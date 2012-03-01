@@ -14,7 +14,7 @@ zh-CN:
           or: 或
           replace_image: " 使用这个去覆盖..."
           current_image: 当前图片
-          maximum_image_size: 最大的图片大小为 %{bytes} MB.
+          maximum_image_size: 最大的图片大小为 %{bytes}.
         actions:
           create_new_image: 添加新图片
         records:

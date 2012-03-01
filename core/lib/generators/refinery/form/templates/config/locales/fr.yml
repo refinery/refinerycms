@@ -1,12 +1,13 @@
 fr:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
       description: Fournit un formulaire de contact et gère les demandes de contacts.
-  <%= plural_name %>:
-    new:
-      send: Envoyer un message
-      privacy_policy: Nous respectons votre vie privée
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        send: Envoyer un message
+        privacy_policy: Nous respectons votre vie privée
     admin:
       <%= plural_name %>:
         delete: Supprimer définitivement cette requête
@@ -40,7 +41,7 @@ fr:
           message: Message
       settings:
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Envoyer une notification à
+          settings_value_name: Envoyer une notification à
           explanation: Chaque fois qu'une demande de contact est rédigée sur votre site, Refinery envoie un e-mail pour le signaler.
           hint: Quand une nouvelle requête est soumise, Refinery vous envoie un e-mail d'avertissement.
           example: "Entrez votre/vos addresse(s) e-mail comme il suit: jack@work.com, jill@office.com"

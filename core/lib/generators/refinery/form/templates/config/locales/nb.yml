@@ -1,11 +1,11 @@
 nb:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
   activerecord:
     models:
       <%= singular_name %>: <%= class_name.underscore.titleize %>
-      <%= singular_name %>_setting: Innstillinger for Forespørsler
+      setting: Innstillinger for Forespørsler
     attributes:
       <%= singular_name %>:
         to: Til
@@ -14,12 +14,13 @@ nb:
         phone: Telefon
         date: Dato
         message: Melding
-  <%= plural_name %>:
-    new:
-      header_message: "Ooops, det oppsto et lite problem"
-      message: "Følgende problemer må løses:"
-      send: Send melding
-      privacy_policy: "Vi respekterer ditt privatliv"
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        header_message: "Ooops, det oppsto et lite problem"
+        message: "Følgende problemer må løses:"
+        send: Send melding
+        privacy_policy: "Vi respekterer ditt privatliv"
     admin:
       <%= plural_name %>:
         <%= singular_name %>:
@@ -59,7 +60,7 @@ nb:
         update:
           updated: "'%{setting}' ble endret."
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Send oppdateringer til
+          settings_value_name: Send oppdateringer til
           explanation: "Hver gang noen kontakter deg på websiden din, så vil Refinery sende ut en e-post for å si ifra at det er ny forespørsel."
           hint: "Når en ny forespørsel er lagt inn, så vil Refinery sende deg en e-post for å si i fra."
           example: "Legg inn din(e) e-post adresse(r) slik: jack@jobb.no, jill@kontoret.no"

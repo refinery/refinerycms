@@ -9,9 +9,6 @@ pl:
         description: Refinery dialogs plugin
     welcome:
       there_are_no_users: Nie ma jeszcze żadnych użytkowników, więc na początek pomożemy Ci się przygotować.
-      remember_admin_location: "Pamiętaj, strefa administracyjna Refinery ma następujący adres: "
-      lets_start: OK, przygotujmy Cię tak, żeby można było Cię zalogować...
-      continue: Kontynuuj...
     crudify:
       created: Skutecznie dodano %{what}.
       updated: Skutecznie uaktualniono %{what}.

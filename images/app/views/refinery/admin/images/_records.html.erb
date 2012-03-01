@@ -1,18 +1,18 @@
 <% if searching? %>
   <h2><%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %></h2>
 <% end %>
-<% if @images.any? %>
-  <div class='pagination_container'>
+<div class='pagination_container'>
+  <% if @images.any? %>
     <%= render 'images' %>
-  </div>
-<% else %>
-  <p>
-    <% unless searching? %>
-      <strong>
-        <%= t('.no_images_yet') %>
-      </strong>
-    <% else %>
-      <%= t('no_results', :scope => 'refinery.admin.search') %>
-    <% end %>
-  </p>
-<% end %>
+  <% else %>
+    <p>
+      <% unless searching? %>
+        <strong>
+          <%= t('.no_images_yet') %>
+        </strong>
+      <% else %>
+        <%= t('no_results', :scope => 'refinery.admin.search') %>
+      <% end %>
+    </p>
+  <% end %>
+</div>

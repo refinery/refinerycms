@@ -14,7 +14,7 @@ vi:
           or: hoặc
           replace_image: " thay bằng ảnh khác..."
           current_image: Ảnh hiện tại
-          maximum_image_size: Dung lượng ảnh tối đa là %{bytes} bytes.
+          maximum_image_size: Dung lượng ảnh tối đa là %{bytes}.
         actions:
           create_new_image: Tạo ảnh mới
         records:

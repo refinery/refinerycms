@@ -9,9 +9,6 @@ ru:
         description: Refinery dialogs plugin
     welcome:
       there_are_no_users: "Ни одного пользователя не создано. Вы будете первым."
-      remember_admin_location: "Запомнить администратора как:"
-      lets_start: "Ок, давайте введем настройки для входа в систему..."
-      continue: "Далее..."
     crudify:
       created: "%{what} создан(а)."
       updated: "%{what} отредактирован(а)."

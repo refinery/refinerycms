@@ -15,7 +15,7 @@ module Refinery
     specify do
       destination_root.should have_structure {
         directory "vendor" do
-          directory "engines" do
+          directory "extensions" do
             directory "rspec_product_tests" do
               directory "app" do
                 directory "controllers" do
@@ -59,6 +59,9 @@ module Refinery
               end
               directory "lib" do
                 file "refinerycms-rspec_product_tests.rb"
+              end
+              directory "spec" do
+                file "spec_helper.rb"
               end
               directory "tasks" do
                 file "testing.rake"

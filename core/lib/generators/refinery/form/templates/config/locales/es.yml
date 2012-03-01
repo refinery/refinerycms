@@ -1,6 +1,6 @@
 es:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
   activerecord:
     models:
@@ -14,12 +14,13 @@ es:
         date: Fecha
         name: Nombre
         message: Mensaje
-  <%= plural_name %>:
-    new:
-      header_message: "Mil disculpas hay un pequeño problema."
-      message: "Los siguientes problemas necesitan ser corregidos:"
-      send: Enviar mensaje
-      privacy_policy: "Nosotros valoramos tu privacidad"
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        header_message: "Mil disculpas hay un pequeño problema."
+        message: "Los siguientes problemas necesitan ser corregidos:"
+        send: Enviar mensaje
+        privacy_policy: "Nosotros valoramos tu privacidad"
     admin:
       <%= plural_name %>:
         <%= singular_name %>:
@@ -51,7 +52,7 @@ es:
         update:
           updated: "'%{setting}' fue actualizado exitosamente."
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Mandar notificaciones a
+          settings_value_name: Mandar notificaciones a
           explanation: "Cada vez que alguien se comunique con usted en su sitio web, Refinery enviara un correo electrónico respecto a esta nueva consulta."
           hint: "Ingrese una dirección de correo. Ingrese la dirección de correo de las persona que vaya a ser notificada, si quiere que varias personas sean notificadas ingrese las direcciones de correo separadas por comas."
           example: "Ejemplo: me@domain.com, friend@msn.com, workmate@work.com"

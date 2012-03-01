@@ -12,9 +12,6 @@ ko:
         description: Refinery 대화창 플러그인
     welcome:
       there_are_no_users: 아무런 사용자도 존재하지 않기 때문에 새 사용자를 생성합니다.
-      remember_admin_location: "Refinery 관리 페이지의 주소를 기억해주세요:"
-      lets_start: 로그인을 위한 계정을 생성해주세요.
-      continue: 계속...
     crudify:
       created: '%{what}을(를) 생성했습니다.'
       updated: '%{what}을(를) 수정했습니다.'

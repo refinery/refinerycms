@@ -3,7 +3,7 @@
 
   <%= render '/refinery/admin/error_messages', :object => @page, :include_object_name => true %>
 
-  <%= render 'locale_picker', :current_locale => Thread.current[:globalize_locale] if Refinery.i18n_enabled? %>
+  <%= render 'locale_picker', :current_locale => Globalize.locale if Refinery.i18n_enabled? %>
 
   <div class="field">
     <%= f.label :title %>
@@ -44,11 +44,11 @@
       );
 
       $("#preview-button").click(function(e) {
-        var form = $(this).parents('form')
+        var form = $(this).parents('form');
         var prev_url = form.attr('action');
         var prev_target = form.attr('target');
         form.attr({
-          'action': '<%= @page.persisted? ? refinery.admin_preview_page_path(@page.uncached_nested_url) : refinery.admin_preview_pages_path %>'
+          'action': '<%= @page.persisted? ? refinery.preview_page_path(@page.uncached_nested_url) : refinery.preview_pages_path %>'
           , 'target': '_blank'
         });
         form.submit();

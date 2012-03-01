@@ -24,7 +24,7 @@ module Refinery
         params[:search].present?
       end
 
-      protected
+    protected
 
       def group_by_date(records)
         new_records = []
@@ -58,10 +58,7 @@ module Refinery
         # end
       end
 
-      # Override method from application_controller. Not needed in this controller.
-      def find_pages_for_menu; end
-
-      private
+    private
 
       def layout?
         "refinery/admin#{"_dialog" if from_dialog?}"

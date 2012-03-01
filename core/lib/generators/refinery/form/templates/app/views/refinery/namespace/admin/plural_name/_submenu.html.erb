@@ -1,0 +1,29 @@
+<div id='actions'>
+  <ul>
+    <%% if ::Refinery::<%= namespacing %>::Admin::<%= class_name.pluralize %>Controller.searchable? %>
+      <li>
+        <%%= render '/refinery/admin/search', :url => refinery.<%= namespacing.underscore %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path %>
+      </li>
+    <%% end %>
+    <li <%%= "class='selected'" if params[:action] == "index" %>>
+      <%%= link_to t('.inbox'), refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path, :class => "email_icon" %>
+    </li><% if @includes_spam %>
+    <li <%%= "class='selected'" if params[:action] == "spam" %>>
+      <%% if @spam_count.any?  %>
+        <%%= link_to "#{t('.spam')} (#{@spam_count})", refinery.spam_<%= namespacing.underscore %>_admin_<%= plural_name %>_path, :class => "spam_icon" %>
+      <%% else %>
+        <%%= link_to t('.spam'), refinery.spam_<%= namespacing.underscore %>_admin_<%= plural_name %>_path, :class => "spam_empty_icon" %>
+      <%% end %>
+    </li><% end %>
+    <li>
+      <%%= link_to t('.update_notified'),
+                    refinery.edit_<%= namespacing.underscore %>_admin_setting_path(:<%= singular_name %>_notification_recipients, :dialog => true, :height => 300),
+                    :class => "user_comment_icon" %>
+    </li>
+    <li>
+      <%%= link_to t('.edit_confirmation_email'),
+                  refinery.edit_<%= namespacing.underscore %>_admin_setting_path(:<%= singular_name %>_confirmation_body, :dialog => true),
+                  :class => "edit_email_icon" %>
+    </li>
+  </ul>
+</div>

@@ -4,7 +4,7 @@ This guide covers getting up and running with Refinery CMS. After reading it, yo
 
 * Installing and creating a new Refinery site
 * Changing the front end design of a Refinery site
-* Extending Refinery's functionality with custom engines
+* Extending Refinery's functionality with custom extensions
 
 endprologue.
 
@@ -16,7 +16,7 @@ This guide is designed for beginners who want to get started with a Refinery CMS
 
 * The "Ruby":http://www.ruby-lang.org/en/downloads language version 1.8.7 or higher (1.9.3 recommended)
 
-TIP: Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0, so if you want to use Rails 3 with 1.9.x jump on 1.9.3 for smooth sailing.
+TIP: Ruby 1.9.1 is not usable because Rails 3.x is not compatible with it. Use 1.9.3 for smooth sailing.
 
 * The "RubyGems":http://rubyforge.org/frs/?group_id=126 packaging system
 * A working installation of the "SQLite3 Database":http://www.sqlite.org
@@ -37,7 +37,7 @@ Refinery is a Ruby on Rails web application. If you have no prior experience wit
 
 h3. What is Refinery CMS?
 
-Refinery CMS, often shortened to Refinery, is an open source content management system written in Ruby as a Ruby on Rails web application with JQuery used as the JavaScript library. Refinery runs on Rails 3.1.
+Refinery CMS, often shortened to Refinery, is an open source content management system written in Ruby as a Ruby on Rails web application with JQuery used as the JavaScript library. Refinery runs on Rails 3.2.
 
 Refinery differs from similar projects by targeting a non-technical end user and allowing the developer to create a flexible website rapidly by staying as close as possible to the conventions of the Ruby on Rails framework.
 
@@ -50,31 +50,30 @@ The Refinery philosophy includes several guiding principles:
 
 h4. Refinery's architecture
 
-Refinery comprises of several Rails Engines. Each engine acts like a mini Rails application with their own routes and views. Refinery is architected like this so that it keeps out of the way of any custom development you will do in the +/app+ directory.
+Refinery comprises of several Rails Engines. Each extension acts like a mini Rails application with its own routes and views. Refinery is architected like this so that it keeps out of the way of any custom development you will do in the +/app+ directory.
 
-h4. Core engines
+h4. Core extensions
 
-The engines Refinery comes with are:
+The extensions Refinery comes with are:
 
-* *"Authentication":https://github.com/resolve/refinerycms/blob/master/doc/authentication.md* - manages users and sessions within Refinery.
-* *Core* - contains default layouts, views, javascripts and CSS. This engine also has an engine API for extending Refinery and everything Refinery needs to hook into Rails.
-* *"Dashboard":https://github.com/resolve/refinerycms/blob/master/doc/dashboard.md* - shows you what's recently been updated.
-* *"Images":https://github.com/resolve/refinerycms/blob/master/doc/images.md* - handles image upload, insertion and processing images using "Dragonfly":https://github.com/markevans/dragonfly.
-* *"Pages":https://github.com/resolve/refinerycms/blob/master/doc/pages.md* - allows you to manage pages including the structure of your site displayed in the front end.
-* *"Resources":https://github.com/resolve/refinerycms/blob/master/doc/resources.md* - handles file upload and storage.
-* *"Settings":https://github.com/resolve/refinerycms/blob/master/doc/settings.md* - manages various settings you can configure in Refinery.
+* *Authentication* - manages users and sessions within Refinery.
+* *Core* - contains default layouts, views, javascripts and CSS. This extension also has an extension API for extending Refinery and everything Refinery needs to hook into Rails.
+* *Dashboard* - shows you what's recently been updated.
+* *Images* - handles image upload, insertion and processing images using "Dragonfly":https://github.com/markevans/dragonfly.
+* *Pages* - allows you to manage pages including the structure of your site displayed in the front end.
+* *Resources* - handles file upload and storage.
 
 h3. Creating a new Refinery project
 
 !>/system/images/BAhbBlsHOgZmSSJEMjAxMC8xMi8wMi8xMl8wN18xNF82NDdfcmlja19hc3RsZXlfbmV2ZXJfZ29ubmFfZ2l2ZV95b3VfdXAuanBnBjoGRVQ/12_07_14_647_rick_astley_never_gonna_give_you_up.jpg!
 
-If you follow this guide, you'll create a Refinery site called <tt>rickrockstar</tt> that will have a custom design and an events engine to allow Rick to tell his fans when his next gig is.
+If you follow this guide, you'll create a Refinery site called <tt>rickrockstar</tt> that will have a custom design and an events extension to allow Rick to tell his fans when his next gig is.
 
 Before you can start building this site, you need to make sure that you have Refinery itself installed.
 
 h4. Installing Refinery
 
-There are two popular ways to install Refinery: RubyGems and Rails Application Templates.  We will discuss both and how you can get up and running with either.
+There are two popular ways to install Refinery: RubyGems and Rails Application Templates. We will discuss both and how you can get up and running with either.
 
 h5. RubyGems 
 The easiest way to install Refinery is to take advantage of RubyGems.
@@ -88,15 +87,15 @@ NOTE: This step may take some time to load as it needs to download and install a
 TIP. If you're working on Windows, you should be aware that the vast majority of Refinery development is done in Unix environments. If at all possible, we suggest that you develop on a Linux based operating system.
 
 h5. Rails Application Templates
-These application templates are another very easy way to install Refinery, and allow for a great deal of control of your installation.  You can install the edge version of Refinery right now using:
+These application templates are another very easy way to install Refinery, and allow for a great deal of control of your installation. You can create a new Refienry application by typing:
 
 <shell>
-$ rails new rickrockstar -m https://raw.github.com/resolve/refinerycms/master/templates/refinery/edge.rb
+$ rails new rickrockstar -m http://refinerycms.com/t/2.0.0
 </shell>
 
 h4. Creating a Refinery application
 
-The best way to use this guide is to follow each step as it happens, no code or step needed to make this example application has been left out, so you can literally follow along step by step.
+The best way to use this guide is to follow each step as it happens. No code or step needed to make this example application has been left out, so you can literally follow along step-by-step.
 
 To begin, open a terminal, navigate to a folder where you have rights to create files, and type:
 
@@ -104,13 +103,9 @@ To begin, open a terminal, navigate to a folder where you have rights to create 
 $ refinerycms rickrockstar
 </shell>
 
-TIP: You can see all of the switches that the +refinerycms+ command accepts by running +refinerycms+ with no options or arguements.
+This will create a new Rails application with Refinery built in called RickRockStar in a directory called +rickrockstar+. It also automatically runs +bundle install+ which will find and install all Refinery's ruby gem dependencies. Finally, it creates your database and seeds it with some basic defaults to get you started.
 
-TIP: You can run <tt>$ refinerycms rickrockstar -r 3.1.3</tt> to generate a refinery stack with any specific version of rails you need.
-
-This will create a new Rails application with Refinery built in called Rick Rock Star in a directory called +rickrockstar+. It also automatically runs +bundle install+ which will find and install all Refinery's ruby gem dependencies. Finally, it creates your database and seeds it with some basic defaults to get you started.
-
-NOTE: In this guide we are using an SQLite3 database for data storage, because it is a zero configuration database that just works. Refinery also supports MySQL and PostgreSQL "out of the box".
+NOTE: In this guide we are using an SQLite3 database for data storage, because it is a zero-configuration database that works without effort. Refinery also supports MySQL and PostgreSQL "out of the box". For important applications, you may wish to use one of these other database systems.
 
 Refinery will create a folder in your working directory called <tt>rickrockstar</tt>. Switch to this folder:
 
@@ -122,7 +117,7 @@ Open up that folder and explore its contents. You'll notice what you have is a v
 
 h3. Hello, Refinery!
 
-One of the traditional places to start with a new project is by getting some text up on screen quickly, to do this, you need to get your Refinery application server running.
+One of the traditional places to start with a new project is by getting some text up on screen quickly. To do this, you need to get your Refinery application server running.
 
 h4. Starting up the Web Server
 
@@ -132,15 +127,13 @@ You actually have a functional Refinery application already installed. To see it
 $ rails server
 </shell>
 
-NOTE: There is a bug in the current release of Refinery that may cause your database to not be set up properly. If this happens, try running +rake db:create+ and then +rake db:migrate+.
-
-This will fire up an instance of the WEBrick web server by default. To see your application in action, open a browser window and navigate to "http://localhost:3000":http://localhost:3000. You should be greeted with a screen prompting you to create your first Refinery user.
+This will fire up an instance of the built-in Rails web server by default (called WEBrick). To see your application in action, open a browser window and navigate to "http://localhost:3000":http://localhost:3000. You should be greeted with a screen prompting you to create your first Refinery user.
 
 !/system/images/BAhbBlsHOgZmSSI8MjAxMC8xMi8wMi8xMl8yN18zOF80OTVfc2V0dXBfeW91cl9maXJzdF91c2VyX3NtYWxsLnBuZwY6BkVU/12_27_38_495_setup_your_first_user_small.png!
 
-TIP: To stop the web server, hit Ctrl+C in the terminal window where it's running.
+TIP: To stop the web server, hit +Ctrl+C+ in the terminal window where it's running.
 
-If you see this screen it means you have setup everything correctly and your Refinery CMS site is up and running.
+If you see this screen it means you have set up everything correctly and your Refinery CMS site is up and running.
 
 h4. Setting up your first user
 
@@ -152,9 +145,17 @@ Once you've created your first user you'll see Refinery's "Dashboard".
 
 h4. Setting Your Site Name
 
-The screen above prompts you with a message to set your site name. Click the "go here" link and set the value in the dialog to "Rick Rock Star". This name will be shown in both the back and front end header as well as the browser title.
+You'll need to set your Site Name; it's used in several spots on the CMS to give you nice branding (for instance, in the blue header at the top of the page and in the footer of your site). 
 
-Click "Save"
+To do this, you'll have to edit +config/initializers/refinery/core.rb+. Look for the line that begins:
+
+<ruby>
+# config.site_name = "Company Name"
+</ruby>
+
+The +#+ character prefixing the line is a comment character. The configuration options in this file (and in other Refinery initializer files) are all commented out, because these options are already set deep inside of Refinery. If you uncomment a line, Refinery will prefer the value you set inside these initializers. Go ahead and remove the +#+ character plus the space before the word 'config', and then change "Company Name" to "Rick Rock Star". Make sure you save, and then restart your server (if you're using the built-in Rails server, hit +Ctrl+C+, and then type +rails server+ again.
+
+TIP: Many parts of Refinery can be customized by changing the options contained within the +config/initializers/refinery/+ folder. As you add extensions to Refinery, more files will be created here specific to the extensions you install.
 
 h4. Explore Refinery
 
@@ -162,7 +163,7 @@ Now you're setup, click around the various tabs in the backend and become famili
 
 !>/system/images/BAhbBlsHOgZmSSIsMjAxMC8xMi8wMi8xMl81NF80Ml83M19yZW9yZGVyX3RhYnMucG5nBjoGRVQ/12_54_42_73_reorder_tabs.png!
 
-While exploring one of the first things I do is reorder the tabs to reflect what I will be working on the most. Click the tab with the two green arrows, and then drag the backend tabs, for example "Users" or "Settings", into an order which makes more sense to you.
+While exploring, one of the first things to do is reorder the tabs to reflect what you will be working on the most. Click the tab with the two green arrows, and then drag the backend tabs - for example, "Users" or "Images" - into an order which makes the most sense to you.
 
 Click the reorder button again when you're done to save.
 
@@ -170,17 +171,15 @@ h4. Switching to your front end
 
 !>/system/images/BAhbBlsHOgZmSSIyMjAxMC8xMi8wMi8xMl81N18wNl80MjJfc3dpdGNoX3RvX3dlYnNpdGUucG5nBjoGRVQ/12_57_06_422_switch_to_website.png!
 
-You're currently in the back end Refinery site editor. To see your front end site click "Switch to your website".
+You're currently in the back-end Refinery site editor. To see the front-end site, click "Switch to your website".
 
-As you can see Refinery is already displaying a basic menu and layout ready for you to customise.
-
-NOTE: If you get a 404 error on the homepage, try running the +rake db:seed+ and then restarting the server:
+As you can see, Refinery is already displaying a basic menu and layout ready for you to customise.
 
 !/system/images/BAhbBlsHOgZmSSJAMjAxMC8xMi8wMi8xM18wMF8zMl83OV9yZWZpbmVyeV9kZWZhdWx0X2Zyb250X2VuZF9zbWFsbC5wbmcGOgZFVA/13_00_32_79_refinery_default_front_end_small.png!
 
 h3. Customising the Design
 
-The layout Refinery provides out of the box is very barebones. We'll now guide you through customising the front end design to give Rick the beautiful site we promised.
+The layout Refinery provides out of the box is very bare. We'll now guide you through customising the front end design to give Rick the beautiful site we promised.
 
 h4. Overriding your first view
 
@@ -188,9 +187,11 @@ By default Refinery has a range of views built in to display the front end site 
 
 TIP: Overriding Refinery views is a common pattern which is worth keeping in mind at all times. If Refinery isn't displaying something how you'd like, just override it.
 
-If you request +http://localhost:3000/about+ this maps by default to Refinery's +pages_controller.rb+ show action.
+If you request +http://localhost:3000/about+, this maps by default to Refinery's +pages_controller.rb+ show action.
 
-So as you would expect the view for this action is located in +app/views/refinery/pages/show.html.erb+. You won't be able to see this file because Refinery is providing it for you. Next let's override that view and replace it with our own.
+So as you would expect according to Rails convention, the view for this action is located in +app/views/refinery/pages/show.html.erb+. You won't be able to see this file because Refinery is providing it for you. Next, let's override that view and replace it with our own.
+
+TIP: Overriding a file simply copies the file from Refinery's code into your +app/+ folder. Many people are confused as to what can be overridden initially. Any controller, model, view, javascript, or stylesheet from any installed extension can be overridden, but the most commonly overridden ones are those in the "refinery":https://github.com/resolve/refinerycms/tree/master/core/app/views/refinery folder.
 
 h4. Overriding your first view
 
@@ -226,13 +227,13 @@ Replace the contents of +app/views/refinery/pages/show.html.erb+ with this:
 
 As you can see we're going to render a view with some HTML5 tags and along with some content coming from the CMS (those are the lines that mention +@page+).
 
-+@page+ has what we call +PageParts+ associated with it. To see what I mean go to "http://localhost:3000/refinery/pages":http://localhost:3000/refinery/pages and then click edit on the page titled "About".
++@page+ has what we call +PageParts+ associated with it. To see what we mean, go to "http://localhost:3000/refinery/pages":http://localhost:3000/refinery/pages and then click "Edit" on the page titled "About".
 
-When you edit the about page you'll see something like this:
+When you edit the About page you'll see something like this:
 
 !/system/images/BAhbBlsHOgZmSSI5MjAxMC8xMi8wMi8xMl8zMl81MV84NjRfZWRpdGluZ19hYm91dF9wYWdlX3NtYWxsLnBuZwY6BkVU/12_32_51_864_editing_about_page_small.png!
 
-You'll notice two tabs on the page "Body" and "Side Body". These are +Page Parts+, or in other words a single piece of content attached to this page that you can render in your view. There is a "Body" tab with some content on this screen, to render that same content in your view you put:
+You'll notice two tabs on the page: "Body" and "Side Body". These are +PageParts+, or in other words, a single piece of content attached to this page that you can render in your view. There is a "Body" tab with some content on this screen. To render that same content in your view, put:
 
 <erb>
 <%=raw @page.content_for(:body) %>
@@ -240,7 +241,7 @@ You'll notice two tabs on the page "Body" and "Side Body". These are +Page Parts
 
 h4. Styling your views
 
-As mentioned earlier, a key principle in Refinery is to stick to "The Rails Way" where possible. This is apparent in the way you style your views too. You style your site exactly how you would style any Rails 3.1 application, using +app/assets/stylesheets/application.css.scss+
+As mentioned earlier, a key principle in Refinery is to stick to "The Rails Way" where possible. This is apparent in the way you style your views too. You style your site exactly how you would style any Rails 3.1 application, using +app/assets/stylesheets/application.css.scss+.
 
 Open up +app/assets/stylesheets/application.css.scss+ and add this:
 
@@ -294,19 +295,19 @@ h3. Extending Refinery with your first Engine
 
 h4. The Anatomy of an Engine
 
-Think of a Refinery engine as a mini Rails application running in your +vendor/engines+ directory. Each engine specifies its own routes in the config directory and has its own views and controllers in its own app directory. Engines can even serve up their own images, stylesheets and javascripts by utilizing asset pipeline which got introduced in Rails 3.1.
+Think of a Refinery extension as a miniature Rails application running in your +vendor/extensions+ directory. Each extension specifies its own routes in its config directory and has its own views and controllers in its own app directory. Engines can even serve up their own images, stylesheets and javascripts by utilizing the asset pipeline, which got introduced in Rails 3.1.
 
-h4. Generating an engine
+h4. Generating an extension
 
-Refinery ships with an engine generator that makes adding your own functionality a breeze. It works just like the Rails scaffold generator.
+Refinery ships with an extension generator that makes adding your own functionality a breeze. It works just like the Rails scaffold generator.
 
 <shell>
 $ rails generate refinery:engine singular_model_name attribute:type [attribute:type ...]
 </shell>
 
-TIP: to see all the options supported by the +refinery:engine+ generator just run +rails g refinery:engine+
+TIP: to see all the options supported by the +refinery:engine+ generator just run +rails g refinery:engine+.
 
-Here is a list of the different field types are what they give you:
+Here is a list of the different field types and what they give you:
 
 |*field type*|*description*|
 |text|a multiline visual editor|
@@ -314,53 +315,58 @@ Here is a list of the different field types are what they give you:
 |image|a link which pops open a dialog which allows the  user to select an existing image or upload a new one|
 |string and integer|a standard single line text input|
 
-If you remember, we told Rick that we'll give him an area to post up events he'll be at. Although he could technically create a new page in Refinery to add this content there, areas that have special functionality are much better suited as an engine.
+If you remember, we told Rick that we'll give him an area to post up events he'll be at. Although he could technically create a new page in Refinery to add this content there, areas that have special functionality are much better suited as an extension.
 
 Rick is going to want to enter the following information about each event:
 
-* The event title
-* The event date
+* The title
+* The date of the event
 * A photo
 * A little blurb about the event.
 
-Run this command to generate the events engine for Rick[1]:
+Run this command to generate the events extension for Rick:
 
 <shell>
 $ rails generate refinery:engine event title:string date:datetime photo:image blurb:text
-      create  vendor/engines/events/app/controllers/refinery/admin/events_controller.rb
-      create  vendor/engines/events/app/controllers/refinery/events_controller.rb
-      create  vendor/engines/events/app/models/refinery/event.rb
-      create  vendor/engines/events/app/views/refinery/admin/events/_actions.html.erb
-      create  vendor/engines/events/app/views/refinery/admin/events/_form.html.erb
-      create  vendor/engines/events/app/views/refinery/admin/events/_events.html.erb
-      create  vendor/engines/events/app/views/refinery/admin/events/_records.html.erb
-      create  vendor/engines/events/app/views/refinery/admin/events/_event.html.erb
-      create  vendor/engines/events/app/views/refinery/admin/events/_sortable_list.html.erb
-      create  vendor/engines/events/app/views/refinery/admin/events/edit.html.erb
-      create  vendor/engines/events/app/views/refinery/admin/events/index.html.erb
-      create  vendor/engines/events/app/views/refinery/admin/events/new.html.erb
-      create  vendor/engines/events/app/views/refinery/events/index.html.erb
-      create  vendor/engines/events/app/views/refinery/events/show.html.erb
-      create  vendor/engines/events/config/locales/en.yml
-      create  vendor/engines/events/config/locales/es.yml
-      create  vendor/engines/events/config/locales/fr.yml
-      create  vendor/engines/events/config/locales/lolcat.yml
-      create  vendor/engines/events/config/locales/nb.yml
-      create  vendor/engines/events/config/locales/nl.yml
-      create  vendor/engines/events/config/routes.rb
-      create  vendor/engines/events/db/migrate/20111031210430_create_events.rb
-      create  vendor/engines/events/db/seeds.rb
-      create  vendor/engines/events/lib/generators/refinery/events_generator.rb
-      create  vendor/engines/events/lib/refinerycms-events.rb
-      create  vendor/engines/events/lib/tasks/events.rake
-      create  vendor/engines/events/readme.md
-      create  vendor/engines/events/refinerycms-events.gemspec
+<shell>
+
+This results in the following:
+<shell>
+      create  vendor/extensions/events/app/controllers/refinery/admin/events_controller.rb
+      create  vendor/extensions/events/app/controllers/refinery/events_controller.rb
+      create  vendor/extensions/events/app/models/refinery/event.rb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_actions.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_form.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_events.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_records.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_event.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_sortable_list.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/edit.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/index.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/new.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/index.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/show.html.erb
+      create  vendor/extensions/events/config/locales/en.yml
+      create  vendor/extensions/events/config/locales/es.yml
+      create  vendor/extensions/events/config/locales/fr.yml
+      create  vendor/extensions/events/config/locales/lolcat.yml
+      create  vendor/extensions/events/config/locales/nb.yml
+      create  vendor/extensions/events/config/locales/nl.yml
+      create  vendor/extensions/events/config/routes.rb
+      create  vendor/extensions/events/db/migrate/20111031210430_create_events.rb
+      create  vendor/extensions/events/db/seeds.rb
+      create  vendor/extensions/events/lib/generators/refinery/events_generator.rb
+      create  vendor/extensions/events/lib/refinerycms-events.rb
+      create  vendor/extensions/events/lib/tasks/events.rake
+      create  vendor/extensions/events/readme.md
+      create  vendor/extensions/events/refinerycms-events.gemspec
       ...
 ------------------------
 Now run:
 bundle install
 rails generate refinery:events
 rake db:migrate
+rake db:seed
 ------------------------
 </shell>
 
@@ -370,39 +376,40 @@ As the output shows next run:
 $ bundle install
 $ rails generate refinery:events
 $ rake db:migrate
+$ rake db:seed
 </shell>
 
 A +refinery:events+ generator is created for you to install the migration to create the events table.
 
-TIP: When new engines are added it's a good idea to restart your server for new changes to be loaded in.
+TIP: When new extensions are added it's a good idea to restart your server for new changes to be loaded in.
 
-Now go to the backend of your Refinery site "http://localhost:3000/refinery":http://localhost:3000/refinery and you'll notice a new tab called "Events". Click on "Add new event" and you'll see something like this:
+Now go to the backend of your Refinery site ("http://localhost:3000/refinery":http://localhost:3000/refinery) and you'll notice a new tab called "Events". Click on "Add new event" and you'll see something like this:
 
 !/system/images/BAhbBlsHOgZmSSI1MjAxMC8xMi8wMi8xMl8zMF8wOV84Ml9ldmVudHNfcGx1Z2luX3NtYWxsZXIucG5nBjoGRVQ/12_30_09_82_events_plugin_smaller.png!
 
-You'll see the entire form has been generated for you based off the field types you specified when generating the events section. The blurb has a visual editor, the date field is a date picker and the photo allows you to pick or upload a new photo from a built in Refinery dialog.
+You'll see the entire form has been generated for you based off the field types you specified when generating the events section. The blurb has a visual editor, the date field is a date picker and the photo allows you to pick or upload a new photo from a built-in Refinery dialog.
 
-Add a couple of mock events to your events engine.
+Add a couple of mock events to your events extension.
 
 Now click on "Switch to your website", and navigate to "http://localhost:3000/events":http://localhost:3000/events
 
-You'll notice not only has Refinery generated the backend "Events" tab but also a new menu item called "Events" and two new front end views +index.html.erb+ and +show.html.erb+ located in +vendor/engines/events/app/views/refinery/events/+ for you to customise.
+You'll notice not only has Refinery generated the backend "Events" tab but also a new menu item called "Events" and two new front-end views, +index.html.erb+ and +show.html.erb+, located in +vendor/extensions/events/app/views/refinery/events/+ for you to customise.
 
-!/system/images/BAhbBlsHOgZmSSI0MjAxMC8xMi8wMi8xNF8yNF81MV80MTVfZXZlbnRzX2VuZ2luZV9zbWFsbC5wbmcGOgZFVA/14_24_51_415_events_engine_small.png!
+!/system/images/BAhbBlsHOgZmSSI0MjAxMC8xMi8wMi8xNF8yNF81MV80MTVfZXZlbnRzX2VuZ2luZV9zbWFsbC5wbmcGOgZFVA/14_24_51_415_events_extension_small.png!
 
-As you can see, Refinery makes it insanely easy to quickly add new engines to manage various areas of a site.
+As you can see, Refinery makes it insanely easy to quickly add new extensions to manage various areas of a site.
 
-But I've noticed one problem. The "2011 Music Awards" is showing up in the middle when it makes more sense to order the events with the latest event at the top. To fix this we need to understand what's happening under the hood of a Refinery engine. Let's dive in.
+But I've noticed one problem. The "2011 Music Awards" is showing up in the middle when it makes more sense to order the events with the latest event at the top. To fix this we need to understand what's happening under the hood of a Refinery extension. Let's dive in.
 
-h4. Testing your engine
+h4. Testing your extension
 
-There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/how-to-enable-testing-in-your-application
+There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/how-to-enable-testing-in-your-application.
 
 h4. Crudify: The Backbone of Refinery Engines
 
-Any Refinery engine, even the built-in ones, that focus on Create, Read, Update and Delete are driven by crudify. Crudify is a highly reusable module included with Refinery that gives you all the standard CRUD actions as well as reordering, searching and paging.
+Any Refinery extension, even the built-in ones, that focus on Create, Read, Update and Delete are driven by crudify. Crudify is a highly reusable module included with Refinery that gives you all the standard CRUD actions as well as reordering, searching and paging.
 
-Open up +vendor/engines/events/app/controllers/refinery/admin/events_controller.rb+ and look at it's contents:
+Open up +vendor/extensions/events/app/controllers/refinery/admin/events_controller.rb+ and look at its contents:
 
 <ruby>
 module ::Refinery
@@ -414,9 +421,9 @@ module ::Refinery
 end
 </ruby>
 
-Most of the time crudify's defaults are bang on, but if you need to, you can easily customise how it works[2].
+Most of the time, crudify's defaults are bang on, but if you need to, you can easily customise how it works.
 
-But default +crudify+ assumes your records will be sortable. But events are not manually sortable, it makes more sense to order them by their event date. Update the contents of the file to this:
+By default +crudify+ assumes your records will be sortable. But events should not be manually sortable; it makes more sense to order them by their event date. Update the contents of the file to this:
 
 <ruby>
 module ::Refinery
@@ -432,7 +439,7 @@ end
 
 This will tell +crudify+ to sort by our event date field and to turn off manual sorting by the user.
 
-Finally edit +vendor/engines/events/app/controllers/refinery/events_controller.rb+ and replace the +find_all_events+ method with this one:
+Finally edit +vendor/extensions/events/app/controllers/refinery/events_controller.rb+ and replace the +find_all_events+ method with this one:
 
 <ruby>
 module ::Refinery
@@ -455,14 +462,10 @@ end
 
 Now when you look at "http://localhost:3000/events":http://localhost:3000/events you'll notice they're now being sorted by the event date.
 
-!/system/images/BAhbBlsHOgZmSSI6MjAxMC8xMi8wMi8xNF8yNF81MV8zMTRfZXZlbnRzX2VuZ2luZV9maXhlZF9zbWFsbC5wbmcGOgZFVA/14_24_51_314_events_engine_fixed_small.png!
+!/system/images/BAhbBlsHOgZmSSI6MjAxMC8xMi8wMi8xNF8yNF81MV8zMTRfZXZlbnRzX2VuZ2luZV9maXhlZF9zbWFsbC5wbmcGOgZFVA/14_24_51_314_events_extension_fixed_small.png!
 
 h3. What's Next?
 
-Now that you've made your first Refinery application with a custom events engine, you should feel free to update it and experiment on your own. But you don't have to do everything without help.
+Now that you've made your first Refinery application with a custom events extension, you should feel free to update it and experiment on your own. But you don't have to do everything without help.
 
-If you need assistance getting up and running with Refinery follow the "How to get help with Refinery Guide":/guides/how-to-get-help-with-refinery and for professional support & consulting contact "Resolve Digital":http://resolvedigital.com/ (the creators of Refinery).
-
-fn1. If you want to know more about the Engine's file structure, check out the "separate documentation on Engines":https://github.com/resolve/refinerycms/blob/master/doc/engines.md.
-
-fn2. There's a "separate doc on configuring and overriding Crudify":https://github.com/resolve/refinerycms/blob/master/doc/crud.md.
+If you need assistance getting up and running with Refinery, follow the "How to get help with Refinery Guide":/guides/how-to-get-help-with-refinery.

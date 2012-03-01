@@ -1,6 +1,6 @@
 it:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
   activerecord:
     models:
@@ -13,12 +13,13 @@ it:
         phone: Telefono
         date: Data
         message: Messaggio
-  <%= plural_name %>:
-    new:
-      header_message: "Un problema si è verificato"
-      message: "I seguenti problemi devono essere corretti:"
-      send: Invia messaggio
-      privacy_policy: "Noi diamo valore alla tua privacy"
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        header_message: "Un problema si è verificato"
+        message: "I seguenti problemi devono essere corretti:"
+        send: Invia messaggio
+        privacy_policy: "Noi diamo valore alla tua privacy"
     admin:
       <%= plural_name %>:
         <%= singular_name %>:
@@ -49,7 +50,7 @@ it:
         update:
           updated: "'%{setting}' stato aggiornato con successo."
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Invia a notifiche
+          settings_value_name: Invia a notifiche
           explanation: "Ogni volta che qualcuno ti contatti sul suo sito web, Refinery invia una mail a dire che c'è una nuova indagine."
           hint: "Inserisci un indirizzo email di cui sopra. Vuoi la notifica di andare a più di una persona? Inserisci più indirizzi email separati da virgole."
           example: "E.g. me@domain.com, friend@msn.com, workmate@work.com"

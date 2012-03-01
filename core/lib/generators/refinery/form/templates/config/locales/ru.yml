@@ -1,11 +1,11 @@
 ru:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
   activerecord:
     models:
       <%= singular_name %>: <%= class_name.underscore.titleize %>
-      <%= singular_name %>_setting: "Настройки запроса"
+      setting: "Настройки запроса"
     attributes:
       <%= singular_name %>:
         to: "Кому"
@@ -14,12 +14,13 @@ ru:
         phone: "Телефон"
         date: "Дата"
         message: "Сообщение"
-  <%= plural_name %>:
-    new:
-      header_message: "Упс. Возникла небольшая проблемка."
-      message: "Нужно исправить следующие ошибки:"
-      send: "Отправить сообщение"
-      privacy_policy: "Мы относимся с уважением к вашим личным данным"
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        header_message: "Упс. Возникла небольшая проблемка."
+        message: "Нужно исправить следующие ошибки:"
+        send: "Отправить сообщение"
+        privacy_policy: "Мы относимся с уважением к вашим личным данным"
     admin:
       <%= plural_name %>:
         <%= singular_name %>:
@@ -61,7 +62,7 @@ ru:
         update:
           updated: "'%{setting}' были успешно обновлены."
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: "Отправить уведомления"
+          settings_value_name: "Отправить уведомления"
           explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет уведомление на электронную почту."
           hint: "Когда поступит новый запрос, Refinery CMS отправит вам уведомление на электронную почту."
           example: "Введите адрес(а) электронной почты через запятую: anna@mail.ru, ivanov@yandex.ru"

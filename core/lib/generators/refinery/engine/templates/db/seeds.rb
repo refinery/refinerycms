@@ -8,13 +8,12 @@ if defined?(::Refinery::User)
 end
 
 <% unless skip_frontend? %>
-url = "/<%= namespacing.underscore %>/<%= plural_name %>"
+url = "/<%= [(namespacing.underscore if namespacing.underscore != plural_name), plural_name].compact.join('/') %>"
 if defined?(::Refinery::Page) && ::Refinery::Page.where(:link_url => url).empty?
   page = ::Refinery::Page.create(
     :title => '<%= class_name.pluralize.underscore.titleize %>',
     :link_url => url,
     :deletable => false,
-    :position => ((::Refinery::Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
     :menu_match => "^#{url}(\/|\/.+?|)$"
   )
   Refinery::Pages.default_parts.each do |default_page_part|

@@ -9,9 +9,6 @@ nb:
         description: Refinery tillegg for dialoger
     welcome:
       there_are_no_users: "Det finnes ingen brukere enda, så la oss sette opp en bruker for deg først."
-      remember_admin_location: "Husk at adressen for å administrere din Refinery er:"
-      lets_start: "Ok, la oss få deg satt opp slik at du kan logge inn..."
-      continue: "Fortsett..."
     crudify:
       created: "%{what} ble opprettet."
       updated: "%{what} ble oppdatert."

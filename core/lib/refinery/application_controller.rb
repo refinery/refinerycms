@@ -15,7 +15,7 @@ module Refinery
 
       send :include, Refinery::Crud # basic create, read, update and delete methods
 
-      send :before_filter, :find_pages_for_menu, :refinery_user_required?
+      send :before_filter, :refinery_user_required?
 
       send :after_filter, :store_current_location!,
                             :if => Proc.new {|c| send(:refinery_user?) }
@@ -61,12 +61,7 @@ module Refinery
       (controller_name =~ /^(user|session)(|s)/ and not admin?) or just_installed?
     end
 
-    protected
-
-    # get all the pages to be displayed in the site menu.
-    def find_pages_for_menu
-      raise NotImplementedError, 'Please implement protected method find_pages_for_menu'
-    end
+  protected
 
     # use a different model for the meta information.
     def present(model)
@@ -80,7 +75,7 @@ module Refinery
       end
     end
 
-    private
+  private
 
     def store_current_location!
       if admin? and request.get? and !request.xhr? and !from_dialog?

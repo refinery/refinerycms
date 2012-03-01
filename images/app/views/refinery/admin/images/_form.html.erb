@@ -21,7 +21,7 @@
   </div>
 
   <div class='field'>
-    <label><%= t('.maximum_image_size', :bytes => Refinery::Images.max_image_size) %></label>
+    <label><%= t('.maximum_image_size', :bytes => number_to_human_size(Refinery::Images.max_image_size)) %></label>
   </div>
 
   <input type='hidden' name='wymeditor' value='<%= params[:wymeditor] %>'>

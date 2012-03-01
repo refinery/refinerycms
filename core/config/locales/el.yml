@@ -9,9 +9,6 @@ el:
         description: Refinery dialogs plugin
     welcome:
       there_are_no_users: Δεν υπάρχουν χρήστες προς το παρόν, οπότε θα φτιάξουμε έναν για εσένα.
-      remember_admin_location: "Θυμήσου ότι η διεύθυνση διαχείρισης του Refinery είναι:"
-      lets_start: Τέλεια, ας φτιάξουμε ένα λογαριασμό για να συνδεθείς...
-      continue: Συνέχεια...
     crudify:
       created: '%{what} προστέθηκε επιτυχώς.'
       updated: '%{what} επεξεργάστηκε επιτυχώς.'

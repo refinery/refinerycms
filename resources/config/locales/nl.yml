@@ -11,7 +11,7 @@ nl:
           download_current: Download het huidige bestand
           or: of
           replace: ", vervang het door dit..."
-          maximum_file_size: "The maximum file size is %{bytes} bytes."
+          maximum_file_size: "The maximum file size is %{bytes}."
         resource:
           download: Download dit bestand (%{size})
         actions:

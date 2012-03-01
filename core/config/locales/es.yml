@@ -2,9 +2,6 @@ es:
   refinery:
     welcome:
       there_are_no_users: "No hay usuarios registrados, así que debemos registrar al primero."
-      remember_admin_location: "Recuerda que tu área administrativa de Refinery esta en:"
-      lets_start: "Excelente, ahora vamos a configurar tu cuenta para poder entrar..."
-      continue: "Continuar..."
     crudify:
       created: '%{what} fue creado correctamente.'
       updated: '%{what} fue actualizado correctamente.'

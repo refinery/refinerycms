@@ -10,7 +10,11 @@
 <% if attribute.type.to_s == 'image' -%>
       <%%= image_fu @<%= singular_name %>.<%= attribute.name %>, nil %>
 <% elsif attribute.type.to_s == 'resource' -%>
-      <%%= link_to <%= "'#{attribute.name}'" %>, @<%= singular_name %>.<%= attribute.name %>.url %>
+      <%% if @<%= singular_name %>.<%= attribute.name %>.present? %>
+        <%%= link_to <%= "'#{attribute.name}'" %>, @<%= singular_name %>.<%= attribute.name %>.url %>
+      <%% else %>
+        <%= attribute.name %>
+      <%% end %>
 <% else -%>
       <%%=raw @<%= singular_name %>.<%= attribute.name %> %>
 <% end -%>

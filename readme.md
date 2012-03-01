@@ -37,7 +37,7 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 ### For developers
 
 * Easily customise the look to suit the business.
-* __[Extend with custom engines](https://github.com/resolve/refinerycms/blob/master/doc/engines.md#readme)__ to do anything Refinery doesn't do out of the box.
+* __[Extend with custom extensions](https://github.com/resolve/refinerycms/blob/master/doc/extensions.md#readme)__ to do anything Refinery doesn't do out of the box.
 * Sticks to __"the Rails way"__ as much as possible; we don't force you to learn new templating languages.
 * Uses [jQuery](http://jquery.com/) for fast and concise Javascript.
 
@@ -54,7 +54,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 * [GitHub repository](http://github.com/resolve/refinerycms)
 * [Developer/API documentation](http://api.refinerycms.org)
 * [Twitter Account](http://twitter.com/refinerycms)
-* Documentation about: [Pages](https://github.com/resolve/refinerycms/blob/master/doc/pages.md#readme), [Images](http://github.com/resolve/refinerycms/blob/master/doc/images.md#readme), [Files](http://github.com/resolve/refinerycms/blob/master/doc/resources.md#readme), [Inquiries](http://github.com/resolve/refinerycms-inquiries/blob/master/readme.md#readme), [Settings](http://github.com/resolve/refinerycms/blob/master/doc/settings.md#readme), [Dashboard](http://github.com/resolve/refinerycms/blob/master/doc/dashboard.md#readme), [Authentication & Users](http://github.com/resolve/refinerycms/blob/master/doc/authentication.md#readme), [Extending with Engines](http://github.com/resolve/refinerycms/blob/master/doc/engines.md#readme).
+* Documentation about: [Pages](https://github.com/resolve/refinerycms/blob/master/doc/pages.md#readme), [Images](http://github.com/resolve/refinerycms/blob/master/doc/images.md#readme), [Files](http://github.com/resolve/refinerycms/blob/master/doc/resources.md#readme), [Inquiries](http://github.com/resolve/refinerycms-inquiries/blob/master/readme.md#readme), [Settings](http://github.com/resolve/refinerycms/blob/master/doc/settings.md#readme), [Dashboard](http://github.com/resolve/refinerycms/blob/master/doc/dashboard.md#readme), [Authentication & Users](http://github.com/resolve/refinerycms/blob/master/doc/authentication.md#readme), [Extending with Engines](http://github.com/resolve/refinerycms/blob/master/doc/extensions.md#readme).
 
 ## Features
 
@@ -88,24 +88,24 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 ### [Authentication & Users](http://github.com/resolve/refinerycms/blob/master/doc/authentication.md#readme)
 
 * Manage who can access Refinery.
-* Control which engines each user has access to.
+* Control which extensions each user has access to.
 * Uses the popular [devise](http://github.com/plataformatec/devise).
 
-### ...Want more? [Extend with Engines](http://github.com/resolve/refinerycms/blob/master/doc/engines.md#readme)
+### ...Want more? [Extend with Engines](http://github.com/resolve/refinerycms/blob/master/doc/extensions.md#readme)
 
-Extend Refinery easily by running the Refinery engine generator
+Extend Refinery easily by running the Refinery extension generator
 
     rails generate refinery:engine
 
-to get help on how to use that. Or read the full documentation on [writing engines for Refinery](https://github.com/resolve/refinerycms/blob/master/doc/generators.md)
+to get help on how to use that. Or read the full documentation on [writing extensions for Refinery](https://github.com/resolve/refinerycms/blob/master/doc/generators.md)
 
 ### Popular Engines
 
-* [Blog](http://github.com/resolve/refinerycms-blog) - A simple blogging engine that supports posts, categories and comments (with moderation support if you choose to enable it)
+* [Blog](http://github.com/resolve/refinerycms-blog) - A simple blogging extension that supports posts, categories and comments (with moderation support if you choose to enable it)
 * [Portfolio](http://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](http://github.com/resolve/refinerycms-news) - post and manage news items.
 
-[Full engine list here](http://github.com/resolve/refinerycms/wiki/engines)
+[Full extension list here](http://github.com/resolve/refinerycms/wiki/extensions)
 
 ### Example Site Showcase
 
@@ -113,7 +113,7 @@ to get help on how to use that. Or read the full documentation on [writing engin
 
 ## License
 
-Refinery is released under the [MIT license](http://github.com/resolve/refinerycms/blob/master/license.md#readme) and is copyright (c) 2005-2011 [Resolve Digital](http://www.resolvedigital.com)
+Refinery is released under the [MIT license](http://github.com/resolve/refinerycms/blob/master/license.md#readme) and is copyright (c) 2005-2012 [Resolve Digital](http://www.resolvedigital.com)
 
 ### Credits
 

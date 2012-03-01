@@ -1,0 +1,21 @@
+<%%= form_for([refinery, :admin, @setting], :url => (@url_override || @url)) do |f| %>
+
+  <div class='field'>
+    <span class='label_with_help'>
+      <%%= f.label :value, t('.settings_value_name') %>
+    </span>
+    <%%= f.text_field :value, :value => @setting.value, :class => "larger widest" %>
+  </div>
+
+  <p>
+    <%%= t('.hint') %>
+  </p>
+  <p>
+    <%%= t('.example') %>
+  </p>
+
+  <%%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :cancel_url => refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path,
+             :hide_delete => true  %>
+<%% end %>

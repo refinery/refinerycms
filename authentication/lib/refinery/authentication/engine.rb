@@ -29,7 +29,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.register_engine(Refinery::Authentication)
+        Refinery.register_extension(Refinery::Authentication)
       end
     end
   end

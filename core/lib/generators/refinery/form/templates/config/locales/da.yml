@@ -1,6 +1,6 @@
 da:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
   activerecord:
     models:
@@ -13,12 +13,13 @@ da:
         phone: Telefon
         date: Dato
         message: Besked
-  <%= plural_name %>:
-    new:
-      header_message: "Der er et mindre problem"
-      message: "Følgende skal rettes:"
-      send: Send besked
-      privacy_policy: "Vi værner om dine personlige oplysninger"
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        header_message: "Der er et mindre problem"
+        message: "Følgende skal rettes:"
+        send: Send besked
+        privacy_policy: "Vi værner om dine personlige oplysninger"
     admin:
       <%= plural_name %>:
         <%= singular_name %>:
@@ -50,7 +51,7 @@ da:
         update:
           updated: "'%{setting}' er opdateret."
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Send besked til
+          settings_value_name: Send besked til
           explanation: "Hver gang kontaktformularen benyttes, sender Refinery en e-mail med besked om, at der er modtaget en ny henvendelse"
           hint: "Indtast en e-mail-adresse ovenfor. Skal beskeden sendes til mere end en person, så indtast flere adresser adskilt med kommaer."
           example: "Fx mig@domæne.dk, ven@hotmail.com, kollega@arbejde.dk"

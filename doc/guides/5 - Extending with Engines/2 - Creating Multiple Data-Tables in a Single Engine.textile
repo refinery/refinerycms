@@ -2,22 +2,22 @@ h2. Creating Multiple Data-Tables in a Single Engine
 
 This guide will show you how to:
 
-* Creating multiple tables on one single engine
+* Creating multiple tables on one single extension
 
 endprologue.
 
 WARNING: This only works on Refinery versions 0.9.9 and greater
 
 
-h4. Generating an engine
+h4. Generating an extension
 
-Refinery ships with an engine generator that makes adding your own functionality a breeze. It works just like the Rails scaffold generator.
+Refinery ships with an extension generator that makes adding your own functionality a breeze. It works just like the Rails scaffold generator.
 
 <shell>
-$ rails generate refinery_engine singular_model_name attribute:type [attribute:type ...]
+$ rails generate refinery_extension singular_model_name attribute:type [attribute:type ...]
 </shell>
 
-TIP: to see all the options supported by the +refinery_engine+ generator just run +rails g refinery_engine+
+TIP: to see all the options supported by the +refinery_extension+ generator just run +rails g refinery_extension+
 
 Here is a list of the different field types are what they give you:
 
@@ -27,7 +27,7 @@ Here is a list of the different field types are what they give you:
 |image|a link which pops open a dialog which allows the  user to select an existing image or upload a new one|
 |string and integer|a standard single line text input|
 
-If you remember, we told Rick that we'll give him an area to post up events he'll be at. Although he could technically create a new page in Refinery to add this content there, areas that have special functionality are much better suited as an engine.
+If you remember, we told Rick that we'll give him an area to post up events he'll be at. Although he could technically create a new page in Refinery to add this content there, areas that have special functionality are much better suited as an extension.
 
 Rick is going to want to enter the following information about each event:
 
@@ -36,37 +36,37 @@ Rick is going to want to enter the following information about each event:
 * A photo
 * A little blurb about the event.
 
-Run this command to generate the events engine for Rick[1]:
+Run this command to generate the events extension for Rick[1]:
 
 <shell>
-$ rails generate refinery_engine event title:string date:datetime photo:image blurb:text
-      create  vendor/engines/events/app/controllers/admin/events_controller.rb
-      create  vendor/engines/events/app/controllers/events_controller.rb
-      create  vendor/engines/events/app/models/event.rb
-      create  vendor/engines/events/app/views/admin/events/_form.html.erb
-      create  vendor/engines/events/app/views/admin/events/_event.html.erb
-      create  vendor/engines/events/app/views/admin/events/_sortable_list.html.erb
-      create  vendor/engines/events/app/views/admin/events/edit.html.erb
-      create  vendor/engines/events/app/views/admin/events/index.html.erb
-      create  vendor/engines/events/app/views/admin/events/new.html.erb
-      create  vendor/engines/events/app/views/events/index.html.erb
-      create  vendor/engines/events/app/views/events/show.html.erb
-      create  vendor/engines/events/config/locales/en.yml
-      create  vendor/engines/events/config/locales/lolcat.yml
-      create  vendor/engines/events/config/locales/nb.yml
-      create  vendor/engines/events/config/locales/nl.yml
-      create  vendor/engines/events/config/routes.rb
-      create  vendor/engines/events/db/migrate/create_events.rb
-      create  vendor/engines/events/db/seeds/events.rb
-      create  vendor/engines/events/features/manage_events.feature
-      create  vendor/engines/events/features/step_definitions/event_steps.rb
-      create  vendor/engines/events/features/support/paths.rb
-      create  vendor/engines/events/lib/generators/refinerycms_events_generator.rb
-      create  vendor/engines/events/lib/events.rb
-      create  vendor/engines/events/lib/tasks/events.rake
-      create  vendor/engines/events/public/.gitkeep
-      create  vendor/engines/events/readme.md
-      create  vendor/engines/events/refinerycms-events.gemspec
+$ rails generate refinery_extension event title:string date:datetime photo:image blurb:text
+      create  vendor/extensions/events/app/controllers/admin/events_controller.rb
+      create  vendor/extensions/events/app/controllers/events_controller.rb
+      create  vendor/extensions/events/app/models/event.rb
+      create  vendor/extensions/events/app/views/admin/events/_form.html.erb
+      create  vendor/extensions/events/app/views/admin/events/_event.html.erb
+      create  vendor/extensions/events/app/views/admin/events/_sortable_list.html.erb
+      create  vendor/extensions/events/app/views/admin/events/edit.html.erb
+      create  vendor/extensions/events/app/views/admin/events/index.html.erb
+      create  vendor/extensions/events/app/views/admin/events/new.html.erb
+      create  vendor/extensions/events/app/views/events/index.html.erb
+      create  vendor/extensions/events/app/views/events/show.html.erb
+      create  vendor/extensions/events/config/locales/en.yml
+      create  vendor/extensions/events/config/locales/lolcat.yml
+      create  vendor/extensions/events/config/locales/nb.yml
+      create  vendor/extensions/events/config/locales/nl.yml
+      create  vendor/extensions/events/config/routes.rb
+      create  vendor/extensions/events/db/migrate/create_events.rb
+      create  vendor/extensions/events/db/seeds/events.rb
+      create  vendor/extensions/events/features/manage_events.feature
+      create  vendor/extensions/events/features/step_definitions/event_steps.rb
+      create  vendor/extensions/events/features/support/paths.rb
+      create  vendor/extensions/events/lib/generators/refinerycms_events_generator.rb
+      create  vendor/extensions/events/lib/events.rb
+      create  vendor/extensions/events/lib/tasks/events.rake
+      create  vendor/extensions/events/public/.gitkeep
+      create  vendor/extensions/events/readme.md
+      create  vendor/extensions/events/refinerycms-events.gemspec
 ------------------------
 Now run:
 bundle install
@@ -85,47 +85,47 @@ $ rake db:migrate
 
 A +refinerycms_events+ generator is created for you to install the migration to create the events table. Run all the commands provided by in the terminal.
 
-TIP: When new engines are added it's a good idea to restart your server for new changes to be loaded in.
+TIP: When new extensions are added it's a good idea to restart your server for new changes to be loaded in.
 
-As you can see inside your text editor, in vendor/engines folder, the event engine is in stored. this is where all your files including your migration file will be in placed. Similar like a normal Rails app looks like. 
+As you can see inside your text editor, in vendor/extensions folder, the event extension is in stored. this is where all your files including your migration file will be in placed. Similar like a normal Rails app looks like. 
 
-Ok. Once you have generate an engine. It's time to create another table to put inside the engine. 
+Ok. Once you have generate an extension. It's time to create another table to put inside the extension. 
 
-To do that, run this command. Notice the last argument(+engine_name:engine+). This is where your new table will be inserted to. 
+To do that, run this command. Notice the last argument(+extension_name:extension+). This is where your new table will be inserted to. 
 
 <shell>
-$ rails g refinery_engine place name:string events:engine
-	  create  vendor/engines/events/app/controllers/admin/places_controller.rb
-      create  vendor/engines/events/app/controllers/places_controller.rb
-      create  vendor/engines/events/app/models/place.rb
-      create  vendor/engines/events/app/views/admin/places/_actions.html.erb
-      create  vendor/engines/events/app/views/admin/places/_form.html.erb
-      create  vendor/engines/events/app/views/admin/places/_states.html.erb
-      create  vendor/engines/events/app/views/admin/places/_records.html.erb
-      create  vendor/engines/events/app/views/admin/places/_place.html.erb
-      create  vendor/engines/events/app/views/admin/places/_sortable_list.html.erb
-      create  vendor/engines/events/app/views/admin/places/edit.html.erb
-      create  vendor/engines/events/app/views/admin/places/index.html.erb
-      create  vendor/engines/events/app/views/admin/places/new.html.erb
-      create  vendor/engines/events/app/views/places/index.html.erb
-      create  vendor/engines/events/app/views/places/show.html.erb
-      create  vendor/engines/events/config/locales/tmp/en.yml
-      create  vendor/engines/events/config/locales/tmp/fr.yml
-      create  vendor/engines/events/config/locales/tmp/lolcat.yml
-      create  vendor/engines/events/config/locales/tmp/nb.yml
-      create  vendor/engines/events/config/locales/tmp/nl.yml
-      create  vendor/engines/events/config/tmp/routes.rb
-      create  vendor/engines/events/db/migrate/create_places.rb
-      create  vendor/engines/events/db/seeds/places.rb
-      create  vendor/engines/events/features/manage_places.feature
-      create  vendor/engines/events/features/step_definitions/place_steps.rb
-      create  vendor/engines/events/features/support/tmp/paths.rb
-      create  vendor/engines/events/lib/generators/refinerycms_places_generator.rb
-      create  vendor/engines/events/lib/refinerycms-places.rb
-      create  vendor/engines/events/lib/tasks/places.rake
-      create  vendor/engines/events/refinerycms-places.gemspec
-      create  vendor/engines/events/spec/models/place_spec.rb
-      append  vendor/engines/events/lib/refinerycms-events.rb
+$ rails g refinery_extension place name:string events:extension
+	  create  vendor/extensions/events/app/controllers/admin/places_controller.rb
+      create  vendor/extensions/events/app/controllers/places_controller.rb
+      create  vendor/extensions/events/app/models/place.rb
+      create  vendor/extensions/events/app/views/admin/places/_actions.html.erb
+      create  vendor/extensions/events/app/views/admin/places/_form.html.erb
+      create  vendor/extensions/events/app/views/admin/places/_states.html.erb
+      create  vendor/extensions/events/app/views/admin/places/_records.html.erb
+      create  vendor/extensions/events/app/views/admin/places/_place.html.erb
+      create  vendor/extensions/events/app/views/admin/places/_sortable_list.html.erb
+      create  vendor/extensions/events/app/views/admin/places/edit.html.erb
+      create  vendor/extensions/events/app/views/admin/places/index.html.erb
+      create  vendor/extensions/events/app/views/admin/places/new.html.erb
+      create  vendor/extensions/events/app/views/places/index.html.erb
+      create  vendor/extensions/events/app/views/places/show.html.erb
+      create  vendor/extensions/events/config/locales/tmp/en.yml
+      create  vendor/extensions/events/config/locales/tmp/fr.yml
+      create  vendor/extensions/events/config/locales/tmp/lolcat.yml
+      create  vendor/extensions/events/config/locales/tmp/nb.yml
+      create  vendor/extensions/events/config/locales/tmp/nl.yml
+      create  vendor/extensions/events/config/tmp/routes.rb
+      create  vendor/extensions/events/db/migrate/create_places.rb
+      create  vendor/extensions/events/db/seeds/places.rb
+      create  vendor/extensions/events/features/manage_places.feature
+      create  vendor/extensions/events/features/step_definitions/place_steps.rb
+      create  vendor/extensions/events/features/support/tmp/paths.rb
+      create  vendor/extensions/events/lib/generators/refinerycms_places_generator.rb
+      create  vendor/extensions/events/lib/refinerycms-places.rb
+      create  vendor/extensions/events/lib/tasks/places.rake
+      create  vendor/extensions/events/refinerycms-places.gemspec
+      create  vendor/extensions/events/spec/models/place_spec.rb
+      append  vendor/extensions/events/lib/refinerycms-events.rb
 ------------------------
 Now run:
 bundle install

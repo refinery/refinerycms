@@ -1,13 +1,16 @@
 var shiftHeld = false;
 var initialLoad = true;
-$(document).ready(function(){
+
+init_refinery_admin = function(){
   init_interface();
   init_sortable_menu();
   init_submit_continue();
   init_modal_dialogs();
   init_tooltips();
   init_ajaxy_pagination();
-});
+};
+
+$(document).ready(init_refinery_admin);
 
 if(typeof(window.onpopstate) == "object"){
   $(window).bind('popstate', function(e) {
@@ -94,6 +97,24 @@ init_modal_dialogs = function(){
     });
   });
 };
+
+refinery_dialog_success = function(e) {
+  close_dialog();
+
+  $.ajax({
+    url: window.location.pathname,
+    cache: false,
+    success: function(data) {
+      $('.pagination_container').html(data);
+
+      $('#flash_container > #flash').remove();
+      $('#flash_container').append($('.pagination_container').find('#flash'));
+
+      $('#flash').css({'width': 'auto', 'visibility': ''}).fadeIn(550);
+      init_refinery_admin();
+    }
+  });
+}
 
 trigger_reordering = function(e, enable) {
   $menu = $("#menu");
@@ -193,8 +214,8 @@ init_tooltips = function(args){
             tooltip.corner('6px').find('span').corner('6px');
           }
 
-          tooltip_nib_image = $.browser.msie ? 'tooltip-nib.gif' : 'tooltip-nib.png';
-          nib = $("<img src='/assets/refinery/"+tooltip_nib_image+"' class='tooltip-nib'/>").appendTo('#tooltip_container');
+          tooltip_nib_extension = $.browser.msie ? '.gif' : '.png';
+          nib = $("<img src='<%= asset_path 'refinery/tooltip-nib' %>" + tooltip_nib_extension + "' class='tooltip-nib'/>").appendTo('#tooltip_container');
 
           tooltip.css({
             'opacity': 0
@@ -302,7 +323,7 @@ var link_tester = {
 
   validate_textbox: function(validation_method, textbox_id, callback) {
     var icon = '';
-    var loader_img = $("<img id='" + textbox_id.replace('#','') + "_test_loader' src='/assets/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>");
+    var loader_img = $("<img id='" + textbox_id.replace('#','') + "_test_loader' src='<%= asset_path 'refinery/ajax-loader.gif' %>' alt='Testing...' style='display: none;'/>");
     var result_span = $("<span id='" + textbox_id.replace('#','') + "_test_result'></span>");
 
     loader_img.insertAfter($(textbox_id));
@@ -972,7 +993,9 @@ close_dialog = function(e) {
     the_body.removeClass('hide-overflow');
     the_dialog.filter(':data(dialog)').dialog('close');
     the_dialog.remove();
-    e.preventDefault();
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
   }
 };
 

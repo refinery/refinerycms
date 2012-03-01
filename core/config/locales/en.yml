@@ -12,9 +12,6 @@ en:
         description: Refinery dialogs plugin
     welcome:
       there_are_no_users: "There are no users yet, so we'll set you up first."
-      remember_admin_location: "Remember your Refinery admin area is at:"
-      lets_start: Alright let's get you setup so you can login...
-      continue: Continue...
     crudify:
       created: '%{what} was successfully added.'
       updated: '%{what} was successfully updated.'

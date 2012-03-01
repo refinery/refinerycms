@@ -15,7 +15,7 @@ module Refinery
     specify do
       destination_root.should have_structure {
         directory "vendor" do
-          directory "engines" do
+          directory "extensions" do
             directory "rspec_form_tests" do
               directory "app" do
                 directory "controllers" do
@@ -24,14 +24,16 @@ module Refinery
                       directory "admin" do
                         file "rspec_form_tests_controller.rb"
                       end
-                      directory "rspec_form_tests" do
-                        file "rspec_form_tests_controller.rb"
-                      end
+                      file "rspec_form_tests_controller.rb"
                     end
                   end
                 end
                 directory "mailers" do
-                  file "rspec_form_test_mailer.rb"
+                  directory "refinery" do
+                    directory "rspec_form_tests" do
+                      file "mailer.rb"
+                    end
+                  end
                 end
                 directory "models" do
                   directory "refinery" do
@@ -61,6 +63,9 @@ module Refinery
                     end
                   end
                 end
+              end
+              directory "db" do
+                file "seeds.rb"
               end
               directory "lib" do
                 file "refinerycms-rspec_form_tests.rb"

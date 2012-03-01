@@ -1,5 +1,5 @@
 Description:
-    Generates a custom forms based engine for Refinery automatically.
+    Generates a custom forms based extension for Refinery automatically.
     It works very similarly to the Refinery Engine generator.
 
     The first string attribute should always be the one which is the title or

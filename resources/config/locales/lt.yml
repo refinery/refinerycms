@@ -12,7 +12,7 @@ lt:
           download_current: Parsisiųsti failą
           or: arba
           replace: " pakeisti jį šiuo..."
-          maximum_file_size: Maksimalus failo dydis yra %{bytes} megabaitų.
+          maximum_file_size: Maksimalus failo dydis yra %{bytes}.
         resource:
           download: Parsisiųsti failą (%{size})
         actions:

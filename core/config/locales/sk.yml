@@ -9,9 +9,6 @@ sk:
         description: Refinery dialóg modul
     welcome:
       there_are_no_users: Nemáme žiadneho užívateľa, preto teraz jedného vytvoríme.
-      remember_admin_location: "Zapamätajte si adresu k Refinery administrácii:"
-      lets_start: Najskôr vytvoríme užívateľský účet, nech sa máme ako prihlásiť...
-      continue: Pokračovať...
     crudify:
       created: '%{what} bol úspešne vytvorený.'
       updated: '%{what} bol úspešne aktualizovaný.'

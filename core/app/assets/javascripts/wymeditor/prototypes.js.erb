@@ -780,7 +780,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
       ajax_loaded_callback();
       break;
     default:
-      $("<img id='dialog_loading' src='/assets/refinery/dialogLoadingAnimation.gif' width='208' height='13' />").appendTo(dialog_container);
+      $("<img id='dialog_loading' src='<%= asset_path 'refinery/dialogLoadingAnimation.gif' %>' width='208' height='13' />").appendTo(dialog_container);
       dialog_container.dialog($.extend(wym._options.dialogFeatures, {
         title: dialog_title
       })).load(path, ajax_loaded_callback);

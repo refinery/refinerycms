@@ -17,12 +17,11 @@ def setup_environment
     config.filter_run :focus => true
     config.run_all_when_everything_filtered = true
   end
-
-  # set javascript driver for capybara
-  Capybara.javascript_driver = :selenium
 end
 
 def each_run
+  Rails.cache.clear
+  ActiveSupport::Dependencies.clear
   FactoryGirl.reload
 
   # Requires supporting files with custom matchers and macros, etc,

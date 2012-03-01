@@ -12,7 +12,7 @@ el:
           download_current: Μεταφόρτωση τρέχοντος αρχείου
           or: ή
           replace: " αντικατάσταση με νέο..."
-          maximum_file_size: Το μέγιστο μέγεθος του αρχείου είναι %{bytes} bytes.
+          maximum_file_size: Το μέγιστο μέγεθος του αρχείου είναι %{bytes}.
         resource:
           download: Μεταφόρτωση αυτού του αρχείου (%{size})
         actions:

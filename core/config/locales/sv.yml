@@ -9,9 +9,6 @@ sv:
         description: Refinery dialoger tillägsprogram
     welcome:
       there_are_no_users: Det finns inga användare ännu, så vi skapar en för dig först.
-      remember_admin_location: "Kom ihåg att kontrollpanelen nås via:"
-      lets_start: Okej, låt oss skapa en användare för dig så du kan logga in...
-      continue: Fortsätt...
     crudify:
       created: '%{what} lades till.'
       updated: '%{what} uppdaterades.'

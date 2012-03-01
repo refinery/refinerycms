@@ -13,7 +13,7 @@
       cancel_title = t('.cancel_lose_changes')
     end
     cancel_button_id    ||= "cancel_button"
-    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? refinery.send(Refinery.route_for_model(f.object.class)) : back)
+    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? refinery.send(Refinery.route_for_model(f.object.class, true)) : back)
   end
 
   continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and f.object.persisted?)

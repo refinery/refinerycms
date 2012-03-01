@@ -1,11 +1,12 @@
 lv:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
-  <%= plural_name %>:
-    new:
-      send: Sūtīt ziņu
-      privacy_policy: Mēs cienam Jūsu privātumu
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        send: Sūtīt ziņu
+        privacy_policy: Mēs cienam Jūsu privātumu
     admin:
       <%= plural_name %>:
         delete: Dzēst šo pieprasījumu
@@ -39,7 +40,7 @@ lv:
           message: Ziņa
       settings:
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Sūtīt paziņojumu uz
+          settings_value_name: Sūtīt paziņojumu uz
           explanation: Katru reizi, kad kāds ar tevi sazinās izmantojot kontaktformu, Refinery nosūta epastu par to, ka ir jauns pieprasījums.
           hint: Kad tiek iesniegts jauns pieprasījums, tad Refinery nosūtīs paziņojumu uz šo epastu.
           example: "Ievadi savu epasta(-u) adresi(-es) šādā formātā: janis.ozols@test.lv, juris@test.lv"

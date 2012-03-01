@@ -2,9 +2,6 @@ sl:
   refinery:
     welcome:
       there_are_no_users: "Trenutno še ni nobenega uporabnika, zato vas moramo najprej namestiti."
-      remember_admin_location: "Zapomnite si vaše administracijsko področje v Refinery je:"
-      lets_start: "Vredu najprej vas bomo namestili, da se boste potem lahko prijavili..."
-      continue: "Nadaljuj..."
     crudify:
       created: "%{what} je bil uspešno ustvarjen"
       updated: "%{what} je bil uspešno ustvarjen"

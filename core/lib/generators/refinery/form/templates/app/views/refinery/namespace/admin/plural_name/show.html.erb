@@ -1,0 +1,52 @@
+<div id='records'>
+  <h2><%%= t('.<%= singular_name %>') %></h2>
+  <table id='<%= singular_name %>' class='inquiry'>
+<% attributes.each do |attribute| -%>
+      <tr>
+        <td<%= " valign='top'" if attribute.type.to_s == 'text' %>>
+          <strong>
+            <%%= t('.<%= attribute.name %>', :default => t('activerecord.attributes.<%= singular_name %>.<%= attribute.name %>')) %>
+          </strong>
+        </td>
+        <td>
+<% if attribute.type.to_s == 'text' -%>
+          <p style='margin-top: 0px'>
+            <%% @<%= singular_name %>.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+              <%%=raw "</p><p>" unless index == 0 %>
+              <%%= sentence %>
+            <%% end %>
+          </p>
+<% else -%>
+          <%%= @<%= singular_name %>.<%= attribute.name %> %>
+<% end -%>
+        </td>
+      </tr>
+<% end -%>
+  </table>
+</div>
+<div id='actions'>
+  <h2><%%= t('.details')%></h2>
+  <p>
+    <strong><%%= t('.age') %>:</strong> <%%= time_ago_in_words(@<%= singular_name %>.created_at) %>
+  </p><% if @includes_spam %>
+  <%% if @<%= singular_name %>.spam? %>
+    <p>
+      <strong><%%= t('.spam') %>:</strong> <%%= t('.spam_yes') %>
+    </p>
+  <%% end %><% end %>
+  <h2><%%= t('.actions') %></h2>
+  <ul>
+    <li>
+      <%%= link_to t('.back_to_all_<%= plural_name %>'), refinery.url_for(:action => 'index'),
+                   :class => "back_icon" %>
+    </li>
+    <li>
+      <%%= link_to t('delete', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>'),
+                  refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(@<%= singular_name %>),
+                  :class => 'delete_icon no-tooltip confirm-delete',
+                  :title => t('delete', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>'),
+                  :'data-confirm' => t('message', :scope => 'refinery.admin.delete', :title => @<%= singular_name %>.name),
+                  :'data-method' => "delete" %>
+    </li>
+  </ul>
+</div>

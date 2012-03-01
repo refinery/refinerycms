@@ -9,9 +9,6 @@ zh-CN:
         description: Refinery 对话框插件
     welcome:
       there_are_no_users: 现在还没有用户, 因此我们先来设置一个.
-      remember_admin_location: "记住你的 Refinery 后台管理页面在:"
-      lets_start: 好了, 让我们协助您设置, 然后您就能够登录了...
-      continue: 继续...
     crudify:
       created: '%{what} 添加成功.'
       updated: '%{what} 编辑成功.'

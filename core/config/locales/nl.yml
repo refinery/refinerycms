@@ -9,9 +9,6 @@ nl:
         description: Refinery dialogen plugin
     welcome:
       there_are_no_users: "Er zijn nog geen gebruikers, dus zullen we er nu eerst een voor je maken"
-      remember_admin_location: "Onthoud dat u het beheerders gedeelte hieronder vindt:"
-      lets_start: "Goed, laten we nu jouw gebruikersaccount instellen."
-      continue: "Ga verder..."
     crudify:
       created: "%{what} is met success aangemaakt"
       updated: "%{what} is met success aangepast"

@@ -11,9 +11,6 @@ ja:
         description: Refineryのダイアログプラグイン
     welcome:
       there_are_no_users: あなたを最初のユーザとして登録します。
-      remember_admin_location: "Refineryの管理画面は"
-      lets_start: それでは始めましょう。
-      continue: 続行
     crudify:
       created: '%{what} を追加しました。'
       updated: '%{what}を更新しました。'

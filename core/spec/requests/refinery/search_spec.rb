@@ -5,7 +5,7 @@ module Refinery
     login_refinery_user
 
     context "when searched item exists" do
-      describe "image engine" do
+      describe "image extension" do
         before(:each) { FactoryGirl.create(:image) }
 
         it "returns found image" do
@@ -16,7 +16,7 @@ module Refinery
         end
       end
 
-      describe "resource engine" do
+      describe "resource extension" do
         before(:each) { FactoryGirl.create(:resource) }
 
         it "returns found resource" do
@@ -27,7 +27,7 @@ module Refinery
         end
       end
 
-      describe "page engine" do
+      describe "page extension" do
         before(:each) { FactoryGirl.create(:page, :title => "Ugis Ozols") }
 
         it "returns found page" do
@@ -35,17 +35,6 @@ module Refinery
           fill_in "search", :with => "ugis"
           click_button "Search"
           page.should have_content("Ugis Ozols")
-        end
-      end
-
-      describe "setting engine" do
-        before(:each) { Refinery::Setting.set(:testy, true) }
-
-        it "returns found setting" do
-          visit refinery.admin_settings_path
-          fill_in "search", :with => "testy"
-          click_button "Search"
-          page.should have_content("Testy - true")
         end
       end
     end
@@ -57,30 +46,23 @@ module Refinery
         page.should have_content("Sorry, no results found")
       end
 
-      describe "image engine" do
+      describe "image extension" do
         it "returns no results" do
           visit refinery.admin_images_path
           shared_stuff
         end
       end
 
-      describe "resource engine" do
+      describe "resource extension" do
         it "returns no results" do
           visit refinery.admin_resources_path
           shared_stuff
         end
       end
 
-      describe "page engine" do
+      describe "page extension" do
         it "returns no results" do
           visit refinery.admin_pages_path
-          shared_stuff
-        end
-      end
-
-      describe "setting engine" do
-        it "returns no results" do
-          visit refinery.admin_settings_path
           shared_stuff
         end
       end

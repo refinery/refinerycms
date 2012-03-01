@@ -2,8 +2,6 @@ module Refinery
   class SessionsController < Devise::SessionsController
     layout 'refinery/layouts/login'
 
-    skip_before_filter :find_pages_for_menu
-
     before_filter :clear_unauthenticated_flash, :only => [:new]
 
     def create

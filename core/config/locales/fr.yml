@@ -9,9 +9,6 @@ fr:
         description: Plugin de boîtes de dialogue pour Refinery
     welcome:
       there_are_no_users: Il n'y actuellement aucun utilisateur enregistré, nous allons donc vous enregistrer pour commencer.
-      remember_admin_location: "Souvenez-vous que votre tableau de bord se situe à l'adresse : "
-      lets_start: Procédons à votre enregistrement afin que vous puissiez vous identifier...
-      continue: Continuer...
     crudify:
       created: '%{what} a été correctement créé.'
       updated: '%{what} a été correctement mis à jour.'

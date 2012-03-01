@@ -1,12 +1,13 @@
 pt-BR:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
       description: Gerenciar contatos
-  <%= plural_name %>:
-    new:
-      send: Enviar mensagem
-      privacy_policy: "Nós valorizamos sua privacidade"
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        send: Enviar mensagem
+        privacy_policy: "Nós valorizamos sua privacidade"
     admin:
       <%= plural_name %>:
         delete: Remover esta mensagem para sempre
@@ -40,7 +41,7 @@ pt-BR:
           message: Mensagem
       settings:
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Enviar notificações para
+          settings_value_name: Enviar notificações para
           explanation: "Toda vez que alguém contactar você no seu website, enviamos um email para notificar a essa pessoa o recebimento de uma mensagem."
           hint: "Digite um endereço de email acima. Deseja que a notificação vá para mais de uma pessoa? Digite vários endereços de email separados por vírgulas."
           example: "Digite os endereços da seguinte forma: eu@dominio.com, amigo@msn.com, colegadetrabalho@trabalho.com"

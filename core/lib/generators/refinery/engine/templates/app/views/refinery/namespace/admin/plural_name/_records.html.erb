@@ -1,18 +1,18 @@
 <%% if searching? %>
   <h2><%%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %></h2>
 <%% end %>
-<%% if @<%= plural_name %>.any? %>
-  <div class='pagination_container'>
+<div class='pagination_container'>
+  <%% if @<%= plural_name %>.any? %>
     <%%= render '<%= plural_name %>' %>
-  </div>
-<%% else %>
-  <p>
-    <%% unless searching? %>
-      <strong>
-        <%%= t('.no_items_yet') %>
-      </strong>
-    <%% else %>
-      <%%= t('no_results', :scope => 'refinery.admin.search') %>
-    <%% end %>
-  </p>
-<%% end %>
+  <%% else %>
+    <p>
+      <%% unless searching? %>
+        <strong>
+          <%%= t('.no_items_yet') %>
+        </strong>
+      <%% else %>
+        <%%= t('no_results', :scope => 'refinery.admin.search') %>
+      <%% end %>
+    </p>
+  <%% end %>
+</div>

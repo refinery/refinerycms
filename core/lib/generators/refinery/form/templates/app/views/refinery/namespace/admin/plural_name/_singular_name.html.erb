@@ -1,0 +1,25 @@
+<li class='clearfix record <%%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <%%= link_to <%= singular_name %>.name, refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>) %> <%%= t('.said') %>
+    <span class="preview"><%%= truncate(strip_tags(<%= singular_name %>.message), :length => 60) -%></span>
+  </span>
+  <span class='actions'>
+    <%%= link_to refinery_icon_tag('delete.png'), refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>),
+                :class => "cancel confirm-delete",
+                :title => t('admin.<%= plural_name %>.delete'),
+                :'data-confirm' => t('shared.admin.delete.message', :title => <%= singular_name %>.name),
+                :'data-method' => "delete" -%>
+
+    <%%= link_to refinery_icon_tag('zoom.png'), refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>),
+                :title => t('.read_<%= singular_name %>') -%>
+<% if @includes_spam %>
+    <%% if <%= singular_name %>.spam? %>
+      <%%= link_to refinery_icon_tag('email.png'), refinery.toggle_spam_<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>),
+                  :title => t('.mark_as_ham') -%>
+    <%% else %>
+      <%%= link_to refinery_icon_tag('bin_closed.png'), refinery.toggle_spam_<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>),
+                  :title => t('.mark_as_spam') -%>
+    <%% end %>
+<% end -%>
+  </span>
+</li>

@@ -325,31 +325,27 @@ module Refinery
       end
 
       context "with #page_menu_title" do
-        pending "can't set page[:page_menu_title] because it'll throw an unknown attribute exception"
+        before do
+          page.page_menu_title = "Page Menu Title"
+        end
 
-        # before do
-        #   page[:page_menu_title] = "Page Menu Title"
-        # end
-        #
-        # it_should_behave_like "Refinery menu item hash"
-        #
-        # it "returns the page_menu_title for :title" do
-        #   subject[:title].should eq("Page Menu Title")
-        # end
+        it_should_behave_like "Refinery menu item hash"
+
+        it "returns the page_menu_title for :title" do
+          subject[:title].should eq("Page Menu Title")
+        end
       end
 
       context "with #page_title" do
-        pending "can't set page[:page_title] because it'll throw an unknown attribute exception"
+        before do
+          page.page_title = "Page Title"
+        end
 
-        # before do
-        #   page[:page_title] = "Page Title"
-        # end
-        #
-        # it_should_behave_like "Refinery menu item hash"
-        #
-        # it "returns the page_title for :title" do
-        #   subject[:title].should eq("Page Title")
-        # end
+        it_should_behave_like "Refinery menu item hash"
+
+        it "returns the page_title for :title" do
+          subject[:title].should eq("Page Title")
+        end
       end
 
       context "with #menu_title" do
@@ -412,33 +408,6 @@ module Refinery
           page.stub(:in_menu?).and_return(false)
           page.not_in_menu?.should be_true
         end
-      end
-    end
-
-    # https://github.com/resolve/refinerycms/issues/1302
-    describe "saving nested page" do
-      before do
-        Refinery::I18n.stub(:enabled).and_return(false)
-        Refinery::I18n.stub(:default_locale).and_return(:de)
-        Refinery::I18n.stub(:current_locale).and_return(:de)
-        Refinery::I18n.stub(:default_frontend_locale).and_return(:de)
-        Refinery::I18n.stub(:frontend_locales).and_return([:de])
-        Refinery::I18n.stub(:locales).and_return({ :de => "Deutsch" })
-        Refinery::Pages.stub(:approximate_ascii).and_return(true)
-        Refinery::Pages.stub(:strip_non_ascii).and_return(true)
-        Dummy::Application.config.i18n.stub(:default_locale).and_return(:de)
-      end
-
-      let!(:root_page) { FactoryGirl.create(:page, :title => "Root page") }
-      let!(:nested_page) { FactoryGirl.create(:page, :title => "Nested page", :parent_id => root_page) }
-
-      it "doesn't delete slug" do
-        Slug.where(:name => nested_page.friendly_id).count.should be > 0
-        nested_page.parts.each do |part|
-          part.body = "test"
-        end
-        nested_page.save!
-        Slug.where(:name => nested_page.friendly_id).count.should be > 0
       end
     end
 
