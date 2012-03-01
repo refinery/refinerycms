@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.executables       = %w(refinerycms)
   s.require_paths     = %w(lib)
 
-  s.files             = `git ls-files -- lib/*`.split("\n")
+  s.files             = `git ls-files -- lib/* templates/*`.split("\n")
 
   s.add_dependency    'bundler',                    '~> 1.0'
   s.add_dependency    'refinerycms-authentication', version
