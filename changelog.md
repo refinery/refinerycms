@@ -5,11 +5,12 @@
 * Moved everything under Refinery namespace. [wakeless](https://github.com/wakeless)
 * Renamed `RefinerySetting` to `Refinery::Setting`. [Philip Arndt](https://github.com/parndt)
 * Added `rails g refinery:form` generator for form textensions. [Philip Arndt](https://github.com/parndt)
-* Added `--trace` option to bin/refinerycms. [Steven Heidel](http://github.com/stevenheidel)
 * Moved `/shared/*` to `/refinery/*` instead, including `/shared/admin/*` to `/refinery/admin/*` as it makes more sense. [Philip Arndt](https://github.com/parndt)
-* `vendor/engines` is now `vendor/extensions` [Philip Arndt](https://github.com/parndt)
+* `vendor/engines` is now `vendor/extensions`. [Philip Arndt](https://github.com/parndt)
+* Extensions are now generated with testing support built in via a dummy refinery installation. [Jamie Winsor](https://github.com/reset)
+* Refinery is now mountable at a custom path. [Uģis Ozols](https://github.com/ugisozols)
 * [See full list](https://github.com/resolve/refinerycms/compare/1.0.9...master) if you dare.
-* [See explanation of changes](https://github.com/resolve/refinerycms/wiki/Changelog)
+* [See explanation of changes](https://github.com/resolve/refinerycms/wiki/Changelog).
 
 ## 1.0.9 [5 November 2011]
 
