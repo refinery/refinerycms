@@ -2,6 +2,9 @@ source 'http://rubygems.org'
 
 gemspec
 
+# Add i18n support.
+gem 'refinerycms-i18n', '~> 2.0.0'
+
 # Database Configuration
 platforms :jruby do
   gem 'activerecord-jdbcsqlite3-adapter'
@@ -67,9 +70,6 @@ group :assets do
 end
 
 gem 'jquery-rails', '~> 2.0.0'
-
-# Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',           :git => 'git://github.com/parndt/refinerycms-i18n.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'
