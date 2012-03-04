@@ -8,7 +8,7 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer 'setup-refinery-resources-with-dragonfly', :before => :load_config_initializers do |app|
+      initializer 'setup-refinery-resources-with-dragonfly', :before => :load_config_initializers do
         ::Refinery::Resources::Dragonfly.setup!
       end
 
@@ -17,16 +17,14 @@ module Refinery
         ::Refinery::Resources::Dragonfly.attach!(app)
       end
 
-      initializer "register refinery_files plugin" do
+      initializer "register refinery_files plugin", :after => :set_routes_reloader_hook do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_files'
           plugin.menu_match = /refinery\/(refinery_)?(files|resources)$/
           plugin.version = %q{2.0.0}
-          plugin.activity = {
-            :class_name => :'refinery/resource'
-          }
-          plugin.url = { :controller => '/refinery/admin/resources' }
+          plugin.activity = { :class_name => :'refinery/resource' }
+          plugin.url = Refinery::Core::Engine.routes.url_helpers.admin_resources_path
         end
       end
 

@@ -8,7 +8,7 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer "register refinery_dashboard plugin" do
+      initializer "register refinery_dashboard plugin", :after => :set_routes_reloader_hook do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_dashboard'
@@ -16,7 +16,7 @@ module Refinery
           plugin.version = %q{2.0.0}
           plugin.always_allow_access = true
           plugin.dashboard = true
-          plugin.url = { :controller => '/refinery/admin/dashboard' }
+          plugin.url = Refinery::Core::Engine.routes.url_helpers.admin_dashboard_path
         end
       end
 

@@ -8,7 +8,7 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer "register refinery_user plugin" do
+      initializer "register refinery_user plugin", :after => :set_routes_reloader_hook do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_users'
@@ -18,7 +18,7 @@ module Refinery
             :class_name => :'refinery/user',
             :title => 'username'
           }
-          plugin.url = { :controller => '/refinery/admin/users' }
+          plugin.url = Refinery::Core::Engine.routes.url_helpers.admin_users_path
         end
       end
 
