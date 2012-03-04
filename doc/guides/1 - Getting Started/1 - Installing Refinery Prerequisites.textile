@@ -55,7 +55,7 @@ h3. Mac OS X
 
 h4. Ruby
 
-TIP. If you're planning on using Ruby a lot, the best way to install it is using the "Ruby Version Manager":https://rvm.beginrescueend.com/ (RVM)
+TIP. The best way to install Ruby is using the "Ruby Version Manager":https://rvm.beginrescueend.com/ (RVM)
 
 Ruby 1.8.7 comes installed by default on a mac. Lucky you!
 
