@@ -131,7 +131,7 @@ This will fire up an instance of the built-in Rails web server by default (calle
 
 !http://d2prewpsu45gft.cloudfront.net/system/images/BAhbB1sHOgZmSSI3MjAxMi8wMy8wNC8xNF8xMV8yNF85OTNfc2V0X3VwX3lvdXJfZmlyc3RfdXNlci5wbmcGOgZFVFsIOgZwOgp0aHVtYkkiCTYxMHgGOwZG/set-up-your-first-user.png!
 
-TIP: To stop the web server, hit +Ctrl+C+ in the terminal window where it's running.
+TIP: To stop the web server, hit +Ctrl&#43;C+ in the terminal window where it's running.
 
 If you see this screen it means you have set up everything correctly and your Refinery CMS site is up and running.
 
