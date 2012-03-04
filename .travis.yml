@@ -11,7 +11,9 @@ notifications:
     - parndt@gmail.com
     - ugis.ozolss@gmail.com
   irc:
-    - "irc.freenode.org#refinerycms"
+    use_notice: true
+    channels:
+      - "irc.freenode.org#refinerycms"
 env:
   - DB=postgresql
   - DB=mysql
