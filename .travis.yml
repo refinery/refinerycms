@@ -12,6 +12,7 @@ notifications:
     - ugis.ozolss@gmail.com
   irc:
     use_notice: true
+    skip_join: true
     channels:
       - "irc.freenode.org#refinerycms"
 env:
