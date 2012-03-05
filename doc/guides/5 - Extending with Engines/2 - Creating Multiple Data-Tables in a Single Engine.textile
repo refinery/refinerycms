@@ -6,18 +6,17 @@ This guide will show you how to:
 
 endprologue.
 
-WARNING: This only works on Refinery versions 0.9.9 and greater
-
+WARNING: This only works on Refinery versions 2.0.0 and greater.
 
 h4. Generating an extension
 
 Refinery ships with an extension generator that makes adding your own functionality a breeze. It works just like the Rails scaffold generator.
 
 <shell>
-$ rails generate refinery_extension singular_model_name attribute:type [attribute:type ...]
+$ rails generate refinery:engine singular_model_name attribute:type [attribute:type ...]
 </shell>
 
-TIP: to see all the options supported by the +refinery_extension+ generator just run +rails g refinery_extension+
+TIP: to see all the options supported by the +refinery:engine+ generator just run +rails g refinery:engine+.
 
 Here is a list of the different field types are what they give you:
 
@@ -39,7 +38,7 @@ Rick is going to want to enter the following information about each event:
 Run this command to generate the events extension for Rick[1]:
 
 <shell>
-$ rails generate refinery_extension event title:string date:datetime photo:image blurb:text
+$ rails generate refinery:engine event title:string date:datetime photo:image blurb:text
       create  vendor/extensions/events/app/controllers/admin/events_controller.rb
       create  vendor/extensions/events/app/controllers/events_controller.rb
       create  vendor/extensions/events/app/models/event.rb
@@ -70,8 +69,9 @@ $ rails generate refinery_extension event title:string date:datetime photo:image
 ------------------------
 Now run:
 bundle install
-rails generate refinerycms_events
+rails generate refinery:events
 rake db:migrate
+rake db:seed
 ------------------------
 </shell>
 
@@ -79,22 +79,25 @@ As the output shows next run:
 
 <shell>
 $ bundle install
-$ rails generate refinerycms_events
+$ rails generate refinery:events
 $ rake db:migrate
+$ rake db:seed
 </shell>
 
-A +refinerycms_events+ generator is created for you to install the migration to create the events table. Run all the commands provided by in the terminal.
+A +refinery:events+ generator is created for you to install the migration to create the events table. Run all the commands provided by in the terminal.
 
-TIP: When new extensions are added it's a good idea to restart your server for new changes to be loaded in.
+TIP: When new extensions are added, it's a good idea to restart your server for new changes to be loaded in.
 
-As you can see inside your text editor, in vendor/extensions folder, the event extension is in stored. this is where all your files including your migration file will be in placed. Similar like a normal Rails app looks like. 
+As you can see inside your text editor, the event extension is now stored in +vendor/extensions/events/+. This is where all your files &mdash; including your migration file &mdash; will be in placed. The folder structure of +events+ is nearly identical to a normal Rails app, but has a few additions to provide Refinery functionality.
 
-Ok. Once you have generate an extension. It's time to create another table to put inside the extension. 
+Once you have generated an extension, it's time to create another table to put inside of it.
 
-To do that, run this command. Notice the last argument(+extension_name:extension+). This is where your new table will be inserted to. 
+To do that, run the following command. Notice the last argument(+--extension extension_name+). This is how Refinery knows which engine to insert your new code.
+
+TIP: You can additionally specify +--pretend+ to simulate generation, so you may inspect the outcome without actually modifying anything.
 
 <shell>
-$ rails g refinery_extension place name:string events:extension
+$ rails g refinery:engine place name:string --extension events 
 	  create  vendor/extensions/events/app/controllers/admin/places_controller.rb
       create  vendor/extensions/events/app/controllers/places_controller.rb
       create  vendor/extensions/events/app/models/place.rb
@@ -126,6 +129,7 @@ $ rails g refinery_extension place name:string events:extension
       create  vendor/extensions/events/refinerycms-places.gemspec
       create  vendor/extensions/events/spec/models/place_spec.rb
       append  vendor/extensions/events/lib/refinerycms-events.rb
+
 ------------------------
 Now run:
 bundle install
@@ -138,10 +142,10 @@ Run all the command provided like the above. Notice +rails generate refinerycms_
 
 The bundle install command will run the normal rails bundle install.
 
-The +rails generate refinerycms_events places+ will run and create the migration file with timestamp. Example:
+The +rails generate refinery:events places+ will run and create the migration file with timestamp. Example:
 
 <shell>
-$ rails generate refinerycms_events places
+$ rails generate refinery:events places
 
 You already have a migration called create_events
       create  db/migrate/20110608043313_create_places.rb
@@ -150,7 +154,8 @@ You already have a migration called create_events
 ------------------------
 Now run:
 rake db:migrate
+rake db:seed
 ------------------------
 </shell>
 
-Lastly, run rake db:migrate as usual.
+Lastly, run +rake db:migrate+ and +rake db:seed+ as usual.
