@@ -30,7 +30,7 @@ Refinery::Core::Engine.routes.draw do
   end
 end
 
-Refinery::Core::Engine.routes.prepend do
+Refinery::Core::Engine.routes.append do
   namespace :admin, :path => 'refinery' do
     resources :users, :except => :show
   end
