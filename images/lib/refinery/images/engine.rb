@@ -8,7 +8,7 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer 'setup-refinery-images-with-dragonfly', :before => :load_config_initializers do |app|
+      initializer 'setup-refinery-images-with-dragonfly', :before => :load_config_initializers do
         ::Refinery::Images::Dragonfly.setup!
       end
 
@@ -23,10 +23,8 @@ module Refinery
           plugin.name = 'refinery_images'
           plugin.version = %q{2.0.0}
           plugin.menu_match = %r{refinery/image(_dialog)?s$}
-          plugin.activity = {
-            :class_name => :'refinery/image'
-          }
-          plugin.url = { :controller => '/refinery/admin/images' }
+          plugin.activity = { :class_name => :'refinery/image' }
+          plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_images_path }
         end
       end
 

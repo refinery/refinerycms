@@ -29,35 +29,30 @@ module Refinery
           plugin.name = 'refinery_pages'
           plugin.version = %q{2.0.0}
           plugin.menu_match = %r{refinery/page(_part|s_dialog)?s$}
-          plugin.activity = {
-            :class_name => :'refinery/page'
-          }
-          plugin.url = { :controller => '/refinery/admin/pages' }
+          plugin.activity = { :class_name => :'refinery/page' }
+          plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_pages_path }
         end
       end
 
-      initializer "append marketable routes" do
-        if Refinery::Pages.marketable_urls
-          append_marketable_routes
-        end
+      initializer "append marketable routes", :after => :set_routes_reloader_hook do
+        append_marketable_routes if Refinery::Pages.marketable_urls
       end
 
       initializer "add marketable route parts to reserved words", :after => :set_routes_reloader_hook do |app|
-        if Refinery::Pages.marketable_urls
-          add_route_parts_as_reserved_words(app)
-        end
+        add_route_parts_as_reserved_words(app) if Refinery::Pages.marketable_urls
       end
 
       config.after_initialize do
         Refinery.register_extension(Refinery::Pages)
       end
 
-      protected
+    protected
 
       def append_marketable_routes
         Refinery::Core::Engine.routes.append do
-          get '*path', :to => 'pages#show'
+          get '*path', :to => 'pages#show', :as => :marketable_page
         end
+        Rails.application.routes_reloader.reload!
       end
 
       # Add any parts of routes as reserved words.
