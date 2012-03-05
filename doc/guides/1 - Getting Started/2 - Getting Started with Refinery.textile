@@ -403,7 +403,7 @@ But I've noticed one problem. The "2011 Music Awards" is showing up in the middl
 
 h4. Testing your extension
 
-There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/how-to-enable-testing-in-your-application.
+There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/how-to-test-your-engine.
 
 h4. Crudify: The Backbone of Refinery Engines
 
