@@ -88,7 +88,7 @@ A +refinery:events+ generator is created for you to install the migration to cre
 
 TIP: When new extensions are added, it's a good idea to restart your server for new changes to be loaded in.
 
-As you can see inside your text editor, the event extension is now stored in +vendor/extensions/events/+. This is where all your files &mdash; including your migration file &mdash; will be in placed. The folder structure of +events+ is nearly identical to a normal Rails app, but has a few additions to provide Refinery functionality.
+As you can see inside your text editor, the event extension is now stored in +vendor/extensions/events/+. This is where all your files &mdash; including your migration file &mdash; will be placed. The folder structure of +events+ is nearly identical to a normal Rails app, but has a few additions to provide Refinery functionality.
 
 Once you have generated an extension, it's time to create another table to put inside of it.
 
@@ -138,7 +138,7 @@ rake db:migrate
 ------------------------
 </shell>
 
-Run the commands listed above. Notice +rails generate refinery:events places+. The +rails generate refinery:events places+ will copy the migration files from +vendor/extensions/engines/db/migrate+ to +db/migrate+ and will prepend a timestamp to each migration. This is so an extension that was written before your application will declare its migrations chronologically later than the migrations you wrote for the app. For instance, if you wrote your app on Tuesday and then inserted the extension on Wednesday, you would want the timestamps on the migrations to show Wednesday rather than the date it was created &mdash; perhaps Monday. If the extension didn't do this, when you deployed your application, it would run the migrations for your extension first, potentially failing because it couldn't find the Refinery database tables it needs to complete.
+Run the commands listed above. Notice +rails generate refinery:events places+. The +rails generate refinery:events places+ will copy the migration files from +vendor/extensions/events/db/migrate+ to +db/migrate+ and will prepend a timestamp to each migration. This is so an extension that was written before your application will declare its migrations chronologically later than the migrations you wrote for the app. For instance, if you wrote your app on Tuesday and then inserted the extension on Wednesday, you would want the timestamps on the migrations to show Wednesday rather than the date it was created &mdash; perhaps Monday. If the extension didn't do this, when you deployed your application, it would run the migrations for your extension first, potentially failing because it couldn't find the Refinery database tables it needs to complete.
 
 <shell>
 $ bundle install
