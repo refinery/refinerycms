@@ -12,7 +12,7 @@ h3. Checklist
 
 If you are already a Rails developer, you will most likely not have to install anything else. Here's the requirements for Refinery:
 
-* *Ruby* - 1.8.7, 1.9.2, Rubinius, and JRuby are all acceptable
+* *Ruby* - 1.8.7, 1.9.2, 1.9.3, Rubinius, and JRuby are all acceptable
 * *RubyGems* - Recommended that you have the latest version installed
 * *Database* - SQLite3 (default), MySQL, or PostgreSQL
 * *ImageMagick* - Recommended that you have the latest version installed
@@ -55,7 +55,7 @@ h3. Mac OS X
 
 h4. Ruby
 
-TIP. If you're planning on using Ruby a lot, the best way to install it is using the "Ruby Version Manager":https://rvm.beginrescueend.com/ (RVM)
+TIP. The best way to install Ruby is using the "Ruby Version Manager":https://rvm.beginrescueend.com/ (RVM)
 
 Ruby 1.8.7 comes installed by default on a mac. Lucky you!
 
