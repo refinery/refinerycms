@@ -30,11 +30,11 @@ module Refinery
           plugin.version = %q{2.0.0}
           plugin.menu_match = %r{refinery/page(_part|s_dialog)?s$}
           plugin.activity = { :class_name => :'refinery/page' }
-          plugin.url = Refinery::Core::Engine.routes.url_helpers.admin_pages_path
+          plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_pages_path }
         end
       end
 
-      initializer "append marketable routes" do
+      initializer "append marketable routes", :after => :set_routes_reloader_hook do
         append_marketable_routes if Refinery::Pages.marketable_urls
       end
 
@@ -46,7 +46,7 @@ module Refinery
         Refinery.register_extension(Refinery::Pages)
       end
 
-      protected
+    protected
 
       def append_marketable_routes
         Refinery::Core::Engine.routes.append do
