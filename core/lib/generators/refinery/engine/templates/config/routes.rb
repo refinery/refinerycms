@@ -1,4 +1,4 @@
-Refinery::Core::Engine.routes.draw do
+Refinery::Core::Engine.routes.append do
 <% unless skip_frontend? %>
   # Frontend routes
   namespace :<%= namespacing.underscore %> do

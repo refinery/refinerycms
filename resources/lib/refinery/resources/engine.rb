@@ -17,14 +17,14 @@ module Refinery
         ::Refinery::Resources::Dragonfly.attach!(app)
       end
 
-      initializer "register refinery_files plugin", :after => :set_routes_reloader_hook do
+      initializer "register refinery_files plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_files'
           plugin.menu_match = /refinery\/(refinery_)?(files|resources)$/
           plugin.version = %q{2.0.0}
           plugin.activity = { :class_name => :'refinery/resource' }
-          plugin.url = Refinery::Core::Engine.routes.url_helpers.admin_resources_path
+          plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_resources_path }
         end
       end
 
