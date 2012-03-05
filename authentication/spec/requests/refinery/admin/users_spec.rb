@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe "manage users" do
+describe "User admin page" do
   login_refinery_user
 
   describe "new/create" do
-    it "allows to create user" do
+    it "can create a user" do
       visit refinery.admin_users_path
       click_link "Add new user"
 
@@ -20,7 +20,7 @@ describe "manage users" do
   end
 
   describe "edit/update" do
-    it "allows to update user" do
+    it "can update a user" do
       visit refinery.admin_users_path
       click_link "Edit this user"
 
@@ -36,14 +36,14 @@ describe "manage users" do
   describe "destroy" do
     let!(:user) { FactoryGirl.create(:user, :username => "ugisozols") }
 
-    it "allows to destroy only regular user" do
+    it "can only destroy regular users" do
       visit refinery.admin_users_path
       page.should have_selector("a[href='/refinery/users/#{user.username}']")
-      page.should have_no_selector("a[href='/refinery/users/refinerycms']")
+      page.should have_no_selector("a[href='/refinery/users/#{logged_in_user.username}']")
 
       click_link "Remove this user"
       page.should have_content("'#{user.username}' was successfully removed.")
-      page.should have_content("refinerycms (refinerycms@refinerycms.com)")
+      page.should have_content("#{logged_in_user.username} (#{logged_in_user.email})")
     end
   end
 end
