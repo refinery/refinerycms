@@ -98,7 +98,7 @@ TIP: You can additionally specify +--pretend+ to simulate generation, so you may
 
 <shell>
 $ rails g refinery:engine place name:string --extension events 
-	  create  vendor/extensions/events/app/controllers/admin/places_controller.rb
+	    create  vendor/extensions/events/app/controllers/admin/places_controller.rb
       create  vendor/extensions/events/app/controllers/places_controller.rb
       create  vendor/extensions/events/app/models/place.rb
       create  vendor/extensions/events/app/views/admin/places/_actions.html.erb
@@ -133,18 +133,15 @@ $ rails g refinery:engine place name:string --extension events
 ------------------------
 Now run:
 bundle install
-rails generate refinerycms_events places
+rails generate refinery:events places
 rake db:migrate
 ------------------------
 </shell>
 
-Run all the command provided like the above. Notice +rails generate refinerycms_events places+. This is where it will all took place for your new migration file. 
-
-The bundle install command will run the normal rails bundle install.
-
-The +rails generate refinery:events places+ will run and create the migration file with timestamp. Example:
+Run the commands listed above. Notice +rails generate refinery:events places+. The +rails generate refinery:events places+ will copy the migration files from +vendor/extensions/engines/db/migrate+ to +db/migrate+ and will prepend a timestamp to each migration. This is so an extension that was written before your application will declare its migrations chronologically later than the migrations you wrote for the app. For instance, if you wrote your app on Tuesday and then inserted the extension on Wednesday, you would want the timestamps on the migrations to show Wednesday rather than the date it was created &mdash; perhaps Monday. If the extension didn't do this, when you deployed your application, it would run the migrations for your extension first, potentially failing because it couldn't find the Refinery database tables it needs to complete.
 
 <shell>
+$ bundle install
 $ rails generate refinery:events places
 
 You already have a migration called create_events
