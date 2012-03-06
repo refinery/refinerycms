@@ -1,3 +1,5 @@
+require "will_paginate/view_helpers/action_view"
+
 module WillPaginate
   module ActionView
     class LinkRenderer < ViewHelpers::LinkRenderer
