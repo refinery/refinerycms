@@ -18,9 +18,8 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
 
   s.files             = `git ls-files`.split("\n")
-  s.test_files        = `git ls-files -- spec/*`.split("\n")
-  s.executables       = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
+  s.add_dependency 'refinerycms-core',        version
   s.add_dependency 'database_cleaner',        '~> 0.7.1'
   s.add_dependency 'launchy'
   s.add_dependency 'factory_girl_rails',      '~> 1.6.0'
@@ -32,5 +31,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'capybara',                '~> 1.1.0'
   s.add_dependency 'guard-rspec',             '~> 0.6.0'
   s.add_dependency 'guard-spork',             '~> 0.5.2'
-  s.add_dependency 'refinerycms-core',        version
 end

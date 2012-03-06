@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
 
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files -- spec/*`.split("\n")
-  s.executables       = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
   s.add_dependency 'acts_as_indexed',             '~> 0.7.7'
   s.add_dependency 'friendly_id',                 '~> 4.0.1'
