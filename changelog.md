@@ -1,3 +1,13 @@
+## 1.0.10 [6 March 2012]
+
+* Fixed a recursive formatting problem in WYMeditor for webkit. [Philip Arndt](https://github.com/parndt)
+* Use `asset_host` for url returned from link_to dialog. [Sergio Cambra](https://github.com/scambra)
+* Fix file link not appearing after selecting a new file [Joe Sak](https://github.com/joemsak)
+* Move will_paginate config into i18n language files. [Nic Haynes](https://github.com/nicinabox)
+* Multi-language fixes. [Miroslav Rachev](https://github.com/mirosr)
+
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.9...1.0.10)
+
 ## 1.0.9 [5 November 2011]
 
 * `guard` testing strategy ported from edge for testing refinery from its own directory without a dummy app. [Jamie Winsor](https://github.com/resetexistence) & [Joe Sak](https://github.com/joemsak)
