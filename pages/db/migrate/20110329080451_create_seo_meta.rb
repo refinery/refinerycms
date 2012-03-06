@@ -27,7 +27,7 @@ class CreateSeoMeta < ActiveRecord::Migration
 
     # Reset column information because otherwise the old columns will still exist.
     [::Page, ::Page.translation_class].each do |model|
-      ActiveRecord::Base.connection.schema_cache.clear_table_cache!(model.table_name)
+      ActiveRecord::Base.connection.schema_cache.clear_table_cache!(model.table_name) if ActiveRecord::Base.connection.respond_to?(:schema_cache)
       model.reset_column_information
     end
 
