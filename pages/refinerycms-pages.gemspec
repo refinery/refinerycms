@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
 
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files -- spec/*`.split("\n")
-  s.executables       = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
   s.add_dependency 'awesome_nested_set',          '~> 2.1.0'
   s.add_dependency 'seo_meta',                    '~> 1.2.0'
