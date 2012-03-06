@@ -31,7 +31,6 @@ class PasswordsController < ::Devise::PasswordsController
       UserMailer.reset_notification(user, request).deliver
       redirect_to new_user_session_path, :notice => t('email_reset_sent', :scope => 'users.forgot') and return
     else
-      @user = User.new(params[:user])
       flash.now[:error] = if (email = params[:user][:email]).blank?
         t('blank_email', :scope => 'users.forgot')
       else
