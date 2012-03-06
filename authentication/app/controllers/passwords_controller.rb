@@ -35,7 +35,7 @@ class PasswordsController < ::Devise::PasswordsController
       flash.now[:error] = if (email = params[:user][:email]).blank?
         t('blank_email', :scope => 'users.forgot')
       else
-        t('email_not_associated_with_account_html', :email => h(email), :scope => 'users.forgot')
+        t('email_not_associated_with_account_html', :email => ERB::Util.html_escape(email), :scope => 'users.forgot').html_safe
       end
       render_with_scope :new
     end
