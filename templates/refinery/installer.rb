@@ -15,6 +15,10 @@ gem 'refinerycms-i18n',   '~> #{VERSION_BAND}'
 "
 end
 
+if RbConfig::CONFIG['target_os'] =~ /linux/i
+  gsub_file 'Gemfile', "# gem 'therubyracer'", "gem 'therubyracer'"
+end
+
 run 'bundle install'
 rake 'db:create'
 generate "refinery:cms --fresh-installation #{ARGV.join(' ')}"

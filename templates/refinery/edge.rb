@@ -17,6 +17,10 @@ gem 'refinerycms-i18n',   '~> 2.0.0', :git => 'git://github.com/parndt/refineryc
 "
 end
 
+if RbConfig::CONFIG['target_os'] =~ /linux/i
+  gsub_file 'Gemfile', "# gem 'therubyracer'", "gem 'therubyracer'"
+end
+
 run 'bundle install'
 rake 'db:create'
 generate 'refinery:cms --fresh-installation #{ARGV.join(' ')}'
