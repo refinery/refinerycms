@@ -42,7 +42,7 @@ module Refinery
         flash.now[:error] = if @refinery_user.email.blank?
           t('blank_email', :scope => 'refinery.users.forgot')
         else
-          t('email_not_associated_with_account_html', :email => h(@refinery_user.email), :scope => 'refinery.users.forgot').html_safe
+          t('email_not_associated_with_account_html', :email => ERB::Util.html_escape(@refinery_user.email), :scope => 'refinery.users.forgot').html_safe
         end
         render :new
       end
