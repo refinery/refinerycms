@@ -4,7 +4,7 @@ module Refinery
     # a PagePart model.
     class PagePartSectionPresenter < SectionPresenter
       def initialize(page_part)
-        super
+        super()
         self.fallback_html = page_part.body.html_safe if page_part.body
         self.id = convert_title_to_id(page_part.title) if page_part.title
       end
