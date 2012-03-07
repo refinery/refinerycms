@@ -6,12 +6,7 @@ module Refinery
           let!(:logged_in_user) { Factory.create(factory) }
 
           before do
-            visit refinery.new_refinery_user_session_path
-
-            fill_in "Login", :with => logged_in_user.username
-            fill_in "Password", :with => logged_in_user.password
-
-            click_on "Sign in"
+            login_as logged_in_user, :scope => :refinery_user
           end
         end
 
