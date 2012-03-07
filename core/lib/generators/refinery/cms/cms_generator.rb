@@ -2,14 +2,18 @@ module Refinery
   class CmsGenerator < Rails::Generators::Base
     source_root Pathname.new(File.expand_path('../templates', __FILE__))
 
-    class_option :update, :type => :boolean, :aliases => nil, :group => :runtime,
-                          :desc => "Update an existing Refinery CMS based application"
+    class_option :update,  :type => :boolean, :aliases => nil, :group => :runtime,
+                           :desc => "Update an existing Refinery CMS based application"
     class_option :fresh_installation, :type => :boolean, :aliases => nil, :group => :runtime, :default => false,
-                          :desc => "Allow Refinery to remove default Rails files in a fresh installation"
-    class_option :heroku, :type => :string, :default => nil, :group => :runtime, :banner => 'APP_NAME',
-                          :desc => "Deploy to Heroku after the generator has run."
-    class_option :stack, :type => :string, :default => 'cedar', :group => :runtime,
-                          :desc => "Specify which Heroku stack you want to use. Requires --heroku option to function."
+                           :desc => "Allow Refinery to remove default Rails files in a fresh installation"
+    class_option :heroku,  :type => :string, :default => nil, :group => :runtime, :banner => 'APP_NAME',
+                           :desc => "Deploy to Heroku after the generator has run."
+    class_option :stack,   :type => :string, :default => 'cedar', :group => :runtime,
+                           :desc => "Specify which Heroku stack you want to use. Requires --heroku option to function."
+    class_option :skip_db, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
+                           :desc => "Skip over any database creation, migration or seeding."
+    class_option :skip_migrations, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
+                           :desc => "Skip over installing or running migrations."
 
     def generate
       start_pretending?
@@ -159,8 +163,10 @@ gem 'pg'
     end
 
     def migrate_database!
-      rake 'railties:install:migrations'
-      rake 'db:create db:migrate'
+      unless self.options[:skip_migrations]
+        rake 'railties:install:migrations'
+        rake 'db:create db:migrate' unless self.options[:skip_db]
+      end
     end
 
     def mount!
@@ -211,7 +217,7 @@ gem 'pg'
     end
 
     def seed_database!
-      rake 'db:seed'
+      rake 'db:seed' unless self.options[:skip_db]
     end
 
     def start_pretending?

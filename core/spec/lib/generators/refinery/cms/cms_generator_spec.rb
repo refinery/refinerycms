@@ -9,7 +9,7 @@ module Refinery
 
     before(:each) do
       prepare_destination
-      run_generator
+      run_generator %w[--skip-db --skip-migrations]
     end
 
     specify do
