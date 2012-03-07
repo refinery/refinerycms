@@ -53,7 +53,6 @@ module Refinery
     after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
     after_update :invalidate_cached_urls
     after_destroy :expire_page_caching
-    has_paper_trail
 
     class << self
       # Live pages are 'allowed' to be shown in the frontend of your website.
