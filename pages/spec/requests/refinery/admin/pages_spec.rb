@@ -261,13 +261,16 @@ module Refinery
           Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
 
           # Create a home page in both locales (needed to test menus)
-          home_page = FactoryGirl.create(:page, :title => 'Home',
-                                                :link_url => '/',
-                                                :menu_match => "^/$")
-          Globalize.locale = :ru
-          home_page.title = 'Домашняя страница'
-          home_page.save
-          Globalize.locale = :en
+          home_page = Globalize.with_locale(:en) do
+            FactoryGirl.create(:page, :title => 'Home',
+                                      :link_url => '/',
+                                      :menu_match => "^/$")
+          end
+
+          Globalize.with_locale(:ru) do
+            home_page.title = 'Домашняя страница'
+            home_page.save
+          end
         end
 
         describe "add a page with title for default locale" do
