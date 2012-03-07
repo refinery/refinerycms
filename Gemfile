@@ -4,7 +4,7 @@ gemspec
 
 # Add i18n support.
 gem 'refinerycms-i18n', '~> 2.0.0'
-
+gem 'paper_trail'
 # Database Configuration
 platforms :jruby do
   gem 'activerecord-jdbcsqlite3-adapter'
