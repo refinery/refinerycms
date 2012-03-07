@@ -15,15 +15,13 @@ module Refinery
         @sections.reject {|section| section.has_content?(can_use_fallback)}.map(&:not_present_css_class)
       end
 
-      def hide_sections(ids_to_hide)
+      def hide_sections(*ids_to_hide)
         @sections.select {|section| ids_to_hide.include?(section.id)}.each(&:hide) if ids_to_hide.any?
       end
 
       def fetch_template_overrides
         @sections.each do |section|
-          if section.id.present?
-            section.override_html = yield section.id
-          end
+          section.override_html = yield section.id if section.id.present?
         end
       end
 
