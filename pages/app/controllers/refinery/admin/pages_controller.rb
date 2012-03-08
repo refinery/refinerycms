@@ -26,7 +26,9 @@ module Refinery
         @page = find_page
         render :layout => false
       end
-
+      def revisions
+        @page_revisions=find_page.versions
+      end
     protected
 
       def find_page

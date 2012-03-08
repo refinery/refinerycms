@@ -3,20 +3,31 @@
 
   <%= render '/refinery/admin/error_messages', :object => @page, :include_object_name => true %>
 
-  <%= render 'locale_picker', :current_locale => Globalize.locale if Refinery.i18n_enabled? %>
-
+  <%= render 'locale_picker', :current_locale => Thread.current[:globalize_locale] if Refinery.i18n_enabled? %>
+  <div class="field">
+  	<%= f.check_box :group, :class=>"smaller"%>
+  	<span class="label_with_help" style="display:inline;">
+    	<%= f.label :group, :class=>"stripped" %>
+    	<%= refinery_help_tag t('admin.pages.toggle_group_help')%>
+   	</span>
+  </div>
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title, :class => "larger widest" %>
   </div>
-
+  <div class="field">
+	<%= f.label :subtitle %>
+	<%= f.text_field :subtitle, :class => "larger widest" %>
+  </div>
   <%= render 'form_fields_after_title', :f => f %>
 
   <div class='field'>
     <%= render 'form_page_parts', :f => f %>
   </div>
-
+	
   <%= render 'form_advanced_options', :f => f %>
+  
+  <%= render 'form_header_options', :f => f%>
 
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => true,
@@ -27,13 +38,12 @@
                :id => 'preview-button',
                :title => 'Preview page',
                :name => nil,
-               :class => "wymupdate button",
+               :class => "wymupdate button page_fields",
                :tooltip => t('.preview_changes')
              ) %>
 
   <%= render 'form_new_page_parts', :f => f if Refinery::Pages.new_page_parts %>
 <% end %>
-
 <% content_for :javascripts do %>
   <script>
     $(document).ready(function(){
@@ -42,21 +52,40 @@
         , "<%= refinery.new_admin_page_part_path %>"
         , "<%= refinery.admin_page_parts_path %>"
       );
-
+	  //Hide unneeded fields based on the group attribute.
+	  <%=@page.root? ? '' : "$('.root_only').hide();"%>
+	  
       $("#preview-button").click(function(e) {
-        var form = $(this).parents('form');
+        var form = $(this).parents('form')
         var prev_url = form.attr('action');
         var prev_target = form.attr('target');
         form.attr({
-          'action': '<%= @page.persisted? ? refinery.preview_page_path(@page.uncached_nested_url) : refinery.preview_pages_path %>'
+          'action': ''
           , 'target': '_blank'
         });
-        form.submit();
         form.attr({
           'action': prev_url
           , 'target': prev_target
         });
         e.preventDefault();
+      });
+      $("#toggle_header_options").click(function(e) {
+        $('#header_options').toggle();	
+        e.preventDefault();
+      });
+      $('#page_parent_id').change(function(e){
+      	if (this.vlaue != null || this.value != ""){ $(".root_only").hide(); }
+      	else{ $(".root_only").show(); }
+      });
+      
+      $("#page_group").click(function(e) {
+      	if (this.checked == true) {
+          $(".page_fields").hide();
+         }
+        else{
+          $(".page_fields").show();
+        }
+        
       });
     });
   </script>

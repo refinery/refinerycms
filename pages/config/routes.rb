@@ -7,6 +7,7 @@ Refinery::Core::Engine.routes.draw do
   namespace :admin, :path => 'refinery' do
     get 'pages/*path/edit', :to => 'pages#edit'
     get 'pages/*path/children', :to => 'pages#children', :as => 'children_pages'
+    get 'pages/*path/revisions', :to => 'pages#revisions', :as => 'revisions'
     put 'pages/*path', :to => 'pages#update'
     delete 'pages/*path', :to => 'pages#destroy'
     resources :pages, :except => :show do

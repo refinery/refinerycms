@@ -33,6 +33,7 @@ en:
             link_to_this_resource: Link to this file
       pages:
         delete: Remove this page forever
+        revisions: Show revisions for this page
         edit: Edit this page
         new: Add a new child page
         expand_collapse: Expand or collapse sub pages

@@ -49,6 +49,7 @@ module Refinery
 end
 
 require 'awesome_nested_set'
+require 'paper_trail'
 require 'globalize3'
 require 'friendly_id'
 require 'seo_meta'

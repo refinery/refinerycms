@@ -3,13 +3,14 @@
 module Refinery
   class Page < Refinery::Core::BaseModel
     extend FriendlyId
-
     # when collecting the pages path how is each of the pages seperated?
     PATH_SEPARATOR = " - "
+    
+    has_paper_trail
+    
+    translates :title, :menu_title, :custom_slug, :slug, :versioning => true, :include => :seo_meta
 
-    translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
-
-    attr_accessible :title
+    attr_accessible :title, :subtitle, :group, :image_id
 
     # Delegate SEO Attributes to globalize3 translation
     seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
@@ -36,7 +37,8 @@ module Refinery
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
     acts_as_indexed :fields => [:title, :meta_keywords, :meta_description,
                                 :menu_title, :browser_title, :all_page_part_content]
-
+    belongs_to :image
+    
     has_many :parts,
              :foreign_key => :refinery_page_id,
              :class_name => '::Refinery::PagePart',
@@ -53,7 +55,7 @@ module Refinery
     after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
     after_update :invalidate_cached_urls
     after_destroy :expire_page_caching
-
+    
     class << self
       # Live pages are 'allowed' to be shown in the frontend of your website.
       # By default, this is all pages that are not set as 'draft'.
@@ -164,7 +166,7 @@ module Refinery
       # Override this method to change which columns you want to select to render your menu.
       # title and menu_title are always retrieved so omit these.
       def menu_columns
-        %w(id depth parent_id lft rgt link_url menu_match slug)
+        %w(id depth parent_id lft rgt link_url menu_match slug group)
       end
 
       # Returns how many pages per page should there be when paginating pages

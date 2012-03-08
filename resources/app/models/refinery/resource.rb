@@ -24,7 +24,11 @@ module Refinery
     def title
       CGI::unescape(file_name.to_s).gsub(/\.\w+$/, '').titleize
     end
-
+    
+    def is_supported_video?
+      ["video/x-m4v", "video/x-mp4"].include?(self.file_mime_type)
+    end
+    
     class << self
       # How many resources per page should be displayed?
       def per_page(dialog = false)

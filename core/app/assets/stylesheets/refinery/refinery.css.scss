@@ -681,25 +681,25 @@ label.stripped {
 }
 #dialog_main #resource_file_area .pages_list ul li a.page_link{
   background-position:5px center;
-  display:block;
+  display: inline-block;
 }
 #records.files .record .title.pdf, #dialog_main #resource_file_area .pages_list ul li a.page_link.pdf {
-	background-image: image_url('refinery/icons/pdf.png');
+  background-image: image_url('refinery/icons/pdf.png');
 }
 #records.files .record .title.jpg, #records.files .record .title.gif, #records.files .record .title.jpeg, #records.files .record .title.png, #records.files .record .title.tiff, #dialog_main #resource_file_area .pages_list ul li a.page_link.jpg, #dialog_main #resource_file_area .pages_list ul li a.page_link.jpeg, #dialog_main #resource_file_area .pages_list ul li a.page_link.gif, #dialog_main #resource_file_area .pages_list ul li a.page_link.png, #dialog_main #resource_file_area .pages_list ul li a.page_link.tiff {
-	background-image: image_url('refinery/icons/img.png');
+  background-image: image_url('refinery/icons/img.png');
 }
 #records.files .record .title.doc, #records.files .record .title.pages, #records.files .record .title.docx, #dialog_main #resource_file_area .pages_list ul li a.page_link.doc, #dialog_main #resource_file_area .pages_list ul li a.page_link.docx, #dialog_main #resource_file_area .pages_list ul li a.page_link.pages {
-	background-image: image_url('refinery/icons/doc.png');
+  background-image: image_url('refinery/icons/doc.png');
 }
 #records.files .record .title.ppt, #records.files .record .title.keynote, #dialog_main #resource_file_area .pages_list ul li a.page_link.ppt, #dialog_main #resource_file_area .pages_list ul li a.page_link.keynote {
-	background-image: image_url('refinery/icons/ppt.png');
+  background-image: image_url('refinery/icons/ppt.png');
 }
 #records.files .record .title.xls, #records.files .record .title.numbers, #dialog_main #resource_file_area .pages_list ul li a.page_link.xls, #dialog_main #resource_file_area .pages_list ul li a.page_link.numbers {
-	background-image: image_url('refinery/icons/xls.png');
+  background-image: image_url('refinery/icons/xls.png');
 }
 #records.files .record .title.zip, #records.files .record .title.rar, #dialog_main #resource_file_area .pages_list ul li a.page_link.zip, #dialog_main #resource_file_area .pages_list ul li a.page_link.rar {
-	background-image: image_url('refinery/icons/zip.png');
+  background-image: image_url('refinery/icons/zip.png');
 }
 #records.files .record .title.mp3, #records.files .record .title.wav, #records.files .record .title.aiff, #records.files .record .title.m4a, #dialog_main #resource_file_area .pages_list ul li a.page_link.mp3, #dialog_main #resource_file_area .pages_list ul li a.page_link.wav, #dialog_main #resource_file_area .pages_list ul li a.page_link.aiff, #dialog_main #resource_file_area .pages_list ul li a.page_link.m4a {
   background-image: image_url('refinery/icons/music.png');
@@ -708,7 +708,7 @@ label.stripped {
   position: absolute;
   right: 0px;
   top: 0px;
-  width: 120px;
+  width: 200px;
   text-align: right;
   display: block;
   line-height: 28px;
@@ -829,7 +829,7 @@ body.dialog form {
   width: 100% !important;
 }
 .wym_dialog_table {
-	height: 250px;
+  height: 250px;
 }
 .dialog {
   #dialog_main {
@@ -1105,12 +1105,12 @@ ul#page_parts_controls img {
   clear:left;
 }
 a#toggle_advanced_options {
-	background: image_url('refinery/icons/page_white_gear.png') no-repeat 0px 3px;
-	padding: 5px 5px 5px 22px;
-	border-bottom: none;
+  background: image_url('refinery/icons/page_white_gear.png') no-repeat 0px 3px;
+  padding: 5px 5px 5px 22px;
+  border-bottom: none;
 }
 a#toggle_advanced_options:hover {
-	border-bottom:1px dotted #727272;
+  border-bottom:1px dotted #727272;
 }
 /* dialog stuff */
 #dialog_frame {
@@ -1311,10 +1311,10 @@ input.button, a.button, #content a.button, span.button-wrapper, span.button-wrap
 }
 /* for those pesky IE browsers */
 span.button-wrapper {
-	padding: 0px;
+  padding: 0px;
 }
 span.button-wrapper input {
-	display: inherit;
+  display: inherit;
 }
 /* fixes firefox display */
 input.button {
@@ -1409,9 +1409,9 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   position: relative;
 }
 #draft_field {
-	position: absolute;
-	right: 0px;
-	top: 0px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
 }
 .nothing_selected {
   border-bottom: 1px dotted #727272;
@@ -1475,10 +1475,10 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   position: absolute;
   top: 28px;
   right: auto;
- 	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .pagination_container > div.pagination_frame {
   top: 40px;
@@ -1489,9 +1489,9 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 .pagination_frame.frame_right {
   left: 1000px;
   -moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .pagination_frame.frame_center {
   left: 0;

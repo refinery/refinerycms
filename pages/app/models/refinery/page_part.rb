@@ -1,6 +1,5 @@
 module Refinery
   class PagePart < Refinery::Core::BaseModel
-
     attr_accessible :title, :content, :position, :body, :created_at,
                     :updated_at, :refinery_page_id
     belongs_to :page, :foreign_key => :refinery_page_id
@@ -9,7 +8,8 @@ module Refinery
     alias_attribute :content, :body
 
     translates :body if respond_to?(:translates)
-
+    has_paper_trail
+    
     def to_param
       "page_part_#{title.downcase.gsub(/\W/, '_')}"
     end

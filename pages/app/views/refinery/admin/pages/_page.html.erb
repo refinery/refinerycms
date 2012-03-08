@@ -40,7 +40,10 @@
                   :title => t('delete', :scope => 'refinery.admin.pages'),
                   :confirm => t('message', :scope => 'refinery.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, "")),
                   :method => :delete if page.deletable? %>
-    </span>
+      <%= link_to refinery_icon_tag('arrow_switch.png'),
+                  refinery.admin_revisions_path(page.uncached_nested_url),
+                  :title => t('revisions', :scope => 'refinery.admin.pages')%>
+     </span>
   </div>
   <ul class='nested' data-ajax-content="<%= refinery.admin_children_pages_path(page.uncached_nested_url) %>">
     <%= render(:partial => 'page', :collection => page.children) if Refinery::Pages.auto_expand_admin_tree %>

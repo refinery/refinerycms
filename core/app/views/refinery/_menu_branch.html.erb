@@ -1,19 +1,11 @@
-<%
-  if !!local_assigns[:apply_css] and (classes = menu_branch_css(local_assigns)).any?
-    css = "class='#{classes.join(' ')}'".html_safe
-  end
--%>
-<li<%= ['', css].compact.join(' ').gsub(/\ *$/, '').html_safe %>>
-<%= link_to(menu_branch.title, refinery.url_for(menu_branch.url)) -%>
-  <% if ( (children = menu_branch.children unless hide_children).present? &&
-          (!local_assigns[:menu_levels] || menu_branch.ancestors.length < local_assigns[:menu_levels]) ) -%>
-    <ul class='clearfix'>
-      <%= render :partial => '/refinery/menu_branch', :collection => children,
-                 :locals => {
-                   :apply_css => local_assigns[:apply_css],
-                   :hide_children => !!hide_children,
-                   :menu_levels => local_assigns[:menu_levels]
-                 } -%>
-    </ul>
-  <% end -%>
-</li>
+<div class="nav-group">
+  <li class="nav-header">
+    <%= menu_branch.title %>
+  </li>
+  <% menu_branch.children.each do |child| %>
+    <li>
+    <%= link_to child.title, refinery.url_for(child.url) %>
+    </li>
+  <% end %>
+  <li class="divider"></li>
+</div>
