@@ -47,23 +47,27 @@ module Refinery
         "no_#{id}"
       end
 
-      protected
+    protected
 
-        def content_html(can_use_fallback)
-          override_html.present? ? override_html : html_from_fallback(can_use_fallback)
+      def content_html(can_use_fallback)
+        if override_html.present?
+          override_html
+        else
+          html_from_fallback(can_use_fallback)
         end
+      end
 
-        def html_from_fallback(can_use_fallback)
-          fallback_html if fallback_html.present? && can_use_fallback
-        end
+      def html_from_fallback(can_use_fallback)
+        fallback_html if fallback_html.present? && can_use_fallback
+      end
 
-      private
+    private
 
-        attr_writer :id, :fallback_html, :hidden
+      attr_writer :id, :fallback_html, :hidden
 
-        def wrap_content_in_tag(content)
-          content_tag(:section, content_tag(:div, content, :class => 'inner'), :id => id)
-        end
+      def wrap_content_in_tag(content)
+        content_tag(:section, content_tag(:div, content, :class => 'inner'), :id => id)
+      end
     end
   end
 end

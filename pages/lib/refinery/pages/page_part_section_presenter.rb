@@ -9,11 +9,11 @@ module Refinery
         self.id = convert_title_to_id(page_part.title) if page_part.title
       end
 
-      private
+    private
 
-        def convert_title_to_id(title)
-          title.to_s.gsub(/\ /, '').underscore.to_sym
-        end
+      def convert_title_to_id(title)
+        title.to_s.gsub(/\ /, '').underscore.to_sym
+      end
     end
   end
 end
