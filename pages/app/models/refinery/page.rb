@@ -6,9 +6,7 @@ module Refinery
     # when collecting the pages path how is each of the pages seperated?
     PATH_SEPARATOR = " - "
     
-    has_paper_trail
-    
-    translates :title, :menu_title, :custom_slug, :slug, :versioning => true, :include => :seo_meta
+    translates :title, :menu_title, :custom_slug, :slug, :versioning=>true, :include => :seo_meta
 
     attr_accessible :title, :subtitle, :group, :image_id
 
