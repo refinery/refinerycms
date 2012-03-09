@@ -1,5 +1,5 @@
 before_install:
-  - gem install bundler --pre
+  - gem install bundler
 before_script:
   - "sh -e /etc/init.d/xvfb start"
   - "bundle exec rake refinery:testing:dummy_app > /dev/null"
