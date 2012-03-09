@@ -22,6 +22,7 @@ end
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.1.0.dev'
   gem 'generator_spec', '>= 0.8.5'
+  gem 'guard-rspec', '~> 0.6.0'
 
   platforms :mswin, :mingw do
     gem 'win32console'
