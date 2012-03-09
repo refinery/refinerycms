@@ -17,7 +17,7 @@ gem 'refinerycms-i18n',   '~> 2.0.0', :git => 'git://github.com/parndt/refineryc
 "
 end
 
-if RbConfig::CONFIG['target_os'] =~ /linux/i
+if RbConfig::CONFIG['target_os'] =~ /linux/i && !defined?(JRUBY_VERSION)
   gsub_file 'Gemfile', "# gem 'therubyracer'", "gem 'therubyracer'"
 end
 
