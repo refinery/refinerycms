@@ -138,6 +138,16 @@ module Refinery
       config.after_initialize do
         Refinery.register_extension(Refinery::Core)
       end
+
+      # We need to reload the routes here due to how Refinery sets them up
+      # The different facets of Refinery (dashboard, pages, etc.) append/prepend routes to Core
+      # *after* Core has been loaded.
+      #
+      # So we wait until after initialization is complete to do one final reload
+      # This then makes the appended/prepended routes available to the application.
+      config.after_initialize do
+        Rails.application.routes_reloader.reload!
+      end
     end
   end
 end

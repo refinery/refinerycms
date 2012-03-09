@@ -87,7 +87,11 @@ module Refinery
     end
 
     def to_s
-      username
+      username.to_s
+    end
+
+    def to_param
+      to_s.parameterize
     end
 
   end

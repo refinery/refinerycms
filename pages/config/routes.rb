@@ -1,7 +1,7 @@
 Refinery::Core::Engine.routes.draw do
-  root :to => 'pages#home'
-  post   'pages/preview'     => 'pages#preview', :as => :preview_pages
-  match  'pages/*path/preview' => 'pages#preview', :as => :preview_page,  :via => [:get, :put]
+  root :to => 'pages#home', :via => :get
+  post 'pages/preview'     => 'pages#preview', :as => :preview_pages
+  match 'pages/*path/preview' => 'pages#preview', :as => :preview_page,  :via => [:get, :put]
   get '/pages/:id', :to => 'pages#show', :as => :page
 
   namespace :admin, :path => 'refinery' do

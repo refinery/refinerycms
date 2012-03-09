@@ -16,7 +16,7 @@ module Refinery
           plugin.version = %q{2.0.0}
           plugin.always_allow_access = true
           plugin.dashboard = true
-          plugin.url = { :controller => '/refinery/admin/dashboard' }
+          plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_dashboard_path }
         end
       end
 

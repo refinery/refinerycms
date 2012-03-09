@@ -28,7 +28,9 @@ Refinery::Core::Engine.routes.draw do
       raise exc
     end
   end
+end
 
+Refinery::Core::Engine.routes.append do
   namespace :admin, :path => 'refinery' do
     resources :users, :except => :show
   end

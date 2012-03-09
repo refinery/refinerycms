@@ -1,3 +1,11 @@
+## 2.0.1 [6 March 2012]
+
+* Updated `plugin.url` code to support Rails 3.2.2. [Philip Arndt](https://github.com/parndt)
+* Added guard-spork '0.5.2' dependency to refinerycms-testing. [Joe Sak](https://github.com/joemsak)
+* Added support for '.' in usernames. [Philip Arndt](https://github.com/parndt)
+* Now includes application.js by default. [Nick Romanowski](https://github.com/nodabs)
+* [See full list](https://github.com/resolve/refinerycms/compare/2.0.0...2.0.1)
+
 ## 2.0.0 [29 February 2012]
 
 * Remove jquery_include_tags helper in favor of using jquery from jquery-rails gem. [Uģis Ozols](https://github.com/ugisozols)
