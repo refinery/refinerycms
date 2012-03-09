@@ -4,11 +4,11 @@ module Refinery
     # a title. These are much like normal sections except they are wrapped in
     # a h1 tag rather than a div.
     class TitleSectionPresenter < SectionPresenter
-      private
+    private
 
-        def wrap_content_in_tag(content)
-          content_tag(:h1, content, :id => id)
-        end
+      def wrap_content_in_tag(content)
+        content_tag(:h1, content, :id => id)
+      end
     end
   end
 end
