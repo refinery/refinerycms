@@ -19,7 +19,7 @@ More information at [http://refinerycms.com](http://refinerycms.com)
 * [Update Refinery CMS to the latest stable version](http://refinerycms.com/guides/how-to-update-refinery-to-the-latest-stable-version)
 * [Install Refinery CMS on Heroku](http://refinerycms.com/guides/how-to-install-refinery-on-heroku)
 * [Run the Refinery CMS test suite](http://refinerycms.com/guides/how-to-test-refinery)
-* __[Contribute to Refinery CMS](http://refinerycms.com/guides/how-to-contribute-to-refinery-development)__
+* __[Contribute to Refinery CMS](http://refinerycms.com/guides/contributing-to-refinery)__
 * __[Donate to the Refinery CMS core team](http://pledgie.com/campaigns/8431)__
 
 ## Getting Started
