@@ -33,7 +33,7 @@ h5. In terminal
 $ git clone git@github.com:USERNAME/refinerycms.git
 $ cd refinerycms
 $ bundle install
-$ rake refinery:testing:dummy_app
+$ bundle exec rake refinery:testing:dummy_app
 $ rails server
 </shell>
 
