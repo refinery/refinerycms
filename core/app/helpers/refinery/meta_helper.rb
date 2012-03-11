@@ -3,11 +3,15 @@ module Refinery
 
     # This is used to display the title of the current object (normally a page) in the browser's titlebar.
     #
+    def localized_site_name
+      ::I18n.t('site_name', :scope => 'refinery.core.config') || Refinery::Core.site_name
+    end
+
     def browser_title(yield_title=nil)
       [
         (yield_title if yield_title.present?),
         @meta.browser_title.present? ? @meta.browser_title : @meta.path,
-        Refinery::Core.site_name
+        localized_site_name
       ].compact.join(" - ")
     end
 

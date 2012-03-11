@@ -71,6 +71,9 @@ en:
       enable_javascript_html: For full functionality of this page it is necessary to enable JavaScript.
       here_are: Here are the
       instructions_enable_javascript_html: instructions for how to enable JavaScript in your web browser
+    core:
+      config:
+        site_name: Company Name
   time:
     formats:
       short: "%A, %d %B %Y"

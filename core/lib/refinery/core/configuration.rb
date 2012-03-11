@@ -12,7 +12,7 @@ module Refinery
     self.rescue_not_found = false
     self.s3_backend = false
     self.base_cache_key = :refinery
-    self.site_name = { :en => "Company Name" }
+    self.site_name = "Company Name"
     self.google_analytics_page_code = "UA-xxxxxx-x"
     self.authenticity_token_on_frontend = true
     self.menu_hide_children = false
@@ -42,14 +42,6 @@ module Refinery
 
     def self.clear_stylesheets!
       self.stylesheets = []
-    end
-
-    def self.site_name
-      if Refinery.i18n_enabled?
-        self.config.site_name[Refinery::I18n.current_frontend_locale] || self.config.site_name[Refinery::I18n.default_frontend_locale]
-      else
-        self.config.site_name
-      end
     end
 
     # wrapper for stylesheet registration
