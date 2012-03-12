@@ -7,9 +7,7 @@ script:
   - "JS=false bundle exec rspec ./*/spec"
   - "DISPLAY=:99.0 JS=true bundle exec rspec ./*/spec"
 notifications:
-  email:
-    - parndt@gmail.com
-    - ugis.ozolss@gmail.com
+  email: true
   irc:
     use_notice: true
     skip_join: true
