@@ -217,7 +217,7 @@ gem 'pg'
     end
 
     def seed_database!
-      rake 'db:seed' unless self.options[:skip_db]
+      rake 'db:seed' unless self.options[:skip_db] || self.options[:skip_migrations]
     end
 
     def start_pretending?
