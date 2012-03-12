@@ -112,33 +112,8 @@ module Refinery
         where(:show_in_menu => true).with_globalize
       end
 
-      # Because pages are translated this can have a negative performance impact
-      # on your website and can introduce scaling issues. What fast_menu does is
-      # finds all of the columns necessary to render a +Refinery::Menu+ structure
-      # using only one SQL query. This has limitations, including not being able
-      # to access any other attributes of the pages but you can specify more columns
-      # by passing in an array e.g. fast_menu([:column1, :column2])
-      def fast_menu(columns = [])
-        # First, apply a filter to determine which pages to show.
-        pages = live.in_menu.order('lft ASC').includes(:translations)
-
-        # Now we only want to select particular columns to avoid any further queries.
-        # Title and menu_title are retrieved in the next block below so they are not here.
-        (menu_columns | columns).each do |column|
-          pages = pages.select(arel_table[column.to_sym])
-        end
-
-        # We have to get title and menu_title from the translations table.
-        # To avoid calling globalize3 an extra time, we get title as page_title
-        # and we get menu_title as page_menu_title.
-        # These is used in 'to_refinery_menu_item' in the Page model.
-        %w(title menu_title).each do |column|
-          pages = pages.joins(:translations).select(
-            "#{translation_class.table_name}.#{column} as page_#{column}"
-          )
-        end
-
-        pages
+      def fast_menu
+        live.in_menu.order('lft ASC').includes(:translations)
       end
 
       # Wrap up the logic of finding the pages based on the translations table.
