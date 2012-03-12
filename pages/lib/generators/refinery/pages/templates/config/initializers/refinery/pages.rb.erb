@@ -7,6 +7,12 @@ Refinery::Pages.configure do |config|
   # Configure global page default parts
   # config.default_parts = <%= Refinery::Pages.default_parts.inspect %>
 
+  # Configure whether to allow adding new page parts
+  # config.new_page_parts = <%= Refinery::Pages.new_page_parts.inspect %>
+
+  # Configure whether to enable marketable_urls
+  # config.marketable_urls = <%= Refinery::Pages.marketable_urls.inspect %>
+
   # Configure how many pages per page should be displayed when a dialog is presented that contains a links to pages
   # config.pages_per_dialog = <%= Refinery::Pages.pages_per_dialog.inspect %>
 
@@ -39,6 +45,8 @@ Refinery::Pages.configure do |config|
   # config.use_layout_templates = <%= Refinery::Pages.use_layout_templates.inspect %>
 
   # config.use_view_templates = <%= Refinery::Pages.use_view_templates.inspect %>
+
+  # config.page_title = <%= Refinery::Pages.page_title.inspect %>
 
   # config.absolute_page_links = <%= Refinery::Pages.absolute_page_links.inspect %>
 end
