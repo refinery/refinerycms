@@ -136,6 +136,18 @@ module Refinery
 
           Refinery::Page.count.should == 1
         end
+
+        it "includes menu title field" do
+          visit refinery.new_admin_page_path
+
+          fill_in "Title", :with => "My first page"
+          fill_in "Menu title", :with => "The first page"
+
+          click_button "Save"
+
+          page.should have_content("'My first page' was successfully added.")
+          page.body.should =~ %r{/pages/the-first-page}
+        end
       end
 
       describe "edit/update" do
