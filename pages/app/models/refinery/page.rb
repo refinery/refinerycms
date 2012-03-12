@@ -21,7 +21,7 @@ module Refinery
                     :parent_id, :menu_title, :created_at, :updated_at,
                     :page_id, :layout_template, :view_template, :custom_slug
 
-    attr_accessor :locale, :page_title, :page_menu_title # to hold temporarily
+    attr_accessor :locale # to hold temporarily
     validates :title, :presence => true
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
@@ -136,12 +136,6 @@ module Refinery
         ::Refinery.i18n_enabled? && ::Refinery::I18n.current_frontend_locale != ::I18n.locale
       end
 
-      # Override this method to change which columns you want to select to render your menu.
-      # title and menu_title are always retrieved so omit these.
-      def menu_columns
-        %w(id depth parent_id lft rgt link_url menu_match slug)
-      end
-
       # Returns how many pages per page should there be when paginating pages
       def per_page(dialog = false)
         dialog ? Pages.pages_per_dialog : Pages.config.pages_per_admin_index
@@ -159,8 +153,6 @@ module Refinery
       end
     end
 
-    # Returns in cascading order: custom_slug or menu_title or title depending on
-    # which attribute is first found to be present for this page.
     def custom_slug_or_title
       if custom_slug.present?
         custom_slug
@@ -338,7 +330,7 @@ module Refinery
     end
 
     def refinery_menu_title
-      [page_menu_title, page_title, menu_title, title].detect(&:present?)
+      [menu_title, title].detect(&:present?)
     end
 
     def to_refinery_menu_item
