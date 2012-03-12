@@ -7,7 +7,7 @@ gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
 # USER DEFINED
 
 # Specify additional Refinery CMS Engines here (all optional):
-gem 'refinerycms-i18n',   '~> 2.0.0', :git => 'git://github.com/parndt/refinerycms-i18n.git'
+gem 'refinerycms-i18n',   '~> 2.1.0.dev', :git => 'git://github.com/parndt/refinerycms-i18n.git'
 #  gem 'refinerycms-blog', :git => 'git://github.com/resolve/refinerycms-blog.git', :branch => 'rails-3-1'
 #  gem 'refinerycms-inquiries', :git => 'git://github.com/resolve/refinerycms-inquiries.git', :branch => 'rails-3-1'
 #  gem 'refinerycms-search', :git => 'git://github.com/resolve/refinerycms-search.git', :branch => 'rails-3-1'
