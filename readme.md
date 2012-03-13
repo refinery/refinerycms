@@ -88,7 +88,7 @@ For help run the command without any options:
 * [Portfolio](https://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](https://github.com/resolve/refinerycms-news) - post and manage news items.
 
-[Full extension list here](https://github.com/resolve/refinerycms/wiki/extensions)
+[Full extension list here](http://refinerycms.com/engines)
 
 ### Example Site Showcase
 
