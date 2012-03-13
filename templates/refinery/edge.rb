@@ -19,7 +19,7 @@ end
 
 run 'bundle install'
 rake 'db:create'
-generate 'refinery:cms --fresh-installation #{ARGV.join(' ')}'
+generate "refinery:cms --fresh-installation #{ARGV.join(' ')}"
 
 say <<-eos
   ============================================================================
