@@ -17,7 +17,6 @@ More information at [http://refinerycms.com](http://refinerycms.com)
 
 * __[Install Refinery CMS](http://refinerycms.com/download)__
 * [Install Refinery CMS on Heroku](http://refinerycms.com/guides/how-to-install-refinery-on-heroku)
-* [Run the Refinery CMS test suite](http://refinerycms.com/guides/how-to-test-refinery)
 * [Contribute to Refinery CMS](http://refinerycms.com/guides/contributing-to-refinery)
 
 ## Getting Started
@@ -88,7 +87,7 @@ For help run the command without any options:
 * [Portfolio](https://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](https://github.com/resolve/refinerycms-news) - post and manage news items.
 
-[Full extension list here](https://github.com/resolve/refinerycms/wiki/extensions)
+[Full extension list here](http://refinerycms.com/engines)
 
 ### Example Site Showcase
 
