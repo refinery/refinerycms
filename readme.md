@@ -17,7 +17,6 @@ More information at [http://refinerycms.com](http://refinerycms.com)
 
 * __[Install Refinery CMS](http://refinerycms.com/download)__
 * [Install Refinery CMS on Heroku](http://refinerycms.com/guides/how-to-install-refinery-on-heroku)
-* [Run the Refinery CMS test suite](http://refinerycms.com/guides/how-to-test-refinery)
 * [Contribute to Refinery CMS](http://refinerycms.com/guides/contributing-to-refinery)
 
 ## Getting Started
