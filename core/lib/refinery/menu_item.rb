@@ -3,7 +3,7 @@ module Refinery
 
     class << self
       def attributes
-        [:title, :parent_id, :lft, :rgt, :depth, :url, :menu_id, :menu_match]
+        [:title, :parent_id, :lft, :rgt, :depth, :url, :menu, :menu_match]
       end
 
       def apply_attributes!
@@ -75,10 +75,6 @@ module Refinery
       end
 
       hash.inspect
-    end
-
-    def menu
-      ::Refinery.menus[menu_id]
     end
 
     def parent
