@@ -3,6 +3,7 @@ require 'devise'
 require 'friendly_id'
 
 module Refinery
+  autoload :AuthenticationGenerator, 'generators/refinery/authentication/authentication_generator'
   autoload :AuthenticatedSystem, 'refinery/authenticated_system'
 
   class << self
