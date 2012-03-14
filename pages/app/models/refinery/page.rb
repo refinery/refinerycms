@@ -153,6 +153,8 @@ module Refinery
       end
     end
 
+    # Returns in cascading order: custom_slug or menu_title or title depending on
+    # which attribute is first found to be present for this page.
     def custom_slug_or_title
       if custom_slug.present?
         custom_slug
