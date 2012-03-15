@@ -4,7 +4,7 @@ describe "User admin page" do
   login_refinery_superuser
 
   describe "new/create" do
-    it "can create a user" do
+    def visit_and_fill_form
       visit refinery.admin_users_path
       click_link "Add new user"
 
@@ -12,10 +12,33 @@ describe "User admin page" do
       fill_in "Email", :with => "test@refinerycms.com"
       fill_in "Password", :with => "123456"
       fill_in "Password confirmation", :with => "123456"
+    end
+
+    it "can create a user" do
+      visit_and_fill_form
+
       click_button "Save"
 
       page.should have_content("test was successfully added.")
       page.should have_content("test (test@refinerycms.com)")
+    end
+
+    context "when assigning roles config is enabled" do
+      before do
+        Refinery::Authentication.stub(:superuser_can_assign_roles).and_return(true)
+      end
+
+      it "allows superuser to assign roles" do
+        visit_and_fill_form
+
+        within "#roles" do
+          check "roles_#{Refinery::Role.first.title.downcase}"
+        end
+        click_button "Save"
+
+        page.should have_content("test was successfully added.")
+        page.should have_content("test (test@refinerycms.com)")
+      end
     end
   end
 
