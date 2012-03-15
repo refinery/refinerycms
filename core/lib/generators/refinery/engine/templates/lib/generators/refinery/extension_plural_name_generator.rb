@@ -10,6 +10,7 @@ module Refinery
       append_file 'db/seeds.rb', :verbose => true do
         <<-EOH
 
+# Added by Refinery CMS <%= plural_name.titleize %> extension
 Refinery::<%= namespacing %>::Engine.load_seed
         EOH
       end
