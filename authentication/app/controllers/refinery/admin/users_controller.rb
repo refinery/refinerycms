@@ -15,7 +15,7 @@ module Refinery
       end
 
       def create
-        @user = Refinery::User.new(params[:user])
+        @user = Refinery::User.new(params[:user].except(:roles))
         @selected_plugin_names = params[:user][:plugins] || []
         @selected_role_names = params[:user][:roles] || []
 
