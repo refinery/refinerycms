@@ -3,6 +3,7 @@ $:.push File.expand_path('../../core/lib', __FILE__)
 require 'refinery/version'
 
 version = Refinery::Version.to_s
+rails_version = ['>= 3.1.3', '< 3.3']
 
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
@@ -24,7 +25,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'friendly_id',                 '~> 4.0.1'
   s.add_dependency 'globalize3',                  '~> 0.2.0'
   s.add_dependency 'awesome_nested_set',          '~> 2.1.0'
-  s.add_dependency 'rails',                       ['>= 3.1.3', '< 3.3']
+  s.add_dependency 'railties',                    rails_version
+  s.add_dependency 'activerecord',                rails_version
+  s.add_dependency 'actionpack',                  rails_version
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'will_paginate',               '~> 3.0.2'
   s.add_dependency 'sass-rails',                  '~> 3.2.3'

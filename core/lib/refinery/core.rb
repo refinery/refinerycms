@@ -1,4 +1,6 @@
-require 'rails/all'
+require 'rails'
+require 'active_record'
+require 'action_pack'
 require 'rbconfig'
 require 'acts_as_indexed'
 require 'truncate_html'
