@@ -5,6 +5,9 @@ gemspec
 # Add i18n support.
 gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/parndt/refinerycms-i18n.git'
 
+# Temporarily use a custom branch for paper_trail (used by globalize3, used by refinerycms-pages)
+gem 'paper_trail', :git => 'git://github.com/parndt/paper_trail.git', :branch => 'less_rails'
+
 # Database Configuration
 platforms :jruby do
   gem 'activerecord-jdbcsqlite3-adapter'
@@ -21,7 +24,7 @@ end
 
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.1.0.dev'
-  gem 'generator_spec', '>= 0.8.5'
+  gem 'generator_spec', '>= 0.8.5', :git => 'git://github.com/parndt/generator_spec.git', :branch => 'less_rails'
   gem 'guard-rspec', '~> 0.6.0'
   gem 'fuubar'
 
