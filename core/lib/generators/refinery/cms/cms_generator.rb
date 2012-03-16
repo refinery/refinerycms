@@ -160,6 +160,10 @@ gem 'pg'
           end
         end
       end
+
+      gsub_file 'Gemfile', %q{gem 'sqlite3'}, %q{group :development, :test do
+  gem 'sqlite3'
+end}
     end
 
     def migrate_database!
