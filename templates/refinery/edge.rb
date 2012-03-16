@@ -1,4 +1,7 @@
 require 'rbconfig'
+
+ExecJS::Runtimes.autodetect rescue gsub_file 'Gemfile', "# gem 'therubyracer'", "gem 'therubyracer'"
+
 append_file 'Gemfile' do
 "
 
