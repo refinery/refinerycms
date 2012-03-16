@@ -1,4 +1,14 @@
 require 'rbconfig'
+
+# We want to ensure that you have an ExecJS runtime available!
+begin
+  run 'bundle install'
+  require 'execjs'
+  ::ExecJS::Runtimes.autodetect
+rescue
+  gsub_file 'Gemfile', "# gem 'therubyracer'", "gem 'therubyracer'"
+end
+
 append_file 'Gemfile' do
 "
 
