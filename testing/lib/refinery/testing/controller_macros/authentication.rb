@@ -7,34 +7,34 @@ module Refinery
         end
 
         def login_user
+          let(:user) { FactoryGirl.create(:user) }
           before(:each) do
-            @user = FactoryGirl.create(:user)
             @request.env["devise.mapping"] = Devise.mappings[:admin]
-            sign_in @user
+            sign_in user
           end
         end
 
         def login_refinery_user
+          let(:refinery_user) { FactoryGirl.create(:refinery_user) }
           before(:each) do
-            @refinery_user = FactoryGirl.create(:refinery_user)
             @request.env["devise.mapping"] = Devise.mappings[:admin]
-            sign_in @refinery_user
+            sign_in refinery_user
           end
         end
 
         def login_refinery_superuser
+          let(:refinery_superuser) { FactoryGirl.create(:refinery_superuser) }
           before(:each) do
-            @refinery_superuser = FactoryGirl.create(:refinery_superuser)
             @request.env["devise.mapping"] = Devise.mappings[:admin]
-            sign_in @refinery_superuser
+            sign_in refinery_superuser
           end
         end
 
         def login_refinery_translator
+          let(:refinery_translator) { FactoryGirl.create(:refinery_translator) }
           before(:each) do
-            @refinery_translator = FactoryGirl.create(:refinery_translator)
             @request.env["devise.mapping"] = Devise.mappings[:admin]
-            sign_in @refinery_translator
+            sign_in refinery_translator
           end
         end
       end
