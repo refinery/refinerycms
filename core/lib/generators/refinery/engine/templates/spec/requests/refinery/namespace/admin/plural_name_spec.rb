@@ -5,7 +5,7 @@ describe Refinery do
   describe "<%= namespacing %>" do
     describe "Admin" do
       describe "<%= plural_name %>" do
-        login_refinery_user
+        refinery_login_with :refinery_user
 <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
         describe "<%= plural_name %> list" do
           before(:each) do

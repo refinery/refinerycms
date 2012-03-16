@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "dashboard" do
-  login_refinery_user
+  refinery_login_with :refinery_user
 
   describe "quick tasks" do
     specify "buttons" do
@@ -33,15 +33,14 @@ describe "dashboard" do
 
   describe "latest activity" do
     before(:each) do
-      3.times { |n| FactoryGirl.create(:refinery_user, :username => "ugisozols#{n}") }
-      3.times { |n| FactoryGirl.create(:page, :title => "Refinery CMS #{n}") }
+      3.times { |n| FactoryGirl.create :refinery_user, :username => "ugisozols#{n}" }
+      3.times { |n| FactoryGirl.create :page, :title => "Refinery CMS #{n}" }
     end
 
-    it "shows 7 recent actions" do
+    it "shows created tracked objects" do
       visit refinery.admin_dashboard_path
 
       page.should have_content("Latest Activity")
-      page.should have_content("#{logged_in_user.username.capitalize} user was updated")
       3.times { |n| page.should have_content("Ugisozols#{n} user was added") }
       3.times { |n| page.should have_content("Refinery cms #{n} page was added") }
     end
