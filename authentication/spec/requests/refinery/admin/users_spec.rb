@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "User admin page" do
-  login_refinery_superuser
+  refinery_login_with :refinery_superuser
 
   describe "new/create" do
     def visit_and_fill_form

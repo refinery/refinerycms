@@ -4,7 +4,7 @@ require "spec_helper"
 module Refinery
   module Admin
     describe "Resources" do
-      login_refinery_user
+      refinery_login_with :refinery_user
 
       context "when no files" do
         it "invites to upload file" do
