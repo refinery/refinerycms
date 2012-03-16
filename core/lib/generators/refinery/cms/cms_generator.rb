@@ -134,6 +134,14 @@ gem 'pg'
       %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
         next unless destination_path.join(env).file?
 
+        # Refinery does not necessarily expect action_mailer to be available as
+        # we may not always require it (currently only the authentication extension).
+        # Rails, however, will optimistically place config entries for action_mailer.
+        insert_into_file env, "  if config.respond_to?(:action_mailer)\n  ",
+                              :before => %r{^[^#]+config\.action_mailer\.}, :verbose => false
+        insert_into_file env, "\n  end",
+                              :after => %r{^[^#]+config\.action_mailer\..*}, :verbose => false
+
         gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
 
         insert_into_file env, %Q{
