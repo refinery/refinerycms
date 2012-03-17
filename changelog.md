@@ -1,3 +1,16 @@
+## 2.1.0 [unreleased]
+
+* [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
+
+## 2.0.2 [15 March 2012]
+
+* Removed dependencies from refinerycms-testing that were just opinions and not necessary. [Pete Higgins](https://github.com/phiggins)
+* Fixed missing `Refinery::PagePart` positions in seeds. [Mark Stuart](https://github.com/markstuart)
+* Fixed issue with Rakefile template that gets generated into extensions. [Uģis Ozols](https://github.com/ugisozols)
+* Fixed issue where new page parts could not be added to a page. [Uģis Ozols](https://github.com/ugisozols)
+* Added missing initializer for the Authentication extension. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/2.0.1...2.0.2)
+
 ## 2.0.1 [6 March 2012]
 
 * Updated `plugin.url` code to support Rails 3.2.2. [Philip Arndt](https://github.com/parndt)
