@@ -1,3 +1,7 @@
+## 2.1.0 [unreleased]
+
+* [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
+
 ## 2.0.2 [15 March 2012]
 
 * Removed dependencies from refinerycms-testing that were just opinions and not necessary. [Pete Higgins](https://github.com/phiggins)
