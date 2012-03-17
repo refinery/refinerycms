@@ -24,6 +24,8 @@ module Refinery
 
       stop_pretending?
 
+      append_gemfile!
+
       append_gitignore!
 
       forced_overwriting?
@@ -44,6 +46,12 @@ module Refinery
     end
 
   protected
+
+    def append_gemfile!
+      gsub_file 'Gemfile', %q{gem 'sqlite3'}, %q{group :development, :test do
+  gem 'sqlite3'
+end}  if destination_path.join('Gemfile').file?
+    end
 
     def append_gitignore!
       # Ensure .gitignore exists and append our rules to it.
@@ -160,10 +168,6 @@ gem 'pg'
           end
         end
       end
-
-      gsub_file 'Gemfile', %q{gem 'sqlite3'}, %q{group :development, :test do
-  gem 'sqlite3'
-end}
     end
 
     def migrate_database!
