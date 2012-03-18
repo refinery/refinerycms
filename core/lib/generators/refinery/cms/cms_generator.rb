@@ -28,6 +28,8 @@ module Refinery
 
       append_gitignore!
 
+      append_asset_pipeline!
+
       forced_overwriting?
 
       copy_files!
@@ -46,6 +48,15 @@ module Refinery
     end
 
   protected
+
+    def append_asset_pipeline!
+      application_css = 'app/assets/stylesheets/application.css'
+      if destination_path.join(application_css).file?
+        insert_into_file application_css, %q{*= require formatting
+ *= require theme
+ },      :before => "*= require_self"
+      end
+    end
 
     def append_gemfile!
       gsub_file 'Gemfile', %q{gem 'sqlite3'}, %q{group :development, :test do
