@@ -24,7 +24,7 @@ end
 
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.1.0.dev'
-  gem 'generator_spec', '>= 0.8.5', :git => 'git://github.com/parndt/generator_spec.git', :branch => 'less_rails'
+  gem 'generator_spec', '>= 0.8.5', :git => 'git://github.com/stevehodgkiss/generator_spec.git'
   gem 'guard-rspec', '~> 0.6.0'
   gem 'fuubar'
 
