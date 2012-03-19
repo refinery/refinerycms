@@ -1,4 +1,5 @@
 require 'refinerycms-core'
+require 'action_mailer'
 require 'devise'
 require 'friendly_id'
 

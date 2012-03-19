@@ -1,4 +1,6 @@
-require 'rails/all'
+require 'rails' # from railties
+require 'active_record'
+require 'action_controller'
 require 'rbconfig'
 require 'acts_as_indexed'
 require 'truncate_html'
