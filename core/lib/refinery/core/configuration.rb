@@ -9,8 +9,7 @@ module Refinery
                     :javascripts, :stylesheets, :s3_bucket_name, :s3_region, :s3_access_key_id,
                     :s3_secret_access_key
 
-    self.rescue_not_found = false
-    self.s3_backend = false
+    self.rescue_not_found = false   
     self.base_cache_key = :refinery
     self.site_name = "Company Name"
     self.google_analytics_page_code = "UA-xxxxxx-x"
@@ -27,6 +26,7 @@ module Refinery
     self.s3_region = ENV['S3_REGION']
     self.s3_access_key_id = ENV['S3_KEY']
     self.s3_secret_access_key = ENV['S3_SECRET']
+    self.s3_backend = self.s3_access_key_id.present? && self.s3_secret_access_key.present? &&  self.s3_bucket_name.present? && self.s3_region.present?
 
     def config.register_javascript(name)
       self.javascripts << name
