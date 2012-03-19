@@ -52,8 +52,8 @@ module Refinery
     def append_asset_pipeline!
       application_css = 'app/assets/stylesheets/application.css'
       if destination_path.join(application_css).file?
-        insert_into_file application_css, %q{*= require formatting
- *= require theme
+        insert_into_file application_css, %q{*= require refinery/formatting
+ *= require refinery/theme
  },      :before => "*= require_self"
       end
     end
