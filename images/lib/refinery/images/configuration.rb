@@ -7,7 +7,8 @@ module Refinery
                     :pages_per_dialog_that_have_size_options, :user_image_sizes,
                     :image_views, :preferred_image_view, :datastore_root_path,
                     :s3_backend, :s3_bucket_name, :s3_region,
-                    :s3_access_key_id, :s3_secret_access_key, :trust_file_extensions
+                    :s3_access_key_id, :s3_secret_access_key, :trust_file_extensions,
+                    :whitelisted_mime_types
 
     self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
     self.dragonfly_secret = Refinery::Core.dragonfly_secret
@@ -24,6 +25,14 @@ module Refinery
       :medium => '225x255>',
       :large => '450x450>'
     }
+
+    self.whitelisted_mime_types = [
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/tiff'
+    ]
+
     self.image_views = [:grid, :list]
     self.preferred_image_view = :grid
 
