@@ -26,12 +26,7 @@ module Refinery
       :large => '450x450>'
     }
 
-    self.whitelisted_mime_types = [
-      'image/jpeg',
-      'image/png',
-      'image/gif',
-      'image/tiff'
-    ]
+    self.whitelisted_mime_types = %w[image/jpeg image/png image/gif image/tiff]
 
     self.image_views = [:grid, :list]
     self.preferred_image_view = :grid
