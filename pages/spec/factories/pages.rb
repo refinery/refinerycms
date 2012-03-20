@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :page, :class => Refinery::Page do
-    title "Test title"
+    sequence(:title, "a") {|n| "Test title #{n}" }
   end
 end
