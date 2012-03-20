@@ -54,33 +54,33 @@ module Refinery
 
     attr :database
 
-    protected
+  protected
 
-      def dummy_path
-        'spec/dummy'
-      end
+    def dummy_path
+      'spec/dummy'
+    end
 
-      def module_name
-        'Dummy'
-      end
+    def module_name
+      'Dummy'
+    end
 
-      def application_definition
-        @application_definition ||= begin
-          dummy_application_path = File.expand_path("#{dummy_path}/config/application.rb", destination_root)
-          unless options[:pretend] || !File.exists?(dummy_application_path)
-            contents = File.read(dummy_application_path)
-            contents[(contents.index("module #{module_name}"))..-1]
-          end
+    def application_definition
+      @application_definition ||= begin
+        dummy_application_path = File.expand_path("#{dummy_path}/config/application.rb", destination_root)
+        unless options[:pretend] || !File.exists?(dummy_application_path)
+          contents = File.read(dummy_application_path)
+          contents[(contents.index("module #{module_name}"))..-1]
         end
       end
-      alias :store_application_definition! :application_definition
+    end
+    alias :store_application_definition! :application_definition
 
-      def camelized
-        @camelized ||= name.gsub(/\W/, '_').squeeze('_').camelize
-      end
+    def camelized
+      @camelized ||= name.gsub(/\W/, '_').squeeze('_').camelize
+    end
 
-      def gemfile_path
-        '../../../../Gemfile'
-      end
+    def gemfile_path
+      '../../../../Gemfile'
+    end
   end
 end
