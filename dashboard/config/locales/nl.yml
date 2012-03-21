@@ -3,25 +3,25 @@ nl:
     plugins:
       refinery_dashboard:
         title: Overzicht
-        description: Gives an overview of activity in Refinery
+        description: Een overzicht van activiteit binnen Refinery
     admin:
       dashboard:
         index:
-          quick_tasks: Algemene taken
+          quick_tasks: Algemene Taken
         actions:
-          add_a_new_page: Voeg een nieuwe pagina toe
-          update_a_page: Bewerk een pagina
-          upload_a_image: Upload een afbeelding
-          upload_a_file: Upload een bestand
-          change_language: Verander de taal
-          see_home_page: Bezoek de homepage
+          add_a_new_page: Een nieuwe pagina toevoegen
+          update_a_page: Een pagina bewerken
+          upload_a_image: Een afbeelding uploaden
+          upload_a_file: Een bestand uploaden
+          change_language: De taal veranderen
+          see_home_page: De homepage bezoeken
         recent_activity:
           empty: Er hebben zich recentelijk geen activiteiten voorgedaan.
-          latest_activity: Laatste Wijzigingen
+          latest_activity: Laatste activiteit
           latest_activity_message: '%{what} %{kind} is %{action}'
         recent_inquiries:
-          latest_inquiries: Latest Inquiries
+          latest_inquiries: Laatste contactaanvragen
     updated:
-      'with_article "the"':  bewerkt
+      'with_article "the"': bewerkt
     created:
-      'with_article "the"':  aangemaakt
+      'with_article "the"': toegevoegd

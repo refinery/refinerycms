@@ -1,52 +1,55 @@
 nl:
   refinery:
+    js:
+      admin:
+        confirm_changes: Wijzigingen zullen verloren gaan. Weet u zeker dat u wilt doorgaan zonder op te slaan?
     plugins:
       refinery_core:
         title: Refinery
-        description: Kern plugin van refinery
+        description: Kern van Refinery
       refinery_dialogs:
         title: Dialogen
-        description: Refinery dialogen plugin
+        description: Refinery dialogen-plugin
     welcome:
-      there_are_no_users: "Er zijn nog geen gebruikers, dus zullen we er nu eerst een voor je maken"
+      there_are_no_users: "Er zijn nog geen gebruikers, dus we zullen er nu eerst een voor u instellen"
     crudify:
-      created: "%{what} is met success aangemaakt"
-      updated: "%{what} is met success aangepast"
-      destroyed: "%{what} is met success verwijderd"
+      created: '%{what} is met success toegevoegd.'
+      updated: '%{what} is met success aangepast.'
+      destroyed: '%{what} is met success verwijderd.'
     site_bar:
       log_out: Afmelden
-      switch_to_your_website: Ga naar de website
-      switch_to_your_website_editor: Ga terug naar de editor
+      switch_to_your_website: naar de website
+      switch_to_your_website_editor: naar de editor
     admin:
       menu:
-        reorder_menu: Wijzig menu volgorde
-        reorder_menu_done: Ik ben klaar met het wijzigen van de volgorde
+        reorder_menu: Menuvolgorde wijzigen
+        reorder_menu_done: Klaar met het wijzigen van de menuvolgorde
       dialogs:
         show:
           save: Opslaan
           cancel: Annuleren
       continue_editing:
-        save_and_continue_editing: Sla op en ga verder met bewerken
+        save_and_continue_editing: Opslaan en verdergaan met bewerken
       form_actions:
-        save: Sla op
-        cancel: Annuleer
-        cancel_lose_changes: "Als u annuleert, zal geen avn de wijzingen worden opgeslagen!"
-        delete: Verwijder
+        save: Opslaan
+        cancel: Annuleren
+        cancel_lose_changes: "Als u annuleert, zal geen van de wijzingen worden opgeslagen!"
+        delete: Verwijderen
         close: Sluiten
       image_picker:
-        none_selected: "Er is op dit moment geen %{what} geselecteerd. Klik a.u.b. hier om er een toe te voegen."
-        remove_current: "Verwijder de huidige %{what}"
-        change: Klik hier om de afbeelding te wijzigen
-        show: Laat zien
+        none_selected: "Er is nog geen afbeelding geselecteerd, klik hier om er een toe te voegen."
+        remove_current: "Huidige afbeelding verwijderen"
+        change: Klik hier om een afbeelding te kiezen
+        show: Tonen
       resource_picker:
-        download_current: "Download huidige %{what}"
+        download_current: "Huidig bestand downloaden"
         opens_in_new_window: Opent in een nieuw venster
-        remove_current: "Verwijder huidige %{what}"
-        name: Voeg bestand toe
+        remove_current: "Huidig bestand verwijderen"
+        no_resource_selected: Er is nog geen bestand geselecteerd, klik hier om er een toe te voegen.
+        name: Bestand toevoegen
         current: Huidig bestand
-        no_resource_selected: Er is momenteel geen bestand geselecteerd, klik hier om er een toe te voegen.
       search:
-        button_text: Zoek
+        button_text: Zoeken
         results_for: "Zoekresultaten voor '%{query}'"
         no_results: "Excuses, geen resultaten gevonden"
       delete:
@@ -56,18 +59,18 @@ nl:
       help: help
     message:
       close: Sluiten
-      close_this_message: Sluit dit bericht
+      close_this_message: Dit bericht sluiten
     draft_page_message:
-      not_live: Deze pagina is NIET beschikbaar voor het publiek
+      not_live: Deze pagina is NIET publiek te zien
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
       enable_javascript_html: Om alle functies van deze pagina te gebruiken, is het noodzakelijk om JavaScript in te schakelen.
       here_are: Hier zijn de
-      instructions_enable_javascript_html: instructies m.b.t. het inschakelen van JavaScript in de browser.
+      instructions_enable_javascript_html: instructies over het inschakelen van JavaScript in uw browser
   time:
     formats:
-      short: "%A, %d %B %Y"
+      short: "%A %d %B %Y"
   will_paginate:
     previous_label: "&laquo;"
     next_label: "&raquo;"
