@@ -8,6 +8,10 @@ gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/parndt/refiner
 # Temporarily use a custom branch for paper_trail (used by globalize3, used by refinerycms-pages)
 gem 'paper_trail', :git => 'git://github.com/parndt/paper_trail.git', :branch => 'less_rails'
 
+# Fixes uniqueness constraint on translated columns.
+# See: https://github.com/svenfuchs/globalize3/pull/121
+gem 'globalize3', :git => 'git://github.com/shioyama/globalize3.git', :branch => 'uniqueness_validator_fix'
+
 # Database Configuration
 platforms :jruby do
   gem 'activerecord-jdbcsqlite3-adapter'
