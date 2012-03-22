@@ -12,7 +12,7 @@ Before you start translating, you should clone a fresh copy of Refinery from Git
 
 It's not required, but we strongly advise you to create a separate branch when adding a translation or a new feature. You can do so by typing the following shell command.
 
-TIP: Throughout this guide, we refer to the Dutch locale (nl). In most circumstances, you will not want to refer to this locale; be sure to substitute 'nl' for the locale you're working with.
+TIP: Throughout this guide, we refer to the Dutch locale (+nl+). In most circumstances, you will not want to refer to this locale; be sure to substitute +nl+ for the locale you're working with.
 
 <shell>
 $ git checkout -b i18n_nl
