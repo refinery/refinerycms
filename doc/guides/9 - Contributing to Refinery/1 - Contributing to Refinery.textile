@@ -16,8 +16,6 @@ Read the "Writing a guide for this website":/guides/writing-a-guide-for-this-web
 
 h3. Contributing bug fixes or new features
 
-WARNING: This guide is only for advanced users of Refinery
-
 h4. Setup
 
 h5. In your browser
