@@ -2,6 +2,7 @@
   $menu = $("#menu")
   return  if $menu.length == 0
   $menu.sortable(
+    items: "> *:not(#menu_reorder, #menu_reorder_done)"
     axis: "x"
     cursor: "crosshair"
     connectWith: ".nested"
