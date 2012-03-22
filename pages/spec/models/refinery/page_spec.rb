@@ -154,6 +154,18 @@ module Refinery
         child_with_custom_slug.url[:path].should == [page.url[:path].first, "#{custom_child_slug}-ru"]
       end
 
+      context "given a page with a custom_slug exists" do
+        before do
+          Factory(:page, :custom_slug => custom_page_slug)
+        end
+
+        it "fails validation when a new record uses that custom_slug" do
+          new_page = Refinery::Page.new :custom_slug => custom_page_slug
+          new_page.valid?
+
+          new_page.errors[:custom_slug].should_not be_empty
+        end
+      end
     end
 
     context 'home page' do
