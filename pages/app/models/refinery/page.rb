@@ -383,8 +383,8 @@ module Refinery
         title = [self.translations.detect {|t| t.title.present?}.title]
       end
 
-      title << "<em>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</em>" unless show_in_menu?
-      title << "<em>(#{::I18n.t('draft', :scope => 'refinery.admin.pages.page')})</em>" if draft?
+      title << "<span class='label'>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</span>" unless show_in_menu?
+      title << "<span class='label notice'>(#{::I18n.t('draft', :scope => 'refinery.admin.pages.page')})</span>" if draft?
 
       title.join(' ')
     end
