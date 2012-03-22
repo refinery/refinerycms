@@ -6,12 +6,12 @@ module Refinery
       login_refinery_user
 
       it "should update the plugin positions" do
-        plugins = @refinery_user.plugins.reverse.collect {|p| p.name}
+        plugins = refinery_user.plugins.reverse.collect {|p| p.name}
 
         post 'update_plugin_positions', :menu => plugins
 
-        @refinery_user.plugins.reload
-        @refinery_user.plugins.each_with_index do |plugin, idx|
+        refinery_user.plugins.reload
+        refinery_user.plugins.each_with_index do |plugin, idx|
           plugin.name.should eql(plugins[idx])
         end
       end
