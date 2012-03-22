@@ -12,21 +12,19 @@ h3. IRC Channel
 
 Use your favourite IRC client to connect to #refinerycms on freenode.net, or use this "Online IRC Client":http://webchat.freenode.net/?randomnick=1&amp;channels=refinerycms&amp;prompt=1&amp;uio=d4.
 
-NOTE: If you ask a question and don't get an immediate response, don't take offence, just post your question on the "Google Group":http://group.refinerycms.org instead. This gives developers in other timezones a chance to help you out.
+NOTE: If you ask a question and don't get an immediate response, don't take offence; either wait a half-hour and ask again, or just post your question on the "Google Group":http://group.refinerycms.org instead. This gives developers who are in other timezones or who are temporarily unavailable a chance to help you out.
 
-Alternatively just use this in-browser client below.
+Alternatively, just use this in-browser client below.
 
 <iframe src="http://webchat.freenode.net/?randomnick=1&amp;channels=refinerycms&amp;prompt=1&amp;uio=d" width="613" height="428"></iframe>
 
 h3. Google Group
 
-The "Refinery CMS Google Group":http://group.refinerycms.org is a great place to ask for help if you don't get a response on IRC.
+The "Refinery CMS Google Group":http://group.refinerycms.org is a great place to ask for help if you don't get a response on IRC. Your first message may take a short while to appear, as all first-time posters are required by Google Groups to pass moderation.
 
 h3. Core Team
 
 * Philip Arndt (parndt) - Resolve Digital
-* David Jones (dgjones) - Resolve Digital
-* Steven Heidel (stevenheidel)
 * Uģis Ozols (ugisozols)
 
 h3. Other places
