@@ -20,7 +20,12 @@ $ git checkout -b i18n_nl
 
 h3. Finding missing keys
 
-Execute the following to get a list of missing translations for all locales:
+First, you must create a 'dummy' application to enable additional useful +rake+ tasks. Do so with the following command:
+<shell>
+$ bundle exec rake refinery:testing:dummy_app
+</shell>
+
+Then execute the following to get a list of missing translations for all locales:
 
 <shell>
 $ bundle exec rake app:translate:lost_in_translation_all
