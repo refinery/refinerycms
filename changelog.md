@@ -2,6 +2,20 @@
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
+## 2.0.3 [unreleased]
+* Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
+* Fixed Heroku and sqlite3 related errors. [Philip Arndt](https://github.com/parndt)
+* Replaced label_tag with label in pages advanced options form. [Johannes Edelstam](https://github.com/jede)
+* Added missing refinerycms-settings require in generated refinery form extension. [Philip Arndt](https://github.com/parndt)
+* Added JS runtime check in templates. [Philip Arndt](https://github.com/parndt) & [Josef Šimánek](https://github.com/simi)
+* Fixed user role assignment issue. [Uģis Ozols](https://github.com/ugisozols)
+* Added image type whitelisting configuration option. [Rob Yurkowski](https://github.com/robyurkowski)
+* Removed global hash of menu instances. [Pete Higgins](https://github.com/phiggins)
+* Fixed save & continue issue. [Philip Arndt](https://github.com/parndt)
+* Fixed issue with Heroku option for CMS generator. [Philip Arndt](https://github.com/parndt)
+* Fixed config.assets.initialize_on_precompile setting to false. [Philip Arndt](https://github.com/parndt)
+
+
 ## 2.0.2 [15 March 2012]
 
 * Removed dependencies from refinerycms-testing that were just opinions and not necessary. [Pete Higgins](https://github.com/phiggins)
