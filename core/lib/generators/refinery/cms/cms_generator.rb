@@ -167,12 +167,13 @@ gem 'pg'
                               :after => %r{^[^#]+config\.action_mailer\..*}, :verbose => false
 
         gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
+      end
 
-        insert_into_file env, %Q{
-  # Refinery has set config.assets.initialize_on_precompile = false by default.
-  config.assets.initialize_on_precompile = false
-
-},                       :after => "Application.configure do\n" if env =~ /production/
+      if destination_path.join('config', 'application.rb').file?
+        insert_into_file 'config/application.rb', %Q{
+    # Refinery has set config.assets.initialize_on_precompile = false by default.
+    config.assets.initialize_on_precompile = false
+},                       :after => "class Application < Rails::Application"
       end
     end
 
