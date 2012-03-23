@@ -324,30 +324,6 @@ module Refinery
         end
       end
 
-      context "with #page_menu_title" do
-        before do
-          page.page_menu_title = "Page Menu Title"
-        end
-
-        it_should_behave_like "Refinery menu item hash"
-
-        it "returns the page_menu_title for :title" do
-          subject[:title].should eq("Page Menu Title")
-        end
-      end
-
-      context "with #page_title" do
-        before do
-          page.page_title = "Page Title"
-        end
-
-        it_should_behave_like "Refinery menu item hash"
-
-        it "returns the page_title for :title" do
-          subject[:title].should eq("Page Title")
-        end
-      end
-
       context "with #menu_title" do
         before do
           page[:menu_title] = "Menu Title"

@@ -11,7 +11,7 @@ end
 module Refinery
   module Admin
     describe "Pages" do
-      login_refinery_user
+      refinery_login_with :refinery_user
 
       context "when no pages" do
         it "invites to create one" do
@@ -135,6 +135,18 @@ module Refinery
           page.body.should =~ %r{/pages/my-first-page}
 
           Refinery::Page.count.should == 1
+        end
+
+        it "includes menu title field" do
+          visit refinery.new_admin_page_path
+
+          fill_in "Title", :with => "My first page"
+          fill_in "Menu title", :with => "The first page"
+
+          click_button "Save"
+
+          page.should have_content("'My first page' was successfully added.")
+          page.body.should =~ %r{/pages/the-first-page}
         end
       end
 
@@ -261,13 +273,16 @@ module Refinery
           Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
 
           # Create a home page in both locales (needed to test menus)
-          home_page = FactoryGirl.create(:page, :title => 'Home',
-                                                :link_url => '/',
-                                                :menu_match => "^/$")
-          Globalize.locale = :ru
-          home_page.title = 'Домашняя страница'
-          home_page.save
-          Globalize.locale = :en
+          home_page = Globalize.with_locale(:en) do
+            FactoryGirl.create(:page, :title => 'Home',
+                                      :link_url => '/',
+                                      :menu_match => "^/$")
+          end
+
+          Globalize.with_locale(:ru) do
+            home_page.title = 'Домашняя страница'
+            home_page.save
+          end
         end
 
         describe "add a page with title for default locale" do
@@ -474,10 +489,30 @@ module Refinery
           end
         end
       end
+
+      describe "new page part", :js => true do
+        before do
+          Refinery::Pages.stub(:new_page_parts).and_return(true)
+        end
+
+        it "adds new page part" do
+          visit refinery.new_admin_page_path
+          click_link "add_page_part"
+
+          within "#new_page_part_dialog" do
+            fill_in "new_page_part_title", :with => "testy"
+            click_button "Save"
+          end
+
+          within "#page_parts" do
+            page.should have_content("testy")
+          end
+        end
+      end
     end
 
     describe "TranslatePages" do
-      login_refinery_translator
+      refinery_login_with :refinery_translator
 
       describe "add page to main locale" do
         it "doesn't succeed" do
@@ -532,11 +567,14 @@ module Refinery
           Refinery::I18n.frontend_locales = [:en, :ru]
 
           # Create a page in both locales
-          about_page = FactoryGirl.create(:page, :title => 'About')
-          Globalize.locale = :ru
-          about_page.title = 'About Ru'
-          about_page.save
-          Globalize.locale = :en
+          about_page = Globalize.with_locale(:en) do
+            FactoryGirl.create(:page, :title => 'About')
+          end
+
+          Globalize.with_locale(:ru) do
+            about_page.title = 'About Ru'
+            about_page.save
+          end
         end
 
         describe "adding page link" do
@@ -544,14 +582,14 @@ module Refinery
             before(:each) { Refinery::Pages.absolute_page_links = false }
 
             it "shows Russian pages if we're editing the Russian locale" do
-              visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
+              visit refinery.link_to_admin_pages_dialogs_path(:wymeditor => true, :switch_locale => :ru)
 
               page.should have_content("About Ru")
               page.should have_selector("a[href='/ru/about-ru']")
             end
 
             it "shows default to the default locale if no query string is added" do
-              visit 'refinery/pages_dialogs/link_to?wymeditor=true'
+              visit refinery.link_to_admin_pages_dialogs_path(:wymeditor => true)
 
               page.should have_content("About")
               page.should have_selector("a[href='/about']")
@@ -561,14 +599,14 @@ module Refinery
             before(:each) { Refinery::Pages.absolute_page_links = true }
 
             it "shows Russian pages if we're editing the Russian locale" do
-              visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
+              visit refinery.link_to_admin_pages_dialogs_path(:wymeditor => true, :switch_locale => :ru)
 
               page.should have_content("About Ru")
               page.should have_selector("a[href='http://www.example.com/ru/about-ru']")
             end
 
             it "shows default to the default locale if no query string is added" do
-              visit 'refinery/pages_dialogs/link_to?wymeditor=true'
+              visit refinery.link_to_admin_pages_dialogs_path(:wymeditor => true)
 
               page.should have_content("About")
               page.should have_selector("a[href='http://www.example.com/about']")

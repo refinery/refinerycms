@@ -2,7 +2,7 @@ require "spec_helper"
 
 module Refinery
   describe "search" do
-    login_refinery_user
+    refinery_login_with :refinery_user
 
     context "when searched item exists" do
       describe "image extension" do

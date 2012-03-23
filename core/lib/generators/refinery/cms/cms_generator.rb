@@ -2,14 +2,18 @@ module Refinery
   class CmsGenerator < Rails::Generators::Base
     source_root Pathname.new(File.expand_path('../templates', __FILE__))
 
-    class_option :update, :type => :boolean, :aliases => nil, :group => :runtime,
-                          :desc => "Update an existing Refinery CMS based application"
+    class_option :update,  :type => :boolean, :aliases => nil, :group => :runtime,
+                           :desc => "Update an existing Refinery CMS based application"
     class_option :fresh_installation, :type => :boolean, :aliases => nil, :group => :runtime, :default => false,
-                          :desc => "Allow Refinery to remove default Rails files in a fresh installation"
-    class_option :heroku, :type => :string, :default => nil, :group => :runtime, :banner => 'APP_NAME',
-                          :desc => "Deploy to Heroku after the generator has run."
-    class_option :stack, :type => :string, :default => 'cedar', :group => :runtime,
-                          :desc => "Specify which Heroku stack you want to use. Requires --heroku option to function."
+                           :desc => "Allow Refinery to remove default Rails files in a fresh installation"
+    class_option :heroku,  :type => :string, :default => nil, :group => :runtime, :banner => 'APP_NAME',
+                           :desc => "Deploy to Heroku after the generator has run."
+    class_option :stack,   :type => :string, :default => 'cedar', :group => :runtime,
+                           :desc => "Specify which Heroku stack you want to use. Requires --heroku option to function."
+    class_option :skip_db, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
+                           :desc => "Skip over any database creation, migration or seeding."
+    class_option :skip_migrations, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
+                           :desc => "Skip over installing or running migrations."
 
     def generate
       start_pretending?
@@ -20,7 +24,11 @@ module Refinery
 
       stop_pretending?
 
+      append_gemfile!
+
       append_gitignore!
+
+      append_asset_pipeline!
 
       forced_overwriting?
 
@@ -41,6 +49,23 @@ module Refinery
 
   protected
 
+    def append_asset_pipeline!
+      application_css = 'app/assets/stylesheets/application.css'
+      if destination_path.join(application_css).file?
+        insert_into_file application_css, %q{*= require refinery/formatting
+ *= require refinery/theme
+ },      :before => "*= require_self"
+      end
+    end
+
+    def append_gemfile!
+      if destination_path.join('Gemfile').file? &&
+         destination_path.join('Gemfile').read !~ %r{group :development, :test do\n.+?gem 'sqlite3'\nend}m
+        gsub_file 'Gemfile', %q{gem 'sqlite3'}, %q{group :development, :test do
+  gem 'sqlite3'
+end}  end
+    end
+
     def append_gitignore!
       # Ensure .gitignore exists and append our rules to it.
       create_file ".gitignore" unless destination_path.join('.gitignore').file?
@@ -58,7 +83,7 @@ gem 'heroku'
 gem 'fog'
 }
       # If postgres is not the database in use, Heroku still needs it.
-      if destination_path.join('Gemfile').read !~ %r{gem ['"]pg['"]}
+      if destination_path.join('Gemfile').file? && destination_path.join('Gemfile').read !~ %r{gem ['"]pg['"]}
         append_file 'Gemfile', %q{
 # Postgres support (added for Heroku)
 gem 'pg'
@@ -88,7 +113,7 @@ gem 'pg'
     end
 
     def deploy_to_hosting?
-      if options[:heroku]
+      if heroku?
         append_heroku_gems!
 
         bundle!
@@ -108,7 +133,10 @@ gem 'pg'
       say_status message, nil, :yellow if message
 
       say_status "Creating Heroku app..", nil
-      run "heroku create #{options[:heroku]}#{" --stack #{options[:stack]}" if options[:stack]}"
+      run ["heroku create",
+           (options[:heroku] if heroku?),
+           "#{"--stack #{options[:stack]}" if options[:stack]}"
+          ].compact.join(' ')
 
       say_status "Pushing to Heroku (this takes time, be patient)..", nil
       run "git push heroku master"
@@ -130,6 +158,14 @@ gem 'pg'
       %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
         next unless destination_path.join(env).file?
 
+        # Refinery does not necessarily expect action_mailer to be available as
+        # we may not always require it (currently only the authentication extension).
+        # Rails, however, will optimistically place config entries for action_mailer.
+        insert_into_file env, "  if config.respond_to?(:action_mailer)\n  ",
+                              :before => %r{^[^#]+config\.action_mailer\.}, :verbose => false
+        insert_into_file env, "\n  end",
+                              :after => %r{^[^#]+config\.action_mailer\..*}, :verbose => false
+
         gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
 
         insert_into_file env, %Q{
@@ -146,6 +182,10 @@ gem 'pg'
       self.options = force_options
     end
 
+    def heroku?
+      options[:heroku].present?
+    end
+
     def manage_roadblocks!
       %w(public/index.html app/views/layouts/application.html.erb).each do |roadblock|
         if (roadblock_path = destination_path.join(roadblock)).file?
@@ -159,8 +199,10 @@ gem 'pg'
     end
 
     def migrate_database!
-      rake 'railties:install:migrations'
-      rake 'db:create db:migrate'
+      unless self.options[:skip_migrations]
+        rake 'railties:install:migrations'
+        rake 'db:create db:migrate' unless self.options[:skip_db]
+      end
     end
 
     def mount!
@@ -184,6 +226,7 @@ gem 'pg'
       generator_args = []
       generator_args << '--quiet' if self.options[:quiet]
       Refinery::CoreGenerator.start generator_args
+      Refinery::AuthenticationGenerator.start generator_args
       Refinery::ResourcesGenerator.start generator_args
       Refinery::PagesGenerator.start generator_args
       Refinery::ImagesGenerator.start generator_args
@@ -191,7 +234,7 @@ gem 'pg'
     end
 
     def sanity_check_heroku_application_name!
-      if options[:heroku].to_s.include?('_') || options[:heroku].to_s.length > 30
+      if heroku? && options[:heroku].to_s.include?('_') || options[:heroku].to_s.length > 30
         message = ["\nThe application name '#{options[:heroku]}' that you specified is invalid for Heroku."]
         suggested_name = options[:heroku].dup.to_s
         if suggested_name.include?('_')
@@ -208,10 +251,12 @@ gem 'pg'
         message << "We have changed the name to '#{suggested_name}' for you, hope it suits you.\n"
         message.join("\n")
       end
+
+      options[:heroku] = '' if options[:heroku] == 'heroku'
     end
 
     def seed_database!
-      rake 'db:seed'
+      rake 'db:seed' unless self.options[:skip_db] || self.options[:skip_migrations]
     end
 
     def start_pretending?

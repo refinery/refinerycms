@@ -66,7 +66,14 @@ module Refinery
       else
         { :controller => "refinery/admin/#{name}" }
       end
-      @url.is_a?(Hash) ? {:only_path => true}.merge(@url) : @url
+
+      if @url.is_a?(Hash)
+        {:only_path => true}.merge(@url)
+      elsif @url.respond_to?(:call)
+        @url.call
+      else
+        @url
+      end
     end
 
   # Make this protected, so that only Plugin.register can use it.

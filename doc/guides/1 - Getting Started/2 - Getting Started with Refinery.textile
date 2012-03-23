@@ -129,9 +129,9 @@ $ rails server
 
 This will fire up an instance of the built-in Rails web server by default (called WEBrick). To see your application in action, open a browser window and navigate to "http://localhost:3000":http://localhost:3000. You should be greeted with a screen prompting you to create your first Refinery user.
 
-!/system/images/BAhbBlsHOgZmSSI8MjAxMC8xMi8wMi8xMl8yN18zOF80OTVfc2V0dXBfeW91cl9maXJzdF91c2VyX3NtYWxsLnBuZwY6BkVU/12_27_38_495_setup_your_first_user_small.png!
+!http://d2prewpsu45gft.cloudfront.net/system/images/BAhbB1sHOgZmSSI3MjAxMi8wMy8wNC8xNF8xMV8yNF85OTNfc2V0X3VwX3lvdXJfZmlyc3RfdXNlci5wbmcGOgZFVFsIOgZwOgp0aHVtYkkiCTYxMHgGOwZG/set-up-your-first-user.png!
 
-TIP: To stop the web server, hit +Ctrl+C+ in the terminal window where it's running.
+TIP: To stop the web server, hit +Ctrl&#43;C+ in the terminal window where it's running.
 
 If you see this screen it means you have set up everything correctly and your Refinery CMS site is up and running.
 
@@ -403,7 +403,7 @@ But I've noticed one problem. The "2011 Music Awards" is showing up in the middl
 
 h4. Testing your extension
 
-There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/how-to-enable-testing-in-your-application.
+There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/how-to-test-your-engine.
 
 h4. Crudify: The Backbone of Refinery Engines
 

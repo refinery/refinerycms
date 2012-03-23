@@ -1,4 +1,4 @@
-Refinery::Core::Engine.routes.draw do
+Refinery::Core::Engine.routes.append do
   # Frontend routes
   namespace :<%= namespacing.underscore %> do
     resources :<%= plural_name %><%= ", :path => ''" if namespacing.underscore == plural_name %>, :only => [:new, :create] do

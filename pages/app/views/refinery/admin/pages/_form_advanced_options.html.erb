@@ -24,7 +24,7 @@
     <% if Refinery::Pages.use_layout_templates %>
     <div class='field'>
       <span class='label_with_help'>
-        <%= label_tag :layout_template, t('.layout_template') %>
+        <%= f.label :layout_template, t('.layout_template') %>
         <%= refinery_help_tag t('.layout_template_help') %>
       </span>
       <%= f.select(:layout_template, @valid_layout_templates) %>
@@ -33,7 +33,7 @@
     <% if Refinery::Pages.use_view_templates %>
     <div class='field'>
       <span class='label_with_help'>
-        <%= label_tag :view_template, t('.view_template') %>
+        <%= f.label :view_template, t('.view_template') %>
         <%= refinery_help_tag t('.view_template_help') %>
       </span>
       <%= f.select(:view_template, @valid_view_templates.map{|t| [t.titleize, t]}) %>
@@ -42,7 +42,7 @@
 
     <div class='field'>
       <span class='label_with_help'>
-        <%= label_tag :menu_title, t('.menu_title') %>
+        <%= f.label :menu_title, t('.menu_title') %>
         <%= refinery_help_tag t('.menu_title_help') %>
       </span>
       <%= f.text_field :menu_title, :style=> 'width:400px;' %>

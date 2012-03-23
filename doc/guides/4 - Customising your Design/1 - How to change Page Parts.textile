@@ -11,26 +11,18 @@ h3. Changing default Page Parts
 
 Refinery by default provides you with +Body+ and +Side Body+ page parts because most pages have a two column style layout. If your layout has three content areas or one, you're going to want to update this setting to reflect that.
 
-In Refinery's backend, go to the "Settings" tab. Look for a setting called "Default Page Parts" and click on the edit link. The value of this setting will look like this:
+Within @config/initializers/refinery/pages.rb@ you will see various default settings are commented out including the following:
 
-NOTE: If you don't have this setting, try creating a new page and then restarting your web server.
 
-<yaml>
----
-- Body
-- Side Body
-</yaml>
+@  # Configure global page default parts@
+@  # config.default_parts = ["Body", "Side Body"]@
 
-Edit this YAML to have the names of the default page parts you want, click +Save+ and you're done.
+Edit this code to have the names of the default page parts you want, click +Save+ and you're done.
 
 Here's a sample of a site that would have three content areas on most of its pages.
 
-<yaml>
----
-- Left Body
-- Middle Body
-- Right Body
-</yaml>
+@  # Configure global page default parts@
+@  config.default_parts = ["Left Body", "Middle Body", "Right Body"]@
 
 h3. Changing Page Parts for a single page
 

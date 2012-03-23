@@ -21,7 +21,7 @@ module Refinery
                     :parent_id, :menu_title, :created_at, :updated_at,
                     :page_id, :layout_template, :view_template, :custom_slug
 
-    attr_accessor :locale, :page_title, :page_menu_title # to hold temporarily
+    attr_accessor :locale # to hold temporarily
     validates :title, :presence => true
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
@@ -112,33 +112,8 @@ module Refinery
         where(:show_in_menu => true).with_globalize
       end
 
-      # Because pages are translated this can have a negative performance impact
-      # on your website and can introduce scaling issues. What fast_menu does is
-      # finds all of the columns necessary to render a +Refinery::Menu+ structure
-      # using only one SQL query. This has limitations, including not being able
-      # to access any other attributes of the pages but you can specify more columns
-      # by passing in an array e.g. fast_menu([:column1, :column2])
-      def fast_menu(columns = [])
-        # First, apply a filter to determine which pages to show.
-        pages = live.in_menu.order('lft ASC').includes(:translations)
-
-        # Now we only want to select particular columns to avoid any further queries.
-        # Title and menu_title are retrieved in the next block below so they are not here.
-        (menu_columns | columns).each do |column|
-          pages = pages.select(arel_table[column.to_sym])
-        end
-
-        # We have to get title and menu_title from the translations table.
-        # To avoid calling globalize3 an extra time, we get title as page_title
-        # and we get menu_title as page_menu_title.
-        # These is used in 'to_refinery_menu_item' in the Page model.
-        %w(title menu_title).each do |column|
-          pages = pages.joins(:translations).select(
-            "#{translation_class.table_name}.#{column} as page_#{column}"
-          )
-        end
-
-        pages
+      def fast_menu
+        live.in_menu.order('lft ASC').includes(:translations)
       end
 
       # Wrap up the logic of finding the pages based on the translations table.
@@ -159,12 +134,6 @@ module Refinery
       # This terminates in a false if i18n extension is not defined or enabled.
       def different_frontend_locale?
         ::Refinery.i18n_enabled? && ::Refinery::I18n.current_frontend_locale != ::I18n.locale
-      end
-
-      # Override this method to change which columns you want to select to render your menu.
-      # title and menu_title are always retrieved so omit these.
-      def menu_columns
-        %w(id depth parent_id lft rgt link_url menu_match slug)
       end
 
       # Returns how many pages per page should there be when paginating pages
@@ -325,16 +294,16 @@ module Refinery
       Rails.cache.fetch(path_cache_key) { ['', nested_url].join('/') }
     end
 
-    def path_cache_key
-      [cache_key, 'nested_path'].join('#')
+    def path_cache_key(locale=::I18n.locale)
+      [cache_key(locale), 'nested_path'].join('#')
     end
 
-    def url_cache_key
-      [cache_key, 'nested_url'].join('#')
+    def url_cache_key(locale=::I18n.locale)
+      [cache_key(locale), 'nested_url'].join('#')
     end
 
-    def cache_key
-      [Refinery::Core.base_cache_key, 'page', ::I18n.locale, id].compact.join('/')
+    def cache_key(locale)
+      [Refinery::Core.base_cache_key, 'page', locale, id].compact.join('/')
     end
 
     # Returns true if this page is "published"
@@ -363,7 +332,7 @@ module Refinery
     end
 
     def refinery_menu_title
-      [page_menu_title, page_title, menu_title, title].detect(&:present?)
+      [menu_title, title].detect(&:present?)
     end
 
     def to_refinery_menu_item
@@ -414,8 +383,8 @@ module Refinery
         title = [self.translations.detect {|t| t.title.present?}.title]
       end
 
-      title << "<em>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</em>" unless show_in_menu?
-      title << "<em>(#{::I18n.t('draft', :scope => 'refinery.admin.pages.page')})</em>" if draft?
+      title << "<span class='label'>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</span>" unless show_in_menu?
+      title << "<span class='label notice'>(#{::I18n.t('draft', :scope => 'refinery.admin.pages.page')})</span>" if draft?
 
       title.join(' ')
     end
@@ -446,8 +415,10 @@ module Refinery
       return true unless Refinery::Pages.marketable_urls
 
       [self, children].flatten.each do |page|
-        Rails.cache.delete(page.url_cache_key)
-        Rails.cache.delete(page.path_cache_key)
+        ::Refinery::I18n.frontend_locales.each do |locale|
+          Rails.cache.delete(page.url_cache_key(locale))
+          Rails.cache.delete(page.path_cache_key(locale))
+        end
       end
     end
     alias_method :invalidate_child_cached_url, :invalidate_cached_urls

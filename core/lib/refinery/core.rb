@@ -1,4 +1,6 @@
-require 'rails/all'
+require 'rails' # from railties
+require 'active_record'
+require 'action_controller'
 require 'rbconfig'
 require 'acts_as_indexed'
 require 'truncate_html'
@@ -158,12 +160,12 @@ module Refinery
       end
     end
 
-    private
-      def validate_extension!(const)
-        unless const.respond_to?(:root) && const.root.is_a?(Pathname)
-          raise InvalidEngineError, "Engine must define a root accessor that returns a pathname to its root"
-        end
+  private
+    def validate_extension!(const)
+      unless const.respond_to?(:root) && const.root.is_a?(Pathname)
+        raise InvalidEngineError, "Engine must define a root accessor that returns a pathname to its root"
       end
+    end
   end
 
   module Core

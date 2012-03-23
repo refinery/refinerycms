@@ -15,7 +15,7 @@ module Refinery
       end
 
       def create
-        @user = Refinery::User.new(params[:user])
+        @user = Refinery::User.new(params[:user].except(:roles))
         @selected_plugin_names = params[:user][:plugins] || []
         @selected_role_names = params[:user][:roles] || []
 
@@ -37,8 +37,6 @@ module Refinery
       end
 
       def edit
-        @user = Refinery::User.find(params[:id])
-
         redirect_unless_user_editable!
 
         @selected_plugin_names = @user.plugins.collect(&:name)
@@ -81,20 +79,28 @@ module Refinery
 
     protected
 
-    def load_available_plugins_and_roles
-      @available_plugins = Refinery::Plugins.registered.in_menu.collect { |a|
-        { :name => a.name, :title => a.title }
-      }.sort_by { |a| a[:title] }
+      def find_user_with_slug
+        begin
+          find_user_without_slug
+        rescue ActiveRecord::RecordNotFound
+          @user = Refinery::User.all.detect{|u| u.to_param == params[:id]}
+        end
+      end
+      alias_method_chain :find_user, :slug
 
-      @available_roles = Refinery::Role.all
-    end
+      def load_available_plugins_and_roles
+        @available_plugins = Refinery::Plugins.registered.in_menu.collect { |a|
+          { :name => a.name, :title => a.title }
+        }.sort_by { |a| a[:title] }
+
+        @available_roles = Refinery::Role.all
+      end
 
       def redirect_unless_user_editable!
         unless current_refinery_user.can_edit?(@user)
           redirect_to(main_app.refinery_admin_users_path) and return
         end
       end
-
     end
   end
 end

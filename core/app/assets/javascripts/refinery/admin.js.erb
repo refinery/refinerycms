@@ -173,29 +173,33 @@ submit_and_continue = function(e, redirect_to) {
   $('.fieldWithErrors').removeClass('fieldWithErrors').addClass('field');
   $('#flash_container .errorExplanation').remove();
 
-  $.post($('#continue_editing').get(0).form.action, $($('#continue_editing').get(0).form).serialize(), function(data) {
-    if (($flash_container = $('#flash_container')).length > 0) {
-      $flash_container.html(data);
+  $.post(
+    $('#continue_editing').get(0).form.action
+    , $($('#continue_editing').get(0).form).serialize()
+    , function(data) {
+      if (($flash_container = $('#flash_container')).length > 0) {
+        $flash_container.html(data);
 
-      $('#flash').css({'width': 'auto', 'visibility': null}).fadeIn(550);
+        $('#flash').css({'width': 'auto', 'visibility': null}).fadeIn(550);
 
-      $('.errorExplanation').not($('#flash_container .errorExplanation')).remove();
+        $('.errorExplanation').not($('#flash_container .errorExplanation')).remove();
 
-      if ((error_fields = $('#fieldsWithErrors').val()) != null) {
-        $.each(error_fields.split(','), function() {
-          $("#" + this).wrap("<div class='fieldWithErrors' />");
-        });
-      } else if (redirect_to) {
-        window.location = redirect_to;
+        if ((error_fields = $('#fieldsWithErrors').val()) != null) {
+          $.each(error_fields.split(','), function() {
+            $("#" + this).wrap("<div class='fieldWithErrors' />");
+          });
+        } else if (redirect_to) {
+          window.location = redirect_to;
+        }
+
+        $('.fieldWithErrors:first :input:first').focus();
+
+        $('#continue_editing').val(false);
+
+        init_flash_messages();
       }
-
-      $('.fieldWithErrors:first :input:first').focus();
-
-      $('#continue_editing').val(false);
-
-      init_flash_messages();
-    }
-  });
+    }, 'html'
+  );
 
   e.preventDefault();
 };
@@ -608,7 +612,7 @@ var page_options = {
               page_options.tabs.find('> ul li a').corner('top 5px');
 
               $('#new_page_part_dialog').dialog('close');
-            }
+            }, 'html'
           );
         }else{
           alert("A content section with that title already exists, please choose another.");

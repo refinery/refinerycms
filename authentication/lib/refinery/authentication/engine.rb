@@ -18,7 +18,7 @@ module Refinery
             :class_name => :'refinery/user',
             :title => 'username'
           }
-          plugin.url = { :controller => '/refinery/admin/users' }
+          plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_users_path }
         end
       end
 

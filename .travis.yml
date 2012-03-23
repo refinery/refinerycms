@@ -1,5 +1,5 @@
 before_install:
-  - gem install bundler --pre
+  - gem install bundler
 before_script:
   - "sh -e /etc/init.d/xvfb start"
   - "bundle exec rake refinery:testing:dummy_app > /dev/null"
@@ -7,9 +7,7 @@ script:
   - "JS=false bundle exec rspec ./*/spec"
   - "DISPLAY=:99.0 JS=true bundle exec rspec ./*/spec"
 notifications:
-  email:
-    - parndt@gmail.com
-    - ugis.ozolss@gmail.com
+  email: true
   irc:
     use_notice: true
     skip_join: true
