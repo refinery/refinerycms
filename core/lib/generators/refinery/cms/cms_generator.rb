@@ -6,7 +6,7 @@ module Refinery
                            :desc => "Update an existing Refinery CMS based application"
     class_option :fresh_installation, :type => :boolean, :aliases => nil, :group => :runtime, :default => false,
                            :desc => "Allow Refinery to remove default Rails files in a fresh installation"
-    class_option :heroku,  :type => :string, :default => '', :group => :runtime, :banner => 'APP_NAME',
+    class_option :heroku,  :type => :string, :default => nil, :group => :runtime, :banner => 'APP_NAME',
                            :desc => "Deploy to Heroku after the generator has run."
     class_option :stack,   :type => :string, :default => 'cedar', :group => :runtime,
                            :desc => "Specify which Heroku stack you want to use. Requires --heroku option to function."
@@ -100,7 +100,7 @@ gem 'pg'
     end
 
     def deploy_to_hosting?
-      if options[:heroku]
+      if heroku?
         append_heroku_gems!
 
         bundle!
@@ -120,7 +120,10 @@ gem 'pg'
       say_status message, nil, :yellow if message
 
       say_status "Creating Heroku app..", nil
-      run "heroku create #{options[:heroku]}#{" --stack #{options[:stack]}" if options[:stack]}"
+      run ["heroku create",
+           (options[:heroku] if heroku?),
+           "#{"--stack #{options[:stack]}" if options[:stack]}"
+          ].compact.join(' ')
 
       say_status "Pushing to Heroku (this takes time, be patient)..", nil
       run "git push heroku master"
@@ -156,6 +159,10 @@ gem 'pg'
       force_options = self.options.dup
       force_options[:force] = self.options[:force] || self.options[:update]
       self.options = force_options
+    end
+
+    def heroku?
+      options[:heroku].present?
     end
 
     def manage_roadblocks!
@@ -206,7 +213,7 @@ gem 'pg'
     end
 
     def sanity_check_heroku_application_name!
-      if options[:heroku].to_s.include?('_') || options[:heroku].to_s.length > 30
+      if heroku? && options[:heroku].to_s.include?('_') || options[:heroku].to_s.length > 30
         message = ["\nThe application name '#{options[:heroku]}' that you specified is invalid for Heroku."]
         suggested_name = options[:heroku].dup.to_s
         if suggested_name.include?('_')
@@ -223,6 +230,8 @@ gem 'pg'
         message << "We have changed the name to '#{suggested_name}' for you, hope it suits you.\n"
         message.join("\n")
       end
+
+      options[:heroku] = '' if options[:heroku] == 'heroku'
     end
 
     def seed_database!
