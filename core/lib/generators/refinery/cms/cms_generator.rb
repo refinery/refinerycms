@@ -59,9 +59,11 @@ module Refinery
     end
 
     def append_gemfile!
-      gsub_file 'Gemfile', %q{gem 'sqlite3'}, %q{group :development, :test do
+      if destination_path.join('Gemfile').file? &&
+         destination_path.join('Gemfile').read !~ %r{group :development, :test do\n.+?gem 'sqlite3'\nend}m
+        gsub_file 'Gemfile', %q{gem 'sqlite3'}, %q{group :development, :test do
   gem 'sqlite3'
-end}  if destination_path.join('Gemfile').file?
+end}  end
     end
 
     def append_gitignore!
