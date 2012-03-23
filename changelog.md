@@ -14,7 +14,7 @@
 * Fixed save & continue issue. [Philip Arndt](https://github.com/parndt)
 * Fixed issue with Heroku option for CMS generator. [Philip Arndt](https://github.com/parndt)
 * Fixed config.assets.initialize_on_precompile setting to false. [Philip Arndt](https://github.com/parndt)
-
+* Add label style for admin Page tree [Nic Aitch](https://github.com/nicinabox)
 
 ## 2.0.2 [15 March 2012]
 
