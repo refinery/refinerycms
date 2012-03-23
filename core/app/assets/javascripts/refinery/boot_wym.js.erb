@@ -252,8 +252,8 @@ WYMeditor.editor.prototype.loadIframe = function(iframe) {
 
     var doc_head = doc.head || $(doc).find('head').get(0);
     $("<link href='<%= asset_path 'wymeditor/skins/refinery/wymiframe.css' %>' media='all' rel='stylesheet' />").appendTo(doc_head);
-    $("<link href='<%= asset_path 'formatting.css' %>' media='all' rel='stylesheet' />").appendTo(doc_head);
-    $("<link href='<%= asset_path 'theme.css' %>' media='all' rel='stylesheet' />").appendTo(doc_head);
+    $("<link href='<%= asset_path 'refinery/formatting.css' %>' media='all' rel='stylesheet' />").appendTo(doc_head);
+    $("<link href='<%= asset_path 'refinery/theme.css' %>' media='all' rel='stylesheet' />").appendTo(doc_head);
   }
   if ((id_of_editor = wym._element.parent().attr('id')) != null) {
     $(doc.body).addClass(id_of_editor);
