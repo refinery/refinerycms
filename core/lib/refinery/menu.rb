@@ -1,30 +1,14 @@
 module Refinery
-
-  # Create a little something to store the instances of the menu.
-  class << self
-    attr_accessor :menus
-    def menus
-      @@menus ||= HashWithIndifferentAccess.new
-    end
-  end
-
   class Menu
 
     def initialize(objects = nil)
       objects.each do |item|
         item = item.to_refinery_menu_item if item.respond_to?(:to_refinery_menu_item)
-        items << MenuItem.new(item.merge(:menu_id => id))
+        items << MenuItem.new(item.merge(:menu => self))
       end if objects
-
-      ::Refinery.menus[self.id] = self
     end
 
-    attr_accessor :items, :id
-
-    def id
-      require 'securerandom' unless defined?(::SecureRandom)
-      @id ||= ::SecureRandom.hex(8)
-    end
+    attr_accessor :items
 
     def items
       @items ||= []
