@@ -178,6 +178,20 @@ module Refinery
         page.content_for('BoDY').should == "<p>I'm the first page part for this page.</p>"
       end
 
+      it 'return true when page part has content when using content_for?' do
+        page.content_for?(:body).should be_true
+      end
+
+      it 'return false when page part does not exist when using content_for?' do
+        page.parts = page.parts.drop(1)
+        page.content_for?(:body).should be_false
+      end
+
+      it 'return false when page part does not have any content when using content_for?' do
+        page.parts.first.content = ''
+        page.content_for?(:body).should be_false
+      end
+
       it 'return all page part content' do
         page.all_page_part_content.should == "<p>I'm the first page part for this page.</p> <p>Closely followed by the second page part.</p>"
       end
