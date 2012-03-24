@@ -8,7 +8,7 @@
               :include_object_name => true %>
 <% if localized? %>
   <%%= render "locale_picker",
-              :current_locale => Thread.current[:globalize_locale] if Refinery.i18n_enabled? %>
+              :current_locale => Globalize.locale if Refinery.i18n_enabled? %>
 <% end %>
   <% attributes.each_with_index do |attribute, index| %>
 <% if attribute.field_type.to_s != 'text_area' -%>
