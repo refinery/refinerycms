@@ -8,7 +8,7 @@ module ::Refinery
         # Get the switch_local variable to determine the locale we're currently editing
         # Set up Globalize with our current locale
         if ::Refinery.i18n_enabled?
-          Thread.current[:globalize_locale] = params[:switch_locale] || Refinery::I18n.default_locale
+          Globalize.locale = params[:switch_locale] || Refinery::I18n.default_locale
         end
 
         @pages = ::Refinery::Page.roots.paginate(:page => params[:page], :per_page => ::Refinery::Page.per_page(true))

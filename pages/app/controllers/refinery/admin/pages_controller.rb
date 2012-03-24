@@ -50,7 +50,7 @@ module Refinery
           # end
         else
           # Always display the tree of pages from the default frontend locale.
-          Thread.current[:globalize_locale] = params[:switch_locale].try(:to_sym) || Refinery::I18n.default_frontend_locale
+          Globalize.locale = params[:switch_locale].try(:to_sym) || Refinery::I18n.default_frontend_locale
         end
       end
 
