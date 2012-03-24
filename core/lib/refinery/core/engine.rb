@@ -24,16 +24,8 @@ module Refinery
         def refinery_inclusion!
           before_inclusion_procs.each(&:call)
 
-          [::ApplicationController, Refinery::AdminController].each do |c|
-            c.send :include, Refinery::ApplicationController
-            c.send :helper, Refinery::Core::Engine.helpers
-          end
-
-          [Refinery::UsersController, Refinery::SessionsController, Refinery::PasswordsController].each do |c|
-            c.send :helper, Refinery::Core::Engine.helpers
-          end
-
-          Refinery::AdminController.send :include, Refinery::Admin::BaseController
+          ::ApplicationController.send :include, Refinery::ApplicationController
+          ::ApplicationController.send :helper, Refinery::Core::Engine.helpers
 
           after_inclusion_procs.each(&:call)
         end
@@ -58,7 +50,7 @@ module Refinery
       end
 
       initializer "refinery.will_paginate" do
-        WillPaginate.per_page = 20
+        #WillPaginate.per_page = 20
       end
 
       initializer "register refinery_core plugin" do
@@ -97,10 +89,13 @@ module Refinery
       end
 
       initializer "refinery.acts_as_indexed" do
-        ActsAsIndexed.configure do |config|
-          config.index_file = Rails.root.join('tmp', 'index')
-          config.index_file_depth = 3
-          config.min_word_size = 3
+        ActiveSupport.on_load(:active_record) do
+          require 'acts_as_indexed'
+          ActsAsIndexed.configure do |config|
+            config.index_file = Rails.root.join('tmp', 'index')
+            config.index_file_depth = 3
+            config.min_word_size = 3
+          end
         end
       end
 
