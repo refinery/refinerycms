@@ -1,5 +1,6 @@
 module Refinery
   class SessionsController < Devise::SessionsController
+    helper Refinery::Core::Engine.helpers
     layout 'refinery/layouts/login'
 
     before_filter :clear_unauthenticated_flash, :only => [:new]

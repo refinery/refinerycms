@@ -9,7 +9,9 @@ module Refinery
       config.autoload_paths += %W( #{config.root}/lib )
 
       initializer 'setup-refinery-resources-with-dragonfly', :before => :load_config_initializers do
-        ::Refinery::Resources::Dragonfly.setup!
+        ActiveSupport.on_load(:active_record) do
+          ::Refinery::Resources::Dragonfly.setup!
+        end
       end
 
       initializer 'attach-refinery-resources-with-dragonfly', :after => :load_config_initializers do |app|
