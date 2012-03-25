@@ -12,10 +12,6 @@ gem 'paper_trail', :git => 'git://github.com/parndt/paper_trail.git', :branch =>
 # See: https://github.com/svenfuchs/globalize3/pull/121
 gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git', :branch => 'master'
 
-# For asset precompilation support out of the box.
-gem 'orm_adapter', :git => 'git://github.com/parndt/orm_adapter.git',
-                   :branch => 'respect_active_support_on_load_hook_for_active_record'
-
 # Database Configuration
 platforms :jruby do
   gem 'activerecord-jdbcsqlite3-adapter'
