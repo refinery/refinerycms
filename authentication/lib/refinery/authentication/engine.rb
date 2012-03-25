@@ -28,6 +28,10 @@ module Refinery
         end
       end
 
+      config.before_configuration do
+        require 'refinery/authentication/devise'
+      end
+
       config.after_initialize do
         Refinery.register_extension(Refinery::Authentication)
       end
