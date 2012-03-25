@@ -348,6 +348,17 @@ module Refinery
       }
     end
 
+    # Accessor method to test whether a page part
+    # exists and has content for this page.
+    # Example:
+    #
+    #   ::Refinery::Page.first.content_for?(:body)
+    #
+    # Will return true if the page has a body page part and it is not blank.
+    def content_for?(part_title)
+      content_for(part_title).present?
+    end
+
     # Accessor method to get a page part from a page.
     # Example:
     #
