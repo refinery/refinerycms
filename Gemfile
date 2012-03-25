@@ -5,6 +5,10 @@ gemspec
 # Add i18n support.
 gem 'refinerycms-i18n', '~> 2.0.0'
 
+# For asset precompilation support out of the box.
+gem 'orm_adapter', :git => 'git://github.com/parndt/orm_adapter.git',
+                   :branch => 'respect_active_support_on_load_hook_for_active_record'
+
 # Database Configuration
 platforms :jruby do
   gem 'activerecord-jdbcsqlite3-adapter'
