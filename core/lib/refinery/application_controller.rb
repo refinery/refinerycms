@@ -15,10 +15,11 @@ module Refinery
 
       send :include, Refinery::Crud # basic create, read, update and delete methods
 
-      send :before_filter, :refinery_user_required?
+      send :before_filter, :refinery_user_required?,
+                           :if => :admin?
 
       send :after_filter, :store_current_location!,
-                            :if => Proc.new {|c| send(:refinery_user?) }
+                          :if => Proc.new {|c| send(:refinery_user?) }
 
       if Refinery::Core.rescue_not_found
         send :rescue_from, ActiveRecord::RecordNotFound,
