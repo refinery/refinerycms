@@ -8,7 +8,7 @@ module Refinery
         def setup!
           app_resources = ::Dragonfly[:refinery_resources]
 
-          app_resources.define_macro(::Refinery::Core::BaseModel, :resource_accessor)
+          app_resources.define_macro(::Refinery::Resource, :resource_accessor)
 
           app_resources.analyser.register(::Dragonfly::Analysis::FileCommandAnalyser)
           app_resources.content_disposition = :attachment

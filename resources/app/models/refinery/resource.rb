@@ -1,5 +1,9 @@
+require 'dragonfly'
+
 module Refinery
   class Resource < Refinery::Core::BaseModel
+    ::Refinery::Resources::Dragonfly.setup!
+
     include Resources::Validators
 
     attr_accessible :id, :file

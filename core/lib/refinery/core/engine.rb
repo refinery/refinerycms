@@ -24,26 +24,14 @@ module Refinery
         def refinery_inclusion!
           before_inclusion_procs.each(&:call)
 
-          [::ApplicationController, Refinery::AdminController].each do |c|
-            c.send :include, Refinery::ApplicationController
-            c.send :helper, Refinery::Core::Engine.helpers
-          end
-
-          [Refinery::UsersController, Refinery::SessionsController, Refinery::PasswordsController].each do |c|
-            c.send :helper, Refinery::Core::Engine.helpers
-          end
-
-          Refinery::AdminController.send :include, Refinery::Admin::BaseController
+          ::ApplicationController.send :include, Refinery::ApplicationController
+          ::ApplicationController.send :helper, Refinery::Core::Engine.helpers
 
           after_inclusion_procs.each(&:call)
         end
       end
 
       config.autoload_paths += %W( #{config.root}/lib )
-
-      # We can't reload the base class because otherwise in development mode
-      # we lose any configuration that is applied to it like macros for Dragonfly.
-      config.autoload_once_paths += %W( #{config.root}/app/models/refinery/core )
 
       # Include the refinery controllers and helpers dynamically
       config.to_prepare &method(:refinery_inclusion!).to_proc
@@ -97,10 +85,13 @@ module Refinery
       end
 
       initializer "refinery.acts_as_indexed" do
-        ActsAsIndexed.configure do |config|
-          config.index_file = Rails.root.join('tmp', 'index')
-          config.index_file_depth = 3
-          config.min_word_size = 3
+        ActiveSupport.on_load(:active_record) do
+          require 'acts_as_indexed'
+          ActsAsIndexed.configure do |config|
+            config.index_file = Rails.root.join('tmp', 'index')
+            config.index_file_depth = 3
+            config.min_word_size = 3
+          end
         end
       end
 

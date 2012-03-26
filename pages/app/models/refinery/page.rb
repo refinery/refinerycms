@@ -1,4 +1,6 @@
 # Encoding: utf-8
+require 'acts_as_indexed'
+require 'friendly_id'
 
 module Refinery
   class Page < Refinery::Core::BaseModel
@@ -8,6 +10,11 @@ module Refinery
     PATH_SEPARATOR = " - "
 
     translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
+
+    class Translation
+      is_seo_meta
+      attr_accessible :browser_title, :meta_description, :meta_keywords, :locale
+    end
 
     attr_accessible :title
 

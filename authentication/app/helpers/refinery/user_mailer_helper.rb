@@ -1,4 +1,4 @@
 module Refinery
-  module PagesHelper
+  module UserMailerHelper
   end
 end
