@@ -1,4 +1,4 @@
-h2. How to add an image gallery to pages
+h2. Adding an Image Gallery to Pages
 
 By default pages don't allow you to make galleries of images. This guide will show you how to:
 

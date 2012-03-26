@@ -1,4 +1,4 @@
-h2. How to test your extension
+h2. Testing your Extension
 
 Refinery ships with an optional testing extension in the form of a gem called +refinerycms-testing+ which will add generators and rake tasks to your extension that provide it with the same RSpec2 testing environment we use to test Refinery. We abstract common test helpers, controller macros, and factories into this extension so you can use these in tests of your own.
 

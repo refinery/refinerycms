@@ -1,8 +1,8 @@
-h2. Creating Multiple Data-Tables in a Single Engine
+h2. Multiple Resources in an Extension
 
 This guide will show you how to:
 
-* Creating multiple tables on one single extension
+* Create multiple tables on one single extension
 
 endprologue.
 

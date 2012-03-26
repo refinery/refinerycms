@@ -1,4 +1,4 @@
-h2. How to upgrade to edge Refinery
+h2. Upgrading to Edge
 
 If you're an experienced Refinery developer you might want to live on the edge. This guide will show you how to:
 

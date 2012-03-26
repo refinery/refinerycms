@@ -1,4 +1,4 @@
-h2. Extending Controllers and Model with Decorators
+h2. Extending Controllers and Models with Decorators
 
 The default behavior of Refinery or a Refinery extension and its controllers and models may not be exactly what you are looking for. This guide will show you how to:
 

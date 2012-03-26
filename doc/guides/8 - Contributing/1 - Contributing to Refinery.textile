@@ -1,4 +1,4 @@
-h2. How to contribute to Refinery development
+h2. Contributing to Refinery
 
 One of Refinery's key principles is encouraging people to contribute. This guide will show you how to:
 

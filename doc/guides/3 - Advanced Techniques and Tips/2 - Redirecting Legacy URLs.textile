@@ -1,4 +1,4 @@
-h2. How to redirect old pages
+h2. Redirecting Legacy URLs
 
 Many Refinery sites replace old ones that have links to these older pages. This guide will show you how to:
 

@@ -1,4 +1,4 @@
-h2. Installing Refinery Prerequisites
+h2. Installation Prerequisites
 
 This guide covers getting your system ready for Refinery. Afterwards you will have:
 

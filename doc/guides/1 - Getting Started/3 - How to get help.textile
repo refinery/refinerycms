@@ -1,4 +1,4 @@
-h2. How to get help with Refinery
+h2. How to get help
 
 We all sometimes hit a brick wall. This guide will show you how to:
 

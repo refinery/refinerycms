@@ -1,4 +1,4 @@
-h2. How to change Page Parts
+h2. Changing Page Parts
 
 Refinery sets up two default page parts +Body+ and +Side Body+. Sometimes this is not suitable for your project. This guide will show you how to:
 

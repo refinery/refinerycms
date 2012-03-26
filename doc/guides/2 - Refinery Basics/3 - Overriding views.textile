@@ -1,4 +1,4 @@
-h2. How to override a view
+h2. Overriding views
 
 The default HTML Refinery generates on the front end is sometimes not suitable for your design. This guide will show you how to:
 
