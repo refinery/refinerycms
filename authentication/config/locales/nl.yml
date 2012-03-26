@@ -42,9 +42,9 @@ nl:
         enter_email_address: Vul het e-mailadres van uw account in.
         reset_password: Een nieuw wachtwoord aanvragen
         blank_email: Uw heeft geen e-mailadres ingevuld.
-        email_not_associated_with_account_html: "Sorry, '%{email}' is niet gekoppeld aan een account. <br/>Weet u zeker dat u het juiste heeft e-mailadres ingevuld?"
+        email_not_associated_with_account_html: "Sorry, '%{email}' is niet gekoppeld aan een account. <br/>Weet u zeker dat u het juiste e-mailadres heeft ingevuld?"
         email_reset_sent: Er is een e-mail naar u verzonden met een link om een nieuw wachtwoord in te stellen.
-        password_encryption: 'Uw moet een nieuwe wachtwoord instellen omdat de wachtwoordversleuteling van Refinery is verbeterd, hiermee wordt uw wachtwoord nog veiliger opgeslagen.'
+        password_encryption: 'U moet een nieuw wachtwoord instellen omdat de wachtwoordversleuteling van Refinery is verbeterd, hiermee wordt uw wachtwoord nog veiliger opgeslagen.'
       reset:
         code_invalid: "Het spijt ons, maar deze code is verlopen of ongeldig. U kunt het probleem wellicht verhelpen door de link direct vanuit de e-mail te kopieren en in uw browser te plakken, of door het proces opnieuw te starten."
         successful: "Het instellen van een nieuw wachtwoord voor %{email} is gelukt."

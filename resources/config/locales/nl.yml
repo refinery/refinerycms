@@ -14,7 +14,7 @@ nl:
           replace: " vervangen door dit bestand..."
           maximum_file_size: De maximale bestandsgrootte is %{bytes}.
         resource:
-          download: Dit bestand bestand downloaden (%{size})
+          download: Dit bestand downloaden (%{size})
         actions:
           upload_new: Nieuw bestand uploaden
         records:

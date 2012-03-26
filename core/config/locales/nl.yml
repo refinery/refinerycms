@@ -29,7 +29,7 @@ nl:
           save: Opslaan
           cancel: Annuleren
       continue_editing:
-        save_and_continue_editing: Opslaan en verdergaan met bewerken
+        save_and_continue_editing: Opslaan en verder gaan met bewerken
       form_actions:
         save: Opslaan
         cancel: Annuleren

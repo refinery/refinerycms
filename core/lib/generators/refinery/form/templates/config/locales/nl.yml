@@ -23,9 +23,9 @@ nl:
             update_notified: Wijzigen wie op de hoogte wordt gesteld
             edit_confirmation_email: Bevestigings-e-mail bewerken
           index:
-            no_<%= plural_name %>: Je hebt nog geen <%= plural_name.humanize.downcase %> ontvangen.
+            no_<%= plural_name %>: U heeft nog geen <%= plural_name.humanize.downcase %> ontvangen.
           spam:
-            no_spam: Hoera! Je hebt geen spam.
+            no_spam: Hoera! U heeft geen spam.
           show:
             details: Details
             age: Leeftijd
@@ -43,7 +43,7 @@ nl:
         settings:
           notification_recipients_form:
             settings_value_name: Stuur notificaties naar
-            explanation: "Telkens wanneer iemand het contactformulier invult op je website, stuurt Refinery een bevestiging naar de verzender."
+            explanation: "Telkens wanneer iemand het contactformulier invult op uw website, stuurt Refinery een bevestiging naar de verzender."
             hint: "Wilt u naar meerdere adressen notificaties sturen? Vul dan meerdere e-mailadressen in gescheiden door komma's"
             example: "Bijvoorbeeld: jan@werk.nl, els@kantoor.nl"
           confirmation_email_form:
@@ -51,7 +51,7 @@ nl:
             from: Van
             subject: Onderwerp
             click_to_edit_subject: Klik hier om het onderwerp bewerken
-            explanation: "Telkens wanneer iemand het contactformulier invult op je website, stuurt Refinery een bevestiging naar de verzender."
+            explanation: "Telkens wanneer iemand het contactformulier invult op uw website, stuurt Refinery een bevestiging naar de verzender."
             below_edit_email_sent: Hieronder kunt u de email die verzonden wordt bewerken.
             the_customer_making_<%= singular_name %>: De persoon die de <%= singular_name.humanize.downcase %> heeft ingezonden
             message: Bericht
