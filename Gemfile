@@ -10,7 +10,7 @@ gem 'paper_trail', :git => 'git://github.com/parndt/paper_trail.git', :branch =>
 
 # Fixes uniqueness constraint on translated columns.
 # See: https://github.com/svenfuchs/globalize3/pull/121
-gem 'globalize3', :git => 'git://github.com/shioyama/globalize3.git', :branch => 'uniqueness_validator_fix'
+gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git', :branch => 'master'
 
 # Database Configuration
 platforms :jruby do
