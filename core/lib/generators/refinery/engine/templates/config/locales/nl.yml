@@ -7,17 +7,17 @@ nl:
       admin:
         <%= plural_name %>:
           actions:
-            create_new: Maak een nieuwe <%= singular_name.titleize %>
-            reorder: Wijzig de volgorde van de <%= singular_name.titleize.pluralize %>
-            reorder_done: Klaar met het wijzingen van de volgorde van de <%= singular_name.titleize.pluralize %>
+            create_new: Nieuwe <%= singular_name.titleize %> toevoegen
+            reorder: De volgorde van de <%= singular_name.titleize.pluralize %> wijzigen
+            reorder_done: Klaar met het wijzingen van de van de <%= singular_name.titleize %>-volgorde
           records:
             title: <%= plural_name.titleize %>
             sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
-            no_items_yet: Er zijn nog geen <%= singular_name.titleize.pluralize %>. Druk op 'Maak een nieuwe <%= singular_name.titleize %>' om de eerste aan te maken.
+            no_items_yet: Er zijn nog geen <%= singular_name.titleize.pluralize %>. Druk op 'Nieuwe <%= singular_name.titleize %> toevoegen' om de eerste toe te voegen.
           <%= singular_name %>:
-            view_live_html: Bekijk deze <%= singular_name.titleize.downcase %> op de website <br/><em>(opent een nieuw venster)</em>
+            view_live_html: Deze <%= singular_name.titleize.downcase %> op de website bekijken <br/><em>(opent in een nieuw venster)</em>
             edit: Bewerk deze <%= singular_name.titleize.downcase %>
-            delete: Verwijder deze <%= singular_name.titleize.downcase %> voor eeuwig
+            delete: Deze <%= singular_name.titleize.downcase %> definitief verwijderen
       <%= plural_name %>:
         show:
           other: Andere <%= singular_name.titleize.pluralize %>

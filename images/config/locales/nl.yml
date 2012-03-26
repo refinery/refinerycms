@@ -3,31 +3,32 @@ nl:
     plugins:
       refinery_images:
         title: Afbeeldingen
+        description: Afbeeldingen beheren
     admin:
       images:
-        delete: Verwijder deze afbeelding permanent
-        edit: Bewerk deze afbeelding
+        delete: Deze afbeelding definitief verwijderen
+        edit: Deze afbeelding bewerken
         form:
           image: Afbeelding
-          use_current_image: Gebruik huidige afbeelding
+          use_current_image: Huidige afbeelding gebruiken
           or: of
-          replace_image: Vervang de afbeelding door deze
+          replace_image: " vervangen door deze..."
           current_image: Huidige afbeelding
-          maximum_image_size: "The maximum image size is %{bytes}."
+          maximum_image_size: De maximale afbeeldingssgrootte is %{bytes}.
         actions:
-          create_new_image: Upload een nieuwe afbeelding
+          create_new_image: Nieuwe afbeelding toevoegen
         records:
-          no_images_yet: Er zijn nog geen afbeeldingen. Klik op "Upload een nieuwe afbeelding" om uw eerste afbleelding toe te voegen.
+          no_images_yet: Er zijn nog geen afbeeldingen. Klik op "Nieuwe afbeelding toevoegen" om uw eerste afbleelding toe te voegen.
         index:
           view:
-            switch_to: Bekijk de %{view_name} versie
+            switch_to: De %{view_name}versie bekijken
             list: lijst
-            grid: tabel
+            grid: raster
         grid_view:
-          view_live_html: Bekijk deze afbeelding <br/><em>(opent een nieuw venster)</em>
+          view_live_html: Deze afbeelding bekijken <br/><em>Opent in een nieuw venster</em>
         existing_image:
           button_text: Invoegen
-          resize_image: Schaal de afbeelding
+          resize_image: De afbeelding schalen?
           size: Grootte
         insert:
           existing_image: Bibliotheek
@@ -38,6 +39,6 @@ nl:
     errors:
       models:
         refinery/image:
-          blank: U moet een afbeelding kiezen om te uploaden.
-          too_big: Afbeeldingen mogen niet groter dan %{size} bytes zijn.
-          incorrect_format: Uw afbeelding moet een JPG, PNG of GIF zijn.
+          blank: U moet een afbeelding kiezen om te uploaden
+          too_big: Afbeeldingen mogen niet groter dan %{size} bytes zijn
+          incorrect_format: Uw afbeelding moet een JPG, PNG of GIF zijn
