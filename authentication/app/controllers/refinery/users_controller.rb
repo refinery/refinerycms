@@ -4,6 +4,7 @@ module Refinery
     # Protect these actions behind an admin login
     before_filter :redirect?, :only => [:new, :create]
 
+    helper Refinery::Core::Engine.helpers
     layout 'refinery/layouts/login'
 
     def new

@@ -1,4 +1,4 @@
-module ::Refinery
+module Refinery
   module Admin
     class ResourcesController < ::Refinery::AdminController
 

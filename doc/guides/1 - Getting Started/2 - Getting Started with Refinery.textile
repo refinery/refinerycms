@@ -412,7 +412,7 @@ Any Refinery extension, even the built-in ones, that focus on Create, Read, Upda
 Open up +vendor/extensions/events/app/controllers/refinery/admin/events_controller.rb+ and look at its contents:
 
 <ruby>
-module ::Refinery
+module Refinery
   module Admin
     class EventsController < ::Refinery::AdminController
       crudify :'refinery/event', :xhr_paging => true
@@ -426,7 +426,7 @@ Most of the time, crudify's defaults are bang on, but if you need to, you can ea
 By default +crudify+ assumes your records will be sortable. But events should not be manually sortable; it makes more sense to order them by their event date. Update the contents of the file to this:
 
 <ruby>
-module ::Refinery
+module Refinery
   module Admin
     class EventsController < ::Refinery::AdminController
       crudify :'refinery/event', :xhr_paging => true,
@@ -442,7 +442,7 @@ This will tell +crudify+ to sort by our event date field and to turn off manual 
 Finally edit +vendor/extensions/events/app/controllers/refinery/events_controller.rb+ and replace the +find_all_events+ method with this one:
 
 <ruby>
-module ::Refinery
+module Refinery
   class EventsController < ::ApplicationController
 
     # code

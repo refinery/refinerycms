@@ -2,11 +2,11 @@ require 'spec_helper'
 
 module Refinery
   module Admin
-    describe RefineryCoreController do
+    describe CoreController do
       login_refinery_user
 
       it "should update the plugin positions" do
-        plugins = refinery_user.plugins.reverse.collect {|p| p.name}
+        plugins = refinery_user.plugins.reverse.collect(&:name)
 
         post 'update_plugin_positions', :menu => plugins
 

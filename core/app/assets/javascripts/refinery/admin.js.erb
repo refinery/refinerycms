@@ -402,13 +402,14 @@ var link_dialog = {
   },
 
   init_resources_submit: function(){
+    <% absolute_page_links = defined?(Refinery::Pages) && Refinery::Pages.absolute_page_links %>
     $('#existing_resource_area .form-actions-dialog #submit_button').click(function(e){
       e.preventDefault();
       if((resource_selected = $('#existing_resource_area_content ul li.linked a')).length > 0) {
         resourceUrl = parseURL(resource_selected.attr('href'));
-        relevant_href = <%= Refinery::Pages.absolute_page_links ? "resource_selected.attr('href')" : "resourceUrl.pathname" %>;
+        relevant_href = <%= absolute_page_links ? "resource_selected.attr('href')" : "resourceUrl.pathname" %>;
 
-        <% unless Refinery::Pages.absolute_page_links %>
+        <% unless absolute_page_links %>
         // Add any alternate resource stores that need a absolute URL in the regex below
         if(resourceUrl.hostname.match(/s3.amazonaws.com/)) {
           relevant_href = resourceUrl.protocol + '//' + resourceUrl.host + relevant_href;
@@ -459,7 +460,7 @@ var link_dialog = {
 
       var link = $(this).children('a.page_link').get(0);
       var port = (window.location.port.length > 0 ? (":" + window.location.port) : "");
-      var url = link.href<%= %q{.replace(window.location.protocol + "//" + window.location.hostname + port, "")} unless Refinery::Pages.absolute_page_links %>;
+      var url = link.href<%= %q{.replace(window.location.protocol + "//" + window.location.hostname + port, "")} unless defined?(Refinery::Pages) && Refinery::Pages.absolute_page_links %>;
 
       link_dialog.update_parent(url, link.rel.replace(/\ ?<em>.+?<\/em>/, ''));
     });

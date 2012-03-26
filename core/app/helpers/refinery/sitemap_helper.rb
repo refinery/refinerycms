@@ -1,4 +1,4 @@
 module Refinery
-  module PagesHelper
+  module SitemapHelper
   end
 end
