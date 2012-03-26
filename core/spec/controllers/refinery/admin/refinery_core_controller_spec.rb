@@ -6,7 +6,7 @@ module Refinery
       refinery_login_with :refinery_user
 
       it "should update the plugin positions" do
-        plugins = refinery_user.plugins.reverse.collect(&:name)
+        plugins = logged_in_user.plugins.reverse.collect(&:name)
 
         post 'update_plugin_positions', :menu => plugins
 
