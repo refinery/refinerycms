@@ -1,4 +1,5 @@
 require 'dragonfly'
+require 'acts_as_indexed'
 
 module Refinery
   class Image < Refinery::Core::BaseModel

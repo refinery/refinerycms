@@ -23,5 +23,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'dragonfly',        '~> 0.9.8'
   s.add_dependency 'rack-cache',       '>= 0.5.3'
+  s.add_dependency 'acts_as_indexed',  '~> 0.7.7'
   s.add_dependency 'refinerycms-core', version
 end
