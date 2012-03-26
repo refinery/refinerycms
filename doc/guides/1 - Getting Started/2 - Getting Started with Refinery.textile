@@ -175,7 +175,7 @@ You're currently in the back-end Refinery site editor. To see the front-end site
 
 As you can see, Refinery is already displaying a basic menu and layout ready for you to customise.
 
-!/system/images/BAhbBlsHOgZmSSJAMjAxMC8xMi8wMi8xM18wMF8zMl83OV9yZWZpbmVyeV9kZWZhdWx0X2Zyb250X2VuZF9zbWFsbC5wbmcGOgZFVA/13_00_32_79_refinery_default_front_end_small.png!
+!/system/images/BAhbBlsHOgZmSSJBMjAxMi8wMy8yNS8yM18yNV8xOF82ODVfcmVmaW5lcnlfZGVmYXVsdF9mcm9udF9lbmRfc21hbGwucG5nBjoGRVQ/refinery-default-front-end-small.png!
 
 h3. Customising the Design
 
@@ -409,13 +409,17 @@ h4. Crudify: The Backbone of Refinery Engines
 
 Any Refinery extension, even the built-in ones, that focus on Create, Read, Update and Delete are driven by crudify. Crudify is a highly reusable module included with Refinery that gives you all the standard CRUD actions as well as reordering, searching and paging.
 
-Open up +vendor/extensions/events/app/controllers/refinery/admin/events_controller.rb+ and look at its contents:
+Open up +vendor/extensions/events/app/controllers/refinery/events/admin/events_controller.rb+ and look at its contents:
 
 <ruby>
-module ::Refinery
-  module Admin
-    class EventsController < ::Refinery::AdminController
-      crudify :'refinery/event', :xhr_paging => true
+module Refinery
+  module Events
+    module Admin
+      class EventsController < ::Refinery::AdminController
+
+        crudify :'refinery/events/event', :xhr_paging => true
+
+      end
     end
   end
 end
@@ -426,12 +430,16 @@ Most of the time, crudify's defaults are bang on, but if you need to, you can ea
 By default +crudify+ assumes your records will be sortable. But events should not be manually sortable; it makes more sense to order them by their event date. Update the contents of the file to this:
 
 <ruby>
-module ::Refinery
-  module Admin
-    class EventsController < ::Refinery::AdminController
-      crudify :'refinery/event', :xhr_paging => true,
-                                 :order => "date DESC",
-                                 :sortable => false
+module Refinery
+  module Events
+    module Admin
+      class EventsController < ::Refinery::AdminController
+
+        crudify :'refinery/events/event', :xhr_paging => true,
+                                          :order => "date DESC",
+                                          :sortable => false
+
+      end
     end
   end
 end
@@ -439,23 +447,25 @@ end
 
 This will tell +crudify+ to sort by our event date field and to turn off manual sorting by the user.
 
-Finally edit +vendor/extensions/events/app/controllers/refinery/events_controller.rb+ and replace the +find_all_events+ method with this one:
+Finally edit +vendor/extensions/events/app/controllers/refinery/events/events_controller.rb+ and replace the +find_all_events+ method with this one:
 
 <ruby>
-module ::Refinery
-  class EventsController < ::ApplicationController
+module Refinery
+  module Events
+    class EventsController < ::ApplicationController
 
-    # code
+      # code
 
-  protected
+      protected
 
-    def find_all_events
-      # Order by event date
-      @events = Refinery::Event.order("date DESC")
+        def find_all_events
+          # Order by event date
+          @events = Event.order("date DESC")
+        end
+
+        # code
+
     end
-
-    # code
-
   end
 end
 </ruby>
