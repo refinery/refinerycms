@@ -1,6 +1,6 @@
 require 'net/http'
 
-module ::Refinery
+module Refinery
   module Admin
     class PagesDialogsController < ::Refinery::Admin::DialogsController
 
