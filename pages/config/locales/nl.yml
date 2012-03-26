@@ -2,8 +2,8 @@ nl:
   refinery:
     plugins:
       refinery_pages:
-        title: "Pagina's"
-        description: Beheer de inhoud van de pagina's
+        title: Pagina's
+        description: Inhoud van pagina's beheren
     admin:
       pages_dialogs:
         page_link:
@@ -11,61 +11,83 @@ nl:
         link_to:
           insert: Invoegen
           your_page:
-            tab_name: Jouw pagina
+            tab_name: Uw pagina
           web_address:
             tab_name: Website
             location: Locatie
             new_window: Nieuw venster
-            new_window_label: Vink dit vakje, om de link in een nieuw venster te laten openen.
-            not_sure: Niet zeker wat je in de veld hierboven moet invullen?
-            step1: Zoek de pagina op het internet, waar je naartoe wilt linken.
-            step2: Kopieer het adres uit de adresbalk van de browser, en plak het in het tekstveld hierboven.
+            new_window_label: Aanvinken om de link in een nieuw venster te laten openen.
+            not_sure: Niet zeker wat u in het veld hierboven moet invullen?
+            step1: Zoek de pagina op het internet, waar u naar wilt linken.
+            step2: Kopieer het adres uit de adresbalk van de browser, en plak het in het veld hierboven.
           email_address:
-            tab_name: Email adres
+            tab_name: E-mailadres
             subject_line_optional: Optioneel onderwerp
             body_optional: Optionele inhoud
-            not_sure: Niet zeker wat je in de veld hierboven moet invullen?
-            step1_html: Schrijf, of kopieer en plak (bijv. uit je adresboek), het email adres waar je naar wilt linken, en vul het in de '<strong>Email adres</strong>' box hierboven in.
-            step2_html: Gebruik het '<strong>Onderwerp</strong>' invoerveld hierboven, als je het bericht met een vooraf bepaald onderwerp wilt versturen.
-            step3_html: Gebruik het '<strong>Email inhoud</strong>' invoervoeld hierboven, als  je het bericht met een vooraf bepaalde inhoud wilt versturen.
+            not_sure: Niet zeker wat u in het veld hierboven moet invullen?
+            step1_html: Typ, of kopieer en plak (bijv. uit uw adresboek), het e-mailadres waar u naar wilt linken, en vul het in het veld '<strong>E-mailadres</strong>' hierboven.
+            step2_html: Gebruik het invoerveld '<strong>Onderwerp</strong>' hierboven, als u het bericht met een <strong>vooraf bepaald onderwerp</strong> wilt versturen.
+            step3_html: Gebruik het invoerveld <strong>E-mailinhoud</strong> hierboven, als u het bericht met een <strong>vooraf bepaalde inhoud</strong> wilt versturen.
           your_resource:
-            tab_name: Je bestand
-            link_to_this_resource: Link naar dit bestand
+            tab_name: Uw bestand
+            link_to_this_resource: Naar dit bestand linken
       pages:
-        delete: Verwijder de pagina permanent
-        edit: Bewerk deze pagina
+        delete: Deze pagina definitief verwijderen
+        edit: Deze pagina bewerken
+        new: Een nieuwe subpagina toevoegen
+        expand_collapse: "Subpagina's inklappen of uitvouwen"
         page:
-          view_live_html: Bekijk deze pagina 'live' <br/><em>(opent in een nieuw venster)</em>
+          view_live_html: Deze pagina op de website bekijken<br/><em>(opent in een nieuw venster)</em>
           hidden: verborgen
           draft: concept
+        form:
+          preview: Voorbeeld
+          preview_changes: Bewerkingen bekijken ter controle
         form_new_page_parts:
           title: Titel
         form_page_parts:
-          create_content_section: Maak een inhoudsectie
-          delete_content_section: Verwijder een inhoudsectie
+          create_content_section: Een pagina-onderdeel toevoegen
+          delete_content_section: Een pagina-onderdeel verwijderen
+          reorder_content_section: De volgorde van de pagina-onderdelen wijzigen
         form_advanced_options:
           toggle_advanced_options: Klik om extra opties voor de metadata- en menuopties te bewerken
-          parent_page: Ouder pagina
-          page_options: Pagina opties
+          page_options: Pagina-opties
+          parent_page: Bovenliggende pagina
           advanced_options: Uitgebreide opties
-          custom_title: Aangepaste titel
-          show_in_menu_title: Toon in menu
-          show_in_menu_description: Vink deze box aan als de pagina in het menu moet worden getoond.
-          show_in_menu_help: Laat deze box, om de pagina niet in het menu te laten tonen. Dit kan handig zijn als je een pagina hebt, waar je naar wilt linken, zonder dat de pagina in het menu geplaatst wordt.
-          save_as_draft: Sla op als concept
-          skip_to_first_child: Spring naar de eerste subpagina
-          skip_to_first_child_label: Redirect bezoekers naar de de eerste subpagina van deze pagina.
-          skip_to_first_child_help: Deze optie veroorzaakt dat deze pagina verwijst naar de eerste pagina die er 'onder ligt'. Dit kan handig zijn om pagina's bij elkaar te groeperen.
-          link_url: Stuur de bezoeker naar een andere pagina door, als ze deze pagina bezoeken.
-          link_url_help: Als je wilt dat deze pagina naar een andere website, of pagina verwijst, wanneer je deze pagina in het menu selecteerd, vul dan een adres in. Laat het leeg om de pagina zelf te laten zien.
-          parent_page_help: Je kunt een pagina onder een andere pagina hangen, door de "ouder" pagina te selecteren in deze lijst. Als het een "top level" pagina moet worden, kunt u de lege optie selecteren.
-          custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
+          menu_title: Menutitel
+          custom_slug: Aangepaste 'slug'
+          show_in_menu_title: In menu tonen
+          show_in_menu_description: Laat deze pagina zien in het menu op de site
+          show_in_menu_help: Vink dit vakje uit, om de pagina niet in het menu te laten zien. Dit kan handig zijn als u een pagina hebt waar u naar wilt linken, zonder dat de pagina in het menu geplaatst wordt.
+          save_as_draft: Opslaan als concept
+          skip_to_first_child: Naar de eerste onderliggende pagina springen
+          skip_to_first_child_label: Bezoekers doorsturen naar de eerste onderliggende pagina
+          skip_to_first_child_help: Deze optie zorgt er voor deze pagina verwijst naar de eerste onderliggende pagina. Dit kan handig zijn om pagina's te groeperen.
+          link_url: Stuur de bezoeker door naar een andere pagina.
+          link_url_help: Als u wilt dat deze pagina naar een andere website of pagina verwijst, wanneer deze pagina in het menu geselecteerd wordt, vul dan een adres in. Bijvoorbeeld http://google.com. Laat het leeg om de pagina zelf te laten zien.
+          parent_page_help: U kunt een pagina onder een andere pagina hangen, door de bovenliggende pagina te selecteren in deze lijst. Als de pagina op het hoogste niveau moet liggen, selecteert u de lege optie.
+          menu_title_help: Als u wilt dat de pagina in het menu een andere titel heeft dan op de pagina zelf, voer die dan hier in.
+          custom_slug_help: Een 'slug' is een leesbare aanduiding die in het adres van de pagina gebruikt wordt, bijvoorbeeld 'over'. Refinery genereert automatisch slugs, hier kunt u een aangepaste slug instellen.
+          view_template: Sjabloon bekijken
+          view_template_help: U kunt een andere sjabloon voor deze pagina kiezen
+        form_advanced_options_seo:
+          seo: Zoekmachine-optimalisatie
+          seo_override_title: Browser-titel
+          seo_override_title_help: Voer een titel in van 5-10 woorden die de inhoud van de pagina samenvat.
+          meta_keywords_title: Meta-trefwoorden
+          meta_keywords_help: Voer 5-10 trefwoorden in die met deze pagina verband houden. Zet komma's tussen de trefwoorden.
+          meta_description_title: Meta-beschrijving
+          meta_description_help: Voer een korte omschrijving van twee tot drie zinnen in, die beschrijft waar deze pagina over gaat.
         actions:
-          create_new_page: Maak een nieuwe pagina
-          reorder_pages: "Wijzig de volgorde van de pagina's"
-          reorder_pages_done: "Klaar met het wijzingen van de volgorde van de pagina's"
+          create_new_page: Nieuwe pagina toevoegen
+          reorder_pages: De volgorde van de pagina's wijzigen
+          reorder_pages_done: Klaar met het wijzingen van de paginavolgorde
         records:
-          no_pages_yet: "Er zijn nog geen pagina's. Druk op 'Maak een nieuwe pagina' om de eerste aan te maken."
+          no_pages_yet: Er zijn nog geen pagina's. Druk op 'Nieuwe pagina toevoegen' om de eerste aan te maken.
+        translator_access: U heeft niet de benodigde permissies om pagina's in deze taal te wijzigen.
   activerecord:
     models:
-      refinery/page: Pagina
+      refinery/page: pagina
+    attributes:
+      refinery/page:
+        title: Titel
