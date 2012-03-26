@@ -1,4 +1,4 @@
-h2. How to update Refinery to the latest stable version
+h2. Upgrading to the Latest Stable Version
 
 Refinery constantly changes as we add new features and fix bugs. This guide will show you how to:
 

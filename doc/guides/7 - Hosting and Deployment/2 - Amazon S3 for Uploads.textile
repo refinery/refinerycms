@@ -1,4 +1,4 @@
-h2. How to use Amazon S3 for storage
+h2. Using Amazon S3 for Uploads
 
 Hosting your site's files on Amazon S3 is a popular option for many, especially
 if you're using a read only file system like "Heroku":http://heroku.com.

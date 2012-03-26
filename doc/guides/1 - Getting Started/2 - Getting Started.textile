@@ -1,4 +1,4 @@
-h2. Getting Started with Refinery
+h2. Getting Started
 
 This guide covers getting up and running with Refinery CMS. After reading it, you should be familiar with:
 
@@ -16,7 +16,7 @@ This guide is designed for beginners who want to get started with a Refinery CMS
 
 * The "Ruby":http://www.ruby-lang.org/en/downloads language version 1.8.7 or higher (1.9.3 recommended)
 
-TIP: Ruby 1.9.1 is not usable because Rails 3.x is not compatible with it. Use 1.9.3 for smooth sailing.
+TIP: Do not use Ruby 1.9.1 as Rails 3.x is not compatible with it. Use 1.9.3 for smooth sailing.
 
 * The "RubyGems":http://rubyforge.org/frs/?group_id=126 packaging system
 * A working installation of the "SQLite3 Database":http://www.sqlite.org

@@ -1,4 +1,4 @@
-h2. How to Install Refinery on Heroku
+h2. Heroku
 
 "Heroku":http://heroku.com is a popular hosting choice for many developers. This guide will show you how to:
 

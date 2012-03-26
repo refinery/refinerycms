@@ -1,4 +1,4 @@
-h2. Tabbed fields in your extension's admin area
+h2. Tabbed Fields
 
 Sometimes you create an extension with a number of wymeditor fields. Having these display one after another can be overwhelming for your clients (or you!).
 This guide will show you how to:

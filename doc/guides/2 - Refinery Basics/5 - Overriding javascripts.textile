@@ -1,4 +1,4 @@
-h2. How to override JavaScripts
+h2. Overriding javascripts
 
 Refinery by default will provide you with the required javascript files you need.  Sometimes you want to provide your own files and this guide will show you how to:
 

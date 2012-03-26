@@ -1,4 +1,4 @@
-h2. Attaching Refinery CMS To A Larger Rails + Devise Application
+h2. Using Refinery with Rails and Devise
 
 This guide covers adding functionality provided by Refinery CMS to an existing application, while retaining the existing application's control over configuration and use of the Devise authentication gem.  After reading it, you should be familiar with:
 

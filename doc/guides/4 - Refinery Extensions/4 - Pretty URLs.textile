@@ -1,4 +1,4 @@
-h2. Marketable URLs for Engines
+h2. Pretty / SEO-Friendly URLs
 
 It's very important for Search Engine Optimization (SEO) purposes to have your URLs be human-readable. Refinery CMS ships with software (FriendlyID) that enables these marketing-friendly URLs with only minor modifications.
 

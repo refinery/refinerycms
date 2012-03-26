@@ -1,4 +1,4 @@
-h2. Titles and URLs in Refinery Pages
+h2. Page Titles and URLs
 
 This guide covers titles and urls in Refinery Pages. After reading it, you should be familiar with:
 

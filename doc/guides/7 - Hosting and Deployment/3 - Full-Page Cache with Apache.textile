@@ -1,4 +1,4 @@
-h2. How to use Full Page Caching with Apache
+h2. Full-Page Cache with Apache
 
 If you have a simple Page on a slow Server with Apache you can use the Full
 Page Caching for deliver the most pages directly from Apache (without passenger).

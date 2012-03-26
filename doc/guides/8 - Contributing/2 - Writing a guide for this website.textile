@@ -1,4 +1,4 @@
-h2. Writing a guide for this website
+h2. Writing a Guide for this Website
 
 This guide covers writing your own guide. After reading it, you should be able to:
 

@@ -1,4 +1,4 @@
-h2. Attaching Refinery CMS to an existing Rails application
+h2. Using Refinery with an Existing Rails App
 
 This guide covers integration with Refinery CMS. After reading it, you should be familiar with:
 

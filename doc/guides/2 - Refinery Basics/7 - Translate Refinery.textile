@@ -1,4 +1,4 @@
-h2. Translate Refinery into your language
+h2. Translate Refinery
 
 Refinery supports translations. This guide will show you how to:
 

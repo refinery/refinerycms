@@ -1,4 +1,4 @@
-h2. How to setup Google Analytics
+h2. Google Analytics
 
 Google Analytics is a great free way to find out how much traffic your site is getting. This guide will show you how to:
 
