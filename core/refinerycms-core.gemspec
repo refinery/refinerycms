@@ -21,9 +21,6 @@ Gem::Specification.new do |s|
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
-  s.add_dependency 'acts_as_indexed',             '~> 0.7.7'
-  s.add_dependency 'friendly_id',                 '~> 4.0.1'
-  s.add_dependency 'globalize3',                  '~> 0.2.0'
   s.add_dependency 'awesome_nested_set',          '~> 2.1.0'
   s.add_dependency 'railties',                    rails_version
   s.add_dependency 'activerecord',                rails_version

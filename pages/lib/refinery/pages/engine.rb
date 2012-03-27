@@ -18,7 +18,7 @@ module Refinery
         Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
       end
 
-      initializer "register refinery_pages plugin" do
+      initializer "refinery.pages register plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_pages'
@@ -29,7 +29,18 @@ module Refinery
         end
       end
 
-      initializer "append marketable routes", :after => :set_routes_reloader_hook do
+      initializer "refinery.pages acts_as_indexed" do
+        ActiveSupport.on_load(:active_record) do
+          require 'acts_as_indexed'
+          ActsAsIndexed.configure do |config|
+            config.index_file = Rails.root.join('tmp', 'index')
+            config.index_file_depth = 3
+            config.min_word_size = 3
+          end
+        end
+      end
+
+      initializer "refinery.pages append marketable routes", :after => :set_routes_reloader_hook do
         append_marketable_routes if Refinery::Pages.marketable_urls
       end
 
