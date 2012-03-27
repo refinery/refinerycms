@@ -14,7 +14,11 @@
 * Fixed save & continue issue. [Philip Arndt](https://github.com/parndt)
 * Fixed issue with Heroku option for CMS generator. [Philip Arndt](https://github.com/parndt)
 * Fixed config.assets.initialize_on_precompile setting to false. [Philip Arndt](https://github.com/parndt)
-
+* Add label style for admin Page tree [Nic Aitch](https://github.com/nicinabox)
+* Fixed page part hiding [Rob Yurkowski](https://github.com/robyurkowski)
+* Fixed missing page part CSS classes (i.e. no\_side\_body) [Rob Yurkowski](https://github.com/robyurkowski)
+* Deprecated body\_content\_left and body\_content\_right [Rob Yurkowski](https://github.com/robyurkowski)
+* Reorganizes documentation [Rob Yurkowski](https://github.com/robyurkowski)
 
 ## 2.0.2 [15 March 2012]
 

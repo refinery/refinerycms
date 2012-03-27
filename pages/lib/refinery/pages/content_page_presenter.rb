@@ -19,6 +19,10 @@ module Refinery
       end
 
       def add_default_post_page_sections
+        add_section_if_missing(:id => :body)
+        add_section_if_missing(:id => :side_body)
+
+        # Deprecated in 2.1
         add_section_if_missing(:id => :body_content_left)
         add_section_if_missing(:id => :body_content_right)
       end
