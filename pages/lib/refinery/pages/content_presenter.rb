@@ -20,6 +20,10 @@ module Refinery
         @sections.select {|section| ids_to_hide.include?(section.id)}.each(&:hide) if ids_to_hide.any?
       end
 
+      def hidden_sections
+        @sections.select {|section| section.hidden? }
+      end
+
       def fetch_template_overrides
         @sections.each do |section|
           section.override_html = yield section.id if section.id.present?

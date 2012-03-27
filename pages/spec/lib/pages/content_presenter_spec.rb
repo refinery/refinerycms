@@ -34,15 +34,23 @@ module Refinery
         end
 
         it "hides a section specified by id" do
-          section2.should_receive(:hide)
-          @content.hide_sections('bar')
+          section2.should_receive :hide
+          @content.hide_sections 'bar'
         end
 
         # Regression for https://github.com/resolve/refinerycms/issues/1516
         it "accepts an array" do
-          section2.should_receive(:hide)
-          @content.hide_sections(['bar'])
+          section2.should_receive :hide
+          @content.hide_sections ['bar']
         end
+
+        it "hides nothing if nil" do
+          section1.stub(:'hidden?').and_return false
+          section2.stub(:'hidden?').and_return false
+          @content.hide_sections nil
+          @content.hidden_sections.count.should == 0
+        end
+
       end
 
       describe "when fetching template overrides" do
