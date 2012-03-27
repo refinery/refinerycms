@@ -28,7 +28,7 @@ In creating the existing application, we'll make the following convenient, but n
 * you're using older versions of some gems than refinery also expects, to demonstrate one way to deal with that situation.
 # you're using git for source code control.
 
-TIP. *"Attaching Refinery CMS to an existing Rails application":http://refinerycms.com/guides/attaching-refinery-cms-to-an-existing-rails-application* has further details about integrating with an existing application in general.
+TIP. *"Attaching Refinery CMS to an existing Rails application":http://refinerycms.com/guides/with-an-existing-rails-app/* has further details about integrating with an existing application in general.
 
 h3. Creating the existing Rails + Devise application
 

@@ -83,7 +83,7 @@ Double check your S3_ information and make sure that the right buckets actually 
 
 h4. Other problems?
 
-See the "How to use Amazon S3 for storage":http://refinerycms.com/guides/how-to-use-amazon-s3-for-storage guide for more specific information.
+See the "How to use Amazon S3 for storage":http://refinerycms.com/guides/amazon-s3-for-uploads guide for more specific information.
 
 Otherwise, run `heroku logs` or `heroku logs --tail` and see if you can spot the error yourself.
-Or you could explore the "help options available":/guides/how-to-get-help-with-refinery.
+Or you could explore the "help options available":/guides/how-to-get-help.
