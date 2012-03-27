@@ -47,7 +47,21 @@ module Refinery
     private
 
       def sections_html(can_use_fallback)
-        @sections.map {|section| section.wrapped_html(can_use_fallback)}.compact.join("\n").html_safe
+        @sections.map do |section|
+          # Remove in 2.1
+          check_deprecated_sections(section)
+          section.wrapped_html(can_use_fallback)
+        end.compact.join("\n").html_safe
+      end
+
+      def check_deprecated_sections(section)
+        if section.has_content?
+          if section.id == :body_content_left
+            Refinery.deprecate "content_for :body_content_left", :when => '2.1.0', :replacement => "content_for :body"
+          elsif section.id == :body_content_right
+            Refinery.deprecate "content_for :body_content_right", :when => '2.1.0', :replacement => "content_for :side_body"
+          end
+        end
       end
 
       def add_section_if_missing(options)
