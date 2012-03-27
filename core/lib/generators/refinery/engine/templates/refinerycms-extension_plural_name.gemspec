@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
 
   # Runtime dependencies
   s.add_dependency             'refinerycms-core',    '~> <%= Refinery::Version %>'
+  s.add_dependency             'acts_as_indexed',     '~> 0.7'
 
   # Development dependencies (usually used for testing)
   s.add_development_dependency 'refinerycms-testing', '~> <%= Refinery::Version %>'
