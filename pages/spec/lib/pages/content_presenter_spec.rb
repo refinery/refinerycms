@@ -45,8 +45,8 @@ module Refinery
         end
 
         it "hides nothing if nil" do
-          section1.stub(:'hidden?').and_return false
-          section2.stub(:'hidden?').and_return false
+          section1.stub(:hidden?).and_return false
+          section2.stub(:hidden?).and_return false
           @content.hide_sections nil
           @content.hidden_sections.count.should == 0
         end
