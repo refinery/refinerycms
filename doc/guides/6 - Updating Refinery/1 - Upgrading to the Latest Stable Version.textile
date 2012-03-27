@@ -1,0 +1,44 @@
+h2. Upgrading to the Latest Stable Version
+
+Refinery constantly changes as we add new features and fix bugs. This guide will show you how to:
+
+* Keep updated with the latest stable versions as they are released
+
+endprologue.
+
+WARNING. Check out this post "http://www.refinerycms.com/blog/whats-new-in-refinery-cms-099":http://www.refinerycms.com/blog/whats-new-in-refinery-cms-099 to see how to upgrade to 0.9.9 from 0.9.8.9. You can't update from 0.9.8.9 to anything later than 0.9.9 without going to 0.9.9 first.
+
+h3. Introduction
+
+First you need a current installation of Refinery. Refinery would have been installed by one of two ways, Ruby Gem or Git. When updating, the latest files are copied into your project.
+
+h3. Updating a Gem Installation of Refinery
+
+Take a look at "http://rubygems.org/gems/refinerycms":http://rubygems.org/gems/refinerycms to find the latest version number for Refinery.
+
+Edit your +Gemfile+ to reference the latest version of Refinery (a later version than the one shown "may exist":https://rubygems.org/gems/refinerycms/versions).
+
+<ruby>
+gem 'refinerycms', '= 1.0.8'
+</ruby>
+
+Now install the new gems using bundler ('bundle install' is outdated):
+
+<shell>
+$ bundle update
+</shell>
+
+Use the rails generator to update your Refinery installation:
+
+TIP: You only need to run the below step when upgrading between major or minor versions. Bug fix releases should not change the database structure. For example, if you are going from 1.0.3 -> 1.0.8 (Bugfix) you do not need to run this command. 
+
+<shell>
+$ rails generate refinerycms --update
+</shell>
+
+Database migrations and new gem dependencies may have been added, so finish your Refinery update with:
+
+<shell>
+$ rake db:migrate
+$ bundle install
+</shell>

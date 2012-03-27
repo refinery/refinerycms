@@ -1,0 +1,23 @@
+h2. Tabbed Fields
+
+Sometimes you create an extension with a number of wymeditor fields. Having these display one after another can be overwhelming for your clients (or you!).
+This guide will show you how to:
+
+* Organise many visual editors into nice tabs like Refinery's 'pages' extension does
+
+endprologue.
+
+WARNING: This only works on Refinery versions 0.9.9 and greater
+
+h3. Changing your admin view to support multiple tabs
+
+If your extension has a number of text areas that you'd like to display as a series of tabs instead, simply edit the admin view (under +app/views/admin/extension_name/_form.html.erb+), and add:
+
+<erb>
+<%= render :partial => '/refinery/admin/tabbed_fields',
+           :locals => { :f => f,
+                        :tabbed_fields => [:field, :list] } %>
+</erb>
+
+Replace the array +[:field, :list]+ with an array of symbols of the columns you would like displayed as tabs.
+

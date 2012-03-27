@@ -1,0 +1,11 @@
+h2. Google Analytics
+
+Google Analytics is a great free way to find out how much traffic your site is getting. This guide will show you how to:
+
+* Use the built in Refinery setting and layout to easily add Google Analytics support to your existing Refinery site
+
+endprologue.
+
+Default Refinery layouts have Google Analytics support built in. To start using Google Analytics on your site all you need to do is go into the "Settings" area and edit the setting called "Analytics Page Code". Replace "UA-XXXXXX-X" with your Google Analytics code to get up and running.
+
+Note that this setting only appears in production. So you won't see this setting in your development environment.
