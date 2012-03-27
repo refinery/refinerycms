@@ -22,7 +22,7 @@ TIP: Do not use Ruby 1.9.1 as Rails 3.x is not compatible with it. Use 1.9.3 for
 * A working installation of the "SQLite3 Database":http://www.sqlite.org
 * A working installation of "ImageMagick":http://www.imagemagick.org/script/install-source.php
 
-TIP: If you don't already have these things, then you will need to follow the "Installing Refinery Prerequisites":/guides/installing-refinery-prerequisites guide.
+TIP: If you don't already have these things, then you will need to follow the "Installing Refinery Prerequisites":/guides/installation-prerequisites/ guide.
 
 TIP: It is recommended that developers use RVM to manage Ruby versions and gems. Once RVM is installed on your system, and you've created a gemset for the project, create an .rvmrc file in the site's root directory. Its contents should look something like:
 
@@ -403,7 +403,7 @@ But I've noticed one problem. The "2011 Music Awards" is showing up in the middl
 
 h4. Testing your extension
 
-There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/how-to-test-your-engine.
+There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/testing/.
 
 h4. Crudify: The Backbone of Refinery Engines
 
@@ -468,4 +468,4 @@ h3. What's Next?
 
 Now that you've made your first Refinery application with a custom events extension, you should feel free to update it and experiment on your own. But you don't have to do everything without help.
 
-If you need assistance getting up and running with Refinery, follow the "How to get help with Refinery Guide":/guides/how-to-get-help-with-refinery.
+If you need assistance getting up and running with Refinery, follow the "How to get help with Refinery Guide":/guides/how-to-get-help/.

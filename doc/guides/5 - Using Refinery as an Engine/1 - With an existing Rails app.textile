@@ -58,4 +58,4 @@ After this, you should be all set. Don't forget to revisit the initializers in +
 
 h3. Getting Help
 
-As this is a relatively new process, if you need help with any of these steps we would love to "hear about it":/guides/how-to-get-help-with-refinery.
+As this is a relatively new process, if you need help with any of these steps we would love to "hear about it":/guides/how-to-get-help/.

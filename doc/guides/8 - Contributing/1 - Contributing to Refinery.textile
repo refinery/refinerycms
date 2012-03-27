@@ -51,7 +51,7 @@ Make your changes to fix a bug. Next run the Refinery tests
 $ bundle exec rspec ./*/spec
 </shell>
 
-If this doesn't work. Follow the "How to test Refinery guide":/guides/how-to-test-refinery
+If this doesn't work. Follow the "How to test Refinery guide":/guides/testing
 
 Commit your changes:
 

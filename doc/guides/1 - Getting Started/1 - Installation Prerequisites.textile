@@ -17,7 +17,7 @@ If you are already a Rails developer, you will most likely not have to install a
 * *Database* - SQLite3 (default), MySQL, or PostgreSQL
 * *ImageMagick* - Recommended that you have the latest version installed
 
-If you have all of these things, great! Proceed on to the "Getting Started with Refinery":/guides/getting-started-with-refinery/ guide.
+If you have all of these things, great! Proceed on to the "Getting Started with Refinery":/guides/getting-started/ guide.
 
 Otherwise, choose your operating system below.
 
@@ -95,4 +95,4 @@ Follow the instructions at "http://www.imagemagick.org/script/binary-releases.ph
 
 h3. Ready to Install!
 
-Easier than expected right? Now you're ready to start building great websites with Refinery! Proceed on to the "Getting Started with Refinery":/guides/getting-started-with-refinery/ guide.
+Easier than expected right? Now you're ready to start building great websites with Refinery! Proceed on to the "Getting Started with Refinery":/guides/getting-started/ guide.
