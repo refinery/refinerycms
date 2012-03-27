@@ -37,6 +37,12 @@ module Refinery
           section2.should_receive(:hide)
           @content.hide_sections('bar')
         end
+
+        # Regression for https://github.com/resolve/refinerycms/issues/1516
+        it "accepts an array" do
+          section2.should_receive(:hide)
+          @content.hide_sections(['bar'])
+        end
       end
 
       describe "when fetching template overrides" do

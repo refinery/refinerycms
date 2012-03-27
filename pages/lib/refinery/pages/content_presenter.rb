@@ -16,6 +16,7 @@ module Refinery
       end
 
       def hide_sections(*ids_to_hide)
+        ids_to_hide.flatten!
         @sections.select {|section| ids_to_hide.include?(section.id)}.each(&:hide) if ids_to_hide.any?
       end
 
