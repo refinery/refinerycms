@@ -47,7 +47,7 @@ module Refinery
     private
 
       def sections_html(can_use_fallback)
-        @sections.map {|section| section.wrapped_html(can_use_fallback)}.compact.join("\n").html_safe
+        @sections.map { |section| section.wrapped_html(can_use_fallback) }.compact.join("\n").html_safe
       end
 
       def add_section_if_missing(options)
