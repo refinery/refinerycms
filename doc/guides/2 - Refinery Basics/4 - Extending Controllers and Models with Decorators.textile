@@ -1,0 +1,60 @@
+h2. Extending Controllers and Models with Decorators
+
+The default behavior of Refinery or a Refinery extension and its controllers and models may not be exactly what you are looking for. This guide will show you how to:
+
+* Extend a Controller or Model to add new behavior
+
+endprologue.
+
+h3. Why extend instead of override?
+
+When designing pages for Refinery, a commonly performed task is to override views with something similar to:
+
+<shell>
+  $ rake refinery:override view=refinery/pages/show
+</shell>
+
+The same can be done for Refinery's controllers or models, but it could make troubleshooting Refinery and upgrading to future versions more difficult. Often you'll want a controller or model to act exactly as it has already been defined, but you'll want to add some additional behavior or modify only a small bit of pre-existing behavior.
+
+h3. Extending a Controller
+
+Often you'll want to perform some additional controller logic that is not defined by Refinery already. An example for this is when you are building a homepage that contains a listing of blog articles. By default the 'home' action on the +PagesController+ will not find all of the published blog articles. You could perform this logic at the top of your view but you would be violating the rules of MVC. What you really want to do is to have the controller populate an instance variable for you to render in your view.
+
+We start out by creating +app/decorators/controllers/refinery/pages_controller_decorator.rb+ unless it already exists:
+
+<ruby>
+  Refinery::PagesController.class_eval do
+    # your controller logic goes here
+  end
+</ruby>
+
+The code within the +class_eval+ block in any decorator can be written as if you are writing in the class definition of the class it is extending. In this case we're extending a ActionController and we want it to find us some blog posts:
+
+<ruby>
+  Refinery::PagesController.class_eval do
+  
+    before_filter :find_all_blog_posts, :only => [:home]
+  
+    protected
+    
+      def find_all_blog_posts
+        @blog_posts = Refinery::BlogPost.live
+      end
+
+  end
+</ruby>
+
+We define the +find_all_blog_posts+ method and set it as a +before_filter+ for the +pages#home+ action. This will make the +@blog_posts+ instance variable available in our views which will contain all of the live blog posts. Because a writing a decorator is just like extending a class definition, we could even simplify this further by writing:
+
+<ruby>
+  Refinery::PagesController.class_eval do
+  
+    include Refinery::Blog::ControllerHelper
+    before_filter :find_all_blog_posts, :only => [:home]
+    
+  end
+</ruby>
+
+The Blog extension contains a helper module which already has the +find_all_blog_posts+ method defined for this common case.
+
+WARNING. If you are following along, make sure that you have the refinerycms-blog extension in your gem file or you will not have access to this helper module.
