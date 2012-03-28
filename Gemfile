@@ -5,9 +5,6 @@ gemspec
 # Add i18n support.
 gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/parndt/refinerycms-i18n.git'
 
-# Require latest (at time of writing) version to get parndt's changes
-gem 'paper_trail', '~> 2.6.3'
-
 # Fixes uniqueness constraint on translated columns.
 # See: https://github.com/svenfuchs/globalize3/pull/121
 gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git', :branch => 'master'
