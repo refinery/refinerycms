@@ -5,11 +5,19 @@ require 'generators/refinery/form/form_generator'
 module Refinery
   describe FormGenerator do
     include GeneratorSpec::TestCase
-    destination File.expand_path("../../../../../../tmp", __FILE__)
+
+    temp_dir = Dir.mktmpdir("refinery_rspec_form_test")
+    let(:temp_dir) { temp_dir }
+
+    destination temp_dir
 
     before(:each) do
       prepare_destination
       run_generator %w{ rspec_form_test title:string description:text choice:radio another:dropdown enable:checkbox }
+    end
+
+    after do
+      FileUtils.rm_r(temp_dir)
     end
 
     specify do
