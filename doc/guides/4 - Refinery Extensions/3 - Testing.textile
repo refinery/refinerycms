@@ -60,10 +60,12 @@ This is the most simple way to execute the test suite and useful for a one time 
 
 h3. Running the tests with Guard
 
-We recommend using Guard if you like to develop using TDD. Guard will load your test environment and watch for changes in files. If a change is made to a spec or a file that is tested against, it will re-run only the necessary specs. Because your environment is loaded at all times, this is a much faster way to get test results.
+We recommend using Guard if you like to develop using TDD. Guard will watch your project for changes in files. If a change is made to a spec or a file that is tested against, it will re-run only the necessary specs. This is a faster way to get feedback during your TDD cycles.
 
 At your project's root run:
 
 <shell>
 $ bundle exec guard start
 </shell>
+
+Larger Rails apps, particularly on Ruby 1.9.2, may take several seconds (or more) to start up. If that's the case, you might also want to use Spork, which loads a single instance of the Rails environment and forks it to run tests, for even faster feedback cycles.
