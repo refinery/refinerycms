@@ -655,11 +655,30 @@ var page_options = {
 
 };
 
-function ImageDialog(callback) {
-  self = this;
+// TODO:  Need to rewrite WYM to accept multiple images. As it stands, only
+//        the callback is useful when inserting multiple -- helpful for
+//        the page-images and portfolio engines.
 
-  this.create = function() { 
-    this.callback = callback;
+// ImageDialog
+// 
+//   The dialog that opens when choosing to 'Add image' in WYM.
+//
+//   Options:
+//     callback (null):
+//       a function to execute upon chosing 'submit'. Passed either an
+//       an array or a single image, depending on whether `multiple` is
+//       true.
+//     multiple (false):
+//       if true, enables selection of multiple images. Does not allow
+//       insertion into WYM without manual callback manipulation.
+function ImageDialog(options) {
+  self = this;
+  this.defaults = {callback: null, multiple: false};
+
+  this.create = function(options) {
+    this.settings = $.extend({}, this.defaults, options);
+
+    this.callback = this.settings.callback;
     this.init_tabs();
     this.init_select();
     this.init_actions();
@@ -685,36 +704,36 @@ function ImageDialog(callback) {
 
   this.init_select = function() {
     $('#existing_image_area_content ul li img').click(function() {
-      self.set_image(this);
+      self.toggle_image($(this));
     });
 
     // Select any currently selected, just uploaded...
     if ((selected_img = $('#existing_image_area_content ul li.selected img')).length > 0) {
-      self.set_image(selected_img.first());
+      self.toggle_image(selected_img.first());
     }
   };
 
-  this.set_image = function(img) {
-    if ($(img).length > 0) {
-      $('#existing_image_area_content ul li.selected').removeClass('selected');
+  this.toggle_image = function(img) {
+    if (img.length > 0) {
+      if (!self.settings.multiple) $('#existing_image_area_content ul li.selected').removeClass('selected');
 
-      $(img).parent().addClass('selected');
-      var imageId = $(img).attr('data-id');
+      img.parent().toggleClass('selected');
+      var imageId = img.attr('data-id');
       var geometry = $('#existing_image_size_area li.selected a').attr('data-geometry');
       var size = $('#existing_image_size_area li.selected a').attr('data-size');
       var resize = $("#wants_to_resize_image").is(':checked');
 
-      image_url = resize ? $(img).attr('data-' + size) : $(img).attr('data-original');
+      image_url = resize ? img.attr('data-' + size) : img.attr('data-original');
 
       if (parent) {
         if ((wym_src = parent.document.getElementById('wym_src')) != null) {
           wym_src.value = image_url;
         }
         if ((wym_title = parent.document.getElementById('wym_title')) != null) {
-          wym_title.value = $(img).attr('title');
+          wym_title.value = img.attr('title');
         }
         if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
-          wym_alt.value = $(img).attr('alt');
+          wym_alt.value = img.attr('alt');
         }
         if ((wym_size = parent.document.getElementById('wym_size')) != null
             && typeof(geometry) != 'undefined') {
@@ -726,9 +745,12 @@ function ImageDialog(callback) {
 
   this.submit_image_choice = function(e) {
     e.preventDefault();
-    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0)) && $.isFunction(self.callback))
+    selected_images = $('#existing_image_area_content ul li.selected img');
+    selected_images = self.settings.multiple ? selected_images.get() : selected_images.get(0);
+
+    if(selected_images && $.isFunction(self.callback))
     {
-      self.callback(img_selected);
+      self.callback(selected_images);
     }
 
     close_dialog(e);
