@@ -38,7 +38,7 @@
 <% content_for :javascripts do %>
   <script>
     $(document).ready(function(){
-      image_dialog.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
+      new ImageDialog(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>).create();
     });
   </script>
 <% end %>

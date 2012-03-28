@@ -655,52 +655,47 @@ var page_options = {
 
 };
 
-var image_dialog = {
-  initialised: false
-  , callback: null
+function ImageDialog(callback) {
+  self = this;
 
-  , init: function(callback){
+  this.create = function() { 
+    this.callback = callback;
+    this.init_tabs();
+    this.init_select();
+    this.init_actions();
+  };
 
-    if (!this.initialised) {
-      this.callback = callback;
-      this.init_tabs();
-      this.init_select();
-      this.init_actions();
-      this.initialised = true;
-    }
-    return this;
-  }
-
-  , init_tabs: function(){
+  this.init_tabs = function() {
     var radios = $('#dialog_menu_left input:radio');
     var selected = radios.parent().filter(".selected_radio").find('input:radio').first() || radios.first();
-
-    radios.click(function(){
-      link_dialog.switch_area($(this));
+    radios.click(function() {
+      self.switch_area($(this));
     });
 
     selected.attr('checked', 'true');
-    link_dialog.switch_area(selected);
-  }
+    self.switch_area(selected);
+  };
 
-  , switch_area: function(radio){
+  this.switch_area = function(radio) {
+    console.log(radio);
     $('#dialog_menu_left .selected_radio').removeClass('selected_radio');
-    $(radio).parent().addClass('selected_radio');
+    radio.parent().addClass('selected_radio');
     $('#dialog_main .dialog_area').hide();
-    $('#' + radio.value + '_area').show();
-  }
+    $('#' + radio.val() + '_area').show();
+  };
 
-  , init_select: function(){
-    $('#existing_image_area_content ul li img').click(function(){
-        image_dialog.set_image(this);
+  this.init_select = function() {
+    $('#existing_image_area_content ul li img').click(function() {
+      self.set_image(this);
     });
-    //Select any currently selected, just uploaded...
-    if ((selected_img = $('#existing_image_area_content ul li.selected img')).length > 0) {
-      image_dialog.set_image(selected_img.first());
-    }
-  }
 
-  , set_image: function(img){
+    // Select any currently selected, just uploaded...
+    if ((selected_img = $('#existing_image_area_content ul li.selected img')).length > 0) {
+      self.set_image(selected_img.first());
+    }
+  };
+
+  this.set_image = function(img) {
     if ($(img).length > 0) {
       $('#existing_image_area_content ul li.selected').removeClass('selected');
 
@@ -728,35 +723,34 @@ var image_dialog = {
         }
       }
     }
-  }
+  };
 
-  , submit_image_choice: function(e) {
+  this.submit_image_choice = function(e) {
     e.preventDefault();
-    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0)) && $.isFunction(this.callback))
+    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0)) && $.isFunction(self.callback))
     {
-      this.callback(img_selected);
+      self.callback(img_selected);
     }
 
     close_dialog(e);
-  }
+  };
 
-  , init_actions: function(){
-    var _this = this;
+  this.init_actions = function() {
     // get submit buttons not inside a wymeditor iframe
     $('#existing_image_area .form-actions-dialog #submit_button')
       .not('.wym_iframe_body #existing_image_area .form-actions-dialog #submit_button')
-      .click($.proxy(_this.submit_image_choice, _this));
+      .click($.proxy(self.submit_image_choice, self));
 
     // get cancel buttons not inside a wymeditor iframe
     $('.form-actions-dialog #cancel_button')
       .not('.wym_iframe_body .form-actions-dialog #cancel_button')
-      .click($.proxy(close_dialog, _this));
+      .click($.proxy(close_dialog, self));
 
     $('#existing_image_size_area ul li a').click(function(e) {
       $('#existing_image_size_area ul li').removeClass('selected');
       $(this).parent().addClass('selected');
       $('#existing_image_size_area #wants_to_resize_image').attr('checked', 'checked');
-      image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
+      self.set_image($('#existing_image_area_content ul li.selected img'));
       e.preventDefault();
     });
 
@@ -765,7 +759,7 @@ var image_dialog = {
         $('#existing_image_size_area ul li:first a').click();
       } else {
         $('#existing_image_size_area ul li').removeClass('selected');
-        image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
+        self.set_image($('#existing_image_area_content ul li.selected img'));
       }
     });
 
@@ -775,8 +769,8 @@ var image_dialog = {
       $(this.document.getElementById('wym_dialog_submit')).click();
     }, parent));
     image_area.find('.form-actions a.close_dialog').click(close_dialog);
-  }
-};
+  };
+}
 
 var list_reorder = {
   initialised: false
