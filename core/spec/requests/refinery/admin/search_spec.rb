@@ -6,13 +6,16 @@ module Refinery
 
     context "when searched item exists" do
       describe "image extension" do
-        before(:each) { FactoryGirl.create(:image) }
+        let!(:image) { FactoryGirl.create(:image) }
 
         it "returns found image" do
           visit refinery.admin_images_path
           fill_in "search", :with => "beach"
           click_button "Search"
-          page.should have_selector("img[src*='beach.jpeg']")
+
+          within ".actions" do
+            page.should have_selector("a[href='#{image.url}']")
+          end
         end
       end
 

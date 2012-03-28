@@ -7,9 +7,6 @@ module Refinery
     let(:about_page) { FactoryGirl.create(:page, :title => 'About') }
     let(:draft_page) { FactoryGirl.create(:page, :title => 'Draft', :draft => true) }
     before(:each) do
-      # So that we can use Refinery.
-      Refinery::PagesController.any_instance.stub(:refinery_user_required?).and_return(false)
-
       # Stub the menu pages we're expecting
       Refinery::Page.stub(:fast_menu).and_return([home_page, about_page])
     end
