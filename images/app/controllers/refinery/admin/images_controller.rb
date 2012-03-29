@@ -84,6 +84,7 @@ module Refinery
         @update_image = params[:update_image]
         @thumbnail = params[:thumbnail]
         @callback = params[:callback]
+        @multiple = params[:multiple]
         @conditions = params[:conditions]
       end
 
