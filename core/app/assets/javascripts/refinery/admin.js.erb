@@ -674,9 +674,9 @@ var page_options = {
 function ImageDialog(options) {
   self = this;
   this.defaults = {callback: null, multiple: false};
+  this.settings = $.extend({}, this.defaults, options);
 
-  this.create = function(options) {
-    this.settings = $.extend({}, this.defaults, options);
+  this.create = function() {
 
     this.callback = this.settings.callback;
     this.init_tabs();
