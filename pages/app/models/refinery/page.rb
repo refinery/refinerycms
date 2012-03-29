@@ -303,15 +303,23 @@ module Refinery
       Rails.cache.fetch(path_cache_key) { ['', nested_url].join('/') }
     end
 
-    def path_cache_key(locale=::I18n.locale)
-      [cache_key(locale), 'nested_path'].join('#')
+    def path_cache_key(locale = ::I18n.locale)
+      if defined?(::Refinery::I18n)
+        [cache_key(locale), 'nested_path'].join('#')
+      else
+        [cache_key, 'nested_path'].join('#')
+      end
     end
 
-    def url_cache_key(locale=::I18n.locale)
-      [cache_key(locale), 'nested_url'].join('#')
+    def url_cache_key(locale = ::I18n.locale)
+      if defined?(::Refinery::I18n)
+        [cache_key(locale), 'nested_url'].join('#')
+      else
+        [cache_key, 'nested_url'].join('#')
+      end
     end
 
-    def cache_key(locale)
+    def cache_key(locale = ::I18n.locale)
       [Refinery::Core.base_cache_key, 'page', locale, id].compact.join('/')
     end
 
@@ -435,9 +443,14 @@ module Refinery
       return true unless Refinery::Pages.marketable_urls
 
       [self, children].flatten.each do |page|
-        ::Refinery::I18n.frontend_locales.each do |locale|
-          Rails.cache.delete(page.url_cache_key(locale))
-          Rails.cache.delete(page.path_cache_key(locale))
+        if defined?(::Refinery::I18n)
+          ::Refinery::I18n.frontend_locales.each do |locale|
+            Rails.cache.delete(page.url_cache_key(locale))
+            Rails.cache.delete(page.path_cache_key(locale))
+          end
+        else
+          Rails.cache.delete(page.url_cache_key)
+          Rails.cache.delete(page.path_cache_key)
         end
       end
     end
