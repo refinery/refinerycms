@@ -2,6 +2,9 @@ source 'http://rubygems.org'
 
 gemspec
 
+# Puma webserver
+gem 'puma'
+
 # Add i18n support.
 gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/parndt/refinerycms-i18n.git'
 
