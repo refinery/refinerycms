@@ -40,7 +40,7 @@
     $(document).ready(function(){
       new ImageDialog({
         callback: <%= @callback.present? ? "self.parent.#{@callback}" : "null" %>, 
-        multiple: <%= @multiple.present? ? @multiple : false %>
+        multiple: <%= @multiple == true %>
       }).create();
     });
   </script>
