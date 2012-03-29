@@ -74,6 +74,9 @@ capybara-*html
 .rvmrc
 .rvmrc.*
 
+# vendor/extensions dummy applications.
+vendor/extensions/**/spec/dummy
+
 # REFINERY CMS DEVELOPMENT ====================================================
 # Always keep this section at the bottom.
 
