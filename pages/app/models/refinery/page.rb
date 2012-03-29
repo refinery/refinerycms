@@ -103,9 +103,9 @@ module Refinery
       end
 
       # Finds a page using its slug.  See by_title
-      def by_slug(slug, conditions={})
-        locales = Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales : ::I18n.locale
-        with_globalize({ :locale => locales, :slug => slug }.merge(conditions))
+      def by_slug(slug)
+        locales = if Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales : ::I18n.locale
+        with_globalize(:locale => locales, :slug => slug)
       end
 
       # Shows all pages with :show_in_menu set to true, but it also
@@ -330,7 +330,7 @@ module Refinery
     end
 
     def path_cache_key(locale = ::I18n.locale)
-      if defined?(::Refinery::I18n)
+      if Refinery.i18n_enabled?
         [cache_key(locale), 'nested_path'].join('#')
       else
         [cache_key, 'nested_path'].join('#')
@@ -338,7 +338,7 @@ module Refinery
     end
 
     def url_cache_key(locale = ::I18n.locale)
-      if defined?(::Refinery::I18n)
+      if Refinery.i18n_enabled?
         [cache_key(locale), 'nested_url'].join('#')
       else
         [cache_key, 'nested_url'].join('#')
@@ -458,14 +458,9 @@ module Refinery
       return true unless Refinery::Pages.marketable_urls
 
       [self, children].flatten.each do |page|
-        if defined?(::Refinery::I18n)
-          ::Refinery::I18n.frontend_locales.each do |locale|
-            Rails.cache.delete(page.url_cache_key(locale))
-            Rails.cache.delete(page.path_cache_key(locale))
-          end
-        else
-          Rails.cache.delete(page.url_cache_key)
-          Rails.cache.delete(page.path_cache_key)
+        ((Refinery.i18n_enabled? && Refinery::I18n.frontend_locales) || [::I18n.locale]).each do |locale|
+          Rails.cache.delete(page.url_cache_key(locale))
+          Rails.cache.delete(page.path_cache_key(locale))
         end
       end
     end
