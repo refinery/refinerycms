@@ -2,9 +2,6 @@ source 'http://rubygems.org'
 
 gemspec
 
-# Puma webserver
-gem 'puma'
-
 # Add i18n support.
 gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/parndt/refinerycms-i18n.git'
 
@@ -99,3 +96,8 @@ gem 'jquery-rails', '~> 2.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
 # gem 'rack', :git => 'git://github.com/rack/rack.git'
 # gem 'arel', :git => 'git://github.com/rails/arel.git'
+
+# Load local gems according to Refinery developer preference.
+if File.exist?(File.expand_path('../.gemfile', __FILE__))
+  eval(File.read(File.expand_path('../.gemfile', __FILE__)))
+end
