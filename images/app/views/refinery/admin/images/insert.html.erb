@@ -39,7 +39,7 @@
   <script>
     $(document).ready(function(){
       new ImageDialog({
-        callback: <%= @callback.present? ? "self.parent.#{@callback}" : "null" %>, 
+        callback: <%= @callback.present? ? "self.parent.#{h @callback}" : "null" %>, 
         multiple: <%= @multiple == true %>
       }).create();
     });
