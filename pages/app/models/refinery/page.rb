@@ -104,7 +104,7 @@ module Refinery
 
       # Finds a page using its slug.  See by_title
       def by_slug(slug)
-        locales = if Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales : ::I18n.locale
+        locales = Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales : ::I18n.locale
         with_globalize(:locale => locales, :slug => slug)
       end
 
