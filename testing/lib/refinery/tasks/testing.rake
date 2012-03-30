@@ -1,7 +1,13 @@
 namespace :refinery do
   namespace :testing do
     desc "Generates a dummy app for testing"
-    task :dummy_app => [:setup_dummy_app, :setup_extension, :init_test_database]
+    task :dummy_app do
+      unless dummy_app_path.exist?
+        Rake::Task["refinery:testing:setup_dummy_app"].invoke
+        Rake::Task["refinery:testing:setup_extension"].invoke
+        Rake::Task["refinery:testing:init_test_database"].invoke
+      end
+    end
 
     task :setup_dummy_app do
       require 'refinerycms'
@@ -39,12 +45,6 @@ namespace :refinery do
     task :init_test_database do
       load 'rails/tasks/engine.rake'
       Rake::Task["app:db:test:prepare"].invoke
-    end
-
-    task :conditionally_setup_dummy_app do
-      unless dummy_app_path.exist?
-        Rake::Task["refinery:testing:dummy_app"].invoke
-      end
     end
 
     def dummy_app_path
