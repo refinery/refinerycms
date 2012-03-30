@@ -301,22 +301,14 @@ module Refinery
     end
 
     def path_cache_key(locale = ::I18n.locale)
-      if Refinery.i18n_enabled?
-        [cache_key(locale), 'nested_path'].join('#')
-      else
-        [cache_key, 'nested_path'].join('#')
-      end
+      [cache_key(locale), 'nested_path'].join('#')
     end
 
     def url_cache_key(locale = ::I18n.locale)
-      if Refinery.i18n_enabled?
-        [cache_key(locale), 'nested_url'].join('#')
-      else
-        [cache_key, 'nested_url'].join('#')
-      end
+      [cache_key(locale), 'nested_url'].join('#')
     end
 
-    def cache_key(locale = ::I18n.locale)
+    def cache_key(locale)
       [Refinery::Core.base_cache_key, 'page', locale, id].compact.join('/')
     end
 
