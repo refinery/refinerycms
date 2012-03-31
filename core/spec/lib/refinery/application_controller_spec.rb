@@ -4,6 +4,10 @@ describe "Refinery::ApplicationController" do
   describe "DummyController", :type => :controller do
     controller do
       include ::Refinery::ApplicationController
+
+      def index
+        render :nothing => true
+      end
     end
 
     describe ".home_page?" do
@@ -22,6 +26,33 @@ describe "Refinery::ApplicationController" do
       it "escapes regexp" do
         request.stub(:path).and_return("\/huh)")
         expect { controller.home_page? }.to_not raise_error(RegexpError)
+      end
+    end
+
+    describe "force_ssl" do
+      before(:each) do
+        controller.stub(:admin?).and_return(true)
+        controller.stub(:refinery_user_required?).and_return(false)
+      end
+
+      it "is false so standard HTTP is used" do
+        Refinery::Core.config.force_ssl = false
+
+        get :index
+
+        response.should_not be_redirect
+      end
+
+      it "is true so HTTPS is used" do
+        begin
+          Refinery::Core.config.force_ssl = true
+
+          get :index
+
+          response.should be_redirect
+        ensure
+          Refinery::Core.config.force_ssl = false
+        end
       end
     end
   end
