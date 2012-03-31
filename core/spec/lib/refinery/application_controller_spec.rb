@@ -54,6 +54,19 @@ describe "Refinery::ApplicationController" do
           Refinery::Core.config.force_ssl = false
         end
       end
+
+      it "is true but HTTPS is not used because admin? is false" do
+        begin
+          controller.stub(:admin?).and_return(false)
+          Refinery::Core.config.force_ssl = true
+
+          get :index
+
+          response.should_not be_redirect
+        ensure
+          Refinery::Core.config.force_ssl = false
+        end
+      end
     end
   end
 end
