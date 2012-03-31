@@ -5,6 +5,10 @@ module Refinery
     describe "DummyController", :type => :controller do
       controller do
         include ::Refinery::ApplicationController
+
+        def index
+          render :nothing => true
+        end
       end
 
       describe ".home_page?" do
@@ -37,6 +41,33 @@ module Refinery
 
         it "returns the class's presenter when the instance's class has a presenter" do
           controller.send(:presenter_for, Page.new).should eq(PagePresenter)
+        end
+      end
+
+      describe "force_ssl" do
+        before(:each) do
+          controller.stub(:admin?).and_return(true)
+          controller.stub(:refinery_user_required?).and_return(false)
+        end
+
+        it "is false so standard HTTP is used" do
+          Refinery::Core.config.force_ssl = false
+
+          get :index
+
+          response.should_not be_redirect
+        end
+
+        it "is true so HTTPS is used" do
+          begin
+            Refinery::Core.config.force_ssl = true
+
+            get :index
+
+            response.should be_redirect
+          ensure
+            Refinery::Core.config.force_ssl = false
+          end
         end
       end
     end

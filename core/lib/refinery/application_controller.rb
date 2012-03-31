@@ -66,7 +66,7 @@ module Refinery
   protected
 
     def force_ssl?
-      redirect_to :protocol => 'https' unless request.ssl? && Refinery::Core.force_ssl
+      redirect_to :protocol => 'https' if !request.ssl? && Refinery::Core.force_ssl
     end
 
     # use a different model for the meta information.
