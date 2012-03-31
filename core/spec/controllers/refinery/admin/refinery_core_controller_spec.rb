@@ -5,7 +5,7 @@ module Refinery
     describe CoreController do
       refinery_login_with :refinery_user
 
-      it "should update the plugin positions" do
+      it "updates the plugin positions" do
         plugins = logged_in_user.plugins.reverse.collect(&:name)
 
         post 'update_plugin_positions', :menu => plugins
