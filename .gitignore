@@ -86,3 +86,6 @@ public/assets
 
 #Gemfile's lock file
 Gemfile.lock
+
+# Local Gemfile for developing without sharing dependencies (from master)
+.gemfile
