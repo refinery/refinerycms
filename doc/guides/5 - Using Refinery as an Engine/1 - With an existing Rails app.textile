@@ -39,7 +39,7 @@ WARNING. Running the +bundle exec rake railties:install:migrations+ task will co
 Generating Refinery on top of an existing application is marginally more complicated than it was before, but it's still quite simple:
 
 <shell>
-  rails generate refinery:cms --fresh-installation
+  bundle exec rails generate refinery:cms --fresh-installation
 </shell>
 
 This creates +config/initializers/refinery/+ and copies over all the required initializers from Refinery and Devise. It also injects Refinery's mounting line into your +config/routes.rb+ file. If you wish to customize where Refinery is mounted, you can change the path there.
