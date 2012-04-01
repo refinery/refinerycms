@@ -153,7 +153,7 @@ To do this, you'll have to edit +config/initializers/refinery/core.rb+. Look for
 # config.site_name = "Company Name"
 </ruby>
 
-The +#+ character prefixing the line is a comment character. The configuration options in this file (and in other Refinery initializer files) are all commented out, because these options are already set deep inside of Refinery. If you uncomment a line, Refinery will prefer the value you set inside these initializers. Go ahead and remove the +#+ character plus the space before the word 'config', and then change "Company Name" to "Rick Rock Star". Make sure you save, and then restart your server (if you're using the built-in Rails server, hit +Ctrl+C+, and then type +rails server+ again.
+The +#+ character prefixing the line is a comment character. The configuration options in this file (and in other Refinery initializer files) are all commented out, because these options are already set deep inside of Refinery. If you uncomment a line, Refinery will prefer the value you set inside these initializers. Go ahead and remove the +#+ character plus the space before the word 'config', and then change "Company Name" to "Rick Rock Star". Make sure you save, and then restart your server (if you're using the built-in Rails server, hit +Ctrl&#43;C+, and then type +rails server+ again.
 
 TIP: Many parts of Refinery can be customized by changing the options contained within the +config/initializers/refinery/+ folder. As you add extensions to Refinery, more files will be created here specific to the extensions you install.
 
