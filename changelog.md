@@ -19,6 +19,7 @@
 * Fixed missing page part CSS classes (i.e. no\_side\_body) [Rob Yurkowski](https://github.com/robyurkowski)
 * Deprecated body\_content\_left and body\_content\_right [Rob Yurkowski](https://github.com/robyurkowski)
 * Reorganizes documentation [Rob Yurkowski](https://github.com/robyurkowski)
+* Fixed issue where 'Switch to your website' was not working inside the pages form. [Philip Arndt](https://github.com/parndt)
 
 ## 2.0.2 [15 March 2012]
 
