@@ -39,7 +39,7 @@ body {
   font-size: 10px;
   font-family: Verdana;
   line-height: 1.5em;
-  background: #303030 image_url('refinery/page_bg.png') repeat;
+  background: #303030 image_url('assets/refinery/page_bg.png') repeat;
 }
 acronym {
   cursor: help;
@@ -134,7 +134,7 @@ hr {
   }
 }
 .errorExplanation {
-  background: 7px 10px no-repeat image_url('refinery/icons/cancel.png') #FFB1B1;
+  background: 7px 10px no-repeat image_url('assets/refinery/icons/cancel.png') #FFB1B1;
   padding: 0px 5px 5px 30px;
   font-weight: bold;
   margin-top: 5px;
@@ -164,7 +164,7 @@ hr {
 .flash_notice, .flash_message {
   border: 1px solid #00A017;
   color: #00A017;
-  background: 7px 7px no-repeat image_url('refinery/icons/accept.png') #E0F5E0;
+  background: 7px 7px no-repeat image_url('assets/refinery/icons/accept.png') #E0F5E0;
 }
 .flash_notice, .flash_notice * {
   color: #00A017;
@@ -172,7 +172,7 @@ hr {
 .flash_error, .flash_alert {
   border: 1px solid #A00027;
   color: #A00027;
-  background: 7px 7px no-repeat image_url('refinery/icons/cancel.png') #FFB1B1;
+  background: 7px 7px no-repeat image_url('assets/refinery/icons/cancel.png') #FFB1B1;
 }
 .flash.flash_notice #flash_close, .flash.flash_error #flash_close, .flash.flash_alert #flash_close {
   text-transform: lowercase;
@@ -345,7 +345,7 @@ body.login {
   }
   /* Works in Firefox, Safari, Chrome, IE8+ */
   input.larger {
-    background: image_url('refinery/text_field_background.png') repeat-x white;
+    background: image_url('assets/refinery/text_field_background.png') repeat-x white;
     height: 31px;
   }
   input.larger:focus {
@@ -430,7 +430,7 @@ header {
     display: block;
     padding: 9px 13px;
     font-size: 13px;
-    background: image_url('refinery/nav_inactive_background.png') transparent repeat;
+    background: image_url('assets/refinery/nav_inactive_background.png') transparent repeat;
     margin-top:4px;
     color: white;
     font-weight: normal;
@@ -549,7 +549,7 @@ pre {
   width: 100%;
 }
 #pagination ul a:hover, #pagination .on {
-  background: image_url('refinery/hover-gradient.jpg') repeat-x bottom #D4D4C6;
+  background: image_url('assets/refinery/hover-gradient.jpg') repeat-x bottom #D4D4C6;
 }
 #records.tree ul li ul, .tree ul li ul {
   padding: 0;
@@ -557,19 +557,19 @@ pre {
 #records.tree ul li, .tree ul li {
   margin: 0px;
   padding: 4px 0 0 40px;
-  background: image_url('refinery/branch.gif') no-repeat 15px 0px;
+  background: image_url('assets/refinery/branch.gif') no-repeat 15px 0px;
 }
 #records.tree li.record ul {
   margin-left: 0;
 }
 #records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
-  background: image_url('refinery/branch.gif') no-repeat 15px 0px;
+  background: image_url('assets/refinery/branch.gif') no-repeat 15px 0px;
 }
 #records.tree ul li.branch_start, .tree ul li.branch_start {
-  background-image: image_url('refinery/branch-start.gif');
+  background-image: image_url('assets/refinery/branch-start.gif');
 }
 #records.tree ul li.branch_end, .tree ul li.branch_end {
-  background-image: image_url('refinery/branch-end.gif');
+  background-image: image_url('assets/refinery/branch-end.gif');
 }
 #records.tree li {
   line-height: 25px;
@@ -677,32 +677,32 @@ label.stripped {
   min-height:16px;
   background-repeat:no-repeat;
   background-position:left;
-  background-image: image_url('refinery/icons/folder_page_white.png');
+  background-image: image_url('assets/refinery/icons/folder_page_white.png');
 }
 #dialog_main #resource_file_area .pages_list ul li a.page_link{
   background-position:5px center;
   display:block;
 }
 #records.files .record .title.pdf, #dialog_main #resource_file_area .pages_list ul li a.page_link.pdf {
-	background-image: image_url('refinery/icons/pdf.png');
+	background-image: image_url('assets/refinery/icons/pdf.png');
 }
 #records.files .record .title.jpg, #records.files .record .title.gif, #records.files .record .title.jpeg, #records.files .record .title.png, #records.files .record .title.tiff, #dialog_main #resource_file_area .pages_list ul li a.page_link.jpg, #dialog_main #resource_file_area .pages_list ul li a.page_link.jpeg, #dialog_main #resource_file_area .pages_list ul li a.page_link.gif, #dialog_main #resource_file_area .pages_list ul li a.page_link.png, #dialog_main #resource_file_area .pages_list ul li a.page_link.tiff {
-	background-image: image_url('refinery/icons/img.png');
+	background-image: image_url('assets/refinery/icons/img.png');
 }
 #records.files .record .title.doc, #records.files .record .title.pages, #records.files .record .title.docx, #dialog_main #resource_file_area .pages_list ul li a.page_link.doc, #dialog_main #resource_file_area .pages_list ul li a.page_link.docx, #dialog_main #resource_file_area .pages_list ul li a.page_link.pages {
-	background-image: image_url('refinery/icons/doc.png');
+	background-image: image_url('assets/refinery/icons/doc.png');
 }
 #records.files .record .title.ppt, #records.files .record .title.keynote, #dialog_main #resource_file_area .pages_list ul li a.page_link.ppt, #dialog_main #resource_file_area .pages_list ul li a.page_link.keynote {
-	background-image: image_url('refinery/icons/ppt.png');
+	background-image: image_url('assets/refinery/icons/ppt.png');
 }
 #records.files .record .title.xls, #records.files .record .title.numbers, #dialog_main #resource_file_area .pages_list ul li a.page_link.xls, #dialog_main #resource_file_area .pages_list ul li a.page_link.numbers {
-	background-image: image_url('refinery/icons/xls.png');
+	background-image: image_url('assets/refinery/icons/xls.png');
 }
 #records.files .record .title.zip, #records.files .record .title.rar, #dialog_main #resource_file_area .pages_list ul li a.page_link.zip, #dialog_main #resource_file_area .pages_list ul li a.page_link.rar {
-	background-image: image_url('refinery/icons/zip.png');
+	background-image: image_url('assets/refinery/icons/zip.png');
 }
 #records.files .record .title.mp3, #records.files .record .title.wav, #records.files .record .title.aiff, #records.files .record .title.m4a, #dialog_main #resource_file_area .pages_list ul li a.page_link.mp3, #dialog_main #resource_file_area .pages_list ul li a.page_link.wav, #dialog_main #resource_file_area .pages_list ul li a.page_link.aiff, #dialog_main #resource_file_area .pages_list ul li a.page_link.m4a {
-  background-image: image_url('refinery/icons/music.png');
+  background-image: image_url('assets/refinery/icons/music.png');
 }
 #records .actions {
   position: absolute;
@@ -749,18 +749,18 @@ label.stripped {
   width: 16px;
   height: 16px;
   margin: 3px 3px 0 0;
-  background: image_url('refinery/icons/page.png') center center no-repeat;
+  background: image_url('assets/refinery/icons/page.png') center center no-repeat;
 
   &.toggle {
     cursor: pointer;
-    background-image: image_url('refinery/icons/folder.png');
+    background-image: image_url('assets/refinery/icons/folder.png');
   }
   &.toggle.expanded {
-    background-image: image_url('refinery/icons/folder_open.png');
+    background-image: image_url('assets/refinery/icons/folder_open.png');
   }
 }
 #records.tree li.loading > div > span.icon {
-  background-image: image_url('refinery/icons/ajax-loader.gif') !important;
+  background-image: image_url('assets/refinery/icons/ajax-loader.gif') !important;
 }
 #image_grid .actions a img {
   padding: 4px 4px 1px 4px;
@@ -980,7 +980,7 @@ body.dialog form {
   .pages_list .linked a, .pages_list .linked a:hover {
     border: 1px solid #00A017;
     color: #00A017;
-    background: 7px 7px no-repeat image_url('refinery/icons/accept.png') #E0F5E0;
+    background: 7px 7px no-repeat image_url('assets/refinery/icons/accept.png') #E0F5E0;
   }
   .pages_list .linked a em {
     color: #00A017;
@@ -1054,20 +1054,20 @@ a img {
   border: 0px none;
 }
 /* icons */
-.add_icon             { background-image: image_url('refinery/icons/add.png'); }
-.delete_icon          { background-image: image_url('refinery/icons/delete.png'); }
-.edit_icon            { background-image: image_url('refinery/icons/application_edit.png'); }
-.reorder_icon         { background-image: image_url('refinery/icons/arrow_switch.png'); }
-.reorder_icon.loading { background-image:image_url('refinery/icons/ajax-loader.gif'); }
-.user_comment_icon    { background-image: image_url('refinery/icons/user_comment.png'); }
-.edit_email_icon      { background-image: image_url('refinery/icons/email_edit.png'); }
-.spam_icon            { background-image: image_url('refinery/icons/bin.png'); }
-.spam_empty_icon      { background-image: image_url('refinery/icons/bin_closed.png'); }
-.email_icon           { background-image: image_url('refinery/icons/email.png'); }
-.back_icon            { background-image: image_url('refinery/icons/arrow_left.png'); }
-.go_icon              { background-image: image_url('refinery/icons/application_go.png'); }
-.success_icon         { background-image: image_url('refinery/icons/tick.png'); padding: 0px 8px; }
-.failure_icon         { background-image: image_url('refinery/icons/cross.png'); padding: 0px 8px; }
+.add_icon             { background-image: image_url('assets/refinery/icons/add.png'); }
+.delete_icon          { background-image: image_url('assets/refinery/icons/delete.png'); }
+.edit_icon            { background-image: image_url('assets/refinery/icons/application_edit.png'); }
+.reorder_icon         { background-image: image_url('assets/refinery/icons/arrow_switch.png'); }
+.reorder_icon.loading { background-image: image_url('assets/refinery/icons/ajax-loader.gif'); }
+.user_comment_icon    { background-image: image_url('assets/refinery/icons/user_comment.png'); }
+.edit_email_icon      { background-image: image_url('assets/refinery/icons/email_edit.png'); }
+.spam_icon            { background-image: image_url('assets/refinery/icons/bin.png'); }
+.spam_empty_icon      { background-image: image_url('assets/refinery/icons/bin_closed.png'); }
+.email_icon           { background-image: image_url('assets/refinery/icons/email.png'); }
+.back_icon            { background-image: image_url('assets/refinery/icons/arrow_left.png'); }
+.go_icon              { background-image: image_url('assets/refinery/icons/application_go.png'); }
+.success_icon         { background-image: image_url('assets/refinery/icons/tick.png'); padding: 0px 8px; }
+.failure_icon         { background-image: image_url('assets/refinery/icons/cross.png'); padding: 0px 8px; }
 /* page parts */
 ul#page_parts {
   float: left;
@@ -1105,7 +1105,7 @@ ul#page_parts_controls img {
   clear:left;
 }
 a#toggle_advanced_options {
-	background: image_url('refinery/icons/page_white_gear.png') no-repeat 0px 3px;
+	background: image_url('assets/refinery/icons/page_white_gear.png') no-repeat 0px 3px;
 	padding: 5px 5px 5px 22px;
 	border-bottom: none;
 }
