@@ -2,6 +2,9 @@
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
+## 2.0.4 [unreleased]
+* Fixed stack level too deep error in Refinery::Menu#inspect. [Uģis Ozols](https://github.com/ugisozols)
+
 ## 2.0.3 [2 April 2012]
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
 * Fixed Heroku and sqlite3 related errors. [Philip Arndt](https://github.com/parndt)
