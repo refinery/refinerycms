@@ -1,7 +1,7 @@
 require "spec_helper"
 
-describe "Refinery::ApplicationController" do
-  describe "DummyController", :type => :controller do
+module Refinery
+  describe ApplicationController, :type => :controller do
     controller do
       include ::Refinery::ApplicationController
 
@@ -23,9 +23,20 @@ describe "Refinery::ApplicationController" do
         controller.home_page?.should be_true
       end
 
+      it "matches localised root url with trailing slash" do
+        controller.refinery.stub(:root_path).and_return("/en/")
+        request.stub(:path).and_return("/en/")
+        controller.home_page?.should be_true
+      end
+
       it "escapes regexp" do
         request.stub(:path).and_return("\/huh)")
         expect { controller.home_page? }.to_not raise_error(RegexpError)
+      end
+
+      it "returns false for non root url" do
+        request.stub(:path).and_return("/foo/")
+        controller.should_not be_home_page
       end
     end
 
