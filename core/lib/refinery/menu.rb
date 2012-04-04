@@ -22,10 +22,6 @@ module Refinery
       items.map(&:title).join(' ')
     end
 
-    def inspect
-      items.map(&:inspect)
-    end
-
     # The delegation is specified so crazily so that it works on 1.8.x and 1.9.x
     delegate *((Array.instance_methods - Object.instance_methods) << {:to => :items})
   end
