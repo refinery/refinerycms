@@ -158,7 +158,7 @@ var wymeditor_boot_options = $.extend({
       + "</form>"
     + "</div>"
 
-  , dialogPath: "/refinery/dialogs/"
+  , dialogPath: "<%= Refinery::Core::Engine.routes.url_helpers.root_path %>refinery/dialogs/"
   , dialogFeatures: {
       width: 866
     , height: 455
