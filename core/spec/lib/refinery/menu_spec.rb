@@ -27,10 +27,9 @@ module Refinery
       end
     end
 
-    describe '#to_s & #inspect' do
+    describe '#to_s' do
       it 'returns string of joined page titles' do
         menu.to_s.should eq('test1 test2')
-        menu.inspect.should eq('test1 test2')
       end
     end
 
