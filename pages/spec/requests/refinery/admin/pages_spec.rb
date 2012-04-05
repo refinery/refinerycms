@@ -488,6 +488,52 @@ module Refinery
             end
           end
         end
+
+        describe "add a translation for a child page" do
+          let(:de_page_title) { 'Über uns' }
+          let(:de_page_slug) { 'uber-uns' }
+          let(:de_page_title_2) { 'Mitarbeiter' }
+          let(:de_page_slug_2) { 'mitarbeiter' }
+          let(:en_page_title) { 'Team' }
+          let(:about_us_page) { FactoryGirl.create(:page, :title => de_page_title) }
+          let!(:team_page) do
+            Refinery::I18n.stub(:frontend_locales).and_return([:de, :en])
+            Refinery::I18n.stub(:default_frontend_locale).and_return(:de)
+
+            _page = Globalize.with_locale(:de) {
+              FactoryGirl.create(:page, :title => de_page_title_2, :parent => about_us_page)
+            }
+            Globalize.with_locale(:en) do
+              _page.title = en_page_title
+              _page.save
+            end
+
+            _page
+          end
+
+          it "succeeds" do
+            team_page.destroy!
+            visit refinery.admin_pages_path
+
+            within "#page_#{about_us_page.id}" do
+              click_link "Page_add"
+            end
+            fill_in "Title", :with => de_page_title_2
+            click_button "Save"
+
+            within "#page_#{Page.last.id}" do
+              click_link "Application_edit"
+            end
+            within "#switch_locale_picker" do
+              click_link "En"
+            end
+            fill_in "Title", :with => en_page_title
+            click_button "Save"
+
+            page.should have_content("'#{en_page_title}' was successfully updated.")
+            Refinery::Page.count.should == 3
+          end
+        end
       end
 
       describe "new page part", :js => true do
