@@ -1,6 +1,10 @@
 module ::Refinery
   module Admin
     class DialogsController < ::Refinery::AdminController
+      def index
+        redirect_to refinery.admin_root_path
+      end
+
       def show
         @dialog_type = params[:id].downcase
 
