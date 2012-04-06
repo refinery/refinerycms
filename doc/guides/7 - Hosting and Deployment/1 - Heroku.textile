@@ -60,7 +60,7 @@ gem install taps
 
 Step 2: Update the gemfile
 
-Right now your gemfile probably uses sqlite3 as a data store.  This is fine locally - but sqlite3 doesn't exist on Heroku.  So in gemfile change:
+Right now your gemfile probably uses sqlite3 as a data store.  This is fine locally - but sqlite3 doesn't exist on Heroku.  So in Gemfile change:
 
 <shell>
 gem 'sqlite3'
