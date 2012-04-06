@@ -1,4 +1,4 @@
-extensions = Dir[File.expand_path('../vendor/extensions/*', __FILE__)]
+extensions = Dir[ 'vendor/extensions/*' ]
 
 guard 'spork', :wait => 60, :cucumber => false, :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
