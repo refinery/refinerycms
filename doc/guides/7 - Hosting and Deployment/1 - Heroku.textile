@@ -42,7 +42,71 @@ Created http://random-site-name.heroku.com/
 
 This will output the URL for your Heroku hosted Refinery application. Your application should now be live at http://random-site-name.heroku.com
 
-NOTE: if you already have a refinery app you would like to deploy then just deploy as normal according to Heroku's instructions. You do not need to run the +--heroku+ flag, as all it does is automate some things.
+h3. If you already have a local Refinery application built
+
+If you have already built a Refinery application locally using SQLite, you'll need to make some changes to be able to deploy to Heroku.
+
+Step 0: Setup and log into Heroku
+If you haven't already - follow the first three steps of the "Heroku quick start guide":https://devcenter.heroku.com/articles/quickstart.
+
+Step 1: install the Taps gem:
+Since you've set up your website locally - you've probably got a bunch of information in a local database.  Rather than trying to recreate all that on Heroku we're going to import your SQLite database using a gem called taps.  One gotcha is that Taps will throw errors if you're using Ruby 1.9.3 - so switch to 1.9.2 for an easier time.
+
+You'll want to actually install this to your system - not just add it to your Gemfile.
+
+<shell>
+gem install taps
+</shell>
+
+Step 2: Update the Gemfile
+
+Right now your Gemfile probably uses sqlite3 as a data store.  This is fine locally - but sqlite3 doesn't exist on Heroku.  So in Gemfile change:
+
+<shell>
+gem 'sqlite3'
+</shell>
+
+to:
+<shell>
+group :development, :test do
+  gem 'sqlite3'
+end
+</shell>
+
+Next we need to add three more gems.
+
+# The Heroku gem allows you to interface with Heroku's API
+# Fog allows you to use S3 assets (See Adding Amazon S3 Support below)
+# Postgres support (added for Heroku)
+
+You can just throw these at the end of your Gemfile:
+
+<shell>
+gem 'heroku'
+gem 'fog'
+gem 'pg'
+</shell>
+
+Now we just need to run bundle and add the changes to git:
+<shell>
+bundle install
+git add Gemfile
+git add Gemfile.lock
+git commit "setup for Heroku"
+</shell>
+
+Step 3: Set up your app on Heroku:
+<shell>
+app_name="your-app-name"
+heroku create $app_name --stack cedar
+git push heroku master
+</shell>
+
+Step 4: Import your data
+<shell>
+heroku db:push
+</shell>
+
 
 h3. Adding Amazon S3 Support
 
