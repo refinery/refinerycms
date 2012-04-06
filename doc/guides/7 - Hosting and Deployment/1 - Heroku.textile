@@ -52,15 +52,15 @@ If you haven't already - follow the first three steps of the "Heroku quick start
 Step 1: install the Taps gem:
 Since you've set up your website locally - you've probably got a bunch of information in a local database.  Rather than trying to recreate all that on Heroku we're going to import your SQLite database using a gem called taps.  One gotcha is that Taps will throw errors if you're using Ruby 1.9.3 - so switch to 1.9.2 for an easier time.
 
-You'll want to actually install this to your system - not just add it to your gemfile.
+You'll want to actually install this to your system - not just add it to your Gemfile.
 
 <shell>
 gem install taps
 </shell>
 
-Step 2: Update the gemfile
+Step 2: Update the Gemfile
 
-Right now your gemfile probably uses sqlite3 as a data store.  This is fine locally - but sqlite3 doesn't exist on Heroku.  So in Gemfile change:
+Right now your Gemfile probably uses sqlite3 as a data store.  This is fine locally - but sqlite3 doesn't exist on Heroku.  So in Gemfile change:
 
 <shell>
 gem 'sqlite3'
@@ -79,7 +79,7 @@ Next we need to add three more gems.
 # Fog allows you to use S3 assets (See Adding Amazon S3 Support below)
 # Postgres support (added for Heroku)
 
-You can just throw these at the end of your gemfile:
+You can just throw these at the end of your Gemfile:
 
 <shell>
 gem 'heroku'
