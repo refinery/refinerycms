@@ -5,6 +5,7 @@
 ## 2.0.4 [unreleased]
 * Fixed stack level too deep error in Refinery::Menu#inspect. [Uģis Ozols](https://github.com/ugisozols)
 * Fixed spec fails for newly generated engines and bumped gem versions in generated Gemfile. [Uģis Ozols](https://github.com/ugisozols)
+* Fixed dialog opening issue when Refinery was mounted at different path than /. [Uģis Ozols](https://github.com/ugisozols)
 
 ## 2.0.3 [2 April 2012]
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
