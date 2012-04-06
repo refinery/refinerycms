@@ -98,7 +98,7 @@ module Refinery
 
       def redirect_unless_user_editable!
         unless current_refinery_user.can_edit?(@user)
-          redirect_to(main_app.refinery_admin_users_path) and return
+          redirect_to(refinery.admin_users_path) and return
         end
       end
     end
