@@ -22,7 +22,7 @@ More information at [http://refinerycms.com](http://refinerycms.com)
 
 If you're new to Refinery, start with this guide:
 
-* __[Getting started with Refinery](http://refinerycms.com/guides/getting-started-with-refinery)__
+* __[Getting Started](http://refinerycms.com/guides/getting-started)__
 
 ## What's it good at?
 
@@ -43,10 +43,10 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 
 ## Help and Documentation
 
-* [Getting Started](http://refinerycms.com/guides/getting-started-with-refinery)
+* [Getting Started](http://refinerycms.com/guides/getting-started)
 * [Guides](http://refinerycms.com/guides)
 * [Google Group Discussion](http://group.refinerycms.org)
-* [IRC Channel](http://refinerycms.com/guides/how-to-get-help-with-refinery#irc-channel)
+* [IRC Channel](http://refinerycms.com/guides/how-to-get-help#irc-channel)
 * [GitHub repository](https://github.com/resolve/refinerycms)
 * [Developer/API documentation](http://api.refinerycms.org)
 * [Twitter Account](http://twitter.com/refinerycms)
