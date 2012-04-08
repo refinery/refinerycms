@@ -22,6 +22,7 @@ module Refinery
     #
     def show
       if current_user_can_view_page?
+        @canonical = page.friendly_id
         if should_skip_to_first_child?
           redirect_to refinery.url_for(first_live_child.url)
         elsif page.link_url.present?
