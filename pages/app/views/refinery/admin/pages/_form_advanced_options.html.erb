@@ -41,7 +41,7 @@
         <%= refinery_help_tag t('.view_template_help') %>
       </span>
       <% if @page.parent_id? %>
-        <%= f.select(:view_template, @valid_view_templates.map{|t| [t.titleize, t]}, {:selected => @page.parent.view_template } %>
+        <%= f.select(:view_template, @valid_view_templates.map{|t| [t.titleize, t]}, {:selected => @page.parent.view_template }) %>
       <% else %>
         <%= f.select(:view_template, @valid_view_templates.map{|t| [t.titleize, t]}) %>
       <% end %>
