@@ -69,9 +69,9 @@ en:
           menu_title_help: If you want the menu to display a different title than the one that dipsplays on the page, enter it here.
           custom_slug_help: A slug is a human-readable ID used to create a page&apos;s full URL, for example &apos;about-us&apos;. To override the slug that is automatically created by Refinery, enter your custom slug here.
           layout_template: Layout template
-          layout_template_help: You can chose different layout template for this page
+          layout_template_help: You can choose a different layout template for this page
           view_template: View template
-          view_template_help: You can chose different view template for this page
+          view_template_help: You can choose a different view template for this page
         form_advanced_options_seo:
           seo: Search Engine Optimization
           seo_override_title: Browser title
