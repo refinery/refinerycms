@@ -103,9 +103,9 @@ module Refinery
       end
 
       # Finds a page using its slug.  See by_title
-      def by_slug(slug)
+      def by_slug(slug, conditions={})
         locales = Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales : ::I18n.locale
-        with_globalize(:locale => locales, :slug => slug)
+        with_globalize(conditions.reverse_merge(:locale => locales, :slug => slug))
       end
 
       # Shows all pages with :show_in_menu set to true, but it also
