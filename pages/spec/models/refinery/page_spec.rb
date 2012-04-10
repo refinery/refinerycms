@@ -418,5 +418,24 @@ module Refinery
       end
     end
 
+    describe '.find_by_path' do
+      let(:page_title)  { 'team' }
+      let(:child_title) { 'about' }
+      let(:created_root_about) { subject.class.create!(:title => child_title, :deletable => true) }
+
+      before(:each) do
+        # Ensure pages are created.
+        created_child
+        created_root_about
+      end
+
+      it "should return (root) about page when looking for '/about'" do
+        Refinery::Page.find_by_path('/about').should == created_root_about
+      end
+
+      it "should return child about page when looking for '/team/about'" do
+        Refinery::Page.find_by_path('/team/about').should == created_child
+      end
+    end
   end
 end
