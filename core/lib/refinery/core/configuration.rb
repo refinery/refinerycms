@@ -37,12 +37,18 @@ module Refinery
       self.stylesheets << Stylesheet.new(*args)
     end
 
-    def self.clear_javascripts!
-      self.javascripts = []
-    end
+    class << self
+      def clear_javascripts!
+        self.javascripts = []
+      end
 
-    def self.clear_stylesheets!
-      self.stylesheets = []
+      def clear_stylesheets!
+        self.stylesheets = []
+      end
+
+      def site_name
+        ::I18n.t('site_name', :scope => 'refinery.core.config', :default => config.site_name)
+      end
     end
 
     # wrapper for stylesheet registration
