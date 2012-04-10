@@ -8,7 +8,7 @@
 * Fixed dialog opening issue when Refinery was mounted at different path than /. [Uģis Ozols](https://github.com/ugisozols)
 * Added ability to specify site name in I18n locales too. [Philip Arndt](https://github.com/parndt)
 * If parent page has custom view/layout template specified set this template as selected when editing sub page. [xyz](https://github.com/xyz)
-* Fixed page ambiguity for different pages with the same slug in find_by_path. [nicholassm](https://github.com/nicholassm)
+* Fixed page ambiguity for different pages with the same slug in find_by_path. [Nicholas Schultz-Møller](https://github.com/nicholassm)
 
 ## 2.0.3 [2 April 2012]
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
@@ -27,7 +27,6 @@
 * Fixed missing page part CSS classes (i.e. `no_side_body`) [Rob Yurkowski](https://github.com/robyurkowski)
 * Deprecated `body_content_left` and `body_content_right` [Rob Yurkowski](https://github.com/robyurkowski)
 * Reorganizes documentation [Rob Yurkowski](https://github.com/robyurkowski)
-* Fixed issue where 'Switch to your website' was not working inside the pages form. [Philip Arndt](https://github.com/parndt)
 
 ## 2.0.2 [15 March 2012]
 
