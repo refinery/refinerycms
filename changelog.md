@@ -6,6 +6,9 @@
 * Fixed stack level too deep error in Refinery::Menu#inspect. [Uģis Ozols](https://github.com/ugisozols)
 * Fixed spec fails for newly generated engines and bumped gem versions in generated Gemfile. [Uģis Ozols](https://github.com/ugisozols)
 * Fixed dialog opening issue when Refinery was mounted at different path than /. [Uģis Ozols](https://github.com/ugisozols)
+* Added ability to specify site name in I18n locales too. [Philip Arndt](https://github.com/parndt)
+* If parent page has custom view/layout template specified set this template as selected when editing sub page. [xyz](https://github.com/xyz)
+* Fixed page ambiguity for different pages with the same slug in find_by_path. [nicholassm](https://github.com/nicholassm)
 
 ## 2.0.3 [2 April 2012]
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
