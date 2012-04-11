@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
-  s.add_dependency 'awesome_nested_set',          '~> 2.1.0'
+  s.add_dependency 'awesome_nested_set',          '~> 2.1.3'
   s.add_dependency 'seo_meta',                    '~> 1.3.0'
   s.add_dependency 'refinerycms-core',            version
   s.add_dependency 'babosa',                      '!= 0.3.6'
