@@ -75,7 +75,9 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 * Control which extensions each user has access to.
 * Uses the popular [Devise](https://github.com/plataformatec/devise).
 
-Extend Refinery easily by running the Refinery extension generator. 
+### Custom Engines
+
+Extend Refinery easily by running the Refinery extension generator.
 For help run the command without any options:
 
     rails generate refinery:engine
