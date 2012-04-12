@@ -82,7 +82,7 @@ For help run the command without any options:
 
     rails generate refinery:engine
 
-### Popular Engines
+### Popular Extensions
 
 * [Blog](https://github.com/resolve/refinerycms-blog) - A simple blogging extension that supports posts, categories and comments (with moderation support if you choose to enable it)
 * [Portfolio](https://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
