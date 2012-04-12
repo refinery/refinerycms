@@ -84,7 +84,7 @@ For help run the command without any options:
 
 ### Popular Extensions
 
-* [Blog](https://github.com/resolve/refinerycms-blog) - A simple blogging extension that supports posts, categories and comments (with moderation support if you choose to enable it)
+* [Blog](https://github.com/resolve/refinerycms-blog) - A simple blogging extension that supports posts, categories and comments with optional moderation support.
 * [Portfolio](https://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](https://github.com/resolve/refinerycms-news) - post and manage news items.
 
