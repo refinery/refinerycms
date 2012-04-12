@@ -34,21 +34,28 @@ da:
       pages:
         delete: Slet siden permanent
         edit: Redigér siden
+        new: Tilføj en ny underside
+        expand_collapse: Udvid eller sammenfold undersider
         page:
           view_live_html: Vis siden live <br/><em>(åbner i et nyt vindue)</em>
           hidden: skjult
           draft: kladde
+        form:
+          preview: Preview
+          preview_changes: Se dine ændringer før du udgiver dem
         form_new_page_parts:
           title: Titel
         form_page_parts:
           create_content_section: Tilføj indholdselement
           delete_content_section: Slet indholdselement
+          reorder_content_section: Redigér rækkefølgen af indholdselement
         form_advanced_options:
           toggle_advanced_options: Tilgå meta tags og menuindstillinger
           page_options: Side indstillinger
           parent_page: Overordnet side
           advanced_options: Avancerede indstillinger
-          custom_title: Brugerdefineret titel
+          menu_title: Menutitel
+          custom_slug: Brugerdefineret slug
           show_in_menu_title: Vis i menuen
           show_in_menu_description: Vis siden i menuen på sitet
           show_in_menu_help: Afkryds ikke, hvis du vil fjerne siden fra menuen på sitet. Dette kan benyttes, hvis du vil have en side, du kan linke til direkte, men som ikke skal vises i menuen.
@@ -59,13 +66,27 @@ da:
           link_url: Videresend besøgende til andet website eller anden side
           link_url_help: Hvis du vil have denne side går til et andet website eller en anden side, når besøgende klikker på den i menuen, skal du indtaste URLen, fx http://google.com
           parent_page_help: Du kan placere siden under en anden side ved at vælge den i listen. Hvis siden skal ligge på øverste niveau skal du ikke vælge noget.
-          custom_title_help: Hvis siden skal have en anden titel end i menuen, så vælg &apos;Tekst&apos; og indtast titlen her.
+          menu_title_help: Hvis siden skal have en anden titel i menuen, så vælg &apos;Tekst&apos; og indtast titlen her.
+          custom_slug_help: En slug er et letlæseligt id, som bruges til at lave en sides fulde internetadresse (URL), fx &apos;om-os&apos. For at overskrive den slug der automatisk bliver oprettet af Refinery, kan du skrive din brugerdefinerede slug her.
+          layout_template: Layout template
+          layout_template_help: You can choose a different layout template for this page
+          view_template: View template
+          view_template_help: You can choose a different view template for this page
+        form_advanced_options_seo:
+          seo: Søgemaskineoptimering
+          seo_override_title: Browsertitel
+          seo_override_title_help: Indtast en titel på 5-10 ord, der opsummerer sidens indhold.
+          meta_keywords_title: Meta nøgleord
+          meta_keywords_help: Indtast 5-10 nøgleord der er relaterede til siden. Adskil nøgleordene med kommaer.
+          meta_description_title: Meta beskrivelse
+          meta_description_help: Indtast to eller tre sætninger, der beskriver siden.
         actions:
           create_new_page: Tilføj en ny side
           reorder_pages: Redigér rækkefølgen af siderne
           reorder_pages_done: Gem rækkefølgen
         records:
           no_pages_yet: Der er ingen sider endnu. Klik på "Tilføj en ny side" for at oprette den første."
+          translator_access: Du har ikke tilstrækkelige rettigheder til at ændre siden på det valgte sprog.
   activerecord:
     models:
       refinery/page: side
