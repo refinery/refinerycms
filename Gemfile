@@ -9,6 +9,8 @@ gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/parndt/refiner
 # See: https://github.com/svenfuchs/globalize3/pull/121
 gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git', :branch => 'master'
 
+gem 'quiet_assets', :group => :development
+
 # Database Configuration
 platforms :jruby do
   gem 'activerecord-jdbcsqlite3-adapter'
