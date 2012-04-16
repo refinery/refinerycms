@@ -9,10 +9,9 @@ endprologue.
 
 h3. Changing default Page Parts
 
-Refinery by default provides you with +Body+ and +Side Body+ page parts because most pages have a two column style layout. If your layout has three content areas or one, you're going to want to update this setting to reflect that.
+By default, Refinery provides you with +Body+ and +Side Body+ page parts since most pages have a two column-style layout. If your layout has three content areas or one, you're going to want to update this setting to reflect that.
 
-Within @config/initializers/refinery/pages.rb@ you will see various default settings are commented out including the following:
-
+Within @config/initializers/refinery/pages.rb@ you will see various default settings are commented out, including the following:
 
 @  # Configure global page default parts@
 @  # config.default_parts = ["Body", "Side Body"]@
@@ -30,18 +29,18 @@ Often we find our home pages have three or more page parts but the rest of the s
 
 Refinery supports the ability for the user to add new Page Parts on the fly when editing a page.
 
-To add a new Page Part just to the home page, first we need to go into the "Settings" tab in Refinery. Find the setting named "New Page Parts" and set its value to +true+.
+To add a new Page Part just to the home page, refer back to @config/initializers/refinery/pages.rb@. Inside, you should see the following:
 
-Now go to your "Pages" tab in Refinery and edit your home page. You'll notice a plus and minus button at the top right of the visual editor. Click on the plus icon and add a new page part titled "Middle Body" and click save. A new visual editor will appear in a tab called "Middle Body" ready to use just for this page.
+@  # config.new_page_parts = false@
 
-NOTE: Your "middle body" content won't show on the front end yet. You need to output the content of that page part in the view.
+Change this to true, save, and restart your server.
 
-Now in your +app/views/refinery/pages/home.html.erb+ view you'll be able to put:
+Now go to your "Pages" tab in Refinery and edit your home page. You'll notice a plus and minus button at the top right of the visual editor. Click on the plus icon and add a new page part titled "Middle Body" and click save. A new visual editor will appear in a tab called "Middle Body" ready to use just for this page. Inserting content there will show up on any page that uses the @content_page@ partial (by default, all of them).
+
+WARNING. If you've modified your @app/views/refinery/pages/home.html.erb@ file, you will not see your new page part until you set that page part to display in the view.
+
+If you have modified your @home.html.erb@ file, you can use the following snippet to output the new part's content in your page:
 
 <erb>
 <%= raw @page.content_for(:middle_body) %>
 </erb>
-
-to output this new content area in the view.
-
-NOTE: If you don't have a +app/views/refinery/pages/home.html.erb+ view already, run +rake refinery:override view=refinery/pages/home+ to copy it into your app.
