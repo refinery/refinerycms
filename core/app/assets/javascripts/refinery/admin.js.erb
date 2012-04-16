@@ -959,10 +959,10 @@ var image_picker = {
   }
 
   , toggle_image: function(e) {
-    $(this.container).find(this.options.image_toggler).html(
-      ($(this.container).find(options.image_toggler).html() == 'Show' ? 'Hide' : 'Show')
+    $(this.container).find(this.picker.options.image_toggler).html(
+      ($(this.container).find(this.picker.options.image_toggler).html() == 'Show' ? 'Hide' : 'Show')
     );
-    $(this.container).find(this.options.image_container).toggle();
+    $(this.container).find(this.picker.options.image_container).toggle();
     e.preventDefault();
   }
 
