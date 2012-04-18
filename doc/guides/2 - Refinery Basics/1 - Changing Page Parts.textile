@@ -14,7 +14,7 @@ Refinery by default provides you with +Body+ and +Side Body+ page parts because 
 Within @config/initializers/refinery/pages.rb@ you will see various default settings are commented out including the following:
 
 <ruby>
-# Configure global page default parts@
+# Configure global page default parts
 # config.default_parts = ["Body", "Side Body"]
 </ruby>
 
