@@ -68,7 +68,7 @@ module Refinery
       @meta = presenter_for(model).new(model)
     end
 
-    def presenter_for(model, default=BasePresenter)
+    def presenter_for(model, default = BasePresenter)
       return default if model.nil?
 
       "#{model.class.name}Presenter".constantize
