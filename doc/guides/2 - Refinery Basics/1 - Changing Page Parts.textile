@@ -23,7 +23,7 @@ Edit this code to have the names of the default page parts you want, click +Save
 Here's a sample of a site that would have three content areas on most of its pages.
 
 <ruby>
-# Configure global page default parts@
+# Configure global page default parts
 config.default_parts = ["Left Body", "Middle Body", "Right Body"]
 </ruby>
 
