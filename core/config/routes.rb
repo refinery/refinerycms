@@ -5,10 +5,10 @@ Refinery::Core::Engine.routes.draw do
 
   namespace :admin, :path => 'refinery' do
     root :to => 'dashboard#index'
-    resources :dialogs, :only => :show
+    resources :dialogs, :only => [:index, :show]
   end
 
-  match '/refinery/update_menu_positions', :to => 'admin/refinery_core#update_plugin_positions'
+  match '/refinery/update_menu_positions', :to => 'admin/core#update_plugin_positions'
 
   get '/sitemap.xml' => 'sitemap#index', :defaults => { :format => 'xml' }
 end

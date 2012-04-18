@@ -16,7 +16,12 @@ module Refinery
       end
 
       def hide_sections(*ids_to_hide)
+        ids_to_hide.flatten!
         @sections.select {|section| ids_to_hide.include?(section.id)}.each(&:hide) if ids_to_hide.any?
+      end
+
+      def hidden_sections
+        @sections.select {|section| section.hidden? }
       end
 
       def fetch_template_overrides
@@ -42,7 +47,7 @@ module Refinery
     private
 
       def sections_html(can_use_fallback)
-        @sections.map {|section| section.wrapped_html(can_use_fallback)}.compact.join("\n").html_safe
+        @sections.map { |section| section.wrapped_html(can_use_fallback) }.compact.join("\n").html_safe
       end
 
       def add_section_if_missing(options)

@@ -8,11 +8,6 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      config.to_prepare do |app|
-        Refinery::Page.translation_class.send(:is_seo_meta)
-        Refinery::Page.translation_class.send(:attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale)
-      end
-
       before_inclusion do
         ::ApplicationController.send :helper, Refinery::Pages::ContentPagesHelper
         Refinery::AdminController.send :helper, Refinery::Pages::ContentPagesHelper
@@ -23,7 +18,7 @@ module Refinery
         Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
       end
 
-      initializer "register refinery_pages plugin" do
+      initializer "refinery.pages register plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_pages'
@@ -34,12 +29,23 @@ module Refinery
         end
       end
 
-      initializer "append marketable routes", :after => :set_routes_reloader_hook do
+      initializer "refinery.pages acts_as_indexed" do
+        ActiveSupport.on_load(:active_record) do
+          require 'acts_as_indexed'
+          ActsAsIndexed.configure do |config|
+            config.index_file = Rails.root.join('tmp', 'index')
+            config.index_file_depth = 3
+            config.min_word_size = 3
+          end
+        end
+      end
+
+      initializer "refinery.pages append marketable routes", :after => :set_routes_reloader_hook do
         append_marketable_routes if Refinery::Pages.marketable_urls
       end
 
-      initializer "add marketable route parts to reserved words", :after => :set_routes_reloader_hook do |app|
-        add_route_parts_as_reserved_words(app) if Refinery::Pages.marketable_urls
+      initializer "add marketable route parts to reserved words", :after => :set_routes_reloader_hook do
+        add_route_parts_as_reserved_words if Refinery::Pages.marketable_urls
       end
 
       config.after_initialize do
@@ -56,12 +62,14 @@ module Refinery
       end
 
       # Add any parts of routes as reserved words.
-      def add_route_parts_as_reserved_words(app)
-        route_paths = app.routes.named_routes.routes.map { |name, route| route.path.spec }
-        route_paths.reject! {|path| path.to_s =~ %r{^/(rails|refinery)}}
-        Refinery::Page.friendly_id_config.reserved_words |= route_paths.map { |path|
-          path.to_s.gsub(%r{^/}, '').to_s.split('(').first.to_s.split(':').first.to_s.split('/')
-        }.flatten.reject { |w| w =~ %r{_|\.} }.uniq
+      def add_route_parts_as_reserved_words
+        ActiveSupport.on_load(:active_record) do
+          route_paths = Rails.application.routes.named_routes.routes.map { |name, route| route.path.spec }
+          route_paths.reject! {|path| path.to_s =~ %r{^/(rails|refinery)}}
+          Refinery::Page.friendly_id_config.reserved_words |= route_paths.map { |path|
+            path.to_s.gsub(%r{^/}, '').to_s.split('(').first.to_s.split(':').first.to_s.split('/')
+          }.flatten.reject { |w| w =~ %r{_|\.} }.uniq
+        end
       end
     end
   end

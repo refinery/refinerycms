@@ -1,5 +1,10 @@
+require 'dragonfly'
+require 'acts_as_indexed'
+
 module Refinery
   class Image < Refinery::Core::BaseModel
+    ::Refinery::Images::Dragonfly.setup!
+
     include Images::Validators
 
     image_accessor :image

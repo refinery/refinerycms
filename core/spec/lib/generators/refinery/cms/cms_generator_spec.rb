@@ -37,9 +37,6 @@ module Refinery
           file "database.yml.mysql"
           file "database.yml.postgresql"
           file "database.yml.sqlite3"
-          directory "initializers" do
-            file "devise.rb"
-          end
         end
       }
     end

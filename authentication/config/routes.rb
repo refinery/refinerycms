@@ -1,5 +1,12 @@
+Refinery::Core::Engine.routes.append do
+  namespace :admin, :path => 'refinery' do
+    resources :users, :except => :show
+  end
+end
+
 Refinery::Core::Engine.routes.draw do
   begin
+    require 'devise'
     devise_for :refinery_user,
                :class_name => 'Refinery::User',
                :path => 'refinery/users',
@@ -27,11 +34,5 @@ Refinery::Core::Engine.routes.draw do
     else
       raise exc
     end
-  end
-end
-
-Refinery::Core::Engine.routes.append do
-  namespace :admin, :path => 'refinery' do
-    resources :users, :except => :show
   end
 end

@@ -16,11 +16,12 @@ Gem::Specification.new do |s|
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'David Jones', 'Steven Heidel']
   s.license           = %q{MIT}
   s.require_paths     = %w(lib)
-  
+
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
   s.add_dependency 'dragonfly',        '~> 0.9.8'
   s.add_dependency 'rack-cache',       '>= 0.5.3'
+  s.add_dependency 'acts_as_indexed',  '~> 0.7.7'
   s.add_dependency 'refinerycms-core', version
 end

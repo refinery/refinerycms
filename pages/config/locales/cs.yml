@@ -34,6 +34,7 @@ cs:
       pages:
         delete: Smazat tuto stránku
         edit: Upravit tuto stránku
+        new: Přidat podstránku
         page:
           view_live_html: Zobrazit tuto stránku <br/><em>(otevře se v novém okně)</em>
           hidden: skrytá

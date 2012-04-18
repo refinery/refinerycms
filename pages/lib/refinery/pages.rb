@@ -48,8 +48,10 @@ module Refinery
   end
 end
 
-require 'awesome_nested_set'
-require 'globalize3'
+ActiveSupport.on_load(:active_record) do
+  require 'awesome_nested_set'
+  require 'globalize3'
+end
 require 'friendly_id'
 require 'seo_meta'
 require 'babosa'

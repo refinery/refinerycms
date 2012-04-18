@@ -1,0 +1,49 @@
+h2. Full-Page Cache with Apache
+
+If you have a simple Page on a slow Server with Apache you can use the Full
+Page Caching for deliver the most pages directly from Apache (without passenger).
+
+endprologue.
+
+h3. Activate "Cache Pages Full"
+
+* Go to http://your-website/refinery/settings
+* Enable the setting "Cache Pages Full"
+* Restart the Application (example by touching <tt>tmp/restart.txt</tt> in your
+  current directory on server)
+
+From now every page you request from Refinery CMS will be saved at
+public/refinery/cache/pages. E.g. after you request http://your-website/about
+you find a file named public/refinery/cache/pages/about.html.
+
+h3. Redirect
+
+Now we have to redirect Apache to these generated files.
+Write a <tt>.htaccess</tt> file like this:
+
+<code>
+RewriteEngine On
+
+# Rewrite home to check for static
+RewriteRule ^$ home
+
+#checks cache directory for already cached pages
+RewriteCond %{REQUEST_URI} ^/(../)?[^/]*$
+RewriteCond %{DOCUMENT_ROOT}/refinery/cache/pages%{REQUEST_URI}.html -f
+RewriteRule ^([^.]+)$ refinery/cache/pages/%{REQUEST_URI}.html [L]
+
+# by default, Rails appends asset timestamps to all asset paths. This allows
+# you to set a cache-expiration date for the asset far into the future
+ExpiresActive on
+ExpiresByType image/gif "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/x-icon "access plus 1 year"
+ExpiresByType text/css "access plus 1 year"
+ExpiresByType application/javascript "access plus 1 year"
+
+# compress static text files
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript text/css application/javascript
+</code>
+
+Now pages are delivered by Apache without touching passenger.

@@ -1,7 +1,13 @@
 namespace :refinery do
   namespace :testing do
     desc "Generates a dummy app for testing"
-    task :dummy_app => [:setup_dummy_app, :setup_extension, "extension:setup"]
+    task :dummy_app do
+      unless dummy_app_path.exist?
+        Rake::Task["refinery:testing:setup_dummy_app"].invoke
+        Rake::Task["refinery:testing:setup_extension"].invoke
+        Rake::Task["refinery:testing:init_test_database"].invoke
+      end
+    end
 
     task :setup_dummy_app do
       require 'refinerycms'
@@ -12,6 +18,8 @@ namespace :refinery do
       Refinery::DummyGenerator.start params
 
       Refinery::CmsGenerator.start %w[--quiet --fresh-installation]
+
+      Dir.chdir Refinery::Testing::Railtie.target_extension_path
     end
 
     # This task is a hook to allow extensions to pass configuration
@@ -31,21 +39,16 @@ namespace :refinery do
 
     desc "Remove the dummy app used for testing"
     task :clean_dummy_app do
-      path = Refinery::Testing::Railtie.target_extension_path.join('spec', 'dummy')
-
-      path.rmtree if path.exist?
+      dummy_app_path.rmtree if dummy_app_path.exist?
     end
 
-    namespace :extension do
-      desc "Initialize the testing environment"
-      task :setup => [:init_test_database]
+    task :init_test_database do
+      load 'rails/tasks/engine.rake'
+      Rake::Task["app:db:test:prepare"].invoke
+    end
 
-      task :init_test_database do
-        task_params = [%Q{ bundle exec rake -f #{Refinery::Testing::Railtie.target_extension_path.join('Rakefile')} }]
-        task_params << %Q{ app:db:test:prepare }
-
-        system task_params.join(' ')
-      end
+    def dummy_app_path
+      Refinery::Testing::Railtie.target_extension_path.join('spec', 'dummy')
     end
   end
 end

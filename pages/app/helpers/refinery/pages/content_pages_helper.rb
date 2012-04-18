@@ -1,4 +1,4 @@
-module ::Refinery
+module Refinery
   module Pages
     module ContentPagesHelper
       # Build the html for a Refinery CMS page object by creating a ContentPagePresenter. This is a

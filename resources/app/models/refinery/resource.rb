@@ -1,5 +1,10 @@
+require 'dragonfly'
+require 'acts_as_indexed'
+
 module Refinery
   class Resource < Refinery::Core::BaseModel
+    ::Refinery::Resources::Dragonfly.setup!
+
     include Resources::Validators
 
     attr_accessible :id, :file

@@ -509,6 +509,39 @@ module Refinery
           end
         end
       end
+
+      describe 'advanced options' do
+        describe 'view and layout templates' do
+          context 'when parent page has templates set' do
+            before(:each) do
+              Refinery::Pages.stub(:use_layout_templates).and_return(true)
+              Refinery::Pages.stub(:use_view_templates).and_return(true)
+              Refinery::Pages.stub(:layout_template_whitelist).and_return(['abc', 'refinery'])
+              Refinery::Pages.stub(:view_template_whitelist).and_return(['abc', 'refinery'])
+              Refinery::Pages.stub(:valid_templates).and_return(['abc', 'refinery'])
+              parent_page = FactoryGirl.create(:page, :view_template => 'refinery',
+                                                      :layout_template => 'refinery')
+              FactoryGirl.create(:page, :parent_id => parent_page)
+            end
+
+            specify 'sub page should inherit them' do
+              visit refinery.admin_pages_path
+
+              within '.nested' do
+                click_link 'Edit this page'
+              end
+
+              within '#page_layout_template' do
+                page.find('option[value=refinery]').selected?.should eq('selected')
+              end
+
+              within '#page_view_template' do
+                page.find('option[value=refinery]').selected?.should eq('selected')
+              end
+            end
+          end
+        end
+      end
     end
 
     describe "TranslatePages" do

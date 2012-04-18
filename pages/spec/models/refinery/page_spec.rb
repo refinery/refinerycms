@@ -154,6 +154,18 @@ module Refinery
         child_with_custom_slug.url[:path].should == [page.url[:path].first, "#{custom_child_slug}-ru"]
       end
 
+      context "given a page with a custom_slug exists" do
+        before do
+          Factory(:page, :custom_slug => custom_page_slug)
+        end
+
+        it "fails validation when a new record uses that custom_slug" do
+          new_page = Refinery::Page.new :custom_slug => custom_page_slug
+          new_page.valid?
+
+          new_page.errors[:custom_slug].should_not be_empty
+        end
+      end
     end
 
     context 'home page' do
@@ -178,6 +190,25 @@ module Refinery
         page.content_for('BoDY').should == "<p>I'm the first page part for this page.</p>"
       end
 
+
+      context 'when using content_for?' do
+
+        it 'return true when page part has content' do
+          page.content_for?(:body).should be_true
+        end
+
+        it 'return false when page part does not exist' do
+          page.parts = []
+          page.content_for?(:body).should be_false
+        end
+
+        it 'return false when page part does not have any content' do
+          page.parts.first.content = ''
+          page.content_for?(:body).should be_false
+        end
+
+      end
+      
       it 'return all page part content' do
         page.all_page_part_content.should == "<p>I'm the first page part for this page.</p> <p>Closely followed by the second page part.</p>"
       end
@@ -387,5 +418,24 @@ module Refinery
       end
     end
 
+    describe '.find_by_path' do
+      let(:page_title)  { 'team' }
+      let(:child_title) { 'about' }
+      let(:created_root_about) { subject.class.create!(:title => child_title, :deletable => true) }
+
+      before(:each) do
+        # Ensure pages are created.
+        created_child
+        created_root_about
+      end
+
+      it "should return (root) about page when looking for '/about'" do
+        Refinery::Page.find_by_path('/about').should == created_root_about
+      end
+
+      it "should return child about page when looking for '/team/about'" do
+        Refinery::Page.find_by_path('/team/about').should == created_child
+      end
+    end
   end
 end

@@ -1,4 +1,5 @@
 require 'devise'
+require 'friendly_id'
 
 module Refinery
   class User < Refinery::Core::BaseModel
@@ -43,7 +44,7 @@ module Refinery
     end
 
     def authorized_plugins
-      plugins.collect { |p| p.name } | ::Refinery::Plugins.always_allowed.names
+      plugins.collect(&:name) | ::Refinery::Plugins.always_allowed.names
     end
 
     def can_delete?(user_to_delete = self)
@@ -88,10 +89,6 @@ module Refinery
 
     def to_s
       username.to_s
-    end
-
-    def to_param
-      to_s.parameterize
     end
 
   end

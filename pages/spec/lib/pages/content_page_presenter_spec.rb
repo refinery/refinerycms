@@ -24,18 +24,18 @@ module Refinery
 
         it "adds body content left and right after page parts" do
           content = ContentPagePresenter.new(page_with_one_part, title)
-          content.get_section(2).id.should == :body_content_left
-          content.get_section(3).id.should == :body_content_right
+          content.get_section(2).id.should == :body
+          content.get_section(3).id.should == :side_body
         end
 
         it "doesnt add page parts if page is nil" do
           content = ContentPagePresenter.new(nil, title)
-          content.get_section(1).id.should == :body_content_left
+          content.get_section(1).id.should == :body
         end
 
         it "doesnt add title if it is blank" do
           content = ContentPagePresenter.new(nil, '')
-          content.get_section(0).id.should == :body_content_left
+          content.get_section(0).id.should == :body
         end
       end
     end

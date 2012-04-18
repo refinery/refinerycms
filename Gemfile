@@ -5,8 +5,11 @@ gemspec
 # Add i18n support.
 gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/parndt/refinerycms-i18n.git'
 
-# Temporarily use a custom branch for paper_trail (used by globalize3, used by refinerycms-pages)
-gem 'paper_trail', :git => 'git://github.com/parndt/paper_trail.git', :branch => 'less_rails'
+# Fixes uniqueness constraint on translated columns.
+# See: https://github.com/svenfuchs/globalize3/pull/121
+gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git', :branch => 'master'
+
+gem 'quiet_assets', :group => :development
 
 # Database Configuration
 platforms :jruby do
@@ -25,29 +28,29 @@ end
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.1.0.dev'
   gem 'generator_spec', '>= 0.8.5', :git => 'git://github.com/stevehodgkiss/generator_spec.git'
-  gem 'guard-rspec', '~> 0.6.0'
-  gem 'fuubar'
+  gem 'guard-rspec', '~> 0.7.0'
+  gem 'fuubar', '~> 1.0.0'
 
   platforms :mswin, :mingw do
-    gem 'win32console'
+    gem 'win32console', '~> 1.3.0'
     gem 'rb-fchange', '~> 0.0.5'
     gem 'rb-notifu', '~> 0.0.4'
   end
 
   platforms :ruby do
-    gem 'spork', '~> 0.9.0.rc'
-    gem 'guard-spork'
+    gem 'spork', '~> 0.9.0'
+    gem 'guard-spork', '~> 0.5.2'
 
     unless ENV['TRAVIS']
       require 'rbconfig'
       if RbConfig::CONFIG['target_os'] =~ /darwin/i
-        gem 'rb-fsevent', '>= 0.3.9'
-        gem 'ruby_gntp'
+        gem 'rb-fsevent', '~> 0.9.0'
+        gem 'ruby_gntp', '~> 0.3.4'
       end
       if RbConfig::CONFIG['target_os'] =~ /linux/i
-        gem 'rb-inotify', '>= 0.5.1'
-        gem 'libnotify',  '~> 0.1.3'
-        gem 'therubyracer', '~> 0.9.9'
+        gem 'rb-inotify', '~> 0.8.8'
+        gem 'libnotify',  '~> 0.7.2'
+        gem 'therubyracer', '~> 0.10.0'
       end
     end
   end
@@ -56,11 +59,11 @@ group :development, :test do
     unless ENV['TRAVIS']
       require 'rbconfig'
       if RbConfig::CONFIG['target_os'] =~ /darwin/i
-        gem 'ruby_gntp'
+        gem 'ruby_gntp', '~> 0.3.4'
       end
       if RbConfig::CONFIG['target_os'] =~ /linux/i
-        gem 'rb-inotify', '>= 0.5.1'
-        gem 'libnotify',  '~> 0.1.3'
+        gem 'rb-inotify', '~> 0.8.8'
+        gem 'libnotify',  '~> 0.7.2'
       end
     end
   end
@@ -95,3 +98,8 @@ gem 'jquery-rails', '~> 2.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
 # gem 'rack', :git => 'git://github.com/rack/rack.git'
 # gem 'arel', :git => 'git://github.com/rails/arel.git'
+
+# Load local gems according to Refinery developer preference.
+if File.exist?(File.expand_path('../.gemfile', __FILE__))
+  eval(File.read(File.expand_path('../.gemfile', __FILE__)))
+end

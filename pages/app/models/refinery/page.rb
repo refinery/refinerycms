@@ -1,4 +1,6 @@
 # Encoding: utf-8
+require 'acts_as_indexed'
+require 'friendly_id'
 
 module Refinery
   class Page < Refinery::Core::BaseModel
@@ -8,6 +10,11 @@ module Refinery
     PATH_SEPARATOR = " - "
 
     translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
+
+    class Translation
+      is_seo_meta
+      attr_accessible :browser_title, :meta_description, :meta_keywords, :locale
+    end
 
     attr_accessible :title
 
@@ -23,6 +30,8 @@ module Refinery
 
     attr_accessor :locale # to hold temporarily
     validates :title, :presence => true
+
+    validates :custom_slug, :uniqueness => true, :allow_blank => true
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
     # rather than :delete_all we want :destroy
@@ -65,8 +74,8 @@ module Refinery
       # For example with about/example we would need to find 'about' and then its child
       # called 'example' otherwise it may clash with another page called /example.
       def find_by_path(path)
-        split_path = path.to_s.split('/')
-        page = ::Refinery::Page.by_slug(split_path.shift).first
+        split_path = path.to_s.split('/').reject(&:blank?)
+        page = ::Refinery::Page.by_slug(split_path.shift, :parent_id => nil).first
         page = page.children.by_slug(split_path.shift).first until page.nil? || split_path.empty?
 
         page
@@ -96,12 +105,9 @@ module Refinery
       end
 
       # Finds a page using its slug.  See by_title
-      def by_slug(slug)
-        if defined?(::Refinery::I18n)
-          with_globalize(:locale => Refinery::I18n.frontend_locales, :slug => slug)
-        else
-          with_globalize(:locale => ::I18n.locale, :slug => slug)
-        end
+      def by_slug(slug, conditions={})
+        locales = Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales : ::I18n.locale
+        with_globalize({ :locale => locales, :slug => slug }.merge(conditions))
       end
 
       # Shows all pages with :show_in_menu set to true, but it also
@@ -294,11 +300,11 @@ module Refinery
       Rails.cache.fetch(path_cache_key) { ['', nested_url].join('/') }
     end
 
-    def path_cache_key(locale=::I18n.locale)
+    def path_cache_key(locale = ::I18n.locale)
       [cache_key(locale), 'nested_path'].join('#')
     end
 
-    def url_cache_key(locale=::I18n.locale)
+    def url_cache_key(locale = ::I18n.locale)
       [cache_key(locale), 'nested_url'].join('#')
     end
 
@@ -348,6 +354,17 @@ module Refinery
       }
     end
 
+    # Accessor method to test whether a page part
+    # exists and has content for this page.
+    # Example:
+    #
+    #   ::Refinery::Page.first.content_for?(:body)
+    #
+    # Will return true if the page has a body page part and it is not blank.
+    def content_for?(part_title)
+      content_for(part_title).present?
+    end
+
     # Accessor method to get a page part from a page.
     # Example:
     #
@@ -383,8 +400,8 @@ module Refinery
         title = [self.translations.detect {|t| t.title.present?}.title]
       end
 
-      title << "<span class='label'>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</span>" unless show_in_menu?
-      title << "<span class='label notice'>(#{::I18n.t('draft', :scope => 'refinery.admin.pages.page')})</span>" if draft?
+      title << "<span class='label'>#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')}</span>" unless show_in_menu?
+      title << "<span class='label notice'>#{::I18n.t('draft', :scope => 'refinery.admin.pages.page')}</span>" if draft?
 
       title.join(' ')
     end
@@ -415,7 +432,7 @@ module Refinery
       return true unless Refinery::Pages.marketable_urls
 
       [self, children].flatten.each do |page|
-        ::Refinery::I18n.frontend_locales.each do |locale|
+        ((Refinery.i18n_enabled? && Refinery::I18n.frontend_locales) || [::I18n.locale]).each do |locale|
           Rails.cache.delete(page.url_cache_key(locale))
           Rails.cache.delete(page.path_cache_key(locale))
         end

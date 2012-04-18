@@ -2,19 +2,31 @@
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
-## 2.0.3 [unreleased]
+## 2.0.4 [unreleased]
+* Fixed stack level too deep error in Refinery::Menu#inspect. [Uģis Ozols](https://github.com/ugisozols)
+* Fixed spec fails for newly generated engines and bumped gem versions in generated Gemfile. [Uģis Ozols](https://github.com/ugisozols)
+* Fixed dialog opening issue when Refinery was mounted at different path than /. [Uģis Ozols](https://github.com/ugisozols)
+* Added ability to specify site name in I18n locales too. [Philip Arndt](https://github.com/parndt)
+* If parent page has custom view/layout template specified set this template as selected when editing sub page. [xyz](https://github.com/xyz)
+* Fixed page ambiguity for different pages with the same slug in find_by_path. [Nicholas Schultz-Møller](https://github.com/nicholassm)
+
+## 2.0.3 [2 April 2012]
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
 * Fixed Heroku and sqlite3 related errors. [Philip Arndt](https://github.com/parndt)
 * Replaced label_tag with label in pages advanced options form. [Johannes Edelstam](https://github.com/jede)
-* Added missing refinerycms-settings require in generated refinery form extension. [Philip Arndt](https://github.com/parndt)
+* Added missing `refinerycms-settings` require in generated refinery form extension. [Philip Arndt](https://github.com/parndt)
 * Added JS runtime check in templates. [Philip Arndt](https://github.com/parndt) & [Josef Šimánek](https://github.com/simi)
 * Fixed user role assignment issue. [Uģis Ozols](https://github.com/ugisozols)
 * Added image type whitelisting configuration option. [Rob Yurkowski](https://github.com/robyurkowski)
 * Removed global hash of menu instances. [Pete Higgins](https://github.com/phiggins)
 * Fixed save & continue issue. [Philip Arndt](https://github.com/parndt)
 * Fixed issue with Heroku option for CMS generator. [Philip Arndt](https://github.com/parndt)
-* Fixed config.assets.initialize_on_precompile setting to false. [Philip Arndt](https://github.com/parndt)
-
+* Fixed asset compilation in production mode. [Philip Arndt](https://github.com/parndt)
+* Add label style for admin Page tree [Nic Aitch](https://github.com/nicinabox)
+* Fixed page part hiding [Rob Yurkowski](https://github.com/robyurkowski)
+* Fixed missing page part CSS classes (i.e. `no_side_body`) [Rob Yurkowski](https://github.com/robyurkowski)
+* Deprecated `body_content_left` and `body_content_right` [Rob Yurkowski](https://github.com/robyurkowski)
+* Reorganizes documentation [Rob Yurkowski](https://github.com/robyurkowski)
 
 ## 2.0.2 [15 March 2012]
 

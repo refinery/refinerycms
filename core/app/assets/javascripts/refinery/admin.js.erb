@@ -402,13 +402,14 @@ var link_dialog = {
   },
 
   init_resources_submit: function(){
+    <% absolute_page_links = defined?(Refinery::Pages) && Refinery::Pages.absolute_page_links %>
     $('#existing_resource_area .form-actions-dialog #submit_button').click(function(e){
       e.preventDefault();
       if((resource_selected = $('#existing_resource_area_content ul li.linked a')).length > 0) {
         resourceUrl = parseURL(resource_selected.attr('href'));
-        relevant_href = <%= Refinery::Pages.absolute_page_links ? "resource_selected.attr('href')" : "resourceUrl.pathname" %>;
+        relevant_href = <%= absolute_page_links ? "resource_selected.attr('href')" : "resourceUrl.pathname" %>;
 
-        <% unless Refinery::Pages.absolute_page_links %>
+        <% unless absolute_page_links %>
         // Add any alternate resource stores that need a absolute URL in the regex below
         if(resourceUrl.hostname.match(/s3.amazonaws.com/)) {
           relevant_href = resourceUrl.protocol + '//' + resourceUrl.host + relevant_href;
@@ -459,7 +460,7 @@ var link_dialog = {
 
       var link = $(this).children('a.page_link').get(0);
       var port = (window.location.port.length > 0 ? (":" + window.location.port) : "");
-      var url = link.href<%= %q{.replace(window.location.protocol + "//" + window.location.hostname + port, "")} unless Refinery::Pages.absolute_page_links %>;
+      var url = link.href<%= %q{.replace(window.location.protocol + "//" + window.location.hostname + port, "")} unless defined?(Refinery::Pages) && Refinery::Pages.absolute_page_links %>;
 
       link_dialog.update_parent(url, link.rel.replace(/\ ?<em>.+?<\/em>/, ''));
     });
@@ -654,72 +655,85 @@ var page_options = {
 
 };
 
-var image_dialog = {
-  initialised: false
-  , callback: null
+// TODO:  Need to rewrite WYM to accept multiple images. As it stands, only
+//        the callback is useful when inserting multiple -- helpful for
+//        the page-images and portfolio engines.
 
-  , init: function(callback){
+// ImageDialog
+// 
+//   The dialog that opens when choosing to 'Add image' in WYM.
+//
+//   Options:
+//     callback (null):
+//       a function to execute upon chosing 'submit'. Passed either an
+//       an array or a single image, depending on whether `multiple` is
+//       true.
+//     multiple (false):
+//       if true, enables selection of multiple images. Does not allow
+//       insertion into WYM without manual callback manipulation.
+function ImageDialog(options) {
+  self = this;
+  this.defaults = {callback: null, multiple: false};
+  this.settings = $.extend({}, this.defaults, options);
 
-    if (!this.initialised) {
-      this.callback = callback;
-      this.init_tabs();
-      this.init_select();
-      this.init_actions();
-      this.initialised = true;
-    }
-    return this;
-  }
+  this.create = function() {
 
-  , init_tabs: function(){
+    this.callback = this.settings.callback;
+    this.init_tabs();
+    this.init_select();
+    this.init_actions();
+  };
+
+  this.init_tabs = function() {
     var radios = $('#dialog_menu_left input:radio');
     var selected = radios.parent().filter(".selected_radio").find('input:radio').first() || radios.first();
-
-    radios.click(function(){
-      link_dialog.switch_area($(this));
+    radios.click(function() {
+      self.switch_area($(this));
     });
 
     selected.attr('checked', 'true');
-    link_dialog.switch_area(selected);
-  }
+    self.switch_area(selected);
+  };
 
-  , switch_area: function(radio){
+  this.switch_area = function(radio) {
     $('#dialog_menu_left .selected_radio').removeClass('selected_radio');
-    $(radio).parent().addClass('selected_radio');
+    radio.parent().addClass('selected_radio');
     $('#dialog_main .dialog_area').hide();
-    $('#' + radio.value + '_area').show();
-  }
+    $('#' + radio.val() + '_area').show();
+  };
 
-  , init_select: function(){
-    $('#existing_image_area_content ul li img').click(function(){
-        image_dialog.set_image(this);
+  this.init_select = function() {
+    $('#existing_image_area_content ul li img').click(function() {
+      self.toggle_image($(this));
     });
-    //Select any currently selected, just uploaded...
+
+    // Select any currently selected, just uploaded...
     if ((selected_img = $('#existing_image_area_content ul li.selected img')).length > 0) {
-      image_dialog.set_image(selected_img.first());
+      self.toggle_image(selected_img.first());
     }
-  }
+  };
 
-  , set_image: function(img){
-    if ($(img).length > 0) {
-      $('#existing_image_area_content ul li.selected').removeClass('selected');
+  this.toggle_image = function(img) {
+    if (img.length > 0) {
+      if (!self.settings.multiple) $('#existing_image_area_content ul li.selected').removeClass('selected');
 
-      $(img).parent().addClass('selected');
-      var imageId = $(img).attr('data-id');
+      img.parent().toggleClass('selected');
+      var imageId = img.attr('data-id');
       var geometry = $('#existing_image_size_area li.selected a').attr('data-geometry');
       var size = $('#existing_image_size_area li.selected a').attr('data-size');
       var resize = $("#wants_to_resize_image").is(':checked');
 
-      image_url = resize ? $(img).attr('data-' + size) : $(img).attr('data-original');
+      image_url = resize ? img.attr('data-' + size) : img.attr('data-original');
 
       if (parent) {
         if ((wym_src = parent.document.getElementById('wym_src')) != null) {
           wym_src.value = image_url;
         }
         if ((wym_title = parent.document.getElementById('wym_title')) != null) {
-          wym_title.value = $(img).attr('title');
+          wym_title.value = img.attr('title');
         }
         if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
-          wym_alt.value = $(img).attr('alt');
+          wym_alt.value = img.attr('alt');
         }
         if ((wym_size = parent.document.getElementById('wym_size')) != null
             && typeof(geometry) != 'undefined') {
@@ -727,35 +741,37 @@ var image_dialog = {
         }
       }
     }
-  }
+  };
 
-  , submit_image_choice: function(e) {
+  this.submit_image_choice = function(e) {
     e.preventDefault();
-    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0)) && $.isFunction(this.callback))
+    selected_images = $('#existing_image_area_content ul li.selected img');
+    selected_images = self.settings.multiple ? selected_images.get() : selected_images.get(0);
+
+    if(selected_images && $.isFunction(self.callback))
     {
-      this.callback(img_selected);
+      self.callback(selected_images);
     }
 
     close_dialog(e);
-  }
+  };
 
-  , init_actions: function(){
-    var _this = this;
+  this.init_actions = function() {
     // get submit buttons not inside a wymeditor iframe
     $('#existing_image_area .form-actions-dialog #submit_button')
       .not('.wym_iframe_body #existing_image_area .form-actions-dialog #submit_button')
-      .click($.proxy(_this.submit_image_choice, _this));
+      .click($.proxy(self.submit_image_choice, self));
 
     // get cancel buttons not inside a wymeditor iframe
     $('.form-actions-dialog #cancel_button')
       .not('.wym_iframe_body .form-actions-dialog #cancel_button')
-      .click($.proxy(close_dialog, _this));
+      .click($.proxy(close_dialog, self));
 
     $('#existing_image_size_area ul li a').click(function(e) {
       $('#existing_image_size_area ul li').removeClass('selected');
       $(this).parent().addClass('selected');
       $('#existing_image_size_area #wants_to_resize_image').attr('checked', 'checked');
-      image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
+      self.set_image($('#existing_image_area_content ul li.selected img'));
       e.preventDefault();
     });
 
@@ -764,7 +780,7 @@ var image_dialog = {
         $('#existing_image_size_area ul li:first a').click();
       } else {
         $('#existing_image_size_area ul li').removeClass('selected');
-        image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
+        self.set_image($('#existing_image_area_content ul li.selected img'));
       }
     });
 
@@ -774,8 +790,8 @@ var image_dialog = {
       $(this.document.getElementById('wym_dialog_submit')).click();
     }, parent));
     image_area.find('.form-actions a.close_dialog').click(close_dialog);
-  }
-};
+  };
+}
 
 var list_reorder = {
   initialised: false
@@ -943,10 +959,10 @@ var image_picker = {
   }
 
   , toggle_image: function(e) {
-    $(this.container).find(this.options.image_toggler).html(
-      ($(this.container).find(options.image_toggler).html() == 'Show' ? 'Hide' : 'Show')
+    $(this.container).find(this.picker.options.image_toggler).html(
+      ($(this.container).find(this.picker.options.image_toggler).html() == 'Show' ? 'Hide' : 'Show')
     );
-    $(this.container).find(this.options.image_container).toggle();
+    $(this.container).find(this.picker.options.image_container).toggle();
     e.preventDefault();
   }
 

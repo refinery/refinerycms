@@ -1,0 +1,85 @@
+h2. Contributing to Refinery
+
+One of Refinery's key principles is encouraging people to contribute. This guide will show you how to:
+
+* Contribute to the documentation (such as this guide)
+* Contribute bug fixes or new features
+* Contribute financially
+
+endprologue.
+
+h3. Contributing documentation or guides
+
+We'd love it if you have a how-to guide on adding or setting up a feature on Refinery.
+
+Read the "Writing a guide for this website":/guides/writing-a-guide-for-this-website guide for more information.
+
+h3. Contributing bug fixes or new features
+
+WARNING: This guide is only for advanced users of Refinery
+
+h4. Setup
+
+h5. In your browser
+
+* Login to "http://github.com":http://github.com
+* Go to "http://github.com/resolve/refinerycms":http://github.com/resolve/refinerycms
+* If you have a fork of refinerycms already, delete it (_if you're not going to lose work. This makes it much easier for us to integrate your changes back in_)
+* Click on "fork" to make a fresh new fork on your own account.
+
+h5. In terminal
+
+<shell>
+$ git clone git@github.com:USERNAME/refinerycms.git
+$ cd refinerycms
+$ bundle install
+$ rake refinery:testing:dummy_app
+$ rails server
+</shell>
+
+h5. In your browser
+
+* go to "http://localhost:3000":http://localhost:3000
+
+h4. I found an issue. Where do I file it?
+
+* add it to "http://github.com/resolve/refinerycms/issues":http://github.com/resolve/refinerycms/issues - with as much detail as possible :-)
+
+h4. Contributing a fix
+
+Make your changes to fix a bug. Next run the Refinery tests
+
+<shell>
+$ bundle exec rspec ./*/spec
+</shell>
+
+If this doesn't work. Follow the "How to test Refinery guide":/guides/testing
+
+Commit your changes:
+
+<shell>
+$ git add path/to/files/changed
+$ git commit -m "your fix"
+</shell>
+
+TIP: if you've filed an issue on Github add "Closes GH-999" (replace 999 with your issue number) to your commit message and it will automatically link the issue to your commit and close it.
+
+<shell>
+$ git push origin master
+</shell>
+
+Now go to "http://github.com/resolve/refinerycms":http://github.com/resolve/refinerycms and click "Pull Request". Type a nice message explaining what you've done and send the request.
+
+We'll merge it in if it's all good.
+
+h4. Confused on where to find everything?
+
+Take a look at this "page":https://github.com/resolve/refinerycms/wiki/Begin-Developing which briefly explains the source.
+
+h3. Contributing financially
+
+Some of the effort that goes into Refinery CMS is covered by client work where requirements aren't met by the current implementation and so extensions are required.  Most of the effort, however, is done on a free basis by the core team and many contributors worldwide. 
+
+If you would like to contribute to Refinery CMS development by helping us to justify spending more time on it then you can "donate to the project at pledgie.":http://pledgie.com/campaigns/8431 
+
+All donations are very much appreciated and 100% of proceeds go toward making Refinery CMS even better.

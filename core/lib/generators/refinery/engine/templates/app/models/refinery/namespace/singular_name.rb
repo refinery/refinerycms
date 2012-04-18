@@ -5,6 +5,8 @@ module Refinery
       <% if localized? %>
       translates <%= localized_attributes.map{|a| ":#{a.name}"}.join(', ') %><% end %>
     <% if (string_attributes = attributes.select{ |a| a.type.to_s =~ /string|text/ }.uniq).any? %>
+      attr_accessible <%= string_attributes.first.name.to_sym.inspect %>, :position
+
       acts_as_indexed :fields => <%= string_attributes.map{|s| s.name.to_sym}.inspect %>
 
       validates <%= string_attributes.first.name.to_sym.inspect %>, :presence => true, :uniqueness => true

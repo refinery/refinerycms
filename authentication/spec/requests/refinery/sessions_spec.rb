@@ -42,7 +42,7 @@ module Refinery
     describe 'when there are no users' do
       it 'allows user creation' do
         # Verify that we can access the sign up page.
-        visit refinery.root_path
+        visit refinery.admin_root_path
         page.should have_content("There are no users yet, so we'll set you up first")
 
         # Fill in user details.
