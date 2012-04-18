@@ -518,7 +518,7 @@ module Refinery
               Refinery::Pages.stub(:valid_templates).and_return(['abc', 'refinery'])
               parent_page = FactoryGirl.create(:page, :view_template => 'refinery',
                                                       :layout_template => 'refinery')
-              FactoryGirl.create(:page, :parent_id => parent_page)
+              parent_page.children.create(FactoryGirl.attributes_for(:page))
             end
 
             specify 'sub page should inherit them' do
