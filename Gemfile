@@ -13,16 +13,16 @@ gem 'quiet_assets', :group => :development
 
 # Database Configuration
 platforms :jruby do
-  gem 'activerecord-jdbcsqlite3-adapter'
-  gem 'activerecord-jdbcmysql-adapter'
-  gem 'activerecord-jdbcpostgresql-adapter'
+  gem 'activerecord-jdbcsqlite3-adapter' unless ENV['TRAVIS']
+  gem 'activerecord-jdbcmysql-adapter' unless ENV['TRAVIS'] && ENV['DB'] != 'mysql'
+  gem 'activerecord-jdbcpostgresql-adapter' unless ENV['TRAVIS'] && ENV['DB'] != 'postgresql'
   gem 'jruby-openssl'
 end
 
 platforms :ruby do
-  gem 'sqlite3'
-  gem 'mysql2'
-  gem 'pg'
+  gem 'sqlite3' unless ENV['TRAVIS']
+  gem 'mysql2' unless ENV['TRAVIS'] && ENV['DB'] != 'mysql'
+  gem 'pg' unless ENV['TRAVIS'] && ENV['DB'] != 'postgresql'
 end
 
 group :development, :test do
