@@ -50,12 +50,12 @@ module Refinery
         unless current_refinery_user.has_role?(:superuser) and Refinery::Authentication.superuser_can_assign_roles
           @selected_role_names = @user.roles.collect(&:title)
         end
-        @selected_plugins = params[:user][:plugins]
+        @selected_plugin_names = params[:user][:plugins]
 
         # Prevent the current user from locking themselves out of the User manager or backend
         if current_refinery_user.id == @user.id && # If editing self
-           ((@selected_plugins.present? && # If we're submitting plugins
-             @selected_plugins.exclude?("refinery_users")) || # And we're removing user plugin access
+           ((@selected_plugin_names.present? && # If we're submitting plugins
+             @selected_plugin_names.exclude?("refinery_users")) || # And we're removing user plugin access
              @selected_role_names.map(&:downcase).exclude?("refinery")) # Or we're removing the refinery role
 
           flash.now[:error] = t('cannot_remove_user_plugin_from_current_user', :scope => 'refinery.admin.users.update')
