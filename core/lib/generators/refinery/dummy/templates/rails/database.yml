@@ -1,6 +1,6 @@
 login: &login
 <% if /mysql$/ === @database %>
-  adapter: mysql2
+  adapter: mysql<%= '2' unless /jdbc/ === @database %>
   encoding: utf8
   reconnect: false
   pool: 5
