@@ -1,5 +1,5 @@
 login: &login
-<% if database == 'mysql' %>
+<% if /mysql$/ === @database %>
   adapter: mysql2
   encoding: utf8
   reconnect: false
@@ -7,7 +7,7 @@ login: &login
   username: root
   password:
   #socket: /tmp/mysql.sock
-<% elsif database == 'postgresql' %>
+<% elsif /postgresql/ === @database %>
   adapter: postgresql
   encoding: unicode
   database: refinery_database_development
