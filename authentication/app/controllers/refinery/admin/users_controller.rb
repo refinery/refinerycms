@@ -48,7 +48,7 @@ module Refinery
         # Store what the user selected.
         @selected_role_names = params[:user].delete(:roles) || []
         unless current_refinery_user.has_role?(:superuser) and Refinery::Authentication.superuser_can_assign_roles
-          @selected_role_names = @user.roles.collect(&:title)
+          @selected_role_names = @user.roles.pluck(:title)
         end
         @selected_plugin_names = params[:user][:plugins]
 
