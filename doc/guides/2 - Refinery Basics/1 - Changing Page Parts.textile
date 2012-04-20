@@ -19,6 +19,7 @@ Within @config/initializers/refinery/pages.rb@ you will see various default sett
 </ruby>
 
 Edit this code to have the names of the default page parts you want, click +Save+ and you're done.
+Notice that You need reset Your database after those changes.
 
 Here's a sample of a site that would have three content areas on most of its pages.
 
