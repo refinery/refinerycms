@@ -15,7 +15,7 @@ module Refinery
 
       send :include, Refinery::Crud # basic create, read, update and delete methods
 
-      send :before_filter, :refinery_user_required?, :if => :admin?
+      send :before_filter, :refinery_user_required?
 
       send :before_filter, :force_ssl?, :if => :admin?
 
