@@ -67,6 +67,15 @@ describe Refinery::Admin::UsersController do
       response.should be_redirect
     end
 
+    context "when specifying plugins" do
+      it "won't allow to remove 'Users' plugin from self" do
+        Refinery::User.should_receive(:find).at_least(1).times{ logged_in_user }
+        put "update", :id => logged_in_user.id.to_s, :user => {:plugins => ["some plugin"]}
+
+        flash[:error].should eq("You cannot remove the 'Users' plugin from the currently logged in account.")
+      end
+    end
+
     it_should_behave_like "new, create, update, edit and update actions"
   end
 end

@@ -48,12 +48,16 @@ module Refinery
         # Store what the user selected.
         @selected_role_names = params[:user].delete(:roles) || []
         unless current_refinery_user.has_role?(:superuser) and Refinery::Authentication.superuser_can_assign_roles
-          @selected_role_names = @user.roles.collect(&:title)
+          @selected_role_names = @user.roles.pluck(:title)
         end
         @selected_plugin_names = params[:user][:plugins]
 
-        # Prevent the current user from locking themselves out of the User manager
-        if current_refinery_user.id == @user.id and (params[:user][:plugins].exclude?("refinery_users") || @selected_role_names.map(&:downcase).exclude?("refinery"))
+        # Prevent the current user from locking themselves out of the User manager or backend
+        if current_refinery_user.id == @user.id && # If editing self
+           ((@selected_plugin_names.present? && # If we're submitting plugins
+             @selected_plugin_names.exclude?("refinery_users")) || # And we're removing user plugin access
+             @selected_role_names.map(&:downcase).exclude?("refinery")) # Or we're removing the refinery role
+
           flash.now[:error] = t('cannot_remove_user_plugin_from_current_user', :scope => 'refinery.admin.users.update')
           render :edit
         else
