@@ -9,6 +9,7 @@
 * Added ability to specify site name in I18n locales too. [Philip Arndt](https://github.com/parndt)
 * If parent page has custom view/layout template specified set this template as selected when editing sub page. [xyz](https://github.com/xyz)
 * Fixed page ambiguity for different pages with the same slug in find_by_path. [Nicholas Schultz-Møller](https://github.com/nicholassm)
+* Added Refinery::Core.force_ssl config option. [Philip Arndt](https://github.com/parndt)
 
 ## 2.0.3 [2 April 2012]
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
