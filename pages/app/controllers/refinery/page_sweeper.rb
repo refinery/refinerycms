@@ -22,7 +22,7 @@ module Refinery
 
       # Delete the full Cache
       if (cache_root = page_cache_directory_path.join('refinery', 'cache', 'pages')).directory?
-        cache_root.rmdir
+        FileUtils.rm_rf cache_root
       end
     end
   end
