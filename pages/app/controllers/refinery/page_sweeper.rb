@@ -22,12 +22,17 @@ module Refinery
 
       # Delete the full Cache
       if (cache_root = page_cache_directory_path.join('refinery', 'cache', 'pages')).directory?
-        FileUtils.rm_rf cache_root
+        cache_root.rmtree
       end
       
       # Delete the pages index file (/refinery/cache/pages.html)
       if (cache_index = page_cache_directory_path.join('refinery', 'cache', 'pages.html')).file?
-        FileUtils.rm_f cache_index
+        cache_index.delete
+      end
+      
+      # Delete the gzipped pages index file (/refinery/cache/pages.html.gz)
+      if (cache_index_gz = page_cache_directory_path.join('refinery', 'cache', 'pages.html.gz')).file?
+        cache_index_gz.delete
       end
     end
   end
