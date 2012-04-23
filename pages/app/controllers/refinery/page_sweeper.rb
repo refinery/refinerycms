@@ -21,7 +21,7 @@ module Refinery
       page_cache_directory_path = Pathname.new(page_cache_directory.to_s)
 
       # Delete the full Cache
-      if (cache_root = page_cache_directory_path.join('refinery', 'cache')).directory?
+      if (cache_root = page_cache_directory_path.join('refinery', 'cache', 'pages')).directory?
         FileUtils.rm_rf cache_root
       end
       
