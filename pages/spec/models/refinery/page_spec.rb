@@ -103,6 +103,15 @@ module Refinery
       end
     end
 
+    describe '#canonical' do
+      let(:page_title)  { 'team' }
+      let(:child_title) { 'about' }
+
+      specify '' do
+
+      end
+    end
+
     context 'custom slugs' do
       let(:custom_page_slug) { 'custom-page-slug' }
       let(:custom_child_slug) { 'custom-child-slug' }
