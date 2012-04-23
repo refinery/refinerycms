@@ -3,11 +3,13 @@ module Refinery
     class <%= class_name %> < Refinery::Core::BaseModel
 <% if table_name == namespacing.underscore.pluralize -%>
       self.table_name = 'refinery_<%= plural_name %>'
-<% end -%>
-<% if (text_or_string_fields = attributes.map{ |a| a.name if a.type.to_s =~ /string|text/ }.compact.uniq).any? %>
+<% end %>
+      attr_accessible <%= attributes.map { |attr| ":#{attr.name}" }.join(', ') %>, :position
+
+<% if (text_or_string_fields = attributes.map{ |a| a.name if a.type.to_s =~ /string|text/ }.compact.uniq).any? -%>
       acts_as_indexed :fields => [:<%= text_or_string_fields.join(", :") %>]
 <% end -%>
-<% if (text_fields = attributes.map {|a| a.name if a.type.to_s == 'text'}.compact.uniq).any? && text_fields.detect{|a| a.to_s == 'message'}.nil? %>
+<% if (text_fields = attributes.map {|a| a.name if a.type.to_s == 'text'}.compact.uniq).any? && text_fields.detect{|a| a.to_s == 'message'}.nil? -%>
       alias_attribute :message, :<%= text_fields.first %>
 <% elsif text_fields.empty? %>
       # def message was created automatically because you didn't specify a text field
