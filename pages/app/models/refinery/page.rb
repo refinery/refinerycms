@@ -300,11 +300,11 @@ module Refinery
       Rails.cache.fetch(path_cache_key) { ['', nested_url].join('/') }
     end
 
-    def path_cache_key(locale = ::I18n.locale)
+    def path_cache_key(locale = Globalize.locale)
       [cache_key(locale), 'nested_path'].join('#')
     end
 
-    def url_cache_key(locale = ::I18n.locale)
+    def url_cache_key(locale = Globalize.locale)
       [cache_key(locale), 'nested_url'].join('#')
     end
 
