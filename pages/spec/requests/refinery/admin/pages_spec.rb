@@ -665,7 +665,7 @@ module Refinery
 
               page.within_frame("dialog_frame") do
                 page.should have_content("About")
-                page.should have_css("a[href='/about']")
+                page.should have_css("a[href$='/about']")
 
                 click_link "cancel_button"
               end
@@ -678,7 +678,7 @@ module Refinery
 
               page.within_frame("dialog_frame") do
                 page.should have_content("About Ru")
-                page.should have_css("a[href='/ru/about-ru']")
+                page.should have_css("a[href$='/ru/about-ru']")
               end
             end
           end
