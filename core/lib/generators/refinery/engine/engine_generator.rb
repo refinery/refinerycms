@@ -20,6 +20,8 @@ module Refinery
 
       merge_locales!
 
+      copy_or_merge_seeds!
+
       append_extension_to_gemfile!
 
       finalize_extension!
