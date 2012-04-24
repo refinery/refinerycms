@@ -10,6 +10,11 @@
 * If parent page has custom view/layout template specified set this template as selected when editing sub page. [xyz](https://github.com/xyz)
 * Fixed page ambiguity for different pages with the same slug in find_by_path. [Nicholas Schultz-Møller](https://github.com/nicholassm)
 * Added Refinery::Core.force_ssl config option. [Philip Arndt](https://github.com/parndt)
+* Fixed bugs with page sweeper. [f3ng3r](https://github.com/f3ng3r)
+* Fixed image toggler show/hide bug. [Uģis Ozols](https://github.com/ugisozols)
+* Now extension/form generators will add all attributes to attr_accessible. [Uģis Ozols](https://github.com/ugisozols)
+* Fixed site bar caching bug when `cache_pages_full` is enabled and user is logged in. [TheMaster](https://github.com/TheMaster)
+* Made sure plugin params are set before checking exclusion, and removed unused variable. [Rob Yurkowski](https://github.com/robyurkowski)
 
 ## 2.0.3 [2 April 2012]
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
