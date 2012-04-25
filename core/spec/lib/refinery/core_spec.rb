@@ -1,6 +1,24 @@
 require 'spec_helper'
 
 describe Refinery do
+  describe "#include_unless_included" do
+    it "shouldn't double include a module" do
+      mod = Module.new do
+        def self.included(base)
+          base::INCLUSIONS << self
+          super
+        end
+      end
+
+      [Module.new, Class.new].each do |target|
+        target::INCLUSIONS = []
+        subject.include_unless_included(target, mod)
+        subject.include_unless_included(target, mod)
+        target::INCLUSIONS.should have(1).item
+      end
+    end
+  end
+
   describe "#extensions" do
     it "should return an array of modules representing registered extensions" do
       subject.extensions.should be_a(Array)
