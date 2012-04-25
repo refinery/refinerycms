@@ -23,7 +23,7 @@ module Refinery
       end
 
       before_inclusion do
-        [Refinery::ApplicationController, Refinery::AdminController, ::ApplicationHelper].each do |c|
+        [Refinery::AdminController, ::ApplicationController].each do |c|
           c.send :include, Refinery::AuthenticatedSystem
         end
       end
