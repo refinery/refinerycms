@@ -1,5 +1,4 @@
 require 'action_controller'
-require 'application_helper'
 
 module Refinery
   module Admin
