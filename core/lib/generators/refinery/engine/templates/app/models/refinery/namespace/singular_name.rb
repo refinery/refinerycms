@@ -8,6 +8,10 @@ module Refinery
 <% if localized? -%>
 
       translates <%= localized_attributes.map{|a| ":#{a.name}"}.join(', ') %>
+
+      class Translation
+        attr_accessible :locale
+      end
 <% end -%>
 <% if (string_attributes = attributes.select{ |a| a.type.to_s =~ /string|text/ }.uniq).any? -%>
 
