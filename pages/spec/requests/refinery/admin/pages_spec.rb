@@ -657,6 +657,8 @@ module Refinery
 
               click_link "Add Link"
 
+              page.should have_selector("iframe#dialog_frame")
+
               page.within_frame("dialog_frame") do
                 page.should have_content("About")
                 page.should have_css("a[href$='/about']")
@@ -669,6 +671,8 @@ module Refinery
               end
 
               click_link "Add Link"
+
+              page.should have_selector("iframe#dialog_frame")
 
               page.within_frame("dialog_frame") do
                 page.should have_content("About Ru")
