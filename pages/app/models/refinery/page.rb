@@ -72,8 +72,8 @@ module Refinery
       # For example with about/example we would need to find 'about' and then its child
       # called 'example' otherwise it may clash with another page called /example.
       def find_by_path(path)
-        split_path = path.to_s.split('/')
-        page = ::Refinery::Page.by_slug(split_path.shift).first
+        split_path = path.to_s.split('/').reject(&:blank?)
+        page = ::Refinery::Page.by_slug(split_path.shift, :parent_id => nil).first
         page = page.children.by_slug(split_path.shift).first until page.nil? || split_path.empty?
 
         page
@@ -103,12 +103,9 @@ module Refinery
       end
 
       # Finds a page using its slug.  See by_title
-      def by_slug(slug)
-        if defined?(::Refinery::I18n)
-          with_globalize(:locale => Refinery::I18n.frontend_locales, :slug => slug)
-        else
-          with_globalize(:locale => ::I18n.locale, :slug => slug)
-        end
+      def by_slug(slug, conditions={})
+        locales = Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales : ::I18n.locale
+        with_globalize({ :locale => locales, :slug => slug }.merge(conditions))
       end
 
       # Shows all pages with :show_in_menu set to true, but it also
@@ -332,16 +329,16 @@ module Refinery
       Rails.cache.fetch(path_cache_key) { ['', nested_url].join('/') }
     end
 
-    def path_cache_key
-      [cache_key, 'nested_path'].join('#')
+    def path_cache_key(locale = Globalize.locale)
+      [cache_key(locale), 'nested_path'].join('#')
     end
 
-    def url_cache_key
-      [cache_key, 'nested_url'].join('#')
+    def url_cache_key(locale = Globalize.locale)
+      [cache_key(locale), 'nested_url'].join('#')
     end
 
-    def cache_key
-      [Refinery::Core.base_cache_key, 'page', ::I18n.locale, id].compact.join('/')
+    def cache_key(locale)
+      [Refinery::Core.base_cache_key, 'page', locale, id].compact.join('/')
     end
 
     # Returns true if this page is "published"
@@ -453,8 +450,10 @@ module Refinery
       return true unless Refinery::Pages.marketable_urls
 
       [self, children].flatten.each do |page|
-        Rails.cache.delete(page.url_cache_key)
-        Rails.cache.delete(page.path_cache_key)
+        ((Refinery.i18n_enabled? && Refinery::I18n.frontend_locales) || [::I18n.locale]).each do |locale|
+          Rails.cache.delete(page.url_cache_key(locale))
+          Rails.cache.delete(page.path_cache_key(locale))
+        end
       end
     end
     alias_method :invalidate_child_cached_url, :invalidate_cached_urls

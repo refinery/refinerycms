@@ -51,7 +51,7 @@ describe Refinery::Admin::UsersController do
 
   describe "#edit" do
     it "renders the edit template" do
-      get :edit, :id => "1"
+      get :edit, :id => refinery_superuser.id
       response.should be_success
       response.should render_template("refinery/admin/users/edit")
     end

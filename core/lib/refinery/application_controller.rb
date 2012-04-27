@@ -17,6 +17,8 @@ module Refinery
 
       send :before_filter, :refinery_user_required?
 
+      send :before_filter, :force_ssl?, :if => :admin?
+
       send :after_filter, :store_current_location!,
                             :if => Proc.new {|c| send(:refinery_user?) }
 
@@ -63,12 +65,16 @@ module Refinery
 
   protected
 
+    def force_ssl?
+      redirect_to :protocol => 'https' if !request.ssl? && Refinery::Core.force_ssl
+    end
+
     # use a different model for the meta information.
     def present(model)
       @meta = presenter_for(model).new(model)
     end
 
-    def presenter_for(model, default=BasePresenter)
+    def presenter_for(model, default = BasePresenter)
       return default if model.nil?
 
       "#{model.class.name}Presenter".constantize

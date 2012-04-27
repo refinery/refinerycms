@@ -13,16 +13,19 @@ Refinery by default provides you with +Body+ and +Side Body+ page parts because 
 
 Within @config/initializers/refinery/pages.rb@ you will see various default settings are commented out including the following:
 
-
-@  # Configure global page default parts@
-@  # config.default_parts = ["Body", "Side Body"]@
+<ruby>
+# Configure global page default parts
+# config.default_parts = ["Body", "Side Body"]
+</ruby>
 
 Edit this code to have the names of the default page parts you want, click +Save+ and you're done.
 
 Here's a sample of a site that would have three content areas on most of its pages.
 
-@  # Configure global page default parts@
-@  config.default_parts = ["Left Body", "Middle Body", "Right Body"]@
+<ruby>
+# Configure global page default parts
+config.default_parts = ["Left Body", "Middle Body", "Right Body"]
+</ruby>
 
 h3. Changing Page Parts for a single page
 

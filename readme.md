@@ -4,7 +4,6 @@ __An open source Ruby on Rails content management system for Rails 3.__
 
 More information at [http://refinerycms.com](http://refinerycms.com)
 
-[![Donate to the project using Flattr](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=parndt&url=https://github.com/resolve/refinerycms&title=Refinery CMS&language=en_GB&tags=github&category=software)
 [![Build Status](https://secure.travis-ci.org/resolve/refinerycms.png)](http://travis-ci.org/resolve/refinerycms)
 
 ## Requirements
@@ -23,7 +22,7 @@ More information at [http://refinerycms.com](http://refinerycms.com)
 
 If you're new to Refinery, start with this guide:
 
-* __[Getting started with Refinery](http://refinerycms.com/guides/getting-started-with-refinery)__
+* __[Getting Started](http://refinerycms.com/guides/getting-started)__
 
 ## What's it good at?
 
@@ -44,10 +43,10 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 
 ## Help and Documentation
 
-* [Getting Started](http://refinerycms.com/guides/getting-started-with-refinery)
+* [Getting Started](http://refinerycms.com/guides/getting-started)
 * [Guides](http://refinerycms.com/guides)
 * [Google Group Discussion](http://group.refinerycms.org)
-* [IRC Channel](http://refinerycms.com/guides/how-to-get-help-with-refinery#irc-channel)
+* [IRC Channel](http://refinerycms.com/guides/how-to-get-help#irc-channel)
 * [GitHub repository](https://github.com/resolve/refinerycms)
 * [Developer/API documentation](http://api.refinerycms.org)
 * [Twitter Account](http://twitter.com/refinerycms)
@@ -74,7 +73,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 
 * Manage who can access Refinery.
 * Control which extensions each user has access to.
-* Uses the popular [devise](https://github.com/plataformatec/devise).
+* Uses the popular [Devise](https://github.com/plataformatec/devise).
 
 Extend Refinery easily by running the Refinery extension generator. 
 For help run the command without any options:

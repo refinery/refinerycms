@@ -96,7 +96,7 @@ module Refinery
       end
 
       # set the manifests and assets to be precompiled
-      initializer "refinery.assets.precompile" do |app|
+      initializer "refinery.assets.precompile", :group => :all do |app|
         app.config.assets.precompile += [
           "refinery/*",
           "refinery/icons/*",

@@ -506,6 +506,39 @@ module Refinery
           end
         end
       end
+
+      describe 'advanced options' do
+        describe 'view and layout templates' do
+          context 'when parent page has templates set' do
+            before(:each) do
+              Refinery::Pages.stub(:use_layout_templates).and_return(true)
+              Refinery::Pages.stub(:use_view_templates).and_return(true)
+              Refinery::Pages.stub(:layout_template_whitelist).and_return(['abc', 'refinery'])
+              Refinery::Pages.stub(:view_template_whitelist).and_return(['abc', 'refinery'])
+              Refinery::Pages.stub(:valid_templates).and_return(['abc', 'refinery'])
+              parent_page = FactoryGirl.create(:page, :view_template => 'refinery',
+                                                      :layout_template => 'refinery')
+              parent_page.children.create(FactoryGirl.attributes_for(:page))
+            end
+
+            specify 'sub page should inherit them' do
+              visit refinery.admin_pages_path
+
+              within '.nested' do
+                click_link 'Edit this page'
+              end
+
+              within '#page_layout_template' do
+                page.find('option[value=refinery]').selected?.should eq('selected')
+              end
+
+              within '#page_view_template' do
+                page.find('option[value=refinery]').selected?.should eq('selected')
+              end
+            end
+          end
+        end
+      end
     end
 
     describe "TranslatePages" do
@@ -571,6 +604,15 @@ module Refinery
           Globalize.locale = :en
         end
 
+        let(:about_page) do
+          page = Refinery::Page.last
+          # we need page parts so that there's wymeditor
+          Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
+            page.parts.create(:title => default_page_part, :body => nil, :position => index)
+          end
+          page
+        end
+
         describe "adding page link" do
           describe "with relative urls" do
             before(:each) { Refinery::Pages.absolute_page_links = false }
@@ -589,6 +631,7 @@ module Refinery
               page.should have_selector("a[href='/about']")
             end
           end
+
           describe "with absolute urls" do
             before(:each) { Refinery::Pages.absolute_page_links = true }
 
@@ -604,6 +647,37 @@ module Refinery
 
               page.should have_content("About")
               page.should have_selector("a[href='http://www.example.com/about']")
+            end
+          end
+
+          # see https://github.com/resolve/refinerycms/pull/1583
+          context "when switching locales" do
+            specify "dialog has correct links", :js => true do
+              visit refinery.edit_admin_page_path(about_page)
+
+              click_link "Add Link"
+
+              page.should have_selector("iframe#dialog_frame")
+
+              page.within_frame("dialog_frame") do
+                page.should have_content("About")
+                page.should have_css("a[href$='/about']")
+
+                click_link "cancel_button"
+              end
+
+              within "#switch_locale_picker" do
+                click_link "Ru"
+              end
+
+              click_link "Add Link"
+
+              page.should have_selector("iframe#dialog_frame")
+
+              page.within_frame("dialog_frame") do
+                page.should have_content("About Ru")
+                page.should have_css("a[href$='/ru/about-ru']")
+              end
             end
           end
         end

@@ -2,7 +2,14 @@ def setup_environment
   # Configure Rails Environment
   ENV["RAILS_ENV"] ||= 'test'
 
-  require File.expand_path("../dummy/config/environment", __FILE__)
+  if File.exist?(dummy_path = File.expand_path('../spec/dummy/config/environment.rb', __FILE__))
+    require dummy_path
+  elsif File.dirname(__FILE__) =~ %r{vendor/extensions}
+    # Require the path to the refinerycms application this is vendored inside.
+    require File.expand_path('../../../../../config/environment', __FILE__)
+  else
+    raise "Could not find a config/environment.rb file to require. Please specify this in spec/spec_helper.rb"
+  end
 
   require 'rspec/rails'
   require 'capybara/rspec'

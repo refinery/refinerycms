@@ -7,7 +7,7 @@ module Refinery
                     :menu_hide_children, :menu_css, :dragonfly_secret, :ie6_upgrade_message_enabled,
                     :show_internet_explorer_upgrade_message, :wymeditor_whitelist_tags,
                     :javascripts, :stylesheets, :s3_bucket_name, :s3_region, :s3_access_key_id,
-                    :s3_secret_access_key
+                    :s3_secret_access_key, :force_ssl
 
     self.rescue_not_found = false
     self.s3_backend = false
@@ -27,6 +27,7 @@ module Refinery
     self.s3_region = ENV['S3_REGION']
     self.s3_access_key_id = ENV['S3_KEY']
     self.s3_secret_access_key = ENV['S3_SECRET']
+    self.force_ssl = false
 
     def config.register_javascript(name)
       self.javascripts << name
@@ -36,12 +37,18 @@ module Refinery
       self.stylesheets << Stylesheet.new(*args)
     end
 
-    def self.clear_javascripts!
-      self.javascripts = []
-    end
+    class << self
+      def clear_javascripts!
+        self.javascripts = []
+      end
 
-    def self.clear_stylesheets!
-      self.stylesheets = []
+      def clear_stylesheets!
+        self.stylesheets = []
+      end
+
+      def site_name
+        ::I18n.t('site_name', :scope => 'refinery.core.config', :default => config.site_name)
+      end
     end
 
     # wrapper for stylesheet registration
