@@ -98,6 +98,10 @@ module Refinery
       # set the manifests and assets to be precompiled
       initializer "refinery.assets.precompile", :group => :all do |app|
         app.config.assets.precompile += [
+          "home.css",
+          "formatting.css",
+          "theme.css",
+          "admin.js",
           "refinery/*",
           "refinery/icons/*",
           "wymeditor/lang/*",
