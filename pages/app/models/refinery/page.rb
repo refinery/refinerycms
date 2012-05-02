@@ -186,6 +186,20 @@ module Refinery
           return true # so that other callbacks process.
         end
       end
+
+      # Preloading children via Page.includes(:children) is inefficient and doesn't work beyond
+      # the first level of nesting (ie: @pages.first.children.first.children starts issuing queries again).
+      def manually_associate_children(pages)
+        parent_id_grouped = pages.group_by(&:parent_id)
+        # code taken almost verbatim from AR::Associations::Preloader::CollectionAssociation
+        pages.each do |page|
+          children = parent_id_grouped[page.id] || []
+          association = page.association(:children)
+          association.loaded!
+          association.target.concat(children)
+          children.each {|child| association.set_inverse_instance(child)}
+        end
+      end
     end
 
     # Returns in cascading order: custom_slug or menu_title or title depending on

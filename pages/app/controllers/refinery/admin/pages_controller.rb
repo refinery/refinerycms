@@ -27,12 +27,22 @@ module Refinery
         render :layout => false
       end
 
+      def index_with_manual_children_preloading
+        index_without_manual_children_preloading
+        Page.manually_associate_children(@pages)
+      end
+      alias_method_chain :index, :manual_children_preloading
+
     protected
 
       def find_page
         @page = Refinery::Page.find_by_path_or_id(params[:path], params[:id])
       end
       alias_method :page, :find_page
+
+      def find_all_pages(conditions = nil)
+        @pages = Page.where(conditions).includes(:translations).order("lft ASC")
+      end
 
       # We can safely assume ::Refinery::I18n is defined because this method only gets
       # Invoked when the before_filter from the plugin is run.
