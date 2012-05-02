@@ -18,8 +18,7 @@
         <%= f.label :parent_id, t('.parent_page') %>
         <%= refinery_help_tag t('.parent_page_help') %>
       </span>
-      <%= f.select :parent_id, nested_set_options(::Refinery::Page, @page) {|i| "#{'-' * i.level} #{i.title}" },
-                   :include_blank => true %>
+      <%= f.select :parent_id, parent_id_nested_set_options(@page), :include_blank => true %>
     </div>
     <% if Refinery::Pages.use_layout_templates %>
     <div class='field'>
