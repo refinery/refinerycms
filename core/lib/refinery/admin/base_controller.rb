@@ -51,10 +51,13 @@ module Refinery
       end
 
       def restrict_controller
-        # if ::Refinery::Plugins.active.reject { |plugin| params[:controller] !~ Regexp.new(plugin.menu_match)}.empty?
-        #   warn "'#{current_refinery_user.username}' tried to access '#{params[:controller]}' but was rejected."
-        #   error_404
-        # end
+        # We need to remove the admin/ section since the path is silent for the
+        # namespace.
+        path = params[:controller].gsub('admin/', '')
+        unless ::Refinery::Plugins.active.any? {|plugin| path =~ Regexp.new(plugin.menu_match) }
+          logger.warn "'#{current_refinery_user.username}' tried to access '#{path}' but was rejected."
+          error_404
+        end
       end
 
     private
