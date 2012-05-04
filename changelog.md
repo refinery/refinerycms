@@ -17,6 +17,7 @@
 * Made sure plugin params are set before checking exclusion, and removed unused variable. [#1602](https://github.com/resolve/refinerycms/pull/1602). [Rob Yurkowski](https://github.com/robyurkowski)
 * Fixed link addition bug in the backend when switching locale. [#1583](https://github.com/resolve/refinerycms/pull/1583). [Vít Krchov](https://github.com/vita)
 * Fixed bug with invalidating cached urls for all frontend locales. [#1479](https://github.com/resolve/refinerycms/pull/1479), [#1534](https://github.com/resolve/refinerycms/pull/1534). [Vít Krchov](https://github.com/vita), [Rob Yurkowski](https://github.com/robyurkowski) & [Uģis Ozols](https://github.com/ugisozols)
+* Fixed image picker bug in Firefox 11 where content of the page was blank until you move the popup. [#1637](https://github.com/resolve/refinerycms/pull/1637). [Nelly Natalí](https://github.com/nnatali) 
 
 ## 2.0.3 [2 April 2012]
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
