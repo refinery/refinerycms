@@ -42,7 +42,7 @@ module Refinery
                                               'Dragonfly::Middleware', :refinery_images
 
           app.config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
-            :verbose     => Rails.env.development?,
+            :verbose     => Refinery::Core.verbose_rack_cache,
             :metastore   => "file:#{Rails.root.join('tmp', 'dragonfly', 'cache', 'meta')}",
             :entitystore => "file:#{Rails.root.join('tmp', 'dragonfly', 'cache', 'body')}"
           }
