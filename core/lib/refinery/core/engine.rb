@@ -57,7 +57,7 @@ module Refinery
           plugin.version = Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
-          plugin.menu_match = /refinery\/(refinery_core)$/
+          plugin.menu_match = /refinery\/(refinery_)?core$/
         end
       end
 
