@@ -3,7 +3,7 @@ require "spec_helper"
 module Refinery
   describe "plugin access" do
     context "as refinery user" do
-      refinery_login_with :refinery_user
+      login_refinery_user
 
       context "with permission" do
         it "allows access" do
@@ -14,7 +14,7 @@ module Refinery
 
       context "without permission" do
         before do
-          logged_in_user.stub(:plugins).and_return []
+          Refinery::User.first.plugins = []
         end
 
         it "denies access" do
