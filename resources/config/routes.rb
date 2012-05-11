@@ -1,4 +1,4 @@
-Refinery::Core::Engine.routes.prepend do
+Refinery::Core::Engine.routes.draw do
   get '/system/resources/*dragonfly', :to => Dragonfly[:refinery_resources]
 
   namespace :admin, :path => 'refinery' do
