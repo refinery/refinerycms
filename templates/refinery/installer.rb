@@ -23,6 +23,10 @@ end
 
 append_file 'Gemfile', <<-GEMFILE
 
+# Spam filter mixin for your models.
+# https://github.com/resolve/filters_spam
+# gem 'filters_spam', '~> 0.3'
+
 # Refinery CMS
 gem 'refinerycms', '~> #{VERSION_BAND}'
 

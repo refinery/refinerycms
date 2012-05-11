@@ -1,5 +1,6 @@
 require 'refinerycms-settings'
 require 'refinerycms-core'
+<%= "require 'filters_spam'" if @includes_spam %>
 
 module Refinery
   module <%= class_name.pluralize %><%= 'Engine' if plural_name == singular_name %>
