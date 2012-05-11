@@ -125,6 +125,7 @@ module Refinery
             Rails.application.routes.draw do
               mount Refinery::Core::Engine, :at => "/about"
             end
+            Rails.application.routes_reloader.reload!
           end
 
           after do
