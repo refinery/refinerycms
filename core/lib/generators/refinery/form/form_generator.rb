@@ -18,6 +18,8 @@ module Refinery
     def generate
       sanity_check!
 
+      check_for_spam_filter!
+
       evaluate_templates!
 
       merge_locales!
