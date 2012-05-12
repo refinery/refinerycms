@@ -111,7 +111,7 @@ module Refinery
             # Detect whether this is a special file that needs to get merged not overwritten.
             # This is important only when nesting extensions.
             if extension.present? && File.exist?(path)
-              path = if path =~ %r{/locales/.*\.yml$} or path =~ %r{/routes.rb$} or path =~ %r{/#{gem_name}.rb$}
+              path = if path =~ %r{/locales/.*\.yml$} || path =~ %r{/routes.rb$} || path =~ %r{/#{gem_name}.rb$}
                 # put new translations into a tmp directory
                 path.split(File::SEPARATOR).insert(-2, "tmp").join(File::SEPARATOR)
               elsif path =~ %r{/readme.md$} or path =~ %r{/#{plural_name}.rb$}
