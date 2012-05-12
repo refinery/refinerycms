@@ -159,7 +159,21 @@ module Refinery
       end
     end
 
+    def include_unless_included(base, extension_module)
+      base.send :include, extension_module unless included_extension_module?(base, extension_module)
+    end
+
   private
+    # plain Module#included? or Module#included_modules doesn't cut it here
+    def included_extension_module?(base, extension_module)
+      if base.kind_of?(Class)
+        direct_superclass = base.superclass
+        base.ancestors.take_while {|ancestor| ancestor != direct_superclass}.include?(extension_module)
+      else
+        base < extension_module # can't do better than that for modules
+      end
+    end
+
     def validate_extension!(const)
       unless const.respond_to?(:root) && const.root.is_a?(Pathname)
         raise InvalidEngineError, "Engine must define a root accessor that returns a pathname to its root"
