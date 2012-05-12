@@ -4,7 +4,29 @@ require 'rails/generators'
 require 'rails/generators/rails/app/app_generator'
 template_path = File.expand_path('../../templates/refinery/installer.rb', __FILE__)
 
+if ARGV.size == 0 || ARGV[0] == "--help"
+  puts "Usage:"
+  puts "  refinerycms APP_NAME [options]"
+  puts ""
+  puts "Options:"
+  # Support when running locally
+  relative_path = File.expand_path('../../core/lib/generators/refinery/cms/cms_generator.rb', __FILE__)
+  if File.exist?(relative_path)
+    require relative_path
+  else
+    gem 'refinerycms-core'
+    require 'generators/refinery/cms/cms_generator'
+  end
+  Refinery::CmsGenerator.class_options.each do |raw, option|
+    dasherized = "--#{option.name.to_s.gsub('_', '-')}"
+    dasherized = [option.aliases, "[#{dasherized}]"].flatten.join(', ') if option.aliases.any?
+    puts "  #{dasherized}".ljust(28) << "# #{option.description}"
+  end
+  exit 0
+end
+
 application_name = ARGV.shift
+
 result = Rails::Generators::AppGenerator.start [application_name, '-m', template_path, '--skip-test-unit'] | ARGV
 
 if result && result.include?('Gemfile')
