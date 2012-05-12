@@ -91,9 +91,11 @@ init_modal_dialogs = function(){
       , height: height
       , open: onOpenDialog
       , close: onCloseDialog
+			, open: function(event, ui) {
+				iframe.attr('src', iframe_src);
+			}
     });
 
-    iframe.attr('src', iframe_src);
     e.preventDefault();
   });
 };

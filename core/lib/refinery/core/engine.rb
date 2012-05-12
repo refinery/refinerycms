@@ -57,7 +57,7 @@ module Refinery
           plugin.version = Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
-          plugin.menu_match = /refinery\/(refinery_core)$/
+          plugin.menu_match = /refinery\/(refinery_)?core$/
         end
       end
 
@@ -98,6 +98,10 @@ module Refinery
       # set the manifests and assets to be precompiled
       initializer "refinery.assets.precompile", :group => :all do |app|
         app.config.assets.precompile += [
+          "home.css",
+          "formatting.css",
+          "theme.css",
+          "admin.js",
           "refinery/*",
           "refinery/icons/*",
           "wymeditor/lang/*",

@@ -173,4 +173,12 @@ describe Refinery do
       end
     end
   end
+
+  describe Refinery::Core::Engine do
+    describe "#helpers" do
+      it "should not include ApplicationHelper" do
+        Refinery::Core::Engine.helpers.ancestors.map(&:name).should_not include("ApplicationHelper")
+      end
+    end
+  end
 end

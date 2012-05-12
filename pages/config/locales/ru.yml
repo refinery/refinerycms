@@ -43,6 +43,9 @@ ru:
           view_live_html: Показать эту страницу вживую <br/><em>(откроется в новом окне)</em>
           hidden: скрытая
           draft: черновик
+        form:
+          preview: Посмотреть
+          preview_changes: Посмотреть свои изменения перед сохранением
         form_new_page_parts:
           title: Заголовок
         form_page_parts:

@@ -10,8 +10,10 @@ describe Refinery::Admin::UsersController do
     end
 
     it "loads plugins" do
+      user_plugin = Refinery::Plugins.registered.detect { |plugin| plugin.name == "refinery_users" }
       plugins = Refinery::Plugins.new
-      plugins.should_receive(:in_menu).once{ [] }
+      plugins << user_plugin
+      plugins.should_receive(:in_menu).once{ [user_plugin] }
 
       Refinery::Plugins.should_receive(:registered).at_least(1).times{ plugins }
       get :new
