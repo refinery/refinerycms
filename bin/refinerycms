@@ -2,7 +2,6 @@
 gem 'railties'
 require 'rails/generators'
 require 'rails/generators/rails/app/app_generator'
-require File.expand_path('../../core/lib/generators/refinery/cms/cms_generator', __FILE__)
 template_path = File.expand_path('../../templates/refinery/installer.rb', __FILE__)
 
 if ARGV.size == 0 || ARGV[0] == "--help"
@@ -10,11 +9,20 @@ if ARGV.size == 0 || ARGV[0] == "--help"
   puts "  refinerycms APP_NAME [options]"
   puts ""
   puts "Options:"
-  options = Refinery::CmsGenerator.class_options
-  options.keys.each do |option_key|
-    puts "  --#{option_key}".ljust(28) << "# #{options[option_key].description}"
+  # Support when running locally
+  relative_path = File.expand_path('../../core/lib/generators/refinery/cms/cms_generator.rb', __FILE__)
+  if File.exist?(relative_path)
+    require relative_path
+  else
+    gem 'refinerycms-core'
+    require 'generators/refinery/cms/cms_generator'
   end
-  exit(0)
+  Refinery::CmsGenerator.class_options.each do |raw, option|
+    dasherized = "--#{option.name.to_s.gsub('_', '-')}"
+    dasherized = [option.aliases, "[#{dasherized}]"].flatten.join(', ') if option.aliases.any?
+    puts "  #{dasherized}".ljust(28) << "# #{option.description}"
+  end
+  exit 0
 end
 
 application_name = ARGV.shift
@@ -27,7 +35,7 @@ if result && result.include?('Gemfile')
   note << "\ncd #{application_name}"
   note << "rails server"
   note << "\nThis will launch the built-in webserver at port 3000."
-  note << "You can now see your site running in your browser at http://localhost:3000"
+  note << "You can now see Refinery running in your browser at http://localhost:3000/refinery"
 
   if ARGV.include?('--heroku')
     note << "\nIf you want files and images to work on Heroku, you will need setup S3:"

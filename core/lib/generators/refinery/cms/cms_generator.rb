@@ -1,3 +1,5 @@
+require 'pathname'
+
 module Refinery
   class CmsGenerator < Rails::Generators::Base
     source_root Pathname.new(File.expand_path('../templates', __FILE__))
