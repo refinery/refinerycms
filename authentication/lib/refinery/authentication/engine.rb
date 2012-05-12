@@ -23,8 +23,8 @@ module Refinery
       end
 
       before_inclusion do
-        [Refinery::ApplicationController, Refinery::AdminController, ::ApplicationHelper].each do |c|
-          c.send :include, Refinery::AuthenticatedSystem
+        [Refinery::AdminController, ::ApplicationController].each do |c|
+          Refinery.include_unless_included(c, Refinery::AuthenticatedSystem)
         end
       end
 
