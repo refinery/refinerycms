@@ -14,8 +14,8 @@ module Refinery
       end
 
       after_inclusion do
-        Refinery.include_unless_included(::ApplicationController, Refinery::Pages::InstanceMethods)
-        Refinery.include_unless_included(Refinery::AdminController, Refinery::Pages::Admin::InstanceMethods)
+        Refinery.include_once(::ApplicationController, Refinery::Pages::InstanceMethods)
+        Refinery.include_once(Refinery::AdminController, Refinery::Pages::Admin::InstanceMethods)
       end
 
       initializer "refinery.pages register plugin" do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Refinery do
-  describe "#include_unless_included" do
+  describe "#include_once" do
     it "shouldn't double include a module" do
       mod = Module.new do
         def self.included(base)
@@ -12,8 +12,8 @@ describe Refinery do
 
       [Module.new, Class.new].each do |target|
         target::INCLUSIONS = []
-        subject.include_unless_included(target, mod)
-        subject.include_unless_included(target, mod)
+        subject.include_once(target, mod)
+        subject.include_once(target, mod)
         target::INCLUSIONS.should have(1).item
       end
     end

@@ -159,7 +159,7 @@ module Refinery
       end
     end
 
-    def include_unless_included(base, extension_module)
+    def include_once(base, extension_module)
       base.send :include, extension_module unless included_extension_module?(base, extension_module)
     end
 

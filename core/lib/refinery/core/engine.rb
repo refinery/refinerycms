@@ -24,7 +24,7 @@ module Refinery
         def refinery_inclusion!
           before_inclusion_procs.each(&:call)
 
-          Refinery.include_unless_included(::ApplicationController, Refinery::ApplicationController)
+          Refinery.include_once(::ApplicationController, Refinery::ApplicationController)
           ::ApplicationController.send :helper, Refinery::Core::Engine.helpers
 
           after_inclusion_procs.each(&:call)

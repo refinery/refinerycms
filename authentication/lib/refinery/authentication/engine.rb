@@ -24,7 +24,7 @@ module Refinery
 
       before_inclusion do
         [Refinery::AdminController, ::ApplicationController].each do |c|
-          Refinery.include_unless_included(c, Refinery::AuthenticatedSystem)
+          Refinery.include_once(c, Refinery::AuthenticatedSystem)
         end
       end
 
