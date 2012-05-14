@@ -149,13 +149,6 @@ module Refinery
     #   Refinery.route_for_model(Refinery::Blog::Post, {:plural => true}) => "blog_admin_posts_path"
     #   Refinery.route_for_model(Refinery::Blog::Post, {:admin => false}) => "blog_post_path"
     def route_for_model(klass, options = {})
-      if [TrueClass, FalseClass].include? options.class
-        options = {:plural => options}
-        Refinery.deprecate "[Refinery.route_for_model] 'plural' argument",
-                           :when => '2.1',
-                           :replacement => '{:plural => false}'
-      end
-
       options = {:plural => false, :admin => true}.merge options
 
       klass = klass.constantize if klass.respond_to?(:constantize)
