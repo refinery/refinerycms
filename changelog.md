@@ -2,7 +2,7 @@
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
-## 2.0.4 [unreleased]
+# 2.0.4 [14 May 2012]
 * IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [#1636](https://github.com/resolve/refinerycms/pull/1636). [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
 * Fixed stack level too deep error in Refinery::Menu#inspect. [#1551](https://github.com/resolve/refinerycms/pull/1551). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed spec fails for newly generated engines and bumped gem versions in generated Gemfile. [#1553](https://github.com/resolve/refinerycms/issues/1553). [Uģis Ozols](https://github.com/ugisozols)
