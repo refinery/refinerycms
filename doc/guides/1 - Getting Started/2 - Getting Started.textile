@@ -328,7 +328,7 @@ Run this command to generate the events extension for Rick:
 
 <shell>
 $ rails generate refinery:engine event title:string date:datetime photo:image blurb:text
-<shell>
+</shell>
 
 This results in the following:
 <shell>
