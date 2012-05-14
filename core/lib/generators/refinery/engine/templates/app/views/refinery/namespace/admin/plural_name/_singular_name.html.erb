@@ -1,4 +1,4 @@
-<% title_attribute = (title = attributes.detect { |a| a.type.to_s == "string" }).present? ? title.name : title -%>
+<% title_attribute = (title = attributes.detect { |a| a.type.to_s == "string" }).present? ? title.name : 'title' -%>
 <li class='clearfix record <%%= cycle("on", "on-hover") %>' id="<%%= dom_id(<%= singular_name %>) -%>">
   <span class='title'>
     <%%= <%= singular_name %>.<%= title_attribute %> %>
