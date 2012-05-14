@@ -31,6 +31,7 @@ WYMeditor.STRINGS['ru'] = {
   Summary:          'Summary',
   Number_Of_Rows:   'Кол-во строк',
   Number_Of_Cols:   'Кол-во столбцов',
+  Insert:           'Вставить',
   Submit:           'Отправить',
   Cancel:           'Отмена',
   Choose:           'Выбор',
