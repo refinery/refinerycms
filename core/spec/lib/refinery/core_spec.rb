@@ -155,39 +155,62 @@ describe Refinery do
   end
 
   describe ".route_for_model" do
-    context "when passed Refinery::Dummy" do
+    context 'with Refinery::Dummy' do
+      module Refinery::Dummy
+      end
+
       it "returns admin_dummy_path" do
-        Refinery.route_for_model("Refinery::Dummy").should == "admin_dummy_path"
+        Refinery.route_for_model(Refinery::Dummy).should == "admin_dummy_path"
+      end
+
+      context ":plural => true" do
+        it "returns admin_dummies_path" do
+          Refinery.route_for_model(Refinery::Dummy, :plural => true).should == "admin_dummies_path"
+        end
       end
     end
 
-    context "when passed Refinery::Dummy and true" do
-      it "returns admin_dummies_path" do
-        Refinery.route_for_model("Refinery::Dummy", true).should == "admin_dummies_path"
+    context 'with Refinery::DummyName' do
+      module Refinery::DummyName
       end
-    end
 
-    context "when passed Refinery::DummyName" do
       it "returns admin_dummy_name_path" do
-        Refinery.route_for_model("Refinery::DummyName").should == "admin_dummy_name_path"
+        Refinery.route_for_model(Refinery::DummyName).should == "admin_dummy_name_path"
+      end
+
+      context ":plural => true" do
+        it "returns admin_dummy_names_path" do
+          Refinery.route_for_model(Refinery::DummyName, :plural => true).should == "admin_dummy_names_path"
+        end
       end
     end
 
-    context "when passed Refinery::DummyName and true" do
-      it "returns admin_dummy_names_path" do
-        Refinery.route_for_model("Refinery::DummyName", true).should == "admin_dummy_names_path"
+    context 'with Refinery::Dummy::Name' do
+      module Refinery::Dummy
+        module Name
+        end
       end
-    end
 
-    context "when passed Refinery::Dummy::Name" do
       it "returns dummy_admin_name_path" do
-        Refinery.route_for_model("Refinery::Dummy::Name").should == "dummy_admin_name_path"
+        Refinery.route_for_model(Refinery::Dummy::Name).should == "dummy_admin_name_path"
       end
-    end
 
-    context "when passed Refinery::Dummy::Name and true" do
-      it "returns dummy_admin_names_path" do
-        Refinery.route_for_model("Refinery::Dummy::Name", true).should == "dummy_admin_names_path"
+      context ":plural => true" do
+        it "returns dummy_admin_names_path" do
+          Refinery.route_for_model(Refinery::Dummy::Name, :plural => true).should == "dummy_admin_names_path"
+        end
+      end
+
+      context ":admin => false" do
+        it "returns dummy_name_path" do
+          Refinery.route_for_model(Refinery::Dummy::Name, :admin => false).should == 'dummy_name_path'
+        end
+      end
+
+      context ":admin => false, :plural => true" do
+        it "returns dummy_names_path" do
+          Refinery.route_for_model(Refinery::Dummy::Name, :admin => false, :plural => true).should == 'dummy_names_path'
+        end
       end
     end
   end

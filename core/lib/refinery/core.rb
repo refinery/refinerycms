@@ -139,23 +139,39 @@ module Refinery
       Refinery::Version.to_s
     end
 
-    # Returns string version of url helper path. We need this to temporary support namespaces
+    # Returns string version of url helper path. We need this to temporarily support namespaces
     # like Refinery::Image and Refinery::Blog::Post
     #
     # Example:
-    #   Refinery.route_for_model("Refinery::Image") => "admin_image_path"
-    #   Refinery.route_for_model(Refinery::Image, true) => "admin_images_path"
+    #   Refinery.route_for_model(Refinery::Image) => "admin_image_path"
+    #   Refinery.route_for_model(Refinery::Image, {:plural => true}) => "admin_images_path"
     #   Refinery.route_for_model(Refinery::Blog::Post) => "blog_admin_post_path"
-    #   Refinery.route_for_model(Refinery::Blog::Post, true) => "blog_admin_posts_path"
-    def route_for_model(klass, plural = false)
-      parts = klass.to_s.underscore.split('/').delete_if { |p| p.blank? }
+    #   Refinery.route_for_model(Refinery::Blog::Post, {:plural => true}) => "blog_admin_posts_path"
+    #   Refinery.route_for_model(Refinery::Blog::Post, {:admin => false}) => "blog_post_path"
+    def route_for_model(klass, options = {})
+      if [TrueClass, FalseClass].include? options.class
+        options = {:plural => options}
+        Refinery.deprecate "[Refinery.route_for_model] 'plural' argument",
+                           :when => '2.1',
+                           :replacement => '{:plural => false}'
+      end
 
-      resource_name = plural ? parts[-1].pluralize : parts[-1]
+      options = {:plural => false, :admin => true}.merge options
 
-      if parts.size == 2
-        "admin_#{resource_name}_path"
-      elsif parts.size > 2
-        [parts[1..-2].join("_"), "admin", resource_name, "path"].join("_")
+      klass = klass.constantize if klass.respond_to?(:constantize)
+      active_name = ActiveModel::Name.new(klass, (Refinery if klass.parents.include?(Refinery)))
+
+      if options[:admin]
+        # Most of the time this gets rid of 'refinery'
+        parts = active_name.underscore.split('/').reject{|name| active_name.singular_route_key.exclude?(name)}
+        resource_name = parts.pop
+        resource_name = options[:plural] ? resource_name.pluralize : resource_name.singularize
+
+        [parts.join("_"), "admin", resource_name, "path"].reject(&:blank?).join "_"
+      else
+        path = options[:plural] ? active_name.route_key : active_name.singular_route_key
+
+        [path, 'path'].join '_'
       end
     end
 
