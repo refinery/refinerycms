@@ -2,8 +2,8 @@
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
-## 2.0.4 [14 May 2012]
-* IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
+# 2.0.4 [unreleased]
+* IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [#1636](https://github.com/resolve/refinerycms/pull/1636). [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
 * Fixed stack level too deep error in Refinery::Menu#inspect. [#1551](https://github.com/resolve/refinerycms/pull/1551). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed spec fails for newly generated engines and bumped gem versions in generated Gemfile. [#1553](https://github.com/resolve/refinerycms/issues/1553). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed dialog opening issue when Refinery was mounted at different path than /. [#1555](https://github.com/resolve/refinerycms/issues/1555). [Uģis Ozols](https://github.com/ugisozols)
@@ -19,11 +19,11 @@
 * Fixed link addition bug in the backend when switching locale. [#1583](https://github.com/resolve/refinerycms/pull/1583). [Vít Krchov](https://github.com/vita)
 * Fixed bug with invalidating cached urls for all frontend locales. [#1479](https://github.com/resolve/refinerycms/pull/1479), [#1534](https://github.com/resolve/refinerycms/pull/1534). [Vít Krchov](https://github.com/vita), [Rob Yurkowski](https://github.com/robyurkowski) & [Uģis Ozols](https://github.com/ugisozols)
 * Fixed image picker bug in Firefox 11 where content of the page was blank until you move the popup. [#1637](https://github.com/resolve/refinerycms/pull/1637). [Nelly Natalí](https://github.com/nnatali)
-* Modified `Refinery.route_for_model` to fix a bug with the refinerycms-search plugin. [Philip Arndt](https://github.com/parndt)
-* Fixed engine generator for when you don't have a title field. [Jean-Philippe Boily](https://github.com/jipiboily)
+* Modified `Refinery.route_for_model` to fix a bug with the refinerycms-search plugin. [#1661](https://github.com/resolve/refinerycms/pull/1661). [Philip Arndt](https://github.com/parndt)
+* Fixed engine generator for when you don't have a title field. [#1619](https://github.com/resolve/refinerycms/pull/1619). [Jean-Philippe Boily](https://github.com/jipiboily)
 * Fixed `content_fu`. [#1628](https://github.com/resolve/refinerycms/issues/1628) [Philip Arndt](https://github.com/parndt)
 # Added Russian translations for the preview button. [Vasiliy Ermolovich](https://github.com/nashby)
-* Manually loaded translations associations to avoid N+1 queries in the pages backend. [thedarkone](https://github.com/thedarkone)
+* Manually loaded translations associations to avoid N+1 queries in the pages backend. [#1633](https://github.com/resolve/refinerycms/pull/1633). [thedarkone](https://github.com/thedarkone)
 
 ## 2.0.3 [2 April 2012]
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
