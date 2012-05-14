@@ -22,7 +22,7 @@
 * Modified `Refinery.route_for_model` to fix a bug with the refinerycms-search plugin. [#1661](https://github.com/resolve/refinerycms/pull/1661). [Philip Arndt](https://github.com/parndt)
 * Fixed engine generator for when you don't have a title field. [#1619](https://github.com/resolve/refinerycms/pull/1619). [Jean-Philippe Boily](https://github.com/jipiboily)
 * Fixed `content_fu`. [#1628](https://github.com/resolve/refinerycms/issues/1628) [Philip Arndt](https://github.com/parndt)
-# Added Russian translations for the preview button. [Vasiliy Ermolovich](https://github.com/nashby)
+* Added Russian translations for the preview button. [Vasiliy Ermolovich](https://github.com/nashby)
 * Manually loaded translations associations to avoid N+1 queries in the pages backend. [#1633](https://github.com/resolve/refinerycms/pull/1633). [thedarkone](https://github.com/thedarkone)
 
 ## 2.0.3 [2 April 2012]
