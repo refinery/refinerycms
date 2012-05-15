@@ -1,3 +1,6 @@
+language: ruby
+before_install:
+  - 'if [[ "$TRAVIS_RUBY_VERSION" =~ "jruby" ]] ; then gem update --system ; fi'
 before_script:
   - "sh -e /etc/init.d/xvfb start"
   - "bundle exec rake refinery:testing:dummy_app > /dev/null"
@@ -17,7 +20,6 @@ matrix:
   allow_failures:
     - rvm: rbx-18mode
     - rvm: rbx-19mode
-    - rvm: jruby-19mode
 rvm:
   - 1.8.7
   - 1.9.3
