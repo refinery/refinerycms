@@ -1,3 +1,4 @@
+language: ruby
 before_install:
   - 'if [[ "$TRAVIS_RUBY_VERSION" =~ "jruby" ]] ; then gem update --system ; fi'
 before_script:
