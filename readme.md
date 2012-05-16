@@ -87,6 +87,7 @@ For help run the command without any options:
 * [Blog](https://github.com/resolve/refinerycms-blog) - A simple blogging extension that supports posts, categories and comments with optional moderation support.
 * [Portfolio](https://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](https://github.com/resolve/refinerycms-news) - post and manage news items.
+* [Inquiries](https://github.com/refinery/refinerycms-inquiries) - simple contact form that notifies you and customer when an inquiry is made.
 
 [Full extension list here](http://refinerycms.com/engines)
 
