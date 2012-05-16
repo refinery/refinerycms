@@ -56,7 +56,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 ### Pages
 
 * Easily edit and manage pages with a [WYSIWYG visual editor](http://www.wymeditor.org/).
-* Manage you site's structure.
+* Manage your site's structure.
 
 ### Images & Files
 
