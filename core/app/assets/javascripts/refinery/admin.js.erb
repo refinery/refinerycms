@@ -104,7 +104,7 @@ refinery_dialog_success = function(e) {
   close_dialog();
 
   $.ajax({
-    url: window.location.pathname,
+    url: window.location.pathname + window.location.search,
     cache: false,
     success: function(data) {
       $('.pagination_container').html(data);
@@ -662,7 +662,7 @@ var page_options = {
 //        the page-images and portfolio engines.
 
 // ImageDialog
-// 
+//
 //   The dialog that opens when choosing to 'Add image' in WYM.
 //
 //   Options:
