@@ -22,7 +22,7 @@ namespace :refinery do
 
       Refinery::CmsGenerator.start %w[--quiet --fresh-installation]
 
-      Dir.chdir Refinery::Testing::Railtie.target_extension_path
+      Dir.chdir dummy_app_path
     end
 
     # This task is a hook to allow extensions to pass configuration
@@ -53,8 +53,7 @@ namespace :refinery do
     end
 
     task :init_test_database do
-      load 'rails/tasks/engine.rake'
-      Rake::Task['app:db:test:prepare'].invoke
+      system "bundle exec rake -f #{dummy_app_path.join('Rakefile')} db:test:prepare"
     end
 
     def dummy_app_path
