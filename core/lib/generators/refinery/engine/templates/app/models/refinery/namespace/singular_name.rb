@@ -14,13 +14,12 @@ module Refinery
 <% end -%>
 <% if (string_attributes = attributes.select{ |a| a.type.to_s =~ /string|text/ }.uniq).any? -%>
 
-      attr_accessible <%= string_attributes.first.name.to_sym.inspect %>, :position
+      attr_accessible <%= attributes.map { |attr| ":#{attr.name}" }.join(', ') %>, :position
 
       acts_as_indexed :fields => <%= string_attributes.map{|s| s.name.to_sym}.inspect %>
 
       validates <%= string_attributes.first.name.to_sym.inspect %>, :presence => true, :uniqueness => true
 <% else -%>
-
       # def title was created automatically because you didn't specify a string field
       # when you ran the refinery:engine generator. <3 <3 Refinery CMS.
       def title
@@ -34,6 +33,7 @@ module Refinery
 <% attributes.select{|a| a.type.to_s == 'resource'}.uniq.each do |a| -%>
 
       belongs_to :<%= a.name.gsub("_id", "") %>, :class_name => '::Refinery::Resource'
+
 <% end -%>
     end
   end
