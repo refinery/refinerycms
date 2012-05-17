@@ -1,6 +1,6 @@
 class Create<%= class_name.pluralize %> < ActiveRecord::Migration
 
-  def self.up
+  def up
     create_table :refinery_<%= table_name %> do |t|
 <%
   attributes.each do |attribute|
@@ -21,13 +21,9 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
     end
 
     add_index :refinery_<%= table_name %>, :id
-
-    if (seed = Rails.root.join('db', 'seeds', '<%= plural_name %>.rb')).exist?
-      load(seed)
-    end
   end
 
-  def self.down
+  def down
     if defined?(::Refinery::UserPlugin)
       ::Refinery::UserPlugin.destroy_all({:name => "<%= plural_name %>"})
     end
