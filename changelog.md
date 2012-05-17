@@ -4,6 +4,7 @@
 
 ## 2.0.5 [unreleased]
 * Now extension/form generators will add all attributes to attr_accessible. [#1613](https://github.com/resolve/refinerycms/pull/1613). [Uģis Ozols](https://github.com/ugisozols)
+* Fixed a bug where `refinerycms-images` was trying to load `refinerycms-resources`. [#1651](https://github.com/resolve/refinerycms/issues/1651). [Philip Arndt](https://github.com/parndt)
 
 ## 2.0.4 [14 May 2012]
 * IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [#1636](https://github.com/resolve/refinerycms/pull/1636). [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
