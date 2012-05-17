@@ -8,6 +8,7 @@ module Refinery
         class_option :namespace, :type => :string, :default => nil, :banner => 'NAMESPACE', :required => false
         class_option :extension, :type => :string, :default => nil, :banner => 'ENGINE', :required => false
         class_option :i18n, :type => :array, :default => [], :required => false, :banner => "field field", :desc => 'Indicates generated fields'
+        class_option :include_spam_filter, :type => :boolean, :default => false, :required => false, :desc => 'Check for spam in fields'
 
         remove_class_option :skip_namespace
 
@@ -212,6 +213,7 @@ module Refinery
         def puts_instructions!
           unless Rails.env.test?
             puts "------------------------"
+            puts "Uncomment or include to your gemfile: gem 'filters_spam'" if includes_spam?
             puts "Now run:"
             puts "bundle install"
             puts "rails generate refinery:#{extension_plural_name}"
@@ -250,6 +252,14 @@ module Refinery
 
         def source_pathname
           @source_pathname ||= Pathname.new(self.class.source_root.to_s)
+        end
+
+        def includes_spam?
+          @includes_spam = options[:include_spam_filter]
+        end
+
+        def check_for_spam_filter!
+          includes_spam?
         end
       end
     end

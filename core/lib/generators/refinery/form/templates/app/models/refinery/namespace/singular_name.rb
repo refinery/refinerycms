@@ -32,6 +32,10 @@ module Refinery
         "Override def name in vendor/extensions/<%= namespacing.underscore %>/app/models/refinery/<%= namespacing.underscore %>/<%= singular_name %>.rb"
       end
 <% end -%>
+<% if @includes_spam -%>
+
+      filters_spam :message_field => :message, :extra_spam_words => %w()
+<% end %>
 <% attributes.select{|a| a.type.to_s == 'image'}.uniq.each do |a| -%>
 
       belongs_to :<%= a.name.gsub("_id", "") -%>, :class_name => '::Refinery::Image'
