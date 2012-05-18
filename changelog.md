@@ -1,3 +1,10 @@
+## 1.0.11 [18 May 2012]
+
+* Fixed email escape display bug. [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
+* Only clear schema cache if database adaptor allows it. [Philip Arndt](https://github.com/parndt)
+
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.10...1.0.11)
+
 ## 1.0.10 [6 March 2012]
 
 * Fixed a recursive formatting problem in WYMeditor for webkit. [Philip Arndt](https://github.com/parndt)

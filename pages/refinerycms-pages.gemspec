@@ -3,10 +3,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-pages}
-  s.version           = %q{1.0.10}
+  s.version           = %q{1.0.11}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
-  s.date              = %q{2012-03-06}
+  s.date              = %q{2012-05-18}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -117,12 +117,11 @@ Gem::Specification.new do |s|
     'license.md',
     'refinerycms-pages.gemspec',
     'spec',
-    'spec/lib',
     'spec/models',
     'spec/models/page_spec.rb'
   ]
 
-  s.add_dependency 'refinerycms-core',            '= 1.0.10'
+  s.add_dependency 'refinerycms-core',            '= 1.0.11'
   s.add_dependency 'activerecord',                '~> 3.0.10'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.2.0.beta4'
