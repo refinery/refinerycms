@@ -2,7 +2,7 @@
   <%%= @<%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>.<%= title.name %><% else %>.title<% end %> %>
 <%% end %>
 
-<%% content_for :body_content_left do %>
+<%% content_for :body do %>
 <% attributes.each do |attribute| -%>
   <section>
     <h1><%= attribute.name.titleize %></h1>
@@ -23,7 +23,7 @@
 <% end -%>
 <%% end %>
 
-<%% content_for :body_content_right do %>
+<%% content_for :side_body do %>
   <aside>
     <h2><%%= t('.other') %></h2>
     <ul id="<%= plural_name %>">
