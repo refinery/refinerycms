@@ -69,6 +69,8 @@ h3. Creating a new Refinery project
 
 If you follow this guide, you'll create a Refinery site called <tt>rickrockstar</tt> that will have a custom design and an events extension to allow Rick to tell his fans when his next gig is.
 
+If you already have a Rails application and want to add Refinery to it, please follow "Using Refinery with an Existing Rails App Guide":/guides/with-an-existing-rails-app and continue this guide by the next section "4. Hello, Refinery!":#hello-refinery
+
 Before you can start building this site, you need to make sure that you have Refinery itself installed.
 
 h4. Installing Refinery
