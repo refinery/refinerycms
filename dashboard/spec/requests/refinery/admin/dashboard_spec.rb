@@ -47,8 +47,7 @@ describe "dashboard" do
 
     # see https://github.com/resolve/refinerycms/issues/1673
     it "uses proper link for nested pages" do
-      parent = FactoryGirl.create :page, :title => "Parent"
-      nested = FactoryGirl.create :page, :title => "I'm nested", :parent_id => parent.id
+      nested = FactoryGirl.create :page, :parent_id => Refinery::Page.last.id 
 
       visit refinery.admin_dashboard_path
     
