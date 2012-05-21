@@ -46,5 +46,15 @@ describe "dashboard" do
       3.times { |n| page.should have_content("Ugisozols#{n} user was added") }
       3.times { |n| page.should have_content("Refinery cms #{n} page was added") }
     end
+
+    # see https://github.com/resolve/refinerycms/issues/1673
+    it "uses proper link for nested pages" do
+      parent = FactoryGirl.create :page, :title => "Parent"
+      nested = FactoryGirl.create :page, :title => "I'm nested", :parent_id => parent.id
+
+      visit refinery.admin_dashboard_path
+    
+      page.should have_selector("a[href='#{refinery.edit_admin_page_path(nested.uncached_nested_url)}']")
+    end
   end
 end
