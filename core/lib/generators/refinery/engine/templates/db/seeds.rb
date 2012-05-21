@@ -7,7 +7,7 @@ if defined?(::Refinery::User)
   end
 end
 
-<% unless skip_frontend? %>
+<% unless skip_frontend? -%>
 url = "/<%= [(namespacing.underscore if namespacing.underscore != plural_name), plural_name].compact.join('/') %>"
 if defined?(::Refinery::Page) && ::Refinery::Page.where(:link_url => url).empty?
   page = ::Refinery::Page.create(
@@ -20,4 +20,4 @@ if defined?(::Refinery::Page) && ::Refinery::Page.where(:link_url => url).empty?
     page.parts.create(:title => default_page_part, :body => nil, :position => index)
   end
 end
-<% end %>
+<% end -%>
