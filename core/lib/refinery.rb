@@ -142,13 +142,16 @@ module Refinery
       options = {:plural => false, :admin => true}.merge options
 
       klass = klass.constantize if klass.respond_to?(:constantize)
-      active_name = ActiveModel::Name.new klass, (Refinery if klass.parents.include?(Refinery))
+      active_name = ::ActiveModel::Name.new(
+        klass, (Refinery if klass.parents.include?(Refinery))
+      )
 
       if options[:admin]
         # Most of the time this gets rid of 'refinery'
-        parts = active_name.underscore.split('/').reject{|name|
-          active_name.singular_route_key.exclude?(name)
-        }
+        parts = ActiveSupport::Inflector.underscore(active_name)
+                  .split('/').reject{|name|
+                    active_name.singular_route_key.exclude?(name)
+                  }
 
         # Get the singular resource_name from the url parts
         resource_name = parts.pop
