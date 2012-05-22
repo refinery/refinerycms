@@ -11,7 +11,7 @@ module Refinery
     end
 
     def self.[](title)
-      (title.to_s.camelize)
+      where(:title => title.to_s.camelize).first_or_create!
     end
 
   end
