@@ -6,6 +6,9 @@ require 'truncate_html'
 require 'will_paginate'
 
 module Refinery
+  # Ensure that the i18n shim is in place first.
+  require 'refinery/i18n'
+
   WINDOWS = !!(RbConfig::CONFIG['host_os'] =~ %r!(msdos|mswin|djgpp|mingw)!) unless defined? WINDOWS
 
   require 'refinery/errors'
@@ -108,7 +111,7 @@ module Refinery
     end
 
     def i18n_enabled?
-      !!(defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?)
+      ::Refinery::I18n.enabled?
     end
 
     # Returns a Pathname to the root of the Refinery CMS project
