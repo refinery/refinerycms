@@ -115,7 +115,7 @@ module Refinery
 
       after(:each) do
         ::Refinery::I18n.stub(:current_frontend_locale).and_return(Refinery::I18n.default_frontend_locale)
-        ::Refinery::I18n.current_locale = Refinery::I18n.default_locale
+        ::Refinery::I18n.stub(:current_locale).and_return(Refinery::I18n.default_locale)
       end
 
       it 'returns its path with custom slug' do
@@ -134,7 +134,7 @@ module Refinery
 
       it 'returns its path with custom slug when using different locale' do
         ::Refinery::I18n.stub(:current_frontend_locale).and_return(:ru)
-        ::Refinery::I18n.current_locale = :ru
+        ::Refinery::I18n.stub(:current_locale).and_return(:ru)
         page_with_custom_slug.custom_slug = "#{custom_page_slug}-ru"
         page_with_custom_slug.save
         page_with_custom_slug.reload
@@ -145,7 +145,7 @@ module Refinery
 
       it 'returns path underneath its parent with custom urls when using different locale' do
         ::Refinery::I18n.stub(:current_frontend_locale).and_return(:ru)
-        ::Refinery::I18n.current_locale = :ru
+        ::Refinery::I18n.stub(:current_locale).and_return(:ru)
         child_with_custom_slug.custom_slug = "#{custom_child_slug}-ru"
         child_with_custom_slug.save
         child_with_custom_slug.reload
@@ -208,7 +208,7 @@ module Refinery
         end
 
       end
-      
+
       it 'return all page part content' do
         page.all_page_part_content.should == "<p>I'm the first page part for this page.</p> <p>Closely followed by the second page part.</p>"
       end

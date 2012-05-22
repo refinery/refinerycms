@@ -269,7 +269,7 @@ module Refinery
     # then the :locale attribute will be set on the url hash, otherwise it won't be.
     def with_locale_param(url_hash)
       if self.class.different_frontend_locale?
-        url_hash.update(:locale => ::Refinery::I18n.current_frontend_locale)
+        url_hash.update(:locale => (::Refinery::I18n.current_frontend_locale if Refinery.i18n_enabled?))
       end
       url_hash
     end
@@ -437,8 +437,8 @@ module Refinery
     # Make sures that a translation exists for this page.
     # The translation is set to the default frontend locale.
     def ensure_locale
-      unless self.translations.present?
-        self.translations.build :locale => ::Refinery::I18n.default_frontend_locale
+      if self.translations.empty?
+        self.translations.build(:locale => (::Refinery::I18n.default_frontend_locale if Refinery.i18n_enabled?))
       end
     end
 
