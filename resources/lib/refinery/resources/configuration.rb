@@ -38,6 +38,11 @@ module Refinery
       def s3_secret_access_key
         config.s3_secret_access_key.nil? ? Refinery::Core.s3_secret_access_key : config.s3_secret_access_key
       end
+      
+      def s3_region
+        config.s3_region.nil? ? Refinery::Core.s3_region : config.s3_region
+      end
+      
     end
   end
 end
