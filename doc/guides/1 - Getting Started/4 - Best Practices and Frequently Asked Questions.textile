@@ -43,7 +43,7 @@ h4. How do I add a new page part to all existing pages?
 There is no facility for this. In your console, you will have to run:
 
 <ruby>
-Page.all.map do {|p| p.parts.create(:title => "My Page Part", :position => 3) }
+Refinery::Page.all.map do {|p| p.parts.create(:title => "My Page Part", :position => 3) }
 </ruby>
 
 If you wish to make this a default for all new pages, be sure to add it to your default parts (in 1.0.x, this is in your Settings tab; in 2.0.x, it is in the +config/initializers/refinery/pages.rb+ file).
@@ -70,6 +70,8 @@ h3. Friendly ID
 
 h4. I screwed up one of the URL slugs on a site. How do I redo them?
 
+In Refinery 2.0.x, the slug will be re-written when you resave the page.
+
 In Refinery 1.0.x, you have have two choices. The more severe one is to reset all slugs for that model:
 
 <shell>
@@ -77,8 +79,6 @@ MODEL=news_item rake friendly_id:redo_slugs
 </shell>
 
 The other choice is not documented, because that would be just way too awesome. **(TODO: Document this.)**
-
-In Refinery 2.0.x, the slug will be re-written when you resave the page.
 
 h3. Testing
 
