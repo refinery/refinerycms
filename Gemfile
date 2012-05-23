@@ -14,6 +14,7 @@ gem 'paper_trail', github: 'parndt/paper_trail', branch: 'rails4'
 gem 'devise', '~> 3.0.2'
 gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set'
 gem 'orm_adapter', github: 'ianwhite/orm_adapter'
+gem 'database_cleaner', github: "ugisozols/database_cleaner", branch: 'rails4'
 
 # Database Configuration
 unless ENV['TRAVIS']
