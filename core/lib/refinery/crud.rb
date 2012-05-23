@@ -109,8 +109,8 @@ module Refinery
 
           # Finds one single result based on the id params.
           def find_#{singular_name}
-            @#{singular_name} = #{class_name}.find(params[:id],
-                                                   :include => #{options[:include].map(&:to_sym).inspect})
+            @#{singular_name} = #{class_name}.includes(#{options[:include].map(&:to_sym).inspect}).
+                                              find(params[:id])
           end
 
           # Find the collection of @#{plural_name} based on the conditions specified into crudify
