@@ -752,7 +752,7 @@ module Refinery
 
       describe "Pages Link-to Dialog" do
         before do
-          Refinery::I18n.frontend_locales = [:en, :ru]
+          Refinery::I18n.stub(:frontend_locales).and_return [:en, :ru]
 
           # Create a page in both locales
           about_page = Globalize.with_locale(:en) do
