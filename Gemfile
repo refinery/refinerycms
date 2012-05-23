@@ -12,6 +12,7 @@ gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed
 gem 'globalize3', github: 'svenfuchs/globalize3'
 gem 'paper_trail', github: 'parndt/paper_trail', branch: 'rails4'
 gem 'devise', '~> 3.0.2'
+gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set'
 
 # Database Configuration
 unless ENV['TRAVIS']
