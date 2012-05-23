@@ -6,9 +6,9 @@ h3. General
 
 h4. I've never done any Ruby or Rails development. Will Refinery be easy to use for me?
 
-The answer depends on the amount of work you are willing to put in to learn the system. If you've never done any programming, then there is an obvious challenge in learning to customize any computer system. Refinery prides itself on doing things the  'Rails way', so any sort of customization beyond a very basic level will require some ability to code--or, at least, the ability to deductively reason.
+The answer depends on the amount of work you are willing to put in to learn the system. If you've never done any programming, then there is an obvious challenge in learning to customize any computer system. Refinery prides itself on doing things the 'Rails way', so any sort of customization beyond a very basic level will require some ability to code--or, at least, the ability to deductively reason.
 
-This is a round-about way of saying that Refinery will be difficult for you, but not impossible. We're available to help on IRC and on the mailing list. But we absolutely encourage you to spend a some time with Ruby and Rails; they're amazing tools, and knowing them will save you some confusion and much time. 
+This is a round-about way of saying that Refinery will be difficult for you, but not impossible. We're available to help on IRC and on the mailing list, but we have limited free time. The less we have to teach you to help you achieve your goal, the more likely it is we'll be able to spend the requisite time with you, since we have to prioritize which problems get our attention. We absolutely encourage you to spend some time with Ruby and Rails; they're amazing tools, and knowing them will save you some confusion and much time.  
 
 h3. Best Practices
 
@@ -32,7 +32,9 @@ gem unpack refinerycms-news[-1.2.0] --target vendor/extensions
 
 And update the relevant +Gemfile+ line to read:
 
-`gem 'refinerycms-news', '1.2.0', :path => 'vendor/engines/refinerycms-news-1.2.0'`
+<ruby>
+gem 'refinerycms-news', '1.2.0', :path => 'vendor/engines/refinerycms-news-1.2.0'
+</ruby>
     
 TIP. For convenience, you can rename the folder of the unpacked gem to something short, like 'news', so long as you update the path specified in the Gemfile.
 
@@ -58,7 +60,7 @@ h4. How do I hide the page title?
 
 Phil, one of the chief maintainers of RefineryCMS, says: 
 
-bq. Add a +content_for :body_content_page_title+ block in the template you're including from. Just make it blank and use the option to hide blanks.
+bq. Add a +content_for :body_content_title+ block in the template you're including from. Just make it blank and tell the +_content_page+ partial to hide empty sections by passing it +:locals => {:hide_sections => [:body_content_title]}+.
 
 h3. Translation
 
@@ -77,11 +79,3 @@ In Refinery 1.0.x, you have have two choices. The more severe one is to reset al
 <shell>
 MODEL=news_item rake friendly_id:redo_slugs
 </shell>
-
-The other choice is not documented, because that would be just way too awesome. **(TODO: Document this.)**
-
-h3. Testing
-
-h4. 1. How do I do integration tests? When I visit any page it shows the first time startup page because I don't have any superusers.
-
-Use the +login_refinery_user+ method.
