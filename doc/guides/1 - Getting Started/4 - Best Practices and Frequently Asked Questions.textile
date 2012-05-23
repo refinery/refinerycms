@@ -49,16 +49,17 @@ $ rake refinery:uncrudify controller=refinery/admin/pages action=create
 TIP. Running the +rake refinery:uncrudify+ task outputs to +stdout+, and will not modify any files, so you can do so without fear of overwriting your existing controller modifications.
 
 If you absolutely must modify an existing engine in large pieces, you can install
-the gem and unpack it to your +vendor/extensions+ directory:
+the gem and unpack it to your +vendor/extensions+ directory.  The example below
+demonstrates this using the refinerycms-news extension at version 2.0.0:
 
 <shell>
-gem unpack refinerycms-news[-1.2.0] --target vendor/extensions
+gem unpack refinerycms-news --version 2.0.0 --target vendor/extensions
 </shell>
 
-And update the relevant +Gemfile+ line to read:
+And update the relevant line in your +Gemfile+ to read:
 
 <ruby>
-gem 'refinerycms-news', '1.2.0', :path => 'vendor/extensions/refinerycms-news-1.2.0'
+gem 'refinerycms-news', '2.0.0', :path => 'vendor/extensions/refinerycms-news-2.0.0'
 </ruby>
 
 TIP. For convenience, you can rename the folder of the unpacked gem to something short, like 'news', so long as you update the path specified in the Gemfile.
