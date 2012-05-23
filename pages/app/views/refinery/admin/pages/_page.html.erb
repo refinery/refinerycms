@@ -6,8 +6,10 @@
       <span class="icon"></span>
     <% end %>
 
-    <span class='title <%= 'toggle' if page.children.present? %>'>
-      <%= page.title_with_meta.html_safe %>
+    <span class='title'>
+      <%= link_to page.title_with_meta.html_safe,
+                  refinery.edit_admin_page_path(page.uncached_nested_url),
+                  :title => t('edit', :scope => 'refinery.admin.pages') %>
       <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
         <span class='preview'>
           <% page.translations.each do |translation| %>
