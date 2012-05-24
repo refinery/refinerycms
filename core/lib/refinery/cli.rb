@@ -67,7 +67,7 @@ module Refinery
           puts "Couldn't match any model files in any extensions like #{model}"
         end
       elsif (javascripts = env["javascript"]).present?
-        pattern = "#{javascripts.split("/").join(File::SEPARATOR)}*.js"
+        pattern = "#{javascripts.split("/").join(File::SEPARATOR)}*.js{,.*}"
         looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "assets", "javascripts", pattern).to_s}
 
         # copy in the matches
