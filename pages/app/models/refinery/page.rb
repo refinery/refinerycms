@@ -444,8 +444,7 @@ module Refinery
     end
     alias_method_chain :normalize_friendly_id, :marketable_urls
 
-  private
-
+    private
     def invalidate_cached_urls
       return true unless Refinery::Pages.marketable_urls
 
