@@ -203,10 +203,10 @@ gem 'pg'
       generator_args = []
       generator_args << '--quiet' if self.options[:quiet]
       Refinery::CoreGenerator.start generator_args
-      Refinery::AuthenticationGenerator.start generator_args
-      Refinery::ResourcesGenerator.start generator_args
-      Refinery::PagesGenerator.start generator_args
-      Refinery::ImagesGenerator.start generator_args
+      Refinery::AuthenticationGenerator.start generator_args if defined?(Refinery::AuthenticationGenerator)
+      Refinery::ResourcesGenerator.start generator_args if defined?(Refinery::ResourcesGenerator)
+      Refinery::PagesGenerator.start generator_args if defined?(Refinery::PagesGenerator)
+      Refinery::ImagesGenerator.start generator_args if defined?(Refinery::ImagesGenerator)
       Refinery::I18nGenerator.start generator_args if defined?(Refinery::I18nGenerator)
     end
 
