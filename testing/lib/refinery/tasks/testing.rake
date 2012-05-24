@@ -48,12 +48,11 @@ namespace :refinery do
 
     desc "Remove the dummy app's database."
     task :drop_dummy_app_database do
-      load 'rails/tasks/engine.rake'
-      Rake::Task['app:db:drop'].invoke
+      system "bundle exec rake -f #{File.join(dummy_app_path, 'Rakefile')} db:drop"
     end
 
     task :init_test_database do
-      system "bundle exec rake -f #{dummy_app_path.join('Rakefile')} db:test:prepare"
+      system "bundle exec rake -f #{File.join(dummy_app_path, 'Rakefile')} db:test:prepare"
     end
 
     def dummy_app_path
