@@ -14,22 +14,18 @@ describe "CLI" do
     it "shows info message" do
       msg = capture(:stdout) { rake["refinery:override"].invoke }
     
-      msg.should eq(
-        <<-MSG
-You didn't specify anything to override. Here are some examples:
-rake refinery:override view=pages/home
-rake refinery:override view=refinery/pages/home
-rake refinery:override view=**/*menu
-rake refinery:override view=_menu_branch
-rake refinery:override javascript=admin
-rake refinery:override javascript=refinery/site_bar
-rake refinery:override stylesheet=home
-rake refinery:override stylesheet=refinery/site_bar
-rake refinery:override controller=pages
-rake refinery:override model=page
-rake refinery:override model=refinery/page
-        MSG
-      )
+      msg.should match("You didn't specify anything to override. Here are some examples:")
+      msg.should match("rake refinery:override view=pages/home")
+      msg.should match("rake refinery:override view=refinery/pages/home")
+      msg.should match(%r{rake refinery:override view=\*\*/\*menu})
+      msg.should match("rake refinery:override view=_menu_branch")
+      msg.should match("rake refinery:override javascript=admin")
+      msg.should match("rake refinery:override javascript=refinery/site_bar")
+      msg.should match("rake refinery:override stylesheet=home")
+      msg.should match("rake refinery:override stylesheet=refinery/site_bar")
+      msg.should match("rake refinery:override controller=pages")
+      msg.should match("rake refinery:override model=page")
+      msg.should match("rake refinery:override model=refinery/page")
     end
   end
 
