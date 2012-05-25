@@ -128,7 +128,7 @@ module Refinery
 
           page.body.should =~ /Remove this page forever/
           page.body.should =~ /Edit this page/
-          page.body.should =~ %r{/refinery/pages/#{Page.last.id}/edit}
+          page.body.should =~ %r{/refinery/pages/my-first-page/edit}
           page.body.should =~ /Add a new child page/
           page.body.should =~ %r{/refinery/pages/new\?parent_id=}
           page.body.should =~ /View this page live/
@@ -302,11 +302,11 @@ module Refinery
             end
           end
 
-          it "uses the id for the edit link" do
+          it "shows title in the admin menu" do
             p = ::Refinery::Page.by_slug('news').first
             within "#page_#{p.id}" do
               page.should have_content('News')
-              page.find_link('Edit this page')[:href].should include(p.id.to_s)
+              page.find_link('Edit this page')[:href].should include('news')
             end
           end
 
@@ -390,11 +390,11 @@ module Refinery
             end
           end
 
-          it "uses the id of the page for the edit link" do
+          it "uses the slug from the default locale in admin" do
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
-              page.find_link('Edit this page')[:href].should include(news_page.id.to_s)
+              page.find_link('Edit this page')[:href].should include(en_page_slug)
             end
           end
 
