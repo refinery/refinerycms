@@ -19,7 +19,7 @@ module Refinery
           end
         end
 
-        @recent_activity = @recent_activity.sort_by{ &:updated_at }.
+        @recent_activity = @recent_activity.sort_by( &:updated_at ).
           reverse.first(Refinery::Dashboard.activity_show_limit)
 
         @recent_inquiries = if Refinery::Plugins.active.find_by_name("refinery_inquiries")
