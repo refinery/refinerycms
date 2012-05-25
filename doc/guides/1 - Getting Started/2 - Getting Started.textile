@@ -279,7 +279,7 @@ body {
 }
 </erb>
 
-TIP: When on the home page of your site, Refinery automatically loads an extra stylesheet located in +app/assets/stylesheets/home.css.scss+ as often sites have a different style on the home page.
+TIP: You can add CSS for specific pages by using their slug with -page. The default for the home page is 'home-page'.
 
 Now when you view your front end at "http://localhost:3000":http://localhost:3000 you'll notice your site has a grey background, with a horizontal menu and two white content areas.
 
