@@ -12,6 +12,7 @@
 * Fixed dashboard bug where it wasn't producing proper links for nested pages. [#1696](https://github.com/resolve/refinerycms/pull/1696). [Philip Arndt](https://github.com/parndt)
 * Match only &dialog, ?dialog, &width, ?width, &height and ?height in dialog querystrings. [#1397](https://github.com/resolve/refinerycms/issues/1397). [Philip Arndt](https://github.com/parndt)
 * Added multiple language support (specified by `Refinery::I18n.frontend_locales`) in `Refinery::Page` seeds file. [#1694](https://github.com/resolve/refinerycms/pull/1694). [Ole Reifschneider](https://github.com/Tranquility)
+* Added `Refinery::Page#canonical` support which allows multiple translations to have one canonical version. [Philip Arndt](https://github.com/parndt)
 
 ## 2.0.4 [14 May 2012]
 * IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [#1636](https://github.com/resolve/refinerycms/pull/1636). [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
