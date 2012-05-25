@@ -186,6 +186,20 @@ module Refinery
           return true # so that other callbacks process.
         end
       end
+
+      def rebuild!
+        all.each do |page|
+          invalidate_child_cached_urls(page)
+        end
+      end
+
+      def invalidate_child_cached_urls(page)
+        page.send(:invalidate_cached_urls)
+
+        page.children.each do |child|
+          invalidate_child_cached_urls(child)
+        end
+      end
     end
 
     # The canonical page for this particular page.
