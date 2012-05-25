@@ -104,7 +104,7 @@ module Refinery
       end
     end
 
-    describe '#canonical' do
+    context 'canonicals' do
       before do
         ::Refinery::I18n.stub(:default_frontend_locale).and_return(:en)
         ::Refinery::I18n.stub(:frontend_locales).and_return([Refinery::I18n.default_frontend_locale, :ru])
@@ -115,26 +115,53 @@ module Refinery
       let(:page_title)  { 'team' }
       let(:child_title) { 'about' }
       let(:ru_page_title) { 'Новости' }
-      let!(:default_canonical) {
-        Globalize.with_locale(::Refinery::I18n.default_frontend_locale) {
-          page.canonical
+
+      describe '#canonical' do
+        let!(:default_canonical) {
+          Globalize.with_locale(::Refinery::I18n.default_frontend_locale) {
+            page.canonical
+          }
         }
-      }
 
-      specify 'page returns itself' do
-        page.canonical.should == page.url
+        specify 'page returns itself' do
+          page.canonical.should == page.url
+        end
+
+        specify 'default canonical matches page#canonical' do
+          default_canonical.should == page.canonical
+        end
+
+        specify 'translated page returns master page' do
+          Globalize.with_locale(:ru) do
+            page.title = ru_page_title
+            page.save
+
+            page.canonical.should == default_canonical
+          end
+        end
       end
 
-      specify 'default canonical matches page#canonical' do
-        default_canonical.should == page.canonical
-      end
+      describe '#canonical_slug' do
+        let!(:default_canonical_slug) {
+          Globalize.with_locale(::Refinery::I18n.default_frontend_locale) {
+            page.canonical_slug
+          }
+        }
+        specify 'page returns its own slug' do
+          page.canonical_slug.should == page.slug
+        end
 
-      specify 'translated page returns master page' do
-        Globalize.with_locale(:ru) do
-          page.title = ru_page_title
-          page.save
+        specify 'default canonical_slug matches page#canonical' do
+          default_canonical_slug.should == page.canonical_slug
+        end
 
-          page.canonical.should == default_canonical
+        specify "translated page returns master page's slug'" do
+          Globalize.with_locale(:ru) do
+            page.title = ru_page_title
+            page.save
+
+            page.canonical_slug.should == default_canonical_slug
+          end
         end
       end
     end
