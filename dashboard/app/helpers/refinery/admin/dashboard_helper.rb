@@ -16,7 +16,7 @@ module Refinery
                     :what => record.send(activity.title),
                     :kind => record.class.model_name.human,
                     :action => t("with_article \"#{article}\"", :scope => "refinery.#{action}")
-                   ).downcase.capitalize, eval("#{activity.url}(#{activity.nesting("record")}record)")
+                   ).downcase.capitalize, eval("#{activity.url}(#{activity.nesting("record")})")
         end
       end
 
