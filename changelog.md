@@ -1,5 +1,7 @@
 ## 2.1.0 [unreleased]
 
+* Added `Refinery::Page#canonical_slug` to allow us to have the same slug for multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/resolve/refinerycms/issues/1457) [Philip Arndt](https://github.com/parndt)
+
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
 ## 2.0.5 [unreleased]
