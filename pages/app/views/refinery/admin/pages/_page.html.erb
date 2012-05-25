@@ -11,11 +11,9 @@
       <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
         <span class='preview'>
           <% page.translations.each do |translation| %>
-            <% if translation.title.present? %>
-              <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
-                          refinery.edit_admin_page_path(page, :switch_locale => translation.locale),
-                          :class => 'locale' %>
-            <% end %>
+            <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
+                        refinery.edit_admin_page_path(page, :switch_locale => translation.locale),
+                        :class => 'locale' if translation.title.present? %>
           <% end %>
         </span>
       <% end %>
@@ -23,7 +21,7 @@
 
     <span class='actions'>
       <%= link_to refinery_icon_tag('application_go.png'),
-                  refinery.page_path(page),
+                  refinery.page_path(page.uncached_nested_url),
                   :target => "_blank",
                   :title => t('.view_live_html') %>
       <%= link_to refinery_icon_tag('page_add.png'),
@@ -31,7 +29,7 @@
                   :title => t('new', :scope => 'refinery.admin.pages') %>
 
       <%= link_to refinery_icon_tag('application_edit.png'),
-                  refinery.edit_admin_page_path(page.id),
+                  refinery.edit_admin_page_path(page.uncached_nested_url),
                   :title => t('edit', :scope => 'refinery.admin.pages') %>
 
       <%= link_to refinery_icon_tag('delete.png'),
