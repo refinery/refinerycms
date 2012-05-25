@@ -1,4 +1,4 @@
-Refinery::I18n.frontend_locales.each do |lang|
+(Refinery.i18n_enabled ? Refinery::I18n.frontend_locales : [:en]).each do |lang|
   I18n.locale = lang
 
   if Refinery::Page.where(:menu_match => "^/$").empty?
