@@ -70,9 +70,9 @@ init_modal_dialogs = function(){
         height = parseInt($(href.match("height=([0-9]*)")).last().get(0), 10)||473,
         title = $anchor.attr('title') || $anchor.attr('name') || $anchor.html() || null;
 
-    href = href.replace(/(\&(amp\;)?)?dialog\=true/, '')
-               .replace(/(\&(amp\;)?)?width\=\d+/, '')
-               .replace(/(\&(amp\;)?)?height\=\d+/, '')
+    href = href.replace(/((\&(amp\;)?)|\?)dialog\=true/, '')
+               .replace(/((\&(amp\;)?)|\?)width\=\d+/, '')
+               .replace(/((\&(amp\;)?)|\?)height\=\d+/, '')
                .replace(/(\?&(amp\;)?)/, '?')
                .replace(/\?$/, '');
 

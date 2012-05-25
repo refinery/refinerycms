@@ -9,6 +9,7 @@ module Refinery
     # Total number of activies to show for a given class of activity
     attr_accessor :limit
 
+    # Other objects, like parents, to include in the nesting structure
     attr_accessor :nested_with
 
     # SQL order by string to specify how to order the activities in the activity feed for
@@ -21,6 +22,10 @@ module Refinery
     # Image asset to use to represent updated instance of the class thisa activity represents
     attr_accessor :updated_image
 
+    # Boolean; whether or not to use the record itself when constructing the nesting
+    # Default true
+    attr_accessor :use_record_in_nesting
+
     # Creates a new instance of Activity for a registered Refinery Plugin. An optional
     # hash of options can be specified to customize the values of each attribute
     # accessor defined on this class. Each key specified in the options hash should be a
@@ -31,7 +36,8 @@ module Refinery
     #   Activity.new(:limit => 10, :title => "Newest Activity!")
     #
     # Warning:
-    #  for the nested_with option, pass in the reverse order of ancestry e.g. [parent.parent_of_parent, parent]
+    #  for the nested_with option, pass in the reverse order of ancestry
+    #  e.g. [parent.parent_of_parent, parent]
     def initialize(options = {})
       {
         :class_name => nil,
@@ -43,7 +49,8 @@ module Refinery
         :title => "title",
         :updated_image => "edit.png",
         :url => nil,
-        :url_prefix => "edit"
+        :url_prefix => "edit",
+        :use_record_in_nesting => true
       }.merge(options).each { |key, value| self.send(:"#{key}=", value) }
     end
 
@@ -80,11 +87,15 @@ module Refinery
     end
 
     # to use in a URL like edit_refinery_admin_group_individuals_path(record.group, record)
-    # which will help you if you're using nested routed.
+    # which will help you if you're using nested routes.
     def nesting(record_string = "record")
-      self.nested_with.inject("") { |nest_chain, nesting|
-        nest_chain << "#{record_string}.#{nesting},"
-      }
+      @nesting ||= begin
+        chain = self.nested_with.inject([]) { |nest_chain, nesting|
+          nest_chain << "#{record_string}.#{nesting}"
+        }
+        chain << record_string if self.use_record_in_nesting
+        chain.join(',')
+      end
     end
 
     attr_writer :url_prefix
