@@ -8,7 +8,7 @@ module Refinery
         ::Refinery::Plugins.active.each do |plugin|
           begin
             plugin.activity.each do |activity|
-              @recent_activity << activity.klass.where(activity.conditions).
+              @recent_activity += activity.klass.where(activity.conditions).
                                                  order(activity.order).
                                                  limit(activity.limit)
             end
@@ -19,9 +19,8 @@ module Refinery
           end
         end
 
-        @recent_activity = @recent_activity.flatten.compact.sort { |x,y|
-          y.updated_at <=> x.updated_at
-        }.first(Refinery::Dashboard.activity_show_limit)
+        @recent_activity = @recent_activity.sort_by( &:updated_at ).
+          reverse.first(Refinery::Dashboard.activity_show_limit)
 
         @recent_inquiries = if Refinery::Plugins.active.find_by_name("refinery_inquiries")
           Inquiry.latest(Refinery::Dashboard.activity_show_limit)
