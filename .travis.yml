@@ -16,8 +16,11 @@ notifications:
 env:
   - DB=postgresql
   - DB=mysql
+matrix:
+  allow_failures:
+    - rvm: rbx
 rvm:
   - 1.8.7
   - 1.9.3
-#  - rbx
+  - rbx
   - jruby

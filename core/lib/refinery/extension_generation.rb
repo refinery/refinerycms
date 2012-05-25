@@ -139,6 +139,7 @@ module Refinery
             reject_template?(f)
           }.sort.each do |path|
             if (template_path = extension_path_for(path, extension_name)).present?
+              next if path.to_s =~ /seeds.rb/
               template path, template_path
             end
           end
@@ -206,6 +207,27 @@ module Refinery
             end
 
             tmp_directories.uniq.each{|dir| remove_dir(dir) if dir && dir.exist?}
+          end
+        end
+
+        def copy_or_merge_seeds!
+          source_seed_file      = source_pathname.join("db/seeds.rb")
+          destination_seed_file = destination_pathname.join(extension_path_for(source_seed_file, extension_name))
+
+          if existing_extension?
+            # create temp seeds file
+            temp_seed_file = destination_pathname.join(extension_path_for("tmp/seeds.rb", extension_name))
+
+            # copy/evaluate seeds template to temp file
+            template source_seed_file, temp_seed_file, :verbose => false
+
+            # append temp seeds file content to extension seeds file
+            destination_seed_file.open('a+') { |file| file.puts temp_seed_file.read.to_s }
+
+            # remove temp file
+            FileUtils.rm_rf temp_seed_file
+          else
+            template source_seed_file, destination_seed_file
           end
         end
 

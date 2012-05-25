@@ -2,14 +2,36 @@
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
-## 2.0.4 [unreleased]
-* Fixed stack level too deep error in Refinery::Menu#inspect. [Uģis Ozols](https://github.com/ugisozols)
-* Fixed spec fails for newly generated engines and bumped gem versions in generated Gemfile. [Uģis Ozols](https://github.com/ugisozols)
-* Fixed dialog opening issue when Refinery was mounted at different path than /. [Uģis Ozols](https://github.com/ugisozols)
-* Added ability to specify site name in I18n locales too. [Philip Arndt](https://github.com/parndt)
-* If parent page has custom view/layout template specified set this template as selected when editing sub page. [xyz](https://github.com/xyz)
-* Fixed page ambiguity for different pages with the same slug in find_by_path. [Nicholas Schultz-Møller](https://github.com/nicholassm)
-* Added Refinery::Core.force_ssl config option. [Philip Arndt](https://github.com/parndt)
+## 2.0.5 [unreleased]
+* Now extension/form generators will add all attributes to attr_accessible. [#1613](https://github.com/resolve/refinerycms/pull/1613). [Uģis Ozols](https://github.com/ugisozols)
+* Fixed a bug where `refinerycms-images` was trying to load `refinerycms-resources`. [#1651](https://github.com/resolve/refinerycms/issues/1651). [Philip Arndt](https://github.com/parndt)
+* Use new page part names (:body, :side_body) when generating extensions. [Uģis Ozols](https://github.com/ugisozols)
+* Now extension generator will merge two seeds file in case user generates multiple resources for one extension. [#1532](https://github.com/resolve/refinerycms/issues/1532). [Uģis Ozols](https://github.com/ugisozols)
+* Fix refinery:override bug where it won't match js files with more than extension. [#1685](https://github.com/resolve/refinerycms/issues/1685). [Uģis Ozols](https://github.com/ugisozols) and [Philip Arndt](https://github.com/parndt)
+* Now `refinerycms-images` and `refinerycms-resources` will inherit the s3_region configuration from `refinerycms-core`.
+[#1687](https://github.com/resolve/refinerycms/pull/1687). [Julien Palmas](https://github.com/bartocc)
+
+## 2.0.4 [14 May 2012]
+* IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [#1636](https://github.com/resolve/refinerycms/pull/1636). [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
+* Fixed stack level too deep error in Refinery::Menu#inspect. [#1551](https://github.com/resolve/refinerycms/pull/1551). [Uģis Ozols](https://github.com/ugisozols)
+* Fixed spec fails for newly generated engines and bumped gem versions in generated Gemfile. [#1553](https://github.com/resolve/refinerycms/issues/1553). [Uģis Ozols](https://github.com/ugisozols)
+* Fixed dialog opening issue when Refinery was mounted at different path than /. [#1555](https://github.com/resolve/refinerycms/issues/1555). [Uģis Ozols](https://github.com/ugisozols)
+* Added ability to specify site name in I18n locales too. [#1576](https://github.com/resolve/refinerycms/pull/1576). [Philip Arndt](https://github.com/parndt)
+* If parent page has custom view/layout template specified set this template as selected when editing sub page. [#1581](https://github.com/resolve/refinerycms/pull/1581). [xyz](https://github.com/xyz)
+* Fixed page ambiguity for different pages with the same slug in find_by_path. [#1586](https://github.com/resolve/refinerycms/pull/1586). [Nicholas Schultz-Møller](https://github.com/nicholassm)
+* Added Refinery::Core.force_ssl config option. [#1540](https://github.com/resolve/refinerycms/pull/1540). [Philip Arndt](https://github.com/parndt)
+* Fixed bugs with page sweeper. [#1615](https://github.com/resolve/refinerycms/pull/1615). [f3ng3r](https://github.com/f3ng3r)
+* Fixed image toggler show/hide bug. [#1587](https://github.com/resolve/refinerycms/issues/1587). [Gabriel Paladino](https://github.com/gabpaladino) & [Uģis Ozols](https://github.com/ugisozols)
+* Fixed site bar caching bug when `cache_pages_full` is enabled and user is logged in. [#1609](https://github.com/resolve/refinerycms/pull/1609). [TheMaster](https://github.com/TheMaster)
+* Made sure plugin params are set before checking exclusion, and removed unused variable. [#1602](https://github.com/resolve/refinerycms/pull/1602). [Rob Yurkowski](https://github.com/robyurkowski)
+* Fixed link addition bug in the backend when switching locale. [#1583](https://github.com/resolve/refinerycms/pull/1583). [Vít Krchov](https://github.com/vita)
+* Fixed bug with invalidating cached urls for all frontend locales. [#1479](https://github.com/resolve/refinerycms/pull/1479), [#1534](https://github.com/resolve/refinerycms/pull/1534). [Vít Krchov](https://github.com/vita), [Rob Yurkowski](https://github.com/robyurkowski) & [Uģis Ozols](https://github.com/ugisozols)
+* Fixed image picker bug in Firefox 11 where content of the page was blank until you move the popup. [#1637](https://github.com/resolve/refinerycms/pull/1637). [Nelly Natalí](https://github.com/nnatali)
+* Modified `Refinery.route_for_model` to fix a bug with the refinerycms-search plugin. [#1661](https://github.com/resolve/refinerycms/pull/1661). [Philip Arndt](https://github.com/parndt)
+* Fixed engine generator for when you don't have a title field. [#1619](https://github.com/resolve/refinerycms/pull/1619). [Jean-Philippe Boily](https://github.com/jipiboily)
+* Fixed `content_fu`. [#1628](https://github.com/resolve/refinerycms/issues/1628) [Philip Arndt](https://github.com/parndt)
+* Added Russian translations for the preview button. [Vasiliy Ermolovich](https://github.com/nashby)
+* Manually loaded translations associations to avoid N+1 queries in the pages backend. [#1633](https://github.com/resolve/refinerycms/pull/1633). [thedarkone](https://github.com/thedarkone)
 
 ## 2.0.3 [2 April 2012]
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)

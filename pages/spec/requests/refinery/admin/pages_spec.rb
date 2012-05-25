@@ -128,7 +128,7 @@ module Refinery
 
           page.body.should =~ /Remove this page forever/
           page.body.should =~ /Edit this page/
-          page.body.should =~ %r{/refinery/pages/my-first-page/edit}
+          page.body.should =~ %r{/refinery/pages/#{Page.last.id}/edit}
           page.body.should =~ /Add a new child page/
           page.body.should =~ %r{/refinery/pages/new\?parent_id=}
           page.body.should =~ /View this page live/
@@ -302,11 +302,11 @@ module Refinery
             end
           end
 
-          it "shows title in the admin menu" do
+          it "uses the id for the edit link" do
             p = ::Refinery::Page.by_slug('news').first
             within "#page_#{p.id}" do
               page.should have_content('News')
-              page.find_link('Edit this page')[:href].should include('news')
+              page.find_link('Edit this page')[:href].should include(p.id.to_s)
             end
           end
 
@@ -390,11 +390,11 @@ module Refinery
             end
           end
 
-          it "uses the slug from the default locale in admin" do
+          it "uses the id of the page for the edit link" do
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
-              page.find_link('Edit this page')[:href].should include(en_page_slug)
+              page.find_link('Edit this page')[:href].should include(news_page.id.to_s)
             end
           end
 
@@ -604,6 +604,15 @@ module Refinery
           Globalize.locale = :en
         end
 
+        let(:about_page) do
+          page = Refinery::Page.last
+          # we need page parts so that there's wymeditor
+          Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
+            page.parts.create(:title => default_page_part, :body => nil, :position => index)
+          end
+          page
+        end
+
         describe "adding page link" do
           describe "with relative urls" do
             before(:each) { Refinery::Pages.absolute_page_links = false }
@@ -622,6 +631,7 @@ module Refinery
               page.should have_selector("a[href='/about']")
             end
           end
+
           describe "with absolute urls" do
             before(:each) { Refinery::Pages.absolute_page_links = true }
 
@@ -637,6 +647,37 @@ module Refinery
 
               page.should have_content("About")
               page.should have_selector("a[href='http://www.example.com/about']")
+            end
+          end
+
+          # see https://github.com/resolve/refinerycms/pull/1583
+          context "when switching locales" do
+            specify "dialog has correct links", :js => true do
+              visit refinery.edit_admin_page_path(about_page)
+
+              click_link "Add Link"
+
+              page.should have_selector("iframe#dialog_frame")
+
+              page.within_frame("dialog_frame") do
+                page.should have_content("About")
+                page.should have_css("a[href$='/about']")
+
+                click_link "cancel_button"
+              end
+
+              within "#switch_locale_picker" do
+                click_link "Ru"
+              end
+
+              click_link "Add Link"
+
+              page.should have_selector("iframe#dialog_frame")
+
+              page.within_frame("dialog_frame") do
+                page.should have_content("About Ru")
+                page.should have_css("a[href$='/ru/about-ru']")
+              end
             end
           end
         end

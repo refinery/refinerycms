@@ -27,5 +27,3 @@ h3. Custom Slug
 Sometimes you might need to change a page's slug from the default that Refinery generates for you.  This is useful if you have pages with really long titles, if you need to support a legacy URL schema, if you are writing in a language that doesn't work well with Refinery's standard slug generation, or if you want to have consistent slugs across multiple locales.
 
 To use custom slugs, change the setting "Use Custom Slugs" to true.  This will enable a "Custom slug" field in the Advanced Options section of the page editing screen.  If text is entered in this field, it will be used as the basis for your slug instead of the Title or Menu Title.  
-
-TIP: Each time a new slug is generated, either by changing the Title, Menu Title, or Custom Slug fields, the old slugs are still saved in the database.  All old slugs will be automatically 301 redirected to the current URL.

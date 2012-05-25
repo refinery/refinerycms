@@ -7,3 +7,6 @@
     $("#editor_switch a").click (e) ->
       if $("form[data-changes-made]").length > 0
         e.preventDefault() unless confirm("<%= ::I18n.t('confirm_changes', :scope => 'refinery.js.admin') %>")
+
+  $("input[id=page_custom_slug]").change ->
+    $("#submit_continue_button").remove()
