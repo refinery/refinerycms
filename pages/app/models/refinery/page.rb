@@ -192,7 +192,7 @@ module Refinery
     # Consists of:
     #   * The default locale's translated slug
     def canonical
-      with_locale_param url_marketable, ::Refinery::I18n.default_frontend_locale
+      Globalize.with_locale(::Refinery::I18n.default_frontend_locale){ url }
     end
 
     # Returns in cascading order: custom_slug or menu_title or title depending on
@@ -312,7 +312,7 @@ module Refinery
     def uncached_nested_url
       [parent.try(:uncached_nested_url), to_param.to_s].compact.flatten
     end
-    
+
     # Returns an array with all ancestors to_param, allow with its own
     # Ex: with an About page and a Mission underneath,
     # ::Refinery::Page.find('mission').nested_url would return:

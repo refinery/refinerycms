@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 module Refinery
@@ -104,11 +105,37 @@ module Refinery
     end
 
     describe '#canonical' do
+      before do
+        ::Refinery::I18n.stub(:default_frontend_locale).and_return(:en)
+        ::Refinery::I18n.stub(:frontend_locales).and_return([Refinery::I18n.default_frontend_locale, :ru])
+        ::Refinery::I18n.stub(:current_frontend_locale).and_return(Refinery::I18n.default_frontend_locale)
+
+        page.save
+      end
       let(:page_title)  { 'team' }
       let(:child_title) { 'about' }
+      let(:ru_page_title) { 'Новости' }
+      let!(:default_canonical) {
+        Globalize.with_locale(::Refinery::I18n.default_frontend_locale) {
+          page.canonical
+        }
+      }
 
-      specify '' do
+      specify 'page returns itself' do
+        page.canonical.should == page.url
+      end
 
+      specify 'default canonical matches page#canonical' do
+        default_canonical.should == page.canonical
+      end
+
+      specify 'translated page returns master page' do
+        Globalize.with_locale(:ru) do
+          page.title = ru_page_title
+          page.save
+
+          page.canonical.should == default_canonical
+        end
       end
     end
 
