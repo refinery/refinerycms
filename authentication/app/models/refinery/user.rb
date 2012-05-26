@@ -13,7 +13,8 @@ module Refinery
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable
     if self.respond_to?(:devise)
-      devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
+      devise :database_authenticatable, :registerable, :recoverable, :rememberable,
+             :trackable, :validatable, :authentication_keys => [:login]
     end
 
     # Setup accessible (or protected) attributes for your model
@@ -23,6 +24,7 @@ module Refinery
     attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login
 
     validates :username, :presence => true, :uniqueness => true
+    before_validation :downcase_username
 
     class << self
       # Find user by email or username.
@@ -77,7 +79,7 @@ module Refinery
         save
         # add refinery role
         add_role(:refinery)
-        # add superuser role
+        # add superuser role if there are no other users
         add_role(:superuser) if ::Refinery::Role[:refinery].users.count == 1
         # add plugins
         self.plugins = Refinery::Plugins.registered.in_menu.names
@@ -89,6 +91,14 @@ module Refinery
 
     def to_s
       username.to_s
+    end
+
+    private
+    # To ensure uniqueness without case sensitivity we first downcase the username.
+    # We do this here and not in SQL is that it will otherwise bypass indexes using LOWER:
+    # SELECT 1 FROM "refinery_users" WHERE LOWER("refinery_users"."username") = LOWER('UsErNAME') LIMIT 1
+    def downcase_username
+      self.username = self.username.downcase if self.username?
     end
 
   end
