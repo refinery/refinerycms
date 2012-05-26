@@ -187,19 +187,11 @@ module Refinery
         end
       end
 
-      def rebuild!
-        all.each do |page|
-          invalidate_child_cached_urls(page)
-        end
+      def rebuild_with_invalidate_cached_urls!
+        rebuild_without_invalidate_cached_urls!
+        find_each.each(&:invalidate_cached_urls)
       end
-
-      def invalidate_child_cached_urls(page)
-        page.send(:invalidate_cached_urls)
-
-        page.children.each do |child|
-          invalidate_child_cached_urls(child)
-        end
-      end
+      alias_method_chain :rebuild!, :invalidate_cached_urls
     end
 
     # The canonical page for this particular page.
