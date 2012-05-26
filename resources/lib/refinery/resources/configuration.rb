@@ -6,12 +6,13 @@ module Refinery
                     :max_file_size, :pages_per_dialog, :pages_per_admin_index,
                     :s3_backend, :s3_bucket_name, :s3_region,
                     :s3_access_key_id, :s3_secret_access_key,
-                    :datastore_root_path
+                    :datastore_root_path, :content_disposition
 
     self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
     self.dragonfly_secret = Refinery::Core.dragonfly_secret
     self.dragonfly_url_format = '/system/resources/:job/:basename.:format'
-
+    
+    self.content_disposition = :attachment
     self.max_file_size = 52428800
     self.pages_per_dialog = 12
     self.pages_per_admin_index = 20
