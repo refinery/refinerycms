@@ -11,7 +11,27 @@ module Refinery
         image.valid?.should be_true
       end
     end
+    
+    context "image url" do
+      it "responds to .thumbnail_url" do
+        image.should respond_to(:thumbnail_url)
+      end
 
+      it "becomes different when supplying geometry" do
+        created_image.url.should_not == created_image.thumbnail_url('200x200')
+      end
+
+      it "has different urls for each geometry string" do
+        created_image.thumbnail_url('200x200').should_not == created_image.thumbnail_url('200x201')
+      end
+
+      it "uses right geometry when given a thumbnail name" do
+        name, geometry = Refinery::Images.user_image_sizes.first
+        created_image.thumbnail_url(name).should == created_image.thumbnail_url(geometry)
+      end
+    end
+
+    # Old way of doing it.
     context "image url" do
       it "responds to .thumbnail" do
         image.should respond_to(:thumbnail)

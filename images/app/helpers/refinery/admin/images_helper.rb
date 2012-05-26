@@ -10,11 +10,11 @@ module Refinery
       def thumbnail_urls(image)
         thumbnail_urls = {
           :"data-original" => asset_paths.compute_public_path(image.url, ''),
-          :"data-grid" => asset_paths.compute_public_path(image.thumbnail('135x135#c').url, '')
+          :"data-grid" => asset_paths.compute_public_path(image.thumbnail_url('135x135#c'), '')
         }
 
         Refinery::Images.user_image_sizes.sort_by{|key,geometry| geometry}.each do |size, pixels|
-          thumbnail_urls[:"data-#{size.to_s.parameterize}"] = asset_paths.compute_public_path(image.thumbnail(pixels).url, '')
+          thumbnail_urls[:"data-#{size.to_s.parameterize}"] = asset_paths.compute_public_path(image.thumbnail_url(pixels), '')
         end
 
         thumbnail_urls

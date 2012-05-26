@@ -37,7 +37,7 @@ module Refinery
       end
     end
 
-    # Get a thumbnail job object given a geometry.
+    # Get a thumbnail job object given a geometry. OLD WAY
     def thumbnail(geometry = nil)
       if geometry.is_a?(Symbol) and Refinery::Images.user_image_sizes.keys.include?(geometry)
         geometry = Refinery::Images.user_image_sizes[geometry]
@@ -48,6 +48,20 @@ module Refinery
       else
         image
       end
+    end
+    
+    # Get a url for a thumbnail given a geometry.
+    def thumbnail_url(geometry = nil)
+      if geometry.is_a?(Symbol) and Refinery::Images.user_image_sizes.keys.include?(geometry)
+        geometry = Refinery::Images.user_image_sizes[geometry]
+      end
+
+      Refinery::Core::Engine.routes.url_helpers.thumbnail_path(self, geometry)
+    end
+    
+    # Get the url for the original image
+    def url
+      thumbnail_url
     end
 
     # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
