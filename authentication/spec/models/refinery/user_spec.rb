@@ -68,6 +68,11 @@ module Refinery
         User.create!(attr)
         User.new(attr.merge(:email => "another@email.com")).should_not be_valid
       end
+
+      it "rejects duplicate usernames regardless of case" do
+        User.create!(attr)
+        User.new(attr.merge(:username => attr[:username].upcase, :email => "another@email.com")).should_not be_valid
+      end
     end
 
     describe ".find_for_database_authentication" do
