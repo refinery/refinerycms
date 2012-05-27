@@ -1,0 +1,75 @@
+h2. Using Refinery with Rails and Spree
+
+This guide covers enabling both Spree and Refinery to share the authorisation and authentication provided by Spree (Devise) on the same app.  After reading it, you should be familiar with:
+
+* Getting Refinery CMS and Spree to work together within the same application. 
+
+endprologue.
+
+h3. Guide Assumptions
+
+This guide assumes that you are using the authentication system provided by Spree (Devise). Additionally, it assumes that you have set up your Rails 3.0+ app already. 
+
+
+h3. Include the spree_refinery_auth gem
+
+Include the spree_refinery_auth gem as follows along with the following modifications on some files on your Rails app. 
+
++Gemfile+
+<ruby>
+...
+	gem "spree_refinery_auth", :git => "https://github.com/maleko/spree_refinery_auth"
+	gem 'refinerycms-core'
+	gem 'refinerycms-dashboard'
+	gem 'refinerycms-images'
+	gem 'refinerycms-pages'
+	gem 'refinerycms-resources'
+	gem 'refinerycms-settings'
+	# we don't use the refinery auth gem.
+	# gem 'refinerycms', '~> 2.0.0'
+	...
+</ruby>
+
++config/routes.rb+
+<ruby>
+	FactorySound::Application.routes.draw do
+	  # root :to => "refinery/pages#home"
+
+	  mount Spree::Core::Engine, :at => '/'
+
+	  mount Refinery::Core::Engine, :at => '/'
+	end
+</ruby>
+
++config/devise.rb+
+<ruby>
+	Devise.setup do |config|
+	  config.authentication_keys = [ :email ]
+	  config.router_name = :spree
+	  # Use this hook to configure devise mailer, warden hooks and so forth. The first
+	  # four configuration values can also be set straight in your models.
+	end
+</ruby>
+
++db/seeds.rb+
+<ruby>
+	# -- Refinery Roles
+	admin_role = Spree::Role.find_by_name('admin')
+	admin_user = admin_role.users.uniq.first
+	refinery_role = Spree::Role.where(:name => 'Refinery').first_or_create!
+	refinery_superuser_role = Spree::Role.where(:name => 'Superuser').first_or_create!
+
+	[refinery_superuser_role, refinery_role].each do |role|
+	  if admin_user.has_role?(role.name)
+	    puts "[db:seed] Skipping Refinery #{role.name} role"
+	  else
+	    admin_user.roles << role
+	  end
+	end
+</ruby>
+
+Run the bundle install. Run the spree installation steps as per http://guides.spreecommerce.com/getting_started.html or rails g spree:install.
+
+Run the migration and seeding. 
+
+Launch the app and log into the system using /admin (Spree) or /refinery. 
