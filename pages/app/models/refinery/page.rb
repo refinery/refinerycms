@@ -189,7 +189,7 @@ module Refinery
 
       def rebuild_with_invalidate_cached_urls!
         rebuild_without_invalidate_cached_urls!
-        find_each.each(&:invalidate_cached_urls)
+        find_each { |page| page.send :invalidate_cached_urls }
       end
       alias_method_chain :rebuild!, :invalidate_cached_urls
     end
