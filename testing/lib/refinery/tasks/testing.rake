@@ -17,9 +17,12 @@ namespace :refinery do
 
       Refinery::DummyGenerator.start params
 
+      # Ensure the database is not there from a previous run.
+      Rake::Task['refinery:testing:drop_dummy_app_database'].invoke
+
       Refinery::CmsGenerator.start %w[--quiet --fresh-installation]
 
-      Dir.chdir Refinery::Testing::Railtie.target_extension_path
+      Dir.chdir dummy_app_path
     end
 
     # This task is a hook to allow extensions to pass configuration
@@ -39,12 +42,18 @@ namespace :refinery do
 
     desc "Remove the dummy app used for testing"
     task :clean_dummy_app do
+      Rake::Task['refinery:testing:drop_dummy_app_database'].invoke
       dummy_app_path.rmtree if dummy_app_path.exist?
     end
 
-    task :init_test_database do
+    desc "Remove the dummy app's database."
+    task :drop_dummy_app_database do
       load 'rails/tasks/engine.rake'
-      Rake::Task["app:db:test:prepare"].invoke
+      Rake::Task['app:db:drop'].invoke
+    end
+
+    task :init_test_database do
+      system "bundle exec rake -f #{dummy_app_path.join('Rakefile')} db:test:prepare"
     end
 
     def dummy_app_path

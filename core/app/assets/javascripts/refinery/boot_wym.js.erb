@@ -224,7 +224,7 @@ var wymeditor_boot_options = $.extend({
       );
     }
   }
-  , lang: '<%= ::Refinery::i18n_enabled? ? ::Refinery::I18n.current_locale : 'en' %>'
+  , lang: '<%= ::Refinery.i18n_enabled? ? ::Refinery::I18n.current_locale : 'en' %>'
 }, custom_wymeditor_boot_options);
 
 WYMeditor.editor.prototype.loadIframe = function(iframe) {

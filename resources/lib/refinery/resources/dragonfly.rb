@@ -11,7 +11,7 @@ module Refinery
           app_resources.define_macro(::Refinery::Resource, :resource_accessor)
 
           app_resources.analyser.register(::Dragonfly::Analysis::FileCommandAnalyser)
-          app_resources.content_disposition = :attachment
+          app_resources.content_disposition = Refinery::Resources.content_disposition
         end
 
         def configure!
@@ -40,7 +40,7 @@ module Refinery
                                               'Dragonfly::Middleware', :refinery_resources
 
           app.config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
-            :verbose     => Rails.env.development?,
+            :verbose     => Refinery::Core.verbose_rack_cache,
             :metastore   => "file:#{URI.encode(Rails.root.join('tmp', 'dragonfly', 'cache', 'meta').to_s)}",
             :entitystore => "file:#{URI.encode(Rails.root.join('tmp', 'dragonfly', 'cache', 'body').to_s)}"
           }

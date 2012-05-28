@@ -8,7 +8,7 @@ Refinery::Core::Engine.routes.draw do
     resources :dialogs, :only => [:index, :show]
   end
 
-  match '/refinery/update_menu_positions', :to => 'admin/core#update_plugin_positions'
+  post '/refinery/update_menu_positions', :to => 'admin/core#update_plugin_positions'
 
   get '/sitemap.xml' => 'sitemap#index', :defaults => { :format => 'xml' }
 end

@@ -10,8 +10,10 @@ describe Refinery::Admin::UsersController do
     end
 
     it "loads plugins" do
+      user_plugin = Refinery::Plugins.registered.detect { |plugin| plugin.name == "refinery_users" }
       plugins = Refinery::Plugins.new
-      plugins.should_receive(:in_menu).once{ [] }
+      plugins << user_plugin
+      plugins.should_receive(:in_menu).once{ [user_plugin] }
 
       Refinery::Plugins.should_receive(:registered).at_least(1).times{ plugins }
       get :new
@@ -65,6 +67,15 @@ describe Refinery::Admin::UsersController do
       Refinery::User.should_receive(:find).at_least(1).times{ additional_user }
       put "update", :id => additional_user.id.to_s, :user => {}
       response.should be_redirect
+    end
+
+    context "when specifying plugins" do
+      it "won't allow to remove 'Users' plugin from self" do
+        Refinery::User.should_receive(:find).at_least(1).times{ logged_in_user }
+        put "update", :id => logged_in_user.id.to_s, :user => {:plugins => ["some plugin"]}
+
+        flash[:error].should eq("You cannot remove the 'Users' plugin from the currently logged in account.")
+      end
     end
 
     it_should_behave_like "new, create, update, edit and update actions"

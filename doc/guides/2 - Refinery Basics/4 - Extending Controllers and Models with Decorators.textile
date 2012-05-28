@@ -44,7 +44,7 @@ The code within the +class_eval+ block in any decorator can be written as if you
   end
 </ruby>
 
-We define the +find_all_blog_posts+ method and set it as a +before_filter+ for the +pages#home+ action. This will make the +@blog_posts+ instance variable available in our views which will contain all of the live blog posts. Because a writing a decorator is just like extending a class definition, we could even simplify this further by writing:
+We define the +find_all_blog_posts+ method and set it as a +before_filter+ for the +pages#home+ action. This will make the +@blog_posts+ instance variable available in our views which will contain all of the live blog posts. Because writing a decorator is just like extending a class definition, we could even simplify this further by writing:
 
 <ruby>
   Refinery::PagesController.class_eval do

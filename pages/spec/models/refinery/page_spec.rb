@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 module Refinery
@@ -103,6 +104,68 @@ module Refinery
       end
     end
 
+    context 'canonicals' do
+      before do
+        ::Refinery::I18n.stub(:default_frontend_locale).and_return(:en)
+        ::Refinery::I18n.stub(:frontend_locales).and_return([Refinery::I18n.default_frontend_locale, :ru])
+        ::Refinery::I18n.stub(:current_frontend_locale).and_return(Refinery::I18n.default_frontend_locale)
+
+        page.save
+      end
+      let(:page_title)  { 'team' }
+      let(:child_title) { 'about' }
+      let(:ru_page_title) { 'Новости' }
+
+      describe '#canonical' do
+        let!(:default_canonical) {
+          Globalize.with_locale(::Refinery::I18n.default_frontend_locale) {
+            page.canonical
+          }
+        }
+
+        specify 'page returns itself' do
+          page.canonical.should == page.url
+        end
+
+        specify 'default canonical matches page#canonical' do
+          default_canonical.should == page.canonical
+        end
+
+        specify 'translated page returns master page' do
+          Globalize.with_locale(:ru) do
+            page.title = ru_page_title
+            page.save
+
+            page.canonical.should == default_canonical
+          end
+        end
+      end
+
+      describe '#canonical_slug' do
+        let!(:default_canonical_slug) {
+          Globalize.with_locale(::Refinery::I18n.default_frontend_locale) {
+            page.canonical_slug
+          }
+        }
+        specify 'page returns its own slug' do
+          page.canonical_slug.should == page.slug
+        end
+
+        specify 'default canonical_slug matches page#canonical' do
+          default_canonical_slug.should == page.canonical_slug
+        end
+
+        specify "translated page returns master page's slug'" do
+          Globalize.with_locale(:ru) do
+            page.title = ru_page_title
+            page.save
+
+            page.canonical_slug.should == default_canonical_slug
+          end
+        end
+      end
+    end
+
     context 'custom slugs' do
       let(:custom_page_slug) { 'custom-page-slug' }
       let(:custom_child_slug) { 'custom-child-slug' }
@@ -115,7 +178,7 @@ module Refinery
 
       after(:each) do
         ::Refinery::I18n.stub(:current_frontend_locale).and_return(Refinery::I18n.default_frontend_locale)
-        ::Refinery::I18n.current_locale = Refinery::I18n.default_locale
+        ::Refinery::I18n.stub(:current_locale).and_return(Refinery::I18n.default_locale)
       end
 
       it 'returns its path with custom slug' do
@@ -134,7 +197,7 @@ module Refinery
 
       it 'returns its path with custom slug when using different locale' do
         ::Refinery::I18n.stub(:current_frontend_locale).and_return(:ru)
-        ::Refinery::I18n.current_locale = :ru
+        ::Refinery::I18n.stub(:current_locale).and_return(:ru)
         page_with_custom_slug.custom_slug = "#{custom_page_slug}-ru"
         page_with_custom_slug.save
         page_with_custom_slug.reload
@@ -145,7 +208,7 @@ module Refinery
 
       it 'returns path underneath its parent with custom urls when using different locale' do
         ::Refinery::I18n.stub(:current_frontend_locale).and_return(:ru)
-        ::Refinery::I18n.current_locale = :ru
+        ::Refinery::I18n.stub(:current_locale).and_return(:ru)
         child_with_custom_slug.custom_slug = "#{custom_child_slug}-ru"
         child_with_custom_slug.save
         child_with_custom_slug.reload
@@ -208,7 +271,7 @@ module Refinery
         end
 
       end
-      
+
       it 'return all page part content' do
         page.all_page_part_content.should == "<p>I'm the first page part for this page.</p> <p>Closely followed by the second page part.</p>"
       end
@@ -380,7 +443,7 @@ module Refinery
       end
     end
 
-    describe ".in_menu?" do
+    describe "#in_menu?" do
       context "when live? and show_in_menu? returns true" do
         it "returns true" do
           page.stub(:live?).and_return(true)
@@ -402,7 +465,7 @@ module Refinery
       end
     end
 
-    describe ".not_in_menu?" do
+    describe "#not_in_menu?" do
       context "when in_menu? returns true" do
         it "returns false" do
           page.stub(:in_menu?).and_return(true)
@@ -435,6 +498,90 @@ module Refinery
 
       it "should return child about page when looking for '/team/about'" do
         Refinery::Page.find_by_path('/team/about').should == created_child
+      end
+    end
+
+    describe ".find_by_path_or_id" do
+      let!(:market) { FactoryGirl.create(:page, :title => "market") }
+      let(:path) { "market" }
+      let(:id) { market.id }
+      
+      context "when marketable urls are true and path is present" do
+        before do
+          Refinery::Page.stub(:marketable_urls).and_return(true)
+        end
+        
+        context "when path is friendly_id" do
+          it "finds page using path" do
+            Refinery::Page.find_by_path_or_id(path, "").should eq(market)
+          end
+        end
+
+        context "when path is not friendly_id" do
+          it "finds page using id" do
+            Refinery::Page.find_by_path_or_id(id, "").should eq(market)
+          end
+        end
+      end
+
+      context "when id is present" do
+        before do
+          Refinery::Page.stub(:marketable_urls).and_return(false)
+        end
+
+        it "finds page using id" do
+          Refinery::Page.find_by_path_or_id("", id).should eq(market)
+        end
+      end
+    end
+
+    describe "#deletable?" do
+      let(:deletable_page) do
+        page.deletable  = true
+        page.link_url   = ""
+        page.menu_match = ""
+        page
+      end
+      
+      context "when deletable is true and link_url, and menu_match is blank" do
+        it "returns true" do
+          deletable_page.deletable?.should be_true
+        end
+      end
+
+      context "when deletable is false and link_url, and menu_match is blank" do
+        it "returns false" do
+          deletable_page.deletable = false 
+          deletable_page.deletable?.should be_false
+        end
+      end
+
+      context "when deletable is false and link_url or menu_match isn't blank" do
+        it "returns false" do
+          deletable_page.deletable  = false 
+          deletable_page.link_url   = "text"
+          deletable_page.deletable?.should be_false
+
+          deletable_page.menu_match = "text"
+          deletable_page.deletable?.should be_false
+        end
+      end
+    end
+
+    describe "#destroy" do
+      before do
+        page.deletable  = false
+        page.link_url   = "link_url"
+        page.menu_match = "menu_match"
+        page.save!
+        # need to stub this in order to see message
+        Rails.env.stub(:test?).and_return(false)
+      end
+
+      it "shows message" do
+        msg = capture(:stdout) { page.destroy }
+
+        msg.should eq("This page is not deletable. Please use .destroy! if you really want it deleted \nunset .link_url,\nunset .menu_match,\nset .deletable to true\n")
       end
     end
   end

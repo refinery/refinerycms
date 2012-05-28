@@ -12,18 +12,22 @@ gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git', :branch =
 gem 'quiet_assets', :group => :development
 
 # Database Configuration
-platforms :jruby do
-  gem 'activerecord-jdbcsqlite3-adapter'
-  gem 'activerecord-jdbcmysql-adapter'
-  gem 'activerecord-jdbcpostgresql-adapter'
-  gem 'jruby-openssl'
+unless ENV['TRAVIS']
+  gem 'activerecord-jdbcsqlite3-adapter', :platform => :jruby
+  gem 'sqlite3', :platform => :ruby
 end
 
-platforms :ruby do
-  gem 'sqlite3'
-  gem 'mysql2'
-  gem 'pg'
+unless ENV['TRAVIS'] && ENV['DB'] != 'mysql'
+  gem 'activerecord-jdbcmysql-adapter', :platform => :jruby
+  gem 'mysql2', :platform => :ruby
 end
+
+unless ENV['TRAVIS'] && ENV['DB'] != 'postgresql'
+  gem 'activerecord-jdbcpostgresql-adapter', :platform => :jruby
+  gem 'pg', :platform => :ruby
+end
+
+gem 'jruby-openssl', :platform => :jruby
 
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.1.0.dev'

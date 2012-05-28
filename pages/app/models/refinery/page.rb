@@ -1,9 +1,10 @@
 # Encoding: utf-8
+require 'refinerycms-core'
 require 'acts_as_indexed'
 require 'friendly_id'
 
 module Refinery
-  class Page < Refinery::Core::BaseModel
+  class Page < Core::BaseModel
     extend FriendlyId
 
     # when collecting the pages path how is each of the pages seperated?
@@ -144,7 +145,7 @@ module Refinery
 
       # Returns how many pages per page should there be when paginating pages
       def per_page(dialog = false)
-        dialog ? Pages.pages_per_dialog : Pages.config.pages_per_admin_index
+        dialog ? Pages.pages_per_dialog : Pages.pages_per_admin_index
       end
 
       def expire_page_caching
@@ -159,16 +160,23 @@ module Refinery
       end
     end
 
+    # The canonical page for this particular page.
+    # Consists of:
+    #   * The default locale's translated slug
+    def canonical
+      Globalize.with_locale(::Refinery::I18n.default_frontend_locale){ url }
+    end
+
+    # The canonical slug for this particular page.
+    # This is the slug for the default frontend locale.
+    def canonical_slug
+      Globalize.with_locale(::Refinery::I18n.default_frontend_locale) { slug }
+    end
+
     # Returns in cascading order: custom_slug or menu_title or title depending on
     # which attribute is first found to be present for this page.
     def custom_slug_or_title
-      if custom_slug.present?
-        custom_slug
-      elsif menu_title.present?
-        menu_title
-      else
-        title
-      end
+      custom_slug.presence || menu_title.presence || title
     end
 
     # Am I allowed to delete this page?
@@ -262,7 +270,7 @@ module Refinery
     # For example, this might evaluate to /about for the "About" page.
     def url_marketable
       # :id => nil is important to prevent any other params[:id] from interfering with this route.
-      url_normal.merge(:path => nested_url, :id => nil)
+      url_normal.merge :path => nested_url, :id => nil
     end
 
     # Returns a url suitable to be used in url_for in Rails (such as link_to).
@@ -273,11 +281,14 @@ module Refinery
 
     # If the current locale is set to something other than the default locale
     # then the :locale attribute will be set on the url hash, otherwise it won't be.
-    def with_locale_param(url_hash)
-      if self.class.different_frontend_locale?
-        url_hash.update(:locale => ::Refinery::I18n.current_frontend_locale)
-      end
+    def with_locale_param(url_hash, locale = nil)
+      locale ||= ::Refinery::I18n.current_frontend_locale if self.class.different_frontend_locale?
+      url_hash.update :locale => locale if locale
       url_hash
+    end
+
+    def uncached_nested_url
+      [parent.try(:uncached_nested_url), to_param.to_s].compact.flatten
     end
 
     # Returns an array with all ancestors to_param, allow with its own
@@ -286,13 +297,7 @@ module Refinery
     #
     #   ['about', 'mission']
     #
-    def nested_url
-      Rails.cache.fetch(url_cache_key) { uncached_nested_url }
-    end
-
-    def uncached_nested_url
-      [parent.try(:nested_url), to_param.to_s].compact.flatten
-    end
+    alias_method :nested_url, :uncached_nested_url
 
     # Returns the string version of nested_url, i.e., the path that should be generated
     # by the router
@@ -300,11 +305,11 @@ module Refinery
       Rails.cache.fetch(path_cache_key) { ['', nested_url].join('/') }
     end
 
-    def path_cache_key(locale = ::I18n.locale)
+    def path_cache_key(locale = Globalize.locale)
       [cache_key(locale), 'nested_path'].join('#')
     end
 
-    def url_cache_key(locale = ::I18n.locale)
+    def url_cache_key(locale = Globalize.locale)
       [cache_key(locale), 'nested_url'].join('#')
     end
 
@@ -443,8 +448,8 @@ module Refinery
     # Make sures that a translation exists for this page.
     # The translation is set to the default frontend locale.
     def ensure_locale
-      unless self.translations.present?
-        self.translations.build :locale => ::Refinery::I18n.default_frontend_locale
+      if self.translations.empty?
+        self.translations.build(:locale => (::Refinery::I18n.default_frontend_locale if Refinery.i18n_enabled?))
       end
     end
 

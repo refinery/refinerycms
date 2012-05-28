@@ -29,7 +29,7 @@ module Refinery
         :order => ('position ASC' if this_class.table_exists? && this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
-        :redirect_to_url => "refinery.#{Refinery.route_for_model(class_name.constantize, true)}",
+        :redirect_to_url => "refinery.#{Refinery.route_for_model(class_name.constantize, :plural => true)}",
         :searchable => true,
         :search_conditions => '',
         :sortable => true,
@@ -87,7 +87,7 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render :partial => '/refinery/message'
+                    render '/refinery/message'
                   end
                 end
               else
@@ -99,10 +99,9 @@ module Refinery
               unless request.xhr?
                 render :action => 'new'
               else
-                render :partial => '/refinery/admin/error_messages', :locals => {
-                         :object => @#{singular_name},
-                         :include_object_name => true
-                       }
+                render '/refinery/admin/error_messages',
+                       :object => @#{singular_name},
+                       :include_object_name => true
               end
             end
           end
@@ -125,7 +124,7 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render :partial => '/refinery/message'
+                    render '/refinery/message'
                   end
                 end
               else
@@ -137,10 +136,9 @@ module Refinery
               unless request.xhr?
                 render :action => 'edit'
               else
-                render :partial => '/refinery/admin/error_messages', :locals => {
-                         :object => @#{singular_name},
-                         :include_object_name => true
-                       }
+                render '/refinery/admin/error_messages',
+                       :object => @#{singular_name},
+                       :include_object_name => true
               end
             end
           end

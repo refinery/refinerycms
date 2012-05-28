@@ -38,11 +38,11 @@ module Refinery
 
         def attach!(app)
           ### Extend active record ###
-          app.config.middleware.insert_before Refinery::Resources.dragonfly_insert_before,
+          app.config.middleware.insert_before Refinery::Images.dragonfly_insert_before,
                                               'Dragonfly::Middleware', :refinery_images
 
           app.config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
-            :verbose     => Rails.env.development?,
+            :verbose     => Refinery::Core.verbose_rack_cache,
             :metastore   => "file:#{Rails.root.join('tmp', 'dragonfly', 'cache', 'meta')}",
             :entitystore => "file:#{Rails.root.join('tmp', 'dragonfly', 'cache', 'body')}"
           }

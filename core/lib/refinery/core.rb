@@ -6,6 +6,9 @@ require 'truncate_html'
 require 'will_paginate'
 
 module Refinery
+  # Ensure that the i18n shim is in place first.
+  require 'refinery/i18n'
+
   WINDOWS = !!(RbConfig::CONFIG['host_os'] =~ %r!(msdos|mswin|djgpp|mingw)!) unless defined? WINDOWS
 
   require 'refinery/errors'
@@ -108,7 +111,7 @@ module Refinery
     end
 
     def i18n_enabled?
-      !!(defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?)
+      ::Refinery::I18n.enabled?
     end
 
     # Returns a Pathname to the root of the Refinery CMS project
@@ -139,27 +142,50 @@ module Refinery
       Refinery::Version.to_s
     end
 
-    # Returns string version of url helper path. We need this to temporary support namespaces
+    # Returns string version of url helper path. We need this to temporarily support namespaces
     # like Refinery::Image and Refinery::Blog::Post
     #
     # Example:
-    #   Refinery.route_for_model("Refinery::Image") => "admin_image_path"
-    #   Refinery.route_for_model(Refinery::Image, true) => "admin_images_path"
+    #   Refinery.route_for_model(Refinery::Image) => "admin_image_path"
+    #   Refinery.route_for_model(Refinery::Image, {:plural => true}) => "admin_images_path"
     #   Refinery.route_for_model(Refinery::Blog::Post) => "blog_admin_post_path"
-    #   Refinery.route_for_model(Refinery::Blog::Post, true) => "blog_admin_posts_path"
-    def route_for_model(klass, plural = false)
-      parts = klass.to_s.underscore.split('/').delete_if { |p| p.blank? }
+    #   Refinery.route_for_model(Refinery::Blog::Post, {:plural => true}) => "blog_admin_posts_path"
+    #   Refinery.route_for_model(Refinery::Blog::Post, {:admin => false}) => "blog_post_path"
+    def route_for_model(klass, options = {})
+      options = {:plural => false, :admin => true}.merge options
 
-      resource_name = plural ? parts[-1].pluralize : parts[-1]
+      klass = klass.constantize if klass.respond_to?(:constantize)
+      active_name = ActiveModel::Name.new(klass, (Refinery if klass.parents.include?(Refinery)))
 
-      if parts.size == 2
-        "admin_#{resource_name}_path"
-      elsif parts.size > 2
-        [parts[1..-2].join("_"), "admin", resource_name, "path"].join("_")
+      if options[:admin]
+        # Most of the time this gets rid of 'refinery'
+        parts = active_name.underscore.split('/').reject{|name| active_name.singular_route_key.exclude?(name)}
+        resource_name = parts.pop
+        resource_name = options[:plural] ? resource_name.pluralize : resource_name.singularize
+
+        [parts.join("_"), "admin", resource_name, "path"].reject(&:blank?).join "_"
+      else
+        path = options[:plural] ? active_name.route_key : active_name.singular_route_key
+
+        [path, 'path'].join '_'
       end
     end
 
+    def include_once(base, extension_module)
+      base.send :include, extension_module unless included_extension_module?(base, extension_module)
+    end
+
   private
+    # plain Module#included? or Module#included_modules doesn't cut it here
+    def included_extension_module?(base, extension_module)
+      if base.kind_of?(Class)
+        direct_superclass = base.superclass
+        base.ancestors.take_while {|ancestor| ancestor != direct_superclass}.include?(extension_module)
+      else
+        base < extension_module # can't do better than that for modules
+      end
+    end
+
     def validate_extension!(const)
       unless const.respond_to?(:root) && const.root.is_a?(Pathname)
         raise InvalidEngineError, "Engine must define a root accessor that returns a pathname to its root"

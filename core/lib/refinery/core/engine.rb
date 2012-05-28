@@ -24,7 +24,7 @@ module Refinery
         def refinery_inclusion!
           before_inclusion_procs.each(&:call)
 
-          ::ApplicationController.send :include, Refinery::ApplicationController
+          Refinery.include_once(::ApplicationController, Refinery::ApplicationController)
           ::ApplicationController.send :helper, Refinery::Core::Engine.helpers
 
           after_inclusion_procs.each(&:call)
@@ -57,7 +57,7 @@ module Refinery
           plugin.version = Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
-          plugin.menu_match = /refinery\/(refinery_core)$/
+          plugin.menu_match = /refinery\/(refinery_)?core$/
         end
       end
 
@@ -72,8 +72,10 @@ module Refinery
         end
       end
 
-      initializer "refinery.routes" do |app|
-        app.routes_reloader.paths << File.expand_path('../../catch_all_routes.rb', __FILE__)
+      initializer "refinery.routes", :after => :set_routes_reloader_hook do |app|
+        Refinery::Core::Engine.routes.append do
+          get '/refinery/*path' => 'admin/base#error_404'
+        end
       end
 
       initializer "refinery.autoload_paths" do |app|
@@ -117,16 +119,6 @@ module Refinery
 
       config.after_initialize do
         Refinery.register_extension(Refinery::Core)
-      end
-
-      # We need to reload the routes here due to how Refinery sets them up
-      # The different facets of Refinery (dashboard, pages, etc.) append/prepend routes to Core
-      # *after* Core has been loaded.
-      #
-      # So we wait until after initialization is complete to do one final reload
-      # This then makes the appended/prepended routes available to the application.
-      config.after_initialize do
-        Rails.application.routes_reloader.reload!
       end
     end
   end

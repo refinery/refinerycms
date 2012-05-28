@@ -14,8 +14,8 @@ module Refinery
       end
 
       after_inclusion do
-        ::ApplicationController.send :include, Refinery::Pages::InstanceMethods
-        Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
+        Refinery.include_once(::ApplicationController, Refinery::Pages::InstanceMethods)
+        Refinery.include_once(Refinery::AdminController, Refinery::Pages::Admin::InstanceMethods)
       end
 
       initializer "refinery.pages register plugin" do
@@ -24,7 +24,11 @@ module Refinery
           plugin.name = 'refinery_pages'
           plugin.version = %q{2.0.0}
           plugin.menu_match = %r{refinery/page(_part|s_dialog)?s$}
-          plugin.activity = { :class_name => :'refinery/page' }
+          plugin.activity = {
+            :class_name => :'refinery/page',
+            :nested_with => [:uncached_nested_url],
+            :use_record_in_nesting => false
+          }
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_pages_path }
         end
       end

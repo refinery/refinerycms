@@ -6,7 +6,7 @@ module Refinery
     end
 
     def message
-      render :partial => '/refinery/message', :layout => false
+      render '/refinery/message', :layout => false
     end
 
   end

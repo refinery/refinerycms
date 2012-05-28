@@ -1,6 +1,6 @@
 module Refinery
   class PagesController < ::ApplicationController
-    before_filter :find_page, :except => [:preview]
+    before_filter :find_page, :set_canonical, :except => [:preview]
 
     # Save whole Page after delivery
     after_filter { |c| c.write_cache? }
@@ -94,8 +94,12 @@ module Refinery
       render render_options if render_options.any?
     end
 
+    def set_canonical
+      @canonical = refinery.url_for @page.canonical if @page.present?
+    end
+
     def write_cache?
-      if Refinery::Pages.cache_pages_full
+      if Refinery::Pages.cache_pages_full && !refinery_user?
         cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path.sub("//", "/")).to_s)
       end
     end

@@ -1,6 +1,24 @@
 require 'spec_helper'
 
 describe Refinery do
+  describe "#include_once" do
+    it "shouldn't double include a module" do
+      mod = Module.new do
+        def self.included(base)
+          base::INCLUSIONS << self
+          super
+        end
+      end
+
+      [Module.new, Class.new].each do |target|
+        target::INCLUSIONS = []
+        subject.include_once(target, mod)
+        subject.include_once(target, mod)
+        target::INCLUSIONS.should have(1).item
+      end
+    end
+  end
+
   describe "#extensions" do
     it "should return an array of modules representing registered extensions" do
       subject.extensions.should be_a(Array)
@@ -137,39 +155,70 @@ describe Refinery do
   end
 
   describe ".route_for_model" do
-    context "when passed Refinery::Dummy" do
+    context 'with Refinery::Dummy' do
+      module Refinery::Dummy
+      end
+
       it "returns admin_dummy_path" do
-        Refinery.route_for_model("Refinery::Dummy").should == "admin_dummy_path"
+        Refinery.route_for_model(Refinery::Dummy).should == "admin_dummy_path"
+      end
+
+      context ":plural => true" do
+        it "returns admin_dummies_path" do
+          Refinery.route_for_model(Refinery::Dummy, :plural => true).should == "admin_dummies_path"
+        end
       end
     end
 
-    context "when passed Refinery::Dummy and true" do
-      it "returns admin_dummies_path" do
-        Refinery.route_for_model("Refinery::Dummy", true).should == "admin_dummies_path"
+    context 'with Refinery::DummyName' do
+      module Refinery::DummyName
       end
-    end
 
-    context "when passed Refinery::DummyName" do
       it "returns admin_dummy_name_path" do
-        Refinery.route_for_model("Refinery::DummyName").should == "admin_dummy_name_path"
+        Refinery.route_for_model(Refinery::DummyName).should == "admin_dummy_name_path"
+      end
+
+      context ":plural => true" do
+        it "returns admin_dummy_names_path" do
+          Refinery.route_for_model(Refinery::DummyName, :plural => true).should == "admin_dummy_names_path"
+        end
       end
     end
 
-    context "when passed Refinery::DummyName and true" do
-      it "returns admin_dummy_names_path" do
-        Refinery.route_for_model("Refinery::DummyName", true).should == "admin_dummy_names_path"
+    context 'with Refinery::Dummy::Name' do
+      module Refinery::Dummy
+        module Name
+        end
       end
-    end
 
-    context "when passed Refinery::Dummy::Name" do
       it "returns dummy_admin_name_path" do
-        Refinery.route_for_model("Refinery::Dummy::Name").should == "dummy_admin_name_path"
+        Refinery.route_for_model(Refinery::Dummy::Name).should == "dummy_admin_name_path"
+      end
+
+      context ":plural => true" do
+        it "returns dummy_admin_names_path" do
+          Refinery.route_for_model(Refinery::Dummy::Name, :plural => true).should == "dummy_admin_names_path"
+        end
+      end
+
+      context ":admin => false" do
+        it "returns dummy_name_path" do
+          Refinery.route_for_model(Refinery::Dummy::Name, :admin => false).should == 'dummy_name_path'
+        end
+      end
+
+      context ":admin => false, :plural => true" do
+        it "returns dummy_names_path" do
+          Refinery.route_for_model(Refinery::Dummy::Name, :admin => false, :plural => true).should == 'dummy_names_path'
+        end
       end
     end
+  end
 
-    context "when passed Refinery::Dummy::Name and true" do
-      it "returns dummy_admin_names_path" do
-        Refinery.route_for_model("Refinery::Dummy::Name", true).should == "dummy_admin_names_path"
+  describe Refinery::Core::Engine do
+    describe "#helpers" do
+      it "should not include ApplicationHelper" do
+        Refinery::Core::Engine.helpers.ancestors.map(&:name).should_not include("ApplicationHelper")
       end
     end
   end
