@@ -534,5 +534,55 @@ module Refinery
         end
       end
     end
+
+    describe ".deletable?" do
+      let(:deletable_page) do
+        page.deletable  = true
+        page.link_url   = ""
+        page.menu_match = ""
+        page
+      end
+      
+      context "when deletable is true and link_url, and menu_match is blank" do
+        it "returns true" do
+          deletable_page.deletable?.should be_true
+        end
+      end
+
+      context "when deletable is false and link_url, and menu_match is blank" do
+        it "returns false" do
+          deletable_page.deletable = false 
+          deletable_page.deletable?.should be_false
+        end
+      end
+
+      context "when deletable is false and link_url or menu_match isn't blank" do
+        it "returns false" do
+          deletable_page.deletable  = false 
+          deletable_page.link_url   = "text"
+          deletable_page.deletable?.should be_false
+
+          deletable_page.menu_match = "text"
+          deletable_page.deletable?.should be_false
+        end
+      end
+    end
+
+    describe ".destroy" do
+      before do
+        page.deletable  = false
+        page.link_url   = "link_url"
+        page.menu_match = "menu_match"
+        page.save!
+        # need to stub this in order to see message
+        Rails.env.stub(:test?).and_return(false)
+      end
+
+      it "shows message" do
+        msg = capture(:stdout) { page.destroy }
+
+        msg.should eq("This page is not deletable. Please use .destroy! if you really want it deleted \nunset .link_url,\nunset .menu_match,\nset .deletable to true\n")
+      end
+    end
   end
 end
