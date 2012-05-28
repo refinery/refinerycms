@@ -519,9 +519,7 @@ module Refinery
 
         context "when path is not friendly_id" do
           it "finds page using id" do
-            path = id
-            
-            Refinery::Page.find_by_path_or_id(path, "").should eq(market)
+            Refinery::Page.find_by_path_or_id(id, "").should eq(market)
           end
         end
       end
