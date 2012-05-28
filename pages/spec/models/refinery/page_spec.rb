@@ -500,5 +500,41 @@ module Refinery
         Refinery::Page.find_by_path('/team/about').should == created_child
       end
     end
+
+    describe ".find_by_path_or_id" do
+      let!(:market) { FactoryGirl.create(:page, :title => "market") }
+      let(:path) { "market" }
+      let(:id) { market.id }
+      
+      context "when marketable urls are true and path is present" do
+        before do
+          Refinery::Page.stub(:marketable_urls).and_return(true)
+        end
+        
+        context "when path is friendly_id" do
+          it "finds page using path" do
+            Refinery::Page.find_by_path_or_id(path, "").should eq(market)
+          end
+        end
+
+        context "when path is not friendly_id" do
+          it "finds page using id" do
+            path = id
+            
+            Refinery::Page.find_by_path_or_id(path, "").should eq(market)
+          end
+        end
+      end
+
+      context "when id is present" do
+        before do
+          Refinery::Page.stub(:marketable_urls).and_return(false)
+        end
+
+        it "finds page using id" do
+          Refinery::Page.find_by_path_or_id("", id).should eq(market)
+        end
+      end
+    end
   end
 end
