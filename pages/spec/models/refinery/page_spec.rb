@@ -443,7 +443,7 @@ module Refinery
       end
     end
 
-    describe ".in_menu?" do
+    describe "#in_menu?" do
       context "when live? and show_in_menu? returns true" do
         it "returns true" do
           page.stub(:live?).and_return(true)
@@ -465,7 +465,7 @@ module Refinery
       end
     end
 
-    describe ".not_in_menu?" do
+    describe "#not_in_menu?" do
       context "when in_menu? returns true" do
         it "returns false" do
           page.stub(:in_menu?).and_return(true)
@@ -535,7 +535,7 @@ module Refinery
       end
     end
 
-    describe ".deletable?" do
+    describe "#deletable?" do
       let(:deletable_page) do
         page.deletable  = true
         page.link_url   = ""
@@ -568,7 +568,7 @@ module Refinery
       end
     end
 
-    describe ".destroy" do
+    describe "#destroy" do
       before do
         page.deletable  = false
         page.link_url   = "link_url"
