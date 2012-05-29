@@ -11,7 +11,7 @@ module Refinery
         pages.map {|page| ["#{'-' * page.level} #{page.title}", page.id]}
       end
 
-      def view_template_options(template_type, current_page)
+      def template_options(template_type, current_page)
         return {} if current_page.send(template_type)
 
         if current_page.parent_id?
