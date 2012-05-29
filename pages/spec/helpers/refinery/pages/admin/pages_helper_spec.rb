@@ -3,16 +3,16 @@ require "spec_helper"
 module Refinery
   module Admin
     describe PagesHelper do
-      describe "#view_template_options" do
+      describe "#template_options" do
         context "when page layout/view templte is set" do
           it "returns empty hash" do
             page = FactoryGirl.create(:page)
 
             page.view_template = "rspec_template"
-            helper.view_template_options(:view_template, page).should eq({})
+            helper.template_options(:view_template, page).should eq({})
 
             page.layout_template = "rspec_layout"
-            helper.view_template_options(:layout_template, page).should eq({})
+            helper.template_options(:layout_template, page).should eq({})
           end
         end
 
@@ -24,10 +24,10 @@ module Refinery
               page = FactoryGirl.create(:page, :parent_id => parent.id)
 
               expected_view = { :selected => parent.view_template }
-              helper.view_template_options(:view_template, page).should eq(expected_view)
+              helper.template_options(:view_template, page).should eq(expected_view)
 
               expected_layout = { :selected => parent.layout_template }
-              helper.view_template_options(:layout_template, page).should eq(expected_layout)
+              helper.template_options(:layout_template, page).should eq(expected_layout)
             end
           end
 
@@ -41,10 +41,10 @@ module Refinery
               page = FactoryGirl.create(:page)
 
               expected_view = { :selected => "one" }
-              helper.view_template_options(:view_template, page).should eq(expected_view)
+              helper.template_options(:view_template, page).should eq(expected_view)
 
               expected_layout = { :selected => "two" }
-              helper.view_template_options(:layout_template, page).should eq(expected_layout)
+              helper.template_options(:layout_template, page).should eq(expected_layout)
             end
           end
         end
