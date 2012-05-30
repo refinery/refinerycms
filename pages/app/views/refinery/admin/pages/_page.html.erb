@@ -21,7 +21,7 @@
 
     <span class='actions'>
       <%= link_to refinery_icon_tag('application_go.png'),
-                  refinery.page_path(page.uncached_nested_url),
+                  page.url,
                   :target => "_blank",
                   :title => t('.view_live_html') %>
       <%= link_to refinery_icon_tag('page_add.png'),
