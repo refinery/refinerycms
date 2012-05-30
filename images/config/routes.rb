@@ -1,7 +1,8 @@
 Refinery::Core::Engine.routes.draw do
-  match '/system/thumbs/:id(/:style)' => Dragonfly[:refinery_images].endpoint { |params, app|
-    if params[:style]
-      app.fetch(Refinery::Image.find(params[:id]).image_uid).thumb(params[:style])
+  match '/system/thumbs/:id(/:size)' => Dragonfly[:refinery_images].endpoint { |params, app|
+    if size.present? && Refinery::Images.user_image_sizes.keys.include?(size)
+      size = Refinery::Images.user_image_sizes[size]
+      app.fetch(Refinery::Image.find(params[:id]).image_uid).thumb(size)
     else
       app.fetch(Refinery::Image.find(params[:id]).image_uid)
     end

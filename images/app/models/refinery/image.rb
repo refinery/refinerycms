@@ -37,7 +37,7 @@ module Refinery
       end
     end
 
-    # Get a thumbnail job object given a geometry. OLD WAY
+    # Get a thumbnail job object given a geometry.
     def thumbnail(geometry = nil)
       if geometry.is_a?(Symbol) and Refinery::Images.user_image_sizes.keys.include?(geometry)
         geometry = Refinery::Images.user_image_sizes[geometry]
@@ -50,13 +50,13 @@ module Refinery
       end
     end
     
-    # Get a url for a thumbnail given a geometry.
-    def thumbnail_url(geometry = nil)
-      if geometry.is_a?(Symbol) and Refinery::Images.user_image_sizes.keys.include?(geometry)
-        geometry = Refinery::Images.user_image_sizes[geometry]
+    # Get a url for a thumbnail given a size.
+    def thumbnail_url(size = nil)
+      unless size.nil? || Refinery::Images.user_image_sizes.keys.include?(size)
+        raise ArgumentError, "Size must be one of #{Refinery::Images.user_image_sizes.keys.join(", ")}"
       end
 
-      Refinery::Core::Engine.routes.url_helpers.thumbnail_path(self, geometry)
+      Refinery::Core::Engine.routes.url_helpers.thumbnail_path(self, size)
     end
     
     # Get the url for the original image

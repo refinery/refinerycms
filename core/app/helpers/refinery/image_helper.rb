@@ -28,7 +28,7 @@ module Refinery
       if image.present?
         dimensions = (image.thumbnail_dimensions(geometry) rescue {})
 
-        image_tag(image.thumbnail_url(geometry), {
+        image_tag(image.thumbnail(geometry).url, {
           :alt => image.respond_to?(:title) ? image.title : image.image_name,
         }.merge(dimensions).merge(options))
       end
