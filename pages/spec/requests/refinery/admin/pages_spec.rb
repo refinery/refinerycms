@@ -132,7 +132,7 @@ module Refinery
           page.body.should =~ /Add a new child page/
           page.body.should =~ %r{/refinery/pages/new\?parent_id=}
           page.body.should =~ /View this page live/
-          page.body.should =~ %r{/pages/my-first-page}
+          page.body.should =~ %r{href="/my-first-page"}
 
           Refinery::Page.count.should == 1
         end
