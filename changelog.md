@@ -13,7 +13,8 @@
 * Match only &dialog, ?dialog, &width, ?width, &height and ?height in dialog querystrings. [#1397](https://github.com/resolve/refinerycms/issues/1397). [Philip Arndt](https://github.com/parndt)
 * Added multiple language support (specified by `Refinery::I18n.frontend_locales`) in `Refinery::Page` seeds file. [#1694](https://github.com/resolve/refinerycms/pull/1694). [Ole Reifschneider](https://github.com/Tranquility)
 * Added `Refinery::Page#canonical` support which allows multiple translations to have one canonical version. [Philip Arndt](https://github.com/parndt)
-* Usernames are validated case insensitively to ensure true uniqueness. [#1703](https://github.com/resolve/refinerycms/issues/1703) [Philip Arndt](https://github.com/parndt)
+* Usernames are validated case insensitively to ensure true uniqueness. [#1703](https://github.com/resolve/refinerycms/issues/1703). [Philip Arndt](https://github.com/parndt)
+* Fixed bug with template selector for page where it would always default to parents template. [#1710](https://github.com/resolve/refinerycms/issues/1710). [Glenn Hoppe](https://github.com/ghoppe)
 
 ## 2.0.4 [14 May 2012]
 * IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [#1636](https://github.com/resolve/refinerycms/pull/1636). [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
