@@ -12,6 +12,8 @@ endprologue.
 
 h3. Bootstrap the test environment
 
+NOTE: Make sure you perform all of the following steps from within your extension's directory.
+
 In your extension's Gemfile uncomment or add the following line
 
 <ruby>
@@ -38,18 +40,18 @@ require "refinerycms-testing"
 Refinery::Testing::Railtie.load_tasks
 </ruby>
 
-And run the dummy application generator
+And run the dummy application generator:
 
 <shell>
 $ bundle exec rake refinery:testing:dummy_app
 </shell>
 
+NOTE: To succesfully run rake tasks within your project you may need to add the +refinerycms-testing+ gem to your application's Gemfile, too.
+
 h3. Running the tests with Rake
 
-At your project's root run:
-
 <shell>
-$ bundle exec rake
+$ bundle exec rake spec
 </shell>
 
 This will run the rspec specs.
@@ -60,7 +62,7 @@ h3. Running the tests with Guard
 
 We recommend using Guard if you like to develop using TDD. Guard will watch your project for changes in files. If a change is made to a spec or a file that is tested against, it will re-run only the necessary specs. This is a faster way to get feedback during your TDD cycles.
 
-At your project's root run:
+At your extension's root directory run:
 
 <shell>
 $ bundle exec guard start
