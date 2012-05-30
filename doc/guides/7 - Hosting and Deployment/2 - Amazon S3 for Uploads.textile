@@ -8,6 +8,10 @@ This guide will show you how to:
 
 endprologue.
 
+h3. Prerequisites
+
+If you are using S3 in combination with Heroku please refer to the "Heroku guide":/guides/heroku for more information.
+
 h3. Setting Up
 
 If you want to use Refinery's image and resource support on S3 instead of the local
