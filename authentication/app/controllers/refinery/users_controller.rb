@@ -31,7 +31,7 @@ module Refinery
       if refinery_user?
         redirect_to refinery.admin_users_path
       elsif refinery_users_exist?
-        redirect_to refinery.new_refinery_user_session_path
+        redirect_to refinery.login_path
       end
     end
 
