@@ -1,8 +1,8 @@
 Refinery::I18n.frontend_locales.each do |lang|
   I18n.locale = lang
 
-  if defined?(Refinery::User)
-    Refinery::User.all.each do |user|
+  if defined?(Refinery::Core.user_class)
+    Refinery::Core.user_class.all.each do |user|
       if user.plugins.find_by_name('<%= plural_name %>').nil?
         user.plugins.create(:name => "<%= plural_name %>",
                             :position => (user.plugins.maximum(:position) || -1) +1)

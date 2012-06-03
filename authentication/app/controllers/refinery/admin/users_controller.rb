@@ -10,12 +10,12 @@ module Refinery
       before_filter :load_available_plugins_and_roles, :only => [:new, :create, :edit, :update]
 
       def new
-        @user = Refinery::User.new
+        @user = Refinery::Core.user_class.new
         @selected_plugin_names = []
       end
 
       def create
-        @user = Refinery::User.new(params[:user].except(:roles))
+        @user = Refinery::Core.user_class.new(params[:user].except(:roles))
         @selected_plugin_names = params[:user][:plugins] || []
         @selected_role_names = params[:user][:roles] || []
 
@@ -87,7 +87,7 @@ module Refinery
         begin
           find_user_without_slug
         rescue ActiveRecord::RecordNotFound
-          @user = Refinery::User.all.detect{|u| u.to_param == params[:id]}
+          @user = Refinery::Core.user_class.all.detect{|u| u.to_param == params[:id]}
         end
       end
       alias_method_chain :find_user, :slug

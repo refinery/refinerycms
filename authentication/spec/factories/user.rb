@@ -7,7 +7,7 @@
 require Refinery.roots(:'refinery/authentication').join("app/models/refinery/role.rb")
 
 FactoryGirl.define do
-  factory :user, :class => Refinery::User do
+  factory :user, :class => Refinery::Core.user_class do
     sequence(:username) { |n| "refinery#{n}" }
     sequence(:email) { |n| "refinery#{n}@refinerycms.com" }
     password  "refinerycms"

@@ -2,7 +2,7 @@ Refinery::Core::Engine.routes.draw do
   begin
     require 'devise'
     devise_for :refinery_user,
-               :class_name => 'Refinery::User',
+               :class_name => Refinery::Core.user_class,
                :path => 'refinery/users',
                :controllers => { :registrations => 'refinery/users' },
                :skip => [:registrations],
