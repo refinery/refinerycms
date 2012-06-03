@@ -1,0 +1,169 @@
+h2. Using Custom View or Layout Templates
+
+Many Refinery sites have more than one look. Sometimes, the content from a page
+might have a different container, or the page itself might be laid out
+differently. This guide will:
+
+* Help you decide whether these techniques are appropriate for your site;
+* Guide you as to which technique is the appropriate one to use for your
+situation;
+* Show you how to enable both techniques.
+
+endprologue.
+
+h3. Take a Second Look
+
+When developing a site, you might stumble into an issue where you need to change
+the structure of the output page to accommodate a different look or a necessary
+DOM modification that cannot be achieved through the reordering of page parts.
+In these cases, it is nice to be able to quickly draft a second template and
+swap.
+
+Refinery utilises a separate view file for the home page
+(+refinery/pages/home.html.erb+). In all other circumstances, by default,
+Refinery uses the +show+ action of the +Refinery::PagesController+ to render
+page content. That means overriding and editing +refinery/pages/show.html.erb+
+to change the structure. By default, that template is largely blank&mdash;it
+contains a reference to the +refinery/_content_page+ partial, which utilises a
+complex series of classes beginning with the +ContentPagePresenter+.
+
+This is rather advanced magic, and in some circumstances, this automatic
+rendering does not serve well &mdash; or we might need to wrap content inside an
+element. In this case, when we are customizing the rendering of only the page,
+not the header or footer or actual site layout, it is appropriate to enable
+Refinery's custom view templates.
+
+Likewise, on some pages, we might prefer to wrap the content of a page inside a
+different layout, one where the header, footer, or other sections are laid out
+differently. In this case, it's appropropriate to enable Refinery's custom
+layout templates.
+
+h3. Enabling Custom View Templates
+
+This is a straightforward process that enhances Refinery's capabilities greatly.
+
+h4. Set Initializers
+
+Open +config/initializers/refinery/pages.rb+.
+
+* Change +config.use_view_templates+ to +true+;
+* Change +config.view_template_whitelist+ to an array containing either string or
+symbol representations of your new view's filename (i.e. if you will create a
+new view called +about_us.html.erb+, set this whitelist to +[:about_us]+). In
+order for a view template to be displayed in the back-end, it must be present in
+the whitelist. When you select an option in the back-end corresponding to one of
+these whitelisted templates, it hands the name of the template to +render+.
+
+h4. Create Template
+
+Create +app/views/refinery/pages/about_us.html.erb+, where +about_us+ is the
+name of the file you whitelisted.
+
+* Inside of this file, you can either +render '/refinery/content_page'+, or you
+can use +@page.content_for?(:body)+ to output the content of a specific page part.
+
+h4. Set Back-End Select
+
+Then, when editing your page, you should see an option to change the template in
+the __Advanced Options__ section.
+
+h3. Enabling Custom Layout Templates
+
+This is nearly identical to enabling View Templates, with the following caveats:
+
+* The configuration variables are named +config.use_layout_templates+ and
++config.layout_template_whitelist+, respectively;
+* When you set a custom layout in the back-end, it passes the template's title to
++render :layout+;
+* You should create your new layout inside of +app/views/layouts/+, not
+g+/app/views/refinery/pages/+.
+
+h3. When Not to Use Custom View Templates
+
+Do not use your view template to instantiate collections
+(i.e. +<% events = Refinery::Events::Event.all %>+). This is a violation of MVC
+convention, and in certain circumstances, can cause major issues (such as when
+your Senior Programmer begins to pummel you with her fists). If you need to make
+new collections or objects available to your view templates, you have three
+options before you:
+
+h4. Use a Decorator to Add the Collection to Pages#show
+
+Assuming we need access to a collection of events, create
++/app/decorators/controllers/refinery/pages/pages_controller_decorator.rb+
+containing the following:
+
+<ruby>
+Refinery::PagesController.class_eval do
+  before_filter :fetch_events, :only => [:show]
+
+  def fetch_events
+    @events = ::Refinery::Events::Event.all
+  end
+  protected :fetch_events
+end
+</ruby>
+
+You can also entirely override the +show+ method inside this decorator, too, if
+need be. You can "view the existing method here":https://github.com/resolve/refinerycms/blob/master/pages/app/controllers/refinery/pages_controller.rb#L23-39
+for reference.
+
+This method has the advantage of constraining the find to occur only on pages
+that are not the home page (and not, for example, on any engine pages). There
+are two major downsides, though:
+
+# If you override only the +show+ method and not the +preview+ method, you will
+break the +preview+ method since it will not be able to find your collection;
+# It will still perform the find on many other pages, which is not well-contained
+and has implications for performance.
+
+h4. Modify the ApplicationController
+
+You can modify the +ApplicationController+ in your host app to run a before
+filter, but this is even less efficient than the above-listed method. It is,
+however, the simplest method.
+
+h4. Create a Custom Action
+
+This is actually relatively straightforward with one single exception.
+Basically, use a decorator to create an additional method on the
++PagesController+:
+
+<ruby>
+# /app/decorators/controllers/refinery/pages/pages_controller_decorator.rb
+Refinery::PagesController.class_eval do
+  def about_us
+    @page = ::Refinery::Page.where(:link_url => '/about-us').first || error_404
+    @events = ::Refinery::Events::Event.all render_with_templates?
+  end
+end
+</ruby>
+
+WARNING. You may need to adjust the +find+ method if you intend to rename the
+page at any point, since +link_url+ is volatile.
+
+You will also need to add a route to this method, or else the page will remain
+unaccessible. On the very first line of +config/routes.rb+, before anything
+else, add the following:
+
+<ruby>
+Refinery::Core::Engine.routes.prepend do
+  get '/about-us', :to => 'pages#about_us', :as => :about_us
+end
+
+# Your route file resumes here
+</ruby>
+
+Then this will use the +app/views/refinery/pages/about_us.html.erb+ template by
+default.
+
+There is one huge advantage to this method: the additional find is
+well-constrained to just a single page. There are, however, two downsides:
+
+# This removes some of the flexibility afforded to you by Refinery, since you
+must be able to locate the Refinery::Page entry for the method to work;
+# This requires you to prepend to routes, which is not a common idiom in Rails,
+and might be confusing to newcomers if you do not document properly.
+
+When possible, you should prefer either of the two previous methods, but this
+last method is made available for completeness.
