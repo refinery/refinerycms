@@ -6,7 +6,7 @@ Refinery::Core::Engine.routes.draw do
     namespace :admin, :path => Refinery::Core.backend_route do
       scope :path => :pages do
         post 'preview', :to => 'preview#show', :as => :preview_pages
-        put  'preview/*path', :to => 'preview#show', :as => :preview_page
+        match 'preview/*path' => 'preview#show', :as => :preview_page,  :via => [:put, :patch]
       end
     end
   end

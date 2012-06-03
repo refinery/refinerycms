@@ -37,6 +37,7 @@ gem 'jruby-openssl', platform: :jruby
 group :test do
   gem 'refinerycms-testing', '~> 3.0.0.dev'
   gem 'generator_spec', '~> 0.9.0'
+  gem 'launchy'
 end
 
 # Gems used only for assets and not required
