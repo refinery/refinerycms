@@ -56,7 +56,8 @@ module Refinery
       refinery_user_signed_in? && current_refinery_user.has_role?(:refinery)
     end
 
-    protected :store_location, :redirect_back_or_default, :refinery_user?
+    protected :store_location, :pop_stored_location, :redirect_back_or_default,
+              :sanitized_stored_location_for, :refinery_user?
 
     def self.included(base)
       if base.respond_to? :helper_method
