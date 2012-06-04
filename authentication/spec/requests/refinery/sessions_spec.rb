@@ -6,7 +6,7 @@ module Refinery
       FactoryGirl.create(:refinery_user, :username => "ugisozols",
                               :password => "123456",
                               :password_confirmation => "123456")
-      visit refinery.new_refinery_user_session_path
+      visit refinery.login_path
     end
 
     it "shows login form" do
