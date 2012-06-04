@@ -93,7 +93,7 @@ gem 'jquery-rails', '~> 2.0.0'
 # To use debugger
 # gem 'ruby-debug', :platform => :mri_18
 # or in 1.9.x:
-# gem 'ruby-debug19', :platform => :mri_19
+# gem 'debugger', :platform => :mri_19
 
 # For Heroku/s3:
 # gem 'fog'
