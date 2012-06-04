@@ -83,13 +83,6 @@ end
 
 gem 'jquery-rails', '~> 2.0.0'
 
-# Use unicorn as the web server
-# gem 'unicorn'
-# gem 'mongrel'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
 # To use debugger
 # gem 'ruby-debug', :platform => :mri_18
 # or in 1.9.x:
@@ -97,11 +90,6 @@ gem 'jquery-rails', '~> 2.0.0'
 
 # For Heroku/s3:
 # gem 'fog'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
-# gem 'rack', :git => 'git://github.com/rack/rack.git'
-# gem 'arel', :git => 'git://github.com/rails/arel.git'
 
 # Load local gems according to Refinery developer preference.
 if File.exist?(File.expand_path('../.gemfile', __FILE__))
