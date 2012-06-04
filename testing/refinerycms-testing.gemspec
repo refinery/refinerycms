@@ -25,4 +25,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'rack-test',               '~> 0.6.0'
   s.add_dependency 'rspec-rails',             '~> 2.10.0'
   s.add_dependency 'capybara',                '~> 1.1.0'
+
+  s.add_development_dependency 'launchy'
 end
