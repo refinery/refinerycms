@@ -15,6 +15,7 @@
 * Added `Refinery::Page#canonical` support which allows multiple translations to have one canonical version. [Philip Arndt](https://github.com/parndt)
 * Usernames are validated case insensitively to ensure true uniqueness. [#1703](https://github.com/resolve/refinerycms/issues/1703). [Philip Arndt](https://github.com/parndt)
 * Fixed bug with template selector for page where it would always default to parents template. [#1710](https://github.com/resolve/refinerycms/issues/1710). [Glenn Hoppe](https://github.com/ghoppe)
+* Fixed and added tests for post-authentication redirect bug where users would always be redirected to the admin root after successful auth. [#1561](https://github.com/resolve/refinerycms/issues/1561),  [#1728](https://github.com/resolve/refinerycms/issues/1728). [Alexander Wenzowski](https://github.com/wenzowski)
 
 ## 2.0.4 [14 May 2012]
 * IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [#1636](https://github.com/resolve/refinerycms/pull/1636). [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
