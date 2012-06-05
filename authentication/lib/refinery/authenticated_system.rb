@@ -46,6 +46,7 @@ module Refinery
     # This just defines the devise method for after sign in to support
     # extension namespace isolation...
     def after_sign_in_path_for(resource_or_scope)
+      pop_stored_location ||
       sanitized_stored_location_for(resource_or_scope) ||
       signed_in_root_path(resource_or_scope)
     end
