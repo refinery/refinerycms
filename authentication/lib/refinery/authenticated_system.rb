@@ -31,12 +31,12 @@ module Refinery
       end
     end
 
-    # Popps the stored url, trims the sneaky "//" from it, and returns it.
+    # Pops the stored url, trims the sneaky "//" from it, and returns it.
     #
     # Making sure bad urls aren't stored in the first place should probably be
     # a part of the Devise::FailureApp
     def sanitized_stored_location_for(resource_or_scope)
-      # `stored_location_for` is the devise method that popps the
+      # `stored_location_for` is the devise method that pops the
       # scoped `return_to` key
       location = stored_location_for(resource_or_scope)
       location.sub!("//", "/") if location.respond_to?(:sub!)
