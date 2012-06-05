@@ -3,13 +3,13 @@ module Refinery
     module ControllerMacros
       module Authentication
         def self.extended(base)
-          base.send(:include, Devise::TestHelpers)
+          base.send(:include, Devise::TestHelpers) if defined?(Devise::TestHelpers)
         end
 
         def refinery_login_with(factory)
           let(:logged_in_user) { FactoryGirl.create factory }
           before(:each) do
-            @request.env["devise.mapping"] = Devise.mappings[:admin]
+            @request.env["devise.mapping"] = Devise.mappings[:admin] if defined?(Devise)
             sign_in logged_in_user
           end
         end
