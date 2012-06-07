@@ -16,13 +16,17 @@ module Refinery
       it "responds to .thumbnail_url" do
         image.should respond_to(:thumbnail_url)
       end
-
+      
+      
       it "becomes different when supplying a size" do
-        created_image.url.should_not == created_image.thumbnail_url(:small)
+        size = Refinery::Images.user_image_sizes.first[0]
+        created_image.url.should_not == created_image.thumbnail_url(size)
       end
 
       it "has different urls for each size" do
-        created_image.thumbnail_url(:small).should_not == created_image.thumbnail_url(:medium)
+        image_sizes = Refinery::Images.user_image_sizes.keys
+        image_sizes[0].should_not == image_sizes[1]
+        created_image.thumbnail_url(image_sizes[0]).should_not == created_image.thumbnail_url(image_sizes[1])
       end
 
       it "raise exception if it's not a predefined user image size" do

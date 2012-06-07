@@ -52,7 +52,7 @@ module Refinery
     
     # Get a url for a thumbnail given a size.
     def thumbnail_url(size = nil)
-      unless size.nil? || Refinery::Images.user_image_sizes.keys.include?(size)
+      if size && Refinery::Images.user_image_sizes.keys.exclude?(size)
         raise ArgumentError, "Size must be one of #{Refinery::Images.user_image_sizes.keys.join(", ")}"
       end
 

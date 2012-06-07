@@ -14,7 +14,7 @@ module Refinery
           click_button "Search"
 
           within ".actions" do
-            page.should have_selector("a[href$='#{image.image_name}']")
+            page.should have_selector("a[href$='#{image.id}']")
           end
         end
       end
