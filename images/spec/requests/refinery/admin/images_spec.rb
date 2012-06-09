@@ -29,7 +29,10 @@ module Refinery
           attach_file "image_image", Refinery.roots(:'refinery/images').
                                               join("spec/fixtures/image-with-dashes.jpg")
           click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
+          page.should have_content(::I18n.t("uploaded_successfully", :scope => "refinery.admin.images.form"))
+          page.should have_content("image-with-dashes.jpg")
         end
+        find(".ui-icon-closethick").click
 
         page.should have_content(::I18n.t('created', :scope => 'refinery.crudify', :what => "'Image With Dashes'"))
         Refinery::Image.count.should == 1
