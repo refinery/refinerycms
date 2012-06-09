@@ -1,9 +1,28 @@
+<% content_for :after_javascript_libraries, javascript_include_tag('refinery/images') %>
 <%= form_for @image, :url => (@url_override or @image.persisted? ? refinery.admin_image_path(@image) : refinery.admin_images_path),
              :html => { :multipart => true } do |f| %>
 
   <%= render '/refinery/admin/error_messages',
              :object => @image,
              :include_object_name => false %>
+
+  <% unless @image.errors.any? %>
+    <div id="upload_progress"></div>
+
+    <div class="errorExplanation" id="errorExplanation" style="display:none;">
+      <p><%= t("refinery.admin.error_messages.problems_in_following_fields")%></p>
+      <ul id="error_list">
+          
+      </ul>
+    </div>
+
+    <div id="flash_container">
+      <div id="flash" class="flash flash_notice" style="width: auto; display:none;">
+        <h3><%= t(".uploaded_successfully") %>:</h3>
+
+      </div>
+    </div>
+  <% end %>
 
   <div class='field'>
     <% if action_name =~ /(edit)|(update)/ %>
