@@ -230,6 +230,9 @@ a:hover {
   padding: 0px;
   a {
     border-bottom: 1px dotted #727272;
+    &.locale {
+      border-bottom: 0;
+    }
   }
   h1 {
     font-size: 18px;
