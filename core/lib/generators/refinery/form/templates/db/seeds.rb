@@ -1,7 +1,7 @@
 Refinery::I18n.frontend_locales.each do |lang|
   I18n.locale = lang
 
-  if defined?(Refinery::Core.user_class)
+  if Refinery::Core.user_class
     Refinery::Core.user_class.all.each do |user|
       if user.plugins.find_by_name('<%= plural_name %>').nil?
         user.plugins.create(:name => "<%= plural_name %>",
