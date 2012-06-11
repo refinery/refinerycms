@@ -2,7 +2,7 @@
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
-## 2.0.5 [unreleased]
+## 2.0.5 [11 June 2012]
 * Now extension/form generators will add all attributes to attr_accessible. [#1613](https://github.com/resolve/refinerycms/pull/1613). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed a bug where `refinerycms-images` was trying to load `refinerycms-resources`. [#1651](https://github.com/resolve/refinerycms/issues/1651). [Philip Arndt](https://github.com/parndt)
 * Use new page part names (:body, :side_body) when generating extensions. [Uģis Ozols](https://github.com/ugisozols)
