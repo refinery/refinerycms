@@ -19,6 +19,7 @@
 * Fixed bug with template selector for page where it would always default to parents template. [#1710](https://github.com/resolve/refinerycms/issues/1710). [Glenn Hoppe](https://github.com/ghoppe)
 * Fixed and added tests for post-authentication redirect bug where a user would always be redirected to the admin root after successful auth. [#1561](https://github.com/resolve/refinerycms/issues/1561). [Alexander Wenzowski](https://github.com/wenzowski)
 * Added session key check for unscoped `return_to` variable so that the key set by `Refinery::Admin::BaseController#store_location?` is respected after successful auth. [#1728](https://github.com/resolve/refinerycms/issues/1728). [Alexander Wenzowski](https://github.com/wenzowski)
+* Fixed bug where flag icons in page listing couldn't be clicked due to expand/collapse event preventing it. [#1741](https://github.com/resolve/refinerycms/pull/1741). [Uģis Ozols](https://github.com/ugisozols)
 
 ## 2.0.4 [14 May 2012]
 * IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [#1636](https://github.com/resolve/refinerycms/pull/1636). [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
