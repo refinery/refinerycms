@@ -1,6 +1,6 @@
 <% content_for :header, t('there_are_no_users', :scope => 'refinery.welcome') %>
 
-<%= form_for :user, :url => refinery.refinery_user_registration_path do |f| -%>
+<%= form_for :user, :url => refinery.signup_path do |f| -%>
 
   <%= render '/refinery/admin/error_messages', :object => @user, :include_object_name => true %>
 
