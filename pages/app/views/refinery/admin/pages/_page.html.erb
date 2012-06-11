@@ -10,11 +10,13 @@
       <%= page.title_with_meta.html_safe %>
     </span>
     <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
-      <% page.translations.each do |translation| %>
-        <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
-                    refinery.edit_admin_page_path(page, :switch_locale => translation.locale),
-                    :class => 'locale' if translation.title.present? %>
-      <% end %>
+      <span class='locales'>
+        <% page.translations.each do |translation| %>
+          <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
+                      refinery.edit_admin_page_path(page, :switch_locale => translation.locale),
+                      :class => 'locale' if translation.title.present? %>
+        <% end %>
+      </span>
     <% end %>
 
     <span class='actions'>
