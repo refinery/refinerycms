@@ -1,6 +1,7 @@
 ## 2.1.0 [unreleased]
 
-* Added `Refinery::Page#canonical_slug` to allow us to retrieve a consistent slug across multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/resolve/refinerycms/issues/1457) [Philip Arndt](https://github.com/parndt)
+* Added `Refinery::Page#canonical_slug` to allow us to retrieve a consistent slug across multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/resolve/refinerycms/issues/1457). [Philip Arndt](https://github.com/parndt)
+* Shortened all authentication helpers. [#1719](https://github.com/resolve/refinerycms/pull/1719). [Ryan Bigg](https://github.com/radar)
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
