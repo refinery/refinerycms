@@ -9,7 +9,7 @@
 * Fixed a bug where `refinerycms-images` was trying to load `refinerycms-resources`. [#1651](https://github.com/resolve/refinerycms/issues/1651). [Philip Arndt](https://github.com/parndt)
 * Use new page part names (:body, :side_body) when generating extensions. [Uģis Ozols](https://github.com/ugisozols)
 * Now extension generator will merge two seeds file in case user generates multiple resources for one extension. [#1532](https://github.com/resolve/refinerycms/issues/1532). [Uģis Ozols](https://github.com/ugisozols)
-* Fix refinery:override bug where it won't match js files with more than extension. [#1685](https://github.com/resolve/refinerycms/issues/1685). [Uģis Ozols](https://github.com/ugisozols) and [Philip Arndt](https://github.com/parndt)
+* Fix refinery:override bug where it won't match js files with more than one extension. [#1685](https://github.com/resolve/refinerycms/issues/1685). [Uģis Ozols](https://github.com/ugisozols) and [Philip Arndt](https://github.com/parndt)
 * Now `refinerycms-images` and `refinerycms-resources` will inherit the s3_region configuration from `refinerycms-core`. [#1687](https://github.com/resolve/refinerycms/pull/1687). [Julien Palmas](https://github.com/bartocc)
 * Fixed dashboard bug where it wasn't producing proper links for nested pages. [#1696](https://github.com/resolve/refinerycms/pull/1696). [Philip Arndt](https://github.com/parndt)
 * Match only &dialog, ?dialog, &width, ?width, &height and ?height in dialog querystrings. [#1397](https://github.com/resolve/refinerycms/issues/1397). [Philip Arndt](https://github.com/parndt)
