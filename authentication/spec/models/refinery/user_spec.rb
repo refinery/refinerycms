@@ -204,10 +204,11 @@ module Refinery
       end
 
       it "adds registered plugins" do
-        first_user.plugins.collect(&:name).should eq(
-          ["refinery_users", "refinery_dashboard", "refinery_images",
-           "refinery_files", "refinery_pages"]
-        )
+        plugins = first_user.plugins.collect(&:name)
+        ["refinery_users", "refinery_dashboard", "refinery_images",
+         "refinery_files", "refinery_pages"].each do |plugin|
+           plugins.should include(plugin)
+        end
       end
 
       it "returns true on success" do
