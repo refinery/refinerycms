@@ -6,7 +6,7 @@
              :object => @image,
              :include_object_name => false %>
 
-  <% unless @image.errors.any? %>
+  <% if @image.errors.empty? %>
     <div id="upload_progress"></div>
 
     <div class="errorExplanation" id="errorExplanation" style="display:none;">
