@@ -48,7 +48,6 @@ class Images
     $(".save-loader").hide()
     @upload_progress.hide()
     if @errors.length > 0
-      @progress "<%= ::I18n.t("refinery.admin.images.form.there_was")%> #{@errors.length} <%= ::I18n.t("refinery.admin.images.form.error")%>#{(if @errors.length > 1 then "s" else "")}"
       @render_errors()
     @success_list.show()
 
