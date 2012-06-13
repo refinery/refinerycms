@@ -36,7 +36,9 @@
                   refinery.admin_page_path(page.uncached_nested_url),
                   :class => "cancel confirm-delete",
                   :title => t('delete', :scope => 'refinery.admin.pages'),
-                  :confirm => t('message', :scope => 'refinery.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, "")),
+                  :data => {
+                    :confirm => t('message', :scope => 'refinery.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, ""))
+                  },
                   :method => :delete if page.deletable? %>
     </span>
   </div>
