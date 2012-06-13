@@ -32,9 +32,9 @@ describe Refinery::Admin::UsersController do
 
   describe "#create" do
     it "creates a new user with valid params" do
-      user = Refinery::User.new :username => "bob"
+      user = Refinery::Core.user_class.new :username => "bob"
       user.should_receive(:save).once{ true }
-      Refinery::User.should_receive(:new).once.with(instance_of(HashWithIndifferentAccess)){ user }
+      Refinery::Core.user_class.should_receive(:new).once.with(instance_of(HashWithIndifferentAccess)){ user }
       post :create, :user => {}
       response.should be_redirect
     end
@@ -42,9 +42,9 @@ describe Refinery::Admin::UsersController do
     it_should_behave_like "new, create, update, edit and update actions"
 
     it "re-renders #new if there are errors" do
-      user = Refinery::User.new :username => "bob"
+      user = Refinery::Core.user_class.new :username => "bob"
       user.should_receive(:save).once{ false }
-      Refinery::User.should_receive(:new).once.with(instance_of(HashWithIndifferentAccess)){ user }
+      Refinery::Core.user_class.should_receive(:new).once.with(instance_of(HashWithIndifferentAccess)){ user }
       post :create, :user => {}
       response.should be_success
       response.should render_template("refinery/admin/users/new")
@@ -64,14 +64,14 @@ describe Refinery::Admin::UsersController do
   describe "#update" do
     let(:additional_user) { FactoryGirl.create :refinery_user }
     it "updates a user" do
-      Refinery::User.should_receive(:find).at_least(1).times{ additional_user }
+      Refinery::Core.user_class.should_receive(:find).at_least(1).times{ additional_user }
       put "update", :id => additional_user.id.to_s, :user => {}
       response.should be_redirect
     end
 
     context "when specifying plugins" do
       it "won't allow to remove 'Users' plugin from self" do
-        Refinery::User.should_receive(:find).at_least(1).times{ logged_in_user }
+        Refinery::Core.user_class.should_receive(:find).at_least(1).times{ logged_in_user }
         put "update", :id => logged_in_user.id.to_s, :user => {:plugins => ["some plugin"]}
 
         flash[:error].should eq("You cannot remove the 'Users' plugin from the currently logged in account.")
