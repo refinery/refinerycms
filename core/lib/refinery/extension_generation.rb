@@ -139,7 +139,12 @@ module Refinery
             reject_template?(f)
           }.sort.each do |path|
             if (template_path = extension_path_for(path, extension_name)).present?
-              next if path.to_s =~ /seeds.rb/
+              next if path.to_s =~ /seeds.rb.erb/ 
+              
+              unless path.to_s =~ /views/
+                template_path = template_path.to_s.sub(".erb", "")
+              end
+
               template path, template_path
             end
           end
@@ -211,8 +216,8 @@ module Refinery
         end
 
         def copy_or_merge_seeds!
-          source_seed_file      = source_pathname.join("db/seeds.rb")
-          destination_seed_file = destination_pathname.join(extension_path_for(source_seed_file, extension_name))
+          source_seed_file      = source_pathname.join("db/seeds.rb.erb")
+          destination_seed_file = destination_pathname.join(extension_path_for(source_seed_file.to_s.sub(".erb", ""), extension_name))
 
           if existing_extension?
             # create temp seeds file
