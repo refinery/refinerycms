@@ -31,7 +31,7 @@
         <%= link_to part.title, "##{@page.persisted? ? part.to_param : "page_part_new_#{part_index}"}" %>
       </li>
     <% end %>
-    <% ::Refinery::Pages.tabs.each_with_index do |tab, tab_index| %>
+    <% ::Refinery::Pages.tabs_for_template(@page.view_template).each_with_index do |tab, tab_index| %>
       <li class='ui-state-default' id="custom_<%= tab.name %>_tab">
         <%= link_to tab.name.titleize, "#custom_tab_#{tab_index}" %>
       </li>
@@ -46,7 +46,7 @@
                  :part_index => (part_index += 1),
                  :new_part => @page.new_record? -%>
     <% end %>
-    <% ::Refinery::Pages.tabs.each_with_index do |tab, tab_index| %>
+    <% ::Refinery::Pages.tabs_for_template(@page.view_template).each_with_index do |tab, tab_index| %>
       <div class='page_part' id='<%= "custom_tab_#{tab_index}" %>'>
         <%= render tab.partial, :f => f %>
       </div>
