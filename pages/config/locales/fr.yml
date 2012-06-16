@@ -34,10 +34,15 @@ fr:
       pages:
         delete: Supprimer définitivement cette page
         edit: Modifier cette page
+        new: Ajouter une nouvelle sous-page
+        expand_collapse: Développer ou réduire les sous-pages
         page:
           view_live_html: Voir cette page<br/><em>(Ouvre une nouvelle fenêtre)</em>
           hidden: caché
           draft: brouillon
+        form:
+          preview: Prévisualiser
+          preview_changes: Prévisualiser vos changements avant de les appliquer
         form_new_page_parts:
           title: Titre
         form_page_parts:
@@ -48,6 +53,7 @@ fr:
           page_options: Page Options
           parent_page: Page parente
           advanced_options: Options avancées
+          menu_title: Titre dans le menu
           custom_title: Titre personnalisé
           show_in_menu_title: Placer dans le menu
           show_in_menu_description: Placer cette page dans le menu du site
@@ -59,6 +65,7 @@ fr:
           link_url: Cette page redirige le visiteur vers un autre site ou une autre page
           link_url_help: "Si vous souhaitez que cette page mène à un autre site internet ou à une autre page lorsque l'on clique dessus dans le menu, entrez une URL '(par exemple http://google.com)'. Sinon laissez ce champ vide."
           parent_page_help: "Vous pouvez placer une page sous une autre page en la sélectionnant dans la liste. Si vous voulez que cette page soit une page parente, laissez ce champ vide."
+          menu_title_help: Si vous voulez que le menu affiche un titre différent que celui qui sera affiché sur la page, entrez-le ici.
           custom_title_help: "Si vous voulez que la page ait un titre différent de celui qui apparaît dans le menu, sélectionnez &apos;Text&apos; et entrez-le ici."
         actions:
           create_new_page: Créer une nouvelle page
