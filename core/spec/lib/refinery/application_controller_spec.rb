@@ -47,7 +47,7 @@ module Refinery
       end
 
       it "is false so standard HTTP is used" do
-        Refinery::Core.config.force_ssl = false
+        Refinery::Core.stub(:force_ssl).and_return(false)
 
         get :index
 
@@ -55,28 +55,20 @@ module Refinery
       end
 
       it "is true so HTTPS is used" do
-        begin
-          Refinery::Core.config.force_ssl = true
+        Refinery::Core.stub(:force_ssl).and_return(true)
+        
+        get :index
 
-          get :index
-
-          response.should be_redirect
-        ensure
-          Refinery::Core.config.force_ssl = false
-        end
+        response.should be_redirect
       end
 
       it "is true but HTTPS is not used because admin? is false" do
-        begin
-          controller.stub(:admin?).and_return(false)
-          Refinery::Core.config.force_ssl = true
+        controller.stub(:admin?).and_return(false)
+        Refinery::Core.stub(:force_ssl).and_return(true)
 
-          get :index
+        get :index
 
-          response.should_not be_redirect
-        ensure
-          Refinery::Core.config.force_ssl = false
-        end
+        response.should_not be_redirect
       end
     end
 
