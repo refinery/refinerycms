@@ -4,7 +4,7 @@ module Refinery
     #
     # We can return to this location by calling #redirect_back_or_default.
     def store_location
-      session[:return_to] = request.fullpath.sub("//", "/")
+      session[:return_to] = request.fullpath
     end
 
     # Clear and return the stored location

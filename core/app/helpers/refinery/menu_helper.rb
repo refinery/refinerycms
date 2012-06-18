@@ -40,7 +40,7 @@ module Refinery
     # Determine whether the supplied page is the currently open page according to Refinery.
     # Also checks whether Rails thinks it is selected after that using current_page?
     def selected_page?(page)
-      path = request.path.sub("//", "/")
+      path = request.path
       path = path.force_encoding('utf-8') if path.respond_to?(:force_encoding)
 
       # Ensure we match the path without the locale, if present.
