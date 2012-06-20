@@ -8,7 +8,7 @@ def setup_environment
     # Require the path to the refinerycms application this is vendored inside.
     require File.expand_path('../../../../../config/environment', __FILE__)
   else
-    raise "Could not find a config/environment.rb file to require. Please specify this in #{File.expand_path(__FILE__)}"
+    puts "Could not find a config/environment.rb file to require. Please specify this in #{File.expand_path(__FILE__)}"
   end
 
   require 'rspec/rails'
