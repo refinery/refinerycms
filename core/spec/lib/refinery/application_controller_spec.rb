@@ -2,6 +2,14 @@ require "spec_helper"
 
 module Refinery
   describe ApplicationController, :type => :controller do
+    before do
+      Rails.application.routes.draw { get "anonymous/index" }
+    end
+    
+    after do
+      Rails.application.reload_routes!
+    end
+
     controller do
       include ::Refinery::ApplicationController
 
