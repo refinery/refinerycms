@@ -199,7 +199,7 @@ module Refinery
     # Consists of:
     #   * The default locale's translated slug
     def canonical
-      Globalize.with_locale(::Refinery::I18n.default_frontend_locale){ url }
+      Globalize.with_locale(Refinery.i18n_enabled? && Refinery::I18n.default_frontend_locale || ::I18n.locale){ url }
     end
 
     # Returns in cascading order: custom_slug or menu_title or title depending on
