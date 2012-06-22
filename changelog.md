@@ -4,6 +4,7 @@
 
 ## 2.0.6 [unreleased]
 * Fixed bug with 404 page not honoring custom view/layout template. [#1746](https://github.com/resolve/refinerycms/pull/1746). [Uģis Ozols](https://github.com/ugisozols)
+* Renamed all templates in generators which contained erb to *.rb.erb. [#1750](https://github.com/resolve/refinerycms/pull/1750). [Uģis Ozols](https://github.com/ugisozols)
 
 ## 2.0.5 [11 June 2012]
 * Now extension/form generators will add all attributes to attr_accessible. [#1613](https://github.com/resolve/refinerycms/pull/1613). [Uģis Ozols](https://github.com/ugisozols)
