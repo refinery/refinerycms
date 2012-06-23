@@ -156,3 +156,27 @@ rake db:seed
 </shell>
 
 Lastly, run +rake db:migrate+ and +rake db:seed+ as usual.
+
+Sorry, I don't where to put these correction : 
+
+With ruby -v
+ruby 1.9.3p194 
+and rails -v
+Rails 3.2.6
+
+When I run 
+ rails generate refinery:events places
+        rake  refinery_events:install:migrations
+rake aborted!
+Multiple migrations have the version number 1by
+
+Tasks: TOP => railties:install:migrations
+(See full trace by running task with --trace)
+      append  db/seeds.rb
+
+To by pass the error, before runing the migration 
+rename the file  1 -> 2 : 
+vendor/extensions/events/db/migrate/1_create_places_places.rb
+by
+vendor/extensions/events/db/migrate/2_create_places_places.rb
+
