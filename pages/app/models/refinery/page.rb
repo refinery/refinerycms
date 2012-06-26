@@ -95,7 +95,7 @@ module Refinery
         end
       end
 
-      # Finds a page using its title.  This method is necessary because pages
+      # Finds pages by their title.  This method is necessary because pages
       # are translated which means the title attribute does not exist on the
       # pages table thus requiring us to find the attribute on the translations table
       # and then join to the pages table again to return the associated record.
@@ -103,7 +103,7 @@ module Refinery
         with_globalize(:title => title)
       end
 
-      # Finds a page using its slug.  See by_title
+      # Finds pages by their slug.  See by_title
       def by_slug(slug, conditions={})
         locales = Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales : ::I18n.locale
         with_globalize({ :locale => locales, :slug => slug }.merge(conditions))
