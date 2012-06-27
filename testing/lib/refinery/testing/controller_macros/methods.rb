@@ -16,7 +16,7 @@ module Refinery
           process_refinery_action(action, 'PUT', options)
         end
 
-        # Executes a request simulating PUT HTTP method and set/volley the response
+        # Executes a request simulating PATCH HTTP method and set/volley the response
         def patch(action, options = {})
           process_refinery_action(action, 'PATCH', options)
         end
