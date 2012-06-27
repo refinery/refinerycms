@@ -203,7 +203,7 @@ module Refinery
     # This ensures that they are in the correct 0,1,2,3,4... etc order.
     def reposition_parts!
       reload.parts.each_with_index do |part, index|
-        part.update_attributes :position => index
+        part.update_column(:position, index)
       end
     end
 

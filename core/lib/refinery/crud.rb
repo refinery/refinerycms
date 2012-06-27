@@ -284,7 +284,7 @@ module Refinery
                       @current_#{singular_name}.move_to_root
                     end
                   else
-                    @current_#{singular_name}.update_attributes :position => index
+                    @current_#{singular_name}.update_column(:position, index)
                   end
 
                   if hash['children'].present?

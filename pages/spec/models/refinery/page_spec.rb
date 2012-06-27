@@ -339,8 +339,8 @@ module Refinery
       it 'reposition correctly' do
         page.save
 
-        page.parts.first.update_attributes :position => 6
-        page.parts.last.update_attributes :position => 4
+        page.parts.first.update_column(:position, 6)
+        page.parts.last.update_column(:position, 4)
 
         page.parts.first.position.should == 6
         page.parts.last.position.should == 4
