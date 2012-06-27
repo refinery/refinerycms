@@ -21,8 +21,8 @@ module Refinery
 
         raise "A tab MUST have a name!: #{tab.inspect}" if tab.name.blank?
         raise "A tab MUST have a partial!: #{tab.inspect}" if tab.partial.blank?
-        tab.templates = ['all'] if tab.templates.blank?
-        tab.templates = [tab.templates] unless tab.templates.is_a?(Array)
+        tab.templates = %w[all] if tab.templates.empty?
+        tab.templates = Array(tab.templates)
       end
 
     protected
