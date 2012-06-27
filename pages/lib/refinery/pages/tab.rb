@@ -8,7 +8,7 @@ module Refinery
     end
     
     def self.tabs_for_template(template)
-      @tabs.select{|t| t.templates.include?('all') || t.templates.include?(template) }
+      tabs.select{|t| t.templates.include?('all') || t.templates.include?(template) }
     end
 
     class Tab
