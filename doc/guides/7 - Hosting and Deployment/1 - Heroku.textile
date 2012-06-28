@@ -94,8 +94,6 @@ h4. Step 3: Copy your data from your local database to the Heroku app
 
 Since you've set up your website locally, you've probably got a bunch of information in a local database.  Rather than trying to recreate all that on Heroku, we're going to import your database using a gem called taps.  One gotcha is that Taps might throw errors if you're using Ruby 1.9.3, so if you get any errors, switch to 1.9.2 for an easier time.
 
-(make GitHub Issue: is that Ruby 1.9.3 warning still relevant? might Taps still throw errors, or can we remove that warning? it doesn't throw any 1.9.3-related errors for me. or maybe the previous person had the same problem I had but misdiagnosed it – they were using RVM and had the heroku gem installed in 1.9.2 but not 1.9.3.)
-
 You'll want to actually install taps to your system – not just add it to your Gemfile.
 
 <shell>
