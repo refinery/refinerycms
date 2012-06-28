@@ -10,9 +10,6 @@ sk:
         edit: Upraviť tento obrázok
         form:
           image: Obrázok
-          use_current_image: Použiť vybraný obrázok
-          or: or
-          replace_image: " nahradiť ho týmto..."
           current_image: Vybraný obrázok
           maximum_image_size: Maximálna veľkosť obrázku je %{bytes}.
         actions:

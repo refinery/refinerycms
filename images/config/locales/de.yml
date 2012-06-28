@@ -10,9 +10,6 @@ de:
         edit: Dieses Bild bearbeiten
         form:
           image: Bild
-          use_current_image: Aktuelles Bild verwenden
-          or: oder
-          replace_image: " mit diesem ersetzen..."
           current_image: Aktuelles Bild
           maximum_image_size: Die maximale Größe eines Bildes beträgt %{bytes}.
         actions:

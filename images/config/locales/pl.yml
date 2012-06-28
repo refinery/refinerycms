@@ -11,9 +11,6 @@ pl:
         edit: Zmień ten obraz
         form:
           image: Obraz
-          use_current_image: Użyj obecnego obrazu
-          or: lub
-          replace_image: " zastąp go tym..."
           current_image: Obecny obraz
           maximum_image_size: Maksymalny rozmiar obrazu to %{bytes}.
         actions:

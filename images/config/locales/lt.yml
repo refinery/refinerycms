@@ -10,9 +10,6 @@ lt:
         edit: Redaguoti paveikslėlį
         form:
           image: Paveikslėlis
-          use_current_image: Naudoti pasirinktą paveikslėlį
-          or: arba
-          replace_image: " pakeisti jį šiuo..."
           current_image: Pasirinktas paveikslėlis
           maximum_image_size: Maksimalus paveikslėlio dydis yra %{bytes}.
         actions:

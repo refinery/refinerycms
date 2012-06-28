@@ -10,9 +10,6 @@ fr:
         edit: Modifier cette image
         form:
           image: Image
-          use_current_image: Utiliser l'image actuelle
-          or: ou
-          replace_image: " la remplacer par celle-ci..."
           current_image: Image actuelle
           maximum_image_size: "La taille de l'image ne doit pas excéder %{bytes}."
         actions:

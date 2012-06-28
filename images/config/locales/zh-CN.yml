@@ -10,9 +10,6 @@ zh-CN:
         edit: 编辑此图片
         form:
           image: 图片
-          use_current_image: 使用当前图片
-          or: 或
-          replace_image: " 使用这个去覆盖..."
           current_image: 当前图片
           maximum_image_size: 最大的图片大小为 %{bytes}.
         actions:

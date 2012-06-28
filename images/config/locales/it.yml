@@ -10,9 +10,6 @@ it:
         edit: "Modifica l'immagine corrente"
         form:
           image: Immagine
-          use_current_image: "Usa l'immagine corrente"
-          or: o
-          replace_image: Sostituirla con questa...
           current_image: Immagine corrente
           maximum_image_size: "La dimensione massima per l'immagine è di %{bytes}."
         actions:

@@ -10,9 +10,6 @@ lv:
         delete: Dzēst šo bildi
         edit: Labot šo bildi
         form:
-          use_current_image: Lietot pašreizējo bildi
-          or: vai
-          replace_image: " aizstāt to ar šo..."
           current_image: Pašreizējā Bilde
           maximum_image_size: Maksimāli pieļaujamais bildes izmērs ir %{bytes}.
         actions:

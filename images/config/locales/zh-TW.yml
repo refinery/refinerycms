@@ -10,9 +10,6 @@ zh-TW:
         edit: 編輯圖片
         form:
           image: 圖片
-          use_current_image: 使用目前圖片
-          or: 或
-          replace_image: " 用這個來取代..."
           current_image: 目前圖片
           maximum_image_size: 圖片大小限制為 %{bytes}.
         actions:
