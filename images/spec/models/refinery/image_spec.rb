@@ -11,15 +11,36 @@ module Refinery
         image.valid?.should be_true
       end
     end
-
+    
     context "image url" do
+      it "responds to .thumbnail_url" do
+        image.should respond_to(:thumbnail_url)
+      end
+      
+      
+      it "becomes different when supplying a size" do
+        size = Refinery::Images.user_image_sizes.first[0]
+        created_image.url.should_not == created_image.thumbnail_url(size)
+      end
+
+      it "has different urls for each size" do
+        image_sizes = Refinery::Images.user_image_sizes.keys
+        image_sizes[0].should_not == image_sizes[1]
+        created_image.thumbnail_url(image_sizes[0]).should_not == created_image.thumbnail_url(image_sizes[1])
+      end
+
+      it "raise exception if it's not a predefined user image size" do
+        Refinery::Images.user_image_sizes.should_not include(:wrong_size)
+        lambda {created_image.thumbnail_url(:wrong_size)}.should raise_error
+      end
+
       it "responds to .thumbnail" do
         image.should respond_to(:thumbnail)
       end
-
-      it "contains its filename at the end" do
-        created_image.url.split('/').last.should == created_image.image_name
-      end
+      
+      # it "contains its filename at the end" do
+      #   created_image.url.split('/').last.should == created_image.image_name
+      # end
 
       it "becomes different when supplying geometry" do
         created_image.url.should_not == created_image.thumbnail('200x200').url

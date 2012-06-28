@@ -49,6 +49,20 @@ module Refinery
         image
       end
     end
+    
+    # Get a url for a thumbnail given a size.
+    def thumbnail_url(size = nil)
+      if size && Refinery::Images.user_image_sizes.keys.exclude?(size)
+        raise ArgumentError, "Size must be one of #{Refinery::Images.user_image_sizes.keys.join(", ")}"
+      end
+
+      Refinery::Core::Engine.routes.url_helpers.thumbnail_path(self, size)
+    end
+    
+    # Get the url for the original image
+    def url
+      thumbnail_url
+    end
 
     # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
     def thumbnail_dimensions(geometry)
