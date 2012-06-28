@@ -15,14 +15,7 @@ First you need to install Refinery. To do that you need the refinerycms gem.
 gem install refinerycms
 </shell>
 
-Next, go to "Heroku.com":http://heroku.com and click "sign up" for a free account.
-
-Now that you've got a Heroku account, install the Heroku gem and provide your account credentials:
-
-<shell>
-gem install heroku
-heroku login
-</shell>
+Then, if you haven't done so already, follow the first three steps of the "Heroku quick start guide":https://devcenter.heroku.com/articles/quickstart. They cover signing up for Heroku, installing the Heroku client, and logging in through the client.
 
 Now it's time to create your Refinery application using the built in +--heroku+ option
 
@@ -50,7 +43,7 @@ If you have already built a Refinery application locally, you'll need to make so
 
 h4. Step 0: Setup and log into Heroku
 
-If you haven't done so already, follow the first three steps of the "Heroku quick start guide":https://devcenter.heroku.com/articles/quickstart.
+If you haven't done so already, follow the first three steps of the "Heroku quick start guide":https://devcenter.heroku.com/articles/quickstart. They cover signing up for Heroku, installing the Heroku client, and logging in through the client.
 
 h4. Step 1: Update the Gemfile
 
