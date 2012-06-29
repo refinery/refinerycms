@@ -1,6 +1,7 @@
 <%= javascript_include_tag 'admin' -%>
 <%= javascript_include_tag 'refinery/refinery' -%>
 <%= javascript_include_tag 'refinery/wymeditor', "wymeditor/lang/#{::I18n.locale}", "wymeditor/skins/refinery/skin" %>
+<%= javascript_include_tag 'refinery/codemirror' if Refinery::Core.code_mirror %>
 <%= yield :after_javascript_libraries -%>
 <% custom_javascripts.each do |js| %>
   <%= javascript_include_tag js %>
