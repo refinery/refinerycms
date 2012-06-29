@@ -24,8 +24,11 @@ module Refinery
   describe CrudDummyController, :type => :controller do
 
     describe "#update_positions" do
+      let!(:crud_dummy_one) { Refinery::CrudDummy.create! }
+      let!(:crud_dummy_two) { Refinery::CrudDummy.create! }
+      let!(:crud_dummy_three) { Refinery::CrudDummy.create! }
+
       before do
-        3.times { Refinery::CrudDummy.create! }
         controller.should_receive(:refinery_user_required?).and_return(false)
       end
 
@@ -33,24 +36,69 @@ module Refinery
         post :update_positions, {
           "ul" => {
             "0" => {
-              "0" => {"id" => "crud_dummy_3"},
-              "1" => {"id" => "crud_dummy_2"},
-              "2" => {"id" => "crud_dummy_1"}
+              "0" => {"id" => "crud_dummy_#{crud_dummy_three.id}"},
+              "1" => {"id" => "crud_dummy_#{crud_dummy_two.id}"},
+              "2" => {"id" => "crud_dummy_#{crud_dummy_one.id}"}
             }
           }
         }
 
-        dummy = Refinery::CrudDummy.find_by_id(1)
-        dummy.lft.should eq(5)
-        dummy.rgt.should eq(6)
+        dummy = crud_dummy_three.reload
+        dummy.lft.should eq(1)
+        dummy.rgt.should eq(2)
 
-        dummy = Refinery::CrudDummy.find_by_id(2)
+        dummy = crud_dummy_two.reload
         dummy.lft.should eq(3)
         dummy.rgt.should eq(4)
 
-        dummy = Refinery::CrudDummy.find_by_id(3)
+        dummy = crud_dummy_one.reload
+        dummy.lft.should eq(5)
+        dummy.rgt.should eq(6)
+      end
+
+      it "orders nested dummies" do
+        nested_crud_dummy_one = Refinery::CrudDummy.create! :parent_id => crud_dummy_one.id
+        nested_crud_dummy_two = Refinery::CrudDummy.create! :parent_id => crud_dummy_one.id
+
+        post :update_positions, {
+          "ul" => {
+            "0" => {
+              "0" => {
+                "id" => "crud_dummy_#{crud_dummy_three.id}",
+                "children" => {
+                  "0" => {
+                    "0" => {"id" => "crud_dummy_#{nested_crud_dummy_one.id}"},
+                    "1" => {"id" => "crud_dummy_#{nested_crud_dummy_two.id}"}
+                  }
+                }
+              },
+              "1" => {"id" => "crud_dummy_#{crud_dummy_two.id}"},
+              "2" => {"id" => "crud_dummy_#{crud_dummy_one.id}"}
+            }
+          }
+        }
+
+        dummy = crud_dummy_three.reload
         dummy.lft.should eq(1)
-        dummy.rgt.should eq(2)
+        dummy.rgt.should eq(6)
+
+        dummy = nested_crud_dummy_one.reload
+        dummy.lft.should eq(2)
+        dummy.rgt.should eq(3)
+        dummy.parent_id.should eq(crud_dummy_three.id)
+
+        dummy = nested_crud_dummy_two.reload
+        dummy.lft.should eq(4)
+        dummy.rgt.should eq(5)
+        dummy.parent_id.should eq(crud_dummy_three.id)
+
+        dummy = crud_dummy_two.reload
+        dummy.lft.should eq(7)
+        dummy.rgt.should eq(8)
+
+        dummy = crud_dummy_one.reload
+        dummy.lft.should eq(9)
+        dummy.rgt.should eq(10)
       end
     end
 
