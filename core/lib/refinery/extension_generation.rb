@@ -139,8 +139,8 @@ module Refinery
             reject_template?(f)
           }.sort.each do |path|
             if (template_path = extension_path_for(path, extension_name)).present?
-              next if path.to_s =~ /seeds.rb.erb/ 
-              
+              next if path.to_s =~ /seeds.rb.erb/
+
               unless path.to_s =~ /views/
                 template_path = template_path.to_s.sub(".erb", "")
               end

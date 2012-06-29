@@ -6,7 +6,7 @@ module Refinery
       before do
         Rails.application.routes.draw { get "anonymous/index" }
       end
-      
+
       after do
         Rails.application.reload_routes!
       end

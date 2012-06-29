@@ -17,7 +17,7 @@
                 :title => t('delete', :scope => 'refinery.admin.users'),
                 :method => :delete,
                 :data => {
-                  :confirm => t('message', :scope => 'refinery.admin.delete', :title => user.username) 
+                  :confirm => t('message', :scope => 'refinery.admin.delete', :title => user.username)
                 } if current_refinery_user.can_delete?(user) %>
   </span>
 </li>

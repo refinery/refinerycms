@@ -85,7 +85,7 @@ module Refinery
       before do
         Refinery::EngineGenerator.any_instance.stub(:merge_locales!).and_return(true)
         Refinery::EngineGenerator.any_instance.stub(:existing_extension?).and_return(true)
-        
+
         run_generator %w{ rspec_item_test title:string --extension rspec_product_tests --skip }
       end
 
