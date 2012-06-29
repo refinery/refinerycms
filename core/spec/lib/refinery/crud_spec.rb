@@ -22,19 +22,28 @@ end
 
 module Refinery
   describe CrudDummyController, :type => :controller do
-    
+
     describe "#update_positions" do
       before do
-        3.times { Refinery::CrudDummy.create! } 
+        3.times { Refinery::CrudDummy.create! }
+        controller.should_receive(:refinery_user_required?).and_return(false)
       end
 
       it "orders dummies" do
-        post :update_positions, {"ul"=>{"0"=>{"0"=>{"id"=>"crud_dummy_3"}, "1"=>{"id"=>"crud_dummy_2"}, "2"=>{"id"=>"crud_dummy_1"}}}}
-        
+        post :update_positions, {
+          "ul" => {
+            "0" => {
+              "0" => {"id" => "crud_dummy_3"},
+              "1" => {"id" => "crud_dummy_2"},
+              "2" => {"id" => "crud_dummy_1"}
+            }
+          }
+        }
+
         dummy = Refinery::CrudDummy.find_by_id(1)
         dummy.lft.should eq(5)
         dummy.rgt.should eq(6)
-        
+
         dummy = Refinery::CrudDummy.find_by_id(2)
         dummy.lft.should eq(3)
         dummy.rgt.should eq(4)
