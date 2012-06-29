@@ -528,3 +528,17 @@ a.wym_wymeditor_link {
 .wym_skin_refinery {
   opacity: 0;
 }
+
+.wym_skin_refinery .wym_codemirror {
+  display: none;
+  background-color: white;
+  .CodeMirror {    
+    width: 100% !important;
+    height: 400px;
+    border: 1px solid #CCC;
+    background: white;
+    .CodeMirror-scroll {
+      height: 100%;
+    }
+  }
+}

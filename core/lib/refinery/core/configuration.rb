@@ -7,7 +7,7 @@ module Refinery
                     :menu_hide_children, :menu_css, :dragonfly_secret, :ie6_upgrade_message_enabled,
                     :show_internet_explorer_upgrade_message, :wymeditor_whitelist_tags,
                     :javascripts, :stylesheets, :s3_bucket_name, :s3_region, :s3_access_key_id,
-                    :s3_secret_access_key, :force_ssl, :verbose_rack_cache
+                    :s3_secret_access_key, :force_ssl, :verbose_rack_cache, :code_mirror
 
     self.rescue_not_found = false
     self.s3_backend = false
@@ -29,6 +29,7 @@ module Refinery
     self.s3_secret_access_key = ENV['S3_SECRET']
     self.force_ssl = false
     self.verbose_rack_cache = false
+    self.code_mirror = true
 
     def config.register_javascript(name)
       self.javascripts << name
