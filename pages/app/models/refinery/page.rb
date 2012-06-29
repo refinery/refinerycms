@@ -1,9 +1,10 @@
 # Encoding: utf-8
+require 'refinerycms-core'
 require 'acts_as_indexed'
 require 'friendly_id'
 
 module Refinery
-  class Page < Refinery::Core::BaseModel
+  class Page < Core::BaseModel
     extend FriendlyId
 
     # when collecting the pages path how is each of the pages seperated?
@@ -199,7 +200,13 @@ module Refinery
     # Consists of:
     #   * The default locale's translated slug
     def canonical
-      Globalize.with_locale(Refinery.i18n_enabled? && Refinery::I18n.default_frontend_locale || ::I18n.locale){ url }
+      Globalize.with_locale(Refinery.i18n_enabled? && Refinery::I18n.default_frontend_locale || ::I18n.locale) { url }
+    end
+
+    # The canonical slug for this particular page.
+    # This is the slug for the default frontend locale.
+    def canonical_slug
+      Globalize.with_locale(Refinery.i18n_enabled? && Refinery::I18n.default_frontend_locale || ::I18n.locale) { slug }
     end
 
     # Returns in cascading order: custom_slug or menu_title or title depending on
