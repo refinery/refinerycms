@@ -20,6 +20,11 @@ module Refinery
         'dir' => 'models',
         'desc' => 'model',
       },
+      'presenter' => {
+        'glob' => '*.rb',
+        'dir' => 'presenters',
+        'desc' => 'presenter',
+      },
       'javascript' => {
         'glob' => '*.js{,.*}',
         'dir' => 'assets/javascripts',
@@ -46,7 +51,8 @@ module Refinery
         :javascript => %w(admin refinery/site_bar),
         :stylesheet => %w(home refinery/site_bar),
         :controller => %w(pages),
-        :model => %w(page refinery/page)
+        :model => %w(page refinery/page),
+        :presenter => %w(refinery/page_presenter)
       }.each do |type, examples|
         examples.each do |example|
           puts "rake refinery:override #{type}=#{example}"
