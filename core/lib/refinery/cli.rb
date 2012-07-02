@@ -4,31 +4,37 @@ module Refinery
   class CLI < Thor
     include Thor::Actions
 
-    KIND_EXTS = {
-      'view' => '{erb,builder}',
-      'controller' => 'rb',
-      'model' => 'rb',
-      'javascript' => 'js{,.*}',
-      'stylesheet' => 'css.scss'
-    }
-    KIND_DIRS = {
-      'view' => 'views',
-      'controller' => 'controllers',
-      'model' => 'models',
-      'javascript' => 'assets/javascripts',
-      'stylesheet' => 'assets/stylesheets'
-    }
-    KIND_DESCS = {
-      'view' => 'view template',
-      'controller' => 'controller',
-      'model' => 'model',
-      'javascript' => 'javascript',
-      'stylesheet' => 'stylesheet'
+    KINDS = {
+      'view' => {
+        'glob' => '*.{erb,builder}',
+        'dir' => 'views',
+        'desc' => 'view template',
+      },
+      'controller' => {
+        'glob' => '*.rb',
+        'dir' => 'controllers',
+        'desc' => 'controller',
+      },
+      'model' => {
+        'glob' => '*.rb',
+        'dir' => 'models',
+        'desc' => 'model',
+      },
+      'javascript' => {
+        'glob' => '*.js{,.*}',
+        'dir' => 'assets/javascripts',
+        'desc' => 'javascript',
+      },
+      'stylesheet' => {
+        'glob' => '*.css.scss',
+        'dir' => 'assets/stylesheets',
+        'desc' => 'stylesheet',
+      },
     }
 
     desc "override", "copies files from any Refinery extension that you are using into your application"
     def override(env)
-      for kind in %w(view controller model javascript stylesheet)
+      for kind in KINDS.keys
         if (which = env[kind]).present?
           return _override(kind, which)
         end
@@ -88,24 +94,24 @@ module Refinery
     private
 
     def _override(kind, which)
-      pattern = "{refinery#{File::SEPARATOR},}#{which.split("/").join(File::SEPARATOR)}*.#{KIND_EXTS[kind]}"
-      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", KIND_DIRS[kind], pattern).to_s}
+      pattern = "{refinery#{File::SEPARATOR},}#{which.split("/").join(File::SEPARATOR)}#{KINDS[kind]['glob']}"
+      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", KINDS[kind]['dir'], pattern).to_s}
 
       # copy in the matches
       if (matches = looking_for.map{|d| Dir[d]}.flatten.compact.uniq).any?
         matches.each do |match|
-          dir = match.split("/app/#{KIND_DIRS[kind]}/").last.split('/')
+          dir = match.split("/app/#{KINDS[kind]['dir']}/").last.split('/')
           file = dir.pop # get rid of the file.
           dir = dir.join(File::SEPARATOR) # join directory back together
 
-          destination_dir = Rails.root.join("app", KIND_DIRS[kind], dir)
+          destination_dir = Rails.root.join("app", KINDS[kind]['dir'], dir)
           FileUtils.mkdir_p(destination_dir)
           FileUtils.cp match, (destination = File.join(destination_dir, file))
 
-          puts "Copied #{KIND_DESCS[kind]} file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
+          puts "Copied #{KINDS[kind]['desc']} file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
         end
       else
-        puts "Couldn't match any #{KIND_DESCS[kind]} files in any extensions like #{which}"
+        puts "Couldn't match any #{KINDS[kind]['desc']} files in any extensions like #{which}"
       end
     end
   end
