@@ -61,7 +61,9 @@ pl:
           link_url_help: Jeżeli chcesz, aby ta strona prowadziła do innej strony lub witryny kiedy klikniesz ją w menu, wpisz tu adres URL, na przykład http://google.com.W innym wypadku pozostaw to pole pustym.
           parent_page_help: Możesz umieścić tę stronę pod inną wybierając stronę nadrzędną z listy. Jeżeli ta strona ma być stroną najwyższego poziomu pozostaw to pole pustym.
           custom_title_help: Jeżeli chcesz aby ta strona miała inny tytuł niż ten widoczny w menu wybierz &apos;Tekst&apos; i wpisz go tutaj.
-        actions:
+          menu_title: Tytuł w menu
+          menu_title_help: Jeżeli chcesz aby ta strona miała inny tytuł w menu wybierz &apos;Tekst&apos; i wpisz go tutaj.
+       actions:
           create_new_page: Dodaj nową stronę
           reorder_pages: Zmień kolejność stron
           reorder_pages_done: Zakończono zmianę kolejności stron
