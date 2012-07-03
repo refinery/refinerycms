@@ -13,8 +13,8 @@ describe "CLI" do
   context "when called with no args" do
     it "shows info message" do
       msg = capture(:stdout) { rake["refinery:override"].invoke }
-    
-      msg.should match("You didn't specify anything to override. Here are some examples:")
+
+      msg.should match("You didn't specify anything valid to override. Here are some examples:")
       msg.should match("rake refinery:override view=pages/home")
       msg.should match("rake refinery:override view=refinery/pages/home")
       msg.should match(%r{rake refinery:override view=\*\*/\*menu})
@@ -33,7 +33,7 @@ describe "CLI" do
     context "specified file doesn't exist" do
       it "shows message" do
         ENV[env] = "non-existent"
-      
+
         msg = capture(:stdout) { rake["refinery:override"].invoke }
 
         msg.should eq(not_found_message)
@@ -41,10 +41,10 @@ describe "CLI" do
     end
 
     context "specified file exist" do
-      let (:file_name) do 
+      let (:file_name) do
         Dir.entries(file_location).reject { |e| e =~ %r{^\.+} || e !~ %r{\..+} }.first
       end
-      
+
       after do
         FileUtils.rm_f(Rails.root.join(copied_file_location))
         ENV[env] = nil
