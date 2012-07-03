@@ -40,6 +40,17 @@ WYMeditor.STRINGS['pl'] = {
 	Containers:		 'Format',
 	Classes:			'Styl',
 	Status:			 'Status',
-	Source_Code:		'Kod źródłowy'
+	Source_Code:		'Kod źródłowy',
+	Apply_Style: 'Określ styl',
+	Text_Align: "Wyrównanie tekstu",
+	Left: "Do lewej",
+	Right: "Do prawej",
+	Center: "Do środka",
+	Justify: "Wyjustuj",
+	Image_Align: "Wyrównanie obrazka",
+	Font_Size: "Rozmiar teksru",
+	Small: "Mały",
+	Normal: "Normalny",
+	Large: "Duży"
 };
 
