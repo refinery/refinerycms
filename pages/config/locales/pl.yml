@@ -18,14 +18,14 @@ pl:
             location: Lokacja
             new_window: Nowe okno
             new_window_label: Zaznacz tę kratkę aby link otwierał się w nowym oknie.
-            not_sure: Nie wiesz, co wstawić w pole powyżej?
+            not_sure: 'Nie wiesz, co wstawić w pole powyżej?'
             step1: Znajdź stronę w sieci do której chcesz linkować.
             step2: Wklej adres z pola adresu Twojej przeglądarki i wklej go do pola powyżej.
           email_address:
             tab_name: Adres e-mail
             subject_line_optional: Opcjonalny temat
             body_optional: Opcjonalna treść
-            not_sure: Nie wiesz, co wstawić w pola powyżej?
+            not_sure: 'Nie wiesz, co wstawić w pola powyżej?'
             step1_html: Wpisz lub wklej (np. z książki adresowej) adres e-mail do którego ma prowadzić link w pole '<stron>Adres e-mail</strong> powyżej.
             step2_html: Użyj pola '<strong>Temat</strong> aby wiadomość miała wstępnie określony temat.
             step3_html: Użyj pola '<strong>Treść</strong> aby wiadomość miała wstępnie określoną treść.
@@ -52,18 +52,18 @@ pl:
           custom_title: Inny tytuł
           show_in_menu_title: Pokaż w menu
           show_in_menu_description: Wyświetl tę stronę w menu witryny
-          show_in_menu_help: Odznacz tę kratkę aby usunąć tę stronę z menu witryny. To może być przydatne jeżeli chcesz linkować do tej strony, ale nie chcesz aby była widoczna w menu.
+          show_in_menu_help: 'Odznacz tę kratkę aby usunąć tę stronę z menu witryny. To może być przydatne jeżeli chcesz linkować do tej strony, ale nie chcesz aby była widoczna w menu.'
           save_as_draft: Zapisz jako szkic
           skip_to_first_child: Pomiń stronę najwyższego poziomu
           skip_to_first_child_label: Przekieruj odwiedzających do pierwszej strony potomnej.
-          skip_to_first_child_help: Ta opcja sprawia, że ta strona kieruje do pierwszej strony pod nią. To może być przydatne przy grupowaniu stron razem.
+          skip_to_first_child_help: 'Ta opcja sprawia, że ta strona kieruje do pierwszej strony pod nią. To może być przydatne przy grupowaniu stron razem.'
           link_url: Przekieruj tę stronę do innej strony lub witryny
-          link_url_help: Jeżeli chcesz, aby ta strona prowadziła do innej strony lub witryny kiedy klikniesz ją w menu, wpisz tu adres URL, na przykład http://google.com.W innym wypadku pozostaw to pole pustym.
+          link_url_help: 'Jeżeli chcesz, aby ta strona prowadziła do innej strony lub witryny kiedy klikniesz ją w menu, wpisz tu adres URL, na przykład http://google.com.W innym wypadku pozostaw to pole pustym.'
           parent_page_help: Możesz umieścić tę stronę pod inną wybierając stronę nadrzędną z listy. Jeżeli ta strona ma być stroną najwyższego poziomu pozostaw to pole pustym.
-          custom_title_help: Jeżeli chcesz aby ta strona miała inny tytuł niż ten widoczny w menu wybierz &apos;Tekst&apos; i wpisz go tutaj.
+          custom_title_help: 'Jeżeli chcesz aby ta strona miała inny tytuł niż ten widoczny w menu wybierz &apos;Tekst&apos; i wpisz go tutaj.'
           menu_title: Tytuł w menu
-          menu_title_help: Jeżeli chcesz aby ta strona miała inny tytuł w menu wybierz &apos;Tekst&apos; i wpisz go tutaj.
-       actions:
+          menu_title_help: 'Jeżeli chcesz aby ta strona miała inny tytuł w menu wybierz &apos;Tekst&apos; i wpisz go tutaj.'
+        actions:
           create_new_page: Dodaj nową stronę
           reorder_pages: Zmień kolejność stron
           reorder_pages_done: Zakończono zmianę kolejności stron
