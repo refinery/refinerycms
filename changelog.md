@@ -1,5 +1,6 @@
 ## 2.1.0 [unreleased]
 
+* Refactored wysiwyg fields into a partial. [#1796](https://github.com/resolve/refinerycms/pull/1796). [Rob Yurkowski](https://github.com/robyurkowski)
 * Shortened all authentication helpers. [#1719](https://github.com/resolve/refinerycms/pull/1719). [Ryan Bigg](https://github.com/radar)
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
@@ -11,7 +12,7 @@
 * Fixed page reorder issue on Ruby 1.8.x. [#1585](https://github.com/resolve/refinerycms/issues/1585). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt).
 * Allowed to override presenters using `rake refinery:override`. [#1790](https://github.com/resolve/refinerycms/pull/1790). [Kevin Bullock](https://github.com/krbullock).
 
-## 2.0.5 [unreleased]
+## 2.0.5 [11 June 2012]
 * Now extension/form generators will add all attributes to attr_accessible. [#1613](https://github.com/resolve/refinerycms/pull/1613). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed a bug where `refinerycms-images` was trying to load `refinerycms-resources`. [#1651](https://github.com/resolve/refinerycms/issues/1651). [Philip Arndt](https://github.com/parndt)
 * Use new page part names (:body, :side_body) when generating extensions. [Uģis Ozols](https://github.com/ugisozols)
