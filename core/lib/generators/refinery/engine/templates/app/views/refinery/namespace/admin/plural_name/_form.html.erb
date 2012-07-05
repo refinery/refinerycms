@@ -6,62 +6,61 @@
   <%%= render '/refinery/admin/error_messages',
               :object => @<%= singular_name %>,
               :include_object_name => true %>
-<% if localized? %>
+
+<% if localized? -%>
   <%%= render "locale_picker",
-              :current_locale => Globalize.locale if Refinery.i18n_enabled? %>
-<% end %>
-  <% attributes.each_with_index do |attribute, index| %>
-<% if attribute.field_type.to_s != 'text_area' -%>
+              :current_locale => Globalize.locale if Refinery.i18n_enabled? -%>
+
+<% end -%>
+<% attributes.each_with_index do |attribute, index| -%>
+<% if attribute.type.to_s == 'image' -%>
   <div class='field'>
     <%%= f.label :<%= attribute.name %> -%>
-<% end -%>
-<% if attribute.type.to_s == 'image' -%>
     <%%= render '/refinery/admin/image_picker',
                :f => f,
                :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
                :image => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %>,
-               :toggle_image_display => false %>
+               :toggle_image_display => false -%>
+  </div>
+
 <% elsif attribute.type.to_s == 'resource' -%>
+  <div class='field'>
+    <%%= f.label :<%= attribute.name %> -%>
     <%%= render '/refinery/admin/resource_picker',
                :f => f,
                :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
-               :resource => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %> %>
+               :resource => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %> -%>
+  </div>
+
 <% elsif attribute.field_type.to_s == "text_area" and !generated_text_areas -%>
   <div class='field'>
-    <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
-      <ul id='page_parts'>
-        <%% <%= text_areas.map{|t| t.name.to_sym}.inspect -%>.each_with_index do |part, part_index| %>
-          <li class='ui-state-default<%%= ' ui-state-active' if part_index == 0 %>'>
-            <%%= link_to t("#{part}", :scope => "activerecord.attributes.refinery/<%= namespacing.underscore %>/<%= singular_name %>", :default => part.to_s.titleize), "##{part}" %>
-          </li>
-        <%% end %>
-      </ul>
-      <div id='page_part_editors'>
-        <%% <%= text_areas.map{|t| t.name.to_sym}.inspect -%>.each do |part| %>
-          <div class='page_part' id='<%%= part %>'>
-            <%%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
-          </div>
-        <%% end %>
-      </div>
-    </div>
+    <%%= render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => <%= text_areas.map{|t| t.name.to_sym}.inspect -%>,
+                :object => "<%= namespacing.underscore -%>/<%= singular_name -%>" -%>
+  </div>
+
 <% generated_text_areas = true -%>
 <% elsif attribute.field_type.to_s != 'text_area' -%>
-    <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%><%= ", :class => 'larger widest'" if (index == 0 && attribute.field_type == :text_field) -%><%= ", :checked => @#{singular_name}[:#{attribute.name}]" if attribute.field_type == :check_box %>  -%>
-<% end -%>
-
+  <div class='field'>
+    <%%= f.label :<%= attribute.name %> -%>
+    <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%><%= ", :class => 'larger widest'" if (index == 0 && attribute.field_type == :text_field) -%><%= ", :checked => @#{singular_name}[:#{attribute.name}]" if attribute.field_type == :check_box %> -%>
   </div>
-  <% end %>
+
+<% end -%>
+<% end -%>
   <%%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
              :delete_title => t('delete', :scope => 'refinery.<%= plural_name %>.admin.<%= plural_name %>.<%= singular_name %>'),
-             :delete_confirmation => t('message', :scope => 'refinery.admin.delete'<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>, :title => @<%= singular_name %>.<%= title.name %><% end %>) %>
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete'<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>, :title => @<%= singular_name %>.<%= title.name %><% end %>) -%>
 <%% end -%>
 <% if text_areas.any? -%>
-<%% content_for :javascripts do %>
+
+<%% content_for :javascripts do -%>
   <script>
     $(document).ready(function(){
       page_options.init(false, '', '');
     });
   </script>
-<%% end %>
+<%% end -%>
 <% end -%>
