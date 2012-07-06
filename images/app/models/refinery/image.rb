@@ -56,16 +56,16 @@ module Refinery
       width = original_width = self.image_width.to_f
       height = original_height = self.image_height.to_f
       geometry_width, geometry_height = geometry.split(%r{\#{1,2}|\+|>|!|x}im)[0..1].map(&:to_f)
-      if (original_width * original_height > 0) && geometry =~ ::Dragonfly::ImageMagick::Processor::THUMB_GEOMETRY
-        if geometry =~ ::Dragonfly::ImageMagick::Processor::RESIZE_GEOMETRY
-          if geometry !~ %r{\d+x\d+>} || (geometry =~ %r{\d+x\d+>} && (width > geometry_width.to_f || height > geometry_height.to_f))
+      if (original_width * original_height > 0) && ::Dragonfly::ImageMagick::Processor::THUMB_GEOMETRY === geometry
+        if ::Dragonfly::ImageMagick::Processor::RESIZE_GEOMETRY === geometry
+          if geometry !~ %r{\d+x\d+>} || (%r{\d+x\d+>} === geometry && (width > geometry_width.to_f || height > geometry_height.to_f))
             # Try scaling with width factor first. (wf = width factor)
-            wf_width = (original_width * (geometry_width / width)).ceil
-            wf_height = (original_height * (geometry_width / width)).ceil
+            wf_width = (original_width * geometry_width / width).round
+            wf_height = (original_height * geometry_width / width).round
 
             # Scale with height factor (hf = height factor)
-            hf_width = (original_width * (geometry_height / height)).ceil
-            hf_height = (original_height * (geometry_height / height)).ceil
+            hf_width = (original_width * geometry_height / height).round
+            hf_height = (original_height * geometry_height / height).round
 
             # Take the highest value that doesn't exceed either axis limit.
             use_wf = wf_width <= geometry_width && wf_height <= geometry_height

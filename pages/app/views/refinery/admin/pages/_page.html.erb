@@ -8,20 +8,20 @@
 
     <span class='title <%= 'toggle' if page.children.present? %>'>
       <%= page.title_with_meta.html_safe %>
-      <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
-        <span class='preview'>
-          <% page.translations.each do |translation| %>
-            <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
-                        refinery.edit_admin_page_path(page, :switch_locale => translation.locale),
-                        :class => 'locale' if translation.title.present? %>
-          <% end %>
-        </span>
-      <% end %>
     </span>
+    <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
+      <span class='locales'>
+        <% page.translations.each do |translation| %>
+          <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
+                      refinery.edit_admin_page_path(page.nested_url, :switch_locale => translation.locale),
+                      :class => 'locale' if translation.title.present? %>
+        <% end %>
+      </span>
+    <% end %>
 
     <span class='actions'>
       <%= link_to refinery_icon_tag('application_go.png'),
-                  refinery.page_path(page.uncached_nested_url),
+                  page.url,
                   :target => "_blank",
                   :title => t('.view_live_html') %>
       <%= link_to refinery_icon_tag('page_add.png'),
@@ -36,7 +36,9 @@
                   refinery.admin_page_path(page.uncached_nested_url),
                   :class => "cancel confirm-delete",
                   :title => t('delete', :scope => 'refinery.admin.pages'),
-                  :confirm => t('message', :scope => 'refinery.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, "")),
+                  :data => {
+                    :confirm => t('message', :scope => 'refinery.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, ""))
+                  },
                   :method => :delete if page.deletable? %>
     </span>
   </div>

@@ -49,6 +49,7 @@ en:
           create_content_section: Add content section
           delete_content_section: Delete content section
           reorder_content_section: Reorder content sections
+          reorder_content_section_done: I'm done reordering the content sections
         form_advanced_options:
           toggle_advanced_options: Access meta tag settings and menu options
           page_options: Page Options

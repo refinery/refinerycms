@@ -26,11 +26,8 @@
         <%= f.label :layout_template, t('.layout_template') %>
         <%= refinery_help_tag t('.layout_template_help') %>
       </span>
-      <% if @page.parent_id? %>
-        <%= f.select(:layout_template, @valid_layout_templates, {:selected => @page.parent.layout_template}) %>
-      <% else %>
-        <%= f.select(:layout_template, @valid_layout_templates) %>
-      <% end %>
+      <%= f.select :layout_template, @valid_layout_templates,
+                   template_options(:layout_template, @page) %>
     </div>
     <% end %>
     <% if Refinery::Pages.use_view_templates %>
@@ -39,11 +36,8 @@
         <%= f.label :view_template, t('.view_template') %>
         <%= refinery_help_tag t('.view_template_help') %>
       </span>
-      <% if @page.parent_id? %>
-        <%= f.select(:view_template, @valid_view_templates.map{|t| [t.titleize, t]}, {:selected => @page.parent.view_template }) %>
-      <% else %>
-        <%= f.select(:view_template, @valid_view_templates.map{|t| [t.titleize, t]}) %>
-      <% end %>
+      <%= f.select :view_template, @valid_view_templates.map { |t| [t.titleize, t] },
+                   template_options(:view_template, @page) %>
     </div>
     <% end %>
 

@@ -87,7 +87,7 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render '/refinery/message'
+                    render :partial => '/refinery/message'
                   end
                 end
               else
@@ -99,9 +99,10 @@ module Refinery
               unless request.xhr?
                 render :action => 'new'
               else
-                render '/refinery/admin/error_messages',
-                       :object => @#{singular_name},
-                       :include_object_name => true
+                render :partial => '/refinery/admin/error_messages', :locals => {
+                         :object => @#{singular_name},
+                         :include_object_name => true
+                       }
               end
             end
           end
@@ -124,7 +125,7 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render '/refinery/message'
+                    render :partial => '/refinery/message'
                   end
                 end
               else
@@ -136,9 +137,10 @@ module Refinery
               unless request.xhr?
                 render :action => 'edit'
               else
-                render '/refinery/admin/error_messages',
-                       :object => @#{singular_name},
-                       :include_object_name => true
+                render :partial => '/refinery/admin/error_messages', :locals => {
+                         :object => @#{singular_name},
+                         :include_object_name => true
+                       }
               end
             end
           end
@@ -264,8 +266,11 @@ module Refinery
             def update_positions
               previous = nil
               params[:ul].each do |_, list|
-                list.each do |index, hash|
-                  moved_item_id = hash['id'].split(/#{singular_name}\\_?/)
+                # After we drop Ruby 1.8.x support the following line can be changed back to
+                # list.each do |index, hash|
+                # because there won't be an ordering issue (see https://github.com/resolve/refinerycms/issues/1585)
+                list.sort.map { |item| item[1] }.each_with_index do |hash, index|
+                  moved_item_id = hash['id'].split(/#{singular_name}\_?/).reject(&:empty?).first
                   @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
 
                   if @current_#{singular_name}.respond_to?(:move_to_root)
@@ -291,8 +296,9 @@ module Refinery
             end
 
             def update_child_positions(_node, #{singular_name})
-              _node['children']['0'].each do |_, child|
-                child_id = child['id'].split(/#{singular_name}\_?/)
+              list = _node['children']['0']
+              list.sort.map { |item| item[1] }.each_with_index do |child, index|
+                child_id = child['id'].split(/#{singular_name}\_?/).reject(&:empty?).first
                 child_#{singular_name} = #{class_name}.where(:id => child_id).first
                 child_#{singular_name}.move_to_child_of(#{singular_name})
 

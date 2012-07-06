@@ -112,6 +112,18 @@ module Refinery
       end
     end
 
+    describe '#thumbnail_dimensions returns correctly with' do
+      let(:created_alternate_image) { FactoryGirl.create(:alternate_image) }
+
+      it 'nil' do
+        created_alternate_image.thumbnail_dimensions(nil).should == { :width => 376, :height => 184 }
+      end
+
+      it '225x255>' do
+        created_alternate_image.thumbnail_dimensions('225x255>').should == { :width => 225, :height => 110 }
+      end
+    end
+
     describe "validations" do
       describe "valid #image" do
         before(:each) do

@@ -48,7 +48,7 @@ module Refinery
     end
 
     def home_page?
-      refinery.root_path =~ %r{^#{Regexp.escape(request.path.sub("//", "/"))}}
+      refinery.root_path =~ %r{^#{Regexp.escape(request.path)}}
     end
 
     def just_installed?
@@ -84,7 +84,7 @@ module Refinery
 
     def refinery_user_required?
       if just_installed? and controller_name != 'users'
-        redirect_to refinery.new_refinery_user_registration_path
+        redirect_to refinery.signup_path
       end
     end
 

@@ -27,7 +27,8 @@ module Refinery
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :browser_title, :meta_description,
                     :parent_id, :menu_title, :created_at, :updated_at,
-                    :page_id, :layout_template, :view_template, :custom_slug
+                    :page_id, :layout_template, :view_template, :custom_slug,
+                    :slug
 
     attr_accessor :locale # to hold temporarily
     validates :title, :presence => true
@@ -60,8 +61,7 @@ module Refinery
     before_save { |m| m.translation.save }
     before_create :ensure_locale, :if => proc { ::Refinery.i18n_enabled? }
     before_destroy :deletable?
-    after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
-    after_update :invalidate_cached_urls
+    after_save :reposition_parts!, :expire_page_caching
     after_destroy :expire_page_caching
 
     class << self
@@ -97,7 +97,7 @@ module Refinery
         end
       end
 
-      # Finds a page using its title.  This method is necessary because pages
+      # Finds pages by their title.  This method is necessary because pages
       # are translated which means the title attribute does not exist on the
       # pages table thus requiring us to find the attribute on the translations table
       # and then join to the pages table again to return the associated record.
@@ -105,7 +105,7 @@ module Refinery
         with_globalize(:title => title)
       end
 
-      # Finds a page using its slug.  See by_title
+      # Finds pages by their slug.  See by_title
       def by_slug(slug, conditions={})
         locales = Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales : ::I18n.locale
         with_globalize({ :locale => locales, :slug => slug }.merge(conditions))
@@ -302,19 +302,7 @@ module Refinery
     # Returns the string version of nested_url, i.e., the path that should be generated
     # by the router
     def nested_path
-      Rails.cache.fetch(path_cache_key) { ['', nested_url].join('/') }
-    end
-
-    def path_cache_key(locale = Globalize.locale)
-      [cache_key(locale), 'nested_path'].join('#')
-    end
-
-    def url_cache_key(locale = Globalize.locale)
-      [cache_key(locale), 'nested_url'].join('#')
-    end
-
-    def cache_key(locale)
-      [Refinery::Core.base_cache_key, 'page', locale, id].compact.join('/')
+      ['', nested_url].join('/')
     end
 
     # Returns true if this page is "published"
@@ -432,18 +420,6 @@ module Refinery
     alias_method_chain :normalize_friendly_id, :marketable_urls
 
   private
-
-    def invalidate_cached_urls
-      return true unless Refinery::Pages.marketable_urls
-
-      [self, children].flatten.each do |page|
-        ((Refinery.i18n_enabled? && Refinery::I18n.frontend_locales) || [::I18n.locale]).each do |locale|
-          Rails.cache.delete(page.url_cache_key(locale))
-          Rails.cache.delete(page.path_cache_key(locale))
-        end
-      end
-    end
-    alias_method :invalidate_child_cached_url, :invalidate_cached_urls
 
     # Make sures that a translation exists for this page.
     # The translation is set to the default frontend locale.

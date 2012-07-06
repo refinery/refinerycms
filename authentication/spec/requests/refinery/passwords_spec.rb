@@ -6,7 +6,7 @@ module Refinery
       let!(:user) { FactoryGirl.create(:refinery_user, :email => "refinery@refinerycms.com") }
 
       it "asks user to specify email address" do
-        visit refinery.new_refinery_user_session_path
+        visit refinery.login_path
         click_link "I forgot my password"
         page.should have_content("Please enter the email address for your account.")
       end

@@ -64,7 +64,9 @@
                 :title => delete_title,
                 :id => delete_button_id,
                 :method => :delete,
-                :confirm => delete_confirmation,
+                :data => {
+                  :confirm => delete_confirmation
+                },
                 :class => "button confirm-delete") unless hide_delete %>
     <%= local_assigns[:after_delete_button] -%>
   </div>

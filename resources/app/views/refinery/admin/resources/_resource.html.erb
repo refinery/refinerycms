@@ -14,7 +14,9 @@
                 refinery.admin_resource_path(resource),
                 :class => "cancel confirm-delete",
                 :title => t('delete', :scope => 'refinery.admin.resources'),
-                :confirm => t('message', :scope => 'refinery.admin.delete', :title => resource.title),
+                :data => {
+                  :confirm => t('message', :scope => 'refinery.admin.delete', :title => resource.title)
+                },
                 :method => :delete %>
   </span>
 </li>

@@ -2,11 +2,16 @@ require "spec_helper"
 
 module Refinery
   describe "sign in" do
+    let(:login_path) { refinery.new_refinery_user_session_path }
+    let(:login_retry_path) { refinery.refinery_user_session_path }
+    let(:admin_path) { refinery.admin_root_path }
+
     before(:each) do
       FactoryGirl.create(:refinery_user, :username => "ugisozols",
                               :password => "123456",
                               :password_confirmation => "123456")
-      visit refinery.new_refinery_user_session_path
+
+      visit refinery.login_path
     end
 
     it "shows login form" do
@@ -21,6 +26,7 @@ module Refinery
         fill_in "Password", :with => "123456"
         click_button "Sign in"
         page.should have_content("Signed in successfully.")
+        current_path.should == admin_path
       end
     end
 
@@ -30,6 +36,7 @@ module Refinery
         fill_in "Password", :with => "Hmmm"
         click_button "Sign in"
         page.should have_content("Sorry, your login or password was incorrect.")
+        current_path.should == login_retry_path
       end
     end
   end
@@ -58,5 +65,40 @@ module Refinery
         User.count.should == 1
       end
     end
+  end
+
+  describe 'redirects' do
+    let(:protected_path) { refinery.new_admin_user_path }
+    let(:login_path) { refinery.new_refinery_user_session_path }
+
+    before(:each) do
+      FactoryGirl.create(:refinery_user,
+        :username => "ugisozols",
+        :password => "123456",
+        :password_confirmation => "123456"
+      )
+    end
+
+    context "when visiting a protected path" do
+      before(:each) { visit protected_path }
+
+      it "redirects to the login" do
+        current_path.should == login_path
+      end
+
+      it "shows login form" do
+        page.should have_content("Hello! Please sign in.")
+        page.should have_content("I forgot my password")
+        page.should have_selector("a[href*='/refinery/users/password/new']")
+      end
+
+      it "redirects to the protected path on login" do
+        fill_in "Login", :with => "ugisozols"
+        fill_in "Password", :with => "123456"
+        page.click_button "Sign in"
+        current_path.should == protected_path
+      end
+    end
+
   end
 end

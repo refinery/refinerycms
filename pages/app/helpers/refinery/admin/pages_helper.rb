@@ -10,6 +10,18 @@ module Refinery
         ActiveRecord::Associations::Preloader.new(pages, :translations).run
         pages.map {|page| ["#{'-' * page.level} #{page.title}", page.id]}
       end
+
+      def template_options(template_type, current_page)
+        return {} if current_page.send(template_type)
+
+        if current_page.parent_id?
+          # Use Parent Template by default.
+          { :selected => current_page.parent.send(template_type) }
+        else
+          # Use Default Template (First in whitelist)
+          { :selected => Refinery::Pages.send("#{template_type}_whitelist").first }
+        end
+      end
     end
   end
 end

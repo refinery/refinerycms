@@ -1,3 +1,5 @@
+require 'active_record'
+
 module Refinery
   module Core
     class BaseModel < ActiveRecord::Base

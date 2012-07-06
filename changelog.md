@@ -1,21 +1,33 @@
 ## 2.1.0 [unreleased]
 
-* Added `Refinery::Page#canonical_slug` to allow us to retrieve a consistent slug across multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/resolve/refinerycms/issues/1457) [Philip Arndt](https://github.com/parndt)
+* Refactored wysiwyg fields into a partial. [#1796](https://github.com/resolve/refinerycms/pull/1796). [Rob Yurkowski](https://github.com/robyurkowski)
+* Shortened all authentication helpers. [#1719](https://github.com/resolve/refinerycms/pull/1719). [Ryan Bigg](https://github.com/radar)
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
-## 2.0.5 [unreleased]
+## 2.0.6 [unreleased]
+* Added `Refinery::Page#canonical_slug` to allow us to retrieve a consistent slug across multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/resolve/refinerycms/issues/1457). [Philip Arndt](https://github.com/parndt)
+* Fixed bug with 404 page not honoring custom view/layout template. [#1746](https://github.com/resolve/refinerycms/pull/1746). [Uģis Ozols](https://github.com/ugisozols)
+* Renamed all templates in generators which contained erb to *.rb.erb. [#1750](https://github.com/resolve/refinerycms/pull/1750). [Uģis Ozols](https://github.com/ugisozols)
+* Fixed page reorder issue on Ruby 1.8.x. [#1585](https://github.com/resolve/refinerycms/issues/1585). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt).
+* Allowed to override presenters using `rake refinery:override`. [#1790](https://github.com/resolve/refinerycms/pull/1790). [Kevin Bullock](https://github.com/krbullock).
+
+## 2.0.5 [11 June 2012]
 * Now extension/form generators will add all attributes to attr_accessible. [#1613](https://github.com/resolve/refinerycms/pull/1613). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed a bug where `refinerycms-images` was trying to load `refinerycms-resources`. [#1651](https://github.com/resolve/refinerycms/issues/1651). [Philip Arndt](https://github.com/parndt)
 * Use new page part names (:body, :side_body) when generating extensions. [Uģis Ozols](https://github.com/ugisozols)
 * Now extension generator will merge two seeds file in case user generates multiple resources for one extension. [#1532](https://github.com/resolve/refinerycms/issues/1532). [Uģis Ozols](https://github.com/ugisozols)
-* Fix refinery:override bug where it won't match js files with more than extension. [#1685](https://github.com/resolve/refinerycms/issues/1685). [Uģis Ozols](https://github.com/ugisozols) and [Philip Arndt](https://github.com/parndt)
+* Fix refinery:override bug where it won't match js files with more than one extension. [#1685](https://github.com/resolve/refinerycms/issues/1685). [Uģis Ozols](https://github.com/ugisozols) and [Philip Arndt](https://github.com/parndt)
 * Now `refinerycms-images` and `refinerycms-resources` will inherit the s3_region configuration from `refinerycms-core`. [#1687](https://github.com/resolve/refinerycms/pull/1687). [Julien Palmas](https://github.com/bartocc)
 * Fixed dashboard bug where it wasn't producing proper links for nested pages. [#1696](https://github.com/resolve/refinerycms/pull/1696). [Philip Arndt](https://github.com/parndt)
 * Match only &dialog, ?dialog, &width, ?width, &height and ?height in dialog querystrings. [#1397](https://github.com/resolve/refinerycms/issues/1397). [Philip Arndt](https://github.com/parndt)
 * Added multiple language support (specified by `Refinery::I18n.frontend_locales`) in `Refinery::Page` seeds file. [#1694](https://github.com/resolve/refinerycms/pull/1694). [Ole Reifschneider](https://github.com/Tranquility)
 * Added `Refinery::Page#canonical` support which allows multiple translations to have one canonical version. [Philip Arndt](https://github.com/parndt)
-* Usernames are validated case insensitively to ensure true uniqueness. [#1703](https://github.com/resolve/refinerycms/issues/1703) [Philip Arndt](https://github.com/parndt)
+* Usernames are validated case insensitively to ensure true uniqueness. [#1703](https://github.com/resolve/refinerycms/issues/1703). [Philip Arndt](https://github.com/parndt)
+* Fixed bug with template selector for page where it would always default to parents template. [#1710](https://github.com/resolve/refinerycms/issues/1710). [Glenn Hoppe](https://github.com/ghoppe)
+* Fixed and added tests for post-authentication redirect bug where a user would always be redirected to the admin root after successful auth. [#1561](https://github.com/resolve/refinerycms/issues/1561). [Alexander Wenzowski](https://github.com/wenzowski)
+* Added session key check for unscoped `return_to` variable so that the key set by `Refinery::Admin::BaseController#store_location?` is respected after successful auth. [#1728](https://github.com/resolve/refinerycms/issues/1728). [Alexander Wenzowski](https://github.com/wenzowski)
+* Fixed bug where flag icons in page listing couldn't be clicked due to expand/collapse event preventing it. [#1741](https://github.com/resolve/refinerycms/pull/1741). [Uģis Ozols](https://github.com/ugisozols)
 
 ## 2.0.4 [14 May 2012]
 * IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [#1636](https://github.com/resolve/refinerycms/pull/1636). [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
