@@ -33,7 +33,7 @@ Use the rails generator to update your Refinery installation:
 TIP: You only need to run the below step when upgrading between major or minor versions. Bug fix releases should not change the database structure. For example, if you are going from 1.0.3 -> 1.0.8 (Bugfix) you do not need to run this command. 
 
 <shell>
-$ rails generate refinerycms --update
+$ rails generate refinery:cms --update
 </shell>
 
 Database migrations and new gem dependencies may have been added, so finish your Refinery update with:
