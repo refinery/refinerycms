@@ -4,7 +4,7 @@ module Refinery
 <% if table_name == namespacing.underscore.pluralize -%>
       self.table_name = 'refinery_<%= plural_name %>'
 <% end %>
-      attr_accessible <%= attributes.map { |a| ":#{a.name}" }.join(', ') %>, :position
+      attr_accessible <%= names_for_attr_accessible.map { |n| ":#{n}" }.join(', ') %>, :position
 <% if localized? -%>
 
       translates <%= localized_attributes.map { |a| ":#{a.name}" }.join(', ') %>
@@ -13,7 +13,7 @@ module Refinery
         attr_accessible :locale
       end
 <% end -%>
-<% if (string_attributes = attributes.select { |a| a.type.to_s =~ /string|text/ }.uniq).any? -%>
+<% if string_attributes.any? -%>
 
       acts_as_indexed :fields => <%= string_attributes.map {|s| s.name.to_sym }.inspect %>
 
@@ -26,13 +26,13 @@ module Refinery
         "Override def title in vendor/extensions/<%= namespacing.underscore %>/app/models/refinery/<%= namespacing.underscore %>/<%= singular_name %>.rb"
       end
 <% end -%>
-<% attributes.select { |a| a.type.to_s == 'image' }.uniq.each do |a| -%>
+<% image_attributes.each do |a| -%>
 
-      belongs_to :<%= a.name.gsub("_id", "") -%>, :class_name => '::Refinery::Image'
+      belongs_to :<%= a.name -%>, :class_name => '::Refinery::Image'
 <% end -%>
-<% attributes.select { |a| a.type.to_s == 'resource' }.uniq.each do |a| -%>
+<% resource_attributes.each do |a| -%>
 
-      belongs_to :<%= a.name.gsub("_id", "") %>, :class_name => '::Refinery::Resource'
+      belongs_to :<%= a.name %>, :class_name => '::Refinery::Resource'
 <% end -%>
     end
   end

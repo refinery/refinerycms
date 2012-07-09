@@ -6,8 +6,8 @@
       <%%= render '/refinery/admin/error_messages',
                  :object => @<%= singular_name %>,
                  :include_object_name => true  %>
-<% string_fields = attributes.map{ |a| a.name if a.type.to_s =~ /string|text/ }.compact.uniq -%>
-      <% attributes.each do |attribute| %>
+<% string_fields = string_attributes.map(&:name) -%>
+<% attributes.each do |attribute| %>
       <div class='field <%= attribute.name %>_field <%= attribute.type %>_field'>
         <%%= f.<%= 'required_' if string_fields.any? && attribute.name == string_fields.first %>label :<%= attribute.name %> %>
 <% case attribute.type
@@ -16,7 +16,7 @@
 <% when :text -%>
         <%%= f.text_area :<%= attribute.name %>, :rows => 8 %>
 <% when :radio -%>
-        <%% <%= class_name %>::<%= attribute.name.pluralize.upcase %>.each do |value, name| %>
+        <%% Refinery::<%= namespacing %>::<%= class_name %>::<%= attribute.name.pluralize.upcase %>.each do |value, name| %>
           <%%= f.radio_button :<%= attribute.name %>, (name || value), :value => value %>
           <%%= f.label :"<%= attribute.name %>_#{(name || value)}", value.humanize %>
         <%% end %>
@@ -33,7 +33,7 @@
         <%%= f.time_select :<%= attribute.name %> %>
 <% end -%>
       </div>
-      <% end %>
+<% end %>
       <div class='actions'>
         <%%= f.submit t('.send') %>
       </div>
