@@ -1,8 +1,7 @@
 module Refinery
   class PagePart < Refinery::Core::BaseModel
 
-    attr_accessible :title, :content, :position, :body, :created_at,
-                    :updated_at, :refinery_page_id
+    attr_accessible :title, :content, :position, :body, :refinery_page_id
     belongs_to :page, :foreign_key => :refinery_page_id
 
     validates :title, :presence => true
