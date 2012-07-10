@@ -26,9 +26,8 @@ module Refinery
     attr_accessible :id, :deletable, :link_url, :menu_match, :meta_keywords,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :browser_title, :meta_description,
-                    :parent_id, :menu_title, :created_at, :updated_at,
-                    :page_id, :layout_template, :view_template, :custom_slug,
-                    :slug
+                    :parent_id, :menu_title, :page_id, :layout_template,
+                    :view_template, :custom_slug, :slug
 
     attr_accessor :locale, :page_title, :page_menu_title # to hold temporarily
     validates :title, :presence => true
