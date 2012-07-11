@@ -5,12 +5,13 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
 <%
   attributes.each do |attribute|
     # turn image or resource into what it was supposed to be which is an integer reference to an image or resource.
-    if attribute.type.to_s =~ /^(image|resource)$/
+    case attribute.type
+    when :image, :resource
       attribute.type = 'integer'
-      attribute.name = "#{attribute.name}_id".gsub("_id_id", "_id")
-    elsif attribute.type.to_s =~ /^(radio|select)$/
+      attribute.name = "#{attribute.name}_id"
+    when :radio, :select
       attribute.type = 'string'
-    elsif attribute.type.to_s =~ /^(checkbox)$/
+    when :checkbox
       attribute.type = 'boolean'
     end
 -%>
