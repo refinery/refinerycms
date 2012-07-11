@@ -6,7 +6,8 @@ module Refinery
         crudify :'refinery/<%= namespacing.underscore %>/<%= singular_name %>', <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
                 :title_attribute => "<%= title.name %>", <% end %>
                 :order => "created_at DESC"
-      <% if @includes_spam %>
+<% if @includes_spam -%>
+  
         before_filter :get_spam_count, :only => [:index, :spam]
 
         def index
@@ -35,7 +36,7 @@ module Refinery
         def get_spam_count
           @spam_count = <%= class_name %>.count(:conditions => {:spam => true})
         end
-      <% else %>
+<% else %>
         def index
           unless searching?
             find_all_<%= plural_name %>
@@ -46,8 +47,7 @@ module Refinery
           @grouped_<%= plural_name %> = group_by_date(@<%= plural_name %>)
         end
 
-      <% end %>
-
+<% end -%>
       end
     end
   end
