@@ -68,11 +68,8 @@ init_modal_dialogs = function(){
       'dialog-width': parseInt($($(anchor).attr('href').match("width=([0-9]*)")).last().get(0), 10)||928
       , 'dialog-height': parseInt($($(anchor).attr('href').match("height=([0-9]*)")).last().get(0), 10)||473
       , 'dialog-title': ($(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null)
-    }).attr('href', $(anchor).attr('href').replace(/((\&(amp\;)?)|\?)dialog\=true/, '')
-                                          .replace(/((\&(amp\;)?)|\?)width\=\d+/, '')
-                                          .replace(/((\&(amp\;)?)|\?)height\=\d+/, '')
-                                          .replace(/(\?&(amp\;)?)/, '?')
-                                          .replace(/\?$/, ''))
+    }).attr('href', $(anchor).attr('href').replace(/(&(amp;)?|\?)(dialog=true|(width|height)=\d+)/g, '')
+                                          .replace(/(\/[^&\?]*)&(amp;)?/, '$1?'))
     .click(function(e){
       $anchor = $(this);
       iframe_src = (iframe_src = $anchor.attr('href'))
