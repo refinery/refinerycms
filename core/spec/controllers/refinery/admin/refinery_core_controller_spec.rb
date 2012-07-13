@@ -3,10 +3,10 @@ require 'spec_helper'
 module Refinery
   module Admin
     describe CoreController do
-      refinery_login_with :refinery_user
+      refinery_login_with_factory :refinery_user
 
       it "updates the plugin positions" do
-        plugins = logged_in_user.plugins.reverse.collect(&:name)
+        plugins = logged_in_user.plugins.reverse.map &:name
 
         post 'update_plugin_positions', :menu => plugins
 

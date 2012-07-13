@@ -31,12 +31,12 @@ module Refinery
     end
 
     def admin?
-      controller_name =~ %r{^admin/}
+      %r{^admin/} === controller_name
     end
 
     def error_404(exception=nil)
       # fallback to the default 404.html page.
-      file = Rails.root.join('public', '404.html')
+      file = Rails.root.join 'public', '404.html'
       file = Refinery.roots(:'refinery/core').join('public', '404.html') unless file.exist?
       render :file => file.cleanpath.to_s.gsub(%r{#{file.extname}$}, ''),
              :layout => false, :status => 404, :formats => [:html]
@@ -48,7 +48,7 @@ module Refinery
     end
 
     def home_page?
-      refinery.root_path =~ %r{^#{Regexp.escape(request.path)}}
+      %r{^#{Regexp.escape(request.path)}} === refinery.root_path
     end
 
     def just_installed?
@@ -56,11 +56,11 @@ module Refinery
     end
 
     def local_request?
-      Rails.env.development? or request.remote_ip =~ /(::1)|(127.0.0.1)|((192.168).*)/
+      Rails.env.development? || /(::1)|(127.0.0.1)|((192.168).*)/ === request.remote_ip
     end
 
     def login?
-      (controller_name =~ /^(user|session)(|s)/ and not admin?) or just_installed?
+      (/^(user|session)(|s)/ === controller_name && !admin?) || just_installed?
     end
 
   protected
@@ -83,7 +83,7 @@ module Refinery
     end
 
     def refinery_user_required?
-      if just_installed? and controller_name != 'users'
+      if just_installed? && controller_name != 'users'
         redirect_to refinery.signup_path
       end
     end
@@ -91,7 +91,7 @@ module Refinery
   private
 
     def store_current_location!
-      if admin? and request.get? and !request.xhr? and !from_dialog?
+      if admin? && request.get? && !request.xhr? && !from_dialog?
         # ensure that we don't redirect to AJAX or POST/PUT/DELETE urls
         session[:refinery_return_to] = request.path.sub('//', '/')
       end
