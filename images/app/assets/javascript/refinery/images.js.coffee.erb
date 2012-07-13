@@ -6,9 +6,6 @@ $(document).ready ->
       images.upload_all()
   $("#image_image").change (e) ->
     images.file_list  = e.target.files
-  parent.$(".ui-icon-closethick").click (e) ->
-    e.preventDefault()
-    parent.window.location.href = parent.window.location.href
 
 
 class Images
@@ -47,9 +44,12 @@ class Images
   after_upload_all: ->
     $(".save-loader").hide()
     @upload_progress.hide()
+    @success_list.show()
     if @errors.length > 0
       @render_errors()
-    @success_list.show()
+    else
+      $('#flash_container', window.parent.document).html($("#inner_flash_container").html())
+      parent.$(".ui-icon-closethick").trigger("click")
 
   validate: (file) ->
     max_file_size = <%= Refinery::Images.max_image_size %>
