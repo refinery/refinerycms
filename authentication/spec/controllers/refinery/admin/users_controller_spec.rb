@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Refinery::Admin::UsersController do
-  refinery_login_with :refinery_superuser
+  refinery_login_with_factory :refinery_superuser
 
   shared_examples_for "new, create, update, edit and update actions" do
     it "loads roles" do

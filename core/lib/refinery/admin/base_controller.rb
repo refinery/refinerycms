@@ -10,7 +10,7 @@ module Refinery
         layout :layout?
 
         before_filter :authenticate_refinery_user!, :restrict_plugins, :restrict_controller
-        after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
+        after_filter :store_location?, :only => [:index] # for redirect_back_or_default
 
         helper_method :searching?, :group_by_date
       end
@@ -51,26 +51,29 @@ module Refinery
       end
 
       def restrict_controller
-        # We need to remove the admin/ section since the path is silent for the
-        # namespace.
-        path = params[:controller].gsub('admin/', '')
-        unless ::Refinery::Plugins.active.any? {|plugin| path =~ Regexp.new(plugin.menu_match) }
-          logger.warn "'#{current_refinery_user.username}' tried to access '#{path}' but was rejected."
+        unless allow_controller? params[:controller].gsub 'admin/', ''
+          logger.warn "'#{current_refinery_user.username}' tried to access '#{params[:controller]}' but was rejected."
           error_404
         end
       end
 
     private
 
+      def allow_controller?(controller_path)
+        ::Refinery::Plugins.active.any? {|plugin|
+          Regexp.new(plugin.menu_match) === controller_path
+        }
+      end
+
       def layout?
-        "refinery/admin#{"_dialog" if from_dialog?}"
+        "refinery/admin#{'_dialog' if from_dialog?}"
       end
 
       # Check whether it makes sense to return the user to the last page they
       # were at instead of the default e.g. refinery_admin_pages_path
       # right now we just want to snap back to index actions and definitely not to dialogues.
       def store_location?
-        store_location unless action_name !~ /index/ or request.xhr? or from_dialog?
+        store_location unless request.xhr? || from_dialog?
       end
 
       # Override authorized? so that only users with the Refinery role can admin the website.
