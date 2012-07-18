@@ -6,7 +6,9 @@
 * Added Refinery::Page#canonical_slug to allow us to retrieve a consistent slug across multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/resolve/refinerycms/pull/1457). [Philip Arndt](https://github.com/parndt)
 * Fixed bug with 404 page not honoring custom view/layout template. [#1746](https://github.com/resolve/refinerycms/pull/1746). [Uģis Ozols](https://github.com/ugisozols)
 * Renamed all templates in generators which contained erb to *.rb.erb. [#1750](https://github.com/resolve/refinerycms/pull/1750). [Uģis Ozols](https://github.com/ugisozols)
-* Fixed page reorder issue on Ruby 1.8.x. [#1585](https://github.com/resolve/refinerycms/issues/1585). [Uģis Ozols](https://github.com/ugisozols)
+* Fixed page reorder issue on Ruby 1.8.x. [#1585](https://github.com/resolve/refinerycms/issues/1585). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt).
+* Allowed to override presenters using `rake refinery:override`. [#1790](https://github.com/resolve/refinerycms/pull/1790). [Kevin Bullock](https://github.com/krbullock).
+* Fixed issue with saving settings in generated form extension by completely rewriting settings controller. [#1817](https://github.com/resolve/refinerycms/issues/1817). [Uģis Ozols](https://github.com/ugisozols)
 
 ## 2.0.5 [11 June 2012]
 * Now extension/form generators will add all attributes to attr_accessible. [#1613](https://github.com/resolve/refinerycms/pull/1613). [Uģis Ozols](https://github.com/ugisozols)
