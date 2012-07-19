@@ -123,6 +123,10 @@ add the following:
 config.assets.initialize_on_precompile = true
 </ruby>
 
+This is necessary to make post-deploy asset precompilation happen. Without this,
+Refinery will fail to compile its assets, owing to its use of Rails' URL helpers
+inside of its Javascript files (necessary for its WYSIWYG editor).
+
 You may also need to enable the experimental +user_env_compile+ option on
 Heroku. You can read more
 "here":https://devcenter.heroku.com/articles/labs-user-env-compile, but in
@@ -131,10 +135,6 @@ short, run the following command:
 <shell>
 $ heroku labs:enable user_env_compile
 </shell>
-
-This is necessary to make post-deploy asset precompilation happen. Without this,
-Refinery will fail to compile its assets, owing to its use of Rails' URL helpers
-inside of its Javascript files (necessary for its WYSIWYG editor).
 
 In theory, this should only affect applications where +initialize_on_precompile+
 is false or default; however, you may need to set the +user_env_compile+ option
