@@ -148,7 +148,7 @@ module Refinery
 
       # Wrap up the logic of finding the pages based on the translations table.
       def with_globalize(conditions = {})
-        conditions = {:locale => ::Globalize.locale}.merge(conditions)
+        conditions = {:locale => ::Globalize.locale.to_s}.merge(conditions)
         globalized_conditions = {}
         conditions.keys.each do |key|
           if (translated_attribute_names.map(&:to_s) | %w(locale)).include?(key.to_s)
