@@ -2,12 +2,12 @@ h2. Heroku
 
 "Heroku":http://heroku.com is a popular hosting choice for many developers. This guide will show you how to:
 
-* Install and deploy a Refinery app on the Heroku hosting platform
+* Install and deploy a Refinery application on the Heroku hosting platform
 
 endprologue.
 
 
-h3. Creating a new Refinery app on Heroku
+h3. Creating a new Refinery application on Heroku
 
 First you need to install Refinery. To do that you need the refinerycms gem.
 
@@ -49,7 +49,7 @@ h4. Step 1: Update the Gemfile
 
 h5. If your local database is not PostgreSQL
 
-The only database that Heroku supports is PostgreSQL. You can still keep using whatever you’re using locally, but when your app is running on Heroku, it needs to be able to connect to PostgreSQL.  So in your Gemfile, change:
+You don't have to change your local database settings to use PostgreSQL, but Heroku depends on the presence of the @pg@ gem. So, in your Gemfile, change:
 
 <shell>
 gem 'sqlite3' # or whatever the database driver for your local database is
@@ -65,11 +65,11 @@ group :production do
 end
 </shell>
 
-'pg' is the database driver for PostgreSQL.
+WARNING. Using differing databases for development and production is not recommended. Occasionally, specific Rails idioms may have different effects on different databases. We encourage you to set up and develop on PostgreSQL if you intend to deploy your application to Heroku.
 
 h5. Getting a place to store files
 
-If you want to use Refinery's image and resource support, you need to add the 'fog' gem too. Edit the Gemfile as shown in "Adding Amazon S3 Support" below. (You can do the other steps in that section after your site is first deployed.)
+If you want to use Refinery's image and resource support, you need to add the 'fog' gem too. Edit the Gemfile as shown in "Adding Amazon S3 Support" below (you can do the other steps in that section after your site is first deployed).
 
 h5. Applying your changes
 
@@ -92,7 +92,7 @@ git push heroku master
 
 h4. Step 3: Copy your data from your local database to the Heroku app
 
-Since you've set up your website locally, you've probably got a bunch of information in a local database.  Rather than trying to recreate all that on Heroku, we're going to import your database using a gem called taps.  One gotcha is that Taps might throw errors if you're using Ruby 1.9.3, so if you get any errors, switch to 1.9.2 for an easier time.
+If you've developed your website locally, you likely have information in a local database that you would like to use. Rather than trying to recreate all that on Heroku, Heroku provides you with a task that requires you to install the @taps@ gem. Be warned, though: Taps has been known to raise errors with Ruby 1.9.3. If you receive any errors or the transfer fails the first time, switch to 1.9.2 to be safe.
 
 You'll want to actually install taps to your system – not just add it to your Gemfile.
 
@@ -100,7 +100,7 @@ You'll want to actually install taps to your system – not just add it to your 
 gem install taps
 </shell>
 
-Now let’s actually copy the data to your Heroku app.
+Now copy the data to your Heroku app.
 
 <shell>
 heroku db:push
