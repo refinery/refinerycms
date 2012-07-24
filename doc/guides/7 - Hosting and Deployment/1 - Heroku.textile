@@ -161,8 +161,6 @@ See its comments for fixes to try.
 
 h3. Adding Amazon S3 Support
 
-h3. Adding Amazon S3 Support
-
 If you want to use Refinery's image and resource support you'll need to setup
 storage, too. Heroku does not persist your app’s local filesystem, so to store
 uploaded files, you need to store them "in the cloud". This section explains how
