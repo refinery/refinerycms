@@ -34,7 +34,7 @@ module Refinery
 
   describe Plugins do
 
-    before(:each) do
+    before do
       # First, deactivate all.
       subject.class.set_active([])
     end

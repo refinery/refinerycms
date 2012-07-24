@@ -42,7 +42,7 @@ module Refinery
         end
 
         context "when some pages exist" do
-          before(:each) { 2.times { |i| Page.create :title => "Page #{i}" } }
+          before { 2.times { |i| Page.create :title => "Page #{i}" } }
 
           it "shows reorder pages link" do
             visit refinery.admin_pages_path
@@ -143,7 +143,7 @@ module Refinery
       end
 
       describe "edit/update" do
-        before(:each) { Page.create :title => "Update me" }
+        before { Page.create :title => "Update me" }
 
         it "updates page" do
           visit refinery.admin_pages_path
@@ -161,7 +161,7 @@ module Refinery
 
       describe 'Previewing' do
         context "an existing page" do
-          before(:each) { Page.create :title => 'Preview me' }
+          before { Page.create :title => 'Preview me' }
 
           it 'will show the preview changes in a new window', :js do
             visit refinery.admin_pages_path
@@ -222,7 +222,7 @@ module Refinery
 
       describe "destroy" do
         context "when page can be deleted" do
-          before(:each) { Page.create :title => "Delete me" }
+          before { Page.create :title => "Delete me" }
 
           it "will show delete button" do
             visit refinery.admin_pages_path
@@ -236,7 +236,7 @@ module Refinery
         end
 
         context "when page can't be deleted" do
-          before(:each) { Page.create :title => "Indestructible", :deletable => false }
+          before { Page.create :title => "Indestructible", :deletable => false }
 
           it "wont show delete button" do
             visit refinery.admin_pages_path
@@ -248,7 +248,7 @@ module Refinery
       end
 
       context "duplicate page titles" do
-        before(:each) { Page.create :title => "I was here first" }
+        before { Page.create :title => "I was here first" }
 
         it "will append nr to url path" do
           visit refinery.new_admin_page_path
@@ -261,7 +261,7 @@ module Refinery
       end
 
       context "with translations" do
-        before(:each) do
+        before do
           Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
 
           # Create a home page in both locales (needed to test menus)
@@ -417,7 +417,7 @@ module Refinery
           let(:ru_page_title) { 'Новости' }
           let(:ru_page_slug) { 'новости' }
 
-          before(:each) do
+          before do
             ru_page
             visit refinery.admin_pages_path
           end
@@ -502,7 +502,7 @@ module Refinery
       describe 'advanced options' do
         describe 'view and layout templates' do
           context 'when parent page has templates set' do
-            before(:each) do
+            before do
               Refinery::Pages.stub(:use_layout_templates).and_return(true)
               Refinery::Pages.stub(:use_view_templates).and_return(true)
               Refinery::Pages.stub(:layout_template_whitelist).and_return(['abc', 'refinery'])
@@ -551,7 +551,7 @@ module Refinery
       end
 
       describe "add page to second locale" do
-        before(:each) do
+        before do
           Refinery::I18n.stub(:frontend_locales).and_return([:en, :lv])
           Page.create :title => 'First Page'
         end
@@ -573,7 +573,7 @@ module Refinery
       end
 
       describe "delete page from main locale" do
-        before(:each) { Page.create :title => 'Default Page' }
+        before { Page.create :title => 'Default Page' }
 
         it "doesn't succeed" do
           visit refinery.admin_pages_path
@@ -608,7 +608,7 @@ module Refinery
 
         describe "adding page link" do
           describe "with relative urls" do
-            before(:each) { Refinery::Pages.absolute_page_links = false }
+            before { Refinery::Pages.absolute_page_links = false }
 
             it "shows Russian pages if we're editing the Russian locale" do
               visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
@@ -626,7 +626,7 @@ module Refinery
           end
 
           describe "with absolute urls" do
-            before(:each) { Refinery::Pages.absolute_page_links = true }
+            before { Refinery::Pages.absolute_page_links = true }
 
             it "shows Russian pages if we're editing the Russian locale" do
               visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
