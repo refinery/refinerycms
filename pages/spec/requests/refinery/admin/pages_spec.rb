@@ -55,18 +55,14 @@ module Refinery
         end
 
         context "when sub pages exist" do
-          let(:company) { FactoryGirl.create(:page, :title => "Our Company") }
-          let(:team) { FactoryGirl.create(:page, :parent => company, :title => 'Our Team') }
-          let(:locations) { FactoryGirl.create(:page, :parent => company, :title => 'Our Locations')}
-          let(:location) { FactoryGirl.create(:page, :parent => locations, :title => 'New York') }
+          let!(:company) { FactoryGirl.create(:page, :title => 'Our Company') }
+          let!(:team) { FactoryGirl.create(:page, :parent => company, :title => 'Our Team') }
+          let!(:locations) { FactoryGirl.create(:page, :parent => company, :title => 'Our Locations')}
+          let!(:location) { FactoryGirl.create(:page, :parent => locations, :title => 'New York') }
 
           context "with auto expand option turned off" do
             before do
-              Refinery::Pages.auto_expand_admin_tree = false
-
-              # Pre load pages
-              location
-              team
+              Refinery::Pages.stub(:auto_expand_admin_tree).and_return(false)
 
               visit refinery.admin_pages_path
             end
@@ -82,7 +78,7 @@ module Refinery
             end
 
             it "expands children", :js => true do
-              find(".toggle").click
+              find("#page_#{company.id} .toggle").click
 
               page.should have_content(team.title)
               page.should have_content(locations.title)
@@ -98,11 +94,7 @@ module Refinery
 
           context "with auto expand option turned on" do
             before do
-              Refinery::Pages.auto_expand_admin_tree = true
-
-              # Pre load pages
-              location
-              team
+              Refinery::Pages.stub(:auto_expand_admin_tree).and_return(true)
 
               visit refinery.admin_pages_path
             end
