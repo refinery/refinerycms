@@ -486,7 +486,7 @@ module Refinery
       let(:child_title) { 'about' }
       let(:created_root_about) { subject.class.create!(:title => child_title, :deletable => true) }
 
-      before(:each) do
+      before do
         # Ensure pages are created.
         created_child
         created_root_about

@@ -6,7 +6,7 @@ module Refinery
     let(:home_page) { Page.create :title => 'Home', :link_url => '/' }
     let(:about_page) { Page.create :title => 'About' }
     let(:draft_page) { Page.create :title => 'Draft', :draft => true }
-    before(:each) do
+    before do
       # Stub the menu pages we're expecting
       Refinery::Page.stub(:fast_menu).and_return([home_page, about_page])
     end
@@ -62,7 +62,7 @@ module Refinery
     end
 
     describe 'title set (without menu title or browser title)' do
-      before(:each) { visit '/about' }
+      before { visit '/about' }
 
       it "shows title at the top of the page" do
         find("#body_content_title").text.should == about_page.title
@@ -80,7 +80,7 @@ module Refinery
     describe 'when menu_title is' do
       let(:page_mt) { Page.create :title => 'Company News' }
 
-      before(:each) do
+      before do
         Refinery::Page.stub(:fast_menu).and_return([page_mt])
       end
 
@@ -125,7 +125,7 @@ module Refinery
       let(:page_bt) {
         Page.create :title => 'About Us', :browser_title => 'About Our Company'
       }
-      before(:each) do
+      before do
         Refinery::Page.stub(:fast_menu).and_return([page_bt])
       end
       it 'should have the browser_title in the title tag' do
@@ -144,7 +144,7 @@ module Refinery
 
     describe 'custom_slug' do
       let(:page_cs) { Page.create :title => 'About Us' }
-      before(:each) do
+      before do
         Refinery::Page.stub(:fast_menu).and_return([page_cs])
       end
 
@@ -207,7 +207,7 @@ module Refinery
     describe "submenu page" do
       let(:submenu_page) { about_page.children.create :title => 'Sample Submenu' }
 
-      before(:each) do
+      before do
         Refinery::Page.stub(:fast_menu).and_return([home_page, submenu_page, about_page.reload].sort_by(&:lft))
       end
 
@@ -223,7 +223,7 @@ module Refinery
 
     describe "special characters title" do
       let(:special_page) { Page.create :title => 'ä ö ü spéciål chåråctÉrs' }
-      before(:each) do
+      before do
         Refinery::Page.stub(:fast_menu).and_return([home_page, about_page, special_page])
       end
 
@@ -243,7 +243,7 @@ module Refinery
         about_page.children.create :title => 'ä ö ü spéciål chåråctÉrs'
       }
 
-      before(:each) do
+      before do
         Refinery::Page.stub(:fast_menu).and_return(
           [home_page, special_page, about_page.reload].sort_by &:lft
         )
@@ -263,7 +263,7 @@ module Refinery
     describe "hidden page" do
       let(:hidden_page) { Page.create :title => "Hidden", :show_in_menu => false }
 
-      before(:each) do
+      before do
         Refinery::Page.stub(:fast_menu).and_return([home_page, about_page])
       end
 
@@ -281,7 +281,7 @@ module Refinery
 
     describe "skip to first child" do
       let(:child_page) { about_page.children.create :title => "Child Page" }
-      before(:each) do
+      before do
        child_page
        about = about_page.reload
        about.skip_to_first_child = true

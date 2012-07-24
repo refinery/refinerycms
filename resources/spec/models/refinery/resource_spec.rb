@@ -74,7 +74,7 @@ module Refinery
 
     describe "validations" do
       describe "valid #file" do
-        before(:each) do
+        before do
           @file = Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
           Resources.max_file_size = (File.read(@file).size + 10)
         end
@@ -85,7 +85,7 @@ module Refinery
       end
 
       describe "too large #file" do
-        before(:each) do
+        before do
           @file = Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
           Resources.max_file_size = (File.read(@file).size - 10)
           @resource = Resource.new(:file => @file)
@@ -103,7 +103,7 @@ module Refinery
       end
 
       describe "invalid argument for #file" do
-        before(:each) do
+        before do
           @resource = Resource.new
         end
 

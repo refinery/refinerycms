@@ -38,7 +38,7 @@ module Refinery
         end
 
         describe "max file size" do
-          before(:each) do
+          before do
             ::Refinery::Resources.stub(:max_file_size).and_return('1224')
           end
 

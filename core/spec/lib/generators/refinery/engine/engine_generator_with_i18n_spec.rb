@@ -7,7 +7,7 @@ module Refinery
     include GeneratorSpec::TestCase
     destination File.expand_path("../../../../../../tmp", __FILE__)
 
-    before(:each) do
+    before do
       prepare_destination
       run_generator %w{ rspec_product_test title:string description:text image:image brochure:resource --i18n title description }
     end

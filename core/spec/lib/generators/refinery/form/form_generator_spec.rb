@@ -11,7 +11,7 @@ module Refinery
 
     destination temp_dir
 
-    before(:each) do
+    before do
       prepare_destination
       run_generator %w{ rspec_form_test title:string description:text choice:radio another:dropdown enable:checkbox }
     end

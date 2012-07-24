@@ -49,7 +49,7 @@ module Refinery
     end
 
     describe "force_ssl" do
-      before(:each) do
+      before do
         controller.stub(:admin?).and_return(true)
         controller.stub(:refinery_user_required?).and_return(false)
       end
