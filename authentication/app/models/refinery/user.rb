@@ -5,16 +5,18 @@ module Refinery
   class User < Refinery::Core::BaseModel
     extend FriendlyId
 
-    has_and_belongs_to_many :roles, :join_table => :refinery_roles_users
+    has_and_belongs_to_many :roles, join_table: :refinery_roles_users
 
-    has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
-    friendly_id :username, :use => [:slugged]
+    has_many :plugins, -> { order('position ASC') },
+                       class_name: "UserPlugin", dependent: :destroy
+
+    friendly_id :username, use: [:slugged]
 
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable
     if self.respond_to?(:devise)
       devise :database_authenticatable, :registerable, :recoverable, :rememberable,
-             :trackable, :validatable, :authentication_keys => [:login]
+             :trackable, :validatable, authentication_keys: [:login]
     end
 
     # Setup accessible (or protected) attributes for your model
@@ -23,7 +25,7 @@ module Refinery
     attr_accessor :login
     attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login, :full_name
 
-    validates :username, :presence => true, :uniqueness => true
+    validates :username, presence: true, uniqueness: true
     before_validation :downcase_username, :strip_username
 
     class << self
@@ -31,7 +33,7 @@ module Refinery
       # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign_in-using-their-username-or-email-address
       def find_for_database_authentication(conditions)
         value = conditions[authentication_keys.first]
-        where(["username = :value OR email = :value", { :value => value }]).first
+        where(["username = :value OR email = :value", { value: value }]).first
       end
     end
 
@@ -56,8 +58,10 @@ module Refinery
         end
 
         plugin_names.each do |plugin_name|
-          plugins.create(:name => plugin_name,
-                         :position => plugins.select(:position).map{|p| p.position.to_i}.max + 1)
+          if plugin_name.is_a?(String)
+            plugins.create name: plugin_name,
+                           position: plugins.select(:position).map{|p| p.position.to_i}.max + 1
+          end
         end
       end
     end

@@ -2,7 +2,7 @@ require 'database_cleaner'
 
 RSpec.configure do |config|
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.strategy = :truncation#:transaction
   end
 
   config.before do
@@ -13,9 +13,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  config.around(:each, :js) do |example|
-    DatabaseCleaner.strategy = :truncation
-    example.call
-    DatabaseCleaner.strategy = :transaction
-  end
+  # config.around(:each, :js) do |example|
+  #   DatabaseCleaner.strategy = :truncation
+  #   example.call
+  #   DatabaseCleaner.strategy = :transaction
+  # end
 end
