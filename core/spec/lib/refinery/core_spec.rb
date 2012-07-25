@@ -152,6 +152,15 @@ describe Refinery do
       end
     end
 
+    context 'with Refinery::GroupClass' do
+      module Refinery::GroupClass
+      end
+
+      it "returns admin_group_class_path" do
+        Refinery.route_for_model(Refinery::GroupClass).should == "admin_group_class_path"
+      end
+    end
+
     context 'with Refinery::DummyName' do
       module Refinery::DummyName
       end

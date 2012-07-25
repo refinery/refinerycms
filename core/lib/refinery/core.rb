@@ -128,7 +128,7 @@ module Refinery
     #   Refinery.roots(:'refinery/core')  =>  #<Pathname:/Users/Reset/Code/refinerycms/core>
     #   Refinery.roots("refinery/core")   =>  #<Pathname:/Users/Reset/Code/refinerycms/core>
     def roots(extension_name = nil)
-      return @roots ||= self.extensions.map { |extension| extension.root } if extension_name.nil?
+      return @roots ||= self.extensions.map(&:root) if extension_name.nil?
 
       extension_name.to_s.camelize.constantize.root
     end
@@ -157,13 +157,17 @@ module Refinery
       options = {:plural => false, :admin => true}.merge options
 
       klass = klass.constantize if klass.respond_to?(:constantize)
-      active_name = ActiveModel::Name.new(klass, (Refinery if klass.parents.include?(Refinery)))
+      active_name = ActiveModel::Name.new klass, (Refinery if klass.parents.include?(Refinery))
 
       if options[:admin]
         # Most of the time this gets rid of 'refinery'
-        parts = active_name.underscore.split('/').reject{|name| active_name.singular_route_key.exclude?(name)}
+        parts = active_name.underscore.split('/').reject{|name|
+          active_name.singular_route_key.exclude?(name)
+        }
+
+        # Get the singular resource_name from the url parts
         resource_name = parts.pop
-        resource_name = options[:plural] ? resource_name.pluralize : resource_name.singularize
+        resource_name = resource_name.pluralize if options[:plural]
 
         [parts.join("_"), "admin", resource_name, "path"].reject(&:blank?).join "_"
       else
