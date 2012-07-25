@@ -7,7 +7,11 @@ module Refinery
 
     include Refinery::ExtensionGeneration
 
-    class_option :skip_frontend, :type => :boolean, :default => false, :required => false, :desc => 'Generate extension without frontend'
+    class_option :skip_frontend,
+                 :desc => 'Generate extension without frontend',
+                 :type => :boolean,
+                 :default => false,
+                 :required => false
 
     def skip_frontend?
       options[:skip_frontend]
