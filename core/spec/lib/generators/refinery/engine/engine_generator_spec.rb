@@ -83,9 +83,6 @@ module Refinery
 
     context "when generating extension inside existing extensions dir" do
       before do
-        Refinery::EngineGenerator.any_instance.stub(:merge_locales!).and_return(true)
-        Refinery::EngineGenerator.any_instance.stub(:existing_extension?).and_return(true)
-        
         run_generator %w{ rspec_item_test title:string --extension rspec_product_tests --skip }
       end
 
@@ -95,7 +92,7 @@ module Refinery
         end
       end
     end
-    
+
     describe "attr_accessible" do
       it "adds attributes to the list" do
         File.open("#{destination_root}/vendor/extensions/rspec_product_tests/app/models/refinery/rspec_product_tests/rspec_product_test.rb") do |file|
