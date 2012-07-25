@@ -56,7 +56,7 @@ cs:
           save_as_draft: Uložit jako pracovní verzi
           skip_to_first_child: Přeskočit na první dceřinou stránku
           skip_to_first_child_label: Přesměruje návštěvníka na první dceřinou stránku.
-          skip_to_first_child_help: Tato stránka se nezobrazí, místo toho bude odkaz na ní přesměrován na její první dceřinou stránku. To se může hodit pro seskupování stránkek.
+          skip_to_first_child_help: Tato stránka se nezobrazí, místo toho bude odkaz na ní přesměrován na její první dceřinou stránku. To se může hodit pro seskupování stránek.
           link_url: Přesměrovat tuto stránku na jiný web nebo stránku.
           link_url_help: Pokud chcete aby po kliknutí na odkaz na tutu stránku byl návštěvník přesměrován na jiný web, vložte adresu (např. http://google.com), jinak nechte prázdné
           parent_page_help: Můžete umístit tuto stránku v hierarchii pod jinou stránku. Pokud nevyberete nic, bude tato stránka umístěna na první úrovni.
