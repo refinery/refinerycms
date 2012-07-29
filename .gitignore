@@ -89,3 +89,7 @@ Gemfile.lock
 
 # Local Gemfile for developing without sharing dependencies
 .gemfile
+
+# Sublime editor 
+*.sublime-project
+*.sublime-workspace
