@@ -1,5 +1,6 @@
 ## 2.1.0 [unreleased]
 
+* Removed :before_javascript_libraries, :after_javascript_libraries, and :javascript_libraries content blocks. [#1842](https://github.com/resolve/refinerycms/pull/1842). [Rob Yurkowski](https://github.com/robyurkowski)
 * Refactored wysiwyg fields into a partial. [#1796](https://github.com/resolve/refinerycms/pull/1796). [Rob Yurkowski](https://github.com/robyurkowski)
 * Shortened all authentication helpers. [#1719](https://github.com/resolve/refinerycms/pull/1719). [Ryan Bigg](https://github.com/radar)
 * Added canonical page id to body to allow CSS selectors to target specific pages instead of including special CSS files. [#1700](https://github.com/resolve/refinerycms/pull/1700) & [#1828](https://github.com/resolve/refinerycms/pull/1828). [Philip Arndt](https://github.com/parndt) & [Graham Wagener](https://github.com/gwagener/)
