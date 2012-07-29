@@ -1,45 +1,47 @@
-h2. Overriding javascripts
+h2. Overriding Javascripts
 
-Refinery by default will provide you with the required javascript files you need.  Sometimes you want to provide your own files and this guide will show you how to:
+By default, Refinery will provide you with the required javascript files you
+need. Sometimes, these defaults do not suffice, and you will need to customize
+the Javascript files used by Refinery. This guide will show you how to:
 
-*Change the default javascript libraries included.
-*Add your own files to be included on a per page basis.
+* Change the default javascript libraries included;
+* Add your own files to be included.
 
 endprologue.
 
-h3. Overriding the JavaScript libraries
+h3. Overriding the default Javascript libraries
 
-Refinery uses jQuery by default, but if you would like to override the javascript library to dojo for example you can add this to home.html.erb (or any other view):
+Refinery version 2.0 and later use Rails's asset pipeline to deliver Javascript.
+This means that you can simply remove the two relevant lines from
+@application.js@ to remove the default library, jQuery:
 
-<shell>
-<% content_for :javascript_libraries, javascript_include_tag('https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js') %>
-</shell>
+<javascript>
+//= require jquery
+//= require jquery_ujs
+</javascript>
 
-h3. Overriding the JavaScript files included
+You can include your own files this way too; indeed, since @application.js@ is
+minified in production, we recommend this as opposed to adding separate files.
 
-If you want to override one of the javascript files refinery comes built with (for example, to add your own jQuery plugin for the home page), you'll need to override the files Refinery is including. 
+h3. Adding additional files
 
-It is easy to override the files that are provided by default. You simply have to include this in your home.html.erb:
+If you absolutely must include your own discrete Javascript files, you can
+utilize the @content_for :javascripts@ block, which will append Javascript files
+after @application.js@. This is often times useful when you are writing an
+extension that requires additional functionality, where you do not want to rely
+on a user to inject your dependency into his @application.js@ file.
 
-<shell>
-<% content_for :javascript_libraries, javascript_include_tag('jquery') %>
+It should be used inside a view like so:
+
+<erb>
 <% content_for :javascripts do %>
-  <% javascript_include_tag('jquery.cycle.all', 'jquery.super_awesome.plugin', 'more') %>
+  <%= javascript_link_tag 'jquery-cycle.min' %>
 <% end %>
-</shell>
+</erb>
 
-This will override the javascript files that are included on your home page. If you want to override the files for other pages you can override show.html.erb and include or exclude any files you desire.
+This will append @jquery-cycle.min.js@ after your @application.js@ file.
 
-h3. Possible combinations of overriding
-Refinery provides you with four unique ways of overriding the default JavaScript files, two we have already seen. 
-
-<shell>
-<% content_for :before_javascript_libraries, javascript_include_tag('jquery.cycle.all') %>
-<% content_for :javascript_libraries, javascript_include_tag('jquery') %>
-<% content_for :after_javascript_libraries, javascript_include_tag('jquery.cycle.all') %>
-<% content_for :javascripts do %>
-</shell>
-
-These are pretty self explanatory, but <tt>before_javascript_libraries</tt> will include a file before any libraries have been loaded.  <tt>javascript_libraries</tt>, like we have seen, will load any javascript libraries we want to include.  <tt>after_javascript_libraries</tt> will load any files you wish to include directly below your libraries, and finally we have the <tt>javascripts</tt> do block that we have seen that will load all the files we are using for our project. 
-
-TIP. You can change the files that are loaded on a per page basis by simply overriding the corresponding views to include only what you need. 
+WARNING. Previous versions of Refinery allowed you to define @content_for@
+blocks named @:before_javascript_libraries@, @:after_javascript_libraries@,
+and @:javascript_libraries@. These are no longer available, since the asset
+pipeline obviates their use.
