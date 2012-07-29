@@ -51,6 +51,7 @@ module Refinery
       end
 
       def test_url
+        result = 'failure'
         begin
           timeout(5) do
             unless params[:url].blank?
@@ -62,16 +63,16 @@ module Refinery
               result = case Net::HTTP.get_response(url)
                 when Net::HTTPSuccess, Net::HTTPRedirection
                   'success'
-                else
-                  'failure'
                 end
-
-              render :json => {:result => result}
+               
             end
           end
+
         rescue
-          render :json => {:result => 'failure'}
+          # be quiet
         end
+        
+        render :json => {:result => result}
       end
 
       def test_email
