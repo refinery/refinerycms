@@ -7,7 +7,8 @@
     <% end %>
 
     <span class='title <%= 'toggle' if page.children.present? %>'>
-      <%= page.title_with_meta.html_safe %>
+      <%= page_title_with_translations page %>
+      <%= page_meta_information page %>
     </span>
     <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
       <span class='locales'>
@@ -37,7 +38,10 @@
                   :class => "cancel confirm-delete",
                   :title => t('delete', :scope => 'refinery.admin.pages'),
                   :data => {
-                    :confirm => t('message', :scope => 'refinery.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, ""))
+                    :confirm => t('message',
+                      :scope => 'refinery.admin.delete',
+                      :title => page_title_with_translations(page)
+                    )
                   },
                   :method => :delete if page.deletable? %>
     </span>
