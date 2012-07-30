@@ -32,9 +32,9 @@ describe "dashboard" do
   end
 
   describe "latest activity" do
-    before(:each) do
-      3.times { |n| FactoryGirl.create(:refinery_user, :username => "ugisozols#{n}") }
-      3.times { |n| FactoryGirl.create(:page, :title => "Refinery CMS #{n}") }
+    before do
+      3.times { |n| FactoryGirl.create :refinery_user, :username => "ugisozols#{n}" }
+      3.times { |n| FactoryGirl.create :page, :title => "Refinery CMS #{n}" }
     end
 
     it "shows 7 recent actions" do

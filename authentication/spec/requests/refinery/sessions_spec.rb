@@ -6,7 +6,7 @@ module Refinery
     let(:login_retry_path) { refinery.refinery_user_session_path }
     let(:admin_path) { refinery.admin_root_path }
 
-    before(:each) do
+    before do
       FactoryGirl.create(:refinery_user, :username => "ugisozols",
                               :password => "123456",
                               :password_confirmation => "123456")
@@ -41,7 +41,7 @@ module Refinery
   end
 
   describe 'user sign up' do
-    before(:each) do
+    before do
       User.delete_all
     end
 
@@ -70,7 +70,7 @@ module Refinery
     let(:protected_path) { refinery.new_admin_user_path }
     let(:login_path) { refinery.new_refinery_user_session_path }
 
-    before(:each) do
+    before do
       FactoryGirl.create(:refinery_user,
         :username => "ugisozols",
         :password => "123456",
@@ -79,7 +79,7 @@ module Refinery
     end
 
     context "when visiting a protected path" do
-      before(:each) { visit protected_path }
+      before { visit protected_path }
 
       it "redirects to the login" do
         current_path.should == login_path

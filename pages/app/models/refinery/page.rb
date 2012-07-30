@@ -105,7 +105,7 @@ module Refinery
 
       # Finds pages by their slug.  See by_title
       def by_slug(slug, conditions={})
-        locales = Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales : ::I18n.locale
+        locales = Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales.map(&:to_s) : ::I18n.locale.to_s
         with_globalize({ :locale => locales, :slug => slug }.merge(conditions))
       end
 
@@ -148,7 +148,7 @@ module Refinery
 
       # Wrap up the logic of finding the pages based on the translations table.
       def with_globalize(conditions = {})
-        conditions = {:locale => ::Globalize.locale}.merge(conditions)
+        conditions = {:locale => ::Globalize.locale.to_s}.merge(conditions)
         globalized_conditions = {}
         conditions.keys.each do |key|
           if (translated_attribute_names.map(&:to_s) | %w(locale)).include?(key.to_s)

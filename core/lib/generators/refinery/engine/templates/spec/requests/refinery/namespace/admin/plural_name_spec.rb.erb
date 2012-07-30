@@ -8,7 +8,7 @@ describe Refinery do
         login_refinery_user
 <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
         describe "<%= plural_name %> list" do
-          before(:each) do
+          before do
             FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne")
             FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleTwo")
           end
@@ -21,7 +21,7 @@ describe Refinery do
         end
 
         describe "create" do
-          before(:each) do
+          before do
             visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
 
             click_link "Add New <%= singular_name.titleize %>"
@@ -47,7 +47,7 @@ describe Refinery do
           end
 
           context "duplicate" do
-            before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitle") }
+            before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitle") }
 
             it "should fail" do
               visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
@@ -63,7 +63,7 @@ describe Refinery do
           end
 <% if localized? %>
           context "with translations" do
-            before(:each) do
+            before do
               Refinery::I18n.stub(:frontend_locales).and_return([:en, :cs])
             end
 
@@ -164,7 +164,7 @@ describe Refinery do
         end
 
         describe "edit" do
-          before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "A <%= title.name %>") }
+          before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "A <%= title.name %>") }
 
           it "should succeed" do
             visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
@@ -182,7 +182,7 @@ describe Refinery do
         end
 
         describe "destroy" do
-          before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
+          before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
 
           it "should succeed" do
             visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path

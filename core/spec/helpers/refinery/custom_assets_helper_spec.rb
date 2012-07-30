@@ -3,7 +3,7 @@ require "spec_helper"
 module Refinery
   describe CustomAssetsHelper do
     describe "custom_javascripts" do
-      before(:each) do
+      before do
         Refinery::Core.clear_javascripts!
       end
 
@@ -24,7 +24,7 @@ module Refinery
     end
 
     describe "custom_stylesheets" do
-      before(:each) do
+      before do
         Refinery::Core.clear_stylesheets!
       end
 
