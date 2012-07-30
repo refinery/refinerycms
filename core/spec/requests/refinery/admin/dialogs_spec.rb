@@ -19,9 +19,10 @@ module Refinery
     end
 
     context "a" do
-      it "have empty iframe src" do
+      it "404s" do
+        Admin::DialogsController.any_instance.should_receive(:error_404).once
+
         visit refinery.admin_dialog_path('a')
-        page.should have_selector("iframe[src='']")
       end
     end
   end
