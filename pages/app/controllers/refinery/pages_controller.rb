@@ -2,7 +2,7 @@ module Refinery
   class PagesController < ::ApplicationController
     before_filter :find_page, :set_canonical, :except => [:preview]
     before_filter :find_page_for_preview, :only => [:preview]
-    
+
     # Save whole Page after delivery
     after_filter { |c| c.write_cache? }
 
@@ -71,10 +71,10 @@ module Refinery
         @page.attributes = params[:page]
       elsif params[:page]
         # Preview a non-persisted page
-        @page = Page.new(params[:page])
+        @page = Page.new params[:page]
       end
-    end    
-    
+    end
+
     def find_page(fallback_to_404 = true)
       @page ||= case action_name
                 when "home"
