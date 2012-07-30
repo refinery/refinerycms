@@ -68,7 +68,7 @@ module Refinery
     def find_page_for_preview
       if page(fallback_to_404 = false)
         # Preview existing pages
-        @page.attributes = params[:page]
+        @page.attributes = view_context.sanitize_hash params[:page]
       elsif params[:page]
         # Preview a non-persisted page
         @page = Page.new params[:page]
