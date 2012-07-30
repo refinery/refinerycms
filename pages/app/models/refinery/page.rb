@@ -420,21 +420,6 @@ module Refinery
       end
     end
 
-    # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
-    # We show the title from the next available locale if there is no title for the current locale
-    def title_with_meta
-      if self.title.present?
-        title = [self.title]
-      else
-        title = [self.translations.detect {|t| t.title.present?}.title]
-      end
-
-      title << "<em>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</em>" unless show_in_menu?
-      title << "<em>(#{::I18n.t('draft', :scope => 'refinery.admin.pages.page')})</em>" if draft?
-
-      title.join(' ')
-    end
-
     # Used to index all the content on this page so it can be easily searched.
     def all_page_part_content
       parts.map(&:body).join(" ")

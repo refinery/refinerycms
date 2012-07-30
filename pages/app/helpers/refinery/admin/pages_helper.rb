@@ -22,6 +22,31 @@ module Refinery
           { :selected => Refinery::Pages.send("#{template_type}_whitelist").first }
         end
       end
+
+      # In the admin area we use a slightly different title
+      # to inform the which pages are draft or hidden pages
+      def page_meta_information(page)
+        meta_information = ActiveSupport::SafeBuffer.new
+        meta_information << content_tag(:span, :class => 'label') do
+          ::I18n.t('hidden', :scope => 'refinery.admin.pages.page')
+        end unless page.show_in_menu?
+
+        meta_information << content_tag(:span, :class => 'label notice') do
+          ::I18n.t('draft', :scope => 'refinery.admin.pages.page')
+        end if page.draft?
+
+        meta_information.html_safe
+      end
+
+      # We show the title from the next available locale
+      # if there is no title for the current locale
+      def page_title_with_translations(page)
+        if page.title.present?
+          page.title
+        else
+          page.translations.detect {|t| t.title.present?}.title
+        end
+      end
     end
   end
 end
