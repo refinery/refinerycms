@@ -4,6 +4,8 @@ module Refinery
   module Admin
     class PagesDialogsController < ::Refinery::Admin::DialogsController
 
+      helper :'refinery/admin/pages'
+
       def link_to
         # Get the switch_local variable to determine the locale we're currently editing
         # Set up Globalize with our current locale
