@@ -9,6 +9,7 @@
 * Fixed page reorder issue on Ruby 1.8.x. [#1585](https://github.com/resolve/refinerycms/issues/1585). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt).
 * Allowed to override presenters using `rake refinery:override`. [#1790](https://github.com/resolve/refinerycms/pull/1790). [Kevin Bullock](https://github.com/krbullock).
 * Fixed issue with saving settings in generated form extension by completely rewriting settings controller. [#1817](https://github.com/resolve/refinerycms/issues/1817). [Uģis Ozols](https://github.com/ugisozols)
+* Removed Refinery::Page#title_with_meta in favour of view helpers. [#1847](https://github.com/resolve/refinerycms/pull/1847). [Philip Arndt](https://github.com/parndt)
 
 ## 2.0.5 [11 June 2012]
 * Now extension/form generators will add all attributes to attr_accessible. [#1613](https://github.com/resolve/refinerycms/pull/1613). [Uģis Ozols](https://github.com/ugisozols)
