@@ -217,7 +217,7 @@ module Refinery
           # get the path to the existing file and perform a deep hash merge.
           current_path = extension_path_for(path, extension_name, false)
           new_contents = nil
-          if %r{.yml$} === new_file_path.to_s
+          if File.exist?(new_file_path) && %r{.yml$} === new_file_path.to_s
             # merge translation files together.
             new_contents = YAML::load(new_file_path.read).deep_merge(
               YAML::load(current_path.read)
