@@ -75,6 +75,11 @@ module Refinery
         end
       end
 
+      def set_flash
+        flash.notice = t('uploaded_successfully', :scope => 'refinery.admin.images.form')
+        render :nothing => true, :layout => false
+      end
+
     protected
 
       def init_dialog

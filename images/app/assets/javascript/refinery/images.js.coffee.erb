@@ -51,8 +51,7 @@ class Images
       if getParameterByName("modal") == "true"
         window.parent.document.getElementById("dialog_frame").contentDocument.location.reload(true);
       else
-        $('#flash_container', window.parent.document).html($("#inner_flash_container").html())
-        parent.$(".ui-icon-closethick").trigger("click")
+        @set_flash_and_reload($("#inner_flash_container").html())
 
   validate: (file) ->
     max_file_size = <%= Refinery::Images.max_image_size %>
@@ -83,6 +82,21 @@ class Images
         _this.post_success(file)
       error: (data) ->
         _this.post_error(file, data.responseText)
+
+  set_flash_and_reload: (message) ->
+    form = new FormData();
+    form.append "notice", message
+    _this = @ # save current scope so we can use current object methods within $.ajax
+    $.ajax
+      type: 'POST'
+      url: "/refinery/images/set_flash"
+      data: form
+      contentType: false
+      processData: false
+      success: (data) ->
+        window.parent.location.reload(true)
+      error: (data) ->
+        window.parent.location.reload(true)
 
   after_do_upload: (file) ->
     @files.remove file
