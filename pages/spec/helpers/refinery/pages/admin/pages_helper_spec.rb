@@ -49,6 +49,55 @@ module Refinery
           end
         end
       end
+
+      describe "#page_meta_information" do
+        let(:page) { FactoryGirl.build(:page) }
+
+        context "when show_in_menu is false" do
+          it "adds 'hidden' label" do
+            page.show_in_menu = false
+
+            helper.page_meta_information(page).should eq("<span class=\"label\">hidden</span>")
+          end
+        end
+
+        context "when draft is true" do
+          it "adds 'draft' label" do
+            page.draft = true
+
+            helper.page_meta_information(page).should eq("<span class=\"label notice\">draft</span>")
+          end
+        end
+      end
+
+      describe "#page_title_with_translations" do
+        let(:page) { FactoryGirl.build(:page) }
+
+        before do
+          Globalize.with_locale(:en) do
+            page.title = "draft"
+            page.save!
+          end
+
+          Globalize.with_locale(:lv) do
+            page.title = "melnraksts"
+            page.save!
+          end
+        end
+
+        context "when title is present" do
+          it "returns it" do
+            helper.page_title_with_translations(page).should eq("draft")
+          end
+        end
+
+        context "when title for current locale isn't available" do
+          it "returns existing title from translations" do
+            Refinery::Page::Translation.where(:locale => :en).first.delete
+            helper.page_title_with_translations(page).should eq("melnraksts")
+          end
+        end
+      end
     end
   end
 end
