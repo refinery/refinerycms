@@ -16,20 +16,20 @@ class Images
     @authenticity_token = $("meta[name=\"csrf-token\"]").attr("content")
     @form_action =  $("#new_image").attr("action")
     @cache_dom()
-    
+
   cache_dom: ->
     @error_list = $("#error_list")
     @success_list = $("#flash")
     @error_explanation = $("#errorExplanation")
     @upload_progress = $("#upload_progress")
-  
+
   before_upload_all: ->
     @files = []
     @errors = []
     @total_files = @file_list.length
     @uploaded = 0
     @error_explanation.hide()
-  
+
   upload_all: ->
     @before_upload_all()
     for file in @file_list
@@ -40,7 +40,7 @@ class Images
     $(".field").hide()
     @progress "<%= ::I18n.t("refinery.admin.images.form.uploading")%>"
     @upload_next()
-  
+
   after_upload_all: ->
     $(".save-loader").hide()
     @upload_progress.hide()
@@ -48,8 +48,11 @@ class Images
     if @errors.length > 0
       @render_errors()
     else
-      $('#flash_container', window.parent.document).html($("#inner_flash_container").html())
-      parent.$(".ui-icon-closethick").trigger("click")
+      if getParameterByName("modal") == "true"
+        window.parent.document.getElementById("dialog_frame").contentDocument.location.reload(true);
+      else
+        $('#flash_container', window.parent.document).html($("#inner_flash_container").html())
+        parent.$(".ui-icon-closethick").trigger("click")
 
   validate: (file) ->
     max_file_size = <%= Refinery::Images.max_image_size %>
@@ -64,7 +67,7 @@ class Images
     @do_upload(@files[0]) unless @files.length == 0
     if @total_files > 0 && @files.length == 0
       @after_upload_all()
-  
+
   do_upload: (file) =>
     form = new FormData();
     form.append "image[image]", file
@@ -80,7 +83,7 @@ class Images
         _this.post_success(file)
       error: (data) ->
         _this.post_error(file, data.responseText)
-  
+
   after_do_upload: (file) ->
     @files.remove file
     @upload_next()
@@ -90,7 +93,7 @@ class Images
     @success_list.append("#{file.name} <br />")
     @update_progress file
     @after_do_upload file
-  
+
   post_error: (file, errors) ->
     errors = JSON.parse(errors).image
     @update_progress file, errors
@@ -105,13 +108,23 @@ class Images
       @error_list.append("<li>#{error}</li>")
     @error_explanation.show()
 
-  update_progress: (file, error = null) -> 
+  update_progress: (file, error = null) ->
     @uploaded++
     message = error || "<%= ::I18n.t("refinery.admin.images.form.last_complete")%>: #{file.name}"
     @progress "#{@uploaded}/#{@total_files} <%= ::I18n.t("refinery.admin.images.form.uploaded")%> | #{message}"
-  
+
   progress: (text) ->
     @upload_progress.html(text);
 
 # adds a remove method to Array
 Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
+
+getParameterByName = (name) ->
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
+  regexS = "[\\?&]" + name + "=([^&#]*)"
+  regex = new RegExp(regexS)
+  results = regex.exec(window.location.search)
+  unless results?
+    ""
+  else
+    decodeURIComponent results[1].replace(/\+/g, " ")
