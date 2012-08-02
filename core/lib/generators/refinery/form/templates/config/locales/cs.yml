@@ -11,12 +11,12 @@ cs:
           privacy_policy: Chráníme vaše soukromí
       admin:
         <%= plural_name %>:
-          delete: Trvale odstránit <%= singular_name.humanize.downcase %>
+          delete: Trvale odstranit <%= singular_name.humanize.downcase %>
           <%= singular_name %>:
-            read_<%= singular_name %>: Prečíst <%= singular_name.humanize.downcase %>
+            read_<%= singular_name %>: Přečíst <%= singular_name.humanize.downcase %>
             said: řekl
             mark_as_spam: Označit jako spam
-            mark_as_ham: Označit jako pročtené
+            mark_as_ham: Označit jako přečtené
           submenu:
             inbox: Inbox
             spam: Spam
@@ -36,26 +36,26 @@ cs:
             <%= singular_name %>: <%= class_name.underscore.titleize %>
             to: Komu
             from: Od
-            click_to_email: Klikněte pro odoslání této adresy e-mailem
+            click_to_email: Klikněte pro odeslání této adresy e-mailem
             phone: Telefon
             date: Datum
             message: Zpráva
         settings:
           notification_recipients_form:
-            settings_value_name: Zaslat upozornení pro
-            explanation: Pokaždé, když Vás někdo kontaktuje s vaše webové stránky, Refinery odošle e-mail s upozornením na nový <%= singular_name.humanize.downcase %>.
+            settings_value_name: Zaslat upozornění pro
+            explanation: Pokaždé, když Vás někdo kontaktuje přes vaše webové stránky, Refinery odešle e-mail s upozorněním na nový <%= singular_name.humanize.downcase %>.
             hint: Když je odeslán nový <%= singular_name.humanize.downcase %>, Refinery pošle upozornení na Váš e-mail.
-            example: "Zadejte e-mailovú adresu(y) jako: jack@work.com, jill@office.com"
+            example: "Zadejte e-mailové adresy jako: jack@work.com, jill@office.com"
           confirmation_email_form:
             to: Komu
             from: Od
             subject: Předmet
             click_to_edit_subject: Klikněte zde pro editaci předmetu
-            explanation: Když Vás někdo kontaktuje cez vaše webové stránky, Refinery odošle e-mail s potvrzením o přijetí odosílateli <%= singular_name.humanize.downcase %>.
-            below_edit_email_sent: Níže můžete upravit e-mail, který je odesílan.
+            explanation: Když Vás někdo kontaktuje přes vaše webové stránky, Refinery odešle e-mail s potvrzením o přijetí odesílateli <%= singular_name.humanize.downcase %>.
+            below_edit_email_sent: Níže můžete upravit e-mail, který je odeslán.
             the_customer_making_<%= singular_name %>: Klient delá <%= singular_name.humanize.downcase %>
             message: Zpráva
-            note: "Poznámka: umístnete text %name%, pro určení pozice jména klienta v e-maile"
+            note: "Poznámka: umístěte text %name%, pro určení pozice jména klienta v e-maile"
       mailer:
         notification:
           greeting: Hi there
