@@ -25,7 +25,7 @@ sk:
           index:
             no_<%= plural_name %>: Zatiaľ ste neobdržali žiadne <%= plural_name.humanize.downcase %>.
           spam:
-            no_spam: Super! Žiaden spam
+            no_spam: Hurá! Nemáte žiaden spam.
           show:
             details: Podrobnosti
             age: Vek
@@ -49,14 +49,13 @@ sk:
           confirmation_email_form:
             to: Komu
             from: Od
-            subject: Subjekt
+            subject: Predmet
             click_to_edit_subject: Kliknite tu ak chcete upraviť predmet
-            explanation: Zakaždým, keď Vás niekto kontaktuje cez vaše webové stránky, Refinery odošle e-mail s potvrdením o prijatí odosielateľovi <%= singular_name.humanize.downcase %> 
-            below_edit_email_sent: Nižšie môžete upraviť e-mail, ktorý je odosielaný
+            explanation: Zakaždým, keď Vás niekto kontaktuje cez vaše webové stránky, Refinery odošle e-mail s potvrdením o prijatí odosielateľovi <%= singular_name.humanize.downcase %>.
+            below_edit_email_sent: Nižšie môžete upraviť e-mail, ktorý je odosielaný.
             the_customer_making_<%= singular_name %>: Klient robiť <%= singular_name.humanize.downcase %>
             message: Správa
-            note: "Note: place the text %name% where you'd like the customer's name to appear in the email"
-            Poznámka: umiestniťe text %name%, pre určenie pozície mena klienta v e-maile"
+            note: "Poznámka: umiestniťe text %name%, pre určenie pozície mena klienta v e-maile"
       mailer:
         notification:
           greeting: Ahoj
