@@ -1,0 +1,28 @@
+sk:
+  refinery:
+    plugins:
+      <%= plural_name %>:
+        title: <%= plural_name.titleize %>
+    <%= namespacing.underscore %>:
+      admin:
+        <%= plural_name %>:
+          actions:
+            create_new: Pridať <%= singular_name.titleize %>
+            reorder: Preusporiadať <%= singular_name.titleize.pluralize %>
+            reorder_done: Koniec radenia <%= singular_name.titleize.pluralize %>
+          records:
+            title: <%= plural_name.titleize %>
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne <%= singular_name.titleize.pluralize %>. Kliknite na "Pridať <%= singular_name.titleize %>" pre pridanie prvého <%= singular_name.titleize.downcase %>.
+          <%= singular_name %>:
+            view_live_html: Zobraziť náhľad <%= singular_name.titleize.downcase %><br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť <%= singular_name.titleize.downcase %>
+            delete: Zmazať <%= singular_name.titleize.downcase %>
+      <%= plural_name %>:
+        show:
+          other: Daľšie <%= singular_name.titleize.pluralize %>
+  activerecord:
+    attributes:
+      'refinery/<%= namespacing.underscore %>/<%= singular_name %>':<% attributes.each do |a| %>
+        <%= a.name %>: <%= a.name.titleize -%>
+<% end -%>
