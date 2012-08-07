@@ -2,7 +2,7 @@
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
-## 2.0.6 [unreleased]
+## 2.0.6 [6 August 2012]
 * Added Refinery::Page#canonical_slug to allow us to retrieve a consistent slug across multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/resolve/refinerycms/pull/1457). [Philip Arndt](https://github.com/parndt)
 * Fixed bug with 404 page not honoring custom view/layout template. [#1746](https://github.com/resolve/refinerycms/pull/1746). [Uģis Ozols](https://github.com/ugisozols)
 * Renamed all templates in generators which contained erb to *.rb.erb. [#1750](https://github.com/resolve/refinerycms/pull/1750). [Uģis Ozols](https://github.com/ugisozols)
