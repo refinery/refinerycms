@@ -1,7 +1,7 @@
 <li class='clearfix record <%%= cycle("on", "on-hover") %>'>
   <span class='title'>
     <%%= link_to <%= singular_name %>.name, refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>) %> <%%= t('.said') %>
-    <span class="preview"><%%= truncate(strip_tags(<%= singular_name %>.message), :length => 60) -%></span>
+    <span class="preview"><%%= truncate(strip_tags(sanitize(<%= singular_name %>.message)), :length => 60) -%></span>
   </span>
   <span class='actions'>
     <%%= link_to refinery_icon_tag('delete.png'), refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>),
