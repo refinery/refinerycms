@@ -33,7 +33,7 @@ Often we find our home pages have three or more page parts but the rest of the s
 
 Refinery supports the ability for the user to add new Page Parts on the fly when editing a page.
 
-To add a new Page Part just to the home page, first we need to go into the "Settings" tab in Refinery. Find the setting named "New Page Parts" and set its value to +true+.
+To add a new Page Part just to the home page, first we need to go into @config/initializers/refinery/pages.rb@. Find and uncomment the line <ruby> # config.new_page_parts = false </ruby> and set the value from "false" to "true"
 
 Now go to your "Pages" tab in Refinery and edit your home page. You'll notice a plus and minus button at the top right of the visual editor. Click on the plus icon and add a new page part titled "Middle Body" and click save. A new visual editor will appear in a tab called "Middle Body" ready to use just for this page.
 
