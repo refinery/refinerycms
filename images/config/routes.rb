@@ -5,5 +5,6 @@ Refinery::Core::Engine.routes.draw do
     resources :images, :except => :show do
       get :insert, :on => :collection
     end
+    post "images/set_flash" => "images#set_flash"
   end
 end
