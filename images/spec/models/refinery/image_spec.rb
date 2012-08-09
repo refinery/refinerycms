@@ -6,9 +6,46 @@ module Refinery
     let(:image) { FactoryGirl.build(:image) }
     let(:created_image) { FactoryGirl.create(:image) }
 
-    context "with valid attributes" do
-      it "should report being valid" do
-        image.valid?.should be_true
+    describe "validations" do
+      describe "valid #image" do
+        before do
+          @file = Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
+          Images.stub(:max_image_size).and_return(File.read(@file).size + 10.megabytes)
+        end
+
+        it "should be valid when size does not exceed .max_image_size" do
+          Image.new(:image => @file).should be_valid
+        end
+      end
+
+      describe "too large #image" do
+        before do
+          @file = Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
+          Images.stub(:max_image_size).and_return(0)
+          @image = Image.new(:image => @file)
+        end
+
+        it "should not be valid when size exceeds .max_image_size" do
+          @image.should_not be_valid
+        end
+
+        it "should contain an error message" do
+          @image.valid?
+          @image.errors.should_not be_empty
+          @image.errors[:image].should == ["Image should be smaller than #{Images.max_image_size} bytes in size"]
+        end
+      end
+
+      describe "invalid argument for #image" do
+        before do
+          @image = Image.new
+        end
+
+        it "has an error message" do
+          @image.valid?
+          @image.errors.should_not be_empty
+          @image.errors[:image].should == ["You must specify an image for upload"]
+        end
       end
     end
 
@@ -124,47 +161,5 @@ module Refinery
       end
     end
 
-    describe "validations" do
-      describe "valid #image" do
-        before do
-          @file = Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
-          Images.max_image_size = (File.read(@file).size + 10.megabytes)
-        end
-
-        it "should be valid when size does not exceed .max_image_size" do
-          Image.new(:image => @file).should be_valid
-        end
-      end
-
-      describe "too large #image" do
-        before do
-          @file = Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
-          Images.max_image_size = 0
-          @image = Image.new(:image => @file)
-        end
-
-        it "should not be valid when size exceeds .max_image_size" do
-          @image.should_not be_valid
-        end
-
-        it "should contain an error message" do
-          @image.valid?
-          @image.errors.should_not be_empty
-          @image.errors[:image].should == ["Image should be smaller than #{Images.max_image_size} bytes in size"]
-        end
-      end
-
-      describe "invalid argument for #image" do
-        before do
-          @image = Image.new
-        end
-
-        it "has an error message" do
-          @image.valid?
-          @image.errors.should_not be_empty
-          @image.errors[:image].should == ["You must specify an image for upload"]
-        end
-      end
-    end
   end
 end
