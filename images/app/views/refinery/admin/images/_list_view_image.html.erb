@@ -6,9 +6,6 @@
     <%= link_to refinery_icon_tag('eye.png'), list_view_image.url,
                 :target => "_blank",
                 :title => "#{image_fu list_view_image, '96x96#c', :size => '96x96'}" %>
-    <%= link_to refinery_icon_tag('application_edit.png'),
-                refinery.edit_admin_image_path(list_view_image),
-                :title => t('edit', :scope => 'refinery.admin.images') %>
     <%= link_to refinery_icon_tag('delete.png'),
                 refinery.admin_image_path(list_view_image),
                 :class => "cancel confirm-delete",

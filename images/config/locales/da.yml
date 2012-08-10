@@ -10,9 +10,6 @@ da:
         edit: Redigér billede
         form:
           image: Billede
-          use_current_image: Behold nuværende billede
-          or: eller
-          replace_image: " erstat med dette..."
           current_image: Nuværende billede
           maximum_image_size: Billedet må maksimalt fylde %{bytes}.
         actions:

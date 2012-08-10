@@ -10,9 +10,6 @@ vi:
         edit: Sửa ảnh này
         form:
           image: Ảnh
-          use_current_image: Dùng ảnh hiện tại
-          or: hoặc
-          replace_image: " thay bằng ảnh khác..."
           current_image: Ảnh hiện tại
           maximum_image_size: Dung lượng ảnh tối đa là %{bytes}.
         actions:

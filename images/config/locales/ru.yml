@@ -10,9 +10,6 @@ ru:
         edit: Редактировать это изображение
         form:
           image: Изображение
-          use_current_image: Использовать текущее изображение
-          or: или
-          replace_image: " заменить его этим"
           current_image: Текущее изображение
           maximum_image_size: "Максимальный размер изображения — %{bytes}."
         actions:

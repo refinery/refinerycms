@@ -10,9 +10,6 @@ fi:
         edit: Muokkaa tätä kuvaa
         form:
           image: Kuva
-          use_current_image: Käytä nykyistä kuvaa
-          or: tai
-          replace_image: " korvaa se tällä..."
           current_image: Nykyinen kuva
           maximum_image_size: Kuvan suurin mahdollinen koko on %{bytes}.
         actions:

@@ -10,9 +10,6 @@ nl:
         edit: Deze afbeelding bewerken
         form:
           image: Afbeelding
-          use_current_image: Huidige afbeelding gebruiken
-          or: of
-          replace_image: " vervangen door deze..."
           current_image: Huidige afbeelding
           maximum_image_size: De maximale afbeeldingssgrootte is %{bytes}.
         actions:

@@ -11,9 +11,6 @@ es:
         edit: Editar esta imagen
         form:
           image: Imagen
-          use_current_image: Usar imagen actual
-          or: o
-          replace_image: " reemplazarla con esta otra..."
           current_image: Imagen actual
           maximum_image_size: El peso máximo para una imagen son %{bytes}.
         actions:

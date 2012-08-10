@@ -10,9 +10,6 @@ cs:
         edit: Upravit tento obrázek
         form:
           image: Obrázek
-          use_current_image: Použít vybraný obrázek
-          or: nebo
-          replace_image: " nahradit jej tímto..."
           current_image: Vybraný obrázek
           maximum_image_size: Maximální velikost obrázku je %{bytes}.
         actions:

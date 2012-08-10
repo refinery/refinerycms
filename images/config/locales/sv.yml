@@ -10,9 +10,6 @@ sv:
         edit: Redigera den här bilden
         form:
           image: Bild
-          use_current_image: Använd denna bild
-          or: eller
-          replace_image: " ersätt den med den här..."
           current_image: Denna bild
           maximum_image_size: Maximal filstorlek för bilden är %{bytes}.
         actions:

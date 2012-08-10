@@ -10,9 +10,6 @@ ja:
         edit: 画像を編集
         form:
           image: 画像
-          use_current_image: この画像を使用する
-          or: または
-          replace_image: " この画像と差し替える"
           current_image: 選択されている画像
           maximum_image_size: '画像は最大で %{bytes}　までです。'
         actions:

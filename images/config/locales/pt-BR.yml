@@ -11,9 +11,6 @@ pt-BR:
         edit: Editar esta imagem
         form:
           image: Imagem
-          use_current_image: Usar imagem atual
-          or: ou
-          replace_image: " substituir por esta..."
           current_image: Imagem atual
           maximum_image_size: "O tamanho máximo permitido é de %{bytes}."
         actions:

@@ -10,9 +10,6 @@ bg:
         edit: Редактиране на това изображение
         form:
           image: Изображение
-          use_current_image: Използвайте текущото изображение
-          or: или
-          replace_image: " го заменете с ново..."
           current_image: Текущо изображение
           maximum_image_size: Максималната големина на изображението е %{bytes} байта.
         actions:

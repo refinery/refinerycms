@@ -10,9 +10,6 @@ nb:
         edit: Rediger dette bildet
         form:
           image: Bilde
-          use_current_image: Bruk gjeldende bilde
-          or: eller
-          replace_image: Erstatt det med dette ...
           current_image: Gjeldende bilde
           maximum_image_size: "Den største tillatte størrelsen på et bilde er %{bytes}."
         actions:

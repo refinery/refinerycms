@@ -10,9 +10,6 @@ el:
         edit: Επεξεργασία εικόνας
         form:
           image: Εικόνα
-          use_current_image: Χρήση τρέχουσας εικόνας
-          or: or
-          replace_image: " αλλαγή με αυτήν..."
           current_image: Τρέχουσα εικόνα
           maximum_image_size: Το μέγιστο μέγεθος εικόνας είναι %{bytes}.
         actions:

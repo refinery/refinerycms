@@ -9,9 +9,6 @@ sl:
         edit: Uredi sliko
         form:
           image: Slika
-          use_current_image: Uporabi tretnutno sliko
-          or: ali
-          replace_image: " zamenjaj jo s tole..."
           current_image: Trenutna Slika
           maximum_image_size: "Največja dovoljena velikost slike je lahko %{bytes}."
         actions:

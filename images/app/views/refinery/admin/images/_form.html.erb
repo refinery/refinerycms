@@ -6,18 +6,7 @@
              :include_object_name => false %>
 
   <div class='field'>
-    <% if action_name =~ /(edit)|(update)/ %>
-      <p>
-        <%= t('.use_current_image') %>
-        <em><%= t('.or') %></em><%= t('.replace_image') %>
-      </p>
-      <p>
-        <%= f.file_field :image %>
-      </p>
-    <% else %>
-      <% # we must only hint at multiple when it's a new record otherwise update fails. %>
-      <%= f.file_field :image, :multiple => true %>
-    <% end %>
+    <%= f.file_field :image, :multiple => true %>
   </div>
 
   <div class='field'>

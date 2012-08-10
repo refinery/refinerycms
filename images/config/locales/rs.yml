@@ -10,9 +10,6 @@ rs:
         edit: Izmeni sliku
         form:
           image: Slika
-          use_current_image: Koristi trenutnu sliku
-          or: ili
-          replace_image: " zameni sa ovom..."
           current_image: Trenutna slika
           maximum_image_size: Maksimalna veličina slike je %{bytes}.
         actions:
