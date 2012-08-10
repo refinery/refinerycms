@@ -45,6 +45,6 @@
 <% if action_name =~ /(edit)|(update)/ %>
   <div id='existing_image'>
     <label><%=t('.current_image') %></label>
-    <%= image_fu @image, '225x255>', :class => "brown_border" %>
+    <%= image_fu @thumbnail || @image, '225x255>', :class => "brown_border" %>
   </div>
 <% end %>
