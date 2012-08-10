@@ -32,3 +32,4 @@ h3. Tips and Tricks
 * Only override when you really need to, as it makes upgrading to future versions of Refinery trickier
 * You only need the path to the view from inside the 'views' folder, regardless of which extension the file is in
 * This will also work to override views in plugins you've created locally
+* You can override any of the view files located at https://github.com/resolve/refinerycms/tree/master/core/app/views/refinery
