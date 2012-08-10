@@ -76,6 +76,43 @@ module Refinery
         end
       end
 
+      def update
+        attributes_before_assignment = @image.attributes
+        @image.attributes = params[:image]
+        if @image.valid? && @image.save
+          flash.notice = t(
+            'refinery.crudify.updated',
+            :what => "'#{@image.title}'"
+          )
+
+          unless from_dialog?
+            unless params[:continue_editing] =~ /true|on|1/
+              redirect_back_or_default refinery.admin_images_path
+            else
+              unless request.xhr?
+                redirect_to :back
+              else
+                render :partial => '/refinery/message'
+              end
+            end
+          else
+            self.index
+            @dialog_successful = true
+            render :index
+          end
+        else
+          @thumbnail = Image.find params[:id]
+          unless request.xhr?
+            render :action => 'edit'
+          else
+            render :partial => '/refinery/admin/error_messages', :locals => {
+                     :object => @image,
+                     :include_object_name => true
+                   }
+          end
+        end
+      end
+
     protected
 
       def init_dialog

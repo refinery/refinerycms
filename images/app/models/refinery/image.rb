@@ -12,7 +12,9 @@ module Refinery
     validates :image, :presence  => true
     validates_with ImageSizeValidator
     validates_with ImageUpdateValidator, :on => :update
-    validates_property :mime_type, :of => :image, :in => ::Refinery::Images.whitelisted_mime_types,
+    validates_property :mime_type,
+                       :of => :image,
+                       :in => ::Refinery::Images.whitelisted_mime_types,
                        :message => :incorrect_format
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
