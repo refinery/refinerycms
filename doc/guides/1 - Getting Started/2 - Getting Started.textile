@@ -107,7 +107,7 @@ $ refinerycms rickrockstar
 
 This will create a new Rails application with Refinery built in called RickRockStar in a directory called +rickrockstar+. It also automatically runs +bundle install+ which will find and install all Refinery's ruby gem dependencies. Finally, it creates your database and seeds it with some basic defaults to get you started.
 
-NOTE: In this guide we are using an SQLite3 database for data storage, because it is a zero-configuration database that works without effort. Refinery also supports MySQL and PostgreSQL "out of the box". For important applications, you may wish to use one of these other database systems.
+NOTE: In this guide we are using an SQLite3 database for data storage, because it is a zero-configuration database that works without effort. Refinery also supports MySQL and PostgreSQL "out of the box". For important applications, you may wish to use one of these other database systems. You can use another database systems by running the -d switch, or by changing the database.yml file after instance creation. If you choose to change the database.yml file, you may want to run the <shell>rake db:seed</shell> command to keep your instance consistent with this example.
 
 Refinery will create a folder in your working directory called <tt>rickrockstar</tt>. Switch to this folder:
 
