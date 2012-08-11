@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
   protected
     def render_with_templates?(render_options = {})
       if Refinery::Pages.use_layout_templates && page.layout_template.present?
-        render_options[:layout] = page.layout_template
+        render_options[:layout] = page.layout_template unless render_options[:layout]
       end
       if Refinery::Pages.use_view_templates && page.view_template.present?
-        render_options[:action] = page.view_template
+        render_options[:action] = page.view_template unless render_options[:action]
       end
       render render_options if render_options.any?
     end
