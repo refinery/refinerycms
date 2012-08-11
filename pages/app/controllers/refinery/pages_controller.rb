@@ -87,16 +87,6 @@ module Refinery
 
     alias_method :page, :find_page
 
-    def render_with_templates?(render_options = {})
-      if Refinery::Pages.use_layout_templates && page.layout_template.present?
-        render_options[:layout] = page.layout_template
-      end
-      if Refinery::Pages.use_view_templates && page.view_template.present?
-        render_options[:action] = page.view_template
-      end
-      render render_options if render_options.any?
-    end
-
     def set_canonical
       @canonical = refinery.url_for @page.canonical if @page.present?
     end
