@@ -20,7 +20,7 @@ sk:
           latest_activity: Najnovšie Akcie
           latest_activity_message: '%{what} %{kind} bol/a %{action}'
         recent_inquiries:
-          latest_inquiries: Najnovšie Otázky Z Webu
+          latest_inquiries: Najnovšie otázky z webu
     updated:
       'with_article "the"': upravený/á
     created:

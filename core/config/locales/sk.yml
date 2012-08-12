@@ -1,5 +1,8 @@
 sk:
   refinery:
+    js:
+      admin:
+        confirm_changes: Všetky zmeny, ktoré ste vykonali sa stratia. Ste si istý, že chcete pokračovať bez uloženia?
     plugins:
       refinery_core:
         title: Refinery
@@ -34,8 +37,8 @@ sk:
         delete: Zmazať
         close: Zavrieť
       image_picker:
-        none_selected: Zatiaľ nie je vybraný žiadny %{what}, kliknutím jeden pridajte.
-        remove_current: Zmazať vybraný %{what}
+        none_selected: Zatiaľ nie je vybraný žiadny obrázok, kliknutím jeden pridajte.
+        remove_current: Zmazať vybraný obrázok
         change: Kliknite tu pre vybranie obrázku 
         show: Zobraziť
       resource_picker:
