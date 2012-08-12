@@ -25,6 +25,12 @@ sk:
         hello_please_sign_in: Prosím prihláste sa.
         sign_in: Prihlásenie
         forgot_password: Zabudol som heslo
+    user_mailer:
+      reset_notification:
+        subject: Odkaz pre reset hesla
+        reset_request_received_for: "Požiadavka na vytvorenie nového hesla pre používateľské konto %{username}"
+        visit_this_url: Navštívte túto URL pre zvolenie nového hesla.
+        remain_same_if_no_action: 'Vaše heslo zostane nezmenené, ak nevykonáte žiadnu akciu.'
     users:
       new:
         fill_form: Vyplňte údaje a môžeme začať.
@@ -44,12 +50,6 @@ sk:
         successful: "Heslo bolo úspešne resetované pre '%{email}'"
         pick_new_password_for: "Zadajte nové heslo pre %{email}"
         reset_password: Reset hesla
-    user_mailer:
-      reset_notification:
-        subject: Odkaz pre reset hesla
-        reset_request_received_for: "Požiadavka na vytvorenie nového hesla pre používateľské konto %{username}"
-        visit_this_url: Navštívte túto URL pre zvolenie nového hesla.
-        remain_same_if_no_action: 'Vaše heslo zostane nezmenené, ak nevykonáte žiadnu akciu.'
     roles:
       superuser: Superužívateľ
       refinery: Refinery
