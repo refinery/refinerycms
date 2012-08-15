@@ -100,6 +100,23 @@ module Refinery
         dummy.lft.should eq(9)
         dummy.rgt.should eq(10)
       end
+
+      # Regression test for https://github.com/resolve/refinerycms/issues/1585
+      it "sorts numerically rather than by string key" do
+        dummy, dummy_params = [], {}
+
+        # When we have 11 entries, the 11th index will be #10, which will be 
+        # sorted above #2 if we are sorting by strings.
+        11.times do |n|
+          dummy << Refinery::CrudDummy.create!
+          dummy_params["#{n}"] = {"id" => "crud_dummy_#{dummy[n].id}"}
+        end
+
+        post :update_positions, { "ul" => { "0" => dummy_params } }
+
+        dummy = dummy.last.reload
+        dummy.lft.should eq(21)
+      end
     end
 
   end
