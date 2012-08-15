@@ -2,6 +2,9 @@
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
+## 2.0.7 [Unreleased]
+* Fixed a bug with nested reordering that would shuffle any set with 11 or more entities. [#1882](https://github.com/resolve/refinerycms/pull/1882). [Rob Yurkowski](https://github.com/robyurkowski)
+
 ## 2.0.6 [6 August 2012]
 * Added Refinery::Page#canonical_slug to allow us to retrieve a consistent slug across multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/resolve/refinerycms/pull/1457). [Philip Arndt](https://github.com/parndt)
 * Fixed bug with 404 page not honoring custom view/layout template. [#1746](https://github.com/resolve/refinerycms/pull/1746). [Uģis Ozols](https://github.com/ugisozols)
