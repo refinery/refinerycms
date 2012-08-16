@@ -2,7 +2,7 @@ module Refinery
   class Version
     @major = 2
     @minor = 0
-    @tiny  = 6
+    @tiny  = 7
     @build = nil
 
     class << self

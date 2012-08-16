@@ -2,8 +2,9 @@
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
-## 2.0.7 [Unreleased]
+## 2.0.7 [16 August 2012]
 * Fixed a bug with nested reordering that would shuffle any set with 11 or more entities. [#1882](https://github.com/resolve/refinerycms/pull/1882). [Rob Yurkowski](https://github.com/robyurkowski)
+* [See full list](https://github.com/resolve/refinerycms/compare/2.0.6...2.0.7)
 
 ## 2.0.6 [6 August 2012]
 * Added Refinery::Page#canonical_slug to allow us to retrieve a consistent slug across multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/resolve/refinerycms/pull/1457). [Philip Arndt](https://github.com/parndt)
@@ -13,6 +14,7 @@
 * Allowed to override presenters using `rake refinery:override`. [#1790](https://github.com/resolve/refinerycms/pull/1790). [Kevin Bullock](https://github.com/krbullock).
 * Fixed issue with saving settings in generated form extension by completely rewriting settings controller. [#1817](https://github.com/resolve/refinerycms/issues/1817). [Uģis Ozols](https://github.com/ugisozols)
 * Removed Refinery::Page#title_with_meta in favour of view helpers. [#1847](https://github.com/resolve/refinerycms/pull/1847). [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/2.0.5...2.0.6)
 
 ## 2.0.5 [11 June 2012]
 * Now extension/form generators will add all attributes to attr_accessible. [#1613](https://github.com/resolve/refinerycms/pull/1613). [Uģis Ozols](https://github.com/ugisozols)
@@ -30,6 +32,7 @@
 * Fixed and added tests for post-authentication redirect bug where a user would always be redirected to the admin root after successful auth. [#1561](https://github.com/resolve/refinerycms/issues/1561). [Alexander Wenzowski](https://github.com/wenzowski)
 * Added session key check for unscoped `return_to` variable so that the key set by `Refinery::Admin::BaseController#store_location?` is respected after successful auth. [#1728](https://github.com/resolve/refinerycms/issues/1728). [Alexander Wenzowski](https://github.com/wenzowski)
 * Fixed bug where flag icons in page listing couldn't be clicked due to expand/collapse event preventing it. [#1741](https://github.com/resolve/refinerycms/pull/1741). [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/2.0.4...2.0.5)
 
 ## 2.0.4 [14 May 2012]
 * IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [#1636](https://github.com/resolve/refinerycms/pull/1636). [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
@@ -52,6 +55,7 @@
 * Fixed `content_fu`. [#1628](https://github.com/resolve/refinerycms/issues/1628) [Philip Arndt](https://github.com/parndt)
 * Added Russian translations for the preview button. [Vasiliy Ermolovich](https://github.com/nashby)
 * Manually loaded translations associations to avoid N+1 queries in the pages backend. [#1633](https://github.com/resolve/refinerycms/pull/1633). [thedarkone](https://github.com/thedarkone)
+* [See full list](https://github.com/resolve/refinerycms/compare/2.0.3...2.0.4)
 
 ## 2.0.3 [2 April 2012]
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
@@ -71,6 +75,7 @@
 * Deprecated `body_content_left` and `body_content_right` [Rob Yurkowski](https://github.com/robyurkowski)
 * Reorganizes documentation [Rob Yurkowski](https://github.com/robyurkowski)
 * Fixed issue where 'Switch to your website' was not working inside the pages form. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/2.0.2...2.0.3)
 
 ## 2.0.2 [15 March 2012]
 
