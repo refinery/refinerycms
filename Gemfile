@@ -71,7 +71,6 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'sass', '~> 3.1.12'
 end
 
 gem 'jquery-rails', '~> 2.0.0'
