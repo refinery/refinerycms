@@ -70,6 +70,13 @@ module Refinery
           r.should be_an_instance_of(Resource)
         end
       end
+
+      specify "each returned array item should be passed form parameters" do
+        params = {:file => [file, file, file], :fake_param => 'blah'}
+
+        Resource.should_receive(:create).exactly(3).times.with({:file => file, :fake_param => 'blah'})
+        Resource.create_resources(params)
+      end
     end
 
     describe "validations" do

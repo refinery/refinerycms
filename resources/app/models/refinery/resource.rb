@@ -43,7 +43,7 @@ module Refinery
           resources << create(params)
         else
           params[:file].each do |resource|
-            resources << create(:file => resource)
+            resources << create({:file => resource}.merge(params.except(:file)))
           end
         end
 
