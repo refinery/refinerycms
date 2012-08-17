@@ -25,9 +25,7 @@ gsub_file 'Gemfile', "gem 'jquery-rails'", "gem 'jquery-rails', '~> 2.0.0'"
 append_file 'Gemfile', <<-GEMFILE
 
 # Refinery CMS
-gem 'refinerycms', :path => '/Users/rob/Sites/r/refinerycms'
-
-#gem 'refinerycms', '~> #{VERSION_BAND}'
+gem 'refinerycms', '~> #{VERSION_BAND}'
 
 # Specify additional Refinery CMS Extensions here (all optional):
 gem 'refinerycms-i18n', '~> #{VERSION_BAND}'
