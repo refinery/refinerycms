@@ -130,10 +130,12 @@ module Refinery
 
         # Detect whether this is a special file that needs to get merged not overwritten.
         # This is important only when nesting extensions.
-        if extension.present? && File.exist?(path)
+        # Routes and #{gem_name}\.rb have an .erb extension as path points to the generator template
+        # We have to exclude it when checking if the file already exists and  include it in the regexps
+        if extension.present? && File.exist?(path.gsub(/\.erb$/, ""))
           if %r{/locales/.*\.yml$} === path ||
-             %r{/routes.rb$} === path ||
-             %r{/#{gem_name}.rb$} === path
+             %r{/routes\.rb\.erb$} === path ||
+             %r{/#{gem_name}\.rb\.erb$} === path
             # put new translations into a tmp directory
             if apply_tmp
               path = path.split(File::SEPARATOR).insert(-2, "tmp").
@@ -210,13 +212,15 @@ module Refinery
       if existing_extension?
         # go through all of the temporary files and merge what we need into the current files.
         tmp_directories = []
-        Dir.glob(source_pathname.join("{config/locales/*.yml,config/routes.rb,lib/refinerycms-extension_plural_name.rb}"), File::FNM_DOTMATCH).sort.each do |path|
+        Dir.glob(source_pathname.join("{config/locales/*.yml,config/routes.rb.erb,lib/refinerycms-extension_plural_name.rb.erb}"), File::FNM_DOTMATCH).sort.each do |path|
           # get the path to the current tmp file.
-          new_file_path = extension_path_for(path, extension_name)
+          # Both the new and current paths need to strip the .erb portion from the generator template
+          new_file_path = Pathname.new extension_path_for(path, extension_name).to_s.gsub(/\.erb$/, "")
           tmp_directories << Pathname.new(new_file_path.to_s.split(File::SEPARATOR)[0..-2].join(File::SEPARATOR)) # save for later
           # get the path to the existing file and perform a deep hash merge.
-          current_path = extension_path_for(path, extension_name, false)
+          current_path = Pathname.new extension_path_for(path, extension_name, false).to_s.gsub(/\.erb$/, "")
           new_contents = nil
+
           if File.exist?(new_file_path) && %r{.yml$} === new_file_path.to_s
             # merge translation files together.
             new_contents = YAML::load(new_file_path.read).deep_merge(
