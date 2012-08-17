@@ -70,11 +70,18 @@ module Refinery
           r.should be_an_instance_of(Resource)
         end
       end
+
+      specify "each returned array item should be passed form parameters" do
+        params = {:file => [file, file, file], :fake_param => 'blah'}
+
+        Resource.should_receive(:create).exactly(3).times.with({:file => file, :fake_param => 'blah'})
+        Resource.create_resources(params)
+      end
     end
 
     describe "validations" do
       describe "valid #file" do
-        before(:each) do
+        before do
           @file = Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
           Resources.max_file_size = (File.read(@file).size + 10)
         end
@@ -85,7 +92,7 @@ module Refinery
       end
 
       describe "too large #file" do
-        before(:each) do
+        before do
           @file = Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
           Resources.max_file_size = (File.read(@file).size - 10)
           @resource = Resource.new(:file => @file)
@@ -103,7 +110,7 @@ module Refinery
       end
 
       describe "invalid argument for #file" do
-        before(:each) do
+        before do
           @resource = Resource.new
         end
 

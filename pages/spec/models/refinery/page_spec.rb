@@ -279,8 +279,8 @@ module Refinery
       it 'reposition correctly' do
         page.save
 
-        page.parts.first.update_attribute(:position, 6)
-        page.parts.last.update_attribute(:position, 4)
+        page.parts.first.update_attributes :position => 6
+        page.parts.last.update_attributes :position => 4
 
         page.parts.first.position.should == 6
         page.parts.last.position.should == 4
@@ -486,7 +486,7 @@ module Refinery
       let(:child_title) { 'about' }
       let(:created_root_about) { subject.class.create!(:title => child_title, :deletable => true) }
 
-      before(:each) do
+      before do
         # Ensure pages are created.
         created_child
         created_root_about
@@ -505,12 +505,12 @@ module Refinery
       let!(:market) { FactoryGirl.create(:page, :title => "market") }
       let(:path) { "market" }
       let(:id) { market.id }
-      
+
       context "when marketable urls are true and path is present" do
         before do
           Refinery::Page.stub(:marketable_urls).and_return(true)
         end
-        
+
         context "when path is friendly_id" do
           it "finds page using path" do
             Refinery::Page.find_by_path_or_id(path, "").should eq(market)
@@ -542,7 +542,7 @@ module Refinery
         page.menu_match = ""
         page
       end
-      
+
       context "when deletable is true and link_url, and menu_match is blank" do
         it "returns true" do
           deletable_page.deletable?.should be_true
@@ -551,14 +551,14 @@ module Refinery
 
       context "when deletable is false and link_url, and menu_match is blank" do
         it "returns false" do
-          deletable_page.deletable = false 
+          deletable_page.deletable = false
           deletable_page.deletable?.should be_false
         end
       end
 
       context "when deletable is false and link_url or menu_match isn't blank" do
         it "returns false" do
-          deletable_page.deletable  = false 
+          deletable_page.deletable  = false
           deletable_page.link_url   = "text"
           deletable_page.deletable?.should be_false
 

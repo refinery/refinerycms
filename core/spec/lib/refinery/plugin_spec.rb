@@ -122,7 +122,7 @@ module Refinery
         end
       end
 
-      before(:each) { plugin.reset_url! }
+      before { plugin.reset_url! }
 
       context 'when @url is already defined' do
         it 'returns hash' do

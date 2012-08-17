@@ -20,7 +20,7 @@ module Refinery
       end
 
       describe "resource extension" do
-        before(:each) { FactoryGirl.create(:resource) }
+        before { FactoryGirl.create(:resource) }
 
         it "returns found resource" do
           visit refinery.admin_resources_path
@@ -31,7 +31,7 @@ module Refinery
       end
 
       describe "page extension" do
-        before(:each) { FactoryGirl.create(:page, :title => "Ugis Ozols") }
+        before { FactoryGirl.create(:page, :title => "Ugis Ozols") }
 
         it "returns found page" do
           visit refinery.admin_pages_path

@@ -56,13 +56,23 @@ module Refinery
           page.should have_content("Use current image or replace it with this one...")
           page.should have_selector("a[href*='#{refinery.admin_images_path}']")
 
-          attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/fathead.png")
+          attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
           click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
 
-          page.should have_content(::I18n.t('updated', :scope => 'refinery.crudify', :what => "'Fathead'"))
+          page.should have_content(::I18n.t('updated', :scope => 'refinery.crudify', :what => "'Beach'"))
           Refinery::Image.count.should == 1
 
           lambda { click_link "View this image" }.should_not raise_error
+        end
+
+        it "doesn't allow updating if image has different file name" do
+          visit refinery.edit_admin_image_path(image)
+
+          attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/fathead.png")
+          click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
+
+          page.should have_content(::I18n.t("different_file_name",
+                                            :scope => "activerecord.errors.models.refinery/image"))
         end
       end
 

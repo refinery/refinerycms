@@ -29,7 +29,7 @@ describe Refinery do
   end
 
   describe "#register_extension" do
-    before(:each) { subject.extensions.clear }
+    before { subject.extensions.clear }
 
     it "should add the extension's module to the array of registered extensions" do
       subject.register_extension(Refinery::Core)
@@ -48,7 +48,7 @@ describe Refinery do
 
   describe "#extension_registered?" do
     context "with Refinery::Core::Engine registered" do
-      before(:each) { subject.register_extension(Refinery::Core) }
+      before { subject.register_extension(Refinery::Core) }
 
       it "should return true if the extension is registered" do
         subject.extension_registered?(Refinery::Core).should == true
@@ -56,7 +56,7 @@ describe Refinery do
     end
 
     context "with no extensions registered" do
-      before(:each) { subject.extensions.clear }
+      before { subject.extensions.clear }
 
       it "should return false if the extension is not registered" do
         subject.extension_registered?(Refinery::Core).should == false
@@ -65,7 +65,7 @@ describe Refinery do
   end
 
   describe "#unregister_extension" do
-    before(:each) do
+    before do
       subject.extensions.clear
       subject.register_extension(Refinery::Images)
     end
@@ -115,7 +115,7 @@ describe Refinery do
   end
 
   describe "#deprecate" do
-    before(:each) do
+    before do
       @errors = StringIO.new
       @old_err = $stderr
       $stderr = @errors
@@ -167,6 +167,15 @@ describe Refinery do
         it "returns admin_dummies_path" do
           Refinery.route_for_model(Refinery::Dummy, :plural => true).should == "admin_dummies_path"
         end
+      end
+    end
+
+    context 'with Refinery::GroupClass' do
+      module Refinery::GroupClass
+      end
+
+      it "returns admin_group_class_path" do
+        Refinery.route_for_model(Refinery::GroupClass).should == "admin_group_class_path"
       end
     end
 

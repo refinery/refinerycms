@@ -1,12 +1,14 @@
 h2. Heroku
 
-"Heroku":http://heroku.com is a popular hosting choice for many developers. This guide will show you how to:
+"Heroku":http://heroku.com is a popular hosting choice for many developers. This
+guide will show you how to:
 
-* Install and deploy Refinery on the Heroku hosting platform
+* Install and deploy a Refinery application on the Heroku hosting platform
 
 endprologue.
 
-h3. Starting Out
+
+h3. Creating a new Refinery application on Heroku
 
 First you need to install Refinery. To do that you need the refinerycms gem.
 
@@ -14,56 +16,50 @@ First you need to install Refinery. To do that you need the refinerycms gem.
 gem install refinerycms
 </shell>
 
-Next go to "Heroku.com":http://heroku.com and click "sign up" for a free account.
+Then, if you haven't done so already, follow the first three steps of the
+"Heroku quick start guide":https://devcenter.heroku.com/articles/quickstart.
+They cover signing up for Heroku, installing the Heroku client, and logging
+in through the client.
 
-Now you've got a Heroku account, install the Heroku gem and provide your account credentials:
-
-<shell>
-gem install heroku
-heroku list
-</shell>
-
-Now it's time to create your Refinery application using the built in +--heroku+ option
+Now it's time to create your Refinery application using the built in +--heroku+
+option:
 
 <shell>
 refinerycms myapp --heroku
 </shell>
 
-NOTE: Heroku relies on "Git":http://git-scm.com/download being installed on your system. Please check or install it beforehand.
+NOTE: Heroku relies on "Git":http://git-scm.com/download being installed on your
+system. You should install it beforehand.
 
-Watch the output for these lines
+Watch the output for these lines:
 
 <shell>
 Creating Heroku app..
 Running: cd /path/to/app/myapp && heroku create
 Creating random-site-name..... done
-Created http://random-site-name.heroku.com/
+Created http://random-site-name.herokuapp.com/
 </shell>
 
-This will output the URL for your Heroku hosted Refinery application. Your application should now be live at http://random-site-name.heroku.com
+This will output the URL for your Heroku-hosted Refinery application. Your
+application should now be live at http://random-site-name.heroku.com.
 
-h3. If you already have a local Refinery application built
+Note that you may have issues precompiling your assets, which may result in
+system images not loading. Skip to the following Step 3 for a fix.
 
-If you have already built a Refinery application locally using SQLite, you'll need to make some changes to be able to deploy to Heroku.
+h3. Deploying an existing local Refinery application
 
-Step 0: Setup and log into Heroku
-If you haven't already - follow the first three steps of the "Heroku quick start guide":https://devcenter.heroku.com/articles/quickstart.
+If you have already built a Refinery application locally, you'll need to make
+some changes to be able to deploy to Heroku.
 
-Step 1: install the Taps gem:
-Since you've set up your website locally - you've probably got a bunch of information in a local database.  Rather than trying to recreate all that on Heroku we're going to import your SQLite database using a gem called taps.  One gotcha is that Taps will throw errors if you're using Ruby 1.9.3 - so switch to 1.9.2 for an easier time.
+h4. Step 1: Update the Gemfile
 
-You'll want to actually install this to your system - not just add it to your Gemfile.
+h5. If your local database is not PostgreSQL
 
-<shell>
-gem install taps
-</shell>
-
-Step 2: Update the Gemfile
-
-Right now your Gemfile probably uses sqlite3 as a data store.  This is fine locally - but sqlite3 doesn't exist on Heroku.  So in Gemfile change:
+You don't have to change your local database settings to use PostgreSQL, but
+Heroku depends on the presence of the @pg@ gem. So, in your Gemfile, change:
 
 <shell>
-gem 'sqlite3'
+gem 'sqlite3' # or whatever the database driver for your local database is
 </shell>
 
 to:
@@ -71,21 +67,23 @@ to:
 group :development, :test do
   gem 'sqlite3'
 end
+group :production do
+  gem 'pg'
+end
 </shell>
 
-Next we need to add three more gems.
+WARNING. Using differing databases for development and production is not
+recommended. Occasionally, specific Rails idioms may have different effects
+on different databases. We encourage you to set up and develop on PostgreSQL
+if you intend to deploy your application to Heroku.
 
-# The Heroku gem allows you to interface with Heroku's API
-# Fog allows you to use S3 assets (See Adding Amazon S3 Support below)
-# Postgres support (added for Heroku)
+h5. Getting a place to store files
 
-You can just throw these at the end of your Gemfile:
+If you want to use Refinery's image and resource support, you need to add the
+'fog' gem too. Edit the Gemfile as shown in "Adding Amazon S3 Support" below
+(you can do the other steps in that section after your site is first deployed).
 
-<shell>
-gem 'heroku'
-gem 'fog'
-gem 'pg'
-</shell>
+h5. Applying your changes
 
 Now we just need to run bundle and add the changes to git:
 <shell>
@@ -95,37 +93,98 @@ git add Gemfile.lock
 git commit "setup for Heroku"
 </shell>
 
-Step 3: Set up your app on Heroku:
+h4. Step 2: Set up your app on Heroku:
+
 <shell>
 app_name="your-app-name"
 heroku create $app_name --stack cedar
 git push heroku master
 </shell>
 
-Step 4: Import your data
+h4. Step 3: Set up asset precompilation
+
+Inside +config/application.rb+, at the end of the config block, make sure you
+add the following:
+
+<ruby>
+config.assets.initialize_on_precompile = true
+</ruby>
+
+This is necessary to make post-deploy asset precompilation happen. Without this,
+Refinery will fail to compile its assets, owing to its use of Rails' URL helpers
+inside of its Javascript files (necessary for its WYSIWYG editor).
+
+You may also need to enable the experimental +user_env_compile+ option on
+Heroku. You can read more
+"here":https://devcenter.heroku.com/articles/labs-user-env-compile, but in
+short, run the following command:
+
+<shell>
+$ heroku labs:enable user_env_compile
+</shell>
+
+In theory, this should only affect applications where +initialize_on_precompile+
+is false or default; however, you may need to set the +user_env_compile+ option
+if you receive complaints about being unable to connect to +127.0.0.1+.
+
+(If someone else created the Heroku app for you, make sure it is on the
+"Cedar stack":https://devcenter.heroku.com/articles/cedar. Cedar is the newest
+stack and Heroku recommends it for new apps. You can run @heroku stack@ to check
+which stack your app is on.)
+
+h4. Step 4: Copy your data from your local database to the Heroku app
+
+If you've developed your website locally, you likely have information in a local
+database that you would like to use. Rather than trying to recreate all that on
+Heroku, Heroku provides you with a task that requires you to install the @taps@
+gem. Be warned, though: Taps has been known to raise errors with Ruby 1.9.3.
+If you receive any errors or the transfer fails the first time, switch to 1.9.2
+to be safe.
+
+You'll want to actually install taps to your system – not just add it to your
+Gemfile.
+
+<shell>
+gem install taps
+</shell>
+
+Now copy the data to your Heroku app.
+
 <shell>
 heroku db:push
 </shell>
 
+If that command gives you the error "no such file to load -- taps/operation",
+you have run into
+"this Heroku and taps bug":https://github.com/heroku/heroku/issues/69.
+See its comments for fixes to try.
 
 h3. Adding Amazon S3 Support
 
-If you want to use Refinery's image and resource support you'll need to setup storage too. Create a bucket called "my_app_production" and add this line in your Gemfile (this might already be done for you):
+If you want to use Refinery's image and resource support you'll need to setup
+storage, too. Heroku does not persist your app’s local filesystem, so to store
+uploaded files, you need to store them "in the cloud". This section explains how
+to store the files in Amazon S3.
+
+On Amazon S3, create a bucket called "my_app_production". Then add this to the
+end of your Gemfile (this might already be done for you):
 
 <ruby>
-gem 'fog'
+group :production do
+  gem 'fog'
+end
 </ruby>
 
-Next tell Heroku about your new S3 bucket.
+Next, tell Heroku about your new S3 bucket.
 
 <shell>
 heroku config:add S3_KEY=123key S3_SECRET=456secret S3_BUCKET=my_app_production
 </shell>
 
-If you have created your bucket in a region other than 'us-east-1' you need to add S3_REGION=s3region also.
+If you have created your bucket in a region other than 'us-east-1' you need to
+add S3_REGION=s3region also.
+
 That's it! Heroku will restart your site and it should be live with S3 support.
-
-
 
 h3. Troubleshooting
 
@@ -133,21 +192,18 @@ h4. Missing a required gem
 
 Simply add that gem to the Gemfile.
 
-h4. Acts As Indexed giving you problems (Refinery CMS version 0.9.7.13 and below)
-
-Make sure that you are using at least version 0.6.6 (latest at time of writing) by putting this in your Gemfile (instead of the current entry):
-
-<ruby>
-gem 'acts_as_indexed', '= 0.6.6'
-</ruby>
-
 h4. Images or Resources don’t work
 
-Double check your S3_ information and make sure that the right buckets actually exist.
+Double check your S3_ information and make sure that the right buckets actually
+exist. You can confirm against the values Heroku has recorded by running
++heroku config+.
+
+See the
+"How to use Amazon S3 for storage":http://refinerycms.com/guides/amazon-s3-for-uploads
+guide for more specific information on file storage.
 
 h4. Other problems?
 
-See the "How to use Amazon S3 for storage":http://refinerycms.com/guides/amazon-s3-for-uploads guide for more specific information.
-
-Otherwise, run `heroku logs` or `heroku logs --tail` and see if you can spot the error yourself.
-Or you could explore the "help options available":/guides/how-to-get-help.
+Otherwise, run `heroku logs` or `heroku logs --tail` and see if you can spot the
+error yourself. Or you could explore the "help options
+available":/guides/how-to-get-help.

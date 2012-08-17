@@ -1,16 +1,23 @@
 ## 2.1.0 [unreleased]
 
+* Removed :before_javascript_libraries, :after_javascript_libraries, and :javascript_libraries content blocks. [#1842](https://github.com/resolve/refinerycms/pull/1842). [Rob Yurkowski](https://github.com/robyurkowski)
 * Refactored wysiwyg fields into a partial. [#1796](https://github.com/resolve/refinerycms/pull/1796). [Rob Yurkowski](https://github.com/robyurkowski)
 * Shortened all authentication helpers. [#1719](https://github.com/resolve/refinerycms/pull/1719). [Ryan Bigg](https://github.com/radar)
+* Added canonical page id to body to allow CSS selectors to target specific pages instead of including special CSS files. [#1700](https://github.com/resolve/refinerycms/pull/1700) & [#1828](https://github.com/resolve/refinerycms/pull/1828). [Philip Arndt](https://github.com/parndt) & [Graham Wagener](https://github.com/gwagener/)
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
-## 2.0.6 [unreleased]
-* Added `Refinery::Page#canonical_slug` to allow us to retrieve a consistent slug across multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/resolve/refinerycms/issues/1457). [Philip Arndt](https://github.com/parndt)
+## 2.0.7 [Unreleased]
+* Fixed a bug with nested reordering that would shuffle any set with 11 or more entities. [#1882](https://github.com/resolve/refinerycms/pull/1882). [Rob Yurkowski](https://github.com/robyurkowski)
+
+## 2.0.6 [6 August 2012]
+* Added Refinery::Page#canonical_slug to allow us to retrieve a consistent slug across multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/resolve/refinerycms/pull/1457). [Philip Arndt](https://github.com/parndt)
 * Fixed bug with 404 page not honoring custom view/layout template. [#1746](https://github.com/resolve/refinerycms/pull/1746). [Uģis Ozols](https://github.com/ugisozols)
 * Renamed all templates in generators which contained erb to *.rb.erb. [#1750](https://github.com/resolve/refinerycms/pull/1750). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed page reorder issue on Ruby 1.8.x. [#1585](https://github.com/resolve/refinerycms/issues/1585). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt).
 * Allowed to override presenters using `rake refinery:override`. [#1790](https://github.com/resolve/refinerycms/pull/1790). [Kevin Bullock](https://github.com/krbullock).
+* Fixed issue with saving settings in generated form extension by completely rewriting settings controller. [#1817](https://github.com/resolve/refinerycms/issues/1817). [Uģis Ozols](https://github.com/ugisozols)
+* Removed Refinery::Page#title_with_meta in favour of view helpers. [#1847](https://github.com/resolve/refinerycms/pull/1847). [Philip Arndt](https://github.com/parndt)
 
 ## 2.0.5 [11 June 2012]
 * Now extension/form generators will add all attributes to attr_accessible. [#1613](https://github.com/resolve/refinerycms/pull/1613). [Uģis Ozols](https://github.com/ugisozols)

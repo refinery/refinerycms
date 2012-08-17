@@ -5,7 +5,7 @@ module Refinery
 
     describe "#pagination_css_class" do
       context "when request.xhr? and params[:from_page] is set" do
-        before(:each) do
+        before do
           controller.request.stub(:xhr?).and_return(true)
         end
 

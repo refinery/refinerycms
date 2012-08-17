@@ -1,0 +1,78 @@
+sk:
+  refinery:
+    plugins:
+      <%= plural_name %>:
+        title: <%= plural_name.titleize %>
+        description: Poskytuje kontaktný formulár a zaznamenáva <%= plural_name.humanize.downcase %>
+    <%= namespacing.underscore %>:
+      <%= plural_name %>:
+        new:
+          send: Odoslať správu
+          privacy_policy: Chránime vaše súkromie
+      admin:
+        <%= plural_name %>:
+          delete: Trvalo odstrániť <%= singular_name.humanize.downcase %>
+          <%= singular_name %>:
+            read_<%= singular_name %>: Prečítať <%= singular_name.humanize.downcase %>
+            said: povedal
+            mark_as_spam: Označiť ako spam
+            mark_as_ham: Označiť ako prečítané
+          submenu:
+            inbox: Inbox
+            spam: Spam
+            update_notified: Upraviť zoznam notifikovaných
+            edit_confirmation_email: Upraviť potvrdzovací e-mail
+          index:
+            no_<%= plural_name %>: Zatiaľ ste neobdržali žiadne <%= plural_name.humanize.downcase %>.
+          spam:
+            no_spam: Hurá! Nemáte žiaden spam.
+          show:
+            details: Podrobnosti
+            age: Vek
+            actions: Akcie
+            back_to_all_<%= plural_name %>: Späť na všetky <%= plural_name.humanize.downcase %>
+            spam: Spam
+            spam_yes: 'áno'
+            <%= singular_name %>: <%= class_name.underscore.titleize %>
+            to: Komu
+            from: Od
+            click_to_email: Kliknite pre odoslanie tejto adresy e-mailom
+            phone: Telefón
+            date: Dátum
+            message: Správa
+        settings:
+          notification_recipients_form:
+            settings_value_name: Poslať upozornenie pre
+            explanation: Zakaždým, keď Vás niekto kontaktuje cez vaše webové stránky, Refinery odošle e-mail s upozornením na nový <%= singular_name.humanize.downcase %>.
+            hint: Keď je odoslaný nový <%= singular_name.humanize.downcase %>, Refinery odošle upozornenie na Váš e-mail.
+            example: "Zadajte e-mailovú adresu(y) ako: jack@work.com, jill@office.com"
+          confirmation_email_form:
+            to: Komu
+            from: Od
+            subject: Predmet
+            click_to_edit_subject: Kliknite tu ak chcete upraviť predmet
+            explanation: Zakaždým, keď Vás niekto kontaktuje cez vaše webové stránky, Refinery odošle e-mail s potvrdením o prijatí odosielateľovi <%= singular_name.humanize.downcase %>.
+            below_edit_email_sent: Nižšie môžete upraviť e-mail, ktorý je odosielaný.
+            the_customer_making_<%= singular_name %>: Klient robiť <%= singular_name.humanize.downcase %>
+            message: Správa
+            note: "Poznámka: umiestniťe text %name%, pre určenie pozície mena klienta v e-maile"
+      mailer:
+        notification:
+          greeting: Ahoj
+          you_recieved_new_<%= singular_name %>: Práve ste obdržali nový <%= singular_name.humanize.downcase %> na vašej webové stránke.
+          <%= singular_name %>_starts: --- <%= singular_name.humanize.downcase %> začiatok ---
+          <%= singular_name %>_ends: --- <%= singular_name.humanize.downcase %> koniec ---
+          from: Od
+          email: E-mail
+          phone: Telefón
+          message: Správa
+          closing_line: S pozdravom
+          ps_html: P.S. Všetky vaše <%= plural_name.humanize.downcase %> sú uložené v "<%= plural_name.titleize %>" sekcii v Refinery, ak by ste ich chceli zobraziť neskôr.
+  activerecord:
+    models:
+      <%= singular_name %>: <%= class_name.underscore.titleize %>
+    attributes:
+      <%= singular_name %>:
+<% attributes.each do |a| -%>
+        <%= a.name %>: <%= a.name.humanize %>
+<% end -%>

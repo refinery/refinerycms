@@ -38,11 +38,15 @@ module Refinery
         end
 
         describe "max file size" do
-          before(:each) do
-            ::Refinery::Resources.stub(:max_file_size).and_return('1224')
+          before do
+            Refinery::Resources.stub(:max_file_size).and_return('1224')
           end
 
           context "in english" do
+            before do
+              Refinery::I18n.stub(:current_locale).and_return(:en)
+            end
+
             it "is shown" do
               visit refinery.admin_resources_path
               click_link "Upload new file"
@@ -52,22 +56,18 @@ module Refinery
               end
             end
           end
-          context "in danish" do
-            it "is shown" do
-              visit refinery.admin_dashboard_path
-              within "#other_locales" do
-                click_link "Dansk"
-              end
 
-              click_link "Filer"
+          context "in danish" do
+            before do
+              Refinery::I18n.stub(:current_locale).and_return(:da)
+            end
+              
+            it "is shown" do
+              visit refinery.admin_resources_path
+
               click_link "Tilføj en ny fil"
               within "#maximum_file_size" do
                 page.should have_content "1,2 KB"
-              end
-
-              visit refinery.admin_dashboard_path
-              within "#other_locales" do
-                click_link "English"
               end
             end
           end

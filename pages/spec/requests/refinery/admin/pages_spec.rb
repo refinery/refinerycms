@@ -42,7 +42,7 @@ module Refinery
         end
 
         context "when some pages exist" do
-          before(:each) { 2.times { FactoryGirl.create(:page) } }
+          before { 2.times { |i| Page.create :title => "Page #{i}" } }
 
           it "shows reorder pages link" do
             visit refinery.admin_pages_path
@@ -55,18 +55,14 @@ module Refinery
         end
 
         context "when sub pages exist" do
-          let(:company) { FactoryGirl.create(:page, :title => "Our Company") }
-          let(:team) { FactoryGirl.create(:page, :parent => company, :title => 'Our Team') }
-          let(:locations) { FactoryGirl.create(:page, :parent => company, :title => 'Our Locations')}
-          let(:location) { FactoryGirl.create(:page, :parent => locations, :title => 'New York') }
+          let!(:company) { Page.create :title => 'Our Company' }
+          let!(:team) { company.children.create :title => 'Our Team' }
+          let!(:locations) { company.children.create :title => 'Our Locations' }
+          let!(:location) { locations.children.create :title => 'New York' }
 
           context "with auto expand option turned off" do
             before do
-              Refinery::Pages.auto_expand_admin_tree = false
-
-              # Pre load pages
-              location
-              team
+              Refinery::Pages.stub(:auto_expand_admin_tree).and_return(false)
 
               visit refinery.admin_pages_path
             end
@@ -81,14 +77,14 @@ module Refinery
               page.should_not have_content(locations.title)
             end
 
-            it "expands children", :js => true do
-              find(".toggle").click
+            it "expands children", :js do
+              find("#page_#{company.id} .toggle").click
 
               page.should have_content(team.title)
               page.should have_content(locations.title)
             end
 
-            it "expands children when nested mutliple levels deep", :js => true do
+            it "expands children when nested mutliple levels deep", :js do
               find("#page_#{company.id} .toggle").click
               find("#page_#{locations.id} .toggle").click
 
@@ -98,11 +94,7 @@ module Refinery
 
           context "with auto expand option turned on" do
             before do
-              Refinery::Pages.auto_expand_admin_tree = true
-
-              # Pre load pages
-              location
-              team
+              Refinery::Pages.stub(:auto_expand_admin_tree).and_return(true)
 
               visit refinery.admin_pages_path
             end
@@ -151,7 +143,7 @@ module Refinery
       end
 
       describe "edit/update" do
-        before(:each) { FactoryGirl.create(:page, :title => "Update me") }
+        before { Page.create :title => "Update me" }
 
         it "updates page" do
           visit refinery.admin_pages_path
@@ -169,9 +161,9 @@ module Refinery
 
       describe 'Previewing' do
         context "an existing page" do
-          before(:each) { FactoryGirl.create(:page, :title => 'Preview me') }
+          before { Page.create :title => 'Preview me' }
 
-          it 'will show the preview changes in a new window', :js => true do
+          it 'will show the preview changes in a new window', :js do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
@@ -181,7 +173,7 @@ module Refinery
             new_window_should_have_content("Some changes I'm unsure what they will look like")
           end
 
-          it 'will not save the preview changes', :js => true do
+          it 'will not save the preview changes', :js do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
@@ -196,7 +188,7 @@ module Refinery
         end
 
         context 'a brand new page' do
-          it "will not save when just previewing", :js => true do
+          it "will not save when just previewing", :js do
             visit refinery.admin_pages_path
 
             click_link "Add new page"
@@ -210,10 +202,10 @@ module Refinery
         end
 
         context 'a nested page' do
-          let!(:parent_page) { FactoryGirl.create(:page, :title => "Our Parent Page") }
-          let!(:nested_page) { FactoryGirl.create(:page, :parent => @parent, :title => 'Preview Me') }
+          let!(:parent_page) { Page.create :title => "Our Parent Page" }
+          let!(:nested_page) { parent_page.children.create :title => 'Preview Me' }
 
-          it "works like an un-nested page", :js => true do
+          it "works like an un-nested page", :js do
             visit refinery.admin_pages_path
 
             within "#page_#{nested_page.id}" do
@@ -230,7 +222,7 @@ module Refinery
 
       describe "destroy" do
         context "when page can be deleted" do
-          before(:each) { FactoryGirl.create(:page, :title => "Delete me") }
+          before { Page.create :title => "Delete me" }
 
           it "will show delete button" do
             visit refinery.admin_pages_path
@@ -244,7 +236,7 @@ module Refinery
         end
 
         context "when page can't be deleted" do
-          before(:each) { FactoryGirl.create(:page, :title => "Indestructible", :deletable => false) }
+          before { Page.create :title => "Indestructible", :deletable => false }
 
           it "wont show delete button" do
             visit refinery.admin_pages_path
@@ -256,7 +248,7 @@ module Refinery
       end
 
       context "duplicate page titles" do
-        before(:each) { FactoryGirl.create(:page, :title => "I was here first") }
+        before { Page.create :title => "I was here first" }
 
         it "will append nr to url path" do
           visit refinery.new_admin_page_path
@@ -269,14 +261,14 @@ module Refinery
       end
 
       context "with translations" do
-        before(:each) do
+        before do
           Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
 
           # Create a home page in both locales (needed to test menus)
           home_page = Globalize.with_locale(:en) do
-            FactoryGirl.create(:page, :title => 'Home',
-                                      :link_url => '/',
-                                      :menu_match => "^/$")
+            Page.create :title => 'Home',
+                        :link_url => '/',
+                        :menu_match => "^/$"
           end
 
           Globalize.with_locale(:ru) do
@@ -342,7 +334,7 @@ module Refinery
             Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
 
             _page = Globalize.with_locale(:en) {
-              FactoryGirl.create(:page, :title => en_page_title)
+              Page.create :title => en_page_title
             }
             Globalize.with_locale(:ru) do
               _page.title = ru_page_title
@@ -421,14 +413,14 @@ module Refinery
         describe "add a page with title only for secondary locale" do
           let(:ru_page) {
             Globalize.with_locale(:ru) {
-              FactoryGirl.create(:page, :title => ru_page_title)
+              Page.create :title => ru_page_title
             }
           }
           let(:ru_page_id) { ru_page.id }
           let(:ru_page_title) { 'Новости' }
           let(:ru_page_slug) { 'новости' }
 
-          before(:each) do
+          before do
             ru_page
             visit refinery.admin_pages_path
           end
@@ -490,7 +482,7 @@ module Refinery
         end
       end
 
-      describe "new page part", :js => true do
+      describe "new page part", :js do
         before do
           Refinery::Pages.stub(:new_page_parts).and_return(true)
         end
@@ -513,15 +505,16 @@ module Refinery
       describe 'advanced options' do
         describe 'view and layout templates' do
           context 'when parent page has templates set' do
-            before(:each) do
+            before do
               Refinery::Pages.stub(:use_layout_templates).and_return(true)
               Refinery::Pages.stub(:use_view_templates).and_return(true)
               Refinery::Pages.stub(:layout_template_whitelist).and_return(['abc', 'refinery'])
               Refinery::Pages.stub(:view_template_whitelist).and_return(['abc', 'refinery'])
               Refinery::Pages.stub(:valid_templates).and_return(['abc', 'refinery'])
-              parent_page = FactoryGirl.create(:page, :view_template => 'refinery',
-                                                      :layout_template => 'refinery')
-              parent_page.children.create(FactoryGirl.attributes_for(:page))
+              parent_page = Page.create :title => 'Parent Page',
+                                        :view_template => 'refinery',
+                                        :layout_template => 'refinery'
+              parent_page.children.create :title => 'Child Page'
             end
 
             specify 'sub page should inherit them' do
@@ -561,9 +554,9 @@ module Refinery
       end
 
       describe "add page to second locale" do
-        before(:each) do
+        before do
           Refinery::I18n.stub(:frontend_locales).and_return([:en, :lv])
-          FactoryGirl.create(:page)
+          Page.create :title => 'First Page'
         end
 
         it "succeeds" do
@@ -583,7 +576,7 @@ module Refinery
       end
 
       describe "delete page from main locale" do
-        before(:each) { FactoryGirl.create(:page) }
+        before { Page.create :title => 'Default Page' }
 
         it "doesn't succeed" do
           visit refinery.admin_pages_path
@@ -601,7 +594,7 @@ module Refinery
 
           # Create a page in both locales
           about_page = Globalize.with_locale(:en) do
-            FactoryGirl.create(:page, :title => 'About')
+            Page.create :title => 'About'
           end
 
           Globalize.with_locale(:ru) do
@@ -621,7 +614,7 @@ module Refinery
 
         describe "adding page link" do
           describe "with relative urls" do
-            before(:each) { Refinery::Pages.absolute_page_links = false }
+            before { Refinery::Pages.absolute_page_links = false }
 
             it "shows Russian pages if we're editing the Russian locale" do
               visit refinery.link_to_admin_pages_dialogs_path(:wymeditor => true, :switch_locale => :ru)
@@ -639,7 +632,7 @@ module Refinery
           end
 
           describe "with absolute urls" do
-            before(:each) { Refinery::Pages.absolute_page_links = true }
+            before { Refinery::Pages.absolute_page_links = true }
 
             it "shows Russian pages if we're editing the Russian locale" do
               visit refinery.link_to_admin_pages_dialogs_path(:wymeditor => true, :switch_locale => :ru)
@@ -658,7 +651,7 @@ module Refinery
 
           # see https://github.com/resolve/refinerycms/pull/1583
           context "when switching locales" do
-            specify "dialog has correct links", :js => true do
+            specify "dialog has correct links", :js do
               visit refinery.edit_admin_page_path(about_page)
 
               click_link "Add Link"

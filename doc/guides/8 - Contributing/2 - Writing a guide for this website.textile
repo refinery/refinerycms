@@ -11,7 +11,7 @@ h3. Format the guide
 
 The best way for you to learn how to create a guide is to look at how a guide is structured. We are currently using the docrails project and as such all of the guides are written in textile.
 
-A good example of how a guide can be structured is the 'Getting Started With Refinery' guide which you can "see here":https://github.com/resolve/refinerycms/raw/master/doc/guides/1%20-%20Getting%20Started/1%20-%20Getting%20Started.textile
+A good example of how a guide can be structured is the 'Getting Started With Refinery' guide which you can "see here":https://github.com/resolve/refinerycms/raw/master/doc/guides/1%20-%20Getting%20Started/1%20-%20Getting%20Started.textile.
 
 You should be able to match the sections of the raw textile guide with the "live guide":/guides/getting-started/ to see how each aspect works.
 

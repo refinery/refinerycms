@@ -5,7 +5,7 @@ module Refinery
     refinery_login_with :refinery_user
 
     context "javascripts" do
-      before(:each) do
+      before do
         ::Refinery::Core.clear_javascripts!
       end
 
@@ -17,7 +17,7 @@ module Refinery
     end
 
     context "stylesheets" do
-      before(:each) do
+      before do
         ::Refinery::Core.clear_stylesheets!
       end
 
