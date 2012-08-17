@@ -9,6 +9,7 @@ rescue
   gsub_file 'Gemfile', "# gem 'therubyracer'", "gem 'therubyracer'"
 end
 
+gsub_file 'Gemfile', "gem 'jquery-rails'", "gem 'jquery-rails', '~> 2.0.0'"
 append_file 'Gemfile' do
 "
 
