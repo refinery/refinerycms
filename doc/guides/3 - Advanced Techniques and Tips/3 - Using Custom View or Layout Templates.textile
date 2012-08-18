@@ -60,7 +60,7 @@ Create +app/views/refinery/pages/about_us.html.erb+, where +about_us+ is the
 name of the file you whitelisted.
 
 * Inside of this file, you can either +render '/refinery/content_page'+, or you
-can use +@page.content_for?(:body)+ to output the content of a specific page part.
+can use +@page.content_for(:body)+ to output the content of a specific page part.
 
 h4. Set Back-End Select
 
