@@ -1,6 +1,7 @@
 require 'rbconfig'
 VERSION_BAND = '2.0.0'
 
+gsub_file 'Gemfile', "gem 'jquery-rails'", "gem 'jquery-rails', '~> 2.0.0'"
 # We want to ensure that you have an ExecJS runtime available!
 begin
   run 'bundle install'
@@ -21,7 +22,6 @@ GEMFILE
   end
 end
 
-gsub_file 'Gemfile', "gem 'jquery-rails'", "gem 'jquery-rails', '~> 2.0.0'"
 append_file 'Gemfile', <<-GEMFILE
 
 # Refinery CMS
