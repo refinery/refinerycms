@@ -15,10 +15,10 @@ Refinery version 2.0 and later use Rails's asset pipeline to deliver Javascript.
 This means that you can simply remove the two relevant lines from
 @application.js@ to remove the default library, jQuery:
 
-<javascript>
+<erb>
 //= require jquery
 //= require jquery_ujs
-</javascript>
+</erb>
 
 You can include your own files this way too; indeed, since @application.js@ is
 minified in production, we recommend this as opposed to adding separate files.
@@ -41,7 +41,4 @@ It should be used inside a view like so:
 
 This will append @jquery-cycle.min.js@ after your @application.js@ file.
 
-WARNING. Previous versions of Refinery allowed you to define @content_for@
-blocks named @:before_javascript_libraries@, @:after_javascript_libraries@,
-and @:javascript_libraries@. These are no longer available, since the asset
-pipeline obviates their use.
+WARNING. Previous versions of Refinery allowed you to define @content_for@ blocks named @:before_javascript_libraries@, @:after_javascript_libraries@, and @:javascript_libraries@. These are no longer available, since the asset pipeline obviates their use.
