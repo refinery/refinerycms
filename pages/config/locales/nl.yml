@@ -50,16 +50,13 @@ nl:
           delete_content_section: Een pagina-onderdeel verwijderen
           reorder_content_section: De volgorde van de pagina-onderdelen wijzigen
         form_advanced_options:
-          toggle_advanced_options: Klik om extra opties voor de metadata- en menuopties te bewerken
           page_options: Pagina-opties
           parent_page: Bovenliggende pagina
-          advanced_options: Uitgebreide opties
           menu_title: Menutitel
           custom_slug: Aangepaste 'slug'
           show_in_menu_title: In menu tonen
           show_in_menu_description: Laat deze pagina zien in het menu op de site
           show_in_menu_help: Vink dit vakje uit, om de pagina niet in het menu te laten zien. Dit kan handig zijn als u een pagina hebt waar u naar wilt linken, zonder dat de pagina in het menu geplaatst wordt.
-          save_as_draft: Opslaan als concept
           skip_to_first_child: Naar de eerste onderliggende pagina springen
           skip_to_first_child_label: Bezoekers doorsturen naar de eerste onderliggende pagina
           skip_to_first_child_help: Deze optie zorgt er voor deze pagina verwijst naar de eerste onderliggende pagina. Dit kan handig zijn om pagina's te groeperen.

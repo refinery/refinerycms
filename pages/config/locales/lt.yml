@@ -45,15 +45,12 @@ lt:
           create_content_section: Pridėti turinio skiltį
           delete_content_section: Trinti turinio skiltį
         form_advanced_options:
-          toggle_advanced_options: Paspauskite norėdami matyti puslapio meta nustatymus ir meniu pasirinkimus
           page_options: Puslapio nustatymai
           parent_page: Tėvinis puslapis
-          advanced_options: Papildomi nustatymai
           custom_title: Kitokia puslapio antraštė
           show_in_menu_title: Rodyti meniu
           show_in_menu_description: Rodyti šį puslapį svetainės meniu
           show_in_menu_help: "Atžymėkite šią varnelę jei norite pašalinti šį puslapį iš svetainės meniu. Tai gali būti naudinga, jeigu turite puslapį į kurį norite leisti nuorodas tiesiogiai, bet nenorite jo rodyti svetainės meniu."
-          save_as_draft: Išsaugoti kaip juodraštį
           skip_to_first_child: Praleisti aukštesnio lygio puslapį
           skip_to_first_child_label: Nukreipti lankytojus į pirmą žemesnio lygio puslapį.
           skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.

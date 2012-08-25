@@ -44,15 +44,12 @@ ko:
           create_content_section: 컨텐츠 영역 생성
           delete_content_section: 컨텐츠 영역 삭제
         form_advanced_options:
-          toggle_advanced_options: 메타 태그 및 메뉴 설정 변경
           page_options: 페이지 설정
           parent_page: 상위 페이지
-          advanced_options: 고급 설정
           custom_title: 임의 제목 설정
           show_in_menu_title: 메뉴에 보이기
           show_in_menu_description: 이 페이지를 사이트 메뉴에 포함시킵니다.
           show_in_menu_help: 사이트 메뉴에 페이지가 보이지 않도록 하려면 이 설정을 해제하세요. 직접 링크는 가능하지만 메뉴에 보이기 원치 않는 페이지에 사용하면 유용합니다.
-          save_as_draft: 초안 저장
           skip_to_first_child: 상위 페이지 건너뛰기
           skip_to_first_child_label: 방문자들을 첫 하위 페이지로 보냅니다.
           skip_to_first_child_help: 이것을 설정하면 이 페이지가 첫 하위 페이지로 링크됩니다. 여러 페이지를 한 데 묶을 때 유용한 옵션입니다.

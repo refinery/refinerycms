@@ -44,15 +44,12 @@ fi:
           create_content_section: Lisää sisältöosio
           delete_content_section: Poista sisältöosio
         form_advanced_options:
-          toggle_advanced_options: "Näe metatieto- ja valikko-ominaisuudet"
           page_options: Sivun ominaisuudet
           parent_page: Yläsivu
-          advanced_options: Lisäasetukset
           custom_title: Kustomoitu otsikko
           show_in_menu_title: Näytä valikossa
           show_in_menu_description: Näytä tämä sivu nettisivuston valikossa
           show_in_menu_help: "Poista rasti tästä kentästä, jos haluat poistaa sivun valikosta. Tämä voi olla hyödyllinen ominaisuus, jos haluat näkymättömän sivun jonka linkin voit antaa tietyille ihmisille."
-          save_as_draft: Tallenna luonnoksena
           skip_to_first_child: "Näytä ensimmäinen alisivu"
           skip_to_first_child_label: "Uudelleenohjaa kävijät ensimmäiseen alisivuun"
           skip_to_first_child_help: "Tämä ominaisuus linkittää tämän sivun ensimmäiseen alisivuun, joka sillä on. Tämä on hyödyllistä, kun haluat ryhmitellä sivuja yhteen."

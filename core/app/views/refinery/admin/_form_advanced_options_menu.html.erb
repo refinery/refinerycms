@@ -1,0 +1,12 @@
+<div id="more_options_field" >
+  <p>
+    <%= link_to t('.advanced_options'), '#',
+                :id => 'toggle_advanced_options',
+                :title => t('.toggle_advanced_options') %>
+  </p>
+  <span id="draft_field">
+    <%= f.check_box :draft %>
+    <%= f.label :draft, t('.save_as_draft'),
+                :class => 'stripped' %>
+  </span>
+</div>

@@ -45,16 +45,13 @@ lv:
           create_content_section: Izveidot satura sadaļu
           delete_content_section: Dzēst satura sadaļu
         form_advanced_options:
-          toggle_advanced_options: Spied, lai piekļūtu meta tagiem un izvēlnes opcijām
           page_options: Lapas Opcijas
           # can't think of a proper translation for this ...
           parent_page: Parent page
-          advanced_options: Papildu Opcijas
           custom_title: Cits nosaukums
           show_in_menu_title: Rādīt izvēlnē
           show_in_menu_description: Rādīt šo lapu saita izvēlnē
           show_in_menu_help: Izņemiet ķeksi no šī loga, ja vēlaties, lai šī lapa nebūtu redzama saita izvēlnē. Šī opcija noder gadījumos, kad vēlaties iesaitēt šo lapu, bet nevēlaties, lai šī lapa parādītos saita izvēlnē.
-          save_as_draft: Saglabāt kā melnrakstu
           skip_to_first_child: Izlaist augstākā līmeņa lapu
           skip_to_first_child_label: Novirzīt apmeklētājus uz pirmo apakš līmeņa lapu.
           skip_to_first_child_help: Šī opcija liek lapai izveidot saiti uz pirmo apakšlapu. Tas varētu būt noderīgi, grupējot lapas kopā.

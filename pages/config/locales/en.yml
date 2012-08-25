@@ -51,16 +51,13 @@ en:
           reorder_content_section: Reorder content sections
           reorder_content_section_done: I'm done reordering the content sections
         form_advanced_options:
-          toggle_advanced_options: Access meta tag settings and menu options
           page_options: Page Options
           parent_page: Parent page
-          advanced_options: Advanced Options
           menu_title: Menu title
           custom_slug: Custom slug
           show_in_menu_title: Show in menu
           show_in_menu_description: Display this page in the site menu
           show_in_menu_help: Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu.
-          save_as_draft: Save as Draft
           skip_to_first_child: Skip top-level page
           skip_to_first_child_label: Redirect visitors to the first sub-level page.
           skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
