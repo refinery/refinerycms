@@ -44,15 +44,12 @@ de:
           create_content_section: Inhaltsabschnitt anlegen
           delete_content_section: Inhaltsabschnitt löschen
         form_advanced_options:
-          toggle_advanced_options: Klicken Sie hier, für die Meta-Tag-Einstellungen und Menüoptionen
           page_options: Seitenoptionen
           parent_page: Übergeordnete Seite
-          advanced_options: Erweiterte Optionen
           custom_title: Angepasster Titel
           show_in_menu_title: Im Menü anzeigen
           show_in_menu_description: Zeigt diese Seite im Seitenmenü an
           show_in_menu_help: Entfernen Sie dieses Häckchen, wenn die Seite nicht im Menü erscheinen soll. Dies kann nützlich sein, wenn Sie eine Seite direkt verlinken jedoch nicht im Menü anzeigen lassen möchten.
-          save_as_draft: Als Entwurf speichern
           skip_to_first_child: Überspringen der obersten Ebene
           skip_to_first_child_label: Auf erste untergeordnete Seite weiterleiten
           skip_to_first_child_help: Diese Option verlinkt die Seite zu der ersten untergeordneten Seite. Dies kann nützlich sein, wenn Seiten gruppiert werden sollen.

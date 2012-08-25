@@ -44,15 +44,12 @@ rs:
           create_content_section: Dodaj sekciju za sadržaj
           delete_content_section: Ukloni sekciju za sadržaj
         form_advanced_options:
-          toggle_advanced_options: Pristupi meta-tag podešavanjima i opcijama menija
           page_options: Opcije strane
           parent_page: Roditelj strana
-          advanced_options: Napredne opcije
           custom_title: Prilagođen naslov
           show_in_menu_title: Prikaži u meniju
           show_in_menu_description: Prikaži ovu stranu u meniju sajta
           show_in_menu_help: Ostavi prazno polje ako želiš da ukloniš ovu stranu iz menija sajta. Ovo može biti korisno ukoliko je potrebno da strana postoji, ali da se ne može izabrati iz glavnog menija.
-          save_as_draft: Snimi kao skicu
           skip_to_first_child: Preskoči stranu višeg nivoa
           skip_to_first_child_label: Preusmeri posetioce na prvu podstranu.
           skip_to_first_child_help: Ova opcija omogućava strani da linkuje na prvu stranu ispod. Ovo može biti korisno pri grupisanju strana.

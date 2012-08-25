@@ -44,15 +44,12 @@ sv:
           create_content_section: Lägg till ny innehållssektion
           delete_content_section: Ta bort innehållssektion
         form_advanced_options:
-          toggle_advanced_options: Klicka för att få tillgång till meta-taggar och menyval
           page_options: Sidalternativ
           parent_page: Ovanliggande sida
-          advanced_options: Avancerade alternativ
           custom_title: Annan titel
           show_in_menu_title: Visa i huvudmeny
           show_in_menu_description: Visa den här sidan i huvudmeny
           show_in_menu_help: Avmarkera den här rutan om du vill ta bort en sida från huvudmeny. Det här är användbart för de sidor du vill man ska komma till på annat vis än genom huvudmeny. Tex genom länkar.
-          save_as_draft: Spara som Utkast
           skip_to_first_child: Sida som hoppar över topp-nivå
           skip_to_first_child_label: Vidarebefodrar besökare till den första undersidan.
           skip_to_first_child_help: Det här alternativet vidarebefodrar besökaren till den första undersidan. Detta alternativ kan vara användbart vid gruppering av sidor.

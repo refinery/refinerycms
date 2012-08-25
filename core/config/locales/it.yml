@@ -62,6 +62,10 @@ it:
       error_messages:
         problems_in_following_fields: "È necessario risolvere i seguenti errori"
       help: aiuto
+      form_advanced_options_menu:
+        advanced_options: Mostra/nascondi opzioni avanzate
+        toggle_advanced_options: Cliccare per accedere alle impostazioni dei meta tags e del menu.
+        save_as_draft: Salva come bozza
     message:
       close: Fine
       close_this_message: Chiudi questo messaggio

@@ -56,6 +56,10 @@ ja:
       error_messages:
         problems_in_following_fields: 以下のフィールドに問題がありました。
       help: ヘルプ
+      form_advanced_options_menu:
+        advanced_options: その他の設定
+        toggle_advanced_options: メタタグの設定とメニューオプションの設定
+        save_as_draft: 準備稿として保存する
     message:
       close: 閉じる
       close_this_message: このメッセージを閉じる

@@ -57,6 +57,10 @@ nl:
       error_messages:
         problems_in_following_fields: Er zijn problemen met de volgende velden
       help: help
+      form_advanced_options_menu:
+        advanced_options: Uitgebreide opties
+        toggle_advanced_options: Klik om extra opties voor de metadata- en menuopties te bewerken
+        save_as_draft: Opslaan als concept
     message:
       close: Sluiten
       close_this_message: Dit bericht sluiten

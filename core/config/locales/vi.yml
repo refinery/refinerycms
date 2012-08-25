@@ -54,6 +54,10 @@ vi:
       error_messages:
         problems_in_following_fields: Có lỗi xảy ra với những trường sau
       help: giúp đỡ
+      form_advanced_options_menu:
+        advanced_options: Các tùy chọn nâng cao
+        toggle_advanced_options: Mở các thiết lập meta-tag và menu
+        save_as_draft: Lưu trữ dưới dạng bản thảo
     message:
       close: Đóng
       close_this_message: Đóng thông báo này

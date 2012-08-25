@@ -42,15 +42,12 @@ ja:
           create_content_section: コンテンツを追加
           delete_content_section: コンテンツを削除
         form_advanced_options:
-          toggle_advanced_options: メタタグの設定とメニューオプションの設定
           page_options: ページの設定
           parent_page: 親ページ
-          advanced_options: その他の設定
           custom_title: カスタマイズしたタイトル
           show_in_menu_title: メニューで表示する
           show_in_menu_description: このページをサイトメニューで表示する
           show_in_menu_help: サイトメニューからこのページを削除する時はこのチェックボックスのチェックを外して下さい。ユーザに直接アクセスしてもらいたいページで、サイトメニューには表示したくないページがある場合などに便利です。
-          save_as_draft: 準備稿として保存する
           skip_to_first_child: トップレベルのページを飛ばす
           skip_to_first_child_label: この直ぐ下の階層のページにユーザを飛ばす
           skip_to_first_child_help: このオプションを使うと、リンクは直ぐ下の階層のページのうちの先頭のものにリンクします。幾つかのページを一まとめにする場合などに便利です。

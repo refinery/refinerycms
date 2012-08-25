@@ -45,15 +45,12 @@ pt-BR:
           create_content_section: Criar seção de conteúdo
           delete_content_section: Apagar seção de conteúdo
         form_advanced_options:
-          toggle_advanced_options: Clique aqui para acessar as configurações de meta tag e opções do menu
           page_options: Opções de página
           parent_page: Página pai
-          advanced_options: Opções avançadas
           custom_title: Título opcional
           show_in_menu_title: Mostrar no menu
           show_in_menu_description: Mostra esta página no menu do site
           show_in_menu_help: "Desmarque está opção caso queira remover a página do menu do site. Pode ser útil caso queira linkar um outra página para esta, mas não quer que esta apareça no menu do site."
-          save_as_draft: Salvar como rascunho
           skip_to_first_child: Pular esta página
           skip_to_first_child_label: Redieciona os visitante para a primeira página a baixo desta no menu.
           skip_to_first_child_help: "Está opção faz com que o link desta página aponte para o primeiro link do menu a baixo dessa. Usado quando você tem sub-páginas."

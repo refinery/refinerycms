@@ -52,16 +52,13 @@ ru:
           create_content_section: Добавить колонку
           delete_content_section: Удалить колонку
         form_advanced_options:
-          toggle_advanced_options: Настройка мета-тегов, меню и др.
           page_options: Настройка страницы
           parent_page: Родительская страница
-          advanced_options: Дополнительные настройки
           menu_title: Заголовок в меню
           custom_slug: Пользовательский slug
           show_in_menu_title: Показывать в меню
           show_in_menu_description: Отображать эту страницу в меню сайта
           show_in_menu_help: "Снимите отметку, если вы хотите убрать страницу из меню вашего сайта."
-          save_as_draft: Сохранить как черновик
           skip_to_first_child: Пропуск страницы верхнего уровня
           skip_to_first_child_label: Перенаправлять посетителей на первую подстраницу
           skip_to_first_child_help: "Эта опция делает страницу связаннной с первой подстраницей. Это может быть полезно при группировке страниц."

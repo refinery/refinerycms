@@ -54,6 +54,10 @@ fr:
       error_messages:
         problems_in_following_fields: Les champs suivants comportent des problèmes
       help: aide
+      form_advanced_options_menu:
+        advanced_options: Options avancées
+        toggle_advanced_options: Cliquer ici pour paraméter les étiquettes et accéder au menu des options
+        save_as_draft: Enregistrer comme brouillon
     message:
       close: Fermer
       close_this_message: Fermer ce message

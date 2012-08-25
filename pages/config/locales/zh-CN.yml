@@ -45,17 +45,14 @@ zh-CN:
           create_content_section: 添加内容区
           delete_content_section: 删除内容区
         form_advanced_options:
-          toggle_advanced_options: meta 标签设定与菜单选项
           page_options: 页面选项
           parent_page: 父业面
-          advanced_options: 高级选项
           menu_title: 菜单项名称
           custom_slug: 自定义slug
           custom_title: 自定义标题
           show_in_menu_title: 在菜单中显示
           show_in_menu_description: 在网站菜单中显示这个页面
           show_in_menu_help: 如果您想在网站菜单中去除一个页面, 不勾选这个选项. 如果您想有个可以直接访问的页面但又不想显示在菜单里, 这个很方便的选项.
-          save_as_draft: 另存为草稿
           skip_to_first_child: 跳过第一层页面
           skip_to_first_child_label: 重定向浏览者到第一个子层页.
           skip_to_first_child_help: 这个选项使得这个页面连接到第一个页面下面, 这对组合页面在一起的时候非常有用.

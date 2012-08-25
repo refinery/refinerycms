@@ -54,6 +54,10 @@ lt:
       error_messages:
         problems_in_following_fields: Su šiais laukais iškilo problemų
       help: pagalba
+      form_advanced_options_menu:
+        advanced_options: Papildomi nustatymai
+        toggle_advanced_options: Paspauskite norėdami matyti puslapio meta nustatymus ir meniu pasirinkimus
+        save_as_draft: Išsaugoti kaip juodraštį
     message:
       close: Uždaryti
       close_this_message: Uždaryti šią žinutę

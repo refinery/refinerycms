@@ -43,15 +43,12 @@ sl:
           create_content_section: Ustvari vsebinski sklop
           delete_content_section: Odstrani vsebinski sklop
         form_advanced_options:
-          toggle_advanced_options: Klinite za dostop do nastavitev meta značk in opcij menija
           page_options: Možnosti Strani
           parent_page: Matična stran
-          advanced_options: Napredne Možnosti
           custom_title: Naslov po meri
           show_in_menu_title: Prikaži v meniju
           show_in_menu_description: Obkljukajte, če želite da se stran pojavi v glavnem meniju.
           show_in_menu_help: "Odkljukate, če želite da se stran ne prikaže v glavnem meniju. To je lahko zelo priročno, če imate stran za katero želite da se uporabniki povežejo neposredno vendar ne želite da prikaže v glavnem meniju."
-          save_as_draft: Shrani kot Osnutek
           skip_to_first_child: Preskoči na prvo podstran
           skip_to_first_child_label: Preusmeri obiskovalce na prvo podstran.
           skip_to_first_child_help: "Ta opcija poveže to stran s prvo podstranjo. To je lahko priročno pri združevanju strani."

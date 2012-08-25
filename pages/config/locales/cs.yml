@@ -45,15 +45,12 @@ cs:
           create_content_section: Přidat sekci
           delete_content_section: Smazat sekci
         form_advanced_options:
-          toggle_advanced_options: Zpřístupní nastavení menu a meta tagů
           page_options: Nastavení stránky
           parent_page: Nadřazená stránka
-          advanced_options: Rozšířené nastavení
           custom_title: Titulek
           show_in_menu_title: Zobrazit v menu
           show_in_menu_description: Zobrazit tuto stránku v menu webu
           show_in_menu_help: Odškrtněte pokud chcete odstranit odkaz na tuto stránku z menu webu.
-          save_as_draft: Uložit jako pracovní verzi
           skip_to_first_child: Přeskočit na první dceřinou stránku
           skip_to_first_child_label: Přesměruje návštěvníka na první dceřinou stránku.
           skip_to_first_child_help: Tato stránka se nezobrazí, místo toho bude odkaz na ní přesměrován na její první dceřinou stránku. To se může hodit pro seskupování stránek.
