@@ -208,6 +208,10 @@ module Refinery
       end
     end
 
+    def generator_command
+      raise "You must override the method 'generator_command' in your generator."
+    end
+
     def merge_locales!
       if existing_extension?
         # go through all of the temporary files and merge what we need into the current files.
@@ -304,11 +308,12 @@ module Refinery
         else
           "Please specify the singular name '#{singular_name.singularize}' instead of '#{plural_name}'."
         end
-        exit_with_message!(message)
+        exit_with_message! message
       end
 
       if attributes.empty? && self.behavior != :revoke
-        exit_with_message!("You must specify a name and at least one field. For help: #{generator_command}")
+        exit_with_message! "You must specify a name and at least one field." \
+                           "\nFor help, run: #{generator_command}"
       end
     end
 
