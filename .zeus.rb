@@ -4,7 +4,7 @@ begin
 rescue LoadError
 end
 
-ROOT_PATH = File.expand_path(Dir.pwd)
+ROOT_PATH = File.expand_path('../spec/dummy', __FILE__)
 
 Zeus::Server.define! do
   stage :boot do
@@ -115,13 +115,11 @@ Zeus::Server.define! do
           end
         end
 
-        if Dir.exist?(ROOT_PATH + "/spec")
-          stage :spec_helper do
-            action { require 'spec_helper' }
+        stage :spec_helper do
+          action { require File.join(ROOT_PATH, '..', 'spec_helper') }
 
-            command :rspec do
-              exit RSpec::Core::Runner.run(ARGV)
-            end
+          command :rspec do
+            exit RSpec::Core::Runner.run(ARGV)
           end
         end
 
