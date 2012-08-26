@@ -186,6 +186,10 @@ module Refinery
       exit 1
     end
 
+    def extension_in_gemfile?
+      gemfile.read.scan(%r{#{gem_name}}).any?
+    end
+
     def finalize_extension!
       if self.behavior != :revoke and !self.options['pretend']
         puts_instructions!
@@ -204,8 +208,8 @@ module Refinery
       end
     end
 
-    def extension_in_gemfile?
-      gemfile.read.scan(%r{#{gem_name}}).any?
+    def generator_command
+      raise "You must override the method 'generator_command' in your generator."
     end
 
     def merge_locales!
@@ -304,11 +308,12 @@ module Refinery
         else
           "Please specify the singular name '#{singular_name.singularize}' instead of '#{plural_name}'."
         end
-        exit_with_message!(message)
+        exit_with_message! message
       end
 
       if attributes.empty? && self.behavior != :revoke
-        exit_with_message!("You must specify a name and at least one field. For help: #{generator_command}")
+        exit_with_message! "You must specify a name and at least one field." \
+                           "\nFor help, run: #{generator_command}"
       end
     end
 
