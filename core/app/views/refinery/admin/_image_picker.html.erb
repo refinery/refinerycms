@@ -21,7 +21,7 @@
       <% else -%>
         <img class="current_picked_image" src="" alt="" style='display: none' />
       <% end -%>
-      <span class='no_picked_image_selected nothing_selected' <%= "style='display: none;'" if image.present? %>>
+      <span class='no_picked_image_selected nothing_selected'<%= " style='display: none;'".html_safe if image.present? %>>
         <%= t('.none_selected') %>
       </span>
     </a>
