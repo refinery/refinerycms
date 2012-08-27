@@ -55,12 +55,10 @@ module Refinery
         unless params[:insert]
           if @images.all?(&:valid?)
             flash.notice = t('uploaded_successfully', :scope => 'refinery.admin.images.form')
-            if from_dialog?
-              @dialog_successful = true
-              render :nothing => true, :layout => true
-            else
-              redirect_to refinery.admin_images_path
-            end
+            
+            @dialog_successful = true if from_dialog?
+
+            render :nothing => true, :layout => true
           else
             self.new # important for dialogs
             render :action => 'new'
