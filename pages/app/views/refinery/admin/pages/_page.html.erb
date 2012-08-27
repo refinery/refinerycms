@@ -30,7 +30,7 @@
                   :title => t('new', :scope => 'refinery.admin.pages') %>
 
       <%= link_to refinery_icon_tag('application_edit.png'),
-                  refinery.edit_admin_page_path(page.uncached_nested_url),
+                  refinery.edit_admin_page_path(page.id),
                   :title => t('edit', :scope => 'refinery.admin.pages') %>
 
       <%= link_to refinery_icon_tag('delete.png'),
