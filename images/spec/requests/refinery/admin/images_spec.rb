@@ -31,7 +31,7 @@ module Refinery
           click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
         end
         page.should have_content(::I18n.t("uploaded_successfully", :scope => "refinery.admin.images.form"))
-        page.should have_content("image-with-dashes.jpg")
+        page.should have_selector("img[src*='image-with-dashes.jpg']")
         Refinery::Image.count.should == 1
       end
 
