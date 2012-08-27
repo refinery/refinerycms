@@ -4,6 +4,7 @@
 * Refactored wysiwyg fields into a partial. [#1796](https://github.com/resolve/refinerycms/pull/1796). [Rob Yurkowski](https://github.com/robyurkowski)
 * Shortened all authentication helpers. [#1719](https://github.com/resolve/refinerycms/pull/1719). [Ryan Bigg](https://github.com/radar)
 * Added canonical page id to body to allow CSS selectors to target specific pages instead of including special CSS files. [#1700](https://github.com/resolve/refinerycms/pull/1700) & [#1828](https://github.com/resolve/refinerycms/pull/1828). [Philip Arndt](https://github.com/parndt) & [Graham Wagener](https://github.com/gwagener/)
+* Added ajaxy image uploading. [#1739](https://github.com/resolve/refinerycms/pull/1739). [Jean-Philippe Boily](https://github.com/jipiboily)
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
