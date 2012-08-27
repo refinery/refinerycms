@@ -54,6 +54,10 @@ sk:
       error_messages:
         problems_in_following_fields: Vyskytol sa problém s týmito údajmi 
       help: Nápoveda
+      form_advanced_options_menu:
+        advanced_options: Rozšírené nastavenia
+        toggle_advanced_options: Sprístupní rozšírené nastavenia ako napríklad nastavenia menu a meta tagov.
+        save_as_draft: Uložiť ako pracovnú verziu
     message:
       close: Zavrieť
       close_this_message: Zavrieť správu

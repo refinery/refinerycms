@@ -50,6 +50,10 @@ sl:
       error_messages:
         problems_in_following_fields: Prišlo je do težav v naslednjih poljih
       help: pomoč
+      form_advanced_options_menu:
+        advanced_options: Napredne Možnosti
+        toggle_advanced_options: Klinite za dostop do nastavitev meta značk in opcij menija
+        save_as_draft: Shrani kot Osnutek
     message:
       close: Zapri
       close_this_message: Zapri to sporočilo

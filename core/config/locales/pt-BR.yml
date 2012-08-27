@@ -54,6 +54,10 @@ pt-BR:
       error_messages:
         problems_in_following_fields: Há problemas com os seguintes campos
       help: ajuda
+      form_advanced_options_menu:
+        advanced_options: Opções avançadas
+        toggle_advanced_options: Clique aqui para acessar as configurações de meta tag e opções do menu
+        save_as_draft: Salvar como rascunho
     message:
       close: Fechar
       close_this_message: Fechar esta mensagem

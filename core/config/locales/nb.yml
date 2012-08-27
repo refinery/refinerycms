@@ -54,6 +54,10 @@ nb:
       error_messages:
         problems_in_following_fields: Det oppsto problemer med følgende felter
       help: hjelp
+      form_advanced_options_menu:
+        advanced_options: Avanserte Innstillinger
+        toggle_advanced_options: Klikk for å få tilgang til meta tag innstillinger og meny alternativer
+        save_as_draft: Lagre som Utkast
     message:
       close: Lukk
       close_this_message: Lukk denne meldingen

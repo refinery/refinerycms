@@ -57,6 +57,10 @@ ko:
       error_messages:
         problems_in_following_fields: 다음 항목에서 문제를 발견했습니다
       help: 도움말
+      form_advanced_options_menu:
+        advanced_options: 고급 설정
+        toggle_advanced_options: 메타 태그 및 메뉴 설정 변경
+        save_as_draft: 초안 저장
     message:
       close: 닫기
       close_this_message: 이 메시지 닫기

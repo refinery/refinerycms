@@ -54,6 +54,10 @@ zh-CN:
       error_messages:
         problems_in_following_fields: 以下字段存在问题
       help: 帮助
+      form_advanced_options_menu:
+        advanced_options: 高级选项
+        toggle_advanced_options: meta 标签设定与菜单选项
+        save_as_draft: 另存为草稿
     message:
       close: 关闭
       close_this_message: 关闭这条信息

@@ -54,6 +54,10 @@ zh-TW:
       error_messages:
         problems_in_following_fields: 以下幾個欄位出現問題
       help: 求助
+      form_advanced_options_menu:
+        advanced_options: 進階選項
+        toggle_advanced_options: 存取 meta 標籤設定與選單選項
+        save_as_draft: 儲存草稿
     message:
       close: 關閉
       close_this_message: 關閉這個訊息

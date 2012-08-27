@@ -56,6 +56,10 @@ cs:
       error_messages:
         problems_in_following_fields: Vyskytl se problém s těmito údaji
       help: nápověda
+      form_advanced_options_menu:
+        advanced_options: Zpřístupní rozšířené nastavení ako například nastavení menu a meta tagů
+        toggle_advanced_options: Rozšířené nastavení
+        save_as_draft: Uložit jako pracovní verzi
     message:
       close: Zavřít
       close_this_message: Zavřít zprávu
