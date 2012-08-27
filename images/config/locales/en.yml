@@ -15,6 +15,15 @@ en:
           replace_image: " replace it with this one..."
           current_image: Current Image
           maximum_image_size: The maximum image size is %{bytes}.
+          uploading: "Uploading..."
+          there_was: "There was"
+          error: "error"
+          should_be_smaller: "should be smaller than"
+          bytes_in_size: "bytes in size"
+          image_type: "should be either a JPG, PNG or GIF"
+          uploaded: "uploaded"
+          last_complete: "Last upload complete"
+          uploaded_successfully: "Uploaded successfully"
         actions:
           create_new_image: Add new image
         records:

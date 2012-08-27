@@ -54,7 +54,7 @@ module Refinery
 
         unless params[:insert]
           if @images.all?(&:valid?)
-            flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@images.map(&:title).join("', '")}'")
+            flash.notice = t('uploaded_successfully', :scope => 'refinery.admin.images.form')
             if from_dialog?
               @dialog_successful = true
               render :nothing => true, :layout => true
