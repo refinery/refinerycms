@@ -54,6 +54,7 @@ module Refinery
 
         unless params[:insert]
           if @images.all?(&:valid?)
+            flash.notice = t('uploaded_successfully', :scope => 'refinery.admin.images.form')
             if from_dialog?
               @dialog_successful = true
               render :nothing => true, :layout => true
@@ -110,11 +111,6 @@ module Refinery
                    }
           end
         end
-      end
-
-      def set_flash
-        flash.notice = t('uploaded_successfully', :scope => 'refinery.admin.images.form')
-        render :nothing => true, :layout => false
       end
 
     protected
