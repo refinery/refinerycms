@@ -30,8 +30,8 @@ module Refinery
                                               join("spec/fixtures/image-with-dashes.jpg")
           click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
         end
-
-        page.should have_content(::I18n.t('created', :scope => 'refinery.crudify', :what => "'Image With Dashes'"))
+        page.should have_content(::I18n.t("uploaded_successfully", :scope => "refinery.admin.images.form"))
+        page.should have_selector("img[src*='image-with-dashes.jpg']")
         Refinery::Image.count.should == 1
       end
 
