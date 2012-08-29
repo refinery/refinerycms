@@ -19,7 +19,6 @@ class Images
 
   cache_dom: ->
     @error_list = $("#error_list")
-    @success_list = $("#flash")
     @error_explanation = $("#errorExplanation")
     @upload_progress = $("#upload_progress")
 
@@ -44,14 +43,15 @@ class Images
   after_upload_all: ->
     $(".save-loader").hide()
     @upload_progress.hide()
-    @success_list.show()
     if @errors.length > 0
       @render_errors()
     else
       if getParameterByName("modal") == "true"
         window.parent.document.getElementById("dialog_frame").contentDocument.location.reload(true);
-      else
+      else if getParameterByName("dialog") == "true"
         window.parent.location.reload(true)
+      else
+        window.location = "<%= Refinery::Core::Engine.routes.url_helpers.admin_images_path %>"
 
   validate: (file) ->
     max_file_size = <%= Refinery::Images.max_image_size %>
