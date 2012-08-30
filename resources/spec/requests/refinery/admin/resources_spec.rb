@@ -61,7 +61,7 @@ module Refinery
             before do
               Refinery::I18n.stub(:current_locale).and_return(:da)
             end
-              
+
             it "is shown" do
               visit refinery.admin_resources_path
 
