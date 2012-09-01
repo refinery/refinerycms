@@ -114,6 +114,10 @@ module Refinery
       ::Refinery::I18n.enabled?
     end
 
+    def current_admin_locale
+      ::I18n.locale
+    end
+
     # Returns a Pathname to the root of the Refinery CMS project
     def root
       @root ||= Pathname.new(File.expand_path('../../../../', __FILE__))
