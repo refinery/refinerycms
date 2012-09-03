@@ -27,8 +27,8 @@ es:
         delete: Borrar
         close: Cerrar
       image_picker:
-        none_selected: No hay ninguna %{what} seleccionada, haz click aquí para añadir una.
-        remove_current: Eliminar %{what} actual
+        none_selected: No hay ninguna imagen seleccionada, haz click aquí para añadir una.
+        remove_current: Eliminar imagen actual
         change: Haz click aquí para escoger una imagen
         show: Mostrar
       resource_picker:
