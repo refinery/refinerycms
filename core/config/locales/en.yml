@@ -50,8 +50,9 @@ en:
         current: Current File
       search:
         button_text: Search
-        results_for: "Search results for '%{query}'"
+        results_for: "Search results for &#8216;<em>%{query}</em>&#8217;"
         no_results: 'Sorry, no results found'
+        cancel_search: 'Cancel search'
       delete:
         message: "Are you sure you want to remove '%{title}'?"
       error_messages:
