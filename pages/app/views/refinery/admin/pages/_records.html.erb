@@ -1,5 +1,6 @@
 <% if searching? %>
-  <h2><%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %></h2>
+  <%= link_to t('cancel_search', :scope => 'refinery.admin.search'), refinery.admin_pages_path, :class => "cancel-search" %>
+  <h2><%= t('results_for_html', :scope => 'refinery.admin.search', :query => h(params[:search])).html_safe %></h2>
 <% end %>
 <% if @pages.any? %>
   <%= render 'sortable_list' %>
