@@ -494,6 +494,13 @@ pre {
 #records > #recent_activity > ul li, #records > #recent_inquiries > ul li {
   max-height: 35px;
 }
+#recent_activity li a, #recent_inquiries li a {
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
 #content #records > ul li .actions a, #content #records .pagination_container > ul li .actions a {
   line-height: 29px;
 }
