@@ -97,7 +97,7 @@ module Refinery
         dummy.rgt.should eq(10)
       end
 
-      # Regression test for https://github.com/resolve/refinerycms/issues/1585
+      # Regression test for https://github.com/refinery/refinerycms/issues/1585
       it "sorts numerically rather than by string key" do
         dummy, dummy_params = [], {}
 

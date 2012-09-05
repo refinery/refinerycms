@@ -649,7 +649,7 @@ module Refinery
             end
           end
 
-          # see https://github.com/resolve/refinerycms/pull/1583
+          # see https://github.com/refinery/refinerycms/pull/1583
           context "when switching locales" do
             specify "dialog has correct links", :js do
               visit refinery.edit_admin_page_path(about_page)

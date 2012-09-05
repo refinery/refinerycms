@@ -183,7 +183,7 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
     if ((span = $(this._doc.body).find('span#' + this._current_unique_stamp)).length > 0) {
       span.parent().html(span.parent().html().replace(new RegExp(["<span(.+?)", span.attr('id'), "(.+?)<\/span>"].join("")), span.html()));
     }
-    // https://github.com/resolve/refinerycms/issues/888
+    // https://github.com/refinery/refinerycms/issues/888
     if (node = $(this._doc.body).find('#' + this._current_unique_stamp)) {
       node.attr("id", (node.attr('_id_before_replaceable') || ""));
       node.removeAttr("_id_before_replaceable");

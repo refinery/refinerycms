@@ -106,4 +106,4 @@ h3. Pull request
 
 h3. Done
 
-And now you're done! If your changes are accepted, you will end up on the "contributor list":http://github.com/resolve/refinerycms/contributors.
+And now you're done! If your changes are accepted, you will end up on the "contributor list":http://github.com/refinery/refinerycms/contributors.

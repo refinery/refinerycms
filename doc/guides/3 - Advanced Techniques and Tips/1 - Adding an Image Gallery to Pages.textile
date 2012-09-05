@@ -6,7 +6,7 @@ By default pages don't allow you to make galleries of images. This guide will sh
 
 endprologue.
 
-WARNING: This guide is for Rails 2 implementations of Refinery. If you're using Rails 3 use the "refinerycms-page-images":https://github.com/resolve/refinerycms-page-images extension instead.
+WARNING: This guide is for Rails 2 implementations of Refinery. If you're using Rails 3 use the "refinerycms-page-images":https://github.com/refinery/refinerycms-page-images extension instead.
 
 h3. Introduction
 
@@ -17,7 +17,7 @@ h3. Create association between page and portfolio entry
 Let say we want every page has exactly one gallery. So for achieve that we are going to add association in page model. Add following code in +/app/models/page.rb+
 
 <erb>
-belongs_to :gallery, :class_name => "PortfolioEntry", 
+belongs_to :gallery, :class_name => "PortfolioEntry",
                      :foreign_key => :portfolio_entry_id
 </erb>
 
@@ -42,13 +42,13 @@ First we want to select gallery from list of options (add a few entries in portf
 <erb>
 <div class="field images_field">
   <%= f.label 'Select Gallery' %>
-  <%= f.select (:portfolio_entry_id, 
-                PortfolioEntry.all.collect { |p| [p.title, p.id.to_s] }, { 
-                :prompt   => 'Select gallery', 
-                :selected =>  @page.portfolio_entry_id.to_s }, 
+  <%= f.select (:portfolio_entry_id,
+                PortfolioEntry.all.collect { |p| [p.title, p.id.to_s] }, {
+                :prompt   => 'Select gallery',
+                :selected =>  @page.portfolio_entry_id.to_s },
                 :class    => 'select_gallery' ) %>
 
-  <%= render :partial => 'gallery', 
+  <%= render :partial => 'gallery',
              :locals => { :f => f, :gallery => @page.gallery } %>
 </div>
 </erb>
@@ -99,7 +99,7 @@ init_gallery = function () {
   $('.select_gallery').change(function(e) {
     $('#portfolio_images').remove();
 
-    gallery_placeholder.empty().html('<img 
+    gallery_placeholder.empty().html('<img
          src="/images/refinery/ajax-loader.gif" style="padding:10px 0;">');
 
     $.ajax({
@@ -145,7 +145,7 @@ But this would not work until we added below route in +/config/routes.rb+
 
 <ruby>
 map.namespace(:admin, :path_prefix => 'refinery') do |admin|
-  admin.load_gallery "/load_gallery", :controller => "pages", 
+  admin.load_gallery "/load_gallery", :controller => "pages",
                                       :action => "load_gallery"
 end
 </ruby>
