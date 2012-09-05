@@ -44,7 +44,7 @@ module Refinery
             @images << (@image = ::Refinery::Image.create(params[:image]))
           else
             params[:image][:image].each do |image|
-              @images << (@image = ::Refinery::Image.create(:image => image))
+              @images << (@image = ::Refinery::Image.create({:image => image}.merge(params[:image].except(:image))))
             end
           end
         rescue Dragonfly::FunctionManager::UnableToHandle
