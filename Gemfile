@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gemspec
 
 # Add i18n support.
-gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/parndt/refinerycms-i18n.git'
+gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/refinery/refinerycms-i18n.git'
 
 # Fixes uniqueness constraint on translated columns.
 # See: https://github.com/svenfuchs/globalize3/pull/121
