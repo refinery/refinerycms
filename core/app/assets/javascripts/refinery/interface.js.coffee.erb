@@ -7,10 +7,6 @@
     $(".field > .wym_box").corner "5px tl"
     $(".wym_iframe iframe").corner "2px"
     $(".form-actions:not(\".form-actions-dialog\")").corner "5px"
-  $("#recent_activity li a, #recent_inquiries li a").each (i, a) ->
-    $(this).textTruncate
-      width: $(this).width()
-      tooltip: false
 
   $("textarea.wymeditor").each ->
     textarea = $(this)
