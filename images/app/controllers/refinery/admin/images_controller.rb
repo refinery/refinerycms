@@ -42,13 +42,9 @@ module Refinery
         begin
           unless params[:image].present? and params[:image][:image].is_a?(Array)
             @images << (@image = ::Refinery::Image.create(params[:image]))
-          else
-            #copy other params than :image in a new Hash
-            images_params = params[:image].dup
-            images_params.delete(:image)
-            #create images
+          else                               
             params[:image][:image].each do |image|
-              @images << (@image = ::Refinery::Image.create({:image => image}.merge(images_params)))
+              @images << (@image = ::Refinery::Image.create({:image => image}.merge(params[:image].except(:image))))
             end
           end
         rescue Dragonfly::FunctionManager::UnableToHandle
