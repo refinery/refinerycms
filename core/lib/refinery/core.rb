@@ -115,7 +115,7 @@ module Refinery
     end
 
     def current_admin_locale
-      @current_admin_locale ||= ::Refinery.i18n_enabled? ? ::I18n.locale : ::Refinery::I18n.default_locale
+      ::I18n.locale
     end
 
     # Returns a Pathname to the root of the Refinery CMS project
