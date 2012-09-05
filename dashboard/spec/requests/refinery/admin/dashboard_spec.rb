@@ -47,7 +47,7 @@ describe "dashboard" do
       3.times { |n| page.should have_content("Refinery cms #{n} page was added") }
     end
 
-    # see https://github.com/resolve/refinerycms/issues/1673
+    # see https://github.com/refinery/refinerycms/issues/1673
     it "uses proper link for nested pages" do
       # we need to increase updated_at because dashboard entries are sorted by
       # updated_at column and we need this page to be at the top of the list

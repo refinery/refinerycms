@@ -21,7 +21,7 @@ h4. Setup
 h5. In your browser
 
 * Login to "http://github.com":http://github.com
-* Go to "http://github.com/resolve/refinerycms":http://github.com/resolve/refinerycms
+* Go to "http://github.com/refinery/refinerycms":http://github.com/refinery/refinerycms
 * If you have a fork of refinerycms already, delete it (_if you're not going to lose work. This makes it much easier for us to integrate your changes back in_)
 * Click on "fork" to make a fresh new fork on your own account.
 
@@ -41,7 +41,7 @@ h5. In your browser
 
 h4. I found an issue. Where do I file it?
 
-* add it to "http://github.com/resolve/refinerycms/issues":http://github.com/resolve/refinerycms/issues - with as much detail as possible :-)
+* add it to "http://github.com/refinery/refinerycms/issues":http://github.com/refinery/refinerycms/issues - with as much detail as possible :-)
 
 h4. Contributing a fix
 
@@ -66,13 +66,13 @@ TIP: if you've filed an issue on Github add "Closes GH-999" (replace 999 with yo
 $ git push origin master
 </shell>
 
-Now go to "http://github.com/resolve/refinerycms":http://github.com/resolve/refinerycms and click "Pull Request". Type a nice message explaining what you've done and send the request.
+Now go to "http://github.com/refinery/refinerycms":http://github.com/refinery/refinerycms and click "Pull Request". Type a nice message explaining what you've done and send the request.
 
 We'll merge it in if it's all good.
 
 h4. Confused on where to find everything?
 
-Take a look at this "page":https://github.com/resolve/refinerycms/wiki/Begin-Developing which briefly explains the source.
+Take a look at this "page":https://github.com/refinery/refinerycms/wiki/Begin-Developing which briefly explains the source.
 
 h3. Contributing financially
 

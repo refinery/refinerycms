@@ -193,7 +193,7 @@ If you request +http://localhost:3000/about+, this maps by default to Refinery's
 
 So as you would expect according to Rails convention, the view for this action is located in +app/views/refinery/pages/show.html.erb+. You won't be able to see this file because Refinery is providing it for you. Next, let's override that view and replace it with our own.
 
-TIP: Overriding a file simply copies the file from Refinery's code into your +app/+ folder. Many people are confused as to what can be overridden initially. Any controller, model, view, javascript, or stylesheet from any installed extension can be overridden, but the most commonly overridden ones are those in the "refinery":https://github.com/resolve/refinerycms/tree/master/core/app/views/refinery folder.
+TIP: Overriding a file simply copies the file from Refinery's code into your +app/+ folder. Many people are confused as to what can be overridden initially. Any controller, model, view, javascript, or stylesheet from any installed extension can be overridden, but the most commonly overridden ones are those in the "refinery":https://github.com/refinery/refinerycms/tree/master/core/app/views/refinery folder.
 
 h4. Overriding your first view
 

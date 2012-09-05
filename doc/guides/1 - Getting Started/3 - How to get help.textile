@@ -32,5 +32,5 @@ h3. Core Team
 h3. Other places
 
 * API (click 'File List' in top right) - <a href="http://api.refinerycms.org" title="http://api.refinerycms.org">http://api.refinerycms.org</a>
-* "GitHub Wiki":https://github.com/resolve/refinerycms/wiki
+* "GitHub Wiki":https://github.com/refinery/refinerycms/wiki
 * "Guides":http://refinerycms.com/guides

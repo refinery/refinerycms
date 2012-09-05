@@ -13,16 +13,16 @@ end
 append_file 'Gemfile' do
 "
 
-gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
+gem 'refinerycms', :git => 'git://github.com/refinery/refinerycms.git'
 
 # USER DEFINED
 
 # Specify additional Refinery CMS Engines here (all optional):
 gem 'refinerycms-i18n', :git => 'git://github.com/parndt/refinerycms-i18n.git'
-#  gem 'refinerycms-blog', :git => 'git://github.com/resolve/refinerycms-blog.git'
-#  gem 'refinerycms-inquiries', :git => 'git://github.com/resolve/refinerycms-inquiries.git'
-#  gem 'refinerycms-search', :git => 'git://github.com/resolve/refinerycms-search.git'
-#  gem 'refinerycms-page-images', :git => 'git://github.com/resolve/refinerycms-page-images.git'
+#  gem 'refinerycms-blog', :git => 'git://github.com/refinery/refinerycms-blog.git'
+#  gem 'refinerycms-inquiries', :git => 'git://github.com/refinery/refinerycms-inquiries.git'
+#  gem 'refinerycms-search', :git => 'git://github.com/refinery/refinerycms-search.git'
+#  gem 'refinerycms-page-images', :git => 'git://github.com/refinery/refinerycms-page-images.git'
 
 # END USER DEFINED
 "
