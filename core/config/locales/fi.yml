@@ -57,6 +57,10 @@ fi:
       error_messages:
         problems_in_following_fields: Seuraavissa kentissä oli virheitä
       help: apua
+      form_advanced_options_menu:
+        advanced_options: Lisäasetukset
+        toggle_advanced_options: "Näe metatieto- ja valikko-ominaisuudet"
+        save_as_draft: Tallenna luonnoksena
     message:
       close: Sulje
       close_this_message: Sulje tämä viesti

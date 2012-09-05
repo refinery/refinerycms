@@ -44,15 +44,12 @@ nb:
           create_content_section: Legg til innholdsseksjon
           delete_content_section: Slett innholdsseksjon
         form_advanced_options:
-          toggle_advanced_options: Klikk for å få tilgang til meta tag innstillinger og meny alternativer
           page_options: Alternativer for siden
           parent_page: Overliggende side
-          advanced_options: Avanserte Innstillinger
           custom_title: Valgfri tittel
           show_in_menu_title: Vis i meny
           show_in_menu_description: Vis denne siden i menyen
           show_in_menu_help: Fjern markeringen i denne boksen om du ønsker å fjerne en side fra menyen. Dette kan være praktisk dersom du har en underside som du ønsker å lenke besøkende til, men ikke ønsker å vise i menyen.
-          save_as_draft: Lagre som Utkast
           skip_to_first_child: Hopp over den overliggende side.
           skip_to_first_child_label: Styrer besøkende rett inn på første underside.
           skip_to_first_child_help: Denne innstillingen gjør at siden linker til sin første underside. Dette kan være praktisk om du grupperer flere sider sammen.

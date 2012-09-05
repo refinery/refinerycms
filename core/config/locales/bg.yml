@@ -57,6 +57,10 @@ bg:
       error_messages:
         problems_in_following_fields: Има проблем със следните полета
       help: помощ
+      form_advanced_options_menu:
+        advanced_options: Разширени настройки
+        toggle_advanced_options: Достъп до настройките за етикета "meta" и менюто
+        save_as_draft: Запис като чернова
     message:
       close: Затваряне
       close_this_message: Затваряне на това съобщение

@@ -5,7 +5,7 @@ module Refinery
     before do
       Rails.application.routes.draw { get "anonymous/index" }
     end
-    
+
     after do
       Rails.application.reload_routes!
     end
@@ -66,7 +66,7 @@ module Refinery
 
       it "is true so HTTPS is used" do
         Refinery::Core.stub(:force_ssl).and_return(true)
-        
+
         get :index
 
         response.should be_redirect

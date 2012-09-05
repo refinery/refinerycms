@@ -54,6 +54,10 @@ lv:
       error_messages:
         problems_in_following_fields: Problēmas sekojošos ievades laukos
       help: palīdzība
+      form_advanced_options_menu:
+        advanced_options: Papildu Opcijas
+        toggle_advanced_options: Spied, lai piekļūtu meta tagiem un izvēlnes opcijām
+        save_as_draft: Saglabāt kā melnrakstu
     message:
       close: Aizvērt
       close_this_message: Aizvērt šo paziņojumu

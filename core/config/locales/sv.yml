@@ -54,6 +54,10 @@ sv:
       error_messages:
         problems_in_following_fields: Det uppstod problem med följande fält
       help: hjälp
+      form_advanced_options_menu:
+        advanced_options: Avancerade alternativ
+        toggle_advanced_options: Klicka för att få tillgång till meta-taggar och menyval
+        save_as_draft: Spara som Utkast
     message:
       close: Stäng
       close_this_message: Stäng detta meddelande

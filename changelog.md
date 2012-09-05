@@ -4,10 +4,14 @@
 * Refactored wysiwyg fields into a partial. [#1796](https://github.com/resolve/refinerycms/pull/1796). [Rob Yurkowski](https://github.com/robyurkowski)
 * Shortened all authentication helpers. [#1719](https://github.com/resolve/refinerycms/pull/1719). [Ryan Bigg](https://github.com/radar)
 * Added canonical page id to body to allow CSS selectors to target specific pages instead of including special CSS files. [#1700](https://github.com/resolve/refinerycms/pull/1700) & [#1828](https://github.com/resolve/refinerycms/pull/1828). [Philip Arndt](https://github.com/parndt) & [Graham Wagener](https://github.com/gwagener/)
+* Added ajaxy image uploading. [#1739](https://github.com/resolve/refinerycms/pull/1739). [Jean-Philippe Boily](https://github.com/jipiboily)
 
 * [See full list](https://github.com/resolve/refinerycms/compare/2-0-stable...master)
 
-## 2.0.7 [Unreleased]
+## 2.0.8 [17 August 2012]
+* Fixes installs broken by the release of jquery-rails 2.1.0 by requiring ~> 2.0.0. [Rob Yurkowski](https://github.com/robyurkowski)
+
+## 2.0.7 [16 August 2012]
 * Fixed a bug with nested reordering that would shuffle any set with 11 or more entities. [#1882](https://github.com/resolve/refinerycms/pull/1882). [Rob Yurkowski](https://github.com/robyurkowski)
 
 ## 2.0.6 [6 August 2012]

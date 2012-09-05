@@ -54,6 +54,10 @@ da:
       error_messages:
         problems_in_following_fields: Der er fejl i følgende felter
       help: hjælp
+      form_advanced_options_menu:
+        advanced_options: Avancerede indstillinger
+        toggle_advanced_options: Tilgå meta tags og menuindstillinger
+        save_as_draft: Gem som kladde
     message:
       close: Luk
       close_this_message: Luk denne besked

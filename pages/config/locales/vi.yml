@@ -44,15 +44,12 @@ vi:
           create_content_section: Tạo một khu vực nội dung
           delete_content_section: Xóa khu vực nội dung
         form_advanced_options:
-          toggle_advanced_options: Mở các thiết lập meta-tag và menu
           page_options: Các tùy chọn về Trang
           parent_page: Trang cha
-          advanced_options: Các tùy chọn nâng cao
           custom_title: Tiêu đề khác
           show_in_menu_title: Hiển thị trong menu
           show_in_menu_description: Hiển thị trang này trong menu của trang web
           show_in_menu_help: Bỏ chọn ô này nếu bạn muốn xóa trang khỏi menu của trang web. Đây là trường hợp bạn muốn Trang này tồn tại (có thể truy cập vào được) nhưng không muốn nó hiện trong menu của trang web.
-          save_as_draft: Lưu trữ dưới dạng bản thảo
           skip_to_first_child: Bỏ qua trang lớp ngoài cùng
           skip_to_first_child_label: Chuyển hướng truy cập của người dùng tới trang con đầu tiên.
           skip_to_first_child_help: Tùy chọn này cho phép trang này được chuyển hướng tới trang con đầu tiên. Điều này có thể hữu ích khi bạn muốn nhóm các trang lại với nhau.

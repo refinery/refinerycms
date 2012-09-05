@@ -54,6 +54,10 @@ el:
       error_messages:
         problems_in_following_fields: Υπήρξαν προβλήματα με τα ακόλουθα πεδία
       help: βοήθεια
+      form_advanced_options_menu:
+        advanced_options: Προχωρημένες Επιλογές
+        toggle_advanced_options: Access meta tag settings and menu options
+        save_as_draft: Αποθήκευση ως πρόχειρο
     message:
       close: Κλείσιμο
       close_this_message: Κλείστε το μήνυμα

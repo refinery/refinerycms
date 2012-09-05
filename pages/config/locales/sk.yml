@@ -51,7 +51,6 @@ sk:
           reorder_content_section: Preusporiadať sekcie
           reorder_content_section_done: Uložiť usporiadanie sekcií
         form_advanced_options:
-          toggle_advanced_options: Sprístupní nastavenia menu a meta tagov.
           page_options: Nastavenie stránky
           parent_page: Nadradená stránka
           advanced_options: Rozšírené nastavenia
@@ -60,7 +59,6 @@ sk:
           show_in_menu_title: Zobraziť v menu
           show_in_menu_description: Zobraziť túto stránku v menu webu
           show_in_menu_help: Odznačte ak chcete odstrániť odkaz na túto stránku z menu webu. Toto je užitočné ak máte stránku, na ktorú chcete mať priamy odkaz, ale nechcete zobrazovať stránku v menu.
-          save_as_draft: Uložiť ako pracovnú verziu
           skip_to_first_child: Prejsť na prvú  podstránku
           skip_to_first_child_label: Presmeruje návštevníka na prvú podstránku sekcie.
           skip_to_first_child_help: Táto stránka sa nezobrazí, namiesto toho bude odkaz na nej presmerovaný na jej prvú podstránku. To sa môže hodiť pre zoskupovanie stránok.

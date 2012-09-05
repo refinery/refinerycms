@@ -54,6 +54,10 @@ pl:
       error_messages:
         problems_in_following_fields: W następujących polach wystąpiły problemy
       help: pomoc
+      form_advanced_options_menu:
+        advanced_options: Opcje zaawansowane
+        toggle_advanced_options: Kliknij aby uzyskać dostęp do zawartości tagów meta oraz opcji menu
+        save_as_draft: Zapisz jako szkic
     message:
       close: Zamknij
       close_this_message: Zamknij tę wiadomość

@@ -50,16 +50,13 @@ da:
           delete_content_section: Slet indholdselement
           reorder_content_section: Redigér rækkefølgen af indholdselement
         form_advanced_options:
-          toggle_advanced_options: Tilgå meta tags og menuindstillinger
           page_options: Side indstillinger
           parent_page: Overordnet side
-          advanced_options: Avancerede indstillinger
           menu_title: Menutitel
           custom_slug: Brugerdefineret slug
           show_in_menu_title: Vis i menuen
           show_in_menu_description: Vis siden i menuen på sitet
           show_in_menu_help: Afkryds ikke, hvis du vil fjerne siden fra menuen på sitet. Dette kan benyttes, hvis du vil have en side, du kan linke til direkte, men som ikke skal vises i menuen.
-          save_as_draft: Gem som kladde
           skip_to_first_child: Spring øverste sideniveau over
           skip_to_first_child_label: Videresend besøgende til den første underliggende side.
           skip_to_first_child_help: Dette vil vise den første underliggende side i stedet for denne side. Kan benyttes når man vil gruppere sider.

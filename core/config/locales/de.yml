@@ -54,6 +54,10 @@ de:
       error_messages:
         problems_in_following_fields: Es gab Probleme mit den folgenden Feldern
       help: Hilfe
+      form_advanced_options_menu:
+        advanced_options: Erweiterte Optionen
+        toggle_advanced_options: Klicken Sie hier, für die Meta-Tag-Einstellungen und Menüoptionen
+        save_as_draft: Als Entwurf speichern
     message:
       close: Schließen
       close_this_message: Diese Meldung schließen

@@ -54,6 +54,10 @@ rs:
       error_messages:
         problems_in_following_fields: Došlo je do problema
       help: pomoć
+      form_advanced_options_menu:
+        advanced_options: Napredne opcije
+        toggle_advanced_options: Pristupi meta-tag podešavanjima i opcijama menija
+        save_as_draft: Snimi kao skicu
     message:
       close: Zatvori
       close_this_message: Zatvori ovu poruku

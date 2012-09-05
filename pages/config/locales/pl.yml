@@ -45,15 +45,12 @@ pl:
           create_content_section: Dodaj sekcję zawartości
           delete_content_section: Usuń sekcję zawartości
         form_advanced_options:
-          toggle_advanced_options: Kliknij aby uzyskać dostęp do zawartości tagów meta oraz opcji menu
           page_options: Opcje strony
           parent_page: Strona nadrzędna
-          advanced_options: Opcje zaawansowane
           custom_title: Inny tytuł
           show_in_menu_title: Pokaż w menu
           show_in_menu_description: Wyświetl tę stronę w menu witryny
           show_in_menu_help: 'Odznacz tę kratkę aby usunąć tę stronę z menu witryny. To może być przydatne jeżeli chcesz linkować do tej strony, ale nie chcesz aby była widoczna w menu.'
-          save_as_draft: Zapisz jako szkic
           skip_to_first_child: Pomiń stronę najwyższego poziomu
           skip_to_first_child_label: Przekieruj odwiedzających do pierwszej strony potomnej.
           skip_to_first_child_help: 'Ta opcja sprawia, że ta strona kieruje do pierwszej strony pod nią. To może być przydatne przy grupowaniu stron razem.'

@@ -38,7 +38,6 @@ module Refinery
     end
 
     # Determine whether the supplied page is the currently open page according to Refinery.
-    # Also checks whether Rails thinks it is selected after that using current_page?
     def selected_page?(page)
       path = request.path
       path = path.force_encoding('utf-8') if path.respond_to?(:force_encoding)
@@ -57,8 +56,7 @@ module Refinery
       url << ['', page.url[:path]].compact.flatten.join('/') if page.url.respond_to?(:keys)
       url = url.last.match(%r{^/#{::I18n.locale.to_s}(/.*)}) ? $1 : url.detect{|u| u.is_a?(String)}
 
-      # Now use all possible vectors to try to find a valid match,
-      # finally passing to rails' "current_page?" method.
+      # Now use all possible vectors to try to find a valid match
       [path, URI.decode(path)].include?(url) || path == "/#{page.original_id}"
     end
 

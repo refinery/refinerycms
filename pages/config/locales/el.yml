@@ -45,15 +45,12 @@ el:
           delete_content_section: Διαγραφή περιοχής περιεχομένου
           reorder_content_section: Αναδιάταξη περιοχής περιεχομένου
         form_advanced_options:
-          toggle_advanced_options: Access meta tag settings and menu options
           page_options: Επιλογές Σελίδας
           parent_page: Ανήκει
-          advanced_options: Προχωρημένες Επιλογές
           custom_title: Προσαρμοσμένος τίτλος
           show_in_menu_title: Εμφάνιση στο μενού
           show_in_menu_description: Να εμφανίζεται αυτή η σελίδα στο μενού
           show_in_menu_help: Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu.
-          save_as_draft: Αποθήκευση ως πρόχειρο
           skip_to_first_child: Skip top-level page
           skip_to_first_child_label: Redirect visitors to the first sub-level page.
           skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.

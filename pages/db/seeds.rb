@@ -43,7 +43,10 @@ end
 
 (Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales : [:en]).each do |lang|
   I18n.locale = lang
-  Refinery::Page.find_by_title("Home").update_attributes(:slug => "home")
-  Refinery::Page.find_by_title("Page not found").update_attributes(:slug => "page-not-found")
-  Refinery::Page.find_by_title("About").update_attributes(:slug => "about")
+  {'home' => "Home",
+   'page-not-found' => 'Page not found',
+   'about' => 'About'
+  }.each do |slug, title|
+    Refinery::Page.by_title(title).update_all(:slug => slug)
+  end
 end

@@ -1,6 +1,5 @@
 # Encoding: UTF-8
-$:.push File.expand_path('../../core/lib', __FILE__)
-require 'refinery/version'
+require File.expand_path('../../core/lib/refinery/version', __FILE__)
 
 version = Refinery::Version.to_s
 rails_version = ['>= 3.1.3', '< 3.3']
@@ -14,7 +13,7 @@ Gem::Specification.new do |s|
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
-  s.authors           = ['Philip Arndt', 'Uģis Ozols', 'David Jones', 'Steven Heidel']
+  s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}
   s.require_paths     = %w(lib)
 
@@ -23,6 +22,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'refinerycms-core',  version
   s.add_dependency 'actionmailer',      rails_version
-  s.add_dependency 'devise',            '~> 2.0.0'
-  s.add_dependency 'orm_adapter',       '~> 0.0.7'
+  s.add_dependency 'devise',            '~> 2.1.0'
 end

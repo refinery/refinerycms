@@ -1,16 +1,6 @@
-<div id='more_options_field'>
-  <p>
-    <%= link_to t('.advanced_options'), "#",
-                :id => 'toggle_advanced_options',
-                :title => t('.toggle_advanced_options') %>
-  </p>
-  <span id='draft_field'>
-    <%= f.check_box :draft %>
-    <%= f.label :draft, t('.save_as_draft'),
-                :class => "stripped" %>
-  </span>
-</div>
-<div id='more_options' style="display:none;">
+<%= render '/refinery/admin/form_advanced_options_menu', :f => f %>
+
+<div id="more_options" style="display:none;">
   <div class="hemisquare">
     <h2><%= t('.page_options') %></h2>
     <div class='field'>

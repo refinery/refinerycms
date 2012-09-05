@@ -33,6 +33,10 @@ module Refinery
 
   protected
 
+    def generator_command
+      'rails generate refinery:engine'
+    end
+
     def reject_file_with_skip_frontend?(file)
       (skip_frontend? && (file.to_s.include?('app') && file.to_s.scan(/admin|models|mailers/).empty?)) ||
         reject_file_without_skip_frontend?(file)

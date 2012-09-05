@@ -45,15 +45,12 @@ es:
           create_content_section: Crear sección de contenido
           delete_content_section: Borrar sección de contenido
         form_advanced_options:
-          toggle_advanced_options: Pulsa para acceder a las opciones de meta tags y menú
           page_options: Opciones de página
           parent_page: Página padre
-          advanced_options: Opciones avanzadas
           custom_title: Título personalizado
           show_in_menu_title: Ver en menú
           show_in_menu_description: Mostrar esta página en el menú de la web
           show_in_menu_help: Deja sin marcar esta casilla para eliminar una página del menú de tu web. Puede ser útil si tienes una página que quieres que la gente enlace directamente pero no quieres mostrarla en el menú.
-          save_as_draft: Guardar como borrador
           skip_to_first_child: Saltar página de primer nivel
           skip_to_first_child_label: Redirigir a los visitantes a la primera página hija.
           skip_to_first_child_help: Esta opción hace que esta página enlace a su primera página hija. Puede ser útil para agrupar varias páginas juntas.

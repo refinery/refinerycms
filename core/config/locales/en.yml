@@ -57,6 +57,10 @@ en:
       error_messages:
         problems_in_following_fields: There were problems with the following fields
       help: help
+      form_advanced_options_menu:
+        advanced_options: Advanced options
+        toggle_advanced_options: Toggle advanced options
+        save_as_draft: Save as Draft
     message:
       close: Close
       close_this_message: Close this message

@@ -7,14 +7,14 @@ module Refinery
 
       attr_accessible <%= names_for_attr_accessible.map { |a| ":#{a}" }.join(', ') %>, :position
 <% if string_attributes.any? -%>
-  
+
       acts_as_indexed :fields => [<%= string_attributes.map { |a| ":#{a.name}" }.join(", ") %>]
 <% end -%>
 <% if (text_fields = attributes.map { |a| a.name if a.type == :text }.compact.uniq).any? && text_fields.detect{ |a| a.to_s == 'message' }.nil? -%>
-  
+
       alias_attribute :message, :<%= text_fields.first %>
 <% elsif text_fields.empty? -%>
-  
+
       # def message was created automatically because you didn't specify a text field
       # when you ran the refinery:form generator. <3 <3 Refinery CMS.
       def message
@@ -22,7 +22,7 @@ module Refinery
       end
 <% end -%>
 <% unless (string_fields = attributes.map { |a| a.name if a.type == :string }.compact.uniq).empty? || string_fields.detect { |f| f.to_s == 'name' } -%>
-  
+
       alias_attribute :name, :<%= string_fields.first %>
 <% end -%>
 

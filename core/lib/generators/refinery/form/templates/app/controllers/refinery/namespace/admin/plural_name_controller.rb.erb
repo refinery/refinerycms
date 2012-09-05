@@ -7,7 +7,7 @@ module Refinery
                 :title_attribute => "<%= title.name %>", <% end %>
                 :order => "created_at DESC"
 <% if @includes_spam -%>
-  
+
         before_filter :get_spam_count, :only => [:index, :spam]
 
         def index
