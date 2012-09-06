@@ -24,7 +24,7 @@ module Refinery
 
       if Refinery::Core.rescue_not_found
         send :rescue_from, ActiveRecord::RecordNotFound,
-                           ActionController::UnknownAction,
+                           ::AbstractController::ActionNotFound,
                            ActionView::MissingTemplate,
                            :with => :error_404
       end
