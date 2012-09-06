@@ -1,3 +1,4 @@
+# encoding: utf-8
 Refinery::Pages.configure do |config|
   # Configure specific page templates
   # config.types.register :home do |home|
