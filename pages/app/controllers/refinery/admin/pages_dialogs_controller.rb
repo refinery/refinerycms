@@ -63,7 +63,7 @@ module Refinery
               end
 
               result = 'success' if [Net::HTTPSuccess, Net::HTTPRedirection].
-                                      include? Net::HTTP.get_response(url)
+                                      include? Net::HTTP.get_response(url).class.superclass
             end
           end
 
