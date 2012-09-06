@@ -296,17 +296,9 @@ init_tooltips = function(args){
 };
 
 var link_tester = {
-  initialised: false
-  , email_re : new RegExp(/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i)
-  , url_re : new RegExp(/(https?|ftp):\/\/(-\.)?([^\s/?\.#-]+\.?)+(\/[^\s]*)?$/i)
-  , init: function(test_url, test_email) {
-
-    if (!this.initialised) {
-      this.test_url = test_url;
-      this.test_email = test_email;
-      this.initialised = true;
-    }
-  },
+  email_re : new RegExp(/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i),
+  url_re : new RegExp(/^(https?|ftp):\/\/(-\.)?([^\s/?\.#-]+\.?)+(\/[^\s]*)?$/i),
+  page_re : new RegExp('^(https?:\/\/' + document.location.host + '|\/[a-z0-9]+)'),
 
   email: function(value, callback) {
     if (value != "") {
@@ -316,8 +308,26 @@ var link_tester = {
 
   url: function(value, callback) {
     if (value != "") {
-      callback(link_tester.url_re.test(value));
+      if (link_tester.page_re.test(value)) {
+        link_tester.page(value, callback);
+      } else {
+        callback(link_tester.url_re.test(value));
+      }
     }
+  },
+
+  page: function(value, callback) {
+    var valid = false;
+    $.ajax({
+      url: value,
+      timeout: 5000,
+      success: function() {
+        valid = true;
+      },
+      complete: function () {
+        callback(valid);
+      }
+    });
   },
 
   validate_textbox: function(validation_method, textbox_id, callback) {
@@ -327,14 +337,13 @@ var link_tester = {
 
     loader_img.insertAfter($(textbox_id));
     result_span.insertAfter(loader_img);
-
     $(textbox_id).bind('paste blur',function(){
       $(textbox_id).stop(true); // Clear the current queue; if we weren't checking yet, cancel it.
       $(textbox_id + '_test_loader').hide();
       $(textbox_id + '_test_result').hide();
       $(textbox_id + '_test_result').removeClass('success_icon').removeClass('failure_icon');
 
-      if (this.value != "" && this.value[0] != "/") {
+      if (this.value != "") {
         // Wait 300ms before checking.
         $(textbox_id).delay(300).queue(function () {
           $(textbox_id + '_test_loader').show();
