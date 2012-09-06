@@ -297,6 +297,8 @@ init_tooltips = function(args){
 
 var link_tester = {
   initialised: false
+  , email_re : new RegExp(/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i)
+  , url_re : new RegExp(/(https?|ftp):\/\/(-\.)?([^\s/?\.#-]+\.?)+(\/[^\s]*)?$/i)
   , init: function(test_url, test_email) {
 
     if (!this.initialised) {
@@ -308,17 +310,13 @@ var link_tester = {
 
   email: function(value, callback) {
     if (value != "") {
-      $.getJSON(link_tester.test_email, {email: value}, function(data){
-        callback(data.result == 'success');
-      });
+      callback(link_tester.email_re.test(value));
     }
   },
 
   url: function(value, callback) {
     if (value != "") {
-      $.getJSON(link_tester.test_url, {'url': value}, function(data){
-        callback(data.result == 'success');
-      });
+      callback(link_tester.url_re.test(value));
     }
   },
 
