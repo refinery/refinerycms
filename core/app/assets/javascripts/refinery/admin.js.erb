@@ -35,7 +35,7 @@ $.fn.paginateTo = function(stateUrl) {
         $(this).attr('href', $(this).attr('href').replace(/\?\_\=[^&]+&/, '?'));
       })
     },
-    failure: function(data) {
+    error: function(data) {
       window.location = popstate_location;
     }
   });
