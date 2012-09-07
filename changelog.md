@@ -3,7 +3,8 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
 ## 2.0.9 [unreleased]
-* Allowed extra parameters to be passed when creating image [#1914](https://github.com/refinery/refinerycms/pull/1914). [tbuyle](https://github.com/tbuyle)
+* Allowed extra parameters to be passed when creating image. [#1914](https://github.com/refinery/refinerycms/pull/1914). [tbuyle](https://github.com/tbuyle)
+* Added usage instructions to refinerycms executable. [#1931](https://github.com/refinery/refinerycms/pull/1931). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt).
 
 ## 2.0.8 [17 August 2012]
 * Fixes installs broken by the release of jquery-rails 2.1.0 by requiring ~> 2.0.0. [Rob Yurkowski](https://github.com/robyurkowski)
