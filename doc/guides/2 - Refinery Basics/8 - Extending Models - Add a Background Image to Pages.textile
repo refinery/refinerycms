@@ -1,0 +1,142 @@
+h2. Extending Models with Decorators - Add a Background Image to Pages
+
+Sometimes you will want to graft in extra functionality that requires extra data to be stored in your Model. This guide will show you how to:
+
+* Extend the Pages Model to add a Background Image field
+* Modify the Pages _form partial through an override
+
+endprologue.
+
+h3. The Use-Case
+
+Designers love control. It's what they live for, what they crave, and you, as a stalwart developer, must often find ways to add functionality that is not necessarily built into Refinery. In this case, your designers desire the ability to give each page its own background.
+
+Obviously, creating an entirely new engine to duplicate all the abilities of the built-in Page model is offensive to your DRY sense.
+
+You could also override the model, but as you already face the not-undaunting task of overriding functionality in the Admin and user-facing Views, that just simply seems to be overkill.
+
+If only there was a way to add a Background Image to the Page model, so that you could leverage the existing functionality and add just that little extra your designers are longing for!
+
+h3. Enter the Decorator
+
+Thankfully, we now have this decorator pattern to work with, wherein we can add onto existing code without directly overriding and altering the entire module.
+
+(It wouldn't hurt, by the way, to check out the Refinery Guide for Extending Controllers with Decorators!)
+
+h3. The Setup
+
+We know we're going to need to add a field to the Page model in our database, so let's create a new migration:
+
+<shell>
+  $ rails g migration AddBackgroundImageToRefineryPage background_image:integer
+</shell>
+
+Open up the file that Rails has kindly created for you, in your db/migrate folder, and make sure it looks something like this:
+<ruby>
+class AddBackgroundImageToRefineryPages < ActiveRecord::Migration
+  def change
+    add_column :refinery_pages, :background_image_id, :integer
+  end
+end
+</ruby>
+
+The important things to note, above:
+1. :refinery_pages is the actual name of the Page model
+2. :background_image_id is how Rails will store a reference to the Background Image
+3. :integer is therefore the type of field data that :background_image_id stores
+
+Save any changes you need to make to the migration file, then go back to the Terminal.
+
+Run 
+<shell>
+  $ rake db:migrate
+</shell>
+to update your schema.
+
+h3. Create your Decorator
+
+Create a new file, under the decorators/models/refinery directory, called page_decorator.rb
+
+Here's the magic:
+<ruby>
+Refinery::Page.class_eval do
+  attr_accessible :background_image_id
+
+  belongs_to :background_image, :class_name => '::Refinery::Image'
+end
+</ruby>
+
+Yes.
+
+That's right.
+
+Five lines, to add this functionality to the Page model.
+
+I'll give you a minute to pick up your jaws from the floor.
+
+While you're reacquainting your mouth with your lower mandible, here's a quick overview of what the code does:
+
+<ruby>
+Refinery::Page.class_eval do 
+...
+end
+</ruby>
+
+This is what opens the model to manipulation. You're essentially telling Ruby to give you access to the model, to make modifications to it. Anything between the "do" and "end" will make adjustments to the way the model works, what fields it has... you can add or even modify methods on the model.
+
+<ruby>
+  attr_accessible :background_image_id
+</ruby>
+
+This allows the :background_image_id to be a readable, writable field.
+
+<ruby>
+  belongs_to :background_image, :class_name => '::Refinery::Image'
+</ruby>
+
+This associates the :background_image symbol with the Page model, and bases that symbol on the Refinery.Image model.
+
+We now have this lovely Page model that can store a background image
+
+h3. Extending a Controller
+
+Often you'll want to perform some additional controller logic that is not defined by Refinery already. An example for this is when you are building a homepage that contains a listing of blog articles. By default the 'home' action on the +PagesController+ will not find all of the published blog articles. You could perform this logic at the top of your view but you would be violating the rules of MVC. What you really want to do is to have the controller populate an instance variable for you to render in your view.
+
+We start out by creating +app/decorators/controllers/refinery/pages_controller_decorator.rb+ unless it already exists:
+
+<ruby>
+  Refinery::PagesController.class_eval do
+    # your controller logic goes here
+  end
+</ruby>
+
+The code within the +class_eval+ block in any decorator can be written as if you are writing in the class definition of the class it is extending. In this case we're extending a ActionController and we want it to find us some blog posts:
+
+<ruby>
+  Refinery::PagesController.class_eval do
+  
+    before_filter :find_all_blog_posts, :only => [:home]
+  
+    protected
+    
+      def find_all_blog_posts
+        @blog_posts = Refinery::BlogPost.live
+      end
+
+  end
+</ruby>
+
+We define the +find_all_blog_posts+ method and set it as a +before_filter+ for the +pages#home+ action. This will make the +@blog_posts+ instance variable available in our views which will contain all of the live blog posts. Because writing a decorator is just like extending a class definition, we could even simplify this further by writing:
+
+<ruby>
+  Refinery::PagesController.class_eval do
+  
+    include Refinery::Blog::ControllerHelper
+    before_filter :find_all_blog_posts, :only => [:home]
+    
+  end
+</ruby>
+
+The Blog extension contains a helper module which already has the +find_all_blog_posts+ method defined for this common case.
+
+WARNING. If you are following along, make sure that you have the refinerycms-blog extension in your gem file or you will not have access to this helper module.
