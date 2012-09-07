@@ -8,10 +8,6 @@
 </div>
 <% else %>
   <p>
-    <% unless searching? %>
-      <strong><%=t('.no_users_yet')%></strong>
-    <% else %>
-      <%= t('no_results', :scope => 'refinery.admin.search') %>
-    <% end %>
+    <%= t('no_results', :scope => 'refinery.admin.search') %>
   </p>
 <% end %>
