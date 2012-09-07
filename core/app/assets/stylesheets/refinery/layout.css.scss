@@ -31,7 +31,7 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 0;
-  font-family: Verdana, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 13px;
   line-height: 1.5em;
   color: #41403C;
@@ -427,7 +427,7 @@ header {
   }
   a {
     display: block;
-    padding: 9px 13px;
+    padding: 7px 13px;
     font-size: 13px;
     background: image_url('refinery/nav_inactive_background.png') transparent repeat;
     margin-top:4px;
@@ -441,7 +441,7 @@ header {
       color: #ff5500;
     }
     &.active {
-      padding: 11px 13px;
+      padding: 9px 13px;
       margin-top: 0px;
     }
   }
