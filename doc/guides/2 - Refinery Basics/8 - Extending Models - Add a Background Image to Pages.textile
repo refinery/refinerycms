@@ -96,11 +96,32 @@ This allows the :background_image_id to be a readable, writable field.
 
 This associates the :background_image symbol with the Page model, and bases that symbol on the Refinery.Image model.
 
-We now have this lovely Page model that can store a background image
+We now have this lovely Page model that can store a background image, but we have to modify the Admin form to allow users to edit that image.
 
-h3. Extending a Controller
+h3. Adding an Image Editor
 
-Often you'll want to perform some additional controller logic that is not defined by Refinery already. An example for this is when you are building a homepage that contains a listing of blog articles. By default the 'home' action on the +PagesController+ will not find all of the published blog articles. You could perform this logic at the top of your view but you would be violating the rules of MVC. What you really want to do is to have the controller populate an instance variable for you to render in your view.
+In Terminal, run the following:
+
+<shell>
+  $ rake refinery:override view=refinery/admin/pages/_form
+</shell>
+
+After a few moments, you should see something that states _form.html.erb has been copied into app/views/refinery/admin/pages
+
+Open that file in your editor of choice. Find a nice spot for the new field to live. I personally think it's important enough to sit right up there with the title, so add this code under the block that holds the title field:
+
+<ruby>
+  <div class="field">
+    <%= f.label :background_image %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+      :f => f,
+      :field => :background_image_id,
+      :image => f.object.background_image,
+      :toggle_image_display => false
+    }
+    %>
+  </div>
+</ruby>
 
 We start out by creating +app/decorators/controllers/refinery/pages_controller_decorator.rb+ unless it already exists:
 
