@@ -46,6 +46,6 @@ end
    'page-not-found' => 'Page not found',
    'about' => 'About'
   }.each do |slug, title|
-    Refinery::Page.by_title(title).update_all(:slug => slug)
+    Refinery::Page.by_title(title).each { |page| page.update_attributes(:slug => slug) }
   end
 end
