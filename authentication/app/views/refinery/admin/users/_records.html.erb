@@ -1,3 +1,13 @@
+<% if searching? %>
+  <%= link_to t('cancel_search', :scope => 'refinery.admin.search'), refinery.admin_users_path, :class => "cancel-search" %>
+  <h2><%= t('results_for_html', :scope => 'refinery.admin.search', :query => h(params[:search])).html_safe %></h2>
+<% end %>
+<% if @users.any? %>
 <div class='pagination_container'>
   <%= render 'users' %>
 </div>
+<% else %>
+  <p>
+    <%= t('no_results', :scope => 'refinery.admin.search') %>
+  </p>
+<% end %>
