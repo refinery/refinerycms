@@ -11,12 +11,16 @@
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
-## 2.0.9 [unreleased]
+## 2.0.9 [10 September 2012]
 * Allowed extra parameters to be passed when creating image. [#1914](https://github.com/refinery/refinerycms/pull/1914). [tbuyle](https://github.com/tbuyle)
 * Added usage instructions to refinerycms executable. [#1931](https://github.com/refinery/refinerycms/pull/1931). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt).
+* Disabled page caching when logged in to prevent caching the sitebar. [#1609](https://github.com/refinery/refinerycms/pull/1609). [Johan Frolich](https://github.com/jokklan)
+* Fixed problems with `refinery:engine` generator and namespacing. [#1888](https://github.com/refinery/refinerycms/pull/1888). [David J. Brenes](https://github.com/brenes)
+* [See full list](https://github.com/refinery/refinerycms/compare/2.0.8...2.0.9)
 
 ## 2.0.8 [17 August 2012]
 * Fixes installs broken by the release of jquery-rails 2.1.0 by requiring ~> 2.0.0. [Rob Yurkowski](https://github.com/robyurkowski)
+* [See full list](https://github.com/refinery/refinerycms/compare/2.0.7...2.0.8)
 
 ## 2.0.7 [16 August 2012]
 * Fixed a bug with nested reordering that would shuffle any set with 11 or more entities. [#1882](https://github.com/refinery/refinerycms/pull/1882). [Rob Yurkowski](https://github.com/robyurkowski)
