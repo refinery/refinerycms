@@ -10,11 +10,10 @@ Gem::Specification.new do |s|
   s.version           = version
   s.summary           = %q{Pages extension for Refinery CMS}
   s.description       = %q{The default content extension of Refinery CMS. This extension handles the administration and display of user-editable pages.}
-  s.date              = %q{2011-10-12}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
-  s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski', 'David Jones', 'Steven Heidel']
+  s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}
   s.require_paths     = %w(lib)
 

@@ -105,7 +105,7 @@ module Refinery
       it "sorts numerically rather than by string key" do
         dummy, dummy_params = [], {}
 
-        # When we have 11 entries, the 11th index will be #10, which will be 
+        # When we have 11 entries, the 11th index will be #10, which will be
         # sorted above #2 if we are sorting by strings.
         11.times do |n|
           dummy << Refinery::CrudDummy.create!
