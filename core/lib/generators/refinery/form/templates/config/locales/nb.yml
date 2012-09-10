@@ -39,7 +39,6 @@ nb:
           update_notified: Oppdater hvem som blir informert
           edit_confirmation_email: Rediger bekreftelses e-posten
         index:
-          search_results_for: Søkeresultater for %{query}
           no_<%= plural_name %>: Du har ikke mottatt noen forespørsler enda.
         spam:
           no_spam: Hurra! Du har ikke noen søppelpost.

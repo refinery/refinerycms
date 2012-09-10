@@ -43,7 +43,7 @@ sl:
         resource: vir
       search:
         button_text: Išči
-        results_for: Iskalni rezultati za '%{query}'
+        results_for_html: "Iskalni rezultati za &#8216;<em>%{query}</em>&#8217;"
         no_results: Ni bilo zadetkov
       delete:
         message: Ali ste prepričani da želite odstraniti '%{title}'?

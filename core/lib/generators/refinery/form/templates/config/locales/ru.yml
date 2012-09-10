@@ -41,7 +41,6 @@ ru:
           update_notified: Изменить получателей уведомлений
           edit_confirmation_email: "Редактировать письмо-подтверждение"
         index:
-          search_results_for: "Найти результаты для %{query}"
           no_<%= plural_name %>: "Вы еще не получили ни одного запроса."
         spam:
           no_spam: "Ура! Вы не получили спам."

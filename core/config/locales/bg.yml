@@ -50,7 +50,7 @@ bg:
         current: Текущ файл
       search:
         button_text: Търсене
-        results_for: 'Резултати от търсене на "%{query}"'
+        results_for_html: "Резултати от търсене на &#8216;<em>%{query}</em>&#8217;"
         no_results: 'За съжаление нищо не бе намерено'
       delete:
         message: 'Сигурни ли сте, че искате да изтриете "%{title}"?'

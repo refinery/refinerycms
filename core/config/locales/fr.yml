@@ -47,7 +47,7 @@ fr:
         current: Fichier courrant
       search:
         button_text: Chercher
-        results_for: "Résultats de la recherche : '%{query}'"
+        results_for_html: "Résultats de la recherche &#8216;<em>%{query}</em>&#8217;"
         no_results: Aucun résultat ne correspond à votre recherche
       delete:
         message: Etes-vous sûr de vouloir supprimer '%{title}'?

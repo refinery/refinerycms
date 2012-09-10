@@ -55,7 +55,7 @@ it:
         name: Aggiungi File
       search:
         button_text: Cerca
-        results_for: "Risultati della ricerca per '%{query}'"
+        results_for_html: "Risultati della ricerca per &#8216;<em>%{query}</em>&#8217;"
         no_results: "Spiacenti, nessun risultato trovato"
       delete:
         message: "Sei sicuro di voler eliminare '%{title}'?"

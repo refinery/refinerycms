@@ -50,11 +50,10 @@ en:
         current: Current File
       search:
         button_text: Search
-        results_for: "Search results for '%{query}'"
         results_for_html: "Search results for &#8216;<em>%{query}</em>&#8217;"
         no_results: 'Sorry, no results found'
         cancel_search: 'Cancel search'
-        search_input_notice: 'Put here string which you looking for. Minimal length is 3 chars.'
+        search_input_notice: "Put here string which you're looking for. Minimal length is 3 chars."
       delete:
         message: "Are you sure you want to remove '%{title}'?"
       error_messages:

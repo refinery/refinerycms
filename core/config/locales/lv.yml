@@ -47,7 +47,7 @@ lv:
         current: Pašreizējais Fails
       search:
         button_text: Meklēt
-        results_for: Meklēšanas rezultāti pēc '%{query}'
+        results_for_html: "Meklēšanas rezultāti pēc &#8216;<em>%{query}</em>&#8217;"
         no_results: Atvainojiet, nekas netika atrasts
       delete:
         message: Vai tiešām vēlaties dzēst '%{title}'?

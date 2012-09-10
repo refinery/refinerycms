@@ -33,7 +33,6 @@ es:
           closed: "La consulta '%{<%= singular_name %>}' esta cerrada"
           reopened: "La consulta '%{<%= singular_name %>}' esta abierta"
         index:
-          search_results_for: Resultados de la busqueda de %{query}
           no_<%= plural_name %>: No has recibido ninguna consulta aun.
         show:
           details: Detalles

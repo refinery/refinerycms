@@ -50,7 +50,7 @@ sk:
         current: Vybraný súbor 
       search:
         button_text: Hľadať 
-        results_for: Výsledky hľadania pre '%{query}'
+        results_for_html: "Výsledky hľadania pre &#8216;<em>%{query}</em>&#8217;"
         no_results: Žiadne záznamy sa nenašli
       delete:
         message: Naozaj chcete zmazať '%{title}'?

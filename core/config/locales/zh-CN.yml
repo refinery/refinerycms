@@ -47,7 +47,7 @@ zh-CN:
         current: 当前文件
       search:
         button_text: 搜索
-        results_for: 搜索 '%{query}' 的结果
+        results_for_html: "搜索 &#8216;<em>%{query}</em>&#8217; 的结果"
         no_results: 对不起, 没有找到结果
       delete:
         message: 您确认要删除 '%{title}'?

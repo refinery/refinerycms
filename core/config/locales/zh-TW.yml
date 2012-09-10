@@ -47,7 +47,7 @@ zh-TW:
         current: 目前檔案
       search:
         button_text: 搜尋
-        results_for: 搜尋 '%{query}' 的結果
+        results_for_html: "搜尋 &#8216;<em>%{query}</em>&#8217; 的結果"
         no_results: 抱歉, 沒有任何搜尋結果
       delete:
         message: 確定要移除 '%{title}' 嗎?

@@ -47,7 +47,7 @@ de:
         current: Aktuelle Datei
       search:
         button_text: Suchen
-        results_for: Suchergebnisse für '%{query}'
+        results_for_html: "Suchergebnisse für &#8216;<em>%{query}</em>&#8217;"
         no_results: Tut mir leid, Suche brachte keine Ergebnisse
       delete:
         message: Sind Sie sicher, dass Sie '%{title}' löschen möchten?

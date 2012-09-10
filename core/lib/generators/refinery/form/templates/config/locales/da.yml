@@ -32,7 +32,6 @@ da:
           closed: "Henvendelsen '%{<%= singular_name %>}' er lukket"
           reopened: "Henvendelsen '%{<%= singular_name %>}' er genåbnet"
         index:
-          search_results_for: "Søgeresultat for '%{query}'"
           no_<%= plural_name %>: Du har endnu ikke modtaget nogen henvendelser.
         show:
           details: Detaljer

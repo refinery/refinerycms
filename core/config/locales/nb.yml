@@ -47,7 +47,7 @@ nb:
         current: Gjeldende fil
       search:
         button_text: Søk
-        results_for: "Søkeresultater for '%{query}'"
+        results_for_html: "Søkeresultater for &#8216;<em>%{query}</em>&#8217;"
         no_results: "Beklager, ditt søk returnerte ingen resultater"
       delete:
         message: Er du sikker på at du ønsker å fjerne '%{title}'?
