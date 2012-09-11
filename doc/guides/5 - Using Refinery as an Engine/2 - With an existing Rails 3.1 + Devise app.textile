@@ -110,6 +110,7 @@ class Users::SessionsController < Devise::SessionsController
    redirect_to db_maintenance_message_path
    return false
   end
+end
 </ruby>
 
 +config/initializers/db_maintenance.rb+
