@@ -5,6 +5,7 @@
 * Shortened all authentication helpers. [#1719](https://github.com/refinery/refinerycms/pull/1719). [Ryan Bigg](https://github.com/radar)
 * Added canonical page id to body to allow CSS selectors to target specific pages instead of including special CSS files. [#1700](https://github.com/refinery/refinerycms/pull/1700) & [#1828](https://github.com/resolve/refinerycms/pull/1828). [Philip Arndt](https://github.com/parndt) & [Graham Wagener](https://github.com/gwagener/)
 * Improved search functionality by adding cancel search link next to search input, made results_for entry nicer by adding some html to it. [#1922](https://github.com/refinery/refinerycms/pull/1922/). [Marek](https://github.com/keram)
+* Added search functionality to users extension. [#1922](https://github.com/refinery/refinerycms/pull/1934/). [Marek](https://github.com/keram)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
