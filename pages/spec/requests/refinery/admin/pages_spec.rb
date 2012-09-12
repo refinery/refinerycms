@@ -143,19 +143,45 @@ module Refinery
       end
 
       describe "edit/update" do
-        before { Page.create :title => "Update me" }
-
-        it "updates page" do
+        before do
+          Page.create :title => "Update me"
+          
           visit refinery.admin_pages_path
-
           page.should have_content("Update me")
+        end
 
-          click_link "Edit this page"
+        context 'when saving and returning to index' do
+          it "updates page" do
+            click_link "Edit this page"
 
-          fill_in "Title", :with => "Updated"
-          click_button "Save"
+            fill_in "Title", :with => "Updated"
+            click_button "Save"
 
-          page.should have_content("'Updated' was successfully updated.")
+            page.should have_content("'Updated' was successfully updated.")
+          end
+        end
+
+        context 'when saving and continuing to edit' do
+          before :each do
+            find('a[tooltip^=Edit]').visible?
+            find('a[tooltip^=Edit]').click
+
+            fill_in "Title", :with => "Updated"
+            click_button "Save & continue editing"
+            find('#flash').visible?
+          end
+
+          it "updates page", :js do
+            page.should have_content("'Updated' was successfully updated.")
+          end
+          
+          # Regression test for https://github.com/refinery/refinerycms/issues/1892
+          context 'when saving to exit (a second time)' do
+            it 'updates page', :js do 
+              click_button "Save"
+              page.should have_content("'Updated' was successfully updated.")
+            end
+          end
         end
       end
 
