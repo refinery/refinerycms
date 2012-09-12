@@ -4,9 +4,9 @@ module Refinery
 
     config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name,
                     :google_analytics_page_code, :authenticity_token_on_frontend,
-                    :menu_hide_children, :menu_css, :dragonfly_secret, :ie6_upgrade_message_enabled,
-                    :show_internet_explorer_upgrade_message, :wymeditor_whitelist_tags,
-                    :javascripts, :stylesheets, :s3_bucket_name, :s3_region, :s3_access_key_id,
+                    :menu_hide_children, :menu_css, :dragonfly_secret,
+                    :wymeditor_whitelist_tags, :javascripts, :stylesheets,
+                    :s3_bucket_name, :s3_region, :s3_access_key_id,
                     :s3_secret_access_key, :force_ssl, :verbose_rack_cache
 
     self.rescue_not_found = false
@@ -18,8 +18,6 @@ module Refinery
     self.menu_hide_children = false
     self.menu_css = { :selected => "selected", :first => "first", :last => "last" }
     self.dragonfly_secret = Array.new(24) { rand(256) }.pack('C*').unpack('H*').first
-    self.ie6_upgrade_message_enabled = true
-    self.show_internet_explorer_upgrade_message = false
     self.wymeditor_whitelist_tags = {}
     self.javascripts = []
     self.stylesheets = []
