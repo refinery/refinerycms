@@ -29,11 +29,6 @@ module Refinery
         end
       end
 
-      def disable_upgrade_message
-        Refinery::Core.show_internet_explorer_upgrade_message = false
-        render :nothing => true
-      end
-
     end
   end
 end
