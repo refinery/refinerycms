@@ -7,7 +7,3 @@
     <%= render 'actions' %>
   </aside>
 </div>
-<% if request.env["HTTP_USER_AGENT"] =~ /MSIE/ and
-        Refinery::Core.show_internet_explorer_upgrade_message %>
-  <% flash.now[:message] = render(:partial => "/refinery/ie6check")  %>
-<% end %>
