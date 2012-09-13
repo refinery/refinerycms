@@ -7,6 +7,7 @@
 * Added usage instructions to refinerycms executable. [#1931](https://github.com/refinery/refinerycms/pull/1931). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt).
 * Disabled page caching when logged in to prevent caching the sitebar. [#1609](https://github.com/refinery/refinerycms/pull/1609). [Johan Frolich](https://github.com/jokklan)
 * Fixed problems with `refinery:engine` generator and namespacing. [#1888](https://github.com/refinery/refinerycms/pull/1888). [David J. Brenes](https://github.com/brenes)
+* Fixed extension/form generator issue when using --pretend option. [#1916](https://github.com/refinery/refinerycms/issues/1916). [Uģis Ozols](https://github.com/ugisozols)
 * [See full list](https://github.com/refinery/refinerycms/compare/2.0.8...2.0.9)
 
 ## 2.0.8 [17 August 2012]
