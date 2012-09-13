@@ -1,13 +1,13 @@
 module Refinery
   module Pages
 
-    attr_accessor :tabs
-
     def self.tabs
       @tabs ||= []
     end
     
     def self.tabs_for_template(template)
+      return tabs unless template
+
       tabs.select do |tab|
         tab.templates.include?('all') || tab.templates.include?(template)
       end
@@ -26,6 +26,8 @@ module Refinery
 
         tab.templates = %w[all] if tab.templates.blank?
         tab.templates = Array(tab.templates)
+
+        tab
       end
 
     protected
