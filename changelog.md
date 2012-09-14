@@ -8,6 +8,7 @@
 * Added search functionality to users extension. [#1922](https://github.com/refinery/refinerycms/pull/1934/). [Marek](https://github.com/keram)
 * Extracted locale picker code into separate partial. [#1936](https://github.com/refinery/refinerycms/pull/1936). [Marek](https://github.com/keram)
 * Removed upgrade messages for IE. [#1940](https://github.com/refinery/refinerycms/pull/1940). [Philip Arndt](https://github.com/parndt)
+* Added template whitelist for page tabs. [#1943](https://github.com/refinery/refinerycms/pull/1943). [Johan](https://github.com/jokklan)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
