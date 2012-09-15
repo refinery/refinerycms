@@ -1,12 +1,12 @@
-<%= form_for @resource, :url => (@url_override || @resource.new_record? ? refinery.admin_resources_path : refinery.admin_resource_path(@resource)),
-                        :html => { :multipart => true },
-                        :as => "resource" do |f| -%>
+<%= form_for @resource, :url => (@url_override || (@resource.persisted? ? refinery.admin_resource_path(@resource) : refinery.admin_resources_path)),
+             :html => { :multipart => true },
+             :as => 'resource' do |f| %>
 
   <%= render '/refinery/admin/error_messages',
              :object => @resource,
              :include_object_name => false %>
 
-  <div class='field'>
+  <div class="field">
     <% if action_name =~ /(edit)|(update)/ %>
       <%= link_to t('.download_current'), @resource.url,
                   :title => @resource.title %>
@@ -18,7 +18,7 @@
     <% end %>
   </div>
 
-  <div class='field' id='maximum_file_size'>
+  <div class="field" id="maximum_file_size">
     <label>
       <%= t('.maximum_file_size', :bytes => number_to_human_size(Refinery::Resources.max_file_size)) %>
     </label>
@@ -26,20 +26,20 @@
 
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
-             :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?),
+             :hide_cancel => (@app_dialog or action_name == 'insert' or from_dialog?),
              :delete_title => t('delete', :scope => 'refinery.admin.resources'),
              :delete_confirmation => (t('message', :scope => 'refinery.admin.delete',
                                       :title => @resource.title) if @resource.persisted?) %>
 
   <% if @app_dialog -%>
-    <input type='hidden' name='app_dialog' value='<%= @app_dialog %>' />
-    <input type='hidden' name='field' value='<%= @field %>' />
-    <input type='hidden' name='update_resource' value='<%= @update_resource %>' />
-    <input type='hidden' name='update_text' value='<%= @update_text %>' />
-    <input type='hidden' name='thumbnail' value='<%= @thumbnail %>' />
-    <input type='hidden' name='callback' value='<%= @callback %>' />
-    <input type='hidden' name='conditions' value='<%= @conditions %>' />
-    <input type='hidden' name='current_link' value='<%= @current_link %>' />
+    <input type="hidden" name="app_dialog" value="<%= @app_dialog %>" />
+    <input type="hidden" name="field" value="<%= @field %>" />
+    <input type="hidden" name="update_resource" value="<%= @update_resource %>" />
+    <input type="hidden" name="update_text" value="<%= @update_text %>" />
+    <input type="hidden" name="thumbnail" value="<%= @thumbnail %>" />
+    <input type="hidden" name="callback" value="<%= @callback %>" />
+    <input type="hidden" name="conditions" value="<%= @conditions %>" />
+    <input type="hidden" name="current_link" value="<%= @current_link %>" />
   <% end -%>
 <% end -%>
 <% content_for :javascripts do %>
