@@ -1,17 +1,17 @@
-<li id="sortable_<%= list_view_image.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
-  <span class='title'>
+<li id="sortable_<%= list_view_image.id %>" class="clearfix record <%= cycle('on', 'on-hover') %>">
+  <span class="title">
     <%= list_view_image.title %> <span class="preview">&nbsp;</span>
   </span>
-  <span class='actions'>
+  <span class="actions">
     <%= link_to refinery_icon_tag('eye.png'), list_view_image.url,
-                :target => "_blank",
-                :title => "#{image_fu list_view_image, '96x96#c', :size => '96x96'}" %>
+                :target => '_blank',
+                :title => image_fu(list_view_image, '96x96#c', :size => '96x96') %>
     <%= link_to refinery_icon_tag('application_edit.png'),
                 refinery.edit_admin_image_path(list_view_image),
                 :title => t('edit', :scope => 'refinery.admin.images') %>
     <%= link_to refinery_icon_tag('delete.png'),
                 refinery.admin_image_path(list_view_image),
-                :class => "cancel confirm-delete",
+                :class => 'cancel confirm-delete',
                 :title => t('delete', :scope => 'refinery.admin.images'),
                 :data => {
                   :confirm => t('message', :scope => 'refinery.admin.delete', :title => list_view_image.title)
