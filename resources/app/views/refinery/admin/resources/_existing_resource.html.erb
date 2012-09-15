@@ -4,7 +4,7 @@
     <div id="pages_list" class="pages_list">
       <ul class="link_list">
         <% @resources.each do |resource| -%>
-          <% resource_linked = (resource.url == params[:current_link]) if params[:current_link].present? %>
+          <% resource_linked = ((@resource_id.present? && @resource_id == resource.id) || (params[:current_link].present? && resource.url == params[:current_link])) %>
           <li<%= ' class="linked"'.html_safe if resource_linked %>>
             <%= link_to "#{resource.title} (#{resource.file_name})", asset_paths.compute_public_path(resource.url, ''),
                         :title => t('.link_to_file'),
