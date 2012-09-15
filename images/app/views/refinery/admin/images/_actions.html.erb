@@ -3,13 +3,13 @@
     <%= render '/refinery/admin/search', :url => refinery.admin_images_path %>
   </li>
   <li>
-    <%= link_to t('.create_new_image'), refinery.new_admin_image_path(:dialog => true), :class => "add_icon" %>
+    <%= link_to t('.create_new_image'), refinery.new_admin_image_path(:dialog => true), :class => 'add_icon' %>
   </li>
   <% other_image_views.each do |image_view| %>
     <li>
       <%= link_to t('switch_to', :scope => 'refinery.admin.images.index.view', :view_name => t("#{image_view}", :scope => 'refinery.admin.images.index.view')),
                   refinery.admin_images_path(:view => image_view, :page => params[:page]),
-                  :class => "reorder_icon"  %>
+                  :class => 'reorder_icon'  %>
     </li>
   <% end %>
 </ul>
