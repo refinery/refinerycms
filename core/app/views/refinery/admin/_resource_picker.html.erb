@@ -1,5 +1,4 @@
 <%
-  conditions ||= nil
   insert_text = %Q{<span id="no_resource_selected_#{field}" class="nothing_selected" #{'style="display: none;"'.html_safe if resource}>
                    #{t('.no_resource_selected')}
                  </span>}.html_safe
@@ -11,7 +10,7 @@
                   :field => [f.object_name.gsub(/\]\[|[^-a-zA-Z0-9:.]/, '_').sub(/_$/, ''), field].join('_'),
                   :current_link => "#{resource.url if resource}",
                   :height => 480,
-                  :conditions => conditions
+                  :conditions => local_assigns[:conditions]
                 })
               %>
 <%= f.hidden_field field %>
