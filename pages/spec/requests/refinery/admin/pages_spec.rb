@@ -185,6 +185,20 @@ module Refinery
             Page.by_title("Some changes I'm unsure what they will look like").should be_empty
           end
 
+          # Regression test for previewing after save-and_continue
+          it 'will show the preview in a new window after save-and-continue', :js do
+            visit refinery.admin_pages_path
+
+            find('a[tooltip^=Edit]').click
+            fill_in "Title", :with => "Save this"
+            click_button "Save & continue editing"
+            page.should have_content("'Save this' was successfully updated")
+            
+            click_button "Preview"
+
+            # this test SHOULD fail but it does not. It does when run manually
+            new_window_should_have_content("Save this")
+          end
         end
 
         context 'a brand new page' do
