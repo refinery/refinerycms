@@ -35,7 +35,7 @@ It should be used inside a view like so:
 
 <erb>
 <% content_for :javascripts do %>
-  <%= javascript_link_tag 'jquery-cycle.min' %>
+  <%= javascript_include_tag 'jquery-cycle.min' %>
 <% end %>
 </erb>
 
