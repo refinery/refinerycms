@@ -1,0 +1,3 @@
+<%= render '/refinery/message' %>
+<%= hidden_field_tag 'new_action', local_assigns[:new_refinery_page_path] %>
+<script>refinery_page_preview_url = '<%= local_assigns[:new_page_path] %>';</script>

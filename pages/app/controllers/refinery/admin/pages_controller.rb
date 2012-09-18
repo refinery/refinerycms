@@ -41,9 +41,10 @@ module Refinery
               unless request.xhr?
                 redirect_to :back
               else
-                render :partial => '/refinery/message',
-                  #pass the new update url in case the title was updated 
-                  :locals => {:new_url => refinery.admin_page_path(@page.uncached_nested_url) }
+                render :partial => 'save_and_continue_callback', :locals => {
+                  :new_refinery_page_path => refinery.admin_page_path(@page.uncached_nested_url),
+                  :new_page_path => refinery.preview_page_path(@page.uncached_nested_url)
+                }
               end
             end
           else

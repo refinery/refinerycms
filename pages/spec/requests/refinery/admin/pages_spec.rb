@@ -8,6 +8,13 @@ def new_window_should_have_content(content)
   end
 end
 
+def new_window_should_not_have_content(content)
+  new_window = page.driver.browser.window_handles.last
+  page.within_window new_window do
+    page.should_not have_content(content)
+  end
+end
+
 module Refinery
   module Admin
     describe "Pages" do
@@ -145,7 +152,7 @@ module Refinery
       describe "edit/update" do
         before do
           Page.create :title => "Update me"
-          
+
           visit refinery.admin_pages_path
           page.should have_content("Update me")
         end
@@ -174,10 +181,10 @@ module Refinery
           it "updates page", :js do
             page.should have_content("'Updated' was successfully updated.")
           end
-          
+
           # Regression test for https://github.com/refinery/refinerycms/issues/1892
           context 'when saving to exit (a second time)' do
-            it 'updates page', :js do 
+            it 'updates page', :js do
               click_button "Save"
               page.should have_content("'Updated' was successfully updated.")
             end
@@ -219,11 +226,13 @@ module Refinery
             fill_in "Title", :with => "Save this"
             click_button "Save & continue editing"
             page.should have_content("'Save this' was successfully updated")
-            
+
             click_button "Preview"
 
-            # this test SHOULD fail but it does not. It does when run manually
             new_window_should_have_content("Save this")
+            new_window_should_not_have_content(
+              ::I18n.t('switch_to_website', :scope => 'refinery.site_bar')
+            )
           end
         end
 

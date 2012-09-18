@@ -1,8 +1,3 @@
-<% if local_assigns.has_key? :new_url %> 
-  <%# Need the new action URL if the title has been changed.
-      Will be used by the js to update the form action %>
-  <%= hidden_field_tag 'new_action', new_url %>  
-<% end -%>
 <% flash.each do |key, value| %>
 <div id='flash' class="flash flash_<%= key %>" style='visibility: hidden;' >
   <%= value %>
