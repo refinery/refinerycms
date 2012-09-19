@@ -7,7 +7,7 @@ zh-CN:
     admin:
       pages_dialogs:
         page_link:
-          link_to_this_page: 页面连接
+          link_to_this_page: 页面链接
         link_to:
           insert: 插入
           your_page:
@@ -16,21 +16,21 @@ zh-CN:
             tab_name: 网站
             location: 位置
             new_window: 新窗口
-            new_window_label: 勾选这个方框使得此连接在新浏览器窗口中打开.
+            new_window_label: 勾选这个方框使得此链接在新浏览器窗口中打开.
             not_sure: 不确定放什么东西到上面的方框?
-            step1: 在网上寻找要连接去的页面.
+            step1: 在网上寻找要链接去的页面.
             step2: 在浏览器地址栏复制网页地址然后粘贴到上面的方框.
           email_address:
             tab_name: Email 地址
             subject_line_optional: 可选的主题
             body_optional: 可选的内容
             not_sure: 不确定放什么东西到上面那些方框?
-            step1_html: 输入或复制然后粘贴 (例如从您的通讯录) email 地址用来连接到上面方框的 '<strong>邮件地址</strong>'.
+            step1_html: 输入或复制然后粘贴 (例如从您的通讯录) email 地址用来链接到上面方框的 '<strong>邮件地址</strong>'.
             step2_html: 如果您想使用 <strong>预写的标题列</strong> 来编辑信息, 请使用上面的 '<strong>标题列</strong>' 方框.
             step3_html: 如果您想使用 <strong>预写的信息</strong> 来编辑信息, 请使用上面的 <strong>Email 内容</strong> 方框.
           your_resource:
             tab_name: 您的文件
-            link_to_this_resource: 连接到此文件
+            link_to_this_resource: 链接到此文件
       pages:
         delete: 永久删除此页面
         edit: 编辑此页面
@@ -46,7 +46,7 @@ zh-CN:
           delete_content_section: 删除内容区
         form_advanced_options:
           page_options: 页面选项
-          parent_page: 父业面
+          parent_page: 父页面
           menu_title: 菜单项名称
           custom_slug: 自定义slug
           custom_title: 自定义标题
@@ -55,7 +55,7 @@ zh-CN:
           show_in_menu_help: 如果您想在网站菜单中去除一个页面, 不勾选这个选项. 如果您想有个可以直接访问的页面但又不想显示在菜单里, 这个很方便的选项.
           skip_to_first_child: 跳过第一层页面
           skip_to_first_child_label: 重定向浏览者到第一个子层页.
-          skip_to_first_child_help: 这个选项使得这个页面连接到第一个页面下面, 这对组合页面在一起的时候非常有用.
+          skip_to_first_child_help: 这个选项使得这个页面链接到第一个页面下面, 这对组合页面在一起的时候非常有用.
           link_url: 重定向这个页面到其他的网站或页面
           link_url_help: 如果您想要在菜单中点这个页面就跳到其他网站或是页面的话, 在这里输入网址, 例如 http://google.com, 不然就留空
           parent_page_help: 您可以在列表中让一个页面依附在另一个页面之下. 如果您想要让这个页面为第一层页面, 就不要填写.
@@ -68,7 +68,7 @@ zh-CN:
           reorder_pages_done: 完成编排
         records:
           no_pages_yet: 这里还没有页面. 点击 "添加新页面" 去添加您的第一个页面.
-        translator_access: 您没有权限更改这种语言的页面
+        translator_access: 您没有权限来更改使用这种语言的页面
   activerecord:
     models:
       refinery/page: 页面
