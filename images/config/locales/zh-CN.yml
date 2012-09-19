@@ -39,6 +39,6 @@ zh-CN:
     errors:
       models:
         refinery/image:
-          blank: 你必须选择一个图片来上传
+          blank: 您没有选择图片，无法上传。
           too_big: 图片应该小于 %{size} MB 大小
-          incorrect_format: '你的图片必须是JPG, PNG 或者 GIF'
+          incorrect_format: '图片格式必须是JPG, PNG 或者 GIF'

@@ -3,7 +3,7 @@ zh-CN:
     plugins:
       refinery_files:
         title: 文件
-        description: 上传与连接文件
+        description: 上传并链接文件
     admin:
       resources:
         delete: 永久删除此文件
@@ -24,7 +24,7 @@ zh-CN:
           new: 新文件
           no_files: 没有文件.
         existing_resource:
-          link_to_file: 连接到此文件
+          link_to_file: 链接到此文件
           button_text: 插入
   activerecord:
     models:
