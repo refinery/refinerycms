@@ -35,37 +35,43 @@ Rick is going to want to enter the following information about each event:
 * A photo
 * A little blurb about the event.
 
-Run this command to generate the events extension for Rick[1]:
+Run this command to generate the events extension for Rick:
 
 <shell>
 $ rails generate refinery:engine event title:string date:datetime photo:image blurb:text
-      create  vendor/extensions/events/app/controllers/admin/events_controller.rb
-      create  vendor/extensions/events/app/controllers/events_controller.rb
-      create  vendor/extensions/events/app/models/event.rb
-      create  vendor/extensions/events/app/views/admin/events/_form.html.erb
-      create  vendor/extensions/events/app/views/admin/events/_event.html.erb
-      create  vendor/extensions/events/app/views/admin/events/_sortable_list.html.erb
-      create  vendor/extensions/events/app/views/admin/events/edit.html.erb
-      create  vendor/extensions/events/app/views/admin/events/index.html.erb
-      create  vendor/extensions/events/app/views/admin/events/new.html.erb
-      create  vendor/extensions/events/app/views/events/index.html.erb
-      create  vendor/extensions/events/app/views/events/show.html.erb
+<shell>
+
+This results in the following:
+<shell>
+      create  vendor/extensions/events/app/controllers/refinery/admin/events_controller.rb
+      create  vendor/extensions/events/app/controllers/refinery/events_controller.rb
+      create  vendor/extensions/events/app/models/refinery/event.rb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_actions.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_form.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_events.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_records.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_event.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/_sortable_list.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/edit.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/index.html.erb
+      create  vendor/extensions/events/app/views/refinery/admin/events/new.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/index.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/show.html.erb
       create  vendor/extensions/events/config/locales/en.yml
+      create  vendor/extensions/events/config/locales/es.yml
+      create  vendor/extensions/events/config/locales/fr.yml
       create  vendor/extensions/events/config/locales/lolcat.yml
       create  vendor/extensions/events/config/locales/nb.yml
       create  vendor/extensions/events/config/locales/nl.yml
       create  vendor/extensions/events/config/routes.rb
-      create  vendor/extensions/events/db/migrate/create_events.rb
-      create  vendor/extensions/events/db/seeds/events.rb
-      create  vendor/extensions/events/features/manage_events.feature
-      create  vendor/extensions/events/features/step_definitions/event_steps.rb
-      create  vendor/extensions/events/features/support/paths.rb
-      create  vendor/extensions/events/lib/generators/refinerycms_events_generator.rb
-      create  vendor/extensions/events/lib/events.rb
+      create  vendor/extensions/events/db/migrate/20111031210430_create_events.rb
+      create  vendor/extensions/events/db/seeds.rb
+      create  vendor/extensions/events/lib/generators/refinery/events_generator.rb
+      create  vendor/extensions/events/lib/refinerycms-events.rb
       create  vendor/extensions/events/lib/tasks/events.rake
-      create  vendor/extensions/events/public/.gitkeep
       create  vendor/extensions/events/readme.md
       create  vendor/extensions/events/refinerycms-events.gemspec
+      ...
 ------------------------
 Now run:
 bundle install
@@ -156,3 +162,68 @@ rake db:seed
 </shell>
 
 Lastly, run +rake db:migrate+ and +rake db:seed+ as usual.
+
+h4. Crudify: The Backbone of Refinery Engines
+
+Any Refinery extension, even the built-in ones, that focus on Create, Read, Update and Delete are driven by crudify. Crudify is a highly reusable module included with Refinery that gives you all the standard CRUD actions as well as reordering, searching and paging.
+
+Open up +vendor/extensions/events/app/controllers/refinery/events/admin/events_controller.rb+ and look at its contents:
+
+<ruby>
+module Refinery
+  module Events
+    module Admin
+      class EventsController < ::Refinery::AdminController
+
+        crudify :'refinery/events/event', :xhr_paging => true
+
+      end
+    end
+  end
+end
+</ruby>
+
+Most of the time, crudify's defaults are bang on, but if you need to, you can easily customise how it works.
+
+By default +crudify+ assumes your records will be sortable. But events should not be manually sortable; it makes more sense to order them by their event date. Update the contents of the file to this:
+
+<ruby>
+module Refinery
+  module Events
+    module Admin
+      class EventsController < ::Refinery::AdminController
+
+        crudify :'refinery/events/event', :xhr_paging => true,
+                                          :order => "date DESC",
+                                          :sortable => false
+
+      end
+    end
+  end
+end
+</ruby>
+
+This will tell +crudify+ to sort by our event date field and to turn off manual sorting by the user.
+
+Finally edit +vendor/extensions/events/app/controllers/refinery/events/events_controller.rb+ and replace the +find_all_events+ method with this one:
+
+<ruby>
+module Refinery
+  module Events
+    class EventsController < ::ApplicationController
+
+      # code
+
+      protected
+
+        def find_all_events
+          # Order by event date
+          @events = Event.order("date DESC")
+        end
+
+        # code
+
+    end
+  end
+end
+</ruby>
