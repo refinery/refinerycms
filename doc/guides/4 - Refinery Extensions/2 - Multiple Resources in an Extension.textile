@@ -37,6 +37,9 @@ Rick is going to want to enter the following information about each event:
 
 Run this command to generate the events extension for Rick:
 
+TIP1: if you want to create a model without frontend, just add +--skip-frontend+.
+TIP2: if you want to use a namespace for your plugin, add +--namespace namespace_name+. If you use it, you have to add the namespace to every generation of this plugin.
+
 <shell>
 $ rails generate refinery:engine event title:string date:datetime photo:image blurb:text
 <shell>
