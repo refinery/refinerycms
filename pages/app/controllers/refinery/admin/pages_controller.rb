@@ -27,6 +27,43 @@ module Refinery
         render :layout => false
       end
 
+      def update
+        if @page.update_attributes(params[:page])
+          flash.notice = t(
+            'refinery.crudify.updated',
+            :what => "'#{@page.title}'"
+          )
+
+          unless from_dialog?
+            unless params[:continue_editing] =~ /true|on|1/
+              redirect_back_or_default(refinery.admin_pages_path)
+            else
+              unless request.xhr?
+                redirect_to :back
+              else
+                render :partial => 'save_and_continue_callback', :locals => {
+                  :new_refinery_page_path => refinery.admin_page_path(@page.uncached_nested_url),
+                  :new_page_path => refinery.preview_page_path(@page.uncached_nested_url)
+                }
+              end
+            end
+          else
+            self.index
+            @dialog_successful = true
+            render :index
+          end
+        else
+          unless request.xhr?
+            render :action => 'edit'
+          else
+            render :partial => '/refinery/admin/error_messages', :locals => {
+              :object => @page,
+              :include_object_name => true
+            }
+          end
+        end
+      end
+
     protected
 
       def find_page

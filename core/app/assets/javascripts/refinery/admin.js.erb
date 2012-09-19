@@ -194,6 +194,9 @@ submit_and_continue = function(e, redirect_to) {
         $('#continue_editing').val(false);
 
         init_flash_messages();
+
+        //updates the form action with new URL
+        $('form').attr('action', $('#new_action').attr('value'));
       }
     }, 'html'
   );

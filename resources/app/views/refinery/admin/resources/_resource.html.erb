@@ -1,9 +1,9 @@
-<li class='clearfix record <%= cycle("on", "on-hover") %>'>
-  <span class='title <%= resource.ext.try(:downcase) %>'>
+<li class="clearfix record <%= cycle('on', 'on-hover') %>">
+  <span class="title <%= resource.ext.try(:downcase) %>">
     <%= resource.title %><%= ".#{resource.ext}" if resource.ext %>
     <span class="preview">- <%= number_to_human_size(resource.size) %></span>
   </span>
-  <span class='actions'>
+  <span class="actions">
     <%= link_to refinery_icon_tag('page_white_put.png'),
                 resource.url,
                 :title => t('.download', :size => number_to_human_size(resource.size)) %>
