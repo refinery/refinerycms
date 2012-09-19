@@ -34,21 +34,29 @@ sk:
       pages:
         delete: Zmazať túto stránku
         edit: Upraviť túto stránku
+        new: Pridať novú podstránku
+        expand_collapse: Rozbaliť alebo zbaliť podstránky
         page:
           view_live_html: Zobraziť stránku <br/><em>(otvorí sa v novom okne)</em>
           hidden: skrytá
           draft: pracovná verzia
+        form:
+          preview: Náhľad
+          preview_changes: Zobraziť náhľad s vykonanými zmenami
         form_new_page_parts:
           title: Názov
         form_page_parts:
           create_content_section: Pridať sekciu
           delete_content_section: Zmazať sekciu
+          reorder_content_section: Preusporiadať sekcie
+          reorder_content_section_done: Uložiť usporiadanie sekcií
         form_advanced_options:
           toggle_advanced_options: Sprístupní nastavenia menu a meta tagov.
           page_options: Nastavenie stránky
           parent_page: Nadradená stránka
           advanced_options: Rozšírené nastavenia
-          custom_title: Titulok
+          menu_title: Názov menu
+          custom_slug: Vlastný url identifikátor
           show_in_menu_title: Zobraziť v menu
           show_in_menu_description: Zobraziť túto stránku v menu webu
           show_in_menu_help: Odznačte ak chcete odstrániť odkaz na túto stránku z menu webu. Toto je užitočné ak máte stránku, na ktorú chcete mať priamy odkaz, ale nechcete zobrazovať stránku v menu.
@@ -59,13 +67,27 @@ sk:
           link_url: Presmerovať túto stránku na iný web alebo stránku.
           link_url_help: Ak chcete, aby po kliknutí na odkaz na tútu stránku bol návštevník presmerovaný na iný web, vložte adresu (napr. http://google.com), inak ponechajte prázdne.
           parent_page_help: Môžete umiestniť túto stránku v hierarchii pod inú stránku. Ak nevyberiete nič, bude táto stránka umiestnená na prvej úrovni.
-          custom_title_help: Ak chcete aby stránka mala iný titulok než ten ktorý sa zobrazuje v menu vyberte &apos;Text&apos; a vložte ho tu.
+          menu_title_help: Ak chcete, aby sa v menu zobrazil odlišný názov ako ten, ktorý sa zobrazuje na stránke, napíšte ho sem.
+          custom_slug_help: Url identifikátor je človekom čitateľný identifikátor, ktorý sa používa na vytvorenie celej url adresy stránky, napríklad &apos;o-nas&apos;. Ak chcete zmeniť url identifikátor, ktorý automaticky vytvorí Refinery, napíšte váš vlastný url identifikátor sem.
+          layout_template: Šablóny rozmiestnenia
+          layout_template_help: Pre túto stránku si môžete vybrať odlišnú šablónu rozmiestnenia.
+          view_template: Šablóny vzhľadu
+          view_template_help: Pre túto stránku si môžete vybrať odlišnú šablónu vzhľadu.
+        form_advanced_options_seo:
+          seo: Optimalizácia pre vyhľadávače
+          seo_override_title: Titulok prehliadača
+          seo_override_title_help: Vložte titulok dĺžky 5-10 slov, ktorý vystihuje obsah stránky.
+          meta_keywords_title: Kľúčové slová (Meta keywords)
+          meta_keywords_help: Vložte 5-10 kľúčových slov oddelených čiarkov, ktoré sa vzťahujú k obsahu stránky.
+          meta_description_title: Popis (Meta description)
+          meta_description_help: Vložte 2-3 krátke vety sumarizujúce obsah stránky.
         actions:
           create_new_page: Pridať novú stránku
           reorder_pages: Zmeniť usporiadanie stránok
           reorder_pages_done: Uložiť usporiadanie
         records:
           no_pages_yet: Zatiaľ neboli vytvorené žiadne stránky. Kliknite na "Pridať novú stránku" pre pridanie prvej.
+        translator_access: Nemáte požadované oprávnenia editovať stránky v tomto jazyku
   activerecord:
     models:
       refinery/page: stránka
