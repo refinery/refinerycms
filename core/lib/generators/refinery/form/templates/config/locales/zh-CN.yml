@@ -3,71 +3,62 @@ en:
     plugins:
       <%= plural_name %>:
         title: <%= plural_name.titleize %>
-        #Provides a contact form and stores <%= plural_name.humanize.downcase %>
         description: 提供联系方式表格来存放 <%= plural_name.humanize.downcase %>
     <%= namespacing.underscore %>:
       <%= plural_name %>:
         new:
-          send: 发送邮件 #Send message
-          privacy_policy: 我们重视您的隐私 #We value your privacy
+          send: 发送邮件
+          privacy_policy: 我们重视您的隐私
       admin:
         <%= plural_name %>:
-          # Remove this <%= singular_name.humanize.downcase %> forever
           delete: 永久删除 <%= singular_name.humanize.downcase %>
           <%= singular_name %>:
             read_<%= singular_name %>: 阅读这个 <%= singular_name.humanize.downcase %>
             said: 说
-            mark_as_spam: 标记为垃圾邮件 #Mark as spam
-            mark_as_ham:  移动到收件箱 # Move to inbox
+            mark_as_spam: 标记为垃圾邮件
+            mark_as_ham:  移动到收件箱
           submenu:
-            inbox: 收件箱 # Inbox
-            spam: 垃圾邮件 #Spam
-            update_notified: 通知相关人员 #Update who gets notified
-            edit_confirmation_email: 编辑确认邮件  #Edit confirmation email
+            inbox: 收件箱
+            spam: 垃圾邮件
+            update_notified: 通知相关人员
+            edit_confirmation_email: 编辑确认邮件
           index:
-            #  You have not received any <%= plural_name.humanize.downcase %> yet.
             no_<%= plural_name %>: 您尚未收到任何 <%= plural_name.humanize.downcase %>
           spam:
-            no_spam: 太棒了！一封垃圾邮件都没有～ #Hooray! You don't have any spam.
+            no_spam: 太棒了！一封垃圾邮件都没有～
           show:
-            details: 详细 #Details
-            age: 岁 #Age
-            actions: 操作 #Actions
-            # Back to all <%= plural_name.humanize.downcase %>
+            details: 详细
+            age: 岁
+            actions: 操作
             back_to_all_<%= plural_name %>: 返回到全部 <%= plural_name.humanize.downcase %>
-            spam: 垃圾信息 #Spam
-            spam_yes: 是 # 'yes'
+            spam: 垃圾信息
+            spam_yes: 是
             <%= singular_name %>: <%= class_name.underscore.titleize %>
             to: 收件人(To)
             from: 发件人(From)
-            click_to_email: 点击来发送 # Click to email this address
-            phone: 电话 #Phone
-            date: 日期 #Date
-            message: 信息 #Message
+            click_to_email: 点击来发送
+            phone: 电话
+            date: 日期
+            message: 信息
         settings:
           notification_recipients_form:
-            settings_value_name: 发通知给 # Send notifications to
-            # Every time someone contacts you on your website, Refinery sends out an email to say there is a new <%= singular_name.humanize.downcase %>.
+            settings_value_name: 发通知给
             explanation: 每当有人联系您时， Refinery都会发邮件给您.
-            # When a new <%= singular_name.humanize.downcase %> is submitted, Refinery will send an email notification to you.
             hint: 当有新的 <%= singular_name.humanize.downcase %> 被提交时， Refinery 会发邮件告知您。
             example: "输入您的Email地址, 形如： jack@work.com, jill@office.com"
           confirmation_email_form:
-            to: 收件人 # To
-            from: 发件人 # From
-            subject: 主题 #Subject
-            click_to_edit_subject: 点击编辑主题 # Click here to edit the subject
-            # Every time someone contacts you on your website, Refinery sends out an email to confirm the <%= singular_name.humanize.downcase %> with the person who made it.
+            to: 收件人
+            from: 发件人
+            subject: 主题
+            click_to_edit_subject: 点击编辑主题
             explanation: 当有人试图联系您时，Refinery 都会发邮件跟他（拥有<%= singular_name.humanize.downcase %> 的人）进行确认
-            below_edit_email_sent: 您可以在下面编辑邮件内容 # Below you can edit the email that is sent out.
+            below_edit_email_sent: 您可以在下面编辑邮件内容
             the_customer_making_<%= singular_name %>:  建立 <%= singular_name.humanize.downcase %> 的顾客
-            message: 邮件 #Message
-            # "Note: place the text %name% where you'd like the customer's name to appear in the email"
+            message: 邮件
             note: "提示: 您可以在希望出现对方姓名的地方，使用%name%"
       mailer:
         notification:
-          greeting: 你好 # Hi there
-          #You just received a new <%= singular_name.humanize.downcase %> on your website.
+          greeting: 你好
           you_recieved_new_<%= singular_name %>: 您刚刚收到了一封新 <%= singular_name.humanize.downcase %>.
           <%= singular_name %>_starts: --- <%= singular_name.humanize.downcase %> 开始---
           <%= singular_name %>_ends: --- <%= singular_name.humanize.downcase %> 结束---
@@ -76,7 +67,6 @@ en:
           phone: 电话
           message: 正文
           closing_line: 此致，
-          #P.S. All your <%= plural_name.humanize.downcase %> are stored in the "<%= plural_name.titleize %>" section of Refinery should you ever want to view it later there.
           ps_html:  注：所有您的<%= plural_name.humanize.downcase %>都会保存在"<%= plural_name.titleize %>"里。这样您可以在任何时间查看它们。
   activerecord:
     models:
