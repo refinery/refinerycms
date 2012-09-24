@@ -103,7 +103,7 @@ module Refinery
 
     def write_cache?
       if Refinery::Pages.cache_pages_full && !refinery_user?
-        cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path).to_s)
+        cache_page(response.body, File.join('', 'system', 'refinery', 'cache', 'pages', request.path).to_s)
       end
     end
   end

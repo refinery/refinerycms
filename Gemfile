@@ -92,6 +92,6 @@ gem 'jquery-rails', '~> 2.0.0'
 # gem 'fog'
 
 # Load local gems according to Refinery developer preference.
-if File.exist? local_gemfile = File.expand_path('../.gemfile', __FILE__)
-  eval File.read(local_gemfile)
+if File.exist?(File.expand_path('../.gemfile', __FILE__))
+  eval(File.read(File.expand_path('../.gemfile', __FILE__)))
 end

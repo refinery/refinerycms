@@ -21,12 +21,12 @@ module Refinery
       page_cache_directory_path = Pathname.new(page_cache_directory.to_s)
 
       # Delete the full Cache
-      if (cache_root = page_cache_directory_path.join('refinery', 'cache', 'pages')).directory?
+      if (cache_root = page_cache_directory_path.join('system', 'refinery', 'cache', 'pages')).directory?
         cache_root.rmtree
       end
 
-      # Delete the pages index files (/refinery/cache/pages.html*)
-      Pathname.glob(page_cache_directory_path.join('refinery', 'cache', 'pages.html*')).each do |cache_index|
+      # Delete the pages index files (/system/refinery/cache/pages.html*)
+      Pathname.glob(page_cache_directory_path.join('system', 'refinery', 'cache', 'pages.html*')).each do |cache_index|
         cache_index.delete
       end
     end

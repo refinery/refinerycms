@@ -1,5 +1,6 @@
 <%
-  insert_text = %Q{<span id="no_resource_selected_#{field}" class="nothing_selected" #{'style="display: none;"'.html_safe if resource}>
+  conditions ||= nil
+  insert_text = %Q{<span id="no_resource_selected_#{field}" class="nothing_selected" #{'style="display: none;"'.html_safe if resource.present?}>
                    #{t('.no_resource_selected')}
                  </span>}.html_safe
   insert_link = refinery.insert_admin_resources_path({
@@ -8,9 +9,9 @@
                   :update_text => "current_resource_text_#{field}",
                   :callback => "resource_changed_#{field}",
                   :field => [f.object_name.gsub(/\]\[|[^-a-zA-Z0-9:.]/, '_').sub(/_$/, ''), field].join('_'),
-                  :current_link => "#{resource.url if resource}",
+                  :current_link => "#{resource.url if resource.present?}",
                   :height => 480,
-                  :conditions => local_assigns[:conditions]
+                  :conditions => conditions
                 })
               %>
 <%= f.hidden_field field %>
@@ -19,21 +20,21 @@
               :name => t('.name'),
               :id => "current_resource_link_#{field}"
   %>
-  <div id="current_resource_container_<%= field %>" style="margin-top: 10px;<%= 'display: none' unless resource %>">
+  <div id="current_resource_container_<%= field %>" style="margin-top: 10px;<%= 'display: none' unless resource.present? %>">
     <%= link_to "#{refinery_icon_tag('page_white_put.png')} ".html_safe +
                 content_tag(
                   :span,
-                  (%Q{#{resource.title} (#{resource.file_name})} if resource).to_s,
+                  resource.present? ? "#{resource.title} (#{resource.file_name})" : '',
                   :id => "current_resource_text_#{field}"
                 ),
-                "#{resource.url if resource}",
+                "#{resource.url if resource.present?}",
                 :id => "current_resource_#{field}",
                 :target => '_blank' %>
   </div>
   <br/>
   <%= link_to t('.remove_current'), '',
               :id => "remove_resource_#{field}",
-              :style => "#{'display:none;' unless resource}" %>
+              :style => "#{'display:none;' unless resource.present?}" %>
 </div>
 
 <% content_for :javascripts do %>
