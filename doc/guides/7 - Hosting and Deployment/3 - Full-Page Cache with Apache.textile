@@ -28,7 +28,7 @@ RewriteEngine On
 RewriteRule ^$ home
 
 #checks cache directory for already cached pages
-RewriteCond %{REQUEST_URI} ^/(../)?[^/]*$
+RewriteCond %{REQUEST_URI} ^/[a-zA-Z0-9\-/]*$
 RewriteCond %{DOCUMENT_ROOT}/refinery/cache/pages%{REQUEST_URI}.html -f
 RewriteRule ^([^.]+)$ refinery/cache/pages/%{REQUEST_URI}.html [L]
 
