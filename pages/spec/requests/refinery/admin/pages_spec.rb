@@ -584,6 +584,24 @@ module Refinery
           end
         end
       end
+
+      # regression spec for https://github.com/refinery/refinerycms/issues/1891
+      describe "page part body" do
+        before do
+          page = Refinery::Page.create! :title => "test"
+          Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
+            page.parts.create(:title => default_page_part,
+                              :body => "<header class='regression'>test</header>",
+                              :position => index)
+          end
+        end
+
+        specify "html shouldn't be stripped" do
+          visit refinery.admin_pages_path
+          click_link "Edit this page"
+          page.should have_content("header class='regression'")
+        end
+      end
     end
 
     describe "TranslatePages" do
