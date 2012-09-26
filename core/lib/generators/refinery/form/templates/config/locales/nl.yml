@@ -1,71 +1,72 @@
 nl:
-  plugins:
-    <%= plural_name %>:
-      title: <%= plural_name.titleize %>
-  <%= namespacing.underscore %>:
-    <%= plural_name %>:
-      new:
-        send: Verstuur uw vraag
-        privacy_policy: Wij respecteren uw privacy
-    admin:
+  refinery:
+    plugins:
       <%= plural_name %>:
-        delete: Verwijder deze vraag voorgoed
-        <%= singular_name %>:
-          read_<%= singular_name %>: Lees de vraag
-          said: zei
-          mark_as_spam: Markeer als spam
-          mark_as_ham: Verplaats naar de inbox
-        submenu:
-          inbox: Inbox
-          spam: Spam
-          update_notified: Wijzig wie op de hoogte wordt gesteld van vragen
-          edit_confirmation_email: Bewerk bevestigings email
-        index:
-          no_<%= plural_name %>: Je hebt nog geen vragen ontvangen.
-        spam:
-          no_spam: Jeej! Je hebt geen spam.
-        show:
-          details: Details
-          age: Leeftijd
-          actions: Acties
-          back_to_all_<%= plural_name %>: Terug naar alle vragen
-          spam: Spam
-          spam_yes: ja
-          <%= singular_name %>: <%= class_name.underscore.titleize %>
-          to: Aan
+        title: <%= plural_name.titleize %>
+    <%= namespacing.underscore %>:
+      <%= plural_name %>:
+        new:
+          send: Verstuur uw vraag
+          privacy_policy: Wij respecteren uw privacy
+      admin:
+        <%= plural_name %>:
+          delete: Verwijder deze vraag voorgoed
+          <%= singular_name %>:
+            read_<%= singular_name %>: Lees de vraag
+            said: zei
+            mark_as_spam: Markeer als spam
+            mark_as_ham: Verplaats naar de inbox
+          submenu:
+            inbox: Inbox
+            spam: Spam
+            update_notified: Wijzig wie op de hoogte wordt gesteld van vragen
+            edit_confirmation_email: Bewerk bevestigings email
+          index:
+            no_<%= plural_name %>: Je hebt nog geen vragen ontvangen.
+          spam:
+            no_spam: Jeej! Je hebt geen spam.
+          show:
+            details: Details
+            age: Leeftijd
+            actions: Acties
+            back_to_all_<%= plural_name %>: Terug naar alle vragen
+            spam: Spam
+            spam_yes: ja
+            <%= singular_name %>: <%= class_name.underscore.titleize %>
+            to: Aan
+            from: Van
+            click_to_email: Klik hier om een e-mail te sturen
+            phone: Telefoonnummer
+            date: Datum
+            message: Bericht
+        settings:
+          notification_recipients_form:
+            settings_value_name: Stuur notificaties naar
+            explanation: "Iedere keer wanneer iemand het vraag formulier invult op uw website, stuurt Refinery een email waarin staat dat er een nieuwe vraag ontvangen is."
+            hint: "Vul hierboven een email adres in. Wilt u naar meerdere adressen notificaties sturen? Vul dan meerdere email adressen in gescheiden door comma's"
+            example: "Bijvoorbeeld: ik@domein.com, vrienden@msn.com, collegas@werk.com"
+          confirmation_email_form:
+            to: Aan
+            from: Van
+            subject: Onderwerp
+            click_to_edit_subject: Klik hier om het onderwerp bewerken
+            explanation: "Iedere keer wanneer iemand het vraag formulier invult op uw website, stuurt Refinery een email naar die persoon waarin staat dat de vraag ontvangen is."
+            below_edit_email_sent: Hieronder kun je de email die verzonden wordt bewerken.
+            the_customer_making_<%= singular_name %>: De persoon die de heeft vraag gesteld
+            message: Bericht
+            note: "Notitie: plaats de tekst %name% overal in je email waar je de naam van de vragende persoon wilt invoegen"
+      mailer:
+        notification:
+          greeting: Hallo
+          you_recieved_new_<%= singular_name %>: Je hebt een nieuwe vraag via de website ontvangen.
+          <%= singular_name %>_starts: --- begin van de vraag---
+          <%= singular_name %>_ends: --- einde van de vraag---
           from: Van
-          click_to_email: Klik hier om een e-mail te sturen
-          phone: Telefoonnummer
-          date: Datum
+          email: Email
+          phone: Telefoon
           message: Bericht
-      settings:
-        notification_recipients_form:
-          settings_value_name: Stuur notificaties naar
-          explanation: "Iedere keer wanneer iemand het vraag formulier invult op uw website, stuurt Refinery een email waarin staat dat er een nieuwe vraag ontvangen is."
-          hint: "Vul hierboven een email adres in. Wilt u naar meerdere adressen notificaties sturen? Vul dan meerdere email adressen in gescheiden door comma's"
-          example: "Bijvoorbeeld: ik@domein.com, vrienden@msn.com, collegas@werk.com"
-        confirmation_email_form:
-          to: Aan
-          from: Van
-          subject: Onderwerp
-          click_to_edit_subject: Klik hier om het onderwerp bewerken
-          explanation: "Iedere keer wanneer iemand het vraag formulier invult op uw website, stuurt Refinery een email naar die persoon waarin staat dat de vraag ontvangen is."
-          below_edit_email_sent: Hieronder kun je de email die verzonden wordt bewerken.
-          the_customer_making_<%= singular_name %>: De persoon die de heeft vraag gesteld
-          message: Bericht
-          note: "Notitie: plaats de tekst %name% overal in je email waar je de naam van de vragende persoon wilt invoegen"
-    mailer:
-      notification:
-        greeting: Hallo
-        you_recieved_new_<%= singular_name %>: Je hebt een nieuwe vraag via de website ontvangen.
-        <%= singular_name %>_starts: --- begin van de vraag---
-        <%= singular_name %>_ends: --- einde van de vraag---
-        from: Van
-        email: Email
-        phone: Telefoon
-        message: Bericht
-        closing_line: Vriendelijke groeten,
-        ps_html: P.S. Alle vragen woren opgeslagen in de "vragen" sectie van uw website.All your <%= plural_name.humanize.downcase %> are stored in the "<%= plural_name.titleize %>" section of Refinery.
+          closing_line: Vriendelijke groeten,
+          ps_html: P.S. Alle vragen woren opgeslagen in de "vragen" sectie van uw website.All your <%= plural_name.humanize.downcase %> are stored in the "<%= plural_name.titleize %>" section of Refinery.
   activerecord:
     models:
       <%= singular_name %>: <%= class_name.underscore.titleize %>
