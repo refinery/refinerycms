@@ -180,9 +180,7 @@ module Refinery
     end
 
     def exit_with_message!(message)
-      puts ""
-      puts message
-      puts ""
+      STDERR.puts "\n#{message}\n\n"
       exit 1
     end
 
@@ -314,6 +312,11 @@ module Refinery
       if attributes.empty? && self.behavior != :revoke
         exit_with_message! "You must specify a name and at least one field." \
                            "\nFor help, run: #{generator_command}"
+      end
+
+      if options[:extension].present? && !extension_pathname.directory?
+        exit_with_message! "You can't use '--extension #{options[:extension]}' option because" \
+                           " extension with name #{options[:extension]} doesn't exist."
       end
     end
 
