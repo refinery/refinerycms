@@ -42,3 +42,4 @@ fr:
           blank: Vous devez sélectionner une image à télécharger
           too_big: L'image doit être plus petite que %{size} megaoctets
           incorrect_format: 'Seules les images aux formats JPG, PNG or GIF sont acceptées'
+          different_file_name: La nouvelle image ne peut pas avoir un nom de fichier différent
