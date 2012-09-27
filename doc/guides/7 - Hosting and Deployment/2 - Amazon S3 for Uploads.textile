@@ -50,7 +50,7 @@ ENV['S3_SECRET']='fill_in_your_secret_key_here'
 ENV['S3_BUCKET']='fill_in_your_bucket_name_here'
 </ruby>
 
-(Note: For Heroku, you should use config vars to set your environment variables, using Heroku's command line utility. See "Heroku's config vars documentation":http://devcenter.heroku.com/articles/config-vars.)
+(Note: For Heroku, you should use "config vars to set your environment variables":http://refinerycms.com/guides/heroku)
 
 Another option, expecially if you experience Dragonfly::DataStorage::S3DataStore exceptions, is to configure 
 your Amazon S3 credential using the following syntax:

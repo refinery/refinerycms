@@ -181,6 +181,8 @@ Next, tell Heroku about your new S3 bucket.
 heroku config:add S3_KEY=123key S3_SECRET=456secret S3_BUCKET=my_app_production
 </shell>
 
+WARNING. Make sure the config vars you add to Heroku match Refinery's environment variables: +S3_KEY+, +S3_SECRET+, and +S3_BUCKET+  
+
 If you have created your bucket in a region other than 'us-east-1' you need to
 add S3_REGION=s3region also.
 
