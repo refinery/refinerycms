@@ -1,0 +1,4 @@
+<% if searching? %>
+  <%= link_to t('cancel_search', :scope => 'refinery.admin.search'), url, :class => "cancel-search" %>
+  <h2><%= t('results_for_html', :scope => 'refinery.admin.search', :query => h(params[:search])).html_safe %></h2>
+<% end %>

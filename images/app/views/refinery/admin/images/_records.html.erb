@@ -1,7 +1,4 @@
-<% if searching? %>
-  <%= link_to t('cancel_search', :scope => 'refinery.admin.search'), refinery.admin_images_path, :class => 'cancel-search' %>
-  <h2><%= t('results_for_html', :scope => 'refinery.admin.search', :query => h(params[:search])).html_safe %></h2>
-<% end %>
+<%= render 'refinery/admin/search_header', :url => refinery.admin_images_path %>
 <div class="pagination_container">
   <% if @images.any? %>
     <%= render 'images' %>
