@@ -4,7 +4,7 @@
     <% @recent_inquiries.each do |inquiry| %>
       <li class='<%= cycle("on", "on-hover", :name => 'recent_inquiries_cycle') %>'>
         <%= link_to truncate("#{inquiry.name} - #{inquiry.message}", :length => 100),
-                    refinery.admin_inquiry_path(inquiry) %>
+                    refinery.inquiries_admin_inquiry_path(inquiry) %>
       </li>
     <% end %>
   </ul>
