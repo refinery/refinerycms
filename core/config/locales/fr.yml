@@ -1,5 +1,8 @@
 fr:
   refinery:
+    js:
+      admin:
+        confirm_changes: Toute modification sera perdue. Êtes-vous sûr de vouloir de vouloir continuer ?
     plugins:
       refinery_core:
         title: Refinery
@@ -49,8 +52,10 @@ fr:
         button_text: Chercher
         results_for_html: "Résultats de la recherche &#8216;<em>%{query}</em>&#8217;"
         no_results: Aucun résultat ne correspond à votre recherche
+        cancel_search: 'Annuler la recherche'
+        search_input_notice: "Entrez ici le texte recherché. La longueur minimale est de 3 caractères."
       delete:
-        message: Etes-vous sûr de vouloir supprimer '%{title}'?
+        message: "Êtes-vous sûr de vouloir supprimer '%{title}'?"
       error_messages:
         problems_in_following_fields: Les champs suivants comportent des problèmes
       help: aide
@@ -69,6 +74,9 @@ fr:
       enable_javascript_html: Pour obtenir l'ensemble des fonctionnalités de cette page il est nécessaire d'activer JavaScript.
       here_are: Ici sont les
       instructions_enable_javascript_html: instructions pour activer JavaScript dans votre navigateur
+  time:
+    formats:
+      short: "%A, %d %B %Y"
   will_paginate:
     previous_label: "&laquo;"
     next_label: "&raquo;"
