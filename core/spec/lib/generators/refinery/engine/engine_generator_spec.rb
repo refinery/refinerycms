@@ -81,18 +81,6 @@ module Refinery
       }
     end
 
-    context "when generating extension inside existing extensions dir" do
-      before do
-        run_generator %w{ rspec_item_test title:string --extension rspec_product_tests --skip }
-      end
-
-      it "appends existing seeds file" do
-        File.open("#{destination_root}/vendor/extensions/rspec_product_tests/db/seeds.rb") do |file|
-          file.grep(%r{/rspec_product_tests|/rspec_item_tests}).count.should eq(2)
-        end
-      end
-    end
-
     describe "attr_accessible" do
       it "adds attributes to the list" do
         File.open("#{destination_root}/vendor/extensions/rspec_product_tests/app/models/refinery/rspec_product_tests/rspec_product_test.rb") do |file|
