@@ -23,8 +23,8 @@ module Refinery
           y.updated_at <=> x.updated_at
         }.first(Refinery::Dashboard.activity_show_limit)
 
-        @recent_inquiries = if Refinery::Plugins.active.find_by_name("refinery_inquiries")
-          Inquiry.latest(Refinery::Dashboard.activity_show_limit)
+        @recent_inquiries = if Refinery::Plugins.active.find_by_name("refinerycms_inquiries")
+          Refinery::Inquiries::Inquiry.latest(Refinery::Dashboard.activity_show_limit)
         else
           []
         end
