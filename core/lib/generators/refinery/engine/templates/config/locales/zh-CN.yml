@@ -1,0 +1,30 @@
+zh-CN:
+  refinery:
+    plugins:
+      <%= plural_name %>:
+        title: <%= plural_name.titleize %>
+    <%= namespacing.underscore %>:
+      admin:
+        <%= plural_name %>:
+          actions:
+            create_new: 建立新的 <%= singular_name.titleize %>
+            reorder: 对 <%= singular_name.titleize.pluralize %> 重新排序
+            reorder_done: 对 <%= singular_name.titleize.pluralize %> 的重新排序结束
+          records:
+            title: <%= plural_name.titleize %>
+            sorry_no_results: 对不起，未找到结果。 #Sorry! There are no results found.
+
+            # There are no <%= singular_name.titleize.pluralize %> yet. Click "Add New <%= singular_name.titleize %>" to add your first <%= singular_name.titleize.downcase %>.
+            no_items_yet: 目前没有 <%= singular_name.titleize.pluralize %> . 点击 "Add New <%= singular_name.titleize %>" 创建一个<%= singular_name.titleize.downcase %>.
+          <%= singular_name %>:
+            view_live_html: 查看 <%= singular_name.titleize.downcase %> 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 <%= singular_name.titleize.downcase %>
+            delete: 永久删除 <%= singular_name.titleize.downcase %>
+      <%= plural_name %>:
+        show:
+          other: 其他 <%= singular_name.titleize.pluralize %>
+  activerecord:
+    attributes:
+      'refinery/<%= namespacing.underscore %>/<%= singular_name %>':<% attributes.each do |a| %>
+        <%= a.name %>: <%= a.name.titleize -%>
+<% end -%>
