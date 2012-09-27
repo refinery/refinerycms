@@ -19,8 +19,7 @@
     <%= t('no_results', :scope => 'refinery.admin.search') %>
 <% end %>
   </div>
-
-  <%= will_paginate @images, :params => params.dup %>
+  <%= will_paginate @images, :params => params.dup.merge(:action => "insert") %>
 
   <% unless @app_dialog or @images.empty? %>
     <div id="existing_image_size_area" class="clearfix">
