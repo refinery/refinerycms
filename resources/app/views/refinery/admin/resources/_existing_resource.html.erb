@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <%= will_paginate @resources, :params => params.dup %>
+  <%= will_paginate @resources, :params => params.dup.merge(:action => "insert") %>
 
   <%= render '/refinery/admin/form_actions', :f => nil,
              :submit_button_text => t('.button_text'),
