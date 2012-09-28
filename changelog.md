@@ -21,6 +21,8 @@
 * Fixed new resource insertion in custom extensions which use resource picker. [#1948](https://github.com/refinery/refinerycms/pull/1948). [Marek](https://github.com/keram)
 * Fixed _save and continue_ and _preview_ functionality in pages extension when title was changed. [#1944](https://github.com/refinery/refinerycms/pull/1944). (tsemana)[https://github.com/tsemana]
 * Fixed html stripping bug when editing pages. [#1891](https://github.com/refinery/refinerycms/issues/1891). [Uģis Ozols](https://github.com/ugisozols)
+* Fixed pagination in existing image/resource partial after uploading new image/resource. [#1970](https://github.com/refinery/refinerycms/issues/1970). [Uģis Ozols](https://github.com/ugisozols)
+* Added check to extension generator which checks if extension specified by --extension option actually exist. [#1967](https://github.com/refinery/refinerycms/issues/1967). [Uģis Ozols](https://github.com/ugisozols)
 * [See full list](https://github.com/refinery/refinerycms/compare/2.0.8...2.0.9)
 
 ## 2.0.8 [17 August 2012]
