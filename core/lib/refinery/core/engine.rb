@@ -108,7 +108,8 @@ module Refinery
           "wymeditor/skins/refinery/*",
           "wymeditor/skins/refinery/**/*",
           "modernizr-min.js",
-          "dd_belatedpng.js"
+          "dd_belatedpng.js",
+          "admin.js"
         ]
       end
 
