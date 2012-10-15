@@ -101,16 +101,22 @@ module Refinery
     def _override(kind, which)
       override_kind = OVERRIDES[kind]
       pattern = "{refinery#{File::SEPARATOR},}#{which.split("/").join(File::SEPARATOR)}#{override_kind[:glob]}"
-      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", override_kind[:dir], pattern).to_s}
+      looking_for = ["app", "vendor"].inject([]) do |memo, location|
+        Refinery::Plugins.registered.pathnames.each do |p|
+          memo << p.join(location, override_kind[:dir], pattern).to_s
+        end
+        memo
+      end
 
       # copy in the matches
       if (matches = looking_for.map{|d| Dir[d]}.flatten.compact.uniq).any?
         matches.each do |match|
-          dir = match.split("/app/#{override_kind[:dir]}/").last.split('/')
+          location = match[/app|vendor/]
+          dir = match.split("/#{location}/#{override_kind[:dir]}/").last.split('/')
           file = dir.pop # get rid of the file.
           dir = dir.join(File::SEPARATOR) # join directory back together
 
-          destination_dir = Rails.root.join('app', override_kind[:dir], dir)
+          destination_dir = Rails.root.join(location, override_kind[:dir], dir)
           FileUtils.mkdir_p(destination_dir)
           FileUtils.cp match, (destination = File.join(destination_dir, file))
 
