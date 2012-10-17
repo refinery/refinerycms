@@ -9,6 +9,8 @@
 * Extracted locale picker code into separate partial. [#1936](https://github.com/refinery/refinerycms/pull/1936). [Marek](https://github.com/keram)
 * Removed upgrade messages for IE. [#1940](https://github.com/refinery/refinerycms/pull/1940). [Philip Arndt](https://github.com/parndt)
 * Added template whitelist for page tabs. [#1943](https://github.com/refinery/refinerycms/pull/1943). [Johan](https://github.com/jokklan)
+* Removed DD_belatedPNG since we're dropping IE6 support. (https://github.com/refinery/refinerycms/commit/45367ebeb2fa026a2932d0514db50c8982d2c309)
+* Dropped coffee-rails dependency. [#1975](https://github.com/refinery/refinerycms/issues/1975). [Uģis Ozols](https://github.com/ugisozols)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
