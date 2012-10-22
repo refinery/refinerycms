@@ -47,7 +47,7 @@ vi:
         current: File hiện tại
       search:
         button_text: Tìm kiếm
-        results_for: Các kết quả tìm kiếm với truy vấn '%{query}'
+        results_for_html: "Các kết quả tìm kiếm với truy vấn &#8216;<em>%{query}</em>&#8217;"
         no_results: Rất tiếc, không có kết quả nào được tìm thấy
       delete:
         message: Bạn có thực sự chắc chắn khi xóa bỏ '%{title}' không?

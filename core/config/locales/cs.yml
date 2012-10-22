@@ -49,7 +49,7 @@ cs:
         current: Vybraný soubor
       search:
         button_text: Hledat
-        results_for: Výsledky hledání pro '%{query}'
+        results_for_html: "Výsledky hledání pro &#8216;<em>%{query}</em>&#8217;"
         no_results: Žádné záznamy nenalezeny
       delete:
         message: Opravdu chcete smazat '%{title}'?

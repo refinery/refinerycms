@@ -47,7 +47,7 @@ pt-BR:
         current: Arquivo atual
       search:
         button_text: Buscar
-        results_for: "Resultados da busca por '%{query}'"
+        results_for_html: "Resultados da busca por &#8216;<em>%{query}</em>&#8217;"
         no_results: "Desculpe, nenhum resultado foi encontrado."
       delete:
         message: Você tem certeza que deseja apagar '%{title}'?

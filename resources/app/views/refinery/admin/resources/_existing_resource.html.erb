@@ -1,11 +1,11 @@
-<div id='existing_resource_area' class='dialog_area' <%= "style='display:none;'" if @resource.errors.any? %>>
-  <input type='hidden' name='linked_resource' id='linked_resource' />
-  <div id='existing_resource_area_content' class='clearfix'>
-    <div id='pages_list' class='pages_list'>
-      <ul class='link_list'>
+<div id="existing_resource_area" class="dialog_area" <%= 'style="display:none;"'.html_safe if @resource.errors.any? %>>
+  <input type="hidden" name="linked_resource" id="linked_resource" />
+  <div id="existing_resource_area_content" class="clearfix">
+    <div id="pages_list" class="pages_list">
+      <ul class="link_list">
         <% @resources.each do |resource| -%>
-          <% resource_linked = (resource.url == params[:current_link]) if params[:current_link].present? %>
-          <li<%= " class='linked'" if resource_linked %>>
+          <% resource_linked = ((@resource_id.present? && @resource_id == resource.id) || (params[:current_link].present? && resource.url == params[:current_link])) %>
+          <li<%= ' class="linked"'.html_safe if resource_linked %>>
             <%= link_to "#{resource.title} (#{resource.file_name})", asset_paths.compute_public_path(resource.url, ''),
                         :title => t('.link_to_file'),
                         :rel => resource.title,
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <%= will_paginate @resources, :params => params.dup %>
+  <%= will_paginate @resources, :params => params.dup.merge(:action => "insert") %>
 
   <%= render '/refinery/admin/form_actions', :f => nil,
              :submit_button_text => t('.button_text'),

@@ -40,7 +40,7 @@ es:
         current: Archivo actual
       search:
         button_text: Buscar
-        results_for: Resultados de la búsqueda '%{query}'
+        results_for_html: "Resultados de la búsqueda &#8216;<em>%{query}</em>&#8217;"
         no_results: Lo siento, no hay resultados
       delete:
         message: ¿Seguro que quieres borrar '%{title}'?

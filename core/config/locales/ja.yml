@@ -49,7 +49,7 @@ ja:
         current: 選択されているファイル
       search:
         button_text: 検索
-        results_for: '「%{query}」の検索結果'
+        results_for_html: "&#8216;<em>%{query}</em>&#8217; の検索結果"
         no_results: 見つかりませんでした。
       delete:
         message: '「%{title}」を消します。宜しいですか。'

@@ -44,7 +44,7 @@ module Refinery
             @images << (@image = ::Refinery::Image.create(params[:image]))
           else
             params[:image][:image].each do |image|
-              @images << (@image = ::Refinery::Image.create(:image => image))
+              @images << (@image = ::Refinery::Image.create({:image => image}.merge(params[:image].except(:image))))
             end
           end
         rescue Dragonfly::FunctionManager::UnableToHandle
@@ -54,11 +54,13 @@ module Refinery
 
         unless params[:insert]
           if @images.all?(&:valid?)
-            flash.notice = t('uploaded_successfully', :scope => 'refinery.admin.images.form')
-
-            @dialog_successful = true if from_dialog?
-
-            render :nothing => true, :layout => true
+            flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@images.map(&:title).join("', '")}'")
+            if from_dialog?
+              @dialog_successful = true
+              render :nothing => true, :layout => true
+            else
+              redirect_to refinery.admin_images_path
+            end
           else
             self.new # important for dialogs
             render :action => 'new'

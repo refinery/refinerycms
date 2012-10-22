@@ -8,6 +8,13 @@ def new_window_should_have_content(content)
   end
 end
 
+def new_window_should_not_have_content(content)
+  new_window = page.driver.browser.window_handles.last
+  page.within_window new_window do
+    page.should_not have_content(content)
+  end
+end
+
 module Refinery
   module Admin
     describe "Pages" do
@@ -143,19 +150,45 @@ module Refinery
       end
 
       describe "edit/update" do
-        before { Page.create :title => "Update me" }
+        before do
+          Page.create :title => "Update me"
 
-        it "updates page" do
           visit refinery.admin_pages_path
-
           page.should have_content("Update me")
+        end
 
-          click_link "Edit this page"
+        context 'when saving and returning to index' do
+          it "updates page" do
+            click_link "Edit this page"
 
-          fill_in "Title", :with => "Updated"
-          click_button "Save"
+            fill_in "Title", :with => "Updated"
+            click_button "Save"
 
-          page.should have_content("'Updated' was successfully updated.")
+            page.should have_content("'Updated' was successfully updated.")
+          end
+        end
+
+        context 'when saving and continuing to edit' do
+          before :each do
+            find('a[tooltip^=Edit]').visible?
+            find('a[tooltip^=Edit]').click
+
+            fill_in "Title", :with => "Updated"
+            click_button "Save & continue editing"
+            find('#flash').visible?
+          end
+
+          it "updates page", :js do
+            page.should have_content("'Updated' was successfully updated.")
+          end
+
+          # Regression test for https://github.com/refinery/refinerycms/issues/1892
+          context 'when saving to exit (a second time)' do
+            it 'updates page', :js do
+              click_button "Save"
+              page.should have_content("'Updated' was successfully updated.")
+            end
+          end
         end
       end
 
@@ -185,6 +218,22 @@ module Refinery
             Page.by_title("Some changes I'm unsure what they will look like").should be_empty
           end
 
+          # Regression test for previewing after save-and_continue
+          it 'will show the preview in a new window after save-and-continue', :js do
+            visit refinery.admin_pages_path
+
+            find('a[tooltip^=Edit]').click
+            fill_in "Title", :with => "Save this"
+            click_button "Save & continue editing"
+            page.should have_content("'Save this' was successfully updated")
+
+            click_button "Preview"
+
+            new_window_should_have_content("Save this")
+            new_window_should_not_have_content(
+              ::I18n.t('switch_to_website', :scope => 'refinery.site_bar')
+            )
+          end
         end
 
         context 'a brand new page' do
@@ -535,6 +584,24 @@ module Refinery
           end
         end
       end
+
+      # regression spec for https://github.com/refinery/refinerycms/issues/1891
+      describe "page part body" do
+        before do
+          page = Refinery::Page.create! :title => "test"
+          Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
+            page.parts.create(:title => default_page_part,
+                              :body => "<header class='regression'>test</header>",
+                              :position => index)
+          end
+        end
+
+        specify "html shouldn't be stripped" do
+          visit refinery.admin_pages_path
+          click_link "Edit this page"
+          page.should have_content("header class='regression'")
+        end
+      end
     end
 
     describe "TranslatePages" do
@@ -649,7 +716,7 @@ module Refinery
             end
           end
 
-          # see https://github.com/resolve/refinerycms/pull/1583
+          # see https://github.com/refinery/refinerycms/pull/1583
           context "when switching locales" do
             specify "dialog has correct links", :js do
               visit refinery.edit_admin_page_path(about_page)

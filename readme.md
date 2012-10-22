@@ -4,7 +4,7 @@ __An open source Ruby on Rails content management system for Rails 3.__
 
 More information at [http://refinerycms.com](http://refinerycms.com)
 
-[![Build Status](https://secure.travis-ci.org/resolve/refinerycms.png)](http://travis-ci.org/resolve/refinerycms)
+[![Build Status](https://secure.travis-ci.org/refinery/refinerycms.png)](http://travis-ci.org/refinery/refinerycms)
 
 ## Requirements
 
@@ -47,7 +47,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 * [Guides](http://refinerycms.com/guides)
 * [Google Group Discussion](http://group.refinerycms.org)
 * [IRC Channel](http://refinerycms.com/guides/how-to-get-help#irc-channel)
-* [GitHub repository](https://github.com/resolve/refinerycms)
+* [GitHub repository](https://github.com/refinery/refinerycms)
 * [Developer/API documentation](http://api.refinerycms.org)
 * [Twitter Account](http://twitter.com/refinerycms)
 
@@ -84,20 +84,20 @@ For help run the command without any options:
 
 ### Popular Extensions
 
-* [Blog](https://github.com/resolve/refinerycms-blog) - A simple blogging extension that supports posts, categories and comments with optional moderation support.
-* [Portfolio](https://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
-* [News](https://github.com/resolve/refinerycms-news) - post and manage news items.
+* [Blog](https://github.com/refinery/refinerycms-blog) - A simple blogging extension that supports posts, categories and comments with optional moderation support.
+* [Portfolio](https://github.com/refinery/refinerycms-portfolio) - manage groups of images like an image gallery.
+* [News](https://github.com/refinery/refinerycms-news) - post and manage news items.
 * [Inquiries](https://github.com/refinery/refinerycms-inquiries) - simple contact form that notifies you and customer when an inquiry is made.
 
 [Full extension list here](http://refinerycms.com/engines)
 
 ### Example Site Showcase
 
-[List here (add your link when you're done)](https://github.com/resolve/refinerycms/wiki/Example-Site-Showcase)
+[List here (add your link when you're done)](https://github.com/refinery/refinerycms/wiki/Example-Site-Showcase)
 
 ## License
 
-Refinery is released under the [MIT license](https://github.com/resolve/refinerycms/blob/master/license.md#readme) and is copyright (c) 2005-2012 [Resolve Digital](http://www.resolvedigital.com)
+Refinery is released under the [MIT license](https://github.com/refinery/refinerycms/blob/master/license.md#readme) and is copyright (c) 2005-2012 [Resolve Digital](http://www.resolvedigital.com)
 
 ### Credits
 

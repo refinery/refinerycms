@@ -1,6 +1,4 @@
-<% if searching? %>
-  <h2><%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %></h2>
-<% end %>
+<%= render 'refinery/admin/search_header', :url => refinery.admin_pages_path %>
 <% if @pages.any? %>
   <%= render 'sortable_list' %>
 <% else %>

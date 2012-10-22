@@ -75,7 +75,7 @@ h4. Installing Refinery
 
 There are two popular ways to install Refinery: RubyGems and Rails Application Templates. We will discuss both and how you can get up and running with either.
 
-h5. RubyGems 
+h5. RubyGems
 The easiest way to install Refinery is to take advantage of RubyGems.
 
 <shell>
@@ -149,7 +149,7 @@ Once you've created your first user you'll see Refinery's "Dashboard".
 
 h4. Setting Your Site Name
 
-You'll need to set your Site Name; it's used in several spots on the CMS to give you nice branding (for instance, in the blue header at the top of the page and in the footer of your site). 
+You'll need to set your Site Name; it's used in several spots on the CMS to give you nice branding (for instance, in the blue header at the top of the page and in the footer of your site).
 
 To do this, you'll have to edit +config/initializers/refinery/core.rb+. Look for the line that begins:
 
@@ -195,7 +195,7 @@ If you request +http://localhost:3000/about+, this maps by default to Refinery's
 
 So as you would expect according to Rails convention, the view for this action is located in +app/views/refinery/pages/show.html.erb+. You won't be able to see this file because Refinery is providing it for you. Next, let's override that view and replace it with our own.
 
-TIP: Overriding a file simply copies the file from Refinery's code into your +app/+ folder. Many people are confused as to what can be overridden initially. Any controller, model, view, javascript, or stylesheet from any installed extension can be overridden, but the most commonly overridden ones are those in the "refinery":https://github.com/resolve/refinerycms/tree/master/core/app/views/refinery folder.
+TIP: Overriding a file simply copies the file from Refinery's code into your +app/+ folder. Many people are confused as to what can be overridden initially. Any controller, model, view, javascript, or stylesheet from any installed extension can be overridden, but the most commonly overridden ones are those in the "refinery":https://github.com/refinery/refinerycms/tree/master/core/app/views/refinery folder.
 
 h4. Overriding your first view
 

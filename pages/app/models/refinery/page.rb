@@ -1,7 +1,7 @@
 # Encoding: utf-8
-require 'refinerycms-core'
 require 'acts_as_indexed'
 require 'friendly_id'
+require 'refinery/core/base_model'
 
 module Refinery
   class Page < Core::BaseModel

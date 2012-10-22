@@ -15,15 +15,6 @@ fr:
           replace_image: " la remplacer par celle-ci..."
           current_image: Image actuelle
           maximum_image_size: "La taille de l'image ne doit pas excéder %{bytes}."
-          uploading: "Transfert en cours..."
-          there_was: "Il y a"
-          error: "erreur"
-          should_be_smaller: "devrait être plus petit que"
-          bytes_in_size: "octets"
-          image_type: "devrait être un fichier JPG, PNG ou GIF"
-          uploaded: "transféré"
-          last_complete: "Dernier transfert complété"
-          uploaded_successfully: "Transféré avec succès"
         actions:
           create_new_image: Ajouter une image
         records:
@@ -51,3 +42,4 @@ fr:
           blank: Vous devez sélectionner une image à télécharger
           too_big: L'image doit être plus petite que %{size} megaoctets
           incorrect_format: 'Seules les images aux formats JPG, PNG or GIF sont acceptées'
+          different_file_name: La nouvelle image ne peut pas avoir un nom de fichier différent

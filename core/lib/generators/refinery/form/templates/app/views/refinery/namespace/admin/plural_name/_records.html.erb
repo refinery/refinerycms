@@ -1,11 +1,11 @@
+<%%= render 'refinery/admin/search_header', :url => refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path %>
 <%% if searching? %>
-  <h2><%%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
   <%% if @<%= plural_name %>.any? %>
     <ul>
       <%%= render :partial => '<%= singular_name %>', :collection => @<%= plural_name %> %>
     </ul>
   <%% else %>
-    <p><%%= t('shared.admin.search.no_results') %></p>
+    <p><%%= t('no_results', :scope => 'refinery.admin.search') %></p>
   <%% end %>
 <%% else %>
   <%% if @grouped_<%= plural_name %>.any? -%>

@@ -27,11 +27,11 @@
    Global WYMeditor namespace.
 */
 /*
- *= require ../wymeditor/setup
- *= require ../wymeditor/functions
- *= require ../wymeditor/prototypes
- *= require ../wymeditor/classes
- *= require ../wymeditor/validators
+ *= require wymeditor/setup
+ *= require wymeditor/functions
+ *= require wymeditor/prototypes
+ *= require wymeditor/classes
+ *= require wymeditor/validators
  *= require_tree ../wymeditor/browsers
- *= require ./boot_wym
+ *= require refinery/boot_wym
 */

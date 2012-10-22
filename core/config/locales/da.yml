@@ -47,7 +47,7 @@ da:
         current: Nuværende %{what}
       search:
         button_text: Søg
-        results_for: Søgeresultat for '%{query}'
+        results_for_html: "Søgeresultat for &#8216;<em>%{query}</em>&#8217;"
         no_results: Desværre, din søgning gav ingen resultater
       delete:
         message: Are you sure you want to remove '%{title}'?

@@ -1,25 +1,25 @@
-<% user_can_modify_images = ::Refinery::Plugins.active.names.include?("refinery_images") %>
-<div id='dialog_menu_left'>
+<% user_can_modify_images = ::Refinery::Plugins.active.names.include?('refinery_images') %>
+<div id="dialog_menu_left">
   <% if (any_images = @images.any?) or searching? %>
-    <span id="existing_image_radio" class="radio<%= " selected_radio" if (no_errors = @image.errors.empty?) %>">
-      <input type='radio' name='image_type' value='existing_image' id='image_type_existing'<%= " checked='true'" if no_errors or searching? %> />
-      <label for='image_type_existing' class='stripped'><%= t('.existing_image') %></label>
+    <span id="existing_image_radio" class="radio<%= ' selected_radio' if (no_errors = @image.errors.empty?) %>">
+      <input type="radio" name="image_type" value="existing_image" id="image_type_existing"<%= ' checked="true"'.html_safe if no_errors or searching? %> />
+      <label for="image_type_existing" class="stripped"><%= t('.existing_image') %></label>
     </span>
   <% end %>
   <% if user_can_modify_images %>
-    <span id="upload_image_radio" class="radio<%= " selected_radio" if !no_errors and !any_images %>">
-      <input type='radio' name='image_type' value='upload_image' id='image_type_upload'<%= " checked='true'" if (!any_images or !no_errors) and !searching? %> />
-      <label for='image_type_upload' class='stripped'><%= t('.new_image') %></label>
+    <span id="upload_image_radio" class="radio<%= ' selected_radio' if !no_errors and !any_images %>">
+      <input type="radio" name="image_type" value="upload_image" id="image_type_upload"<%= ' checked="true"'.html_safe if (!any_images or !no_errors) and !searching? %> />
+      <label for="image_type_upload" class="stripped"><%= t('.new_image') %></label>
     </span>
   <% end %>
 </div>
 
-<div id='dialog_main'>
+<div id="dialog_main">
   <% if any_images or user_can_modify_images %>
     <%= render 'existing_image' if any_images or searching? %>
 
     <% if user_can_modify_images %>
-      <div id='upload_image_area' class='dialog_area'<%= " style='display:none;'" if any_images and (no_errors or searching?) %>>
+      <div id="upload_image_area" class="dialog_area"<%= ' style="display:none;"'.html_safe if any_images and (no_errors or searching?) %>>
         <%= render 'form', :insert => true %>
       </div>
     <% end %>
@@ -39,7 +39,7 @@
   <script>
     $(document).ready(function(){
       new ImageDialog({
-        callback: <%= @callback.present? ? "self.parent.#{h @callback}" : "null" %>,
+        callback: <%= @callback.present? ? "self.parent.#{h @callback}" : 'null' %>,
         multiple: <%= @multiple == 'true' %>
       }).create();
     });

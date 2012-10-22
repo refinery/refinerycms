@@ -1,11 +1,11 @@
-<div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
+<div id="existing_image_area" class="dialog_area" <%= 'style="display:none;"'.html_safe if @image.errors.any? %>>
   <%= render '/refinery/admin/search', :url => refinery.insert_admin_images_path(params.dup.except('image')) %>
-  <input type='hidden' name='selected_image' id='selected_image' />
-  <div id='existing_image_area_content' class='clearfix'>
+  <input type="hidden" name="selected_image" id="selected_image" />
+  <div id="existing_image_area_content" class="clearfix">
 <% if @images.any? %>
     <ul>
       <% @images.each do |image| -%>
-        <li<%= " class='selected'" if @image_id == image.id %>>
+        <li<%= ' class="selected"'.html_safe if @image_id == image.id %>>
           <%= image_fu(image, '106x106#c', {
                          :alt => image.title,
                          :title => image.title,
@@ -19,15 +19,14 @@
     <%= t('no_results', :scope => 'refinery.admin.search') %>
 <% end %>
   </div>
-
-  <%= will_paginate @images, :params => params.dup %>
+  <%= will_paginate @images, :params => params.dup.merge(:action => "insert") %>
 
   <% unless @app_dialog or @images.empty? %>
-    <div id='existing_image_size_area' class='clearfix'>
-      <input type='hidden' name='selected_image_size' id='selected_image_size' />
+    <div id="existing_image_size_area" class="clearfix">
+      <input type="hidden" name="selected_image_size" id="selected_image_size" />
       <p>
         <input type="checkbox" id="wants_to_resize_image" name="wants_to_resize_image" value="1" checked="checked" />
-        <label for='wants_to_resize_image' class='stripped' style='font-weight: bold;'>
+        <label for="wants_to_resize_image" class="stripped" style="font-weight: bold;">
           <%= t('.resize_image') %>
         </label>
       </p>

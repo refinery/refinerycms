@@ -50,7 +50,7 @@ fi:
         current: Nykyinen tiedosto
       search:
         button_text: Etsi
-        results_for: "Hakutulokset haulle '%{query}'"
+        results_for_html: "Hakutulokset haulle &#8216;<em>%{query}</em>&#8217;"
         no_results: 'Valitettavasti mitään ei löytynyt'
       delete:
         message: "Oletko varma, että haluat poistaa sisältöesineen '%{title}'?"

@@ -52,40 +52,6 @@ module Refinery
         end
       end
 
-      def test_url
-        result = 'failure'
-        begin
-          timeout(5) do
-            unless params[:url].blank?
-              url = URI.parse(params[:url])
-              if url.host.nil? && params[:url].start_with?('/')
-                url.host = URI.parse(request.url).host
-              end
-
-              result = 'success' if [Net::HTTPSuccess, Net::HTTPRedirection].
-                                      include? Net::HTTP.get_response(url)
-            end
-          end
-
-        rescue
-          # the result is already set to failure.
-        end
-
-        render :json => {:result => result}
-      end
-
-      def test_email
-        if params[:email].present?
-          valid = params[:email] =~ /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
-
-          render :json => if valid
-            {:result => 'success'}
-          else
-            {:result => 'failure'}
-          end
-        end
-      end
-
     end
   end
 end

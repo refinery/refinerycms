@@ -36,7 +36,7 @@ describe "CLI" do
 
         msg = capture(:stdout) { rake["refinery:override"].invoke }
 
-        msg.should eq(not_found_message)
+        msg.should include(not_found_message)
       end
     end
 
@@ -55,7 +55,7 @@ describe "CLI" do
 
         msg = capture(:stdout) { rake["refinery:override"].invoke }
 
-        msg.should eq(spec_success_message)
+        msg.should include(spec_success_message)
         File.exists?(Rails.root.join(copied_file_location)).should be_true
       end
     end

@@ -47,7 +47,7 @@ rs:
         current: Trenutni fajl
       search:
         button_text: Pretraga
-        results_for: Rezultati za '%{query}'
+        results_for_html: "Rezultati za &#8216;<em>%{query}</em>&#8217;"
         no_results: Žao nam je, ništa nije pronađeno
       delete:
         message: Sigurno ukloni '%{title}'?

@@ -50,7 +50,7 @@ nl:
         current: Huidig bestand
       search:
         button_text: Zoeken
-        results_for: "Zoekresultaten voor '%{query}'"
+        results_for_html: "Zoekresultaten voor &#8216;<em>%{query}</em>&#8217;"
         no_results: "Excuses, geen resultaten gevonden"
       delete:
         message: Weet u zeker dat u '%{title}' wilt verwijderen?

@@ -1,80 +1,77 @@
 ru:
-  plugins:
-    <%= plural_name %>:
-      title: <%= plural_name.titleize %>
+  refinery:
+    plugins:
+      <%= plural_name %>:
+        title: <%= plural_name.titleize %>
+    <%= namespacing.underscore %>:
+      <%= plural_name %>:
+        new:
+          header_message: "Упс. Возникла небольшая проблемка."
+          message: "Нужно исправить следующие ошибки:"
+          send: "Отправить сообщение"
+          privacy_policy: "Мы относимся с уважением к вашим личным данным"
+      admin:
+        <%= plural_name %>:
+          <%= singular_name %>:
+            move_<%= singular_name %>_to_closed: "Переместить этот запрос в закрытые"
+            move_<%= singular_name %>_to_open: "Переместить этот запрос в открытые"
+            read_<%= singular_name %>: "Прочитать запрос"
+            remove_<%= singular_name %>: "Вы уверены, что хотите удалить запрос от '%{name}'?"
+            title: <%= plural_name.titleize %>
+            said: "пишет"
+            mark_as_spam: "Пометить как спам"
+            mark_as_ham: "Переместить во Входящие"
+          toggle_status:
+            closed: "Запрос '%{<%= singular_name %>}' закрыт"
+            reopened: "Запрос '%{<%= singular_name %>}' открыт заново"
+          submenu:
+            inbox: "Входящие"
+            spam: "Спам"
+            update_notified: Изменить получателей уведомлений
+            edit_confirmation_email: "Редактировать письмо-подтверждение"
+          index:
+            no_<%= plural_name %>: "Вы еще не получили ни одного запроса."
+          spam:
+            no_spam: "Ура! Вы не получили спам."
+          show:
+            details: "Подробности"
+            click_to_email: "Нажмите, чтобы отправить"
+            status: "Статус"
+            open: "Открыт"
+            closed: "Закрыт"
+            age: "Срок"
+            actions: "Действия"
+            back_to_all_<%= plural_name %>: "Назад ко всем запросам"
+            spam: "Спам"
+            spam_yes: 'да'
+            <%= singular_name %>: <%= class_name.underscore.titleize %>
+            title: <%= plural_name.titleize %>
+        settings:
+          update:
+            updated: "'%{setting}' были успешно обновлены."
+          notification_recipients_form:
+            settings_value_name: "Отправить уведомления"
+            explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет уведомление на электронную почту."
+            hint: "Когда поступит новый запрос, Refinery CMS отправит вам уведомление на электронную почту."
+            example: "Введите адрес(а) электронной почты через запятую: anna@mail.ru, ivanov@yandex.ru"
+          confirmation_email_form:
+            to: "Кому"
+            from: "От"
+            subject: "Тема сообщения"
+            click_to_edit_subject: "Редактировать тему сообщения"
+            explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет ему письмо, подтверждающее принятие запроса."
+            below_edit_email_sent: Ниже вы можете отредактировать отсылаемое письмо
+            the_customer_making_<%= singular_name %>: "Клиент, делающий запрос"
+            message: "Сообщение"
+            note: "Примечание: поместите текст %name% там, где вы хотите, чтобы появилось имя клиента."
+          subject_form:
+            subject_value_name: "Тема сообщения"
   activerecord:
     models:
       <%= singular_name %>: <%= class_name.underscore.titleize %>
       setting: "Настройки запроса"
     attributes:
       <%= singular_name %>:
-        to: "Кому"
-        from: "От"
-        click_to_email: "Нажмите, чтобы отправить по этому адресу"
-        phone: "Телефон"
-        date: "Дата"
-        message: "Сообщение"
-  <%= namespacing.underscore %>:
-    <%= plural_name %>:
-      new:
-        header_message: "Упс. Возникла небольшая проблемка."
-        message: "Нужно исправить следующие ошибки:"
-        send: "Отправить сообщение"
-        privacy_policy: "Мы относимся с уважением к вашим личным данным"
-    admin:
-      <%= plural_name %>:
-        <%= singular_name %>:
-          move_<%= singular_name %>_to_closed: "Переместить этот запрос в закрытые"
-          move_<%= singular_name %>_to_open: "Переместить этот запрос в открытые"
-          read_<%= singular_name %>: "Прочитать запрос"
-          remove_<%= singular_name %>: "Вы уверены, что хотите удалить запрос от '%{name}'?"
-          title: <%= plural_name.titleize %>
-          said: "пишет"
-          mark_as_spam: "Пометить как спам"
-          mark_as_ham: "Переместить во Входящие"
-        toggle_status:
-          closed: "Запрос '%{<%= singular_name %>}' закрыт"
-          reopened: "Запрос '%{<%= singular_name %>}' открыт заново"
-        submenu:
-          inbox: "Входящие"
-          spam: "Спам"
-          update_notified: Изменить получателей уведомлений
-          edit_confirmation_email: "Редактировать письмо-подтверждение"
-        index:
-          search_results_for: "Найти результаты для %{query}"
-          no_<%= plural_name %>: "Вы еще не получили ни одного запроса."
-        spam:
-          no_spam: "Ура! Вы не получили спам."
-        show:
-          details: "Подробности"
-          click_to_email: "Нажмите, чтобы отправить"
-          status: "Статус"
-          open: "Открыт"
-          closed: "Закрыт"
-          age: "Срок"
-          actions: "Действия"
-          back_to_all_<%= plural_name %>: "Назад ко всем запросам"
-          spam: "Спам"
-          spam_yes: 'да'
-          <%= singular_name %>: <%= class_name.underscore.titleize %>
-          title: <%= plural_name.titleize %>
-      settings:
-        update:
-          updated: "'%{setting}' были успешно обновлены."
-        notification_recipients_form:
-          settings_value_name: "Отправить уведомления"
-          explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет уведомление на электронную почту."
-          hint: "Когда поступит новый запрос, Refinery CMS отправит вам уведомление на электронную почту."
-          example: "Введите адрес(а) электронной почты через запятую: anna@mail.ru, ivanov@yandex.ru"
-        confirmation_email_form:
-          to: "Кому"
-          from: "От"
-          subject: "Тема сообщения"
-          click_to_edit_subject: "Редактировать тему сообщения"
-          explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет ему письмо, подтверждающее принятие запроса."
-          below_edit_email_sent: Ниже вы можете отредактировать отсылаемое письмо
-          the_customer_making_<%= singular_name %>: "Клиент, делающий запрос"
-          message: "Сообщение"
-          note: "Примечание: поместите текст %name% там, где вы хотите, чтобы появилось имя клиента."
-        subject_form:
-          subject_value_name: "Тема сообщения"
+<% attributes.each do |a| -%>
+        <%= a.name %>: <%= a.name.humanize %>
+<% end -%>

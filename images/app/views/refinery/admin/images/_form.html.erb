@@ -1,4 +1,3 @@
-<% content_for :after_javascript_libraries, javascript_include_tag('refinery/images') %>
 <%= form_for @image, :url => (@url_override or @image.persisted? ? refinery.admin_image_path(@image) : refinery.admin_images_path),
              :html => { :multipart => true } do |f| %>
 
@@ -6,16 +5,7 @@
              :object => @image,
              :include_object_name => false %>
 
-  <% if @image.errors.empty? %>
-    <div id="upload_progress"></div>
-
-    <div class="errorExplanation" id="errorExplanation" style="display:none;">
-      <p><%= t("refinery.admin.error_messages.problems_in_following_fields")%></p>
-      <ul id="error_list"></ul>
-    </div>
-  <% end %>
-
-  <div class='field'>
+  <div class="field">
     <% if action_name =~ /(edit)|(update)/ %>
       <p>
         <%= t('.use_current_image') %>
@@ -30,31 +20,31 @@
     <% end %>
   </div>
 
-  <div class='field'>
+  <div class="field">
     <label><%= t('.maximum_image_size', :bytes => number_to_human_size(Refinery::Images.max_image_size)) %></label>
   </div>
 
-  <input type='hidden' name='wymeditor' value='<%= params[:wymeditor] %>'>
+  <input type="hidden" name="wymeditor" value="<%= params[:wymeditor] %>">
 
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
-             :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?),
+             :hide_cancel => (@app_dialog or action_name == 'insert' or from_dialog?),
              :delete_title => t('delete', :scope => 'refinery.admin.images'),
              :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @image.image_name) -%>
 
   <% if @app_dialog %>
-    <input type='hidden' name='app_dialog' value='<%= @app_dialog %>' />
-    <input type='hidden' name='field' value='<%= @field %>' />
-    <input type='hidden' name='update_image' value='<%= @update_image %>' />
-    <input type='hidden' name='thumbnail' value='<%= @thumbnail %>' />
-    <input type='hidden' name='callback' value='<%= @callback %>' />
-    <input type='hidden' name='conditions' value='<%= @conditions %>' />
+    <input type="hidden" name="app_dialog" value="<%= @app_dialog %>" />
+    <input type="hidden" name="field" value="<%= @field %>" />
+    <input type="hidden" name="update_image" value="<%= @update_image %>" />
+    <input type="hidden" name="thumbnail" value="<%= @thumbnail %>" />
+    <input type="hidden" name="callback" value="<%= @callback %>" />
+    <input type="hidden" name="conditions" value="<%= @conditions %>" />
   <% end %>
 <% end %>
 
 <% if action_name =~ /(edit)|(update)/ %>
-  <div id='existing_image'>
+  <div id="existing_image">
     <label><%=t('.current_image') %></label>
-    <%= image_fu @thumbnail || @image, '225x255>', :class => "brown_border" %>
+    <%= image_fu @thumbnail || @image, '225x255>', :class => 'brown_border' %>
   </div>
 <% end %>

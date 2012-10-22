@@ -110,6 +110,7 @@ class Users::SessionsController < Devise::SessionsController
    redirect_to db_maintenance_message_path
    return false
   end
+end
 </ruby>
 
 +config/initializers/db_maintenance.rb+
@@ -194,16 +195,16 @@ Now that we have a baseline example working ExistingApp using Devise, it's time 
 ...
   gem 'devise' #temporarily commented out,'~> 1.4.0'
 
-  gem 'refinerycms-core',       :git => 'git://github.com/resolve/refinerycms.git'
-  gem 'refinerycms-dashboard',  :git => 'git://github.com/resolve/refinerycms.git'
-  gem 'refinerycms-images',     :git => 'git://github.com/resolve/refinerycms.git'
-  gem 'refinerycms-pages',      :git => 'git://github.com/resolve/refinerycms.git'
-  gem 'refinerycms-resources',  :git => 'git://github.com/resolve/refinerycms.git'
-  gem 'refinerycms-settings',   :git => 'git://github.com/resolve/refinerycms.git'
-  gem 'refinerycms-generators', :git => 'git://github.com/resolve/refinerycms-generators.git'
+  git 'git://github.com/refinery/refinerycms.git' do
+    gem 'refinerycms-core'
+    gem 'refinerycms-dashboard'
+    gem 'refinerycms-images'
+    gem 'refinerycms-pages'
+    gem 'refinerycms-resources'
+  end
 
   group :development, :test do
-    gem 'refinerycms-testing',  :git => 'git://github.com/resolve/refinerycms.git'
+    gem 'refinerycms-testing',  :git => 'git://github.com/refinery/refinerycms.git'
   end
 ...
 </ruby>
@@ -217,14 +218,14 @@ Now we have to undo some of what the refinery generator did, to keep control of 
 <shell>
 $ mv app/views/layouts/application.html.erb.backup app/views/layouts/application.html.erb
 TODO don't really know how you handle the asset pipeline, but obviously the following lines don't have anymore sense
-$ mkdir public/stylesheets/hide 
+$ mkdir public/stylesheets/hide
 $ mv public/stylesheets/*.css public/stylesheets/hide/.
 $ mv public/stylesheets/hide/front_end_styles.css public/stylesheets/.
 </shell>
 
 Now we need to setup up:
 
-* a Role model 
+* a Role model
 * an additional model to get our many to many association working: RolesUsers
 * a model used to list all Refinery plugins belonging to someone: UserPlugin
 
@@ -232,7 +233,7 @@ These are created by default when you add the refinerycms-authentication gem so 
 
 WARNING. Beware of raw code: models are usually namespaced. Ex: replace ::Refinery::Role with ::Role or simply Role
 
-With inspiration from https://github.com/resolve/refinerycms/blob/master/authentication/db/migrate/, refinery_cms_authentication_schema:
+With inspiration from https://github.com/refinery/refinerycms/blob/master/authentication/db/migrate/, refinery_cms_authentication_schema:
 
 <shell>
 $ rails g model RolesUsers user_id:integer role_id:integer # add the index directly within the migration file
@@ -240,7 +241,7 @@ $ rails g model Role title:string
 $ rails g model UserPlugin user_id:integer name:string position:integer
 </shell>
 
-Now we have to fill in our models. Once again, we won't reinvent the wheel so we'll pick the code from here: https://github.com/resolve/refinerycms/blob/master/authentication/app/models/refinery/
+Now we have to fill in our models. Once again, we won't reinvent the wheel so we'll pick the code from here: https://github.com/refinery/refinerycms/blob/master/authentication/app/models/refinery/
 
 +app/model/role.rb+
 <ruby>
@@ -311,7 +312,7 @@ class User < Refinery::Core::BaseModel
     raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(::Role)
     roles.any?{|r| r.title == title.to_s.camelize}
   end
-  
+
   def can_delete?(user_to_delete = self)
     user_to_delete.persisted? and
     id != user_to_delete.id and
@@ -349,12 +350,12 @@ module ExistingApp
       require 'refinery_patch'
       require 'restrict_refinery_to_refinery_users'
     end
-    
-    config.to_prepare do    
+
+    config.to_prepare do
       [::Refinery::ApplicationController, Refinery::Helpers].each do |c|
         c.send :include, ::RefineryPatch
       end
-    
+
       ::Refinery::AdminController.send :include, ::RestrictRefineryToRefineryUsers
       ::Refinery::AdminController.send :before_filter, :restrict_refinery_to_refinery_users
     end
@@ -389,7 +390,7 @@ class ApplicationController < ActionController::Base
 end
 </ruby>
 
-Ok. We should be ready to give it a spin. 
+Ok. We should be ready to give it a spin.
 
 If you try to access http://localhost:3000/, you should get first an error "undefined method 'refinery_user?'". Just reload the page, it should now be fine.
 

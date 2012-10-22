@@ -7,7 +7,7 @@
     <% end %>
   </ul>
   <div id='page_part_editors'>
-   <% fields.each do |part| %>
+    <% fields.each do |part| %>
       <div class='page_part' id='<%= part %>'>
         <%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
       </div>

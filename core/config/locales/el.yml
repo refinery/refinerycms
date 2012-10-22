@@ -47,7 +47,7 @@ el:
         current: Επιλεγμένο Αρχείο
       search:
         button_text: Αναζήτηση
-        results_for: Αποτελέσματα αναζήτησης για '%{query}'
+        results_for_html: "Αποτελέσματα αναζήτησης για &#8216;<em>%{query}</em>&#8217;"
         no_results: Συγγνώμη, δεν υπάρχουν αποτελέσματα
       delete:
         message: Είστε σίγουρος ότι θέλετε να διαγράψετε το '%{title}';

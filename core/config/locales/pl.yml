@@ -47,7 +47,7 @@ pl:
         current: Obecny plik
       search:
         button_text: Szukaj
-        results_for: Wyniki wyszukiwania dla '%{query}'
+        results_for_html: "Wyniki wyszukiwania dla &#8216;<em>%{query}</em>&#8217;"
         no_results: Niestety nic nie odnaleziono
       delete:
         message: Czy na pewno chcesz usunąć '%{title}'?

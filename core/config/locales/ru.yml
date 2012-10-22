@@ -47,7 +47,7 @@ ru:
         current: Текущий файл
       search:
         button_text: Поиск
-        results_for: "Результаты поиска для «%{query}»"
+        results_for_html: "Результаты поиска для &#8216;<em>%{query}</em>&#8217;"
         no_results: Ничего не найдено
       delete:
         message: Вы уверены, что хотите удалить '%{title}'?

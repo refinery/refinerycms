@@ -16,8 +16,6 @@ Refinery::Core::Engine.routes.draw do
     resources :pages_dialogs, :only => [] do
       collection do
         get :link_to
-        get :test_url
-        get :test_email
       end
     end
 
