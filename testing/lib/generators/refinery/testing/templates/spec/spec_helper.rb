@@ -17,10 +17,6 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
 end
 
-Rails.cache.clear
-ActiveSupport::Dependencies.clear
-FactoryGirl.reload
-
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories including factories.
 ([ENGINE_RAILS_ROOT, Rails.root.to_s].uniq | ::Refinery::Plugins.registered.pathnames).map{|p|
