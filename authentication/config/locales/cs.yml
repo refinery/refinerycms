@@ -23,7 +23,7 @@ cs:
     sessions:
       new:
         hello_please_sign_in: Prosím přihlašte se
-        sign_in: Přihlášení
+        sign_in: Přihlásit se
         forgot_password: Zapomenuté heslo
     users:
       new:
@@ -67,7 +67,7 @@ cs:
       refinery/user: uživatel
     attributes:
       refinery/user:
-        login: Přihlásit
+        login: Uživatelské jméno nebo email
         email: Email
         username: Uživatelské jméno
         password: Heslo
