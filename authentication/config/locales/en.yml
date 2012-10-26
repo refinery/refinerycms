@@ -64,7 +64,7 @@ en:
       refinery/user: user
     attributes:
       refinery/user:
-        login: Login
+        login: Username or email
         username: Username
         password: Password
         password_confirmation: Password confirmation
