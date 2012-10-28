@@ -23,7 +23,7 @@ sk:
     sessions:
       new:
         hello_please_sign_in: Prosím prihláste sa.
-        sign_in: Prihlásenie
+        sign_in: Prihlásiť sa
         forgot_password: Zabudol som heslo
     user_mailer:
       reset_notification:
@@ -64,7 +64,7 @@ sk:
       refinery/user: užívateľ
     attributes:
       refinery/user:
-        login: Prihlásiť
+        login: Užívateľské meno alebo email
         username: Užívateľské meno
         password: Heslo
         password_confirmation: Potvrdiť heslo
