@@ -1,0 +1,82 @@
+pt:
+  refinery:
+    js:
+      admin:
+        confirm_changes: "Qualquer alteração que tenha sido realizada não será gravada. Tem a certeza que deseja continuar sem gravar?"
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core refinery plugin
+      refinery_dialogs:
+        title: Dialogs
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: "Ainda não existem utilizadores, portanto vamos criar uma."
+    crudify:
+      created: '%{what} foi adicionado com sucesso.'
+      updated: '%{what} foi actualizado com sucesso.'
+      destroyed: '%{what} foi removido com sucesso.'
+    site_bar:
+      log_out: Log out
+      switch_to_your_website: Ver website
+      switch_to_your_website_editor: Ver administração
+    admin:
+      menu:
+        reorder_menu: Ordenar menu
+        reorder_menu_done: Já ordenei o menu
+      dialogs:
+        show:
+          save: Gravar
+          cancel: Cancelar
+      continue_editing:
+        save_and_continue_editing: 'Gravar e continuar a editar'
+      form_actions:
+        save: Gravar
+        cancel: Cancelar
+        cancel_lose_changes: Se cancelar vai perder todas as alterações realizadas
+        delete: Remover
+        close: Fechar
+      image_picker:
+        none_selected: "Actualmente não existe nenhuma imagem seleccionada, por favor adicione uma."
+        remove_current: Remover imagem actual
+        change: Clique aqui para escolher uma imagem
+        show: Mostrar
+      resource_picker:
+        download_current: Download do ficheiro actual
+        opens_in_new_window: Abrir em nova janela
+        remove_current: "Remover ficheiro actual"
+        no_resource_selected: 'Actualmente não existe nenhum ficheiro seleccionado, por favor adicione um.'
+        name: Adicionar ficheiro
+        current: Ficheiro actual
+      search:
+        button_text: Procurar
+        results_for_html: "Resultados para &#8216;<em>%{query}</em>&#8217;"
+        no_results: 'Não existem resultados para a sua procura'
+        cancel_search: 'Cancelar procura'
+        search_input_notice: "Escreva aqui o que está à procura, o mínimo são 3 caractéres."
+      delete:
+        message: "Tem a certeza que quer remover '%{title}'?"
+      error_messages:
+        problems_in_following_fields: Houve problemas nos seguintes campos
+      help: Ajuda
+      form_advanced_options_menu:
+        advanced_options: Opções Avançadas
+        toggle_advanced_options: Alternar para as Opções Avançadas
+        save_as_draft: Gravar como rascunho
+    message:
+      close: Fechar
+      close_this_message: Fechar esta mensagem
+    draft_page_message:
+      not_live: Esta página não se encontra disponível
+    footer:
+      copyright: "Copyright © %{year} %{site_name}"
+    no_script:
+      enable_javascript_html: É necessário que tenha o JavaScript ligado.
+      here_are: Aqui estão as 
+      instructions_enable_javascript_html: instruções para ligar o JavaScript no seu browser.
+  time:
+    formats:
+      short: "%A, %d %B %Y"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
