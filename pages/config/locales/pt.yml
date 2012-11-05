@@ -1,0 +1,93 @@
+pt:
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Páginas
+        description: Gerir páginas
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Link para esta página
+        link_to:
+          insert: Inserir
+          your_page:
+            tab_name: A sua página
+          web_address:
+            tab_name: Website
+            location: Localização
+            new_window: Nova Janela
+            new_window_label: Marque esta opção para que o link abra uma nova janela.
+            not_sure: Não sabe ao certo o que colocar na caixa acima?
+            step1: Procure o site na web para onde quer redirecionar.
+            step2: "Copie o endereço do site da barra de navegação do seu browser e cole na caixa acima."
+          email_address:
+            tab_name: endereço de email
+            subject_line_optional: Título opcional
+            body_optional: Conteúdo opcional
+            not_sure: Não sabe ao certo o que colocar na caixa acima?
+            step1_html: "Escreva ou copie e cole (ex. do seu catálogo de email) o endereço de email e coloque dentro do <strong>Endereço de email</strong> na caixa acima."
+            step2_html: "Use o <strong>Título opcional</strong> na caixa acima se você quer que a mensagem seja composta por <strong>título pré-preenchido</strong>."
+            step3_html: "Use o <strong>Corpo opcional</strong> na caixa acima se você quer que a mensagem seja composta por uma  <strong>mensagem pré-preenchida</strong>."
+          your_resource:
+            tab_name: Seu ficheiro
+            link_to_this_resource: Link para este ficheiro
+      pages:
+        delete: Apagar página definitivamente
+        edit: Editar esta página
+        new: Adicionar nova página
+        expand_collapse: Expandir ou recolher sub-páginas
+        page:
+          view_live_html: Ver esta página <br/><em>(abre uma nova janela)</em>
+          hidden: escondido
+          draft: rascunho
+        form:
+          preview: Pré-visualizar
+          preview_changes: Pré-visualizar as alterações antes de publicar
+        form_new_page_parts:
+          title: Título
+        form_page_parts:
+          create_content_section: Adicionar secção de conteúdo
+          delete_content_section: Apagar secção de conteúdo
+          reorder_content_section: Ordenar secções de conteúdo
+          reorder_content_section_done: Terminei de ordenar as secções de conteúdo
+        form_advanced_options:
+          page_options: Opções da página
+          parent_page: Página pai
+          menu_title: Título de menu
+          custom_slug: Personalizar o permalink
+          show_in_menu_title: Mostrar no menu
+          show_in_menu_description: Mostrar esta página no menu do site
+          show_in_menu_help: "Desmarque esta opção caso queira remover a página do menu do site. Pode ser útil caso queira ligar outra página a esta, mas não quer que esta apareça no menu do site."
+          skip_to_first_child: Passar para a página de nível superior
+          skip_to_first_child_label: Redireccionar visitantes para a primeira página dependente desta página.
+          skip_to_first_child_help: Esta opção linka para a página abaixo. Pode ser útil para agrupar as páginas.
+          link_url: Enviar esta página para outros websites ou páginas
+          link_url_help: "Se quiser que esta página aponte para outro website ou página, insira o URL. exemplo: http://google.com caso contrário deixe em branco."
+          parent_page_help: "Se você quer colocar esta página abaixo de outra página no menu, selecione aqui qual é a página ou deixe em branco caso queria a página na raiz do menu."
+          menu_title_help: Se quer apresentar um nome diferente no menu escreva-o aqui.
+          custom_slug_help: "Uma slug (permalink) é um ID de fácil leitura para os humanos usado para criar o URL da página. Exemplo: &apos;about-us&apos;. Para alterar escreva o que pretende aqui."
+          layout_template: Modelo de layout
+          layout_template_help: Pode escolher um novo modelo de layout para esta página
+          view_template: Ver modelo (template)
+          view_template_help: Pode escolher um novo modelo para esta página.
+        form_advanced_options_seo:
+          seo: Search Engine Optimization
+          seo_override_title: Título no browser
+          seo_override_title_help: Escreva 5 a 10 palavras que descrevam esta página.
+          meta_keywords_title: Meta keywords
+          meta_keywords_help: Escreva entre 5 a 10 palavras que relacionem esta página - separe por vírgulas.
+          meta_description_title: Meta description
+          meta_description_help: Escreva duas ou três frases que descrevam esta página.
+        actions:
+          create_new_page: Adicionar nova página
+          reorder_pages: Ordenar páginas
+          reorder_pages_done: Terminei de ordenar as páginas
+        records:
+          no_pages_yet: Não existem páginas de momento. Clique em 'Adicionar nova página' para criar a primeira.
+        translator_access: Não tem as permissões necessárias para modificar esta página.
+  activerecord:
+    models:
+      refinery/page: página
+    attributes:
+      refinery/page:
+        title: Título
