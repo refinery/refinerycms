@@ -32,6 +32,8 @@ module Refinery
 
       append_asset_pipeline!
 
+      set_assets_debugging_to_false!
+
       forced_overwriting?
 
       copy_files!
@@ -66,6 +68,15 @@ module Refinery
         gsub_file 'Gemfile', %q{gem 'sqlite3'}, %q{group :development, :test do
   gem 'sqlite3'
 end}  end
+    end
+
+    def set_assets_debugging_to_false!
+      if destination_path.join(env = "config/environments/development.rb").file?
+        gsub_file env, "config.assets.debug = true", "config.assets.debug = false"
+
+        insert_into_file env, "# Refinery is setting this config to false in order to speed up page load time\n  ",
+          :before => "config.assets.debug = false"
+      end
     end
 
     def append_gitignore!
