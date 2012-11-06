@@ -28,7 +28,7 @@ module Refinery
         elsif page.link_url.present?
           redirect_to page.link_url
         else
-          if requested_friendly_id != page.friendly_id
+          if should_redirect_to_friendly_url?
             redirect_to refinery.url_for(page.url), :status => 301
           else
             render_with_templates?
@@ -51,6 +51,10 @@ module Refinery
 
     def should_skip_to_first_child?
       page.skip_to_first_child && first_live_child
+    end
+
+    def should_redirect_to_friendly_url?
+      requested_friendly_id != page.friendly_id || params[:path].present? && params[:path].match(page.root.slug).nil?
     end
 
     def current_user_can_view_page?
