@@ -99,11 +99,6 @@ module Refinery
         ]
       end
 
-      # Disable asset debugging - it's a performance killer in dev mode
-      initializer "refinery.assets.pipeline" do |app|
-        app.config.assets.debug = false
-      end
-
       # active model fields which may contain sensitive data to filter
       initializer "refinery.params.filter" do |app|
         app.config.filter_parameters += [:password, :password_confirmation]
