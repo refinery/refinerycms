@@ -1,0 +1,82 @@
+hu:
+  refinery:
+    js:
+      admin:
+        confirm_changes: Minden változtatás el fog veszni. Biztosan mentés nélkül akarod folytatni?
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core refinery plugin
+      refinery_dialogs:
+        title: Dialogs
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: "Nincs egyetlen felhasználó sem, így azt kell beállítani először."
+    crudify:
+      created: '%{what} sikeresen hozzáadva.'
+      updated: '%{what} sikeresen frissítve.'
+      destroyed: '%{what} sikeresen eltávolítva.'
+    site_bar:
+      log_out: Log out
+      switch_to_your_website: Váltás a weboldalra
+      switch_to_your_website_editor: Váltás a szerkesztőre
+    admin:
+      menu:
+        reorder_menu: Menü átrendezése
+        reorder_menu_done: Végeztem a menü átrendezésével
+      dialogs:
+        show:
+          save: Mentés
+          cancel: Mégsem
+      continue_editing:
+        save_and_continue_editing: 'Mentés és a szerkesztés folytatása'
+      form_actions:
+        save: Mentés
+        cancel: Mégsem
+        cancel_lose_changes: 'Ha megszakítod, akkor az összes változtatás elveszik'
+        delete: Eltávolít
+        close: Bezár
+      image_picker:
+        none_selected: 'Jelenleg nincs kép kiválasztva, kattints ide a hozzáadáshoz.'
+        remove_current: Jelenlegi kép eltávolítása
+        change: Kattints ide kép kiválasztásához
+        show: Mutat
+      resource_picker:
+        download_current: Jelenlegi fájl letöltése
+        opens_in_new_window: Megnyitás új ablakban
+        remove_current: "Jelenlegi fájl eltávolítása"
+        no_resource_selected: 'Jelenleg nincs fájl kiválasztva, kattints ide a hozzáadáshoz.'
+        name: Fájl hozzáadása
+        current: Jelenlegi fájl
+      search:
+        button_text: Keres
+        results_for_html: "Keresési eredmények a következőhöz: &#8216;<em>%{query}</em>&#8217;"
+        no_results: 'Sajnáljuk, nincs találat'
+        cancel_search: 'Keresés megszakítása'
+        search_input_notice: "Írd ide amit keresel. Minimális hossz 3 karakter."
+      delete:
+        message: "Biztosan ez akarod távolítani ezt: '%{title}'?"
+      error_messages:
+        problems_in_following_fields: Problémák akadtak a következő mezőkkel
+      help: segítség
+      form_advanced_options_menu:
+        advanced_options: Haladó beállítások
+        toggle_advanced_options: Haladó beállítások mutatása/elrejtése
+        save_as_draft: Mentés vázlatként
+    message:
+      close: Bezár
+      close_this_message: Üzenet bezárása
+    draft_page_message:
+      not_live: Ez az oldal NEM elérhető publikusan.
+    footer:
+      copyright: "Copyright © %{year} %{site_name}"
+    no_script:
+      enable_javascript_html: Az oldal teljes működéséhez szükséges a JavaScript engedélyezése.
+      here_are: Itt vannak az
+      instructions_enable_javascript_html: 'instrukciók, hogyan engedélyezd a JavaScript-et a böngésződben'
+  time:
+    formats:
+      short: "%Y %B %d, %A"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

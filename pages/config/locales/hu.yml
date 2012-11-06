@@ -1,0 +1,93 @@
+hu:
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Oldalak
+        description: 'Tartalmi oldalak kezelése'
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: 'Link erre az oldalra'
+        link_to:
+          insert: 'Beszúrás'
+          your_page:
+            tab_name: 'Saját oldalak'
+          web_address:
+            tab_name: Weboldal
+            location: "Elhelyezkedés"
+            new_window: "Új ablak"
+            new_window_label: 'Válaszd ki ezt a jelölőt, ha azt szeretnéd, hogy a link új ablakban nyíljon meg.'
+            not_sure: 'Nem vagy biztos benne, hogy mit kell tenni a fenti mezőbe?'
+            step1: 'Válaszd ki az oldalt a weben, amire linkelni akarsz'
+            step2: 'Másold ki a webcímet a böngésző címsorából és illeszd be a fenti dobozba.'
+          email_address:
+            tab_name: "Email cím"
+            subject_line_optional: "Opcionális tárgy"
+            body_optional: "Opcionális törzs"
+            not_sure: 'Nem vagy biztos benne, hogy mit kell tenni a fenti mezőbe?'
+            step1_html: "Írd vagy másold (pl. a címtáradból) az email címet a fenti '<strong>Email Cím</strong>' dobozokba."
+            step2_html: "Használd a fenti '<strong>Opcionális tárgy</strong>' sort ha azt szeretnéd hogy az üzenet tárgya egy <strong>előre megyírt sor legyen</strong>."
+            step3_html: "Használd a fenti '<strong>Opcionális törzs</strong>' dobozt, ha szeretnéd, hogy üzenet kitöltődjön egy <strong>előre megyírt tartalommal</strong>."
+          your_resource:
+            tab_name: 'Saját fájlok'
+            link_to_this_resource: 'Link erre a fájlra'
+      pages:
+        delete: 'Oldal végleges eltávolítása'
+        edit: 'Oldal szerkesztése'
+        new: 'Új aloldal hozzáadása'
+        expand_collapse: 'Aloldalak kinyitása/bezárása'
+        page:
+          view_live_html: 'Nézd meg ezt az oldalt élőben <br/><em>(új ablakban nyílik meg)</em>'
+          hidden: rejtett
+          draft: piszkozat
+        form:
+          preview: 'Előnézet'
+          preview_changes: 'Változások előnézete élesítés előtt'
+        form_new_page_parts:
+          title: Title
+        form_page_parts:
+          create_content_section: 'Tartalmi rész hozzáadása'
+          delete_content_section: 'Tartalmi rész törlése'
+          reorder_content_section: 'Tartalmi részek rendezése'
+          reorder_content_section_done: 'Befejeztem a tartalmi részek rendezését'
+        form_advanced_options:
+          page_options: 'Oldal opciók'
+          parent_page: 'Szülő oldal'
+          menu_title: 'Menu cím'
+          custom_slug: 'Egyedi slug'
+          show_in_menu_title: 'Mutasd a menüben'
+          show_in_menu_description: 'Az oldal megjelenítése a weboldal menüjében'
+          show_in_menu_help: 'Töröld ezt a dobozt, ha el akarod távolítani az oldalt a menüből. Olyankor lehet hasznos, ha közvetlenül akarsz linkelni az oldalre, de nem szeretnéd hogy megjelenjen a menüben.'
+          skip_to_first_child: 'Felső szintű oldal kihagyása'
+          skip_to_first_child_label: 'Az első aloldalra irányítja a látogatókat.'
+          skip_to_first_child_help: 'Ez az opció az oldalt az első aloldalra linkeli. Hasznos lehet, ha csoportosítani szeretnéd az oldalakat. '
+          link_url: 'Oldal továbbítsa másik weboldalra vagy oldalra'
+          link_url_help: 'Ha azt szeretnéd, hogy egy másik weboldalra ugorjon, ha a menüben rákattintanak, akkor adj meg egy URL-t pl.: http://google.com egyébként hagyd üresen'
+          parent_page_help: 'Elhelyezheted az oldalt egy másik alatt, a listából történő választással. Ha azt szeretnéd, hogy felső szintű oldal legyen, akkor hagyd üresen.'
+          menu_title_help: 'Ha azt szeretnéd, hogy a menüben a címtől különböző szöveg jelenjen meg, add meg itt.'
+          custom_slug_help: 'A slug egy ember számára jól olvasható azonosító, ami az URL-ben jelenik meg, pl: kapcsolat-velunk. Hogy felülírd a Refinery által generált értéket, add mag a saját slug-ot itt.'
+          layout_template: 'Layout sablon'
+          layout_template_help: 'Eltérő layout sablont választhatsz ennek az oldalnak'
+          view_template: 'View sablon'
+          view_template_help: 'Eltérő view sablont választhatsz ennek az oldalnak'
+        form_advanced_options_seo:
+          seo: 'Kereső Optimalizálás'
+          seo_override_title: 'Böngésző cím'
+          seo_override_title_help: 'Adj meg 5-10 szavas címet, ami összefoglalja az oldal tartalmát.'
+          meta_keywords_title: 'Meta kulcsszavak'
+          meta_keywords_help: 'Adj meg 5-10 kulcsszót, amik kapcsolódnak az oldalhoz. Vesszővel válaszd el őket.'
+          meta_description_title: 'Meta leírás'
+          meta_description_help: 'Add meg tömören, két vagy három mondatban, hogy miről szól ez az oldal.'
+        actions:
+          create_new_page: 'Új oldal hozzáadása'
+          reorder_pages: 'Oldalak átrendezése'
+          reorder_pages_done: 'Oldalak átrendezésének befejezése'
+        records:
+          no_pages_yet: 'Jelenleg nincsenek oldalak. Kattints az "Új oldal hozzáadása" linkre, az első oldal létrehozásához.'
+        translator_access: 'Nincs meg a szükséges engedélyed, hogy módosítsd az oldalakat ezen a nyelven.'
+  activerecord:
+    models:
+      refinery/page: oldal
+    attributes:
+      refinery/page:
+        title: Cím
