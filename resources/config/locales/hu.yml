@@ -1,0 +1,36 @@
+hu:
+  refinery:
+    plugins:
+      refinery_files:
+        title: Fájlok
+        description: Fájlok feltöltésének kezelése
+    admin:
+      resources:
+        delete: Fájl végleges eltávolítása
+        edit: Fájl szerkesztése
+        form:
+          download_current: Jelenlegi fájl letöltése
+          or: vagy
+          replace: " lecserélése a következőre..."
+          maximum_file_size: 'A maximum fájl méret: %{bytes}.'
+        resource:
+          download: Fájl letöltése (%{size})
+        actions:
+          upload_new: Új fájl feltöltése
+        records:
+          no_files_yet: 'Még nincsenek fájlok. Kattints az "Új fájl feltöltése"-re, hogy hozzáadd az elsőt.'
+        insert:
+          existing: Létező Fájl
+          new: Új Fájl
+          no_files: Nincsenek fájlok.
+        existing_resource:
+          link_to_file: Link erre a fájlra
+          button_text: Beszúrás
+  activerecord:
+    models:
+      refinery/resource: fájl
+    errors:
+      models:
+        refinery/resource:
+          blank: Meg kell adnod egy feltöltendő fájlt
+          too_big: 'A fájlnak kisebbnek kell lennie mint %{size} bájt'
