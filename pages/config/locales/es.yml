@@ -39,6 +39,9 @@ es:
           view_live_html: Ver esta página como abierta al público<br/><em>(la abre en ventana nueva)</em>
           hidden: oculta
           draft: borrador
+        form:
+          preview: Previsualizar
+          preview_changes: Previsualizar los cambios antes de publicarlos
         form_new_page_parts:
           title: Título
         form_page_parts:
