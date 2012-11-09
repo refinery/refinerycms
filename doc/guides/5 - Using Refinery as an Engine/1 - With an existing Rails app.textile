@@ -6,7 +6,9 @@ This guide covers integration with Refinery CMS. After reading it, you should be
 
 endprologue.
 
-WARNING. This guide is based on Refinery CMS 2.0.0. Much of the code shown here will not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 2.0.x. Much of the code shown here will not work in earlier versions of Refinery.
+
+INFO. Refinery CMS 2.0.x has a minimum requirement of Rails 3.1.3
 
 h3. Guide Assumptions
 
