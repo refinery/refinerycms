@@ -58,8 +58,7 @@ module Refinery
     before_save { |m| m.translation.save }
     before_create :ensure_locale, :if => proc { ::Refinery.i18n_enabled? }
     before_destroy :deletable?
-    after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
-    after_update :invalidate_cached_urls
+    after_save :reposition_parts!, :expire_page_caching
     after_destroy :expire_page_caching
 
     class << self
@@ -187,12 +186,6 @@ module Refinery
           return true # so that other callbacks process.
         end
       end
-
-      def rebuild_with_invalidate_cached_urls!
-        rebuild_without_invalidate_cached_urls!
-        find_each { |page| page.send :invalidate_cached_urls }
-      end
-      alias_method_chain :rebuild!, :invalidate_cached_urls
     end
 
     # The canonical page for this particular page.
@@ -441,17 +434,6 @@ module Refinery
     alias_method_chain :normalize_friendly_id, :marketable_urls
 
     private
-    def invalidate_cached_urls
-      return true unless Refinery::Pages.marketable_urls
-
-      [self, children].flatten.each do |page|
-        ((Refinery.i18n_enabled? && Refinery::I18n.frontend_locales) || [::I18n.locale]).each do |locale|
-          Rails.cache.delete(page.url_cache_key(locale))
-          Rails.cache.delete(page.path_cache_key(locale))
-        end
-      end
-    end
-    alias_method :invalidate_child_cached_url, :invalidate_cached_urls
 
     # Make sures that a translation exists for this page.
     # The translation is set to the default frontend locale.
