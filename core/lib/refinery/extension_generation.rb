@@ -20,7 +20,11 @@ module Refinery
       else
         # If the user has passed an engine, we want to generate it inside of 
         # that extension.
-        options[:extension].presence || class_name.pluralize
+        if options[:extension].present?
+          options[:extension].to_s.camelize
+        else
+          class_name.pluralize
+        end
       end
     end
 
