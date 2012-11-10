@@ -12,6 +12,32 @@ module Refinery
       run_generator %w{ rspec_product_test title:string description:text image:image brochure:resource }
     end
 
+    context "when generating a resource without passing a namespace" do
+      before do
+        run_generator %w{ rspec_item_test title:string --extension rspec_product_tests --skip }
+      end
+
+      it "uses the extension name for the namespace" do
+        destination_root.should have_structure {
+          directory "vendor" do
+            directory "extensions" do
+              directory "rspec_product_tests" do
+                directory "app" do
+                  directory "controllers" do
+                    directory "refinery" do
+                      directory "rspec_product_tests" do
+                        file "rspec_item_tests_controller.rb"
+                      end
+                    end
+                  end
+                end
+              end
+            end
+          end
+        }
+      end
+    end
+
     context "when generating a resource inside existing extensions dir" do
 
       before do
