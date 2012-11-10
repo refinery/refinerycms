@@ -6,7 +6,7 @@ module Refinery
   describe EngineGenerator do
     include GeneratorSpec::TestCase
 
-    it "exits when reserved word is used for extnesion name" do
+    it "exits when reserved word is used for extension name" do
       clash_keywords = YAML.load_file(File.expand_path("../../../../../../lib/generators/refinery/clash_keywords.yml", __FILE__))
       clash_keywords.each do |word|
         lambda {
