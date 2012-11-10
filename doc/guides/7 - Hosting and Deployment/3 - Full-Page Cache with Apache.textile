@@ -7,14 +7,14 @@ endprologue.
 
 h3. Activate "Cache Pages Full"
 
-* Go to http://your-website/refinery/settings
-* Enable the setting "Cache Pages Full"
-* Restart the Application (example by touching <tt>tmp/restart.txt</tt> in your
-  current directory on server)
+Inside +config/initializers/refinery/pages.rb+, find the line that reads 
++config.cache_pages_full = false+, set it to true, and uncomment the line.
+Restart your server.
 
-From now every page you request from Refinery CMS will be saved at
-public/refinery/cache/pages. E.g. after you request http://your-website/about
-you find a file named public/refinery/cache/pages/about.html.
+From then on, every page you request from Refinery CMS will be saved at
+public/refinery/cache/pages. For exapmle, after you request
++http://your-website/about+, you will find a file named 
++public/refinery/cache/pages/about.html+ inside your application folder.
 
 h3. Redirect
 
@@ -46,4 +46,4 @@ ExpiresByType application/javascript "access plus 1 year"
 AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript text/css application/javascript
 </code>
 
-Now pages are delivered by Apache without touching passenger.
+Now pages are delivered by Apache without touching Passenger.
