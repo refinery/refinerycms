@@ -302,14 +302,14 @@ module Refinery
     context "with multiple locales" do
 
       describe "redirects" do
+        before { Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru]) }
+        after { Refinery::I18n.unstub(:frontend_locales) }
         let(:en_page_title) { 'News' }
         let(:en_page_slug) { 'news' }
         let(:ru_page_title) { 'Новости' }
         let(:ru_page_slug) { 'новости' }
         let(:ru_page_slug_encoded) { '%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8' }
         let!(:news_page) do
-          Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
-
           _page = Globalize.with_locale(:en) {
             Page.create :title => en_page_title
           }
@@ -321,10 +321,10 @@ module Refinery
           _page
         end
 
-        it "should remove default locale from path" do
+        it "should recognise when default locale is in the path" do
           visit "/en/#{en_page_slug}"
 
-          current_path.should == "/#{en_page_slug}"
+          current_path.should == "/en/#{en_page_slug}"
         end
 
         it "should redirect to default locale slug" do
@@ -344,8 +344,6 @@ module Refinery
           let(:nested_page_slug) { '2012' }
 
           let!(:nested_page) do
-            Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
-
             _page = Globalize.with_locale(:en) {
               news_page.children.create :title => nested_page_title
             }
