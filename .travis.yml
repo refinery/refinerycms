@@ -27,7 +27,6 @@ matrix:
     - rvm: rbx-19mode
     - rvm: jruby-19mode
     - rvm: jruby-18mode
-    - rvm: 2.0.0-preview1
 rvm:
   - 1.9.3
   - 1.8.7
@@ -35,4 +34,3 @@ rvm:
   - jruby-19mode
   - rbx-18mode
   - jruby-18mode
-  - 2.0.0-preview1
