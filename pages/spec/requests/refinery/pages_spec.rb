@@ -298,5 +298,74 @@ module Refinery
         end
       end
     end
+
+    context "with multiple locales" do
+
+      describe "redirects" do
+        let(:en_page_title) { 'News' }
+        let(:en_page_slug) { 'news' }
+        let(:ru_page_title) { 'Новости' }
+        let(:ru_page_slug) { 'новости' }
+        let(:ru_page_slug_encoded) { '%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8' }
+        let!(:news_page) do
+          Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
+
+          _page = Globalize.with_locale(:en) {
+            Page.create :title => en_page_title
+          }
+          Globalize.with_locale(:ru) do
+            _page.title = ru_page_title
+            _page.save
+          end
+
+          _page
+        end
+
+        it "should remove default locale from path" do
+          visit "/en/#{en_page_slug}"
+
+          current_path.should == "/#{en_page_slug}"
+        end
+
+        it "should redirect to default locale slug" do
+          visit "/#{ru_page_slug_encoded}"
+
+          current_path.should == "/#{en_page_slug}"
+        end
+
+        it "should redirect to second locale slug" do
+          visit "/ru/#{en_page_slug}"
+
+          current_path.should == "/ru/#{ru_page_slug_encoded}"
+        end
+
+        describe "nested page" do
+          let(:nested_page_title) { '2012' }
+          let(:nested_page_slug) { '2012' }
+
+          let!(:nested_page) do
+            Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
+
+            _page = Globalize.with_locale(:en) {
+              news_page.children.create :title => nested_page_title
+            }
+
+            Globalize.with_locale(:ru) do
+              _page.title = nested_page_title
+              _page.save
+            end
+
+            _page
+          end
+
+          it "should redirect to localized url" do
+            visit "/ru/#{en_page_slug}/#{nested_page_slug}"
+
+            current_path.should == "/ru/#{ru_page_slug_encoded}/#{nested_page_slug}"
+          end
+        end
+      end
+
+    end
   end
 end
