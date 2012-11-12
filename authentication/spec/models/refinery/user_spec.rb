@@ -3,8 +3,8 @@ require 'spec_helper'
 module Refinery
   describe User do
 
-    let(:user) { FactoryGirl.create(:user) }
-    let(:refinery_user) { FactoryGirl.create(:refinery_user) }
+    let(:user) { create(:user) }
+    let(:refinery_user) { create(:refinery_user) }
 
     context "Roles" do
       context "add_role" do
@@ -83,9 +83,9 @@ module Refinery
     end
 
     describe "#can_delete?" do
-      let(:user_not_persisted) { FactoryGirl.build(:refinery_user) }
+      let(:user_not_persisted) { build(:refinery_user) }
       let(:super_user) do
-        super_user = FactoryGirl.create(:refinery_user)
+        super_user = create(:refinery_user)
         super_user.add_role(:superuser)
         super_user
       end
@@ -122,13 +122,13 @@ module Refinery
     end
 
     describe "#can_edit?" do
-      let(:user_not_persisted) { FactoryGirl.build(:refinery_user) }
+      let(:user_not_persisted) { build(:refinery_user) }
       let(:super_user) do
-        super_user = FactoryGirl.create(:refinery_user)
+        super_user = create(:refinery_user)
         super_user.add_role(:superuser)
         super_user
       end
-      let(:user_persisted) { FactoryGirl.create(:refinery_user)}
+      let(:user_persisted) { create(:refinery_user)}
 
       context "won't allow to edit" do
         it "non-persisted user record" do
@@ -190,7 +190,7 @@ module Refinery
 
     describe "#create_first" do
       let(:first_user) do
-        first = FactoryGirl.build(:user)
+        first = build(:user)
         first.create_first
         first
       end

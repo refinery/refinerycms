@@ -7,9 +7,9 @@ module Refinery
     let(:admin_path) { refinery.admin_root_path }
 
     before do
-      FactoryGirl.create(:refinery_user, :username => "ugisozols",
-                              :password => "123456",
-                              :password_confirmation => "123456")
+      create(:refinery_user, :username => "ugisozols",
+                             :password => "123456",
+                             :password_confirmation => "123456")
 
       visit refinery.login_path
     end
@@ -72,10 +72,9 @@ module Refinery
     let(:login_path) { refinery.new_refinery_user_session_path }
 
     before do
-      FactoryGirl.create(:refinery_user,
-        :username => "ugisozols",
-        :password => "123456",
-        :password_confirmation => "123456"
+      create(:refinery_user, :username => "ugisozols",
+                             :password => "123456",
+                             :password_confirmation => "123456"
       )
     end
 

@@ -9,8 +9,8 @@ describe Refinery do
 <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
         describe "<%= plural_name %> list" do
           before do
-            FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne")
-            FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleTwo")
+            create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne")
+            create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleTwo")
           end
 
           it "shows two items" do
@@ -47,7 +47,7 @@ describe Refinery do
           end
 
           context "duplicate" do
-            before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitle") }
+            before { create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitle") }
 
             it "should fail" do
               visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
@@ -164,7 +164,7 @@ describe Refinery do
         end
 
         describe "edit" do
-          before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "A <%= title.name %>") }
+          before { create(:<%= singular_name %>, :<%= title.name %> => "A <%= title.name %>") }
 
           it "should succeed" do
             visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
@@ -182,7 +182,7 @@ describe Refinery do
         end
 
         describe "destroy" do
-          before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
+          before { create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
 
           it "should succeed" do
             visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path

@@ -33,8 +33,8 @@ describe "dashboard" do
 
   describe "latest activity" do
     before do
-      3.times { |n| FactoryGirl.create :refinery_user, :username => "ugisozols#{n}" }
-      3.times { |n| FactoryGirl.create :page, :title => "Refinery CMS #{n}" }
+      3.times { |n| create(:refinery_user, :username => "ugisozols#{n}") }
+      3.times { |n| create(:page, :title => "Refinery CMS #{n}") }
     end
 
     it "shows created tracked objects" do
@@ -49,7 +49,7 @@ describe "dashboard" do
     it "uses proper link for nested pages" do
       # we need to increase updated_at because dashboard entries are sorted by
       # updated_at column and we need this page to be at the top of the list
-      nested = FactoryGirl.create(:page, :parent_id => Refinery::Page.last.id,
+      nested = create(:page, :parent_id => Refinery::Page.last.id,
                                          :updated_at => Time.now + 10.seconds)
 
       visit refinery.admin_dashboard_path
