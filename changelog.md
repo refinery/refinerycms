@@ -13,6 +13,8 @@
 * Dropped coffee-rails dependency. [#1975](https://github.com/refinery/refinerycms/issues/1975). [Uģis Ozols](https://github.com/ugisozols)
 * Added Portuguese translations. [#2007](https://github.com/refinery/refinerycms/pull/2007). [David Silva](https://github.com/davidslvto)
 * Added Hungarian translations. [#2010](https://github.com/refinery/refinerycms/pull/2010). [minktom](https://github.com/minktom)
+* Extracted search header logic into partial. [#1974](https://github.com/refinery/refinerycms/pull/1974). [Uģis Ozols](https://github.com/ugisozols)
+* Images can only be updated when the image being uplaoded has the same filename as the original image. [#1866](https://github.com/refinery/refinerycms/pull/1866). [Philip Arndt](https://github.com/parndt) & [Uģis Ozols](https://github.com/ugisozols)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
