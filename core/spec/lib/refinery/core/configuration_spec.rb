@@ -32,6 +32,21 @@ module Refinery
           end
         end
       end
+  
+      context 'Rack::Cache middleware' do
+        subject { ::Rails.application.config }
+        it 'should be configured via Rails' do
+          subject.action_dispatch.rack_cache.should have_key(:metastore)
+          subject.action_dispatch.rack_cache.should have_key(:entitystore)
+        end
+        it 'should be included once and only once' do
+          count = 0
+          subject.middleware.each do |middleware|
+            count += 1 if middleware === Rack::Cache
+          end
+          count.should == 1
+        end
+      end
     end
   end
 end

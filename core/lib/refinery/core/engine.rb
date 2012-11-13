@@ -108,8 +108,8 @@ module Refinery
         app.config.encoding = 'utf-8'
       end
 
-      initializer "refinery.memory_store" do |app|
-        app.config.cache_store = :memory_store
+      initializer "refinery.cache_store" do |app|
+        ::Refinery::Cache.attach!(app)
       end
 
       config.after_initialize do
