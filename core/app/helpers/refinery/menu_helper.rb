@@ -43,7 +43,7 @@ module Refinery
       path = path.force_encoding('utf-8') if path.respond_to?(:force_encoding)
 
       # Ensure we match the path without the locale, if present.
-      if ::Refinery.i18n_enabled? and path =~ %r{^/#{::I18n.locale}/}
+      if path =~ %r{^/#{::I18n.locale}/}
         path = path.split(%r{^/#{::I18n.locale}}).last
         path = "/" if path.blank?
       end

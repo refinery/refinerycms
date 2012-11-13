@@ -10,7 +10,7 @@
       <%= page_title_with_translations page %>
       <%= page_meta_information page %>
     </span>
-    <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
+    <% if Refinery::I18n.frontend_locales.many? %>
       <span class='locales'>
         <% page.translations.each do |translation| %>
           <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),

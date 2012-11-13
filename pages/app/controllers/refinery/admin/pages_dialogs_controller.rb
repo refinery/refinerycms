@@ -9,13 +9,11 @@ module Refinery
       def link_to
         # Get the switch_local variable to determine the locale we're currently editing
         # Set up Globalize with our current locale
-        if ::Refinery.i18n_enabled?
-          Globalize.locale = params[:switch_locale] || Refinery::I18n.default_locale
-        end
+        Globalize.locale = params[:switch_locale] || Refinery::I18n.default_locale
 
         @pages = ::Refinery::Page.roots.paginate(:page => params[:page], :per_page => ::Refinery::Page.per_page(true))
 
-        @pages = @pages.with_globalize if ::Refinery.i18n_enabled?
+        @pages = @pages.with_globalize
 
         if ::Refinery::Plugins.registered.names.include?('refinery_files')
             @resources = Resource.paginate(:page => params[:resource_page], :per_page => Resource.per_page(true)).

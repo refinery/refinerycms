@@ -12,8 +12,7 @@ module Refinery
 
       before_filter :load_valid_templates, :only => [:edit, :new]
 
-      before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy],
-                    :if => proc { Refinery.i18n_enabled? }
+      before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy]
 
       def new
         @page = Refinery::Page.new(params.except(:controller, :action, :switch_locale))
