@@ -41,7 +41,7 @@ es:
           draft: borrador
         form:
           preview: Previsualizar
-          preview_changes: Previsualizar los cambios antes de publicarlos
+          preview_changes: Previsualizar cambios antes de guardarlos
         form_new_page_parts:
           title: Título
         form_page_parts:
@@ -51,6 +51,7 @@ es:
           page_options: Opciones de página
           parent_page: Página padre
           custom_title: Título personalizado
+          menu_title: Título del menú
           show_in_menu_title: Ver en menú
           show_in_menu_description: Mostrar esta página en el menú de la web
           show_in_menu_help: Deja sin marcar esta casilla para eliminar una página del menú de tu web. Puede ser útil si tienes una página que quieres que la gente enlace directamente pero no quieres mostrarla en el menú.
