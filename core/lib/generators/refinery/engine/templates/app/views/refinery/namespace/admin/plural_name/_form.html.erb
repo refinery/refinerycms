@@ -9,7 +9,7 @@
 
 <% if localized? -%>
   <%%= render '/refinery/admin/locale_picker',
-              :current_locale => Globalize.locale if Refinery.i18n_enabled? %>
+              :current_locale => Globalize.locale %>
 <% end -%>
 <% attributes.each_with_index do |attribute, index| -%>
 <% if attribute.type.to_s == 'image' -%>

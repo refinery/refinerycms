@@ -4,11 +4,9 @@ require 'action_controller'
 require 'rbconfig'
 require 'truncate_html'
 require 'will_paginate'
+require 'refinery/i18n'
 
 module Refinery
-  # Ensure that the i18n shim is in place first.
-  require 'refinery/i18n'
-
   WINDOWS = !!(RbConfig::CONFIG['host_os'] =~ %r!(msdos|mswin|djgpp|mingw)!) unless defined? WINDOWS
 
   require 'refinery/errors'
@@ -108,14 +106,6 @@ module Refinery
 
       # Give stern talking to.
       warn warning
-    end
-
-    def i18n_enabled?
-      ::Refinery::I18n.enabled?
-    end
-
-    def current_admin_locale
-      ::I18n.locale
     end
 
     # Returns a Pathname to the root of the Refinery CMS project

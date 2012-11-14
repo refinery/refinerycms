@@ -58,7 +58,7 @@ module Refinery
     accepts_nested_attributes_for :parts, :allow_destroy => true
 
     before_save { |m| m.translation.save }
-    before_create :ensure_locale, :if => proc { ::Refinery.i18n_enabled? }
+    before_create :ensure_locale
     before_destroy :deletable?
     after_save :reposition_parts!, :expire_page_caching
     after_destroy :expire_page_caching
@@ -106,8 +106,8 @@ module Refinery
 
       # Finds pages by their slug.  See by_title
       def by_slug(slug, conditions={})
-        locales = Refinery.i18n_enabled? ? Refinery::I18n.frontend_locales.map(&:to_s) : ::I18n.locale.to_s
-        with_globalize({ :locale => locales, :slug => slug }.merge(conditions))
+        with_globalize({ :locale => Refinery::I18n.frontend_locales.map(&:to_s),
+                         :slug => slug }.merge(conditions))
       end
 
       # Shows all pages with :show_in_menu set to true, but it also
@@ -139,7 +139,7 @@ module Refinery
       # the current frontend locale is different to the current one set by ::I18n.locale.
       # This terminates in a false if i18n extension is not defined or enabled.
       def different_frontend_locale?
-        ::Refinery.i18n_enabled? && ::Refinery::I18n.current_frontend_locale != ::I18n.locale
+        Refinery::I18n.current_frontend_locale != ::I18n.locale
       end
 
       # Returns how many pages per page should there be when paginating pages
@@ -253,8 +253,6 @@ module Refinery
     # Adds the locale key into the URI for this page's link_url attribute, unless
     # the current locale is set as the default locale.
     def link_url_localised?
-      return link_url unless ::Refinery.i18n_enabled?
-
       current_url = link_url
 
       if current_url =~ %r{^/} && ::Refinery::I18n.current_frontend_locale != ::Refinery::I18n.default_frontend_locale
@@ -409,7 +407,7 @@ module Refinery
     # The translation is set to the default frontend locale.
     def ensure_locale
       if self.translations.empty?
-        self.translations.build(:locale => (::Refinery::I18n.default_frontend_locale if Refinery.i18n_enabled?))
+        self.translations.build(:locale => Refinery::I18n.default_frontend_locale)
       end
     end
 

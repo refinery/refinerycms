@@ -32,26 +32,24 @@
   <%= render 'additional_dashboard_menu_items' %>
 </ul>
 
-<% if ::Refinery.i18n_enabled? %>
-  <% locales = Refinery::I18n.locales.clone %>
-  <% current_locale = ::I18n.locale %>
-  <% current_locale_title = locales.delete(current_locale) %>
-  <ul id='current_locale'>
-    <li>
-      <%= link_to "#", :style => "background-image: url('#{asset_path "refinery/icons/flags/#{current_locale}.png"}');" do %>
-        <%= current_locale_title.respond_to?(:force_encoding) ? current_locale_title.force_encoding('utf-8') : current_locale_title %>
-        <span><%= t('.change_language') %></span>
-        <span style='display:none;'><%= t('cancel', :scope => 'refinery.admin.form_actions') %></span>
-      <% end %>
-    </li>
-  </ul>
-  <ul id='other_locales' style='display: none'>
-    <% locales.sort_by{|key, value| value}.each do |locale, locale_title| %>
-      <li>
-        <%= link_to locale_title.respond_to?(:force_encoding) ? locale_title.force_encoding('utf-8') : locale_title,
-                    refinery.admin_dashboard_path(:set_locale => locale),
-                    :style => "background-image: url('#{asset_path "refinery/icons/flags/#{locale}.png"}');" %>
-      </li>
+<% locales = Refinery::I18n.locales.clone %>
+<% current_locale = ::I18n.locale %>
+<% current_locale_title = locales.delete(current_locale) %>
+<ul id='current_locale'>
+  <li>
+    <%= link_to "#", :style => "background-image: url('#{asset_path "refinery/icons/flags/#{current_locale}.png"}');" do %>
+      <%= current_locale_title.respond_to?(:force_encoding) ? current_locale_title.force_encoding('utf-8') : current_locale_title %>
+      <span><%= t('.change_language') %></span>
+      <span style='display:none;'><%= t('cancel', :scope => 'refinery.admin.form_actions') %></span>
     <% end %>
-  </ul>
-<% end %>
+  </li>
+</ul>
+<ul id='other_locales' style='display: none'>
+  <% locales.sort_by{|key, value| value}.each do |locale, locale_title| %>
+    <li>
+      <%= link_to locale_title.respond_to?(:force_encoding) ? locale_title.force_encoding('utf-8') : locale_title,
+                  refinery.admin_dashboard_path(:set_locale => locale),
+                  :style => "background-image: url('#{asset_path "refinery/icons/flags/#{locale}.png"}');" %>
+    </li>
+  <% end %>
+</ul>
