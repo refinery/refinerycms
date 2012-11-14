@@ -62,7 +62,7 @@ describe Refinery::Admin::UsersController do
   end
 
   describe "#update" do
-    let(:additional_user) { FactoryGirl.create :refinery_user }
+    let(:additional_user) { create(:refinery_user) }
     it "updates a user" do
       Refinery::User.should_receive(:find).at_least(1).times{ additional_user }
       put "update", :id => additional_user.id.to_s, :user => {}

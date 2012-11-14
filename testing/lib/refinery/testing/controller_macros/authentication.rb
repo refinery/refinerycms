@@ -43,7 +43,7 @@ module Refinery
         end
 
         def factory_user(factory)
-          let(:logged_in_user) { FactoryGirl.create factory }
+          let(:logged_in_user) { create(factory) }
           before do
             @request.env["devise.mapping"] = Devise.mappings[:admin]
             sign_in logged_in_user

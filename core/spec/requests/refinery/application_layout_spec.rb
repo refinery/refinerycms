@@ -5,7 +5,7 @@ module Refinery
     refinery_login_with :refinery_user
 
     let(:home_page) do
-      FactoryGirl.create :page, :title => 'Home', :link_url => '/'
+      create(:page, :title => 'Home', :link_url => '/')
     end
 
     describe 'body' do

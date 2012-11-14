@@ -219,7 +219,7 @@ module Refinery
 
       context "given a page with a custom_slug exists" do
         before do
-          Factory(:page, :custom_slug => custom_page_slug)
+          create(:page, :custom_slug => custom_page_slug)
         end
 
         it "fails validation when a new record uses that custom_slug" do
@@ -502,7 +502,7 @@ module Refinery
     end
 
     describe ".find_by_path_or_id" do
-      let!(:market) { FactoryGirl.create(:page, :title => "market") }
+      let!(:market) { create(:page, :title => "market") }
       let(:path) { "market" }
       let(:id) { market.id }
 

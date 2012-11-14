@@ -6,7 +6,7 @@ module Refinery
       describe "#template_options" do
         context "when page layout/view templte is set" do
           it "returns empty hash" do
-            page = FactoryGirl.create(:page)
+            page = create(:page)
 
             page.view_template = "rspec_template"
             helper.template_options(:view_template, page).should eq({})
@@ -19,9 +19,9 @@ module Refinery
         context "when page layout/view template isn't set" do
           context "when page has parent" do
             it "returns option hash based on parent page" do
-              parent = FactoryGirl.create(:page, :view_template => "rspec_view",
-                                                 :layout_template => "rspec_layout")
-              page = FactoryGirl.create(:page, :parent_id => parent.id)
+              parent = create(:page, :view_template => "rspec_view",
+                                     :layout_template => "rspec_layout")
+              page = create(:page, :parent_id => parent.id)
 
               expected_view = { :selected => parent.view_template }
               helper.template_options(:view_template, page).should eq(expected_view)
@@ -38,7 +38,7 @@ module Refinery
             end
 
             it "returns option hash with first item from configured whitelist" do
-              page = FactoryGirl.create(:page)
+              page = create(:page)
 
               expected_view = { :selected => "one" }
               helper.template_options(:view_template, page).should eq(expected_view)
@@ -51,7 +51,7 @@ module Refinery
       end
 
       describe "#page_meta_information" do
-        let(:page) { FactoryGirl.build(:page) }
+        let(:page) { build(:page) }
 
         context "when show_in_menu is false" do
           it "adds 'hidden' label" do
@@ -71,7 +71,7 @@ module Refinery
       end
 
       describe "#page_title_with_translations" do
-        let(:page) { FactoryGirl.build(:page) }
+        let(:page) { build(:page) }
 
         before do
           Globalize.with_locale(:en) do

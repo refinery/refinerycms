@@ -13,7 +13,7 @@ module Refinery
     end
 
     describe "images extension" do
-      let!(:image) { FactoryGirl.create(:image) }
+      let!(:image) { create(:image) }
       before do
         visit refinery.admin_images_path
       end
@@ -32,7 +32,7 @@ module Refinery
 
     describe "resources extension" do
       before do
-        FactoryGirl.create(:resource)
+        create(:resource)
         visit refinery.admin_resources_path
       end
 
@@ -47,7 +47,7 @@ module Refinery
 
     describe "pages extension" do
       before do
-        FactoryGirl.create(:page, :title => "Ugis Ozols")
+        create(:page, :title => "Ugis Ozols")
         visit refinery.admin_pages_path
       end
 
@@ -62,7 +62,7 @@ module Refinery
 
     describe "users extension" do
       before do
-        FactoryGirl.create(:user, :username => "ugis")
+        create(:user, :username => "ugis")
         visit refinery.admin_users_path
       end
 

@@ -3,7 +3,7 @@ require "spec_helper"
 module Refinery
   module Users
     describe "password recovery" do
-      let!(:user) { FactoryGirl.create(:refinery_user, :email => "refinery@refinerycms.com") }
+      let!(:user) { create(:refinery_user, :email => "refinery@refinerycms.com") }
 
       it "asks user to specify email address" do
         visit refinery.login_path

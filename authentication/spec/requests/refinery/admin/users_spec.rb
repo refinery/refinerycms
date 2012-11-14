@@ -55,7 +55,7 @@ describe "User admin page" do
       page.should have_content("cmsrefinery (cms@refinerycms.com)")
     end
 
-    let(:dotty_user) { FactoryGirl.create(:refinery_user, :username => 'user.name.with.lots.of.dots') }
+    let(:dotty_user) { create(:refinery_user, :username => 'user.name.with.lots.of.dots') }
     it "accepts a username with a '.' in it" do
       dotty_user # create the user
       visit refinery.admin_users_path
@@ -71,7 +71,7 @@ describe "User admin page" do
   end
 
   describe "destroy" do
-    let!(:user) { FactoryGirl.create(:user, :username => "ugisozols") }
+    let!(:user) { create(:user, :username => "ugisozols") }
 
     it "can only destroy regular users" do
       visit refinery.admin_users_path

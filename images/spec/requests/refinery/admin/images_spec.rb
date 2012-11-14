@@ -44,7 +44,7 @@ module Refinery
     end
 
     context "when an image exists" do
-      let!(:image) { FactoryGirl.create(:image) }
+      let!(:image) { create(:image) }
 
       context "edit/update" do
         it "updates image" do

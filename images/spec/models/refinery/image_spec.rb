@@ -3,8 +3,8 @@ require 'spec_helper'
 module Refinery
   describe Image do
 
-    let(:image) { FactoryGirl.build(:image) }
-    let(:created_image) { FactoryGirl.create(:image) }
+    let(:image) { build(:image) }
+    let(:created_image) { create(:image) }
 
     describe "validations" do
       describe "valid #image" do
@@ -163,7 +163,7 @@ module Refinery
     end
 
     describe '#thumbnail_dimensions returns correctly with' do
-      let(:created_alternate_image) { FactoryGirl.create(:alternate_image) }
+      let(:created_alternate_image) { create(:alternate_image) }
 
       it 'nil' do
         created_alternate_image.thumbnail_dimensions(nil).should == { :width => 376, :height => 184 }

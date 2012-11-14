@@ -29,7 +29,7 @@ module Refinery
     context "when in frontend" do
       before do
         # make a page in order to avoid 404
-        FactoryGirl.create(:page, :link_url => "/")
+        create(:page, :link_url => "/")
 
         visit refinery.root_path
       end
