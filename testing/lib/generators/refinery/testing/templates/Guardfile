@@ -24,7 +24,7 @@ guard 'rspec', :version => 2, :spec_paths => extensions.map{|e| "#{e}/spec"},
     watch("#{extension}/spec/spec_helper.rb")                        { "#{extension}/spec" }
     watch("#{extension}/config/routes.rb")                           { "#{extension}/spec/routing" }
     watch("#{extension}/app/controllers/application_controller.rb")  { "#{extension}/spec/controllers" }
-    # Capybara request specs
-    watch(%r{^#{extension}/app/views/(.+)/.*\.(erb|haml)$})          { |m| "#{extension}/spec/requests/#{m[1]}_spec.rb" }
+    # Capybara feature specs
+    watch(%r{^#{extension}/app/views/(.+)/.*\.(erb|haml)$})          { |m| "#{extension}/spec/features/#{m[1]}_spec.rb" }
   end
 end

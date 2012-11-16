@@ -8,10 +8,10 @@ describe "User admin page" do
       visit refinery.admin_users_path
       click_link "Add new user"
 
-      fill_in "Username", :with => "test"
-      fill_in "Email", :with => "test@refinerycms.com"
-      fill_in "Password", :with => "123456"
-      fill_in "Password confirmation", :with => "123456"
+      fill_in "user[username]", :with => "test"
+      fill_in "user[email]", :with => "test@refinerycms.com"
+      fill_in "user[password]", :with => "123456"
+      fill_in "user[password_confirmation]", :with => "123456"
     end
 
     it "can create a user" do

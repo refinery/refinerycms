@@ -1,6 +1,6 @@
 module Refinery
   module Testing
-    module RequestMacros
+    module FeatureMacros
       module Authentication
         def refinery_login_with(factory)
           let!(:logged_in_user) { Factory.create(factory) }
