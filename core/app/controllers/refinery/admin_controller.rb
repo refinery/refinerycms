@@ -3,7 +3,7 @@
 module Refinery
   class AdminController < ::ActionController::Base
     include ::Refinery::ApplicationController
-    helper ApplicationHelper
+    helper ApplicationHelper if defined? ApplicationHelper
     helper Refinery::Core::Engine.helpers
     include Refinery::Admin::BaseController
 
