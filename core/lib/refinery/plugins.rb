@@ -1,5 +1,10 @@
 module Refinery
-  class Plugins < Array
+  class Plugins
+    include Enumerable
+
+    def initialize(*args)
+      @plugins = Array.new(*args)
+    end
 
     def find_by_model(model)
       model = model.constantize if model.is_a? String
@@ -31,6 +36,8 @@ module Refinery
       map(&:title)
     end
 
+    delegate :<<, :delete_if, :each, :to => :plugins
+
     class << self
       def active
         @active_plugins ||= new
@@ -61,5 +68,8 @@ module Refinery
       end
     end
 
+    private
+
+    attr_reader :plugins
   end
 end
