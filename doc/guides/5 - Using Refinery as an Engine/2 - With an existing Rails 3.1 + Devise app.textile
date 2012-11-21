@@ -351,8 +351,9 @@ module ExistingApp
       require 'restrict_refinery_to_refinery_users'
     end
 
-    config.to_prepare do
-      [::Refinery::ApplicationController, Refinery::Helpers].each do |c|
+    include Refinery::Engine
+    after_inclusion do
+      [::ApplicationController, ::ApplicationHelper, ::Refinery::AdminController].each do |c|
         c.send :include, ::RefineryPatch
       end
 
