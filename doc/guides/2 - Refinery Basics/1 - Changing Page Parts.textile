@@ -24,7 +24,8 @@ settings are commented out, including the following:
 </ruby>
 
 Edit this code to have the names of the default page parts you want, click +Save+
-and you're done.
+and you're done. You'll need to add a new page to see the page part. Existing pages
+have the default_parts they were created with.
 
 Here's a sample of a site that would have three content areas on most of its
 pages.
