@@ -1,10 +1,15 @@
+require 'forwardable'
+
 module Refinery
   class Plugins
     include Enumerable
+    extend Forwardable
 
     def initialize(*args)
       @plugins = Array.new(*args)
     end
+
+    def_delegators :@plugins, :<<, :each, :delete_if
 
     def find_by_model(model)
       model = model.constantize if model.is_a? String
@@ -35,8 +40,6 @@ module Refinery
     def titles
       map(&:title)
     end
-
-    delegate :<<, :delete_if, :each, :to => :plugins
 
     class << self
       def active
