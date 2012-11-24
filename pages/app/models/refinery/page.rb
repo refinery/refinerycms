@@ -233,55 +233,23 @@ module Refinery
       end
     end
 
-    # When this page is rendered in the navigation, where should it link?
-    # If a custom "link_url" is set, it uses that otherwise it defaults to a normal page URL.
-    # The "link_url" is often used to link to a plugin rather than a page.
-    #
-    # For example if I had a "Contact" page I don't want it to just render a contact us page
-    # I want it to show the Inquiries form so I can collect inquiries. So I would set the "link_url"
-    # to "/contact"
     def url
-      if link_url.present?
-        link_url_localised?
-      elsif Refinery::Pages.marketable_urls
-        with_locale_param url_marketable
-      elsif to_param.present?
-        with_locale_param url_normal
-      end
+      Refinery::Pages::Url.build(self)
     end
 
-    # Adds the locale key into the URI for this page's link_url attribute, unless
-    # the current locale is set as the default locale.
     def link_url_localised?
-      current_url = link_url
-
-      if current_url =~ %r{^/} && ::Refinery::I18n.current_frontend_locale != ::Refinery::I18n.default_frontend_locale
-        current_url = "/#{::Refinery::I18n.current_frontend_locale}#{current_url}"
-      end
-
-      current_url
+      Refinery.deprecate "Refinery::Page#link_url_localised?", :when => '2.2', :replacement => "Refinery::Pages::Url::Localised#url"
+      Refinery::Pages::Url::Localised.new(self).url
     end
 
-    # Add 'marketable url' attributes into this page's url.
-    # This sets 'path' as the nested_url value and sets 'id' to nil.
-    # For example, this might evaluate to /about for the "About" page.
-    def url_marketable
-      # :id => nil is important to prevent any other params[:id] from interfering with this route.
-      url_normal.merge :path => nested_url, :id => nil
-    end
-
-    # Returns a url suitable to be used in url_for in Rails (such as link_to).
-    # For example, this might evaluate to /pages/about for the "About" page.
     def url_normal
-      {:controller => '/refinery/pages', :action => 'show', :path => nil, :id => to_param, :only_path => true}
+      Refinery.deprecate "Refinery::Page#url_normal", :when => '2.2', :replacement => "Refinery::Pages::Url::Normal#url"
+      Refinery::Pages::Url::Normal.new(self).url
     end
 
-    # If the current locale is set to something other than the default locale
-    # then the :locale attribute will be set on the url hash, otherwise it won't be.
-    def with_locale_param(url_hash, locale = nil)
-      locale ||= ::Refinery::I18n.current_frontend_locale if self.class.different_frontend_locale?
-      url_hash.update :locale => locale if locale
-      url_hash
+    def url_marketable
+      Refinery.deprecate "Refinery::Page#url_marketable", :when => '2.2', :replacement => "Refinery::Pages::Url::Marketable#url"
+      Refinery::Pages::Url::Marketable.new(self).url
     end
 
     def uncached_nested_url
