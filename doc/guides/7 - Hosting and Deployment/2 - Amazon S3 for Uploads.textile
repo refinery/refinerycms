@@ -61,7 +61,7 @@ Refinery::Core.configure do |config|
   config.s3_bucket_name = 'fill_in_your_bucket_name_here'
   config.s3_region = 'fill_in_your_buckets_region_here' # this one's not always required, default is 'us-east-1'
 end
-<ruby>
+</ruby>
 
 h3. Turning S3 on and off
 
