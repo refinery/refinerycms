@@ -32,12 +32,7 @@ module Refinery
         render_without_presenters(*args)
       end
 
-    private
-      def store_current_location!
-        return super if admin?
 
-        session[:website_return_to] = refinery.url_for(@page.url) if @page && @page.persisted?
-      end
 
     end
   end
