@@ -135,13 +135,6 @@ module Refinery
         joins(:translations).where(globalized_conditions).where(conditions).readonly(false)
       end
 
-      # Wraps up all the checks that we need to do to figure out whether
-      # the current frontend locale is different to the current one set by ::I18n.locale.
-      # This terminates in a false if i18n extension is not defined or enabled.
-      def different_frontend_locale?
-        Refinery::I18n.current_frontend_locale != ::I18n.locale
-      end
-
       # Returns how many pages per page should there be when paginating pages
       def per_page(dialog = false)
         dialog ? Pages.pages_per_dialog : Pages.pages_per_admin_index
