@@ -29,7 +29,8 @@
                :name => nil,
                :class => "wymupdate button",
                :tooltip => t('.preview_changes')
-             ) %>
+             ),
+             :cancel_url => refinery.admin_pages_path %>
 
   <%= render 'form_new_page_parts', :f => f if Refinery::Pages.new_page_parts %>
 <% end %>
