@@ -139,10 +139,6 @@ module Refinery
         super unless action_name == 'insert'
       end
 
-      def store_current_location!
-        super unless action_name == 'insert' or from_dialog?
-      end
-
     end
   end
 end
