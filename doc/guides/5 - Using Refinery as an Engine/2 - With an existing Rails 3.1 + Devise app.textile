@@ -319,6 +319,13 @@ class User < Refinery::Core::BaseModel
     !user_to_delete.has_role?(:superuser) and
     Role[:refinery].users.count > 1
   end
+
+  def can_edit?(user_to_edit = self)
+    user_to_edit.persisted? && (
+      user_to_edit == self ||
+      self.has_role?(:superuser)
+    )
+  end
 end
 </ruby>
 
