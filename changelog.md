@@ -17,6 +17,11 @@
 * Images can only be updated when the image being uplaoded has the same filename as the original image. [#1866](https://github.com/refinery/refinerycms/pull/1866). [Philip Arndt](https://github.com/parndt) & [Uģis Ozols](https://github.com/ugisozols)
 * Rack::Cache should be a soft dependency per rails/rails#7838. Fixes Dragonfly caching when Rack::Cache is present. [#1736](https://github.com/refinery/refinerycms/issues/1736). [Alexander Wenzowski](https://github.com/wenzowski)
 * Made `refinerycms-i18n` hard dependency for `refinerycms-core`. This allowed to remove all `Refinery.i18n_enabled?` checks. [#2025](https://github.com/refinery/refinerycms/pull/2025). [Uģis Ozols](https://github.com/ugisozols)
+* Fixed issue with `view_template_whitelist` config option when array of symbols was used. [#2030](https://github.com/refinery/refinerycms/pull/2030). [A.S. Lomoff](https://github.com/allomov)
+* Removed `source` from block_tags and made it so `wymeditor_whiltelist_tags` don't get added to block_tags. [#2029](https://github.com/refinery/refinerycms/pull/2029). [Sergio Cambra](https://github.com/scambra)
+* Removed Array inheritance from `Refinery::Plugins` and included Enumerable module instead. [#2035](https://github.com/refinery/refinerycms/pull/2035). [Uģis Ozols](https://github.com/ugisozols)
+* Refactored `Refinery::Page#url` and friends. [#2031](https://github.com/refinery/refinerycms/pull/2031). [Uģis Ozols](https://github.com/ugisozols)
+* Removed `store_current_location!` because it was polluting all controllers with Refinery specific instance variable `@page`. [#2032](https://github.com/refinery/refinerycms/issues/2032). [Philip Arndt](https://github.com/parndt) & [Amrit Ayalur](https://github.com/aayalur)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
