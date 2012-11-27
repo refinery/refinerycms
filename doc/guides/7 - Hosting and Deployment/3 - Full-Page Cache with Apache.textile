@@ -10,7 +10,7 @@ h3. Activate "Cache Pages Full"
 Inside +config/initializers/refinery/pages.rb+, find the line that reads:
 
 <ruby>
-#config.cache_pages_full = false
+# config.cache_pages_full = false
 </ruby>
 
 Set it to true, and uncomment the line:
