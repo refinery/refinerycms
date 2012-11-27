@@ -43,4 +43,7 @@ Refinery::Core.configure do |config|
 
   # Register extra stylesheet for backend (optional options)
   # config.register_stylesheet "custom", :media => 'screen'
+
+  # Specify own backend path. Default is to refinery.
+  # config.backend_route = <%= Refinery::Core.backend_route.inspect %>
 end

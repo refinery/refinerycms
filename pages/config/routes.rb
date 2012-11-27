@@ -4,7 +4,7 @@ Refinery::Core::Engine.routes.draw do
   match 'pages/*path/preview' => 'pages#preview', :as => :preview_page,  :via => [:get, :put]
   get '/pages/:id', :to => 'pages#show', :as => :page
 
-  namespace :admin, :path => 'refinery' do
+  namespace :admin, :path => Refinery::Core.backend_route do
     get 'pages/*path/edit', :to => 'pages#edit'
     get 'pages/*path/children', :to => 'pages#children', :as => 'children_pages'
     put 'pages/*path', :to => 'pages#update'
