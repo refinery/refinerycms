@@ -22,6 +22,7 @@
 * Removed Array inheritance from `Refinery::Plugins` and included Enumerable module instead. [#2035](https://github.com/refinery/refinerycms/pull/2035). [Uģis Ozols](https://github.com/ugisozols)
 * Refactored `Refinery::Page#url` and friends. [#2031](https://github.com/refinery/refinerycms/pull/2031). [Uģis Ozols](https://github.com/ugisozols)
 * Removed `store_current_location!` because it was polluting all controllers with Refinery specific instance variable `@page`. [#2032](https://github.com/refinery/refinerycms/issues/2032). [Philip Arndt](https://github.com/parndt) & [Amrit Ayalur](https://github.com/aayalur)
+* Removed `meta_keywords` since seo_meta removed keyword support in version 1.4.0. [#2052](https://github.com/refinery/refinerycms/pull/2052)], [#2053](https://github.com/refinery/refinerycms/pull/2053). [Jean-Philippe Doyle](https://github.com/j15e) & [Uģis Ozols](https://github.com/ugisozols)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
