@@ -5,8 +5,7 @@ module Refinery
       :title              => proc { |p| (p.model.class.name.titleize if p.model.present?) },
       :path               => proc { |p| p.title },
       :browser_title      => nil,
-      :meta_description   => nil,
-      :meta_keywords      => nil
+      :meta_description   => nil
     }
 
     attr_reader :model
