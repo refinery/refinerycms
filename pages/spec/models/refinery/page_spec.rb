@@ -326,10 +326,6 @@ module Refinery
 
     context 'meta data' do
       context 'responds to' do
-        it 'meta_keywords' do
-          page.respond_to?(:meta_keywords)
-        end
-
         it 'meta_description' do
           page.respond_to?(:meta_description)
         end
@@ -340,11 +336,6 @@ module Refinery
       end
 
       context 'allows us to assign to' do
-        it 'meta_keywords' do
-          page.meta_keywords = 'Some, great, keywords'
-          page.meta_keywords.should == 'Some, great, keywords'
-        end
-
         it 'meta_description' do
           page.meta_description = 'This is my description of the page for search results.'
           page.meta_description.should == 'This is my description of the page for search results.'
@@ -357,14 +348,6 @@ module Refinery
       end
 
       context 'allows us to update' do
-        it 'meta_keywords' do
-          page.meta_keywords = 'Some, great, keywords'
-          page.save
-
-          page.reload
-          page.meta_keywords.should == 'Some, great, keywords'
-        end
-
         it 'meta_description' do
           page.meta_description = 'This is my description of the page for search results.'
           page.save

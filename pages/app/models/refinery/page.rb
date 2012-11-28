@@ -14,7 +14,7 @@ module Refinery
 
     class Translation
       is_seo_meta
-      attr_accessible :browser_title, :meta_description, :meta_keywords, :locale
+      attr_accessible :browser_title, :meta_description, :locale
     end
 
     attr_accessible :title
@@ -23,7 +23,7 @@ module Refinery
     seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
     delegate(*(seo_fields << {:to => :translation}))
 
-    attr_accessible :id, :deletable, :link_url, :menu_match, :meta_keywords,
+    attr_accessible :id, :deletable, :link_url, :menu_match,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :browser_title, :meta_description,
                     :parent_id, :menu_title, :page_id, :layout_template,
@@ -44,7 +44,7 @@ module Refinery
                 :scope => :parent
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
-    acts_as_indexed :fields => [:title, :meta_keywords, :meta_description,
+    acts_as_indexed :fields => [:title, :meta_description,
                                 :menu_title, :browser_title, :all_page_part_content]
 
     has_many :parts,
