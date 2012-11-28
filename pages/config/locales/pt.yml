@@ -70,14 +70,6 @@ pt:
           layout_template_help: Pode escolher um novo modelo de layout para esta página
           view_template: Ver modelo (template)
           view_template_help: Pode escolher um novo modelo para esta página.
-        form_advanced_options_seo:
-          seo: Search Engine Optimization
-          seo_override_title: Título no browser
-          seo_override_title_help: Escreva 5 a 10 palavras que descrevam esta página.
-          meta_keywords_title: Meta keywords
-          meta_keywords_help: Escreva entre 5 a 10 palavras que relacionem esta página - separe por vírgulas.
-          meta_description_title: Meta description
-          meta_description_help: Escreva duas ou três frases que descrevam esta página.
         actions:
           create_new_page: Adicionar nova página
           reorder_pages: Ordenar páginas

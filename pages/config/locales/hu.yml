@@ -70,14 +70,6 @@ hu:
           layout_template_help: 'Eltérő layout sablont választhatsz ennek az oldalnak'
           view_template: 'View sablon'
           view_template_help: 'Eltérő view sablont választhatsz ennek az oldalnak'
-        form_advanced_options_seo:
-          seo: 'Kereső Optimalizálás'
-          seo_override_title: 'Böngésző cím'
-          seo_override_title_help: 'Adj meg 5-10 szavas címet, ami összefoglalja az oldal tartalmát.'
-          meta_keywords_title: 'Meta kulcsszavak'
-          meta_keywords_help: 'Adj meg 5-10 kulcsszót, amik kapcsolódnak az oldalhoz. Vesszővel válaszd el őket.'
-          meta_description_title: 'Meta leírás'
-          meta_description_help: 'Add meg tömören, két vagy három mondatban, hogy miről szól ez az oldal.'
         actions:
           create_new_page: 'Új oldal hozzáadása'
           reorder_pages: 'Oldalak átrendezése'

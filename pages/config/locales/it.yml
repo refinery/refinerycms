@@ -70,13 +70,6 @@ it:
           menu_title_help: Se si desidera che il menu mostri un titolo diverso da quello mostrato nella pagigna, inserirlo qui.
           custom_slug_help: Uno slug è un identificatore leggibile usato per creare l'URL assoluto di una pagina. Per sovrascrivere lo slug che è automaticamente creato da Refinery, scrivere il proprio slug qui.
           custom_title_help: "Se si desidera che la pagina abbia un titolo diverso da quello mostrato nel menu, selezionare 'Testo' e inserirlo qui."
-        form_advanced_options_seo:
-          js:
-            content_section:
-              create: Crea sezione dei contenuti
-              already_exists: Una sezione di contenuti con quel titolo e già esistente, si prega di modificarlo.
-              title_empty: Non è stato inserito un titolo per la sezione dei contenuti, inseriscine uno.
-              confirm_delete: Ciò eliminerà la sezione dei contenuti %{section_name} e cancellerà tutti i contenuti che sono stati inseriti al suo interno. Sei sicuro?
         actions:
           create_new_page: Crea una nuova pagina
           reorder_pages: Riordina le pagine

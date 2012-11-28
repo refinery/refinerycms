@@ -57,14 +57,6 @@ ko:
           link_url_help: 이 페이지를 클릭했을 때 다른 웹사이트나 페이지로 이동하게 하려면 여기에 http://google.com과 같은 주소를 입력하세요.
           parent_page_help: 이 페이지의 상위 페이지를 목록에서 선택할 수 있습니다. 이 페이지를 최상위 페이지로 만들고 싶다면 빈 칸으로 남겨 두세요.
           custom_title_help: 페이지가 메뉴에서 보이는 것과 다른 제목을 가지도록 하고 싶다면 &apos;텍스트&apos;를 선택하여 새 제목을 입력하세요.
-        form_advanced_options_seo:
-          seo: 검색엔진 최적화
-          seo_override_title: 브라우저 제목
-          seo_override_title_help: 이 페이지의 내용을 요약하는 제목을 5-10어절 길이로 입력하세요.
-          meta_keywords_title: 메타 키워드
-          meta_keywords_help: 이 페이지의 연관 키워드 5-10개를 쉼표로 구분하여 입력하세요.
-          meta_description_title: 메타 설명
-          meta_description_help: 이 페이지에 대한 간략한 설명을 2-3 문장으로 정리하세요.
         actions:
           create_new_page: 새 페이지
           reorder_pages: 페이지 재정렬

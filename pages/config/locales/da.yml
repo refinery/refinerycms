@@ -69,14 +69,6 @@ da:
           layout_template_help: You can choose a different layout template for this page
           view_template: View template
           view_template_help: You can choose a different view template for this page
-        form_advanced_options_seo:
-          seo: Søgemaskineoptimering
-          seo_override_title: Browsertitel
-          seo_override_title_help: Indtast en titel på 5-10 ord, der opsummerer sidens indhold.
-          meta_keywords_title: Meta nøgleord
-          meta_keywords_help: Indtast 5-10 nøgleord der er relaterede til siden. Adskil nøgleordene med kommaer.
-          meta_description_title: Meta beskrivelse
-          meta_description_help: Indtast to eller tre sætninger, der beskriver siden.
         actions:
           create_new_page: Tilføj en ny side
           reorder_pages: Redigér rækkefølgen af siderne
