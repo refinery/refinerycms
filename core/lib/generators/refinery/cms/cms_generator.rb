@@ -164,9 +164,9 @@ gem 'pg'
         # we may not always require it (currently only the authentication extension).
         # Rails, however, will optimistically place config entries for action_mailer.
         insert_into_file env, "  if config.respond_to?(:action_mailer)\n  ",
-                              :before => %r{^[^#]+config\.action_mailer\.}, :verbose => false
+                              :before => %r{^\s*config\.action_mailer\..+([\w\W]*\})?}, :verbose => false
         insert_into_file env, "\n  end",
-                              :after => %r{^[^#]+config\.action_mailer\..*}, :verbose => false
+                              :after => %r{^\s*config\.action_mailer\..+([\w\W]*\})?}, :verbose => false
 
         gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
       end
