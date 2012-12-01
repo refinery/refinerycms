@@ -3,7 +3,7 @@ sv:
     plugins:
       refinery_core:
         title: Refinery
-        description: Kärntillågsprogram för Refinery
+        description: Kärnprogrammet för Refinery
       refinery_dialogs:
         title: Dialoger
         description: Refinery dialoger tillägsprogram
@@ -50,7 +50,7 @@ sv:
         results_for_html: "Sökresultat för &#8216;<em>%{query}</em>&#8217;"
         no_results: Tyvärr, sökningen gav inga träffar.
       delete:
-        message: Är du säker på att du vill ta bort '%{title}'?
+        message: 'Är du säker på att du vill ta bort %{title}?'
       error_messages:
         problems_in_following_fields: Det uppstod problem med följande fält
       help: hjälp
