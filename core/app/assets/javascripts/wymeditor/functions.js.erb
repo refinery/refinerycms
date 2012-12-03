@@ -88,7 +88,11 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   if(wym._selected_image) {
     imgDialog = $(wym._options.dialogImageSelector);
     img = $(wym._selected_image);
-    size = ((img.attr(WYMeditor.REL) || doc.find('#existing_image_size_area li.selected a').attr('rel')) || "");
+    size = (
+      (img.attr(WYMeditor.REL)
+        || doc.find('#existing_image_size_area li.selected a').attr(WYMeditor.REL)
+        || doc.find('#existing_image_size_area li.selected a').attr('rel')) || ""
+    );
     src = img.attr(WYMeditor.SRC);
     if (size.length > 0) {
       src = src.replace('_' + size + '.', '.');
