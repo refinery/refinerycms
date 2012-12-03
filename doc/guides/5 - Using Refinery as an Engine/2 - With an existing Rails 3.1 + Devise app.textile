@@ -203,6 +203,9 @@ Now that we have a baseline example working ExistingApp using Devise, it's time 
     gem 'refinerycms-resources'
   end
 
+  # Add i18n support.
+  gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/refinery/refinerycms-i18n.git'
+
   group :development, :test do
     gem 'refinerycms-testing',  :git => 'git://github.com/refinery/refinerycms.git'
   end
