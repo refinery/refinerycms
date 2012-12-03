@@ -46,6 +46,6 @@ Refinery::I18n.frontend_locales.each do |lang|
    'page-not-found' => 'Page not found',
    'about' => 'About'
   }.each do |slug, title|
-    Refinery::Page.by_title(title).each { |page| page.update_attributes(:slug => slug) }
+    Refinery::Page.by_title(title).each { |page| page.try(:update_attributes, :slug => slug) }
   end
 end
