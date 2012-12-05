@@ -68,6 +68,12 @@ module Refinery
         find("#body_content_title").text.should == about_page.title
       end
 
+      it "should hide title when config is set" do
+        Refinery::Pages.stub(:show_title_in_body).and_return(false)
+        visit '/about'
+        page.should_not have_selector("#body_content_title")
+      end
+
       it "uses title in the menu" do
         find(".selected").text.strip.should == about_page.title
       end

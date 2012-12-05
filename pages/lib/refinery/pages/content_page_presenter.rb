@@ -7,7 +7,7 @@ module Refinery
     class ContentPagePresenter < ContentPresenter
       def initialize(page, page_title)
         super()
-        add_default_title_section(page_title) if page_title.present?
+        add_default_title_section(page_title) if page_title.present? && Pages.show_title_in_body
         add_page_parts(page.parts) if page
         add_default_post_page_sections
       end
