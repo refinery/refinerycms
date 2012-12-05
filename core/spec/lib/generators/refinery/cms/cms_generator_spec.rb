@@ -91,21 +91,11 @@ end
 Dummy::Application.configure do
   if config.respond_to?(:action_mailer)
     config.action_mailer.test = true
-  config.action_mailer.check = {
-    :test => true,
-    :check => true
-  }
+    config.action_mailer.check = {
+      :test => true,
+      :check => true
+    }
   end
-end
-          SPEC
-        end
-      end
-
-      it "leaves commented config.action_mailer alone" do
-        File.open("#{destination_root}/config/environments/test.rb") do |file|
-          file.read.should eq <<-SPEC
-Dummy::Application.configure do
-  # config.action_mailer.test = true
 end
           SPEC
         end
