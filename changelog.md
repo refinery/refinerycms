@@ -14,7 +14,7 @@
 * Added Portuguese translations. [#2007](https://github.com/refinery/refinerycms/pull/2007). [David Silva](https://github.com/davidslvto)
 * Added Hungarian translations. [#2010](https://github.com/refinery/refinerycms/pull/2010). [minktom](https://github.com/minktom)
 * Extracted search header logic into partial. [#1974](https://github.com/refinery/refinerycms/pull/1974). [Uģis Ozols](https://github.com/ugisozols)
-* Images can only be updated when the image being uplaoded has the same filename as the original image. [#1866](https://github.com/refinery/refinerycms/pull/1866). [Philip Arndt](https://github.com/parndt) & [Uģis Ozols](https://github.com/ugisozols)
+* Images can only be updated when the image being uploaded has the same filename as the original image. [#1866](https://github.com/refinery/refinerycms/pull/1866). [Philip Arndt](https://github.com/parndt) & [Uģis Ozols](https://github.com/ugisozols)
 * Rack::Cache should be a soft dependency per rails/rails#7838. Fixes Dragonfly caching when Rack::Cache is present. [#1736](https://github.com/refinery/refinerycms/issues/1736). [Alexander Wenzowski](https://github.com/wenzowski)
 * Made `refinerycms-i18n` hard dependency for `refinerycms-core`. This allowed to remove all `Refinery.i18n_enabled?` checks. [#2025](https://github.com/refinery/refinerycms/pull/2025). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed issue with `view_template_whitelist` config option when array of symbols was used. [#2030](https://github.com/refinery/refinerycms/pull/2030). [A.S. Lomoff](https://github.com/allomov)
@@ -24,6 +24,9 @@
 * Removed `store_current_location!` because it was polluting all controllers with Refinery specific instance variable `@page`. [#2032](https://github.com/refinery/refinerycms/issues/2032). [Philip Arndt](https://github.com/parndt) & [Amrit Ayalur](https://github.com/aayalur)
 * Removed `meta_keywords` since seo_meta removed keyword support in version 1.4.0. [#2052](https://github.com/refinery/refinerycms/pull/2052), [#2053](https://github.com/refinery/refinerycms/pull/2053). [Jean-Philippe Doyle](https://github.com/j15e) & [Uģis Ozols](https://github.com/ugisozols)
 * Changed WYMeditor.REL from `rel` to `data-rel`. [#2019](https://github.com/refinery/refinerycms/pull/2019). [Amrit Ayalur](https://github.com/aayalur)
+* Added config option to hide page title in page body. [#2067](https://github.com/refinery/refinerycms/pull/2067). [Andrew Hooker](https://github.com/GeekOnCoffee)
+* Added `Refinery::Core.backend_route` config which allows to set backend route to something different than `/refinery`. [#2050](https://github.com/refinery/refinerycms/pull/2050). [Josef Šimánek](https://github.com/simi)
+* Fixed issue with page part reordering for new pages. [#2063](https://github.com/refinery/refinerycms/pull/2063). [Uģis Ozols](https://github.com/ugisozols)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
