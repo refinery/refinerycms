@@ -602,6 +602,9 @@ var page_options = {
               // Add a new tab for the new content section.
               $('#page_part_editors').append(data);
               page_options.tabs.tabs('add', '#page_part_new_' + $('#new_page_part_index').val(), part_title);
+              // this is here because of https://github.com/refinery/refinerycms/issues/2060
+              $("#page-tabs #page_parts li").last().attr("data-index", $('#new_page_part_index').val());
+
               page_options.tabs.tabs('select', $('#new_page_part_index').val());
 
               // hook into wymeditor to instruct it to select this new tab again once it has loaded.
