@@ -67,6 +67,10 @@ module Refinery
       !parent_id.nil?
     end
 
+    def orphan?
+      !has_parent?
+    end
+
     def inspect
       hash = {}
 

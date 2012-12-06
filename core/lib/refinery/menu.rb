@@ -15,7 +15,7 @@ module Refinery
     end
 
     def roots
-      @roots ||= items.select {|item| !item.has_parent?}
+      @roots ||= items.select(&:orphan?)
     end
 
     def to_s

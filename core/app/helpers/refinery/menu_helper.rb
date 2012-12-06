@@ -13,19 +13,6 @@ module Refinery
       nil
     end
 
-    # This was extracted from app/views/refinery/_menu_branch.html.erb
-    # to remove the complexity of that template by reducing logic in the view.
-    def menu_branch_css(local_assigns)
-      options = local_assigns.dup
-      options.update(:sibling_count => options[:menu_branch].shown_siblings.length) unless options[:sibling_count]
-
-      css = []
-      css << Refinery::Core.menu_css[:selected] if selected_page_or_descendant_page_selected?(local_assigns[:menu_branch]) unless Refinery::Core.menu_css[:selected].nil?
-      css << Refinery::Core.menu_css[:first] if options[:menu_branch_counter] == 0 unless Refinery::Core.menu_css[:first].nil?
-      css << Refinery::Core.menu_css[:last] if options[:menu_branch_counter] == options[:sibling_count] unless Refinery::Core.menu_css[:last].nil?
-      css
-    end
-
     # Determines whether any page underneath the supplied page is the current page according to rails.
     # Just calls selected_page? for each descendant of the supplied page
     # unless it first quickly determines that there are no descendants.
@@ -58,6 +45,32 @@ module Refinery
 
       # Now use all possible vectors to try to find a valid match
       [path, URI.decode(path)].include?(url) || path == "/#{page.original_id}"
+    end
+
+    # This was extracted from app/views/refinery/_menu_branch.html.erb
+    # to remove the complexity of that template by reducing logic in the view.
+    def menu_branch_css(local_assigns)
+      options = local_assigns.dup
+      options.update(:sibling_count => options[:menu_branch].shown_siblings.length) unless options[:sibling_count]
+
+      css = []
+      css << Refinery::Core.menu_css[:selected] if selected_page_or_descendant_page_selected?(local_assigns[:menu_branch]) unless Refinery::Core.menu_css[:selected].nil?
+      css << Refinery::Core.menu_css[:first] if options[:menu_branch_counter] == 0 unless Refinery::Core.menu_css[:first].nil?
+      css << Refinery::Core.menu_css[:last] if options[:menu_branch_counter] == options[:sibling_count] unless Refinery::Core.menu_css[:last].nil?
+      css
+    end
+
+    def menu_branch_children(branch, options)
+      if !options[:menu_levels] || branch.ancestors.length < options[:menu_levels]
+        branch.children
+      else
+        []
+      end
+    end
+
+    def menu_roots(options)
+      roots = options.delete(:roots)
+      roots.presence || (options.delete(:collection) || refinery_menu_pages).roots
     end
 
   end
