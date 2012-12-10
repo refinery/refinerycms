@@ -7,9 +7,19 @@ endprologue.
 
 h3. Activate "Cache Pages Full"
 
-Inside +config/initializers/refinery/pages.rb+, find the line that reads 
-+config.cache_pages_full = false+, set it to true, and uncomment the line.
-Restart your server.
+Inside +config/initializers/refinery/pages.rb+, find the line that reads:
+
+<ruby>
+# config.cache_pages_full = false
+</ruby>
+
+Set it to true, and uncomment the line:
+
+<ruby>
+config.cache_pages_full = true
+</ruby>
+
+Then restart your server.
 
 From then on, every page you request from Refinery CMS will be saved at
 public/refinery/cache/pages. For exapmle, after you request
@@ -19,20 +29,19 @@ public/refinery/cache/pages. For exapmle, after you request
 h3. Redirect
 
 Now we have to redirect Apache to these generated files.
-Write a <tt>.htaccess</tt> file like this:
+Add the following to your apache config or create an <tt>.htaccess</tt> file in your project root:
 
-<code>
-RewriteEngine On
-
+bc.. RewriteEngine On
+  
 # Rewrite home to check for static
 RewriteRule ^$ home
 
-#checks cache directory for already cached pages
+# Checks cache directory for already cached pages
 RewriteCond %{REQUEST_URI} ^/[a-zA-Z0-9\-/]*$
 RewriteCond %{DOCUMENT_ROOT}/refinery/cache/pages%{REQUEST_URI}.html -f
 RewriteRule ^([^.]+)$ refinery/cache/pages/%{REQUEST_URI}.html [L]
 
-# by default, Rails appends asset timestamps to all asset paths. This allows
+# By default, Rails appends asset timestamps to all asset paths. This allows
 # you to set a cache-expiration date for the asset far into the future
 ExpiresActive on
 ExpiresByType image/gif "access plus 1 year"
@@ -44,6 +53,5 @@ ExpiresByType application/javascript "access plus 1 year"
 
 # compress static text files
 AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript text/css application/javascript
-</code>
 
-Now pages are delivered by Apache without touching Passenger.
+p. Now pages are delivered by Apache without touching Passenger.
