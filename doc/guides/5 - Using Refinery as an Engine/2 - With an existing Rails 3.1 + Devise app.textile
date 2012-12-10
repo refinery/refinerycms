@@ -385,6 +385,8 @@ ruby> exit
 </shell>
 
 We need to also avoid the show_welcome page in test mode or our ExistingApp existing integration tests will suddenly stop working.
+
+One way to accomplish this is to monkey patch the show_welcome_page? method:
 +app/controllers/application_controller+
 <ruby>
 class ApplicationController < ActionController::Base
@@ -394,6 +396,17 @@ class ApplicationController < ActionController::Base
     #database will successfully run.
     false
   end
+  ...
+end
+</ruby>
+
+But this is the old and busted way of doing things. Let's get with the new hotness:
+
++config/initializers/refinery/core.rb+
+<ruby>
+Refinery::Core.configure do |config|
+  ...
+  config.show_welcome_page = false
   ...
 end
 </ruby>
