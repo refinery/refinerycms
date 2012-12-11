@@ -28,8 +28,7 @@ option:
 refinerycms myapp --heroku
 </shell>
 
-NOTE: Heroku relies on "Git":http://git-scm.com/download being installed on your
-system. You should install it beforehand.
+NOTE: Heroku relies on "Git":http://git-scm.com/download being installed on your system. You should install it beforehand.
 
 Watch the output for these lines:
 
@@ -72,10 +71,7 @@ group :production do
 end
 </shell>
 
-WARNING. Using differing databases for development and production is not
-recommended. Occasionally, specific Rails idioms may have different effects
-on different databases. We encourage you to set up and develop on PostgreSQL
-if you intend to deploy your application to Heroku.
+WARNING. Using differing databases for development and production is not recommended. Occasionally, specific Rails idioms may have different effects on different databases. We encourage you to set up and develop on PostgreSQL if you intend to deploy your application to Heroku.
 
 h5. Getting a place to store files
 

@@ -139,8 +139,7 @@ Refinery::PagesController.class_eval do
 end
 </ruby>
 
-WARNING. You may need to adjust the +find+ method if you intend to rename the
-page at any point, since +link_url+ is volatile.
+WARNING. You may need to adjust the +find+ method if you intend to rename the page at any point, since +link_url+ is volatile.
 
 You will also need to add a route to this method, or else the page will remain
 unaccessible. On the very first line of +config/routes.rb+, before anything
