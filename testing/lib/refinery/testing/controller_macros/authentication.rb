@@ -33,7 +33,7 @@ module Refinery
           end
 
           before do
-            controller.should_receive(:refinery_user_required?).and_return false
+            controller.should_receive(:require_refinery_users!).and_return false
             controller.should_receive(:authenticate_refinery_user!).and_return true
             controller.should_receive(:restrict_plugins).and_return true
             controller.should_receive(:allow_controller?).and_return controller_permission

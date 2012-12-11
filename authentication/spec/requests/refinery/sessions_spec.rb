@@ -8,8 +8,8 @@ module Refinery
 
     before do
       FactoryGirl.create(:refinery_user, :username => "ugisozols",
-                              :password => "123456",
-                              :password_confirmation => "123456")
+                                         :password => "123456",
+                                         :password_confirmation => "123456")
 
       visit refinery.login_path
     end
