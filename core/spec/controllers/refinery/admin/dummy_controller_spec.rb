@@ -31,6 +31,26 @@ module Refinery
             get :index
           end
         end
+
+        describe "force_ssl!" do
+          before do
+            controller.stub(:require_refinery_users!).and_return(false)
+          end
+
+          it "is false so standard HTTP is used" do
+            Refinery::Core.stub(:force_ssl).and_return(false)
+            controller.should_not_receive(:redirect_to).with(:protocol => 'https')
+
+            get :index
+          end
+
+          it "is true so HTTPS is used" do
+            Refinery::Core.stub(:force_ssl).and_return(true)
+            controller.should_receive(:redirect_to).with(:protocol => 'https')
+
+            get :index
+          end
+        end
       end
     end
   end
