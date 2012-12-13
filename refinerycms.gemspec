@@ -20,7 +20,8 @@ Gem::Specification.new do |s|
 
   s.files             = `git ls-files -- lib/* templates/*`.split("\n")
 
-  s.add_dependency    'bundler',                    '~> 1.0'
+  s.add_dependency    'bundler', '>= 1.2.2', '< 2.0'
+
   s.add_dependency    'refinerycms-authentication', version
   s.add_dependency    'refinerycms-core',           version
   s.add_dependency    'refinerycms-dashboard',      version

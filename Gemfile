@@ -29,11 +29,9 @@ end
 
 gem 'jruby-openssl', :platform => :jruby
 
-group :development, :test do
+group :test do
   gem 'refinerycms-testing', '~> 2.1.0.dev'
-  gem 'generator_spec', '>= 0.8.5', :git => 'git://github.com/stevehodgkiss/generator_spec.git'
-  gem 'guard-rspec', '~> 0.7.0'
-  gem 'fuubar', '~> 1.0.0'
+  gem 'generator_spec', '~> 0.8.7'
 
   platforms :mswin, :mingw do
     gem 'win32console', '~> 1.3.0'
@@ -44,11 +42,11 @@ group :development, :test do
   platforms :ruby do
     unless ENV['TRAVIS']
       require 'rbconfig'
-      if RbConfig::CONFIG['target_os'] =~ /darwin/i
+      if /darwin/i === RbConfig::CONFIG['target_os']
         gem 'rb-fsevent', '~> 0.9.0'
         gem 'ruby_gntp', '~> 0.3.4'
       end
-      if RbConfig::CONFIG['target_os'] =~ /linux/i
+      if /linux/i === RbConfig::CONFIG['target_os']
         gem 'rb-inotify', '~> 0.8.8'
         gem 'libnotify',  '~> 0.7.2'
         gem 'therubyracer', '~> 0.10.0'
@@ -59,10 +57,10 @@ group :development, :test do
   platforms :jruby do
     unless ENV['TRAVIS']
       require 'rbconfig'
-      if RbConfig::CONFIG['target_os'] =~ /darwin/i
+      if /darwin/i === RbConfig::CONFIG['target_os']
         gem 'ruby_gntp', '~> 0.3.4'
       end
-      if RbConfig::CONFIG['target_os'] =~ /linux/i
+      if /linux/i === RbConfig::CONFIG['target_os']
         gem 'rb-inotify', '~> 0.8.8'
         gem 'libnotify',  '~> 0.7.2'
       end
