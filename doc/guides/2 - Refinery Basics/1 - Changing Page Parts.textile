@@ -60,9 +60,7 @@ editor will appear in a tab called "Middle Body" ready to use just for this
 page. Inserting content there will show up on any page that uses the
 @content_page@ partial (by default, all of them).
 
-WARNING. If you've modified your @app/views/refinery/pages/home.html.erb@ file,
-you will not see your new page part until you set that page part to display in
-the view.
+WARNING. If you've modified your @app/views/refinery/pages/home.html.erb@ file, you will not see your new page part until you set that page part to display in the view.
 
 If you have modified your @home.html.erb@ file, you can use the following
 snippet to output the new part's content in your page:
@@ -71,5 +69,4 @@ snippet to output the new part's content in your page:
   <%= raw @page.content_for(:middle_body) %>
 </erb>
 
-NOTE: If you don't have a +app/views/refinery/pages/home.html.erb+ view already,
-run +rake refinery:override view=pages/home+ to copy it into your app.
+NOTE: If you don't have a +app/views/refinery/pages/home.html.erb+ view already, run +rake refinery:override view=pages/home+ to copy it into your app.
