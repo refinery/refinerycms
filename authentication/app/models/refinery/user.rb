@@ -57,10 +57,7 @@ module Refinery
     end
 
     def can_edit?(user_to_edit = self)
-      user_to_edit.persisted? && (
-        user_to_edit == self ||
-        self.has_role?(:superuser)
-      )
+      user_to_edit.persisted? && (user_to_edit == self || self.has_role?(:superuser))
     end
 
     def add_role(title)
