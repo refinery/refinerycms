@@ -7,17 +7,12 @@ module Refinery
   class Page < Core::BaseModel
     extend FriendlyId
 
-    # when collecting the pages path how is each of the pages seperated?
-    PATH_SEPARATOR = " - "
-
     translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
 
     class Translation
       is_seo_meta
       attr_accessible :browser_title, :meta_description, :locale
     end
-
-    attr_accessible :title
 
     # Delegate SEO Attributes to globalize3 translation
     seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
@@ -27,9 +22,8 @@ module Refinery
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :browser_title, :meta_description,
                     :parent_id, :menu_title, :page_id, :layout_template,
-                    :view_template, :custom_slug, :slug
+                    :view_template, :custom_slug, :slug, :title
 
-    attr_accessor :locale # to hold temporarily
     validates :title, :presence => true
 
     validates :custom_slug, :uniqueness => true, :allow_blank => true
@@ -191,13 +185,7 @@ module Refinery
     def destroy
       return super if deletable?
 
-      unless Rails.env.test?
-        # give useful feedback when trying to delete from console
-        puts "This page is not deletable. Please use .destroy! if you really want it deleted "
-        puts "unset .link_url," if link_url.present?
-        puts "unset .menu_match," if menu_match.present?
-        puts "set .deletable to true" unless deletable
-      end
+      puts_destroy_help
 
       false
     end
@@ -211,16 +199,23 @@ module Refinery
       destroy
     end
 
+    def puts_destroy_help
+      puts "This page is not deletable. Please use .destroy! if you really want it deleted "
+      puts "unset .link_url," if link_url.present?
+      puts "unset .menu_match," if menu_match.present?
+      puts "set .deletable to true" unless deletable
+    end
+
     # Used for the browser title to get the full path to this page
     # It automatically prints out this page title and all of it's parent page titles joined by a PATH_SEPARATOR
     def path(options = {})
       # Override default options with any supplied.
       options = {:reversed => true}.merge(options)
 
-      unless parent_id.nil?
+      if parent_id
         parts = [title, parent.path(options)]
         parts.reverse! if options[:reversed]
-        parts.join(PATH_SEPARATOR)
+        parts.join(' - ')
       else
         title
       end
@@ -288,10 +283,6 @@ module Refinery
       siblings.reject(&:not_in_menu?)
     end
 
-    def refinery_menu_title
-      [menu_title, title].detect(&:present?)
-    end
-
     def to_refinery_menu_item
       {
         :id => id,
@@ -299,10 +290,20 @@ module Refinery
         :menu_match => menu_match,
         :parent_id => parent_id,
         :rgt => rgt,
-        :title => refinery_menu_title,
+        :title => menu_title.presence || title.presence,
         :type => self.class.name,
         :url => url
       }
+    end
+
+    # Accessor method to get a page part from a page.
+    # Example:
+    #
+    #    ::Refinery::Page.first.content_for(:body)
+    #
+    # Will return the body page part of the first page.
+    def content_for(part_title)
+      part_with_title(part_title).try(:body)
     end
 
     # Accessor method to test whether a page part
@@ -314,16 +315,6 @@ module Refinery
     # Will return true if the page has a body page part and it is not blank.
     def content_for?(part_title)
       content_for(part_title).present?
-    end
-
-    # Accessor method to get a page part from a page.
-    # Example:
-    #
-    #    ::Refinery::Page.first.content_for(:body)
-    #
-    # Will return the body page part of the first page.
-    def content_for(part_title)
-      part_with_title(part_title).try(:body)
     end
 
     # Accessor method to get a page part object from a page.
@@ -347,7 +338,6 @@ module Refinery
       parts.map(&:body).join(" ")
     end
 
-    ##
     # Protects generated slugs from title if they are in the list of reserved words
     # This applies mostly to plugin-generated pages.
     # This only kicks in when Refinery::Pages.marketable_urls is enabled.

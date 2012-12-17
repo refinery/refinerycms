@@ -41,8 +41,8 @@ module Refinery
                 redirect_to :back
               else
                 render :partial => 'save_and_continue_callback', :locals => {
-                  :new_refinery_page_path => refinery.admin_page_path(@page.uncached_nested_url),
-                  :new_page_path => refinery.preview_page_path(@page.uncached_nested_url)
+                  :new_refinery_page_path => refinery.admin_page_path(@page.nested_url),
+                  :new_page_path => refinery.preview_page_path(@page.nested_url)
                 }
               end
             end

@@ -1,5 +1,5 @@
 <%= form_for [refinery, :admin, @page],
-             :url => (refinery.admin_page_path(@page.uncached_nested_url) if @page.persisted?) do |f| %>
+             :url => (refinery.admin_page_path(@page.nested_url) if @page.persisted?) do |f| %>
 
   <%= render '/refinery/admin/error_messages', :object => @page, :include_object_name => true %>
 
@@ -37,7 +37,7 @@
 
 <% content_for :javascripts do %>
   <script>
-    var refinery_page_preview_url = '<%= @page.persisted? ? refinery.preview_page_path(@page.uncached_nested_url) : refinery.preview_pages_path %>';
+    var refinery_page_preview_url = '<%= @page.persisted? ? refinery.preview_page_path(@page.nested_url) : refinery.preview_pages_path %>';
     $(document).ready(function(){
       page_options.init(
         <%= Refinery::Pages.new_page_parts.to_s %>

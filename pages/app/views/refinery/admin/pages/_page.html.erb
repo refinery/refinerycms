@@ -30,11 +30,11 @@
                   :title => t('new', :scope => 'refinery.admin.pages') %>
 
       <%= link_to refinery_icon_tag('application_edit.png'),
-                  refinery.edit_admin_page_path(page.uncached_nested_url),
+                  refinery.edit_admin_page_path(page.nested_url),
                   :title => t('edit', :scope => 'refinery.admin.pages') %>
 
       <%= link_to refinery_icon_tag('delete.png'),
-                  refinery.admin_page_path(page.uncached_nested_url),
+                  refinery.admin_page_path(page.nested_url),
                   :class => "cancel confirm-delete",
                   :title => t('delete', :scope => 'refinery.admin.pages'),
                   :data => {
@@ -46,7 +46,7 @@
                   :method => :delete if page.deletable? %>
     </span>
   </div>
-  <ul class='nested' data-ajax-content="<%= refinery.admin_children_pages_path(page.uncached_nested_url) %>">
+  <ul class='nested' data-ajax-content="<%= refinery.admin_children_pages_path(page.nested_url) %>">
     <%= render(:partial => 'page', :collection => page.children) if Refinery::Pages.auto_expand_admin_tree %>
   </ul>
 </li>

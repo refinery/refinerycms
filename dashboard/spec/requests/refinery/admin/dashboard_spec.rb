@@ -54,7 +54,7 @@ describe "dashboard" do
 
       visit refinery.admin_dashboard_path
 
-      page.should have_selector("a[href='#{refinery.edit_admin_page_path(nested.uncached_nested_url)}']")
+      page.should have_selector("a[href='#{refinery.edit_admin_page_path(nested.nested_url)}']")
     end
   end
 end
