@@ -4,7 +4,7 @@ module Refinery
 
     config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name,
                     :google_analytics_page_code, :authenticity_token_on_frontend,
-                    :menu_hide_children, :menu_css, :dragonfly_secret,
+                    :dragonfly_secret,
                     :wymeditor_whitelist_tags, :javascripts, :stylesheets,
                     :s3_bucket_name, :s3_region, :s3_access_key_id,
                     :s3_secret_access_key, :force_ssl, :backend_route
@@ -15,8 +15,6 @@ module Refinery
     self.site_name = "Company Name"
     self.google_analytics_page_code = "UA-xxxxxx-x"
     self.authenticity_token_on_frontend = true
-    self.menu_hide_children = false
-    self.menu_css = { :selected => "selected", :first => "first", :last => "last" }
     self.dragonfly_secret = Array.new(24) { rand(256) }.pack('C*').unpack('H*').first
     self.wymeditor_whitelist_tags = {}
     self.javascripts = []
