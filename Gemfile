@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gemspec
 
@@ -23,7 +23,7 @@ end
 
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.3'
-  gem 'generator_spec', '>= 0.8.5', :git => 'git://github.com/stevehodgkiss/generator_spec.git'
+  gem 'generator_spec', '~> 0.8.6'
   gem 'guard-rspec', '~> 0.7.0'
   gem 'fuubar', '~> 1.0.0'
 
