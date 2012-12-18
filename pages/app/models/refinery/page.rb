@@ -113,7 +113,7 @@ module Refinery
       end
 
       def fast_menu
-        live.in_menu.order('lft ASC').includes(:translations)
+        live.in_menu.order(arel_table[:lft]).includes(:parent, :translations)
       end
 
       # Wrap up the logic of finding the pages based on the translations table.
@@ -240,8 +240,8 @@ module Refinery
       Refinery::Pages::Url::Marketable.new(self).url
     end
 
-    def uncached_nested_url
-      [parent.try(:uncached_nested_url), to_param.to_s].compact.flatten
+    def nested_url
+      [parent.try(:nested_url), to_param.to_s].compact.flatten
     end
 
     # Returns an array with all ancestors to_param, allow with its own
@@ -250,7 +250,7 @@ module Refinery
     #
     #   ['about', 'mission']
     #
-    alias_method :nested_url, :uncached_nested_url
+    alias_method :uncached_nested_url, :nested_url
 
     # Returns the string version of nested_url, i.e., the path that should be generated
     # by the router

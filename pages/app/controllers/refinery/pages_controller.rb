@@ -4,7 +4,7 @@ module Refinery
     before_filter :find_page_for_preview, :only => [:preview]
 
     # Save whole Page after delivery
-    after_filter { |c| c.write_cache? }
+    after_filter :write_cache?
 
     # This action is usually accessed with the root path, normally '/'
     def home
