@@ -292,7 +292,8 @@ module Refinery
               end
 
               #{class_name}.rebuild! if #{class_name}.respond_to?(:rebuild!)
-              render :nothing => true
+
+              after_update_positions
             end
 
             def update_child_positions(_node, #{singular_name})
@@ -307,6 +308,12 @@ module Refinery
                 end
               end
             end
+
+            def after_update_positions
+              render :nothing => true
+            end
+
+            protected :after_update_positions
           )
         end
 
