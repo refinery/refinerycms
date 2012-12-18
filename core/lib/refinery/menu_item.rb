@@ -1,89 +1,85 @@
 module Refinery
-  class MenuItem < HashWithIndifferentAccess
+  class MenuItem
 
-    class << self
-      def attributes
-        [:title, :parent_id, :lft, :rgt, :depth, :url, :menu, :menu_match]
-      end
+    attr_accessor :menu, :title, :parent_id, :lft, :rgt, :depth, :url, :menu_match,
+                  :original_type, :original_id
 
-      def apply_attributes!
-        attributes.each do |attribute|
-          class_eval %{
-            def #{attribute}
-              @#{attribute} ||= self[:#{attribute}]
-            end
-          } unless self.respond_to?(attribute)
-          class_eval %{
-            def #{attribute}=(attr)
-              @#{attribute} = attr
-            end
-          } unless self.respond_to?(:"#{attribute}=")
-        end
+    def initialize(menu, options = {})
+      @menu = menu
+      remap!(options).each do |key, value|
+        send "#{key}=", value
       end
     end
 
-    def original_id
-      @original_id ||= self[:id]
+    def remap!(options)
+      options[:original_id] = options.delete(:id)
+      options[:original_type] = options.delete(:type)
+      options
     end
-
-    def original_type
-      @original_type ||= self[:type]
-    end
-
-    apply_attributes!
 
     def ancestors
-      return @ancestors if @ancestors
-      @ancestors = []
-      p = self
-      @ancestors << p until(p = p.parent).nil?
-
-      @ancestors
+      @ancestors ||= generate_ancestors
     end
 
     def children
-      @children ||= if has_children?
-        menu.select { |item| item.original_type == original_type && item.parent_id == original_id }
-      else
-        []
-      end
+      @children ||= generate_children
     end
 
     def descendants
-      @descendants ||= if has_descendants?
-        menu.select{|item| item.original_type == original_type && item.lft > lft && item.rgt < rgt}
-      else
-        []
-      end
+      @descendants ||= generate_descendants
     end
 
     def has_children?
-      @has_children ||= (rgt > lft + 1)
+      !leaf?
     end
-    # really, they're the same.
-    alias_method :has_descendants?, :has_children?
+    alias_method :has_descendants?, :has_children? # really, they're the same.
 
     def has_parent?
       !parent_id.nil?
     end
 
-    def inspect
-      hash = {}
+    def orphan?
+      !has_parent?
+    end
 
-      self.class.attributes.each do |attribute|
-        hash[attribute] = self[attribute]
-      end
-
-      hash.inspect
+    def leaf?
+      @leaf ||= rgt.to_i - lft.to_i == 1
     end
 
     def parent
-      @parent ||= (menu.detect{|item| item.original_type == original_type && item.original_id == parent_id} if has_parent?)
+      @parent ||= ancestors.detect { |item| item.original_id == parent_id }
     end
 
     def siblings
       @siblings ||= ((has_parent? ? parent.children : menu.roots) - [self])
     end
     alias_method :shown_siblings, :siblings
+
+    private
+    # At present a MenuItem can only have children of the same type to avoid id
+    # conflicts like a Blog::Post and a Page both having an id of 42
+    def compatible_with?(item)
+      original_type == item.original_type
+    end
+
+    def generate_ancestors
+      if has_parent?
+        menu.select { |item| compatible_with?(item) && item.lft < lft && item.rgt > rgt }
+      else
+        []
+      end
+    end
+
+    def generate_children
+      descendants.select { |item| item.parent_id == original_id }
+    end
+
+    def generate_descendants
+      if has_descendants?
+        menu.select { |item| compatible_with?(item) && item.lft > lft && item.rgt < rgt }
+      else
+        []
+      end
+    end
   end
 end

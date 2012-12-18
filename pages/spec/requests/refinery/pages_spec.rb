@@ -214,7 +214,9 @@ module Refinery
       let(:submenu_page) { about_page.children.create :title => 'Sample Submenu' }
 
       before do
-        Refinery::Page.stub(:fast_menu).and_return([home_page, submenu_page, about_page.reload].sort_by(&:lft))
+        Refinery::Page.stub(:fast_menu).and_return(
+          [home_page, submenu_page, about_page.reload].sort_by(&:lft)
+        )
       end
 
       it "succeeds" do
@@ -230,7 +232,9 @@ module Refinery
     describe "special characters title" do
       let(:special_page) { Page.create :title => 'ä ö ü spéciål chåråctÉrs' }
       before do
-        Refinery::Page.stub(:fast_menu).and_return([home_page, about_page, special_page])
+        Refinery::Page.stub(:fast_menu).and_return(
+          [home_page, about_page, special_page]
+        )
       end
 
       it "succeeds" do
