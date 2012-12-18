@@ -65,6 +65,11 @@ module Refinery
 
     protected
 
+      def after_update_positions
+        find_all_pages
+        render :partial => '/refinery/admin/pages/sortable_list' and return
+      end
+
       def find_page
         @page = Refinery::Page.find_by_path_or_id(params[:path], params[:id])
       end
