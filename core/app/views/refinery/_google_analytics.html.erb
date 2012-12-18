@@ -1,7 +1,22 @@
-<% page_code = Refinery::Core.google_analytics_page_code.to_s.strip %>
-<% unless local_request? or refinery_user? or page_code =~ /^(UA-xxxxxx-x)?$/ -%>
+<%
+google_config = Refinery::Core.google_analytics_page_code
+
+analytics_params = {}
+
+if google_config
+  if google_config.class == String
+    analytics_params[:setAccount] = google_config
+  elsif google_config.class == Hash
+    analytics_params = google_config
+  end
+end
+
+gaq_string = analytics_params.map{ |k,v| "['_#{k}','#{v.to_s.strip}']" }.join(',')
+
+%>
+<% unless local_request? or refinery_user? or analytics_params[:setAccount].to_s =~ /^(UA-xxxxxx-x)?$/ -%>
 <!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet -->
-<script>var _gaq=[['_setAccount','<%= page_code %>'],['_trackPageview'],['_trackPageLoadTime']];(function(d,t){
+<script>var _gaq=[<%= raw gaq_string -%>,['_trackPageview'],['_trackPageLoadTime']];(function(d,t){
 var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 g.async=1;g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)
 }(document,'script'))</script>
