@@ -29,6 +29,8 @@
 * Fixed issue with page part reordering for new pages. [#2063](https://github.com/refinery/refinerycms/pull/2063). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed bug in regex which was wrapping `config.action_mailer` settings in if clause. [#2055](https://github.com/refinery/refinerycms/pull/2055). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt)
 * Renamed `force_ssl?` to `force_ssl!` and `refinery_user_required?` to `require_refinery_users!` and moved these methods to `Admin::BaseController`. [#2076](https://github.com/refinery/refinerycms/pull/2076). [Philip Arndt](https://github.com/parndt)
+* Fixed issue with page tree not updating after page position update. [#1985](https://github.com/refinery/refinerycms/issues/1985). [Philip Arndt](https://github.com/parndt)
+* Replaced menu partials with `MenuPresenter`. [#2068](https://github.com/refinery/refinerycms/pull/2068), [#2069](https://github.com/refinery/refinerycms/pull/2069). [Philip Arndt](https://github.com/parndt)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
