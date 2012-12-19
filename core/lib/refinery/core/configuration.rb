@@ -14,7 +14,7 @@ module Refinery
     self.base_cache_key = :refinery
     self.site_name = "Company Name"
     self.google_analytics_page_code = "UA-xxxxxx-x"
-    self.authenticity_token_on_frontend = true
+    self.authenticity_token_on_frontend = false
     self.dragonfly_secret = Array.new(24) { rand(256) }.pack('C*').unpack('H*').first
     self.wymeditor_whitelist_tags = {}
     self.javascripts = []
