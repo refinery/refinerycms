@@ -1,6 +1,9 @@
 module Refinery
   module Admin
     class PagesController < Refinery::AdminController
+      include Pages::InstanceMethods
+      include Pages::RenderOptions
+
       cache_sweeper Refinery::PageSweeper
 
       crudify :'refinery/page',
@@ -42,7 +45,7 @@ module Refinery
               else
                 render :partial => 'save_and_continue_callback', :locals => {
                   :new_refinery_page_path => refinery.admin_page_path(@page.nested_url),
-                  :new_page_path => refinery.preview_page_path(@page.nested_url)
+                  :new_page_path => refinery.admin_preview_page_path(@page.nested_url)
                 }
               end
             end
@@ -63,7 +66,18 @@ module Refinery
         end
       end
 
+      skip_before_filter :find_page, :only => [:preview]
+      before_filter :find_page_for_preview, :only => [:preview]
+
+      def preview
+        render_with_templates? @page, {:template => preview_template, :layout => preview_layout}
+      end
+
     protected
+
+      def admin?
+        action_name != 'preview'
+      end
 
       def after_update_positions
         find_all_pages
@@ -74,6 +88,24 @@ module Refinery
         @page = Refinery::Page.find_by_path_or_id(params[:path], params[:id])
       end
       alias_method :page, :find_page
+
+      def find_page_for_preview
+        if page
+          # Preview existing pages
+          @page.attributes = params[:page]
+        elsif params[:page]
+          # Preview a non-persisted page
+          @page = Page.new params[:page]
+        end
+      end
+
+      def preview_layout
+        'application'
+      end
+
+      def preview_template
+        '/refinery/pages/show'
+      end
 
       # We can safely assume ::Refinery::I18n is defined because this method only gets
       # Invoked when the before_filter from the plugin is run.

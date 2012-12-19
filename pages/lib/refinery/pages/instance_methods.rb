@@ -23,16 +23,14 @@ module Refinery
 
       # Compiles the default menu.
       def refinery_menu_pages
-        ::Refinery::Menu.new(::Refinery::Page.fast_menu)
+        Menu.new Page.fast_menu
       end
 
     protected
       def render_with_presenters(*args)
-        present(@page) unless admin? or @meta.present?
+        present @page unless admin? || @meta
         render_without_presenters(*args)
       end
-
-
 
     end
   end
