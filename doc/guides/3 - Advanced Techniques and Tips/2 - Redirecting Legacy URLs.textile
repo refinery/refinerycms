@@ -15,7 +15,7 @@ h3. Add Rack::Rewrite to your Refinery Application
 Edit your +Gemfile+ and add this line to the bottom:
 
 <ruby>
-gem 'rack-rewrite', '~> 1.0.2'
+gem 'rack-rewrite', '~> 1.2.1'
 </ruby>
 
 To install this gem now run
