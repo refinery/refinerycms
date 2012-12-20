@@ -1,6 +1,8 @@
 module Refinery
   module Admin
     class PagesController < Refinery::AdminController
+      include Pages::InstanceMethods
+
       cache_sweeper Refinery::PageSweeper
 
       crudify :'refinery/page',
@@ -42,7 +44,7 @@ module Refinery
               else
                 render :partial => 'save_and_continue_callback', :locals => {
                   :new_refinery_page_path => refinery.admin_page_path(@page.nested_url),
-                  :new_page_path => refinery.preview_page_path(@page.nested_url)
+                  :new_page_path => refinery.pages_admin_preview_page_path(@page.nested_url)
                 }
               end
             end
