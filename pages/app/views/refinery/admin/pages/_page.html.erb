@@ -10,12 +10,12 @@
       <%= page_title_with_translations page %>
       <%= page_meta_information page %>
     </span>
-    <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
+    <% if Refinery.i18n_enabled? && Refinery::I18n.frontend_locales.many? %>
       <span class='locales'>
-        <% page.translations.each do |translation| %>
+        <% page.translations.sort_by{|t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
           <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
                       refinery.edit_admin_page_path(page.nested_url, :switch_locale => translation.locale),
-                      :class => 'locale' if translation.title.present? %>
+                      :class => 'locale' %>
         <% end %>
       </span>
     <% end %>
@@ -30,7 +30,7 @@
                   :title => t('new', :scope => 'refinery.admin.pages') %>
 
       <%= link_to refinery_icon_tag('application_edit.png'),
-                  refinery.edit_admin_page_path(page.uncached_nested_url),
+                  refinery.edit_admin_page_path(page.uncached_nested_url, :switch_locale => (page.translations.first.locale unless page.translated_to_default_locale?)),
                   :title => t('edit', :scope => 'refinery.admin.pages') %>
 
       <%= link_to refinery_icon_tag('delete.png'),
