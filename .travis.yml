@@ -20,7 +20,7 @@ notifications:
     on_success: always
     on_failure: always
     rooms:
-      - secure: "JaX+Ckvdd2wqL2bD6t8PHvMDBHxWBlCrkBKPcDKxV0t0DOwzzzwxMryVqcRi\nPsmM/zvmWFATDyRmivhNOpu4lRg9RytSroxZ9nkmbLDqjCyEAZ6tv4yZXME/\nPaxPwmfwgS9g8TKjj3lSWS7rEpqqg0D5S0XIfIHrj6KB6LUmFHc="
+      - secure: "X5X39BTgXacSdc32F8mIjJKPqm5dZzmgZfJ14qYpJeMETTdA5JfByt2uCfU8\njJkkxT+XGWta0bSSlRIHQJO6pK26U94A95VYDX0jNuneKEnsoAsqJ6U0VY6v\nH5oxXMAZ2perP/FH9ZsPNR+ulyFfbMQCeGPJw5AXKZQqzf6qPOI="
 env:
   - DB=postgresql
   - DB=mysql
