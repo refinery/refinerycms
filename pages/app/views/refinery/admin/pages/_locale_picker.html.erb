@@ -4,7 +4,7 @@
     <% locales.each do |locale| %>
       <li<%= " class='selected'".html_safe if locale.to_s == local_assigns[:current_locale].to_s %>>
         <%= link_to refinery_icon_tag("flags/#{locale}.png", :size => "32x22"),
-                    refinery.url_for(:switch_locale => locale) %>
+                    refinery.url_for(params.merge(:switch_locale => locale)) %>
       </li>
     <% end %>
   </ul>

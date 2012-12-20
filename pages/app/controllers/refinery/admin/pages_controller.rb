@@ -74,21 +74,10 @@ module Refinery
       # We can safely assume ::Refinery::I18n is defined because this method only gets
       # Invoked when the before_filter from the plugin is run.
       def globalize!
-        unless action_name.to_s == 'index'
-          super
+        return super unless action_name.to_s == 'index'
 
-          # Needs to take into account that slugs are translated now
-          # # Check whether we need to override e.g. on the pages form.
-          # unless params[:switch_locale] || @page.nil? || @page.new_record? || @page.slugs.where({
-          #   :locale => Refinery::I18n.current_locale
-          # }).empty?
-          #   @page.slug = @page.slugs.first if @page.slug.nil? && @page.slugs.any?
-          #   Thread.current[:globalize_locale] = @page.slug.locale if @page.slug
-          # end
-        else
-          # Always display the tree of pages from the default frontend locale.
-          Thread.current[:globalize_locale] = params[:switch_locale].try(:to_sym) || Refinery::I18n.default_frontend_locale
-        end
+        # Always display the tree of pages from the default frontend locale.
+        Globalize.locale = params[:switch_locale].try(:to_sym) || Refinery::I18n.default_frontend_locale
       end
 
       def load_valid_templates

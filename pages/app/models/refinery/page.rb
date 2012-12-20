@@ -14,7 +14,7 @@ module Refinery
 
     class Translation
       is_seo_meta
-      attr_accessible :browser_title, :meta_description, :meta_keywords, :locale
+      attr_accessible :browser_title, :meta_description, :meta_keywords
     end
 
     attr_accessible :title
@@ -188,6 +188,10 @@ module Refinery
       end
     end
 
+    def translated_to_default_locale?
+      persisted? && translations.where(:locale => Refinery::I18n.default_frontend_locale).any?
+    end
+
     # The canonical page for this particular page.
     # Consists of:
     #   * The default locale's translated slug
@@ -316,7 +320,10 @@ module Refinery
     end
 
     def uncached_nested_url
-      [parent.try(:uncached_nested_url), to_param.to_s].compact.flatten
+      [
+        parent.try(:uncached_nested_url),
+        Globalize.with_locale(slug_locale) { to_param.to_s }
+      ].compact.flatten
     end
 
     # Returns an array with all ancestors to_param, allow with its own
@@ -438,13 +445,23 @@ module Refinery
     # Make sures that a translation exists for this page.
     # The translation is set to the default frontend locale.
     def ensure_locale
-      unless self.translations.present?
+      if self.translations.empty?
         self.translations.build :locale => ::Refinery::I18n.default_frontend_locale
       end
     end
 
     def expire_page_caching
       self.class.expire_page_caching
+    end
+
+    def slug_locale
+      return Globalize.locale if translation_for(Globalize.locale).present?
+
+      if Refinery.i18n_enabled? && (translations.empty? || translation_for(Refinery::I18n.default_frontend_locale).present?)
+        Refinery::I18n.default_frontend_locale
+      else
+        translations.first.locale
+      end
     end
   end
 end
