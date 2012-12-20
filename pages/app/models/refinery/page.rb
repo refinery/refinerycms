@@ -146,6 +146,10 @@ module Refinery
       end
     end
 
+    def translated_to_default_locale?
+      persisted? && translations.where(:locale => Refinery::I18n.default_frontend_locale).any?
+    end
+
     # The canonical page for this particular page.
     # Consists of:
     #   * The default locale's translated slug
@@ -241,7 +245,10 @@ module Refinery
     end
 
     def nested_url
-      [parent.try(:nested_url), to_param.to_s].compact.flatten
+      [
+        parent.try(:nested_url),
+        Globalize.with_locale(slug_locale) { to_param.to_s }
+      ].compact.flatten
     end
 
     # Returns an array with all ancestors to_param, allow with its own
@@ -364,6 +371,16 @@ module Refinery
 
     def expire_page_caching
       self.class.expire_page_caching
+    end
+
+    def slug_locale
+      return Globalize.locale if translation_for(Globalize.locale).present?
+
+      if translations.empty? || translation_for(Refinery::I18n.default_frontend_locale).present?
+        Refinery::I18n.default_frontend_locale
+      else
+        translations.first.locale
+      end
     end
   end
 end

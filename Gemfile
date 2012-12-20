@@ -1,13 +1,9 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gemspec
 
 # Add i18n support.
 gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/refinery/refinerycms-i18n.git'
-
-# Fixes uniqueness constraint on translated columns.
-# See: https://github.com/svenfuchs/globalize3/pull/121
-gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git', :ref => 'a59adef44b8249edd0f62e2c66144f37943cfc9e'
 
 gem 'quiet_assets', :group => :development
 
