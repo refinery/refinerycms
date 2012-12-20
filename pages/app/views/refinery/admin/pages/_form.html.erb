@@ -37,7 +37,6 @@
 
 <% content_for :javascripts do %>
   <script>
-    var refinery_page_preview_url = '<%= @page.persisted? ? refinery.preview_page_path(@page.nested_url) : refinery.preview_pages_path %>';
     $(document).ready(function(){
       page_options.init(
         <%= Refinery::Pages.new_page_parts.to_s %>
@@ -50,7 +49,7 @@
         var prev_url = form.attr('action');
         var prev_target = form.attr('target');
         form.attr({
-          'action': refinery_page_preview_url
+          'action': '<%= @page.persisted? ? refinery.pages_admin_preview_page_path(@page.nested_url) : refinery.pages_admin_preview_pages_path %>'
           , 'target': '_blank'
         });
         form.submit();

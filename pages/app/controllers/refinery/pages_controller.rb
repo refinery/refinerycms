@@ -1,7 +1,8 @@
 module Refinery
   class PagesController < ::ApplicationController
-    before_filter :find_page, :set_canonical, :except => [:preview]
-    before_filter :find_page_for_preview, :only => [:preview]
+    include Pages::RenderOptions
+
+    before_filter :find_page, :set_canonical
 
     # Save whole Page after delivery
     after_filter :write_cache?
@@ -39,10 +40,6 @@ module Refinery
       end
     end
 
-    def preview
-      render_with_templates?(:action => :show)
-    end
-
   protected
 
     def requested_friendly_id
@@ -69,37 +66,17 @@ module Refinery
       page.children.order('lft ASC').live.first
     end
 
-    def find_page_for_preview
-      if page(fallback_to_404 = false)
-        # Preview existing pages
-        @page.attributes = view_context.sanitize_hash params[:page]
-      elsif params[:page]
-        # Preview a non-persisted page
-        @page = Page.new params[:page]
-      end
-    end
-
     def find_page(fallback_to_404 = true)
       @page ||= case action_name
                 when "home"
                   Refinery::Page.where(:link_url => '/').first
-                when "show", "preview"
+                when "show"
                   Refinery::Page.find_by_path_or_id(params[:path], params[:id])
                 end
       @page || (error_404 if fallback_to_404)
     end
 
     alias_method :page, :find_page
-
-    def render_with_templates?(render_options = {})
-      if Refinery::Pages.use_layout_templates && page.layout_template.present?
-        render_options[:layout] = page.layout_template
-      end
-      if Refinery::Pages.use_view_templates && page.view_template.present?
-        render_options[:action] = page.view_template
-      end
-      render render_options if render_options.any?
-    end
 
     def set_canonical
       @canonical = refinery.url_for @page.canonical if @page.present?
