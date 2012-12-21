@@ -53,7 +53,7 @@ en:
         results_for_html: "Search results for &#8216;<em>%{query}</em>&#8217;"
         no_results: 'Sorry, no results found'
         cancel_search: 'Cancel search'
-        search_input_notice: "Put here string which you're looking for. Minimal length is 3 chars."
+        search_input_notice: "Put here a string of at least 3 characters containing what you are looking for."
       delete:
         message: "Are you sure you want to remove '%{title}'?"
       error_messages:
