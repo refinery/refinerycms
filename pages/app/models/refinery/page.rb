@@ -144,6 +144,24 @@ module Refinery
           return true # so that other callbacks process.
         end
       end
+
+      def rebuild_with_slug_nullification!
+        rebuild_without_slug_nullification!
+        nullify_duplicate_slugs_under_the_same_parent!
+      end
+      alias_method_chain :rebuild!, :slug_nullification
+
+      protected
+      def nullify_duplicate_slugs_under_the_same_parent!
+        t_slug = translation_class.arel_table[:slug]
+        joins(:translations).group(:locale, :parent_id, t_slug).having(t_slug.count.gt(1)).count.
+        each do |(locale, parent_id, slug), count|
+          by_slug(slug, :locale => locale).where(:parent_id => parent_id).drop(1).each do |page|
+            page.slug = nil # kill the duplicate slug
+            page.save # regenerate the slug
+          end
+        end
+      end
     end
 
     def translated_to_default_locale?
