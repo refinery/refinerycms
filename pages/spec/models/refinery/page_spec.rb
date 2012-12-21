@@ -3,7 +3,6 @@ require 'spec_helper'
 
 module Refinery
   describe Page do
-
     let(:page_title) { 'RSpec is great for testing too' }
     let(:child_title) { 'The child page' }
 
@@ -229,17 +228,6 @@ module Refinery
 
           new_page.errors[:custom_slug].should_not be_empty
         end
-      end
-    end
-
-    context 'home page' do
-      it 'responds as the home page' do
-        page.link_url = '/'
-        page.home?.should == true
-      end
-
-      it 'responds as a normal page when not set to home page' do
-        page.home?.should == false
       end
     end
 
