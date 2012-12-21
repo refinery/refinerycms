@@ -1,7 +1,7 @@
 <form method='GET' action='<%= url %>' class='search_form'>
-  <input id='search' name='search' size='22' type='search' value='<%= params[:search] %>' title="<%= t('search_input_notice', :scope => 'refinery.admin.search') %>" />
-  <% if params[:wymeditor].presence %><input name='wymeditor' value='true' type='hidden'><% end %>
-  <% if from_dialog? %><input id='dialog' name='dialog' type='hidden' value='true' /><% end %>
-  <% if @callback.presence %><input name='callback' value='<%= @callback %>' type='hidden'><% end %>
+  <%= text_field :search, nil, :id => 'search', :type => 'search', :name => 'search', :value => params[:search], :title => t('search_input_notice', :scope => 'refinery.admin.search') %>
+  <%= hidden_field :wymeditor, nil, :name => 'wymeditor', :id => nil, :value => true  if params[:wymeditor].presence %>
+  <%= hidden_field :dialog, nil, :name => 'dialog', :id => nil, :value => true if from_dialog? %>
+  <%= hidden_field :callback, nil, :name => 'callback', :id => nil, :value => @callback if @callback.presence %>
   <%= submit_tag t('button_text', :scope => 'refinery.admin.search'), :name => nil %>
 </form>
