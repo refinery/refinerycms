@@ -32,6 +32,10 @@
 * Fixed issue with page tree not updating after page position update. [#1985](https://github.com/refinery/refinerycms/issues/1985). [Philip Arndt](https://github.com/parndt)
 * Replaced menu partials with `MenuPresenter`. [#2068](https://github.com/refinery/refinerycms/pull/2068), [#2069](https://github.com/refinery/refinerycms/pull/2069). [Philip Arndt](https://github.com/parndt)
 * Set `Refinery::Core.authenticity_token_on_frontend` to `false` by default. [Philip Arndt](https://github.com/parndt)
+* Refactored many internals of pages to centralize page cache expiration. [#2083](https://github.com/refinery/refinerycms/pull/2083). [Philip Arndt](https://github.com/parndt)
+* Fixed page saving bug when default locale was set to something different than EN. [#2088](https://github.com/refinery/refinerycms/pull/2088). [Philip Arndt](https://github.com/parndt)
+* Moved page preview functionality to its own controller and made is so you need to be logged in to use it. [#2089](https://github.com/refinery/refinerycms/pull/2089). [Philip Arndt](https://github.com/parndt)
+* Fixed issue which allowed identical slugs to exist after page reordering. [#2092](https://github.com/refinery/refinerycms/pull/2092). [Philip Arndt](https://github.com/parndt)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
