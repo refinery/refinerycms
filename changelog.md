@@ -1,7 +1,7 @@
 ## 2.1.0 [unreleased]
 
-* Removed :before_javascript_libraries, :after_javascript_libraries, and :javascript_libraries content blocks. [#1842](https://github.com/refinery/refinerycms/pull/1842). [Rob Yurkowski](https://github.com/robyurkowski)
-* Refactored wysiwyg fields into a partial. [#1796](https://github.com/refinery/refinerycms/pull/1796). [Rob Yurkowski](https://github.com/robyurkowski)
+* Removed `:before_javascript_libraries`, `:after_javascript_libraries`, and `:javascript_libraries` content blocks. [#1842](https://github.com/refinery/refinerycms/pull/1842). [Rob Yurkowski](https://github.com/robyurkowski)
+* Refactored WYSIWYG fields into a partial. [#1796](https://github.com/refinery/refinerycms/pull/1796). [Rob Yurkowski](https://github.com/robyurkowski)
 * Shortened all authentication helpers. [#1719](https://github.com/refinery/refinerycms/pull/1719). [Ryan Bigg](https://github.com/radar)
 * Added canonical page id to body to allow CSS selectors to target specific pages instead of including special CSS files. [#1700](https://github.com/refinery/refinerycms/pull/1700) & [#1828](https://github.com/resolve/refinerycms/pull/1828). [Philip Arndt](https://github.com/parndt) & [Graham Wagener](https://github.com/gwagener/)
 * Improved search functionality by adding cancel search link next to search input, made results_for entry nicer by adding some html to it. [#1922](https://github.com/refinery/refinerycms/pull/1922/). [Marek](https://github.com/keram)
@@ -9,7 +9,7 @@
 * Extracted locale picker code into separate partial. [#1936](https://github.com/refinery/refinerycms/pull/1936). [Marek](https://github.com/keram)
 * Removed upgrade messages for IE. [#1940](https://github.com/refinery/refinerycms/pull/1940). [Philip Arndt](https://github.com/parndt)
 * Added template whitelist for page tabs. [#1943](https://github.com/refinery/refinerycms/pull/1943). [Johan](https://github.com/jokklan)
-* Removed DD_belatedPNG since we're dropping IE6 support. (https://github.com/refinery/refinerycms/commit/45367ebeb2fa026a2932d0514db50c8982d2c309)
+* Removed DD_belatedPNG since we dropped IE6 support a while ago. (https://github.com/refinery/refinerycms/commit/45367ebeb2fa026a2932d0514db50c8982d2c309)
 * Dropped coffee-rails dependency. [#1975](https://github.com/refinery/refinerycms/issues/1975). [Uģis Ozols](https://github.com/ugisozols)
 * Added Portuguese translations. [#2007](https://github.com/refinery/refinerycms/pull/2007). [David Silva](https://github.com/davidslvto)
 * Added Hungarian translations. [#2010](https://github.com/refinery/refinerycms/pull/2010). [minktom](https://github.com/minktom)
@@ -33,8 +33,8 @@
 * Replaced menu partials with `MenuPresenter`. [#2068](https://github.com/refinery/refinerycms/pull/2068), [#2069](https://github.com/refinery/refinerycms/pull/2069). [Philip Arndt](https://github.com/parndt)
 * Set `Refinery::Core.authenticity_token_on_frontend` to `false` by default. [Philip Arndt](https://github.com/parndt)
 * Refactored many internals of pages to centralize page cache expiration. [#2083](https://github.com/refinery/refinerycms/pull/2083). [Philip Arndt](https://github.com/parndt)
-* Fixed page saving bug when default locale was set to something different than EN. [#2088](https://github.com/refinery/refinerycms/pull/2088). [Philip Arndt](https://github.com/parndt)
-* Moved page preview functionality to its own controller and made is so you need to be logged in to use it. [#2089](https://github.com/refinery/refinerycms/pull/2089). [Philip Arndt](https://github.com/parndt)
+* Fixed page saving bug when default locale was set to something different than `en` or when it was changed after creating some pages. [#2088](https://github.com/refinery/refinerycms/pull/2088). [Philip Arndt](https://github.com/parndt)
+* Moved page preview functionality to its own controller and made it so that you need to be logged in to use it. [#2089](https://github.com/refinery/refinerycms/pull/2089). [Philip Arndt](https://github.com/parndt)
 * Fixed issue which allowed identical slugs to exist after page reordering. [#2092](https://github.com/refinery/refinerycms/pull/2092). [Philip Arndt](https://github.com/parndt)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
