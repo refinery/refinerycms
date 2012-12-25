@@ -49,3 +49,5 @@ Refinery::I18n.frontend_locales.each do |lang|
     Refinery::Page.by_title(title).each { |page| page.update_attributes(:slug => slug) }
   end
 end
+
+I18n.locale = ::Refinery::I18n.default_locale
