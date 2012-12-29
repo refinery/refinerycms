@@ -61,49 +61,22 @@ module Refinery
 
           prepend_before_filter :find_#{singular_name},
                                 :only => [:update, :destroy, :edit, :show]
+          prepend_before_filter :merge_position_into_params!, :only => :create
 
           def new
             @#{singular_name} = #{class_name}.new
           end
 
           def create
-            # if the position field exists, set this object as last object, given the conditions of this class.
-            if #{class_name}.column_names.include?("position") && params[:#{singular_name}][:position].nil?
-              params[:#{singular_name}].merge!({
-                :position => ((#{class_name}.maximum(:position, :conditions => #{options[:conditions].inspect})||-1) + 1)
-              })
-            end
-
             if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
               flash.notice = t(
                 'refinery.crudify.created',
                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
               )
 
-              unless from_dialog?
-                unless params[:continue_editing] =~ /true|on|1/
-                  redirect_back_or_default(#{options[:redirect_to_url]})
-                else
-                  unless request.xhr?
-                    redirect_to :back
-                  else
-                    render :partial => '/refinery/message'
-                  end
-                end
-              else
-                self.index
-                @dialog_successful = true
-                render :index
-              end
+              create_or_update_successful
             else
-              unless request.xhr?
-                render :action => 'new'
-              else
-                render :partial => '/refinery/admin/error_messages', :locals => {
-                         :object => @#{singular_name},
-                         :include_object_name => true
-                       }
-              end
+              create_or_update_unsuccessful 'new'
             end
           end
 
@@ -118,30 +91,9 @@ module Refinery
                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
               )
 
-              unless from_dialog?
-                unless params[:continue_editing] =~ /true|on|1/
-                  redirect_back_or_default(#{options[:redirect_to_url]})
-                else
-                  unless request.xhr?
-                    redirect_to :back
-                  else
-                    render :partial => '/refinery/message'
-                  end
-                end
-              else
-                self.index
-                @dialog_successful = true
-                render :index
-              end
+              create_or_update_successful
             else
-              unless request.xhr?
-                render :action => 'edit'
-              else
-                render :partial => '/refinery/admin/error_messages', :locals => {
-                         :object => @#{singular_name},
-                         :include_object_name => true
-                       }
-              end
+              create_or_update_unsuccessful 'edit'
             end
           end
 
@@ -152,7 +104,7 @@ module Refinery
               flash.notice = t('destroyed', :scope => 'refinery.crudify', :what => "'\#{title}'")
             end
 
-            redirect_to #{options[:redirect_to_url]}
+            redirect_to redirect_url
           end
 
           # Finds one single result based on the id params.
@@ -170,6 +122,15 @@ module Refinery
                               ).order("#{options[:order]}")
           end
 
+          def merge_position_into_params!
+            # if the position field exists, set this object as last object, given the conditions of this class.
+            if #{class_name}.column_names.include?("position") && params[:#{singular_name}][:position].nil?
+              params[:#{singular_name}].merge!({
+                :position => ((#{class_name}.maximum(:position, :conditions => #{options[:conditions].inspect})||-1) + 1)
+              })
+            end
+          end
+
           # Paginate a set of @#{plural_name} that may/may not already exist.
           def paginate_all_#{plural_name}
             # If we have already found a set then we don't need to again
@@ -184,12 +145,51 @@ module Refinery
             @#{plural_name} = @#{plural_name}.paginate(:page => params[:page], :per_page => per_page)
           end
 
+          def redirect_url
+            if params[:page].present?
+              page = params[:page].to_i rescue 1
+              page -= 1 while #{class_name}.paginate(:page => page).empty? && page > 1
+              #{options[:redirect_to_url]}(:page => page)
+            else
+              #{options[:redirect_to_url]}
+            end
+          end
+
           # If the controller is being accessed via an ajax request
           # then render only the collection of items.
           def render_partial_response?
             if request.xhr?
               render :text => render_to_string(:partial => '#{plural_name}', :layout => false).html_safe,
                      :layout => 'refinery/flash' and return false
+            end
+          end
+
+          def create_or_update_successful
+            if from_dialog?
+              self.index
+              @dialog_successful = true
+              render :index
+            else
+              if /true|on|1/ === params[:continue_editing]
+                if request.xhr?
+                  render :partial => '/refinery/message'
+                else
+                  redirect_to :back
+                end
+              else
+                redirect_back_or_default redirect_url
+              end
+            end
+          end
+
+          def create_or_update_unsuccessful(action)
+            if request.xhr?
+              render :partial => '/refinery/admin/error_messages', :locals => {
+                       :object => @#{singular_name},
+                       :include_object_name => true
+                     }
+            else
+              render :action => action
             end
           end
 
@@ -208,7 +208,11 @@ module Refinery
                     :find_all_#{plural_name},
                     :paginate_all_#{plural_name},
                     :render_partial_response?,
-                    :search_all_#{plural_name}
+                    :search_all_#{plural_name},
+                    :redirect_url,
+                    :create_or_update_successful,
+                    :create_or_update_unsuccessful,
+                    :merge_position_into_params!
         )
 
         # Methods that are only included when this controller is searchable.

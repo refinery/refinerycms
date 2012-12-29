@@ -16,7 +16,8 @@ module Refinery
 
         def configure!
           app_resources = ::Dragonfly[:refinery_resources]
-          app_resources.configure_with(:rails) do |c|
+          app_resources.configure_with(:rails)
+          app_resources.configure do |c|
             c.datastore.root_path = Refinery::Resources.datastore_root_path
             c.url_format = Refinery::Resources.dragonfly_url_format
             c.secret = Refinery::Resources.dragonfly_secret
