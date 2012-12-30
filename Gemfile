@@ -15,6 +15,7 @@ end
 
 unless ENV['TRAVIS'] && ENV['DB'] != 'mysql'
   gem 'activerecord-jdbcmysql-adapter', :platform => :jruby
+  gem 'jdbc-mysql', '= 5.1.13', :platform => :jruby
   gem 'mysql2', :platform => :ruby
 end
 
