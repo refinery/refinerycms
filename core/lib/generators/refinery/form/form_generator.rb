@@ -12,19 +12,7 @@ module Refinery
     end
 
     def generate
-      sanity_check!
-
-      evaluate_templates!
-
-      unless options[:pretend]
-        merge_locales!
-
-        copy_or_merge_seeds!
-
-        append_extension_to_gemfile!
-      end
-
-      finalize_extension!
+      default_generate!
     end
 
     protected

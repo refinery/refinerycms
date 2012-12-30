@@ -8,6 +8,7 @@ module Refinery
         class_option :namespace, :type => :string, :default => nil, :banner => 'NAMESPACE', :required => false
         class_option :extension, :type => :string, :default => nil, :banner => 'ENGINE', :required => false
         class_option :i18n, :type => :array, :default => [], :required => false, :banner => "field field", :desc => 'Indicates generated fields'
+        class_option :install, :type => :boolean, :default => false, :required => false, :banner => nil, :desc => 'Bundles and runs the generated generator, rake db:migrate, rake db:seed for you'
 
         remove_class_option :skip_namespace
       end
@@ -109,6 +110,24 @@ module Refinery
       end
     end
 
+    def default_generate!
+      sanity_check!
+
+      evaluate_templates!
+
+      unless options[:pretend]
+        merge_locales!
+
+        copy_or_merge_seeds!
+
+        append_extension_to_gemfile!
+      end
+
+      install! if options[:install]
+
+      finalize_extension!
+    end
+
     def destination_pathname
       @destination_pathname ||= Pathname.new(self.destination_root.to_s)
     end
@@ -195,7 +214,7 @@ module Refinery
     end
 
     def finalize_extension!
-      if self.behavior != :revoke and !self.options['pretend']
+      if self.behavior != :revoke && !self.options['pretend']
         puts_instructions!
       else
         erase_destination!
@@ -214,6 +233,13 @@ module Refinery
 
     def generator_command
       raise "You must override the method 'generator_command' in your generator."
+    end
+
+    def install!
+      run "bundle install"
+      run "rails generate refinery:#{extension_plural_name}"
+      run "rake db:migrate"
+      run "rake db:seed"
     end
 
     def merge_locales!
@@ -284,11 +310,16 @@ module Refinery
     def puts_instructions!
       unless Rails.env.test?
         puts "------------------------"
-        puts "Now run:"
-        puts "bundle install"
-        puts "rails generate refinery:#{extension_plural_name}"
-        puts "rake db:migrate"
-        puts "rake db:seed"
+        if options[:install]
+          puts "Your extension has been generated and installed."
+        else
+          puts "Now run:"
+          puts "bundle install"
+          puts "rails generate refinery:#{extension_plural_name}"
+          puts "rake db:migrate"
+          puts "rake db:seed"
+        end
+        puts "Please restart your rails server."
         puts "------------------------"
       end
     end
