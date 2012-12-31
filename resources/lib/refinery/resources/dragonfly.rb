@@ -7,7 +7,6 @@ module Refinery
       class << self
         def setup!
           app_resources = ::Dragonfly[:refinery_resources]
-          app_resources.configure_with(:rails)
 
           app_resources.define_macro(::Refinery::Resource, :resource_accessor)
 

@@ -7,8 +7,6 @@ module Refinery
       class << self
         def setup!
           app_images = ::Dragonfly[:refinery_images]
-          app_images.configure_with(:imagemagick)
-          app_images.configure_with(:rails)
 
           app_images.define_macro(::Refinery::Image, :image_accessor)
 
@@ -18,6 +16,7 @@ module Refinery
 
         def configure!
           app_images = ::Dragonfly[:refinery_images]
+          app_images.configure_with(:imagemagick)
           app_images.configure_with(:rails) do |c|
             c.datastore.root_path = Refinery::Images.datastore_root_path
             c.url_format = Refinery::Images.dragonfly_url_format
