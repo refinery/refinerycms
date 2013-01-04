@@ -25,8 +25,7 @@ pl:
             switch_to: Przełącz do widoku %{view_name}
             list: lista
             grid: siatka
-        grid_view:
-          view_live_html: Obejrzyj ten obraz <br/><em>Otwarcie w nowym oknie</em>
+        view_live_html: Obejrzyj ten obraz <br/><em>Otwarcie w nowym oknie</em>
         existing_image:
           button_text: Wstaw
           resize_image: Zmień rozmiar tego obrazu?

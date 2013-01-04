@@ -24,8 +24,7 @@ lv:
             switch_to: Pārslēgt uz %{view_name} skatu
             list: saraksta
             grid: režģa
-        grid_view:
-          view_live_html: Skatīt šo bildi <br/><em>Atvērsies jaunā logā</em>
+        view_live_html: Skatīt šo bildi <br/><em>Atvērsies jaunā logā</em>
         existing_image:
           button_text: Ievietot
           resize_image: Mainīt bildes izmērus?

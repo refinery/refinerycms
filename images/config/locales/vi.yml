@@ -24,8 +24,7 @@ vi:
             switch_to: Đổi sang kiểu xem %{view_name}
             list: danh sách
             grid: lưới
-        grid_view:
-          view_live_html: Xem ảnh này <br/><em>Mở trong cửa sổ mới</em>
+        view_live_html: Xem ảnh này <br/><em>Mở trong cửa sổ mới</em>
         existing_image:
           button_text: Chèn
           resize_image: Đổi kích thước ảnh?

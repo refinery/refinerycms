@@ -24,8 +24,7 @@ fi:
             switch_to: "%{view_name}näkymä"
             list: Lista
             grid: Ruudukko
-        grid_view:
-          view_live_html: Katsele tätä kuvaa <br/><em>Avautuu uudessa ikkunassa</em>
+        view_live_html: Katsele tätä kuvaa <br/><em>Avautuu uudessa ikkunassa</em>
         existing_image:
           button_text: Lisää
           resize_image: Suurenna tai pienennä kuvaa?

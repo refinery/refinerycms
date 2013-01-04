@@ -21,11 +21,10 @@ pt:
           no_images_yet: 'Ainda não existem imagens. Clique em "Adicionar nova imagem" para adicionar a primeira.'
         index:
           view:
-            switch_to: Mudar a disposição para %{view_name} 
+            switch_to: Mudar a disposição para %{view_name}
             list: lista
             grid: grelha
-        grid_view:
-          view_live_html: Ver esta imagem <br/><em>Abre uma nova janela</em>
+        view_live_html: Ver esta imagem <br/><em>Abre uma nova janela</em>
         existing_image:
           button_text: Inserir
           resize_image: Redimensionar esta imagem?

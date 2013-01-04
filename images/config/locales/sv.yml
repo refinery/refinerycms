@@ -24,8 +24,7 @@ sv:
             switch_to: Byt till %{view_name} vyn
             list: lista
             grid: rutnät
-        grid_view:
-          view_live_html: Visa den här bilden <br/><em>Öppnas i nytt fönster</em>
+        view_live_html: Visa den här bilden <br/><em>Öppnas i nytt fönster</em>
         existing_image:
           button_text: Klistra in
           resize_image: Ändra storlek på bilden?
