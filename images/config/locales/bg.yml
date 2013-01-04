@@ -24,8 +24,7 @@ bg:
             switch_to: Преглед като %{view_name}
             list: списък
             grid: решетка
-        grid_view:
-          view_live_html: Преглед на това изображение <br/><em>(ще се отвори в нов прозорец)</em>
+        view_live_html: Преглед на това изображение <br/><em>(ще се отвори в нов прозорец)</em>
         existing_image:
           button_text: Вмъкване
           resize_image: Оразмеряване на изображението?

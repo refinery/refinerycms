@@ -24,8 +24,7 @@ ja:
             switch_to: '%{view_name}表示に切り替え'
             list: リスト
             grid: グリッド
-        grid_view:
-          view_live_html: 'この画像を<br/><em>新しいウィンドウで開く</em>'
+        view_live_html: 'この画像を<br/><em>新しいウィンドウで開く</em>'
         existing_image:
           button_text: 挿入
           resize_image: サイズ変更

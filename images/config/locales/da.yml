@@ -24,8 +24,7 @@ da:
             switch_to: Skift til %{view_name}visning
             list: liste
             grid: gitter
-        grid_view:
-          view_live_html: Vis billede<br/><em>(åbner i nyt vindue)</em>
+        view_live_html: Vis billede<br/><em>(åbner i nyt vindue)</em>
         existing_image:
           button_text: Indsæt
           resize_image: Skalér billedet?

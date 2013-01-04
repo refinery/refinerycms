@@ -26,7 +26,7 @@ it:
             grid: Griglia
         grid_view:
           edit: Modifica questa immagine
-          view_live_html: Visualizza questa immagine <br/><em>Apri in una nuova finestra</em>
+        view_live_html: Visualizza questa immagine <br/><em>Apri in una nuova finestra</em>
         existing_image:
           button_text: Inserisci
           resize_image: "Ridimensionare l'immagine?"

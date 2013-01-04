@@ -24,8 +24,7 @@ lt:
             switch_to: Persijungti į %{view_name} vaizdą
             list: sąrašo
             grid: tinklelio
-        grid_view:
-          view_live_html: Peržiūrėti paveikslėlį <br/><em>Atsirado naujame lange</em>
+        view_live_html: Peržiūrėti paveikslėlį <br/><em>Atsirado naujame lange</em>
         existing_image:
           button_text: Pridėti
           resize_image: Keisti paveikslėlio išmatavimus?

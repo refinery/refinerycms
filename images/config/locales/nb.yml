@@ -24,8 +24,7 @@ nb:
             switch_to: "Endre til %{view_name} visning"
             list: liste
             grid: rutenett
-        grid_view:
-          view_live_html: Vis dette bildet <br/><em>Åpner i et nytt vindu</em>
+        view_live_html: Vis dette bildet <br/><em>Åpner i et nytt vindu</em>
         existing_image:
           button_text: Sett inn
           resize_image: "Endre størrelsen på bildet? <em>(Anbefales)</em>"
