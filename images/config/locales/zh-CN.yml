@@ -24,8 +24,7 @@ zh-CN:
             switch_to: 切换到 %{view_name} 视图
             list: 列表
             grid: 表格
-        grid_view:
-          view_live_html: 查看此图片 <br/><em>新窗口打开</em>
+        view_live_html: 查看此图片 <br/><em>新窗口打开</em>
         existing_image:
           button_text: 插入
           resize_image: 调整图片尺寸?

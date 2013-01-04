@@ -24,8 +24,7 @@ en:
             switch_to: Switch to %{view_name} view
             list: list
             grid: grid
-        grid_view:
-          view_live_html: View this image <br/><em>Opens in a new window</em>
+        view_live_html: View this image <br/><em>Opens in a new window</em>
         existing_image:
           button_text: Insert
           resize_image: Resize the image?

@@ -24,8 +24,7 @@ ko:
             switch_to: "%{view_name} 형식으로 보기"
             list: 목록
             grid: 격자
-        grid_view:
-          view_live_html: 이 이미지 보기 <br/><em>새 창에서 열림</em>
+        view_live_html: 이 이미지 보기 <br/><em>새 창에서 열림</em>
         existing_image:
           button_text: 삽입
           resize_image: 크기를 변경하시겠습니까?

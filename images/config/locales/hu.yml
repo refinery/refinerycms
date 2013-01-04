@@ -24,8 +24,7 @@ hu:
             switch_to: 'Váltás %{view_name} nézetre'
             list: lista
             grid: rács
-        grid_view:
-          view_live_html: Kép megtekintésekor <br/><em>új ablakban nyílik meg</em>
+        view_live_html: Kép megtekintésekor <br/><em>új ablakban nyílik meg</em>
         existing_image:
           button_text: Beszúrás
           resize_image: Kép átméretezése?
