@@ -175,13 +175,15 @@ module Refinery
             # If we have already found a set then we don't need to again
             find_all_#{plural_name} if @#{plural_name}.nil?
 
-            per_page = if #{options[:per_page].present?.inspect}
+            @#{plural_name} = @#{plural_name}.paginate(:page => params[:page], :per_page => paginate_per_page)
+          end
+
+          def paginate_per_page
+            if #{options[:per_page].present?.inspect}
               #{options[:per_page].inspect}
             elsif #{class_name}.methods.map(&:to_sym).include?(:per_page)
               #{class_name}.per_page
             end
-
-            @#{plural_name} = @#{plural_name}.paginate(:page => params[:page], :per_page => per_page)
           end
 
           # If the controller is being accessed via an ajax request
@@ -207,6 +209,7 @@ module Refinery
           protected :find_#{singular_name},
                     :find_all_#{plural_name},
                     :paginate_all_#{plural_name},
+                    :paginate_per_page,
                     :render_partial_response?,
                     :search_all_#{plural_name}
         )
