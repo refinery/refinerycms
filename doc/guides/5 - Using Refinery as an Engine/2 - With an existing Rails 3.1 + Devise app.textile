@@ -416,6 +416,18 @@ Also important, add @:method => :delete@ if it's not in the link_to helper.
 
 Retry http://localhost:3000/refinery, it should be fine now.
 
+Now if you want to be able to edit the User model from refinery, then you should make sure the User table matches the Refinery::User
+table exactly. In most cases with devise, it is as simple as adding the @username@ column to the @users@ table and making that attribute
+accessible in the model. Next you can set up the following initializer:
+
++config/initializers/refinery_class_substitutions.rb+
+<ruby>
+class Refinery::User < User; end
+class Refinery::Role < Role; end
+</ruby>
+
+Now you can restart your server, and manage users instead of refinery_users.
+
 Last advice: in your routes, map your root with @refinery/pages#home@ if you want Refinery to handle your homepage.
 
 <ruby>
