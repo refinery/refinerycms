@@ -36,6 +36,7 @@
 * Fixed page saving bug when default locale was set to something different than `en` or when it was changed after creating some pages. [#2088](https://github.com/refinery/refinerycms/pull/2088). [Philip Arndt](https://github.com/parndt)
 * Moved page preview functionality to its own controller and made it so that you need to be logged in to use it. [#2089](https://github.com/refinery/refinerycms/pull/2089). [Philip Arndt](https://github.com/parndt)
 * Fixed issue which allowed identical slugs to exist after page reordering. [#2092](https://github.com/refinery/refinerycms/pull/2092). [Philip Arndt](https://github.com/parndt)
+* Gave crudify's actions the ability to redirect to a particular page of results when `params[:page]` is supplied to the action. [#1861](https://github.com/refinery/refinerycms/issues/1861). [Philip Arndt](https://github.com/parndt)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
