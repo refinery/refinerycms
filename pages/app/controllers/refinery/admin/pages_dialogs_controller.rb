@@ -62,15 +62,18 @@ module Refinery
                 url.host = URI.parse(request.url).host
               end
 
-              result = 'success' if [Net::HTTPSuccess, Net::HTTPRedirection].
-                                      include? Net::HTTP.get_response(url)
+              result = case Net::HTTP.get_response(url)
+                when Net::HTTPSuccess, Net::HTTPRedirection
+                  'success'
+                end
+               
             end
           end
 
         rescue
-          # the result is already set to failure.
+          # be quiet
         end
-
+        
         render :json => {:result => result}
       end
 

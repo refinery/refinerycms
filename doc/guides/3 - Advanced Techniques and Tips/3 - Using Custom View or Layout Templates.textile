@@ -61,6 +61,7 @@ name of the file you whitelisted.
 
 * Inside of this file, you can either +render '/refinery/content_page'+, or you
 can use +@page.content_for(:body)+ to output the content of a specific page part.
+NB: Content is not marked as safe by default. To mark it as safe, use: +raw(@page.content_for(:body))+
 
 h4. Set Back-End Select
 
