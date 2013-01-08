@@ -455,7 +455,7 @@ module Refinery
     end
 
     def slug_locale
-      return Globalize.locale if translation_for(Globalize.locale).present?
+      return Globalize.locale if translation_for(Globalize.locale).try(:slug).present?
 
       if Refinery.i18n_enabled? && (translations.empty? || translation_for(Refinery::I18n.default_frontend_locale).present?)
         Refinery::I18n.default_frontend_locale
