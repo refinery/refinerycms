@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.2.0.beta4'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'seo_meta',                    '~> 1.1'
+  s.add_dependency 'seo_meta',                    ['>= 1.1', '< 1.4']
 end
 EOF
 

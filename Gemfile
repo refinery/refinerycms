@@ -30,7 +30,7 @@ group :development, :test do
   # Then, run 'rails generate refinerycms_testing' which will copy its support files.
   # Finally, run 'rake' to run the tests.
   gem 'refinerycms-testing',    '~> 1.0.9'
-  gem 'capybara-webkit'
+  gem 'capybara-webkit',        '< 0.14'
 
   if RbConfig::CONFIG['target_os'] =~ /darwin/i
     gem 'growl'
