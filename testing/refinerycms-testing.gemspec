@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'json_pure'
 
   # Factory Girl
-  s.add_dependency 'factory_girl'
+  s.add_dependency 'factory_girl',      '< 3'
 
   s.files             = [
     '.rspec',
