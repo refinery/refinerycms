@@ -33,7 +33,7 @@ namespace :refinery do
     #   namespace :testing do
     #     task :setup_extension do
     #       require 'refinerycms-my-extension'
-    #       Refinery::MyEngineGenerator.start %w[--quiet]
+    #       Refinery::MyExtensionGenerator.start %w[--quiet]
     #     end
     #   end
     # end

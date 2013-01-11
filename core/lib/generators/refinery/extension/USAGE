@@ -20,5 +20,5 @@ Additional Supported Field Types
   resource        - link to a resource picker dialogue
 
 Examples:
-    rails generate refinery:engine product title:string description:text image:image brochure:resource
-    rails generate refinery:engine product title:string description:text image:image brochure:resource --i18n title description
+    rails generate refinery:extension product title:string description:text image:image brochure:resource
+    rails generate refinery:extension product title:string description:text image:image brochure:resource --i18n title description

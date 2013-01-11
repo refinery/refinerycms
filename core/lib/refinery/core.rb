@@ -34,6 +34,7 @@ module Refinery
   autoload :DummyGenerator, 'generators/refinery/dummy/dummy_generator'
   autoload :CoreGenerator, 'generators/refinery/core/core_generator'
   autoload :EngineGenerator, 'generators/refinery/engine/engine_generator'
+  autoload :ExtensionGenerator, 'generators/refinery/extension/extension_generator'
 
   class << self
     @@extensions = []
@@ -57,7 +58,13 @@ module Refinery
 
       @@extensions << const
     end
-    alias_method :register_engine, :register_extension
+
+    def register_engine(const)
+      Refinery.deprecate('register_engine',
+        :when => '2.2',
+        :replacement => 'register_extension')
+      register_extension(const)
+    end
 
     # Unregister an extension from Refinery
     #
@@ -189,7 +196,7 @@ module Refinery
 
     def validate_extension!(const)
       unless const.respond_to?(:root) && const.root.is_a?(Pathname)
-        raise InvalidEngineError, "Engine must define a root accessor that returns a pathname to its root"
+        raise InvalidExtensionError, "Extension must define a root accessor that returns a pathname to its root"
       end
     end
   end
