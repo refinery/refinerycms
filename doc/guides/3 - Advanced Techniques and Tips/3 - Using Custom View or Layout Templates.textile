@@ -135,7 +135,8 @@ Basically, use a decorator to create an additional method on the
 Refinery::PagesController.class_eval do
   def about_us
     @page = ::Refinery::Page.where(:link_url => '/about-us').first || error_404
-    @events = ::Refinery::Events::Event.all render_with_templates?
+    @events = ::Refinery::Events::Event.all
+    render_with_templates?
   end
 end
 </ruby>
