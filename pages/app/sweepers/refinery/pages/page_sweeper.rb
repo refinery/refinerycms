@@ -13,7 +13,7 @@ module Refinery
 
       protected
       def caching
-        @caching ||= Caching.new(page_cache_directory)
+        @caching ||= Caching.new(ActionController::Base.page_cache_directory)
       end
 
       def expire_cache!
