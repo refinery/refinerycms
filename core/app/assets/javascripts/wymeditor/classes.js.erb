@@ -1122,8 +1122,8 @@ WYMeditor.XhtmlSaxListener = function()
     "thead", "title", "tr", "tt", "ul", "var", "extends", "meter",
     "section", "article", "aside", "details", "header", "footer",
     "nav", "dialog", "figure", "figcaption", "address", "hgroup",
-    "mark", "time", "canvas", "audio", "video", "source", "output",
-    "progress", "ruby", "rt", "rp", "summary", "command"<%= ", #{Refinery::Core.wymeditor_whitelist_tags.keys.map{|k| %Q{"#{k}"}}.join(', ')}" if Refinery::Core.wymeditor_whitelist_tags.any? %>];
+    "mark", "time", "canvas", "audio", "video", "output",
+    "progress", "ruby", "rt", "rp", "summary", "command"];
 
 
     // Defines self-closing tags.

@@ -1,13 +1,9 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gemspec
 
 # Add i18n support.
 gem 'refinerycms-i18n', '~> 2.1.0.dev', :git => 'git://github.com/refinery/refinerycms-i18n.git'
-
-# Fixes uniqueness constraint on translated columns.
-# See: https://github.com/svenfuchs/globalize3/pull/121
-gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git', :branch => 'master'
 
 gem 'quiet_assets', :group => :development
 
@@ -17,23 +13,22 @@ unless ENV['TRAVIS']
   gem 'sqlite3', :platform => :ruby
 end
 
-unless ENV['TRAVIS'] && ENV['DB'] != 'mysql'
+if !ENV['TRAVIS'] || ENV['DB'] == 'mysql'
   gem 'activerecord-jdbcmysql-adapter', :platform => :jruby
+  gem 'jdbc-mysql', '= 5.1.13', :platform => :jruby
   gem 'mysql2', :platform => :ruby
 end
 
-unless ENV['TRAVIS'] && ENV['DB'] != 'postgresql'
+if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
   gem 'activerecord-jdbcpostgresql-adapter', :platform => :jruby
   gem 'pg', :platform => :ruby
 end
 
 gem 'jruby-openssl', :platform => :jruby
 
-group :development, :test do
+group :test do
   gem 'refinerycms-testing', '~> 2.1.0.dev'
-  gem 'generator_spec', '>= 0.8.5', :git => 'git://github.com/stevehodgkiss/generator_spec.git'
-  gem 'guard-rspec', '~> 0.7.0'
-  gem 'fuubar', '~> 1.0.0'
+  gem 'generator_spec', '~> 0.8.7'
 
   platforms :mswin, :mingw do
     gem 'win32console', '~> 1.3.0'
@@ -42,16 +37,13 @@ group :development, :test do
   end
 
   platforms :ruby do
-    gem 'spork', '~> 0.9.0'
-    gem 'guard-spork', '~> 0.5.2'
-
     unless ENV['TRAVIS']
       require 'rbconfig'
-      if RbConfig::CONFIG['target_os'] =~ /darwin/i
+      if /darwin/i === RbConfig::CONFIG['target_os']
         gem 'rb-fsevent', '~> 0.9.0'
         gem 'ruby_gntp', '~> 0.3.4'
       end
-      if RbConfig::CONFIG['target_os'] =~ /linux/i
+      if /linux/i === RbConfig::CONFIG['target_os']
         gem 'rb-inotify', '~> 0.8.8'
         gem 'libnotify',  '~> 0.7.2'
         gem 'therubyracer', '~> 0.10.0'
@@ -62,10 +54,10 @@ group :development, :test do
   platforms :jruby do
     unless ENV['TRAVIS']
       require 'rbconfig'
-      if RbConfig::CONFIG['target_os'] =~ /darwin/i
+      if /darwin/i === RbConfig::CONFIG['target_os']
         gem 'ruby_gntp', '~> 0.3.4'
       end
-      if RbConfig::CONFIG['target_os'] =~ /linux/i
+      if /linux/i === RbConfig::CONFIG['target_os']
         gem 'rb-inotify', '~> 0.8.8'
         gem 'libnotify',  '~> 0.7.2'
       end

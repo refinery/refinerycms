@@ -114,13 +114,13 @@ This is necessary to make post-deploy asset precompilation happen. Without this,
 Refinery will fail to compile its assets, owing to its use of Rails' URL helpers
 inside of its Javascript files (necessary for its WYSIWYG editor).
 
-You may also need to enable the experimental +user_env_compile+ option on
+You may also need to enable the experimental +user-env-compile+ option on
 Heroku. You can read more
 "here":https://devcenter.heroku.com/articles/labs-user-env-compile, but in
 short, run the following command:
 
 <shell>
-$ heroku labs:enable user_env_compile
+$ heroku labs:enable user-env-compile
 </shell>
 
 In theory, this should only affect applications where +initialize_on_precompile+
@@ -132,7 +132,25 @@ if you receive complaints about being unable to connect to +127.0.0.1+.
 stack and Heroku recommends it for new apps. You can run @heroku stack@ to check
 which stack your app is on.)
 
-h4. Step 4: Copy your data from your local database to the Heroku app
+h4. Step 4 (Option 1): Start from clean slate
+
+If you haven't set up anything locally, or don't want to copy your local
+database to heroku, you'll need to run a few commands to get Refinery's
+database set up.
+
+<shell>
+heroku run rake db:migrate
+heroku run rake db:seed
+</shell>
+
+This will set up the required database tables, and set up a homepage.
+Log in to your site to set up your first user.
+
+<shell>
+heroku open
+</shell>
+
+h4. Step 4 (Option 2): Copy your data from your local database to the Heroku app
 
 If you've developed your website locally, you likely have information in a local
 database that you would like to use. Rather than trying to recreate all that on
@@ -181,7 +199,7 @@ Next, tell Heroku about your new S3 bucket.
 heroku config:add S3_KEY=123key S3_SECRET=456secret S3_BUCKET=my_app_production
 </shell>
 
-WARNING. Make sure the config vars you add to Heroku match Refinery's environment variables: +S3_KEY+, +S3_SECRET+, and +S3_BUCKET+  
+WARNING. Make sure the config vars you add to Heroku match Refinery's environment variables: +S3_KEY+, +S3_SECRET+, and +S3_BUCKET+
 
 If you have created your bucket in a region other than 'us-east-1' you need to
 add S3_REGION=s3region also.

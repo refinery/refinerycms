@@ -12,7 +12,7 @@ module Refinery
         rspec_tab = Refinery::Pages::Tab.register do |tab|
           tab.name = "rspec"
           tab.partial = "rspec"
-        end 
+        end
 
         Refinery::Pages.tabs.should include(rspec_tab)
       end
@@ -23,11 +23,11 @@ module Refinery
         Refinery::Pages.instance_eval { @tabs = [] }
       end
 
-      it "returns all tabs for which #templates hasn't been set" do 
+      it "returns all tabs for which #templates hasn't been set" do
         rspec_tab = Refinery::Pages::Tab.register do |tab|
           tab.name = "rspec"
           tab.partial = "rspec"
-        end 
+        end
 
         Refinery::Pages.tabs_for_template("huh").should include(rspec_tab)
       end
@@ -37,7 +37,7 @@ module Refinery
           tab.name = "rspec"
           tab.partial = "rspec"
           tab.templates = "rspec"
-        end 
+        end
 
         Refinery::Pages.tabs_for_template("rspec").should include(rspec_tab)
       end

@@ -4,6 +4,14 @@ module Refinery
   class CLI < Thor
     include Thor::Actions
 
+    no_tasks do
+      def source_paths
+        Refinery::Plugins.registered.pathnames.map{|p|
+          %w(app vendor).map{|dir| p.join(dir, @override_kind[:dir])}
+        }.flatten.uniq
+      end
+    end
+
     OVERRIDES = {
       :view => {
         :glob => '*.{erb,builder}',
@@ -48,7 +56,7 @@ module Refinery
       puts "You didn't specify anything valid to override. Here are some examples:"
       {
         :view => ['pages/home', 'refinery/pages/home', '**/*menu', '_menu_branch'],
-        :javascript => %w(admin refinery/site_bar),
+        :javascript => %w(admin refinery/site_bar wymeditor**/{**/}*),
         :stylesheet => %w(home refinery/site_bar),
         :controller => %w(pages),
         :model => %w(page refinery/page),
@@ -99,32 +107,33 @@ module Refinery
     private
 
     def _override(kind, which)
-      override_kind = OVERRIDES[kind]
-      pattern = "{refinery#{File::SEPARATOR},}#{which.split("/").join(File::SEPARATOR)}#{override_kind[:glob]}"
-      looking_for = ["app", "vendor"].inject([]) do |memo, location|
-        Refinery::Plugins.registered.pathnames.each do |p|
-          memo << p.join(location, override_kind[:dir], pattern).to_s
-        end
-        memo
-      end
+      @override_kind = OVERRIDES[kind]
 
-      # copy in the matches
-      if (matches = looking_for.map{|d| Dir[d]}.flatten.compact.uniq).any?
+      matcher = [
+        "{refinery#{File::SEPARATOR},}",
+        which.split('/').join(File::SEPARATOR),
+        @override_kind[:glob]
+      ].flatten.join
+
+      if (matches = find_relative_matches(matcher)).present?
         matches.each do |match|
-          location = match[/app|vendor/]
-          dir = match.split("/#{location}/#{override_kind[:dir]}/").last.split('/')
-          file = dir.pop # get rid of the file.
-          dir = dir.join(File::SEPARATOR) # join directory back together
-
-          destination_dir = Rails.root.join(location, override_kind[:dir], dir)
-          FileUtils.mkdir_p(destination_dir)
-          FileUtils.cp match, (destination = File.join(destination_dir, file))
-
-          puts "Copied #{override_kind[:desc]} file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
+          copy_file match, Rails.root.join('app', @override_kind[:dir], match)
         end
       else
-        puts "Couldn't match any #{override_kind[:desc]} files in any extensions like #{which}"
+        puts "Couldn't match any #{@override_kind[:desc]} files in any extensions like #{which}"
       end
+    end
+
+    def find_matches(pattern)
+      Set.new source_paths.map {|path| Dir[path.join(pattern)] }.flatten
+    end
+
+    def find_relative_matches(pattern)
+      find_matches(pattern).map {|match| strip_source_paths(match) }
+    end
+
+    def strip_source_paths(match)
+      match.gsub Regexp.new(source_paths.join('\/?|')), ''
     end
   end
 end

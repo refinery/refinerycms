@@ -70,14 +70,6 @@ en:
           layout_template_help: You can choose a different layout template for this page
           view_template: View template
           view_template_help: You can choose a different view template for this page
-        form_advanced_options_seo:
-          seo: Search Engine Optimization
-          seo_override_title: Browser title
-          seo_override_title_help: Enter a 5-10 word title that summarizes the contents of this page.
-          meta_keywords_title: Meta keywords
-          meta_keywords_help: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
-          meta_description_title: Meta description
-          meta_description_help: Enter a concise two or three sentences describing what this page is about.
         actions:
           create_new_page: Add new page
           reorder_pages: Reorder pages

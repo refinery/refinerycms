@@ -24,8 +24,7 @@ el:
             switch_to: Αλλαγή σε %{view_name} view
             list: λίστα
             grid: πλέγμα
-        grid_view:
-          view_live_html: Δείτε την εικόνα <br/><em>Ανοίγει σε νέο παράθυρο</em>
+        view_live_html: Δείτε την εικόνα <br/><em>Ανοίγει σε νέο παράθυρο</em>
         existing_image:
           button_text: Εισαγωγή
           resize_image: Αλλαγή μεγέθους;

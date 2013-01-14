@@ -25,18 +25,9 @@ Refinery::Core.configure do |config|
   # Enable/disable authenticity token on frontend
   # config.authenticity_token_on_frontend = <%= Refinery::Core.authenticity_token_on_frontend.inspect %>
 
-  # Hide/show child pages in menu
-  # config.menu_hide_children = <%= Refinery::Core.menu_hide_children.inspect %>
-
-  # CSS class selectors for menu helper
-  # config.menu_css = <%= Refinery::Core.menu_css.inspect %>
-
   # Should set this if concerned about DOS attacks. See
   # http://markevans.github.com/dragonfly/file.Configuration.html#Configuration
   # config.dragonfly_secret = <%= Refinery::Core.dragonfly_secret.inspect %>
-
-  # Log info (in console) about rack cache state for resources when you run webserver
-  # config.verbose_rack_cache = <%= Refinery::Core.verbose_rack_cache.inspect %>
 
   # Add extra tags to the wymeditor whitelist e.g. = {'tag' => {'attributes' => {'1' => 'href'}}} or just {'tag' => {}}
   # config.wymeditor_whitelist_tags = <%= Refinery::Core.wymeditor_whitelist_tags.inspect %>
@@ -46,4 +37,7 @@ Refinery::Core.configure do |config|
 
   # Register extra stylesheet for backend (optional options)
   # config.register_stylesheet "custom", :media => 'screen'
+
+  # Specify a different backend path than the default of /refinery.
+  # config.backend_route = <%= Refinery::Core.backend_route.inspect %>
 end

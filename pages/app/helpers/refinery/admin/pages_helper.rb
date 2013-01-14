@@ -35,17 +35,13 @@ module Refinery
           ::I18n.t('draft', :scope => 'refinery.admin.pages.page')
         end if page.draft?
 
-        meta_information.html_safe
+        meta_information
       end
 
       # We show the title from the next available locale
       # if there is no title for the current locale
       def page_title_with_translations(page)
-        if page.title.present?
-          page.title
-        else
-          page.translations.detect {|t| t.title.present?}.title
-        end
+        page.title.presence || page.translations.detect {|t| t.title.present?}.title
       end
     end
   end

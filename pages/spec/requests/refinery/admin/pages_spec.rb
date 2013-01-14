@@ -206,6 +206,21 @@ module Refinery
             new_window_should_have_content("Some changes I'm unsure what they will look like")
           end
 
+          it 'will not show the site bar', :js do
+            visit refinery.admin_pages_path
+
+            find('a[tooltip^=Edit]').click
+            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
+            click_button "Preview"
+
+            new_window_should_not_have_content(
+              ::I18n.t('switch_to_website', :scope => 'refinery.site_bar')
+            )
+            new_window_should_not_have_content(
+              ::I18n.t('switch_to_website_editor', :scope => 'refinery.site_bar')
+            )
+          end
+
           it 'will not save the preview changes', :js do
             visit refinery.admin_pages_path
 

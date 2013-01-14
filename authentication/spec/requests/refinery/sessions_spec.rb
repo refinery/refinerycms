@@ -8,8 +8,8 @@ module Refinery
 
     before do
       FactoryGirl.create(:refinery_user, :username => "ugisozols",
-                              :password => "123456",
-                              :password_confirmation => "123456")
+                                         :password => "123456",
+                                         :password_confirmation => "123456")
 
       visit refinery.login_path
     end
@@ -22,7 +22,7 @@ module Refinery
 
     context "when supplied data is valid" do
       it "logs in user" do
-        fill_in "Login", :with => "ugisozols"
+        fill_in "Username or email", :with => "ugisozols"
         fill_in "Password", :with => "123456"
         click_button "Sign in"
         page.should have_content("Signed in successfully.")
@@ -32,7 +32,7 @@ module Refinery
 
     context "when supplied data is not valid" do
       it "shows flash error" do
-        fill_in "Login", :with => "Hmmm"
+        fill_in "Username or email", :with => "Hmmm"
         fill_in "Password", :with => "Hmmm"
         click_button "Sign in"
         page.should have_content("Sorry, your login or password was incorrect.")
@@ -93,7 +93,7 @@ module Refinery
       end
 
       it "redirects to the protected path on login" do
-        fill_in "Login", :with => "ugisozols"
+        fill_in "Username or email", :with => "ugisozols"
         fill_in "Password", :with => "123456"
         page.click_button "Sign in"
         current_path.should == protected_path

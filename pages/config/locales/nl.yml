@@ -67,14 +67,6 @@ nl:
           custom_slug_help: Een 'slug' is een leesbare aanduiding die in het adres van de pagina gebruikt wordt, bijvoorbeeld 'over'. Refinery genereert automatisch slugs, hier kunt u een aangepaste slug instellen.
           view_template: Sjabloon bekijken
           view_template_help: U kunt een andere sjabloon voor deze pagina kiezen
-        form_advanced_options_seo:
-          seo: Zoekmachine-optimalisatie
-          seo_override_title: Browser-titel
-          seo_override_title_help: Voer een titel in van 5-10 woorden die de inhoud van de pagina samenvat.
-          meta_keywords_title: Meta-trefwoorden
-          meta_keywords_help: Voer 5-10 trefwoorden in die met deze pagina verband houden. Zet komma's tussen de trefwoorden.
-          meta_description_title: Meta-beschrijving
-          meta_description_help: Voer een korte omschrijving van twee tot drie zinnen in, die beschrijft waar deze pagina over gaat.
         actions:
           create_new_page: Nieuwe pagina toevoegen
           reorder_pages: De volgorde van de pagina's wijzigen

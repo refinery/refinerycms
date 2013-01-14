@@ -5,12 +5,12 @@
       <span class="actions">
         <%= link_to refinery_icon_tag('eye.png'), image.url,
                     :target => '_blank',
-                    :title => t('.view_live_html') %>
+                    :title => t('view_live_html', :scope => 'refinery.admin.images') %>
         <%= link_to refinery_icon_tag('application_edit.png'),
                     refinery.edit_admin_image_path(image),
                     :title => t('edit', :scope => 'refinery.admin.images') %>
         <%= link_to refinery_icon_tag('delete.png'),
-                    refinery.admin_image_path(image),
+                    refinery.admin_image_path(image, params.slice(:page)),
                     :class => 'cancel confirm-delete',
                     :title => t('delete', :scope => 'refinery.admin.images'),
                     :data => {

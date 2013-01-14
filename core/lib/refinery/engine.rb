@@ -17,6 +17,7 @@ module Refinery
       #   module Refinery
       #     module Images
       #       class Engine < Rails::Engine
+      #         include Refinery::Engine
       #         engine_name :images
       #
       #         after_inclusion do
@@ -45,6 +46,7 @@ module Refinery
       #   module Refinery
       #     module Images
       #       class Engine < Rails::Engine
+      #         include Refinery::Engine
       #         engine_name :images
       #
       #         before_inclusion do

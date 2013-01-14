@@ -3,7 +3,7 @@
   <span class='title'>
     <%%= <%= singular_name %>.<%= title_attribute %> %>
 <% if localized? %>
-    <%% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
+    <%% if Refinery::I18n.frontend_locales.many? %>
       <span class='preview'>
         <%% <%= singular_name %>.translations.each do |translation| %>
           <%% if translation.<%= title_attribute %>.present? %>

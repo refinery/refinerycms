@@ -163,10 +163,20 @@ gem 'pg'
         # Refinery does not necessarily expect action_mailer to be available as
         # we may not always require it (currently only the authentication extension).
         # Rails, however, will optimistically place config entries for action_mailer.
-        insert_into_file env, "  if config.respond_to?(:action_mailer)\n  ",
-                              :before => %r{^[^#]+config\.action_mailer\.}, :verbose => false
-        insert_into_file env, "\n  end",
-                              :after => %r{^[^#]+config\.action_mailer\..*}, :verbose => false
+        current_mailer_config = File.read(destination_path.join(env)).to_s.
+                                     match(%r{^\s.+?config\.action_mailer\..+([\w\W]*\})?}).
+                                     to_a.flatten.first
+
+        if current_mailer_config.present?
+          new_mailer_config = [
+            "  if config.respond_to?(:action_mailer)",
+            current_mailer_config.gsub(%r{\A\n+?}, ''). # remove extraneous newlines at the start
+                                  gsub(%r{^\ \ }) { |line| "  #{line}" }, # add indentation on each line
+            "  end"
+          ].join("\n")
+
+          gsub_file env, current_mailer_config, new_mailer_config, :verbose => false
+        end
 
         gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
       end

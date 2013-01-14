@@ -4,7 +4,7 @@ module Refinery
     def self.tabs
       @tabs ||= []
     end
-    
+
     def self.tabs_for_template(template)
       return tabs unless template
 

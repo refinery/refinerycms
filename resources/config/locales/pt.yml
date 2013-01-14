@@ -1,0 +1,36 @@
+pt:
+  refinery:
+    plugins:
+      refinery_files:
+        title: Ficheiros
+        description: Carregar ficheiros
+    admin:
+      resources:
+        delete: Apagar ficheiro definitivamente
+        edit: Editar este ficheiro
+        form:
+          download_current: Download ficheiro actual
+          or: ou
+          replace: " substituir por..."
+          maximum_file_size: O tamanho máximo é %{bytes}.
+        resource:
+          download: Download deste ficheiro (%{size})
+        actions:
+          upload_new: Carregar novo ficheiro
+        records:
+          no_files_yet: Não existem ficheiros ainda. Clique em "Carregar novo ficheiro" para adicionar o primeiro.
+        insert:
+          existing: Ficheiros existentes
+          new: Novo ficheiro
+          no_files: Não existem ficheiros.
+        existing_resource:
+          link_to_file: Link para este ficheiro
+          button_text: Inserir
+  activerecord:
+    models:
+      refinery/resource: ficheiro
+    errors:
+      models:
+        refinery/resource:
+          blank: É necessário You must especificar um ficheiro para carregar
+          too_big: O ficheiro precisa de ser mais pequeno que %{size} bytes de tamanho

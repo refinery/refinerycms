@@ -1,0 +1,44 @@
+pt:
+  refinery:
+    plugins:
+      refinery_images:
+        title: "Imagens"
+        description: "Gerir imagens"
+    admin:
+      images:
+        delete: "Apagar esta imagem definitivamente"
+        edit: "Editar esta imagem"
+        form:
+          image: "Imagem"
+          use_current_image: "Usar imagem actual"
+          or: "ou"
+          replace_image: " substituir por esta..."
+          current_image: "Imagem actual"
+          maximum_image_size: "O tamanho máximo é %{bytes}."
+        actions:
+          create_new_image: Adicionar nova imagem
+        records:
+          no_images_yet: 'Ainda não existem imagens. Clique em "Adicionar nova imagem" para adicionar a primeira.'
+        index:
+          view:
+            switch_to: Mudar a disposição para %{view_name}
+            list: lista
+            grid: grelha
+        view_live_html: Ver esta imagem <br/><em>Abre uma nova janela</em>
+        existing_image:
+          button_text: Inserir
+          resize_image: Redimensionar esta imagem?
+          size: Tamanho
+        insert:
+          existing_image: Imagem existente
+          new_image: Carregar nova imagem
+  activerecord:
+    models:
+      refinery/image: Imagem
+    errors:
+      models:
+        refinery/image:
+          blank: "Deve especificar uma imagem para carregar "
+          too_big: "A imagem deve ser menor do que %{size} bytes de tamanho"
+          incorrect_format: 'A imagem deve ser num dos seguintes formatos: JPG, PNG ou GIF'
+          different_file_name: A nova imagem não pode ter um nome diferente

@@ -71,14 +71,6 @@ sk:
           layout_template_help: Pre túto stránku si môžete vybrať odlišnú šablónu rozmiestnenia.
           view_template: Šablóny vzhľadu
           view_template_help: Pre túto stránku si môžete vybrať odlišnú šablónu vzhľadu.
-        form_advanced_options_seo:
-          seo: Optimalizácia pre vyhľadávače
-          seo_override_title: Titulok prehliadača
-          seo_override_title_help: Vložte titulok dĺžky 5-10 slov, ktorý vystihuje obsah stránky.
-          meta_keywords_title: Kľúčové slová (Meta keywords)
-          meta_keywords_help: Vložte 5-10 kľúčových slov oddelených čiarkov, ktoré sa vzťahujú k obsahu stránky.
-          meta_description_title: Popis (Meta description)
-          meta_description_help: Vložte 2-3 krátke vety sumarizujúce obsah stránky.
         actions:
           create_new_page: Pridať novú stránku
           reorder_pages: Zmeniť usporiadanie stránok

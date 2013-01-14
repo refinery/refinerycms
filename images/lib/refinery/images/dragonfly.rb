@@ -7,7 +7,6 @@ module Refinery
       class << self
         def setup!
           app_images = ::Dragonfly[:refinery_images]
-          app_images.configure_with(:imagemagick)
 
           app_images.define_macro(::Refinery::Image, :image_accessor)
 
@@ -17,6 +16,7 @@ module Refinery
 
         def configure!
           app_images = ::Dragonfly[:refinery_images]
+          app_images.configure_with(:imagemagick)
           app_images.configure_with(:rails) do |c|
             c.datastore.root_path = Refinery::Images.datastore_root_path
             c.url_format = Refinery::Images.dragonfly_url_format
@@ -36,16 +36,14 @@ module Refinery
           end
         end
 
+        ##
+        # Injects Dragonfly::Middleware for Refinery::Images into the stack
         def attach!(app)
-          ### Extend active record ###
-          app.config.middleware.insert_before Refinery::Images.dragonfly_insert_before,
-                                              'Dragonfly::Middleware', :refinery_images
-
-          app.config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
-            :verbose     => Refinery::Core.verbose_rack_cache,
-            :metastore   => "file:#{Rails.root.join('tmp', 'dragonfly', 'cache', 'meta')}",
-            :entitystore => "file:#{Rails.root.join('tmp', 'dragonfly', 'cache', 'body')}"
-          }
+          if ::Rails.application.config.action_controller.perform_caching
+            app.config.middleware.insert_after 'Rack::Cache', 'Dragonfly::Middleware', :refinery_images
+          else
+            app.config.middleware.use 'Dragonfly::Middleware', :refinery_images
+          end
         end
       end
 

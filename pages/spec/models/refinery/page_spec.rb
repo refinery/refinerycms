@@ -3,7 +3,6 @@ require 'spec_helper'
 
 module Refinery
   describe Page do
-
     let(:page_title) { 'RSpec is great for testing too' }
     let(:child_title) { 'The child page' }
 
@@ -16,15 +15,16 @@ module Refinery
     let(:created_child) { created_page.children.create!(:title => child_title) }
 
     def page_cannot_be_destroyed
+      page.should_receive(:puts_destroy_help)
       page.destroy.should == false
     end
 
     def turn_off_marketable_urls
-      Refinery::Pages.stub(:marketable_urls).and_return(false)
+      Pages.stub(:marketable_urls).and_return(false)
     end
 
     def turn_on_marketable_urls
-      Refinery::Pages.stub(:marketable_urls).and_return(true)
+      Pages.stub(:marketable_urls).and_return(true)
     end
 
     context 'cannot be deleted under certain rules' do
@@ -106,9 +106,9 @@ module Refinery
 
     context 'canonicals' do
       before do
-        ::Refinery::I18n.stub(:default_frontend_locale).and_return(:en)
-        ::Refinery::I18n.stub(:frontend_locales).and_return([Refinery::I18n.default_frontend_locale, :ru])
-        ::Refinery::I18n.stub(:current_frontend_locale).and_return(Refinery::I18n.default_frontend_locale)
+        Refinery::I18n.stub(:default_frontend_locale).and_return(:en)
+        Refinery::I18n.stub(:frontend_locales).and_return([I18n.default_frontend_locale, :ru])
+        Refinery::I18n.stub(:current_frontend_locale).and_return(I18n.default_frontend_locale)
 
         page.save
       end
@@ -118,7 +118,7 @@ module Refinery
 
       describe '#canonical' do
         let!(:default_canonical) {
-          Globalize.with_locale(::Refinery::I18n.default_frontend_locale) {
+          Globalize.with_locale(Refinery::I18n.default_frontend_locale) {
             page.canonical
           }
         }
@@ -143,7 +143,7 @@ module Refinery
 
       describe '#canonical_slug' do
         let!(:default_canonical_slug) {
-          Globalize.with_locale(::Refinery::I18n.default_frontend_locale) {
+          Globalize.with_locale(Refinery::I18n.default_frontend_locale) {
             page.canonical_slug
           }
         }
@@ -177,8 +177,8 @@ module Refinery
       }
 
       after(:each) do
-        ::Refinery::I18n.stub(:current_frontend_locale).and_return(Refinery::I18n.default_frontend_locale)
-        ::Refinery::I18n.stub(:current_locale).and_return(Refinery::I18n.default_locale)
+        Refinery::I18n.stub(:current_frontend_locale).and_return(I18n.default_frontend_locale)
+        Refinery::I18n.stub(:current_locale).and_return(I18n.default_locale)
       end
 
       it 'returns its path with custom slug' do
@@ -196,8 +196,8 @@ module Refinery
       end
 
       it 'returns its path with custom slug when using different locale' do
-        ::Refinery::I18n.stub(:current_frontend_locale).and_return(:ru)
-        ::Refinery::I18n.stub(:current_locale).and_return(:ru)
+        Refinery::I18n.stub(:current_frontend_locale).and_return(:ru)
+        Refinery::I18n.stub(:current_locale).and_return(:ru)
         page_with_custom_slug.custom_slug = "#{custom_page_slug}-ru"
         page_with_custom_slug.save
         page_with_custom_slug.reload
@@ -207,8 +207,8 @@ module Refinery
       end
 
       it 'returns path underneath its parent with custom urls when using different locale' do
-        ::Refinery::I18n.stub(:current_frontend_locale).and_return(:ru)
-        ::Refinery::I18n.stub(:current_locale).and_return(:ru)
+        Refinery::I18n.stub(:current_frontend_locale).and_return(:ru)
+        Refinery::I18n.stub(:current_locale).and_return(:ru)
         child_with_custom_slug.custom_slug = "#{custom_child_slug}-ru"
         child_with_custom_slug.save
         child_with_custom_slug.reload
@@ -223,22 +223,11 @@ module Refinery
         end
 
         it "fails validation when a new record uses that custom_slug" do
-          new_page = Refinery::Page.new :custom_slug => custom_page_slug
+          new_page = Page.new :custom_slug => custom_page_slug
           new_page.valid?
 
           new_page.errors[:custom_slug].should_not be_empty
         end
-      end
-    end
-
-    context 'home page' do
-      it 'responds as the home page' do
-        page.link_url = '/'
-        page.home?.should == true
-      end
-
-      it 'responds as a normal page when not set to home page' do
-        page.home?.should == false
       end
     end
 
@@ -326,10 +315,6 @@ module Refinery
 
     context 'meta data' do
       context 'responds to' do
-        it 'meta_keywords' do
-          page.respond_to?(:meta_keywords)
-        end
-
         it 'meta_description' do
           page.respond_to?(:meta_description)
         end
@@ -340,11 +325,6 @@ module Refinery
       end
 
       context 'allows us to assign to' do
-        it 'meta_keywords' do
-          page.meta_keywords = 'Some, great, keywords'
-          page.meta_keywords.should == 'Some, great, keywords'
-        end
-
         it 'meta_description' do
           page.meta_description = 'This is my description of the page for search results.'
           page.meta_description.should == 'This is my description of the page for search results.'
@@ -357,14 +337,6 @@ module Refinery
       end
 
       context 'allows us to update' do
-        it 'meta_keywords' do
-          page.meta_keywords = 'Some, great, keywords'
-          page.save
-
-          page.reload
-          page.meta_keywords.should == 'Some, great, keywords'
-        end
-
         it 'meta_description' do
           page.meta_description = 'This is my description of the page for search results.'
           page.save
@@ -386,12 +358,12 @@ module Refinery
 
     describe "#to_refinery_menu_item" do
       let(:page) do
-        Refinery::Page.new(
+        Page.new(
           :id => 5,
           :parent_id => 8,
           :menu_match => "^/foo$"
 
-        # Refinery::Page does not allow setting lft and rgt, so stub them.
+        # Page does not allow setting lft and rgt, so stub them.
         ).tap do |p|
           p[:lft] = 6
           p[:rgt] = 7
@@ -493,11 +465,11 @@ module Refinery
       end
 
       it "should return (root) about page when looking for '/about'" do
-        Refinery::Page.find_by_path('/about').should == created_root_about
+        Page.find_by_path('/about').should == created_root_about
       end
 
       it "should return child about page when looking for '/team/about'" do
-        Refinery::Page.find_by_path('/team/about').should == created_child
+        Page.find_by_path('/team/about').should == created_child
       end
     end
 
@@ -508,29 +480,29 @@ module Refinery
 
       context "when marketable urls are true and path is present" do
         before do
-          Refinery::Page.stub(:marketable_urls).and_return(true)
+          Page.stub(:marketable_urls).and_return(true)
         end
 
         context "when path is friendly_id" do
           it "finds page using path" do
-            Refinery::Page.find_by_path_or_id(path, "").should eq(market)
+            Page.find_by_path_or_id(path, "").should eq(market)
           end
         end
 
         context "when path is not friendly_id" do
           it "finds page using id" do
-            Refinery::Page.find_by_path_or_id(id, "").should eq(market)
+            Page.find_by_path_or_id(id, "").should eq(market)
           end
         end
       end
 
       context "when id is present" do
         before do
-          Refinery::Page.stub(:marketable_urls).and_return(false)
+          Page.stub(:marketable_urls).and_return(false)
         end
 
         it "finds page using id" do
-          Refinery::Page.find_by_path_or_id("", id).should eq(market)
+          Page.find_by_path_or_id("", id).should eq(market)
         end
       end
     end
@@ -540,6 +512,7 @@ module Refinery
         page.deletable  = true
         page.link_url   = ""
         page.menu_match = ""
+        page.stub(:puts_destroy_help).and_return('')
         page
       end
 
@@ -574,14 +547,12 @@ module Refinery
         page.link_url   = "link_url"
         page.menu_match = "menu_match"
         page.save!
-        # need to stub this in order to see message
-        Rails.env.stub(:test?).and_return(false)
       end
 
       it "shows message" do
-        msg = capture(:stdout) { page.destroy }
+        page.should_receive(:puts_destroy_help)
 
-        msg.should eq("This page is not deletable. Please use .destroy! if you really want it deleted \nunset .link_url,\nunset .menu_match,\nset .deletable to true\n")
+        page.destroy
       end
     end
   end

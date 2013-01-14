@@ -154,7 +154,7 @@ $.extend(WYMeditor, {
     TITLE                   : "title",
     TARGET                : "target",
     ALT                    : "alt",
-    REL                     : 'rel',
+    REL                     : 'data-rel',
     DIALOG_LINK             : "Link",
     DIALOG_IMAGE          : "Image",
     DIALOG_TABLE          : "Table",
@@ -186,8 +186,8 @@ $.extend(WYMeditor, {
      "li", "tbody", "td", "tfoot", "th", "thead", "tr", "meter",
      "section", "article", "aside", "details", "header", "footer",
      "nav", "dialog", "figure", "figcaption", "address", "hgroup",
-     "mark", "time", "canvas", "audio", "video", "source", "output",
-     "progress", "ruby", "rt", "rp", "summary", "command"<%= ", #{Refinery::Core.wymeditor_whitelist_tags.keys.map{|k| %Q{"#{k}"}}.join(', ')}" if Refinery::Core.wymeditor_whitelist_tags.any? %>),
+     "mark", "time", "canvas", "audio", "video", "output",
+     "progress", "ruby", "rt", "rp", "summary", "command"),
 
     KEY : {
       BACKSPACE: 8,

@@ -1,6 +1,4 @@
 module Refinery
-  module Engines; end;
-
   class Plugin
 
     attr_accessor :name, :class_name, :controller, :directory, :url,

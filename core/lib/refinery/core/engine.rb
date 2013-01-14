@@ -7,14 +7,10 @@ module Refinery
       engine_name :refinery
 
       class << self
-        # Require/load (based on Rails app.config) all decorators from app/decorators/
-        # and from registered plugins' paths too.
-        def load_decorators
-          [Rails.root, Refinery::Plugins.registered.pathnames].flatten.map { |p|
-            Dir[p.join('app', 'decorators', '**', '*_decorator.rb')]
-          }.flatten.uniq.each do |decorator|
-            Rails.application.config.cache_classes ? require(decorator) : load(decorator)
-          end
+        # Register all decorators from app/decorators/ and registered plugins' paths.
+        def register_decorators!
+          require 'decorators'
+          Decorators.register! Rails.root, Refinery::Plugins.registered.pathnames
         end
 
         # Performs the Refinery inclusion process which extends the currently loaded Rails
@@ -36,7 +32,7 @@ module Refinery
       # Include the refinery controllers and helpers dynamically
       config.to_prepare &method(:refinery_inclusion!).to_proc
 
-      after_inclusion &method(:load_decorators).to_proc
+      after_inclusion &method(:register_decorators!).to_proc
 
       # Wrap errors in spans
       config.to_prepare do
@@ -97,11 +93,6 @@ module Refinery
           "modernizr-min.js",
           "admin.js"
         ]
-      end
-
-      # Disable asset debugging - it's a performance killer in dev mode
-      initializer "refinery.assets.pipeline" do |app|
-        app.config.assets.debug = false
       end
 
       # active model fields which may contain sensitive data to filter

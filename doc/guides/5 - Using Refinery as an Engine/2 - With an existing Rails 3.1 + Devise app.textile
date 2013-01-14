@@ -8,13 +8,11 @@ This guide covers adding functionality provided by Refinery CMS to an existing a
 
 endprologue.
 
-TIP. This guide is based on Edge Refinery, on the way to support Rails 3.1
-
 h3. Guide Assumptions
 
 This guide assumes you are starting with a working Ruby On Rails v3.1.x application that is using Devise for authentication. It does not assume you are using any particular authorization gem like CanCan. The instructions have been tested with Devise v1.4.0.
 
-This guides takes an approach of leaving the Refinery Gems unmodified to make it easier to upgrade them without re-merging in your necessary modifications. You'd just have to keep an eye on the User model.
+This guide takes an approach of leaving the Refinery Gems unmodified to make it easier to upgrade them without re-merging in your necessary modifications. You'd just have to keep an eye on the User model.
 
 h4. Assumptions About The Existing Application
 
@@ -35,38 +33,31 @@ h3. Creating the existing Rails + Devise application
 These commands should speak for themselves if you previously created your own rails + devise app to integrate with.
 
 <shell>
-$ mkdir ExistingApp
-$ cd ExistingApp
-$ rvm use 1.9.2   # for example, could be another ruby compatible with Rails 3.1.x
-$ rvm gemset create 'existing'
-$ echo "rvm use 1.9.2@existing" > .rvmrc
-$ cd . #to trigger rvm to approve and start using .rvmrc setting
-$ git init #if you are using git for source code control. Git commit steps will be left out of this guide to keep it focused.
-$ cd ..
-$ rails -v #probably want to ensure >= 3.1.0
-$ #if the rails gem isn't there to get your app generated you might do the following two steps..
-$ rvm use 1.9.2@existing #if necessary
-$ gem install rails #if necessary
-$ rails new ExistingApp
-$ cd ExistingApp
+gem install rails # ensure it is greater than 3.1.3 and less than 4.0.0
+rails new ExistingApp
+cd ExistingApp
 </shell>
 
 +Gemfile+
 <ruby>
-...
-  gem 'devise', '~> 1.4.0' #Not recommending a specific version, just saying perhaps your app used an older version than refinery requires, and you aren't quite ready to upgrade, just to demonstrate...
-...
+  # ...
+
+  gem 'devise', '~> 1.4.0' # Not recommending a specific version, just saying perhaps your app used an older version than refinery requires, and you aren't quite ready to upgrade, just to demonstrate...
+
+  # ...
 </ruby>
 
 <shell>
-$ bundle install
-$ rails generate devise:install
-$ rails generate devise User #Devise might be using another model name in your existing app
-$ rake db:migrate
+bundle
+rails generate devise:install
+rails generate devise User # Devise might be using another model name in your existing application
+bundle exec rake db:migrate
 </shell>
 
 Next we'll add a static, unrestricted home page, the notice and alert flashes to the application default layout, and a restricted_content controller and view.
+
 We'll also add a simple stylesheet, which in a real existing app, would be what we would like Refinery to integrate with on the front end, rather than refinery overriding it.
+
 To demonstrate another wrinkle you might discover, let's customize our use of Devise a tiny bit, by overriding the session controller to handle a before_filter to prevent logging in when the database is undergoing maintenance.
 
 
@@ -75,7 +66,7 @@ To demonstrate another wrinkle you might discover, let's customize our use of De
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ExistingApp</title>
+    <title>Existing Application</title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -83,8 +74,7 @@ To demonstrate another wrinkle you might discover, let's customize our use of De
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-  <%= yield %>
-
+    <%= yield %>
   </body>
 </html>
 </erb>
@@ -92,7 +82,7 @@ To demonstrate another wrinkle you might discover, let's customize our use of De
 +app/controllers/static_controller.rb+
 <ruby>
 class StaticController < ApplicationController
-#using default layouts and views, so don't need to define methods here.
+  # using default layouts and views, so don't need to define methods here.
 end
 </ruby>
 
@@ -106,9 +96,9 @@ end
 class Users::SessionsController < Devise::SessionsController
   before_filter :block_login_during_maintenance
   def block_login_during_maintenance
-   return if !DB_UNDER_MAINTENANCE
-   redirect_to db_maintenance_message_path
-   return false
+    return unless DB_UNDER_MAINTENANCE
+    redirect_to db_maintenance_message_path
+    return false
   end
 end
 </ruby>
@@ -137,15 +127,19 @@ end
 
 +config/routes.rb+
 <ruby>
-  ...
-  match "vault" =>"restricted_content#vault"
-  get "static/db_maintenance", :as=>"db_maintenance_message"
-  root :to => "static#home"
-  ...
+  ExistingApp::Routes.draw do
+    # ...
+
+    get "vault", :to => "restricted_content#vault"
+    get "static/db_maintenance", :as => "db_maintenance_message"
+    root :to => "static#home"
+
+    # ...
+  end
 </ruby>
 
 +app/assets/stylesheets/front_end_styles.css+
-<erb>
+<css>
 /* not pretty, but you'll know it when you see it*/
 body {
   background-color: #1100aa
@@ -153,38 +147,34 @@ body {
 p, a, h1, h2, h3, h4 {
   color: white
 }
-</erb>
+</css>
 
 <shell>
-$ rm public/index.html
-$ rails generate devise:views
-$ mkdir app/views/users
-$ mkdir app/views/users/sessions
-$ cp app/views/devise/sessions/new.html.erb app/views/users/sessions/.
+rm public/index.html
+rails generate devise:views
+mkdir app/views/users
+mkdir app/views/users/sessions
+cp app/views/devise/sessions/new.html.erb app/views/users/sessions/.
 </shell>
 
 +app/views/users/sessions/new.html.erb+
 <erb>
 ...
 Our custom new session view
-#Leave the rest unchanged
+# Leave the rest unchanged
 ...
 </erb>
 
 <shell>
-$ rails c
-ruby> me = User.create(:email=>"my_email@my_company.com", :password=>"my_pa$$word")
-...
-ruby> exit
-$ rails s
+rails console
 </shell>
+
+<ruby>
+User.create :email=>"my_email@my_company.com", :password=>"my_pa$$word"
+</ruby>
 
 Go to http://localhost:3000 and you should see the home page.
 Go to http://localhost:3000/vault and you should be able to sign in and then see the vault page.
-<shell>
-$ git add -A
-$ git commit
-</shell>
 
 h3. Integrating Refinery CMS into ExistingApp
 
@@ -192,42 +182,38 @@ Now that we have a baseline example working ExistingApp using Devise, it's time 
 
 +Gemfile+
 <ruby>
-...
-  gem 'devise' #temporarily commented out,'~> 1.4.0'
+  # ...
 
-  git 'git://github.com/refinery/refinerycms.git' do
-    gem 'refinerycms-core'
-    gem 'refinerycms-dashboard'
-    gem 'refinerycms-images'
-    gem 'refinerycms-pages'
-    gem 'refinerycms-resources'
-  end
+  gem 'devise' # temporarily commented out,'~> 1.4.0'
 
-  group :development, :test do
-    gem 'refinerycms-testing',  :git => 'git://github.com/refinery/refinerycms.git'
-  end
-...
+  gem 'refinerycms-dashboard', '~> 2.1.0'
+  gem 'refinerycms-images', '~> 2.1.0'
+  gem 'refinerycms-pages', '~> 2.1.0'
+  gem 'refinerycms-resources', '~> 2.1.0'
+
+  gem 'refinerycms-testing', '~> 2.1.0', :group => :test
+
+  # ...
 </ruby>
 
 <shell>
-$ bundle # or bundle update if you have version conflicts
-$ rails generate refinery:cms # you will be asked whether or not you want to override your devise.rb file. Simply say no to keep your config.
+bundle # or bundle update if you have version conflicts
+rails generate refinery:cms # Say no if asked to override your devise.rb file.
 </shell>
 
 Now we have to undo some of what the refinery generator did, to keep control of the front end, and let refinery still handle the admin backend, as well as not squashing our existing user table.
 <shell>
-$ mv app/views/layouts/application.html.erb.backup app/views/layouts/application.html.erb
-TODO don't really know how you handle the asset pipeline, but obviously the following lines don't have anymore sense
-$ mkdir public/stylesheets/hide
-$ mv public/stylesheets/*.css public/stylesheets/hide/.
-$ mv public/stylesheets/hide/front_end_styles.css public/stylesheets/.
+mv app/views/layouts/application.html.erb.backup app/views/layouts/application.html.erb
+mkdir -p app/assets/stylesheets/hide
+mv app/assets/stylesheets/*.css app/assets/stylesheets/hide/
+mv app/assets/stylesheets/hide/front_end_styles.css app/assets/stylesheets/
 </shell>
 
 Now we need to setup up:
 
-* a Role model
-* an additional model to get our many to many association working: RolesUsers
-* a model used to list all Refinery plugins belonging to someone: UserPlugin
+* A Role model
+* An additional model to get our many to many association working: +RolesUsers+
+* A model used to list all Refinery plugins belonging to someone: +UserPlugin+
 
 These are created by default when you add the refinerycms-authentication gem so we won't reinvent the wheel and use the existing code taken from github. Be aware that your existing models could do the trick (except for UserPlugin), as long as you implement some methods but we'll see that later.
 
@@ -236,12 +222,12 @@ WARNING. Beware of raw code: models are usually namespaced. Ex: replace ::Refine
 With inspiration from https://github.com/refinery/refinerycms/blob/master/authentication/db/migrate/, refinery_cms_authentication_schema:
 
 <shell>
-$ rails g model RolesUsers user_id:integer role_id:integer # add the index directly within the migration file
-$ rails g model Role title:string
-$ rails g model UserPlugin user_id:integer name:string position:integer
+rails g model RolesUsers user_id:integer role_id:integer # add the index directly within the migration file
+rails g model Role title:string
+rails g model UserPlugin user_id:integer name:string position:integer
 </shell>
 
-Now we have to fill in our models. Once again, we won't reinvent the wheel so we'll pick the code from here: https://github.com/refinery/refinerycms/blob/master/authentication/app/models/refinery/
+Now we have to fill in our models. Once again, we won't re-invent the wheel so we'll pick the code from here: https://github.com/refinery/refinerycms/blob/2.1.0/authentication/app/models/refinery/
 
 +app/model/role.rb+
 <ruby>
@@ -278,13 +264,13 @@ end
 +app/model/user.rb+
 <ruby>
 class User < Refinery::Core::BaseModel
-  #Your stuff
+  # Your stuff
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  #/Your stuff
+  # End of your stuff
 
   has_and_belongs_to_many :roles, :join_table => ::RolesUsers.table_name
   has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
@@ -300,40 +286,50 @@ class User < Refinery::Core::BaseModel
   end
 
   def authorized_plugins
-    plugins.collect { |p| p.name } | ::Refinery::Plugins.always_allowed.names
+    plugins.collect(&:name) | ::Refinery::Plugins.always_allowed.names
   end
 
   def add_role(title)
-    raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(::Role)
+    if title.is_a? ::Role
+      raise ArgumentException, "Role should be the title of the role not a role object."
+    end
+
     roles << ::Role[title] unless has_role?(title)
   end
 
   def has_role?(title)
-    raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(::Role)
-    roles.any?{|r| r.title == title.to_s.camelize}
+    if title.is_a? ::Role
+      raise ArgumentException, "Role should be the title of the role not a role object."
+    end
+
+    roles.any? { |r| r.title == title.to_s.camelize}
   end
 
   def can_delete?(user_to_delete = self)
-    user_to_delete.persisted? and
-    id != user_to_delete.id and
-    !user_to_delete.has_role?(:superuser) and
-    Role[:refinery].users.count > 1
+    user_to_delete.persisted? &&
+      !user_to_delete.has_role?(:superuser) &&
+      ::Refinery::Role[:refinery].users.any? &&
+      id != user_to_delete.id
+  end
+
+  def can_edit?(user_to_edit = self)
+    user_to_edit.persisted? && (user_to_edit == self || self.has_role?(:superuser))
   end
 end
 </ruby>
 
 <shell>
-$ rake db:migrate
+bundle exec rake db:migrate
 </shell>
 
 Now we need to add authentication goodness manually, it will just consist in telling refinery to use your devise helpers.
 
-We'll add this in your lib directory
+We'll add this in your lib directory:
 
 <shell>
-$ mkdir lib/refinery
-$ touch lib/refinery/refinery_patch.rb
-$ touch lib/refinery/restrict_refinery_to_refinery_users.rb
+mkdir lib/refinery
+touch lib/refinery/refinery_patch.rb
+touch lib/refinery/restrict_refinery_to_refinery_users.rb
 </shell>
 
 Then open the files and put the content from this gist inside: https://gist.github.com/1272720
@@ -345,14 +341,16 @@ Next, we'll have to load the content of these files in your app.
 module ExistingApp
   class Application < Rails::Application
     ...
-    config.autoload_paths += Dir["#{config.root}/lib/**/"] # to load files from lib directory, including subfolders
+    # Load files from the lib directory, including subfolders.
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.before_initialize do
       require 'refinery_patch'
       require 'restrict_refinery_to_refinery_users'
     end
 
-    config.to_prepare do
-      [::Refinery::ApplicationController, Refinery::Helpers].each do |c|
+    include Refinery::Engine
+    after_inclusion do
+      [::ApplicationController, ::ApplicationHelper, ::Refinery::AdminController].each do |c|
         c.send :include, ::RefineryPatch
       end
 
@@ -363,50 +361,81 @@ module ExistingApp
 end
 </ruby>
 
-Next we need to give refinerycms-core/lib/controllers/application_controller.rb a valid refinery user so it won't take over with a "show welcome" view.
+Next we need to give @refinerycms-core/lib/controllers/application_controller.rb@ a valid Refinery user so it won't take over with a new user form.
 <shell>
-$ rails c
-ruby> su = Role.create(:title=>"Superuser")
-ruby> re = Role.create(:title=>"Refinery")
-ruby> me = User.first #created above to test devise
-ruby> me.roles << su
-ruby> me.roles << re
-ruby> me.save
-true
-ruby> exit
+rails console
 </shell>
 
-We need to also avoid the show_welcome page in test mode or our ExistingApp existing integration tests will suddenly stop working.
-+app/controllers/application_controller+
+<ruby>
+first_user = User.first # created above to test devise
+first_user.roles << Role.create(:title=>"Superuser")
+first_user.roles << Role.create(:title=>"Refinery")
+first_user.save
+exit
+</ruby>
+
+We need to also avoid showing the new user form in test mode or any integration tests in ExistingApp will suddenly stop working.
+
+NOTE: For branch @2-0-stable@ the relevant method is @refinery_user_required?@ in @app/controllers/application_controller@
 <ruby>
 class ApplicationController < ActionController::Base
-  ...
-  def show_welcome_page?
-    #overriding refinery initialization wizard behavior, so unpopulated test
-    #database will successfully run.
+  #...
+
+  def refinery_user_required?
     false
   end
-  ...
+
+  # ...
+end
+</ruby>
+
+NOTE: For branch @master@ the relevant method is @require_refinery_users!@ in @app/controllers/refinery/admin/base_controller@
+
+<ruby>
+Refinery::Admin::BaseController.class_eval do
+  def require_refinery_users!
+    false
+  end
 end
 </ruby>
 
 Ok. We should be ready to give it a spin.
 
-If you try to access http://localhost:3000/, you should get first an error "undefined method 'refinery_user?'". Just reload the page, it should now be fine.
+If you try to access http://localhost:3000/, you should get first an error @undefined method 'refinery_user?'@. Just reload the page, it should now be fine.
 
-If you try to access http://localhost:3000/refinery (the refinery administrative backend), boom again: "undefined method `destroy_refinery_user_session_path'".
+If you try to access http://localhost:3000/refinery (Refinery's administrative backend), boom again: "undefined method `destroy_refinery_user_session_path'".
 
 Indeed, we have to correct one view to set the proper url helper.
 
 <shell>
-$ rake refinery:override view=refinery/_site_bar
+bundle exec rake refinery:override view=refinery/_site_bar
 </shell>
 
-Now the partial has been moved to your app, change "destroy_refinery_user_session_path", with "destroy_user_session_path".
-Also important, add ":method => :delete" if it's not in the link_to helper.
-
-TODO: bug in refinery?
+Now the partial has been moved to your app, change @destroy_refinery_user_session_path@, with @destroy_user_session_path@.
+Also important, add @:method => :delete@ if it's not in the link_to helper.
 
 Retry http://localhost:3000/refinery, it should be fine now.
 
-Last advice: in your routes, map your root with "refinery/pages#home" if you want refinery to handle your homepage.
+Now if you want to be able to edit the User model from refinery, then you should make sure the User table matches the Refinery::User
+table exactly. In most cases with devise, it is as simple as adding the @username@ column to the @users@ table and making that attribute
+accessible in the model. Next you can set up the following initializer:
+
++config/initializers/refinery_class_substitutions.rb+
+<ruby>
+class Refinery::User < User; end
+class Refinery::Role < Role; end
+</ruby>
+
+Now you can restart your server, and manage users instead of refinery_users.
+
+Last advice: in your routes, map your root with @refinery/pages#home@ if you want Refinery to handle your homepage.
+
+<ruby>
+ExistingApp::Routes.draw do
+  # ...
+
+  root :to => 'refinery/pages#home'
+
+  # ...
+end
+</ruby>

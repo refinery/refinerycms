@@ -57,7 +57,7 @@ module Refinery
           it "adds 'hidden' label" do
             page.show_in_menu = false
 
-            helper.page_meta_information(page).should eq("<span class=\"label\">hidden</span>")
+            helper.page_meta_information(page).should eq(%q{<span class="label">hidden</span>})
           end
         end
 
@@ -65,7 +65,7 @@ module Refinery
           it "adds 'draft' label" do
             page.draft = true
 
-            helper.page_meta_information(page).should eq("<span class=\"label notice\">draft</span>")
+            helper.page_meta_information(page).should eq(%q{<span class="label notice">draft</span>})
           end
         end
       end
@@ -93,7 +93,7 @@ module Refinery
 
         context "when title for current locale isn't available" do
           it "returns existing title from translations" do
-            Refinery::Page::Translation.where(:locale => :en).first.delete
+            Page.translation_class.where(:locale => :en).first.destroy
             helper.page_title_with_translations(page).should eq("melnraksts")
           end
         end

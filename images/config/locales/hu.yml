@@ -1,0 +1,44 @@
+hu:
+  refinery:
+    plugins:
+      refinery_images:
+        title: Képek
+        description: Képek kezelése
+    admin:
+      images:
+        delete: Kép végleges eltávolítása
+        edit: Kép szerkesztése
+        form:
+          image: Kép
+          use_current_image: Jelenlegi kép használata
+          or: vagy
+          replace_image: " lecserélés a következővel..."
+          current_image: Jelenlegi Kép
+          maximum_image_size: 'A maximum képméret: %{bytes}.'
+        actions:
+          create_new_image: Új kép hozzáadása
+        records:
+          no_images_yet: Még nincsenek képek. Kattints az "Új kép hozzáadása"-ra hogy hozzáadd az első képet.
+        index:
+          view:
+            switch_to: 'Váltás %{view_name} nézetre'
+            list: lista
+            grid: rács
+        view_live_html: Kép megtekintésekor <br/><em>új ablakban nyílik meg</em>
+        existing_image:
+          button_text: Beszúrás
+          resize_image: Kép átméretezése?
+          size: Méret
+        insert:
+          existing_image: Könyvtár
+          new_image: Feltölt
+  activerecord:
+    models:
+      refinery/image: kép
+    errors:
+      models:
+        refinery/image:
+          blank: Meg kell adnod egy feltöltendő képet
+          too_big: A képnek kisebbnek kell lennie mint %{size} bájt
+          incorrect_format: 'A kép formátuma csak JPG, PNG vagy GIF lehet'
+          different_file_name: Új kép nem lehet más néven
