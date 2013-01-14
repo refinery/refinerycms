@@ -75,11 +75,13 @@ module Refinery
     end
 
     def version
-      Refinery.deprecate "Refinery::Plugin#version", :when => '2.2'
+      Refinery.deprecate "Refinery::Plugin#version", :when => '2.2',
+                         :caller => caller.detect{|c| /#{pathname}/ === c }
     end
-    
-    def version=(*)
-      Refinery.deprecate "Refinery::Plugin#version=", :when => '2.2'
+
+    def version=(*args)
+      Refinery.deprecate "Refinery::Plugin#version=", :when => '2.2',
+                         :caller => caller.detect{|c| /#{pathname}/ === c }
     end
 
   # Make this protected, so that only Plugin.register can use it.
