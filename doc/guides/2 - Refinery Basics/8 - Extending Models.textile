@@ -29,8 +29,8 @@ end
 </ruby>
 
 The important things to note, above:
-1. +:refinery_pages+ is the actual name of the Page model's database table (you can find this out in Rails console by typing +Refinery::Page.table_name+);
-2. +:background_image_id+ is the column name under which we store the foreign key pointing to a +Refinery::Image+.
+# +:refinery_pages+ is the actual name of the Page model's database table (you can find this out in Rails console by typing +Refinery::Page.table_name+);
+# +:background_image_id+ is the column name under which we store the foreign key pointing to a +Refinery::Image+.
 
 Save any changes you need to make to the migration file.
 
