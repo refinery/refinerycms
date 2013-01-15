@@ -26,6 +26,8 @@ describe "CLI" do
       msg.should match("rake refinery:override controller=pages")
       msg.should match("rake refinery:override model=page")
       msg.should match("rake refinery:override model=refinery/page")
+      msg.should match("rake refinery:override helper=site_bar")
+      msg.should match("rake refinery:override helper=refinery/site_bar_helper")
     end
   end
 
@@ -93,6 +95,17 @@ describe "CLI" do
       let(:file_location) { File.expand_path("../../../../app/models/refinery/core", __FILE__) }
       let(:env_file_location) { "refinery/core/#{file_name.sub(%r{\..+}, "")}" }
       let(:copied_file_location) { "app/models/refinery/core/#{file_name}" }
+    end
+  end
+
+  describe "overriding helpers" do
+    it_behaves_like "refinery:override" do
+      let(:env) { "helper" }
+      let(:not_found_message) { "Couldn't match any helper files in any extensions like non-existent\n" }
+      let(:spec_success_message) { %W(create app/helpers/refinery/#{file_name}) }
+      let(:file_location) { File.expand_path("../../../../app/helpers/refinery", __FILE__) }
+      let(:env_file_location) { "refinery/#{file_name.sub(%r{\..+}, "")}" }
+      let(:copied_file_location) { "app/helpers/refinery/#{file_name}" }
     end
   end
 
