@@ -102,7 +102,7 @@ module Refinery
         css << first_css if index == 0
         css << last_css if index == menu_item.shown_siblings.length
 
-        css.reject(&:blank?)
+		css.reject(&:blank?).presence
       end
 
       def menu_item_children(menu_item)
