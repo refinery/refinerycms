@@ -19,6 +19,8 @@ module Refinery
     end
 
     describe ".home_page?" do
+<<<<<<< HEAD
+=======
       it "matches root url" do
         controller.stub(:root_path).and_return("/")
         request.stub(:path).and_return("/")
