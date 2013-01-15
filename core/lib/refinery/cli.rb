@@ -28,6 +28,11 @@ module Refinery
         :dir => 'models',
         :desc => 'model',
       },
+      :helper => {
+        :glob => '*.rb',
+        :dir => 'helpers',
+        :desc => 'helper',
+      },
       :presenter => {
         :glob => '*.rb',
         :dir => 'presenters',
@@ -60,6 +65,7 @@ module Refinery
         :stylesheet => %w(home refinery/site_bar),
         :controller => %w(pages),
         :model => %w(page refinery/page),
+        :helper => %w(site_bar refinery/site_bar_helper),
         :presenter => %w(refinery/page_presenter)
       }.each do |type, examples|
         examples.each do |example|
