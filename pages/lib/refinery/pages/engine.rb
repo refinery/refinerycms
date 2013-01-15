@@ -22,7 +22,6 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_pages'
-          plugin.version = %q{2.0.0}
           plugin.menu_match = %r{refinery/page(_part|s_dialog)?s(/preview)?$}
           plugin.activity = {
             :class_name => :'refinery/page',

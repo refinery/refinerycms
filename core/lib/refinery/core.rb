@@ -99,9 +99,12 @@ module Refinery
       warning << "\nPlease use #{options[:replacement]} instead." if options[:replacement]
 
       # See if we can trace where this happened
-      if options[:caller]
-        whos_calling = options[:caller].detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first
-        warning << "\nCalled from: #{whos_calling}\n"
+      if invoker = options[:caller]
+        if invoker.respond_to?(:detect)
+          invoker = invoker.detect{|c| /#{Rails.root}/ === c }.inspect.to_s.split(':in').first
+        end
+
+        warning << "\nCalled from: #{invoker}\n"
       end
 
       # Give stern talking to.

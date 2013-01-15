@@ -2,7 +2,7 @@ module Refinery
   class Plugin
 
     attr_accessor :name, :class_name, :controller, :directory, :url,
-                  :version, :dashboard, :always_allow_access, :menu_match,
+                  :dashboard, :always_allow_access, :menu_match,
                   :hide_from_menu, :pathname, :plugin_activity
 
     def self.register(&block)
@@ -72,6 +72,16 @@ module Refinery
       else
         @url
       end
+    end
+
+    def version
+      Refinery.deprecate "Refinery::Plugin#version", :when => '2.2',
+                         :caller => caller.detect{|c| /#{pathname}/ === c }
+    end
+
+    def version=(*args)
+      Refinery.deprecate "Refinery::Plugin#version=", :when => '2.2',
+                         :caller => caller.detect{|c| /#{pathname}/ === c }
     end
 
   # Make this protected, so that only Plugin.register can use it.
