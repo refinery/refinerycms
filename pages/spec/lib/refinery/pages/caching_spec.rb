@@ -2,7 +2,7 @@ require "spec_helper"
 
 module Refinery
   module Pages
-    describe Caching, :focus do
+    describe Caching, :caching do
       let(:cache_path) { "/tmp"}
       let(:refinery_cache_path) { "/tmp/refinery/cache/pages"}
       let(:refinery_cache_file) { refinery_cache_path + ".html"}
@@ -30,7 +30,7 @@ module Refinery
             before { Rails.cache.stub(:delete_matched)}
 
             it "should clear rails cache that matched namespace" do
-              Rails.cache.should_receive(:delete_matched).with("/.*#{cache.namespace}.*/")
+              Rails.cache.should_receive(:delete_matched).with(/.*pages.*/)
               cache.expire!
             end
           end
@@ -40,7 +40,9 @@ module Refinery
 
             it "should clear rails cache that matched namespace" do
               Rails.cache.should_receive(:clear)
-              cache.expire!
+              silence_warnings do
+                cache.expire!
+              end
             end
           end
         end

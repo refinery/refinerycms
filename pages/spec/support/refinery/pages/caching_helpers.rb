@@ -1,6 +1,6 @@
 module CachingHelpers
 	def cached_directory
-		"/refinery/cache/pages"
+		"spec/dummy/public/refinery/cache/pages"
 	end
 
 	def cached_file_path(page)
@@ -15,7 +15,7 @@ module CachingHelpers
 
 	RSpec::Matchers.define :be_cached do 
 	  match do |page|
-	    File.exists? (ActionController::Base.page_cache_directory + cached_file_path(page))
+	    File.exists? (cached_file_path(page))
 	  end
 	end
 
