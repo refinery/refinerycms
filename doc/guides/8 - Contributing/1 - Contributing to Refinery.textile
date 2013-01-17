@@ -47,9 +47,10 @@ h4. I found an issue. Where do I file it?
 
 h4. Contributing a fix
 
-Make your changes to fix a bug. Next run the Refinery tests
+Make your changes to fix a bug. Next generate dummy app and run the Refinery tests
 
 <shell>
+$ bundle exec rake refinery:testing:dummy_app
 $ bundle exec rspec ./*/spec
 </shell>
 
