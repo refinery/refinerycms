@@ -12,8 +12,12 @@ module Refinery
       end
 
       protected
+      def cache_directory
+        page_cache_directory
+      end
+
       def caching
-        @caching ||= Caching.new(page_cache_directory)
+        @caching ||= Caching.new(cache_directory)
       end
 
       def expire_cache!
