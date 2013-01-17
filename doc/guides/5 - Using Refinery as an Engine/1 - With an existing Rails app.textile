@@ -34,25 +34,18 @@ h4. Generate support files and migrations, and prepare the database
 
 WARNING. Doing this will overwrite any tables that you have of the same name; please backup first. Refinery table names begin with +refinery_+, so the likelihood of a collision occurring is low, but it is nevertheless recommended you keep backups of your database and your code.
 
-WARNING. Running the +bundle exec rake railties:install:migrations+ task will copy migrations from any Rails extension you have listed in your Gemfile. It is recommended that you only install one extension at a time to prevent a massive influx of migrations that may conflict with each other. This will not overwrite any existing migrations you have, though, so you can run this command more than once without fear.
-
 Generating Refinery on top of an existing application is marginally more complicated than it was before, but it's still quite simple:
 
 <shell>
   rails generate refinery:cms --fresh-installation
 </shell>
 
-This creates +config/initializers/refinery/+ and copies over all the required initializers from Refinery and Devise. It also injects Refinery's mounting line into your +config/routes.rb+ file. If you wish to customize where Refinery is mounted, you can change the path there.
+This does a couple of things:
 
-h4. Migrate and seed the database.
-
-<shell>
-  bundle exec rake railties:install:migrations
-  bundle exec rake db:migrate
-  bundle exec rake db:seed
-</shell>
-
-This copies the migrations from Refinery, migrates them, and adds the seed data to your database to provide you with the minimal Refinery installation.
+* creates +config/initializers/refinery/+ and copies over all the required initializers from Refinery
+* copies all Refinery migrations to your apps migration folder and runs these migrations, and adds the seed data to your database
+* injects Refinery's mounting line into your +config/routes.rb+ file
+* inserts +require refinery/formatting+ and +require refinery/theme+ lines in your apps application.css file
 
 After this, you should be all set. Don't forget to revisit the initializers in +config/initializers/refinery/+ to customize your experience.
 
