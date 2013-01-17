@@ -39,7 +39,7 @@ Run this command to generate the events extension for Rick:
 
 <shell>
 $ rails generate refinery:engine event title:string date:datetime photo:image blurb:text
-<shell>
+</shell>
 
 TIP: if you want to create a model without any front-end code (i.e. code only for the administrative interface), add +--skip-frontend+.
 
@@ -123,6 +123,7 @@ The first two lines indicate that the extension is namespaced using +Refinery::E
 Running this command will produce the following output:
 
 <shell>
+      ...
 	    create  vendor/extensions/events/app/controllers/admin/places_controller.rb
       create  vendor/extensions/events/app/controllers/places_controller.rb
       create  vendor/extensions/events/app/models/place.rb
@@ -154,35 +155,19 @@ Running this command will produce the following output:
       create  vendor/extensions/events/refinerycms-places.gemspec
       create  vendor/extensions/events/spec/models/place_spec.rb
       append  vendor/extensions/events/lib/refinerycms-events.rb
-
+      ...
 ------------------------
 Now run:
 bundle install
 rails generate refinery:events
 rake db:migrate
+rake db:seed
 ------------------------
 </shell>
 
 WARNING: If you are presented with a conflict in the +events_generator.rb+ file, say no! This happens at the moment because Refinery thinks you are generating a Places extension, and this may cause all kinds of havoc if you agree to it. If you have accidentally agreed to it, you can revert that file, and check your +db/seeds.rb+ file to see if you have accidentally appended an additional line reading +Refinery::Events::Engine.load_seed+.
 
 Run the commands listed above. Notice +rails generate refinery:events+. The +rails generate refinery:events+ will copy the migration files from +vendor/extensions/events/db/migrate+ to +db/migrate+ and will prepend a timestamp to each migration. This is so an extension that was written before your application will declare its migrations chronologically later than the migrations you wrote for the app. For instance, if you wrote your app on Tuesday and then inserted the extension on Wednesday, you would want the timestamps on the migrations to show Wednesday rather than the date it was created &mdash; perhaps Monday. If the extension didn't do this, when you deployed your application, it would run the migrations for your extension first, potentially failing because it couldn't find the Refinery database tables it needs to complete.
-
-<shell>
-$ bundle install
-$ rails generate refinery:events
-
-You already have a migration called create_events
-      create  db/migrate/20110608043313_create_places.rb
-   identical  db/seeds/events.rb
-      create  db/seeds/places.rb
-------------------------
-Now run:
-rake db:migrate
-rake db:seed
-------------------------
-</shell>
-
-Lastly, run +rake db:migrate+ and +rake db:seed+ as usual.
 
 h4. Crudify: The Backbone of Refinery Engines
 
