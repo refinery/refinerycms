@@ -9,7 +9,7 @@ module Refinery
 
     before do
       prepare_destination
-      run_generator
+      run_generator %w[--skip-migrations]
     end
 
     specify do
