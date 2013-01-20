@@ -62,6 +62,42 @@ module Refinery
       end
     end
 
+    context "new/create - insert mode" do
+      it "uploads image", :js => true do
+        visit refinery.insert_admin_images_path(:modal => true, :wymedtior => true)
+
+        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/image-with-dashes.jpg")
+        click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
+
+        page.should have_selector('#existing_image_area', visible: true)
+        Refinery::Image.count.should == 1
+      end
+
+      it "gets error message when uploading non-image", :js => true do
+        visit refinery.insert_admin_images_path(:modal => true, :wymedtior => true)
+
+        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")
+        click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
+
+        page.should have_selector('#upload_image_area', visible: true)
+        page.should have_content(::I18n.t('incorrect_format', :scope => 'activerecord.errors.models.refinery/image'))
+        Refinery::Image.count.should == 0
+      end
+
+      it "gets error message when uploading non-image (when an image already exists)", :js => true do
+        FactoryGirl.create(:image)
+        visit refinery.insert_admin_images_path(:modal => true, :wymedtior => true)
+
+        choose 'Upload'
+        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")
+        click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
+
+        page.should have_selector('#upload_image_area', visible: true)
+        page.should have_content(::I18n.t('incorrect_format', :scope => 'activerecord.errors.models.refinery/image'))
+        Refinery::Image.count.should == 1
+      end
+    end
+
     context "when an image exists" do
       let!(:image) { FactoryGirl.create(:image) }
 
