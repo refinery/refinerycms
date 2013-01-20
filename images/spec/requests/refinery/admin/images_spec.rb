@@ -35,6 +35,25 @@ module Refinery
         Refinery::Image.count.should == 1
       end
 
+      it "cannot upload a pdf", :js => true do
+        visit refinery.admin_images_path
+
+        click_link ::I18n.t('create_new_image', :scope => 'refinery.admin.images.actions')
+
+        page.should have_selector 'iframe#dialog_iframe'
+
+        page.within_frame('dialog_iframe') do
+          attach_file "image_image", Refinery.roots(:'refinery/images')
+                                             .join("spec/fixtures/cape-town-tide-table.pdf")
+          click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
+        end
+
+        page.within_frame('dialog_iframe') do
+          page.should have_content(::I18n.t('incorrect_format', :scope => 'activerecord.errors.models.refinery/image'))
+        end
+        Refinery::Image.count.should == 0
+      end
+
       it 'is accessible via url' do
         image = Refinery::Image.create(:image => Refinery.roots(:'refinery/images').join("spec/fixtures/image-with-dashes.jpg"))
         get image.url
