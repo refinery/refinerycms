@@ -231,6 +231,7 @@ gem 'pg'
     def run_additional_generators!
       generator_args = []
       generator_args << '--quiet' if self.options[:quiet]
+      generator_args << '--skip-migrations' if self.options[:skip_migrations]
       Refinery::CoreGenerator.start generator_args
       Refinery::AuthenticationGenerator.start generator_args if defined?(Refinery::AuthenticationGenerator)
       Refinery::ResourcesGenerator.start generator_args if defined?(Refinery::ResourcesGenerator)
