@@ -2,7 +2,7 @@ h2. Redirecting Legacy URLs
 
 Many Refinery sites replace old ones that have links to these older pages. This guide will show you how to:
 
-* Match old urls and redirect to them appropriate new ones
+* Match old urls and redirect them to appropriate new ones
 
 endprologue.
 
@@ -30,7 +30,7 @@ Finally edit <tt>config/application.rb</tt> and add the +require+ line and +midd
 module Refinery
   class Application < Rails::Application
     require 'rack/rewrite'
- 
+
     config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
       # example rewrites
       rewrite '/wiki/John_Trupiano', '/john'
