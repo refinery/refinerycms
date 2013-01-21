@@ -24,6 +24,7 @@ gem 'refinerycms', :git => 'git://github.com/refinery/refinerycms.git'
 
 # Specify additional Refinery CMS Engines here (all optional):
 gem 'refinerycms-i18n', :git => 'git://github.com/refinery/refinerycms-i18n.git'
+gem 'refinerycms-acts-as-indexed', :git => 'git://github.com/refinery/refinerycms-acts-as-indexed.git'
 #  gem 'refinerycms-blog', :git => 'git://github.com/refinery/refinerycms-blog.git'
 #  gem 'refinerycms-inquiries', :git => 'git://github.com/refinery/refinerycms-inquiries.git'
 #  gem 'refinerycms-search', :git => 'git://github.com/refinery/refinerycms-search.git'

@@ -20,6 +20,5 @@ Gem::Specification.new do |s|
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
   s.add_dependency 'dragonfly',        '~> 0.9.12'
-  s.add_dependency 'acts_as_indexed',  '~> 0.8.0'
   s.add_dependency 'refinerycms-core', version
 end

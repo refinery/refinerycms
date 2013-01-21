@@ -15,8 +15,6 @@ module Refinery
 <% end -%>
 <% if string_attributes.any? -%>
 
-      acts_as_indexed :fields => <%= string_attributes.map {|s| s.name.to_sym }.inspect %>
-
       validates <%= string_attributes.first.name.to_sym.inspect %>, :presence => true, :uniqueness => true
 <% else -%>
 

@@ -6,10 +6,6 @@ module Refinery
 <% end -%>
 
       attr_accessible <%= names_for_attr_accessible.map { |a| ":#{a}" }.join(', ') %>, :position
-<% if string_attributes.any? -%>
-
-      acts_as_indexed :fields => [<%= string_attributes.map { |a| ":#{a.name}" }.join(", ") %>]
-<% end -%>
 <% if (text_fields = attributes.map { |a| a.name if a.type == :text }.compact.uniq).any? && text_fields.detect{ |a| a.to_s == 'message' }.nil? -%>
 
       alias_attribute :message, :<%= text_fields.first %>

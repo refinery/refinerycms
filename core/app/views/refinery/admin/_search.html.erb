@@ -1,7 +1,1 @@
-<form method='GET' action='<%= url %>' class='search_form'>
-  <%= text_field :search, nil, :id => 'search', :type => 'search', :name => 'search', :value => params[:search], :title => t('search_input_notice', :scope => 'refinery.admin.search') %>
-  <%= hidden_field :wymeditor, nil, :name => 'wymeditor', :id => nil, :value => true  if params[:wymeditor].presence %>
-  <%= hidden_field :dialog, nil, :name => 'dialog', :id => nil, :value => true if from_dialog? %>
-  <%= hidden_field :callback, nil, :name => 'callback', :id => nil, :value => @callback if @callback.presence %>
-  <%= submit_tag t('button_text', :scope => 'refinery.admin.search'), :name => nil %>
-</form>
+<%= render 'refinery/acts_as_indexed/admin/search', local_assigns if defined?(Refinery::ActsAsIndexed::Engine) %>
