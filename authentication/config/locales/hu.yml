@@ -22,7 +22,7 @@ hu:
           preview: '(%{who}) hozzáadva %{created_at}'
     sessions:
       new:
-        hello_please_sign_in: Hello! Kérlek jelentkezz be.
+        hello_please_sign_in: Helló! Kérlek jelentkezz be.
         sign_in: Bejelentkezés
         forgot_password: Elfelejtettem a jelszavam
     user_mailer:
