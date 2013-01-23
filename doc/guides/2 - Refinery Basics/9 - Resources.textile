@@ -1,0 +1,21 @@
+h2. Resources
+
+h3. How to change Content-Disposition
+
+Refinery comes with support for uploading files (in addition to images).  By default, file uploads are given an http header of +Content-Disposition: attachment; filename=xxx+  
+
+This works great for.a lot of file types, but if you want to be able to upload PDF's and you want your users to be able to preview the PDF in the browser (as is normally the standard), you may want to customize that content disposition configuration.
+
+You can do this by making use of the after_inclusion hook refinery provides:
+
+<ruby>
+# config/application.rb
+# refinery change content-disipotion
+Refinery::Core::Engine.after_inclusion do
+  Refinery::Resource # force autoload
+  ::Dragonfly[:refinery_resources].content_disposition = nil
+end
+</ruby>
+
+You want this code to be placed inside the +class Application < Rails::Application+ class.  Once you restart your webserver, you'll now be able to preveiw PDF's in the browser if your browser supports it.  If it's a filetype the browser does not recgonize, it'll prompt the user to download (save as) anyway.  
+
