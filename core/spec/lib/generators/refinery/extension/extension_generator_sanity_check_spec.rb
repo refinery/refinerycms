@@ -1,9 +1,9 @@
 require 'spec_helper'
 require 'generator_spec/test_case'
-require 'generators/refinery/engine/engine_generator'
+require 'generators/refinery/extension/extension_generator'
 
 module Refinery
-  describe EngineGenerator do
+  describe ExtensionGenerator do
     include GeneratorSpec::TestCase
 
     it "exits when reserved word is used for extension name" do
@@ -32,7 +32,7 @@ module Refinery
 
     it "exits when no attribute provided" do
       lambda {
-        STDERR.should_receive(:puts).with("\nYou must specify a name and at least one field.\nFor help, run: rails generate refinery:engine\n\n")
+        STDERR.should_receive(:puts).with("\nYou must specify a name and at least one field.\nFor help, run: rails generate refinery:extension\n\n")
         run_generator %w{ car }
       }.should raise_error(SystemExit)
     end

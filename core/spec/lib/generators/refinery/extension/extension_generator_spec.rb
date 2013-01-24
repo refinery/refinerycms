@@ -1,15 +1,15 @@
 require 'spec_helper'
 require 'generator_spec/test_case'
-require 'generators/refinery/engine/engine_generator'
+require 'generators/refinery/extension/extension_generator'
 
 module Refinery
-  describe EngineGenerator do
+  describe ExtensionGenerator do
     include GeneratorSpec::TestCase
     destination File.expand_path("../../../../../../tmp", __FILE__)
 
     before do
       prepare_destination
-      run_generator %w{ rspec_product_test title:string description:text image:image brochure:resource --skip-frontend }
+      run_generator %w{ rspec_product_test title:string description:text image:image brochure:resource }
     end
 
     specify do
@@ -24,7 +24,7 @@ module Refinery
                       directory "admin" do
                         file "rspec_product_tests_controller.rb"
                       end
-                      no_file "rspec_product_tests_controller.rb"
+                      file "rspec_product_tests_controller.rb"
                     end
                   end
                 end
@@ -49,8 +49,8 @@ module Refinery
                         end
                       end
                       directory "rspec_product_tests" do
-                        no_file "index.html.erb"
-                        no_file "show.html.erb"
+                        file "index.html.erb"
+                        file "show.html.erb"
                       end
                     end
                   end
@@ -62,16 +62,31 @@ module Refinery
               directory "spec" do
                 file "spec_helper.rb"
               end
+              directory "tasks" do
+                file "testing.rake"
+                file "rspec.rake"
+              end
               directory "config" do
                 directory "locales" do
                   file "en.yml"
                 end
                 file "routes.rb"
               end
+              file "Guardfile"
+              file "Gemfile"
+              file "Rakefile"
             end
           end
         end
       }
+    end
+
+    describe "attr_accessible" do
+      it "adds attributes to the list" do
+        File.open("#{destination_root}/vendor/extensions/rspec_product_tests/app/models/refinery/rspec_product_tests/rspec_product_test.rb") do |file|
+          file.grep(%r{attr_accessible :title, :description, :image_id, :brochure_id, :position}).count.should eq(1)
+        end
+      end
     end
   end
 end

@@ -8,6 +8,6 @@ module Refinery
 
   # Raised when an extension has not been properly defined. See the exception message for further
   # details
-  class InvalidEngineError < RefineryError
+  class InvalidExtensionError < RefineryError
   end
 end

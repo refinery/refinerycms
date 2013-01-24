@@ -1,15 +1,15 @@
 require 'spec_helper'
 require 'generator_spec/test_case'
-require 'generators/refinery/engine/engine_generator'
+require 'generators/refinery/extension/extension_generator'
 
 module Refinery
-  describe EngineGenerator do
+  describe ExtensionGenerator do
     include GeneratorSpec::TestCase
     destination File.expand_path("../../../../../../tmp", __FILE__)
 
     before do
       prepare_destination
-      run_generator %w{ rspec_product_test title:string description:text image:image brochure:resource --i18n title description }
+      run_generator %w{ rspec_product_test title:string description:text image:image brochure:resource --skip-frontend }
     end
 
     specify do
@@ -24,7 +24,7 @@ module Refinery
                       directory "admin" do
                         file "rspec_product_tests_controller.rb"
                       end
-                      file "rspec_product_tests_controller.rb"
+                      no_file "rspec_product_tests_controller.rb"
                     end
                   end
                 end
@@ -49,8 +49,8 @@ module Refinery
                         end
                       end
                       directory "rspec_product_tests" do
-                        file "index.html.erb"
-                        file "show.html.erb"
+                        no_file "index.html.erb"
+                        no_file "show.html.erb"
                       end
                     end
                   end
@@ -62,19 +62,12 @@ module Refinery
               directory "spec" do
                 file "spec_helper.rb"
               end
-              directory "tasks" do
-                file "testing.rake"
-                file "rspec.rake"
-              end
               directory "config" do
                 directory "locales" do
                   file "en.yml"
                 end
                 file "routes.rb"
               end
-              file "Guardfile"
-              file "Gemfile"
-              file "Rakefile"
             end
           end
         end

@@ -19,7 +19,7 @@ module Refinery
         # Use exactly what the user requested, not a pluralised version.
         options[:namespace].to_s.camelize
       else
-        # If the user has passed an engine, we want to generate it inside of
+        # If the user has passed an extension, we want to generate it inside of
         # that extension.
         if options[:extension].present?
           options[:extension].to_s.camelize

@@ -13,10 +13,10 @@ h4. Generating an extension
 Refinery ships with an extension generator that makes adding your own functionality a breeze. It works just like the Rails scaffold generator.
 
 <shell>
-$ rails generate refinery:engine singular_model_name attribute:type [attribute:type ...]
+$ rails generate refinery:extension singular_model_name attribute:type [attribute:type ...]
 </shell>
 
-TIP: to see all the options supported by the +refinery:engine+ generator just run +rails g refinery:engine+.
+TIP: to see all the options supported by the +refinery:extension+ generator just run +rails g refinery:extension+.
 
 Here is a list of the different field types are what they give you:
 
@@ -38,7 +38,7 @@ Rick is going to want to enter the following information about each event:
 Run this command to generate the events extension for Rick:
 
 <shell>
-$ rails generate refinery:engine event title:string date:datetime photo:image blurb:text
+$ rails generate refinery:extension event title:string date:datetime photo:image blurb:text
 </shell>
 
 TIP: if you want to create a model without any front-end code (i.e. code only for the administrative interface), add +--skip-frontend+.
@@ -105,7 +105,7 @@ Once you have generated an extension, it's time to create another scaffold to pu
 To do that, run the following command. 
 
 <shell>
-  $ rails g refinery:engine place name:string --extension events --namespace events
+  $ rails g refinery:extension place name:string --extension events --namespace events
 </shell>
 
 TIP: You can additionally specify +--pretend+ to simulate generation, so you may inspect the outcome without actually modifying anything.

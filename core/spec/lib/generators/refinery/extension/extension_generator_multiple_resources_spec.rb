@@ -1,9 +1,9 @@
 require 'spec_helper'
 require 'generator_spec/test_case'
-require 'generators/refinery/engine/engine_generator'
+require 'generators/refinery/extension/extension_generator'
 
 module Refinery
-  describe EngineGenerator do
+  describe ExtensionGenerator do
     include GeneratorSpec::TestCase
     destination File.expand_path("../../../../../../tmp", __FILE__)
 

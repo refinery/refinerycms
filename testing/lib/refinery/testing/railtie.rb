@@ -5,7 +5,6 @@ module Refinery
 
       class << self
         attr_reader :target_extension_path # :nodoc:
-        alias_method :target_engine_path, :target_extension_path
 
         # Loads Rake tasks to assist with manipulating dummy applications for testing extensions. Takes
         # a string representing the path to your application or extension.
