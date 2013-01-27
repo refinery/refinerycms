@@ -13,5 +13,4 @@ Gem::Specification.new do |s|
   # Runtime dependencies
   s.add_dependency    'refinerycms-core',     '~> <%= Refinery::Version %>'
   s.add_dependency    'refinerycms-settings', '~> <%= Refinery::Version %>'
-  s.add_dependency    'acts_as_indexed',      '~> 0.8'
 end

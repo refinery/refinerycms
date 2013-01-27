@@ -261,10 +261,6 @@ module Refinery
 
       end
 
-      it 'return all page part content' do
-        page.all_page_part_content.should == "<p>I'm the first page part for this page.</p> <p>Closely followed by the second page part.</p>"
-      end
-
       it 'reposition correctly' do
         page.save
 

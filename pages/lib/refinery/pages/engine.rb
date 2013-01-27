@@ -32,17 +32,6 @@ module Refinery
         end
       end
 
-      initializer "refinery.pages acts_as_indexed" do
-        ActiveSupport.on_load(:active_record) do
-          require 'acts_as_indexed'
-          ActsAsIndexed.configure do |config|
-            config.index_file = Rails.root.join('tmp', 'index')
-            config.index_file_depth = 3
-            config.min_word_size = 3
-          end
-        end
-      end
-
       initializer "refinery.pages append marketable routes", :after => :set_routes_reloader_hook do
         append_marketable_routes if Refinery::Pages.marketable_urls
       end
