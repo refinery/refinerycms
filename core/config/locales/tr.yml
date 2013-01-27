@@ -1,0 +1,82 @@
+tr:
+  refinery:
+    js:
+      admin:
+        confirm_changes: Yaptiginiz degisiklikler kaybolacaktir. Kayit etmeden devam etmek istediginize emin misiniz ?
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Cekirdek refinery eklentisi
+      refinery_dialogs:
+        title: Iletisim
+        description: Refinery diyalog eklentisi
+    welcome:
+      there_are_no_users: "Henuz kayitli bir kullanici yok. Ilk once sizi kayit edelim."
+    crudify:
+      created: '%{what} basari ile eklendi'
+      updated: '%{what} basari ile guncellendi'
+      destroyed: '%{what} basari ile silindi.'
+    site_bar:
+      log_out: Cikis Yap
+      switch_to_your_website: Web Siteni Ac
+      switch_to_your_website_editor: Web Site Editorunu Ac
+    admin:
+      menu:
+        reorder_menu: Yeniden duzenleme menusu
+        reorder_menu_done: Yeniden duzenleme tamamlandi
+      dialogs:
+        show:
+          save: Kayit Et
+          cancel: Vazgec
+      continue_editing:
+        save_and_continue_editing: 'Kaydet & Duzenlemeye Devam Et'
+      form_actions:
+        save: Kayit Et
+        cancel: Vazgec
+        cancel_lose_changes: Eger vazgec'e tiklarsaniz burada yaptiginiz degisiklikler kaybolacaktir. 
+        delete: Sil
+        close: Kapat
+      image_picker:
+        none_selected: Secilmis bir fotograf bulunmamaktadir. Eklemek icin buraya tiklayin 
+        remove_current: Mevcut fotografi sil
+        change: Fotograf secmek icin tiklayin
+        show: Goster
+      resource_picker:
+        download_current: Mevcut dosyayi indir
+        opens_in_new_window: Yeni bir pencerede ac
+        remove_current: "Mevcut dosyayi sil"
+        no_resource_selected: 'Herhangi bir dosya secilmemis. Eklemek icin tiklayin'
+        name: Dosya Ekle
+        current: Mevcut Dosya
+      search:
+        button_text: Arama
+        results_for_html: " &#8216;<em>%{query}</em>&#8217; icin arama sonucu"
+        no_results: 'Uzgunum, herhangi bir sonuc bulunamadi'
+        cancel_search: 'Aramayi iptal et'
+        search_input_notice: "Buraya aradiginiz karakterleri iceren en az 3 tane harf girin.
+      delete:
+        message: " '%{title}' Silmek istediginize emin misiniz?"
+      error_messages:
+        problems_in_following_fields: Asagidaki alanlarda problem vardir. 
+      help: yardim
+      form_advanced_options_menu:
+        advanced_options: Gelismis Secenekler
+        toggle_advanced_options: Gelismis Secenekleri Ac 
+        save_as_draft: Taslak Olarak Kaydet
+    message:
+      close: Kapat
+      close_this_message: Bu Mesaji Kapat
+    draft_page_message:
+      not_live: Bu sayfa halka acik canli goruntuleme degildir. 
+    footer:
+      copyright: "Telif Hakki © %{year} %{site_name}"
+    no_script:
+      enable_javascript_html: Bu sayfanin tum fonsiyonlari icin JavaScript'in aktif olmasi gerekmekte
+      here_are: Iste burada
+      instructions_enable_javascript_html: Tarayicinizin JavaScript'ini nasil aktif edilecegi.
+  time:
+    formats:
+      short: "%A, %d %B %Y"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
