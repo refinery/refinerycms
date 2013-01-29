@@ -27,9 +27,9 @@ module Refinery
       def clear_caching!
         begin
           cache.delete_matched(/.*pages.*/)
-        rescue NotImplementedError
-          cache.clear
+        rescue NoMethodError, NotImplementedError
           warn "**** [REFINERY] The cache store you are using is not compatible with Rails.cache#delete_matched - clearing entire cache instead ***"
+          cache.clear
         end
       end
 
