@@ -297,7 +297,7 @@ class Page < ActiveRecord::Base
     def expire_page_caching
       begin
         Rails.cache.delete_matched(/.*pages.*/)
-      rescue NotImplementedError
+      rescue NoMethodError, NotImplementedError
         Rails.cache.clear
         warn "**** [REFINERY] The cache store you are using is not compatible with Rails.cache#delete_matched - clearing entire cache instead ***"
       end
