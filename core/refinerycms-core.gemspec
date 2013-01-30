@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.2.0.beta4'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'rails',                       '~> 3.0.19'
+  s.add_dependency 'rails',                       '~> 3.0.20'
   s.add_dependency 'truncate_html',               ['>= 0.5', '< 0.9.1']
   s.add_dependency 'will_paginate',               '~> 3.0.0'
 
