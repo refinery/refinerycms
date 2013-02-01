@@ -65,7 +65,7 @@ The extensions Refinery comes with are:
 
 h3. Creating a new Refinery project
 
-!>/system/images/BAhbBlsHOgZmSSJEMjAxMC8xMi8wMi8xMl8wN18xNF82NDdfcmlja19hc3RsZXlfbmV2ZXJfZ29ubmFfZ2l2ZV95b3VfdXAuanBnBjoGRVQ/12_07_14_647_rick_astley_never_gonna_give_you_up.jpg!
+!/system/images/BAhbBlsHOgZmSSJEMjAxMC8xMi8wMi8xMl8wN18xNF82NDdfcmlja19hc3RsZXlfbmV2ZXJfZ29ubmFfZ2l2ZV95b3VfdXAuanBnBjoGRVQ/12_07_14_647_rick_astley_never_gonna_give_you_up.jpg!
 
 If you follow this guide, you'll create a Refinery site called <tt>rickrockstar</tt> that will have a custom design and an events extension to allow Rick to tell his fans when his next gig is.
 
@@ -77,7 +77,7 @@ h4. Installing Refinery
 
 There are two popular ways to install Refinery: RubyGems and Rails Application Templates. We will discuss both and how you can get up and running with either.
 
-h5. RubyGems 
+h5. RubyGems
 The easiest way to install Refinery is to take advantage of RubyGems.
 
 <shell>
@@ -147,7 +147,7 @@ Once you've created your first user you'll see Refinery's "Dashboard".
 
 h4. Setting Your Site Name
 
-You'll need to set your Site Name; it's used in several spots on the CMS to give you nice branding (for instance, in the blue header at the top of the page and in the footer of your site). 
+You'll need to set your Site Name; it's used in several spots on the CMS to give you nice branding (for instance, in the blue header at the top of the page and in the footer of your site).
 
 To do this, you'll have to edit +config/initializers/refinery/core.rb+. Look for the line that begins:
 
@@ -171,7 +171,7 @@ Click the reorder button again when you're done to save.
 
 h4. Switching to your front end
 
-!>/system/images/BAhbBlsHOgZmSSIyMjAxMC8xMi8wMi8xMl81N18wNl80MjJfc3dpdGNoX3RvX3dlYnNpdGUucG5nBjoGRVQ/12_57_06_422_switch_to_website.png!
+!>/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfNTdfMDZfNDIyX3N3aXRjaF90b193ZWJzaXRlLnBuZyJdXQ/12_57_06_422_switch_to_website.png!
 
 You're currently in the back-end Refinery site editor. To see the front-end site, click "Switch to your website".
 
@@ -233,7 +233,7 @@ As you can see we're going to render a view with some HTML5 tags and along with 
 
 When you edit the About page you'll see something like this:
 
-!/system/images/BAhbBlsHOgZmSSI5MjAxMC8xMi8wMi8xMl8zMl81MV84NjRfZWRpdGluZ19hYm91dF9wYWdlX3NtYWxsLnBuZwY6BkVU/12_32_51_864_editing_about_page_small.png!
+!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMzJfNTFfODY0X2VkaXRpbmdfYWJvdXRfcGFnZV9zbWFsbC5wbmciXV0/12_32_51_864_editing_about_page_small.png!
 
 You'll notice two tabs on the page: "Body" and "Side Body". These are +PageParts+, or in other words, a single piece of content attached to this page that you can render in your view. There is a "Body" tab with some content on this screen. To render that same content in your view, put:
 
@@ -387,7 +387,7 @@ TIP: When new extensions are added it's a good idea to restart your server for n
 
 Now go to the backend of your Refinery site ("http://localhost:3000/refinery":http://localhost:3000/refinery) and you'll notice a new tab called "Events". Click on "Add new event" and you'll see something like this:
 
-!/system/images/BAhbBlsHOgZmSSI1MjAxMC8xMi8wMi8xMl8zMF8wOV84Ml9ldmVudHNfcGx1Z2luX3NtYWxsZXIucG5nBjoGRVQ/12_30_09_82_events_plugin_smaller.png!
+!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMzBfMDlfODJfZXZlbnRzX3BsdWdpbl9zbWFsbGVyLnBuZyJdXQ/12_30_09_82_events_plugin_smaller.png!
 
 You'll see the entire form has been generated for you based off the field types you specified when generating the events section. The blurb has a visual editor, the date field is a date picker and the photo allows you to pick or upload a new photo from a built-in Refinery dialog.
 
