@@ -65,7 +65,7 @@ The extensions Refinery comes with are:
 
 h3. Creating a new Refinery project
 
-!>/system/images/BAhbBlsHOgZmSSJEMjAxMC8xMi8wMi8xMl8wN18xNF82NDdfcmlja19hc3RsZXlfbmV2ZXJfZ29ubmFfZ2l2ZV95b3VfdXAuanBnBjoGRVQ/12_07_14_647_rick_astley_never_gonna_give_you_up.jpg!
+!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMDdfMTRfNjQ3X3JpY2tfYXN0bGV5X25ldmVyX2dvbm5hX2dpdmVfeW91X3VwLmpwZyJdXQ/12_07_14_647_rick_astley_never_gonna_give_you_up.jpg!
 
 If you follow this guide, you'll create a Refinery site called <tt>rickrockstar</tt> that will have a custom design and an events extension to allow Rick to tell his fans when his next gig is.
 
@@ -131,7 +131,7 @@ $ rails server
 
 This will fire up an instance of the built-in Rails web server by default (called WEBrick). To see your application in action, open a browser window and navigate to "http://localhost:3000":http://localhost:3000. You should be greeted with a screen prompting you to create your first Refinery user.
 
-!http://d2prewpsu45gft.cloudfront.net/system/images/BAhbB1sHOgZmSSI3MjAxMi8wMy8wNC8xNF8xMV8yNF85OTNfc2V0X3VwX3lvdXJfZmlyc3RfdXNlci5wbmcGOgZFVFsIOgZwOgp0aHVtYkkiCTYxMHgGOwZG/set-up-your-first-user.png!
+!/system/images/W1siZiIsIjIwMTIvMDMvMDQvMTRfMTFfMjRfOTkzX3NldF91cF95b3VyX2ZpcnN0X3VzZXIucG5nIl0sWyJwIiwidGh1bWIiLCI2MTB4Il1d/set-up-your-first-user.png!
 
 TIP: To stop the web server, hit +Ctrl&#43;C+ in the terminal window where it's running.
 
@@ -145,7 +145,7 @@ Fill out the sign up form to create your first user. This will be the super user
 
 Once you've created your first user you'll see Refinery's "Dashboard".
 
-!/system/images/BAhbBlsHOgZmSSI7MjAxMC8xMi8wMi8xMl8yOF80NV85NTNfcmVmaW5lcnlfZGFzaGJvYXJkX3NtYWxsZXIucG5nBjoGRVQ/12_28_45_953_refinery_dashboard_smaller.png!
+!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMjhfNDVfOTUzX3JlZmluZXJ5X2Rhc2hib2FyZF9zbWFsbGVyLnBuZyJdXQ/12_28_45_953_refinery_dashboard_smaller.png!
 
 h4. Setting Your Site Name
 
@@ -165,7 +165,7 @@ h4. Explore Refinery
 
 Now you're setup, click around the various tabs in the backend and become familiar with what comes out of the box.
 
-!>/system/images/BAhbBlsHOgZmSSIsMjAxMC8xMi8wMi8xMl81NF80Ml83M19yZW9yZGVyX3RhYnMucG5nBjoGRVQ/12_54_42_73_reorder_tabs.png!
+!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfNTRfNDJfNzNfcmVvcmRlcl90YWJzLnBuZyJdXQ/12_54_42_73_reorder_tabs.png!
 
 While exploring, one of the first things to do is reorder the tabs to reflect what you will be working on the most. Click the tab with the two green arrows, and then drag the backend tabs - for example, "Users" or "Images" - into an order which makes the most sense to you.
 
@@ -173,13 +173,13 @@ Click the reorder button again when you're done to save.
 
 h4. Switching to your front end
 
-!>/system/images/BAhbBlsHOgZmSSIyMjAxMC8xMi8wMi8xMl81N18wNl80MjJfc3dpdGNoX3RvX3dlYnNpdGUucG5nBjoGRVQ/12_57_06_422_switch_to_website.png!
+!>/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfNTdfMDZfNDIyX3N3aXRjaF90b193ZWJzaXRlLnBuZyJdXQ/12_57_06_422_switch_to_website.png!
 
 You're currently in the back-end Refinery site editor. To see the front-end site, click "Switch to your website".
 
 As you can see, Refinery is already displaying a basic menu and layout ready for you to customise.
 
-!/system/images/BAhbBlsHOgZmSSJBMjAxMi8wMy8yNS8yM18yNV8xOF82ODVfcmVmaW5lcnlfZGVmYXVsdF9mcm9udF9lbmRfc21hbGwucG5nBjoGRVQ/refinery-default-front-end-small.png!
+!/system/images/W1siZiIsIjIwMTIvMDMvMjUvMjNfMjVfMThfNjg1X3JlZmluZXJ5X2RlZmF1bHRfZnJvbnRfZW5kX3NtYWxsLnBuZyJdXQ/refinery-default-front-end-small.png!
 
 h3. Customising the Design
 
@@ -235,7 +235,7 @@ As you can see we're going to render a view with some HTML5 tags and along with 
 
 When you edit the About page you'll see something like this:
 
-!/system/images/BAhbBlsHOgZmSSI5MjAxMC8xMi8wMi8xMl8zMl81MV84NjRfZWRpdGluZ19hYm91dF9wYWdlX3NtYWxsLnBuZwY6BkVU/12_32_51_864_editing_about_page_small.png!
+!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMzJfNTFfODY0X2VkaXRpbmdfYWJvdXRfcGFnZV9zbWFsbC5wbmciXV0/12_32_51_864_editing_about_page_small.png!
 
 You'll notice two tabs on the page: "Body" and "Side Body". These are +PageParts+, or in other words, a single piece of content attached to this page that you can render in your view. There is a "Body" tab with some content on this screen. To render that same content in your view, put:
 
@@ -287,7 +287,7 @@ TIP: You can add CSS for specific pages by using their slug with -page. The defa
 
 Now when you view your front end at "http://localhost:3000":http://localhost:3000 you'll notice your site has a grey background, with a horizontal menu and two white content areas.
 
-!/system/images/BAhbBlsHOgZmSSI1MjAxMC8xMi8wMi8xNF8yNF81MV8yMjdfZGVmYXVsdF9kZXNpZ25fc21hbGwucG5nBjoGRVQ/14_24_51_227_default_design_small.png!
+!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfMjI3X2RlZmF1bHRfZGVzaWduX3NtYWxsLnBuZyJdXQ/14_24_51_227_default_design_small.png!
 
 h4. What we just did
 
@@ -389,7 +389,7 @@ TIP: When new extensions are added it's a good idea to restart your server for n
 
 Now go to the backend of your Refinery site ("http://localhost:3000/refinery":http://localhost:3000/refinery) and you'll notice a new tab called "Events". Click on "Add new event" and you'll see something like this:
 
-!/system/images/BAhbBlsHOgZmSSI1MjAxMC8xMi8wMi8xMl8zMF8wOV84Ml9ldmVudHNfcGx1Z2luX3NtYWxsZXIucG5nBjoGRVQ/12_30_09_82_events_plugin_smaller.png!
+!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMzBfMDlfODJfZXZlbnRzX3BsdWdpbl9zbWFsbGVyLnBuZyJdXQ/12_30_09_82_events_plugin_smaller.png!
 
 You'll see the entire form has been generated for you based off the field types you specified when generating the events section. The blurb has a visual editor, the date field is a date picker and the photo allows you to pick or upload a new photo from a built-in Refinery dialog.
 
@@ -399,7 +399,7 @@ Now click on "Switch to your website", and navigate to "http://localhost:3000/ev
 
 You'll notice not only has Refinery generated the backend "Events" tab but also a new menu item called "Events" and two new front-end views, +index.html.erb+ and +show.html.erb+, located in +vendor/extensions/events/app/views/refinery/events/+ for you to customise.
 
-!/system/images/BAhbBlsHOgZmSSI0MjAxMC8xMi8wMi8xNF8yNF81MV80MTVfZXZlbnRzX2VuZ2luZV9zbWFsbC5wbmcGOgZFVA/14_24_51_415_events_extension_small.png!
+!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfNDE1X2V2ZW50c19lbmdpbmVfc21hbGwucG5nIl1d/14_24_51_415_events_extension_small.png!
 
 As you can see, Refinery makes it insanely easy to quickly add new extensions to manage various areas of a site.
 
@@ -476,7 +476,7 @@ end
 
 Now when you look at "http://localhost:3000/events":http://localhost:3000/events you'll notice they're now being sorted by the event date.
 
-!/system/images/BAhbBlsHOgZmSSI6MjAxMC8xMi8wMi8xNF8yNF81MV8zMTRfZXZlbnRzX2VuZ2luZV9maXhlZF9zbWFsbC5wbmcGOgZFVA/14_24_51_314_events_extension_fixed_small.png!
+!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfMzE0X2V2ZW50c19lbmdpbmVfZml4ZWRfc21hbGwucG5nIl1d/14_24_51_314_events_extension_fixed_small.png!
 
 h3. What's Next?
 
