@@ -24,7 +24,8 @@ rejection_patterns = [
   ".gem$",
   "^doc($|\/)",
   "^coverage($|\/)",
-  "^spec/dummy"
+  "^spec/dummy",
+  "^Gemfile.lock"
 ]
 
 files.reject! do |f|
