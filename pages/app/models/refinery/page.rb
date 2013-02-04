@@ -301,7 +301,8 @@ module Refinery
         :rgt => rgt,
         :title => menu_title.presence || title.presence,
         :type => self.class.name,
-        :url => url
+        :url => url,
+        :html => {:title => title}
       }
     end
 

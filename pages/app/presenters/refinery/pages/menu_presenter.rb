@@ -54,7 +54,9 @@ module Refinery
       end
 
       def render_menu_item(menu_item, index)
-        content_tag(list_item_tag, :class => menu_item_css(menu_item, index)) do
+        html_options = menu_item.html || {}
+        html_options[:class] = Array(html_options[:class]).concat menu_item_css(menu_item, index) 
+        content_tag(list_item_tag, html_options) do
           buffer = ActiveSupport::SafeBuffer.new
           buffer << link_to(menu_item.title, context.refinery.url_for(menu_item.url))
           buffer << render_menu_items(menu_item_children(menu_item))

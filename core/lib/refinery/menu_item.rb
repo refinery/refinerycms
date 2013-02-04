@@ -1,7 +1,7 @@
 module Refinery
   class MenuItem
 
-    attr_accessor :menu, :title, :parent_id, :lft, :rgt, :depth, :url, :menu_match,
+    attr_accessor :menu, :title, :parent_id, :lft, :rgt, :depth, :url, :menu_match, :html,
                   :original_type, :original_id
 
     def initialize(menu, options = {})
