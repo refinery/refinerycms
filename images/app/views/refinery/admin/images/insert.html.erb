@@ -42,6 +42,11 @@
         callback: <%= @callback.present? ? "self.parent.#{h @callback}" : 'null' %>,
         multiple: <%= @multiple == 'true' %>
       }).create();
+
+      var $uploadRadio = $('input[type=radio][value=upload_image]');
+      if ($uploadRadio.is(':checked')) {
+        $uploadRadio.click();
+      }
     });
   </script>
 <% end %>
