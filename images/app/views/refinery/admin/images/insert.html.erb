@@ -43,10 +43,7 @@
         multiple: <%= @multiple == 'true' %>
       }).create();
 
-      var $uploadRadio = $('input[type=radio][value=upload_image]');
-      if ($uploadRadio.is(':checked')) {
-        $uploadRadio.click();
-      }
+      $('input[type=radio][value=upload_image]:checked').click();
     });
   </script>
 <% end %>
