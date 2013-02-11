@@ -25,7 +25,7 @@ end
 append_file 'Gemfile', <<-GEMFILE
 
 # Refinery CMS
-gem 'refinerycms', '~> #{VERSION_BAND}'
+gem 'refinerycms', '~> #{VERSION_BAND}', :git => 'git://github.com/refinery/refinerycms.git', :branch => '2-0-stable'
 
 # Specify additional Refinery CMS Extensions here (all optional):
 gem 'refinerycms-i18n', '~> #{VERSION_BAND}'
