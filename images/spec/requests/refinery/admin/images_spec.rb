@@ -43,8 +43,8 @@ module Refinery
         page.should have_selector 'iframe#dialog_iframe'
 
         page.within_frame('dialog_iframe') do
-          attach_file "image_image", Refinery.roots(:'refinery/images')
-                                             .join("spec/fixtures/cape-town-tide-table.pdf")
+          attach_file "image_image", Refinery.roots(:'refinery/images').
+                                              join("spec/fixtures/cape-town-tide-table.pdf")
           click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
         end
 
@@ -69,7 +69,7 @@ module Refinery
         attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/image-with-dashes.jpg")
         click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
 
-        page.should have_selector('#existing_image_area', visible: true)
+        page.should have_selector('#existing_image_area', :visible => true)
         Refinery::Image.count.should == 1
       end
 
@@ -79,7 +79,7 @@ module Refinery
         attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")
         click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
 
-        page.should have_selector('#upload_image_area', visible: true)
+        page.should have_selector('#upload_image_area', :visible => true)
         page.should have_content(::I18n.t('incorrect_format', :scope => 'activerecord.errors.models.refinery/image'))
         Refinery::Image.count.should == 0
       end
@@ -92,7 +92,7 @@ module Refinery
         attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")
         click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
 
-        page.should have_selector('#upload_image_area', visible: true)
+        page.should have_selector('#upload_image_area', :visible => true)
         page.should have_content(::I18n.t('incorrect_format', :scope => 'activerecord.errors.models.refinery/image'))
         Refinery::Image.count.should == 1
       end
