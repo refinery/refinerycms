@@ -97,7 +97,7 @@ For help run the command without any options:
 
 ## License
 
-Refinery is released under the [MIT license](license.md#readme) and is copyright (c) 2005-2013 [Resolve Digital](http://www.resolvedigital.com)
+Refinery is released under the MIT license. See the [license.md file](license.md#readme) for details.
 
 ### Credits
 
