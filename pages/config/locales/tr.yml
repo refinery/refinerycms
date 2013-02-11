@@ -1,0 +1,85 @@
+tr:
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Sayfalar
+        description: Icerik Sayfalarini Yonet
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Bu sayfaya baglanti ekle
+        link_to:
+          insert: Cikart
+          your_page:
+            tab_name: Senin sayfan
+          web_address:
+            tab_name: Website
+            location: Konum
+            new_window: Yeni Pencere
+            new_window_label: Baglantiyi yeni pencerede acmak icin  kutuyu tiklayiniz.
+            not_sure: Yukaridaki kutuya ne yerlestirdiginden emin degil misin ?
+            step1: Web'de baglanti kurmak istediginiz sayfayi bulun
+            step2: Web tarayicinizin adres cubugundaki adresi kopyalayin ve yukaridaki  kutu alanina giriniz.
+          email_address:
+            tab_name: E-Posta Adresi
+            subject_line_optional: Istege bagli konu
+            body_optional: Istege bagli govde
+            not_sure: Yukaridaki kutucuklara ne konacagina emin degil misin ?
+            step1_html: Lutfen  '<strong>E-posta Adresi</strong>' bolumune bir e-posta adresi kopyalayip veya yapistirin. Adres defterinizden de e-posta ekleyebilirsiniz
+            step2_html: <strong>Konu Basligi</strong> kutusu bolumune mesajda gondereceginiz konunun basligini yazabilir  <strong>Satir ici konu basligi</strong> seklinde yapabilirsiniz.
+            step3_html: Eger mesajinizin <string> Satirbasi yazi </strong> gibi olarak gozukmesini istiyorsaniz Yukaridaki  <strong>E-posta Govde</strong> kutucugunu kullaniniz.
+          your_resource:
+            tab_name: Senin Dosyan
+            link_to_this_resource: bu dosyaya baglanti olustur
+      pages:
+        delete: Bu sayfayi sonsuza dek sil
+        edit: Bu sayfayi duzenle
+        new: Yeni Alt Sayfa ekle
+        expand_collapse: Alt Sayfalari daralt veya genislet
+        page:
+          view_live_html: Bu sayfayi canli olarak gor <br/><em>(yeni bir pencerede ac)</em>
+          hidden: gizli
+          draft: Taslak
+        form:
+          preview: Onizleme
+          preview_changes: Yaptiklarinizi canli olarak kaydetmeden once degisikliklere goz at.
+        form_new_page_parts:
+          title: Baslik
+        form_page_parts:
+          create_content_section: Icerik sekmesi ekle
+          delete_content_section: Icerik sekmesi sil
+          reorder_content_section: Icerik sekmelerini tekrardan grupla
+          reorder_content_section_done: Grup duzenlemeyi bitirdim
+        form_advanced_options:
+          page_options: Sayfa Ozellikleri
+          parent_page: Ust sayfa
+          menu_title: Menu basligi
+          custom_slug: Varsayilan slug
+          show_in_menu_title: Menu icerisinde goster
+          show_in_menu_description: Bu sayfayi site menusunde gor.
+          show_in_menu_help: Eger bir sayfayi site menunuzden kaldirmak istiyorsaniz lutfen onay kutucugunu isaretleyin. Bu islem daha kullanisli olur eger insanlari verdiginiz baglantilar sayfada gozukmez.
+          skip_to_first_child: Ust duzey sayfalara gecis
+          skip_to_first_child_label: Kullanicilari alt-sinif sayfalara yonlendirme
+          skip_to_first_child_help: Bu opsiyon verilen baglantilarinin ilk sayfasini altcizgili yapar. Bu olay sayfalari gruplarken faydali olabilir.
+          link_url: Bu sayfayi baska bir web sitesine yada sayfada yonlendir.
+          link_url_help: Eger bu sayfayi menuden tiklayarak baska bir web sitesine yada sayfasina gitmek icin , ornek bir URL gir http://google.com  yada bos olarak birakin
+          parent_page_help: Listeden bir sayfa secerek  ona bir alt sayfa ekleyebilirsin.  Eger bu istediginiz sayfa  Ust Duzey  bir  sayfa ise bos birakiniz.
+          menu_title_help: Eger menunun basligindan baska bir sayfa adi yani ismi ile goruntulenmesini istiyorsanuz, buraya giriniz.
+          custom_slug_help: Bir Slug  sayfalara okunabilir full URL' li ID yaratmak icin kullanilir. RefineryCMS tarafindan atanan Slug yerine kendi Slug'unuzu buraya yazabilirsiniz.
+          layout_template: Taslak Sablonu
+          layout_template_help: Bu sayfa icin degisik bir Taslak Sablonu kullanabilirsiniz.
+          view_template: Sablonu Goruntule
+          view_template_help: Bu sablolu goruntulemek icin baska bir sablon secebilirsiniz.
+        actions:
+          create_new_page: Yeni sayfa ekle
+          reorder_pages: Sayfalari yeniden hizala
+          reorder_pages_done: Yeniden hizalama bitti
+        records:
+          no_pages_yet: Henuz yaratilmis bir sayfa yok.Lutfen "Yeni Sayfa Ekle" tusuna basarak ilk sayfamizi yaratalimdd.
+        translator_access: Bu sayfada degisiklik yapabilecek gerekli yetkiye sahip degilsiniz.
+  activerecord:
+    models:
+      refinery/page: sayfa
+    attributes:
+      refinery/page:
+        title: Baslik
