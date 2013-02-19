@@ -4,12 +4,12 @@
     <%= render 'images' %>
   <% else %>
     <p>
-      <% unless searching? %>
+      <% if searching? %>
+        <%= t('no_results', :scope => 'refinery.admin.search') %>
+      <% else %>
         <strong>
           <%= t('.no_images_yet') %>
         </strong>
-      <% else %>
-        <%= t('no_results', :scope => 'refinery.admin.search') %>
       <% end %>
     </p>
   <% end %>
