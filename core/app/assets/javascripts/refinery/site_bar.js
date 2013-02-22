@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
   $logo = $('#site_bar_content #site_bar_refinery_cms_logo');
   $logo.css('left', ($('#site_bar_content').width() / 2) - ($logo.width() / 2));
 
