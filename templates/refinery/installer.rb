@@ -6,7 +6,7 @@ gsub_file 'Gemfile', "gem 'jquery-rails'", "gem 'jquery-rails', '~> 2.0.0'"
 begin
   run 'bundle install'
   require 'execjs'
-  ::ExecJS::Runtimes.autodetect
+  raise if ::ExecJS::Runtimes.autodetect.name =~ /therubyracer/
 rescue
   require 'pathname'
   if Pathname.new(destination_root.to_s).join('Gemfile').read =~ /therubyracer/

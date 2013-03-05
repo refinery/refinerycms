@@ -1,0 +1,44 @@
+tr:
+  refinery:
+    plugins:
+      refinery_images:
+        title: Resimler
+        description: Resimleri Yonet
+    admin:
+      images:
+        delete: Bu resim dosyasini sonsuza dek sil.
+        edit: Bu resmi duzenle
+        form:
+          image: Resim
+          use_current_image: Varolan resmi kullan
+          or: veya
+          replace_image: " Bununla degisiklik yap .."
+          current_image: Mevcut Resim
+          maximum_image_size: "Maksimum resim boyutu %{bytes}."
+        actions:
+          create_new_image: Yeni Resim Ekle
+        records:
+          no_images_yet:Henuz bir resim yok. "Yeni Resim Ekle" ye basarak ilk resminizi ekleyin.
+        index:
+          view:
+            switch_to: "%{view_name} gorunumu ac"
+            list: Liste
+            grid: Izgara
+        view_live_html: Bu Resmi goruntule <br/><em>yeni bir pencerede acar</em>
+        existing_image:
+          button_text: Cikart
+          resize_image: Resimi yeniden boyutlandir?
+          size: Ebat
+        insert:
+          existing_image: Kutuphane
+          new_image: Yukle
+  activerecord:
+    models:
+      refinery/image: "resim"
+    errors:
+      models:
+        refinery/image:
+          blank: Yukleme yapabilmek icin bir resim belirtmeniz gerekmektedir
+          too_big: "Resim %{size} den daha kucuk boyutta olmalidir"
+          incorrect_format: 'Sectiginiz secmin formati JPG, PNG, GIF olmak zorunda'
+          different_file_name: Yeni resim baska bir dosya ismi iceremez

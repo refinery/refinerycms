@@ -1,0 +1,36 @@
+tr:
+  refinery:
+    plugins:
+      refinery_files:
+        title: Dosyalar
+        description: Bir baglanti ve dosya yukle
+    admin:
+      resources:
+        delete: Bunu sonsuza dek sil
+        edit: Bu dosyayi duzenle
+        form:
+          download_current: Guncel dosyayi indir
+          or: or
+          replace: " bunu sununla degistir..."
+          maximum_file_size: "Maksimum dosya boyutu %{bytes}."
+        resource:
+          download: "Bu dosyayi indir (%{size})"
+        actions:
+          upload_new: Yeni Dosya Yukle
+        records:
+          no_files_yet: Henuz bir dosya yok. "Yeni Dosya Yukle" ye tiklayarak ilk dosyanizi ekleyin.
+        insert:
+          existing: Varolan Dosya
+          new: Yeni Dosya
+          no_files: Henuz bir dosya mevcut degil
+        existing_resource:
+          link_to_file: Bunu dosyaya baglanti yap
+          button_text: Cikart
+  activerecord:
+    models:
+      refinery/resource: "file"
+    errors:
+      models:
+        refinery/resource:
+          blank: Yukleme islemi icin bir dosya belirtmelisiniz
+          too_big: "Dosya %{size} den daha kucuk olmak zorunda"

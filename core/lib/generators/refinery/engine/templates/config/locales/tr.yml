@@ -1,0 +1,28 @@
+tr:
+  refinery:
+    plugins:
+      <%= plural_name %>:
+        title: <%= plural_name.titleize %>
+    <%= namespacing.underscore %>:
+      admin:
+        <%= plural_name %>:
+          actions:
+            create_new: Yeni Ekle <%= singular_name.titleize %>
+            reorder: Tekrar sirala <%= singular_name.titleize.pluralize %>
+            reorder_done: Tekrar siralama tamamlandi<%= singular_name.titleize.pluralize %>
+          records:
+            title: <%= plural_name.titleize %>
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir <%= singular_name.titleize.pluralize %> yok henuz.  Tikla "Yeni Ekle <%= singular_name.titleize %>" eklemek senin ilk <%= singular_name.titleize.downcase %>.
+          <%= singular_name %>:
+            view_live_html: Bunu canlu <%= singular_name.titleize.downcase %> goruntule <br/><em>(yeni bir pencerede acar)</em>
+            edit: Bunu Duzenle <%= singular_name.titleize.downcase %>
+            delete: Bunu Sil <%= singular_name.titleize.downcase %> sonsuza dek
+      <%= plural_name %>:
+        show:
+          other: Diger <%= singular_name.titleize.pluralize %>
+  activerecord:
+    attributes:
+      'refinery/<%= namespacing.underscore %>/<%= singular_name %>':<% attributes.each do |a| %>
+        <%= a.name %>: <%= a.name.titleize -%>
+<% end -%>

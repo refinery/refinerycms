@@ -1,0 +1,78 @@
+tr:
+  refinery:
+    plugins:
+      <%= plural_name %>:
+        title: <%= plural_name.titleize %>
+        description: Iletisim formu ve kayitlarin temini <%= plural_name.humanize.downcase %>
+    <%= namespacing.underscore %>:
+      <%= plural_name %>:
+        new:
+          send: Mesaj Gonder
+          privacy_policy: Mahremiyetinize onem veriyoruz.
+      admin:
+        <%= plural_name %>:
+          delete: Sonsuza dek <%= singular_name.humanize.downcase %> sil
+          <%= singular_name %>:
+            read_<%= singular_name %>: Read the <%= singular_name.humanize.downcase %>
+            said: dedi
+            mark_as_spam: Spam olarak isaretle
+            mark_as_ham: Gelen kutusuna tasi
+          submenu:
+            inbox: Gelen Kutusu
+            spam: Istenmeyen E-posta
+            update_notified: Uyari alanlari guncelle
+            edit_confirmation_email: Dogrulama e-posta'sini duzenle
+          index:
+            no_<%= plural_name %>: Henuz  Herhangi bir  <%= plural_name.humanize.downcase %> almadiniz.
+          spam:
+            no_spam: Oley! Herhangi bir istenmeyen e-posta yok
+          show:
+            details: Detay
+            age: Yas
+            actions: Eylemler
+            back_to_all_<%= plural_name %>: Geri don tum <%= plural_name.humanize.downcase %>
+            spam: Istenmeyen E-posta
+            spam_yes: 'evet'
+            <%= singular_name %>: <%= class_name.underscore.titleize %>
+            to: Kime
+            from: Kimden
+            click_to_email: Bu adrese e-posta'layin
+            phone: Telefon
+            date: Tarih
+            message: Mesaj
+        settings:
+          notification_recipients_form:
+            settings_value_name: Bildirimleri gonderecegin  adres
+            explanation: Her kim olursa seninle web sitesi uzerinden iletisime gecen, Refinery yeni bir <%= singular_name.humanize.downcase %>  diye e-posta atar.
+            hint: Yeni Bir <%= singular_name.humanize.downcase %> teslim edildiginde, Refinery bir e-posta bildirisi yollayacak sana.
+            example: "Lutfen e-posta adres(ler)inizi giriniz. Ornek olarak: jack@work.com, jill@office.com gibi "
+          confirmation_email_form:
+            to: Kime
+            from: Kimden
+            subject: Baslik
+            click_to_edit_subject: Basligi degistirmek icin buraya tiklayiniz
+            explanation: Her kim olursa seninle web siten uzerinden iletisime gecen,Refinery yeni bir dogrulama postasi gonderir <%= singular_name.humanize.downcase %> yapan kisiye
+            below_edit_email_sent: Asagida gonderilen e-postayi duzenleyebilirsin.
+            the_customer_making_<%= singular_name %>: Musteri <%= singular_name.humanize.downcase %> yapiyor
+            message: Mesaj
+            note: "Not: metini hizala %name% nerede musterinizin e-posta adresi gibi gozukmesini istiyorsan
+      mailer:
+        notification:
+          greeting: Selamlar
+          you_recieved_new_<%= singular_name %>: You just received a new <%= singular_name.humanize.downcase %> on your website.
+          <%= singular_name %>_starts: --- <%= singular_name.humanize.downcase %> starts ---
+          <%= singular_name %>_ends: --- <%= singular_name.humanize.downcase %> ends ---
+          from: Kimden
+          email: E-posta
+          phone: Telefon
+          message: Mesaj
+          closing_line: Saygilarimizla
+          ps_html: Senin butun <%= plural_name.humanize.downcase %> kayitli oldugu yer "<%= plural_name.titleize %>" burasidir eger ileride kullanmak istersen
+  activerecord:
+    models:
+      <%= singular_name %>: <%= class_name.underscore.titleize %>
+    attributes:
+      <%= singular_name %>:
+<% attributes.each do |a| -%>
+        <%= a.name %>: <%= a.name.humanize %>
+<% end -%>

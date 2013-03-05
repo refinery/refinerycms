@@ -80,7 +80,11 @@ module Refinery
         return super unless action_name.to_s == 'index'
 
         # Always display the tree of pages from the default frontend locale.
-        Globalize.locale = params[:switch_locale].try(:to_sym) || Refinery::I18n.default_frontend_locale
+        if Refinery::I18n.built_in_locales.keys.map(&:to_s).include?(params[:switch_locale])
+          Globalize.locale = params[:switch_locale].try(:to_sym)
+        else
+          Globalize.locale = Refinery::I18n.default_frontend_locale
+        end
       end
 
       def load_valid_templates

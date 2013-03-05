@@ -1,5 +1,4 @@
 # Encoding: utf-8
-require 'acts_as_indexed'
 require 'friendly_id'
 require 'refinery/core/base_model'
 
@@ -36,10 +35,6 @@ module Refinery
     friendly_id :custom_slug_or_title, :use => [:reserved, :globalize, :scoped],
                 :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                 :scope => :parent
-
-    # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
-    acts_as_indexed :fields => [:title, :meta_description,
-                                :menu_title, :browser_title, :all_page_part_content]
 
     has_many :parts,
              :foreign_key => :refinery_page_id,
@@ -345,11 +340,6 @@ module Refinery
         part.title == part_title.to_s or
         part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
       end
-    end
-
-    # Used to index all the content on this page so it can be easily searched.
-    def all_page_part_content
-      parts.map(&:body).join(" ")
     end
 
   private

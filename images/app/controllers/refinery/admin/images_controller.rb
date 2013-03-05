@@ -70,9 +70,9 @@ module Refinery
           if @images.all?(&:valid?)
             @image_id = @image.id if @image.persisted?
             @image = nil
-
-            self.insert
           end
+
+          self.insert
         end
       end
 
