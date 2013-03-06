@@ -158,7 +158,7 @@ module Refinery
               '%'+$1.unpack('H2'*bytesize($1)).join('%').upcase
             }.tr(' ', '+')
           end
-        end if ::Rack.version <= '1.2.1'
+        end if ::Rack.release <= '1.2.1'
       end
 
       initializer 'ensure devise is initialised' do |app|
