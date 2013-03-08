@@ -10,7 +10,7 @@ $(function() {
       $nested.slideUp(); 
     }
     else {
-      var contentUrl = $nested.attr('data-ajax-content');
+      var contentUrl = $nested.data('ajax-content');
       $li.addClass('loading');
       
       $nested.load(contentUrl, function() {
