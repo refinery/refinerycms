@@ -70,7 +70,7 @@ describe "CLI" do
       let(:env) { "view" }
       let(:not_found_message) { "Couldn't match any view template files in any extensions like non-existent\n" }
       let(:spec_success_message) { %W(create app/views/refinery/#{file_name}) }
-      let(:file_location) { File.expand_path("../../../../app/views/refinery", __FILE__) }
+      let!(:file_location) { File.expand_path("../../../../app/views/refinery", __FILE__) }
       let(:env_file_location) { "refinery/#{file_name.sub(%r{\..+}, "")}" }
       let(:copied_file_location) { "app/views/refinery/#{file_name}" }
     end
@@ -81,7 +81,7 @@ describe "CLI" do
       let(:env) { "controller" }
       let(:not_found_message) { "Couldn't match any controller files in any extensions like non-existent\n" }
       let(:spec_success_message) { %W(create app/controllers/refinery/#{file_name}) }
-      let(:file_location) { File.expand_path("../../../../app/controllers/refinery", __FILE__) }
+      let!(:file_location) { File.expand_path("../../../../app/controllers/refinery", __FILE__) }
       let(:env_file_location) { "refinery/#{file_name.sub(%r{\..+}, "")}" }
       let(:copied_file_location) { "app/controllers/refinery/#{file_name}" }
     end
@@ -92,7 +92,7 @@ describe "CLI" do
       let(:env) { "model" }
       let(:not_found_message) { "Couldn't match any model files in any extensions like non-existent\n" }
       let(:spec_success_message) { %W(create app/models/refinery/core/#{file_name}) }
-      let(:file_location) { File.expand_path("../../../../app/models/refinery/core", __FILE__) }
+      let!(:file_location) { File.expand_path("../../../../app/models/refinery/core", __FILE__) }
       let(:env_file_location) { "refinery/core/#{file_name.sub(%r{\..+}, "")}" }
       let(:copied_file_location) { "app/models/refinery/core/#{file_name}" }
     end
@@ -103,7 +103,7 @@ describe "CLI" do
       let(:env) { "helper" }
       let(:not_found_message) { "Couldn't match any helper files in any extensions like non-existent\n" }
       let(:spec_success_message) { %W(create app/helpers/refinery/#{file_name}) }
-      let(:file_location) { File.expand_path("../../../../app/helpers/refinery", __FILE__) }
+      let!(:file_location) { File.expand_path("../../../../app/helpers/refinery", __FILE__) }
       let(:env_file_location) { "refinery/#{file_name.sub(%r{\..+}, "")}" }
       let(:copied_file_location) { "app/helpers/refinery/#{file_name}" }
     end
@@ -114,7 +114,7 @@ describe "CLI" do
       let(:env) { "javascript" }
       let(:not_found_message) { "Couldn't match any javascript files in any extensions like non-existent\n" }
       let(:spec_success_message) { %W(create app/assets/javascripts/refinery/#{file_name}) }
-      let(:file_location) { File.expand_path("../../../../app/assets/javascripts/refinery", __FILE__) }
+      let!(:file_location) { File.expand_path("../../../../app/assets/javascripts/refinery", __FILE__) }
       let(:env_file_location) { "refinery/#{file_name.sub(%r{\..+}, "")}" }
       let(:copied_file_location) { "app/assets/javascripts/refinery/#{file_name}" }
     end
@@ -125,7 +125,7 @@ describe "CLI" do
       let(:env) { "stylesheet" }
       let(:not_found_message) { "Couldn't match any stylesheet files in any extensions like non-existent\n" }
       let(:spec_success_message) { %W(create app/assets/stylesheets/refinery/#{file_name}) }
-      let(:file_location) { File.expand_path("../../../../app/assets/stylesheets/refinery", __FILE__) }
+      let!(:file_location) { File.expand_path("../../../../app/assets/stylesheets/refinery", __FILE__) }
       let(:env_file_location) { "refinery/#{file_name.sub(%r{\..+}, "")}" }
       let(:copied_file_location) { "app/assets/stylesheets/refinery/#{file_name}" }
     end
