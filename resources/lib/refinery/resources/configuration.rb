@@ -29,21 +29,20 @@ module Refinery
       end
 
       def s3_bucket_name
-        config.s3_bucket_name.nil? ? Refinery::Core.s3_bucket_name : config.s3_bucket_name
+        config.s3_bucket_name.presence || Refinery::Core.s3_bucket_name
       end
 
       def s3_access_key_id
-        config.s3_access_key_id.nil? ? Refinery::Core.s3_access_key_id : config.s3_access_key_id
+        config.s3_access_key_id.presence || Refinery::Core.s3_access_key_id
       end
 
       def s3_secret_access_key
-        config.s3_secret_access_key.nil? ? Refinery::Core.s3_secret_access_key : config.s3_secret_access_key
+        config.s3_secret_access_key.presence || Refinery::Core.s3_secret_access_key
       end
 
       def s3_region
-        config.s3_region.nil? ? Refinery::Core.s3_region : config.s3_region
+        config.s3_region.presence || Refinery::Core.s3_region
       end
-
     end
   end
 end
