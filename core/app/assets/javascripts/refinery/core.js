@@ -10,7 +10,7 @@ init_flash_messages = function(){
     'opacity': 0
     , 'visibility':'visible'
   }).animate({'opacity': '1'}, 550);
-  $('#flash_close').live('click', function(e) {
+  $('#flash_close').on('click', function(e) {
     try {
       $('#flash').animate({
          'opacity': 0,
