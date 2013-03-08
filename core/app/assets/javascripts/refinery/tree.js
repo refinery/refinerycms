@@ -1,6 +1,6 @@
 $(function() {
-  $('.tree .toggle').on('click', function(e) { 
-    e.preventDefault(); 
+  $('.tree').on('click', '.toggle', function(e) {
+    e.preventDefault();
     var $li   = $(this).parents('li:first');
     var $icon = $li.find('.icon.toggle');
     var $nested = $li.find('.nested');
