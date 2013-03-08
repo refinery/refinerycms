@@ -1,6 +1,6 @@
 $(function() {
-  $('.tree .toggle').live('click', function(e) { 
-    e.preventDefault(); 
+  $('.tree').on('click', '.toggle', function(e) {
+    e.preventDefault();
     var $li   = $(this).parents('li:first');
     var $icon = $li.find('.icon.toggle');
     var $nested = $li.find('.nested');
@@ -10,7 +10,7 @@ $(function() {
       $nested.slideUp(); 
     }
     else {
-      var contentUrl = $nested.attr('data-ajax-content');
+      var contentUrl = $nested.data('ajax-content');
       $li.addClass('loading');
       
       $nested.load(contentUrl, function() {

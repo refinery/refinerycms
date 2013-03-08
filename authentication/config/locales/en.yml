@@ -57,6 +57,7 @@ en:
     failure:
       unauthenticated: You need to sign in before continuing.
       invalid: "Sorry, your login or password was incorrect."
+      not_found_in_database: "Sorry, your login or password was incorrect."
     sessions:
       signed_in: Signed in successfully.
   activerecord:
