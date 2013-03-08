@@ -10,13 +10,16 @@ module Refinery
       include ActionView::Helpers::UrlHelper
       include ActiveSupport::Configurable
 
-      config_accessor :roots, :menu_tag, :list_tag, :list_item_tag, :css, :dom_id,
+      config_accessor :roots, :menu_tag, :list_tag, :list_item_tag, :menu_tag_options, :list_tag_options, :list_item_tag_options, :css, :dom_id,
                       :max_depth, :selected_css, :first_css, :last_css
       self.dom_id = 'menu'
       self.css = 'menu clearfix'
       self.menu_tag = :nav
+      self.menu_tag_options = {:id => dom_id, :class => css}
       self.list_tag = :ul
+      self.list_tag_options = {}
       self.list_item_tag = :li
+      self.list_item_tag_options = {}
       self.selected_css = :selected
       self.first_css = :first
       self.last_css = :last
@@ -38,14 +41,14 @@ module Refinery
 
       private
       def render_menu(items)
-        content_tag(menu_tag, :id => dom_id, :class => css) do
+        content_tag(menu_tag, menu_tag_options) do
           render_menu_items(items)
         end
       end
 
       def render_menu_items(menu_items)
         if menu_items.present?
-          content_tag(list_tag) do
+          content_tag(list_tag, list_tag_options) do
             menu_items.each_with_index.inject(ActiveSupport::SafeBuffer.new) do |buffer, (item, index)|
               buffer << render_menu_item(item, index)
             end
@@ -54,7 +57,7 @@ module Refinery
       end
 
       def render_menu_item(menu_item, index)
-        content_tag(list_item_tag, :class => menu_item_css(menu_item, index)) do
+        content_tag(list_item_tag, list_item_tag_options.reverse_merge!({:class => menu_item_css(menu_item, index)})) do
           buffer = ActiveSupport::SafeBuffer.new
           buffer << link_to(menu_item.title, context.refinery.url_for(menu_item.url))
           buffer << render_menu_items(menu_item_children(menu_item))
