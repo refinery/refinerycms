@@ -1,6 +1,8 @@
 <%= form_for [refinery, :admin, @user] do |f| %>
 
-  <%= render '/refinery/admin/error_messages', :object => @user, :include_object_name => true %>
+  <%= render '/refinery/admin/error_messages',
+             :object => @user,
+             :include_object_name => true %>
 
   <div class='field'>
     <%= f.label :username %>
@@ -14,7 +16,7 @@
     <%= f.label :password %>
     <%= f.password_field :password, :autocomplete => 'off' %>
     <% if @user.persisted? %>
-      <%= content_tag(:br) %>
+      <br>
       <%= content_tag(:span, t('.blank_password_keeps_current')) %>
     <% end %>
   </div>
@@ -30,7 +32,7 @@
     <ul id='plugins' class='checkboxes'>
       <% @available_plugins.each do |plugin| -%>
         <% if Refinery::Plugins.always_allowed.names.include?(plugin[:name]) or
-              (plugin[:name] == 'refinery_users' and @user.id == current_refinery_user.id) %>
+              (plugin[:name] == 'refinery_users' && @user.id == current_refinery_user.id) %>
           <%= hidden_field_tag 'user[plugins][]', plugin[:name],
                                :id => "plugins_#{plugin[:name]}" %>
         <% else %>
@@ -48,7 +50,7 @@
     </ul>
   </div>
 
-  <% if current_refinery_user.has_role?(:superuser) and Refinery::Authentication.superuser_can_assign_roles %>
+  <% if current_refinery_user.has_role?(:superuser) && Refinery::Authentication.superuser_can_assign_roles %>
     <div class='field role_access'>
       <span class='label_with_help'>
         <%= f.label :role_access, t('.role_access'), :class => "title_label" %>
