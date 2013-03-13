@@ -296,6 +296,7 @@ module Refinery
       {
         :id => id,
         :lft => lft,
+        :depth => depth,
         :menu_match => menu_match,
         :parent_id => parent_id,
         :rgt => rgt,
