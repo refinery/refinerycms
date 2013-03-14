@@ -174,5 +174,15 @@ module Refinery
       end
     end
 
+    describe '#thumbnail_dimensions returns correctly with user-defined geometries' do
+      it ':medium' do
+        created_image.thumbnail_dimensions(:medium).should == { :width => 225, :height => 169 }
+      end
+
+      it ':large' do
+        created_image.thumbnail_dimensions(:large).should == { :width => 450, :height => 338 }
+      end
+    end
+
   end
 end
