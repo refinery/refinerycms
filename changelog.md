@@ -50,6 +50,13 @@
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
+## 2.0.10 [15 March 2013]
+* Blocked past insecure Rails versions. [Philip Arndt](https://github.com/parndt)
+* Fixed problems with editing pages in different locales. [Philip Arndt](https://github.com/parndt)
+* Locked `truncate_html` to 0.5.x to ensure Ruby 1.8.x compatibility. [Uģis Ozols](https://github.com/ugisozols)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/2.0.9...2.0.10)
+
 ## 2.0.9 [21 November 2012]
 * Allowed extra parameters to be passed when creating image. [#1914](https://github.com/refinery/refinerycms/pull/1914). [tbuyle](https://github.com/tbuyle)
 * Added usage instructions to refinerycms executable. [#1931](https://github.com/refinery/refinerycms/pull/1931). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt).
