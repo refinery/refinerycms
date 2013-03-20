@@ -10,7 +10,7 @@ module Refinery
         layout :layout
 
         def show
-          render_with_templates? @page, :template => template
+          render_with_templates?
         end
 
         protected
@@ -31,10 +31,6 @@ module Refinery
 
         def layout
           'application'
-        end
-
-        def template
-          '/refinery/pages/show'
         end
       end
     end
