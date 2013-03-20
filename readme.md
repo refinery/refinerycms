@@ -16,7 +16,7 @@ More information at [http://refinerycms.com](http://refinerycms.com)
 
 * __[Install Refinery CMS](http://refinerycms.com/download)__
 * [Install Refinery CMS on Heroku](http://refinerycms.com/guides/heroku)
-* [Contribute to Refinery CMS](http://refinerycms.com/guides/contributing-to-refinery)
+* [Contribute to Refinery CMS](readme.md#contributing)
 
 ## Getting Started
 
@@ -94,6 +94,12 @@ For help run the command without any options:
 ### Example Site Showcase
 
 [List here (add your link when you're done)](https://github.com/refinery/refinerycms/wiki/Example-Site-Showcase)
+
+## Contributing
+
+See [contributing.md](contributing.md)
+and [Contributing to Refinery](http://refinerycms.com/guides/contributing-to-refinery)
+guide for details about contributing and running test.
 
 ## License
 
