@@ -5,10 +5,12 @@ module Refinery
         include Pages::InstanceMethods
         include Pages::RenderOptions
 
+        before_filter :find_page
+
         layout :layout
 
         def show
-          render_with_templates? page, :template => template
+          render_with_templates? @page, :template => template
         end
 
         protected
