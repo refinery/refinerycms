@@ -3,7 +3,10 @@ require "spec_helper"
 module Refinery
   describe ApplicationController, :type => :controller do
     before do
-      Rails.application.routes.draw { get "anonymous/index" }
+      Rails.application.routes.draw {
+        mount Refinery::Core::Engine, :at => '/'
+        get "anonymous/index"
+      }
     end
 
     after do
