@@ -2,13 +2,14 @@ module Refinery
   class MenuItem
 
     attr_accessor :menu, :title, :parent_id, :lft, :rgt, :depth, :url, :menu_match,
-                  :original_type, :original_id
+                  :original_type, :original_id, :attributes
 
     def initialize(menu, options = {})
       @menu = menu
       remap!(options).each do |key, value|
         send "#{key}=", value
       end
+      self.attributes = options
     end
 
     def remap!(options)
@@ -54,6 +55,10 @@ module Refinery
       @siblings ||= ((has_parent? ? parent.children : menu.roots) - [self])
     end
     alias_method :shown_siblings, :siblings
+
+    def to_refinery_menu_item
+      attributes
+    end
 
     private
     # At present a MenuItem can only have children of the same type to avoid id
