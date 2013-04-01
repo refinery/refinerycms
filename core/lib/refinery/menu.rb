@@ -26,6 +26,6 @@ module Refinery
       map(&:title).join(' ')
     end
 
-    delegate :inspect, :map, :select, :to => :items
+    delegate :inspect, :map, :select, :detect, :first, :last, :length, :size, :to => :items
   end
 end

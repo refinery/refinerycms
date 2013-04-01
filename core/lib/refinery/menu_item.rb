@@ -9,6 +9,7 @@ module Refinery
       remap!(options).each do |key, value|
         send "#{key}=", value
       end
+      self.attributes = options
     end
 
     def remap!(options)
@@ -35,11 +36,11 @@ module Refinery
     alias_method :has_descendants?, :has_children? # really, they're the same.
 
     def has_parent?
-      !parent_id.nil?
+      !orphan?
     end
 
     def orphan?
-      !has_parent?
+      parent_id.nil? || menu.detect{|item| compatible_with?(item) && item.original_id == parent_id}.nil?
     end
 
     def leaf?
@@ -55,7 +56,12 @@ module Refinery
     end
     alias_method :shown_siblings, :siblings
 
+    def to_refinery_menu_item
+      attributes
+    end
+
     private
+    attr_accessor :attributes
     # At present a MenuItem can only have children of the same type to avoid id
     # conflicts like a Blog::Post and a Page both having an id of 42
     def compatible_with?(item)
