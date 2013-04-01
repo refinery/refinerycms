@@ -2,7 +2,7 @@ module Refinery
   class MenuItem
 
     attr_accessor :menu, :title, :parent_id, :lft, :rgt, :depth, :url, :menu_match,
-                  :original_type, :original_id, :attributes
+                  :original_type, :original_id
 
     def initialize(menu, options = {})
       @menu = menu
@@ -36,11 +36,11 @@ module Refinery
     alias_method :has_descendants?, :has_children? # really, they're the same.
 
     def has_parent?
-      !parent_id.nil?
+      !orphan?
     end
 
     def orphan?
-      !has_parent?
+      parent_id.nil? || menu.detect{|item| compatible_with?(item) && item.original_id == parent_id}.nil?
     end
 
     def leaf?
@@ -61,6 +61,7 @@ module Refinery
     end
 
     private
+    attr_accessor :attributes
     # At present a MenuItem can only have children of the same type to avoid id
     # conflicts like a Blog::Post and a Page both having an id of 42
     def compatible_with?(item)
