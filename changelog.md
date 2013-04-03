@@ -50,6 +50,11 @@
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
+## 2.0.11 [unreleased]
+
+* Fixed issue where a superfluous `</div>` would be inserted when using `rails g refinery:engine` for WYSIWYG fields. [#2236](https://github.com/refinery/refinerycms/issues/2236) [Philip Arndt](https://github.com/parndt) and [Rob Yurkowski](https://github.com/robyurkowski)
+* [See full list](https://github.com/refinery/refinerycms/compare/2.0.10...2-0-stable)
+
 ## 2.0.10 [15 March 2013]
 * Blocked past insecure Rails versions. [Philip Arndt](https://github.com/parndt)
 * Fixed problems with editing pages in different locales. [Philip Arndt](https://github.com/parndt)
