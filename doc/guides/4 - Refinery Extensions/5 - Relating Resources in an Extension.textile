@@ -1,0 +1,213 @@
+h2. Relating Resources in an Extension
+
+This guide will show you how to:
+
+* Properly relate two models in a Refinery Extension that you have created
+* Create a drop-down select box in a Refinery Page 
+
+endprologue.
+
+WARNING: This only works on Refinery versions 2.0.0 and greater.
+WARNING: This guide assumes you have followed the "Multiple Resources in an Extension" guide
+
+h4. Generate your extension
+
+Follow the instructions in "Multiple Resources in an Extension" guide to create your own extension.
+
+At this point we will assume that you have created the events engine which contains an Event model and a Places model.
+
+Now, what if you wanted to add an "Event Type" model, and you wanted to have an event type drop-down on the "edit event" page?  Let's set that up properly.
+
+To add your EventType model, run the following command. 
+
+<shell>
+  $ rails g refinery:engine event_type name:string --extension events --namespace events
+</shell>
+
+TIP: You can additionally specify +--pretend+ to simulate generation, so you may inspect the outcome without actually modifying anything.
+
+Notice the last arguments (+--extension <extension_name> --namespace <extension_name>+). This is how Refinery knows which extension to insert your new code. The +--namespace+ argument is necessary because Refinery will create a namespace for your extension by default. If you don't specify one, it's the name of the first scaffold you created. In this case, the namespace is +events+. 
+
+
+
+Running this command will produce the following output:
+
+<shell>
+      ...
+      create  vendor/extensions/events/app/controllers/admin/places_controller.rb
+      create  vendor/extensions/events/app/controllers/places_controller.rb
+      create  vendor/extensions/events/app/models/place.rb
+      create  vendor/extensions/events/app/views/admin/places/_actions.html.erb
+      create  vendor/extensions/events/app/views/admin/places/_form.html.erb
+      create  vendor/extensions/events/app/views/admin/places/_states.html.erb
+      create  vendor/extensions/events/app/views/admin/places/_records.html.erb
+      create  vendor/extensions/events/app/views/admin/places/_place.html.erb
+      create  vendor/extensions/events/app/views/admin/places/_sortable_list.html.erb
+      create  vendor/extensions/events/app/views/admin/places/edit.html.erb
+      create  vendor/extensions/events/app/views/admin/places/index.html.erb
+      create  vendor/extensions/events/app/views/admin/places/new.html.erb
+      create  vendor/extensions/events/app/views/places/index.html.erb
+      create  vendor/extensions/events/app/views/places/show.html.erb
+      create  vendor/extensions/events/config/locales/tmp/en.yml
+      create  vendor/extensions/events/config/locales/tmp/fr.yml
+      create  vendor/extensions/events/config/locales/tmp/lolcat.yml
+      create  vendor/extensions/events/config/locales/tmp/nb.yml
+      create  vendor/extensions/events/config/locales/tmp/nl.yml
+      create  vendor/extensions/events/config/tmp/routes.rb
+      create  vendor/extensions/events/db/migrate/create_places.rb
+      create  vendor/extensions/events/db/seeds/places.rb
+      create  vendor/extensions/events/features/manage_places.feature
+      create  vendor/extensions/events/features/step_definitions/place_steps.rb
+      create  vendor/extensions/events/features/support/tmp/paths.rb
+      create  vendor/extensions/events/lib/generators/refinerycms_places_generator.rb
+      create  vendor/extensions/events/lib/refinerycms-places.rb
+      create  vendor/extensions/events/lib/tasks/places.rake
+      create  vendor/extensions/events/refinerycms-places.gemspec
+      create  vendor/extensions/events/spec/models/place_spec.rb
+      append  vendor/extensions/events/lib/refinerycms-events.rb
+      ...
+------------------------
+Now run:
+bundle install
+rails generate refinery:events
+rake db:migrate
+rake db:seed
+------------------------
+</shell>
+
+WARNING: If you are presented with a conflict in the +events_generator.rb+ file, say no! This happens at the moment because Refinery thinks you are generating a Places extension, and this may cause all kinds of havoc if you agree to it. If you have accidentally agreed to it, you can revert that file, and check your +db/seeds.rb+ file to see if you have accidentally appended an additional line reading +Refinery::Events::Engine.load_seed+.
+
+Run the commands listed above. Notice +rails generate refinery:events+. The +rails generate refinery:events+ will copy the migration files from +vendor/extensions/events/db/migrate+ to +db/migrate+ and will prepend a timestamp to each migration. This is so an extension that was written before your application will declare its migrations chronologically later than the migrations you wrote for the app. For instance, if you wrote your app on Tuesday and then inserted the extension on Wednesday, you would want the timestamps on the migrations to show Wednesday rather than the date it was created &mdash; perhaps Monday. If the extension didn't do this, when you deployed your application, it would run the migrations for your extension first, potentially failing because it couldn't find the Refinery database tables it needs to complete.
+
+
+h4. Linking the models in our engine
+
+Now that we have an EventType model, we need to tell Rails how these are linked:
+
+Open up +vendor/extensions/events/app/models/refinery/events/event_type.rb+ and look at its contents:
+
+<ruby>
+module Refinery
+  module Events
+    class EventType < Refinery::Core::BaseModel
+
+      attr_accessible :name
+
+    end
+  end
+end
+</ruby>
+
+
+All of the Rails code in the model should be correct, but we need to tell Rails of the has_many relationship between an EventType and an Event.  Add the has_many line so it appears as:
+
+<ruby>
+module Refinery
+  module Events
+    class EventType < Refinery::Core::BaseModel
+
+      attr_accessible :name
+
+      has_many :events
+
+    end
+  end
+end
+</ruby>
+
+
+Naturally, there is also a belongs_to relationship between an Event and an EventType (an Event belongs_to an EventType)
+
+
+Open up +vendor/extensions/events/app/models/refinery/events/event.rb+ and look at its contents:
+
+<ruby>
+module Refinery
+  module Events
+    class Event < Refinery::Core::BaseModel
+
+      attr_accessible :name
+
+    end
+  end
+end
+</ruby>
+
+Add the belongs_to line so it appears as:
+
+<ruby>
+module Refinery
+  module Events
+    class Event < Refinery::Core::BaseModel
+
+      attr_accessible :name
+
+      belongs_to :event_type
+
+    end
+  end
+end
+</ruby>
+
+
+h4. Modifying the Controller to gather information for our sub-table
+
+Ultimately, we will need some collection of "event types" in our Events view... that collection is what we'll use to create the select box.  So, to make that happen, the best (and most proper) way is to modify the Events controller so that it automatically creates an @event_types variable that we'll use in the view.
+
+Open up +vendor/extensions/events/app/controllers/refinery/events/events_controller.rb+ and look at its contents:
+
+<ruby>
+module Refinery
+  module Events
+    module Admin
+      class EventsController < ::Refinery::AdminController
+
+        crudify :'refinery/events/events',
+                :title_attribute => 'name', :xhr_paging => true
+
+      end
+    end
+  end
+end
+</ruby>
+
+
+Now, add a function to "find_all_event_types", and call that function in the before_filter.  Your controller should look like this when you are done:
+
+<ruby>
+module Refinery
+  module Events
+    module Admin
+      class EventsController < ::Refinery::AdminController
+        before_filter :find_all_events
+
+        crudify :'refinery/events/events',
+                :title_attribute => 'name', :xhr_paging => true
+
+        protected
+
+        def find_all_event_types
+          @event_types = Refinery::Events::EventTypes.all
+        end
+
+      end
+    end
+  end
+end
+</ruby>
+
+
+h4. Modifying the View to display and store the sub-table select box
+
+You are almost done!  Just have to put the code in your view that will display the select box.  This is the easiest part:
+
+Open up +vendor/extensions/events/app/views/refinery/events/admin/events/_form.rb+.  In that file, wherever you want your select box to appear, simply add this rails code:
+
+<ruby>
+<div class="field">
+  <%= f.label :event_type -%>
+  <%= f.select(:event_type_id, @event_types.collect {|d| [d.name, d.id] })%>
+</div>
+</ruby>
+
+That should be all you need.  Try it out:  Login to refinery and go to the Events edit page and you should see the Event Type select box and it should be populated with the event types you have defined.  Choose an event type, save your record, and double-check that your selection is persisted.
