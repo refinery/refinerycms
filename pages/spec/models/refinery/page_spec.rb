@@ -209,10 +209,10 @@ module Refinery
 
       it 'allows slashes in custom routes but slugs everything in between' do
         turn_off_slug_scoping
-        page_needing_a_slugging = subject.class.new(:title => page_title, :custom_slug => '/products/sub category/my product is cool!')
+        page_needing_a_slugging = subject.class.new(:title => page_title, :custom_slug => 'products/category/sub category/my product is cool!')
         page_needing_a_slugging.save
         page_needing_a_slugging.url[:id].should be_nil
-        page_needing_a_slugging.url[:path].should == ['/products/sub-category/my-product-is-cool']
+        page_needing_a_slugging.url[:path].should == ['products/category/sub-category/my-product-is-cool']
         turn_on_slug_scoping
       end
 
@@ -231,6 +231,28 @@ module Refinery
 
         child_with_custom_slug.url[:id].should be_nil
         child_with_custom_slug.url[:path].should == [custom_child_slug]
+        turn_on_slug_scoping
+      end
+      
+      it "doesn't allow slashes in slug" do
+        page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => '/products/category')
+        page_with_slashes_in_slug.save
+        page_with_slashes_in_slug.url[:path].should == ['productscategory']
+      end
+      
+      it "allow slashes in slug when slug scoping is off" do
+        turn_off_slug_scoping
+        page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => 'products/category/subcategory')
+        page_with_slashes_in_slug.save
+        page_with_slashes_in_slug.url[:path].should == ['products/category/subcategory']
+        turn_on_slug_scoping
+      end
+      
+      it "strips leading and trailing slashes in slug when slug scoping is off" do
+        turn_off_slug_scoping
+        page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => '/products/category/subcategory/')
+        page_with_slashes_in_slug.save
+        page_with_slashes_in_slug.url[:path].should == ['products/category/subcategory']
         turn_on_slug_scoping
       end
 

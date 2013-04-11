@@ -372,7 +372,8 @@ module Refinery
       # If we are scoping by parent, no slashes are allowed. Otherwise, slug is potentially
       # a custom slug that contains a custom route to the page.
       if !::Refinery::Pages.scope_slug_by_parent && slug_string.include?('/')
-        slug_string.split('/').map {|s| normalize_friendly_id_with_marketable_urls(s) }.join('/')
+        slug_string.sub!(%r{^/*}, '').sub!(%r{/*$}, '') # Remove leading and trailing slashes, but allow internal
+        slug_string.split('/').select(&:present?).map {|s| normalize_friendly_id_with_marketable_urls(s) }.join('/')
       else
         sluggified = slug_string.to_slug.normalize!
         if Pages.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)
