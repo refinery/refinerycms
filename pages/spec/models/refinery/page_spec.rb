@@ -199,7 +199,7 @@ module Refinery
         page_with_custom_slug.url[:path].should == [custom_page_slug]
       end
 
-      it 'allows a custom route when slug scoping is off', :focus => true do
+      it 'allows a custom route when slug scoping is off' do
         turn_off_slug_scoping
         page_with_custom_route.save
         page_with_custom_route.url[:id].should be_nil
@@ -207,7 +207,7 @@ module Refinery
         turn_on_slug_scoping
       end
 
-      it 'allows slashes in custom routes but slugs everything in between', :focus => true do
+      it 'allows slashes in custom routes but slugs everything in between' do
         turn_off_slug_scoping
         page_needing_a_slugging = subject.class.new(:title => page_title, :custom_slug => '/products/sub category/my product is cool!')
         page_needing_a_slugging.save
@@ -224,7 +224,7 @@ module Refinery
         child_with_custom_slug.url[:path].should == [page.url[:path].first, custom_child_slug]
       end
 
-      it 'does not return a path underneath its parent when scoping is off', :focus => true do
+      it 'does not return a path underneath its parent when scoping is off' do
         turn_off_slug_scoping
         child_with_custom_slug.save
         page.save
