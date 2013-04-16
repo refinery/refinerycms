@@ -1,4 +1,5 @@
 require "spec_helper"
+require 'refinery/cli'
 require "rake"
 
 describe "CLI" do

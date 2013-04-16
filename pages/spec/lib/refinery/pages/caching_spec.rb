@@ -1,4 +1,5 @@
 require "spec_helper"
+require 'refinery/pages/caching'
 
 module Refinery
   module Pages
@@ -6,8 +7,8 @@ module Refinery
       let(:cache_path) { "/tmp"}
       let(:refinery_cache_path) { "/tmp/refinery/cache/pages"}
       let(:refinery_cache_file) { refinery_cache_path + ".html"}
-      before do 
-        FileUtils.mkpath refinery_cache_path 
+      before do
+        FileUtils.mkpath refinery_cache_path
         FileUtils.touch refinery_cache_file
       end
 
@@ -68,7 +69,7 @@ module Refinery
               cache.expire!
               File.exists?(refinery_cache_file).should be_false
             end
-            
+
           end
 
           context "invalid cache directory" do
