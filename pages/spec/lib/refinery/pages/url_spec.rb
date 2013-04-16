@@ -1,4 +1,5 @@
 require "spec_helper"
+require 'refinery/pages/url'
 
 module Refinery
   module Pages
