@@ -36,8 +36,8 @@ module Refinery
             end
           end
 
-          if ::Refinery::Images.custom_backend
-            app_images.datastore = Refinery::Images.custom_backend_class.new(Refinery::Images.custom_backend_opts)
+          if Images.custom_backend?
+            app_images.datastore = Images.custom_backend_class.new(Images.custom_backend_opts)
           end
         end
 

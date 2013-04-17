@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe  Refinery::Resources do
+describe Refinery::Resources do
   describe "with custom s3 settings" do
     it "prefers custom values over the default" do
       Refinery::Core.s3_bucket_name = "kfc"
@@ -21,11 +21,11 @@ describe  Refinery::Resources do
 
   describe "with a custom storage backend" do
     before do
-      Refinery::Core.custom_backend_class = 'DummyBackend1'
+      Refinery::Core.dragonfly_custom_backend_class = 'DummyBackend1'
       class DummyBackend1; end
       class DummyBackend2; end
     end
-    after { Refinery::Core.custom_backend_class = nil }
+    after { Refinery::Core.dragonfly_custom_backend_class = nil }
     let(:backend1) { DummyBackend1.new }
     let(:backend2) { DummyBackend2.new }
 

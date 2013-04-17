@@ -12,7 +12,7 @@ module Refinery
                     :custom_backend_class, :custom_backend_opts
 
     self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
-    self.dragonfly_secret = Refinery::Core.dragonfly_secret
+    self.dragonfly_secret = Core.dragonfly_secret
     # If you decide to trust file extensions replace :ext below with :format
     self.dragonfly_url_format = '/system/images/:job/:basename.:ext'
     self.dragonfly_url_host = ''
@@ -41,35 +41,35 @@ module Refinery
       end
 
       def s3_backend
-        config.s3_backend.nil? ? Refinery::Core.s3_backend : config.s3_backend
+        config.s3_backend.presence || Core.s3_backend
       end
 
       def s3_bucket_name
-        config.s3_bucket_name.nil? ? Refinery::Core.s3_bucket_name : config.s3_bucket_name
+        config.s3_bucket_name.presence || Core.s3_bucket_name
       end
 
       def s3_access_key_id
-        config.s3_access_key_id.nil? ? Refinery::Core.s3_access_key_id : config.s3_access_key_id
+        config.s3_access_key_id.presence || Core.s3_access_key_id
       end
 
       def s3_secret_access_key
-        config.s3_secret_access_key.nil? ? Refinery::Core.s3_secret_access_key : config.s3_secret_access_key
+        config.s3_secret_access_key.presence || Core.s3_secret_access_key
       end
 
       def s3_region
-        config.s3_region.nil? ? Refinery::Core.s3_region : config.s3_region
+        config.s3_region.presence || Core.s3_region
       end
 
-      def custom_backend
-        config.custom_backend_class.nil? ? Refinery::Core.custom_backend : config.custom_backend_class.present?
+      def custom_backend?
+        config.custom_backend_class.nil? ? Core.dragonfly_custom_backend? : config.custom_backend_class.present?
       end
 
       def custom_backend_class
-        config.custom_backend_class.nil? ? Refinery::Core.custom_backend_class : config.custom_backend_class.constantize
+        config.custom_backend_class.nil? ? Core.dragonfly_custom_backend_class : config.custom_backend_class.constantize
       end
 
       def custom_backend_opts
-        config.custom_backend_opts.nil? ? Refinery::Core.custom_backend_opts : config.custom_backend_opts
+        config.custom_backend_opts.presence || Core.dragonfly_custom_backend_opts
       end
 
     end

@@ -35,17 +35,17 @@ module Refinery
 
       describe 'custom storage backend' do
         it 'class should be nil by default' do
-          Refinery::Core.custom_backend_class.should == nil
+          Refinery::Core.dragonfly_custom_backend_class.should == nil
         end
 
         context 'is set in core' do
           before { class DummyBackend; end }
-          after { Refinery::Core.custom_backend_class = nil }
+          after { Refinery::Core.dragonfly_custom_backend_class = nil }
           let(:backend) { DummyBackend.new }
 
           it 'and is set to a class that exists' do
-            Refinery::Core.custom_backend_class = 'Refinery::Core::DummyBackend'
-            Refinery::Core.custom_backend_class.should == backend.class
+            Refinery::Core.dragonfly_custom_backend_class = 'Refinery::Core::DummyBackend'
+            Refinery::Core.dragonfly_custom_backend_class.should == backend.class
           end
         end
       end
