@@ -5,7 +5,7 @@
   <span class="actions">
     <%= link_to refinery_icon_tag('eye.png'), list_view_image.url,
                 :target => '_blank',
-                :title => image_fu(list_view_image, '96x96#c', :size => '96x96') %>
+                :title => image_fu(list_view_image, '96x96#c', :size => '96x96').to_str %>
     <%= link_to refinery_icon_tag('application_edit.png'),
                 refinery.edit_admin_image_path(list_view_image),
                 :title => t('edit', :scope => 'refinery.admin.images') %>
