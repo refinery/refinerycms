@@ -43,4 +43,9 @@ Refinery::Images.configure do |config|
   # config.datastore_root_path = <%= Refinery::Images.datastore_root_path.inspect %>
   # config.trust_file_extensions = <%= Refinery::Images.trust_file_extensions.inspect %>
 
+  # Configure Dragonfly custom storage backend
+  # The custom_backend setting by default defers to the core setting for this but can be set just for images.
+  # config.custom_backend_class = <%= Refinery::Images.custom_backend_class.inspect %>
+  # config.custom_backend_opts = <%= Refinery::Images.custom_backend_opts.inspect %>
+
 end

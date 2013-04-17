@@ -7,7 +7,8 @@ module Refinery
                     :dragonfly_secret,
                     :wymeditor_whitelist_tags, :javascripts, :stylesheets,
                     :s3_bucket_name, :s3_region, :s3_access_key_id,
-                    :s3_secret_access_key, :force_ssl, :backend_route
+                    :s3_secret_access_key, :force_ssl, :backend_route,
+                    :custom_backend_class, :custom_backend_opts
 
     self.rescue_not_found = false
     self.s3_backend = false
@@ -25,6 +26,8 @@ module Refinery
     self.s3_secret_access_key = ENV['S3_SECRET']
     self.force_ssl = false
     self.backend_route = "refinery"
+    self.custom_backend_class = ''
+    self.custom_backend_opts = {}
 
     def config.register_javascript(name)
       self.javascripts << name
@@ -41,6 +44,14 @@ module Refinery
 
       def clear_stylesheets!
         self.stylesheets = []
+      end
+
+      def custom_backend
+        config.custom_backend_class.present?
+      end
+
+      def custom_backend_class
+        custom_backend ? config.custom_backend_class.constantize : nil
       end
 
       def site_name

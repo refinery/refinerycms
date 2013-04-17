@@ -35,6 +35,10 @@ module Refinery
               s3.region = Refinery::Images.s3_region if Refinery::Images.s3_region
             end
           end
+
+          if ::Refinery::Images.custom_backend
+            app_images.datastore = Refinery::Images.custom_backend_class.new(Refinery::Images.custom_backend_opts)
+          end
         end
 
         ##

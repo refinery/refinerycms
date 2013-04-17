@@ -8,7 +8,8 @@ module Refinery
                     :image_views, :preferred_image_view, :datastore_root_path,
                     :s3_backend, :s3_bucket_name, :s3_region,
                     :s3_access_key_id, :s3_secret_access_key, :trust_file_extensions,
-                    :whitelisted_mime_types
+                    :whitelisted_mime_types,
+                    :custom_backend_class, :custom_backend_opts
 
     self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
     self.dragonfly_secret = Refinery::Core.dragonfly_secret
@@ -57,6 +58,18 @@ module Refinery
 
       def s3_region
         config.s3_region.nil? ? Refinery::Core.s3_region : config.s3_region
+      end
+
+      def custom_backend
+        config.custom_backend_class.nil? ? Refinery::Core.custom_backend : config.custom_backend_class.present?
+      end
+
+      def custom_backend_class
+        config.custom_backend_class.nil? ? Refinery::Core.custom_backend_class : config.custom_backend_class.constantize
+      end
+
+      def custom_backend_opts
+        config.custom_backend_opts.nil? ? Refinery::Core.custom_backend_opts : config.custom_backend_opts
       end
 
     end
