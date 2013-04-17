@@ -34,6 +34,10 @@ module Refinery
               s3.region = Refinery::Resources.s3_region if Refinery::Resources.s3_region
             end
           end
+
+          if Resources.custom_backend?
+            app_resources.datastore = Resources.custom_backend_class.new(Resources.custom_backend_opts)
+          end
         end
 
         ##
