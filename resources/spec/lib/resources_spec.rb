@@ -18,4 +18,24 @@ describe  Refinery::Resources do
       described_class.s3_bucket_name.should == "kfc"
     end
   end
+
+  describe "with a custom storage backend" do
+    before do
+      Refinery::Core.custom_backend_class = 'DummyBackend1'
+      class DummyBackend1; end
+      class DummyBackend2; end
+    end
+    after { Refinery::Core.custom_backend_class = nil }
+    let(:backend1) { DummyBackend1.new }
+    let(:backend2) { DummyBackend2.new }
+
+    it "uses the default configuration if present" do
+      described_class.custom_backend_class.should == backend1.class
+    end
+
+    it "prefers custom values over the defaults" do
+      described_class.custom_backend_class = 'DummyBackend2'
+      described_class.custom_backend_class.should == backend2.class
+    end
+  end
 end

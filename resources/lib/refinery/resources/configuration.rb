@@ -6,7 +6,8 @@ module Refinery
                     :max_file_size, :pages_per_dialog, :pages_per_admin_index,
                     :s3_backend, :s3_bucket_name, :s3_region,
                     :s3_access_key_id, :s3_secret_access_key,
-                    :datastore_root_path, :content_disposition
+                    :datastore_root_path, :content_disposition,
+                    :custom_backend_class, :custom_backend_opts
 
     self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
     self.dragonfly_secret = Refinery::Core.dragonfly_secret
@@ -44,6 +45,19 @@ module Refinery
       def s3_region
         config.s3_region.presence || Refinery::Core.s3_region
       end
+
+      def custom_backend
+        config.custom_backend_class.nil? ? Refinery::Core.custom_backend : config.custom_backend_class.present?
+      end
+
+      def custom_backend_class
+        config.custom_backend_class.nil? ? Refinery::Core.custom_backend_class : config.custom_backend_class.constantize
+      end
+
+      def custom_backend_opts
+        config.custom_backend_opts.nil? ? Refinery::Core.custom_backend_opts : config.custom_backend_opts
+      end
+
     end
   end
 end
