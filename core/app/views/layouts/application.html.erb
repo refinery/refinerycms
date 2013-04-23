@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <%= render "/refinery/html_tag" %>
   <% site_bar = render('/refinery/site_bar', :head => true) -%>
-  <%= render "/refinery/head" %>
+  <head>
+    <%= render "/refinery/head" %>
+  </head>
   <body id="<%= canonical_id @page %>">
     <%= site_bar -%>
     <div id="page_container">
