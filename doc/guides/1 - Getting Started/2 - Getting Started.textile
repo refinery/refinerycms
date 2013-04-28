@@ -50,7 +50,7 @@ The Refinery philosophy includes several guiding principles:
 
 h4. Refinery's architecture
 
-Refinery comprises of several Rails Engines. Each extension acts like a mini Rails application with its own routes and views. Refinery is architected like this so that it keeps out of the way of any custom development you will do in the +/app+ directory.
+Refinery is comprised of several Rails Engines. Each extension acts like a mini Rails application with its own routes and views. Refinery is architected like this so that it keeps out of the way of any custom development you will do in the +/app+ directory.
 
 h4. Core extensions
 
