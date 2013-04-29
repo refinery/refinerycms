@@ -278,12 +278,12 @@ module Refinery
             def update_tree
               @#{plural_name}.order(:lft)
 
-              previous = @#{plural_name}.first
+              previous = find_first_position
 
               params[:#{singular_name}].each do |id, parent_id|
-                @current_#{singular_name} = @#{plural_name}.find{|t| t.id == id.to_i}
+                @current_#{singular_name} = @#{plural_name}.find{|i| i.id == id.to_i}
 
-                if (parent_id = parent_id.to_i) > 0 && parent = @#{plural_name}.find{|t| t.id == parent_id}
+                if (parent_id = parent_id.to_i) > 0 && parent = @#{plural_name}.find{|i| i.id == parent_id}
                   @current_#{singular_name}.move_to_child_of(parent)
                 else
                   @current_#{singular_name}.move_to_right_of(previous) unless @current_page == previous
@@ -297,14 +297,31 @@ module Refinery
             # Updating of position for models that acts as a list 
             def update_list
               @#{plural_name}.order(:position)
-              start_position = @#{plural_name}.first.position
+              start_position = find_first_position.position
 
               params[:#{singular_name}].each_with_index do |array, index|
                 id = array.first.to_i
                 position = index + start_position
 
-                @current_#{singular_name} = @#{plural_name}.find{|t| t.id == id}
+                @current_#{singular_name} = @#{plural_name}.find{|i| i.id == id}
                 @current_#{singular_name}.update_attributes :position => position
+              end
+            end
+
+            def find_first_position
+              if #{class_name}.respond_to?(:rebuild!)
+                # Check if we have inserted a new record from another page
+                if (@#{plural_name}.first.right_sibling == @#{plural_name}.second) || (@#{plural_name}.first == @#{plural_name}.second.parent)
+                  @#{plural_name}.first
+                else
+                  @#{plural_name}.second
+                end
+              else
+                if(@#{plural_name}.first.position + 1 == @#{plural_name}.second.position)
+                  @#{plural_name}.first
+                else
+                  @#{plural_name}.second
+                end
               end
             end
           )

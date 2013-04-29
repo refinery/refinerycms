@@ -13,16 +13,19 @@ init_refinery_admin = function(){
 $(document).ready(init_refinery_admin);
 
 if(typeof(window.onpopstate) == "object"){
+
   $(window).bind('popstate', function(e) {
+
     // this fires on initial page load too which we don't need.
     if(!initialLoad) {
+      alert("hkj");
       $(document).paginateTo((location.pathname + location.href.split(location.pathname)[1]));
     }
     initialLoad = false;
   });
 }
 
-$.fn.paginateTo = function(stateUrl) {
+$.fn.paginateTo = function(stateUrl, callback) {
   // Grab the url, ensuring not to cache.
   $.ajax({
     url: stateUrl,
@@ -30,10 +33,15 @@ $.fn.paginateTo = function(stateUrl) {
     success: function(data) {
       $('.pagination_container').slideTo(data);
 
+      if(callback){
+        callback();
+      }
+
       // remove caching _ argument.
       $('.pagination_container .pagination a').each(function(i, a){
         $(this).attr('href', $(this).attr('href').replace(/\?\_\=[^&]+&/, '?'));
       })
+      list_reorder.reload();
     },
     failure: function(data) {
       window.location = popstate_location;
@@ -53,10 +61,7 @@ $.fn.slideTo = function(response) {
 $.fn.applyMinimumHeightFromChildren = function() {
   child_heights = 0;
   $(this).children().each(function(i, child){
-    child_heights += $(child).height();
-    $.each(['marginTop', 'marginBottom', 'paddingTop', 'paddingBottom'], function(i, attr) {
-      child_heights += (parseInt($(child).css(attr)) || 0);
-    });
+    child_heights += $(child).outerHeight(true);
   });
   $(this).css('min-height', child_heights);
   return $(this);
@@ -779,51 +784,95 @@ var image_dialog = {
 };
 
 var list_reorder = {
-  initialised: false
-  , init: function() {
-
-    if (!this.initialised) {
-      $('#reorder_action').click(list_reorder.enable_reordering);
-      $('#reorder_action_done').click(list_reorder.disable_reordering);
-      if(list_reorder.tree === false) {
-        list_reorder.sortable_list.find('li').addClass('no-nest');
-      }
-      list_reorder.sortable_list.nestedSortable({
-        listType: 'ul',
-        disableNesting: 'no-nest',
-        forcePlaceholderSize: true,
-        handle: list_reorder.tree ? 'div' : null,
-        items: 'li',
-        opacity: .6,
-        placeholder: 'placeholder',
-        tabSize: 25,
-        tolerance: 'pointer',
-        toleranceElement: list_reorder.tree ? '> div' : null,
-        disabled: true,
-        start: function () {
-        },
-        change: function () {
-          if (list_reorder.tree) {
-            list_reorder.reset_branch_classes(this);
-          }
-        },
-        stop: function () {
-          if (list_reorder.tree) {
-            list_reorder.reset_branch_classes(this);
-            list_reorder.reset_icon_classes(this);
-          } else {
-            list_reorder.reset_on_off_classes(this);
-          }
-        }
-      });
-      if (list_reorder.tree) {
-        list_reorder.reset_branch_classes(list_reorder.sortable_list);
-      } else {
-        list_reorder.reset_on_off_classes(list_reorder.sortable_list);
-      }
-      this.initialised = true;
+  init: function() {
+    this.sortable_list = $(list_reorder.sortable_list_selector);
+    this.reordering = false;
+    $('#reorder_action').click(list_reorder.enable_reordering);
+    $('#reorder_action_done').click(list_reorder.disable_reordering);
+    if(list_reorder.tree === false) {
+      list_reorder.sortable_list.find('li').addClass('no-nest');
     }
+    list_reorder.reload();
   }
+  , reload: function() {
+    list_reorder.sortable_list = $(list_reorder.sortable_list_selector);
+    list_reorder.sortable_list.nestedSortable({
+      listType: 'ul',
+      disableNesting: 'no-nest',
+      forcePlaceholderSize: true,
+      handle: list_reorder.tree ? 'div' : null,
+      items: 'li',
+      opacity: .6,
+      placeholder: 'placeholder',
+      tabSize: 25,
+      tolerance: 'pointer',
+      toleranceElement: list_reorder.tree ? '> div' : null,
+      disabled: true,
+      start: function () {
+      },
+      change: function () {
+        if (list_reorder.tree) {
+          list_reorder.reset_branch_classes(this);
+        }
+      },
+      stop: function () {
+        if (list_reorder.tree) {
+          list_reorder.reset_branch_classes(this);
+          list_reorder.reset_icon_classes(this);
+        } else {
+          list_reorder.reset_on_off_classes(this);
+        }
+      }
+    });
+
+    if (list_reorder.tree) {
+      list_reorder.reset_branch_classes(list_reorder.sortable_list);
+    } else {
+      list_reorder.reset_on_off_classes(list_reorder.sortable_list);
+    }
+
+    if(list_reorder.reordering) {
+      list_reorder.enable_reordering();
+    }
+
+    list_reorder.page_dragging();
+  }
+
+  , page_dragging: function() {
+
+    $( ".pagination a" ).droppable({
+      accept: "li",
+      hoverClass: "hover",
+      tolerance: "pointer",
+      drop: function( event, ui ) {
+        link = this;
+        
+        ui.draggable.hide( "fast", function() {
+          obj = $(this).clone();
+
+          navigate_to(link);
+          from_page = parseInt($(".current").text());
+          to_page = parseInt(link.href.match(/[\?&]page=(\d)/)[1]);
+
+          $(document).paginateTo(link.href, function(){
+            obj.css("opacity", "");
+
+            $("#"+obj.attr('id')).remove();
+            if(from_page > to_page){
+              obj.appendTo( $('#sortable_list') ).delay(300).show( "fast" );
+              $(".pagination_container").css('min-height', '+=' + obj.outerHeight(true));
+            }else{
+              obj.prependTo( $('#sortable_list') ).delay(300).show( "fast" );
+              $(".pagination_container").css('min-height', '+=' + obj.outerHeight(true));
+            }
+            
+          });
+          
+        });
+      }
+    });
+  }
+
   , reset_on_off_classes: function(ul) {
     $("> li", ul).each(function(i, li) {
       $(li).removeClass('on off on-hover').addClass(i % 2 === 0 ? 'on' : 'off');
@@ -858,18 +907,27 @@ var list_reorder = {
   ,enable_reordering: function(e) {
     if(e) { e.preventDefault(); }
 
-    $('#sortable_list, .sortable_list').addClass("reordering");
-    $('#sortable_list .actions, .sortable_list .actions, #site_bar, header > *:not(script)').fadeTo(500, 0.3);
-    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul, div')).fadeTo(500, 0.55);
+    if(list_reorder.reordering){
+      $('#sortable_list, .sortable_list').addClass("reordering");
+      $('#sortable_list .actions, .sortable_list .actions, #site_bar, header > *:not(script)').css('opacity', 0.3);
 
-    list_reorder.sortable_list.nestedSortable("enable");
+      list_reorder.sortable_list.nestedSortable("enable");
+    }else{
+      list_reorder.reordering = true;
+      $('#sortable_list, .sortable_list').addClass("reordering");
+      $('#sortable_list .actions, .sortable_list .actions, #site_bar, header > *:not(script)').fadeTo(500, 0.3);
+      $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul, div')).fadeTo(500, 0.55);
+      
+      list_reorder.sortable_list.nestedSortable("enable");
 
-    $('#reorder_action').hide();
-    $('#reorder_action_done').show();
+      $('#reorder_action').hide();
+      $('#reorder_action_done').show();
+    }
   }
 
   , disable_reordering: function(e) {
     if(e) { e.preventDefault(); }
+    list_reorder.reordering = false;
 
     if($('#reorder_action_done').hasClass('loading')) { return false; }
     $('#reorder_action_done').addClass('loading');
