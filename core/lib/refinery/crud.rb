@@ -261,50 +261,50 @@ module Refinery
             def reorder
               find_all_#{plural_name}
             end
-
-            # Based upon http://github.com/matenia/jQuery-Awesome-Nested-Set-Drag-and-Drop
+            
             def update_positions
-              previous = nil
-              params[:ul].each do |_, list|
-                # After we drop Ruby 1.8.x support the following line can be changed back to
-                # list.each do |index, hash|
-                # because there won't be an ordering issue (see https://github.com/refinery/refinerycms/issues/1585)
-                list.sort_by {|k, v| k.to_i}.map { |item| item[1] }.each_with_index do |hash, index|
-                  moved_item_id = hash['id'].split(/#{singular_name}\_?/).reject(&:empty?).first
-                  @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
+              @#{plural_name} = #{class_name}.where(id: params[:#{singular_name}].keys)
 
-                  if @current_#{singular_name}.respond_to?(:move_to_root)
-                    if previous.present?
-                      @current_#{singular_name}.move_to_right_of(#{class_name}.find_by_id(previous))
-                    else
-                      @current_#{singular_name}.move_to_root
-                    end
-                  else
-                    @current_#{singular_name}.update_attributes :position => index
-                  end
-
-                  if hash['children'].present?
-                    update_child_positions(hash, @current_#{singular_name})
-                  end
-
-                  previous = moved_item_id
-                end
+              if #{class_name}.respond_to?(:rebuild!)
+                update_tree
+              else
+                update_list
               end
 
-              #{class_name}.rebuild! if #{class_name}.respond_to?(:rebuild!)
               render :nothing => true
             end
 
-            def update_child_positions(_node, #{singular_name})
-              list = _node['children']['0']
-              list.sort_by {|k, v| k.to_i}.map { |item| item[1] }.each_with_index do |child, index|
-                child_id = child['id'].split(/#{singular_name}\_?/).reject(&:empty?).first
-                child_#{singular_name} = #{class_name}.where(:id => child_id).first
-                child_#{singular_name}.move_to_child_of(#{singular_name})
+            # Nested updating of position for models that 'acts as nested set'
+            def update_tree
+              @#{plural_name}.order(:lft)
 
-                if child['children'].present?
-                  update_child_positions(child, child_#{singular_name})
+              previous = @#{plural_name}.first
+
+              params[:#{singular_name}].each do |id, parent_id|
+                @current_#{singular_name} = @#{plural_name}.find{|t| t.id == id.to_i}
+
+                if (parent_id = parent_id.to_i) > 0 && parent = @#{plural_name}.find{|t| t.id == parent_id}
+                  @current_#{singular_name}.move_to_child_of(parent)
+                else
+                  @current_#{singular_name}.move_to_right_of(previous) unless @current_page == previous
+                  previous = @current_#{singular_name}
                 end
+              end
+
+              #{class_name}.rebuild!
+            end
+
+            # Updating of position for models that acts as a list 
+            def update_list
+              @#{plural_name}.order(:position)
+              start_position = @#{plural_name}.first.position
+
+              params[:#{singular_name}].each_with_index do |array, index|
+                id = array.first.to_i
+                position = index + start_position
+
+                @current_#{singular_name} = @#{plural_name}.find{|t| t.id == id}
+                @current_#{singular_name}.update_attributes :position => position
               end
             end
           )

@@ -879,7 +879,7 @@ var list_reorder = {
     $('#sortable_list, .sortable_list').removeClass("reordering");
 
     if (list_reorder.update_url !== null) {
-      var serialized = list_reorder.sortable_list.serializelist();
+      var serialized = list_reorder.sortable_list.nestedSortable("serialize");
 
       $.post(list_reorder.update_url, serialized, function(data) {
         list_reorder.restore_controls(e);
