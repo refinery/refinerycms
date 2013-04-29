@@ -342,7 +342,6 @@ This results in the following:
       create  vendor/extensions/events/app/views/refinery/admin/events/_events.html.erb
       create  vendor/extensions/events/app/views/refinery/admin/events/_records.html.erb
       create  vendor/extensions/events/app/views/refinery/admin/events/_event.html.erb
-      create  vendor/extensions/events/app/views/refinery/admin/events/_sortable_list.html.erb
       create  vendor/extensions/events/app/views/refinery/admin/events/edit.html.erb
       create  vendor/extensions/events/app/views/refinery/admin/events/index.html.erb
       create  vendor/extensions/events/app/views/refinery/admin/events/new.html.erb
