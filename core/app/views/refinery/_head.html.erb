@@ -1,16 +1,14 @@
-<head>
-  <meta charset='<%= Rails.application.config.encoding %>' />
-  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
-  <title><%= browser_title(yield(:title)) %></title>
-  <%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
-  <%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
-  <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
-  <%= yield :meta %>
+<meta charset='<%= Rails.application.config.encoding %>' />
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+<title><%= browser_title(yield(:title)) %></title>
+<%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
+<%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
+<%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
+<%= yield :meta %>
 
-  <%= stylesheet_link_tag "application" %>
-  <%= yield :stylesheets %>
+<%= stylesheet_link_tag "application" %>
+<%= yield :stylesheets %>
 
-  <%= render '/refinery/google_analytics' %>
+<%= render '/refinery/google_analytics' %>
 
-  <%= javascript_include_tag 'modernizr-min' %>
-</head>
+<%= javascript_include_tag 'modernizr-min' %>
