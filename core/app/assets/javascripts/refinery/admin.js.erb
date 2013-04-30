@@ -13,12 +13,9 @@ init_refinery_admin = function(){
 $(document).ready(init_refinery_admin);
 
 if(typeof(window.onpopstate) == "object"){
-
   $(window).bind('popstate', function(e) {
-
     // this fires on initial page load too which we don't need.
     if(!initialLoad) {
-      alert("hkj");
       $(document).paginateTo((location.pathname + location.href.split(location.pathname)[1]));
     }
     initialLoad = false;
@@ -846,7 +843,7 @@ var list_reorder = {
       tolerance: "pointer",
       drop: function( event, ui ) {
         link = this;
-        
+
         ui.draggable.hide( "fast", function() {
           obj = $(this).clone();
 
@@ -865,9 +862,7 @@ var list_reorder = {
               obj.prependTo( $('#sortable_list') ).delay(300).show( "fast" );
               $(".pagination_container").css('min-height', '+=' + obj.outerHeight(true));
             }
-            
           });
-          
         });
       }
     });
@@ -917,7 +912,7 @@ var list_reorder = {
       $('#sortable_list, .sortable_list').addClass("reordering");
       $('#sortable_list .actions, .sortable_list .actions, #site_bar, header > *:not(script)').fadeTo(500, 0.3);
       $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul, div')).fadeTo(500, 0.55);
-      
+
       list_reorder.sortable_list.nestedSortable("enable");
 
       $('#reorder_action').hide();
