@@ -1,8 +1,8 @@
-h2. Extending Controllers and Models with Decorators
+h2. Extending Controllers with Decorators
 
-The default behavior of Refinery or a Refinery extension and its controllers and models may not be exactly what you are looking for. This guide will show you how to:
+The default behavior of Refinery or a Refinery extension and its controllers may not be exactly what you are looking for. This guide will show you how to:
 
-* Extend a Controller or Model to add new behavior
+* Extend a Controller to add new behavior
 
 endprologue.
 
