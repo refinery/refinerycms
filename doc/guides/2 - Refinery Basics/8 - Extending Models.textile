@@ -11,7 +11,7 @@ h3. Model Decorators
 
 In some situations, you may find it necessary to extend the existing models that come with Refinery. This will enable you to add additional functionality without resorting to overriding the model itself (an act which can break patch-level upgrades) or without resorting to duplicating the functionality of the existing models.
 
-Model decorators are almost identical to [controller decorators](/guides/extending-controllers-and-models-with-decorators). The only difference, in fact, is in the name of the constant on which to invoke +class_eval+ on. Keep in mind that adding an additional stored field will require you to create a new migration to update your database, too. If you are simply adding a convenience method on a model that doesn't change the database, this will obviously not apply.
+Model decorators are almost identical to "controller decorators":/guides/extending-controllers-and-models-with-decorators. The only difference, in fact, is in the name of the constant on which to invoke +class_eval+ on. Keep in mind that adding an additional stored field will require you to create a new migration to update your database, too. If you are simply adding a convenience method on a model that doesn't change the database, this will obviously not apply.
 
 In this example, we will add a background image to the Page model. Our use case is to allow an administrator to set a different background per page. To track this data, we will need to generate a migration:
 
