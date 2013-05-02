@@ -1,0 +1,77 @@
+uk:
+  refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Ядро Refinery
+      refinery_dialogs:
+        title: Діалоги
+        description: Плагін для діалогів Refinery
+    welcome:
+      there_are_no_users: "Жодного користувача не створено. Ви будете першим."
+    crudify:
+      created: "%{what} створений(а)."
+      updated: "%{what} відредагований(а)."
+      destroyed: "%{what} знищений(а)."
+    site_bar:
+      log_out: Вийти
+      switch_to_your_website: Перейти на сайт
+      switch_to_your_website_editor: Перейти в панель управління
+    admin:
+      menu:
+        reorder_menu: Змінити порядок в меню
+        reorder_menu_done: Зберегти такий порядок в меню
+      dialogs:
+        show:
+          save: Зберегти
+          cancel: Скасувати
+      continue_editing:
+        save_and_continue_editing: Зберегти та продовжити
+      form_actions:
+        save: Зберегти
+        cancel: Відміна
+        cancel_lose_changes: При скасуванні всі зміни будуть втрачені
+        delete: Видалити
+        close: Закрити
+      image_picker:
+        none_selected: Жодного зображення не вибрано. Будь ласка, натисніть тут, щоб додати зображення.
+        remove_current: Видалити поточне зображення
+        change: Натисніть тут, щоб вибрати зображення
+        show: Показати
+      resource_picker:
+        download_current: Завантажити поточний файл
+        opens_in_new_window: Відкриється в новому вікні
+        remove_current: "Видалити поточний файл"
+        no_resource_selected: Жоден файл не вибраний, натисніть тут, щоб додати файл.
+        name: Додати файл
+        current: Поточний файл
+      search:
+        button_text: Пошук
+        results_for_html: "Результати пошуку для &#8216;<em>%{query}</em>&#8217;"
+        no_results: Нічого не знайдено
+      delete:
+        message: Ви впевнені, що хочете видалити '%{title}'?
+      error_messages:
+        problems_in_following_fields: Виявлені проблеми з наступними полями
+      help: Допомога
+      form_advanced_options_menu:
+        advanced_options: Додаткові налаштування
+        toggle_advanced_options: Налаштування мета-тегів, меню та ін.
+        save_as_draft: Зберегти як чернетку
+    message:
+      close: Закрити
+      close_this_message: Закрити це повідомлення
+    draft_page_message:
+      not_live: Ця сторінка не призначена для публічного перегляду.
+    footer:
+      copyright: © %{site_name}, %{year}
+    no_script:
+      enable_javascript_html: Для використання всіх можливостей цієї сторінки необхідно увімкнути JavaScript
+      here_are: Вот
+      instructions_enable_javascript_html: інструкції як включити Javascript у вашому браузері
+  time:
+    formats:
+      short: "%A, %d %B %Y"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
