@@ -13,9 +13,9 @@ module CachingHelpers
 	  Refinery::PagesController.any_instance.unstub(:refinery_user?)
 	end
 
-	RSpec::Matchers.define :be_cached do 
+	RSpec::Matchers.define :be_cached do
 	  match do |page|
-	    File.exists? (cached_file_path(page))
+	    File.exists?(cached_file_path(page))
 	  end
 	end
 
