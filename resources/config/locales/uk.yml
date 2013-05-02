@@ -1,0 +1,37 @@
+uk:
+  refinery:
+    plugins:
+      refinery_files:
+        title: Файли
+        description: Завантажнння і створення посилань на файли
+        article: masculine
+    admin:
+      resources:
+        delete: Видалити цей файл назавжди
+        edit: Редагувати цей файл
+        form:
+          download_current: Завантажити поточний файл
+          or: або
+          replace: " замінити його цим"
+          maximum_file_size: "Максимальний розмір файлу — %{bytes}."
+        resource:
+          download: "Завантажити файл (%{size})"
+        actions:
+          upload_new: Завантажити новий файл
+        records:
+          no_files_yet: "Тут поки немає файлів. Натисніть «Завантажити нові файли», щоб додати перший файл."
+        insert:
+          existing: Існуючий файл
+          new: Новий файл
+          no_files: Немає файлів.
+        existing_resource:
+          link_to_file: Послатися на цей файл
+          button_text: Вставити
+  activerecord:
+    models:
+      refinery/resource: файл
+    errors:
+      models:
+        refinery/resource:
+          blank: Ви повинні вибрати файл для завантаження
+          too_big: "Розмір файлу повинен бути меншим за %{size} МБ"
