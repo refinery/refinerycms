@@ -8,7 +8,9 @@ module Refinery
           render_options[:layout] = page.layout_template
         end
         if Refinery::Pages.use_view_templates && page.view_template.present?
-          render_options[:action] = page.view_template
+          render_options[:template] = "refinery/pages/#{page.view_template}"
+        elsif
+          render_options[:template] = "refinery/pages/show"
         end
         render_options
       end
