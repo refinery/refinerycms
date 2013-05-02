@@ -1,0 +1,44 @@
+uk:
+  refinery:
+    plugins:
+      refinery_images:
+        title: Зображення
+        description: Управління зображеннями
+        article: neuter
+    admin:
+      images:
+        delete: Видалити це зображення назавжди
+        edit: Редагувати це зображення
+        form:
+          image: Зображення
+          use_current_image: Використовувати поточне зображення
+          or: або
+          replace_image: " замінити його цим"
+          current_image: Поточне зображення
+          maximum_image_size: "Максимальний розмір зображення — %{bytes}."
+        actions:
+          create_new_image: Створити нове зображення
+        records:
+          no_images_yet: "Зображень поки що немає. Натисніть «Створити нове зображення», щоб додати зображення."
+        index:
+          view:
+            switch_to: Показати %{view_name}
+            list: списком
+            grid: сіткою
+        view_live_html: Показати це зображення <br/><em>Відкриється в новому вікні</em>
+        existing_image:
+          button_text: Вставити
+          resize_image: Змінити розмір зображення?
+          size: Розмір
+        insert:
+          existing_image: Існуюче зображення
+          new_image: Нове зображення
+  activerecord:
+    models:
+      refinery/image: зображення
+    errors:
+      models:
+        refinery/image:
+          blank: Ви повинні вибрати файл для завантаження
+          too_big: "Розмір файлу повинен бути меншим за %{size} МБ"
+          incorrect_format: "Ваше зображення може бути тільки у форматах JPG, PNG чи GIF"
