@@ -32,7 +32,7 @@
       </p>
       <ul>
         <%
-          Refinery::Images.user_image_sizes.sort_by { |key, geometry| geometry }.each_with_index do |(size, pixels), index|
+          Refinery::Images.user_image_sizes.sort_by { |key, geometry| geometry.to_i }.each_with_index do |(size, pixels), index|
             safe_pixels = pixels.to_s.gsub(/[<>=]/, '')
             # (parndt): ' selected' if size.to_s == 'medium' is not very generic, but I
             # can't think of a decent way of making it so for even sets (e.g. 2,4,6,8,etc image sizes).
