@@ -217,7 +217,7 @@ end
 </ruby>
 
 
-Now, add a function to "find_all_event_types", and call that function in a before_filter.  Your controller should look like this when you are done:
+Now, add a function to "find_all_event_types", and call that function in a before_filter (we only need it in the show action).  Your controller should look like this when you are done:
 
 <ruby>
 module Refinery
@@ -225,7 +225,7 @@ module Refinery
     module Admin
       class EventsController < ::Refinery::AdminController
 
-        before_filter :find_all_event_types
+        before_filter :find_all_event_types, :only => [:show]
 
         crudify :'refinery/events/event', :xhr_paging => true
 
