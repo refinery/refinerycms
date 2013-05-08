@@ -43,10 +43,11 @@ module Refinery
       end
 
       if geometry.present? && !geometry.is_a?(Symbol)
-        image.thumb(geometry)
+        thumbnail = image.thumb(geometry)
       else
-        image
+        thumbnail = image
       end
+      thumbnail.strip
     end
 
     # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
