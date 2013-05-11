@@ -34,8 +34,8 @@ pt-BR:
         delete: Apagar
         close: Fechar
       image_picker:
-        none_selected: "Atualmente não existe nenhuma %{what} selecionado, por favor clique aqui para adicionar um."
-        remove_current: "Remover %{what} atual"
+        none_selected: "Atualmente não existe nenhuma imagem selecionado, por favor clique aqui para adicionar um."
+        remove_current: "Remover imagem atual"
         change: Clique aqui para selecionar a imagem
         show: Mostrar
       resource_picker:
