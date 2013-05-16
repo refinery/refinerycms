@@ -34,8 +34,8 @@ de:
         delete: Löschen
         close: Schließen
       image_picker:
-        none_selected: Es ist momentan kein %{what} ausgewählt, bitte klicken Sie hier, um eins hinzuzufügen.
-        remove_current: Entferne aktuelles %{what}
+        none_selected: Es ist momentan kein Bild ausgewählt, bitte klicken Sie hier, um eins hinzuzufügen.
+        remove_current: Entferne aktuelles Bild
         change: Klicken Sie hier, um ein Bild auszuwählen
         show: anzeigen
       resource_picker:
