@@ -1,3 +1,5 @@
+require 'decorators'
+
 module Refinery
   module Core
     class Engine < ::Rails::Engine
@@ -9,7 +11,6 @@ module Refinery
       class << self
         # Register all decorators from app/decorators/ and registered plugins' paths.
         def register_decorators!
-          require 'decorators'
           Decorators.register! Rails.root, Refinery::Plugins.registered.pathnames
         end
 
