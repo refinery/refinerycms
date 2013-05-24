@@ -273,10 +273,7 @@ module Refinery
             def update_positions
               previous = nil
               params[:ul].each do |_, list|
-                # After we drop Ruby 1.8.x support the following line can be changed back to
-                # list.each do |index, hash|
-                # because there won't be an ordering issue (see https://github.com/refinery/refinerycms/issues/1585)
-                list.sort_by {|k, v| k.to_i}.map { |item| item[1] }.each_with_index do |hash, index|
+                list.each do |index, hash|
                   moved_item_id = hash['id'].split(/#{singular_name}\_?/).reject(&:empty?).first
                   @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
 
