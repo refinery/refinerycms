@@ -33,5 +33,3 @@ rvm:
   - 1.9.3
   - rbx-19mode
   - jruby-19mode
-  - rbx-18mode
-  - jruby-18mode
