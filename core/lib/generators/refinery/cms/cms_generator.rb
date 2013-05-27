@@ -26,7 +26,7 @@ module Refinery
 
       stop_pretending?
 
-      append_gemfile!
+      #append_gemfile!
 
       append_gitignore!
 
