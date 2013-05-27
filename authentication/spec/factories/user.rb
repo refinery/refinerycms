@@ -21,6 +21,7 @@ FactoryGirl.define do
       ::Refinery::Plugins.registered.each_with_index do |plugin, index|
         user.plugins.create(:name => plugin.name, :position => index)
       end
+      user.locales.create(:locale => 'en')
     end
   end
 

@@ -9,16 +9,20 @@ module Refinery
 
       before_filter :load_available_plugins_and_roles,
                     :only => [:new, :create, :edit, :update]
+      before_filter :load_available_locales, :only => [:new, :create, :edit, :update]
 
       def new
         @user = Refinery::User.new
         @selected_plugin_names = []
+        @selected_locales = ['en']
       end
 
       def create
         @user = Refinery::User.new params[:user].except(:roles)
         @selected_plugin_names = params[:user][:plugins] || []
         @selected_role_names = params[:user][:roles] || []
+        @selected_locales = params[:user][:locales] || ['en']
+        @selected_locales.unshift('en') unless @selected_locales.include?('en')
 
         if @user.save
           @user.plugins = @selected_plugin_names
@@ -41,6 +45,7 @@ module Refinery
         redirect_unless_user_editable!
 
         @selected_plugin_names = find_user.plugins.collect(&:name)
+        @selected_locales = find_user.locales.collect(&:locale)
       end
 
       def update
@@ -53,6 +58,8 @@ module Refinery
           @selected_role_names = @user.roles.pluck(:title)
         end
         @selected_plugin_names = params[:user][:plugins]
+        @selected_locales = params[:user][:locales] #.map { |l| locale: l }
+
 
         # Prevent the current user from locking themselves out of the User manager or backend
         if current_refinery_user.id == @user.id && # If editing self
@@ -63,8 +70,9 @@ module Refinery
           flash.now[:error] = t('cannot_remove_user_plugin_from_current_user', :scope => 'refinery.admin.users.update')
           render :edit
         else
-          # Store the current plugins and roles for this user.
+          # Store the current plugins, locales and roles for this user.
           @previously_selected_plugin_names = @user.plugins.collect(&:name)
+          @previously_selected_locales = @user.locales.collect(&:locale)
           @previously_selected_roles = @user.roles
           @user.roles = @selected_role_names.collect { |r| Refinery::Role[r.downcase.to_sym] }
           if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
@@ -77,6 +85,7 @@ module Refinery
           else
             @user.plugins = @previously_selected_plugin_names
             @user.roles = @previously_selected_roles
+            @user.locales = @previously_selected_locales
             @user.save
             render :edit
           end
@@ -100,6 +109,19 @@ module Refinery
         }.sort_by { |a| a[:title] }
 
         @available_roles = Refinery::Role.all
+      end
+
+      def load_available_locales
+        # TODO: make it configurable. YAML, model, whatever.
+        @available_locales = [
+          'en',
+          'de-DE', 'de-CH', 'de-AT',
+          'fr-FR', 'fr-CH',
+          'it-IT', 'it-CH',
+          'dk', 'pl',
+          'es-ES',
+          'pt'
+        ]
       end
 
       def redirect_unless_user_editable!

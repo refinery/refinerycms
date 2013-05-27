@@ -6,8 +6,9 @@ module Refinery
     extend FriendlyId
 
     has_and_belongs_to_many :roles, :join_table => :refinery_roles_users
-
     has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
+    has_many :locales, :class_name => "UserLocale", :order => 'locale ASC', :dependent => :destroy
+
     friendly_id :username, :use => [:slugged]
 
     # Include default devise modules. Others available are:
@@ -21,7 +22,7 @@ module Refinery
     # :login is a virtual attribute for authenticating by either username or email
     # This is in addition to a real persisted field like 'username'
     attr_accessor :login
-    attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login
+    attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :locales, :login
 
     validates :username, :presence => true, :uniqueness => true
     before_validation :downcase_username
@@ -42,6 +43,13 @@ module Refinery
         plugin_names.each_with_index do |plugin_name, index|
           plugins.create(:name => plugin_name, :position => index) if plugin_name.is_a?(String)
         end
+      end
+    end
+
+    def locales=(locale_names)
+      if persisted?
+        UserLocale.delete_all(:user_id => id)
+        locale_names.each { |locale| locales.create(:locale => locale) }
       end
     end
 

@@ -48,6 +48,23 @@
         <% end %>
       <% end %>
     </ul>
+    <ul id='locales' class='checkboxes'>
+      <% @available_locales.each do |locale| -%>
+        <% if (locale == 'en' && @user.id == current_refinery_user.id) %>
+          <%= hidden_field_tag 'user[locales][]', locale, :id => "locale_#{locale}" %>
+        <% else %>
+          <li>
+            <%= check_box_tag 'user[locales][]', locale,
+                              @selected_locales.include?(locale),
+                              :id => "locales_#{locale}" %>
+            <%= f.label 'user[locales][]',
+                        t('title', :scope => "refinery.locales.#{locale}", :default => locale),
+                        :class => "stripped",
+                        :for => "locales_#{locale}" %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
   </div>
 
   <% if current_refinery_user.has_role?(:superuser) && Refinery::Authentication.superuser_can_assign_roles %>
