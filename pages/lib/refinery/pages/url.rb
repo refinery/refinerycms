@@ -11,7 +11,7 @@ module Refinery
           current_url = page.link_url
 
           if current_url =~ %r{^/} &&
-            Refinery::I18n.current_frontend_locale != Refinery::I18n.default_frontend_locale \
+            (Refinery::I18n.current_frontend_locale != Refinery::I18n.default_frontend_locale) \
             && !::Refinery::I18n.domain_name_enabled?
             current_url = "/#{Refinery::I18n.current_frontend_locale}#{current_url}"
           end

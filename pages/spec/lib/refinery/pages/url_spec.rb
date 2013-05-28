@@ -29,6 +29,24 @@ module Refinery
             Url::Localised.new(page).url.should eq("/test")
           end
         end
+        
+        context "when current frontend locale != default frontend locale and domain name enabled" do
+          it "returns unaltered link_url" do
+            Refinery::I18n.stub(:current_frontend_locale).and_return(:lv)
+            Refinery::I18n.stub(:default_frontend_locale).and_return(:en)
+            Refinery::I18n.stub(:domain_name_enabled?).and_return(true)
+            Url::Localised.new(page).url.should eq("/test")
+          end
+        end
+        
+        context "when current frontend locale != default frontend locale and domain name disabled" do
+          it "returns link_url prefixed with current frontend locale" do
+            Refinery::I18n.stub(:current_frontend_locale).and_return(:lv)
+            Refinery::I18n.stub(:default_frontend_locale).and_return(:en)
+            Refinery::I18n.stub(:domain_name_enabled?).and_return(false)
+            Url::Localised.new(page).url.should eq("/lv/test")
+          end
+        end
       end
     end
 
