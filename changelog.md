@@ -1,5 +1,6 @@
 ## 2.1.0 [unreleased]
 
+* Replaced Image#thumbnail geometry parameter with an options hash to support a strip option for reducing thumbnail file size. [#2261](https://github.com/refinery/refinerycms/pull/2261). [Graham Wagener](https://github.com/gwagener/)
 * Removed `:before_javascript_libraries`, `:after_javascript_libraries`, and `:javascript_libraries` content blocks. [#1842](https://github.com/refinery/refinerycms/pull/1842). [Rob Yurkowski](https://github.com/robyurkowski)
 * Refactored WYSIWYG fields into a partial. [#1796](https://github.com/refinery/refinerycms/pull/1796). [Rob Yurkowski](https://github.com/robyurkowski)
 * Shortened all authentication helpers. [#1719](https://github.com/refinery/refinerycms/pull/1719). [Ryan Bigg](https://github.com/radar)
