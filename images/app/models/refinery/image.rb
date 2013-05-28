@@ -40,7 +40,8 @@ module Refinery
     def thumbnail(options = {})
       if options.is_a?(String) || options.is_a?(Symbol)
         Refinery.deprecate 'Refinery::Image#thumbnail(geometry)',
-                           :replacement => 'Refinery::Image#url(:geometry => value)'
+                           :when => '2.2',
+                           :replacement => 'Refinery::Image#thumbnail(:geometry => value)'
         options = { :geometry => options }
       end
 
