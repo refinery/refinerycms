@@ -1,5 +1,6 @@
 ## 2.1.0 [unreleased]
 
+* Require at least Ruby 1.9.3 and thus drop Ruby 1.8.x support. [#2277](https://github.com/refinery/refinerycms/pull/2277) [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt)
 * Removed `:before_javascript_libraries`, `:after_javascript_libraries`, and `:javascript_libraries` content blocks. [#1842](https://github.com/refinery/refinerycms/pull/1842). [Rob Yurkowski](https://github.com/robyurkowski)
 * Refactored WYSIWYG fields into a partial. [#1796](https://github.com/refinery/refinerycms/pull/1796). [Rob Yurkowski](https://github.com/robyurkowski)
 * Shortened all authentication helpers. [#1719](https://github.com/refinery/refinerycms/pull/1719). [Ryan Bigg](https://github.com/radar)
