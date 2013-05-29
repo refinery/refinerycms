@@ -42,6 +42,7 @@
 * Allow user-defined geometries in `image#thumbnail_dimensions`. [#2214](https://github.com/refinery/refinerycms/pull/2214). [Javier Saldana](https://github.com/jassa)
 * Added Ukrainian translation. [#2259](https://github.com/refinery/refinerycms/pull/2259). [Tima Maslyuchenko](https://github.com/timsly)
 * Fixed custom page view template preview. [#2219](https://github.com/refinery/refinerycms/pull/2219). [Jean-Philippe Doyle](https://github.com/j15e)
+* Fixed duplicate page part title validation. [#2282](https://github.com/refinery/refinerycms/pull/2282). [David Jones](https://github.com/djones)
 
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
