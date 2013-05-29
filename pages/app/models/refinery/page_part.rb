@@ -4,7 +4,7 @@ module Refinery
     attr_accessible :title, :content, :position, :body, :refinery_page_id
     belongs_to :page, :foreign_key => :refinery_page_id
 
-    validates :title, :presence => true
+    validates :title, :presence => true, :uniqueness => {:scope => :refinery_page_id}
     alias_attribute :content, :body
 
     translates :body if respond_to?(:translates)
