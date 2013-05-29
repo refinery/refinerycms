@@ -36,11 +36,28 @@ module Refinery
     end
 
     def plugins=(plugin_names)
-      if persisted? # don't add plugins when the user_id is nil.
-        UserPlugin.delete_all(:user_id => id)
+      return unless persisted?
 
+      plugin_names = plugin_names.dup
+      plugin_names.reject! { |plugin_name| !plugin_name.is_a?(String) }
+
+      if plugins.empty?
         plugin_names.each_with_index do |plugin_name, index|
-          plugins.create(:name => plugin_name, :position => index) if plugin_name.is_a?(String)
+          plugins.create(:name => plugin_name, :position => index)
+        end
+      else
+        assigned_plugins = plugins.all
+        assigned_plugins.each do |assigned_plugin|
+          if plugin_names.include?(assigned_plugin.name)
+            plugin_names.delete(assigned_plugin.name)
+          else
+            assigned_plugin.destroy
+          end
+        end
+
+        plugin_names.each do |plugin_name|
+          plugins.create(:name => plugin_name,
+                         :position => plugins.pluck(:position).max + 1)
         end
       end
     end
