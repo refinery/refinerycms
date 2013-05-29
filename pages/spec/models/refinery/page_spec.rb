@@ -488,11 +488,7 @@ module Refinery
       let(:path) { "market" }
       let(:id) { market.id }
 
-      context "when marketable urls are true and path is present" do
-        before do
-          Page.stub(:marketable_urls).and_return(true)
-        end
-
+      context "when path param is present" do
         context "when path is friendly_id" do
           it "finds page using path" do
             Page.find_by_path_or_id(path, "").should eq(market)
@@ -506,11 +502,7 @@ module Refinery
         end
       end
 
-      context "when id is present" do
-        before do
-          Page.stub(:marketable_urls).and_return(false)
-        end
-
+      context "when id param is present" do
         it "finds page using id" do
           Page.find_by_path_or_id("", id).should eq(market)
         end

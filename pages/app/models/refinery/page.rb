@@ -73,7 +73,7 @@ module Refinery
       # and if the path is unfriendly then a different finder method is required
       # than find_by_path.
       def find_by_path_or_id(path, id)
-        if Pages.marketable_urls && path.present?
+        if path.present?
           if path.friendly_id?
             find_by_path(path)
           else
