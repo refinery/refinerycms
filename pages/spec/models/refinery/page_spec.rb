@@ -242,6 +242,20 @@ module Refinery
         page.content_for('BoDY').should == "<p>I'm the first page part for this page.</p>"
       end
 
+      it 'requires a unique title' do
+        page.save
+        page.parts.create(:title => 'body')
+        duplicate_title_part = page.parts.create(:title => 'body')
+
+        duplicate_title_part.errors[:title].should_not be_empty
+      end
+
+      it 'only requires a unique title on the same page' do
+        part_one = Page.create(:title => 'first page').parts.create(:title => 'body')
+        part_two = Page.create(:title => 'second page').parts.create(:title => 'body')
+
+        part_two.errors[:title].should be_empty
+      end
 
       context 'when using content_for?' do
 
