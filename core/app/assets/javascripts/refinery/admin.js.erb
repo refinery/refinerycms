@@ -592,7 +592,7 @@ var page_options = {
       if(part_title.length > 0){
         var tab_title = part_title.toLowerCase().replace(" ", "_");
 
-        if ($('#part_' + tab_title).size() === 0) {
+        if ($('#page_part_' + tab_title).size() === 0) {
           $.get(page_options.new_part_url, {
               title: part_title
               , part_index: $('#new_page_part_index').val()
