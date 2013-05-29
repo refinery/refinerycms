@@ -247,7 +247,7 @@ module Refinery
         page.parts.create(:title => 'body')
         duplicate_title_part = page.parts.create(:title => 'body')
 
-        duplicate_title_part.errors[:title].should_not be_empty
+        duplicate_title_part.errors[:title].should be_present
       end
 
       it 'only requires a unique title on the same page' do
