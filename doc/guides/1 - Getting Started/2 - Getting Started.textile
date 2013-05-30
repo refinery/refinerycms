@@ -203,7 +203,7 @@ Refinery comes with a rake task called +refinery:override+ which allows you to c
 
 <shell>
 $ rake refinery:override view=refinery/pages/show
-$ Copied view template file to app/views/refinery/pages/show.html.erb
+    create  app/views/refinery/pages/show.html.erb
 </shell>
 
 Now edit +app/views/refinery/pages/show.html.erb+ and it will look like this:
@@ -332,7 +332,7 @@ Run this command to generate the events extension for Rick:
 
 <shell>
 $ rails generate refinery:engine event title:string date:datetime photo:image blurb:text
-<shell>
+</shell>
 
 This results in the following:
 <shell>
