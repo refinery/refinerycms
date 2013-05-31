@@ -14,15 +14,13 @@ module Refinery
       def new
         @user = Refinery::User.new
         @selected_plugin_names = []
-        @selected_locales = ['en']
+        @selected_locales = []
       end
 
       def create
         @user = Refinery::User.new params[:user].except(:roles)
         @selected_plugin_names = params[:user][:plugins] || []
         @selected_role_names = params[:user][:roles] || []
-        @selected_locales = params[:user][:locales] || ['en']
-        @selected_locales.unshift('en') unless @selected_locales.include?('en')
 
         if @user.save
           @user.plugins = @selected_plugin_names
@@ -58,8 +56,6 @@ module Refinery
           @selected_role_names = @user.roles.pluck(:title)
         end
         @selected_plugin_names = params[:user][:plugins]
-        @selected_locales = params[:user][:locales] #.map { |l| locale: l }
-
 
         # Prevent the current user from locking themselves out of the User manager or backend
         if current_refinery_user.id == @user.id && # If editing self
@@ -112,16 +108,7 @@ module Refinery
       end
 
       def load_available_locales
-        # TODO: make it configurable. YAML, model, whatever.
-        @available_locales = [
-          'en',
-          'de-DE', 'de-CH', 'de-AT',
-          'fr-FR', 'fr-CH',
-          'it-IT', 'it-CH',
-          'dk', 'pl',
-          'es-ES',
-          'pt'
-        ]
+        @available_locales = Refinery::I18n.frontend_locales
       end
 
       def redirect_unless_user_editable!
