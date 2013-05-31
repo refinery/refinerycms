@@ -129,7 +129,7 @@ You actually have a functional Refinery application already installed. To see it
 $ rails server
 </shell>
 
-This will fire up an instance of the built-in Rails web server by default (called WEBrick). To see your application in action, open a browser window and navigate to "http://localhost:3000":http://localhost:3000. You should be greeted with a screen prompting you to create your first Refinery user.
+This will fire up an instance of the built-in Rails web server by default (called WEBrick). To see your application in action, open a browser window and navigate to "http://localhost:3000/refinery":http://localhost:3000/refinery. You should be greeted with a screen prompting you to create your first Refinery user.
 
 !/system/images/W1siZiIsIjIwMTIvMDMvMDQvMTRfMTFfMjRfOTkzX3NldF91cF95b3VyX2ZpcnN0X3VzZXIucG5nIl0sWyJwIiwidGh1bWIiLCI2MTB4Il1d/set-up-your-first-user.png!
 
@@ -257,7 +257,7 @@ body {
   line-height: 18px;
 }
 
-#body_content, #side_body_content {
+#body, #side_body {
   float: left;
   width: 45%;
   background: white;
@@ -371,6 +371,7 @@ bundle install
 rails generate refinery:events
 rake db:migrate
 rake db:seed
+Please restart your rails server.
 ------------------------
 </shell>
 
