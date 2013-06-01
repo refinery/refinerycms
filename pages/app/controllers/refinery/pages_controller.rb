@@ -49,9 +49,7 @@ module Refinery
       else
         # Remove leading and trailing slashes in path, but leave internal
         # ones for global slug scoping
-        path = params[:path]
-        path.sub!(%r{^/*}, '').sub!(%r{/*$}, '') if path.present?
-        path || params[:id]
+        params[:path].to_s.gsub(%r{\A/+}, '').presence || params[:id]
       end
     end
 

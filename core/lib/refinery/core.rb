@@ -25,7 +25,6 @@ module Refinery
   require 'refinery/ext/action_view/helpers/form_builder'
   require 'refinery/ext/action_view/helpers/form_helper'
   require 'refinery/ext/action_view/helpers/form_tag_helper'
-  require 'refinery/ext/hash'
 
   module Admin
     autoload :BaseController, 'refinery/admin/base_controller'

@@ -33,7 +33,11 @@ module Refinery
 
     # Docs for friendly_id http://github.com/norman/friendly_id
     friendly_id_options = {:use => [:reserved, :globalize], :reserved_words => %w(index new session login logout users refinery admin images wymiframe)}
-    friendly_id_options.safe_deep_merge!({:use => [:scoped], :scope => :parent}) if ::Refinery::Pages.scope_slug_by_parent
+    if ::Refinery::Pages.scope_slug_by_parent
+      friendly_id_options[:use] << :scoped
+      friendly_id_options.merge!(:scope => :parent)
+    end
+
     friendly_id :custom_slug_or_title, friendly_id_options
 
     has_many :parts,
@@ -60,8 +64,6 @@ module Refinery
 
       # Find page by path, checking for scoping rules
       def find_by_path(path)
-        page = nil
-
         if ::Refinery::Pages.scope_slug_by_parent
           # With slugs scoped to the parent page we need to find a page by its full path.
           # For example with about/example we would need to find 'about' and then its child
@@ -371,7 +373,7 @@ module Refinery
     def normalize_friendly_id_with_marketable_urls(slug_string)
       # If we are scoping by parent, no slashes are allowed. Otherwise, slug is potentially
       # a custom slug that contains a custom route to the page.
-      if !::Refinery::Pages.scope_slug_by_parent && slug_string.include?('/')
+      if !Pages.scope_slug_by_parent && slug_string.include?('/')
         slug_string.sub!(%r{^/*}, '').sub!(%r{/*$}, '') # Remove leading and trailing slashes, but allow internal
         slug_string.split('/').select(&:present?).map {|s| normalize_friendly_id_with_marketable_urls(s) }.join('/')
       else
