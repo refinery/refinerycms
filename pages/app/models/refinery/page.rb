@@ -10,7 +10,7 @@ module Refinery
 
     class Translation
       is_seo_meta
-      attr_accessible :browser_title, :meta_description, :locale
+      attr_accessible *::SeoMeta.attributes.keys, :locale
     end
 
     # Delegate SEO Attributes to globalize3 translation
@@ -19,9 +19,9 @@ module Refinery
 
     attr_accessible :id, :deletable, :link_url, :menu_match,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
-                    :parts_attributes, :browser_title, :meta_description,
-                    :parent_id, :menu_title, :page_id, :layout_template,
-                    :view_template, :custom_slug, :slug, :title
+                    :parts_attributes, :parent_id, :menu_title, :page_id,
+                    :layout_template, :view_template, :custom_slug, :slug,
+                    :title, *::SeoMeta.attributes.keys
 
     validates :title, :presence => true
 
