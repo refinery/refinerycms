@@ -43,7 +43,16 @@ module Refinery
   protected
 
     def requested_friendly_id
-      "#{params[:path]}/#{params[:id]}".split('/').last
+      if ::Refinery::Pages.scope_slug_by_parent
+        # Pick out last path component, or id if present
+        "#{params[:path]}/#{params[:id]}".split('/').last
+      else
+        # Remove leading and trailing slashes in path, but leave internal
+        # ones for global slug scoping
+        path = params[:path]
+        path.sub!(%r{^/*}, '').sub!(%r{/*$}, '') if path.present?
+        path || params[:id]
+      end
     end
 
     def should_skip_to_first_child?
@@ -51,7 +60,7 @@ module Refinery
     end
 
     def should_redirect_to_friendly_url?
-      requested_friendly_id != page.friendly_id || params[:path].present? && params[:path].match(page.root.slug).nil?
+      requested_friendly_id != page.friendly_id || ::Refinery::Pages.scope_slug_by_parent && params[:path].present? && params[:path].match(page.root.slug).nil?
     end
 
     def current_user_can_view_page?
