@@ -1,0 +1,28 @@
+it:
+  refinery:
+    plugins:
+      <%= plural_name %>:
+        title: <%= plural_name.titleize %>
+    <%= namespacing.underscore %>:
+      admin:
+        <%= plural_name %>:
+          actions:
+            create_new: Aggiungi Nuovo <%= singular_name.titleize %>
+            reorder: Riordina <%= singular_name.titleize.pluralize %>
+            reorder_done: Termina il Riordino di <%= singular_name.titleize.pluralize %>
+          records:
+            title: <%= plural_name.titleize %>
+            sorry_no_results: "Spiacenti! Nessun risultato trovato"
+            no_items_yet: Non ci sono ancora <%= singular_name.titleize.pluralize %>. Clicca "Aggiungi Nuovo <%= singular_name.titleize %>" per aggiungere il tuo primo <%= singular_name.titleize.downcase %>.
+          <%= singular_name %>:
+            view_live_html: Guarda live questo <%= singular_name.titleize.downcase %> <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo <%= singular_name.titleize.downcase %>
+            delete: Rimuovi per sempre questo <%= singular_name.titleize.downcase %>
+      <%= plural_name %>:
+        show:
+          other: Altri <%= singular_name.titleize.pluralize %>
+  activerecord:
+    attributes:
+      'refinery/<%= namespacing.underscore %>/<%= singular_name %>':<% attributes.each do |a| %>
+        <%= a.name %>: <%= a.name.titleize -%>
+<% end -%>
