@@ -46,8 +46,7 @@
 * Fixed duplicate page part title validation. [#2282](https://github.com/refinery/refinerycms/pull/2282). [David Jones](https://github.com/djones)
 * Fixed nil page bug when `marketable_urls` where set to false and only `path` was passed to `find_by_path_or_id`. [#2278](https://github.com/refinery/refinerycms/pull/2278). [René Cienfuegos](https://github.com/renechz) & [Uģis Ozols](https://github.com/ugisozols)
 * Fixed bug where user plugin order was reset each time user was updated. [#2281](https://github.com/refinery/refinerycms/pull/2281). [Uģis Ozols](https://github.com/ugisozols)
-
-
+* Replaced Image#thumbnail geometry parameter with an options hash to support a strip option for reducing thumbnail file size. [#2261](https://github.com/refinery/refinerycms/pull/2261). [Graham Wagener](https://github.com/gwagener/)
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
 ## 2.0.11 [unreleased]
