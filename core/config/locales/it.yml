@@ -1,82 +1,82 @@
 it:
   refinery:
+    js:
+      admin:
+        confirm_changes: Le modifiche che hai fatto andranno perse. Sei sicuro di voler continuare senza salvare?
     plugins:
       refinery_core:
-        title: Refinery CMS
-        description: Core refinery plugin
+        title: Refinery
+        description: Plugin principale di Refinery
       refinery_dialogs:
-        title: Dialogs
-        description: Refinery dialogs plugin
+        title: Finestre di dialogo
+        description: Plugin finestre di dialogo di Refinery
     welcome:
-      there_are_no_users: "Non ci sono ancora utenti registrati, occorre crearne uno."
+      there_are_no_users: "Non ci sono ancora utenti, provvederemo a crearne uno per te."
     crudify:
       created: "%{what} creato con successo"
       updated: "%{what} modificato con successo"
       destroyed: "%{what} eliminato con successo"
     site_bar:
       log_out: Esci
-      switch_to_your_website: Vai al sito web
-      switch_to_your_website_editor: Vai alla gestione del sito web
+      switch_to_your_website: Vai al tuo sito web
+      switch_to_your_website_editor: Vai alla gestione del tuo sito web
     admin:
       menu:
-        reorder_menu: "Modifica l'ordinamento"
-        reorder_menu_done: "Termina la modifica dell'ordinamento"
+        reorder_menu: "Riordina il menu"
+        reorder_menu_done: "Ho terminato il riordino del menu"
       dialogs:
         show:
           save: Salva
           cancel: Annulla
-      message:
-        close: Fine
       continue_editing:
-        save_and_continue_editing: "Salva e ritorna a questa pagina"
+        save_and_continue_editing: "Salva e continua le modifiche"
       form_actions:
-        or: o
         save: Salva
-        or_cancel: o
         cancel: Annulla
-        or_continue: o
-        cancel_lose_changes: "L'annullamento comporterà la perdita delle modifiche apportate finora" # It is possible to use %{object_name}
+        cancel_lose_changes: "L'annullamento comporterà la perdita delle modifiche apportate finora"
         delete: Rimuovere
         close: Chiudere
       image_picker:
-        none_selected: "Non ci sono %{what} selezionate, clicca qui per aggiungerne una."
-        remove_current: "Rimuovere %{what} corrente"
+        none_selected: "Non c'è nessuna immagine selezionata, clicca qui per aggiungerne una."
+        remove_current: "Rimuovi immagine corrente"
         change: "Clicca qui per scegliere un'immagine"
-        image: immagine
         show: Visualizza
       resource_picker:
-        none_selected: "Non ci sono %{what} selezionate, clicca qui per aggiungerne una."
-        current: "%{what} corrente"
-        download_current: "Scarica il %{what} corrente"
-        opens_in_new_window: Apri in una nuova finestra/scheda
-        remove_current: "Rimuovere %{what} corrente"
-        resource: risorsa
-        no_resource_selected: "Non ci sono %{what} selezionate, clicca qui per aggiungerne una."
+        download_current: "Scarica il file corrente"
+        opens_in_new_window: Apri in una nuova finestra
+        remove_current: "Rimuovi file corrente"
+        no_resource_selected: "Non c'è nessun file selezionato, clicca qui per aggiungerne uno."
         name: Aggiungi File
+        current: "File corrente"
       search:
         button_text: Cerca
         results_for_html: "Risultati della ricerca per &#8216;<em>%{query}</em>&#8217;"
         no_results: "Spiacenti, nessun risultato trovato"
+        cancel_search: 'Annulla ricerca'
+        search_input_notice: "Scrivi qui una stringa di almeno 3 caratteri contenente quello che stai cercando."
       delete:
-        message: "Sei sicuro di voler eliminare '%{title}'?"
+        message: "Sei sicuro di voler rimuovere '%{title}'?"
       error_messages:
-        problems_in_following_fields: "È necessario risolvere i seguenti errori"
+        problems_in_following_fields: "Ci sono stati problemi con i campi seguenti"
       help: aiuto
       form_advanced_options_menu:
-        advanced_options: Mostra/nascondi opzioni avanzate
-        toggle_advanced_options: Cliccare per accedere alle impostazioni dei meta tags e del menu.
+        advanced_options: Opzioni avanzate
+        toggle_advanced_options: Mostra/nascondi opzioni avanzate
         save_as_draft: Salva come bozza
     message:
       close: Fine
       close_this_message: Chiudi questo messaggio
     draft_page_message:
-      not_live: Questa pagina NON è valida per la visione pubblica.
+      not_live: Questa pagina NON è accessibile al pubblico.
     footer:
-      copyright: "Tutti i diritti sono riservati © %{year} %{site_name}"
+      copyright: "Copyright © %{year} %{site_name}"
     no_script:
-      enable_javascript_html: È necessario che JavaScript sia abilitato per poter visualizzare correttamente questa pagina.
-      here_are: ""
-      instructions_enable_javascript_html: Istruzioni su come attivare JavaScript nel tuo browser
+      enable_javascript_html: Per una funzionalità completa di questa pagina è necessario abilitare JavaScript.
+      here_are: "Qui ci sono le"
+      instructions_enable_javascript_html: istruzioni su come attivare JavaScript nel tuo browser
+  time:
+    formats:
+      short: "%A %d %B %Y"
   will_paginate:
     previous_label: "&laquo;"
     next_label: "&raquo;"
