@@ -184,6 +184,23 @@ module Refinery
           page_cs.reload
         end
       end
+
+      describe 'set with slashes' do
+        before do
+          Pages.stub(:scope_slug_by_parent).and_return(false)
+          page_cs.custom_slug = "products/my product/cool one!"
+          page_cs.save
+        end
+
+        after do
+          Pages.stub(:scope_slug_by_parent).and_return(true)
+        end
+
+        it 'should make and use a new friendly_id' do
+          visit '/products/my-product/cool-one'
+          current_path.should == '/products/my-product/cool-one'
+        end
+      end
     end
 
     # Following specs are converted from one of the cucumber features.
