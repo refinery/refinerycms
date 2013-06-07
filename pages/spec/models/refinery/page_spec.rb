@@ -27,6 +27,14 @@ module Refinery
       Pages.stub(:marketable_urls).and_return(true)
     end
 
+    def turn_off_slug_scoping
+      Pages.stub(:scope_slug_by_parent).and_return(false)
+    end
+
+    def turn_on_slug_scoping
+      Pages.stub(:scope_slug_by_parent).and_return(true)
+    end
+
     context 'cannot be deleted under certain rules' do
       it 'if link_url is present' do
         page.link_url = '/plugin-name'
@@ -169,11 +177,15 @@ module Refinery
     context 'custom slugs' do
       let(:custom_page_slug) { 'custom-page-slug' }
       let(:custom_child_slug) { 'custom-child-slug' }
+      let(:custom_route) { '/products/my-product' }
       let(:page_with_custom_slug) {
         subject.class.new(:title => page_title, :custom_slug => custom_page_slug)
       }
       let(:child_with_custom_slug) {
         page.children.new(:title => child_title, :custom_slug => custom_child_slug)
+      }
+      let(:page_with_custom_route) {
+        subject.class.new(:title => page_title, :custom_slug => custom_route)
       }
 
       after(:each) do
@@ -187,12 +199,61 @@ module Refinery
         page_with_custom_slug.url[:path].should == [custom_page_slug]
       end
 
+      it 'allows a custom route when slug scoping is off' do
+        turn_off_slug_scoping
+        page_with_custom_route.save
+        page_with_custom_route.url[:id].should be_nil
+        page_with_custom_route.url[:path].should == [custom_route]
+        turn_on_slug_scoping
+      end
+
+      it 'allows slashes in custom routes but slugs everything in between' do
+        turn_off_slug_scoping
+        page_needing_a_slugging = subject.class.new(:title => page_title, :custom_slug => 'products/category/sub category/my product is cool!')
+        page_needing_a_slugging.save
+        page_needing_a_slugging.url[:id].should be_nil
+        page_needing_a_slugging.url[:path].should == ['products/category/sub-category/my-product-is-cool']
+        turn_on_slug_scoping
+      end
+
       it 'returns its path underneath its parent with custom urls' do
         child_with_custom_slug.save
         page.save
 
         child_with_custom_slug.url[:id].should be_nil
         child_with_custom_slug.url[:path].should == [page.url[:path].first, custom_child_slug]
+      end
+
+      it 'does not return a path underneath its parent when scoping is off' do
+        turn_off_slug_scoping
+        child_with_custom_slug.save
+        page.save
+
+        child_with_custom_slug.url[:id].should be_nil
+        child_with_custom_slug.url[:path].should == [custom_child_slug]
+        turn_on_slug_scoping
+      end
+      
+      it "doesn't allow slashes in slug" do
+        page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => '/products/category')
+        page_with_slashes_in_slug.save
+        page_with_slashes_in_slug.url[:path].should == ['productscategory']
+      end
+      
+      it "allow slashes in slug when slug scoping is off" do
+        turn_off_slug_scoping
+        page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => 'products/category/subcategory')
+        page_with_slashes_in_slug.save
+        page_with_slashes_in_slug.url[:path].should == ['products/category/subcategory']
+        turn_on_slug_scoping
+      end
+      
+      it "strips leading and trailing slashes in slug when slug scoping is off" do
+        turn_off_slug_scoping
+        page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => '/products/category/subcategory/')
+        page_with_slashes_in_slug.save
+        page_with_slashes_in_slug.url[:path].should == ['products/category/subcategory']
+        turn_on_slug_scoping
       end
 
       it 'returns its path with custom slug when using different locale' do

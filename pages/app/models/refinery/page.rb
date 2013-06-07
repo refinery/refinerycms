@@ -32,9 +32,13 @@ module Refinery
     acts_as_nested_set :dependent => :destroy
 
     # Docs for friendly_id http://github.com/norman/friendly_id
-    friendly_id :custom_slug_or_title, :use => [:reserved, :globalize, :scoped],
-                :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
-                :scope => :parent
+    friendly_id_options = {:use => [:reserved, :globalize], :reserved_words => %w(index new session login logout users refinery admin images wymiframe)}
+    if ::Refinery::Pages.scope_slug_by_parent
+      friendly_id_options[:use] << :scoped
+      friendly_id_options.merge!(:scope => :parent)
+    end
+
+    friendly_id :custom_slug_or_title, friendly_id_options
 
     has_many :parts,
              :foreign_key => :refinery_page_id,
@@ -58,13 +62,18 @@ module Refinery
         where(:draft => false)
       end
 
-      # With slugs scoped to the parent page we need to find a page by its full path.
-      # For example with about/example we would need to find 'about' and then its child
-      # called 'example' otherwise it may clash with another page called /example.
+      # Find page by path, checking for scoping rules
       def find_by_path(path)
-        path = path.split('/').select(&:present?)
-        page = by_slug(path.shift, :parent_id => nil).first
-        page = page.children.by_slug(path.shift).first while page && path.any?
+        if ::Refinery::Pages.scope_slug_by_parent
+          # With slugs scoped to the parent page we need to find a page by its full path.
+          # For example with about/example we would need to find 'about' and then its child
+          # called 'example' otherwise it may clash with another page called /example.
+          path = path.split('/').select(&:present?)
+          page = by_slug(path.shift, :parent_id => nil).first
+          page = page.children.by_slug(path.shift).first while page && path.any?
+        else
+          page = by_slug(path).first
+        end
 
         page
       end
@@ -252,10 +261,12 @@ module Refinery
     end
 
     def nested_url
-      [
-        parent.try(:nested_url),
-        Globalize.with_locale(slug_locale) { to_param.to_s }
-      ].compact.flatten
+      globalized_slug = Globalize.with_locale(slug_locale) { to_param.to_s }
+      if ::Refinery::Pages.scope_slug_by_parent
+        [parent.try(:nested_url), globalized_slug].compact.flatten
+      else
+        [globalized_slug]
+      end
     end
 
     # Returns an array with all ancestors to_param, allow with its own
@@ -356,14 +367,22 @@ module Refinery
     # Protects generated slugs from title if they are in the list of reserved words
     # This applies mostly to plugin-generated pages.
     # This only kicks in when Refinery::Pages.marketable_urls is enabled.
+    # Also check for global scoping, and if enabled, allow slashes in slug.
     #
     # Returns the sluggified string
     def normalize_friendly_id_with_marketable_urls(slug_string)
-      sluggified = slug_string.to_slug.normalize!
-      if Pages.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)
-        sluggified << "-page"
+      # If we are scoping by parent, no slashes are allowed. Otherwise, slug is potentially
+      # a custom slug that contains a custom route to the page.
+      if !Pages.scope_slug_by_parent && slug_string.include?('/')
+        slug_string.sub!(%r{^/*}, '').sub!(%r{/*$}, '') # Remove leading and trailing slashes, but allow internal
+        slug_string.split('/').select(&:present?).map {|s| normalize_friendly_id_with_marketable_urls(s) }.join('/')
+      else
+        sluggified = slug_string.to_slug.normalize!
+        if Pages.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)
+          sluggified << "-page"
+        end
+        sluggified
       end
-      sluggified
     end
     alias_method_chain :normalize_friendly_id, :marketable_urls
 
