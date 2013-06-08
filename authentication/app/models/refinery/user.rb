@@ -57,7 +57,7 @@ module Refinery
 
         plugin_names.each do |plugin_name|
           plugins.create(:name => plugin_name,
-                         :position => plugins.pluck(:position).max + 1)
+                         :position => plugins.pluck(:position).map(&:to_i).max + 1)
         end
       end
     end
