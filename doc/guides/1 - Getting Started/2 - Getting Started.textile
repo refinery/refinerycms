@@ -143,7 +143,7 @@ Fill out the sign up form to create your first user. This will be the super user
 
 Once you've created your first user you'll see Refinery's "Dashboard".
 
-!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMjhfNDVfOTUzX3JlZmluZXJ5X2Rhc2hib2FyZF9zbWFsbGVyLnBuZyJdXQ/12_28_45_953_refinery_dashboard_smaller.png!
+!/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfNzIxX2Rhc2hib2FyZC5wbmciXV0/dashboard.png!
 
 h4. Setting Your Site Name
 
@@ -233,7 +233,7 @@ As you can see we're going to render a view with some HTML5 tags and along with 
 
 When you edit the About page you'll see something like this:
 
-!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMzJfNTFfODY0X2VkaXRpbmdfYWJvdXRfcGFnZV9zbWFsbC5wbmciXV0/12_32_51_864_editing_about_page_small.png!
+!/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfNDg5X2Fib3V0X3BhZ2VfZWRpdC5wbmciXV0/about_page_edit.png!
 
 You'll notice two tabs on the page: "Body" and "Side Body". These are +PageParts+, or in other words, a single piece of content attached to this page that you can render in your view. There is a "Body" tab with some content on this screen. To render that same content in your view, put:
 
@@ -387,7 +387,7 @@ TIP: When new extensions are added it's a good idea to restart your server for n
 
 Now go to the backend of your Refinery site ("http://localhost:3000/refinery":http://localhost:3000/refinery) and you'll notice a new tab called "Events". Click on "Add new event" and you'll see something like this:
 
-!/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMzBfMDlfODJfZXZlbnRzX3BsdWdpbl9zbWFsbGVyLnBuZyJdXQ/12_30_09_82_events_plugin_smaller.png!
+!/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfODYwX2V2ZW50X3BhZ2VfZWRpdC5wbmciXV0/event_page_edit.png!
 
 You'll see the entire form has been generated for you based off the field types you specified when generating the events section. The blurb has a visual editor, the date field is a date picker and the photo allows you to pick or upload a new photo from a built-in Refinery dialog.
 
