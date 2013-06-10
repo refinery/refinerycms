@@ -166,7 +166,7 @@ module Refinery
           user.plugins.collect(&:name).should eq(["refinery_one"])
         end
 
-        it "won't rise exception if plugins position is not a number" do
+        it "won't raise exception if plugins position is not a number" do
           Refinery::UserPlugin.create! :name => "refinery_one", :user_id => user.id
 
           expect { user.plugins = ["refinery_one", "refinery_two"] }.to_not raise_error
