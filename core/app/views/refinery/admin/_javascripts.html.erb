@@ -10,3 +10,11 @@
   <%= javascript_include_tag js %>
 <% end %>
 <%= yield :javascripts %>
+
+<% if controller.class.respond_to?(:xhr_pageable?) && !controller.class.xhr_pageable? %>
+  <script>
+    $(document).ready(function() {
+      $('.pagination_container .pagination a').off('click');
+    });
+  </script>
+<% end %>
