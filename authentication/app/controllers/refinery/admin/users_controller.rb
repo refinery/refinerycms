@@ -85,15 +85,6 @@ module Refinery
 
     protected
 
-      def find_user_with_slug
-        @user ||= begin
-          find_user_without_slug
-        rescue ActiveRecord::RecordNotFound
-          Refinery::User.all.detect{|u| u.to_param == params[:id]}
-        end
-      end
-      alias_method_chain :find_user, :slug
-
       def load_available_plugins_and_roles
         @available_plugins = Refinery::Plugins.registered.in_menu.collect { |a|
           { :name => a.name, :title => a.title }
