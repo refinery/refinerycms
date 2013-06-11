@@ -4,46 +4,48 @@ module Refinery
   describe "Crudify" do
     refinery_login_with :refinery_superuser
 
-    describe "xhr_paging", js:true do
+    describe "xhr_paging", :js => true do
+      # Refinery::Admin::UsersController specifies :order => 'username ASC' in crudify
+      let(:first_user) { User.order('username ASC').first }
+      let(:last_user) { User.order('username ASC').last }
       before do
-        FactoryGirl.create(:user)
+        FactoryGirl.create :user
+        Admin::UsersController.should_receive(:xhr_pageable?).
+                               at_least(1).times.and_return(xhr_pageable)
+        User.stub(:per_page).and_return(1)
       end
 
       describe 'when set to true' do
+        let(:xhr_pageable) { true }
         it 'should perform ajax paging of index' do
-          Refinery::Admin::UsersController.should_receive(:xhr_pageable?).any_number_of_times.and_return(true)
-          Refinery::User.should_receive(:per_page).any_number_of_times.and_return(1)
-
           visit refinery.admin_users_path
 
-          expect(page).to have_selector('li.record', count: 1)
-          expect(page).to have_content(Refinery::User.first.email)
+          expect(page).to have_selector('li.record', :count => 1)
+          expect(page).to have_content(first_user.email)
 
           within '.pagination' do
             click_link '2'
           end
 
           expect(page.evaluate_script('jQuery.active')).to eq(1)
-          expect(page).to have_content(Refinery::User.last.email)
+          expect(page).to have_content(last_user.email)
         end
       end
 
       describe 'set to false' do
+        let(:xhr_pageable) { false }
         it 'should not perform ajax paging of index' do
-          Refinery::Admin::UsersController.should_receive(:xhr_pageable?).any_number_of_times.and_return(false)
-          Refinery::User.should_receive(:per_page).any_number_of_times.and_return(1)
-
           visit refinery.admin_users_path
 
-          expect(page).to have_selector('li.record', count: 1)
-          expect(page).to have_content(Refinery::User.first.email)
+          expect(page).to have_selector('li.record', :count => 1)
+          expect(page).to have_content(first_user.email)
 
           within '.pagination' do
             click_link '2'
           end
 
           expect(page.evaluate_script('jQuery.active')).to eq(0)
-          expect(page).to have_content(Refinery::User.last.email)
+          expect(page).to have_content(last_user.email)
 
         end
       end
