@@ -220,7 +220,7 @@ module Refinery
 
         # Methods that are only included when this controller is searchable.
         if options[:searchable]
-          if options[:paging]
+          if options[:paging] || options[:xhr_paging]
             module_eval %(
               def index
                 search_all_#{plural_name} if searching?
@@ -244,7 +244,7 @@ module Refinery
           end
 
         else
-          if options[:paging]
+          if options[:paging] || options[:xhr_paging]
             module_eval %(
               def index
                 paginate_all_#{plural_name}
@@ -324,9 +324,13 @@ module Refinery
         module_eval %(
           class << self
             def pageable?
-              #{options[:paging].to_s}
+              #{options[:paging].to_s} || #{options[:xhr_paging].to_s}
             end
             alias_method :paging?, :pageable?
+
+            def xhr_pageable?
+              #{options[:xhr_paging].to_s}
+            end
 
             def sortable?
               #{options[:sortable].to_s}
