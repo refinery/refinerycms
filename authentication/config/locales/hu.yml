@@ -9,7 +9,7 @@ hu:
         delete: Felhasználó végleges eltávolítása
         edit: Felhasználó szerkesztése
         update:
-          cannot_remove_user_plugin_from_current_user: Nem távolíthatod el a 'Felhasználók' kiegészítőt ebből a bejelentkezett fiókból.
+          lockout_prevented: Nem távolíthatod el a 'Felhasználók' kiegészítőt ebből a bejelentkezett fiókból.
         form:
           blank_password_keeps_current: 'A jelenlegi jelszó megtartásához hagyd a mezőt üresen'
           plugin_access: Kiegészítő hozzáférés

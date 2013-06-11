@@ -10,7 +10,7 @@ uk:
         delete: Видалити цього користувача назавжди
         edit: Редагувати цього користувача
         update:
-          cannot_remove_user_plugin_from_current_user: "Не можна відключити модуль «Користувачі» у самого себе."
+          lockout_prevented: "Не можна відключити модуль «Користувачі» у самого себе."
         form:
           blank_password_keeps_current: 'Залиште поле порожнім, якщо не хочете змінити пароль'
           plugin_access: Доступ до плагінів

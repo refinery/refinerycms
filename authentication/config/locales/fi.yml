@@ -9,7 +9,7 @@ fi:
         delete: Poista tämä käyttäjä ikuisesti
         edit: Muokkaa tätä käyttäjää
         update:
-          cannot_remove_user_plugin_from_current_user: "Et voi poistaa 'Käyttäjät-' palikkaa tunnukselta, jolla olet kirjautunut sisään."
+          lockout_prevented: "Et voi poistaa 'Käyttäjät-' palikkaa tunnukselta, jolla olet kirjautunut sisään."
         form:
           blank_password_keeps_current: "Jätä tyhjäksi, jos et halua vaihtaa salasanaa"
           plugin_access: Palikkaluvat

@@ -9,7 +9,7 @@ da:
         delete: Slet bruger
         edit: Redigér bruger
         update:
-          cannot_remove_user_plugin_from_current_user: "Du kan ikke deaktivere 'Brugere' for en bruger, der er logget på."
+          lockout_prevented: "Du kan ikke deaktivere 'Brugere' for en bruger, der er logget på."
         form:
           blank_password_keeps_current: 'Hvis du ikke indtaster noget, beholdes den nuværende adgangskode'
           plugin_access: Plugin adgang

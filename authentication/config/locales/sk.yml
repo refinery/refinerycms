@@ -9,7 +9,7 @@ sk:
         delete: Zmazať tohto užívateľa
         edit: Editovať tohto užívateľa
         update:
-          cannot_remove_user_plugin_from_current_user: Nemôžete odstrániť modul 'Users' z aktuálne prihláseného konta.
+          lockout_prevented: Nemôžete odstrániť modul 'Users' z aktuálne prihláseného konta.
         form:
           blank_password_keeps_current: Ak necháte toto pole prázdne bude zachované súčasné heslo.
           plugin_access: Prístup k modulom

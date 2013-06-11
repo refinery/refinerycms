@@ -9,7 +9,7 @@ el:
         delete: Διαγραφή χρήστη
         edit: Επεξεργασία χρήστη
         update:
-          cannot_remove_user_plugin_from_current_user: Δεν μπορείτε να διαγράψετε το 'Users' plugin για αυτόν τον λογαριασμό.
+          lockout_prevented: Δεν μπορείτε να διαγράψετε το 'Users' plugin για αυτόν τον λογαριασμό.
         form:
           blank_password_keeps_current: Αφήνοντας κενό τον κωδικό δε θα άλλαξει
           plugin_access: Πρόσβαση Plugin

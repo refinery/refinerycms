@@ -9,7 +9,7 @@ it:
         delete: Elimina questo utente
         edit: Modifica questo utente
         update:
-          cannot_remove_user_plugin_from_current_user: "Non è possibile rimuovere la sezione 'Utenti' dall'account attualmente connesso."
+          lockout_prevented: "Non è possibile rimuovere la sezione 'Utenti' dall'account attualmente connesso."
         form:
           blank_password_keeps_current: Lasciando il campo Password vuoto essa non verrà modificata
           plugin_access: "Abilitare l'accesso alle sezioni"
