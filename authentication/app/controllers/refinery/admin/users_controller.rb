@@ -9,6 +9,7 @@ module Refinery
 
       before_filter :load_available_plugins_and_roles,
                     :only => [:new, :create, :edit, :update]
+      before_filter :redirect_unless_user_editable!, :only => [:edit, :update]
 
       def new
         @user = Refinery::User.new
@@ -38,15 +39,10 @@ module Refinery
       end
 
       def edit
-        redirect_unless_user_editable!
-
         @selected_plugin_names = find_user.plugins.collect(&:name)
       end
 
       def update
-        redirect_unless_user_editable!
-        @user = find_user
-
         # Store what the user selected.
         @selected_role_names = params[:user].delete(:roles) || []
         unless current_refinery_user.has_role?(:superuser) && Refinery::Authentication.superuser_can_assign_roles
@@ -94,9 +90,7 @@ module Refinery
       end
 
       def redirect_unless_user_editable!
-        unless current_refinery_user.can_edit? find_user
-          redirect_to refinery.admin_users_path and return
-        end
+        redirect_to refinery.admin_users_path unless current_refinery_user.can_edit? find_user
       end
     end
   end
