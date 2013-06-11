@@ -3,6 +3,7 @@ module Refinery
     include Pages::RenderOptions
 
     before_filter :find_page, :set_canonical
+    before_filter :error_404, :unless => :current_user_can_view_page?
 
     # Save whole Page after delivery
     after_filter :write_cache?
@@ -23,21 +24,15 @@ module Refinery
     #   GET /about/mission
     #
     def show
-      if current_user_can_view_page?
-        if should_skip_to_first_child?
-          redirect_to refinery.url_for(first_live_child.url)
-        elsif page.link_url.present?
-          redirect_to page.link_url
-        else
-          if should_redirect_to_friendly_url?
-            redirect_to refinery.url_for(page.url), :status => 301
-          else
-            render_with_templates?
-          end
-        end
-      else
-        error_404
+      if should_skip_to_first_child?
+        redirect_to refinery.url_for(first_live_child.url) and return
+      elsif page.link_url.present?
+        redirect_to page.link_url and return
+      elsif should_redirect_to_friendly_url?
+        redirect_to refinery.url_for(page.url), :status => 301 and return
       end
+
+      render_with_templates?
     end
 
   protected
