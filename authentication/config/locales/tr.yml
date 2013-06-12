@@ -9,7 +9,7 @@ tr:
         delete: Bu kullaniciyi sonsuza dek sil!
         edit: Bu kullaniciyi guncelle
         update:
-          cannot_remove_user_plugin_from_current_user: Su an bagli oldugun hesaptan 'Kullanicilar' adli eklentiyi silemezsin.
+          lockout_prevented: Su an bagli oldugun hesaptan 'Kullanicilar' adli eklentiyi silemezsin.
         form:
           blank_password_keeps_current: Parolayi bos birakirsan mevcut parolani korursun.
           plugin_access: Eklenti Erisimi

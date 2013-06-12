@@ -9,7 +9,7 @@ zh-CN:
         delete: 永久删除此用户
         edit: 编辑此用户
         update:
-          cannot_remove_user_plugin_from_current_user: 您当前登录所使用的帐号无法移除‘用户’插件.
+          lockout_prevented: 您当前登录所使用的帐号无法移除‘用户’插件.
         form:
           blank_password_keeps_current: 保留密码框为空以保持原有密码
           plugin_access: 插件

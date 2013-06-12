@@ -9,7 +9,7 @@ fr:
         delete: Supprimer définitivement cet utilisateur
         edit: Modifier cet utilisateur
         update:
-          cannot_remove_user_plugin_from_current_user: Vous ne pouvez pas supprimer l'accès au plugin de gestion des utilisateurs pour l'utilisateur sur lequel vous êtes actuellement authentifié.
+          lockout_prevented: Vous ne pouvez pas supprimer l'accès au plugin de gestion des utilisateurs pour l'utilisateur sur lequel vous êtes actuellement authentifié.
         form:
           blank_password_keeps_current: Laisser le mot de passe vide permet de conserver le mot de passe actuel
           plugin_access: Plugin d'accès

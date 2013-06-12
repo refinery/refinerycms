@@ -10,7 +10,7 @@ pl:
         delete: Usuń tego użytkownika na zawsze
         edit: Edttuj tego użytkownika
         update:
-          cannot_remove_user_plugin_from_current_user: Z obecnie zalogowanego konta nie można usunąć pluginu 'Użytkownicy'.
+          lockout_prevented: Z obecnie zalogowanego konta nie można usunąć pluginu 'Użytkownicy'.
         form:
           blank_password_keeps_current: Pozostawienie pola hasło pustym pozostawi hasło nie zmienionym
           plugin_access: Plugin dostępu

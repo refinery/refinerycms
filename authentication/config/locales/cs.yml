@@ -9,7 +9,7 @@ cs:
         delete: Smazat tohoto uživatele
         edit: Editovat tohoto uživatele
         update:
-          cannot_remove_user_plugin_from_current_user: Nemůžete odstranit 'Users' plugin z aktuálně přihlášeného konta.
+          lockout_prevented: Nemůžete odstranit 'Users' plugin z aktuálně přihlášeného konta.
         form:
           blank_password_keeps_current: Pokud necháte toto pole prázné bude zachováno stávající heslo
           plugin_access: Přístup k pluginům

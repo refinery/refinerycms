@@ -9,7 +9,7 @@ nl:
         delete: Deze gebruiker definitief verwijderen
         edit: Deze gebruiker bewerken
         update:
-          cannot_remove_user_plugin_from_current_user: "U kunt de plugin 'Gebruikers' niet deactiveren voor het account waarmee u op dit moment bent ingelogd."
+          lockout_prevented: "U kunt de plugin 'Gebruikers' niet deactiveren voor het account waarmee u op dit moment bent ingelogd."
         form:
           blank_password_keeps_current: 'Als u dit veld leeg laat, blijft het huidige wachtwoord behouden'
           plugin_access: Toegang tot plugins
