@@ -53,6 +53,10 @@ module Refinery
         class_name = options[:class_name]
         singular_name = options[:singular_name]
         plural_name = options[:plural_name]
+        if options[:parent_class]
+          parent_name = options[:parent_class].name.demodulize.underscore
+          parent_id = "#{parent_name}_id"
+        end
 
         module_eval %(
           def self.crudify_options
@@ -321,6 +325,24 @@ module Refinery
             end
 
             protected :after_update_positions
+          )
+        end
+
+        # Extra methods when we are a child
+        if options[:parent_class]
+          module_eval %(
+            prepend_before_filter :fetch_#{parent_name}
+            prepend_before_filter :store_location, only: [:new, :edit]
+
+            def new
+              @#{singular_name} = #{class_name}.new(#{parent_id}: @#{parent_name}.id)
+            end
+
+            private
+            def fetch_#{parent_name}
+              return if params[:#{parent_id}].blank?
+              @#{parent_name} = #{options[:parent_class]}.find(params[:#{parent_id}])
+            end
           )
         end
 
