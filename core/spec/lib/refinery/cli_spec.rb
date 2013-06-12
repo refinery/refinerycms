@@ -34,6 +34,8 @@ describe "CLI" do
 
   shared_examples "refinery:override" do
     context "specified file doesn't exist" do
+      after { ENV.delete(env) }
+
       it "shows message" do
         ENV[env] = "non-existent"
 
@@ -44,13 +46,13 @@ describe "CLI" do
     end
 
     context "specified file exist" do
-      let (:file_name) do
+      let(:file_name) do
         Dir.entries(file_location).reject { |e| e =~ %r{^\.+} || e !~ %r{\..+} }.first
       end
 
       after do
         FileUtils.rm_f(Rails.root.join(copied_file_location))
-        ENV[env] = nil
+        ENV.delete(env)
       end
 
       it "copies file to app folder" do
