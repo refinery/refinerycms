@@ -9,7 +9,7 @@ zh-TW:
         delete: 永遠移除這位使用者
         edit: 編輯這位使用者
         update:
-          cannot_remove_user_plugin_from_current_user: 您無法從目前登入的帳號移除 '使用者' 插件.
+          lockout_prevented: 您無法從目前登入的帳號移除 '使用者' 插件.
         form:
           blank_password_keeps_current: 密碼處空白可維持現在的密碼
           plugin_access: 插件存取權限

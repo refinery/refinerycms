@@ -8,7 +8,7 @@ sl:
         delete: Odstrani uporabnika
         edit: Uredi uporabnika
         update:
-          cannot_remove_user_plugin_from_current_user: "Ne morete odstraniti vstavka 'Uporabniki' iz trenutno prijavljenega računa."
+          lockout_prevented: "Ne morete odstraniti vstavka 'Uporabniki' iz trenutno prijavljenega računa."
         form:
           blank_password_keeps_current: V kolikor ne boste vnesli gesla bo ostalo obstoječe
           enable_all: omogoči vse

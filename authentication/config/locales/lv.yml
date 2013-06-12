@@ -9,7 +9,7 @@ lv:
         delete: Dzēst šo lietotāju
         edit: Labot šo lietotāju
         update:
-          cannot_remove_user_plugin_from_current_user: Jūs nevarat dzēst pieeju 'Lietotāju' spraudnim kontam ar kuru pašlaik esat pieslēdzies.
+          lockout_prevented: Jūs nevarat dzēst pieeju 'Lietotāju' spraudnim kontam ar kuru pašlaik esat pieslēdzies.
         form:
           blank_password_keeps_current: 'Atstājot paroles lauku tukšu, tiks paturēta pašreizējā parole'
           plugin_access: Spraudņu piekļuve

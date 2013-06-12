@@ -9,7 +9,7 @@ de:
         delete: Diesen Benutzer für immer löschen
         edit: Diesen Benutzer bearbeiten
         update:
-          cannot_remove_user_plugin_from_current_user: Sie können die Erweiterung 'Benutzer' nicht vom aktuellen Konto entfernen.
+          lockout_prevented: Sie können die Erweiterung 'Benutzer' nicht vom aktuellen Konto entfernen.
         form:
           blank_password_keeps_current: 'Wird das Passwort leer gelassen, wird das aktuelle Passwort beibehalten'
           plugin_access: Zugriff auf Erweiterungen

@@ -9,7 +9,7 @@ nb:
         delete: Fjern denne brukeren permanent
         edit: Rediger denne brukeren
         update:
-          cannot_remove_user_plugin_from_current_user: "Du kan ikke fjerne tillegget 'Brukere' når du er logget inn med denne brukeren"
+          lockout_prevented: "Du kan ikke fjerne tillegget 'Brukere' når du er logget inn med denne brukeren"
         form:
           blank_password_keeps_current: La feltet forbli tomt om du ikke ønsker å endre passordet
           plugin_access: Tilgang til komponenter

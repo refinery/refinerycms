@@ -9,7 +9,7 @@ vi:
         delete: Xoá vĩnh viễn người dùng này
         edit: Chỉnh sửa người dùng này
         update:
-          cannot_remove_user_plugin_from_current_user: Bạn không thể xoá 'Users' plugin bằng tài khoản bạn đang đăng nhập.
+          lockout_prevented: Bạn không thể xoá 'Users' plugin bằng tài khoản bạn đang đăng nhập.
         form:
           blank_password_keeps_current: Bỏ trống mật khẩu để giữ nguyên mật khẩu đang sử dụng
           plugin_access: Truy cập plugin

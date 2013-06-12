@@ -9,7 +9,7 @@ rs:
         delete: Ukloni ovog administratora zauvek
         edit: Izmeni ovog administratora
         update:
-          cannot_remove_user_plugin_from_current_user: Ne možeš da ukloniš 'Users' plugin sa trenutno logovanog naloga.
+          lockout_prevented: Ne možeš da ukloniš 'Users' plugin sa trenutno logovanog naloga.
         form:
           blank_password_keeps_current: Ostavi prazno da zadržiš trenutnu lozinku
           plugin_access: Pristup plugin-ovima

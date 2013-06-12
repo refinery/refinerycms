@@ -9,7 +9,7 @@ es:
         delete: Borrar a este usuario para siempre
         edit: Editar este usuario
         update:
-          cannot_remove_user_plugin_from_current_user: No puedes eliminar el plugin 'Usuarios' para el usuario actual.
+          lockout_prevented: No puedes eliminar el plugin 'Usuarios' para el usuario actual.
         form:
           blank_password_keeps_current: Dejar la contraseña en blanco mantendrá la actual
           plugin_access: Gestionar plugins

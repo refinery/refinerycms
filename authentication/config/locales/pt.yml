@@ -9,7 +9,7 @@ pt:
         delete: Apagar utilizador definitivamente
         edit: Editar utilizador
         update:
-          cannot_remove_user_plugin_from_current_user: Não pode remover o plugin de Utilizadores da conta actual.
+          lockout_prevented: Não pode remover o plugin de Utilizadores da conta actual.
         form:
           blank_password_keeps_current: Deixar a password em branco deixa a password actual.
           plugin_access: Plugin de acesso

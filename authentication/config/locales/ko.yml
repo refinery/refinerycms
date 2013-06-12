@@ -9,7 +9,7 @@ ko:
         delete: 이 사용자 삭제
         edit: 이 사용자 편집
         update:
-          cannot_remove_user_plugin_from_current_user: 현재 로그인한 계정에서 사용자 플러그인 접근 권한을 제거할 수 없습니다.
+          lockout_prevented: 현재 로그인한 계정에서 사용자 플러그인 접근 권한을 제거할 수 없습니다.
         form:
           blank_password_keeps_current: 빈 칸으로 두면 비밀번호를 변경하지 않습니다
           plugin_access: 플러그인 권한
@@ -18,7 +18,7 @@ ko:
         actions:
           create_new_user: 새 사용자 추가
         user:
-          email_user: 사용자에게 메일 발송 
+          email_user: 사용자에게 메일 발송
           preview: '(%{who}) %{created_at} 에 추가됨'
     sessions:
       new:

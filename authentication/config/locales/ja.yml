@@ -9,7 +9,7 @@ ja:
         delete: ユーザを削除
         edit: 変更
         update:
-          cannot_remove_user_plugin_from_current_user: 現在使用中のアカウントから'ユーザ'プラグインを削除する事は出来ません。
+          lockout_prevented: 現在使用中のアカウントから'ユーザ'プラグインを削除する事は出来ません。
         form:
           blank_password_keeps_current: 空にしておくと現在のパスワードがそのまま保存されます。
           plugin_access: プラグインアクセス

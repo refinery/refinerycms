@@ -9,7 +9,7 @@ lt:
         delete: Pašalinti vartotoją visam laikui
         edit: Redaguoti vartotoją
         update:
-          cannot_remove_user_plugin_from_current_user: Jūs negalite pašalinti 'Vartotojų' įskiepio iš šiuo metu naudojamos paskyros.
+          lockout_prevented: Jūs negalite pašalinti 'Vartotojų' įskiepio iš šiuo metu naudojamos paskyros.
         form:
           blank_password_keeps_current: "Jei paliksite slaptažodžio laukelį tuščią, jis išliks nepakites"
           enable_all: aktyvuoti visus
