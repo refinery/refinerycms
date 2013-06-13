@@ -54,8 +54,10 @@ module Refinery
         singular_name = options[:singular_name]
         plural_name = options[:plural_name]
         if options[:parent_class]
-          parent_name = options[:parent_class].name.demodulize.underscore
+          parent_class = options[:parent_class]
+          parent_name = parent_class.name.demodulize.underscore
           parent_id = "#{parent_name}_id"
+          options[:redirect_to_url] = "refinery.edit_#{Refinery.route_for_model(parent_class)}"
         end
 
         module_eval %(
@@ -189,6 +191,7 @@ module Refinery
           end
 
           def create_or_update_unsuccessful(action)
+            binding.pry
             if request.xhr?
               render :partial => '/refinery/admin/error_messages', :locals => {
                        :object => @#{singular_name},
@@ -329,19 +332,32 @@ module Refinery
         end
 
         # Extra methods when we are a child
+        # - before filter for storing previous location and for loading the parent object.
+        # - overwrite #new to initialize with parents' id
+        # - overwrite #redirect_url to skip pagination logic: we always redirect back to parent edit.
+#             prepend_before_filter :store_location, only: [:new, :edit]
+
         if options[:parent_class]
           module_eval %(
             prepend_before_filter :fetch_#{parent_name}
-            prepend_before_filter :store_location, only: [:new, :edit]
 
             def new
               @#{singular_name} = #{class_name}.new(#{parent_id}: @#{parent_name}.id)
             end
 
+            protected
+            def redirect_url
+              #{options[:redirect_to_url]}(@#{parent_name})
+            end
+
+            def create_or_update_successful
+              redirect_to redirect_url
+            end
+
             private
             def fetch_#{parent_name}
               return if params[:#{parent_id}].blank?
-              @#{parent_name} = #{options[:parent_class]}.find(params[:#{parent_id}])
+              @#{parent_name} = #{parent_class}.find(params[:#{parent_id}])
             end
           )
         end
