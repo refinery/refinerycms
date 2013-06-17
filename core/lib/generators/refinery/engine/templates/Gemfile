@@ -69,4 +69,4 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails', '~> 2.2.0'
+gem 'jquery-rails', '~> 2.3.0'

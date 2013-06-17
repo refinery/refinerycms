@@ -1,6 +1,6 @@
 require 'rbconfig'
 
-gsub_file 'Gemfile', "gem 'jquery-rails'", "gem 'jquery-rails', '~> 2.2.0'"
+gsub_file 'Gemfile', "gem 'jquery-rails'", "gem 'jquery-rails', '~> 2.3.0'"
 # We want to ensure that you have an ExecJS runtime available!
 begin
   run 'bundle install'
