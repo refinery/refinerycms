@@ -191,7 +191,6 @@ module Refinery
           end
 
           def create_or_update_unsuccessful(action)
-            binding.pry
             if request.xhr?
               render :partial => '/refinery/admin/error_messages', :locals => {
                        :object => @#{singular_name},
