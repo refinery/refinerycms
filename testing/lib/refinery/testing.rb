@@ -27,6 +27,6 @@ module Refinery
     require 'refinery/testing/railtie'
 
     autoload :ControllerMacros, 'refinery/testing/controller_macros'
-    autoload :RequestMacros, 'refinery/testing/request_macros'
+    autoload :FeatureMacros, 'refinery/testing/feature_macros'
   end
 end
