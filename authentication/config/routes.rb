@@ -6,7 +6,7 @@ Refinery::Core::Engine.routes.draw do
     devise_scope :refinery_user do
       get "/#{Refinery::Core.backend_route}/login", :to => "sessions#new", :as => :login
       get "/#{Refinery::Core.backend_route}/logout", :to => "sessions#destroy", :as => :logout
-      get "/#{Refinery::Core.backend_route}/users/register" => 'users#new', :as => :signup
+      get "/#{Refinery::Core.backend_route}/users/register" => 'users#new', :as => :new_signup
       post "/#{Refinery::Core.backend_route}/users/register" => 'users#create', :as => :signup
     end
 

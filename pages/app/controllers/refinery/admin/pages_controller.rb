@@ -1,6 +1,7 @@
 module Refinery
   module Admin
     class PagesController < Refinery::AdminController
+      include ActionController::Caching::Sweeping
       include Pages::InstanceMethods
       cache_sweeper Pages::PageSweeper
 

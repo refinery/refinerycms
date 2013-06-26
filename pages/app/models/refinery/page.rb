@@ -51,7 +51,7 @@ module Refinery
 
     accepts_nested_attributes_for :parts, :allow_destroy => true
 
-    before_save { |m| m.translation.save }
+    after_save { |m| m.translation.save }
     before_create :ensure_locale!
     before_destroy :deletable?
     after_save :reposition_parts!
