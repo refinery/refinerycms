@@ -17,7 +17,7 @@ FactoryGirl.define do
   factory :refinery_user, :parent => :user do
     roles { [ ::Refinery::Role[:refinery] ] }
 
-    after_create do |user|
+    after(:create) do |user|
       ::Refinery::Plugins.registered.each_with_index do |plugin, index|
         user.plugins.create(:name => plugin.name, :position => index)
       end
@@ -31,7 +31,7 @@ FactoryGirl.define do
   factory :refinery_translator, :parent => :user do
     roles { [ ::Refinery::Role[:refinery], ::Refinery::Role[:translator] ] }
 
-    after_create do |user|
+    after(:create) do |user|
       user.plugins.create(:name => 'refinery_pages', :position => 0)
     end
   end

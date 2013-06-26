@@ -233,13 +233,13 @@ module Refinery
         child_with_custom_slug.url[:path].should == [custom_child_slug]
         turn_on_slug_scoping
       end
-      
+
       it "doesn't allow slashes in slug" do
         page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => '/products/category')
         page_with_slashes_in_slug.save
         page_with_slashes_in_slug.url[:path].should == ['productscategory']
       end
-      
+
       it "allow slashes in slug when slug scoping is off" do
         turn_off_slug_scoping
         page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => 'products/category/subcategory')
@@ -247,7 +247,7 @@ module Refinery
         page_with_slashes_in_slug.url[:path].should == ['products/category/subcategory']
         turn_on_slug_scoping
       end
-      
+
       it "strips leading and trailing slashes in slug when slug scoping is off" do
         turn_off_slug_scoping
         page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => '/products/category/subcategory/')
@@ -280,7 +280,7 @@ module Refinery
 
       context "given a page with a custom_slug exists" do
         before do
-          Factory(:page, :custom_slug => custom_page_slug)
+          FactoryGirl.create(:page, :custom_slug => custom_page_slug)
         end
 
         it "fails validation when a new record uses that custom_slug" do
