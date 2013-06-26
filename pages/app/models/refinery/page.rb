@@ -40,12 +40,14 @@ module Refinery
 
     friendly_id :custom_slug_or_title, friendly_id_options
 
-    has_many :parts, -> { order('position ASC') },
-             :foreign_key => :refinery_page_id,
+    has_many :parts, -> {
+      scope = order('position ASC')
+      scope = scope.includes(:translations) if ::Refinery::PagePart.respond_to?(:translation_class)
+      scope
+    },       :foreign_key => :refinery_page_id,
              :class_name => '::Refinery::PagePart',
              :inverse_of => :page,
-             :dependent => :destroy,
-             :include => ((:translations) if ::Refinery::PagePart.respond_to?(:translation_class))
+             :dependent => :destroy
 
     accepts_nested_attributes_for :parts, :allow_destroy => true
 
