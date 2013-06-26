@@ -15,7 +15,7 @@ gem 'seo_meta', github: 'parndt/seo_meta', branch: 'master'
 gem 'globalize3', github: 'svenfuchs/globalize3'
 gem 'paper_trail', github: 'parndt/paper_trail', branch: 'rails4'
 gem 'devise', '~> 3.0.2'
-gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set', branch: 'master'
+gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set', branch: 'rails4'
 gem 'orm_adapter', github: 'ugisozols/orm_adapter', branch: 'rails4'
 gem 'database_cleaner', github: "ugisozols/database_cleaner", branch: 'rails4'
 gem 'routing-filter', github: "svenfuchs/routing-filter"
