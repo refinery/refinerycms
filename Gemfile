@@ -21,6 +21,7 @@ gem 'database_cleaner', github: "ugisozols/database_cleaner", branch: 'rails4'
 gem 'routing-filter', github: "svenfuchs/routing-filter"
 gem 'friendly_id', github: "FriendlyId/friendly_id", branch: 'rails4'
 gem 'rails-observers'
+gem 'actionpack-page_caching'
 
 # Database Configuration
 unless ENV['TRAVIS']

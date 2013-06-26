@@ -1,3 +1,7 @@
+ActionController::Base.class_eval do
+  include ActionController::Caching::Pages
+end
+
 RSpec.configure do |config|
   config.before(:each) do
     Refinery::Pages::PageSweeper.any_instance.stub(:expire_cache!)
