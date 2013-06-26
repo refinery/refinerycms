@@ -79,7 +79,7 @@ module Refinery
       end
 
       it "uses title in browser title" do
-        find("title").should have_content(about_page.title)
+        page.has_title?(about_page.title)
       end
     end
 
@@ -105,7 +105,7 @@ module Refinery
         it "does not effect browser title and page title" do
           visit "/news"
 
-          find("title").should have_content(page_mt.title)
+          page.has_title?(page_mt.title)
           find("#body_content_title").text.should == page_mt.title
         end
       end
@@ -137,7 +137,7 @@ module Refinery
       it 'should have the browser_title in the title tag' do
         visit '/about-us'
 
-        page.find("title").text == page_bt.title
+        page.has_title?(page_bt.title)
       end
 
       it 'should not effect page title and menu title' do
@@ -329,12 +329,12 @@ module Refinery
       include CachingHelpers
       let(:cached_page) { Page.create :title => 'Another Cached page' }
 
-      context "is enabled", :caching do 
+      context "is enabled", :caching do
         it "should create a cached file when none exists" do
           cached_page.should_not be_cached
 
           visit refinery.page_path(cached_page)
-          
+
           cached_page.should be_cached
         end
       end
@@ -356,7 +356,6 @@ module Refinery
         let(:en_page_title) { 'News' }
         let(:en_page_slug) { 'news' }
         let(:ru_page_title) { 'Новости' }
-        let(:ru_page_slug) { 'новости' }
         let(:ru_page_slug_encoded) { '%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8' }
         let!(:news_page) do
           _page = Globalize.with_locale(:en) {
@@ -386,6 +385,8 @@ module Refinery
           visit "/ru/#{en_page_slug}"
 
           current_path.should == "/ru/#{ru_page_slug_encoded}"
+
+          visit "/en/#{en_page_slug}"
         end
 
         describe "nested page" do
@@ -409,6 +410,8 @@ module Refinery
             visit "/ru/#{en_page_slug}/#{nested_page_slug}"
 
             current_path.should == "/ru/#{ru_page_slug_encoded}/#{nested_page_slug}"
+
+            visit "/en/#{en_page_slug}/#{nested_page_slug}"
           end
         end
       end

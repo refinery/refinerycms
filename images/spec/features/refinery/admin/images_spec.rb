@@ -53,13 +53,6 @@ module Refinery
         end
         Refinery::Image.count.should == 0
       end
-
-      it 'is accessible via url' do
-        image = Refinery::Image.create(:image => Refinery.roots(:'refinery/images').join("spec/fixtures/image-with-dashes.jpg"))
-        get image.url
-
-        response.should be_success
-      end
     end
 
     context "new/create - insert mode" do

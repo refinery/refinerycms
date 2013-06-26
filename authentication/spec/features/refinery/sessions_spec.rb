@@ -53,10 +53,10 @@ module Refinery
         page.should have_content("There are no users yet, so we'll set you up first")
 
         # Fill in user details.
-        fill_in 'Username', :with => 'rspec'
-        fill_in 'Email', :with => 'rspec@example.com'
-        fill_in 'Password', :with => 'spectacular'
-        fill_in 'Password confirmation', :with => 'spectacular'
+        fill_in 'user[username]', :with => 'rspec'
+        fill_in 'user[email]', :with => 'rspec@example.com'
+        fill_in 'user[password]', :with => 'spectacular'
+        fill_in 'user[password_confirmation]', :with => 'spectacular'
 
         # Sign up and verify!
         click_button "Sign up"
