@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Refinery::Admin::UsersController do
-  refinery_login_with_factory :refinery_superuser
+  refinery_login_with :refinery_superuser
 
   shared_examples_for "new, create, update, edit and update actions" do
     it "loads roles" do
@@ -34,7 +34,7 @@ describe Refinery::Admin::UsersController do
     it "creates a new user with valid params" do
       user = Refinery::User.new :username => "bob"
       user.should_receive(:save).once{ true }
-      Refinery::User.should_receive(:new).once.with(instance_of(HashWithIndifferentAccess)){ user }
+      Refinery::User.should_receive(:new).once.with(instance_of(ActionController::Parameters)){ user }
       post :create, :user => {}
       response.should be_redirect
     end
@@ -44,7 +44,7 @@ describe Refinery::Admin::UsersController do
     it "re-renders #new if there are errors" do
       user = Refinery::User.new :username => "bob"
       user.should_receive(:save).once{ false }
-      Refinery::User.should_receive(:new).once.with(instance_of(HashWithIndifferentAccess)){ user }
+      Refinery::User.should_receive(:new).once.with(instance_of(ActionController::Parameters)){ user }
       post :create, :user => {}
       response.should be_success
       response.should render_template("refinery/admin/users/new")
@@ -52,6 +52,8 @@ describe Refinery::Admin::UsersController do
   end
 
   describe "#edit" do
+    refinery_login_with_factory :refinery_superuser
+
     it "renders the edit template" do
       get :edit, :id => logged_in_user.id
       response.should be_success
@@ -62,6 +64,8 @@ describe Refinery::Admin::UsersController do
   end
 
   describe "#update" do
+    refinery_login_with_factory :refinery_superuser
+
     let(:additional_user) { FactoryGirl.create :refinery_user }
     it "updates a user" do
       Refinery::User.stub_chain(:includes, :find) { additional_user }

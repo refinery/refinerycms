@@ -48,7 +48,7 @@ module Refinery
           plugins.create(:name => plugin_name, :position => index)
         end
       else
-        assigned_plugins = plugins.all
+        assigned_plugins = plugins.load
         assigned_plugins.each do |assigned_plugin|
           if plugin_names.include?(assigned_plugin.name)
             plugin_names.delete(assigned_plugin.name)
