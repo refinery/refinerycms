@@ -1,5 +1,3 @@
-require 'decorators'
-
 module Refinery
   module Core
     class Engine < ::Rails::Engine

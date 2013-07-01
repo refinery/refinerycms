@@ -15,3 +15,7 @@ module Refinery
     end
   end
 end
+
+# this require has to be down here
+# see https://github.com/refinery/refinerycms/issues/2273
+require 'decorators'
