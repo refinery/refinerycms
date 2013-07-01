@@ -1,7 +1,7 @@
 module Refinery
   module <%= namespacing %>
     class Engine < Rails::Engine
-      include Refinery::Engine
+      extend Refinery::Engine
       isolate_namespace Refinery::<%= namespacing %>
 
       engine_name :refinery_<%= extension_plural_name %>
