@@ -1,5 +1,3 @@
-require 'active_support/concern'
-
 module Refinery
   module Engine
     # Specify a block of code to be run after the refinery inclusion step. See
