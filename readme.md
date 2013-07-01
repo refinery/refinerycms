@@ -4,7 +4,7 @@ __An open source Ruby on Rails content management system for Rails 3.__
 
 More information at [http://refinerycms.com](http://refinerycms.com)
 
-[![Build Status](https://secure.travis-ci.org/refinery/refinerycms.png)](http://travis-ci.org/refinery/refinerycms)
+[![Build Status](https://secure.travis-ci.org/refinery/refinerycms.png)](http://travis-ci.org/refinery/refinerycms)  [![Code Climate](https://codeclimate.com/github/refinery/refinerycms.png)](https://codeclimate.com/github/refinery/refinerycms)
 
 ## Requirements
 
