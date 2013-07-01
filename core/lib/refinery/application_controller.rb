@@ -1,25 +1,19 @@
 module Refinery
   module ApplicationController
 
-    extend ActiveSupport::Concern
+    def self.included(base) # Extend controller
+      base.helper_method :home_page?, :local_request?, :just_installed?,
+                         :from_dialog?, :admin?, :login?
 
-    included do # Extend controller
-      helper_method :home_page?,
-                    :local_request?,
-                    :just_installed?,
-                    :from_dialog?,
-                    :admin?,
-                    :login?
+      base.protect_from_forgery # See ActionController::RequestForgeryProtection
 
-      protect_from_forgery # See ActionController::RequestForgeryProtection
-
-      send :include, Refinery::Crud # basic create, read, update and delete methods
+      base.send :include, Refinery::Crud # basic create, read, update and delete methods
 
       if Refinery::Core.rescue_not_found
-        send :rescue_from, ActiveRecord::RecordNotFound,
-                           ::AbstractController::ActionNotFound,
-                           ActionView::MissingTemplate,
-                           :with => :error_404
+        base.rescue_from ActiveRecord::RecordNotFound,
+                         ::AbstractController::ActionNotFound,
+                         ActionView::MissingTemplate,
+                         :with => :error_404
       end
     end
 
