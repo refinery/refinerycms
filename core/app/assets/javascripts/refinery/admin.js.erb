@@ -206,8 +206,8 @@ init_tooltips = function(args){
           tooltip = $("<div class='tooltip'><div><span></span></div></div>").appendTo('#tooltip_container');
           tooltip.find("span").html($(this).attr('tooltip'));
 
-          tooltip_nib_extension = $.browser.msie ? '.gif' : '.png';
-          nib = $("<img src='<%= asset_path 'refinery/tooltip-nib' %>" + tooltip_nib_extension + "' class='tooltip-nib'/>").appendTo('#tooltip_container');
+          tooltip_nib_image_src = $.browser.msie ? "<%= asset_path 'refinery/tooltip-nib.gif' %>" : "<%= asset_path 'refinery/tooltip-nib.png' %>";
+          nib = $("<img src='" + tooltip_nib_image_src + "' class='tooltip-nib'/>").appendTo('#tooltip_container');
 
           tooltip.css({
             'opacity': 0
