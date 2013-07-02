@@ -74,34 +74,34 @@
   td      { height: 1.6em; }
 
 /* labels */
-  p           { background-image: asset_url('wymeditor/skins/refinery/html5/p.png', image); }
-  h1          { background-image: asset_url('wymeditor/skins/refinery/html5/h1.png', image); }
-  h2          { background-image: asset_url('wymeditor/skins/refinery/html5/h2.png', image); }
-  h3          { background-image: asset_url('wymeditor/skins/refinery/html5/h3.png', image); }
-  h4          { background-image: asset_url('wymeditor/skins/refinery/html5/h4.png', image); }
-  h5          { background-image: asset_url('wymeditor/skins/refinery/html5/h5.png', image); }
-  h6          { background-image: asset_url('wymeditor/skins/refinery/html5/h6.png', image); }
-  blockquote  { background-image: asset_url('wymeditor/skins/refinery/html5/blockquote.png', image); }
-  pre         { background-image: asset_url('wymeditor/skins/refinery/html5/pre.png', image); }
-  meter       { background-image: asset_url('wymeditor/skins/refinery/html5/meter.png', image); }
-  nav         { background-image: asset_url('wymeditor/skins/refinery/html5/nav.png', image); }
-  ruby        { background-image: asset_url('wymeditor/skins/refinery/html5/ruby.png', image); }
-  rt          { background-image: asset_url('wymeditor/skins/refinery/html5/rt.png', image); }
-  rp          { background-image: asset_url('wymeditor/skins/refinery/html5/rp.png', image); }
-  article     { background-image: asset_url('wymeditor/skins/refinery/html5/article.png', image); }
-  aside       { background-image: asset_url('wymeditor/skins/refinery/html5/aside.png', image); }
-  command     { background-image: asset_url('wymeditor/skins/refinery/html5/command.png', image); }
-  details     { background-image: asset_url('wymeditor/skins/refinery/html5/details.png', image); }  
-  summary     { background-image: asset_url('wymeditor/skins/refinery/html5/summary.png', image); }
-  figure      { background-image: asset_url('wymeditor/skins/refinery/html5/figure.png', image); }
-  figcaption  { background-image: asset_url('wymeditor/skins/refinery/html5/figcaption.png', image); }
-  footer      { background-image: asset_url('wymeditor/skins/refinery/html5/footer.png', image); }
-  header      { background-image: asset_url('wymeditor/skins/refinery/html5/header.png', image); }
-  hgroup      { background-image: asset_url('wymeditor/skins/refinery/html5/hgroup.png', image); }
-  mark        { background-image: asset_url('wymeditor/skins/refinery/html5/mark.png', image); }
-  progress    { background-image: asset_url('wymeditor/skins/refinery/html5/progress.png', image); }
-  section     { background-image: asset_url('wymeditor/skins/refinery/html5/section.png', image); }
-  time        { background-image: asset_url('wymeditor/skins/refinery/html5/time.png', image); }
+  p           { background-image: asset-url('wymeditor/skins/refinery/html5/p.png'); }
+  h1          { background-image: asset-url('wymeditor/skins/refinery/html5/h1.png'); }
+  h2          { background-image: asset-url('wymeditor/skins/refinery/html5/h2.png'); }
+  h3          { background-image: asset-url('wymeditor/skins/refinery/html5/h3.png'); }
+  h4          { background-image: asset-url('wymeditor/skins/refinery/html5/h4.png'); }
+  h5          { background-image: asset-url('wymeditor/skins/refinery/html5/h5.png'); }
+  h6          { background-image: asset-url('wymeditor/skins/refinery/html5/h6.png'); }
+  blockquote  { background-image: asset-url('wymeditor/skins/refinery/html5/blockquote.png'); }
+  pre         { background-image: asset-url('wymeditor/skins/refinery/html5/pre.png'); }
+  meter       { background-image: asset-url('wymeditor/skins/refinery/html5/meter.png'); }
+  nav         { background-image: asset-url('wymeditor/skins/refinery/html5/nav.png'); }
+  ruby        { background-image: asset-url('wymeditor/skins/refinery/html5/ruby.png'); }
+  rt          { background-image: asset-url('wymeditor/skins/refinery/html5/rt.png'); }
+  rp          { background-image: asset-url('wymeditor/skins/refinery/html5/rp.png'); }
+  article     { background-image: asset-url('wymeditor/skins/refinery/html5/article.png'); }
+  aside       { background-image: asset-url('wymeditor/skins/refinery/html5/aside.png'); }
+  command     { background-image: asset-url('wymeditor/skins/refinery/html5/command.png'); }
+  details     { background-image: asset-url('wymeditor/skins/refinery/html5/details.png'); }
+  summary     { background-image: asset-url('wymeditor/skins/refinery/html5/summary.png'); }
+  figure      { background-image: asset-url('wymeditor/skins/refinery/html5/figure.png'); }
+  figcaption  { background-image: asset-url('wymeditor/skins/refinery/html5/figcaption.png'); }
+  footer      { background-image: asset-url('wymeditor/skins/refinery/html5/footer.png'); }
+  header      { background-image: asset-url('wymeditor/skins/refinery/html5/header.png'); }
+  hgroup      { background-image: asset-url('wymeditor/skins/refinery/html5/hgroup.png'); }
+  mark        { background-image: asset-url('wymeditor/skins/refinery/html5/mark.png'); }
+  progress    { background-image: asset-url('wymeditor/skins/refinery/html5/progress.png'); }
+  section     { background-image: asset-url('wymeditor/skins/refinery/html5/section.png'); }
+  time        { background-image: asset-url('wymeditor/skins/refinery/html5/time.png'); }
 
 /* specific HTML elements */
 	caption	 { text-align: left; }
@@ -132,7 +132,7 @@
   img.selected_by_wym {
     border: 1px dashed #22a7f2;
   }
-  
+
   article,
   aside,
   command,
