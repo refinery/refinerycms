@@ -69,14 +69,14 @@ describe Refinery::Admin::UsersController do
     let(:additional_user) { FactoryGirl.create :refinery_user }
     it "updates a user" do
       Refinery::User.stub_chain(:includes, :find) { additional_user }
-      put "update", :id => additional_user.id.to_s, :user => {}
+      patch "update", :id => additional_user.id.to_s, :user => {}
       response.should be_redirect
     end
 
     context "when specifying plugins" do
       it "won't allow to remove 'Users' plugin from self" do
         Refinery::User.stub_chain(:includes, :find) { logged_in_user }
-        put "update", :id => logged_in_user.id.to_s, :user => {:plugins => ["some plugin"]}
+        patch "update", :id => logged_in_user.id.to_s, :user => {:plugins => ["some plugin"]}
 
         flash[:error].should eq("You cannot remove the 'Users' plugin from the currently logged in account.")
       end
