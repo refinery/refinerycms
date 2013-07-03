@@ -4,8 +4,6 @@ require 'action_controller'
 require 'rbconfig'
 
 module Refinery
-  WINDOWS = !!(RbConfig::CONFIG['host_os'] =~ %r!(msdos|mswin|djgpp|mingw)!) unless defined? WINDOWS
-
   require 'refinery/errors'
 
   autoload :Activity, 'refinery/activity'

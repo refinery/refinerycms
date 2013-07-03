@@ -50,6 +50,7 @@
 * Added ability to turn off page slug scoping. [#2286](https://github.com/refinery/refinerycms/pull/2286). [Matt Olson](https://github.com/mattolson)
 * Made Crudify's `xhr_paging` option working again. [#2296](https://github.com/refinery/refinerycms/pull/2296). [Chris Irish](https://github.com/supairish)
 * Added draft page support when displaying the home page. [#2298](https://github.com/refinery/refinerycms/pull/2298). [Philip Arndt](https://github.com/parndt)
+* Removed `Refinery::WINDOWS` constant. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
 ## 2.0.11 [unreleased]
