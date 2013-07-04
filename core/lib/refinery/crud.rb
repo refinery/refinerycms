@@ -274,7 +274,7 @@ module Refinery
               previous = nil
               params[:ul].each do |_, list|
                 list.each do |index, hash|
-                  moved_item_id = hash['id'].split(/#{singular_name}\_?/).reject(&:empty?).first
+                  moved_item_id = hash['id'][/\\d+$/]
                   @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
 
                   if @current_#{singular_name}.respond_to?(:move_to_root)
