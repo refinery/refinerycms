@@ -65,12 +65,6 @@ module Refinery
         end
       end
 
-      initializer "refinery.routes", :after => :set_routes_reloader_hook do |app|
-        Refinery::Core::Engine.routes.append do
-          get '/refinery/*path' => 'admin/base#error_404'
-        end
-      end
-
       initializer "refinery.autoload_paths" do |app|
         app.config.autoload_paths += [
           Rails.root.join('app', 'presenters'),
