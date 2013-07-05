@@ -45,7 +45,7 @@ tr:
             settings_value_name: Bildirimleri gonderecegin  adres
             explanation: Her kim olursa seninle web sitesi uzerinden iletisime gecen, Refinery yeni bir <%= singular_name.humanize.downcase %>  diye e-posta atar.
             hint: Yeni Bir <%= singular_name.humanize.downcase %> teslim edildiginde, Refinery bir e-posta bildirisi yollayacak sana.
-            example: "Lutfen e-posta adres(ler)inizi giriniz. Ornek olarak: jack@work.com, jill@office.com gibi "
+            example: "Lutfen e-posta adres(ler)inizi giriniz. Ornek olarak: jack@work.com, jill@office.com gibi"
           confirmation_email_form:
             to: Kime
             from: Kimden
@@ -55,7 +55,7 @@ tr:
             below_edit_email_sent: Asagida gonderilen e-postayi duzenleyebilirsin.
             the_customer_making_<%= singular_name %>: Musteri <%= singular_name.humanize.downcase %> yapiyor
             message: Mesaj
-            note: "Not: metini hizala %name% nerede musterinizin e-posta adresi gibi gozukmesini istiyorsan
+            note: "Not: metini hizala %name% nerede musterinizin e-posta adresi gibi gozukmesini istiyorsan"
       mailer:
         notification:
           greeting: Selamlar
