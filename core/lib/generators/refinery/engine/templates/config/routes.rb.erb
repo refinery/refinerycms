@@ -7,7 +7,7 @@ Refinery::Core::Engine.routes.draw do
 <% end %>
   # Admin routes
   namespace :<%= namespacing.underscore %>, :path => '' do
-    namespace :admin, :path => 'refinery<%= "/#{namespacing.underscore}" if namespacing.underscore != plural_name %>' do
+    namespace :admin, :path => <%= backend_route %> do
       resources :<%= plural_name %>, :except => :show do
         collection do
           post :update_positions
