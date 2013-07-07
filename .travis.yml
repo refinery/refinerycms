@@ -2,8 +2,7 @@ language: ruby
 before_install:
   - 'if [[ "$TRAVIS_RUBY_VERSION" =~ "jruby" ]] ; then gem update --system ; fi'
   - gem install bundler
-install:
-  - bundle install --without development
+bundler_args: --without development
 before_script:
   - "sh -e /etc/init.d/xvfb start"
   - "bundle exec rake refinery:testing:dummy_app > /dev/null"
