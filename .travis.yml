@@ -26,7 +26,6 @@ env:
   - DB=mysql
 matrix:
   allow_failures:
-    - rvm: jruby-19mode
     - rvm: rbx-19mode
 rvm:
   - 2.0.0
