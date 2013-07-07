@@ -6,13 +6,13 @@ module Refinery
     describe Url::Localised do
       describe ".handle?" do
         it "returns true if link_url is present" do
-          page = stub(:page, :link_url => "/")
+          page = double(:page, :link_url => "/")
           Url::Localised.handle?(page).should be_true
         end
       end
 
       describe "#url" do
-        let(:page) { stub(:page, :link_url => "/test") }
+        let(:page) { double(:page, :link_url => "/test") }
 
         context "when current frontend locale != default frontend locale" do
           it "returns link_url prefixed with current frontend locale" do
@@ -35,7 +35,7 @@ module Refinery
     describe Url::Marketable do
       describe ".handle?" do
         it "returns true if marketable_url config is set to true" do
-          page = stub(:page)
+          page = double(:page)
           Refinery::Pages.stub(:marketable_url).and_return(true)
           Url::Marketable.handle?(page).should be_true
         end
@@ -43,7 +43,7 @@ module Refinery
 
       describe "#url" do
         it "returns hash" do
-          page = stub(:page, :nested_url => "test")
+          page = double(:page, :nested_url => "test")
           Url::Marketable.new(page).url.should eq({
             :controller => "/refinery/pages", :action => "show", :only_path => true,
             :path => "test", :id => nil
@@ -55,14 +55,14 @@ module Refinery
     describe Url::Normal do
       describe ".handle?" do
         it "returns true if to_param is present" do
-          page = stub(:page, :to_param => "test")
+          page = double(:page, :to_param => "test")
           Url::Normal.handle?(page).should be_true
         end
       end
 
       describe "#url" do
         it "returns hash" do
-          page = stub(:page, :to_param => "test")
+          page = double(:page, :to_param => "test")
           Url::Normal.new(page).url.should eq({
             :controller => "/refinery/pages", :action => "show", :only_path => true,
             :path => nil, :id => "test"

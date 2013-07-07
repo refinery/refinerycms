@@ -42,7 +42,7 @@ module Refinery
 
       it "escapes regexp" do
         request.stub(:path).and_return("\/huh)")
-        expect { controller.home_page? }.to_not raise_error(RegexpError)
+        expect { controller.home_page? }.to_not raise_error
       end
 
       it "returns false for non root url" do

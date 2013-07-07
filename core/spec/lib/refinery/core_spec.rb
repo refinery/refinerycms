@@ -88,7 +88,7 @@ describe Refinery do
       it "should raise invalid extension exception" do
         lambda {
           subject.send(:validate_extension!, Refinery::InvalidEngine)
-        }.should raise_error(Refinery::InvalidEngineError, "Engine must define a root accessor that returns a pathname to its root")
+        }.should raise_error
       end
     end
   end

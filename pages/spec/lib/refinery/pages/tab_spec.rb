@@ -54,7 +54,7 @@ module Refinery
             Refinery::Pages::Tab.register do |tab|
               tab.partial = "rspec"
             end
-          }.should raise_error(/A tab MUST have a name!/)
+          }.should raise_error
         end
 
         it "requires partial to be set" do
@@ -62,7 +62,7 @@ module Refinery
             Refinery::Pages::Tab.register do |tab|
               tab.name = "rspec"
             end
-          }.should raise_error(/A tab MUST have a partial!/)
+          }.should raise_error
         end
 
         it "sets #templates if it's not set" do
