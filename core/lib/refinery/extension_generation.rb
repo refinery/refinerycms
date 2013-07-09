@@ -90,7 +90,7 @@ module Refinery
       end
     end
 
-  protected
+    protected
 
     def append_extension_to_gemfile!
       unless Rails.env.test? || (self.behavior != :revoke && extension_in_gemfile?)
@@ -137,41 +137,18 @@ module Refinery
     end
 
     def extension_path_for(path, extension, apply_tmp = true)
-      path = extension_pathname.join(path.to_s.gsub(%r{#{source_pathname}/?}, '')).to_s
-
-      path.gsub!('extension_plural_name', extension_plural_name)
-      path.gsub!('plural_name', plural_name)
-      path.gsub!('singular_name', singular_name)
-      path.gsub!('namespace', namespacing.underscore)
+      path = substitute_path_placeholders extension_pathname.join(
+        path.to_s.gsub(%r{#{source_pathname}/?}, '')
+      ).to_s
 
       if options[:namespace].present? || options[:extension].present?
-        # Increment the migration file leading number
-        # Only relevant for nested or namespaced extensions, where a previous migration exists
-        if %r{/migrate/\d+.*\.rb.erb\z} === path
-          if last_migration = Dir["#{destination_pathname.join(path.split(File::SEPARATOR)[0..-2].join(File::SEPARATOR), '*.rb')}"].sort.last
-            path.gsub!(%r{\d+_}) { |m| "#{last_migration.match(%r{migrate/(\d+)_})[1].to_i + 1}_" }
-          end
-        end
+        path = increment_migration_timestamp(path)
 
         # Detect whether this is a special file that needs to get merged not overwritten.
         # This is important only when nesting extensions.
         # Routes and #{gem_name}\.rb have an .erb extension as path points to the generator template
         # We have to exclude it when checking if the file already exists and  include it in the regexps
-        if extension.present? && File.exist?(path.gsub(/\.erb$/, ""))
-          if %r{/locales/.*\.yml$} === path ||
-             %r{/routes\.rb\.erb$} === path ||
-             %r{/#{gem_name}\.rb\.erb$} === path
-            # put new translations into a tmp directory
-            if apply_tmp
-              path = path.split(File::SEPARATOR).insert(-2, "tmp").
-                          join(File::SEPARATOR)
-            end
-          elsif %r{/readme.md$} === path || %r{/#{plural_name}.rb$} === path
-            path = nil
-          end
-        elsif extension.present? and path =~ /lib\/#{plural_name}.rb$/
-          path = nil
-        end
+        path = extension_path_for_nested_extension(path, apply_tmp) if extension.present?
       end
 
       path.present? ? Pathname.new(path) : path
@@ -185,18 +162,12 @@ module Refinery
     end
 
     def evaluate_templates!
-      Pathname.glob(source_pathname.join('**', '**')).reject{|f|
-        reject_template?(f)
-      }.sort.each do |path|
-        if (template_path = extension_path_for(path, extension_name)).present?
-          next if /seeds.rb.erb/ === path.to_s
+      viable_templates.each do |source_path, destination_path|
+        next if /seeds.rb.erb/ === source_path.to_s
 
-          unless /views/ === path.to_s
-            template_path = template_path.to_s.sub(".erb", "")
-          end
+        destination_path.sub!('.erb', '') if source_path.to_s !~ /views/
 
-          template(path, template_path)
-        end
+        template source_path, destination_path
       end
     end
 
@@ -215,7 +186,7 @@ module Refinery
 
     def finalize_extension!
       if self.behavior != :revoke && !self.options['pretend']
-        puts_instructions!
+        instruct_user!
       else
         erase_destination!
       end
@@ -287,27 +258,13 @@ module Refinery
       )
 
       if existing_extension?
-        # create temp seeds file
-        temp_seed_file = destination_pathname.join(
-          extension_path_for("tmp/seeds.rb", extension_name)
-        )
-
-        # copy/evaluate seeds template to temp file
-        template source_seed_file, temp_seed_file, :verbose => false
-
-        # append temp seeds file content to extension seeds file
-        destination_seed_file.open('a+') { |file|
-          file.puts temp_seed_file.read.to_s
-        }
-
-        # remove temp file
-        FileUtils.rm_rf temp_seed_file
+        merge_seed!(source_seed_file, destination_seed_file)
       else
         template source_seed_file, destination_seed_file
       end
     end
 
-    def puts_instructions!
+    def instruct_user!
       unless Rails.env.test?
         puts "------------------------"
         if options[:install]
@@ -333,10 +290,66 @@ module Refinery
     end
 
     def sanity_check!
+      prevent_clashes!
+      prevent_uncountability!
+      prevent_empty_attributes!
+      prevent_invalid_extension!
+    end
+
+    def source_pathname
+      @source_pathname ||= Pathname.new(self.class.source_root.to_s)
+    end
+
+    private
+    def extension_path_for_nested_extension(path, apply_tmp)
+      return nil if !File.exist?(path.gsub(/\.erb$/, '')) &&
+                    %r{readme.md|(lib/)?#{plural_name}.rb$} === path
+
+      if apply_tmp && %r{(locales/.*\.yml)|((config/routes|#{gem_name})\.rb\.erb)$} === path
+        return path.split(File::SEPARATOR).insert(-2, "tmp").join(File::SEPARATOR)
+      end
+
+      path
+    end
+
+    def increment_migration_timestamp(path)
+      # Increment the migration file leading number
+      # Only relevant for nested or namespaced extensions, where a previous migration exists
+      return path unless %r{/migrate/\d+.*\.rb.erb\z} === path && last_migration_file(path)
+
+      path.gsub(%r{\d+_}) { |m| "#{last_migration_file(path).match(%r{migrate/(\d+)_})[1].to_i + 1}_" }
+    end
+
+    def last_migration_file(path)
+      Dir[
+        destination_pathname.join(path.split(File::SEPARATOR)[0..-2].
+                             join(File::SEPARATOR), '*.rb')
+      ].sort.last
+    end
+
+    def merge_seed!(source, destination)
+      # create temp seeds file
+      tmp_seeds = destination_pathname.join(
+        extension_path_for("tmp/seeds.rb", extension_name)
+      )
+
+      # copy/evaluate seeds template to temp file
+      template source, tmp_seeds, :verbose => false
+
+      # append temp seeds file content to extension seeds file
+      destination.open('a+') { |file| file.puts tmp_seeds.read.to_s }
+
+      # remove temp file
+      FileUtils.rm_rf tmp_seeds
+    end
+
+    def prevent_clashes!
       if clash_keywords.member?(singular_name.downcase)
         exit_with_message!("Please choose a different name. The generated code would fail for class '#{singular_name}' as it conflicts with a reserved keyword.")
       end
+    end
 
+    def prevent_uncountability!
       if singular_name == plural_name
         message = if singular_name.singularize == singular_name
           "The extension name you specified will not work as the singular name is equal to the plural name."
@@ -345,20 +358,41 @@ module Refinery
         end
         exit_with_message! message
       end
+    end
 
+    def prevent_empty_attributes!
       if attributes.empty? && self.behavior != :revoke
         exit_with_message! "You must specify a name and at least one field." \
                            "\nFor help, run: #{generator_command}"
       end
+    end
 
+    def prevent_invalid_extension!
       if options[:extension].present? && !extension_pathname.directory?
         exit_with_message! "You can't use '--extension #{options[:extension]}' option because" \
                            " extension with name #{options[:extension]} doesn't exist."
       end
     end
 
-    def source_pathname
-      @source_pathname ||= Pathname.new(self.class.source_root.to_s)
+    def substitute_path_placeholders(path)
+      path.gsub('extension_plural_name', extension_plural_name).
+           gsub('plural_name', plural_name).
+           gsub('singular_name', singular_name).
+           gsub('namespace', namespacing.underscore)
+    end
+
+    def viable_templates
+      @viable_templates ||= begin
+        Pathname.glob(source_pathname.join('**', '**')).
+                 reject{|f| reject_template?(f) }.
+                 inject({}) do |hash, path|
+          if (destination_path = extension_path_for(path, extension_name)).present?
+            hash[path.to_s] = destination_path.to_s
+          end
+
+          hash
+        end
+      end
     end
 
   end
