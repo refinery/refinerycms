@@ -4,7 +4,7 @@ module Refinery
 
     config_accessor :pages_per_dialog, :pages_per_admin_index, :new_page_parts,
                     :marketable_urls, :approximate_ascii, :strip_non_ascii,
-                    :default_parts, :use_custom_slugs, :scope_slug_by_parent, 
+                    :default_parts, :use_custom_slugs, :scope_slug_by_parent,
                     :cache_pages_backend, :cache_pages_full, :layout_template_whitelist,
                     :view_template_whitelist, :use_layout_templates,
                     :use_view_templates, :page_title, :absolute_page_links, :types,
