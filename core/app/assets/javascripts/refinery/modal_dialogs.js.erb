@@ -14,7 +14,7 @@ init_modal_dialogs = function(){
                    + 'app_dialog=true&dialog=true';
 
       iframe = $("<iframe id='dialog_iframe' frameborder='0' marginheight='0' marginwidth='0' border='0'></iframe>");
-      if(!$.browser.msie) { iframe.corner('8px'); }
+      // if(!$.browser.msie) { iframe.corner('8px'); }
       iframe.dialog({
         title: $anchor.data('dialog-title')
         , modal: true

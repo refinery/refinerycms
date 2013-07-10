@@ -35,11 +35,12 @@
       buttonPrevHTML: "<img src='<%= asset_path 'refinery/carousel-left.png' %>' alt='up' height='15' width='10' />"
       listTag: $menu.get(0).tagName.toLowerCase()
       itemTag: $menu.children(":first").get(0).tagName.toLowerCase()
-
+    ###
     if $menu.outerWidth() < $("#page_container").outerWidth()
       $("#page_container:not('.login #page_container')").corner "5px tr"
     else
       $("#page_container:not('.login #page_container')").uncorner()
+    ###
   $("#current_locale li a").click (e) ->
     $("#current_locale li a span").each (span) ->
       $(this).css "display", (if $(this).css("display") == "none" then "" else "none")
