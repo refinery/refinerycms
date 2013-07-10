@@ -1522,7 +1522,7 @@ a.information:hover {
   @include rounded(6px);
 }
 #page_container, .wym_box {
-  @include bottom-rounded(5px);
+//  @include bottom-rounded(5px);
 }
 .wym_iframe iframe {
   @include bottom-rounded(2px);
