@@ -18,5 +18,6 @@
   
   $menu.find("#menu_reorder_done").click (e) ->
     trigger_reordering e, false
-  
+  ###
   $menu.find("> a").corner "top 5px"
+  ###
