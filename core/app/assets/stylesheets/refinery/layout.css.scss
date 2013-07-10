@@ -1535,6 +1535,7 @@ a.information:hover {
 }
 #menu > a {
   @include top-rounded(5px);
+
 }
 .ui-tabs .ui-state-default a {
   @include top-rounded(5px);
