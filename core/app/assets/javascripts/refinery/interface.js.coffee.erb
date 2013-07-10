@@ -2,11 +2,13 @@
   $("body#dialog_container.dialog").addClass "iframed"  if parent and parent.document.location.href != document.location.href
   $("input:submit:not(.button)").addClass "button"
   unless $.browser.msie
+   ###
+    $("#page_container, .wym_box").corner "5px bottom"
     $(".wym_box").corner "5px tr"
     $(".field > .wym_box").corner "5px tl"
     $(".wym_iframe iframe").corner "2px"
     $(".form-actions:not(\".form-actions-dialog\")").corner "5px"
-
+   ###
   $("textarea.wymeditor").each ->
     textarea = $(this)
     if (instance = WYMeditor.INSTANCES[$((textarea.next(".wym_box").find("iframe").attr("id") or "").split("_")).last().get(0)])?
