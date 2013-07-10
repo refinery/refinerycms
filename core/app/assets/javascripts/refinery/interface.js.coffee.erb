@@ -2,7 +2,6 @@
   $("body#dialog_container.dialog").addClass "iframed"  if parent and parent.document.location.href != document.location.href
   $("input:submit:not(.button)").addClass "button"
   unless $.browser.msie
-   # $("#page_container, .wym_box").corner "5px bottom"
     $(".wym_box").corner "5px tr"
     $(".field > .wym_box").corner "5px tl"
     $(".wym_iframe iframe").corner "2px"
