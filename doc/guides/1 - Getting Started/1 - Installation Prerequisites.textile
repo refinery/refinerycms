@@ -75,7 +75,9 @@ SQLite is most likely already installed.
 
 h4. ImageMagick
 
-Use this shell script: "https://github.com/maddox/magick-installer":https://github.com/maddox/magick-installer .
+Use this shell script: "https://github.com/maddox/magick-installer":https://github.com/maddox/magick-installer. Or, if you have "Homebrew":http://mxcl.github.io/homebrew/ installed, you can use:
+
+<shell>brew install imagemagick</shell>
 
 h3. Windows
 
@@ -89,7 +91,7 @@ If you used Rails Installer, then SQLite will have been installed by default. Fo
 
 h4. ImageMagick
 
-Warning. ImageMagick is tricky to install on windows. Make sure to read the instructions carefully, and if one version does not work for you try an older version as well.
+Warning. ImageMagick is tricky to install on Windows. Make sure to read the instructions carefully, and if one version does not work for you try an older version as well.
 
 Follow the instructions at "http://www.imagemagick.org/script/binary-releases.php#windows":http://www.imagemagick.org/script/binary-releases.php#windows
 
