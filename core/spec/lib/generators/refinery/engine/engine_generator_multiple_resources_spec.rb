@@ -1,11 +1,12 @@
 require 'spec_helper'
 require 'generator_spec/test_case'
 require 'generators/refinery/engine/engine_generator'
+require 'tmpdir'
 
 module Refinery
   describe EngineGenerator do
     include GeneratorSpec::TestCase
-    destination File.expand_path("../../../../../../tmp", __FILE__)
+    destination Dir.mktmpdir
 
     before do
       prepare_destination
