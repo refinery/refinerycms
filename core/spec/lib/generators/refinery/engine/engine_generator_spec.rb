@@ -132,7 +132,6 @@ module Refinery
                 file "testing.rake"
                 file "rspec.rake"
               end
-              file "Guardfile"
               file "Gemfile"
               file "Rakefile"
               file "readme.md"
