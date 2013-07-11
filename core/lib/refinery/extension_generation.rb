@@ -333,10 +333,10 @@ module Refinery
     end
 
     def substitute_path_placeholders(path)
-      path.sub('extension_plural_name', extension_plural_name).
-           sub('plural_name', plural_name).
-           sub('singular_name', singular_name).
-           sub('namespace', namespacing.underscore)
+      Pathname.new path.to_s.gsub('extension_plural_name', extension_plural_name).
+                             gsub('plural_name', plural_name).
+                             gsub('singular_name', singular_name).
+                             gsub('namespace', namespacing.underscore)
     end
 
     def viable_templates
