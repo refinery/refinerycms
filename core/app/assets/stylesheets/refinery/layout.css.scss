@@ -1072,7 +1072,12 @@ a img {
   }
 }
 .delete_icon          { background-image: image_url('refinery/icons/delete.png'); }
-.edit_icon            { background-image: image_url('refinery/icons/application_edit.png'); }
+.edit_icon            {
+  background-image: image_url('refinery/icons/bmw_edit.png');
+  &:hover {
+    background-image: image_url('refinery/icons/bmw_edit_hover.png');
+  }
+}
 .reorder_icon         { background-image: image_url('refinery/icons/arrow_switch.png'); }
 .reorder_icon.loading { background-image:image_url('refinery/icons/ajax-loader.gif'); }
 .user_comment_icon    { background-image: image_url('refinery/icons/user_comment.png'); }
