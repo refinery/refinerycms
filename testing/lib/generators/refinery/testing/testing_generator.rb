@@ -6,10 +6,6 @@ module Refinery
       rake "refinery_testing:install:migrations"
     end
 
-    def copy_guardfile
-      template "Guardfile"
-    end
-
     def copy_spec_helper
       directory "spec"
     end

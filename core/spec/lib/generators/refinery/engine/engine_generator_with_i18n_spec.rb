@@ -72,7 +72,6 @@ module Refinery
                 end
                 file "routes.rb"
               end
-              file "Guardfile"
               file "Gemfile"
               file "Rakefile"
             end
