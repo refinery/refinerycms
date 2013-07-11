@@ -13,7 +13,7 @@ module Refinery
     # They are all 16x16 so this is the default but is able to be overriden with supplied options.
     def refinery_icon_tag(filename, options = {})
       filename = "#{filename}.png" unless filename.split('.').many?
-      image_tag "refinery/icons/#{filename}", {:width => 16, :height => 16}.merge(options)
+      image_tag "refinery/icons/#{filename}", {:width => 18, :height => 18}.merge(options)
     end
 
   end
