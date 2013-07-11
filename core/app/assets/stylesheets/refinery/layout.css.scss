@@ -775,8 +775,8 @@ label.stripped {
   vertical-align: top;
 }
 .actions a:hover {
-  color: #E6E5DC;
-  background: #3F3E3A;
+//  color: #E6E5DC;
+//  background: #3F3E3A;
 }
 .actions a.cancel {
   color: #AF0027;
@@ -1065,7 +1065,12 @@ a img {
   border: 0px none;
 }
 /* icons */
-.add_icon             { background-image: image_url('refinery/icons/add.png'); }
+.add_icon             {
+  background-image: image_url('refinery/icons/bmw_add.png');
+  &:hover {
+    background-image: image_url('refinery/icons/bmw_add_hover.png');
+  }
+}
 .delete_icon          { background-image: image_url('refinery/icons/delete.png'); }
 .edit_icon            { background-image: image_url('refinery/icons/application_edit.png'); }
 .reorder_icon         { background-image: image_url('refinery/icons/arrow_switch.png'); }
