@@ -86,7 +86,7 @@ Now we just need to run bundle and add the changes to git:
 bundle install
 git add Gemfile
 git add Gemfile.lock
-git commit "setup for Heroku"
+git commit -m "setup for Heroku"
 </shell>
 
 h4. Step 2: Set up your app on Heroku:
