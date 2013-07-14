@@ -3,7 +3,7 @@ module Refinery
     @major = 2
     @minor = 1
     @tiny  = 0
-    @build = 'dev'
+    @build = nil
 
     class << self
       attr_reader :major, :minor, :tiny, :build
