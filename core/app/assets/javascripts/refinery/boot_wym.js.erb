@@ -1,9 +1,5 @@
 onOpenDialog = function(dialog) {
-  (dialog = $('.ui-dialog')).find('.ui-dialog-titlebar').corner('1px top');
-  if(!$.browser.msie){
-    dialog.corner('6px');
-  }
-  if (dialog.height() < $(window).height()) {
+  if ($('.ui-dialog').height() < $(window).height()) {
     if(iframed()) {
       $(parent.document.body).addClass('hide-overflow');
     } else {

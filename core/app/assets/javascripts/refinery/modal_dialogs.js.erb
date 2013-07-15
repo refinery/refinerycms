@@ -14,7 +14,6 @@ init_modal_dialogs = function(){
                    + 'app_dialog=true&dialog=true';
 
       iframe = $("<iframe id='dialog_iframe' frameborder='0' marginheight='0' marginwidth='0' border='0'></iframe>");
-      if(!$.browser.msie) { iframe.corner('8px'); }
       iframe.dialog({
         title: $anchor.data('dialog-title')
         , modal: true
@@ -58,8 +57,6 @@ init_sortable_menu = function(){
   $menu.find('#menu_reorder_done').click(function(e){
     trigger_reordering(e, false);
   });
-
-  $menu.find('> a').corner('top 5px');
 };
 
 trigger_reordering = function(e, enable) {
