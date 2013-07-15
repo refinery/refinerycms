@@ -39,8 +39,6 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails', '~> 2.3.0'
-
 # To use debugger
 # gem 'ruby-debug', :platform => :mri_18
 # or in 1.9.x:
