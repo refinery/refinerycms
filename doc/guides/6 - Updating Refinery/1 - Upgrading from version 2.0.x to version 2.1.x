@@ -1,0 +1,65 @@
+h2. Upgrading from version 2.0.10 to version 2.1.x
+
+This guide will guide you through the upgrade process from version 2.0.10 to version 2.1.x.
+
+endprologue.
+
+WARNING. This guide assumes that you will be upgrading from version 2.0.10 of Refinery CMS. If your application is not up-to-date we strongly recommend that you upgrade it to version 2.0.10 before trying to upgrade to version 2.1.0.
+
+WARNING. Before continuing make sure you have a backup copy of your application and database in case something goes wrong.
+
+h3. Updating gems
+
+Open up your application's Gemfile and change the version of the +refinerycms+ gem entry from +2.0.10+ to +2.1.0+.
+
+After you complete the steps above your Gemfile should look like this:
+
+<ruby>
+gem "refinerycms", "~> 2.1.0"
+</ruby>
+
+Now run +bundle update+ and let it install new gems.
+
+h3. Running Refinery's CMS generator
+
+WARNING: If the application you will be upgrading is using a SQLite database then you need to read +Refinery's CMS generator and SQLite database+.
+
+Go to the terminal and run following command:
+
+<shell>
+rails generate refinery:cms
+</shell>
+
+This command will do a couple of things:
+
+* Add two css requires in +application.css+.
+* Update +app/views/sitemap/index.xml.builder+ template.
+* Wrap  +config.action_mailer+ config entry in a conditional +if config.respond_to?(:action_mailer)+ clause for each environment file located in +app/config/environments+.
+* Copy new migrations.
+* Run +rake db:migrate+ and +rake db:seed+ commands.
+
+NOTE: If you don't want the generator to run +rake db:migrate+ and +rake db:seed+ commands pass the +--skip_db+ option when invoking the generator:
+
+<shell>
+rails generate refinery:cms --skip_db
+</shell>
+
+h3. Refinery's CMS generator with a SQLite database
+
+INFO. Because SQLite can only handle index names that are no longer than 64 characters you will have to edit one of the migrations that will be generated when you run the following command in the terminal:
+
+<shell>
+rails generate refinery:cms --skip_db
+</shell>
+
+Go inside of +db/migrate+ and find a migration called +<timestamp>_remove_meta_keywords_from_seo_meta.seo_meta.rb+. Open it in the editor of your choice and replace everything with the code from "Uģis' gist":https://gist.github.com/ugisozols/5998256.
+
+What this will do is check if the +seo_meta+ table has an index named +index_seo_meta_on_seo_meta_id_and_seo_meta_type+ and in case it does it will:
+
+* Remove the current index named +seo_meta_id_and_seo_meta_type+.
+* Remove the +meta_keywords+ column.
+* Add back the original index but with a shorter name.
+
+Now run +rake db:migrate+.
+
+h3. Profit!
