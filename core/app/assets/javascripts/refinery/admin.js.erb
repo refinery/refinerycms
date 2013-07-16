@@ -130,19 +130,11 @@ trigger_reordering = function(e, enable) {
 };
 
 trigger_reordering_content_section = function(e, enable) {
-  $menu = $("#page-tabs");
+  $menu = $("#page-tabs").sortable();
   e.preventDefault();
   $('#reorder_page_part, #reorder_page_part_done').toggle();
-  $('#site_bar, #menu, .field:not(:has(#page-tabs)), .page_part, #more_options_field, .form-actions')
+  $('#site_bar, #menu, .field:not(:has(#page-tabs)), .page_part:visible, #more_options_field, .form-actions')
     .fadeTo(500, enable ? 0.35 : 1);
-
-  if(enable) {
-    $menu.addClass('reordering').find('.tab a').click(function(ev){
-      ev.preventDefault();
-    });
-  } else {
-    $menu.removeClass('reordering').find('.tab a').unbind('click');
-  }
 
   $menu.sortable(enable ? 'enable' : 'disable').sortable({
     items: 'li',
@@ -529,8 +521,7 @@ var page_options = {
 
     if (!this.initialised) {
       // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
-      page_options.tabs = $('#page-tabs');
-      page_options.tabs.tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
+      page_options.tabs = $('#page-tabs').tabs();
 
       part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
       $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
@@ -595,19 +586,15 @@ var page_options = {
               $('#submit_continue_button').remove();
               // Add a new tab for the new content section.
               $('#page_part_editors').append(data);
-              page_options.tabs.tabs('add', '#page_part_new_' + $('#new_page_part_index').val(), part_title);
+
+              page_options.tabs.find("ul").append("<li><a href='#page_part_new_"+$('#new_page_part_index').val()+"'>"+part_title+"</a></li>");
+              page_options.tabs.tabs("refresh");
+
               // this is here because of https://github.com/refinery/refinerycms/issues/2060
               $("#page-tabs #page_parts li").last().attr("data-index", $('#new_page_part_index').val());
 
-              page_options.tabs.tabs('select', $('#new_page_part_index').val());
+              page_options.tabs.tabs("option", "active", -1);
 
-              // hook into wymeditor to instruct it to select this new tab again once it has loaded.
-              WYMeditor.onload_functions.push(function() {
-                page_options.tabs.tabs('select', $('#new_page_part_index').val());
-              });
-
-              // turn the new textarea into a wymeditor.
-              $('#page_part_new_' + $('#new_page_part_index').val()).appendTo('#page_part_editors')
               WYMeditor.init();
 
               // Wipe the title and increment the index counter by one.
