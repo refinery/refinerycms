@@ -1,0 +1,99 @@
+h2. What's new, changed and removed in version 2.1.0
+
+This guide will provide a list of bullet points of the stuff that has been added, changed and removed in version 2.1.0.
+
+endprologue.
+
+h3. Changes in behaviour
+
+WARNING. Starting from 2.1.0 we dropped support for Ruby 1.8.x and now Ruby 1.9.3 is the lowest version of
+Ruby that is accepted with Ruby 2.0.0 encouraged. We strongly recommend upgrading if you're still on 1.8.x.
+
+* Dropped +coffee-rails+ dependency.
+
+* Dropped +acts-as-indexed+ dependency. Integration is achieved by "refinerycms-acts-as-indexed":https://github.com/refinery/refinerycms-acts-as-indexed instead.
+
+* Images can only be updated (replaced) when the image being uploaded has
+the same filename as the original image.
+
+* Moved page preview functionality to its own controller and made it so that you
+need to be logged in to use it.
+
+* Renamed +force_ssl?+ to +force_ssl!+ and +refinery_user_required?+ to
++require_refinery_users!+ and moved these methods to +Refinery::Admin::BaseController+.
+
+* Shortened all authentication url helpers. See "#1719":https://github.com/refinery/refinerycms/pull/1719.
+
+* Changed WYMeditor.REL from +rel+ to +data-rel+.
+
+* Gave crudify's actions the ability to redirect to a particular page of results
+when +params[:page]+ is present.
+
+* Allow user-defined geometries in +Refinery::Image#thumbnail_dimensions+.
+
+* +Refinery::Core.authenticity_token_on_frontend+ is now +false+ by default.
+
+* Removed +source+ from block_tags and made it so +wymeditor_whitelist_tags+ don't get added to block_tags.
+
+* Made Crudify's +xhr_paging+ option work again.
+
+h3. Additions
+
+* Portuguese translation.
+
+* Hungarian translation.
+
+* Turkish translation.
+
+* Ukrainian translation.
+
+* Added canonical page id to body to allow CSS selectors to target specific pages instead of including special CSS files.
+
+* Added search functionality to the refinerycms-authentication extension.
+
+* Added cancel search link next to search input.
+
+* Added template whitelisting for page tabs.
+
+* Added draft page support when displaying the home page.
+
+h3. Removals
+
+* Removed +store_current_location!+ because it was polluting all controllers with
+the Refinery specific instance variable +@page+.
+
+* Removed +meta_keywords+ because seo_meta removed keyword support in version 1.4.0.
+
+* Removed upgrade messages for Internet Explorer.
+
+* Removed DD_belatedPNG because we dropped IE6 support.
+
+h3. New configs
+
+* +Refinery::Core.backend_route+ (default: +"/refinery"+). Allows the backend route to be set to something different than +/refinery+.
+
+* +Refinery::Page.show_title_in_body+ (default: +true+). Toggle display of the page title in the page's body.
+
+* +Refinery::Page.scope_slug_by_parent+ (default: +true+). Toggle page slug scoping by parent so that you can access sub pages like +/root-page/sub-page+ directly using +/sub-page+.
+
+h3. Deprecations
+
+* +:before_javascript_libraries+, +:after_javascript_libraries+, and +:javascript_libraries+ content blocks. Use the Asset Pipeline to achieve the same behaviour.
+
+* +Refinery::Page#link_url_localised?+. Use +Refinery::Pages::Url::Localised+ instead.
+
+* +Refinery::Page#url_normal+. Use +Refinery::Pages::Url::Normal+ instead.
+
+* +Refinery::Page#url_marketable+. Use +Refinery::Pages::Url::Marketable+ instead.
+
+* +Refinery::Plugin#version+ and +Refinery::Plugin#version=+.
+
+h3. View related changes
+
+* WYSIWYG fields moved into separate partial. See "#1796":https://github.com/refinery/refinerycms/pull/1796.
+
+* Locale picker was extracted into shared partial. See "#1936":https://github.com/refinery/refinerycms/pull/1936.
+
+* Search header logic was extracted into shared partial. See "#1974":https://github.com/refinery/refinerycms/pull/1974.
+
+* Replaced menu partials with +Refinery::Pages::MenuPresenter+. See "#2068":https://github.com/refinery/refinerycms/pull/2068 and "#2069":https://github.com/refinery/refinerycms/pull/2069 and the "MenuPresenter guide":http://refinerycms.com/guides/menu-presenter.
