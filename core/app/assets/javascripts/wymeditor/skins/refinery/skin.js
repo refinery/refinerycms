@@ -25,7 +25,7 @@ WYMeditor.SKINS['refinery'] = {
 		},function(){
 			$(this).removeClass('hover');
 		});
-		
+
     // show or hide CSS class options on hover
     $(wym._box).find('.wym_tools_class')
                .hover($.proxy(function(){
@@ -37,9 +37,6 @@ WYMeditor.SKINS['refinery'] = {
     // adjust sizing
     $(wym._box).css('width', $(wym._element).width() - 2)
       .find('.wym_iframe iframe').css('width', $(wym._box).width() - 2);
-
-		$('.button').corner('6px');
-		$(".wym_area_top li>a").corner("2px");
 
 		$(".wym_skin_refinery").animate({
 			opacity: 1
