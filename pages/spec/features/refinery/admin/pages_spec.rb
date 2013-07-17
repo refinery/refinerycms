@@ -573,9 +573,7 @@ module Refinery
           context 'when parent page has templates set' do
             before do
               Refinery::Pages.stub(:use_layout_templates).and_return(true)
-              Refinery::Pages.stub(:use_view_templates).and_return(true)
               Refinery::Pages.stub(:layout_template_whitelist).and_return(['abc', 'refinery'])
-              Refinery::Pages.stub(:view_template_whitelist).and_return(['abc', 'refinery'])
               Refinery::Pages.stub(:valid_templates).and_return(['abc', 'refinery'])
               parent_page = Page.create :title => 'Parent Page',
                                         :view_template => 'refinery',

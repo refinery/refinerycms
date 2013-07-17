@@ -91,8 +91,7 @@ module Refinery
         @valid_layout_templates = Pages.layout_template_whitelist &
                                   Pages.valid_templates('app', 'views', '{layouts,refinery/layouts}', '*html*')
 
-        @valid_view_templates = Pages.view_template_whitelist &
-                                Pages.valid_templates('app', 'views', '{pages,refinery/pages}', '*html*')
+        @valid_view_templates = Pages.valid_templates('app', 'views', '{pages,refinery/pages}', '*html*')
       end
 
       def restrict_access

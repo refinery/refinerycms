@@ -20,7 +20,6 @@
                    template_options(:layout_template, @page) %>
     </div>
     <% end %>
-    <% if Refinery::Pages.use_view_templates %>
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :view_template, t('.view_template') %>
@@ -29,7 +28,6 @@
       <%= f.select :view_template, @valid_view_templates.map { |t| [t.titleize, t] },
                    template_options(:view_template, @page) %>
     </div>
-    <% end %>
 
     <div class='field'>
       <span class='label_with_help'>
