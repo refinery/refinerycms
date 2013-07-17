@@ -52,6 +52,7 @@
 * Added draft page support when displaying the home page. [#2298](https://github.com/refinery/refinerycms/pull/2298). [Philip Arndt](https://github.com/parndt)
 * Removed `Refinery::WINDOWS` constant. [Philip Arndt](https://github.com/parndt)
 * Removed `jquery.corner` library and invocations. [#2328](https://github.com/refinery/refinerycms/pull/2328). [Philip Arndt](https://github.com/parndt)
+* Removed `Refinery::Pages.view_template_whitelist` and `Refinery::Pages.use_view_templates` configuration options and enabled setting per page view template to be active by default. [#2331](https://github.com/refinery/refinerycms/pull/2331). [Uģis Ozols](https://github.com/ugisozols)
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 
 ## 2.0.11 [unreleased]
