@@ -5,40 +5,34 @@ module Refinery
     describe PagesHelper do
       describe "#template_options" do
         context "when page layout/view template is set" do
-          it "returns empty hash" do
+          it "returns those templates as selected" do
             page = FactoryGirl.create(:page)
 
             page.view_template = "rspec_template"
-            helper.template_options(:view_template, page).should eq({})
+            helper.template_options(:view_template, page).should eq(:selected => "rspec_template")
 
             page.layout_template = "rspec_layout"
-            helper.template_options(:layout_template, page).should eq({})
+            helper.template_options(:layout_template, page).should eq(:selected => "rspec_layout")
           end
         end
 
-        context "when page layout/view template is set using symbols" do
+        context "when page layout template is set using symbols" do
           before do
-            Pages.config.stub(:view_template_whitelist).and_return [:one, :two, :three]
             Pages.config.stub(:layout_template_whitelist).and_return [:three, :one, :two]
           end
 
           it "works as expected" do
-            page = FactoryGirl.create(:page)
+            page = FactoryGirl.create(:page, :layout_template => "three")
 
-            helper.template_options(:view_template, page).should eq(:selected => 'one' )
             helper.template_options(:layout_template, page).should eq(:selected => 'three')
           end
         end
 
-        context "when page layout/view template isn't set" do
-          context "when page has parent" do
-            it "returns option hash based on parent page" do
-              parent = FactoryGirl.create(:page, :view_template => "rspec_view",
-                                                 :layout_template => "rspec_layout")
+        context "when page layout template isn't set" do
+          context "when page has parent and parent has layout_template set" do
+            it "returns parent layout_template as selected" do
+              parent = FactoryGirl.create(:page, :layout_template => "rspec_layout")
               page = FactoryGirl.create(:page, :parent_id => parent.id)
-
-              expected_view = { :selected => parent.view_template }
-              helper.template_options(:view_template, page).should eq(expected_view)
 
               expected_layout = { :selected => parent.layout_template }
               helper.template_options(:layout_template, page).should eq(expected_layout)
@@ -46,18 +40,10 @@ module Refinery
           end
 
           context "when page doesn't have parent page" do
-            before do
-              Pages.config.stub(:view_template_whitelist).and_return %w(one two)
-              Pages.config.stub(:layout_template_whitelist).and_return %w(two one)
-            end
-
-            it "returns option hash with first item from configured whitelist" do
+            it "returns default application template" do
               page = FactoryGirl.create(:page)
 
-              expected_view = { :selected => "one" }
-              helper.template_options(:view_template, page).should eq(expected_view)
-
-              expected_layout = { :selected => "two" }
+              expected_layout = { :selected => "application" }
               helper.template_options(:layout_template, page).should eq(expected_layout)
             end
           end

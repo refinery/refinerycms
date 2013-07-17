@@ -6,8 +6,7 @@ module Refinery
                     :marketable_urls, :approximate_ascii, :strip_non_ascii,
                     :default_parts, :use_custom_slugs, :scope_slug_by_parent,
                     :cache_pages_backend, :cache_pages_full, :layout_template_whitelist,
-                    :view_template_whitelist, :use_layout_templates,
-                    :use_view_templates, :page_title, :absolute_page_links, :types,
+                    :use_layout_templates, :page_title, :absolute_page_links, :types,
                     :auto_expand_admin_tree, :show_title_in_body
 
     self.pages_per_dialog = 14
@@ -22,17 +21,12 @@ module Refinery
     self.cache_pages_backend = false
     self.cache_pages_full = false
     self.layout_template_whitelist = ["application"]
-    self.view_template_whitelist = ["home", "show"]
     class << self
       def layout_template_whitelist
         Array(config.layout_template_whitelist).map(&:to_s)
       end
-      def view_template_whitelist
-        Array(config.view_template_whitelist).map(&:to_s)
-      end
     end
     self.use_layout_templates = false
-    self.use_view_templates = false
     self.page_title = {
       :chain_page_title => false,
       :ancestors => {
