@@ -20,3 +20,5 @@ end
 # see https://github.com/refinery/refinerycms/issues/2273
 require 'decorators'
 require 'jquery-rails'
+require 'sass-rails'
+require 'coffee-rails'
