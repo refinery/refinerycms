@@ -94,3 +94,5 @@ gem 'jquery-rails', '~> 2.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-2-stable'
 # gem 'rack', :git => 'git://github.com/rack/rack.git'
 # gem 'arel', :git => 'git://github.com/rails/arel.git'
+
+gem 'nokogiri', '< 1.6.0', :platform => :mri_18
