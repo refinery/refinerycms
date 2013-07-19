@@ -232,6 +232,8 @@ Now we have to fill in our models. Once again, we won't re-invent the wheel so w
 +app/model/role.rb+
 <ruby>
 class Role < Refinery::Core::BaseModel
+  attr_accessible :title
+
   # TODO: This works around a bug in rails habtm with namespaces.
   has_and_belongs_to_many :users, :join_table => ::RolesUsers.table_name
 
