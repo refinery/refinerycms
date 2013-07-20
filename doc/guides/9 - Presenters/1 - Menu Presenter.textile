@@ -12,7 +12,7 @@ I have added +show_in_footer+ boolean attribute to pages (this is just a matter 
 
 h3. Decorating the Refinery::Page model
 
-First, lets use a decorator to add a class method +footer_menu_pages+ to +Refinery::Page+ class which will return all pages that have +show_in_footer+ set to +true+. Create a file +app/decorators/refinery/models/page_decorator.rb+ with this content:
+First, lets use a decorator to add a class method +footer_menu_pages+ to +Refinery::Page+ class which will return all pages that have +show_in_footer+ set to +true+. Create a file +app/decorators/models/refinery/page_decorator.rb+ with this content:
 
 <ruby>
 Refinery::Page.class_eval do
