@@ -19,7 +19,6 @@ append_file 'Gemfile' do
 "
 
 gem 'refinerycms', :git => 'git://github.com/refinery/refinerycms.git'
-gem 'refinerycms-i18n', :git => 'git://github.com/refinery/refinerycms-i18n.git'
 
 # USER DEFINED
 
