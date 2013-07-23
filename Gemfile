@@ -10,6 +10,8 @@ gem 'refinerycms-acts-as-indexed', :git => 'git://github.com/refinery/refinerycm
 
 gem 'quiet_assets', :group => :development
 
+gem 'newrelic_rpm'
+
 # Database Configuration
 unless ENV['TRAVIS']
   gem 'activerecord-jdbcsqlite3-adapter', :platform => :jruby
