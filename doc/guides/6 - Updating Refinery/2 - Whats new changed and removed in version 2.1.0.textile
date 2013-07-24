@@ -6,8 +6,7 @@ endprologue.
 
 h3. Changes in behaviour
 
-WARNING. Starting from 2.1.0 we dropped support for Ruby 1.8.x and now Ruby 1.9.3 is the lowest version of
-Ruby that is accepted with Ruby 2.0.0 encouraged. We strongly recommend upgrading if you're still on 1.8.x.
+WARNING. Starting from 2.1.0 we dropped support for Ruby 1.8.x and now Ruby 1.9.3 is the lowest version of Ruby that is accepted with Ruby 2.0.0 encouraged. We strongly recommend upgrading if you're still on 1.8.x.
 
 * Dropped +coffee-rails+ dependency.
 
