@@ -4,7 +4,6 @@ pl:
       refinery_users:
         title: Użytkownicy
         description: Zarządzaj użytkownikami
-        article: masculine
     admin:
       users:
         delete: Usuń tego użytkownika na zawsze
@@ -51,14 +50,19 @@ pl:
         reset_request_received_for: 'Prośba o zmianę hasła dla %{username}'
         visit_this_url: Odwiedź stronę aby ustawić nowe hasło
         remain_same_if_no_action: Twoje hasło nie zostanie zmienione jeśli nie odwiedzisz strony
+    roles:
+      superuser: Superużytkownik
+      refinery: Refinery
   activerecord:
     models:
       refinery/user: użytkownik
     attributes:
       refinery/user:
-        login: Login
+        login: Nazwa użytkownika lub e-mail
+        username: Nazwa użytkownika
         email: E-mail
         password: Hasło
+        password_confirmation: Potwierdzenie hasła
         remember_me: Zapamiętaj mnie
   devise:
     failure:
