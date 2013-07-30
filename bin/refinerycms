@@ -4,7 +4,7 @@ require 'rails/generators'
 require 'rails/generators/rails/app/app_generator'
 template_path = File.expand_path('../../templates/refinery/installer.rb', __FILE__)
 
-if ARGV.size == 0 || ARGV[0] == "--help"
+def show_help_message
   puts "Usage:"
   puts "  refinerycms APP_NAME [options]"
   puts ""
@@ -22,7 +22,20 @@ if ARGV.size == 0 || ARGV[0] == "--help"
     dasherized = [option.aliases, "[#{dasherized}]"].flatten.join(', ') if option.aliases.any?
     puts "  #{dasherized}".ljust(28) << "# #{option.description}"
   end
+end
+
+if ARGV.empty?
+  show_help_message
   exit 0
+end
+
+case ARGV.first
+  when "-h", "--help"
+    show_help_message
+    exit 0
+  when "-v", "--version"
+    puts "Refinery CMS #{Gem.loaded_specs['refinerycms'].version}"
+    exit 0
 end
 
 application_name = ARGV.shift
