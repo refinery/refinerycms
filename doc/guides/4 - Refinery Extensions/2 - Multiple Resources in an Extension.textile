@@ -43,7 +43,7 @@ $ rails generate refinery:engine event title:string date:datetime photo:image bl
 
 TIP: if you want to create a model without any front-end code (i.e. code only for the administrative interface), add +--skip-frontend+.
 
-TIP: if you want to use a custom namespace for your extension, add +--namespace <namespace_name>+. If you use it, you have to remember to specify this namespace for every scaffold you generate for this plugin.
+TIP: if you want to use a custom namespace for your extension, add +--namespace <namespace_name>+. If you use it, you have to remember to specify this namespace for every scaffold you generate for this extension.
 
 This results in the following:
 <shell>
@@ -102,7 +102,7 @@ As you can see inside your text editor, the event extension is now stored in +ve
 
 Once you have generated an extension, it's time to create another scaffold to put inside of it.
 
-To do that, run the following command. 
+To do that, run the following command.
 
 <shell>
   $ rails g refinery:engine place name:string --extension events --namespace events
