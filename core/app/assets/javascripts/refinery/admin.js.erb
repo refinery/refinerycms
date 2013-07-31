@@ -624,7 +624,7 @@ var page_options = {
       var tabName = page_options.tabs.find(".ui-tabs-active a").text();
 
       if(confirm("This will remove the content section '" + tabName + "' immediately even if you don't save this page, are you sure?")) {
-        var tabId = page_options.tabs.tabs('option', 'active');
+        var tabId = page_options.tabs.find('.ui-tabs-active a').attr('id').match(/\d+/)[0] - 1;
 
         if($('#page_parts_attributes_' + tabId + '_id').length > 0) {
           $.ajax({
