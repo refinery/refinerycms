@@ -621,15 +621,25 @@ var page_options = {
     $('#delete_page_part').click(function(e){
       e.preventDefault();
 
-      if(confirm("This will remove the content section '" + $('#page_parts .ui-tabs-selected a').text() + "' immediately even if you don't save this page, are you sure?")) {
-        var tabId = page_options.tabs.tabs('option', 'selected');
-        $.ajax({
-          url: page_options.del_part_url + '/' + $('#page_parts_attributes_' + tabId + '_id').val(),
-          type: 'DELETE'
-        });
-        page_options.tabs.tabs('remove', tabId);
-        $('#page_parts_attributes_' + tabId + '_id').remove();
+      var tabName = page_options.tabs.find(".ui-tabs-active a").text();
+
+      if(confirm("This will remove the content section '" + tabName + "' immediately even if you don't save this page, are you sure?")) {
+        var tabId = page_options.tabs.tabs('option', 'active');
+
+        if($('#page_parts_attributes_' + tabId + '_id').length > 0) {
+          $.ajax({
+            url: page_options.del_part_url + '/' + $('#page_parts_attributes_' + tabId + '_id').val(),
+            type: 'DELETE'
+          });
+        }
+
+        page_options.tabs.find(".ui-tabs-active").remove();
+        page_options.tabs.find("#page_part_" + tabName.toLowerCase()).remove();
+        page_options.tabs.find("#page_part_new_" + tabId).remove();
+        $("[id^=page_parts_attributes_" + tabId + "_]").remove();
         $('#submit_continue_button').remove();
+
+        page_options.tabs.tabs('refresh');
       }
 
     });
