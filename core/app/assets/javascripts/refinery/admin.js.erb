@@ -760,7 +760,7 @@ function ImageDialog(options) {
       $('#existing_image_size_area ul li').removeClass('selected');
       $(this).parent().addClass('selected');
       $('#existing_image_size_area #wants_to_resize_image').attr('checked', 'checked');
-      self.set_image($('#existing_image_area_content ul li.selected img'));
+      self.toggle_image($('#existing_image_area_content ul li.selected img'));
       e.preventDefault();
     });
 
@@ -769,7 +769,7 @@ function ImageDialog(options) {
         $('#existing_image_size_area ul li:first a').click();
       } else {
         $('#existing_image_size_area ul li').removeClass('selected');
-        self.set_image($('#existing_image_area_content ul li.selected img'));
+        self.toggle_image($('#existing_image_area_content ul li.selected img'));
       }
     });
 
