@@ -1,25 +1,15 @@
 require 'rbconfig'
-VERSION_BAND = '2.0.0'
+VERSION_BAND = '2.1.0'
 
-gsub_file 'Gemfile', "gem 'jquery-rails'", "gem 'jquery-rails', '~> 2.3.0'"
 # We want to ensure that you have an ExecJS runtime available!
 begin
-  run 'bundle install'
   require 'execjs'
-  raise if ::ExecJS::Runtimes.autodetect.name =~ /therubyracer/
-rescue
-  require 'pathname'
-  if Pathname.new(destination_root.to_s).join('Gemfile').read =~ /therubyracer/
-    gsub_file 'Gemfile', "# gem 'therubyracer'", "gem 'therubyracer'"
-  else
-    append_file 'Gemfile', <<-GEMFILE
-
-group :assets do
-  # Added by Refinery. We want to ensure that you have an ExecJS runtime available!
-  gem 'therubyracer'
+rescue LoadError
+  abort "ExecJS is not installed. Please re-start the installer after running:\ngem install execjs"
 end
-GEMFILE
-  end
+
+if File.read("#{destination_root}/Gemfile") !~ /assets.+coffee-rails/m
+  gem "coffee-rails", :group => :assets
 end
 
 append_file 'Gemfile', <<-GEMFILE
@@ -27,15 +17,23 @@ append_file 'Gemfile', <<-GEMFILE
 # Refinery CMS
 gem 'refinerycms', '~> #{VERSION_BAND}'
 
-# Specify additional Refinery CMS Extensions here (all optional):
-gem 'refinerycms-i18n', '~> #{VERSION_BAND}'
+# Optionally, specify additional Refinery CMS Extensions here:
+gem 'refinerycms-acts-as-indexed', '~> 1.0.0'
 #  gem 'refinerycms-blog', '~> #{VERSION_BAND}'
 #  gem 'refinerycms-inquiries', '~> #{VERSION_BAND}'
 #  gem 'refinerycms-search', '~> #{VERSION_BAND}'
 #  gem 'refinerycms-page-images', '~> #{VERSION_BAND}'
 GEMFILE
 
+begin
+  require 'execjs'
+  ::ExecJS::Runtimes.autodetect
+rescue
+  gsub_file 'Gemfile', "# gem 'therubyracer'", "gem 'therubyracer'"
+end
+
 run 'bundle install'
+
 rake 'db:create'
 generate "refinery:cms --fresh-installation #{ARGV.join(' ')}"
 
