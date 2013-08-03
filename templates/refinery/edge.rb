@@ -24,6 +24,7 @@ gem 'refinerycms', github: 'refinery/refinerycms', branch: 'master'
 
 # Specify additional Refinery CMS Engines here (all optional):
 gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed', branch: 'master'
+gem 'decorators', github: 'parndt/decorators', branch: 'master'
 #  gem 'refinerycms-blog', github: 'refinery/refinerycms-blog', branch: 'master'
 #  gem 'refinerycms-inquiries', github: 'refinery/refinerycms-inquiries', branch: 'master'
 #  gem 'refinerycms-search', github: 'refinery/refinerycms-search', branch: 'master'
