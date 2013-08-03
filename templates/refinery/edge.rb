@@ -1,7 +1,5 @@
 require 'rbconfig'
 
-gsub_file 'Gemfile', "gem 'jquery-rails'", "gem 'jquery-rails', '>= 2.0.0'"
-
 if File.read("#{destination_root}/Gemfile") !~ /assets.+coffee-rails/m
   gem "coffee-rails", :group => :assets
 end
