@@ -18,16 +18,16 @@ end
 append_file 'Gemfile' do
 "
 
-gem 'refinerycms', :git => 'git://github.com/refinery/refinerycms.git'
+gem 'refinerycms', github: 'refinery/refinerycms', branch: 'master'
 
 # USER DEFINED
 
 # Specify additional Refinery CMS Engines here (all optional):
-gem 'refinerycms-acts-as-indexed', :git => 'git://github.com/refinery/refinerycms-acts-as-indexed.git'
-#  gem 'refinerycms-blog', :git => 'git://github.com/refinery/refinerycms-blog.git'
-#  gem 'refinerycms-inquiries', :git => 'git://github.com/refinery/refinerycms-inquiries.git'
-#  gem 'refinerycms-search', :git => 'git://github.com/refinery/refinerycms-search.git'
-#  gem 'refinerycms-page-images', :git => 'git://github.com/refinery/refinerycms-page-images.git'
+gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed', branch: 'master'
+#  gem 'refinerycms-blog', github: 'refinery/refinerycms-blog', branch: 'master'
+#  gem 'refinerycms-inquiries', github: 'refinery/refinerycms-inquiries', branch: 'master'
+#  gem 'refinerycms-search', github: 'refinery/refinerycms-search', branch: 'master'
+#  gem 'refinerycms-page-images', github: 'refinery/refinerycms-page-images', branch: 'master'
 
 # END USER DEFINED
 "
