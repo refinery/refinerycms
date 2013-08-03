@@ -568,6 +568,49 @@ module Refinery
         end
       end
 
+      describe "delete existing page part", :js do
+        let!(:some_page) { Page.create! :title => "Some Page" }
+
+        before do
+          some_page.parts.create! :title => "First Part", :position => 1
+          some_page.parts.create! :title => "Second Part", :position => 2
+          some_page.parts.create! :title => "Third Part", :position => 3
+
+          Refinery::Pages.stub(:new_page_parts).and_return(true)
+        end
+
+        it "deletes page parts" do
+          visit refinery.edit_admin_page_path(some_page.id)
+
+          within "#page_parts" do
+            page.should have_content("First Part")
+            page.should have_content("Second Part")
+            page.should have_content("Third Part")
+          end
+
+          2.times do
+            click_link "delete_page_part"
+            page.driver.browser.switch_to.alert.accept
+          end
+
+          within "#page_parts" do
+            page.should have_no_content("First Part")
+            page.should have_no_content("Second Part")
+            page.should have_content("Third Part")
+          end
+
+          click_button "submit_button"
+
+          visit refinery.edit_admin_page_path(some_page.id)
+
+          within "#page_parts" do
+            page.should have_no_content("First Part")
+            page.should have_no_content("Second Part")
+            page.should have_content("Third Part")
+          end
+        end
+      end
+
       describe 'advanced options' do
         describe 'view and layout templates' do
           context 'when parent page has templates set' do
