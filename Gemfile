@@ -28,7 +28,7 @@ gem 'jruby-openssl', :platform => :jruby
 
 group :test do
   gem 'refinerycms-testing', '~> 2.1.0'
-  gem 'generator_spec', '~> 0.8.7'
+  gem 'generator_spec', '~> 0.9.0'
 end
 
 # Gems used only for assets and not required
@@ -38,11 +38,6 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
 end
-
-# To use debugger
-# gem 'ruby-debug', :platform => :mri_18
-# or in 1.9.x:
-# gem 'debugger', :platform => :mri_19
 
 # Load local gems according to Refinery developer preference.
 if File.exist? local_gemfile = File.expand_path('../.gemfile', __FILE__)
