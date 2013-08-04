@@ -24,7 +24,7 @@ module Refinery
     attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login
 
     validates :username, :presence => true, :uniqueness => true
-    before_validation :downcase_username
+    before_validation :downcase_username, :strip_username
 
     class << self
       # Find user by email or username.
@@ -113,6 +113,12 @@ module Refinery
     # SELECT 1 FROM "refinery_users" WHERE LOWER("refinery_users"."username") = LOWER('UsErNAME') LIMIT 1
     def downcase_username
       self.username = self.username.downcase if self.username?
+    end
+
+    # To ensure that we aren't creating "admin" and "admin " as the same thing.
+    # Also ensures that "admin user" and "admin    user" are the same thing.
+    def strip_username
+      self.username = self.username.strip.gsub(/\ {2,}/, ' ') if self.username?
     end
 
   end

@@ -51,7 +51,7 @@ module Refinery
     context "validations" do
       # email and password validations are done by including devises validatable
       # module so those validations are not tested here
-      let(:attr) do
+      let(:attributes) do
         {
           :username => "Refinery CMS",
           :email => "refinery@cms.com",
@@ -61,17 +61,28 @@ module Refinery
       end
 
       it "requires username" do
-        User.new(attr.merge(:username => "")).should_not be_valid
+        User.new(attributes.merge(:username => "")).should_not be_valid
       end
 
       it "rejects duplicate usernames" do
-        User.create!(attr)
-        User.new(attr.merge(:email => "another@email.com")).should_not be_valid
+        User.create!(attributes)
+        User.new(attributes.merge(:email => "another@email.com")).should_not be_valid
       end
 
       it "rejects duplicate usernames regardless of case" do
-        User.create!(attr)
-        User.new(attr.merge(:username => attr[:username].upcase, :email => "another@email.com")).should_not be_valid
+        User.create!(attributes)
+        User.new(attributes.merge(
+          :username => attributes[:username].upcase,
+          :email => "another@email.com")
+        ).should_not be_valid
+      end
+
+      it "rejects duplicate usernames regardless of whitespace" do
+        User.create!(attributes)
+        new_user = User.new(attributes.merge(:username => " Refinery   CMS "))
+        new_user.valid?
+        new_user.username.should == 'refinery cms'
+        new_user.should_not be_valid
       end
     end
 
