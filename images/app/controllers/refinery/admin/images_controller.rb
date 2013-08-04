@@ -29,7 +29,7 @@ module Refinery
           extra_condition[1] = nil if extra_condition[1] == "nil"
         end
 
-        find_all_images(({extra_condition[0].to_sym => extra_condition[1]} if extra_condition.present?))
+        find_all_images(({extra_condition[0] => extra_condition[1]} if extra_condition.present?))
         search_all_images if searching?
 
         paginate_images

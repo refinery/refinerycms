@@ -52,7 +52,7 @@ module Refinery
           extra_condition[1] = true if extra_condition[1] == "true"
           extra_condition[1] = false if extra_condition[1] == "false"
           extra_condition[1] = nil if extra_condition[1] == "nil"
-          paginate_resources({extra_condition[0].to_sym => extra_condition[1]})
+          paginate_resources({extra_condition[0] => extra_condition[1]})
         else
           paginate_resources
         end
