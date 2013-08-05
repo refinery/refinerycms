@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gemspec
 
 # Add support for refinerycms-acts-as-indexed
-gem 'refinerycms-acts-as-indexed', '~> 1.0.0'
+gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed'
 
 gem 'quiet_assets', :group => :development
 
@@ -27,7 +27,7 @@ end
 gem 'jruby-openssl', :platform => :jruby
 
 group :test do
-  gem 'refinerycms-testing', '~> 2.1.0'
+  gem 'refinerycms-testing', '~> 3.0.0.dev'
   gem 'generator_spec', '~> 0.9.0'
 end
 
