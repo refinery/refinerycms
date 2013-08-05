@@ -242,24 +242,6 @@ module Refinery
       Pages::Url.build(self)
     end
 
-    def link_url_localised?
-      Refinery.deprecate "Refinery::Page#link_url_localised?", :when => '2.2',
-                         :replacement => "Refinery::Pages::Url::Localised#url"
-      Pages::Url::Localised.new(self).url
-    end
-
-    def url_normal
-      Refinery.deprecate "Refinery::Page#url_normal", :when => '2.2',
-                         :replacement => "Refinery::Pages::Url::Normal#url"
-      Pages::Url::Normal.new(self).url
-    end
-
-    def url_marketable
-      Refinery.deprecate "Refinery::Page#url_marketable", :when => '2.2',
-                         :replacement => "Refinery::Pages::Url::Marketable#url"
-      Pages::Url::Marketable.new(self).url
-    end
-
     def nested_url
       globalized_slug = Globalize.with_locale(slug_locale) { to_param.to_s }
       if ::Refinery::Pages.scope_slug_by_parent

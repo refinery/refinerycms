@@ -46,26 +46,6 @@ module Refinery
           end
         end
 
-        def login_user
-          Refinery.deprecate :login_user, :when => '2.2', :replacement => 'refinery_login_with :user'
-          refinery_login_with :user
-        end
-
-        def login_refinery_user
-          Refinery.deprecate :login_refinery_user, :when => '2.2', :replacement => 'refinery_login_with :refinery_user'
-          refinery_login_with :refinery_user
-        end
-
-        def login_refinery_superuser
-          Refinery.deprecate :login_refinery_superuser, :when => '2.2', :replacement => 'refinery_login_with :refinery_superuser'
-          refinery_login_with :refinery_superuser
-        end
-
-        def login_refinery_translator
-          Refinery.deprecate :login_refinery_translator, :when => '2.2', :replacement => 'refinery_login_with :refinery_translator'
-          refinery_login_with :refinery_translator
-        end
-
         private
         def handle_deprecated_roles!(*roles)
           mappings = {
