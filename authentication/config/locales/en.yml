@@ -71,3 +71,4 @@ en:
         password_confirmation: Password confirmation
         email: Email
         remember_me: Remember me
+        full_name: Full Name
