@@ -28,7 +28,7 @@
 
     var att_rep = function(att, val) {
       if(!opts.att_regex) { return val; }
-			  
+
 			for(x in opts.att_regex) {
 				if(opts.att_regex[x].att === att) {
 					return val.replace(opts.att_regex[x].regex, '');
@@ -41,15 +41,15 @@
     this.each(function(ul_count, ul) {
       $(ul).children().each(function(li_count, li) {
     		if(opts.allow_nest || attrs.length > 1) {
-    			for(att in attrs) {
-    				val = att_rep(attrs[att], $(li).attr(attrs[att]));
-    				serialStr += opts.prepend+'['+ul_count+']['+li_count+']['+attrs[att]+']='+val;
+    			for(var i = 0; i < attrs.length; i++) {
+    				val = att_rep(attrs[i], $(li).attr(attrs[i]));
+    				serialStr += opts.prepend+'['+ul_count+']['+li_count+']['+attrs[i]+']='+val;
     			}
     		} else {
     			val = att_rep(attrs[0], $(li).attr(attrs[0]));
     			serialStr += opts.prepend+'['+ul_count+']['+li_count+']='+val;
     		}
-    
+
     		if(opts.allow_nest) {
     			child_base = opts.prepend+'['+ul_count+']['+li_count+'][children]';
     			$(li).children().each(function() {
@@ -58,11 +58,11 @@
     				}
     			});
     		}
-    		
+
         li_count++;
       });
     });
-    
+
     return(serialStr);
   };
 })(jQuery);
