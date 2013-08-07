@@ -60,6 +60,15 @@ module Refinery
       # Now use all possible vectors to try to find a valid match,
       # finally passing to rails' "current_page?" method.
       [path, URI.decode(path)].include?(url) || path == "/#{page.original_id}"
+    end 
+    
+    # Returns menu_branch.link_title only if it's different from the menu_branch.title
+    def menu_branch_link_title(menu_branch)
+      if menu_branch.title != menu_branch.link_title
+        return menu_branch.link_title
+      else
+        return nil
+      end    
     end
 
   end

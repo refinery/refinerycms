@@ -379,7 +379,13 @@ module Refinery
 
     def refinery_menu_title
       [page_menu_title, page_title, menu_title, title].detect(&:present?)
-    end
+    end  
+    
+    # If Page#menu_title is set, then the menu link will show Page#title in its title attribute for
+    # both SEO and accessibility purposes
+    def refinery_menu_link_title
+      [page_title, title].detect(&:present?)
+    end    
 
     def to_refinery_menu_item
       {
@@ -389,6 +395,7 @@ module Refinery
         :parent_id => parent_id,
         :rgt => rgt,
         :title => refinery_menu_title,
+        :link_title => refinery_menu_link_title,
         :type => self.class.name,
         :url => url
       }
