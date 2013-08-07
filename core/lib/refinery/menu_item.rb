@@ -3,7 +3,7 @@ module Refinery
 
     class << self
       def attributes
-        [:title, :parent_id, :lft, :rgt, :depth, :url, :menu, :menu_match]
+        [:title, :link_title, :parent_id, :lft, :rgt, :depth, :url, :menu, :menu_match]
       end
 
       def apply_attributes!
