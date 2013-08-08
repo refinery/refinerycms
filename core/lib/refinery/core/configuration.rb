@@ -38,6 +38,11 @@ module Refinery
     end
 
     class << self
+      def backend_route
+        # prevent / at the start.
+        config.backend_route.to_s.gsub(%r{\A/}, '')
+      end
+
       def clear_javascripts!
         self.javascripts = []
       end
