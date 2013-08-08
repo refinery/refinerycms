@@ -1,4 +1,4 @@
-## 2.1.0 [4 August 2013]
+## 2.1.0 [5 August 2013]
 
 * Require at least Ruby 1.9.3 and thus drop Ruby 1.8.x support. [#2277](https://github.com/refinery/refinerycms/pull/2277) [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt)
 * Removed `:before_javascript_libraries`, `:after_javascript_libraries`, and `:javascript_libraries` content blocks. [#1842](https://github.com/refinery/refinerycms/pull/1842). [Rob Yurkowski](https://github.com/robyurkowski)
@@ -56,7 +56,7 @@
 * Fixed markup corruption in WYMeditor when using `span` with `style` attribute. [#2350](https://github.com/refinery/refinerycms/pull/2350). [wuboy](https://github.com/wuboy0307)
 * Require jquery-rails ~> 2.3.0. [Francois Harbec](https://github.com/rounders) and [Sergio Cambra](https://github.com/scambra)
 * Unlocked `truncate_html` from 0.5.x as we no longer support Ruby 1.8.x. [Uģis Ozols](https://github.com/ugisozols)
-* [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
+* [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...2-1-stable)
 
 ## 2.0.11 [unreleased]
 
@@ -67,7 +67,6 @@
 * Blocked past insecure Rails versions. [Philip Arndt](https://github.com/parndt)
 * Fixed problems with editing pages in different locales. [Philip Arndt](https://github.com/parndt)
 * Locked `truncate_html` to 0.5.x to ensure Ruby 1.8.x compatibility. [Uģis Ozols](https://github.com/ugisozols)
-
 * [See full list](https://github.com/refinery/refinerycms/compare/2.0.9...2.0.10)
 
 ## 2.0.9 [21 November 2012]
