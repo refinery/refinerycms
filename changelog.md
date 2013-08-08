@@ -1,3 +1,7 @@
+## 2.1.1 [unreleased]
+
+* Fixed menu reordering bug when `Refinery::Core.backend_route` was set to something different than `refinery`. [#2368](https://github.com/refinery/refinerycms/pull/2368). [xyz](https://github.com/xyz)
+
 ## 2.1.0 [5 August 2013]
 
 * Require at least Ruby 1.9.3 and thus drop Ruby 1.8.x support. [#2277](https://github.com/refinery/refinerycms/pull/2277) [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt)
