@@ -2,6 +2,9 @@
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
+## 2.1.1 [unreleased]
+
+* Fixed menu reordering bug when `Refinery::Core.backend_route` was set to something different than `refinery`. [#2368](https://github.com/refinery/refinerycms/pull/2368). [xyz](https://github.com/xyz)
 
 ## 2.1.0 [5 August 2013]
 
