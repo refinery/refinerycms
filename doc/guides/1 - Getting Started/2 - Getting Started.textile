@@ -221,10 +221,10 @@ Every view in Refinery has an instance variable called +@page+ available. The be
 Replace the contents of +app/views/refinery/pages/show.html.erb+ with this:
 
 <erb>
-<section id='body_content'>
+<section id='body'>
   <%=raw @page.content_for(:body) %>
 </section>
-<section id='side_body_content'>
+<section id='side_body'>
   <%=raw @page.content_for(:side_body) %>
 </section>
 </erb>
