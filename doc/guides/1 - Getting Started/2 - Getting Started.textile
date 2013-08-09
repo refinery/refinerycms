@@ -8,17 +8,13 @@ This guide covers getting up and running with Refinery CMS. After reading it, yo
 
 endprologue.
 
-WARNING. This guide is based on Refinery CMS 2.0.0 so some of the code shown here may not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 2.1.0 so some of the code shown here may not work in earlier versions of Refinery.
 
 h3. Guide Assumptions
 
 This guide is designed for beginners who want to get started with a Refinery CMS site from scratch. It does not assume that you have any prior experience with Refinery. However, to get the most out of it, you need to have some prerequisites installed:
 
 * The "Ruby":http://www.ruby-lang.org/en/downloads language version 1.9.3 or higher
-
-TIP: Do not use Ruby 1.9.1 as Rails 3.x is not compatible with it. Use 1.9.3 for smooth sailing.
-
-* The "RubyGems":http://rubyforge.org/frs/?group_id=126 packaging system
 * A working installation of the "SQLite3 Database":http://www.sqlite.org
 * A working installation of "ImageMagick":http://www.imagemagick.org/script/install-source.php
 
