@@ -30,6 +30,8 @@ TIP: It is recommended that developers use RVM to manage Ruby versions and gems.
 rvm use --create ruby-1.9.3@refinery
 </shell>
 
+TIP: If you are not using an RVM gemset and you have Rails 4 installed, be sure to read the "Rails Application Templates":#rails-application-templatesthese-application-templates-are-another-very-easy-way-to-install-refinery-and-allow-for-a-great-deal-of-control-of-your-installation-you-can-create-a-new-refinery-application-by-typing section below.
+
 Refinery is a Ruby on Rails web application. If you have no prior experience with Rails, you will find a very steep learning curve diving straight into Refinery. There are some good free resources on the Internet for learning Rails, including:
 
 * "Getting Started with Rails":http://guides.rubyonrails.org/getting_started.html
@@ -90,7 +92,13 @@ h5. Rails Application Templates
 These application templates are another very easy way to install Refinery, and allow for a great deal of control of your installation. You can create a new Refinery application by typing:
 
 <shell>
-$ rails new rickrockstar -m http://refinerycms.com/t/2.0.3
+$ rails new rickrockstar -m http://refinerycms.com/t/2.1.0
+</shell>
+
+TIP. As *refinerycms is not compatible with Rails 4*, you may also need to specify the Rails version, especially if you are using rbenv instead of RVM to manage rubies: 
+
+<shell>
+$ rails _3.2.14_ new rickrockstar -m http://refinerycms.com/t/2.1.0
 </shell>
 
 WARNING. If you create an application from the template, be sure to skip running +refinerycms rickrockstar+ as listed in the next section&mdash;the template will have completed this step.
