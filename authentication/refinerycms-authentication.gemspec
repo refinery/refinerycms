@@ -23,4 +23,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'refinerycms-core',  version
   s.add_dependency 'actionmailer',      rails_version
   s.add_dependency 'devise',            '>= 2.2.3'
+  s.add_dependency 'friendly_id',       '>= 5.0.0.beta1'
 end

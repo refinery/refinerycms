@@ -4,6 +4,8 @@ gemspec
 
 gem 'rails', '~> 4.0.0'
 
+gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
+
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed'
 
@@ -12,12 +14,10 @@ gem 'seo_meta', github: 'parndt/seo_meta', branch: 'master'
 
 # Fixes uniqueness constraint on translated columns.
 # See: https://github.com/svenfuchs/globalize3/pull/121
-gem 'globalize3', github: 'svenfuchs/globalize3'
-gem 'paper_trail', github: 'parndt/paper_trail', branch: 'rails4'
+gem 'globalize3', github: 'svenfuchs/globalize3', branch: 'rails4'
+gem 'paper_trail', github: 'airblade/paper_trail', branch: 'master'
 gem 'devise', '~> 3.0.2'
-gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set', branch: 'rails4'
-gem 'routing-filter', github: "svenfuchs/routing-filter"
-gem 'friendly_id', github: "FriendlyId/friendly_id", branch: 'rails4'
+gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set', branch: 'master'
 gem 'rails-observers'
 gem 'actionpack-page_caching'
 
