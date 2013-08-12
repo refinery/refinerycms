@@ -51,8 +51,6 @@ module Refinery
 
     accepts_nested_attributes_for :parts, :allow_destroy => true
 
-    after_save { |m| m.translation.save }
-    before_create :ensure_locale!
     before_destroy :deletable?
     after_save :reposition_parts!
 
@@ -340,15 +338,7 @@ module Refinery
       end
     end
 
-  private
-
-    # Make sures that a translation exists for this page.
-    # The translation is set to the default frontend locale.
-    def ensure_locale!
-      if self.translations.empty?
-        self.translations.build(:locale => Refinery::I18n.default_frontend_locale)
-      end
-    end
+    private
 
     # Protects generated slugs from title if they are in the list of reserved words
     # This applies mostly to plugin-generated pages.

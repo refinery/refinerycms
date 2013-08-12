@@ -335,9 +335,7 @@ module Refinery
         let(:ru_page_title) { 'Новости' }
         let(:ru_page_slug_encoded) { '%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8' }
         let!(:news_page) do
-          _page = Globalize.with_locale(:en) {
-            Page.create :title => en_page_title
-          }
+          _page = Globalize.with_locale(:en) { Page.create title: en_page_title }
           Globalize.with_locale(:ru) do
             _page.title = ru_page_title
             _page.save
@@ -379,7 +377,6 @@ module Refinery
               _page.title = nested_page_title
               _page.save
             end
-
             _page
           end
 
