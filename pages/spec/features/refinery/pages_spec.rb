@@ -97,17 +97,17 @@ module Refinery
         end
 
         it 'shows the menu_title in the menu' do
-          visit refinery.page_path(page_mt)
+          visit refinery.url_for(page_mt.url)
 
           within ".selected" do
             expect(page).to have_content(page_mt.menu_title)
           end
         end
 
-        it "does not effect browser title and page title" do
-          visit refinery.page_path(page_mt)
+        it "does not affect browser title and page title" do
+          visit refinery.url_for(page_mt.url)
 
-          page.has_title?(page_mt.title)
+          page.should have_title(page_mt.title)
           find("#body_content_title").text.should == page_mt.title
         end
       end
