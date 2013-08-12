@@ -87,7 +87,7 @@ module Refinery
       let(:page_mt) { Page.create :title => 'Company News' }
 
       before do
-        Page.stub(:fast_menu).and_return([home_page, page_mt])
+        Page.stub(:fast_menu).and_return([page_mt])
       end
 
       describe 'set' do
