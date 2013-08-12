@@ -5,6 +5,7 @@ gemspec
 gem 'rails', '~> 4.0.0'
 
 gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
+gem 'quiet_assets'
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed'
