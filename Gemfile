@@ -36,8 +36,6 @@ if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
   gem 'pg', :platform => :ruby
 end
 
-gem 'jruby-openssl', platform: :jruby
-
 group :test do
   gem 'refinerycms-testing', '~> 3.0.0.dev'
   gem 'generator_spec', '~> 0.9.0'
