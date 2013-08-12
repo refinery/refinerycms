@@ -54,7 +54,6 @@ fr:
           page_options: Page Options
           parent_page: Page parente
           menu_title: Titre dans le menu
-          custom_slug: Slug personnalisé
           show_in_menu_title: Placer dans le menu
           show_in_menu_description: Placer cette page dans le menu du site
           show_in_menu_help: Décochez cette case si vous souhaitez supprimer une page du menu de votre site. Ceci peut être utile si vous voulez diriger les utilisateurs directement vers une page, sans qu'elle n'apparaisse dans le menu.
@@ -65,7 +64,6 @@ fr:
           link_url_help: "Si vous souhaitez que cette page mène à un autre site internet ou à une autre page lorsque l'on clique dessus dans le menu, entrez une URL '(par exemple http://google.com)'. Sinon laissez ce champ vide."
           parent_page_help: "Vous pouvez placer une page sous une autre page en la sélectionnant dans la liste. Si vous voulez que cette page soit une page parente, laissez ce champ vide."
           menu_title_help: Si vous voulez que le menu affiche un titre différent que celui qui sera affiché sur la page, entrez-le ici.
-          custom_slug_help: Un slug est un identifiant plus humain utilisé dans l'adresse d'une page, par exemple &apos;a-propos&apos;. Pour écraser le slug généré automatiquement par Refinery, entrez votre slug personnalisé ici.
           layout_template: Agencement
           layout_template_help: Vous pouvez choisir un agencement différent pour cette page
           view_template: Modèle de vue

@@ -54,7 +54,6 @@ en:
           page_options: Page Options
           parent_page: Parent page
           menu_title: Menu title
-          custom_slug: Custom slug
           show_in_menu_title: Show in menu
           show_in_menu_description: Display this page in the site menu
           show_in_menu_help: Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu.
@@ -65,7 +64,6 @@ en:
           link_url_help: If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank
           parent_page_help: You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.
           menu_title_help: If you want the menu to display a different title than the one that displays on the page, enter it here.
-          custom_slug_help: A slug is a human-readable ID used to create a page&apos;s full URL, for example &apos;about-us&apos;. To override the slug that is automatically created by Refinery, enter your custom slug here.
           layout_template: Layout template
           layout_template_help: You can choose a different layout template for this page
           view_template: View template

@@ -53,7 +53,6 @@ da:
           page_options: Side indstillinger
           parent_page: Overordnet side
           menu_title: Menutitel
-          custom_slug: Brugerdefineret slug
           show_in_menu_title: Vis i menuen
           show_in_menu_description: Vis siden i menuen på sitet
           show_in_menu_help: Afkryds ikke, hvis du vil fjerne siden fra menuen på sitet. Dette kan benyttes, hvis du vil have en side, du kan linke til direkte, men som ikke skal vises i menuen.
@@ -64,7 +63,6 @@ da:
           link_url_help: Hvis du vil have denne side går til et andet website eller en anden side, når besøgende klikker på den i menuen, skal du indtaste URLen, fx http://google.com
           parent_page_help: Du kan placere siden under en anden side ved at vælge den i listen. Hvis siden skal ligge på øverste niveau skal du ikke vælge noget.
           menu_title_help: Hvis siden skal have en anden titel i menuen, så vælg &apos;Tekst&apos; og indtast titlen her.
-          custom_slug_help: En slug er et letlæseligt id, som bruges til at lave en sides fulde internetadresse (URL), fx &apos;om-os&apos. For at overskrive den slug der automatisk bliver oprettet af Refinery, kan du skrive din brugerdefinerede slug her.
           layout_template: Layout template
           layout_template_help: You can choose a different layout template for this page
           view_template: View template

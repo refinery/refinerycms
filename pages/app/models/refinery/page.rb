@@ -6,7 +6,7 @@ module Refinery
   class Page < Core::BaseModel
     extend FriendlyId
 
-    translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
+    translates :title, :menu_title, :slug, :include => :seo_meta
 
     class Translation
       is_seo_meta
@@ -20,12 +20,10 @@ module Refinery
     attr_accessible :id, :deletable, :link_url, :menu_match,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :parent_id, :menu_title, :page_id,
-                    :layout_template, :view_template, :custom_slug, :slug,
+                    :layout_template, :view_template, :slug,
                     :title, *::SeoMeta.attributes.keys
 
     validates :title, :presence => true
-
-    validates :custom_slug, :uniqueness => true, :allow_blank => true
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
     # rather than :delete_all we want :destroy
@@ -42,7 +40,7 @@ module Refinery
     end
     friendly_id_options[:use] << :globalize
 
-    friendly_id :custom_slug_or_title, friendly_id_options
+    friendly_id :menu_title_or_title, friendly_id_options
 
     has_many :parts, -> {
       scope = order('position ASC')
@@ -189,10 +187,10 @@ module Refinery
       Globalize.with_locale(::Refinery::I18n.default_frontend_locale) { slug }
     end
 
-    # Returns in cascading order: custom_slug or menu_title or title depending on
+    # Returns in cascading order: menu_title or title depending on
     # which attribute is first found to be present for this page.
-    def custom_slug_or_title
-      custom_slug.presence || menu_title.presence || title.presence
+    def menu_title_or_title
+      menu_title.presence || title.presence
     end
 
     # Am I allowed to delete this page?

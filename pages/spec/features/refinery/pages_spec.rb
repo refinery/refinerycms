@@ -150,61 +150,6 @@ module Refinery
       end
     end
 
-    describe 'custom_slug' do
-      let(:page_cs) { Page.create :title => 'About Us' }
-      before do
-        Page.stub(:fast_menu).and_return([page_cs])
-      end
-
-      describe 'not set' do
-        it 'makes friendly_id from title' do
-          visit '/about-us'
-
-          current_path.should == '/about-us'
-        end
-      end
-
-      describe 'set' do
-        before do
-          page_cs.custom_slug = "about-custom"
-          page_cs.save
-        end
-
-        it 'should make and use a new friendly_id' do
-          visit '/about-custom'
-
-          current_path.should == '/about-custom'
-        end
-      end
-
-      describe 'set and unset' do
-        before do
-          page_cs.custom_slug = "about-custom"
-          page_cs.save
-          page_cs.custom_slug = ""
-          page_cs.save
-          page_cs.reload
-        end
-      end
-
-      describe 'set with slashes' do
-        before do
-          Pages.stub(:scope_slug_by_parent).and_return(false)
-          page_cs.custom_slug = "products/my product/cool one!"
-          page_cs.save
-        end
-
-        after do
-          Pages.stub(:scope_slug_by_parent).and_return(true)
-        end
-
-        it 'should make and use a new friendly_id' do
-          visit '/products/my-product/cool-one'
-          current_path.should == '/products/my-product/cool-one'
-        end
-      end
-    end
-
     # Following specs are converted from one of the cucumber features.
     # Maybe we should clean up this spec file a bit...
     describe "home page" do

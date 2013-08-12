@@ -54,7 +54,6 @@ pt:
           page_options: Opções da página
           parent_page: Página pai
           menu_title: Título de menu
-          custom_slug: Personalizar o permalink
           show_in_menu_title: Mostrar no menu
           show_in_menu_description: Mostrar esta página no menu do site
           show_in_menu_help: "Desmarque esta opção caso queira remover a página do menu do site. Pode ser útil caso queira ligar outra página a esta, mas não quer que esta apareça no menu do site."
@@ -65,7 +64,6 @@ pt:
           link_url_help: "Se quiser que esta página aponte para outro website ou página, insira o URL. exemplo: http://google.com caso contrário deixe em branco."
           parent_page_help: "Se você quer colocar esta página abaixo de outra página no menu, selecione aqui qual é a página ou deixe em branco caso queria a página na raiz do menu."
           menu_title_help: Se quer apresentar um nome diferente no menu escreva-o aqui.
-          custom_slug_help: "Uma slug (permalink) é um ID de fácil leitura para os humanos usado para criar o URL da página. Exemplo: &apos;about-us&apos;. Para alterar escreva o que pretende aqui."
           layout_template: Modelo de layout
           layout_template_help: Pode escolher um novo modelo de layout para esta página
           view_template: Ver modelo (template)

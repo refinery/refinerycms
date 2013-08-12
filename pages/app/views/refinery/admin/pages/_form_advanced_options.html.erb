@@ -36,15 +36,6 @@
       </span>
       <%= f.text_field :menu_title, :style=> 'width:400px;' %>
     </div>
-    <% if Refinery::Pages.use_custom_slugs %>
-    <div class='field'>
-      <span class='label_with_help'>
-        <%= f.label :custom_slug, t('.custom_slug') %>
-        <%= refinery_help_tag t('.custom_slug_help') %>
-      </span>
-      <%= f.text_field :custom_slug, :style=> 'width:400px;' %>
-    </div>
-    <% end %>
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :skip_to_first_child?, t('.skip_to_first_child') %>

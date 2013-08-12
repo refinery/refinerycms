@@ -54,7 +54,6 @@ tr:
           page_options: Sayfa Ozellikleri
           parent_page: Ust sayfa
           menu_title: Menu basligi
-          custom_slug: Varsayilan slug
           show_in_menu_title: Menu icerisinde goster
           show_in_menu_description: Bu sayfayi site menusunde gor.
           show_in_menu_help: Eger bir sayfayi site menunuzden kaldirmak istiyorsaniz lutfen onay kutucugunu isaretleyin. Bu islem daha kullanisli olur eger insanlari verdiginiz baglantilar sayfada gozukmez.
@@ -65,7 +64,6 @@ tr:
           link_url_help: Eger bu sayfayi menuden tiklayarak baska bir web sitesine yada sayfasina gitmek icin , ornek bir URL gir http://google.com  yada bos olarak birakin
           parent_page_help: Listeden bir sayfa secerek  ona bir alt sayfa ekleyebilirsin.  Eger bu istediginiz sayfa  Ust Duzey  bir  sayfa ise bos birakiniz.
           menu_title_help: Eger menunun basligindan baska bir sayfa adi yani ismi ile goruntulenmesini istiyorsanuz, buraya giriniz.
-          custom_slug_help: Bir Slug  sayfalara okunabilir full URL' li ID yaratmak icin kullanilir. RefineryCMS tarafindan atanan Slug yerine kendi Slug'unuzu buraya yazabilirsiniz.
           layout_template: Taslak Sablonu
           layout_template_help: Bu sayfa icin degisik bir Taslak Sablonu kullanabilirsiniz.
           view_template: Sablonu Goruntule
