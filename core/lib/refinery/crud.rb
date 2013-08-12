@@ -109,17 +109,22 @@ module Refinery
 
           # Finds one single result based on the id params.
           def find_#{singular_name}
-            @#{singular_name} = #{class_name}.includes(#{options[:include].map(&:to_sym).inspect}).
-                                              find(params[:id])
+            @#{singular_name} = find_#{singular_name}_scope.find(params[:id])
+          end
+
+          def find_#{singular_name}_scope
+            _finder_scope = #{class_name}.includes(#{options[:include].map(&:to_sym).inspect})
+            _finder_scope = _finder_scope.friendly if _finder_scope.respond_to?(:friendly)
+            _finder_scope
           end
 
           # Find the collection of @#{plural_name} based on the conditions specified into crudify
           # It will be ordered based on the conditions specified into crudify
           # And eager loading is applied as specified into crudify.
           def find_all_#{plural_name}(conditions = #{options[:conditions].inspect})
-            @#{plural_name} = #{class_name}.where(conditions).includes(
-                                #{options[:include].map(&:to_sym).inspect}
-                              ).order("#{options[:order]}")
+            @#{plural_name} = find_#{singular_name}_scope
+                                .where(conditions)
+                                .order("#{options[:order]}")
           end
 
           def merge_position_into_params!
@@ -207,6 +212,7 @@ module Refinery
           # Ensure all methods are protected so that they should only be called
           # from within the current controller.
           protected :find_#{singular_name},
+                    :find_#{singular_name}_scope,
                     :find_all_#{plural_name},
                     :paginate_all_#{plural_name},
                     :paginate_per_page,

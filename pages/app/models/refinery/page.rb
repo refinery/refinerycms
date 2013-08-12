@@ -32,11 +32,15 @@ module Refinery
     acts_as_nested_set :dependent => :destroy
 
     # Docs for friendly_id http://github.com/norman/friendly_id
-    friendly_id_options = {:use => [:reserved, :globalize], :reserved_words => %w(index new session login logout users refinery admin images wymiframe)}
+    friendly_id_options = {
+      use: [:reserved],
+      reserved_words: %w(index new session login logout users refinery admin images wymiframe)
+    }
     if ::Refinery::Pages.scope_slug_by_parent
       friendly_id_options[:use] << :scoped
-      friendly_id_options.merge!(:scope => :parent)
+      friendly_id_options.merge!(scope: :parent)
     end
+    friendly_id_options[:use] << :globalize
 
     friendly_id :custom_slug_or_title, friendly_id_options
 
@@ -86,12 +90,12 @@ module Refinery
       def find_by_path_or_id(path, id)
         if path.present?
           if path.friendly_id?
-            find_by_path(path)
+            friendly.find_by_path(path)
           else
-            find(path)
+            friendly.find(path)
           end
         elsif id.present?
-          find(id)
+          friendly.find(id)
         end
       end
 
@@ -347,11 +351,14 @@ module Refinery
     #
     # Returns the sluggified string
     def normalize_friendly_id_with_marketable_urls(slug_string)
-      # If we are scoping by parent, no slashes are allowed. Otherwise, slug is potentially
-      # a custom slug that contains a custom route to the page.
+      # If we are scoping by parent, no slashes are allowed. Otherwise, slug is
+      # potentially a custom slug that contains a custom route to the page.
       if !Pages.scope_slug_by_parent && slug_string.include?('/')
-        slug_string.sub!(%r{^/*}, '').sub!(%r{/*$}, '') # Remove leading and trailing slashes, but allow internal
-        slug_string.split('/').select(&:present?).map {|s| normalize_friendly_id_with_marketable_urls(s) }.join('/')
+        # Remove leading and trailing slashes, but allow internal
+        slug_string.sub!(%r{^/*}, '').sub!(%r{/*$}, '')
+        slug_string.split('/').select(&:present?).map {|s|
+          normalize_friendly_id_with_marketable_urls(s)
+        }.join('/')
       else
         sluggified = slug_string.to_slug.normalize!
         if Pages.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)

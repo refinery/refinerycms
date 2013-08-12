@@ -323,7 +323,7 @@ module Refinery
           fill_in "Title", :with => "I was here first"
           click_button "Save"
 
-          Refinery::Page.last.url[:path].should == ["i-was-here-first--2"]
+          Refinery::Page.last.url[:path].first.should =~ %r{\Ai-was-here-first-.+?}
         end
       end
 

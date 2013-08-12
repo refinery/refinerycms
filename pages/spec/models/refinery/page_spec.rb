@@ -178,6 +178,7 @@ module Refinery
       let(:custom_page_slug) { 'custom-page-slug' }
       let(:custom_child_slug) { 'custom-child-slug' }
       let(:custom_route) { '/products/my-product' }
+      let(:custom_route_slug) { 'products/my-product' }
       let(:page_with_custom_slug) {
         subject.class.new(:title => page_title, :custom_slug => custom_page_slug)
       }
@@ -203,7 +204,7 @@ module Refinery
         turn_off_slug_scoping
         page_with_custom_route.save
         page_with_custom_route.url[:id].should be_nil
-        page_with_custom_route.url[:path].should == [custom_route]
+        page_with_custom_route.url[:path].should == [custom_route_slug]
         turn_on_slug_scoping
       end
 
