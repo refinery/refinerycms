@@ -1,5 +1,7 @@
 ## 3.0.0 [unreleased]
 
+* Removed Page#custom_slug. [#2375](https://github.com/refinery/refinerycms/pull/2375) [Philip Arndt](https://github.com/parndt)
+* Removed Pages#cache_pages_backend. [#2375](https://github.com/refinery/refinerycms/pull/2375) [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
 ## 2.1.1 [unreleased]
