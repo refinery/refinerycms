@@ -87,7 +87,7 @@ module Refinery
       let(:page_mt) { Page.create :title => 'Company News' }
 
       before do
-        Page.stub(:fast_menu).and_return([page_mt])
+        Page.stub(:fast_menu).and_return([home_page, page_mt])
       end
 
       describe 'set' do
@@ -97,13 +97,15 @@ module Refinery
         end
 
         it 'shows the menu_title in the menu' do
-          visit '/news'
+          visit refinery.page_path(page_mt)
 
-          find(".selected").text.strip.should == page_mt.menu_title
+          within ".selected" do
+            expect(page).to have_content(page_mt.menu_title)
+          end
         end
 
         it "does not effect browser title and page title" do
-          visit "/news"
+          visit refinery.page_path(page_mt)
 
           page.has_title?(page_mt.title)
           find("#body_content_title").text.should == page_mt.title

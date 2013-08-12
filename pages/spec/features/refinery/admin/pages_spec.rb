@@ -33,7 +33,7 @@ module Refinery
 
           within "#actions" do
             page.should have_content("Add new page")
-            page.should have_selector("a[href='/refinery/pages/new']")
+            page.should have_selector("a[href='/#{Refinery::Core.backend_route}/pages/new']")
           end
         end
 
@@ -43,7 +43,7 @@ module Refinery
 
             within "#actions" do
               page.should have_no_content("Reorder pages")
-              page.should have_no_selector("a[href='/refinery/pages']")
+              page.should have_no_selector("a[href='/#{Refinery::Core.backend_route}/pages']")
             end
           end
         end
@@ -56,7 +56,7 @@ module Refinery
 
             within "#actions" do
               page.should have_content("Reorder pages")
-              page.should have_selector("a[href='/refinery/pages']")
+              page.should have_selector("a[href='/#{Refinery::Core.backend_route}/pages']")
             end
           end
         end
@@ -127,9 +127,9 @@ module Refinery
 
           page.body.should =~ /Remove this page forever/
           page.body.should =~ /Edit this page/
-          page.body.should =~ %r{/refinery/pages/my-first-page/edit}
+          page.body.should =~ %r{/#{Refinery::Core.backend_route}/pages/my-first-page/edit}
           page.body.should =~ /Add a new child page/
-          page.body.should =~ %r{/refinery/pages/new\?parent_id=}
+          page.body.should =~ %r{/#{Refinery::Core.backend_route}/pages/new\?parent_id=}
           page.body.should =~ /View this page live/
           page.body.should =~ %r{href="/my-first-page"}
 
@@ -309,7 +309,7 @@ module Refinery
             visit refinery.admin_pages_path
 
             page.should have_no_content("Remove this page forever")
-            page.should have_no_selector("a[href='/refinery/pages/indestructible']")
+            page.should have_no_selector("a[href='/#{Refinery::Core.backend_route}/pages/indestructible']")
           end
         end
       end
@@ -421,8 +421,8 @@ module Refinery
             fill_in "Title", :with => ru_page_title
             click_button "Save"
 
-            within "#page_#{Page.last.id}" do
-              click_link "Application_edit"
+            within "#page_#{Page.last.id} .actions" do
+              find("a[href^='/#{Refinery::Core.backend_route}/pages/#{ru_page_slug_encoded}/edit']").click
             end
             within "#switch_locale_picker" do
               click_link "En"
