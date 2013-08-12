@@ -677,26 +677,6 @@ module Refinery
           page.should have_content("header class='regression'")
         end
       end
-
-      describe "with full page caching", :caching do
-        include CachingHelpers
-        let(:cached_page) { Page.create :title => 'Cached page' }
-
-        before do
-          cache_page(cached_page)
-        end
-
-        describe "creating updating or destroying a page" do
-          it "should clear the page cache" do
-            cached_page.should be_cached
-
-            visit refinery.admin_pages_path
-            click_link "Remove this page forever"
-
-            cached_page.should_not be_cached
-          end
-        end
-      end
     end
 
     describe "TranslatePages" do

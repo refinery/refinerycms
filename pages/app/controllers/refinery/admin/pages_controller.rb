@@ -1,16 +1,14 @@
 module Refinery
   module Admin
     class PagesController < Refinery::AdminController
-      include ActionController::Caching::Sweeping
       include Pages::InstanceMethods
-      cache_sweeper Pages::PageSweeper
 
       crudify :'refinery/page',
               :order => "lft ASC",
               :include => [:translations, :children],
               :paging => false
 
-      before_filter :load_valid_templates, :only => [:edit, :new]
+      before_filter :load_valid_templates, :only => [:edit, :new, :create, :update]
       before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy]
       after_filter proc { Pages::Caching.new().expire! }, :only => :update_positions
 

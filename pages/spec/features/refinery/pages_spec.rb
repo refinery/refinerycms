@@ -325,29 +325,6 @@ module Refinery
       end
     end
 
-    describe "full page caching" do
-      include CachingHelpers
-      let(:cached_page) { Page.create :title => 'Another Cached page' }
-
-      context "is enabled", :caching do
-        it "should create a cached file when none exists" do
-          cached_page.should_not be_cached
-
-          visit refinery.page_path(cached_page)
-
-          cached_page.should be_cached
-        end
-      end
-
-      context "is disabled" do
-        it "should not cache a page" do
-          page.should_not be_cached
-          visit refinery.page_path(cached_page)
-          cached_page.should_not be_cached
-        end
-      end
-    end
-
     context "with multiple locales" do
 
       describe "redirects" do

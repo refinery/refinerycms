@@ -18,8 +18,6 @@ gem 'globalize3', github: 'svenfuchs/globalize3', branch: 'rails4'
 gem 'paper_trail', github: 'airblade/paper_trail', branch: 'master'
 gem 'devise', '~> 3.0.2'
 gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set', branch: 'master'
-gem 'rails-observers'
-gem 'actionpack-page_caching'
 
 # Database Configuration
 unless ENV['TRAVIS']
