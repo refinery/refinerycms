@@ -557,7 +557,7 @@ module Refinery
               sub_page.parent.should == parent_page
               visit refinery.admin_pages_path
               within "#page_#{sub_page.id}" do
-                click_link "Application_edit"
+                click_link "Application edit"
               end
               fill_in "Title", :with => ru_page_title
               click_button "Save"
