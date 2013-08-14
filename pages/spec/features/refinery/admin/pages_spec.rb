@@ -545,6 +545,25 @@ module Refinery
               page.should have_css('li', :count => 1)
             end
           end
+
+          context "when page is a child page" do
+            it 'succeeds' do
+              ru_page.destroy!
+              parent_page = Page.create(:title => "Parent page")
+              sub_page = Globalize.with_locale(:ru) {
+                Page.create :title => ru_page_title
+                Page.create :title => ru_page_title, :parent_id => parent_page.id
+              }
+              sub_page.parent.should == parent_page
+              visit refinery.admin_pages_path
+              within "#page_#{sub_page.id}" do
+                click_link "Application_edit"
+              end
+              fill_in "Title", :with => ru_page_title
+              click_button "Save"
+              page.should have_content("'#{ru_page_title}' was successfully updated")
+            end
+          end
         end
       end
 
