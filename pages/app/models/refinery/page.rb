@@ -70,7 +70,10 @@ module Refinery
           # called 'example' otherwise it may clash with another page called /example.
           path = path.split('/').select(&:present?)
           page = by_slug(path.shift, :parent_id => nil).first
-          page = page.children.by_slug(path.shift).first while page && path.any?
+          while page && path.any? do
+            slug_or_id = path.shift
+            page = page.children.by_slug(slug_or_id).first || page.children.find(slug_or_id)
+          end
         else
           page = by_slug(path).first
         end
