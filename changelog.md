@@ -1,6 +1,9 @@
 ## 2.1.1 [unreleased]
 
 * Fixed menu reordering bug when `Refinery::Core.backend_route` was set to something different than `refinery`. [#2368](https://github.com/refinery/refinerycms/pull/2368). [xyz](https://github.com/xyz)
+* Fixed bug in serializelist.js where we were iterating through object fields instead of the array elements. [#2360](https://github.com/refinery/refinerycms/pull/2360). Uģis Ozols](https://github.com/ugisozols)
+* Bumped `selenium-webdriver` gem dependency version to ~> 2.34.0.
+* Fixed bug which occurred when trying to save a child page with no default translation. [#2379](https://github.com/refinery/refinerycms/pull/2379). [Jess Brown](https://github.com/jess) & [Uģis Ozols](https://github.com/ugisozols)
 
 ## 2.1.0 [5 August 2013]
 
