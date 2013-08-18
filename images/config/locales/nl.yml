@@ -18,7 +18,7 @@ nl:
         actions:
           create_new_image: Nieuwe afbeelding toevoegen
         records:
-          no_images_yet: Er zijn nog geen afbeeldingen. Klik op "Nieuwe afbeelding toevoegen" om uw eerste afbleelding toe te voegen.
+          no_images_yet: Er zijn nog geen afbeeldingen. Klik op "Nieuwe afbeelding toevoegen" om uw eerste afbeelding toe te voegen.
         index:
           view:
             switch_to: De %{view_name}versie bekijken
