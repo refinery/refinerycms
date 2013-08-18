@@ -15,8 +15,6 @@ ru:
       destroyed: "%{what} уничтожен(а)."
     site_bar:
       log_out: Выйти
-      switch_to_your_website: Перейти на сайт
-      switch_to_your_website_editor: Перейти в панель управления
     admin:
       menu:
         reorder_menu: Изменить порядок в меню
@@ -49,6 +47,8 @@ ru:
         button_text: Поиск
         results_for_html: "Результаты поиска для &#8216;<em>%{query}</em>&#8217;"
         no_results: Ничего не найдено
+        cancel_search: Отмена поиска
+        search_input_notice: Введите строку содержащую то, что вы ищете, минимум 3 символа.
       delete:
         message: Вы уверены, что хотите удалить '%{title}'?
       error_messages:
@@ -69,9 +69,15 @@ ru:
       enable_javascript_html: Для использования всех возможностей этой страницы необходимо включить JavaScript
       here_are: Вот
       instructions_enable_javascript_html: инструкции как включить Javascript в вашем браузере
+    site_bar_helper:
+      switch_to_your_website: Перейти на сайт
+      switch_to_your_website_editor: Перейти в панель управления
   time:
     formats:
       short: "%A, %d %B %Y"
   will_paginate:
     previous_label: "&laquo;"
     next_label: "&raquo;"
+  js:
+    admin:
+      confirm_changes: Любые сделанные изменения будут потеряны. Вы уверены, что хотите продолжить без сохранения?
