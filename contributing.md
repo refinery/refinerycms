@@ -24,7 +24,6 @@ If you'd like to submit a pull request please adhere to the following:
 4. Single-quotes instead of double-quotes unless you are using string
    interpolation or escapes.
 5. General Rails/Ruby naming conventions for files and classes
-6. *Do not* use Ruby 1.9 stubby proc syntax
 
 Please note that you must adhere to each of the above mentioned rules.
 Failure to do so will result in an immediate closing of the pull
