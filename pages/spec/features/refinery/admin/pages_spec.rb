@@ -252,6 +252,18 @@ module Refinery
               ::I18n.t('switch_to_website', :scope => 'refinery.site_bar')
             )
           end
+
+          it 'will show pages with inherited templates', :js do
+            visit refinery.admin_pages_path
+
+            find('a[tooltip^=Edit]').click
+            fill_in 'Title', :with => 'Searchable'
+            click_link 'Advanced options'
+            select 'Searchable', :from => 'View template'
+            click_button 'Preview'
+
+            new_window_should_have_content('Form application/search_form')
+          end
         end
 
         context 'a brand new page' do
