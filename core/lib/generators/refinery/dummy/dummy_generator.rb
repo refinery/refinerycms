@@ -52,6 +52,15 @@ module Refinery
       end
     end
 
+    def test_dummy_inherited_templates
+      template "rails/search_form.html.erb",
+        "#{dummy_path}/app/views/application/_search_form.html.erb",
+        :force => true
+      template "rails/searchable.html.erb",
+        "#{dummy_path}/app/views/refinery/pages/searchable.html.erb",
+        :force => true
+    end
+
     attr :database
 
   protected
