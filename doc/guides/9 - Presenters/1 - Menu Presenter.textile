@@ -40,7 +40,7 @@ def footer_menu
 end
 </ruby>
 
-We create an instance of +Refinery::Menu+ by passing a collection of footer pages (+Refinery::Page.footer_menu_pages+) to it. We need it because it will be the data that will be "presented" by Refinery::Pages::MenuPresenter. We assign this instance to a variable called `presenter` in order to configure this presenter. I want my footer menu to be wrapped inside of a +div+ tag instead of the default +nav+ tag and I also want it to have a CSS class and an ID of +footer_menu+ instead of the default +menu+ one:
+We create an instance of +Refinery::Menu+ by passing a collection of footer pages (+Refinery::Page.footer_menu_pages+) to it. We need it because it will be the data that will be "presented" by +Refinery::Pages::MenuPresenter+. We assign this instance to a variable called +presenter+ in order to configure this presenter. I want my footer menu to be wrapped inside of a +div+ tag instead of the default +nav+ tag and I also want it to have a CSS class and an ID of +footer_menu+ instead of the default +menu+ one:
 
 <ruby>
 presenter.dom_id = "footer_menu"
