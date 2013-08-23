@@ -1,5 +1,9 @@
 h2. Resources
 
+This guide will show you how to set a Content-Disposition when working with resources.
+
+endprologue.
+
 h3. How to change Content-Disposition
 
 Refinery comes with support for uploading files (in addition to images).  By default, file uploads are given an http header of +Content-Disposition: attachment; filename=xxx+  
