@@ -3,6 +3,8 @@ h2. Best Practices and Frequently Asked Questions
 This guide covers recommendations on best practices for coding Refinery sites,
 and also attempts to document answers to the most frequently asked questions.
 
+endprologue.
+
 h3. General
 
 h4. I've never done any Ruby or Rails development. Will Refinery be easy to use for me?
