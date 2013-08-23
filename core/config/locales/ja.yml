@@ -59,14 +59,14 @@ ja:
       form_advanced_options_menu:
         advanced_options: その他の設定
         toggle_advanced_options: メタタグの設定とメニューオプションの設定
-        save_as_draft: 準備稿として保存する
+        save_as_draft: 下書きとして保存する
     message:
       close: 閉じる
       close_this_message: このメッセージを閉じる
     draft_page_message:
       not_live: このページはまだ公開されていません。
     footer:
-      copyright: '著作権© %{year} %{site_name}'
+      copyright: 'Copyright © %{year} %{site_name}'
     no_script:
       enable_javascript_html: このページを快適にお使いになるにはJavaScriptを有効にする必要があります。
       here_are:
