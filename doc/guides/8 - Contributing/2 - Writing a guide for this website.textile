@@ -21,6 +21,7 @@ h3. Submitting the guide
 * Go to "http://github.com/refinery/refinerycms":http://github.com/refinery/refinerycms
 * If you have a fork of refinerycms already, delete it (_if you're not going to lose work. This makes it much easier for us to integrate your changes back in_)
 * Click on "fork" to make a fresh new fork on your own account.
+* Clone your new fork to your local machine
 
 Next make your changes or new guide in the 'doc/guides' folder.
 
