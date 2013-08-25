@@ -31,6 +31,7 @@ WYMeditor.STRINGS['fr'] = {
 	Summary:			'Résumé',
 	Number_Of_Rows:	 'Nombre de lignes',
 	Number_Of_Cols:	 'Nombre de colonnes',
+	Insert: 		 'Insérer',
 	Submit:			 'Envoyer',
 	Cancel:			 'Annuler',
 	Choose:			 'Choisir',
