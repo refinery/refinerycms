@@ -78,7 +78,7 @@ h5. RubyGems
 The easiest way to install Refinery is to take advantage of RubyGems.
 
 <shell>
-# gem install refinerycms
+$ gem install refinerycms
 </shell>
 
 NOTE: This step may take some time to load as it needs to download and install all the ruby gems Refinery depends on.
