@@ -23,7 +23,7 @@ module Refinery
 
     def backend_route
       @backend_route ||= if namespacing.underscore != plural_name
-          %Q{"#\{Refinery::Core.backend_route\}/#{namespacing.underscore}"}
+        %Q{"#\{Refinery::Core.backend_route\}/#{namespacing.underscore}"}
       else
         "Refinery::Core.backend_route"
       end
