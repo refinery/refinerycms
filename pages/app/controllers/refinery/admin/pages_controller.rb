@@ -10,7 +10,6 @@ module Refinery
 
       before_filter :load_valid_templates, :only => [:edit, :new, :create, :update]
       before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy]
-      after_filter proc { Pages::Caching.new().expire! }, :only => :update_positions
 
       def new
         @page = Page.new(params.except(:controller, :action, :switch_locale))
