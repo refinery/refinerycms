@@ -30,7 +30,7 @@ module Refinery
 
     protected
     def minimum_depth
-      map(&:depth).min
+      map(&:depth).compact.min
     end
 
   end
