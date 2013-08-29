@@ -38,10 +38,15 @@
     color: white;
   }
   .ui-dialog-titlebar-close {
+    background-color: #22A7F2;
+    padding-right:0;
+    padding-left:0;
+    padding-top: 5px;
     position: absolute;
     right: 10px;
-    top: 5px;
-    width: 19px;
+    width: 22px;
+    height: 33px;
+    line-height: 33px;
     border: none;
     span {
       display: block;
