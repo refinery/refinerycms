@@ -44,7 +44,7 @@ module Refinery
         ##
         # Injects Dragonfly::Middleware for Refinery::Images into the stack
         def attach!(app)
-          if ::Rails.application.config.action_controller.perform_caching
+          if defined?(::Rack::Cache)
             app.config.middleware.insert_after 'Rack::Cache', 'Dragonfly::Middleware', :refinery_images
           else
             app.config.middleware.use 'Dragonfly::Middleware', :refinery_images
