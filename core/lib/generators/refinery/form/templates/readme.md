@@ -1,4 +1,4 @@
-# <%= extension_plural_name.titleize %> extension for Refinery CMS.
+# <%= extension_plural_name.titleize %> form extension for Refinery CMS.
 
 ## How to build this extension as a gem (not required)
 
