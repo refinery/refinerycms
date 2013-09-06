@@ -21,9 +21,11 @@ module Refinery
         @user = Refinery::User.new params[:user].except(:roles)
         @selected_plugin_names = params[:user][:plugins] || []
         @selected_role_names = params[:user][:roles] || []
+        @selected_locales = params[:user][:locales] || []
 
         if @user.save
           @user.plugins = @selected_plugin_names
+          @user.locales = @selected_locales
           # if the user is a superuser and can assign roles according to this site's
           # settings then the roles are set with the POST data.
           unless current_refinery_user.has_role?(:superuser) && Refinery::Authentication.superuser_can_assign_roles
