@@ -93,7 +93,7 @@
             <% @resources.each do |resource| -%>
               <% resource_linked = (resource.url == params[:current_link]) unless params[:current_link].blank? %>
               <li<%= ' class="linked"'.html_safe if resource_linked %>>
-                <%= link_to "#{resource.title}.#{resource.ext}", asset_paths.compute_public_path(resource.url, ''),
+                <%= link_to "#{resource.title}.#{resource.ext}", path_to_asset(resource.url),
                             :title => t('link_to_this_resource', :scope => 'refinery.admin.pages_dialogs.link_to.your_resource'),
                             :rel => resource.title,
                             :class => "page_link #{resource.ext}" %>
