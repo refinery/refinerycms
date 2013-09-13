@@ -10,7 +10,7 @@ namespace :refinery do
     end
 
     task :setup_dummy_app do
-      require 'refinerycms'
+      require 'refinerycms-core'
 
       params = %w(--quiet)
       params << "--database=#{ENV['DB']}" if ENV['DB']
