@@ -394,6 +394,8 @@ A +refinery:events+ generator is created for you to install the migration to cre
 
 TIP: When new extensions are added it's a good idea to restart your server for new changes to be loaded in.
 
+TIP: Models in Refinery engines expect a string field that acts as the title identifier when displayed in lists in the admin pages. If a title field is not included, the first string field found will be used. Models without a usable field for a title will cause the admin to raise an error, so please include a title field or alias when creating models in your engine.
+
 Now go to the backend of your Refinery site ("http://localhost:3000/refinery":http://localhost:3000/refinery) and you'll notice a new tab called "Events". Click on "Add new event" and you'll see something like this:
 
 !/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfODYwX2V2ZW50X3BhZ2VfZWRpdC5wbmciXV0/event_page_edit.png!
