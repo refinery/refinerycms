@@ -20,7 +20,7 @@
 /* VISUAL FEEDBACK */
 
 /* basic */
-  body  { background: #fff;}
+  body  { background: #fff; margin: 0;}
 
 /* make HTML blocks visible */
   p,
@@ -58,7 +58,7 @@
           margin:6px 0px;
           border: 1px dotted #cccccc;
           }
-  td      { background: #F0F4F8; }
+  td      { background: #F0F4F8; height: 1.6em; }
   th      { background: #ffffcc; }
   ul,
   ol      { border-left:20px solid #B9C4D0; padding:0px 5px; }
@@ -68,10 +68,6 @@
   blockquote  { margin-left: 30px; }
   pre       { background-color:transparent; border: 1px solid white; }
 
-/* Gecko min height fix */
-  p       { min-height: 1em; } /*min-height is needed under Firefox, because empty parargraphs */
-  html.ie p    { min-height: auto; } /* but we have to remove it under IE7 because it triggers the 'haslayout' mode */
-  td      { height: 1.6em; }
 
 /* labels */
   p           { background-image: asset_url('wymeditor/skins/refinery/html5/p.png', image); }
@@ -102,6 +98,7 @@
   progress    { background-image: asset_url('wymeditor/skins/refinery/html5/progress.png', image); }
   section     { background-image: asset_url('wymeditor/skins/refinery/html5/section.png', image); }
   time        { background-image: asset_url('wymeditor/skins/refinery/html5/time.png', image); }
+
 
 /* specific HTML elements */
 	caption	 { text-align: left; }
