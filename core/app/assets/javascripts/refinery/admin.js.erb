@@ -860,9 +860,7 @@ var image_picker = {
     ).trigger("change");
 
     var size = this.picker.options.thumbnail || 'original';
-    size='list';
     this.image.src = $(this.image).attr('data-' + size);
-    alert("txt: " + this.image.src);
     current_image = $(this.container).find(this.picker.options.image_display);
     current_image.replaceWith(
       $("<img src='"+this.image.src+"?"+Math.floor(Math.random() * 100000)+"' id='"+current_image.attr('id')+"' class='"+this.picker.options.image_display.replace(/^./, '')+" brown_border' />")
