@@ -1099,7 +1099,8 @@ a img {
 /* page parts */
 ul#page_parts {
   float: left;
-  width: 92%;
+  /* width: 92%; */
+  width: 960px;
 }
 ul#page_parts, ul#page_parts_controls {
   margin: 20px 0 0 0;
