@@ -83,3 +83,35 @@ following line to the _end_ of +config/environments/development.rb+:
 <ruby>
 Refinery::Core.config.s3_backend = false
 </ruby>
+
+h3. Final look at the file.
+
+Depending on if you want the setting in production.rb, development.rb or application.rb 
+
+Around the top of the file production file
+<ruby>
+MyApp::Application.configure do
+  Refinery::Core.config.s3_backend = true
+</ruby>
+
+Lower in the application file.
+<ruby>
+    include Refinery::Engine
+    after_inclusion do
+      ##[::ApplicationController, ::ApplicationHelper, ::Refinery::AdminController].each do |c|
+      [Refinery::ApplicationController, Refinery::AdminController, ::ApplicationHelper].each do |c|
+          c.send :include, ::RefineryPatch
+
+        Refinery::Core.configure do |config|
+          config.s3_backend = true
+          config.s3_access_key_id = ENV['S3_KEY']
+          config.s3_secret_access_key = ENV['S3_SECRET']
+          config.s3_bucket_name = ENV['S3_BUCKET']
+        end
+      end
+    end
+</ruby>
+
+
+
+
