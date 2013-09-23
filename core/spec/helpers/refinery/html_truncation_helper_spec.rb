@@ -17,7 +17,8 @@ module Refinery
 
       context "when preserve_html_tags option is not present" do
         it "falls back to original truncate method" do
-          helper.truncate("<p>Turducken frankfurter ham hock bacon</p>").should eq("<p>Turducken frankfurter ha...")
+          helper.truncate("<p>Turducken frankfurter ham hock bacon</p>").html_safe.should 
+                 eq("<p>Turducken frankfurter ha...")
         end
       end
     end

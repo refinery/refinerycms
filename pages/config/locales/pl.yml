@@ -56,7 +56,6 @@ pl:
           parent_page: Strona nadrzędna
           advanced_options: Opcje zaawansowane
           menu_title: Tytuł menu
-          custom_slug: Inny slug
           show_in_menu_title: Pokaż w menu
           show_in_menu_description: Wyświetl tę stronę w menu witryny
           show_in_menu_help: 'Odznacz tę kratkę aby usunąć tę stronę z menu witryny. To może być przydatne jeżeli chcesz linkować do tej strony, ale nie chcesz aby była widoczna w menu.'
@@ -68,7 +67,6 @@ pl:
           link_url_help: 'Jeżeli chcesz, aby ta strona prowadziła do innej strony lub witryny kiedy klikniesz ją w menu, wpisz tu adres URL, na przykład http://google.com.W innym wypadku pozostaw to pole pustym.'
           parent_page_help: Możesz umieścić tę stronę pod inną wybierając stronę nadrzędną z listy. Jeżeli ta strona ma być stroną najwyższego poziomu pozostaw to pole pustym.
           menu_title_help: 'Jeżeli chcesz aby ta strona miała inny tytuł w menu wybierz &apos;Tekst&apos; i wpisz go tutaj.'
-          custom_slug_help: Slug to czytelny identyfikator strony widoczny w URLu, np. &pos;o-nas&pos;. Aby nadpisać slug, który jest automatycznie generowany przez Refinery, wpisz go tutaj.
           layout_template: Layout strony
           layout_template_help: Możesz zmienić layout dla tej strony
           view_template: Szablon strony

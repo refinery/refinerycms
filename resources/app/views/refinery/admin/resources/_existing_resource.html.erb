@@ -6,7 +6,7 @@
         <% @resources.each do |resource| -%>
           <% resource_linked = ((@resource_id.present? && @resource_id == resource.id) || (params[:current_link].present? && resource.url == params[:current_link])) %>
           <li<%= ' class="linked"'.html_safe if resource_linked %>>
-            <%= link_to "#{resource.title} (#{resource.file_name})", asset_paths.compute_public_path(resource.url, ''),
+            <%= link_to "#{resource.title} (#{resource.file_name})", path_to_asset(resource.url),
                         :title => t('.link_to_file'),
                         :rel => resource.title,
                         :class => 'page_link',

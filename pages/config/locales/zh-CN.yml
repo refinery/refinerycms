@@ -48,7 +48,6 @@ zh-CN:
           page_options: 页面选项
           parent_page: 父页面
           menu_title: 菜单项名称
-          custom_slug: 自定义slug
           custom_title: 自定义标题
           show_in_menu_title: 在菜单中显示
           show_in_menu_description: 在网站菜单中显示这个页面
@@ -60,7 +59,6 @@ zh-CN:
           link_url_help: 如果您想要在菜单中点这个页面就跳到其他网站或是页面的话, 在这里输入网址, 例如 http://google.com, 不然就留空
           parent_page_help: 您可以在列表中让一个页面依附在另一个页面之下. 如果您想要让这个页面为第一层页面, 就不要填写.
           menu_title_help: 如果您想要菜单有一个不同于这个页面上的名称, 请输入
-          custom_slug_help: slug是用来帮助创建一个页面完整URL的标示符，例如 &apos;about-up&apos;. 要覆盖掉Refinery自动创建的slug, 在此输入
           custom_title_help: 如果您想要此页面在菜单里有个不一样的名称, 请选择 &apos;文字&apos; , 然后在这里输入.
         actions:
           create_new_page: 添加新页面

@@ -53,7 +53,6 @@ nl:
           page_options: Pagina-opties
           parent_page: Bovenliggende pagina
           menu_title: Menutitel
-          custom_slug: Aangepaste 'slug'
           show_in_menu_title: In menu tonen
           show_in_menu_description: Laat deze pagina zien in het menu op de site
           show_in_menu_help: Vink dit vakje uit, om de pagina niet in het menu te laten zien. Dit kan handig zijn als u een pagina hebt waar u naar wilt linken, zonder dat de pagina in het menu geplaatst wordt.
@@ -64,7 +63,6 @@ nl:
           link_url_help: Als u wilt dat deze pagina naar een andere website of pagina verwijst, wanneer deze pagina in het menu geselecteerd wordt, vul dan een adres in. Bijvoorbeeld http://google.com. Laat het leeg om de pagina zelf te laten zien.
           parent_page_help: U kunt een pagina onder een andere pagina hangen, door de bovenliggende pagina te selecteren in deze lijst. Als de pagina op het hoogste niveau moet liggen, selecteert u de lege optie.
           menu_title_help: Als u wilt dat de pagina in het menu een andere titel heeft dan op de pagina zelf, voer die dan hier in.
-          custom_slug_help: Een 'slug' is een leesbare aanduiding die in het adres van de pagina gebruikt wordt, bijvoorbeeld 'over'. Refinery genereert automatisch slugs, hier kunt u een aangepaste slug instellen.
           view_template: Sjabloon bekijken
           view_template_help: U kunt een andere sjabloon voor deze pagina kiezen
         actions:

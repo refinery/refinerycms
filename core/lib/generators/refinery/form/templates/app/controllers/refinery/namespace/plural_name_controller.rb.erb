@@ -9,7 +9,8 @@ module Refinery
       end
 
       def thank_you
-        @page = Refinery::Page.find_by_link_url("/<%= plural_name %>/thank_you", :include => [:parts])
+        @page = Refinery::Page.where(link_url: "/<%= plural_name %>/thank_you").
+                               includes(:parts).first_or_create!
       end
 
       def new
@@ -45,7 +46,8 @@ module Refinery
     protected
 
       def find_page
-        @page = Refinery::Page.find_by_link_url('/<%= plural_name %>/new', :include => [:parts])
+        @page = Refinery::Page.where(link_url: "/<%= plural_name %>/new").
+                               includes(:parts).first_or_create!
       end
 
     end

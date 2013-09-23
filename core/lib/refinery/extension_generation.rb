@@ -95,7 +95,7 @@ module Refinery
     def append_extension_to_gemfile!
       unless Rails.env.test? || (self.behavior != :revoke && extension_in_gemfile?)
         path = extension_pathname.parent.relative_path_from(gemfile.parent)
-        append_file gemfile, "\ngem '#{gem_name}', :path => '#{path}'"
+        append_file gemfile, "\ngem '#{gem_name}', path: '#{path}'"
       end
     end
 
@@ -118,7 +118,7 @@ module Refinery
       unless options[:pretend]
         merge_existing_files! if existing_extension?
 
-        copy_or_merge_seeds!
+        copy_or_merge_seeds! if self.behavior != :revoke
 
         append_extension_to_gemfile!
       end
@@ -162,7 +162,7 @@ module Refinery
 
     def evaluate_templates!
       viable_templates.each do |source_path, destination_path|
-        next if /seeds.rb.erb/ === source_path.to_s
+        next if /seeds.rb.erb/ === source_path.to_s && self.behavior != :revoke
 
         destination_path.sub!('.erb', '') if source_path.to_s !~ /views/
 
@@ -184,7 +184,7 @@ module Refinery
     end
 
     def finalize_extension!
-      if self.behavior != :revoke && !self.options['pretend']
+      if self.behavior != :revoke && !options[:pretend]
         instruct_user!
       else
         erase_destination!

@@ -97,15 +97,17 @@ module Refinery
         end
 
         it 'shows the menu_title in the menu' do
-          visit '/news'
+          visit refinery.url_for(page_mt.url)
 
-          find(".selected").text.strip.should == page_mt.menu_title
+          within ".selected" do
+            expect(page).to have_content(page_mt.menu_title)
+          end
         end
 
-        it "does not effect browser title and page title" do
-          visit "/news"
+        it "does not affect browser title and page title" do
+          visit refinery.url_for(page_mt.url)
 
-          page.has_title?(page_mt.title)
+          page.should have_title(page_mt.title)
           find("#body_content_title").text.should == page_mt.title
         end
       end
@@ -145,61 +147,6 @@ module Refinery
 
         find("#body_content_title").text.should == page_bt.title
         find(".selected").text.strip.should == page_bt.title
-      end
-    end
-
-    describe 'custom_slug' do
-      let(:page_cs) { Page.create :title => 'About Us' }
-      before do
-        Page.stub(:fast_menu).and_return([page_cs])
-      end
-
-      describe 'not set' do
-        it 'makes friendly_id from title' do
-          visit '/about-us'
-
-          current_path.should == '/about-us'
-        end
-      end
-
-      describe 'set' do
-        before do
-          page_cs.custom_slug = "about-custom"
-          page_cs.save
-        end
-
-        it 'should make and use a new friendly_id' do
-          visit '/about-custom'
-
-          current_path.should == '/about-custom'
-        end
-      end
-
-      describe 'set and unset' do
-        before do
-          page_cs.custom_slug = "about-custom"
-          page_cs.save
-          page_cs.custom_slug = ""
-          page_cs.save
-          page_cs.reload
-        end
-      end
-
-      describe 'set with slashes' do
-        before do
-          Pages.stub(:scope_slug_by_parent).and_return(false)
-          page_cs.custom_slug = "products/my product/cool one!"
-          page_cs.save
-        end
-
-        after do
-          Pages.stub(:scope_slug_by_parent).and_return(true)
-        end
-
-        it 'should make and use a new friendly_id' do
-          visit '/products/my-product/cool-one'
-          current_path.should == '/products/my-product/cool-one'
-        end
       end
     end
 
@@ -325,29 +272,6 @@ module Refinery
       end
     end
 
-    describe "full page caching" do
-      include CachingHelpers
-      let(:cached_page) { Page.create :title => 'Another Cached page' }
-
-      context "is enabled", :caching do
-        it "should create a cached file when none exists" do
-          cached_page.should_not be_cached
-
-          visit refinery.page_path(cached_page)
-
-          cached_page.should be_cached
-        end
-      end
-
-      context "is disabled" do
-        it "should not cache a page" do
-          page.should_not be_cached
-          visit refinery.page_path(cached_page)
-          cached_page.should_not be_cached
-        end
-      end
-    end
-
     context "with multiple locales" do
 
       describe "redirects" do
@@ -358,9 +282,7 @@ module Refinery
         let(:ru_page_title) { 'Новости' }
         let(:ru_page_slug_encoded) { '%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8' }
         let!(:news_page) do
-          _page = Globalize.with_locale(:en) {
-            Page.create :title => en_page_title
-          }
+          _page = Globalize.with_locale(:en) { Page.create title: en_page_title }
           Globalize.with_locale(:ru) do
             _page.title = ru_page_title
             _page.save
@@ -402,7 +324,6 @@ module Refinery
               _page.title = nested_page_title
               _page.save
             end
-
             _page
           end
 
