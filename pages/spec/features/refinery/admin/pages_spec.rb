@@ -522,9 +522,9 @@ module Refinery
             end
           end
 
-          it "uses id instead of slug in admin" do
+          it "uses slug in admin" do
             within "#page_#{ru_page_id}" do
-              page.find_link('Edit this page')[:href].should include(ru_page_id.to_s)
+              page.find_link('Edit this page')[:href].should include(ru_page_slug_encoded)
             end
           end
 
