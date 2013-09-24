@@ -43,7 +43,6 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
 
     Refinery::Page.create_translation_table!({
       :title => :string,
-      :custom_slug => :string,
       :menu_title => :string,
       :slug => :string
     })

@@ -16,8 +16,7 @@ Dir[File.expand_path('../tasks/**/*', __FILE__)].each do |task|
 end
 
 require "refinerycms-testing"
-Refinery::Testing::Railtie.load_tasks
-Refinery::Testing::Railtie.load_dummy_tasks(File.dirname(__FILE__))
+Refinery::Testing::Railtie.load_dummy_tasks File.dirname(__FILE__)
 
 desc "Build gem files for all projects"
 task :build => "all:build"

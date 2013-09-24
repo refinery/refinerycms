@@ -33,7 +33,7 @@ module Refinery
 
           within "#actions" do
             page.should have_content("Add new page")
-            page.should have_selector("a[href='/refinery/pages/new']")
+            page.should have_selector("a[href='/#{Refinery::Core.backend_route}/pages/new']")
           end
         end
 
@@ -43,7 +43,7 @@ module Refinery
 
             within "#actions" do
               page.should have_no_content("Reorder pages")
-              page.should have_no_selector("a[href='/refinery/pages']")
+              page.should have_no_selector("a[href='/#{Refinery::Core.backend_route}/pages']")
             end
           end
         end
@@ -56,7 +56,7 @@ module Refinery
 
             within "#actions" do
               page.should have_content("Reorder pages")
-              page.should have_selector("a[href='/refinery/pages']")
+              page.should have_selector("a[href='/#{Refinery::Core.backend_route}/pages']")
             end
           end
         end
@@ -127,9 +127,9 @@ module Refinery
 
           page.body.should =~ /Remove this page forever/
           page.body.should =~ /Edit this page/
-          page.body.should =~ %r{/refinery/pages/my-first-page/edit}
+          page.body.should =~ %r{/#{Refinery::Core.backend_route}/pages/my-first-page/edit}
           page.body.should =~ /Add a new child page/
-          page.body.should =~ %r{/refinery/pages/new\?parent_id=}
+          page.body.should =~ %r{/#{Refinery::Core.backend_route}/pages/new\?parent_id=}
           page.body.should =~ /View this page live/
           page.body.should =~ %r{href="/my-first-page"}
 
@@ -309,7 +309,7 @@ module Refinery
             visit refinery.admin_pages_path
 
             page.should have_no_content("Remove this page forever")
-            page.should have_no_selector("a[href='/refinery/pages/indestructible']")
+            page.should have_no_selector("a[href='/#{Refinery::Core.backend_route}/pages/indestructible']")
           end
         end
       end
@@ -323,7 +323,7 @@ module Refinery
           fill_in "Title", :with => "I was here first"
           click_button "Save"
 
-          Refinery::Page.last.url[:path].should == ["i-was-here-first--2"]
+          Refinery::Page.last.url[:path].first.should =~ %r{\Ai-was-here-first-.+?}
         end
       end
 
@@ -421,8 +421,8 @@ module Refinery
             fill_in "Title", :with => ru_page_title
             click_button "Save"
 
-            within "#page_#{Page.last.id}" do
-              click_link "Application_edit"
+            within "#page_#{Page.last.id} .actions" do
+              find("a[href^='/#{Refinery::Core.backend_route}/pages/#{ru_page_slug_encoded}/edit']").click
             end
             within "#switch_locale_picker" do
               click_link "En"
@@ -522,9 +522,9 @@ module Refinery
             end
           end
 
-          it "uses id instead of slug in admin" do
+          it "uses slug in admin" do
             within "#page_#{ru_page_id}" do
-              page.find_link('Edit this page')[:href].should include(ru_page_id.to_s)
+              page.find_link('Edit this page')[:href].should include(ru_page_slug_encoded)
             end
           end
 
@@ -557,7 +557,7 @@ module Refinery
               sub_page.parent.should == parent_page
               visit refinery.admin_pages_path
               within "#page_#{sub_page.id}" do
-                click_link "Application_edit"
+                click_link "Application edit"
               end
               fill_in "Title", :with => ru_page_title
               click_button "Save"
@@ -677,26 +677,6 @@ module Refinery
           page.should have_content("header class='regression'")
         end
       end
-
-      describe "with full page caching", :caching do
-        include CachingHelpers
-        let(:cached_page) { Page.create :title => 'Cached page' }
-
-        before do
-          cache_page(cached_page)
-        end
-
-        describe "creating updating or destroying a page" do
-          it "should clear the page cache" do
-            cached_page.should be_cached
-
-            visit refinery.admin_pages_path
-            click_link "Remove this page forever"
-
-            cached_page.should_not be_cached
-          end
-        end
-      end
     end
 
     describe "TranslatePages" do
@@ -752,7 +732,7 @@ module Refinery
 
       describe "Pages Link-to Dialog" do
         before do
-          Refinery::I18n.frontend_locales = [:en, :ru]
+          Refinery::I18n.stub(:frontend_locales).and_return [:en, :ru]
 
           # Create a page in both locales
           about_page = Globalize.with_locale(:en) do
