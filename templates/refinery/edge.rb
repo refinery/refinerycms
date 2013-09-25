@@ -13,14 +13,8 @@ end
 
 append_file 'Gemfile' do
 "
-gem 'refinerycms', path: '/code/parndt/refinerycms'#github: 'refinery/refinerycms', branch: 'master'
-gem 'refinerycms-i18n', path: '/code/refinerycms/refinerycms-i18n'#github: 'refinery/refinerycms-i18n', branch: 'master'
-# Optionally, specify additional Refinery CMS Extensions here:
-#  gem 'refinerycms-acts-as-indexed', '~> 1.0.0'
-#  gem 'refinerycms-blog', github: 'refinery/refinerycms-blog', branch: 'master'
-#  gem 'refinerycms-inquiries', github: 'refinery/refinerycms-inquiries', branch: 'master'
-#  gem 'refinerycms-search', github: 'refinery/refinerycms-search', branch: 'master'
-#  gem 'refinerycms-page-images', github: 'refinery/refinerycms-page-images', branch: 'master'
+gem 'refinerycms', github: 'refinery/refinerycms', branch: 'master'
+gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
 "
 end
 
