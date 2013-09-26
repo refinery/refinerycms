@@ -20,3 +20,4 @@ end
 # see https://github.com/refinery/refinerycms/issues/2273
 require 'decorators'
 require 'jquery-rails'
+require 'jquery-ui-rails'
