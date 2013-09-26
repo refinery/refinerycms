@@ -682,7 +682,7 @@ var page_options = {
 //       if true, enables selection of multiple images. Does not allow
 //       insertion into WYM without manual callback manipulation.
 function ImageDialog(options) {
-  self = this;
+  var self = this;
   this.defaults = {callback: null, multiple: false};
   this.settings = $.extend({}, this.defaults, options);
 
