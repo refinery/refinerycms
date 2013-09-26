@@ -7,13 +7,14 @@
 
   hide_cancel = from_dialog? unless defined?(hide_cancel).presence
 
+
   unless hide_cancel
     cancel_button_text  ||= t('.cancel')
     unless defined?(cancel_title)
       cancel_title = t('.cancel_lose_changes')
     end
     cancel_button_id    ||= "cancel_button"
-    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? refinery.send(Refinery.route_for_model(f.object.class, :plural => true)) : back)
+    cancel_url          ||= url_for(:back) # (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? refinery.send(Refinery.route_for_model(f.object.class, :plural => true)) : back)
   end
 
   continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and f.object.persisted?)
