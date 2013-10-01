@@ -79,6 +79,11 @@ module Refinery
         created_image.thumbnail(:geometry => '200x200').url.should_not == created_image.thumbnail(:geometry => '200x201').url
       end
 
+      it "doesn't call thumb when geometry is nil" do
+        created_image.image.should_not_receive(:thumb)
+        created_image.thumbnail(geometry: nil)
+      end
+
       it "uses right geometry when given a thumbnail name" do
         name, geometry = Refinery::Images.user_image_sizes.first
         created_image.thumbnail(:geometry => name).url.should == created_image.thumbnail(:geometry => geometry).url
