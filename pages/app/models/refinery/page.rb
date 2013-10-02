@@ -6,6 +6,11 @@ module Refinery
   class Page < Core::BaseModel
     extend FriendlyId
 
+    amoeba do
+      enable
+      include_field :parts
+    end
+
     translates :title, :menu_title, :slug, :include => :seo_meta
 
     class Translation
@@ -338,6 +343,26 @@ module Refinery
         part.title == part_title.to_s or
         part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
       end
+    end
+
+    def clone
+      new_page = self.amoeba_dup
+      new_page.update_attributes(title: "#{self.title} *")
+
+      Refinery::I18n.config.frontend_locales.each do |locale|
+        Globalize.locale = locale
+        new_page.update_attributes(title: "#{self.title} *",
+                                    menu_title: "#{self.menu_title}",
+                                    slug: "#{self.slug}-2",
+                                    browser_title: self.browser_title,
+                                    meta_description: self.meta_description)
+
+        self.parts.each do |part|
+          new_part = new_page.part_with_title(part.title)
+          new_part.update_attributes(body: part.body)
+        end
+      end
+      Refinery::I18n.current_locale = Refinery::I18n.default_frontend_locale
     end
 
     private
