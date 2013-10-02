@@ -8,14 +8,47 @@ module Refinery
               :include => [:translations, :children],
               :paging => false
 
-      before_filter :load_valid_templates, :only => [:edit, :new, :create, :update]
-      before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy]
+      before_filter :load_valid_templates, :only => [:edit, :new, :create, :update, :duplicate]
+      before_filter :restrict_access, :only => [:create, :update, :update_positions, :duplicate, :destroy]
 
       def new
         @page = Page.new(params.except(:controller, :action, :switch_locale))
         Pages.default_parts_for(@page).each_with_index do |page_part, index|
           @page.parts << PagePart.new(:title => page_part, :position => index)
         end
+      end
+
+      def duplicate
+        @old_page = find_page
+        @old_page.clone
+
+        #params[:page][:parts_attributes] = nil
+        #@old_page.id = nil
+        #@page = Page.new(@old_page.attributes)
+
+        #@page.save
+
+        #params[:page][:parts_attributes].each do |part|
+
+        #end
+
+        #@page = Page.new(params[:page])
+        #Pages.default_parts_for(@page).each_with_index do |page_part, index|
+        #  @page.parts << PagePart.new(:title => page_part, :position => index)
+        #end
+        #@old_page = find_page
+        #@page = @old_page.amoeba_dup
+        #@page.title = "#{@old_page.title} (copy)"
+        #@page.save
+
+        #@seo_fields = SeoMeta.where(seo_meta_id: @old_page.id).where(seo_meta_type: "Refinery::Page::Translation")
+        #@seo_field.each do |meta|
+        #  new_meta = meta.amoeba_dup
+        #  new_meta.seo_meta_id = @page.id
+        #  new_meta.save
+        #end
+
+        redirect_to(refinery.admin_pages_path)
       end
 
       def children
