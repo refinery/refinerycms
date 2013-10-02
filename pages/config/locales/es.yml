@@ -35,6 +35,8 @@ es:
       pages:
         delete: Borrar esta página para siempre
         edit: Editar esta página
+        new: Añadir una nueva sub página
+        expand_collapse: Expandir o contraer las sub páginas
         page:
           view_live_html: Ver esta página como abierta al público<br/><em>(la abre en ventana nueva)</em>
           hidden: oculta
@@ -47,11 +49,14 @@ es:
         form_page_parts:
           create_content_section: Crear sección de contenido
           delete_content_section: Borrar sección de contenido
+          reorder_content_section: Reordenar sección de contenido
+          reorder_content_section_done: Ya está reordenada la sección de contenidos
         form_advanced_options:
           page_options: Opciones de página
           parent_page: Página padre
           custom_title: Título personalizado
           menu_title: Título del menú
+          menu_title_help: Si quieres que el menú muestre un título diferente al que se muestra en la página, introdúcelo aquí
           show_in_menu_title: Ver en menú
           show_in_menu_description: Mostrar esta página en el menú de la web
           show_in_menu_help: Deja sin marcar esta casilla para eliminar una página del menú de tu web. Puede ser útil si tienes una página que quieres que la gente enlace directamente pero no quieres mostrarla en el menú.
@@ -62,6 +67,12 @@ es:
           link_url_help: "Si quieres que esta página envíe a otra web o página entonces pulsa esta página en el menú y introduce una URL (por ej: http://google.com). En caso contrario déjalo en blanco."
           parent_page_help: Puedes incluir una página dentro de otra seleccionándola en la lista. Si quieres que sea una página de primer nivel, déjalo en blanco.
           custom_title_help: Si quieres que la página tenga un título diferente al que aparece en el menú selecciona &apos;Texto&apos; y teclea el título que prefieres.
+          layout_template: Plantilla para la disposición
+          layout_template_help: Puedes elegir una plantilla para la dispoción diferente
+          view_template: Plantilla para la vista
+          view_template_help: Puedes elegir una plantilal para la vista diferente
+          custom_slug: Título personalizado
+          custom_slug_help: Puedes personalizar el título para esta página
         actions:
           create_new_page: Crear nueva página
           reorder_pages: Reordenar páginas
