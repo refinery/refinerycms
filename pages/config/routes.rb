@@ -8,6 +8,7 @@ Refinery::Core::Engine.routes.draw do
         post 'preview', :to => 'preview#show', :as => :preview_pages
         patch 'preview/*path', :to => 'preview#show', :as => :preview_page
       end
+
     end
   end
 
@@ -16,6 +17,7 @@ Refinery::Core::Engine.routes.draw do
     get 'pages/*path/children', :to => 'pages#children', :as => 'children_pages'
     patch 'pages/*path', :to => 'pages#update'
     delete 'pages/*path', :to => 'pages#destroy'
+    post 'pages/*path/duplicate', :to => 'pages#duplicate', :as => :duplicate
 
     resources :pages, :except => :show do
       post :update_positions, :on => :collection
