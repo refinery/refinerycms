@@ -1,6 +1,7 @@
 # Encoding: utf-8
 require 'friendly_id'
 require 'refinery/core/base_model'
+require 'refinery/pages/url'
 
 module Refinery
   class Page < Core::BaseModel
