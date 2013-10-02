@@ -69,7 +69,10 @@ module Refinery
 
           def create
             if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
-              flash.notice = t('refinery.crudify.created', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
+              flash.notice = t(
+                'refinery.crudify.created',
+                :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
+              )
 
               create_or_update_successful
             else
@@ -83,7 +86,10 @@ module Refinery
 
           def update
             if @#{singular_name}.update_attributes(params[:#{singular_name}])
-              flash.notice = t('refinery.crudify.updated', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
+              flash.notice = t(
+                'refinery.crudify.updated',
+                :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
+              )
 
               create_or_update_successful
             else
@@ -116,7 +122,9 @@ module Refinery
           # It will be ordered based on the conditions specified into crudify
           # And eager loading is applied as specified into crudify.
           def find_all_#{plural_name}(conditions = #{options[:conditions].inspect})
-            @#{plural_name} = find_#{singular_name}_scope.where(conditions).order("#{options[:order]}")
+            @#{plural_name} = find_#{singular_name}_scope
+                                .where(conditions)
+                                .order("#{options[:order]}")
           end
 
           def merge_position_into_params!
