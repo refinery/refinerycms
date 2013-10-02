@@ -500,5 +500,52 @@ module Refinery
         page.destroy
       end
     end
+
+    describe "#duplicate" do
+      let(:ru_page_title) { 'Новости' }
+
+      before do
+        page.parts.new(:title => 'body', :content => "I'm the first page part for this page.", :position => 0)
+        page.parts.new(:title => 'side body', :content => 'Closely followed by the second page part.', :position => 1)
+        page.save!
+      end
+
+      #it "duplicates page_parts", :duplicate => true do
+      #  new_page Page.all.last
+      #  new_page.parts.count.should eq(page.parts.count)
+      #end
+
+      it "creates page localisation versions", :duplicate => true do
+        Globalize.with_locale(:ru) do
+          page.title = ru_page_title
+          page.save
+        end
+
+        page.clone
+
+        new_page = Page.all.first
+
+        new_page.title.should eq(page.title)
+        Globalize.with_locale(:ru) do
+          new_page.title.should eq(page.title)
+        end
+      end
+
+      it "creates page part localisation versions", :duplicate => true do
+        Globalize.with_locale(:ru) do
+          page_part = page.parts.first
+          page_part.body = ru_page_title
+          page_part.save
+        end
+
+        page.clone
+
+        new_page = Page.all.first
+        new_page.parts.first.content.should eq(page.parts.first.content)
+        Globalize.with_locale(:ru) do
+          new_page.parts.first.content.should eq(page.parts.first.content)
+        end
+      end
+    end
   end
 end
