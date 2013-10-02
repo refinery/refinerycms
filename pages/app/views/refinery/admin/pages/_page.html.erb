@@ -21,10 +21,18 @@
     <% end %>
 
     <span class='actions'>
+
+
       <%= link_to refinery_icon_tag('application_go.png'),
                   page.url,
                   :target => "_blank",
                   :title => t('.view_live_html') %>
+
+      <%= link_to refinery_icon_tag('page_white_copy.png'),
+                  refinery.admin_duplicate_path(page.nested_url),
+                  :title => t('duplicate', :scope => 'refinery.admin.pages'),
+                  :method => :post %>
+
       <%= link_to refinery_icon_tag('page_add.png'),
                   refinery.new_admin_page_path(:parent_id => page.id),
                   :title => t('new', :scope => 'refinery.admin.pages') %>
@@ -44,6 +52,7 @@
                     )
                   },
                   :method => :delete if page.deletable? %>
+
     </span>
   </div>
   <ul class='nested' data-ajax-content="<%= refinery.admin_children_pages_path(page.nested_url) %>">
