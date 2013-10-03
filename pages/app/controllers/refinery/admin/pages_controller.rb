@@ -22,32 +22,6 @@ module Refinery
         @old_page = find_page
         @old_page.clone
 
-        #params[:page][:parts_attributes] = nil
-        #@old_page.id = nil
-        #@page = Page.new(@old_page.attributes)
-
-        #@page.save
-
-        #params[:page][:parts_attributes].each do |part|
-
-        #end
-
-        #@page = Page.new(params[:page])
-        #Pages.default_parts_for(@page).each_with_index do |page_part, index|
-        #  @page.parts << PagePart.new(:title => page_part, :position => index)
-        #end
-        #@old_page = find_page
-        #@page = @old_page.amoeba_dup
-        #@page.title = "#{@old_page.title} (copy)"
-        #@page.save
-
-        #@seo_fields = SeoMeta.where(seo_meta_id: @old_page.id).where(seo_meta_type: "Refinery::Page::Translation")
-        #@seo_field.each do |meta|
-        #  new_meta = meta.amoeba_dup
-        #  new_meta.seo_meta_id = @page.id
-        #  new_meta.save
-        #end
-
         redirect_to(refinery.admin_pages_path)
       end
 
