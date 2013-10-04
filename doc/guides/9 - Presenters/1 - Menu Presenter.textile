@@ -9,17 +9,17 @@ endprologue.
 
 h3. Requirements
 
-Lets start with requirements. I tried to bring them together in the follwoing steps:
+Let's start with requirements. I tried to bring them together in the follwoing steps:
 
-* We need to add additional navigation menu in the footer section of each page right above Refinery's copyright notice.
-* Admin should be able to specify which pages appears in the footer menu so I'm thinking we'll add a checkbox under "Advanced options" in the page edit form.
-* Data about whether page shows up in the footer should be persisted to database.
+* We need to add an additional navigation menu in the footer section of each page right above Refinery's copyright notice.
+* Admin should be able to specify which pages appear in the footer menu, so we also need to add a checkbox under "Advanced options" in the page edit form.
+* Data about whether page shows up in the footer should be persisted to the database.
 
 Alright, it's time to dive deep into the code.
 
-h3. Adding +show_in_footer+ column to +refinery_pages+ database table
+h3. Adding a +show_in_footer+ column to the +refinery_pages+ database table
 
-The requirement was to persist the data to database so we will start by creating a migration which will add +show_in_footer+ column to +refinery_pages+ database table. Open up terminal and type:
+The requirement was to persist the data to the database, so we will start by creating a migration that a will add +show_in_footer+ column to the +refinery_pages+ database table. Open up terminal and type:
 
 <shell>
 rails generate migration add_show_in_footer_to_refinery_pages
@@ -37,7 +37,7 @@ end
 
 h3. Decorating the Refinery::Page model
 
-Before overriding Refinery's form view we will have to decorate +Refinery::Page+ class. Create a file +app/decorators/models/refinery/page_decorator.rb+ with this content:
+Before overriding Refinery's form view, we want to decorate the +Refinery::Page+ class. Create a file +app/decorators/models/refinery/page_decorator.rb+ with this content:
 
 <ruby>
 Refinery::Page.class_eval do
@@ -49,17 +49,17 @@ Refinery::Page.class_eval do
 end
 </ruby>
 
-We added +show_in_footer+ to allowed attributes list so that it doesn't raise mass-assignment error each time someone tries to save the page. We also added +footer_menu_pages+ class method to abstract away ActiveRecord query method.
+We added +show_in_footer+ to the allowed attributes list so that it doesn't raise a mass-assignment error each time someone tries to save the page. We also added +footer_menu_pages+ class method to abstract away ActiveRecord query method.
 
-h3. Overriding form view
+h3. Overriding the form view
 
-As I previously mentioned it lets make it so that "Show in footer" checkbox appears right after admin clicks "Advanced options" when editing page so we will have to override [_form_advaned_options.html.erb partial](https://github.com/refinery/refinerycms/blob/2-1-stable/pages/app/views/refinery/admin/pages/_form_advanced_options.html.erb). Type this in the terminal:
+As I previously mentioned, let's make it so that a "Show in footer" checkbox appears right after Admin expands the "Advanced options" when editing a page. To do this, we have to override the file [_form_advaned_options.html.erb partial](https://github.com/refinery/refinerycms/blob/2-1-stable/pages/app/views/refinery/admin/pages/_form_advanced_options.html.erb). Type this in the terminal:
 
 <shell>
 rake refinery:override view=refinery/admin/pages/_form_advanced_options.html
 </shell>
 
-Now open +_form_advanced_options.html.erb+ partial and add the following code right after h2 HTML tag:
+Now open the +_form_advanced_options.html.erb+ partial and add the following code right after the h2 HTML tag:
 
 <html>
 <div class='field'>
@@ -76,9 +76,9 @@ The end result should look like this:
 
 h3. Creating and configuring the Presenter
 
-Now lets focus on the presener itself. Once instantiated, it is also possible to configure its CSS/HTML using this instance. We will use a Rails helper to instantiate a new instance of +Refinery::Pages::MenuPresenter+ and also configure it there. We're taking this approach because we don't want to pollute the view with configuration code.
+Now let's focus on the presenter itself. Once instantiated, it is also possible to configure its CSS/HTML using this instance. We will use a Rails helper to instantiate a new instance of +Refinery::Pages::MenuPresenter+ and also configure it there. We're taking this approach because we don't want to pollute the view with configuration code.
 
-Open ApplicationHelper and add this code:
+Open the ApplicationHelper and add this code:
 
 <ruby>
 def footer_menu
@@ -110,7 +110,7 @@ Requirement was for the footer menu to appear just above Refinery's copyright no
 rake refinery:override=refinery/_footer
 </shell>
 
-Next, add this code above the existing code:
+Next, add this code in the footer partial, above the existing code:
 
 <erb>
 <%= footer_menu.to_html %>
@@ -118,7 +118,7 @@ Next, add this code above the existing code:
 
 h3. Taking a look at it
 
-Now it's time to take a look at how everything is working. Edit a couple of pages and for some of them check "Show in footer" checkbox located under "Advanced options". Now go to the root url of your site and take a look at the bottom - you should see links for pages for which you checked "Show in footer" checkbox. Also here's how the generated HTML should look:
+Now it's time to take a look at how everything is working. Edit a couple of pages and for some of them check the "Show in footer" checkbox located under "Advanced options". Now go to the root url of your site and take a look at the bottom; you should see links for the pages for which you checked the "Show in footer" checkbox. Also here's how the generated HTML should look:
 
 <html>
 <div class="footer_menu" id="footer_menu">
