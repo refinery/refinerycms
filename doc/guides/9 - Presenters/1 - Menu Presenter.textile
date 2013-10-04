@@ -2,29 +2,81 @@ h2. Additional Menus
 
 This guide will show you how to:
 * configure and use +Refinery::Pages::MenuPresenter+
-* use a decorator to add a custom method to +Refinery::Page+ class
+* use a decorator to add custom functionality to +Refinery::Page+ class
+* override Refinery's view
 
 endprologue.
 
-h3. Background
+h3. Requirements
 
-I have added +show_in_footer+ boolean attribute to pages (this is just a matter of creating and running a migration) and now I want to display these pages in the footer section of my site.
+Lets start with requirements. I tried to bring them together in the follwoing steps:
+
+* We need to add additional navigation menu in the footer section of each page right above Refinery's copyright notice.
+* Admin should be able to specify which pages appears in the footer menu so I'm thinking we'll add a checkbox under "Advanced options" in the page edit form.
+* Data about whether page shows up in the footer should be persisted to database.
+
+Alright, it's time to dive deep into the code.
+
+h3. Adding +show_in_footer+ column to +refinery_pages+ database table
+
+The requirement was to persist the data to database so we will start by creating a migration which will add +show_in_footer+ column to +refinery_pages+ database table. Open up terminal and type:
+
+<shell>
+rails generate migration add_show_in_footer_to_refinery_pages
+</shell>
+
+This will generate an empty migration. Open it and add the following code:
+
+<ruby>
+class AddShowInFooterToRefineryPages < ActiveRecord::Migration
+  def change
+    add_column :refinery_pages, :show_in_footer, :boolean, :default => false
+  end
+end
+</ruby>
 
 h3. Decorating the Refinery::Page model
 
-First, lets use a decorator to add a class method +footer_menu_pages+ to +Refinery::Page+ class which will return all pages that have +show_in_footer+ set to +true+. Create a file +app/decorators/models/refinery/page_decorator.rb+ with this content:
+Before overriding Refinery's form view we will have to decorate +Refinery::Page+ class. Create a file +app/decorators/models/refinery/page_decorator.rb+ with this content:
 
 <ruby>
 Refinery::Page.class_eval do
+  attr_accessible :show_in_footer
+
   def self.footer_menu_pages
     where :show_in_footer => true
   end
 end
 </ruby>
 
+We added +show_in_footer+ to allowed attributes list so that it doesn't raise mass-assignment error each time someone tries to save the page. We also added +footer_menu_pages+ class method to abstract away ActiveRecord query method.
+
+h3. Overriding form view
+
+As I previously mentioned it lets make it so that "Show in footer" checkbox appears right after admin clicks "Advanced options" when editing page so we will have to override [_form_advaned_options.html.erb partial](https://github.com/refinery/refinerycms/blob/2-1-stable/pages/app/views/refinery/admin/pages/_form_advanced_options.html.erb). Type this in the terminal:
+
+<shell>
+rake refinery:override view=refinery/admin/pages/_form_advanced_options.html
+</shell>
+
+Now open +_form_advanced_options.html.erb+ partial and add the following code right after h2 HTML tag:
+
+<html>
+<div class='field'>
+  <span class='label_with_help'>
+    <%= f.label :show_in_footer, "Show in footer" %>
+  </span>
+  <%= f.check_box :show_in_footer %> Show this page in the footer menu
+</div>
+</html>
+
+The end result should look like this:
+
+!/system/images/W1siZiIsIjIwMTMvMTAvMDMvMDZfMzdfMTNfOTMzX3Nob3dfaW5fZm9vdGVyLnBuZyJdXQ/show_in_footer.png!
+
 h3. Creating and configuring the Presenter
 
-Now lets focus on the presener itself. Once instantiated, it is also possible to configure its CSS/HTML using this instance. I will use a Rails helper to instantiate a new instance of +Refinery::Pages::MenuPresenter+ and also configure it there. I'm doing this in a helper because I don't want to pollute the view with configuration code.
+Now lets focus on the presener itself. Once instantiated, it is also possible to configure its CSS/HTML using this instance. We will use a Rails helper to instantiate a new instance of +Refinery::Pages::MenuPresenter+ and also configure it there. We're taking this approach because we don't want to pollute the view with configuration code.
 
 Open ApplicationHelper and add this code:
 
@@ -52,13 +104,13 @@ Now that we have configured the menu presenter we need to return it because we'l
 
 h3. Rendering the Menu in the View
 
-I want my footer menu to appear just above Refinery's copyright notice. To do that I'll simply override Refinery's footer view:
+Requirement was for the footer menu to appear just above Refinery's copyright notice. To do that we will simply override Refinery's footer view:
 
 <shell>
 rake refinery:override=refinery/_footer
 </shell>
 
-Next, I'll add this code above the existing code:
+Next, add this code above the existing code:
 
 <erb>
 <%= footer_menu.to_html %>
@@ -66,22 +118,12 @@ Next, I'll add this code above the existing code:
 
 h3. Taking a look at it
 
-Before I fire up Rails server I created 3 pages called +First footer page+, +Second footer page+ and +Third footer page+. Each of these pages have the +show_in_menu+ attribute set to +false+ (so that they won't show up in main menu at the top of the page) and +show_in_footer+ set to +true+.
-
-Fire up Rails server and go to root page, e.g. http://localhost:3000 - at the bottom of the page you should see links for these 3 pages. Here's how the generated HTML should look:
+Now it's time to take a look at how everything is working. Edit a couple of pages and for some of them check "Show in footer" checkbox located under "Advanced options". Now go to the root url of your site and take a look at the bottom - you should see links for pages for which you checked "Show in footer" checkbox. Also here's how the generated HTML should look:
 
 <html>
 <div class="footer_menu" id="footer_menu">
   <ul>
-    <li class="first">
-      <a href="/first-footer-page">First footer page</a>
-    </li>
-   <li>
-     <a href="/second-footer-page">Second footer page</a>
-   </li>
-   <li class="last">
-     <a href="/third-footer-page">Third footer page</a>
-   </li>
+    ...
  </ul>
 </div>
 </html>
