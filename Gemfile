@@ -14,12 +14,6 @@ gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed
 gem 'protected_attributes'
 gem 'seo_meta', github: 'parndt/seo_meta', branch: 'master'
 
-# Fixes uniqueness constraint on translated columns.
-# See: https://github.com/svenfuchs/globalize3/pull/121
-gem 'globalize3', github: 'svenfuchs/globalize3', branch: 'rails4'
-gem 'paper_trail', github: 'airblade/paper_trail', branch: 'master'
-gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set', branch: 'master'
-
 # Database Configuration
 unless ENV['TRAVIS']
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.3.0.rc1', platform: :jruby
