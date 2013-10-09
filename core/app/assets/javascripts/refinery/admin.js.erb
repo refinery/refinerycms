@@ -794,13 +794,13 @@ function ImageDialog(options) {
       }
     });
 
-   // var image_area = $('#existing_image_area').not('#wym_iframe_body #existing_image_area');
-   // image_area.find('.form-actions input#submit_button').click($.proxy(function(e) {
-    //  e.preventDefault();
+    var image_area = $('#existing_image_area').not('#wym_iframe_body #existing_image_area');
+    image_area.find('.form-actions input#submit_button').click($.proxy(function(e) {
+      e.preventDefault();
       // folgende Zeile entfernt (eh kein wymeditor und führt zu crash im ie8
       // $(this.document.getElementById('wym_dialog_submit')).click();
-    //}, parent));
-    //image_area.find('.form-actions a.close_dialog').click(close_dialog);
+    }, parent));
+    image_area.find('.form-actions a.close_dialog').click(close_dialog);
   };
 }
 
