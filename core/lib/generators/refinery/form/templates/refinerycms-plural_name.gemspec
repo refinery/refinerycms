@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.summary           = '<%= plural_name.titleize %> forms-extension for Refinery CMS'
   s.require_paths     = %w(lib)
   s.files             = Dir["{app,config,db,lib}/**/*"] + ["readme.md"]
+  s.authors           = 'RefineryCMS Form Generator'
 
   # Runtime dependencies
   s.add_dependency    'refinerycms-core',     '~> <%= Refinery::Version %>'

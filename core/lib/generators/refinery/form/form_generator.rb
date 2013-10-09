@@ -8,7 +8,7 @@ module Refinery
     include Refinery::ExtensionGeneration
 
     def description
-      "Generates an extension which is set up for frontend form submissions like a contact page."
+      'Generates an extension which is set up for frontend form submissions like a contact page.'
     end
 
     def generate
