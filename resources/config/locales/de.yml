@@ -2,6 +2,43 @@ de:
   refinery:
     plugins:
       refinery_files:
+        title: Files
+        description: Upload and link to files
+    admin:
+      resources:
+        delete: Remove this file forever
+        edit: Edit this file
+        form:
+          download_current: Download current file
+          or: or
+          replace: " replace it with this one..."
+          maximum_file_size: The maximum file size is %{bytes}.
+        resource:
+          download: Download this file (%{size})
+        actions:
+          upload_new: Upload new file
+        records:
+          no_files_yet: There are no files yet. Click "Upload new file" to add your first file.
+        insert:
+          existing: Existing File
+          new: New File
+          no_files: There are no files.
+        existing_resource:
+          link_to_file: Link to this file
+          button_text: Insert
+  activerecord:
+    models:
+      refinery/resource: file
+    errors:
+      models:
+        refinery/resource:
+          blank: You must specify file for upload
+          too_big: File should be smaller than %{size} bytes in size
+
+xde:
+  refinery:
+    plugins:
+      refinery_files:
         title: Dateien
         description: Dateien hochladen und verlinken
     admin:
