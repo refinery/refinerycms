@@ -16,7 +16,7 @@ gem 'seo_meta', github: 'parndt/seo_meta', branch: 'master'
 
 # Fixes uniqueness constraint on translated columns.
 # See: https://github.com/svenfuchs/globalize3/pull/121
-gem 'globalize3', github: 'svenfuchs/globalize3', branch: 'rails4'
+gem 'globalize', github: 'globalize/globalize', branch: 'master'
 gem 'paper_trail', github: 'airblade/paper_trail', branch: 'master'
 gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set', branch: 'master'
 
