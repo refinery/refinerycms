@@ -107,7 +107,7 @@ h3. Rendering the Menu in the View
 Requirement was for the footer menu to appear just above Refinery's copyright notice. To do that we will simply override Refinery's footer view:
 
 <shell>
-rake refinery:override=refinery/_footer
+rake refinery:override view=refinery/_footer.html
 </shell>
 
 Next, add this code in the footer partial, above the existing code:
