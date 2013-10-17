@@ -14,7 +14,7 @@ module Refinery
       attr_accessible *::SeoMeta.attributes.keys, :locale
     end
 
-    # Delegate SEO Attributes to globalize3 translation
+    # Delegate SEO Attributes to globalize translation
     seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
     delegate(*(seo_fields << {:to => :translation}))
 
