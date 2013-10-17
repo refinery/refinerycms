@@ -2,6 +2,51 @@ sv:
   refinery:
     plugins:
       refinery_images:
+        title: Images
+        description: Manage images
+    admin:
+      images:
+        delete: Remove this image forever
+        edit: Edit this image
+        form:
+          image: Image
+          use_current_image: Use current image
+          or: or
+          replace_image: " replace it with this one..."
+          current_image: Current Image
+          maximum_image_size: The maximum image size is %{bytes}.
+        actions:
+          create_new_image: Add new image
+        records:
+          no_images_yet: There are no images yet. Click "Add new image" to add your first image.
+        index:
+          view:
+            switch_to: Switch to %{view_name} view
+            list: list
+            grid: grid
+        view_live_html: View this image <br/><em>Opens in a new window</em>
+        existing_image:
+          button_text: Insert
+          resize_image: Resize the image?
+          size: Size
+        insert:
+          existing_image: Library
+          new_image: Upload
+  activerecord:
+    models:
+      refinery/image: image
+    errors:
+      models:
+        refinery/image:
+          blank: You must specify an image for upload
+          too_big: Image should be smaller than %{size} bytes in size
+          incorrect_format: 'Your image must be either a JPG, PNG or GIF'
+          different_file_name: New image can't have different file name
+
+xsv:
+  refinery:
+    plugins:
+      refinery_images:
         title: Bilder
         description: Hantera bilder
     admin:

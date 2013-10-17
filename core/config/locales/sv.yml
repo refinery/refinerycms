@@ -1,5 +1,88 @@
 sv:
   refinery:
+    js:
+      admin:
+        confirm_changes: Any changes you've made will be lost. Are you sure you want to continue without saving?
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core refinery plugin
+      refinery_dialogs:
+        title: Dialogs
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: "There are no users yet, so we'll set you up first."
+    crudify:
+      created: '%{what} was successfully added.'
+      updated: '%{what} was successfully updated.'
+      destroyed: '%{what} was successfully removed.'
+    site_bar:
+      log_out: Log out
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
+    admin:
+      menu:
+        reorder_menu: Reorder menu
+        reorder_menu_done: I'm done reordering the menu
+      dialogs:
+        show:
+          save: Save
+          cancel: Cancel
+      continue_editing:
+        save_and_continue_editing: 'Save & continue editing'
+      form_actions:
+        save: Save
+        cancel: Cancel
+        cancel_lose_changes: If you cancel you will lose any changes you have made here
+        delete: Remove
+        close: Close
+      image_picker:
+        none_selected: There is currently no image selected, please click here to add one.
+        remove_current: Remove current image
+        change: Click here to pick an image
+        show: Show
+      resource_picker:
+        download_current: Download current file
+        opens_in_new_window: Opens in a new window
+        remove_current: "Remove current file"
+        no_resource_selected: 'There is currently no file selected, click here to add one.'
+        name: Add File
+        current: Current File
+      search:
+        button_text: Search
+        results_for_html: "Search results for &#8216;<em>%{query}</em>&#8217;"
+        no_results: 'Sorry, no results found'
+        cancel_search: 'Cancel search'
+        search_input_notice: "Put here a string of at least 3 characters containing what you are looking for."
+      delete:
+        message: "Are you sure you want to remove '%{title}'?"
+      error_messages:
+        problems_in_following_fields: There were problems with the following fields
+      help: help
+      form_advanced_options_menu:
+        advanced_options: Advanced options
+        toggle_advanced_options: Toggle advanced options
+        save_as_draft: Save as Draft
+    message:
+      close: Close
+      close_this_message: Close this message
+    draft_page_message:
+      not_live: This page is NOT live for public viewing.
+    footer:
+      copyright: "Copyright © %{year} %{site_name}"
+    no_script:
+      enable_javascript_html: For full functionality of this page it is necessary to enable JavaScript.
+      here_are: Here are the
+      instructions_enable_javascript_html: instructions for how to enable JavaScript in your web browser
+  time:
+    formats:
+      short: "%A, %d %B %Y"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
+
+xsv:
+  refinery:
     plugins:
       refinery_core:
         title: Refinery

@@ -1,4 +1,4 @@
-nb:
+"no":
   refinery:
     plugins:
       refinery_pages:
@@ -83,77 +83,3 @@ nb:
     attributes:
       refinery/page:
         title: Title
-
-
-xnb:
-  refinery:
-    plugins:
-      refinery_pages:
-        title: Sider
-        description: Behandle sider
-    admin:
-      pages_dialogs:
-        page_link:
-          link_to_this_page: Link til denne siden
-        link_to:
-          insert: Sett inn
-          your_page:
-            tab_name: Din side
-          web_address:
-            tab_name: Webside
-            location: Plassing
-            new_window: Nytt vindu
-            new_window_label: Huk av i denne boksen for å åpne lenken i et nytt nettleservindu.
-            not_sure: Usikker på hva du skal fylle inn i boksen over?
-            step1: Finn websiden du ønsker å lenke til.
-            step2: "Kopier adressen fra adressefeltet i nettleseren din, og lim den inn i boksen over."
-          email_address:
-            tab_name: E-post adresse
-            subject_line_optional: Valgfritt emne
-            body_optional: Valgfri melding
-            not_sure: Usikker på hva du skal fylle inn i boksene over?
-            step1_html: "Skriv eller copier og lim inn (f.eks. fra din adressebok) e-post adressen du ønsker å lenke til i '<strong>E-post Adresse</strong>' boksen over."
-            step2_html: "Bruk '<strong>Emne</strong>' boksen over om du ønsker at meldingen skal sendes med et <strong>forhåndsskrevet emne</strong>."
-            step3_html: "Bruk '<strong>Melding</strong>' boksen over om du ønsker at meldingen skal sendes med en <strong>forhåndsskrevet melding</strong>."
-          your_resource:
-            tab_name: Din fil
-            link_to_this_resource: Link til denne filen
-      pages:
-        delete: Fjern denne siden permanent
-        edit: Rediger denne siden
-        page:
-          view_live_html: Se hvordan denne siden ser ut fra utsiden <br/><em>(Åpner i et nytt vindu)</em>
-          hidden: gjemt
-          draft: utkast
-        form_new_page_parts:
-          title: Tittel
-        form_page_parts:
-          create_content_section: Legg til innholdsseksjon
-          delete_content_section: Slett innholdsseksjon
-        form_advanced_options:
-          page_options: Alternativer for siden
-          parent_page: Overliggende side
-          custom_title: Valgfri tittel
-          show_in_menu_title: Vis i meny
-          show_in_menu_description: Vis denne siden i menyen
-          show_in_menu_help: Fjern markeringen i denne boksen om du ønsker å fjerne en side fra menyen. Dette kan være praktisk dersom du har en underside som du ønsker å lenke besøkende til, men ikke ønsker å vise i menyen.
-          skip_to_first_child: Hopp over den overliggende side.
-          skip_to_first_child_label: Styrer besøkende rett inn på første underside.
-          skip_to_first_child_help: Denne innstillingen gjør at siden linker til sin første underside. Dette kan være praktisk om du grupperer flere sider sammen.
-          link_url: Videresend denne siden til en annen underside eller webside.
-          link_url_help: "Dersom du ønsker å bli sendt til en annen side eller en ekstern webside når du trykker på den i menyen, legg inn en adresse her. F.eks. http://google.com . La ellers feltet stå tomt."
-          parent_page_help: Du kan plassere en side under en annen side ved å velge den fra listen. Om du ønsker at siden skal være en toppnivå side så lar du dette valget stå blankt.
-          custom_title_help: "Dersom du ønsker at siden skal ha en annen tittel enn den som vises i menyen så kan du velge &apos;Tekst&apos; og skrive inn tittelen her."
-        actions:
-          create_new_page: Legg til ny side
-          reorder_pages: Endre rekkefølgen
-          reorder_pages_done: Ferdig med endring av rekkefølgen
-        records:
-          no_pages_yet: Det er ingen sider her enda. Klikk på "Legg til ny side" for å legge til din første side.
-  activerecord:
-    models:
-      refinery/page: side
-    attributes:
-      refinery/page:
-        title: Tittel
-        

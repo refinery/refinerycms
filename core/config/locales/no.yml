@@ -1,4 +1,4 @@
-es:
+"no":
   refinery:
     js:
       admin:
@@ -74,77 +74,6 @@ es:
       enable_javascript_html: For full functionality of this page it is necessary to enable JavaScript.
       here_are: Here are the
       instructions_enable_javascript_html: instructions for how to enable JavaScript in your web browser
-  time:
-    formats:
-      short: "%A, %d %B %Y"
-  will_paginate:
-    previous_label: "&laquo;"
-    next_label: "&raquo;"
-
-xes:
-  refinery:
-    welcome:
-      there_are_no_users: "No hay usuarios registrados, así que debemos registrar al primero."
-    crudify:
-      created: '%{what} fue creado correctamente.'
-      updated: '%{what} fue actualizado correctamente.'
-      destroyed: '%{what} fue borrado correctamente.'
-    site_bar:
-      log_out: Salir
-      switch_to_your_website: Ver tu web
-      switch_to_your_website_editor: Editar tu web
-    admin:
-      menu:
-        reorder_menu: Reordenar menú
-        reorder_menu_done: He terminado de reordenar el menú
-      dialogs:
-        show:
-          save: Guardar
-          cancel: Cancelar
-      continue_editing:
-        save_and_continue_editing: Guardar y seguir editando
-      form_actions:
-        save: Guardar
-        cancel: Cancelar
-        cancel_lose_changes: Al cancelar se perderán los cambios que has realizado aquí
-        delete: Borrar
-        close: Cerrar
-      image_picker:
-        none_selected: No hay ninguna imagen seleccionada, haz click aquí para añadir una.
-        remove_current: Eliminar imagen actual
-        change: Haz click aquí para escoger una imagen
-        show: Mostrar
-      resource_picker:
-        download_current: Descargar archivo actual
-        opens_in_new_window: Abre en una nueva ventana
-        remove_current: "Eliminar archivo actual"
-        no_resource_selected: No hay ningún archivo seleccionado, click aqui para agregar uno.
-        name: Agregar archivo
-        current: Archivo actual
-      search:
-        button_text: Buscar
-        results_for_html: "Resultados de la búsqueda &#8216;<em>%{query}</em>&#8217;"
-        no_results: Lo siento, no hay resultados
-      delete:
-        message: ¿Seguro que quieres borrar '%{title}'?
-      error_messages:
-        problems_in_following_fields: Hubo problemas con los siguientes campos
-      help: ayuda
-      form_advanced_options_menu:
-        advanced_options: Opciones avanzadas
-        toggle_advanced_options: Pulsa para acceder a las opciones de meta tags y menú
-        save_as_draft: Guardar como borrador
-    message:
-      close: Cerrar
-      close_this_message: Cerrar este mensaje
-    draft_page_message:
-      not_live: Esta página NO está visible para el público.
-    footer:
-      copyright: Copyright © %{year} %{site_name}
-    no_script:
-      enable_javascript_html: Para obtener una funcionalidad completa de esta página es necesario activar JavaScript.
-      here_are: Aquí están las
-      instructions_enable_javascript_html: instrucciones de cómo habilitar JavaScript en su navegador web
   time:
     formats:
       short: "%A, %d %B %Y"
