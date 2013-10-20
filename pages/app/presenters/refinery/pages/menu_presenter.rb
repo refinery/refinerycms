@@ -11,7 +11,8 @@ module Refinery
       include ActiveSupport::Configurable
 
       config_accessor :roots, :menu_tag, :list_tag, :list_item_tag, :css, :dom_id,
-                      :max_depth, :selected_css, :first_css, :last_css, :list_tag_css
+                      :max_depth, :selected_css, :first_css, :last_css, :list_tag_css,
+                      :link_tag_css
       self.dom_id = 'menu'
       self.css = 'menu clearfix'
       self.menu_tag = :nav
@@ -21,6 +22,7 @@ module Refinery
       self.first_css = :first
       self.last_css = :last
       self.list_tag_css = 'nav'
+      self.link_tag_css = ''
 
       def roots
         config.roots.presence || collection.roots
@@ -56,7 +58,7 @@ module Refinery
       end
 
       def render_menu_item_link(menu_item)
-        link_to(menu_item.title, context.refinery.url_for(menu_item.url))
+        link_to(menu_item.title, context.refinery.url_for(menu_item.url), :class => link_tag_css)
       end
 
       def render_menu_item(menu_item, index)
