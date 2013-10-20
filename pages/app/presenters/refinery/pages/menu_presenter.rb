@@ -22,7 +22,6 @@ module Refinery
       self.first_css = :first
       self.last_css = :last
       self.list_tag_css = 'nav'
-      self.link_tag_css = ''
 
       def roots
         config.roots.presence || collection.roots
