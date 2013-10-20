@@ -35,6 +35,12 @@ class AddShowInFooterToRefineryPages < ActiveRecord::Migration
 end
 </ruby>
 
+Run the migration:
+
+<shell>
+rake db:migrate
+</shell>
+
 h3. Decorating the Refinery::Page model
 
 Before overriding Refinery's form view, we want to decorate the +Refinery::Page+ class. Create a file +app/decorators/models/refinery/page_decorator.rb+ with this content:
