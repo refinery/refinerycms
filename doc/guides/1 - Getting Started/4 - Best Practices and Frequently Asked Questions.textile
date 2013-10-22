@@ -94,7 +94,7 @@ h4. How do I hide the page title?
 
 "Phil":http://philiparndt.name, one of the chief maintainers of Refinery CMS, says:
 
-bq. Add a +content_for :body_content_title+ block in the template you're including from. Just make it blank and tell the +_content_page+ partial to hide empty sections by passing it +:locals => {:hide_sections => [:body_content_title]}+.
+bq. Add a +content_for :body_content_title+ block in the template you're including from. Just make it blank and tell the +_content_page+ partial to hide empty sections by passing it +:local_assigns => {:hide_sections => [:body_content_title]}+.
 
 h3. Translation
 
