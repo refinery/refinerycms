@@ -50,11 +50,12 @@ We define the +find_all_blog_posts+ method and set it as a +before_filter+ for t
   Refinery::PagesController.class_eval do
   
     include Refinery::Blog::ControllerHelper
+    helper :'refinery/blog/posts'
     before_filter :find_all_blog_posts, :only => [:home]
     
   end
 </ruby>
 
-The Blog extension contains a helper module which already has the +find_all_blog_posts+ method defined for this common case.
+The Blog extension contains a helper module which already has the +find_all_blog_posts+ method defined for this common case. This will make the +@posts+ instance variable available in our views.
 
 WARNING. If you are following along, make sure that you have the refinerycms-blog extension in your gem file or you will not have access to this helper module.
