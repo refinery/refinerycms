@@ -7,6 +7,8 @@ gem 'refinerycms-acts-as-indexed', '~> 1.0.0'
 
 gem 'quiet_assets', :group => :development
 
+gem 'globalize', github: 'globalize/globalize', branch: 'fix_refinery_db_seed'
+
 # Database Configuration
 unless ENV['TRAVIS']
   gem 'activerecord-jdbcsqlite3-adapter', :platform => :jruby

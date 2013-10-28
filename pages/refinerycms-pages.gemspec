@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
   s.add_dependency 'friendly_id',                 '~> 4.0.9'
-  s.add_dependency 'globalize3',                  '~> 0.3.0'
+  s.add_dependency 'globalize',                   '~> 3.0.0'
   s.add_dependency 'awesome_nested_set',          '~> 2.1.3'
   s.add_dependency 'seo_meta',                    '~> 1.4.0'
   s.add_dependency 'refinerycms-core',            version
