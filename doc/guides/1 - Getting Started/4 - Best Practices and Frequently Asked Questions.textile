@@ -13,7 +13,7 @@ The answer depends on the amount of work you are willing to put in to learn the
 system. If you've never done any programming, then there is an obvious challenge
 in learning to customize any computer system. Refinery prides itself on doing
 things the 'Rails way' where possible, so any sort of customization beyond a
-very basic levelwill require some ability to code--or, at least, the ability to
+very basic level will require some ability to code--or, at least, the ability to
 deductively reason.
 
 This is a round-about way of saying that Refinery will be difficult for you, but not impossible.
