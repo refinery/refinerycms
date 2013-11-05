@@ -7,11 +7,11 @@ module Refinery
         if Refinery::Pages.use_layout_templates && page.layout_template.present?
           render_options[:layout] = page.layout_template
         end
-        if Refinery::Pages.use_view_templates && page.view_template.present?
-          render_options[:template] = "refinery/pages/#{page.view_template}"
-        elsif
-          render_options[:template] = "refinery/pages/show"
-        end
+
+        template = page.link_url == "/" ? "home" : "show"
+
+        render_options[:template] = "refinery/pages/#{page.view_template.presence || template}"
+
         render_options
       end
 

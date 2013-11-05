@@ -51,7 +51,6 @@ it:
           create_content_section: Crea la sezione dei contenuti
           delete_content_section: Elimina la sezione dei contenuti
           menu_title: Titolo menu
-          custom_slug: Slug personalizzato
           explain_page_different_title: Se si desidera che la pagina abbia un titolo diverso da quello mostrato nel menu e dal titolo del browser, scriverlo qui.
           redirect_to_first_child: "Seleziona questa casella se vuoi che il visitatore sia reindirizzato alla prima pagina figlia di questa pagina, se questa pagina è selezionata."
           parent_id_title: Genitore
@@ -68,7 +67,6 @@ it:
           link_url_help: Inserire un URL se si desidera che questa pagina punti ad un altro sito o pagina quando si fa clic sul suo nome nel menu; altrimenti lasciare vuoto
           parent_page_help: "Si può fare in modo che questa pagina sia figlia di un'altra pagina selezionandola dalla lista; se invece si desidera che questa pagina sia una pagina di primo livello, lasciare in bianco."
           menu_title_help: Se si desidera che il menu mostri un titolo diverso da quello mostrato nella pagigna, inserirlo qui.
-          custom_slug_help: Uno slug è un identificatore leggibile usato per creare l'URL assoluto di una pagina. Per sovrascrivere lo slug che è automaticamente creato da Refinery, scrivere il proprio slug qui.
           custom_title_help: "Se si desidera che la pagina abbia un titolo diverso da quello mostrato nel menu, selezionare 'Testo' e inserirlo qui."
         actions:
           create_new_page: Crea una nuova pagina

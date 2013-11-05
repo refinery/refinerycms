@@ -55,7 +55,6 @@ sk:
           parent_page: Nadradená stránka
           advanced_options: Rozšírené nastavenia
           menu_title: Názov menu
-          custom_slug: Vlastný url identifikátor
           show_in_menu_title: Zobraziť v menu
           show_in_menu_description: Zobraziť túto stránku v menu webu
           show_in_menu_help: Odznačte ak chcete odstrániť odkaz na túto stránku z menu webu. Toto je užitočné ak máte stránku, na ktorú chcete mať priamy odkaz, ale nechcete zobrazovať stránku v menu.
@@ -66,7 +65,6 @@ sk:
           link_url_help: Ak chcete, aby po kliknutí na odkaz na tútu stránku bol návštevník presmerovaný na iný web, vložte adresu (napr. http://google.com), inak ponechajte prázdne.
           parent_page_help: Môžete umiestniť túto stránku v hierarchii pod inú stránku. Ak nevyberiete nič, bude táto stránka umiestnená na prvej úrovni.
           menu_title_help: Ak chcete, aby sa v menu zobrazil odlišný názov ako ten, ktorý sa zobrazuje na stránke, napíšte ho sem.
-          custom_slug_help: Url identifikátor je človekom čitateľný identifikátor, ktorý sa používa na vytvorenie celej url adresy stránky, napríklad &apos;o-nas&apos;. Ak chcete zmeniť url identifikátor, ktorý automaticky vytvorí Refinery, napíšte váš vlastný url identifikátor sem.
           layout_template: Šablóny rozmiestnenia
           layout_template_help: Pre túto stránku si môžete vybrať odlišnú šablónu rozmiestnenia.
           view_template: Šablóny vzhľadu

@@ -38,17 +38,10 @@ module Refinery
 
     # Get a thumbnail job object given a geometry and whether to strip image profiles and comments.
     def thumbnail(options = {})
-      if options.is_a?(String) || options.is_a?(Symbol)
-        Refinery.deprecate 'Refinery::Image#thumbnail(geometry)',
-                           :when => '2.2',
-                           :replacement => 'Refinery::Image#thumbnail(:geometry => value)'
-        options = { :geometry => options }
-      end
-
-      options = { :geometry => :no_geometry, :strip => true }.merge(options)
+      options = { :geometry => nil, :strip => true }.merge(options)
       geometry = convert_to_geometry(options[:geometry])
       thumbnail = image
-      thumbnail = thumbnail.thumb(geometry) unless geometry.is_a?(Symbol)
+      thumbnail = thumbnail.thumb(geometry) if geometry
       thumbnail = thumbnail.strip if options[:strip]
       thumbnail
     end

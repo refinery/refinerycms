@@ -7,6 +7,3 @@
   if (continue_editing_button = $("#continue_editing")).length > 0 and continue_editing_button.attr("rel") != "no-prompt"
     $("#editor_switch a").click (e) ->
       e.preventDefault()  unless confirm("<%= ::I18n.t("js.admin.confirm_changes") %>")  if $("form[data-changes-made]").length > 0
-
-  $("input[id=page_custom_slug]").change ->
-    $("#submit_continue_button").remove()

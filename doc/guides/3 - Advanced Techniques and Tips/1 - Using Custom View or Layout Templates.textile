@@ -38,26 +38,13 @@ different layout, one where the header, footer, or other sections are laid out
 differently. In this case, it's appropropriate to enable Refinery's custom
 layout templates.
 
-h3. Enabling Custom View Templates
+h3. Using Custom View Templates
 
 This is a straightforward process that enhances Refinery's capabilities greatly.
 
-h4. Set Initializers
-
-Open +config/initializers/refinery/pages.rb+.
-
-* Change +config.use_view_templates+ to +true+;
-* Change +config.view_template_whitelist+ to an array containing either string or
-symbol representations of your new view's filename (i.e. if you will create a
-new view called +about_us.html.erb+, set this whitelist to +[:about_us]+). In
-order for a view template to be displayed in the back-end, it must be present in
-the whitelist. When you select an option in the back-end corresponding to one of
-these whitelisted templates, it hands the name of the template to +render+.
-
 h4. Create Template
 
-Create +app/views/refinery/pages/about_us.html.erb+, where +about_us+ is the
-name of the file you whitelisted.
+Create +app/views/refinery/pages/about_us.html.erb+.
 
 * Inside of this file, you can either +render '/refinery/content_page'+, or you
 can use +@page.content_for(:body)+ to output the content of a specific page part.
@@ -65,19 +52,34 @@ NB: Content is not marked as safe by default. To mark it as safe, use: +raw(@pag
 
 h4. Set Back-End Select
 
-Then, when editing your page, you should see an option to change the template in
-the __Advanced Options__ section.
+When editing your page, in the __Advanced Options__ section you should see a
+select box labled +View template+. One of the options, aside from +Home+ and +Show+
+which are there by default, will be +About Us+. It corresponds to the template
+you added in the previous step. Select it and save your page. Now view this
+page in the frontend and you should see that it utilises +about_us.html.erb+
+template.
 
 h3. Enabling Custom Layout Templates
 
-This is nearly identical to enabling View Templates, with the following caveats:
+This is nearly identical to enabling View Templates, with some additional steps:
 
-* The configuration variables are named +config.use_layout_templates+ and
-+config.layout_template_whitelist+, respectively;
-* When you set a custom layout in the back-end, it passes the template's title to
-+render :layout+;
-* You should create your new layout inside of +app/views/layouts/+, not
-g+/app/views/refinery/pages/+.
+h4. Set Initializers
+
+Open +config/initializers/refinery/pages.rb+.
+
+* Change +config.use_layout_templates+ to +true+;
+* Change +config.layout_template_whitelist+ to an array containing either string or
+symbol representations of your new layout's filename (i.e. if you will create a
+new layout called +customer.html.erb+, set this whitelist to +[:application, :customer]+). In
+order for a layout template to be displayed in the back-end, it must be present in
+the whitelist. When you select an option in the back-end corresponding to one of
+these whitelisted templates, it hands the name of the template to +render :layout+.
+* Create your new layout inside of +app/views/layouts/+, not in +/app/views/refinery/pages/+.
+
+h4. Set Back-End Select
+
+Then, when editing your page, you should see an option to change the layout template in
+the __Advanced Options__ section.
 
 h3. When Not to Use Custom View Templates
 
@@ -111,12 +113,8 @@ for reference.
 
 This method has the advantage of constraining the find to occur only on pages
 that are not the home page (and not, for example, on any engine pages). There
-are two major downsides, though:
-
-# If you override only the +show+ method and not the +preview+ method, you will
-break the +preview+ method since it will not be able to find your collection;
-# It will still perform the find on many other pages, which is not well-contained
-and has implications for performance.
+is one major downside, though - it will still perform the find on many other
+pages, which is not well-contained and has implications for performance.
 
 h4. Modify the ApplicationController
 
@@ -142,8 +140,7 @@ Refinery::PagesController.class_eval do
 end
 </ruby>
 
-WARNING. You may need to adjust the +find+ method if you intend to rename the
-page at any point, since +link_url+ is volatile.
+WARNING. You may need to adjust the +where+ method if you intend to rename the page at any point, since +link_url+ is volatile.
 
 You will also need to add a route to this method, or else the page will remain
 unaccessible. On the very first line of +config/routes.rb+, before anything

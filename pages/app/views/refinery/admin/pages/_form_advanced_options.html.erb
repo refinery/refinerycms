@@ -20,7 +20,6 @@
                    template_options(:layout_template, @page) %>
     </div>
     <% end %>
-    <% if Refinery::Pages.use_view_templates %>
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :view_template, t('.view_template') %>
@@ -29,7 +28,6 @@
       <%= f.select :view_template, @valid_view_templates.map { |t| [t.titleize, t] },
                    template_options(:view_template, @page) %>
     </div>
-    <% end %>
 
     <div class='field'>
       <span class='label_with_help'>
@@ -38,15 +36,6 @@
       </span>
       <%= f.text_field :menu_title, :style=> 'width:400px;' %>
     </div>
-    <% if Refinery::Pages.use_custom_slugs %>
-    <div class='field'>
-      <span class='label_with_help'>
-        <%= f.label :custom_slug, t('.custom_slug') %>
-        <%= refinery_help_tag t('.custom_slug_help') %>
-      </span>
-      <%= f.text_field :custom_slug, :style=> 'width:400px;' %>
-    </div>
-    <% end %>
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :skip_to_first_child?, t('.skip_to_first_child') %>

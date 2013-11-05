@@ -15,7 +15,7 @@ module Refinery
       end
 
       it "wraps image_tag with some options preset" do
-        helper.refinery_icon_tag("ugis.ozols.jpg").should eq("<img alt=\"Ugis.ozols\" height=\"16\" src=\"/assets/refinery/icons/ugis.ozols.jpg\" width=\"16\" />")
+        helper.refinery_icon_tag("ugis.ozols.jpg").should eq(%Q{<img alt="Ugis.ozols" height="16" src="/images/refinery/icons/ugis.ozols.jpg" width="16" />})
       end
     end
 

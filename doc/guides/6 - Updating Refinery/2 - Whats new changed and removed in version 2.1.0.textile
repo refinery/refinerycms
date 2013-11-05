@@ -6,8 +6,7 @@ endprologue.
 
 h3. Changes in behaviour
 
-WARNING. Starting from 2.1.0 we dropped support for Ruby 1.8.x and now Ruby 1.9.3 is the lowest version of
-Ruby that is accepted with Ruby 2.0.0 encouraged. We strongly recommend upgrading if you're still on 1.8.x.
+WARNING. Starting from 2.1.0 we dropped support for Ruby 1.8.x and now Ruby 1.9.3 is the lowest version of Ruby that is accepted with Ruby 2.0.0 encouraged. We strongly recommend upgrading if you're still on 1.8.x.
 
 * Dropped +coffee-rails+ dependency.
 
@@ -36,6 +35,9 @@ when +params[:page]+ is present.
 * Removed +source+ from block_tags and made it so +wymeditor_whitelist_tags+ don't get added to block_tags.
 
 * Made Crudify's +xhr_paging+ option work again.
+
+* Removed +Refinery::Pages.view_template_whitelist+ and +Refinery::Pages.use_view_templates+
+configs and enabled setting per page view template to be active by default.
 
 h3. Additions
 

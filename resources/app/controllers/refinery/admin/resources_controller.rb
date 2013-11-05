@@ -21,11 +21,11 @@ module Refinery
         unless params[:insert]
           if @resources.all?(&:valid?)
             flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.map(&:title).join("', '")}'")
-            unless from_dialog?
-              redirect_to refinery.admin_resources_path
-            else
+            if from_dialog?
               @dialog_successful = true
               render :nothing => true, :layout => true
+            else
+              redirect_to refinery.admin_resources_path
             end
           else
             self.new # important for dialogs
@@ -52,7 +52,7 @@ module Refinery
           extra_condition[1] = true if extra_condition[1] == "true"
           extra_condition[1] = false if extra_condition[1] == "false"
           extra_condition[1] = nil if extra_condition[1] == "nil"
-          paginate_resources({extra_condition[0].to_sym => extra_condition[1]})
+          paginate_resources({extra_condition[0] => extra_condition[1]})
         else
           paginate_resources
         end

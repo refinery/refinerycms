@@ -1,57 +1,59 @@
 # Encoding: utf-8
 require 'friendly_id'
 require 'refinery/core/base_model'
+require 'refinery/pages/url'
 
 module Refinery
   class Page < Core::BaseModel
     extend FriendlyId
 
-    translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
+    translates :title, :menu_title, :slug, :include => :seo_meta
 
     class Translation
       is_seo_meta
       attr_accessible *::SeoMeta.attributes.keys, :locale
     end
 
-    # Delegate SEO Attributes to globalize3 translation
+    # Delegate SEO Attributes to globalize translation
     seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
     delegate(*(seo_fields << {:to => :translation}))
 
     attr_accessible :id, :deletable, :link_url, :menu_match,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :parent_id, :menu_title, :page_id,
-                    :layout_template, :view_template, :custom_slug, :slug,
+                    :layout_template, :view_template, :slug,
                     :title, *::SeoMeta.attributes.keys
 
     validates :title, :presence => true
-
-    validates :custom_slug, :uniqueness => true, :allow_blank => true
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
     # rather than :delete_all we want :destroy
     acts_as_nested_set :dependent => :destroy
 
     # Docs for friendly_id http://github.com/norman/friendly_id
-    friendly_id_options = {:use => [:reserved, :globalize], :reserved_words => %w(index new session login logout users refinery admin images wymiframe)}
+    friendly_id_options = {
+      use: [:reserved],
+      reserved_words: %w(index new session login logout users refinery admin images wymiframe)
+    }
     if ::Refinery::Pages.scope_slug_by_parent
       friendly_id_options[:use] << :scoped
-      friendly_id_options.merge!(:scope => :parent)
+      friendly_id_options.merge!(scope: :parent)
     end
+    friendly_id_options[:use] << :globalize
 
-    friendly_id :custom_slug_or_title, friendly_id_options
+    friendly_id :menu_title_or_title, friendly_id_options
 
-    has_many :parts,
-             :foreign_key => :refinery_page_id,
+    has_many :parts, -> {
+      scope = order('position ASC')
+      scope = scope.includes(:translations) if ::Refinery::PagePart.respond_to?(:translation_class)
+      scope
+    },       :foreign_key => :refinery_page_id,
              :class_name => '::Refinery::PagePart',
-             :order => 'position ASC',
              :inverse_of => :page,
-             :dependent => :destroy,
-             :include => ((:translations) if ::Refinery::PagePart.respond_to?(:translation_class))
+             :dependent => :destroy
 
     accepts_nested_attributes_for :parts, :allow_destroy => true
 
-    before_save { |m| m.translation.save }
-    before_create :ensure_locale!
     before_destroy :deletable?
     after_save :reposition_parts!
 
@@ -70,7 +72,10 @@ module Refinery
           # called 'example' otherwise it may clash with another page called /example.
           path = path.split('/').select(&:present?)
           page = by_slug(path.shift, :parent_id => nil).first
-          page = page.children.by_slug(path.shift).first while page && path.any?
+          while page && path.any? do
+            slug_or_id = path.shift
+            page = page.children.by_slug(slug_or_id).first || page.children.find(slug_or_id)
+          end
         else
           page = by_slug(path).first
         end
@@ -84,12 +89,12 @@ module Refinery
       def find_by_path_or_id(path, id)
         if path.present?
           if path.friendly_id?
-            find_by_path(path)
+            friendly.find_by_path(path)
           else
-            find(path)
+            friendly.find(path)
           end
         elsif id.present?
-          find(id)
+          friendly.find(id)
         end
       end
 
@@ -167,7 +172,7 @@ module Refinery
     end
 
     def translated_to_default_locale?
-      persisted? && translations.where(:locale => Refinery::I18n.default_frontend_locale).any?
+      persisted? && translations.any?{|t| t.locale == Refinery::I18n.default_frontend_locale}
     end
 
     # The canonical page for this particular page.
@@ -183,10 +188,10 @@ module Refinery
       Globalize.with_locale(::Refinery::I18n.default_frontend_locale) { slug }
     end
 
-    # Returns in cascading order: custom_slug or menu_title or title depending on
+    # Returns in cascading order: menu_title or title depending on
     # which attribute is first found to be present for this page.
-    def custom_slug_or_title
-      custom_slug.presence || menu_title.presence || title.presence
+    def menu_title_or_title
+      menu_title.presence || title.presence
     end
 
     # Am I allowed to delete this page?
@@ -200,7 +205,7 @@ module Refinery
     # This ensures that they are in the correct 0,1,2,3,4... etc order.
     def reposition_parts!
       reload.parts.each_with_index do |part, index|
-        part.update_attributes :position => index
+        part.update_columns position: index
       end
     end
 
@@ -240,24 +245,6 @@ module Refinery
 
     def url
       Pages::Url.build(self)
-    end
-
-    def link_url_localised?
-      Refinery.deprecate "Refinery::Page#link_url_localised?", :when => '2.2',
-                         :replacement => "Refinery::Pages::Url::Localised#url"
-      Pages::Url::Localised.new(self).url
-    end
-
-    def url_normal
-      Refinery.deprecate "Refinery::Page#url_normal", :when => '2.2',
-                         :replacement => "Refinery::Pages::Url::Normal#url"
-      Pages::Url::Normal.new(self).url
-    end
-
-    def url_marketable
-      Refinery.deprecate "Refinery::Page#url_marketable", :when => '2.2',
-                         :replacement => "Refinery::Pages::Url::Marketable#url"
-      Pages::Url::Marketable.new(self).url
     end
 
     def nested_url
@@ -354,15 +341,7 @@ module Refinery
       end
     end
 
-  private
-
-    # Make sures that a translation exists for this page.
-    # The translation is set to the default frontend locale.
-    def ensure_locale!
-      if self.translations.empty?
-        self.translations.build(:locale => Refinery::I18n.default_frontend_locale)
-      end
-    end
+    private
 
     # Protects generated slugs from title if they are in the list of reserved words
     # This applies mostly to plugin-generated pages.
@@ -371,11 +350,14 @@ module Refinery
     #
     # Returns the sluggified string
     def normalize_friendly_id_with_marketable_urls(slug_string)
-      # If we are scoping by parent, no slashes are allowed. Otherwise, slug is potentially
-      # a custom slug that contains a custom route to the page.
+      # If we are scoping by parent, no slashes are allowed. Otherwise, slug is
+      # potentially a custom slug that contains a custom route to the page.
       if !Pages.scope_slug_by_parent && slug_string.include?('/')
-        slug_string.sub!(%r{^/*}, '').sub!(%r{/*$}, '') # Remove leading and trailing slashes, but allow internal
-        slug_string.split('/').select(&:present?).map {|s| normalize_friendly_id_with_marketable_urls(s) }.join('/')
+        # Remove leading and trailing slashes, but allow internal
+        slug_string.sub!(%r{^/*}, '').sub!(%r{/*$}, '')
+        slug_string.split('/').select(&:present?).map {|s|
+          normalize_friendly_id_with_marketable_urls(s)
+        }.join('/')
       else
         sluggified = slug_string.to_slug.normalize!
         if Pages.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)

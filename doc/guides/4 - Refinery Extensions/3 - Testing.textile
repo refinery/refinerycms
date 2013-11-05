@@ -37,7 +37,7 @@ APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
 load 'rails/tasks/extension.rake' if File.exists?(APP_RAKEFILE)
 
 require "refinerycms-testing"
-Refinery::Testing::Railtie.load_tasks
+Refinery::Testing::Railtie.load_dummy_tasks ENGINE_PATH
 </ruby>
 
 And run the dummy application generator:

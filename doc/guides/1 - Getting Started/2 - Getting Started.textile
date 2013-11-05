@@ -8,17 +8,13 @@ This guide covers getting up and running with Refinery CMS. After reading it, yo
 
 endprologue.
 
-WARNING. This guide is based on Refinery CMS 2.0.0 so some of the code shown here may not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 2.1.0 so some of the code shown here may not work in earlier versions of Refinery.
 
 h3. Guide Assumptions
 
 This guide is designed for beginners who want to get started with a Refinery CMS site from scratch. It does not assume that you have any prior experience with Refinery. However, to get the most out of it, you need to have some prerequisites installed:
 
 * The "Ruby":http://www.ruby-lang.org/en/downloads language version 1.9.3 or higher
-
-TIP: Do not use Ruby 1.9.1 as Rails 3.x is not compatible with it. Use 1.9.3 for smooth sailing.
-
-* The "RubyGems":http://rubyforge.org/frs/?group_id=126 packaging system
 * A working installation of the "SQLite3 Database":http://www.sqlite.org
 * A working installation of "ImageMagick":http://www.imagemagick.org/script/install-source.php
 
@@ -29,6 +25,8 @@ TIP: It is recommended that developers use RVM to manage Ruby versions and gems.
 <shell>
 rvm use --create ruby-1.9.3@refinery
 </shell>
+
+TIP: If you are not using an RVM gemset and you have Rails 4 installed, be sure to read the "Rails Application Templates":#rails-application-templates section below.
 
 Refinery is a Ruby on Rails web application. If you have no prior experience with Rails, you will find a very steep learning curve diving straight into Refinery. There are some good free resources on the Internet for learning Rails, including:
 
@@ -76,10 +74,11 @@ h4. Installing Refinery
 There are two popular ways to install Refinery: RubyGems and Rails Application Templates. We will discuss both and how you can get up and running with either.
 
 h5. RubyGems
+
 The easiest way to install Refinery is to take advantage of RubyGems.
 
 <shell>
-# gem install refinerycms
+$ gem install refinerycms
 </shell>
 
 NOTE: This step may take some time to load as it needs to download and install all the ruby gems Refinery depends on.
@@ -87,10 +86,17 @@ NOTE: This step may take some time to load as it needs to download and install a
 TIP. If you're working on Windows, you should be aware that the vast majority of Refinery development is done in Unix environments. If at all possible, we suggest that you develop on a Linux based operating system.
 
 h5. Rails Application Templates
+
 These application templates are another very easy way to install Refinery, and allow for a great deal of control of your installation. You can create a new Refinery application by typing:
 
 <shell>
-$ rails new rickrockstar -m http://refinerycms.com/t/2.0.3
+$ rails new rickrockstar -m http://refinerycms.com/t/2.1.0
+</shell>
+
+TIP. As *Refinery CMS is not compatible with Rails 4* you may also need to specify the Rails version in case you are not using an RVM gemset:
+
+<shell>
+$ rails _3.2.14_ new rickrockstar -m http://refinerycms.com/t/2.1.0
 </shell>
 
 WARNING. If you create an application from the template, be sure to skip running +refinerycms rickrockstar+ as listed in the next section&mdash;the template will have completed this step.
@@ -221,10 +227,10 @@ Every view in Refinery has an instance variable called +@page+ available. The be
 Replace the contents of +app/views/refinery/pages/show.html.erb+ with this:
 
 <erb>
-<section id='body_content'>
+<section id='body'>
   <%=raw @page.content_for(:body) %>
 </section>
-<section id='side_body_content'>
+<section id='side_body'>
   <%=raw @page.content_for(:side_body) %>
 </section>
 </erb>
@@ -387,6 +393,8 @@ $ rake db:seed
 A +refinery:events+ generator is created for you to install the migration to create the events table.
 
 TIP: When new extensions are added it's a good idea to restart your server for new changes to be loaded in.
+
+TIP: Models in Refinery engines expect a string field that acts as the title identifier when displayed in lists in the admin pages. If a title field is not included, the first string field found will be used. Models without a usable field for a title will cause the admin to raise an error, so please include a title field or alias when creating models in your engine.
 
 Now go to the backend of your Refinery site ("http://localhost:3000/refinery":http://localhost:3000/refinery) and you'll notice a new tab called "Events". Click on "Add new event" and you'll see something like this:
 

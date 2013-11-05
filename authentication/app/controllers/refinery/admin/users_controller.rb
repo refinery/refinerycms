@@ -36,7 +36,7 @@ module Refinery
       def update
         # Store what the user selected.
         @selected_role_names = params[:user].delete(:roles) || []
-        @selected_role_names = @user.roles.pluck(:title) unless user_can_assign_roles?
+        @selected_role_names = @user.roles.select(:title).map(&:title) unless user_can_assign_roles?
         @selected_plugin_names = params[:user][:plugins]
 
         if user_is_locking_themselves_out?

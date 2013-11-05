@@ -35,6 +35,7 @@ module Refinery
       template "rails/application.rb.erb", "#{dummy_path}/config/application.rb", :force => true
       template "rails/routes.rb", "#{dummy_path}/config/routes.rb", :force => true
       template "rails/Rakefile", "#{dummy_path}/Rakefile", :force => true
+      template "rails/application.js", "#{dummy_path}/app/assets/javascripts/application.js", :force => true
     end
 
     def test_dummy_clean

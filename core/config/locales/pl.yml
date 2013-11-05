@@ -1,5 +1,8 @@
 pl:
   refinery:
+    js:
+      admin:
+        confirm_changes: Wszystkie zmiany zostaną utracone. Kontynuować bez zapisu?
     plugins:
       refinery_core:
         title: Refinery

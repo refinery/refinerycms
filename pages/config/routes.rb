@@ -6,7 +6,7 @@ Refinery::Core::Engine.routes.draw do
     namespace :admin, :path => Refinery::Core.backend_route do
       scope :path => :pages do
         post 'preview', :to => 'preview#show', :as => :preview_pages
-        put  'preview/*path', :to => 'preview#show', :as => :preview_page
+        patch 'preview/*path', :to => 'preview#show', :as => :preview_page
       end
     end
   end
@@ -14,7 +14,7 @@ Refinery::Core::Engine.routes.draw do
   namespace :admin, :path => Refinery::Core.backend_route do
     get 'pages/*path/edit', :to => 'pages#edit'
     get 'pages/*path/children', :to => 'pages#children', :as => 'children_pages'
-    put 'pages/*path', :to => 'pages#update'
+    patch 'pages/*path', :to => 'pages#update'
     delete 'pages/*path', :to => 'pages#destroy'
 
     resources :pages, :except => :show do

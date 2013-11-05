@@ -11,7 +11,8 @@ module Refinery
       include ActiveSupport::Configurable
 
       config_accessor :roots, :menu_tag, :list_tag, :list_item_tag, :css, :dom_id,
-                      :max_depth, :selected_css, :first_css, :last_css
+                      :max_depth, :selected_css, :first_css, :last_css, :list_tag_css,
+                      :link_tag_css
       self.dom_id = 'menu'
       self.css = 'menu clearfix'
       self.menu_tag = :nav
@@ -20,6 +21,8 @@ module Refinery
       self.selected_css = :selected
       self.first_css = :first
       self.last_css = :last
+      self.list_tag_css = 'nav'
+
       def roots
         config.roots.presence || collection.roots
       end
@@ -45,7 +48,7 @@ module Refinery
 
       def render_menu_items(menu_items)
         if menu_items.present?
-          content_tag(list_tag) do
+          content_tag(list_tag, :class => list_tag_css) do
             menu_items.each_with_index.inject(ActiveSupport::SafeBuffer.new) do |buffer, (item, index)|
               buffer << render_menu_item(item, index)
             end
@@ -53,10 +56,14 @@ module Refinery
         end
       end
 
+      def render_menu_item_link(menu_item)
+        link_to(menu_item.title, context.refinery.url_for(menu_item.url), :class => link_tag_css)
+      end
+
       def render_menu_item(menu_item, index)
         content_tag(list_item_tag, :class => menu_item_css(menu_item, index)) do
           buffer = ActiveSupport::SafeBuffer.new
-          buffer << link_to(menu_item.title, context.refinery.url_for(menu_item.url))
+          buffer << render_menu_item_link(menu_item)
           buffer << render_menu_items(menu_item_children(menu_item))
           buffer
         end

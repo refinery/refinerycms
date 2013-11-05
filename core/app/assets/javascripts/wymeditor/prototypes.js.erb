@@ -796,9 +796,6 @@ WYMeditor.editor.prototype.dialog_ajax_callback = function(selected) {
   // now fix the height;
   $("#" + wym._options.dialogId + ".editor_dialog").css('height', 'auto');
 
-  // add corners to the buttons.
-  $('#' + wym._options.dialogId + " .button").corner('6px');
-
   // look for iframes
   (iframes = $("#" + this._options.dialogId).find('iframe')).load(function() {
     WYMeditor.INIT_DIALOG(wym, _selected, true);

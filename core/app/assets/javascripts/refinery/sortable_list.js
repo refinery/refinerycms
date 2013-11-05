@@ -4,7 +4,7 @@ var create_sortable_list = function(options){
         , init: function(options) {
             if(!this.initialised){
                 this.update_url = options.update_url;
-                this.sortable_list = options.sortable_list;
+                this.sortable_list = $(options.sortable_list);
                 this.tree = options.tree;
                 this.replaceContentsAfterUpdate = options.replaceContentsAfterUpdate;
 
@@ -25,7 +25,7 @@ var create_sortable_list = function(options){
                     this.sortable_list.find('li').addClass('no-nest');
                 }
 
-                this.sortable_list.nestedSortable({
+                this.sortable_list.nestedSortable($.extend({
                     listType: 'ul',
                     disableNesting: 'no-nest',
                     forcePlaceholderSize: true,
@@ -37,11 +37,10 @@ var create_sortable_list = function(options){
                     tolerance: 'pointer',
                     toleranceElement: this.tree ? '> div' : null,
                     disabled: true,
-                    start: function () {
-                    },
+                    start: function () {},
                     change: $.proxy(this.change, {list: this}),
                     stop: $.proxy(this.stop, {list: this})
-                });
+                }, options));
                 if (this.tree) {
                     this.reset_branch_classes(this.sortable_list);
                 } else {

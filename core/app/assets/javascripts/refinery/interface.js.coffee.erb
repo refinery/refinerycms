@@ -1,12 +1,6 @@
 @init_interface = ->
   $("body#dialog_container.dialog").addClass "iframed"  if parent and parent.document.location.href != document.location.href
   $("input:submit:not(.button)").addClass "button"
-  unless $.browser.msie
-    $("#page_container, .wym_box").corner "5px bottom"
-    $(".wym_box").corner "5px tr"
-    $(".field > .wym_box").corner "5px tl"
-    $(".wym_iframe iframe").corner "2px"
-    $(".form-actions:not(\".form-actions-dialog\")").corner "5px"
 
   $("textarea.wymeditor").each ->
     textarea = $(this)
@@ -35,10 +29,6 @@
       listTag: $menu.get(0).tagName.toLowerCase()
       itemTag: $menu.children(":first").get(0).tagName.toLowerCase()
 
-    if $menu.outerWidth() < $("#page_container").outerWidth()
-      $("#page_container:not('.login #page_container')").corner "5px tr"
-    else
-      $("#page_container:not('.login #page_container')").uncorner()
   $("#current_locale li a").click (e) ->
     $("#current_locale li a span").each (span) ->
       $(this).css "display", (if $(this).css("display") == "none" then "" else "none")

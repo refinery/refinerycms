@@ -18,7 +18,7 @@ At this point we will assume that you have created the "events" engine which con
 
 Now, what if you wanted to add an "Event Type" model, and you wanted to have an event type drop-down on the "edit event" page?  Let's set that up properly.
 
-To add your EventType model, run the following command. 
+To add your EventType model, run the following command.
 
 <shell>
   $ rails g refinery:engine event_type name:string --extension events --namespace events
@@ -26,7 +26,7 @@ To add your EventType model, run the following command.
 
 TIP: You can additionally specify +--pretend+ to simulate generation, so you may inspect the outcome without actually modifying anything.
 
-Notice the last arguments (+--extension <extension_name> --namespace <extension_name>+). This is how Refinery knows which extension to insert your new code. The +--namespace+ argument is necessary because Refinery will create a namespace for your extension by default. If you don't specify one, it's the name of the first scaffold you created. In this case, the namespace is +events+. 
+Notice the last arguments (+--extension <extension_name> --namespace <extension_name>+). This is how Refinery knows which extension to insert your new code. The +--namespace+ argument is necessary because Refinery will create a namespace for your extension by default. If you don't specify one, it's the name of the first scaffold you created. In this case, the namespace is +events+.
 
 
 Running this command will produce the following output:
@@ -217,7 +217,7 @@ end
 </ruby>
 
 
-Now, add a function to "find_all_event_types", and call that function in a before_filter (we only need it in the show action).  Your controller should look like this when you are done:
+Now, add a function to "find_all_event_types", and call that function in a before_filter. The @event_types variable will be needed in all actions that utilize the +vendor/extensions/events/app/views/refinery/events/admin/events/_form.rb+ partial (all actions except :show and :destroy). Your controller should look like this when you are done:
 
 <ruby>
 module Refinery
@@ -225,7 +225,7 @@ module Refinery
     module Admin
       class EventsController < ::Refinery::AdminController
 
-        before_filter :find_all_event_types, :only => [:show]
+        before_filter :find_all_event_types, :except => [:show, :destroy]
 
         crudify :'refinery/events/event', :xhr_paging => true
 

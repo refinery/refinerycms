@@ -22,7 +22,7 @@ Now run +bundle update+ and let it install new gems.
 
 h3. Running Refinery's CMS generator
 
-WARNING: If the application you will be upgrading is using a SQLite database then you need to read +Refinery's CMS generator and SQLite database+.
+WARNING: If the application you will be upgrading is using a SQLite database scroll down and read *Refinery's CMS generator and SQLite database* section.
 
 Go to the terminal and run following command:
 
@@ -38,7 +38,7 @@ This command will do a couple of things:
 * Copy new migrations.
 * Run +rake db:migrate+ and +rake db:seed+ commands.
 
-NOTE: If you don't want the generator to run +rake db:migrate+ and +rake db:seed+ commands pass the +--skip_db+ option when invoking the generator:
+NOTE: If you don't want the generator to run +rake db:migrate+ and +rake db:seed+ commands pass the +--skip_db+ option when invoking refinery:cms generator:
 
 <shell>
 rails generate refinery:cms --skip_db
@@ -52,7 +52,7 @@ INFO. Because SQLite can only handle index names that are no longer than 64 char
 rails generate refinery:cms --skip_db
 </shell>
 
-Go inside of +db/migrate+ and find a migration called +<timestamp>_remove_meta_keywords_from_seo_meta.seo_meta.rb+. Open it in the editor of your choice and replace everything with the code from "Uģis' gist":https://gist.github.com/ugisozols/5998256.
+Go inside of +db/migrate+ and find a migration called +\<timestamp\>_remove_meta_keywords_from_seo_meta.seo_meta.rb+. Open it in the editor of your choice and replace everything with the code from "Uģis' gist":https://gist.github.com/ugisozols/5998256.
 
 What this will do is check if the +seo_meta+ table has an index named +index_seo_meta_on_seo_meta_id_and_seo_meta_type+ and in case it does it will:
 

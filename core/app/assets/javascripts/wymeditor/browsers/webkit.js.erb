@@ -251,27 +251,26 @@ WYMeditor.WymClassSafari.prototype.keyup = function(e) {
 
 WYMeditor.WymClassSafari.prototype.openBlockTag = function(tag, attributes)
 {
-  var attributes = this.validator.getValidTagAttributes(tag, attributes);
+    var attributes = this.validator.getValidTagAttributes(tag, attributes);
 
-  // Handle Safari styled spans
-  if(tag == 'span' && attributes.style) {
-    if(new_tag = this.getTagForStyle(attributes.style)) {
-      this._tag_stack.pop();
-      var tag = new_tag;
-      this._tag_stack.push(new_tag);
-      attributes.style = '';
+    // Handle Safari styled spans
+    if(tag == 'span' && attributes.style) {
+        new_tag = this.getTagForStyle(attributes.style);
+        if(new_tag) {
+            this._tag_stack.pop();
+            var tag = new_tag;
+            this._tag_stack.push(new_tag);
+            attributes.style = '';
 
-      //should fix #125 - also removed the xhtml() override
-      if(typeof attributes['class'] == 'string') {
-        attributes['class'] = attributes['class'].replace(/apple-style-span/gi, '');
-      }
+            //should fix #125 - also removed the xhtml() override
+            if(typeof attributes['class'] == 'string') {
+                attributes['class'] = attributes['class'].replace(/apple-style-span/gi, '');
+            }
 
-    } else {
-      return;
+        }
     }
-  }
 
-  this.output += this.helper.tag(tag, attributes, true);
+    this.output += this.helper.tag(tag, attributes, true);
 };
 
 WYMeditor.WymClassSafari.prototype.getTagForStyle = function(style) {

@@ -65,7 +65,7 @@ nl:
 
 Order the keys exactly like the en.yml version. This way, you can use a diff-enabled-editor to open both the +en.yml+ and +nl.yml+ file to quickly update the locale. If you are making changes to the +en.yml+ file, alphabetically list keys you add.
 
-TIP: If you're starting a translation for a new language, copy +en.yml+ to "your_locale".yml</p>
+TIP: If you're starting a translation for a new language, copy +en.yml+ to "your_locale".yml
 
 WARNING: Make sure you change +en:+ to your locale's key at the top of "your_locale".yml to avoid overriding the English translation (e.g. +nl:+)
 

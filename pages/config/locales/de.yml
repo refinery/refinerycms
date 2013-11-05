@@ -54,7 +54,6 @@ de:
           page_options: Seitenoptionen
           parent_page: Übergeordnete Seite
           menu_title: Menütitel
-          custom_slug: Angepasster Titel in URL
           show_in_menu_title: Im Menü anzeigen
           show_in_menu_description: Zeigt diese Seite im Seitenmenü an
           show_in_menu_help: Entfernen Sie dieses Häckchen, wenn die Seite nicht im Menü erscheinen soll. Dies kann nützlich sein, wenn Sie eine Seite direkt verlinken jedoch nicht im Menü anzeigen lassen möchten.
@@ -65,7 +64,6 @@ de:
           link_url_help: Wenn diese Seite zu einer anderen Seite weitergeleitet werden soll, geben Sie hier eine Adresse an, sonst lassen Sie dieses Feld leer.
           parent_page_help: Sie können eine Seite einer anderen unterordnen, indem Sie diese aus der Liste wählen. Soll die Seite auf die oberste Ebene, lassen Sie dieses Feld leer.
           menu_title_help: Wenn im Menü ein anderer Titel als der auf der Seite angezeigte angezeigt werden soll, geben Sie ihn hier ein.
-          custom_slug_help: Um den Titel, der in der URL benutzt wird, zu überschreiben, geben Sie hier den Titel ein.
           layout_template: Layoutvorlage
           layout_template_help: Hier können Sie eine andere Layoutvorlage für diese Seite wählen.
           view_template: Ansichtsvorlage

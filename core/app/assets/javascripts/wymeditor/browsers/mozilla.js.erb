@@ -267,21 +267,20 @@ WYMeditor.WymClassMozilla.prototype.openBlockTag = function(tag, attributes)
 {
   var attributes = this.validator.getValidTagAttributes(tag, attributes);
 
-  // Handle Mozilla styled spans
-  if(tag == 'span' && attributes.style) {
-    var new_tag = this.getTagForStyle(attributes.style);
-    if(new_tag){
-      this._tag_stack.pop();
-      var tag = new_tag;
-      this._tag_stack.push(new_tag);
-      attributes.style = '';
-    } else {
-      return;
+    // Handle Mozilla styled spans
+    if (tag === 'span' && attributes.style) {
+        var new_tag = this.getTagForStyle(attributes.style);
+        if (new_tag) {
+            tag = new_tag;
+            this._tag_stack.pop();
+            this._tag_stack.push(tag);
+            attributes.style = '';
+        }
     }
-  }
 
   this.output += this.helper.tag(tag, attributes, true);
 };
+
 
 WYMeditor.WymClassMozilla.prototype.getTagForStyle = function(style) {
 
