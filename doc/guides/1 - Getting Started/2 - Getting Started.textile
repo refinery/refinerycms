@@ -96,7 +96,7 @@ $ rails new rickrockstar -m http://refinerycms.com/t/2.1.0
 TIP. As *Refinery CMS is not compatible with Rails 4* you may also need to specify the Rails version in case you are not using an RVM gemset:
 
 <shell>
-$ rails _3.2.14_ new rickrockstar -m http://refinerycms.com/t/2.1.0
+$ rails _3.2.15_ new rickrockstar -m http://refinerycms.com/t/2.1.0
 </shell>
 
 WARNING. If you create an application from the template, be sure to skip running +refinerycms rickrockstar+ as listed in the next section&mdash;the template will have completed this step.
