@@ -82,8 +82,6 @@ ru:
         subject: "Инструкции по восстановлению пароля"
       unlock_instructions:
         subject: "Инструкции по разблокировке учётной записи"
-    sessions:
-      signed_in: 'Вы вошли.'
   activerecord:
     models:
       refinery/user: пользователь
