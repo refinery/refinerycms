@@ -14,7 +14,7 @@ module Refinery
       attr_accessible *::SeoMeta.attributes.keys, :locale
     end
 
-    # Delegate SEO Attributes to globalize3 translation
+    # Delegate SEO Attributes to globalize translation
     seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
     delegate(*(seo_fields << {:to => :translation}))
 
@@ -51,7 +51,10 @@ module Refinery
 
     accepts_nested_attributes_for :parts, :allow_destroy => true
 
-    before_save { |m| m.translation.save }
+    before_save do |m|
+      m.translation.globalized_model = self
+      m.translation.save if m.translation.new_record?
+    end
     before_create :ensure_locale!
     before_destroy :deletable?
     after_save :reposition_parts!
