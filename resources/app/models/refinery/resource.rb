@@ -2,13 +2,15 @@ require 'dragonfly'
 
 module Refinery
   class Resource < Refinery::Core::BaseModel
-    ::Refinery::Resources::Dragonfly.setup!
+    extend Dragonfly::Model
+    extend Dragonfly::Model::Validations
+
+    dragonfly_accessor :file
+    # ::Refinery::Resources::Dragonfly.setup!
 
     include Resources::Validators
 
     attr_accessible :id, :file
-
-    resource_accessor :file
 
     validates :file, :presence => true
     validates_with FileSizeValidator

@@ -7,7 +7,7 @@ module Refinery
       content.gsub(%r{<img.+?src=['"](/system/images/.+?)/.+?/>}) do |img|
         begin
           sha = img.match(%r{/system/images/(.+?)/})[1]
-          job = Dragonfly::Job.deserialize sha, Dragonfly[:refinery_images]
+          job = Dragonfly::Job.deserialize sha, Dragonfly.app(:refinery_images)
 
           image_fu Image.where(:image_uid => job.uid).first, thumbnail
         rescue Dragonfly::Serializer::BadString
