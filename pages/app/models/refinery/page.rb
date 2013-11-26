@@ -12,11 +12,14 @@ module Refinery
     class Translation
       is_seo_meta
       attr_accessible *::SeoMeta.attributes.keys, :locale
+
+      def self.seo_fields
+        ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
+      end
     end
 
     # Delegate SEO Attributes to globalize translation
-    seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
-    delegate(*(seo_fields << {:to => :translation}))
+    delegate(*(Translation.seo_fields << {:to => :translation}))
 
     attr_accessible :id, :deletable, :link_url, :menu_match,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
