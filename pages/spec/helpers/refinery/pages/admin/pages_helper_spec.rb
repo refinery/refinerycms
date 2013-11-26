@@ -57,7 +57,9 @@ module Refinery
           it "adds 'hidden' label" do
             page.show_in_menu = false
 
-            helper.page_meta_information(page).should eq(%q{<span class="label">hidden</span>})
+            helper.page_meta_information(page).should eq(
+              %Q{<span class="label">#{::I18n.t('refinery.admin.pages.page.hidden')}</span>}
+            )
           end
         end
 
@@ -65,7 +67,9 @@ module Refinery
           it "adds 'draft' label" do
             page.draft = true
 
-            helper.page_meta_information(page).should eq(%q{<span class="label notice">draft</span>})
+            helper.page_meta_information(page).should eq(
+              %Q{<span class="label notice">#{::I18n.t('refinery.admin.pages.page.draft')}</span>}
+            )
           end
         end
       end

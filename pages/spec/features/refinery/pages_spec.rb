@@ -8,6 +8,7 @@ module Refinery
     let(:draft_page) { Page.create :title => 'Draft', :draft => true }
     before do
       # Stub the menu pages we're expecting
+      ::I18n.default_locale = Globalize.locale = :en
       Page.stub(:fast_menu).and_return([home_page, about_page])
     end
 
@@ -312,10 +313,11 @@ module Refinery
         end
 
         describe "nested page" do
-          let(:nested_page_title) { '2012' }
-          let(:nested_page_slug) { '2012' }
+          let(:nested_page_title) { 'nested_page' }
+          let(:nested_page_slug) { 'nested_page' }
 
           let!(:nested_page) do
+            Globalize.fallbacks = [:ru]
             _page = Globalize.with_locale(:en) {
               news_page.children.create :title => nested_page_title
             }
