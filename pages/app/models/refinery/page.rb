@@ -18,6 +18,22 @@ module Refinery
       end
     end
 
+    class FriendlyIdOptions
+      def self.options
+        # Docs for friendly_id http://github.com/norman/friendly_id
+        friendly_id_options = {
+          use: [:reserved],
+          reserved_words: %w(index new session login logout users refinery admin images wymiframe)
+        }
+        if ::Refinery::Pages.scope_slug_by_parent
+          friendly_id_options[:use] << :scoped
+          friendly_id_options.merge!(scope: :parent)
+        end
+        friendly_id_options[:use] << :globalize
+        friendly_id_options
+      end
+    end
+
     # Delegate SEO Attributes to globalize translation
     delegate(*(Translation.seo_fields << {:to => :translation}))
 
@@ -33,18 +49,7 @@ module Refinery
     # rather than :delete_all we want :destroy
     acts_as_nested_set :dependent => :destroy
 
-    # Docs for friendly_id http://github.com/norman/friendly_id
-    friendly_id_options = {
-      use: [:reserved],
-      reserved_words: %w(index new session login logout users refinery admin images wymiframe)
-    }
-    if ::Refinery::Pages.scope_slug_by_parent
-      friendly_id_options[:use] << :scoped
-      friendly_id_options.merge!(scope: :parent)
-    end
-    friendly_id_options[:use] << :globalize
-
-    friendly_id :menu_title_or_title, friendly_id_options
+    friendly_id :menu_title_or_title, FriendlyIdOptions.options
 
     has_many :parts, -> {
       scope = order('position ASC')
