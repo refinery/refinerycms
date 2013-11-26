@@ -21,6 +21,12 @@ module Refinery
 
     self.translation_class.send :attr_accessible, :locale
 
+    def title_matches(other_title)
+      title.present? and # protecting against the problem that occurs when have nil title
+      title == other_title.to_s or
+      title.downcase.gsub(" ", "_") == other_title.to_s.downcase.gsub(" ", "_")
+    end
+
     protected
     def normalise_text_fields
       if body? && body !~ %r{^<}

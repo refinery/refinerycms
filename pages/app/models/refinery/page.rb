@@ -344,9 +344,7 @@ module Refinery
       # self.parts is usually already eager loaded so we can now just grab
       # the first element matching the title we specified.
       self.parts.detect do |part|
-        part.title.present? and # protecting against the problem that occurs when have nil title
-        part.title == part_title.to_s or
-        part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
+        part.title_matches(part_title)
       end
     end
 
