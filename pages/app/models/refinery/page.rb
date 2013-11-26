@@ -66,20 +66,17 @@ module Refinery
 
       # Find page by path, checking for scoping rules
       def find_by_path(path)
-        if ::Refinery::Pages.scope_slug_by_parent
-          # With slugs scoped to the parent page we need to find a page by its full path.
-          # For example with about/example we would need to find 'about' and then its child
-          # called 'example' otherwise it may clash with another page called /example.
-          path = path.split('/').select(&:present?)
-          page = by_slug(path.shift, :parent_id => nil).first
-          while page && path.any? do
-            slug_or_id = path.shift
-            page = page.children.by_slug(slug_or_id).first || page.children.find(slug_or_id)
-          end
-        else
-          page = by_slug(path).first
-        end
+        return by_slug(path).first unless ::Refinery::Pages.scope_slug_by_parent
 
+        # With slugs scoped to the parent page we need to find a page by its full path.
+        # For example with about/example we would need to find 'about' and then its child
+        # called 'example' otherwise it may clash with another page called /example.
+        path = path.split('/').select(&:present?)
+        page = by_slug(path.shift, :parent_id => nil).first
+        while page && path.any? do
+          slug_or_id = path.shift
+          page = page.children.by_slug(slug_or_id).first || page.children.find(slug_or_id)
+        end
         page
       end
 
