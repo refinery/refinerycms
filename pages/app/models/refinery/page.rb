@@ -352,6 +352,34 @@ module Refinery
 
     private
 
+    class FriendlyIdPath
+      def self.normalize_friendly_id_path(slug_string)
+        # Remove leading and trailing slashes, but allow internal
+        slug_string
+          .sub(%r{^/*}, '')
+          .sub(%r{/*$}, '')
+          .split('/')
+          .select(&:present?)
+          .map {|slug| self.normalize_friendly_id_with_marketable_urls(slug) }.join('/')
+      end
+
+      def self.normalize_friendly_id_with_marketable_urls(slug_string)
+        # If we are scoping by parent, no slashes are allowed. Otherwise, slug is
+        # potentially a custom slug that contains a custom route to the page.
+        if !Pages.scope_slug_by_parent && slug_string.include?('/')
+          self.normalize_friendly_id_path(slug_string)
+        else
+          self.protected_slug_string(slug_string)
+        end
+      end
+
+      def self.protected_slug_string(slug_string)
+        sluggified = slug_string.to_slug.normalize!
+        sluggified << "-page" if Pages.marketable_urls && FriendlyIdOptions.reserved_words.include?(sluggified)
+        sluggified
+      end
+    end
+
     # Protects generated slugs from title if they are in the list of reserved words
     # This applies mostly to plugin-generated pages.
     # This only kicks in when Refinery::Pages.marketable_urls is enabled.
@@ -359,30 +387,16 @@ module Refinery
     #
     # Returns the sluggified string
     def normalize_friendly_id_with_marketable_urls(slug_string)
-      # If we are scoping by parent, no slashes are allowed. Otherwise, slug is
-      # potentially a custom slug that contains a custom route to the page.
-      if !Pages.scope_slug_by_parent && slug_string.include?('/')
-        normalize_friendly_id_path(slug_string)
-      else
-        protected_slug_string(slug_string)
-      end
+      FriendlyIdPath.normalize_friendly_id_with_marketable_urls(slug_string)
     end
     alias_method_chain :normalize_friendly_id, :marketable_urls
 
     def normalize_friendly_id_path(slug_string)
-      # Remove leading and trailing slashes, but allow internal
-      slug_string
-        .sub(%r{^/*}, '')
-        .sub(%r{/*$}, '')
-        .split('/')
-        .select(&:present?)
-        .map(&method(:normalize_friendly_id_with_marketable_urls)).join('/')
+      FriendlyIdPath.normalize_friendly_id_path(slug_string)
     end
 
     def protected_slug_string(slug_string)
-      sluggified = slug_string.to_slug.normalize!
-      sluggified << "-page" if Pages.marketable_urls && reserved_words.include?(sluggified)
-      sluggified
+      FriendlyIdPath.protected_slug_string(slug_string)
     end
     delegate :reserved_words, :to => :friendly_id_config
 
