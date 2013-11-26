@@ -350,20 +350,29 @@ module Refinery
       # If we are scoping by parent, no slashes are allowed. Otherwise, slug is
       # potentially a custom slug that contains a custom route to the page.
       if !Pages.scope_slug_by_parent && slug_string.include?('/')
-        # Remove leading and trailing slashes, but allow internal
-        slug_string.sub!(%r{^/*}, '').sub!(%r{/*$}, '')
-        slug_string.split('/').select(&:present?).map {|s|
-          normalize_friendly_id_with_marketable_urls(s)
-        }.join('/')
+        normalize_friendly_id_path(slug_string)
       else
-        sluggified = slug_string.to_slug.normalize!
-        if Pages.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)
-          sluggified << "-page"
-        end
-        sluggified
+        protected_slug_string(slug_string)
       end
     end
     alias_method_chain :normalize_friendly_id, :marketable_urls
+
+    def normalize_friendly_id_path(slug_string)
+      # Remove leading and trailing slashes, but allow internal
+      slug_string
+        .sub(%r{^/*}, '')
+        .sub(%r{/*$}, '')
+        .split('/')
+        .select(&:present?)
+        .map(&method(:normalize_friendly_id_with_marketable_urls)).join('/')
+    end
+
+    def protected_slug_string(slug_string)
+      sluggified = slug_string.to_slug.normalize!
+      sluggified << "-page" if Pages.marketable_urls && reserved_words.include?(sluggified)
+      sluggified
+    end
+    delegate :reserved_words, :to => :friendly_id_config
 
     def puts_destroy_help
       puts "This page is not deletable. Please use .destroy! if you really want it deleted "
