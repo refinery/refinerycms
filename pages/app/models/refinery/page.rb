@@ -295,7 +295,7 @@ module Refinery
         :menu_match => menu_match,
         :parent_id => parent_id,
         :rgt => rgt,
-        :title => menu_title.presence || title.presence,
+        :title => menu_title_or_title,
         :type => self.class.name,
         :url => url
       }
