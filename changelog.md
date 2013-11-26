@@ -5,9 +5,14 @@
 * Updated how `_make_sortable` works to take an options hash, requiring manual file changes. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
-## 2.1.1 [unreleased]
+## 2.1.1 [26 November 2013]
 
 * Fixed menu reordering bug when `Refinery::Core.backend_route` was set to something different than `refinery`. [#2368](https://github.com/refinery/refinerycms/pull/2368). [xyz](https://github.com/xyz)
+* Fixed bug in serializelist.js where we were iterating through object fields instead of the array elements. [#2360](https://github.com/refinery/refinerycms/pull/2360). Uģis Ozols](https://github.com/ugisozols)
+* Bumped `selenium-webdriver` gem dependency version to `~> 2.34.0`.
+* Fixed bug which occurred when trying to save a child page with no default translation. [#2379](https://github.com/refinery/refinerycms/pull/2379). [Jess Brown](https://github.com/jess) & [Uģis Ozols](https://github.com/ugisozols)
+* Upgraded Globalize dependency to `~> 3.0.1`. [Chris Salzberg](https://github.com/shioyama) [#2462](https://github.com/refinery/refinerycms/pull/2462)
+* [See full list](https://github.com/refinery/refinerycms/compare/2.1.0...2.1.1)
 
 ## 2.1.0 [5 August 2013]
 
@@ -78,7 +83,6 @@
 * Blocked past insecure Rails versions. [Philip Arndt](https://github.com/parndt)
 * Fixed problems with editing pages in different locales. [Philip Arndt](https://github.com/parndt)
 * Locked `truncate_html` to 0.5.x to ensure Ruby 1.8.x compatibility. [Uģis Ozols](https://github.com/ugisozols)
-
 * [See full list](https://github.com/refinery/refinerycms/compare/2.0.9...2.0.10)
 
 ## 2.0.9 [21 November 2012]

@@ -83,6 +83,8 @@ $ gem install refinerycms
 
 NOTE: This step may take some time to load as it needs to download and install all the ruby gems Refinery depends on.
 
+NOTE: If +gem install refinerycms+ fails with an error message saying +ERROR:  While executing gem ... (Gem::ImpossibleDependenciesError)+, run +gem install rails -v=3.2.15+ then +gem install refinerycms+
+
 TIP. If you're working on Windows, you should be aware that the vast majority of Refinery development is done in Unix environments. If at all possible, we suggest that you develop on a Linux based operating system.
 
 h5. Rails Application Templates

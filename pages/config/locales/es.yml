@@ -71,6 +71,8 @@ es:
           layout_template_help: Puedes elegir una plantilla para la dispoción diferente
           view_template: Plantilla para la vista
           view_template_help: Puedes elegir una plantilal para la vista diferente
+          custom_slug: Título personalizado
+          custom_slug_help: Puedes personalizar el título para esta página
         actions:
           create_new_page: Crear nueva página
           reorder_pages: Reordenar páginas
