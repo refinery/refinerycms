@@ -398,7 +398,6 @@ module Refinery
     def protected_slug_string(slug_string)
       FriendlyIdPath.protected_slug_string(slug_string)
     end
-    delegate :reserved_words, :to => :friendly_id_config
 
     def puts_destroy_help
       puts "This page is not deletable. Please use .destroy! if you really want it deleted "
