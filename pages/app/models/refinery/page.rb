@@ -19,11 +19,15 @@ module Refinery
     end
 
     class FriendlyIdOptions
+      def self.reserved_words
+        %w(index new session login logout users refinery admin images wymiframe)
+      end
+
       def self.options
         # Docs for friendly_id http://github.com/norman/friendly_id
         friendly_id_options = {
           use: [:reserved],
-          reserved_words: %w(index new session login logout users refinery admin images wymiframe)
+          reserved_words: self.reserved_words
         }
         if ::Refinery::Pages.scope_slug_by_parent
           friendly_id_options[:use] << :scoped
