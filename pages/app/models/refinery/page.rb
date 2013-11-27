@@ -2,6 +2,7 @@
 require 'friendly_id'
 require 'refinery/core/base_model'
 require 'refinery/pages/url'
+require 'refinery/page_finder'
 
 module Refinery
   class Page < Core::BaseModel
@@ -78,33 +79,14 @@ module Refinery
 
       # Find page by path, checking for scoping rules
       def find_by_path(path)
-        return by_slug(path).first unless ::Refinery::Pages.scope_slug_by_parent
-
-        # With slugs scoped to the parent page we need to find a page by its full path.
-        # For example with about/example we would need to find 'about' and then its child
-        # called 'example' otherwise it may clash with another page called /example.
-        path = path.split('/').select(&:present?)
-        page = by_slug(path.shift, :parent_id => nil).first
-        while page && path.any? do
-          slug_or_id = path.shift
-          page = page.children.by_slug(slug_or_id).first || page.children.find(slug_or_id)
-        end
-        page
+        PageFinder.find_by_path(path)
       end
 
       # Helps to resolve the situation where you have a path and an id
       # and if the path is unfriendly then a different finder method is required
       # than find_by_path.
       def find_by_path_or_id(path, id)
-        if path.present?
-          if path.friendly_id?
-            friendly.find_by_path(path)
-          else
-            friendly.find(path)
-          end
-        elsif id.present?
-          friendly.find(id)
-        end
+        PageFinder.find_by_path_or_id(path, id)
       end
 
       # Finds pages by their title.  This method is necessary because pages
@@ -112,7 +94,7 @@ module Refinery
       # pages table thus requiring us to find the attribute on the translations table
       # and then join to the pages table again to return the associated record.
       def by_title(title)
-        with_globalize(:title => title)
+        PageFinder.by_title(title)
       end
 
       # Finds pages by their slug.  This method is necessary because pages
@@ -120,10 +102,7 @@ module Refinery
       # pages table thus requiring us to find the attribute on the translations table
       # and then join to the pages table again to return the associated record.
       def by_slug(slug, conditions={})
-        with_globalize({
-          :locale => Refinery::I18n.frontend_locales.map(&:to_s),
-          :slug => slug
-        }.merge(conditions))
+        PageFinder.by_slug(slug, conditions)
       end
 
       # Shows all pages with :show_in_menu set to true, but it also
@@ -141,19 +120,7 @@ module Refinery
 
       # Wrap up the logic of finding the pages based on the translations table.
       def with_globalize(conditions = {})
-        conditions = {:locale => ::Globalize.locale.to_s}.merge(conditions)
-        translations_conditions = {}
-        translated_attrs = translated_attribute_names.map(&:to_s) | %w(locale)
-
-        conditions.keys.each do |key|
-          if translated_attrs.include? key.to_s
-            translations_conditions["#{self.translation_class.table_name}.#{key}"] = conditions.delete(key)
-          end
-        end
-
-        # A join implies readonly which we don't really want.
-        where(conditions).joins(:translations).where(translations_conditions).
-                                               readonly(false)
+        PageFinder.with_globalize(conditions)
       end
 
       # Returns how many pages per page should there be when paginating pages
