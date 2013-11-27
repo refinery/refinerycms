@@ -57,18 +57,28 @@ module Refinery
 
     def with_globalize(conditions)
       conditions = {:locale => ::Globalize.locale.to_s}.merge(conditions)
-      translations_conditions = {}
-      translated_attrs = Page.translated_attribute_names.map(&:to_s) | %w(locale)
-
-      conditions.keys.each do |key|
-        if translated_attrs.include? key.to_s
-          translations_conditions["#{Page.translation_class.table_name}.#{key}"] = conditions.delete(key)
-        end
-      end
+      translations_conditions = translations_conditions(conditions)
 
       # A join implies readonly which we don't really want.
       Page.where(conditions).joins(:translations).where(translations_conditions).
                                              readonly(false)
     end
+
+    private
+
+    def translated_attrs
+      Page.translated_attribute_names.map(&:to_s) | %w(locale)
+    end
+
+    def translations_conditions(conditions)
+      translations_conditions = {}
+      conditions.keys.each do |key|
+        if translated_attrs.include? key.to_s
+          translations_conditions["#{Page.translation_class.table_name}.#{key}"] = conditions.delete(key)
+        end
+      end
+      translations_conditions
+    end
+
   end
 end
