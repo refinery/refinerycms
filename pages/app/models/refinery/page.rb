@@ -389,14 +389,6 @@ module Refinery
     end
     alias_method_chain :normalize_friendly_id, :marketable_urls
 
-    def normalize_friendly_id_path(slug_string)
-      FriendlyIdPath.normalize_friendly_id_path(slug_string)
-    end
-
-    def protected_slug_string(slug_string)
-      FriendlyIdPath.protected_slug_string(slug_string)
-    end
-
     def puts_destroy_help
       puts "This page is not deletable. Please use .destroy! if you really want it deleted "
       puts "unset .link_url," if link_url.present?
