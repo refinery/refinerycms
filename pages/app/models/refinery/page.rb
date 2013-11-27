@@ -12,11 +12,34 @@ module Refinery
     class Translation
       is_seo_meta
       attr_accessible *::SeoMeta.attributes.keys, :locale
+
+      def self.seo_fields
+        ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
+      end
+    end
+
+    class FriendlyIdOptions
+      def self.reserved_words
+        %w(index new session login logout users refinery admin images wymiframe)
+      end
+
+      def self.options
+        # Docs for friendly_id http://github.com/norman/friendly_id
+        friendly_id_options = {
+          use: [:reserved],
+          reserved_words: self.reserved_words
+        }
+        if ::Refinery::Pages.scope_slug_by_parent
+          friendly_id_options[:use] << :scoped
+          friendly_id_options.merge!(scope: :parent)
+        end
+        friendly_id_options[:use] << :globalize
+        friendly_id_options
+      end
     end
 
     # Delegate SEO Attributes to globalize translation
-    seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
-    delegate(*(seo_fields << {:to => :translation}))
+    delegate(*(Translation.seo_fields << {:to => :translation}))
 
     attr_accessible :id, :deletable, :link_url, :menu_match,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
@@ -30,18 +53,7 @@ module Refinery
     # rather than :delete_all we want :destroy
     acts_as_nested_set :dependent => :destroy
 
-    # Docs for friendly_id http://github.com/norman/friendly_id
-    friendly_id_options = {
-      use: [:reserved],
-      reserved_words: %w(index new session login logout users refinery admin images wymiframe)
-    }
-    if ::Refinery::Pages.scope_slug_by_parent
-      friendly_id_options[:use] << :scoped
-      friendly_id_options.merge!(scope: :parent)
-    end
-    friendly_id_options[:use] << :globalize
-
-    friendly_id :menu_title_or_title, friendly_id_options
+    friendly_id :menu_title_or_title, FriendlyIdOptions.options
 
     has_many :parts, -> {
       scope = order('position ASC')
@@ -295,7 +307,7 @@ module Refinery
         :menu_match => menu_match,
         :parent_id => parent_id,
         :rgt => rgt,
-        :title => menu_title.presence || title.presence,
+        :title => menu_title_or_title,
         :type => self.class.name,
         :url => url
       }
@@ -332,13 +344,39 @@ module Refinery
       # self.parts is usually already eager loaded so we can now just grab
       # the first element matching the title we specified.
       self.parts.detect do |part|
-        part.title.present? and # protecting against the problem that occurs when have nil title
-        part.title == part_title.to_s or
-        part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
+        part.title_matches?(part_title)
       end
     end
 
     private
+
+    class FriendlyIdPath
+      def self.normalize_friendly_id_path(slug_string)
+        # Remove leading and trailing slashes, but allow internal
+        slug_string
+          .sub(%r{^/*}, '')
+          .sub(%r{/*$}, '')
+          .split('/')
+          .select(&:present?)
+          .map {|slug| self.normalize_friendly_id_with_marketable_urls(slug) }.join('/')
+      end
+
+      def self.normalize_friendly_id_with_marketable_urls(slug_string)
+        # If we are scoping by parent, no slashes are allowed. Otherwise, slug is
+        # potentially a custom slug that contains a custom route to the page.
+        if !Pages.scope_slug_by_parent && slug_string.include?('/')
+          self.normalize_friendly_id_path(slug_string)
+        else
+          self.protected_slug_string(slug_string)
+        end
+      end
+
+      def self.protected_slug_string(slug_string)
+        sluggified = slug_string.to_slug.normalize!
+        sluggified << "-page" if Pages.marketable_urls && FriendlyIdOptions.reserved_words.include?(sluggified)
+        sluggified
+      end
+    end
 
     # Protects generated slugs from title if they are in the list of reserved words
     # This applies mostly to plugin-generated pages.
@@ -347,32 +385,9 @@ module Refinery
     #
     # Returns the sluggified string
     def normalize_friendly_id_with_marketable_urls(slug_string)
-      # If we are scoping by parent, no slashes are allowed. Otherwise, slug is
-      # potentially a custom slug that contains a custom route to the page.
-      if !Pages.scope_slug_by_parent && slug_string.include?('/')
-        normalize_friendly_id_path(slug_string)
-      else
-        protected_slug_string(slug_string)
-      end
+      FriendlyIdPath.normalize_friendly_id_with_marketable_urls(slug_string)
     end
     alias_method_chain :normalize_friendly_id, :marketable_urls
-
-    def normalize_friendly_id_path(slug_string)
-      # Remove leading and trailing slashes, but allow internal
-      slug_string
-        .sub(%r{^/*}, '')
-        .sub(%r{/*$}, '')
-        .split('/')
-        .select(&:present?)
-        .map(&method(:normalize_friendly_id_with_marketable_urls)).join('/')
-    end
-
-    def protected_slug_string(slug_string)
-      sluggified = slug_string.to_slug.normalize!
-      sluggified << "-page" if Pages.marketable_urls && reserved_words.include?(sluggified)
-      sluggified
-    end
-    delegate :reserved_words, :to => :friendly_id_config
 
     def puts_destroy_help
       puts "This page is not deletable. Please use .destroy! if you really want it deleted "

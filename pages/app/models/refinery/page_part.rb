@@ -21,6 +21,12 @@ module Refinery
 
     self.translation_class.send :attr_accessible, :locale
 
+    def title_matches?(other_title)
+      title.present? and # protecting against the problem that occurs when have nil title
+        title == other_title.to_s or
+        parameterized_title == parameterize(other_title.to_s)
+    end
+
     protected
     def normalise_text_fields
       if body? && body !~ %r{^<}
@@ -28,5 +34,13 @@ module Refinery
       end
     end
 
+    private
+    def parameterize(string)
+      string.downcase.gsub(" ", "_")
+    end
+
+    def parameterized_title
+      parameterize(title)
+    end
   end
 end
