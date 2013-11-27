@@ -344,7 +344,7 @@ module Refinery
       # self.parts is usually already eager loaded so we can now just grab
       # the first element matching the title we specified.
       self.parts.detect do |part|
-        part.title_matches(part_title)
+        part.title_matches?(part_title)
       end
     end
 

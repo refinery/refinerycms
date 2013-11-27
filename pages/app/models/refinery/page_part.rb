@@ -21,7 +21,7 @@ module Refinery
 
     self.translation_class.send :attr_accessible, :locale
 
-    def title_matches(other_title)
+    def title_matches?(other_title)
       title.present? and # protecting against the problem that occurs when have nil title
         title == other_title.to_s or
         parameterized_title == parameterize(other_title.to_s)
