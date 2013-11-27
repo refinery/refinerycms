@@ -23,8 +23,8 @@ module Refinery
 
     def title_matches(other_title)
       title.present? and # protecting against the problem that occurs when have nil title
-      title == other_title.to_s or
-      title.downcase.gsub(" ", "_") == other_title.to_s.downcase.gsub(" ", "_")
+        title == other_title.to_s or
+        parameterized_title == parameterize(other_title.to_s)
     end
 
     protected
@@ -34,5 +34,13 @@ module Refinery
       end
     end
 
+    private
+    def parameterize(string)
+      string.downcase.gsub(" ", "_")
+    end
+
+    def parameterized_title
+      parameterize(title)
+    end
   end
 end
