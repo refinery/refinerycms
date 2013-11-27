@@ -52,6 +52,10 @@ module Refinery
     
     # Wrap up the logic of finding the pages based on the translations table.
     def self.with_globalize(conditions = {})
+      PageFinder.new.with_globalize(conditions)
+    end
+
+    def with_globalize(conditions)
       conditions = {:locale => ::Globalize.locale.to_s}.merge(conditions)
       translations_conditions = {}
       translated_attrs = Page.translated_attribute_names.map(&:to_s) | %w(locale)
