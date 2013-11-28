@@ -17,7 +17,7 @@ module Refinery
     # pages table thus requiring us to find the attribute on the translations table
     # and then join to the pages table again to return the associated record.
     def self.by_title(title)
-      with_globalize(:title => title)
+      PageFinderByTitle.new(title).find
     end
 
     # Finds pages by their slug.  This method is necessary because pages
@@ -58,6 +58,20 @@ module Refinery
       translations_conditions
     end
 
+  end
+
+  class PageFinderByTitle < PageFinder
+    def initialize(title)
+      @title = title
+    end
+
+    def find
+      with_globalize(default_conditions)
+    end
+
+    def default_conditions
+      { :title => @title }
+    end
   end
 
   class PageFinderBySlug < PageFinder
