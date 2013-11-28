@@ -25,11 +25,11 @@ module Refinery
     end
 
     def find
-      with_globalize(@conditions)
+      with_globalize
     end
 
-    def with_globalize(conditions)
-      conditions = {:locale => ::Globalize.locale.to_s}.merge(conditions)
+    def with_globalize
+      conditions = {:locale => ::Globalize.locale.to_s}.merge(@conditions)
       translations_conditions = translations_conditions(conditions)
 
       # A join implies readonly which we don't really want.
@@ -58,10 +58,11 @@ module Refinery
   class PageFinderByTitle < PageFinder
     def initialize(title)
       @title = title
+      @conditions = default_conditions
     end
 
     def find
-      with_globalize(default_conditions)
+      with_globalize
     end
 
     def default_conditions
@@ -72,11 +73,11 @@ module Refinery
   class PageFinderBySlug < PageFinder
     def initialize(slug, conditions)
       @slug = slug
-      @conditions = conditions
+      @conditions = default_conditions.merge(conditions)
     end
 
     def find
-      with_globalize( default_conditions.merge(@conditions) )
+      with_globalize
     end
 
     def default_conditions
