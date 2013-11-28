@@ -9,15 +9,7 @@ module Refinery
     # and if the path is unfriendly then a different finder method is required
     # than find_by_path.
     def self.find_by_path_or_id(path, id)
-      if path.present?
-        if path.friendly_id?
-          Page.friendly.find_by_path(path)
-        else
-          Page.friendly.find(path)
-        end
-      elsif id.present?
-        Page.friendly.find(id)
-      end
+      PageFinderByPathOrId.new(path, id).find
     end
 
     # Finds pages by their title.  This method is necessary because pages
@@ -124,6 +116,25 @@ module Refinery
 
     def by_slug(path, conditions = {})
       PageFinder.by_slug(path, conditions)
+    end
+  end
+
+  class PageFinderByPathOrId
+    def initialize(path, id)
+      @path = path
+      @id = id
+    end
+
+    def find
+      if @path.present?
+        if @path.friendly_id?
+          Page.friendly.find_by_path(@path)
+        else
+          Page.friendly.find(@path)
+        end
+      elsif @id.present?
+        Page.friendly.find(@id)
+      end
     end
   end
 end
