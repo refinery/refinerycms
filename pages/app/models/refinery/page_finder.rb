@@ -123,7 +123,7 @@ module Refinery
     end
 
     def by_slug(path, conditions = {})
-      PageFinder.by_slug(path)
+      PageFinder.by_slug(path, conditions)
     end
   end
 end
