@@ -87,9 +87,9 @@ module Refinery
 
     def find
       if slugs_scoped_by_parent?
-        find_scoped_slug
+        PageFinderByScopedPath.new(@path).find
       else
-        find_unscoped_slug
+        PageFinderByUnscopedPath.new(@path).find
       end
     end
 
@@ -99,7 +99,13 @@ module Refinery
       ::Refinery::Pages.scope_slug_by_parent
     end
 
-    def find_scoped_slug
+    def by_slug(path, conditions = {})
+      PageFinder.by_slug(path, conditions)
+    end
+  end
+
+  class PageFinderByScopedPath < PageFinderByPath
+    def find
       # With slugs scoped to the parent page we need to find a page by its full path.
       # For example with about/example we would need to find 'about' and then its child
       # called 'example' otherwise it may clash with another page called /example.
@@ -111,13 +117,11 @@ module Refinery
       end
       page
     end
+  end
 
-    def find_unscoped_slug
+  class PageFinderByUnscopedPath < PageFinderByPath
+    def find
       by_slug(@path).first
-    end
-
-    def by_slug(path, conditions = {})
-      PageFinder.by_slug(path, conditions)
     end
   end
 
