@@ -17,7 +17,15 @@ module Refinery
     end
 
     def self.with_globalize(conditions = {})
-      PageFinder.new.with_globalize(conditions)
+      PageFinder.new(conditions).find
+    end
+
+    def initialize(conditions)
+      @conditions = conditions
+    end
+
+    def find
+      with_globalize(@conditions)
     end
 
     def with_globalize(conditions)
