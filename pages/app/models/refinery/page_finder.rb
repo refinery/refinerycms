@@ -2,18 +2,7 @@ module Refinery
   class PageFinder
     # Find page by path, checking for scoping rules
     def self.find_by_path(path)
-      return by_slug(path).first unless ::Refinery::Pages.scope_slug_by_parent
-
-      # With slugs scoped to the parent page we need to find a page by its full path.
-      # For example with about/example we would need to find 'about' and then its child
-      # called 'example' otherwise it may clash with another page called /example.
-      path = path.split('/').select(&:present?)
-      page = by_slug(path.shift, :parent_id => nil).first
-      while page && path.any? do
-        slug_or_id = path.shift
-        page = page.children.by_slug(slug_or_id).first || page.children.find(slug_or_id)
-      end
-      page
+      PageFinderByPath.new(path).find
     end
     
     # Helps to resolve the situation where you have a path and an id
@@ -94,6 +83,47 @@ module Refinery
         :locale => Refinery::I18n.frontend_locales.map(&:to_s),
         :slug => @slug
       }
+    end
+  end
+
+  class PageFinderByPath
+    def initialize(path)
+      @path = path
+    end
+
+    def find
+      if slugs_scoped_by_parent?
+        find_scoped_slug
+      else
+        find_unscoped_slug
+      end
+    end
+
+    private
+
+    def slugs_scoped_by_parent?
+      ::Refinery::Pages.scope_slug_by_parent
+    end
+
+    def find_scoped_slug
+      # With slugs scoped to the parent page we need to find a page by its full path.
+      # For example with about/example we would need to find 'about' and then its child
+      # called 'example' otherwise it may clash with another page called /example.
+      path = @path.split('/').select(&:present?)
+      page = by_slug(path.shift, :parent_id => nil).first
+      while page && path.any? do
+        slug_or_id = path.shift
+        page = page.children.by_slug(slug_or_id).first || page.children.find(slug_or_id)
+      end
+      page
+    end
+
+    def find_unscoped_slug
+      by_slug(@path).first
+    end
+
+    def by_slug(path, conditions = {})
+      PageFinder.by_slug(path)
     end
   end
 end
