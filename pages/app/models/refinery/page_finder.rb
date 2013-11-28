@@ -109,13 +109,26 @@ module Refinery
       # With slugs scoped to the parent page we need to find a page by its full path.
       # For example with about/example we would need to find 'about' and then its child
       # called 'example' otherwise it may clash with another page called /example.
-      path = @path.split('/').select(&:present?)
-      page = by_slug(path.shift, :parent_id => nil).first
-      while page && path.any? do
-        slug_or_id = path.shift
-        page = page.children.by_slug(slug_or_id).first || page.children.find(slug_or_id)
+      page = parent_page
+      while page && path_segments.any? do
+        page = next_page(page)
       end
       page
+    end
+
+    private
+
+    def path_segments
+      @path_segments ||= @path.split('/').select(&:present?)
+    end
+
+    def parent_page
+      by_slug(path_segments.shift, :parent_id => nil).first
+    end
+
+    def next_page(page)
+      slug_or_id = path_segments.shift
+      page.children.by_slug(slug_or_id).first || page.children.find(slug_or_id)
     end
   end
 
