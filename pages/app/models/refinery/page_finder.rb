@@ -61,10 +61,6 @@ module Refinery
       @conditions = default_conditions
     end
 
-    def find
-      with_globalize
-    end
-
     def default_conditions
       { :title => @title }
     end
@@ -74,10 +70,6 @@ module Refinery
     def initialize(slug, conditions)
       @slug = slug
       @conditions = default_conditions.merge(conditions)
-    end
-
-    def find
-      with_globalize
     end
 
     def default_conditions
