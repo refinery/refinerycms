@@ -44,10 +44,7 @@ module Refinery
     # pages table thus requiring us to find the attribute on the translations table
     # and then join to the pages table again to return the associated record.
     def self.by_slug(slug, conditions={})
-      with_globalize({
-        :locale => Refinery::I18n.frontend_locales.map(&:to_s),
-        :slug => slug
-      }.merge(conditions))
+      PageFinderBySlug.new(slug, conditions).find
     end
     
     # Wrap up the logic of finding the pages based on the translations table.
@@ -66,19 +63,37 @@ module Refinery
 
     private
 
-    def translated_attrs
+    def translated_attributes
       Page.translated_attribute_names.map(&:to_s) | %w(locale)
     end
 
     def translations_conditions(conditions)
       translations_conditions = {}
       conditions.keys.each do |key|
-        if translated_attrs.include? key.to_s
+        if translated_attributes.include? key.to_s
           translations_conditions["#{Page.translation_class.table_name}.#{key}"] = conditions.delete(key)
         end
       end
       translations_conditions
     end
 
+  end
+
+  class PageFinderBySlug < PageFinder
+    def initialize(slug, conditions)
+      @slug = slug
+      @conditions = conditions
+    end
+
+    def find
+      with_globalize( default_conditions.merge(@conditions) )
+    end
+
+    def default_conditions
+      {
+        :locale => Refinery::I18n.frontend_locales.map(&:to_s),
+        :slug => @slug
+      }
+    end
   end
 end
