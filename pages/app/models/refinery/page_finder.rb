@@ -29,11 +29,11 @@ module Refinery
     end
 
     def with_globalize
-      conditions = {:locale => ::Globalize.locale.to_s}.merge(@conditions)
-      translations_conditions = translations_conditions(conditions)
+      globalized_conditions = {:locale => ::Globalize.locale.to_s}.merge(@conditions)
+      translations_conditions = translations_conditions(globalized_conditions)
 
       # A join implies readonly which we don't really want.
-      Page.where(conditions).joins(:translations).where(translations_conditions).
+      Page.where(globalized_conditions).joins(:translations).where(translations_conditions).
                                              readonly(false)
     end
 
@@ -43,11 +43,11 @@ module Refinery
       Page.translated_attribute_names.map(&:to_s) | %w(locale)
     end
 
-    def translations_conditions(conditions)
+    def translations_conditions(original_conditions)
       translations_conditions = {}
-      conditions.keys.each do |key|
+      original_conditions.keys.each do |key|
         if translated_attributes.include? key.to_s
-          translations_conditions["#{Page.translation_class.table_name}.#{key}"] = conditions.delete(key)
+          translations_conditions["#{Page.translation_class.table_name}.#{key}"] = original_conditions.delete(key)
         end
       end
       translations_conditions
@@ -99,8 +99,8 @@ module Refinery
       ::Refinery::Pages.scope_slug_by_parent
     end
 
-    def by_slug(path, conditions = {})
-      PageFinder.by_slug(path, conditions)
+    def by_slug(slug_path, conditions = {})
+      PageFinder.by_slug(slug_path, conditions)
     end
   end
 
