@@ -29,7 +29,7 @@ module Refinery
     end
 
     def with_globalize
-      globalized_conditions = {:locale => ::Globalize.locale.to_s}.merge(@conditions)
+      globalized_conditions = {:locale => ::Globalize.locale.to_s}.merge(conditions)
       translations_conditions = translations_conditions(globalized_conditions)
 
       # A join implies readonly which we don't really want.
@@ -38,6 +38,7 @@ module Refinery
     end
 
     private
+    attr_accessor :conditions
 
     def translated_attributes
       Page.translated_attribute_names.map(&:to_s) | %w(locale)
@@ -62,8 +63,11 @@ module Refinery
     end
 
     def default_conditions
-      { :title => @title }
+      { :title => title }
     end
+
+    private
+    attr_accessor :title
   end
 
   class PageFinderBySlug < PageFinder
@@ -75,9 +79,12 @@ module Refinery
     def default_conditions
       {
         :locale => Refinery::I18n.frontend_locales.map(&:to_s),
-        :slug => @slug
+        :slug => slug
       }
     end
+
+    private
+    attr_accessor :slug
   end
 
   class PageFinderByPath
@@ -87,13 +94,14 @@ module Refinery
 
     def find
       if slugs_scoped_by_parent?
-        PageFinderByScopedPath.new(@path).find
+        PageFinderByScopedPath.new(path).find
       else
-        PageFinderByUnscopedPath.new(@path).find
+        PageFinderByUnscopedPath.new(path).find
       end
     end
 
     private
+    attr_accessor :path
 
     def slugs_scoped_by_parent?
       ::Refinery::Pages.scope_slug_by_parent
@@ -119,7 +127,7 @@ module Refinery
     private
 
     def path_segments
-      @path_segments ||= @path.split('/').select(&:present?)
+      @path_segments ||= path.split('/').select(&:present?)
     end
 
     def parent_page
@@ -134,7 +142,7 @@ module Refinery
 
   class PageFinderByUnscopedPath < PageFinderByPath
     def find
-      by_slug(@path).first
+      by_slug(path).first
     end
   end
 
@@ -145,15 +153,18 @@ module Refinery
     end
 
     def find
-      if @path.present?
-        if @path.friendly_id?
-          Page.friendly.find_by_path(@path)
+      if path.present?
+        if path.friendly_id?
+          Page.friendly.find_by_path(path)
         else
-          Page.friendly.find(@path)
+          Page.friendly.find(path)
         end
-      elsif @id.present?
-        Page.friendly.find(@id)
+      elsif id.present?
+        Page.friendly.find(id)
       end
     end
+
+    private
+    attr_accessor :id, :path
   end
 end
