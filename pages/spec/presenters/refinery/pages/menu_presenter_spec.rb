@@ -23,6 +23,7 @@ module Refinery
           expect(menu_presenter.first_css).to eq(:first)
           expect(menu_presenter.last_css).to eq(:last)
           expect(menu_presenter.list_tag_css).to eq("nav")
+          expect(menu_presenter.html_safe).to eq(false)
         end
       end
 
