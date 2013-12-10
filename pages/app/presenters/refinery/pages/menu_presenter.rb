@@ -57,7 +57,7 @@ module Refinery
       end
 
       def render_menu_item_link(menu_item)
-        link_to((menu_item.title.html_safe rescue ""), context.refinery.url_for(menu_item.url), :class => link_tag_css)
+        link_to(menu_item.title.html_safe, context.refinery.url_for(menu_item.url), :class => link_tag_css)
       end
 
       def render_menu_item(menu_item, index)
