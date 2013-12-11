@@ -107,6 +107,19 @@ module Refinery
         end
       end
 
+      # Helps to resolve the situation where you have a path and an id
+      # and if the path is unfriendly then a different finder method is required
+      # than find_by_path.
+      #
+      # raise ActiveRecord::RecordNotFound if not found.
+      def find_by_path_or_id!(path, id)
+        page = find_by_path_or_id(path, id)
+
+        raise ActiveRecord::RecordNotFound unless page
+
+        page
+      end
+
       # Finds pages by their title.  This method is necessary because pages
       # are translated which means the title attribute does not exist on the
       # pages table thus requiring us to find the attribute on the translations table

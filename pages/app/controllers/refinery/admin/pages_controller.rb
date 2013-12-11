@@ -68,7 +68,7 @@ module Refinery
       end
 
       def find_page
-        @page = Page.find_by_path_or_id(params[:path], params[:id])
+        @page = Page.find_by_path_or_id!(params[:path], params[:id])
       end
       alias_method :page, :find_page
 
