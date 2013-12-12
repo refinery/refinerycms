@@ -1,5 +1,5 @@
 require 'rbconfig'
-VERSION_BAND = '2.1.0'
+VERSION_BAND = '2.1.1'
 
 # We want to ensure that you have an ExecJS runtime available!
 begin
