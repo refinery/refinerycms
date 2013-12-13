@@ -1,5 +1,8 @@
 ## 3.0.0 [unreleased]
 
+* Deprecated ':format' syntax in Resources dragonfly_url_format. [#2500](https://github.com/refinery/refinerycms/pull/2500) [Josef Šimánek](https://github.com/simi)
+* Removed Images trust_file_extensions config. [#2500](https://github.com/refinery/refinerycms/pull/2500) [Josef Šimánek](https://github.com/simi)
+* Migrated to Dragonfly ~> 1.0.0. [#2500](https://github.com/refinery/refinerycms/pull/2500) [Josef Šimánek](https://github.com/simi)
 * Removed Page#custom_slug. [#2375](https://github.com/refinery/refinerycms/pull/2375) [Philip Arndt](https://github.com/parndt)
 * Removed Pages#cache_pages_backend. [#2375](https://github.com/refinery/refinerycms/pull/2375) [Philip Arndt](https://github.com/parndt)
 * Updated how `_make_sortable` works to take an options hash, requiring manual file changes. [Philip Arndt](https://github.com/parndt)

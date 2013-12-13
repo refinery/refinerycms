@@ -2,11 +2,10 @@ require 'dragonfly'
 
 module Refinery
   class Image < Refinery::Core::BaseModel
-    ::Refinery::Images::Dragonfly.setup!
+    dragonfly_accessor :image, :app => :refinery_images
 
     include Images::Validators
 
-    image_accessor :image
 
     validates :image, :presence  => true
     validates_with ImageSizeValidator
@@ -51,11 +50,14 @@ module Refinery
         geometry.to_s
       end
 
-      width = original_width = self.image_width.to_f
-      height = original_height = self.image_height.to_f
+      width = original_width = self.image.width.to_f
+      height = original_height = self.image.height.to_f
       geometry_width, geometry_height = geometry.split(%r{\#{1,2}|\+|>|!|x}im)[0..1].map(&:to_f)
-      if (original_width * original_height > 0) && ::Dragonfly::ImageMagick::Processor::THUMB_GEOMETRY === geometry
-        if ::Dragonfly::ImageMagick::Processor::RESIZE_GEOMETRY === geometry
+      thumb_geometry = Regexp.union(::Dragonfly::ImageMagick::Processors::Thumb::RESIZE_GEOMETRY,
+                                    ::Dragonfly::ImageMagick::Processors::Thumb::CROPPED_RESIZE_GEOMETRY,
+                                    ::Dragonfly::ImageMagick::Processors::Thumb::CROP_GEOMETRY)
+      if (original_width * original_height > 0) && thumb_geometry === geometry
+        if ::Dragonfly::ImageMagick::Processors::Thumb::RESIZE_GEOMETRY === geometry
           if geometry !~ %r{\d+x\d+>} || (%r{\d+x\d+>} === geometry && (width > geometry_width.to_f || height > geometry_height.to_f))
             # Try scaling with width factor first. (wf = width factor)
             wf_width = (original_width * geometry_width / width).round
