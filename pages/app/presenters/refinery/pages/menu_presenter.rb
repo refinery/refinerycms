@@ -41,9 +41,9 @@ module Refinery
 
       private
       def render_menu(items)
-        content_tag(menu_tag, :id => dom_id, :class => css) do
+        #content_tag(menu_tag, :id => dom_id, :class => css) do
           render_menu_items(items)
-        end
+        #end
       end
 
       def render_menu_items(menu_items)
