@@ -26,7 +26,7 @@ module Refinery
         page.should have_selector 'iframe#dialog_iframe'
 
         page.within_frame('dialog_iframe') do
-          attach_file "image_image", Refinery.roots(:'refinery/images').
+          attach_file "image_image", Refinery.roots('refinery/images').
                                               join("spec/fixtures/image-with-dashes.jpg")
           click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
         end
@@ -43,7 +43,7 @@ module Refinery
         page.should have_selector 'iframe#dialog_iframe'
 
         page.within_frame('dialog_iframe') do
-          attach_file "image_image", Refinery.roots(:'refinery/images').
+          attach_file "image_image", Refinery.roots('refinery/images').
                                               join("spec/fixtures/cape-town-tide-table.pdf")
           click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
         end
@@ -59,7 +59,7 @@ module Refinery
       it "uploads image", :js => true do
         visit refinery.insert_admin_images_path(:modal => true, :wymedtior => true)
 
-        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/image-with-dashes.jpg")
+        attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/image-with-dashes.jpg")
         click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
 
         page.should have_selector('#existing_image_area', :visible => true)
@@ -69,7 +69,7 @@ module Refinery
       it "gets error message when uploading non-image", :js => true do
         visit refinery.insert_admin_images_path(:modal => true, :wymedtior => true)
 
-        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")
+        attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")
         click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
 
         page.should have_selector('#upload_image_area', :visible => true)
@@ -82,7 +82,7 @@ module Refinery
         visit refinery.insert_admin_images_path(:modal => true, :wymedtior => true)
 
         choose 'Upload'
-        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")
+        attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")
         click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
 
         page.should have_selector('#upload_image_area', :visible => true)
@@ -104,7 +104,7 @@ module Refinery
           page.should have_content("Use current image or replace it with this one...")
           page.should have_selector("a[href*='#{refinery.admin_images_path}']")
 
-          attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
+          attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
           click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
 
           page.should have_content(::I18n.t('updated', :scope => 'refinery.crudify', :what => "'Beach'"))
@@ -116,7 +116,7 @@ module Refinery
         it "doesn't allow updating if image has different file name" do
           visit refinery.edit_admin_image_path(image)
 
-          attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/fathead.png")
+          attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/fathead.png")
           click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
 
           page.should have_content(::I18n.t("different_file_name",

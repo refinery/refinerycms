@@ -4,7 +4,7 @@
 # in an extension that is testing against this Factory via the
 # authentication macros in refinerycms-testing.
 # 10-11-2011 - Jamie Winsor - jamie@enmasse.com
-require Refinery.roots(:'refinery/authentication').join("app/models/refinery/role.rb")
+require Refinery.roots('refinery/authentication').join("app/models/refinery/role.rb")
 
 FactoryGirl.define do
   factory :user, :class => Refinery::User do

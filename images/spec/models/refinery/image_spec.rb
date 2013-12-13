@@ -9,7 +9,7 @@ module Refinery
     describe "validations" do
       describe "valid #image" do
         before do
-          @file = Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
+          @file = Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
           Images.stub(:max_image_size).and_return(File.read(@file).size + 10.megabytes)
         end
 
@@ -20,7 +20,7 @@ module Refinery
 
       describe "too large #image" do
         before do
-          @file = Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
+          @file = Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
           Images.stub(:max_image_size).and_return(0)
           @image = Image.new(:image => @file)
         end
@@ -50,13 +50,13 @@ module Refinery
 
       context "when image exists" do
         it "doesn't allow to replace it with image which has different file name" do
-          created_image.image = Refinery.roots(:'refinery/images').join("spec/fixtures/beach-alternate.jpeg")
+          created_image.image = Refinery.roots('refinery/images').join("spec/fixtures/beach-alternate.jpeg")
           created_image.should_not be_valid
           created_image.should have_at_least(1).error_on(:image_name)
         end
 
         it "allows to replace it with image which has the same file name" do
-          created_image.image = Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
+          created_image.image = Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
           created_image.should be_valid
         end
       end
