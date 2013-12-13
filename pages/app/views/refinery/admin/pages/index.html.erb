@@ -1,7 +1,5 @@
 <section id='records' class='tree'>
-  <% cache_if(Refinery::Pages.cache_pages_backend, [Refinery::Core.base_cache_key, "pages_backend", Globalize.locale].join('_')) do %>
-    <%= render 'records' %>
-  <% end %>
+  <%= render 'records' %>
 </section>
 <section id='actions'>
   <%= render 'actions' %>
