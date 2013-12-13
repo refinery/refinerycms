@@ -6,33 +6,41 @@ module Refinery
 
       class << self
         def setup!
-          app_resources = ::Dragonfly[:refinery_resources]
-
-          app_resources.define_macro(::Refinery::Resource, :resource_accessor)
-
-          app_resources.analyser.register(::Dragonfly::Analysis::FileCommandAnalyser)
-          app_resources.content_disposition = Refinery::Resources.content_disposition
+          app_resources = ::Dragonfly.app(:refinery_resources)
+          app_resources.configure do
+            analyser ::Dragonfly::Analysis::FileCommandAnalyser
+            content_disposition Refinery::Resources.content_disposition
+          end
         end
 
         def configure!
-          app_resources = ::Dragonfly[:refinery_resources]
-          app_resources.configure_with(:rails)
-          app_resources.configure do |c|
-            c.datastore.root_path = Refinery::Resources.datastore_root_path
-            c.url_format = Refinery::Resources.dragonfly_url_format
-            c.url_host = Refinery::Resources.dragonfly_url_host
-            c.secret = Refinery::Resources.dragonfly_secret
+          app_resources = ::Dragonfly.app(:refinery_resources)
+          # app_resources.configure_with(:rails)
+          app_resources.configure do
+            datastore :file, {
+              root_path: Refinery::Resources.datastore_root_path,
+              server_root: Rails.root.join('public')
+            }
+          end
+
+          # Configure
+          app_resources.configure do
+            protect_from_dos_attacks false
+
+            url_format Refinery::Resources.dragonfly_url_format
+            url_host Refinery::Resources.dragonfly_url_host
+            secret Refinery::Resources.dragonfly_secret
           end
 
           if ::Refinery::Resources.s3_backend
-            app_resources.datastore = ::Dragonfly::DataStorage::S3DataStore.new
-            app_resources.datastore.configure do |s3|
-              s3.bucket_name = Refinery::Resources.s3_bucket_name
-              s3.access_key_id = Refinery::Resources.s3_access_key_id
-              s3.secret_access_key = Refinery::Resources.s3_secret_access_key
-              # S3 Region otherwise defaults to 'us-east-1'
-              s3.region = Refinery::Resources.s3_region if Refinery::Resources.s3_region
-            end
+            require 'dragonfly/s3_data_store'
+            options = {
+              bucket_name: Refinery::Resources.s3_bucket_name,
+              access_key_id: Refinery::Resources.s3_access_key_id,
+              secret_access_key: Refinery::Resources.s3_secret_access_key
+            }
+            options.update(region: Refinery::Resources.s3_region) if Refinery::Resources.s3_region
+            app_resources.datastore :s3, options
           end
 
           if Resources.custom_backend?

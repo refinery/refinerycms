@@ -2,7 +2,11 @@ require 'dragonfly'
 
 module Refinery
   class Image < Refinery::Core::BaseModel
-    ::Refinery::Images::Dragonfly.setup!
+    extend Dragonfly::Model
+    extend Dragonfly::Model::Validations
+
+    dragonfly_accessor :image
+    # ::Refinery::Images::Dragonfly.setup!
 
     include Images::Validators
 
