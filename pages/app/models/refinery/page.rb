@@ -7,11 +7,11 @@ module Refinery
   class Page < Core::BaseModel
     extend FriendlyId
 
-    translates :title, :menu_title, :slug, :include => :seo_meta
+    translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
 
     class Translation
       is_seo_meta
-      attr_accessible *::SeoMeta.attributes.keys, :locale
+      attr_accessible(*::SeoMeta.attributes.keys, :locale)
 
       def self.seo_fields
         ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
@@ -44,16 +44,18 @@ module Refinery
     attr_accessible :id, :deletable, :link_url, :menu_match,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :parent_id, :menu_title, :page_id,
-                    :layout_template, :view_template, :slug,
+                    :layout_template, :view_template, :custom_slug, :slug,
                     :title, *::SeoMeta.attributes.keys
 
     validates :title, :presence => true
+
+    validates :custom_slug, :uniqueness => true, :allow_blank => true
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
     # rather than :delete_all we want :destroy
     acts_as_nested_set :dependent => :destroy
 
-    friendly_id :menu_title_or_title, FriendlyIdOptions.options
+    friendly_id :custom_slug_or_title, FriendlyIdOptions.options
 
     has_many :parts, -> {
       scope = order('position ASC')
@@ -197,10 +199,10 @@ module Refinery
       Globalize.with_locale(::Refinery::I18n.default_frontend_locale) { slug }
     end
 
-    # Returns in cascading order: menu_title or title depending on
+    # Returns in cascading order: custom_slug or menu_title or title depending on
     # which attribute is first found to be present for this page.
-    def menu_title_or_title
-      menu_title.presence || title.presence
+    def custom_slug_or_title
+      custom_slug.presence || menu_title.presence || title.presence
     end
 
     # Am I allowed to delete this page?
@@ -307,7 +309,7 @@ module Refinery
         :menu_match => menu_match,
         :parent_id => parent_id,
         :rgt => rgt,
-        :title => menu_title_or_title,
+        :title => menu_title.presence || title.presence,
         :type => self.class.name,
         :url => url
       }
