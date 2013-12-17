@@ -12,8 +12,8 @@ h3. Prerequisites
 Before moving on to Refinery, first make sure you have the required system tools 
 installed:
 
-* Ruby, version 1.9.3 or higher. On Shelly Cloud default Ruby version
-  is 2.0.0 and it's generally better to have the same version locally.
+* Ruby, version 1.9.3 or higher. On Shelly Cloud the default Ruby version
+  is 2.0.0 and it's generally better to have the same version locally
 * Working compiler (to install gems with native extensions)
 ** on OS X you will need XCode with command line tools
 ** for Ubuntu install at least build-essential and autoconf packages
@@ -21,14 +21,12 @@ installed:
 ** for OS X install postgresql via "Postgres.app":http://postgresapp.com/
 ** for Ubuntu it will be required to have libpq-dev installed
 
-WARNING. Microsoft Windows isn't supported on Shelly Cloud. It's strongly 
-discouraged to try this walkthrough on operating systems different than OS X or 
-Linux.
+WARNING. Microsoft Windows isn't supported on Shelly Cloud. It's strongly discouraged to try this walkthrough on operating systems different than OS X or Linux.
 
 As for gems, you will need to install:
 
 * Shelly
-* RefineryCMS - it's used to generate drafts of your future application
+* Refinery CMS - it's used to generate drafts of your future application
 * ExecJS - it isn't installed with Refinery gem but "it's required":https://github.com/refinery/refinerycms/issues/2352
 
 You can do it by executing following command: 
