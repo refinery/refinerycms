@@ -24,7 +24,7 @@ module Refinery
     def error_404(exception=nil)
       # fallback to the default 404.html page.
       file = Rails.root.join 'public', '404.html'
-      file = Refinery.roots(:'refinery/core').join('public', '404.html') unless file.exist?
+      file = Refinery.roots('refinery/core').join('public', '404.html') unless file.exist?
       render :file => file.cleanpath.to_s.gsub(%r{#{file.extname}$}, ''),
              :layout => false, :status => 404, :formats => [:html]
       return false

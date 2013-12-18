@@ -28,8 +28,7 @@ option:
 refinerycms myapp --heroku
 </shell>
 
-NOTE: Heroku relies on "Git":http://git-scm.com/download being installed on your
-system. You should install it beforehand.
+NOTE: Heroku relies on "Git":http://git-scm.com/download being installed on your system. You should install it beforehand.
 
 Watch the output for these lines:
 

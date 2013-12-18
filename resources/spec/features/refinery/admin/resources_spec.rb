@@ -28,7 +28,7 @@ module Refinery
           page.should have_selector 'iframe#dialog_iframe'
 
           page.within_frame('dialog_iframe') do
-            attach_file "resource_file", Refinery.roots(:'refinery/resources').
+            attach_file "resource_file", Refinery.roots('refinery/resources').
                                                   join("spec/fixtures/refinery_is_awesome.txt")
             click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
           end
@@ -87,7 +87,7 @@ module Refinery
           page.should have_content("Download current file or replace it with this one...")
           page.should have_selector("a[href*='/refinery/resources']")
 
-          attach_file "resource_file", Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome2.txt")
+          attach_file "resource_file", Refinery.roots('refinery/resources').join("spec/fixtures/refinery_is_awesome2.txt")
           click_button "Save"
 
           page.should have_content("Refinery Is Awesome2")

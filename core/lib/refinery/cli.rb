@@ -91,7 +91,7 @@ module Refinery
         abort "#{controller_class_name} is not defined"
       end
 
-      crud_lines = Refinery.roots(:'refinery/core').join('lib', 'refinery', 'crud.rb').read
+      crud_lines = Refinery.roots('refinery/core').join('lib', 'refinery', 'crud.rb').read
       if (matches = crud_lines.scan(/(\ +)(def #{action}.+?protected)/m).first).present? &&
          (method_lines = "#{matches.last.split(%r{^#{matches.first}end}).first.strip}\nend".split("\n")).many?
         indent = method_lines.second.index %r{[^ ]}
