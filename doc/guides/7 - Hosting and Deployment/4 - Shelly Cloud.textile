@@ -87,57 +87,15 @@ for Rails application with PostgreSQL database.
 
 h4. Step 6: To have assets working, it’s required to use Shelly Cloud "deployment hook support":https://shellyclou.com/documentation/deployment_hooks
 
-h5. First, update your environment configuration (usually +config/environments/production.rb+) 
-with following line:
-
-<ruby>
-# Enable serving assets, use far-future expiry header
-config.static_cache_control = "public, max-age=31536000"
-</ruby>
-
-h5. Create three hook files which will set up sharing assets between virtual 
-servers after precompilation.
-
-<shell>
-# config/deploy/shelly/link_assets_from_disk
-
-set -e
-
-# Link public/assets to disk/assets if needed
-if [ ! -L "public/assets" ]; then
-  if [ -d "public/assets" ]; then
-    rmdir public/assets
-  fi
-  mkdir -p disk/assets
-  ln -s ../disk/assets public/assets
-fi
-</shell>
+h5. Create hook file which will take care of assets precompilation on remote server.
 
 <shell>
 # config/deploy/shelly/before_migrate
 
 set -e
 
-# Make sure that public/assets is linked to disk/assets
-config/deploy/shelly/link_assets_from_disk
-
 # Precompile assets (this happens only on one of the servers)
 rake assets:precompile
-</shell>
-
-<shell>
-# config/deploy/shelly/before_restart
-
-set -e
-
-# Make sure that public/assets is linked to disk/assets
-config/deploy/shelly/link_assets_from_disk
-</shell>
-
-h5. Add execute permission for `link_assets_from_disk`
-
-<shell>
-$ chmod +x config/deploy/shelly/link_assets_from_disk
 </shell>
 
 h4. Step 7: Install your Refinery instance dependencies.
