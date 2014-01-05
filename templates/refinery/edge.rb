@@ -26,7 +26,6 @@ gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed
 gem 'protected_attributes'
 gem 'seo_meta', github: 'parndt/seo_meta', branch: 'master'
 
-gem 'globalize', github: 'globalize/globalize', branch: 'master'
 gem 'paper_trail', github: 'airblade/paper_trail', branch: 'master'
 gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set', branch: 'master'
 "
