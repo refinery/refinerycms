@@ -16,6 +16,7 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
       t.integer   :parent_id
       t.string    :path
       t.string    :slug
+      t.string    :custom_slug
       t.boolean   :show_in_menu,        :default => true
       t.string    :link_url
       t.string    :menu_match
