@@ -14,6 +14,8 @@ require 'capybara/rspec'
 
 Rails.backtrace_cleaner.remove_silencers!
 
+I18n.locale = :en
+
 RSpec.configure do |config|
   config.mock_with :rspec
   config.treat_symbols_as_metadata_keys_with_true_values = true
