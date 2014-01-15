@@ -150,6 +150,16 @@ module Refinery
           page.should have_content("'My first page' was successfully added.")
           page.body.should =~ %r{/pages/the-first-page}
         end
+
+        it "shows error if title is blank" do
+          visit refinery.admin_pages_path
+
+          click_link "Add new page"
+
+          click_button "Save"
+
+          page.should have_content("Title can't be blank")
+        end
       end
 
       describe "edit/update" do

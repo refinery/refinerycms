@@ -9,7 +9,7 @@ module Refinery
               :include => [:translations, :children],
               :paging => false
 
-      before_filter :load_valid_templates, :only => [:edit, :new]
+      before_filter :load_valid_templates, :only => [:edit, :new, :create]
       before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy]
       after_filter proc { Pages::Caching.new().expire! }, :only => :update_positions
 
