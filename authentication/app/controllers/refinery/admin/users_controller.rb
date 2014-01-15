@@ -18,7 +18,7 @@ module Refinery
       end
 
       def create
-        @user = Refinery::User.new params[:user].except(:roles)
+        @user = Refinery::User.new user_params.except(:roles)
         @selected_plugin_names = params[:user][:plugins] || []
         @selected_role_names = params[:user][:roles] || []
 
@@ -47,7 +47,7 @@ module Refinery
         store_user_memento
 
         @user.roles = @selected_role_names.map { |r| Refinery::Role[r.downcase] }
-        if @user.update_attributes params[:user]
+        if @user.update_attributes user_params
           update_successful
         else
           update_failed
@@ -128,6 +128,13 @@ module Refinery
         @user.plugins = @previously_selected_plugin_names
         @user.roles = @previously_selected_roles
         @user.save
+      end
+
+      def user_params
+        params.require(:user).permit(
+          :email, :password, :password_confirmation, :remember_me, :username,
+          :login, :full_name, plugins: [:user_id, :name, :position]
+        )
       end
     end
   end

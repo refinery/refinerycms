@@ -16,9 +16,6 @@ module Refinery
                        :in => ::Refinery::Images.whitelisted_mime_types,
                        :message => :incorrect_format
 
-    # allows Mass-Assignment
-    attr_accessible :id, :image, :image_size
-
     delegate :size, :mime_type, :url, :width, :height, :to => :image
 
     class << self

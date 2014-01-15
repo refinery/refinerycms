@@ -82,6 +82,10 @@ module Refinery
                               order('created_at DESC')
       end
 
+      def resource_params
+        params.require(:resource).permit(:file)
+      end
+
     end
   end
 end

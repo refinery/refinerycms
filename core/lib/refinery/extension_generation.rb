@@ -79,17 +79,6 @@ module Refinery
       @resource_attributes ||= attributes.select { |a| a.type == :resource }.uniq
     end
 
-    def names_for_attr_accessible
-      @attributes_for_attr_accessible ||= attributes.map do |a|
-        case a.type
-        when :image, :resource
-          "#{a.name}_id" unless a.name[-3..-1] == "_id"
-        else
-          a.name
-        end
-      end
-    end
-
     protected
 
     def append_extension_to_gemfile!

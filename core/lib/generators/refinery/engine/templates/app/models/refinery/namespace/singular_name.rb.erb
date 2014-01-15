@@ -4,14 +4,9 @@ module Refinery
 <% if table_name == namespacing.underscore.pluralize -%>
       self.table_name = 'refinery_<%= plural_name %>'
 <% end %>
-      attr_accessible <%= names_for_attr_accessible.map { |n| ":#{n}" }.join(', ') %>, :position
 <% if localized? -%>
 
       translates <%= localized_attributes.map { |a| ":#{a.name}" }.join(', ') %>
-
-      class Translation
-        attr_accessible :locale
-      end
 <% end -%>
 <% if string_attributes.any? -%>
 

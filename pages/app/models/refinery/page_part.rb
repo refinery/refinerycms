@@ -1,7 +1,6 @@
 module Refinery
   class PagePart < Refinery::Core::BaseModel
 
-    attr_accessible :title, :content, :position, :body, :refinery_page_id
     belongs_to :page, :foreign_key => :refinery_page_id
 
     validates :title, :presence => true, :uniqueness => {:scope => :refinery_page_id}
@@ -18,8 +17,6 @@ module Refinery
 
       normalise_text_fields
     end
-
-    self.translation_class.send :attr_accessible, :locale
 
     def title_matches?(other_title)
       title.present? and # protecting against the problem that occurs when have nil title

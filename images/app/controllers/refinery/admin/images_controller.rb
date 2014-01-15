@@ -40,12 +40,12 @@ module Refinery
       def create
         @images = []
         begin
-          unless params[:image].present? and params[:image][:image].is_a?(Array)
-            @images << (@image = ::Refinery::Image.create(params[:image]))
-          else
+          if params[:image].present? && params[:image][:image].is_a?(Array)
             params[:image][:image].each do |image|
-              @images << (@image = ::Refinery::Image.create({:image => image}.merge(params[:image].except(:image))))
+              @images << (@image = ::Refinery::Image.create({:image => image}.merge(image_params.except(:image))))
             end
+          else
+            @images << (@image = ::Refinery::Image.create(image_params))
           end
         rescue Dragonfly::FunctionManager::UnableToHandle
           logger.warn($!.message)
@@ -78,7 +78,7 @@ module Refinery
 
       def update
         attributes_before_assignment = @image.attributes
-        @image.attributes = params[:image]
+        @image.attributes = image_params
         if @image.valid? && @image.save
           flash.notice = t(
             'refinery.crudify.updated',
@@ -113,7 +113,7 @@ module Refinery
         end
       end
 
-    protected
+      protected
 
       def init_dialog
         @app_dialog = params[:app_dialog].present?
@@ -137,6 +137,10 @@ module Refinery
 
       def restrict_controller
         super unless action_name == 'insert'
+      end
+
+      def image_params
+        params.require(:image).permit(:image, :image_size)
       end
 
     end

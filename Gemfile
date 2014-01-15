@@ -11,7 +11,6 @@ gem 'quiet_assets'
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed'
 
-gem 'protected_attributes'
 gem 'seo_meta', github: 'parndt/seo_meta', branch: 'master'
 
 # Database Configuration

@@ -6,8 +6,6 @@ module Refinery
 
     include Resources::Validators
 
-    attr_accessible :id, :file
-
     resource_accessor :file
 
     validates :file, :presence => true

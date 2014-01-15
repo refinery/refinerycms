@@ -141,13 +141,5 @@ module Refinery
         end
       }
     end
-
-    describe "attr_accessible" do
-      it "adds attributes to the list" do
-        File.open("#{destination_root}/vendor/extensions/rspec_product_tests/app/models/refinery/rspec_product_tests/rspec_product_test.rb") do |file|
-          file.grep(%r{attr_accessible :title, :description, :image_id, :brochure_id, :position}).count.should eq(1)
-        end
-      end
-    end
   end
 end

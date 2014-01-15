@@ -35,7 +35,7 @@ describe Refinery::Admin::UsersController do
       user = Refinery::User.new :username => "bob"
       user.should_receive(:save).once{ true }
       Refinery::User.should_receive(:new).once.with(instance_of(ActionController::Parameters)){ user }
-      post :create, :user => {}
+      post :create, :user => {:username => 'bobby'}
       response.should be_redirect
     end
 
@@ -45,7 +45,7 @@ describe Refinery::Admin::UsersController do
       user = Refinery::User.new :username => "bob"
       user.should_receive(:save).once{ false }
       Refinery::User.should_receive(:new).once.with(instance_of(ActionController::Parameters)){ user }
-      post :create, :user => {}
+      post :create, :user => {:username => 'bobby'}
       response.should be_success
       response.should render_template("refinery/admin/users/new")
     end
@@ -69,7 +69,7 @@ describe Refinery::Admin::UsersController do
     let(:additional_user) { FactoryGirl.create :refinery_user }
     it "updates a user" do
       Refinery::User.stub_chain(:includes, :find) { additional_user }
-      patch "update", :id => additional_user.id.to_s, :user => {}
+      patch "update", :id => additional_user.id.to_s, :user => {:username => 'bobby'}
       response.should be_redirect
     end
 
