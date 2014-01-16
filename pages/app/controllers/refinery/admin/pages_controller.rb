@@ -24,7 +24,7 @@ module Refinery
       end
 
       def update
-        if @page.update_attributes(params[:page])
+        if @page.update_attributes(page_params)
           flash.notice = t(
             'refinery.crudify.updated',
             :what => "'#{@page.title}'"
@@ -60,7 +60,7 @@ module Refinery
         end
       end
 
-    protected
+      protected
 
       def after_update_positions
         find_all_pages
@@ -100,6 +100,14 @@ module Refinery
         end
 
         return true
+      end
+
+      def page_params
+        params.require(:page).permit(
+          :browser_title, :draft, :link_url, :menu_title, :meta_description,
+          :parent_id, :skip_to_first_child, :show_in_menu, :title,
+          parts_attributes: [:id, :title, :body, :position]
+        )
       end
 
     end

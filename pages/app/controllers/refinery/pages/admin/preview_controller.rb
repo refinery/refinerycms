@@ -21,16 +21,24 @@ module Refinery
         def find_page
           if @page = Refinery::Page.find_by_path_or_id(params[:path], params[:id])
             # Preview existing pages
-            @page.attributes = params[:page]
+            @page.attributes = page_params
           elsif params[:page]
             # Preview a non-persisted page
-            @page = Page.new params[:page]
+            @page = Page.new page_params
           end
         end
         alias_method :page, :find_page
 
         def layout
           'application'
+        end
+
+        def page_params
+          params.require(:page).permit(
+            :browser_title, :draft, :link_url, :menu_title, :meta_description,
+            :parent_id, :skip_to_first_child, :show_in_menu, :title,
+            parts_attributes: [:id, :title, :body, :position]
+          )
         end
       end
     end

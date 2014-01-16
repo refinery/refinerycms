@@ -68,7 +68,7 @@ module Refinery
           end
 
           def create
-            if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
+            if (@#{singular_name} = #{class_name}.create(#{singular_name}_params)).valid?
               flash.notice = t(
                 'refinery.crudify.created',
                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
@@ -85,7 +85,7 @@ module Refinery
           end
 
           def update
-            if @#{singular_name}.update_attributes(params[:#{singular_name}])
+            if @#{singular_name}.update_attributes(#{singular_name}_params)
               flash.notice = t(
                 'refinery.crudify.updated',
                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
@@ -209,6 +209,10 @@ module Refinery
             @#{plural_name} = @#{plural_name}.with_query(params[:search])
           end
 
+          def #{singular_name}_params
+            raise "Please override #{singular_name}_params with your desired parameter security."
+          end
+
           # Ensure all methods are protected so that they should only be called
           # from within the current controller.
           protected :find_#{singular_name},
@@ -218,6 +222,7 @@ module Refinery
                     :paginate_per_page,
                     :render_partial_response?,
                     :search_all_#{plural_name},
+                    :#{singular_name}_params,
                     :redirect_url,
                     :create_or_update_successful,
                     :create_or_update_unsuccessful,

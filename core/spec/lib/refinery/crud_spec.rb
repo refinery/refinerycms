@@ -11,7 +11,6 @@ end
 
 module Refinery
   class CrudDummy < ActiveRecord::Base
-    attr_accessible :parent_id
     acts_as_nested_set
   end
 
