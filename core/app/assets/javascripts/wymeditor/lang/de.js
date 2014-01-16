@@ -1,6 +1,5 @@
 WYMeditor.STRINGS['de'] = {
-  Apply_Style: 'Style',
-	Strong:			 'Fett',
+	Bold:         'Fett',
 	Emphasis:		 'Kursiv',
 	Superscript:		'Hochstellen',
 	Subscript:		'Tiefstellen',
@@ -32,6 +31,7 @@ WYMeditor.STRINGS['de'] = {
 	Summary:			'Summary',
 	Number_Of_Rows:	 'Anzahl Zeilen',
 	Number_Of_Cols:	 'Anzahl Spalten',
+	Insert:       'Einfügen', 
 	Submit:			 'Absenden',
 	Cancel:			 'Abbrechen',
 	Choose:			 'Auswählen',
@@ -41,5 +41,16 @@ WYMeditor.STRINGS['de'] = {
 	Containers:		 'Inhaltstyp',
 	Classes:			'Klassen',
 	Status:			 'Status',
-	Source_Code:		'Quellcode'
+	Source_Code:		'Quellcode',
+	Apply_Style: 'Style',
+	Text_Align:       'Textausrichtung',
+  Image_Align:      'Bildausrichtung',
+  Font_Size:        'Schriftgröße',
+  Left:             'Links',
+  Right:            'Rechts',
+  Center:           'Zentriert',
+  Justify:          'Justify',
+  Small:            'Klein',
+  Normal:           'Normal',
+  Large:            'Groß',
 };
