@@ -1,15 +1,15 @@
 h2. Shelly Cloud
 
-"Shelly Cloud":https://shellycloud.com/ is a platform for hosting Ruby and Rails 
+"Shelly Cloud":https://shellycloud.com/ is a platform for hosting Ruby and Rails
 apps. This guide will show you how to:
 
-* Install and deploy a Refinery application on the Shelly Cloud hosting platform 
+* Install and deploy a Refinery application on the Shelly Cloud hosting platform
 
 endprologue.
 
 h3. Prerequisites
 
-Before moving on to Refinery, first make sure you have the required system tools 
+Before moving on to Refinery, first make sure you have the required system tools
 installed:
 
 * Ruby, version 1.9.3 or higher. On Shelly Cloud the default Ruby version
@@ -29,7 +29,7 @@ As for gems, you will need to install:
 * Refinery CMS - it's used to generate drafts of your future application
 * ExecJS - it isn't installed with Refinery gem but "it's required":https://github.com/refinery/refinerycms/issues/2352
 
-You can do it by executing following command: 
+You can do it by executing following command:
 
 <shell>
 gem install shelly execjs refinerycms
@@ -82,10 +82,10 @@ group :production do
 end
 </ruby>
 
-Added gems are standard Shelly Cloud "dependencies":https://shellycloud.com/documentation/requirements#shelly-dependencies 
+Added gems are standard Shelly Cloud "dependencies":https://shellycloud.com/documentation/requirements#shelly-dependencies
 for Rails application with PostgreSQL database.
 
-h4. Step 6: To have assets working, it’s required to use Shelly Cloud "deployment hook support":https://shellyclou.com/documentation/deployment_hooks
+h4. Step 6: To have assets working, it’s required to use Shelly Cloud "deployment hook support":https://shellycloud.com/documentation/deployment_hooks
 
 h5. Create hook file which will take care of assets precompilation on remote server.
 
@@ -112,7 +112,7 @@ h5. Precompile static assets.
 $ rake assets:precompile
 </shell>
 
-h5. Add +public/assets+ to +.gitignore+ file. You don't want to have all these 
+h5. Add +public/assets+ to +.gitignore+ file. You don't want to have all these
 files commited to the repository.
 
 h5. Run migrations
@@ -128,7 +128,7 @@ $ rails s -e production
 </shell>
 
 You can see it by entering "http://localhost:3000/refinery":http://localhost:3000/refinery
-in your browser. 
+in your browser.
 
 NOTE: You can stop your local Rails server using CTRL+C.
 
@@ -140,7 +140,7 @@ $ git add .
 $ git commit -m "Initial commit of my Refinery instance"
 </shell>
 
-h4. Step 10: Create an application on Shelly Cloud (you can respond to all 
+h4. Step 10: Create an application on Shelly Cloud (you can respond to all
 questions with the default action).
 
 <shell>
