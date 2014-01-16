@@ -571,6 +571,19 @@ module Refinery
       end
     end
 
+    describe ".find_by_path_or_id!" do
+      it "delegates to find_by_path_or_id" do
+        lambda do
+          expect(Page).to receive(:find_by_path_or_id).with("path", "id")
+          Page.find_by_path_or_id!("path", "id")
+        end
+      end
+
+      it "throws exception when page isn't found" do
+        expect { Page.find_by_path_or_id!("not", "here") }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
     describe "#deletable?" do
       let(:deletable_page) do
         page.deletable  = true
