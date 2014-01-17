@@ -46,7 +46,7 @@ And run the dummy application generator:
 $ bundle exec rake refinery:testing:dummy_app
 </shell>
 
-NOTE: To succesfully run rake tasks within your project you may need to add the +refinerycms-testing+ gem to your application's Gemfile, too.
+NOTE: To successfully run rake tasks within your project you may need to add the +refinerycms-testing+ gem to your application's Gemfile, too.
 
 h3. Running the tests with Rake
 
@@ -57,6 +57,8 @@ $ bundle exec rake spec
 This will run the rspec specs.
 
 This is the most simple way to execute the test suite and useful for a one time run.
+
+NOTE: If you get +Could not find table+ errors, it may help to delete the +spec/dummy+ directory and run +bundle exec rake refinery:testing:dummy_app+ again.
 
 h3. Running the tests with Guard
 
