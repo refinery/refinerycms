@@ -37,14 +37,14 @@ fr:
         delete: Supprimer
         close: Fermer
       image_picker:
-        none_selected: Il n'y a actuellement aucun %{what} sélectionné, veuillez cliquer ici pour en ajouter un.
-        remove_current: Supprimer le %{what} actuel
+        none_selected: Il n'y a actuellement aucune image sélectionnée, veuillez cliquer ici pour en ajouter une.
+        remove_current: Supprimer l'image actuelle
         change: Cliquer ici pour sélectionner une image
         show: Afficher
       resource_picker:
-        download_current: Télécharger le %{what} actuel
+        download_current: Télécharger le fichier actuel
         opens_in_new_window: Ouvre une nouvelle fenêtre
-        remove_current: "Supprimer le %{what} actuel"
+        remove_current: "Supprimer le fichier actuel"
         no_resource_selected: Il n'y a actuellement aucun fichier de sélectionné. Veuillez cliquer ici pour en ajouter un.
         name: Ajouter un fichier
         current: Fichier courrant
