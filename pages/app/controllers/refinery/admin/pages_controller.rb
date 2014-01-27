@@ -12,7 +12,7 @@ module Refinery
       before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy]
 
       def new
-        @page = Page.new(params.except(:controller, :action, :switch_locale))
+        @page = Page.new(new_page_params)
         Pages.default_parts_for(@page).each_with_index do |page_part, index|
           @page.parts << PagePart.new(:title => page_part, :position => index)
         end
@@ -110,6 +110,9 @@ module Refinery
         )
       end
 
+      def new_page_params
+        params.permit(:parent_id)
+      end
     end
   end
 end

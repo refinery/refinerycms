@@ -151,6 +151,19 @@ module Refinery
           page.should have_content("'My first page' was successfully added.")
           page.body.should =~ %r{/pages/the-first-page}
         end
+
+        it "allows to easily create nested page" do
+          parent_page = Page.create! :title => "Rails 4"
+
+          visit refinery.admin_pages_path
+
+          find("a[href='#{refinery.new_admin_page_path(:parent_id => parent_page.id)}']").click
+
+          fill_in "Title", :with => "Parent page"
+          click_button "Save"
+
+          page.should have_content("'Parent page' was successfully added.")
+        end
       end
 
       describe "edit/update" do
