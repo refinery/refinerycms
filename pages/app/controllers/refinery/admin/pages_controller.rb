@@ -106,7 +106,7 @@ module Refinery
         params.require(:page).permit(
           :browser_title, :draft, :link_url, :menu_title, :meta_description,
           :parent_id, :skip_to_first_child, :show_in_menu, :title, :view_template,
-          parts_attributes: [:id, :title, :body, :position]
+          :layout_template, parts_attributes: [:id, :title, :body, :position]
         )
       end
 
