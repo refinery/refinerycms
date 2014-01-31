@@ -293,6 +293,19 @@ module Refinery
       end
     end
 
+    describe "#should_generate_new_friendly_id?" do
+      context "when title changes" do
+        it "regenerates slug upon save" do
+          page = Page.create!(:title => "Test Title")
+
+          page.title = "Test Title 2"
+          page.save!
+
+          expect(page.slug).to eq("test-title-2")
+        end
+      end
+    end
+
     context 'content sections (page parts)' do
       before do
         page.parts.new(:title => 'body', :content => "I'm the first page part for this page.", :position => 0)

@@ -37,6 +37,11 @@ module Refinery
       end
     end
 
+    # If title changes tell friendly_id to regenerate slug when saving record
+    def should_generate_new_friendly_id?
+      changes.keys.include?("title")
+    end
+
     # Delegate SEO Attributes to globalize translation
     delegate(*(Translation.seo_fields << {:to => :translation}))
 
