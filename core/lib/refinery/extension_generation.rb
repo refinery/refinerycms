@@ -135,8 +135,8 @@ module Refinery
         # Detect whether this is a special file that needs to get merged not overwritten.
         # This is important only when nesting extensions.
         # Routes and #{gem_name}\.rb have an .erb extension as path points to the generator template
-        # We have to exclude it when checking if the file already exists and  include it in the regexps
-        path = extension_path_for_nested_extension(path, apply_tmp) if extension.present?
+        # We have to exclude it when checking if the file already exists and include it in the regexps
+        path = extension_path_for_nested_extension(path, apply_tmp) if options[:extension].present?
       end
 
       path
