@@ -8,17 +8,12 @@ it:
         delete: Elimina il file corrente
         edit: Modifica il file corrente
         form:
-          file_to_upload: File da caricare
           download_current: Scarica il file corrente
           or: o
           replace: ", sostituirlo con questo..."
           maximum_file_size: "La dimensione massima consentita è %{bytes}."
         resource:
           download: Scarica il file corrente (%{size})
-          edit: Modifica il file corrente
-          delete:
-            message: Sei sicuro di voler eliminare '%{title}'?
-            title: Elimina il file corrente
         actions:
           upload_new: Carica un nuovo file
         records:
@@ -27,20 +22,12 @@ it:
           existing: File esistente
           new: Nuovo file
           no_files: Non ci sono files.
-          existing_file: File esistente
-          link_to_resource: 'Link a questa risorsa'
-          previous: Precedente
-          next: Successivo
-          submit_insert: Carica
-          or: o
-          cancel: Annulla
         existing_resource:
           link_to_file: Collegamento a questo file
           button_text: Inserisci
   activerecord:
     errors:
       models:
-        refinery:
-          resource:
-            blank: Devi selezionare un file da caricare
-            too_big: Le dimensioni del file devono essere inferiori a %{size} bytes
+        refinery/resource:
+          blank: Devi selezionare un file da caricare
+          too_big: Le dimensioni del file devono essere inferiori a %{size} bytes
