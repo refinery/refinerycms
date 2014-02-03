@@ -46,7 +46,6 @@ ko:
         form_advanced_options:
           page_options: 페이지 설정
           parent_page: 상위 페이지
-          custom_title: 임의 제목 설정
           show_in_menu_title: 메뉴에 보이기
           show_in_menu_description: 이 페이지를 사이트 메뉴에 포함시킵니다.
           show_in_menu_help: 사이트 메뉴에 페이지가 보이지 않도록 하려면 이 설정을 해제하세요. 직접 링크는 가능하지만 메뉴에 보이기 원치 않는 페이지에 사용하면 유용합니다.
@@ -56,7 +55,6 @@ ko:
           link_url: 다른 웹 사이트나 페이지로 포워딩
           link_url_help: 이 페이지를 클릭했을 때 다른 웹사이트나 페이지로 이동하게 하려면 여기에 http://google.com과 같은 주소를 입력하세요.
           parent_page_help: 이 페이지의 상위 페이지를 목록에서 선택할 수 있습니다. 이 페이지를 최상위 페이지로 만들고 싶다면 빈 칸으로 남겨 두세요.
-          custom_title_help: 페이지가 메뉴에서 보이는 것과 다른 제목을 가지도록 하고 싶다면 &apos;텍스트&apos;를 선택하여 새 제목을 입력하세요.
         actions:
           create_new_page: 새 페이지
           reorder_pages: 페이지 재정렬

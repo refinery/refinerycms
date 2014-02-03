@@ -47,7 +47,6 @@ cs:
         form_advanced_options:
           page_options: Nastavení stránky
           parent_page: Nadřazená stránka
-          custom_title: Titulek
           show_in_menu_title: Zobrazit v menu
           show_in_menu_description: Zobrazit tuto stránku v menu webu
           show_in_menu_help: Odškrtněte pokud chcete odstranit odkaz na tuto stránku z menu webu.
@@ -57,7 +56,6 @@ cs:
           link_url: Přesměrovat tuto stránku na jiný web nebo stránku.
           link_url_help: Pokud chcete aby po kliknutí na odkaz na tutu stránku byl návštěvník přesměrován na jiný web, vložte adresu (např. http://google.com), jinak nechte prázdné
           parent_page_help: Můžete umístit tuto stránku v hierarchii pod jinou stránku. Pokud nevyberete nic, bude tato stránka umístěna na první úrovni.
-          custom_title_help: Pokud chcete aby stránka měla jiný titulek než ten který se zobrazuje v menu vyberte &apos;Text&apos; a vložte jej zde.
           view_template: Šablona
           view_template_help: Můžete zvolit odlišnou šablonu pro tuto stránku
         actions:

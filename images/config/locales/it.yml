@@ -24,28 +24,18 @@ it:
             switch_to: 'Passa alla modalità di visualizzazione "%{view_name}"'
             list: Lista
             grid: Griglia
-        grid_view:
-          edit: Modifica questa immagine
         view_live_html: Visualizza questa immagine <br/><em>Apri in una nuova finestra</em>
         existing_image:
           button_text: Inserisci
           resize_image: "Ridimensionare l'immagine?"
           size: Dimensioni
-        list_view_image:
-          edit_this_image: Modifica questa immagine
         insert:
           existing_image: Immagine Esistente
           new_image: Nuova immagine
-          previous: Precedente
-          next: Successivo
-          submit_insert: Inserire
-          or: o
-          cancel: Annullare
   activerecord:
     errors:
       models:
-        refinery:
-          image:
-            blank: "Devi selezionare un'immagine da caricare"
-            too_big: 'I files devono essere di dimensioni inferiori a %{size} bytes'
-            incorrect_format: "L'immagine deve essere in formato JPEG, PNG o GIF"
+        refinery/image:
+          blank: "Devi selezionare un'immagine da caricare"
+          too_big: 'I files devono essere di dimensioni inferiori a %{size} bytes'
+          incorrect_format: "L'immagine deve essere in formato JPEG, PNG o GIF"

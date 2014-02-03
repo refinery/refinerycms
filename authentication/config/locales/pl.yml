@@ -67,32 +67,6 @@ pl:
   devise:
     failure:
       unauthenticated: 'Musisz się zalogować lub zarejestrować aby kontynuować.'
-      unconfirmed: 'Musisz najpierw aktywować swoje konto aby kontynuować.'
-      locked: 'Twoje konto jest zablokowane.'
       invalid: 'Niepoprawny email lub hasło.'
-      invalid_token: 'Niepoprawny token autentykujący.'
-      timeout: 'Twoja sesja wygasła, zaloguj się ponownie aby kontynuować.'
-      inactive: 'Twoje konto nie zostało jeszcze aktywowane.'
     sessions:
       signed_in: 'Użytkownik został zalogowany.'
-      signed_out: 'Użytkownik został wylogowany.'
-    passwords:
-      send_instructions: 'Wkrótce powinieneś otrzymać email z instrukcją jak ustawić nowe hasło.'
-      updated: 'Twoje hasło zostało zmienione. Jesteś już zalogowany.'
-    confirmations:
-      send_instructions: 'Wkrótce powinieneś otrzymać email z instrukcją jak aktywować swoje konto.'
-      confirmed: 'Twoje konto zostało aktywowane. Jesteś już zalogowany.'
-    registrations:
-      signed_up: 'Rejestracja zakończyła się sukcesem. Link aktywacyjny został wysłany na twój adres e-mail (jeśli włączone).'
-      updated: 'Twoje konto zostało pomyślnie zaktualizowane.'
-      destroyed: 'Papa! Twoje konto zostało usunięte. Mamy nadzieję, że spotkamy się jeszcze kiedyś!'
-    unlocks:
-      send_instructions: 'Wkrótce powinieneś otrzymać email z instrukcją jak odblokować swoje konto.'
-      unlocked: 'Twoje konto zostało odblokowane. Jesteś już zalogowany.'
-    mailer:
-      confirmation_instructions:
-        subject: 'Instrukcja aktywacji konta'
-      reset_password_instructions:
-        subject: 'Instrukcja ustawienia nowego hasła'
-      unlock_instructions:
-        subject: 'Instrukcja odblokowania konta'

@@ -31,7 +31,6 @@ cs:
       refinery/resource: soubor
     errors:
       models:
-        refinery:
-          resource:
-            blank: Musíte vybrat soubor pro nahrání
-            too_big: Maximální velikost souboru je %{size} MB
+        refinery/resource:
+          blank: Musíte vybrat soubor pro nahrání
+          too_big: Maximální velikost souboru je %{size} MB

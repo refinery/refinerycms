@@ -60,32 +60,6 @@ it:
   devise:
     failure:
       unauthenticated: "Devi accedere o registrarti per continuare."
-      unconfirmed: "Devi confermare il tuo account per continuare."
-      locked: "Il tuo account è bloccato."
       invalid: "Indirizzo email o password non validi."
-      invalid_token: "Codice di autenticazione non valido."
-      timeout: "Sessione scaduta, rieffettuare l'accesso."
-      inactive: "Il tuo account non è stato ancora attivato."
     sessions:
       signed_in: "Accesso effettuato con successo."
-      signed_out: "Uscita effettuata correttamente."
-    passwords:
-      send_instructions: "Riceverai un messaggio email con le istruzioni per reimpostare la tua password entro qualche minuto."
-      updated: "La tua password è stata cambiata. Ora sei collegato."
-    confirmations:
-      send_instructions: "Riceverai un messaggio email con le istruzioni per confermare il tuo account entro qualche minuto."
-      confirmed: "Il tuo account è stato confermato. Ora sei collegato."
-    registrations:
-      signed_up: "Iscrizione correttamente eseguita. Se abilitata, una conferma è stata inviata al tuo indirizzo email."
-      updated: "Il tuo account è stato aggiornato."
-      destroyed: "Arrivederci! L'account è stato cancellato. Speriamo di rivederci presto."
-    unlocks:
-      send_instructions: "Riceverai un messaggio email con le istruzioni per sbloccare il tuo account entro qualche minuto."
-      unlocked: "Il tuo account è stato correttamente sbloccato. Ora sei collegato."
-    mailer:
-      confirmation_instructions:
-        subject: "Istruzioni per la conferma"
-      reset_password_instructions:
-        subject: "Istruzioni per reimpostare la password"
-      unlock_instructions:
-        subject: "Istruzioni per sbloccare l'account"

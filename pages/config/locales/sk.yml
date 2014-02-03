@@ -53,7 +53,6 @@ sk:
         form_advanced_options:
           page_options: Nastavenie stránky
           parent_page: Nadradená stránka
-          advanced_options: Rozšírené nastavenia
           menu_title: Názov menu
           custom_slug: Vlastný url identifikátor
           show_in_menu_title: Zobraziť v menu

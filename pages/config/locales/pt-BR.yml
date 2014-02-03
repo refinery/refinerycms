@@ -47,7 +47,6 @@ pt-BR:
         form_advanced_options:
           page_options: Opções de página
           parent_page: Página pai
-          custom_title: Título opcional
           show_in_menu_title: Mostrar no menu
           show_in_menu_description: Mostra esta página no menu do site
           show_in_menu_help: "Desmarque está opção caso queira remover a página do menu do site. Pode ser útil caso queira linkar um outra página para esta, mas não quer que esta apareça no menu do site."
@@ -57,7 +56,6 @@ pt-BR:
           link_url: "Redirecionar esta página para outro site ou página."
           link_url_help: "Se você quer que esta página seja redicionada para outro site ou página quando você clicar nesta página no menu, digite a URL. ex. http://google.com ou deixe em branco."
           parent_page_help: "Se você quer colocar está página a baixo de outra página no menu, selecione qual página aqui ou deixe em branco caso queria a página na raiz do menu."
-          custom_title_help: "Se você quer que a página tenha um título diferente do que é mostrado no menu então selecione &apos;Texto&apos; e digite o novo título."
         actions:
           create_new_page: Criar uma nova página
           reorder_pages: Reordenar as Páginas

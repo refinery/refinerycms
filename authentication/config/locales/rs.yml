@@ -63,11 +63,10 @@ rs:
     models:
       refinery/user: administrator
     attributes:
-      refinery:
-        user:
-          login: Login
-          username: Username
-          password: Lozinka
-          password_confirmation: Potvrdi lozinku
-          email: Email
-          remember_me: Zapamti me
+      refinery/user:
+        login: Login
+        username: Username
+        password: Lozinka
+        password_confirmation: Potvrdi lozinku
+        email: Email
+        remember_me: Zapamti me
