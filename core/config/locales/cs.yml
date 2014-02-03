@@ -32,8 +32,6 @@ cs:
         cancel: Storno
         cancel_lose_changes: Pokud akci stornujete všechny provedené změny budou ztraceny
         delete: Smazat
-        previous: Předchozí
-        next: Další
         close: Zavřít
       image_picker:
         none_selected: Zatím není vybrán žádný obrázek, klikněte zde pro přidání.
