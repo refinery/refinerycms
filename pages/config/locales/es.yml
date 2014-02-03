@@ -54,7 +54,6 @@ es:
         form_advanced_options:
           page_options: Opciones de página
           parent_page: Página padre
-          custom_title: Título personalizado
           menu_title: Título del menú
           menu_title_help: Si quieres que el menú muestre un título diferente al que se muestra en la página, introdúcelo aquí
           show_in_menu_title: Ver en menú
@@ -66,7 +65,6 @@ es:
           link_url: Redirigir esta página a otra web o a otra página
           link_url_help: "Si quieres que esta página envíe a otra web o página entonces pulsa esta página en el menú y introduce una URL (por ej: http://google.com). En caso contrario déjalo en blanco."
           parent_page_help: Puedes incluir una página dentro de otra seleccionándola en la lista. Si quieres que sea una página de primer nivel, déjalo en blanco.
-          custom_title_help: Si quieres que la página tenga un título diferente al que aparece en el menú selecciona &apos;Texto&apos; y teclea el título que prefieres.
           layout_template: Plantilla para la disposición
           layout_template_help: Puedes elegir una plantilla para la dispoción diferente
           view_template: Plantilla para la vista

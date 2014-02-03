@@ -46,7 +46,6 @@ fi:
         form_advanced_options:
           page_options: Sivun ominaisuudet
           parent_page: Yläsivu
-          custom_title: Kustomoitu otsikko
           show_in_menu_title: Näytä valikossa
           show_in_menu_description: Näytä tämä sivu nettisivuston valikossa
           show_in_menu_help: "Poista rasti tästä kentästä, jos haluat poistaa sivun valikosta. Tämä voi olla hyödyllinen ominaisuus, jos haluat näkymättömän sivun jonka linkin voit antaa tietyille ihmisille."
@@ -56,7 +55,6 @@ fi:
           link_url: Uudelleenohjaa tämä sivu toiselle nettisivustolle tai sivulle
           link_url_help: "Jos haluat tämän sivun uudelleenohjaavan käyttäjän toiselle nettisivustolle tai sivulle, kirjoita URL (esim. http://google.com) tai jätä muuten tyhjäksi"
           parent_page_help: "Voit asettaa sivun toisen sivun alisivuksi valitsemalla yläsivun valikosta. Jos haluat tämän sivun olevan pääsivu, jätä sivu valitsematta."
-          custom_title_help: "Jos haluat sivun näyttävän eri otsikon valikossa, valitse 'Teksti' ja kirjoita se tähän."
         actions:
           create_new_page: Lisää uusi sivu
           reorder_pages: Muuta sivujen järjestystä

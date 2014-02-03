@@ -48,7 +48,6 @@ lv:
           page_options: Lapas Opcijas
           # can't think of a proper translation for this ...
           parent_page: Parent page
-          custom_title: Cits nosaukums
           show_in_menu_title: Rādīt izvēlnē
           show_in_menu_description: Rādīt šo lapu saita izvēlnē
           show_in_menu_help: Izņemiet ķeksi no šī loga, ja vēlaties, lai šī lapa nebūtu redzama saita izvēlnē. Šī opcija noder gadījumos, kad vēlaties iesaitēt šo lapu, bet nevēlaties, lai šī lapa parādītos saita izvēlnē.
@@ -58,7 +57,6 @@ lv:
           link_url: Pārsūtīt šo lapu uz citu interneta saiti
           link_url_help: Ja vēlaties, lai šī lapa novirzītu apmeklētājus uz citu interneta saiti vai jūsu saita lapu, tad ievadiet saiti, piemēram, http://google.lv, pretējā gadījumā atstājot šo lauku tukšu
           parent_page_help: Jūs varat novietot lapu zem citas lapas, izvēloties to no sarkasta. Ja jūs velaties, lai šī lapa būtu augšējā līmenī - atstājiet lauku tukšu.
-          custom_title_help: Ja vēlaties, lai lapai būtu cits nosaukums nekā tas ir izvēlnē, tad izvēlieties &apos;Teksts&apos; un ievadiet to izveidotajā laukā.
         actions:
           create_new_page: Izveidot jaunu lapu
           reorder_pages: Pārkārtot lapas

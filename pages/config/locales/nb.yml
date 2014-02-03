@@ -46,7 +46,6 @@ nb:
         form_advanced_options:
           page_options: Alternativer for siden
           parent_page: Overliggende side
-          custom_title: Valgfri tittel
           show_in_menu_title: Vis i meny
           show_in_menu_description: Vis denne siden i menyen
           show_in_menu_help: Fjern markeringen i denne boksen om du ønsker å fjerne en side fra menyen. Dette kan være praktisk dersom du har en underside som du ønsker å lenke besøkende til, men ikke ønsker å vise i menyen.
@@ -56,7 +55,6 @@ nb:
           link_url: Videresend denne siden til en annen underside eller webside.
           link_url_help: "Dersom du ønsker å bli sendt til en annen side eller en ekstern webside når du trykker på den i menyen, legg inn en adresse her. F.eks. http://google.com . La ellers feltet stå tomt."
           parent_page_help: Du kan plassere en side under en annen side ved å velge den fra listen. Om du ønsker at siden skal være en toppnivå side så lar du dette valget stå blankt.
-          custom_title_help: "Dersom du ønsker at siden skal ha en annen tittel enn den som vises i menyen så kan du velge &apos;Tekst&apos; og skrive inn tittelen her."
         actions:
           create_new_page: Legg til ny side
           reorder_pages: Endre rekkefølgen
@@ -69,4 +67,3 @@ nb:
     attributes:
       refinery/page:
         title: Tittel
-        

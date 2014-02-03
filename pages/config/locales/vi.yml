@@ -46,7 +46,6 @@ vi:
         form_advanced_options:
           page_options: Các tùy chọn về Trang
           parent_page: Trang cha
-          custom_title: Tiêu đề khác
           show_in_menu_title: Hiển thị trong menu
           show_in_menu_description: Hiển thị trang này trong menu của trang web
           show_in_menu_help: Bỏ chọn ô này nếu bạn muốn xóa trang khỏi menu của trang web. Đây là trường hợp bạn muốn Trang này tồn tại (có thể truy cập vào được) nhưng không muốn nó hiện trong menu của trang web.
@@ -56,7 +55,6 @@ vi:
           link_url: Chuyển hướng truy cập vào trang này sang mội trang khác hoặc một website khác
           link_url_help: Nếu bạn muốn khi ấn vào trang này trên menu, người dùng sẽ được đưa tới một trang kháchay website khác, bạn hãy nhập vào một địa chỉ (ví dụ http://google.com), nếu không để trống ô này.
           parent_page_help: Bạn có thể đặt trang này ở dưới (làm con) một trang khác bằng cách chọn trang cha từ danh sách dưới đây. Hãy để trống nếu bạn muốn trang này là trang ở lớp ngoài cùng.
-          custom_title_help: Nếu bạn muốn trang này có một tiêu đề khác tiêu đề hiện trong menu, hãy chọn &apos;Chữ&apos; và nhập vào đây.
         actions:
           create_new_page: Tạo trang mới
           reorder_pages: Sắp xếp lại các trang

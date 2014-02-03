@@ -45,7 +45,6 @@ sl:
         form_advanced_options:
           page_options: Možnosti Strani
           parent_page: Matična stran
-          custom_title: Naslov po meri
           show_in_menu_title: Prikaži v meniju
           show_in_menu_description: Obkljukajte, če želite da se stran pojavi v glavnem meniju.
           show_in_menu_help: "Odkljukate, če želite da se stran ne prikaže v glavnem meniju. To je lahko zelo priročno, če imate stran za katero želite da se uporabniki povežejo neposredno vendar ne želite da prikaže v glavnem meniju."
@@ -55,7 +54,6 @@ sl:
           link_url: "Preusmeri to stran na drugo spletno stran ali stran"
           link_url_help: "Če želite da stran kaže na drugo spletno stran ali stran, ko boste kliknili na njo v meniju, vnesite URL naslov npr. http://google.com v nasprotnem primeru pustite prazno."
           parent_page_help: "Stran lahko postavite pod neko drugo, tako da jo izberite iz seznama. Če želite da je ta stran na najvišjem nivoju, pustite prazno."
-          custom_title_help: "Če želite da ima stran drugačen naslov od tistega, ki se prikaže v meniju potem izberite &apos;Tekst&apos; in ga vnesite tukaj."
         actions:
           create_new_page: Dodaj novo stran
           reorder_pages: Spremeni vrstni red Strani

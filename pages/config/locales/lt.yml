@@ -47,7 +47,6 @@ lt:
         form_advanced_options:
           page_options: Puslapio nustatymai
           parent_page: Tėvinis puslapis
-          custom_title: Kitokia puslapio antraštė
           show_in_menu_title: Rodyti meniu
           show_in_menu_description: Rodyti šį puslapį svetainės meniu
           show_in_menu_help: "Atžymėkite šią varnelę jei norite pašalinti šį puslapį iš svetainės meniu. Tai gali būti naudinga, jeigu turite puslapį į kurį norite leisti nuorodas tiesiogiai, bet nenorite jo rodyti svetainės meniu."
@@ -58,7 +57,6 @@ lt:
           link_url: Nukreipti šį puslapį į kitą puslapį ar svetainę
           link_url_help: "Jei norite, kad šis puslapis vestų į kitą svetainę ar puslapį, kai jį paspaudžiate meniu, tai įveskite adresą pvz. http://google.com arba palikite tuščią"
           parent_page_help: "Galite sukurti puslapį, po kitu puslapių, tai pasirinkite jį sąraše. Jei norite, kad šis puslapis taptų aukščiausio lygio puslapiu, tiesiog palikite tuščią."
-          custom_title_help: "Jei norite, kad puslapio antraštė būtų kitokia, nei naudojama meniu, tai pasirinkite &apos;Tekstas&apos; ir įveskite antraštę."
         actions:
           create_new_page: Pridėti naują puslapį
           reorder_pages: Keisti puslapių tvarką
