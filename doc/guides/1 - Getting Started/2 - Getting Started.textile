@@ -144,6 +144,7 @@ This will fire up an instance of the built-in Rails web server by default (calle
 TIP: To stop the web server, hit +Ctrl&#43;C+ in the terminal window where it's running.
 
 WARNING: If you do not see this page, but rather see a default page for Rails, ensure you have removed +public/index.html+. The installer should have removed this file for you, but in certain circumstances, it may persist.
+WARNING: If you encounter a routing error afterwards, run rails generate refinery:cms --fresh-installation
 
 If you see this screen it means you have set up everything correctly and your Refinery CMS site is up and running.
 
