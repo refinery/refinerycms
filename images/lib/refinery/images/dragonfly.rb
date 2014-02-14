@@ -31,7 +31,7 @@ module Refinery
             }
             # S3 Region otherwise defaults to 'us-east-1'
             options.update(region: Refinery::Images.s3_region) if Refinery::Images.s3_region
-            app_images.datastore :s3, options
+            app_images.use_datastore :s3, options
           end
 
           if Images.custom_backend?

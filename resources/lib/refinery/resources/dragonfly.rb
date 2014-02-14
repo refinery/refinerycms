@@ -32,7 +32,7 @@ module Refinery
               secret_access_key: Refinery::Resources.s3_secret_access_key
             }
             options.update(region: Refinery::Resources.s3_region) if Refinery::Resources.s3_region
-            app_resources.datastore :s3, options
+            app_resources.use_datastore :s3, options
           end
 
           if Resources.custom_backend?
