@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.0.0'
 
   s.add_dependency 'refinerycms-i18n',            '~> 3.0.0.dev'
-  s.add_dependency 'awesome_nested_set',          '~> 3.0.0.rc.1'
+  s.add_dependency 'awesome_nested_set',          '~> 3.0.0.rc.3'
   s.add_dependency 'railties',                    rails_version
   s.add_dependency 'activerecord',                rails_version
   s.add_dependency 'actionpack',                  rails_version
