@@ -22,7 +22,7 @@ module Refinery
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :parent_id, :menu_title, :page_id,
                     :layout_template, :view_template, :custom_slug, :slug,
-                    :title, *::SeoMeta.attributes.keys
+                    :title, :site_id, *::SeoMeta.attributes.keys
 
     validates :title, :presence => true
 
@@ -161,6 +161,10 @@ module Refinery
         nullify_duplicate_slugs_under_the_same_parent!
       end
       alias_method_chain :rebuild!, :slug_nullification
+
+      def by_site(site = nil)
+        where('site_id = ? OR site_id IS NULL', site)
+      end
 
       protected
       def nullify_duplicate_slugs_under_the_same_parent!
