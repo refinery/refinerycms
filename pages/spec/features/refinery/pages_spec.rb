@@ -156,6 +156,14 @@ module Refinery
       before do
         Page.stub(:fast_menu).and_return([page_cs])
       end
+      
+      describe 'canonical url' do
+        it 'should have a canonical url' do
+          visit '/about-us'
+
+          page.should have_selector('head link[rel="canonical"][href^="http://www.example.com/about-us"]', visible: false)
+        end
+      end
 
       describe 'not set' do
         it 'makes friendly_id from title' do
