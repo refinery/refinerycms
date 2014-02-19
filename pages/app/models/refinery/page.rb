@@ -51,6 +51,8 @@ module Refinery
 
     accepts_nested_attributes_for :parts, :allow_destroy => true
 
+    belongs_to :site
+
     before_save do |m|
       m.translation.globalized_model = self
       m.translation.save if m.translation.new_record?
