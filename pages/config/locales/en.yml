@@ -70,6 +70,8 @@ en:
           layout_template_help: You can choose a different layout template for this page
           view_template: View template
           view_template_help: You can choose a different view template for this page
+          site_select: Site
+          site_select_help: You can make a page available only under a certain site (hostname)
         actions:
           create_new_page: Add new page
           reorder_pages: Reorder pages
