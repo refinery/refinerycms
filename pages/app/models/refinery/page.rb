@@ -162,7 +162,7 @@ module Refinery
       end
       alias_method_chain :rebuild!, :slug_nullification
 
-      def by_site(site = nil)
+      def for_site(site = nil)
         where('site_id = ? OR site_id IS NULL', site)
       end
 

@@ -8,7 +8,7 @@ module Refinery
       end
 
       def error_404(exception=nil)
-        if (@page = ::Refinery::Page.by_site(@site).where(:menu_match => "^/404$").includes(:parts).first).present?
+        if (@page = ::Refinery::Page.for_site(@site).where(:menu_match => "^/404$").includes(:parts).first).present?
           # render the application's custom 404 page with layout and meta.
           if self.respond_to? :render_with_templates?, true
             render_with_templates? @page, :status => 404

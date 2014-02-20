@@ -69,7 +69,7 @@ module Refinery
     end
 
     def find_page(fallback_to_404 = true)
-      pages = Refinery::Page.by_site(@site)
+      pages = Refinery::Page.for_site(@site)
       @page ||= case action_name
                 when "home"
                   pages.where(:link_url => '/').first
