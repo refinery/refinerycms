@@ -163,7 +163,7 @@ module Refinery
       alias_method_chain :rebuild!, :slug_nullification
 
       def for_site(site = nil)
-        where('site_id = ? OR site_id IS NULL', site)
+        where('site_id IS NULL OR site_id = ?', site)
       end
 
       protected
