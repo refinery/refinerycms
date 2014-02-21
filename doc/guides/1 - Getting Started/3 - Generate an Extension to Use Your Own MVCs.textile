@@ -15,7 +15,7 @@ h3. Guide Assumptions
 
 This guide continues the Rick Rock Star example from the "Getting Started":/guide/getting-started/ guide. You will need to have Refinery installed and running as explained in that guide.
 
-This guide does not assume that you have any prior experience with Refinery, but it does assume that you are somewhat familiar with Rails.  If you are not familiar with Rails, you will still be able to step through the guide but you may not fully understand all of the commands or code.  Here are some resources to learn more about Rails:
+This guide does not assume that you have any prior experience with Refinery beyond what is covered in the "Getting Started":/guide/getting-started/ guide, but it does assume that you are somewhat familiar with Rails.  If you are not familiar with Rails, you will still be able to step through the guide but you may not fully understand all of the commands or code.  Here are some resources to learn more about Rails:
 
 * "Ruby on Rails":http://rubyonrails.org/ 
 * "Ruby on Rails Guides":http://guides.rubyonrails.org/v3.2.14/ - Note that these are the guides for Rails version *3.2* since that is the version Refinery requires.
