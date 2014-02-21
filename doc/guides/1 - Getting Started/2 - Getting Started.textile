@@ -3,8 +3,8 @@ h2. Getting Started
 This guide covers getting up and running with Refinery CMS. After reading it, you should be familiar with:
 
 * Installing and creating a new Refinery site
+* Switching between the back-end Refinery site editor and the front-end of a site
 * Changing the front end design of a Refinery site
-* Extending Refinery's functionality with custom extensions
 
 endprologue.
 
@@ -48,7 +48,7 @@ The Refinery philosophy includes several guiding principles:
 
 h4. Refinery's architecture
 
-Refinery is comprised of several Rails Engines. Each extension acts like a mini Rails application with its own routes and views. Refinery is architected like this so that it keeps out of the way of any custom development you will do in the +/app+ directory.
+Refinery is comprised of several Rails Engines. Each engine, or "extension," acts like a mini Rails application with its own routes and views. Refinery is architected like this so that it keeps out of the way of any custom development you will do in the +/app+ directory.
 
 h4. Core extensions
 
@@ -65,7 +65,7 @@ h3. Creating a new Refinery project
 
 !/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMDdfMTRfNjQ3X3JpY2tfYXN0bGV5X25ldmVyX2dvbm5hX2dpdmVfeW91X3VwLmpwZyJdXQ/12_07_14_647_rick_astley_never_gonna_give_you_up.jpg!
 
-If you follow this guide, you'll create a Refinery site called <tt>rickrockstar</tt> that will have a custom design and an events extension to allow Rick to tell his fans when his next gig is.
+If you follow this guide, you'll create a Refinery site called <tt>rickrockstar</tt> that will have a custom design.  Then you'll be ready to go further in the following guide and add events extension to allow Rick to tell his fans when his next gig is.
 
 Before you can start building this site, you need to make sure that you have Refinery itself installed.
 
