@@ -1,5 +1,4 @@
 h2. Getting Started
-h2. Getting Started
 
 This guide covers getting up and running with Refinery CMS. After reading it, you should be familiar with:
 
