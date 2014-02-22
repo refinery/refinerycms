@@ -25,7 +25,7 @@ h3. The Anatomy of an Extension
 
 Think of a Refinery extension as a miniature Rails application running in your +vendor/extensions+ directory. Each extension specifies its own routes in its config directory and has its own views and controllers in its own app directory. In fact, each extension is actually a *Rails engine.*  Engines can even serve up their own images, stylesheets and javascripts by utilizing the asset pipeline, which got introduced in Rails 3.1.  You can define your own models, views, and controllers in an extension and they can take full advantage of all of the functionality that Refinery offers.  
 
-An extension has the same familiar directory structure that you see in Rails applications (and engines).  You'll see a folder for your models, views, controllers, helpers, decorators, config, and so forth.  Your code goes in those folders just as it does in a regular Rails application or engine.
+An extension has the same familiar directory structure that you see in Rails applications and engines.  You'll see a folder for your models, views, controllers, helpers, decorators, config, and so forth.  Your code goes in those folders just as it does in a regular Rails application or engine.
 
 
 h3. Generating an extension
