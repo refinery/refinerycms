@@ -1,10 +1,11 @@
-h2. Generating an Extension So You Can Use Your Own MVCs
+h2. Generate an Extension to Use Your Own MVCs
 
-This guide covers getting up and running with Refinery CMS. After reading it, you should be familiar with:
+This guide explains how to generate and get started with an extension in Refinery.  After reading it, you should be familiar with:
 
-* Installing and creating a new Refinery site
-* Changing the front end design of a Refinery site
+* The basic structure of a Refinery extension
+* Using the Refinery generator to generate a custom extension
 * Extending Refinery's functionality with custom extensions
+* Crudify, a CRUD module that Refinery provides
 
 endprologue.
 
@@ -12,32 +13,20 @@ WARNING. This guide is based on Refinery CMS 2.1.0 so some of the code shown her
 
 h3. Guide Assumptions
 
-This guide is designed for beginners who want to get started with a Refinery CMS site from scratch. It does not assume that you have any prior experience with Refinery. However, to get the most out of it, you need to have some prerequisites installed:
+This guide continues the Rick Rock Star example from the "Getting Started":/guide/getting-started/ guide. You will need to have Refinery installed and running as explained in that guide.
 
-* The "Ruby":http://www.ruby-lang.org/en/downloads language version 1.9.3 or higher
-* A working installation of the "SQLite3 Database":http://www.sqlite.org
-* A working installation of "ImageMagick":http://www.imagemagick.org/script/install-source.php
+This guide does not assume that you have any prior experience with Refinery, but it does assume that you are somewhat familiar with Rails.  If you are not familiar with Rails, you will still be able to step through the guide but you may not fully understand all of the commands or code.  Here are some resources to learn more about Rails:
 
-TIP: If you don't already have these things, then you will need to follow the "Installing Refinery Prerequisites":/guides/installation-prerequisites/ guide.
-
-TIP: It is recommended that developers use RVM to manage Ruby versions and gems. Once RVM is installed on your system, and you've created a gemset for the project, create an .rvmrc file in the site's root directory. Its contents should look something like:
-
-<shell>
-rvm use --create ruby-1.9.3@refinery
-</shell>
-
-TIP: If you are not using an RVM gemset and you have Rails 4 installed, be sure to read the "Rails Application Templates":#rails-application-templates section below.
-
-Refinery is a Ruby on Rails web application. If you have no prior experience with Rails, you will find a very steep learning curve diving straight into Refinery. There are some good free resources on the Internet for learning Rails, including:
-
-* "Getting Started with Rails":http://guides.rubyonrails.org/getting_started.html
-* "Rails for Zombies":http://railsforzombies.org
+* "Ruby on Rails":http://rubyonrails.org/ 
+* "Ruby on Rails Guides":http://guides.rubyonrails.org/v3.2.14/ - Note that these are the guides for Rails version *3.2* since that is the version Refinery requires.
 
 
+h3. The Anatomy of an Extension
 
-h3. The Anatomy of an Engine
+Think of a Refinery extension as a miniature Rails application running in your +vendor/extensions+ directory. Each extension specifies its own routes in its config directory and has its own views and controllers in its own app directory. In fact, each extension is actually a *Rails engine.*  Engines can even serve up their own images, stylesheets and javascripts by utilizing the asset pipeline, which got introduced in Rails 3.1.  You can define your own models, views, and controllers in an extension and they can take full advantage of all of the functionality that Refinery offers.  
 
-Think of a Refinery extension as a miniature Rails application running in your +vendor/extensions+ directory. Each extension specifies its own routes in its config directory and has its own views and controllers in its own app directory. Engines can even serve up their own images, stylesheets and javascripts by utilizing the asset pipeline, which got introduced in Rails 3.1.
+An extension has the same familiar directory structure that you see in Rails applications (and engines).  You'll see a folder for your models, views, controllers, helpers, decorators, config, and so forth.  Your code goes in those folders just as it does in a regular Rails application or engine.
+
 
 h3. Generating an extension
 
@@ -56,6 +45,7 @@ Here is a list of the different field types and what they give you:
 |resource|a link which pops open a dialog which allows the user to select an existing file or upload a new one|
 |image|a link which pops open a dialog which allows the  user to select an existing image or upload a new one|
 |string and integer|a standard single line text input|
+
 
 If you remember, we told Rick that we'll give him an area to post up events he'll be at. Although he could technically create a new page in Refinery to add this content there, areas that have special functionality are much better suited as an extension.
 
