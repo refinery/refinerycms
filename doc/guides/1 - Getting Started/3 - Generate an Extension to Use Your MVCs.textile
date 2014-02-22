@@ -34,13 +34,12 @@ Refinery is a Ruby on Rails web application. If you have no prior experience wit
 * "Rails for Zombies":http://railsforzombies.org
 
 
-h3. Extending Refinery with your first Engine
 
-h4. The Anatomy of an Engine
+h3. The Anatomy of an Engine
 
 Think of a Refinery extension as a miniature Rails application running in your +vendor/extensions+ directory. Each extension specifies its own routes in its config directory and has its own views and controllers in its own app directory. Engines can even serve up their own images, stylesheets and javascripts by utilizing the asset pipeline, which got introduced in Rails 3.1.
 
-h4. Generating an extension
+h3. Generating an extension
 
 Refinery ships with an extension generator that makes adding your own functionality a breeze. It works just like the Rails scaffold generator.
 
@@ -147,11 +146,11 @@ As you can see, Refinery makes it insanely easy to quickly add new extensions to
 
 But I've noticed one problem. The "2011 Music Awards" is showing up in the middle when it makes more sense to order the events with the latest event at the top. To fix this we need to understand what's happening under the hood of a Refinery extension. Let's dive in.
 
-h4. Testing your extension
+h3. Testing your extension
 
 There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/testing/.
 
-h4. Crudify: The Backbone of Refinery Engines
+h3. Crudify: The Backbone of Refinery Engines
 
 Any Refinery extension, even the built-in ones, that focus on Create, Read, Update and Delete are driven by crudify. Crudify is a highly reusable module included with Refinery that gives you all the standard CRUD actions as well as reordering, searching and paging.
 
@@ -220,7 +219,7 @@ Now when you look at "http://localhost:3000/events":http://localhost:3000/events
 
 !/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfMzE0X2V2ZW50c19lbmdpbmVfZml4ZWRfc21hbGwucG5nIl1d/14_24_51_314_events_extension_fixed_small.png!
 
-h3. What's Next?
+h2. What's Next?
 
 Now that you've made your first Refinery application with a custom events extension, you should feel free to update it and experiment on your own. But you don't have to do everything without help.
 
