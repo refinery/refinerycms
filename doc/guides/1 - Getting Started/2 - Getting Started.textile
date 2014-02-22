@@ -299,7 +299,7 @@ Now when you view your front end at "http://localhost:3000":http://localhost:300
 
 h4. What we just did
 
-We just overwrote the +pages/show+ view and replaced it with our own version. We learnt how to use +@page+ to display content entered in the backend.
+We just overwrote the +pages/show+ view and replaced it with our own version. We learned how to use +@page+ to display content entered in the backend.
 
 Finally we added a (super) simple style that changes the colour of the background and uses our +pages/show+ view to split into two even columns.
 
