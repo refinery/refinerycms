@@ -49,6 +49,18 @@ This does a couple of things:
 
 After this, you should be all set. Don't forget to revisit the initializers in +config/initializers/refinery/+ to customize your experience.
 
+h3. Mounting to a directory other than root
+
+It is possible to mount Refinery to a subfolder.  To do this, simply change the mount line in your +config/routes.rb+ file to:
+
+<shell>
+    mount Refinery::Core::Engine, :at => '/subfolder'
+</shell>
+
+After starting your rails server and navigating to +localhost:3000/subfolder+, you should see a dummy home page.
+
+You can create the initial admin user by visiting +localhost:3000/subfolder/refinery+.
+
 h3. Getting Help
 
 As this is a relatively new process, if you need help with any of these steps we would love to "hear about it":/guides/how-to-get-help/.
