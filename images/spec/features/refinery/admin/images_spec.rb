@@ -1,4 +1,5 @@
 require "spec_helper"
+require "httparty"
 
 module Refinery
   describe "AdminImages" do
@@ -121,6 +122,66 @@ module Refinery
 
           page.should have_content(::I18n.t("different_file_name",
                                             :scope => "activerecord.errors.models.refinery/image"))
+        end
+      end
+
+      context "page" do
+        # Regression test for #2552
+        let :page_for_image do
+          page = Refinery::Page.create :title => "Add Image to me"
+          # we need page parts so that there's wymeditor
+          Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
+            page.parts.create(:title => default_page_part, :body => nil, :position => index)
+          end
+          page
+        end
+        it "can add an image to a page and update the image", :js => true do
+
+          visit refinery.edit_admin_page_path(page_for_image)
+
+          # add image to the page
+          page.body.should =~ /Add Image/
+          click_link 'Add Image'
+          page.should have_selector 'iframe#dialog_frame'
+          page.within_frame('dialog_frame') do
+            find(:css, "#existing_image_area img#image_#{image.id}").click
+            find(:css, '#existing_image_size_area #image_dialog_size_0').click
+            click_button ::I18n.t('button_text', :scope => 'refinery.admin.images.existing_image')
+          end
+
+          # check that image loads before save
+          page.within_frame('WYMeditor_0') do
+            img = first('img')
+            img[:naturalWidth].should_not be 0
+            response = HTTParty.get(img[:src])
+            response.code.should == 200
+          end
+
+          #save page
+          click_button "Save"
+
+          # check that image loads after save
+          visit refinery.edit_admin_page_path(page_for_image)
+          page.within_frame('WYMeditor_0') do
+            img = first('img')
+            img[:naturalWidth].should_not be 0
+            response = HTTParty.get(img[:src])
+            response.code.should == 200
+          end
+
+          # update the image
+          visit refinery.edit_admin_image_path(image)
+          attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
+          click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
+
+          # check that image loads after it has been updated
+          visit refinery.edit_admin_page_path(page_for_image)
+          page.within_frame('WYMeditor_0') do
+            img = first('img')
+            img[:naturalWidth].should_not be 0
+            response = HTTParty.get(img[:src])
+            response.code.should == 200
+          end
         end
       end
 
