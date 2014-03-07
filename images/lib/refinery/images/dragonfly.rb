@@ -20,6 +20,9 @@ module Refinery
             url_host Refinery::Images.dragonfly_url_host
             secret Refinery::Images.dragonfly_secret
             dragonfly_url nil
+            processor :strip do |content|
+              content.process!(:convert, '-strip')
+            end
           end
 
           if ::Refinery::Images.s3_backend
