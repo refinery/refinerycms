@@ -88,6 +88,14 @@ module Refinery
         name, geometry = Refinery::Images.user_image_sizes.first
         created_image.thumbnail(:geometry => name).url.should == created_image.thumbnail(:geometry => geometry).url
       end
+
+      it "can strip a thumbnail" do
+        created_image.thumbnail(:strip => true).url.blank?.should == false
+      end
+
+      it "can resize and strip a thumbnail" do
+        created_image.thumbnail(:geometry => '200x200', :strip => true).url.blank?.should == false
+      end
     end
 
     describe "#title" do
