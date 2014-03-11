@@ -1,4 +1,4 @@
-zh-CN:
+zh-cn:
   refinery:
     plugins:
       <%= plural_name %>:
