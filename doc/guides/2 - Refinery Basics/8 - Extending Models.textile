@@ -49,9 +49,6 @@ Create a new file in the +decorators/models/refinery+ directory called +page_dec
 <ruby>
 # Open the Refinery::Page model for manipulation
 Refinery::Page.class_eval do
-  # Whitelist the :background_image_id parameter for form submission
-  attr_accessible :background_image_id
-
   # Add an association to the Refinery::Image class, so we
   # can take advantage of the magic that the class provides
   belongs_to :background_image, :class_name => '::Refinery::Image'
@@ -66,7 +63,25 @@ Refinery::Page.class_eval do ... end
 
 This is what opens the model to manipulation. This essentially tells Ruby to reopen the model as if you were writing methods inside the class itself. Anything between the "do" and "end" will change the way the model works. You can even re-define existing methods and these will take precedence over the previously-written ones.
 
-After saving, the Page model can now store a background image, but there is no way to associate an image through the administrative interface.
+After saving, the Page model can now relate to a background image, but there is no way update or save the +background_image_id+ yet.
+
+Next, to whitelist the +:background_image_id+, we need to 'permit' the param in the controller.
+
+Create a new file in the +decorators/controllers/refinery/admin+ directory called +pages_controller_decorator.rb+:
+
+<ruby>
+# Open the Refinery::Admin::PagesController controller for manipulation
+Refinery::Admin::PagesController.class_eval do
+  def page_params_with_my_params
+    page_params_without_my_params.merge(params.require(:page).permit(:background_image_id))
+  end
+  alias_method_chain :page_params, :my_params
+end
+</ruby>
+
++alias_method_chain+ will alias the normal +page_params+ method to our newly defined method +page_params_with_my_params+ and will alias the old +page_params+ to +page_params_without_my_params+. This enables us to add additional params to be permitted without having to override Refinery's defined +page_params+ method.
+
+After saving, the admin pages controller can now use the Page model to store a background image, but there is no way to associate an image through the administrative interface.
 
 h3. Adding an Image Picker
 
