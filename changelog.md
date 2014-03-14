@@ -9,7 +9,7 @@
 * Removed `attr_accessible` in favour of strong parameters. [Philip Arndt](https://github.com/parndt) [#2518](https://github.com/refinery/refinerycms/pull/2518)
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
-## 2.1.2 [unreleased]
+## 2.1.2 [14 March 2014]
 
 * Fixed bug where `load_valid_templates` wasn't called for create action and caused an exception when creating a new page and saving it with a blank title. [Uģis Ozols](https://github.com/ugisozols). [#2517](https://github.com/refinery/refinerycms/pull/2517)
 * Fixed bug where adding a link for a translated page via wymeditor it wasn't localised. Also updated the regex for `switch_locale` to match hyphenated language code, e.g. zh-CN or pt-BR. [Daniel Brooker](https://github.com/DanBrooker). [#2533](https://github.com/refinery/refinerycms/pull/2533)
