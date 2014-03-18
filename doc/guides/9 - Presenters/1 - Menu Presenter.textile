@@ -9,7 +9,7 @@ endprologue.
 
 h3. Requirements
 
-Let's start with requirements. I tried to bring them together in the follwoing steps:
+Let's start with requirements. I tried to bring them together in the following steps:
 
 * We need to add an additional navigation menu in the footer section of each page right above Refinery's copyright notice.
 * Admin should be able to specify which pages appear in the footer menu, so we also need to add a checkbox under "Advanced options" in the page edit form.
