@@ -822,7 +822,6 @@ module Refinery
             specify "dialog has correct links", :js do
               visit refinery.edit_admin_page_path(about_page)
 
-
               find("#page_part_body .wym_tools_link a").click
 
               page.should have_selector("iframe#dialog_frame")

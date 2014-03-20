@@ -14,6 +14,9 @@ gem 'refinerycms-acts-as-indexed', git: 'https://github.com/refinery/refinerycms
 
 gem 'seo_meta', git: 'https://github.com/parndt/seo_meta', branch: 'master'
 
+# Add the default visual editor.
+gem 'refinerycms-wymeditor', github: 'parndt/refinerycms-wymeditor', branch: 'take-2'
+
 # Database Configuration
 unless ENV['TRAVIS']
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.3.0.rc1', platform: :jruby
