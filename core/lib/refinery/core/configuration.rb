@@ -4,8 +4,7 @@ module Refinery
 
     config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name,
                     :google_analytics_page_code, :authenticity_token_on_frontend,
-                    :dragonfly_secret,
-                    :wymeditor_whitelist_tags, :javascripts, :stylesheets,
+                    :dragonfly_secret, :javascripts, :stylesheets,
                     :s3_bucket_name, :s3_region, :s3_access_key_id,
                     :s3_secret_access_key, :force_ssl, :backend_route,
                     :dragonfly_custom_backend_class, :dragonfly_custom_backend_opts
@@ -17,7 +16,6 @@ module Refinery
     self.google_analytics_page_code = "UA-xxxxxx-x"
     self.authenticity_token_on_frontend = false
     self.dragonfly_secret = Array.new(24) { rand(256) }.pack('C*').unpack('H*').first
-    self.wymeditor_whitelist_tags = {}
     self.javascripts = []
     self.stylesheets = []
     self.s3_bucket_name = ENV['S3_BUCKET']
@@ -61,6 +59,10 @@ module Refinery
 
       def site_name
         ::I18n.t('site_name', :scope => 'refinery.core.config', :default => config.site_name)
+      end
+
+      def wymeditor_whitelist_tags=(tags)
+        raise "Please use Refinery::Wymeditor.whitelist_tags instead of Refinery::Core.wymeditor_whitelist_tags"
       end
     end
 
