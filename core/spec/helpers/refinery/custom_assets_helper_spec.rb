@@ -3,50 +3,34 @@ require "spec_helper"
 module Refinery
   describe CustomAssetsHelper do
     describe "custom_javascripts" do
-      before do
-        Refinery::Core.clear_javascripts!
-      end
-
       it "should return one custom javascript in array when one javascript is registred" do
         Refinery::Core.config.register_javascript("test")
-        helper.custom_javascripts.should eq ["test"]
+        helper.custom_javascripts.last.should == "test"
       end
 
       it "should return two custom javascripts in array when two javascripts are registred" do
         Refinery::Core.config.register_javascript("test")
         Refinery::Core.config.register_javascript("parndt")
-        helper.custom_javascripts.should eq ["test", "parndt"]
-      end
-
-      it "should return empty array when no javascript is registred" do
-        helper.custom_javascripts.should eq []
+        helper.custom_javascripts.should include("test", "parndt")
       end
     end
 
     describe "custom_stylesheets" do
-      before do
-        Refinery::Core.clear_stylesheets!
-      end
-
       it "should return one custom stylesheet class in array when one stylesheet is registred" do
         Refinery::Core.config.register_stylesheet("test")
-        helper.custom_stylesheets.first.path.should eq "test"
+        helper.custom_stylesheets.last.path.should == "test"
       end
 
       it "should return two custom stylesheet classes in array when two stylesheets are registred" do
         Refinery::Core.config.register_stylesheet("test")
         Refinery::Core.config.register_stylesheet("parndt")
-        helper.custom_stylesheets.collect(&:path).should eq ["test", "parndt"]
-      end
-
-      it "should return empty array when no stylesheet is registred" do
-        helper.custom_stylesheets.should eq []
+        helper.custom_stylesheets.map(&:path).should include("test", "parndt")
       end
 
       it "should return stylesheet class with path and options when both are specified" do
         Refinery::Core.config.register_stylesheet("test", :media => 'screen')
-        helper.custom_stylesheets.first.path.should eq("test")
-        helper.custom_stylesheets.first.options.should eq({:media => 'screen'})
+        helper.custom_stylesheets.last.path.should == "test"
+        helper.custom_stylesheets.last.options.should eq({:media => 'screen'})
       end
     end
   end
