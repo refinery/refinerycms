@@ -2,6 +2,14 @@ require "spec_helper"
 
 module Refinery
   describe CustomAssetsHelper do
+    def clear_assets_used_by_spec
+      Refinery::Core.javascripts.reject! {|j| %w[test parndt].include?(j) }
+      Refinery::Core.stylesheets.reject! {|s| %w[test parndt].include?(s.path) }
+    end
+
+    before { clear_assets_used_by_spec }
+    after { clear_assets_used_by_spec }
+
     describe "custom_javascripts" do
       it "should return one custom javascript in array when one javascript is registred" do
         Refinery::Core.config.register_javascript("test")
