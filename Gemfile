@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'rails', github: 'rails/rails', branch: 'master'
+gem 'rails', '~> 4.1.0.rc2'
 gem 'friendly_id', '~> 5.0.0'
 gem 'friendly_id-globalize', '>= 1.0.0.alpha1'
+
 gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
 gem 'quiet_assets'
 
