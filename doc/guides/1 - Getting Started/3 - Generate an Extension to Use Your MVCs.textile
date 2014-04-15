@@ -105,7 +105,7 @@ Please restart your rails server.
 ------------------------
 </shell>
 
-As the output shows next run:
+As the output shows, next run these commands:
 
 <shell>
 $ bundle install
@@ -114,11 +114,21 @@ $ rake db:migrate
 $ rake db:seed
 </shell>
 
-A +refinery:events+ generator is created for you to install the migration to create the events table.
+A line for the events extension has been added in the Gemfile of your application. +bundle install+ will verify and load the extension.  A generator has been created for you that will automatically create the event table and db seed calls for you: +rails generate refinery:events+ will generate the migration and db seed files for the extension based on the fields you specified in the +rails generate refinery:engine ...+ command.  And finally, running +rake db:migrate+ and +rake db:seed+ will load and run the migration and db:seed files that you just generated for the events extension. .
+
+When you run bundle install, you may see a message that says
+
+<shell>
+...extensions/events did not have a valid gemspec. This prevents bundler from installing bins or native extensions, but that may not affect its functionality. The validation message from Rubygems was: 
+   authors may not be empty
+</shell>
+
+This is a warning message from RubyGems telling you that no author is specified for this extension.  This is only important if you are going to create a gem from this extension.  You can safely ignore this message.  If you do want to resolve it and get rid of the message, you can edit the "gem specification file":http://guides.rubygems.org/specification-reference/ for the extension  +refinerycms-events.gemspec+ and put your name in there as the author. Just put this line: +s.author = 'yourname'+ in the do block (after the +s.version....+ line is fine). 
+
 
 TIP: When new extensions are added it's a good idea to restart your server for new changes to be loaded in.
 
-TIP: Models in Refinery engines expect a string field that acts as the title identifier when displayed in lists in the admin pages. If a title field is not included, the first string field found will be used. Models without a usable field for a title will cause the admin to raise an error, so please include a title field or alias when creating models in your engine.
+TIP: Models in Refinery extentions expect a string field that acts as the title identifier when displayed in lists in the admin pages. If a title field is not included, the first string field found will be used. Models without a usable field for a title will cause the admin to raise an error, so please include a title field or alias when creating models in your extension.
 
 Now go to the backend of your Refinery site ("http://localhost:3000/refinery":http://localhost:3000/refinery) and you'll notice a new tab called "Events". Click on "Add new event" and you'll see something like this:
 
@@ -140,7 +150,7 @@ But I've noticed one problem. The "2011 Music Awards" is showing up in the middl
 
 h3. Testing your extension
 
-There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/testing/.
+There is a separate guide which covers this subject found at "Testing Your Extension":/guides/testing/.
 
 h3. Crudify: The Backbone of Refinery Engines
 
