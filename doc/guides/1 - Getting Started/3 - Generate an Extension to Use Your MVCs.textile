@@ -17,7 +17,7 @@ This guide continues the Rick Rock Star example from the "Getting Started":/guid
 
 This guide does not assume that you have any prior experience with Refinery beyond what is covered in the "Getting Started":/guide/getting-started/ guide, but it does assume that you are somewhat familiar with Rails.  If you are not familiar with Rails, you will still be able to step through the guide but you may not fully understand all of the commands or code.  Here are some resources to learn more about Rails:
 
-* "Ruby on Rails":http://rubyonrails.org/ 
+* "Ruby on Rails":http://rubyonrails.org/
 * "Ruby on Rails Guides for v3.2":http://guides.rubyonrails.org/v3.2.14/ - Note that these are the guides for Rails version *3.2* since that is the version Refinery requires.
 * "Getting Started with Rails":http://guides.rubyonrails.org/getting_started.html
 * "Rails for Zombies":http://railsforzombies.org
@@ -25,7 +25,7 @@ This guide does not assume that you have any prior experience with Refinery beyo
 
 h3. The Anatomy of an Extension
 
-Think of a Refinery extension as a miniature Rails application running in your +vendor/extensions+ directory. Each extension specifies its own routes in its config directory and has its own views and controllers in its own app directory. In fact, each extension is actually a *Rails engine.*  Engines can serve up their own images, stylesheets and javascripts by utilizing the asset pipeline, which got introduced in Rails 3.1.  You can define your own models, views, and controllers in an extension and they can take full advantage of all of the functionality that Refinery offers.  
+Think of a Refinery extension as a miniature Rails application running in your +vendor/extensions+ directory. Each extension specifies its own routes in its config directory and has its own views and controllers in its own app directory. In fact, each extension is actually a *Rails engine.*  Engines can serve up their own images, stylesheets and javascripts by utilizing the asset pipeline, which got introduced in Rails 3.1.  You can define your own models, views, and controllers in an extension and they can take full advantage of all of the functionality that Refinery offers.
 
 Since an extension is a kind of engine, it has the same familiar directory structure.  You'll see folders for your models, views, controllers, helpers, decorators, config, and so forth.  Your code goes in those folders just as it does in a regular Rails application or engine.
 
@@ -105,7 +105,7 @@ Please restart your rails server.
 ------------------------
 </shell>
 
-As the output shows next run:
+As the output shows, next run these commands:
 
 <shell>
 $ bundle install
@@ -114,11 +114,21 @@ $ rake db:migrate
 $ rake db:seed
 </shell>
 
-A +refinery:events+ generator is created for you to install the migration to create the events table.
+A line for the events extension has been added in the Gemfile of your application. +bundle install+ will verify and load the extension.  A generator has been created for you that will automatically create the event table and db seed calls for you: +rails generate refinery:events+ will generate the migration and db seed files for the extension based on the fields you specified in the +rails generate refinery:engine ...+ command.  And finally, running +rake db:migrate+ and +rake db:seed+ will load and run the migration and db:seed files that you just generated for the events extension. .
+
+When you run bundle install, you may see a message that says
+
+<shell>
+...extensions/events did not have a valid gemspec. This prevents bundler from installing bins or native extensions, but that may not affect its functionality. The validation message from Rubygems was:
+   authors may not be empty
+</shell>
+
+This is a warning message from RubyGems telling you that no author is specified for this extension.  This is only important if you are going to create a gem from this extension.  You can safely ignore this message.  If you do want to resolve it and get rid of the message, you can edit the "gem specification file":http://guides.rubygems.org/specification-reference/ for the extension  +refinerycms-events.gemspec+ and put your name in there as the author. Just put this line: +s.author = 'yourname'+ in the do block (after the +s.version....+ line is fine).
+
 
 TIP: When new extensions are added it's a good idea to restart your server for new changes to be loaded in.
 
-TIP: Models in Refinery engines expect a string field that acts as the title identifier when displayed in lists in the admin pages. If a title field is not included, the first string field found will be used. Models without a usable field for a title will cause the admin to raise an error, so please include a title field or alias when creating models in your engine.
+TIP: Models in Refinery extensions expect a string field that acts as the title identifier when displayed in lists in the admin pages. If a title field is not included, the first string field found will be used. Models without a usable field for a title will cause the admin to raise an error, so please include a title field or alias when creating models in your extension.
 
 Now go to the backend of your Refinery site ("http://localhost:3000/refinery":http://localhost:3000/refinery) and you'll notice a new tab called "Events". Click on "Add new event" and you'll see something like this:
 
@@ -140,7 +150,7 @@ But I've noticed one problem. The "2011 Music Awards" is showing up in the middl
 
 h3. Testing your extension
 
-There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/testing/.
+There is a separate guide which covers this subject found at "Testing Your Extension":/guides/testing/.
 
 h3. Crudify: The Backbone of Refinery Engines
 
