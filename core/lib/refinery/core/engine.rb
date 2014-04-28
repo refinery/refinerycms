@@ -80,16 +80,16 @@ module Refinery
       end
 
       # set the manifests and assets to be precompiled
-      initializer "refinery.assets.precompile" do |app|
-        app.config.assets.precompile += [
-          "refinery/*",
-          "refinery/icons/*",
-          "wymeditor/lang/*",
-          "wymeditor/skins/refinery/*",
-          "wymeditor/skins/refinery/**/*",
-          "modernizr-min.js",
-          "admin.js"
-        ]
+      config.to_prepare do
+        Rails.application.config.assets.precompile += %w(
+          refinery/*
+          refinery/icons/*
+          wymeditor/lang/*
+          wymeditor/skins/refinery/*
+          wymeditor/skins/refinery/**/*
+          modernizr-min.js
+          admin.js
+        )
       end
 
       # active model fields which may contain sensitive data to filter
