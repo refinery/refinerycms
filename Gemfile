@@ -2,17 +2,17 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'rails', '~> 4.1.0.rc2'
+gem 'rails', '~> 4.1.0'
 gem 'friendly_id', '~> 5.0.0'
 gem 'friendly_id-globalize', '>= 1.0.0.alpha1'
-
-gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
+gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'master'
 gem 'quiet_assets'
+gem 'awesome_nested_set', git: 'https://github.com/collectiveidea/awesome_nested_set', branch: 'master'
 
 # Add support for refinerycms-acts-as-indexed
-gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed'
+gem 'refinerycms-acts-as-indexed', git: 'https://github.com/refinery/refinerycms-acts-as-indexed'
 
-gem 'seo_meta', github: 'parndt/seo_meta', branch: 'master'
+gem 'seo_meta', git: 'https://github.com/parndt/seo_meta', branch: 'master'
 
 # Database Configuration
 unless ENV['TRAVIS']
