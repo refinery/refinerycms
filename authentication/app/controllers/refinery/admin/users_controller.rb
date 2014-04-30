@@ -133,7 +133,7 @@ module Refinery
       def user_params
         params.require(:user).permit(
           :email, :password, :password_confirmation, :remember_me, :username,
-          :login, :full_name, plugins: [:user_id, :name, :position]
+          :login, :full_name, plugins: []
         )
       end
     end
