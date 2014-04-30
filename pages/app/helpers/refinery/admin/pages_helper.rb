@@ -7,7 +7,7 @@ module Refinery
         # page.title needs the :translations association, doing something like
         # nested_set_options(::Refinery::Page.includes(:translations), page) doesn't work, yet.
         # See https://github.com/collectiveidea/awesome_nested_set/pull/123
-        ActiveRecord::Associations::Preloader.new(pages, :translations).run
+        ActiveRecord::Associations::Preloader.new.preload(pages, :translations)
         pages.map {|page| ["#{'-' * page.level} #{page.title}", page.id]}
       end
 

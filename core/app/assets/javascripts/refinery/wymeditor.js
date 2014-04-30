@@ -7,7 +7,7 @@
  * For further information visit:
  *        http://www.wymeditor.org/
  *
- * File: jquery.refinery.wymeditor.js
+ * File: wymeditor.js
  *
  *        Main JS file with core classes and functions.
  *        See the documentation for more info.
