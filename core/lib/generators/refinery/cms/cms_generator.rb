@@ -109,7 +109,7 @@ gem 'pg'
     def create_decorators!
       # Create decorator directories
       %w[controllers models].each do |decorator_namespace|
-        src_file_path = "app/decorators/#{decorator_namespace}/refinery/.gitkeep"
+        src_file_path = "app/decorators/#{decorator_namespace}/refinery/.keep"
         copy_file self.class.source_root.join(src_file_path), destination_path.join(src_file_path)
       end
     end

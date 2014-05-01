@@ -48,12 +48,12 @@ end
           directory "decorators" do
             directory "controllers" do
               directory "refinery" do
-                file ".gitkeep"
+                file ".keep"
               end
             end
             directory "models" do
               directory "refinery" do
-                file ".gitkeep"
+                file ".keep"
               end
             end
           end
