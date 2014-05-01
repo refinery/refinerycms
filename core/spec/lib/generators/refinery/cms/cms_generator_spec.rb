@@ -1,10 +1,9 @@
 require 'spec_helper'
-require 'generator_spec/test_case'
+require 'generator_spec/generator_example_group'
 require 'generators/refinery/cms/cms_generator'
 
 module Refinery
   describe CmsGenerator do
-    include GeneratorSpec::TestCase
     destination File.expand_path("../../../../../../tmp", __FILE__)
 
     before do
