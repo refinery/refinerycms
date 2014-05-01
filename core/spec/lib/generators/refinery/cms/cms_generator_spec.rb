@@ -39,6 +39,7 @@ end
         SPEC
       end
 
+      copy_routes
       run_generator %w[--skip-db --skip-migrations]
     end
 
@@ -100,5 +101,22 @@ end
         end
       end
     end
+
+    describe "#mount!" do
+      it 'adds Refinery to routes.rb' do
+        File.open("#{destination_root}/config/routes.rb") do |file|
+          file.read.should match /Refinery/
+        end
+      end
+    end
+
+    def copy_routes
+      routes = File.join(Gem.loaded_specs['railties'].full_gem_path, 'lib', 'rails', 'generators', 'rails', 'app', 'templates', 'config', 'routes.rb')
+      destination = File.join(destination_root, "config")
+
+      FileUtils.mkdir_p(destination)
+      FileUtils.cp routes, destination
+    end
+
   end
 end
