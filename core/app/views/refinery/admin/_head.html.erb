@@ -5,6 +5,9 @@
   <title><%= Refinery::Core.site_name -%> - Refinery</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'refinery/refinery' %>
+  <% visual_editor_stylesheets.each do |css| %>
+    <%= stylesheet_link_tag css.path, css.options %>
+  <% end %>
   <% custom_stylesheets.each do |css| %>
     <%= stylesheet_link_tag css.path, css.options %>
   <% end %>

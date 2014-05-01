@@ -49,13 +49,13 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 * [IRC Channel](http://refinerycms.com/guides/how-to-get-help#irc-channel)
 * [GitHub repository](https://github.com/refinery/refinerycms)
 * [Developer/API documentation](http://api.refinerycms.org)
-* [Twitter Account](http://twitter.com/refinerycms)
+* [Twitter Account](https://twitter.com/refinerycms)
 
 ## Features
 
 ### Pages
 
-* Easily edit and manage pages with a [WYSIWYG visual editor](http://www.wymeditor.org/).
+* Easily edit and manage pages with a visual editor.
 * Manage your site's structure.
 
 ### Images & Files

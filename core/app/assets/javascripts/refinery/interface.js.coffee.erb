@@ -1,24 +1,9 @@
 @init_interface = ->
-  $("body#dialog_container.dialog").addClass "iframed"  if parent and parent.document.location.href != document.location.href
+  $("body#dialog_container.dialog").addClass "iframed" if parent and parent.document.location.href != document.location.href
   $("input:submit:not(.button)").addClass "button"
 
-  $("textarea.wymeditor").each ->
-    textarea = $(this)
-    if (instance = WYMeditor.INSTANCES[$((textarea.next(".wym_box").find("iframe").attr("id") or "").split("_")).last().get(0)])?
-      if (next = textarea.parent().next())? and next.length > 0
-        next.find("input, textarea").keydown($.proxy((e) ->
-          shiftHeld = e.shiftKey
-          if shiftHeld and e.keyCode == $.ui.keyCode.TAB
-            @_iframe.contentWindow.focus()
-            e.preventDefault()
-        , instance)).keyup (e) ->
-          shiftHeld = false
-      if (prev = textarea.parent().prev())? and prev.length > 0
-        prev.find("input, textarea").keydown $.proxy((e) ->
-          if e.keyCode == $.ui.keyCode.TAB
-            @_iframe.contentWindow.focus()
-            e.preventDefault()
-        , instance)
+  if typeof(visual_editor_init_interface_hook) != 'undefined'
+    visual_editor_init_interface_hook()
 
   if ($menu = $("#menu")).length > 0
     $menu.jcarousel
