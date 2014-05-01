@@ -11,24 +11,19 @@ module Refinery
 
       dir = "#{destination_root}/config/environments"
       FileUtils.mkdir_p(dir)
-      File.open("#{dir}/development.rb", "w") do |file|
-        file.write <<-SPEC
+      File.write "#{dir}/development.rb", <<-SPEC
 Dummy::Application.configure do
   config.action_mailer.test = true
 end
-        SPEC
-      end
+      SPEC
 
-      File.open("#{dir}/test.rb", "w") do |file|
-        file.write <<-SPEC
+      File.write "#{dir}/test.rb", <<-SPEC
 Dummy::Application.configure do
   # config.action_mailer.test = true
 end
-        SPEC
-      end
+      SPEC
 
-      File.open("#{dir}/production.rb", "w") do |file|
-        file.write <<-SPEC
+      File.write "#{dir}/production.rb", <<-SPEC
 Dummy::Application.configure do
   config.action_mailer.test = true
   config.action_mailer.check = {
@@ -36,8 +31,7 @@ Dummy::Application.configure do
     :check => true
   }
 end
-        SPEC
-      end
+      SPEC
 
       copy_routes
       run_generator %w[--skip-db --skip-migrations]
@@ -74,20 +68,17 @@ end
 
     describe "#ensure_environments_are_sane" do
       it "wraps single line config.action_mailer setting" do
-        File.open("#{destination_root}/config/environments/development.rb") do |file|
-          file.read.should eq <<-SPEC
+        File.read("#{destination_root}/config/environments/development.rb").should eq <<-SPEC
 Dummy::Application.configure do
   if config.respond_to?(:action_mailer)
     config.action_mailer.test = true
   end
 end
-          SPEC
-        end
+        SPEC
       end
 
       it "wraps multi line config.action_mailer settings" do
-        File.open("#{destination_root}/config/environments/production.rb") do |file|
-          file.read.should eq <<-SPEC
+        File.read("#{destination_root}/config/environments/production.rb").should eq <<-SPEC
 Dummy::Application.configure do
   if config.respond_to?(:action_mailer)
     config.action_mailer.test = true
@@ -97,16 +88,13 @@ Dummy::Application.configure do
     }
   end
 end
-          SPEC
-        end
+        SPEC
       end
     end
 
     describe "#mount!" do
       it 'adds Refinery to routes.rb' do
-        File.open("#{destination_root}/config/routes.rb") do |file|
-          file.read.should match /Refinery/
-        end
+        File.read("#{destination_root}/config/routes.rb").should match /Refinery/
       end
     end
 
