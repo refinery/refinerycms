@@ -61,7 +61,7 @@ module Refinery
       puts "You didn't specify anything valid to override. Here are some examples:"
       {
         :view => ['pages/home', 'refinery/pages/home', '**/*menu', '_menu_branch'],
-        :javascript => %w(admin refinery/site_bar wymeditor**/{**/}*),
+        :javascript => %w(admin refinery/site_bar refinery**/{**/}*),
         :stylesheet => %w(home refinery/site_bar),
         :controller => %w(pages),
         :model => %w(page refinery/page),
