@@ -56,6 +56,12 @@ module Refinery
         page_cannot_be_destroyed
         page.destroy!.should be
       end
+
+      it "even if you really want it to AND it's saved! >:]" do
+        page.update_attribute(:deletable, false)
+        page_cannot_be_destroyed
+        page.destroy!.should be
+      end
     end
 
     context 'page urls' do
