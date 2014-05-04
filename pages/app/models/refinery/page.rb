@@ -19,7 +19,7 @@ module Refinery
 
     class FriendlyIdOptions
       def self.reserved_words
-        %w(index new session login logout users refinery admin images wymiframe)
+        %w(index new session login logout users refinery admin images)
       end
 
       def self.options
