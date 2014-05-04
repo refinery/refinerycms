@@ -149,7 +149,7 @@ hr {
   border: 1px solid red !important;
   background-color: #FFECF0 !important;
 }
-.fieldWithErrors iframe, .fieldWithErrors .wym_box {
+.fieldWithErrors iframe, .fieldWithErrors .visual_editor_box {
   border-color: red !important;
 }
 #message, .flash {
@@ -215,7 +215,7 @@ a:hover {
   color: #000;
   border-bottom: 1px solid #727272;
 }
-#content .wym_box a, #content .ui-tabs a {
+#content .visual_editor_box a, #content .ui-tabs a {
   border-bottom: 0px none;
 }
 .index #content, .splash #content {
@@ -825,16 +825,13 @@ label.stripped {
 body.dialog {
   background: #FFF;
 }
-body.dialog, body.wym_dialog {
+body.dialog, body.visual_editor_dialog {
   text-align: left;
-}
-#wym_hide_fields {
-  display: none;
 }
 body.dialog form {
   width: 100% !important;
 }
-.wym_dialog_table {
+.visual_editor_dialog_table {
 	height: 250px;
 }
 .dialog {
@@ -930,7 +927,7 @@ body.dialog form {
 #upload_image_area, #upload_resource_area {
   padding: 12px;
 }
-.wym_dialog #page {
+.visual_editor_dialog #page {
   width: 940px;
   padding: 6px;
 }
@@ -1128,10 +1125,10 @@ a#toggle_advanced_options:hover {
   padding: 0px;
   border: 0px solid #F2F1ED;
 }
-.wym_hideables {
+.visual_editor_hideables {
   display: none;
 }
-#content .form-actions, .wym_dialog .form-actions, .ui-dialog .form-actions {
+#content .form-actions, .visual_editor_dialog .form-actions, .ui-dialog .form-actions {
   position: relative;
   background-color: #F2F2F2;
   border: 1px solid #CCCCCC;
@@ -1144,19 +1141,19 @@ a#toggle_advanced_options:hover {
 .dialog .dialog_area > div > .field label:first-child, .dialog .dialog_area > div > label:first-child {
   margin-top: 0px;
 }
-.wym_dialog .form-actions, #content.form-actions.dialog-form-actions, .ui-dialog .form-actions {
+.visual_editor_dialog .form-actions, #content.form-actions.dialog-form-actions, .ui-dialog .form-actions {
   margin-top: 16px;
 }
 #content .form-actions .form-actions-left, #content .form-actions .form-actions-right,
-  .wym_dialog .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-right,
+  .visual_editor_dialog .form-actions .form-actions-left, .visual_editor_dialog .form-actions .form-actions-right,
   .ui-dialog .form-actions .form-actions-left, .ui-dialog .form-actions .form-actions-right {
   position: absolute;
   top: 10px;
 }
-#content .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-left, .ui-dialog .form-actions .form-actions-left {
+#content .form-actions .form-actions-left, .visual_editor_dialog .form-actions .form-actions-left, .ui-dialog .form-actions .form-actions-left {
   left: 10px;
 }
-#content .form-actions .form-actions-right, .wym_dialog .form-actions .form-actions-right, .ui-dialog .form-actions .form-actions-right {
+#content .form-actions .form-actions-right, .visual_editor_dialog .form-actions .form-actions-right, .ui-dialog .form-actions .form-actions-right {
   right: 10px;
 }
 #content .form-actions .save-loader {
@@ -1164,7 +1161,7 @@ a#toggle_advanced_options:hover {
   right: -24px;
   top: 4px;
 }
-.wym_dialog .form-actions, .ui-dialog .form-actions {
+.visual_editor_dialog .form-actions, .ui-dialog .form-actions {
   border: 0px none;
   border-top: 1px solid #E8E8E8;
 }
@@ -1298,10 +1295,10 @@ ul.checkboxes li {
 .tooltip, .tooltip * {
   color: white;
 }
-.wym_dialog_paste .field textarea {
+.visual_editor_dialog_paste .field textarea {
   width: 98%;
 }
-.ui-dialog .wym_dialog_paste .field, .ui-dialog .wym_dialog_paste .field textarea {
+.ui-dialog .visual_editor_dialog_paste .field, .ui-dialog .visual_editor_dialog_paste .field textarea {
   margin: 0px 0px 45px 0px;
   height: 300px;
 }
@@ -1344,7 +1341,7 @@ input.button:active, a.button:active, #content a.button:active, span.button-wrap
 input.button.close_dialog:active, a.button.close_dialog:active, #content a.button.close_dialog:active, span.button-wrapper.close_dialog:active,  span.button-wrapper.close_dialog:active input {
   background: #808080;
 }
-.wym_dialog a.button.wym_cancel.close_dialog {
+.visual_editor_dialog a.button.visual_editor_cancel.close_dialog {
   margin-left: 6px;
 }
 #content a.button.close_dialog:active {
@@ -1521,10 +1518,10 @@ a.information:hover {
 .button, #editor_switch a, #editor_switch span {
   @include rounded(6px);
 }
-#page_container, .wym_box {
+#page_container, .visual_editor_box {
   @include bottom-rounded(5px);
 }
-.wym_iframe iframe {
+.visual_editor_iframe iframe {
   @include bottom-rounded(2px);
 }
 .form-actions {

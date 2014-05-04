@@ -128,14 +128,13 @@ module Refinery
         # Regression test for #2552
         let :page_for_image do
           page = Refinery::Page.create :title => "Add Image to me"
-          # we need page parts so that there's wymeditor
+          # we need page parts so that there's a visual editor
           Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
             page.parts.create(:title => default_page_part, :body => nil, :position => index)
           end
           page
         end
         it "can add an image to a page and update the image", :js => true do
-
           visit refinery.edit_admin_page_path(page_for_image)
 
           # add image to the page
