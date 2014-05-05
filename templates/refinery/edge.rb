@@ -23,6 +23,9 @@ gem 'quiet_assets'
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed'
 
+# Add support for refinerycms-wymeditor
+gem 'refinerycms-wymeditor', github: 'parndt/refinerycms-wymeditor', branch: 'take-2'
+
 gem 'seo_meta', github: 'parndt/seo_meta', branch: 'master'
 
 gem 'paper_trail', github: 'airblade/paper_trail', branch: 'master'
