@@ -36,7 +36,7 @@ en:
         fill_form: Fill out your details below so that we can get you started.
         sign_up: Sign up
       create:
-        welcome: 'Welcome to Refinery, %{who}'
+        welcome: 'Welcome to Refinery, %{who}.'
       forgot:
         email_address: Email Address
         enter_email_address: Please enter the email address for your account.
