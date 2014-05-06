@@ -1,6 +1,5 @@
 Refinery::Core::Engine.routes.draw do
   filter(:refinery_locales) if defined?(RoutingFilter::RefineryLocales) # optionally use i18n.
-  get 'wymiframe(/:id)', :to => 'fast#wymiframe', :as => :wymiframe
   get "#{Refinery::Core.backend_route}/message", :to => 'fast#message', :as => :message
 
   namespace :admin, :path => Refinery::Core.backend_route do

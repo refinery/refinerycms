@@ -84,9 +84,6 @@ module Refinery
         Rails.application.config.assets.precompile += %w(
           refinery/*
           refinery/icons/*
-          wymeditor/lang/*
-          wymeditor/skins/refinery/*
-          wymeditor/skins/refinery/**/*
           modernizr-min.js
           admin.js
         )

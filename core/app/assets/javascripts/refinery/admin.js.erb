@@ -147,13 +147,7 @@ trigger_reordering_content_section = function(e, enable) {
 };
 
 submit_and_continue = function(e, redirect_to) {
-  // ensure wymeditors are up to date.
-  if ($(this).hasClass('wymupdate')) {
-    $.each(WYMeditor.INSTANCES, function(index, wym)
-    {
-      wym.update();
-    });
-  }
+  visual_editor_update();
 
   $('#continue_editing').val(true);
   $('#flash').fadeOut(250);
@@ -425,14 +419,14 @@ var link_dialog = {
   },
 
   init_close: function(){
-    $('.form-actions-dialog #cancel_button').not('.wym_iframe_body .form-actions-dialog #cancel_button').click(close_dialog);
+    $('.form-actions-dialog #cancel_button').not('.visual_editor_iframe_body .form-actions-dialog #cancel_button').click(close_dialog);
 
     if (parent
         && parent.document.location.href != document.location.href
-        && parent.document.getElementById('wym_dialog_submit') != null) {
+        && parent.document.getElementById('visual_editor_dialog_submit') != null) {
       $('#dialog_container .form-actions input#submit_button').click(function(e) {
         e.preventDefault();
-        $(parent.document.getElementById('wym_dialog_submit')).click();
+        $(parent.document.getElementById('visual_editor_dialog_submit')).click();
       });
       $('#dialog_container .form-actions a.close_dialog').click(close_dialog);
     }
@@ -502,14 +496,14 @@ var link_dialog = {
 
   update_parent: function(url, title, target) {
     if (parent != null) {
-      if ((wym_href = parent.document.getElementById('wym_href')) != null) {
-        wym_href.value = url;
+      if ((visual_editor_href = parent.document.getElementById('visual_editor_href')) != null) {
+        visual_editor_href.value = url;
       }
-      if ((wym_title = parent.document.getElementById('wym_title')) != null) {
-        wym_title.value = title;
+      if ((visual_editor_title = parent.document.getElementById('visual_editor_title')) != null) {
+        visual_editor_title.value = title;
       }
-      if ((wym_target = parent.document.getElementById('wym_target')) != null) {
-        wym_target.value = target || "";
+      if ((visual_editor_target = parent.document.getElementById('visual_editor_target')) != null) {
+        visual_editor_target.value = target || "";
       }
     }
   }
@@ -520,7 +514,7 @@ var page_options = {
   , init: function(enable_parts, new_part_url, del_part_url){
 
     if (!this.initialised) {
-      // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
+      // set the page tabs up, but ensure that all tabs are shown so that when the visual editor loads it has a proper height.
       page_options.tabs = $('#page-tabs').tabs();
 
       part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
@@ -595,7 +589,7 @@ var page_options = {
 
               page_options.tabs.tabs("option", "active", -1);
 
-              WYMeditor.init();
+              visual_editor_init();
 
               // Wipe the title and increment the index counter by one.
               $('#new_page_part_index').val(parseInt($('#new_page_part_index').val(), 10) + 1);
@@ -654,7 +648,8 @@ var page_options = {
 
 };
 
-// TODO:  Need to rewrite WYM to accept multiple images. As it stands, only
+// TODO:  Need to rewrite the visual editors to accept multiple images.
+//        As it stands, only
 //        the callback is useful when inserting multiple -- helpful for
 //        the page-images and portfolio engines.
 
@@ -725,18 +720,18 @@ function ImageDialog(options) {
       image_url = resize ? img.attr('data-' + size) : img.attr('data-original');
 
       if (parent) {
-        if ((wym_src = parent.document.getElementById('wym_src')) != null) {
-          wym_src.value = image_url;
+        if ((visual_editor_src = parent.document.getElementById('visual_editor_src')) != null) {
+          visual_editor_src.value = image_url;
         }
-        if ((wym_title = parent.document.getElementById('wym_title')) != null) {
-          wym_title.value = img.attr('title');
+        if ((visual_editor_title = parent.document.getElementById('visual_editor_title')) != null) {
+          visual_editor_title.value = img.attr('title');
         }
-        if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
-          wym_alt.value = img.attr('alt');
+        if ((visual_editor_alt = parent.document.getElementById('visual_editor_alt')) != null) {
+          visual_editor_alt.value = img.attr('alt');
         }
-        if ((wym_size = parent.document.getElementById('wym_size')) != null
+        if ((visual_editor_size = parent.document.getElementById('visual_editor_size')) != null
             && typeof(geometry) != 'undefined') {
-          wym_size.value = geometry.replace(/[<>=]/g, '');
+          visual_editor_size.value = geometry.replace(/[<>=]/g, '');
         }
       }
     }
@@ -756,14 +751,14 @@ function ImageDialog(options) {
   };
 
   this.init_actions = function() {
-    // get submit buttons not inside a wymeditor iframe
+    // get submit buttons not inside a visual editor iframe
     $('#existing_image_area .form-actions-dialog #submit_button')
-      .not('.wym_iframe_body #existing_image_area .form-actions-dialog #submit_button')
+      .not('.visual_editor_iframe_body #existing_image_area .form-actions-dialog #submit_button')
       .click($.proxy(self.submit_image_choice, self));
 
-    // get cancel buttons not inside a wymeditor iframe
+    // get cancel buttons not inside a visual editor iframe
     $('.form-actions-dialog #cancel_button')
-      .not('.wym_iframe_body .form-actions-dialog #cancel_button')
+      .not('.visual_editor_iframe_body .form-actions-dialog #cancel_button')
       .click($.proxy(close_dialog, self));
 
     $('#existing_image_size_area ul li a').click(function(e) {
@@ -783,10 +778,10 @@ function ImageDialog(options) {
       }
     });
 
-    image_area = $('#existing_image_area').not('#wym_iframe_body #existing_image_area');
+    image_area = $('#existing_image_area').not('#visual_editor_iframe_body #existing_image_area');
     image_area.find('.form-actions input#submit_button').click($.proxy(function(e) {
       e.preventDefault();
-      $(this.document.getElementById('wym_dialog_submit')).click();
+      $(this.document.getElementById('visual_editor_dialog_submit')).click();
     }, parent));
     image_area.find('.form-actions a.close_dialog').click(close_dialog);
   };
@@ -885,8 +880,8 @@ close_dialog = function(e) {
     the_dialog.remove();
   }
 
-  // if there's a wymeditor involved don't try to close the dialog as wymeditor will.
-  if (!$(document.body).hasClass('wym_iframe_body')) {
+  // if there's a visual editor involved don't try to close the dialog as visual editor will.
+  if (!$(document.body).hasClass('visual_editor_iframe_body')) {
     the_body.removeClass('hide-overflow');
     the_dialog.filter(':data(dialog)').dialog('close');
     the_dialog.remove();

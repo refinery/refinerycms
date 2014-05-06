@@ -19,7 +19,7 @@
     <div id='page_part_editors'>
       <% tabbed_fields.each do |field| %>
         <div class='page_part' id="<%= field %>">
-          <%= f.text_area field, :rows => 20, :class => 'wymeditor widest' -%>
+          <%= f.text_area field, :rows => 20, :class => 'visual_editor widest' -%>
         </div>
       <% end %>
       <% pages_tabs.each_with_index do |tab, tab_index| %>
