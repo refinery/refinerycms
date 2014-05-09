@@ -1,64 +1,48 @@
+$background_color: #555555;
+
 @mixin rounded($radius) {
   border-radius: $radius;
   -moz-border-radius: $radius;
   -webkit-border-radius: $radius;
 }
-#site_bar_content {
-  height:47px;
-  position: relative;
-  margin: 0px auto 10px auto;
-  text-align: left;
-  width: 990px;
-}
-#site_bar {
-  background: #22a7f2;
-  border-bottom: 0px none;
-}
-a#site_bar_refinery_cms_logo {
-  left: 448px;
-}
-#site_bar, #site_bar * {
+#site_bar,
+#site_bar * {
   color: white;
   font-family: Arial;
   font-size: 14px;
   font-weight: normal;
 }
-#editor_switch, #site_bar_branding, a#site_bar_refinery_cms_logo { position: absolute; }
-#editor_switch {
-  left: 0px;
-  a, a:hover {
-    color: white;
-    background: #e7682c image_url('refinery/orange_button.png') repeat-x;
-    border-bottom: 0px none;
-    padding: 4px 14px;
-    border: 1px solid #fca87f;
-    height: 24px;
-    line-height: 24px;
-    cursor: pointer;
-  }
-  span {
-    border: 1px solid #0280c7;
-    height: 26px;
-    line-height: 26px;
-    margin-top: 9px;
-    display: block;
-    cursor: pointer;
-  }
-  a, span {
-    @include rounded(6px);
-  }
+#editor_switch,
+a#site_bar_refinery_cms_logo {
+  float: left;
+  margin-right: 2em
 }
 #site_bar {
-  height: 47px;
   padding: 0px;
-  * {
-    line-height: 47px;
-  }
+  background: $background_color;
+  // background: $background_color image_url('refinery/page_bg.png') repeat;
+  border-bottom: solid 1px black;
   a {
+    color: #999999;
     text-decoration: none;
+    &:hover {
+      color: white;
+    }
   }
-  #site_bar_branding {
-    right: 0px;
+  #site_bar_content {
+    position: relative;
+    margin: 0 2em 0 2em;
+    text-align: left;
+  }
+  .refinerycms-site_bar-user {
+    float: right;
+    margin-right: 0;
+    border-left: solid 1px black;
+    padding-left: 2em;
+    .refinerycms-site_bar-user-name {
+      float: left;
+      line-height: 32px
+    }
     a {
       font-weight: normal;
       &#logout {
@@ -66,25 +50,35 @@ a#site_bar_refinery_cms_logo {
       }
     }
   }
-  #site_bar_company_name {
-    font-weight: bold;
-  }
 }
 a#site_bar_refinery_cms_logo {
-  left: 44.5%;
+  left: 0;
   border-bottom: none;
-  line-height: 29px;
-  height: 29px;
-  margin-top: 9px;
+  line-height: 0;
+  height: 28px;
+  margin: 2px 2em 2px 0;
   overflow: hidden;
   &:hover {
     border-bottom: none;
     opacity: 1;
     img {
-      margin-top: -29px;
+      margin-top: -28px;
     }
   }
 }
+
+#site_bar .button {
+  @include rounded(0.5em);
+  display: block;
+  float: left;
+  background: #333333;
+  padding: 0.25em 1em;
+  margin: 0.25em 0.5em 0.25em 0;
+  &:hover {
+    background: black;
+  }
+}
+
 .ie7 #site_bar #editor_switch a {
   height: 26px;
   line-height: 26px;
