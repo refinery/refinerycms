@@ -2,16 +2,20 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'rails', '~> 4.0.0'
-gem 'friendly_id', github: 'norman/friendly_id', branch: 'master'
-gem 'friendly_id-globalize', github: 'norman/friendly_id-globalize', branch: 'master'
-gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
+gem 'rails', '~> 4.1.0'
+gem 'friendly_id', '~> 5.0.0'
+gem 'friendly_id-globalize', '>= 1.0.0.alpha1'
+gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'master'
 gem 'quiet_assets'
+gem 'awesome_nested_set', git: 'https://github.com/collectiveidea/awesome_nested_set', branch: 'master'
 
 # Add support for refinerycms-acts-as-indexed
-gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed'
+gem 'refinerycms-acts-as-indexed', git: 'https://github.com/refinery/refinerycms-acts-as-indexed'
 
-gem 'seo_meta', github: 'parndt/seo_meta', branch: 'master'
+gem 'seo_meta', git: 'https://github.com/parndt/seo_meta', branch: 'master'
+
+# Add the default visual editor.
+gem 'refinerycms-wymeditor', github: 'parndt/refinerycms-wymeditor', branch: 'take-2'
 
 # Database Configuration
 unless ENV['TRAVIS']
@@ -35,7 +39,7 @@ end
 
 group :test do
   gem 'refinerycms-testing', '~> 3.0.0.dev'
-  gem 'generator_spec', '~> 0.9.0'
+  gem 'generator_spec', '~> 0.9.1'
   gem 'launchy'
 end
 

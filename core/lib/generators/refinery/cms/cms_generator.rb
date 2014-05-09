@@ -49,7 +49,7 @@ module Refinery
       deploy_to_hosting?
     end
 
-  protected
+    protected
 
     def append_asset_pipeline!
       application_css = 'app/assets/stylesheets/application.css'
@@ -109,7 +109,7 @@ gem 'pg'
     def create_decorators!
       # Create decorator directories
       %w[controllers models].each do |decorator_namespace|
-        src_file_path = "app/decorators/#{decorator_namespace}/refinery/.gitkeep"
+        src_file_path = "app/decorators/#{decorator_namespace}/refinery/.keep"
         copy_file self.class.source_root.join(src_file_path), destination_path.join(src_file_path)
       end
     end
@@ -220,11 +220,11 @@ gem 'pg'
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
-  mount Refinery::Core::Engine, :at => '/'
+  mount Refinery::Core::Engine, at: '/'
 
 }
 
-        inject_into_file 'config/routes.rb', mount, :after => "Application.routes.draw do\n"
+        inject_into_file 'config/routes.rb', mount, after: ".routes.draw do"
       end
     end
 

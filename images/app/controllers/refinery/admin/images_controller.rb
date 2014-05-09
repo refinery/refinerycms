@@ -57,7 +57,7 @@ module Refinery
             flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@images.map(&:title).join("', '")}'")
             if from_dialog?
               @dialog_successful = true
-              render :nothing => true, :layout => true
+              render :template => "/refinery/admin/dialog_success", :layout => true
             else
               redirect_to refinery.admin_images_path
             end
