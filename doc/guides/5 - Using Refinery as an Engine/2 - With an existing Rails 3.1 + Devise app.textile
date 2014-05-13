@@ -219,7 +219,7 @@ These are created by default when you add the refinerycms-authentication gem so 
 
 WARNING. Beware of raw code: models are usually namespaced. Ex: replace ::Refinery::Role with ::Role or simply Role
 
-With inspiration from https://github.com/refinery/refinerycms/blob/master/authentication/db/migrate/, refinery_cms_authentication_schema:
+With inspiration provided by the example at https://github.com/refinery/refinerycms/blob/master/authentication/db/migrate/20100913234705_create_refinerycms_authentication_schema.rb we will generate the following models:
 
 <shell>
 rails g model RolesUsers user_id:integer role_id:integer # add the index directly within the migration file
@@ -342,7 +342,7 @@ Next, we'll have to load the content of these files in your app.
 <ruby>
 module ExistingApp
   class Application < Rails::Application
-    ...
+    #...
     # Load files from the lib directory, including subfolders.
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.before_initialize do

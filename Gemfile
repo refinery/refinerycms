@@ -35,7 +35,7 @@ end
 # in production environments by default.
 group :assets do
   gem 'sass-rails'
-  gem 'coffee-rails'
+  gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier'
 end
 
