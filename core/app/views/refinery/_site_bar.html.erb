@@ -11,20 +11,6 @@
                   :id => 'site_bar_refinery_cms_logo' %>
       <div id='editor_switch'>
         <%= site_bar_switch_link -%>
-        <% if @page %>
-          <%= link_to "Edit page",
-                      refinery.edit_admin_page_path(@page.nested_url, :switch_locale => (@page.translations.first.locale unless @page.translated_to_default_locale?)),
-                      :title => t('edit', :scope => 'refinery.admin.pages'),
-                      class: "button",
-                      'data-no-turbolink' => true %>
-        <% end %>
-        <% if @edit_path %>
-          <%= link_to "Edit resource",
-                    @edit_path,
-                    :title => t('edit', :scope => 'refinery.admin.pages'),
-                    class: "button",
-                    'data-no-turbolink' => true %>
-        <% end %>
       </div>
 
       <div class='refinerycms-site_bar-user'>
