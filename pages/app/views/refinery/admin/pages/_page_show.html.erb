@@ -1,4 +1,4 @@
-<li class='clearfix record icons' id="<%= dom_id(page_show) -%>">
+<li class='clearfix record icons <%= "active" if @page && @page == page_show -%>' id="<%= dom_id(page_show) -%>">
   <div class='clearfix'>
     <% if page_show.children.present? %>
       <span class="icon toggle <%= 'expanded' if Refinery::Pages.auto_expand_admin_tree %>" title="<%= t('expand_collapse', :scope => 'refinery.admin.pages') %>"></span>
