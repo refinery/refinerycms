@@ -73,6 +73,11 @@ select.widest {
   float: left;
   width: 67.7%;
 }
+#records.tree-show {
+  @include box-sizing(border-box);
+  width: 25%;
+  padding-right: 15px;
+}
 #actions {
   float: right;
   width: 30.7%;
@@ -1165,6 +1170,12 @@ a#toggle_advanced_options:hover {
   border: 0px none;
   border-top: 1px solid #E8E8E8;
 }
+
+#page-edit {
+  float: left;
+  width: 75%;
+}
+
 #dialog_iframe {
   position: relative;
 }
