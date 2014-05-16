@@ -148,6 +148,12 @@ module Refinery
           end
           click_button "Save"
 
+          # check that image loads after it has been updated
+          visit refinery.url_for(page_for_image.url)
+          visit find(:css, 'img[src^="/system/images"]')[:src]
+          page.should have_css('img[src*="/system/images"]')
+          expect { page }.to_not have_content('Not found')
+
           # update the image
           visit refinery.edit_admin_image_path(image)
           attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
@@ -155,7 +161,8 @@ module Refinery
 
           # check that image loads after it has been updated
           visit refinery.url_for(page_for_image.url)
-          visit find(:css, 'img[src^="/system"]')[:src]
+          visit find(:css, 'img[src^="/system/images"]')[:src]
+          page.should have_css('img[src*="/system/images"]')
           expect { page }.to_not have_content('Not found')
         end
       end
