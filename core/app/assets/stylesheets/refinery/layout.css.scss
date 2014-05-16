@@ -1,3 +1,6 @@
+$menu_width: 10%;
+$standard_rounding: 5px;
+
 /*==================================
 =     Mixins
 ==================================*/
@@ -13,6 +16,20 @@
   -webkit-border-top-left-radius: $radius;
   -webkit-border-top-right-radius: $radius;
 }
+@mixin right-rounded($radius) {
+  border-radius-right: $radius;
+  -moz-border-radius-topright: $radius;
+  -moz-border-radius-bottomright: $radius;
+  -webkit-border-top-right-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+}
+@mixin left-rounded($radius) {
+  border-radius-left: $radius;
+  -moz-border-radius-topleft: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  -webkit-border-top-left-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+}
 @mixin bottom-rounded($radius) {
   border-radius-bottom: $radius;
   -moz-border-radius-bottomleft: $radius;
@@ -27,6 +44,50 @@
   border: 1px solid #CCCCCC;
   margin-top: 10px;
   height: 45px;
+}
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+@mixin admin_background() {
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		color-stop(0, transparent),
+    color-stop($menu_width, transparent),
+		color-stop($menu_width, white),
+		color-stop(100%, white)
+	);
+	background-image: -webkit-linear-gradient(
+		left,
+		transparent,
+		transparent $menu_width,
+		white $menu_width,
+		white 100%
+	);
+	background-image: -moz-linear-gradient(
+		left,
+		transparent,
+		transparent $menu_width,
+		white $menu_width,
+		white 100%
+	);
+	background-image: -ms-linear-gradient(
+		left,
+		transparent,
+		transparent $menu_width,
+		white $menu_width,
+		white 100%
+	);
+	background-image: -o-linear-gradient(
+		left,
+		transparent,
+		transparent $menu_width,
+		white $menu_width,
+		white 100%
+	);
 }
 
 p {
@@ -52,14 +113,32 @@ acronym {
 label[for] {
   cursor: pointer;
 }
-#page_container, #site_bar_content, header {
-  margin: 0px auto 10px auto;
+#admin_container, #login_container, #site_bar_content {
+  margin: 0px auto 15px auto;
   text-align: left;
-  width: 990px;
+}
+#admin_container, #login_container {
+  @include rounded($standard_rounding);
+  position: relative;
+  height: 100%;
+  margin-top: 15px;
+}
+#login_container {
+  background: white;
+  width: 620px;
+}
+#admin_container {
+  @include admin_background();
+  width: 960px;
 }
 #page_container {
-  width: 960px;
+  @include box-sizing(border-box);
+  @include right-rounded($standard_rounding);
+  background-color: white;
   padding: 30px 15px;
+  position: relative;
+  float: left;
+  width: 100% - $menu_width;
 }
 #site_bar_content {
   margin-bottom: 0px;
@@ -84,7 +163,7 @@ select.widest {
 }
 #actions {
   float: right;
-  width: 30.7%;
+  width: 25%;
   padding-left: 15px;
   padding-top: 0px;
   ul {
@@ -275,7 +354,7 @@ a:hover {
 a#site_bar_refinery_cms_logo {
   left: 448px;
 }
-#content, #page_container {
+#content {
   background-color: white;
 }
 header, footer, nav {
@@ -287,15 +366,10 @@ header, footer, nav {
   font-size: 20px;
   line-height:22px
 }
-body.login {
-  #site_bar_content {
-    width: 650px;
-    a#site_bar_refinery_cms_logo {
-      left: 247px;
-    }
-  }
+#login_container {
   #page_container {
-    width: 620px;
+    background: transparent;
+    width: 100%;
     div.remember_me label, label.inline {
       display: inline;
     }
@@ -313,16 +387,17 @@ body.login {
   }
   header {
     background: #eaeaea;
-    width: 620px;
-    padding: 0px 15px 1em;
     height: auto;
+    float: none;
+    width: 100%;
+    @include top-rounded($standard_rounding);
     h1 {
       color: #41403c;
       vertical-align: middle;
       text-align: center;
       font-weight: bold;
       font-size: 18px;
-      padding-bottom: 0px;
+      padding-bottom: 15px;
       line-height: 30px;
       padding-top: 15px;
     }
@@ -371,39 +446,19 @@ div.field.checkbox_access {
     font-weight: normal;
   }
 }
-#menu, header .jcarousel-container {
+#menu, {
   display: block;
   margin: 0px;
   padding: 0px;
   position: absolute;
-  bottom: -1px;
-  left: 0px;
-  right: 0px;
   background: transparent;
 }
 header {
-  height: 60px;
-  position: relative;
+  float: left;
   margin-bottom: 0px;
+  width: $menu_width;
   a, a:hover {
     border-bottom: 0px none;
-  }
-  .jcarousel-container {
-    position: absolute !important;
-    .jcarousel-prev, .jcarousel-next {
-      position: absolute;
-      top: 13px;
-      cursor: pointer;
-    }
-    .jcarousel-prev {
-      left: -20px;
-    }
-    .jcarousel-next {
-      right: -20px;
-    }
-    .jcarousel-prev-disabled, .jcarousel-next-disabled {
-      display: none !important;
-    }
   }
   #logo {
     position: absolute;
@@ -426,6 +481,8 @@ header {
   }
 }
 #menu {
+  display: block;
+  position: relative;
   &.ui-sortable a {
     cursor: move;
   }
@@ -433,16 +490,21 @@ header {
     cursor: pointer;
   }
   a {
+    @include left-rounded($standard_rounding);
+    @include box-sizing(border-box);
     display: block;
     padding: 7px 13px;
     font-size: 13px;
     background: image_url('refinery/nav_inactive_background.png') transparent repeat;
-    margin-top:4px;
+    margin-top: 1px;
     color: white;
     font-weight: normal;
-    float: left;
     margin-right: 2px;
     position: relative;
+    width: 100%;
+    &:first-child {
+      margin-top: 0;
+    }
     &.active, &:hover, &:focus {
       background-color: white;
       color: #ff5500;
@@ -453,14 +515,20 @@ header {
     }
   }
 }
-#menu a#menu_reorder, header #menu a#menu_reorder_done {
+#menu a#menu_reorder, #menu a#menu_reorder_done {
   height: 14px;
   width: 14px;
-  margin-top: 11px;
+  margin-top: 1px;
+  margin-right: 0;
   padding: 6px;
   cursor: pointer;
   vertical-align: middle;
   text-align: center;
+  float: right;
+  @include box-sizing(content-box);
+}
+#menu a#menu_reorder_done {
+  background: white;
 }
 pre {
   margin: 0;
@@ -1609,23 +1677,20 @@ a.information:hover {
 .button, #editor_switch a, #editor_switch span {
   @include rounded(6px);
 }
-#page_container, .visual_editor_box {
-  @include bottom-rounded(5px);
+.visual_editor_box {
+  @include bottom-rounded($standard_rounding);
 }
 .visual_editor_iframe iframe {
   @include bottom-rounded(2px);
 }
 .form-actions {
-  @include rounded(5px);
+  @include rounded($standard_rounding);
 }
 .form-actions.form-actions-dialog {
   @include rounded(0px);
 }
-#menu > a {
-  @include top-rounded(5px);
-}
 .ui-tabs .ui-state-default a {
-  @include top-rounded(5px);
+  @include top-rounded($standard_rounding);
 }
 .tooltip, .tooltip span {
   @include rounded(6px);
