@@ -85,8 +85,8 @@ select.widest {
   width: 67.7%;
 }
 #records.tree {
+  background: #eeeeee;
   >ul {
-    background: #eeeeee;
     margin: 0;
   }
 }
@@ -94,7 +94,7 @@ select.widest {
   @include box-sizing(border-box);
   width: 25%;
   > ul {
-    .active {
+    .active>.item{
       @include left-rounded(5px);
       background-color: white;
     }
