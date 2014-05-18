@@ -5,7 +5,7 @@
                 :id => "plugin_#{plugin.name}" %>
   <% end -%>
   <% if ::Refinery::Plugins.active.in_menu.many? -%>
-    <%= link_to refinery_icon_tag('arrow_switch.png'), "",
+    <%= link_to refinery_icon_tag('arrow_up_down.png'), "",
                 :id => "menu_reorder",
                 :title => t('.reorder_menu') %>
 
