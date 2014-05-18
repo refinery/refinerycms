@@ -125,7 +125,7 @@ module Refinery
       end
 
       context "page" do
-        # Regression test for #2552
+        # Regression test for #2552 (https://github.com/refinery/refinerycms/issues/2552)
         let :page_for_image do
           page = Refinery::Page.create :title => "Add Image to me"
           # we need page parts so that there's a visual editor
@@ -148,14 +148,21 @@ module Refinery
           end
           click_button "Save"
 
+          # check that image loads after it has been updated
+          visit refinery.url_for(page_for_image.url)
+          visit find(:css, 'img[src^="/system/images"]')[:src]
+          page.should have_css('img[src*="/system/images"]')
+          expect { page }.to_not have_content('Not found')
+
           # update the image
           visit refinery.edit_admin_image_path(image)
           attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
-          click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
+          click_button "Save"
 
           # check that image loads after it has been updated
           visit refinery.url_for(page_for_image.url)
-          visit find(:css, 'img[src^="/system"]')[:src]
+          visit find(:css, 'img[src^="/system/images"]')[:src]
+          page.should have_css('img[src*="/system/images"]')
           expect { page }.to_not have_content('Not found')
         end
       end
