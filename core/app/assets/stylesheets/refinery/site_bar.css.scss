@@ -1,8 +1,5 @@
-@mixin rounded($radius) {
-  border-radius: $radius;
-  -moz-border-radius: $radius;
-  -webkit-border-radius: $radius;
-}
+@import '_mixins';
+
 #site_bar_content {
   height:47px;
   position: relative;
