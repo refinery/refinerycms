@@ -41,7 +41,11 @@ label[for] {
   width: 620px;
 }
 #admin_container {
+<<<<<<< HEAD
   @include faux_columns_2($menu_width, transparent, white);
+=======
+  @include admin_background();
+>>>>>>> b883bb6... Vertical admin tabs
   width: 960px;
 }
 #page_container {
