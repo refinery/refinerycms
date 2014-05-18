@@ -1,42 +1,7 @@
+@import '_mixins';
+
 $menu_width: 10%;
 $standard_rounding: 5px;
-
-/*==================================
-=     Mixins
-==================================*/
-@mixin rounded($radius) {
-  border-radius: $radius;
-  -moz-border-radius: $radius;
-  -webkit-border-radius: $radius;
-}
-@mixin top-rounded($radius) {
-  border-radius-top: $radius;
-  -moz-border-radius-topleft: $radius;
-  -moz-border-radius-topright: $radius;
-  -webkit-border-top-left-radius: $radius;
-  -webkit-border-top-right-radius: $radius;
-}
-@mixin right-rounded($radius) {
-  border-radius-right: $radius;
-  -moz-border-radius-topright: $radius;
-  -moz-border-radius-bottomright: $radius;
-  -webkit-border-top-right-radius: $radius;
-  -webkit-border-bottom-right-radius: $radius;
-}
-@mixin left-rounded($radius) {
-  border-radius-left: $radius;
-  -moz-border-radius-topleft: $radius;
-  -moz-border-radius-bottomleft: $radius;
-  -webkit-border-top-left-radius: $radius;
-  -webkit-border-bottom-left-radius: $radius;
-}
-@mixin bottom-rounded($radius) {
-  border-radius-bottom: $radius;
-  -moz-border-radius-bottomleft: $radius;
-  -moz-border-radius-bottomright: $radius;
-  -webkit-border-bottom-left-radius: $radius;
-  -webkit-border-bottom-right-radius: $radius;
-}
 
 @mixin form_actions() {
   position: relative;
@@ -44,50 +9,6 @@ $standard_rounding: 5px;
   border: 1px solid #CCCCCC;
   margin-top: 10px;
   height: 45px;
-}
-@mixin box-sizing($box-model) {
-  -webkit-box-sizing: $box-model; // Safari <= 5
-     -moz-box-sizing: $box-model; // Firefox <= 19
-          box-sizing: $box-model;
-}
-@mixin admin_background() {
-	background-image: -webkit-gradient(
-		linear,
-		left top,
-		right top,
-		color-stop(0, transparent),
-    color-stop($menu_width, transparent),
-		color-stop($menu_width, white),
-		color-stop(100%, white)
-	);
-	background-image: -webkit-linear-gradient(
-		left,
-		transparent,
-		transparent $menu_width,
-		white $menu_width,
-		white 100%
-	);
-	background-image: -moz-linear-gradient(
-		left,
-		transparent,
-		transparent $menu_width,
-		white $menu_width,
-		white 100%
-	);
-	background-image: -ms-linear-gradient(
-		left,
-		transparent,
-		transparent $menu_width,
-		white $menu_width,
-		white 100%
-	);
-	background-image: -o-linear-gradient(
-		left,
-		transparent,
-		transparent $menu_width,
-		white $menu_width,
-		white 100%
-	);
 }
 
 p {
@@ -128,7 +49,7 @@ label[for] {
   width: 620px;
 }
 #admin_container {
-  @include admin_background();
+  @include faux_columns_2($menu_width, transparent, white);
   width: 960px;
 }
 #page_container {
@@ -1148,7 +1069,7 @@ a img {
 .add_icon             { background-image: image_url('refinery/icons/add.png'); }
 .delete_icon          { background-image: image_url('refinery/icons/delete.png'); }
 .edit_icon            { background-image: image_url('refinery/icons/application_edit.png'); }
-.reorder_icon         { background-image: image_url('refinery/icons/arrow_switch.png'); }
+.reorder_icon         { background-image: image_url('refinery/icons/arrow_up_down.png'); }
 .reorder_icon.loading { background-image:image_url('refinery/icons/ajax-loader.gif'); }
 .user_comment_icon    { background-image: image_url('refinery/icons/user_comment.png'); }
 .edit_email_icon      { background-image: image_url('refinery/icons/email_edit.png'); }
