@@ -1,0 +1,44 @@
+es-CT:
+  refinery:
+    plugins:
+      refinery_images:
+        title: Imatges
+        description: Gestionar imatges
+        article: femení
+    admin:
+      images:
+        delete: Esborrar aquesta imatge per sempre
+        edit: Editar aquesta imatge
+        form:
+          image: Imatge
+          use_current_image: Usar imatge actual
+          or: o
+          replace_image: " reemplaçar-la amb aquesta altra..."
+          current_image: Imatge actual
+          maximum_image_size: "El pes màxim per a una imatge són %{bytes}."
+        actions:
+          create_new_image: Crear nova imatge
+        records:
+          no_images_yet: Encara no hi ha imatges. Fes clic a "Crear nova imatge" per afegir la primera.
+        index:
+          view:
+            switch_to: "Canviar a vista %{view_name}"
+            list: llista
+            grid: quadrícula
+        view_live_html: Veure imatge <br/><em>Obre en finestra nova</em>
+        existing_image:
+          button_text: Inserir
+          resize_image: Redimensionar la imatge?
+          size: Mida
+        insert:
+          existing_image: Imatge existent
+          new_image: Nova imatge
+  activerecord:
+    models:
+      refinery/image: "imatge"
+    errors:
+      models:
+        refinery/image:
+          blank: Has d'indicar què imatge vols pujar
+          too_big: "La imatge ha de pesar menys de %{size} bytes"
+          incorrect_format: "La teva imatge ha de ser un arxiu JPG, PNG o GIF"

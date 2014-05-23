@@ -1,0 +1,82 @@
+es-CT:
+  refinery:
+    js:
+      admin:
+        confirm_changes: "Qualsevol canvi que s'hagi fet es perdrà. Segur que vols continuar sense desar?"
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core plugin de Refinery
+      refinery_dialogs:
+        title: Diàlegs
+        description: Diàlegs del Core plugin de Refinery
+    welcome:
+      there_are_no_users: "No hi ha usuaris registrats, així que hem de registrar al primer."
+    crudify:
+      created: "%{what} s'ha creat correctament."
+      updated: "%{what} s'ha actualitzat correctament."
+      destroyed: "%{what} s'ha esborrat correctament."
+    site_bar:
+      log_out: Sortir
+      switch_to_your_website: Veure el teu web
+      switch_to_your_website_editor: Editar el teu web
+    admin:
+      menu:
+        reorder_menu: Reordenar menú
+        reorder_menu_done: He acabat de reordenar el menú
+      dialogs:
+        show:
+          save: Guardar
+          cancel: Cancel·lar
+      continue_editing:
+        save_and_continue_editing: Guardar i seguir editant
+      form_actions:
+        save: Guardar
+        cancel: Cancelar
+        cancel_lose_changes: En cancel·lar es perdran els canvis que has realitzat aquí
+        delete: Esborrar
+        close: Tancar
+      image_picker:
+        none_selected: "No hi ha cap imatge seleccionada, fes clic aquí per afegir una."
+        remove_current: Eliminar imatge actual
+        change: Fes clic aquí per escollir una imatge
+        show: Mostrar
+      resource_picker:
+        download_current: Descarregar arxiu actual
+        opens_in_new_window: Obre en una finestra nova
+        remove_current: "Eliminar arxiu actual"
+        no_resource_selected: "No hi ha cap arxiu seleccionat, fes clic aqui per agregar un."
+        name: Agregar arxiu
+        current: Arxiu actual
+      search:
+        button_text: Buscar
+        results_for_html: "Resultats de la recerca &#8216;<em>%{query}</em>&#8217;"
+        no_results: "No s'han trobat resultats"
+        cancel_search: 'Cancelar recerca'
+        search_input_notice: "Posa aquí una cadena d'almenys 3 caràcters que conté el que estas buscant."
+      delete:
+        message: "Segur que vols suprimir '%{title}'?"
+      error_messages:
+        problems_in_following_fields: Va haver-hi problemes amb els següents camps
+      help: ajuda
+      form_advanced_options_menu:
+        advanced_options: Opcions avançades
+        toggle_advanced_options: Prem per accedir a les opcions de meta tags i menú
+        save_as_draft: Guardar com a esborrador
+    message:
+      close: Tancar
+      close_this_message: Tancar aquest missatge
+    draft_page_message:
+      not_live: Aquesta pàgina NO està visible per al públic.
+    footer:
+      copyright: "Copyright © %{year} %{site_name}"
+    no_script:
+      enable_javascript_html: "Per obtenir una funcionalitat completa d'aquesta pàgina és necessari activar Javascript."
+      here_are: Aquí estan les
+      instructions_enable_javascript_html: instruccions de com habilitar Javascript al teu navegador web
+  time:
+    formats:
+      short: "%A, %d %B %Y"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
