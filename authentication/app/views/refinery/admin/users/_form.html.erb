@@ -86,7 +86,7 @@
   <script>
     $(document).ready(function() {
       $('#user_plugins_enable_all').click(function(e, a) {
-        $('div.field.plugin_access ul#plugins li input:checkbox').attr('checked', true);
+        $('div.field.plugin_access ul#plugins li input:checkbox').prop('checked', true);
         e.preventDefault();
       });
     });
