@@ -1,0 +1,86 @@
+es-CT:
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Pàgines
+        description: Gestionar pàgines de contingut
+        article: femení
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Enllaç a aquesta pàgina
+        link_to:
+          insert: Inserir
+          your_page:
+            tab_name: La teva pàgina
+          web_address:
+            tab_name: Webs
+            location: Adreça
+            new_window: Nova finestra
+            new_window_label: "Marca aquesta casella perquè l'enllaç s'obri en una finestra nova del navegador."
+            not_sure: No saps què escriure en el camp anterior?
+            step1: Cerca en la web quina pàgina vols enllaçar.
+            step2: "Copia l'adreça web des de la barra d'adreces del teu navegador i pega-la en el camp anterior."
+          email_address:
+            tab_name: Adreça e-mail
+            subject_line_optional: Assumpte opcional
+            body_optional:  Missatge opcional
+            not_sure: No saps què escriure en aquests camps?
+            step1_html: "Escriu o còpia i pega (per ex. des de la teva llibreta d'adreces) l'adreça e-mail a la qual vols enllaçar en el camp '<strong>Adreça e-mail</strong>' anterior."
+            step2_html: "Usa el camp <strong>Assumpte opcional</strong> si vols que el missatge s'enviï amb un <strong>assumpte predeterminat</strong>."
+            step3_html: "Usa el camp <strong>Missatge opcional</strong> si vols que el missatge s'enviï amb un <strong>contingut predeterminat</strong>."
+          your_resource:
+            tab_name: El teu arxiu
+            link_to_this_resource: Enllaç a aquest arxiu
+      pages:
+        delete: Esborrar aquesta pàgina per sempre
+        edit: Editar aquesta pàgina
+        new: Afegir una nova sub-pàgina
+        expand_collapse: Expandir o contreure les sub-pàgines
+        page:
+          view_live_html: "Veure aquesta pàgina com a oberta al públic<br/><em>(l'obre en finestra nova)</em>"
+          hidden: oculta
+          draft: esborrador
+        form:
+          preview: Previsualizar
+          preview_changes: Previsualizar canvis abans de guardar-los
+        form_new_page_parts:
+          title: Títol
+        form_page_parts:
+          create_content_section: Crear secció de contingut
+          delete_content_section: Esborrar secció de contingut
+          reorder_content_section: Reordenar secció de contingut
+          reorder_content_section_done: Ja està reordenada la secció de continguts
+        form_advanced_options:
+          page_options: Opcions de pàgina
+          parent_page: Pàgina pare
+          menu_title: Títol del menú
+          custom_slug: Custom slug
+          show_in_menu_title: Veure en menú
+          show_in_menu_description: Mostrar aquesta pàgina en el menú de la web
+          show_in_menu_help: Deixa sense marcar aquesta casella per eliminar una pàgina del menú del teu web. Pot ser útil si tens una pàgina que vols que la gent enllaci directament però no vols mostrar-la en el menú.
+          skip_to_first_child: Saltar pàgina de primer nivell
+          skip_to_first_child_label: Redirigir als visitants a la primera pàgina filla.
+          skip_to_first_child_help: Aquesta opció fa que aquesta pàgina enllaci a la seva primera pàgina filla. Pot ser útil per agrupar diverses pàgines juntes.
+          link_url: Redirigir aquesta pàgina a una altra web o a una altra pàgina
+          link_url_help: Si vols que aquesta pàgina enviï a una altra web o pàgina llavors prem aquesta pàgina en el menú i introdueix una URL (per example http://google.com). En cas contrari deixa-ho en blanc.
+          parent_page_help: "Pots incloure una pàgina dins d'una altra seleccionant-la en la llista. Si vols que sigui una pàgina de primer nivell, deixa-ho en blanc."
+          menu_title_help: Si vols que el menú mostri un títol diferent al que es mostra a la pàgina, introdueix-ho aquí.
+          custom_slug_help: "Un slug és un ID entendible pels humans. Per exemple 'sobre-nosaltres'. Per sobreescriure el slug que Refinery crea automàticament, introdueix el teu slug personalitzat aquí."
+          layout_template: Plantilla per layout
+          layout_template_help: Pots triar una plantilla per el layout diferenta per aquesta pàgina
+          view_template: Veure plantilla
+          view_template_help: Pots triar una plantilla diferent
+        actions:
+          create_new_page: Crear nova pàgina
+          reorder_pages: Reordenar pàgines
+          reorder_pages_done: Reordenació de pàgines completada
+        records:
+          no_pages_yet: Encara no hi ha pàgines. Prem "Crear nova pàgina" per afegir la teva primera pàgina.
+        translator_access: No tens el permís requerit per modificar pàgines en aquesta llengua.
+  activerecord:
+    models:
+      refinery/page: "pàgina"
+    attributes:
+      refinery/page:
+        title: Títol

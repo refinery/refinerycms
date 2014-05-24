@@ -1,0 +1,36 @@
+es-CT:
+  refinery:
+    plugins:
+      refinery_files:
+        title: Arxius
+        description: Pujar i enllaçar arxius
+    admin:
+      resources:
+        delete: Esborrar aquest arxiu per sempre
+        edit: Editar aquest arxiu
+        form:
+          download_current: Descarregar arxiu actual
+          or: o
+          replace: " reemplaçar-ho per aquest altre..."
+          maximum_file_size: "El pes màxim per a l'arxiu és de %{bytes}."
+        resource:
+          download: "Descarregar aquest arxiu (%{size})"
+        actions:
+          upload_new: Pujar nou arxiu
+        records:
+          no_files_yet: Encara no hi ha arxius. Prem "Pujar nou arxiu" per afegir el teu primer arxiu.
+        insert:
+          existing: Arxiu existent
+          new: Nou arxiu
+          no_files: No hi ha arxius.
+        existing_resource:
+          link_to_file: Enllaçar aquest arxiu
+          button_text: Inserir
+  activerecord:
+    models:
+      refinery/resource: "arxiu"
+    errors:
+      models:
+        refinery/resource:
+          blank: Selecciona quin arxiu vols pujar
+          too_big: "L'arxiu ha de pesar menys de %{size} bytes"
