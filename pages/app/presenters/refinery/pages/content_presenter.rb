@@ -12,7 +12,8 @@ module Refinery
       end
 
       def blank_section_css_classes(can_use_fallback = true)
-        @sections.reject {|section| section.has_content?(can_use_fallback)}.map(&:not_present_css_class)
+        @sections.reject {|section| section.has_content?(can_use_fallback)}
+                 .map(&:not_present_css_class)
       end
 
       def hide_sections(*ids_to_hide)
@@ -21,7 +22,7 @@ module Refinery
       end
 
       def hidden_sections
-        @sections.select {|section| section.hidden? }
+        @sections.select(&:hidden?)
       end
 
       def fetch_template_overrides
@@ -47,7 +48,8 @@ module Refinery
     private
 
       def sections_html(can_use_fallback)
-        @sections.map { |section| section.wrapped_html(can_use_fallback) }.compact.join("\n").html_safe
+        @sections.map { |section| section.wrapped_html(can_use_fallback) }
+                 .compact.join("\n").html_safe
       end
 
       def add_section_if_missing(options)

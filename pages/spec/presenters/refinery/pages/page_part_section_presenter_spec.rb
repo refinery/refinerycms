@@ -14,7 +14,7 @@ module Refinery
         part = double(PagePart, :body => '<p>part_body</p>', :title => nil)
         section = PagePartSectionPresenter.new(part)
         section.fallback_html.should be_html_safe
-        section.wrapped_html.should == "<section><div class=\"inner\"><p>part_body</p></div></section>"
+        section.wrapped_html.should == %q{<section><div class="inner"><p>part_body</p></div></section>}
       end
 
       it "handles a nil page body" do

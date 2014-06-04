@@ -83,14 +83,14 @@ module Refinery
       describe "when rendering as html" do
         it "is empty section tag if it has no sections" do
           content = ContentPresenter.new
-          content.to_html.should == "<section class=\"\" id=\"body_content\"></section>"
+          content.to_html.should == %q{<section class="" id="body_content"></section>}
         end
 
         it "returns sections joined by a newline inside section tag" do
           section1.stub(:wrapped_html).and_return('foo')
           section2.stub(:wrapped_html).and_return('bar')
           content = ContentPresenter.new([section1, section2])
-          content.to_html.should == "<section class=\"\" id=\"body_content\">foo\nbar</section>"
+          content.to_html.should == %Q{<section class="" id="body_content">foo\nbar</section>}
         end
 
         it "passes can_use_fallback option on to sections" do
@@ -103,7 +103,7 @@ module Refinery
           section1.stub(:wrapped_html).and_return('foo')
           section2.stub(:wrapped_html).and_return(nil)
           content = ContentPresenter.new([section1, section2])
-          content.to_html.should == "<section class=\"\" id=\"body_content\">foo</section>"
+          content.to_html.should == %q{<section class="" id="body_content">foo</section>}
         end
       end
     end

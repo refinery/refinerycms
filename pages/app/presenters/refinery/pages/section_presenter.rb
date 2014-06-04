@@ -50,15 +50,11 @@ module Refinery
     protected
 
       def content_html(can_use_fallback)
-        if override_html.present?
-          override_html
-        else
-          html_from_fallback(can_use_fallback)
-        end
+        override_html.presence || html_from_fallback(can_use_fallback)
       end
 
       def html_from_fallback(can_use_fallback)
-        fallback_html if fallback_html.present? && can_use_fallback
+        fallback_html.presence if can_use_fallback
       end
 
     private
