@@ -4,19 +4,17 @@ module Refinery
       include ActiveSupport::Configurable
       # presents a collection of items in a section
       # TODO do a better fallback_html
-      # presents a collection of items in a section
 
       attr_accessor :output_buffer
-      config_accessor :id, :content_wrapper_id, :content_wrapper_tag, :collection_class, :collection_tag
+      # config_accessor :id, :content_wrapper_id, :content_wrapper_tag, :collection_class, :collection_tag
+      config_accessor :collection_tag, :collection_class, :item_tag, :item_class
 
-      self.content_wrapper_tag = :section
       self.collection_tag = :ul
+      self.item_tag = :li
 
       def initialize(page_part)
         super(page_part[:options]) unless page_part[:options].nil?
         @collection = page_part[:data]
-        self.fallback_html = ""
-        self.id = page_part[:id]
         self.collection_class = page_part[:id]
       end
 
@@ -26,20 +24,11 @@ module Refinery
 
       private
 
-      def wrap_content_in_tag(content)
-        content_tag(content_wrapper_tag.to_sym, content,  id: id)
-      end
-
-      def content_html(can_use_fallback)
-        if override_html.present?
-          override_html
-        else
-          collection_markup()
-        end
+     def content_html(can_use_fallback)
+        override_html.present? ? override_html : collection_markup()
       end
 
       def collection_markup()
-
         content_tag(collection_tag.to_sym, class: collection_class ) do
           @collection.each.inject(ActiveSupport::SafeBuffer.new) do |buffer, item|
             buffer << item_markup(item)
@@ -48,7 +37,8 @@ module Refinery
       end
 
       def item_markup(item)
-        content_tag(:li, item.to_s)
+      # minimal markup for a generic item (none!)
+        content_tag(item_tag.sym, item, class: item_class)
       end
 
       def html_from_fallback(can_use_fallback)
