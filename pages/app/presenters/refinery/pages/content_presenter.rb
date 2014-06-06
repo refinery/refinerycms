@@ -26,7 +26,9 @@ module Refinery
       end
 
       def fetch_template_overrides
+        # each section is a sectionPresenter
         @sections.each do |section|
+          # if there has been a content_for(:section), put the results into override_html
           section.override_html = yield section.id if section.id.present?
         end
       end

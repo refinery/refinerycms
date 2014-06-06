@@ -36,18 +36,18 @@ module Refinery
 
           if section_presenter && section_data
             # augment the data to make it more like a page part
-            section_data  = {id: part.title, data:section_data } unless section_data.nil?
+            section_data  = {id: part.title, data:section_data } unless section_data.blank?
           else
             section_presenter = PagePartSectionPresenter
             section_data = part
           end
 
-          add_section section_presenter.new(section_data) unless section_data.nil?
+          add_section section_presenter.new(section_data) unless section_data.blank?
         end
       end
 
       def find_presenter(presenter_name)
-        presenter_name.constantize if Object.const_defined?(presenter_name)
+        presenter_name.safe_constantize
       end
 
       def find_data(page, part_name)
