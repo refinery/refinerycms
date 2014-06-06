@@ -26,20 +26,22 @@ module Refinery
       def add_page_parts(page)
         page.parts.each do |part|
 
+          #  Some section titles have spaces!
+          section_name = part.title.gsub(/\s+/,'')
           # find an instance variable or attribute named for this page part
-          section_data = find_data(page, part.title.gsub(/\s+/,""))
+          section_data = find_data(page, section_name)
 
-          # find a presenter for this attribute/collection?
-          section_presenter = find_presenter("Refinery::Pages::#{part.title.capitalize.gsub(/\s+/, "")}SectionPresenter")
+          # find a presenter for this section
+          section_presenter = find_presenter("Refinery::Pages::#{section_name.capitalize}SectionPresenter")
 
-          if section_presenter.nil? || section_data.nil?
-            # if either presenter/special data is absent default to generic presenter and original part
-            section_presenter = PagePartSectionPresenter
-            section_data = part
-          else
+          if section_presenter && section_data
             # augment the data to make it more like a page part
             section_data  = {id: part.title, data:section_data } unless section_data.nil?
+          else
+            section_presenter = PagePartSectionPresenter
+            section_data = part
           end
+
           add_section section_presenter.new(section_data) unless section_data.nil?
         end
       end
@@ -49,7 +51,7 @@ module Refinery
       end
 
       def find_data(page, part_name)
-        data = page.respond_to?(part_name) ? page.send(part_name) : instance_variable_get('@'+part_name)
+        page.respond_to?(part_name) ? page.send(part_name) : instance_variable_get('@'+part_name)
       end
     end
   end
