@@ -8,37 +8,35 @@ module Refinery
       include ActionView::Helpers::TagHelper
 
       def initialize(initial_sections = [])
-        @sections = initial_sections
+        @section_presenters = initial_sections
       end
 
       def blank_section_css_classes(can_use_fallback = true)
-        @sections.reject {|section| section.has_content?(can_use_fallback)}
-                 .map(&:not_present_css_class)
+        section_presenters.reject {|section| section.has_content?(can_use_fallback)}.map(&:not_present_css_class)
       end
 
       def hide_sections(*ids_to_hide)
         ids_to_hide.flatten!
-        @sections.select {|section| ids_to_hide.include?(section.id)}.each(&:hide) if ids_to_hide.any?
+        section_presenters.select {|section| ids_to_hide.include?(section.id)}.each(&:hide) if ids_to_hide.any?
       end
 
       def hidden_sections
-        @sections.select(&:hidden?)
+        section_presenters.select(&:hidden?)
       end
 
       def fetch_template_overrides
-        # each section is a sectionPresenter
-        @sections.each do |section|
-          # if there has been a content_for(:section), put the results into override_html
-          section.override_html = yield section.id if section.id.present?
+        section_presenters.each do |section|
+        # if there has been a content_for(:section), put the results into override_html
+          section.override_html = yield section.id if section.id
         end
       end
 
-      def add_section(new_section)
-        @sections << new_section
+      def add_section(new_presenter)
+        section_presenters << new_presenter
       end
 
       def get_section(index)
-        @sections[index]
+        section_presenters[index]
       end
 
       def to_html(can_use_fallback = true)
@@ -47,11 +45,13 @@ module Refinery
                     :class => blank_section_css_classes(can_use_fallback).join(' ')
       end
 
-    private
+      private
+
+      attr_reader :section_presenters
 
       def sections_html(can_use_fallback)
-        @sections.map { |section| section.wrapped_html(can_use_fallback) }
-                 .compact.join("\n").html_safe
+        section_presenters.map { |section| section.wrapped_html(can_use_fallback) }
+        .compact.join("\n").html_safe
       end
 
       def add_section_if_missing(options)
@@ -59,7 +59,7 @@ module Refinery
       end
 
       def has_section?(id)
-        @sections.detect {|section| section.id == id}
+        section_presenters.detect {|section| section.id == id}
       end
     end
   end
