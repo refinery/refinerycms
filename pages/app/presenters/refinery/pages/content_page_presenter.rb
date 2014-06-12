@@ -12,7 +12,7 @@ module Refinery
         add_default_post_page_sections
       end
 
-    private
+      private
 
       def add_default_title_section(title)
         add_section TitleSectionPresenter.new(:id => :body_content_title, :fallback_html => title)
@@ -26,24 +26,24 @@ module Refinery
       def add_page_parts(page)
         page.parts.each do |part|
 
-          #  Some section titles have spaces!
-          section_name = part.title.gsub(/\s+/,'')
-          # find an instance variable or attribute named for this page part
-          section_data = find_data(page, section_name)
-
-          # find a presenter for this section
-          section_presenter = find_presenter("Refinery::Pages::#{section_name.capitalize}SectionPresenter")
+          section_id = convert_title_to_id(part.title)
+          section_data = find_data(page, section_id)
+          section_presenter = find_presenter("Refinery::Pages::#{section_id.capitalize}SectionPresenter")
 
           if section_presenter && section_data
-            # augment the data to make it more like a page part
-            section_data  = {id: part.title, data:section_data } unless section_data.blank?
+          # Add an id to the data so it is sufficiently like a page_part for a presenter to handle it
+            section_data  = {id: section_id, data:section_data } unless section_data.blank?
           else
+          # default presenter and data
             section_presenter = PagePartSectionPresenter
             section_data = part
           end
-
           add_section section_presenter.new(section_data) unless section_data.blank?
         end
+      end
+
+      def convert_title_to_id(title)
+        title.to_s.gsub(/\s/, '').underscore.to_sym
       end
 
       def find_presenter(presenter_name)
@@ -51,7 +51,7 @@ module Refinery
       end
 
       def find_data(page, part_name)
-        page.respond_to?(part_name) ? page.send(part_name) : instance_variable_get('@'+part_name)
+        page.respond_to?(part_name) ? page.send(part_name) : instance_variable_get('@'+part_name.to_s)
       end
     end
   end
