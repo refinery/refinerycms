@@ -55,13 +55,13 @@ module Refinery
 
       context "only one resource uploaded" do
         it "returns an array containing one resource" do
-          Resource.create_resources(:file => file).should have(1).item
+          expect(Resource.create_resources(:file => file).size).to eq(1)
         end
       end
 
       context "many resources uploaded at once" do
         it "returns an array containing all those resources" do
-          Resource.create_resources(:file => [file, file, file]).should have(3).items
+          expect(Resource.create_resources(:file => [file, file, file]).size).to eq(3)
         end
       end
 

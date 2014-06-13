@@ -51,13 +51,13 @@ module Refinery
       context "when image exists" do
         it "doesn't allow to replace it with image which has different file name" do
           created_image.image = Refinery.roots('refinery/images').join("spec/fixtures/beach-alternate.jpeg")
-          created_image.should_not be_valid
-          created_image.should have_at_least(1).error_on(:image_name)
+          expect(created_image).not_to be_valid
+          expect(created_image.errors[:image_name].size).to be >= 1
         end
 
         it "allows to replace it with image which has the same file name" do
           created_image.image = Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
-          created_image.should be_valid
+          expect(created_image).to be_valid
         end
       end
     end

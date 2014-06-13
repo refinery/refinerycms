@@ -25,19 +25,19 @@ module Refinery
       it "matches root url" do
         controller.stub(:root_path).and_return("/")
         request.stub(:path).and_return("/")
-        controller.home_page?.should be_true
+        controller.home_page?.should be true
       end
 
       it "matches localised root url" do
         controller.refinery.stub(:root_path).and_return("/en/")
         request.stub(:path).and_return("/en")
-        controller.home_page?.should be_true
+        controller.home_page?.should be true
       end
 
       it "matches localised root url with trailing slash" do
         controller.refinery.stub(:root_path).and_return("/en/")
         request.stub(:path).and_return("/en/")
-        controller.home_page?.should be_true
+        controller.home_page?.should be true
       end
 
       it "escapes regexp" do

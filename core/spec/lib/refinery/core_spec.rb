@@ -14,7 +14,7 @@ describe Refinery do
         target::INCLUSIONS = []
         subject.include_once(target, mod)
         subject.include_once(target, mod)
-        target::INCLUSIONS.should have(1).item
+        expect(target::INCLUSIONS.size).to eq(1)
       end
     end
   end
@@ -35,14 +35,14 @@ describe Refinery do
       subject.register_extension(Refinery::Core)
 
       Refinery.extensions.should include(Refinery::Core)
-      Refinery.extensions.should have(1).item
+      expect(Refinery.extensions.size).to eq(1)
     end
 
     it "should not allow same extension to be registered twice" do
       subject.register_extension(Refinery::Core)
       subject.register_extension(Refinery::Core)
 
-      Refinery.extensions.should have(1).item
+      expect(Refinery.extensions.size).to eq(1)
     end
   end
 
@@ -73,7 +73,7 @@ describe Refinery do
     it "should remove the extension's module from the array of registered extensions" do
       subject.unregister_extension(Refinery::Images)
 
-      subject.extensions.should have(0).item
+      expect(subject.extensions.size).to eq(0)
     end
   end
 
