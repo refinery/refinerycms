@@ -112,8 +112,8 @@ module Refinery
 
       it 'only contains items that are registered' do
         subject.class.set_active(%w(my_plugin))
-        subject.class.active.any?.should be_true
-        subject.class.active.all?{|p| subject.class.registered.include?(p)}.should be_true
+        subject.class.active.any?.should be true
+        subject.class.active.all?{|p| subject.class.registered.include?(p)}.should be true
       end
     end
 
@@ -123,8 +123,8 @@ module Refinery
       end
 
       it 'only contains items that are always allowed' do
-        subject.class.always_allowed.any?.should be_true
-        subject.class.always_allowed.all? { |p| p.always_allow_access }.should be_true
+        subject.class.always_allowed.any?.should be true
+        subject.class.always_allowed.all? { |p| p.always_allow_access }.should be true
       end
     end
 
@@ -134,8 +134,8 @@ module Refinery
       end
 
       it 'only contains items that are in the menu' do
-        subject.class.registered.in_menu.any?.should be_true
-        subject.class.registered.in_menu.all? { |p| !p.hide_from_menu }.should be_true
+        subject.class.registered.in_menu.any?.should be true
+        subject.class.registered.in_menu.all? { |p| !p.hide_from_menu }.should be true
       end
     end
 

@@ -77,7 +77,7 @@ module Refinery
 
     describe '#always_allow_access' do
       it 'returns false if @always_allow_access is not set or its set to false' do
-        plugin.always_allow_access.should be_false
+        plugin.always_allow_access.should be false
       end
 
       it 'returns true if set so' do
@@ -88,7 +88,7 @@ module Refinery
 
     describe '#dashboard' do
       it 'returns false if @dashboard is not set or its set to false' do
-        plugin.dashboard.should be_false
+        plugin.dashboard.should be false
       end
 
       it 'returns true if set so' do

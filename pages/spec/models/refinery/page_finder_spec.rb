@@ -9,7 +9,6 @@ module Refinery
     let(:created_page) { subject.class.create!(:title => page_title, :deletable => true) }
     let(:created_child) { created_page.children.create!(:title => child_title) }
 
-    
     describe '.find_by_path' do
       let(:page_title)  { 'team' }
       let(:child_title) { 'about' }

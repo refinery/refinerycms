@@ -22,7 +22,7 @@ module Refinery
         section = PagePartSectionPresenter.new(part)
         section.fallback_html.should be_nil
         section.wrapped_html.should be_nil
-        section.has_content?.should be_false
+        section.has_content?.should be false
       end
 
       it "has no id if title is nil" do

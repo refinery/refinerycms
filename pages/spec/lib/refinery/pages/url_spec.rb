@@ -6,7 +6,7 @@ module Refinery
       describe ".handle?" do
         it "returns true if link_url is present" do
           page = double(:page, :link_url => "/")
-          Url::Localised.handle?(page).should be_true
+          Url::Localised.handle?(page).should be true
         end
       end
 
@@ -36,7 +36,7 @@ module Refinery
         it "returns true if marketable_url config is set to true" do
           page = double(:page)
           Refinery::Pages.stub(:marketable_url).and_return(true)
-          Url::Marketable.handle?(page).should be_true
+          Url::Marketable.handle?(page).should be true
         end
       end
 
@@ -55,7 +55,7 @@ module Refinery
       describe ".handle?" do
         it "returns true if to_param is present" do
           page = double(:page, :to_param => "test")
-          Url::Normal.handle?(page).should be_true
+          Url::Normal.handle?(page).should be true
         end
       end
 

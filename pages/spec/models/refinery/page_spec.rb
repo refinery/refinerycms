@@ -63,14 +63,14 @@ module Refinery
 
       context "when deletable is true and link_url, and menu_match is blank" do
         it "returns true" do
-          deletable_page.deletable?.should be_true
+          deletable_page.deletable?.should be true
         end
       end
 
       context "when deletable is false and link_url, and menu_match is blank" do
         it "returns false" do
           deletable_page.deletable = false
-          deletable_page.deletable?.should be_false
+          deletable_page.deletable?.should be false
         end
       end
 
@@ -78,10 +78,10 @@ module Refinery
         it "returns false" do
           deletable_page.deletable  = false
           deletable_page.link_url   = "text"
-          deletable_page.deletable?.should be_false
+          deletable_page.deletable?.should be false
 
           deletable_page.menu_match = "text"
-          deletable_page.deletable?.should be_false
+          deletable_page.deletable?.should be false
         end
       end
     end
