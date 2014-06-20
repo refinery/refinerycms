@@ -541,7 +541,12 @@ var page_options = {
       this.enable_parts = enable_parts;
       this.new_part_url = new_part_url;
       this.del_part_url = del_part_url;
-      this.show_options();
+      this.option_links = $('#page_option_links').find('span');
+
+      option_fields = $('#page_option_links').find('span');
+      option_links = option_fields.find('a.toggle_visibility')
+      option_divs = $('#page_options').find('div.PageOption');
+      this.hide_options();
 
       $(document).ready($.proxy(function(){
         // hide the tabs that are supposed to be hidden.
@@ -555,13 +560,17 @@ var page_options = {
     }
   },
 
-  show_options: function(){
-    $('#toggle_advanced_options').click(function(e){
+  hide_options: function(){
+    animate_options = {opacity: 'toggle', height: 'toggle'};
+    animate_timing = 250;
+    option_links.on('click', function(e){
       e.preventDefault();
-      $('#more_options').animate({opacity: 'toggle', height: 'toggle'}, 250);
+      href = $(this).attr('href')
+      $(href).animate(animate_options, animate_timing);
+      $(this).parent('span').toggleClass('open');
 
       $('html,body').animate({
-        scrollTop: $('#toggle_advanced_options').parent().offset().top
+        scrollTop: $('#page_option_links').parent().offset().top
       }, 250);
     });
   },

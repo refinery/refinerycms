@@ -52,6 +52,23 @@ module Refinery
       def page_title_with_translations(page)
         page.title.presence || page.translations.detect {|t| t.title.present?}.title
       end
+
+      def render_page_options(form)
+        # add a toggle option for each plugin that has registered a page menu
+        # save as draft is included with the links
+        titles = ['Page', 'SEO']
+        templates = ['form_advanced_options', 'form_advanced_seo']
+        Refinery::Plugins.registered.each do |p|
+          if p.options_template
+            titles.push  p.plugin_activity ? p.plugin_activity.first.class_name.demodulize : p.name
+            templates.push p.options_template
+          end
+        end
+        links = render 'form_page_option_links',   {titles: titles, f:form}
+        tabs =  render 'form_page_option_section', {templates: templates, f:form}
+        return links << tabs
+      end
+
     end
   end
 end
