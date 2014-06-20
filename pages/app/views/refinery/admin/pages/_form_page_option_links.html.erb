@@ -1,0 +1,12 @@
+<section id='page_option_links' class='clearfix'>
+  <span id="draft_field">
+    <%= f.check_box :draft %>
+    <%= f.label :draft, t('.save_as_draft'),
+                :class => 'stripped' %>
+  </span>
+  <% titles.each_with_index do | title, ix| %>
+    <span class='options_field'>
+      <%= link_to "#{title} Options", "#option#{ix}",  class: :toggle_visibility%>
+    </span>
+  <% end %>
+</section>

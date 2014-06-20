@@ -16,7 +16,7 @@
     <%= render 'form_page_parts', :f => f %>
   </div>
 
-  <%= render 'form_advanced_options', :f => f %>
+  <%= render_page_options(f) %>
 
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => true,

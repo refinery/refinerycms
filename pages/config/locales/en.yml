@@ -43,6 +43,8 @@ en:
         form:
           preview: Preview
           preview_changes: Preview your changes before making them live
+        form_page_option_links:
+          save_as_draft: Save as Draft
         form_new_page_parts:
           title: Title
         form_page_parts:
