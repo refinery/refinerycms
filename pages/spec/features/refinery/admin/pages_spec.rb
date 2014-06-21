@@ -142,7 +142,7 @@ module Refinery
 
           fill_in "Title", :with => "My first page"
 
-          click_link "toggle_advanced_options"
+          click_link "Page Options"
 
           fill_in "Menu title", :with => "The first page"
 
@@ -272,7 +272,7 @@ module Refinery
 
             find('a[tooltip^=Edit]').click
             fill_in 'Title', :with => 'Searchable'
-            click_link 'Advanced options'
+            click_link 'Page Options'
             select 'Searchable', :from => 'View template'
             click_button 'Preview'
 
@@ -672,7 +672,7 @@ module Refinery
             specify 'sub page should inherit them', :js => true do
               visit refinery.edit_admin_page_path(@page.id)
 
-              click_link 'toggle_advanced_options'
+              click_link 'Page Options'
 
               within '#page_layout_template' do
                 page.find('option[value=refinery]').should be_selected
