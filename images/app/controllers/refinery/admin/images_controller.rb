@@ -47,7 +47,7 @@ module Refinery
           else
             @images << (@image = ::Refinery::Image.create(image_params))
           end
-        rescue Dragonfly::FunctionManager::UnableToHandle
+        rescue NotImplementedError
           logger.warn($!.message)
           @image = ::Refinery::Image.new
         end
