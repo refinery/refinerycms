@@ -14,16 +14,16 @@ describe Refinery do
         target::INCLUSIONS = []
         subject.include_once(target, mod)
         subject.include_once(target, mod)
-        target::INCLUSIONS.should have(1).item
+        expect(target::INCLUSIONS.size).to eq(1)
       end
     end
   end
 
   describe "#extensions" do
     it "should return an array of modules representing registered extensions" do
-      subject.extensions.should be_a(Array)
+      expect(subject.extensions).to be_a(Array)
       subject.extensions.each do |e|
-        e.should be_a(Module)
+        expect(e).to be_a(Module)
       end
     end
   end
@@ -34,15 +34,15 @@ describe Refinery do
     it "should add the extension's module to the array of registered extensions" do
       subject.register_extension(Refinery::Core)
 
-      Refinery.extensions.should include(Refinery::Core)
-      Refinery.extensions.should have(1).item
+      expect(Refinery.extensions).to include(Refinery::Core)
+      expect(Refinery.extensions.size).to eq(1)
     end
 
     it "should not allow same extension to be registered twice" do
       subject.register_extension(Refinery::Core)
       subject.register_extension(Refinery::Core)
 
-      Refinery.extensions.should have(1).item
+      expect(Refinery.extensions.size).to eq(1)
     end
   end
 
@@ -51,7 +51,7 @@ describe Refinery do
       before { subject.register_extension(Refinery::Core) }
 
       it "should return true if the extension is registered" do
-        subject.extension_registered?(Refinery::Core).should == true
+        expect(subject.extension_registered?(Refinery::Core)).to eq(true)
       end
     end
 
@@ -59,7 +59,7 @@ describe Refinery do
       before { subject.extensions.clear }
 
       it "should return false if the extension is not registered" do
-        subject.extension_registered?(Refinery::Core).should == false
+        expect(subject.extension_registered?(Refinery::Core)).to eq(false)
       end
     end
   end
@@ -73,43 +73,43 @@ describe Refinery do
     it "should remove the extension's module from the array of registered extensions" do
       subject.unregister_extension(Refinery::Images)
 
-      subject.extensions.should have(0).item
+      expect(subject.extensions.size).to eq(0)
     end
   end
 
   describe "#validate_extension!" do
     context "with a valid extension" do
       it "should return nil" do
-        subject.send(:validate_extension!, Refinery::ValidEngine).should be_nil
+        expect(subject.send(:validate_extension!, Refinery::ValidEngine)).to be_nil
       end
     end
 
     context "with an invalid extension" do
       it "should raise invalid extension exception" do
-        lambda {
+        expect {
           subject.send(:validate_extension!, Refinery::InvalidEngine)
-        }.should raise_error
+        }.to raise_error
       end
     end
   end
 
   describe "#roots" do
     it "should return pathname to extension root when given constant as parameter" do
-      subject.roots(Refinery::Core).should == Refinery::Core.root
+      expect(subject.roots(Refinery::Core)).to eq(Refinery::Core.root)
     end
 
     it "should return pathname to extension root when given symbol as parameter" do
-      subject.roots(:'refinery/core').should == Refinery::Core.root
+      expect(subject.roots(:'refinery/core')).to eq(Refinery::Core.root)
     end
 
     it "should return pathname to extension root when given string as parameter" do
-      subject.roots("refinery/core").should == Refinery::Core.root
+      expect(subject.roots("refinery/core")).to eq(Refinery::Core.root)
     end
 
     it "should return an array of all pathnames if no extension_name is specified" do
-      subject.roots.should be_a(Array)
+      expect(subject.roots).to be_a(Array)
       subject.roots.each do |root|
-        root.should be_a(Pathname)
+        expect(root).to be_a(Pathname)
       end
     end
   end
@@ -126,19 +126,19 @@ describe Refinery do
     it "shows a deprecation warning" do
       Refinery.deprecate("ugis")
       @errors.rewind
-      @errors.read.should == "\n-- DEPRECATION WARNING --\nThe use of 'ugis' is deprecated.\n"
+      expect(@errors.read).to eq("\n-- DEPRECATION WARNING --\nThe use of 'ugis' is deprecated.\n")
     end
 
     it "takes when option" do
       Refinery.deprecate("ugis", :when => "10.0")
       @errors.rewind
-      @errors.read.should == "\n-- DEPRECATION WARNING --\nThe use of 'ugis' is deprecated and will be removed at version 10.0.\n"
+      expect(@errors.read).to eq("\n-- DEPRECATION WARNING --\nThe use of 'ugis' is deprecated and will be removed at version 10.0.\n")
     end
 
     it "takes replacement option" do
       Refinery.deprecate("ugis", :when => "10.0", :replacement => "philip")
       @errors.rewind
-      @errors.read.should == "\n-- DEPRECATION WARNING --\nThe use of 'ugis' is deprecated and will be removed at version 10.0.\nPlease use philip instead.\n"
+      expect(@errors.read).to eq("\n-- DEPRECATION WARNING --\nThe use of 'ugis' is deprecated and will be removed at version 10.0.\nPlease use philip instead.\n")
     end
   end
 
@@ -148,12 +148,12 @@ describe Refinery do
       end
 
       it "returns admin_dummy_path" do
-        Refinery.route_for_model(Refinery::Dummy).should == "admin_dummy_path"
+        expect(Refinery.route_for_model(Refinery::Dummy)).to eq("admin_dummy_path")
       end
 
       context ":plural => true" do
         it "returns admin_dummies_path" do
-          Refinery.route_for_model(Refinery::Dummy, :plural => true).should == "admin_dummies_path"
+          expect(Refinery.route_for_model(Refinery::Dummy, :plural => true)).to eq("admin_dummies_path")
         end
       end
     end
@@ -163,7 +163,7 @@ describe Refinery do
       end
 
       it "returns admin_group_class_path" do
-        Refinery.route_for_model(Refinery::GroupClass).should == "admin_group_class_path"
+        expect(Refinery.route_for_model(Refinery::GroupClass)).to eq("admin_group_class_path")
       end
     end
 
@@ -172,12 +172,12 @@ describe Refinery do
       end
 
       it "returns admin_dummy_name_path" do
-        Refinery.route_for_model(Refinery::DummyName).should == "admin_dummy_name_path"
+        expect(Refinery.route_for_model(Refinery::DummyName)).to eq("admin_dummy_name_path")
       end
 
       context ":plural => true" do
         it "returns admin_dummy_names_path" do
-          Refinery.route_for_model(Refinery::DummyName, :plural => true).should == "admin_dummy_names_path"
+          expect(Refinery.route_for_model(Refinery::DummyName, :plural => true)).to eq("admin_dummy_names_path")
         end
       end
     end
@@ -189,24 +189,24 @@ describe Refinery do
       end
 
       it "returns dummy_admin_name_path" do
-        Refinery.route_for_model(Refinery::Dummy::Name).should == "dummy_admin_name_path"
+        expect(Refinery.route_for_model(Refinery::Dummy::Name)).to eq("dummy_admin_name_path")
       end
 
       context ":plural => true" do
         it "returns dummy_admin_names_path" do
-          Refinery.route_for_model(Refinery::Dummy::Name, :plural => true).should == "dummy_admin_names_path"
+          expect(Refinery.route_for_model(Refinery::Dummy::Name, :plural => true)).to eq("dummy_admin_names_path")
         end
       end
 
       context ":admin => false" do
         it "returns dummy_name_path" do
-          Refinery.route_for_model(Refinery::Dummy::Name, :admin => false).should == 'dummy_name_path'
+          expect(Refinery.route_for_model(Refinery::Dummy::Name, :admin => false)).to eq('dummy_name_path')
         end
       end
 
       context ":admin => false, :plural => true" do
         it "returns dummy_names_path" do
-          Refinery.route_for_model(Refinery::Dummy::Name, :admin => false, :plural => true).should == 'dummy_names_path'
+          expect(Refinery.route_for_model(Refinery::Dummy::Name, :admin => false, :plural => true)).to eq('dummy_names_path')
         end
       end
     end
@@ -215,7 +215,7 @@ describe Refinery do
   describe Refinery::Core::Engine do
     describe "#helpers" do
       it "should not include ApplicationHelper" do
-        Refinery::Core::Engine.helpers.ancestors.map(&:name).should_not include("ApplicationHelper")
+        expect(Refinery::Core::Engine.helpers.ancestors.map(&:name)).not_to include("ApplicationHelper")
       end
     end
   end

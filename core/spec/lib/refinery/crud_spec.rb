@@ -40,16 +40,16 @@ module Refinery
           }
 
           dummy = crud_dummy_three.reload
-          dummy.lft.should eq(1)
-          dummy.rgt.should eq(2)
+          expect(dummy.lft).to eq(1)
+          expect(dummy.rgt).to eq(2)
 
           dummy = crud_dummy_two.reload
-          dummy.lft.should eq(3)
-          dummy.rgt.should eq(4)
+          expect(dummy.lft).to eq(3)
+          expect(dummy.rgt).to eq(4)
 
           dummy = crud_dummy_one.reload
-          dummy.lft.should eq(5)
-          dummy.rgt.should eq(6)
+          expect(dummy.lft).to eq(5)
+          expect(dummy.rgt).to eq(6)
         end
 
         it "orders nested dummies" do
@@ -75,26 +75,26 @@ module Refinery
           }
 
           dummy = crud_dummy_three.reload
-          dummy.lft.should eq(1)
-          dummy.rgt.should eq(6)
+          expect(dummy.lft).to eq(1)
+          expect(dummy.rgt).to eq(6)
 
           dummy = nested_crud_dummy_one.reload
-          dummy.lft.should eq(2)
-          dummy.rgt.should eq(3)
-          dummy.parent_id.should eq(crud_dummy_three.id)
+          expect(dummy.lft).to eq(2)
+          expect(dummy.rgt).to eq(3)
+          expect(dummy.parent_id).to eq(crud_dummy_three.id)
 
           dummy = nested_crud_dummy_two.reload
-          dummy.lft.should eq(4)
-          dummy.rgt.should eq(5)
-          dummy.parent_id.should eq(crud_dummy_three.id)
+          expect(dummy.lft).to eq(4)
+          expect(dummy.rgt).to eq(5)
+          expect(dummy.parent_id).to eq(crud_dummy_three.id)
 
           dummy = crud_dummy_two.reload
-          dummy.lft.should eq(7)
-          dummy.rgt.should eq(8)
+          expect(dummy.lft).to eq(7)
+          expect(dummy.rgt).to eq(8)
 
           dummy = crud_dummy_one.reload
-          dummy.lft.should eq(9)
-          dummy.rgt.should eq(10)
+          expect(dummy.lft).to eq(9)
+          expect(dummy.rgt).to eq(10)
         end
       end
 
@@ -111,7 +111,7 @@ module Refinery
 
         post :update_positions, { "ul" => { "0" => dummy_params } }
 
-        dummy.last.reload.lft.should eq(21)
+        expect(dummy.last.reload.lft).to eq(21)
       end
     end
 

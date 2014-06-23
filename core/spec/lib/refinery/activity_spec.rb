@@ -7,32 +7,32 @@ describe Refinery::Activity do
 
   describe '#base_class_name' do
     it 'returns the base class name, less module nesting' do
-      activity.base_class_name.should == 'Z'
+      expect(activity.base_class_name).to eq('Z')
     end
   end
 
   describe '#klass' do
     it 'returns class constant' do
-      activity.klass.should == X::Y::Z
+      expect(activity.klass).to eq(X::Y::Z)
     end
   end
 
   describe '#url_prefix' do
     it 'returns edit_ by default' do
-      activity.url_prefix.should == 'edit_'
+      expect(activity.url_prefix).to eq('edit_')
     end
 
     it 'returns user specified prefix' do
       activity.url_prefix = 'testy'
-      activity.url_prefix.should == 'testy_'
+      expect(activity.url_prefix).to eq('testy_')
       activity.url_prefix = 'testy_'
-      activity.url_prefix.should == 'testy_'
+      expect(activity.url_prefix).to eq('testy_')
     end
   end
 
   describe '#url' do
     it 'returns the url' do
-      activity.url.should == 'refinery.edit_x_y_admin_z_path'
+      expect(activity.url).to eq('refinery.edit_x_y_admin_z_path')
     end
   end
 
@@ -40,7 +40,7 @@ describe Refinery::Activity do
     before { module Refinery; module Y; class Z; end; end; end }
     let(:activity) { Refinery::Activity.new(:class_name => 'Refinery::Y::Z') }
     it 'returns the url' do
-      activity.url.should == 'refinery.edit_y_admin_z_path'
+      expect(activity.url).to eq('refinery.edit_y_admin_z_path')
     end
   end
 end

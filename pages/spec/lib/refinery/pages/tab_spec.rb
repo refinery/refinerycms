@@ -14,7 +14,7 @@ module Refinery
           tab.partial = "rspec"
         end
 
-        Refinery::Pages.tabs.should include(rspec_tab)
+        expect(Refinery::Pages.tabs).to include(rspec_tab)
       end
     end
 
@@ -29,7 +29,7 @@ module Refinery
           tab.partial = "rspec"
         end
 
-        Refinery::Pages.tabs_for_template("huh").should include(rspec_tab)
+        expect(Refinery::Pages.tabs_for_template("huh")).to include(rspec_tab)
       end
 
       it "returns tabs with matched template" do
@@ -39,7 +39,7 @@ module Refinery
           tab.templates = "rspec"
         end
 
-        Refinery::Pages.tabs_for_template("rspec").should include(rspec_tab)
+        expect(Refinery::Pages.tabs_for_template("rspec")).to include(rspec_tab)
       end
     end
 
@@ -50,19 +50,19 @@ module Refinery
 
       describe ".register" do
         it "requires name to be set" do
-          lambda {
+          expect {
             Refinery::Pages::Tab.register do |tab|
               tab.partial = "rspec"
             end
-          }.should raise_error
+          }.to raise_error
         end
 
         it "requires partial to be set" do
-          lambda {
+          expect {
             Refinery::Pages::Tab.register do |tab|
               tab.name = "rspec"
             end
-          }.should raise_error
+          }.to raise_error
         end
 
         it "sets #templates if it's not set" do
@@ -71,7 +71,7 @@ module Refinery
             tab.partial = "rspec"
           end
 
-          rspec_tab.templates.should eq(["all"])
+          expect(rspec_tab.templates).to eq(["all"])
         end
 
         it "converts #templates to array if it's not an array already" do
@@ -81,7 +81,7 @@ module Refinery
             tab.templates = "rspec"
           end
 
-          rspec_tab.templates.should eq(["rspec"])
+          expect(rspec_tab.templates).to eq(["rspec"])
         end
       end
     end

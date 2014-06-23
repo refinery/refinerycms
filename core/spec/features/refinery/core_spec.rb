@@ -1,6 +1,6 @@
 module Refinery
   module Core
-    describe Engine do
+    describe Engine, :type => :feature do
       describe "#refinery_inclusion!" do
         it "should be idempotent" do
           expect { visit(refinery.root_path) }.to_not raise_error

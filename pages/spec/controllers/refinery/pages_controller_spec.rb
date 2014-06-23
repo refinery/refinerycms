@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Refinery
-  describe PagesController do
+  describe PagesController, :type => :controller do
     before do
       FactoryGirl.create(:page, :link_url => "/")
       FactoryGirl.create(:page, :title => "test")
