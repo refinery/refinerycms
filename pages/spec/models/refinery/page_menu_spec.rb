@@ -30,13 +30,13 @@ module Refinery
           [:menu_match, "^/foo$"]
         ].each do |attr, value|
           it "returns the correct :#{attr}" do
-            subject[attr].should eq(value)
+            expect(subject[attr]).to eq(value)
           end
         end
 
         it "returns the correct :url" do
-          subject[:url].should be_a(Hash) # guard against nil
-          subject[:url].should eq(page.url)
+          expect(subject[:url]).to be_a(Hash) # guard against nil
+          expect(subject[:url]).to eq(page.url)
         end
       end
 
@@ -48,7 +48,7 @@ module Refinery
         it_should_behave_like "Refinery menu item hash"
 
         it "returns the menu_title for :title" do
-          subject[:title].should eq("Menu Title")
+          expect(subject[:title]).to eq("Menu Title")
         end
       end
 
@@ -60,7 +60,7 @@ module Refinery
         it_should_behave_like "Refinery menu item hash"
 
         it "returns the title for :title" do
-          subject[:title].should eq("Title")
+          expect(subject[:title]).to eq("Title")
         end
       end
     end
@@ -68,21 +68,21 @@ module Refinery
     describe "#in_menu?" do
       context "when live? and show_in_menu? returns true" do
         it "returns true" do
-          page.stub(:live?).and_return(true)
-          page.stub(:show_in_menu?).and_return(true)
-          page.in_menu?.should be_true
+          allow(page).to receive(:live?).and_return(true)
+          allow(page).to receive(:show_in_menu?).and_return(true)
+          expect(page.in_menu?).to be_truthy
         end
       end
 
       context "when live? or show_in_menu? doesn't return true" do
         it "returns false" do
-          page.stub(:live?).and_return(true)
-          page.stub(:show_in_menu?).and_return(false)
-          page.in_menu?.should be_false
+          allow(page).to receive(:live?).and_return(true)
+          allow(page).to receive(:show_in_menu?).and_return(false)
+          expect(page.in_menu?).to be_falsey
 
-          page.stub(:live?).and_return(false)
-          page.stub(:show_in_menu?).and_return(true)
-          page.in_menu?.should be_false
+          allow(page).to receive(:live?).and_return(false)
+          allow(page).to receive(:show_in_menu?).and_return(true)
+          expect(page.in_menu?).to be_falsey
         end
       end
     end
@@ -90,15 +90,15 @@ module Refinery
     describe "#not_in_menu?" do
       context "when in_menu? returns true" do
         it "returns false" do
-          page.stub(:in_menu?).and_return(true)
-          page.not_in_menu?.should be_false
+          allow(page).to receive(:in_menu?).and_return(true)
+          expect(page.not_in_menu?).to be_falsey
         end
       end
 
       context "when in_menu? returns false" do
         it "returns true" do
-          page.stub(:in_menu?).and_return(false)
-          page.not_in_menu?.should be_true
+          allow(page).to receive(:in_menu?).and_return(false)
+          expect(page.not_in_menu?).to be_truthy
         end
       end
     end

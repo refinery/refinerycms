@@ -15,20 +15,20 @@ describe "CLI" do
     it "shows info message" do
       msg = capture(:stdout) { rake["refinery:override"].invoke }
 
-      msg.should match("You didn't specify anything valid to override. Here are some examples:")
-      msg.should match("rake refinery:override view=pages/home")
-      msg.should match("rake refinery:override view=refinery/pages/home")
-      msg.should match(%r{rake refinery:override view=\*\*/\*menu})
-      msg.should match("rake refinery:override view=_menu_branch")
-      msg.should match("rake refinery:override javascript=admin")
-      msg.should match("rake refinery:override javascript=refinery/site_bar")
-      msg.should match("rake refinery:override stylesheet=home")
-      msg.should match("rake refinery:override stylesheet=refinery/site_bar")
-      msg.should match("rake refinery:override controller=pages")
-      msg.should match("rake refinery:override model=page")
-      msg.should match("rake refinery:override model=refinery/page")
-      msg.should match("rake refinery:override helper=site_bar")
-      msg.should match("rake refinery:override helper=refinery/site_bar_helper")
+      expect(msg).to match("You didn't specify anything valid to override. Here are some examples:")
+      expect(msg).to match("rake refinery:override view=pages/home")
+      expect(msg).to match("rake refinery:override view=refinery/pages/home")
+      expect(msg).to match(%r{rake refinery:override view=\*\*/\*menu})
+      expect(msg).to match("rake refinery:override view=_menu_branch")
+      expect(msg).to match("rake refinery:override javascript=admin")
+      expect(msg).to match("rake refinery:override javascript=refinery/site_bar")
+      expect(msg).to match("rake refinery:override stylesheet=home")
+      expect(msg).to match("rake refinery:override stylesheet=refinery/site_bar")
+      expect(msg).to match("rake refinery:override controller=pages")
+      expect(msg).to match("rake refinery:override model=page")
+      expect(msg).to match("rake refinery:override model=refinery/page")
+      expect(msg).to match("rake refinery:override helper=site_bar")
+      expect(msg).to match("rake refinery:override helper=refinery/site_bar_helper")
     end
   end
 
@@ -41,7 +41,7 @@ describe "CLI" do
 
         msg = capture(:stdout) { rake["refinery:override"].invoke }
 
-        msg.should include(not_found_message)
+        expect(msg).to include(not_found_message)
       end
     end
 
@@ -61,9 +61,9 @@ describe "CLI" do
         msg = capture(:stdout) { rake["refinery:override"].invoke }
 
         Array(spec_success_message).each do |message_fragment|
-          msg.should include(message_fragment)
+          expect(msg).to include(message_fragment)
         end
-        File.exists?(Rails.root.join(copied_file_location)).should be true
+        expect(File.exists?(Rails.root.join(copied_file_location))).to be_truthy
       end
     end
   end

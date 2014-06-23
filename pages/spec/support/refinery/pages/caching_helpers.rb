@@ -8,9 +8,9 @@ module CachingHelpers
   end
 
   def cache_page(page)
-    Refinery::PagesController.any_instance.stub(:refinery_user?).and_return(false)
+    allow_any_instance_of(Refinery::PagesController).to receive(:refinery_user?).and_return(false)
     visit refinery.page_path(page)
-    Refinery::PagesController.any_instance.unstub(:refinery_user?)
+    allow_any_instance_of(Refinery::PagesController).to receive(:refinery_user?).and_call_original
   end
 
   RSpec::Matchers.define :be_cached do

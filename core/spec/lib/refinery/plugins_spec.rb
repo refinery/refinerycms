@@ -43,22 +43,22 @@ module Refinery
       it "activates a plugin" do
         subject.class.activate("my_plugin")
 
-        subject.class.active.names.should include("my_plugin")
+        expect(subject.class.active.names).to include("my_plugin")
       end
 
       it "only activates the same plugin once" do
          subject.class.activate("my_other_plugin")
          subject.class.activate("my_other_plugin")
 
-         subject.class.active.names.count("my_other_plugin").should == 1
+         expect(subject.class.active.names.count("my_other_plugin")).to eq(1)
       end
 
       it "doesn't deactivate the first plugin when another is activated" do
         subject.class.activate("my_plugin")
         subject.class.activate("my_other_plugin")
 
-        subject.class.active.names.should include("my_plugin")
-        subject.class.active.names.should include("my_other_plugin")
+        expect(subject.class.active.names).to include("my_plugin")
+        expect(subject.class.active.names).to include("my_other_plugin")
       end
     end
 
@@ -67,7 +67,7 @@ module Refinery
         subject.class.activate("my_plugin")
         subject.class.deactivate("my_plugin")
 
-        subject.class.active.count.should == 0
+        expect(subject.class.active.count).to eq(0)
       end
     end
 
@@ -76,80 +76,80 @@ module Refinery
       it "activates a single plugin" do
         subject.class.set_active(%w(my_plugin))
 
-        subject.class.active.names.should include("my_plugin")
+        expect(subject.class.active.names).to include("my_plugin")
       end
 
       it "activates a list of plugins" do
         subject.class.set_active(%w(my_plugin my_other_plugin))
 
-        subject.class.active.names.should include("my_plugin")
-        subject.class.active.names.should include("my_plugin")
+        expect(subject.class.active.names).to include("my_plugin")
+        expect(subject.class.active.names).to include("my_plugin")
 
-        subject.class.active.count.should == 2
+        expect(subject.class.active.count).to eq(2)
       end
 
       it "deactivates the initial plugins when another set is set_active" do
         subject.class.set_active(%w(my_plugin))
         subject.class.set_active(%w(my_other_plugin))
 
-        subject.class.active.names.should_not include("my_plugin")
-        subject.class.active.names.should include("my_other_plugin")
-        subject.class.active.count.should == 1
+        expect(subject.class.active.names).not_to include("my_plugin")
+        expect(subject.class.active.names).to include("my_other_plugin")
+        expect(subject.class.active.count).to eq(1)
       end
 
     end
 
     describe '#registered' do
       it 'identifies as Refinery::Plugins' do
-        subject.class.registered.class.should == subject.class
+        expect(subject.class.registered.class).to eq(subject.class)
       end
     end
 
     describe '#active' do
       it 'identifies as Refinery::Plugins' do
-        subject.class.active.class.should == subject.class
+        expect(subject.class.active.class).to eq(subject.class)
       end
 
       it 'only contains items that are registered' do
         subject.class.set_active(%w(my_plugin))
-        subject.class.active.any?.should be true
-        subject.class.active.all?{|p| subject.class.registered.include?(p)}.should be true
+        expect(subject.class.active.any?).to be_truthy
+        expect(subject.class.active.all?{|p| subject.class.registered.include?(p)}).to be_truthy
       end
     end
 
     describe '#always_allowed' do
       it 'should identify as Refinery::Plugins' do
-        subject.class.always_allowed.class.should == subject.class
+        expect(subject.class.always_allowed.class).to eq(subject.class)
       end
 
       it 'only contains items that are always allowed' do
-        subject.class.always_allowed.any?.should be true
-        subject.class.always_allowed.all? { |p| p.always_allow_access }.should be true
+        expect(subject.class.always_allowed.any?).to be_truthy
+        expect(subject.class.always_allowed.all? { |p| p.always_allow_access }).to be_truthy
       end
     end
 
     describe '#in_menu' do
       it 'identifies as Refinery::Plugins' do
-        subject.class.registered.in_menu.class.should == subject.class
+        expect(subject.class.registered.in_menu.class).to eq(subject.class)
       end
 
       it 'only contains items that are in the menu' do
-        subject.class.registered.in_menu.any?.should be true
-        subject.class.registered.in_menu.all? { |p| !p.hide_from_menu }.should be true
+        expect(subject.class.registered.in_menu.any?).to be_truthy
+        expect(subject.class.registered.in_menu.all? { |p| !p.hide_from_menu }).to be_truthy
       end
     end
 
     describe ".find_by_name" do
       it "finds plugin by given name" do
         subject.class.set_active(%w(my_plugin))
-        subject.class.active.find_by_name("my_plugin").name.should == "my_plugin"
+        expect(subject.class.active.find_by_name("my_plugin").name).to eq("my_plugin")
       end
     end
 
     describe ".find_by_title" do
       it "finds plugin by given title" do
         subject.class.set_active(%w(my_plugin))
-        subject.class.active.find_by_title("my plugin").title.should == "my plugin"
+        expect(subject.class.active.find_by_title("my plugin").title).to eq("my plugin")
       end
     end
 

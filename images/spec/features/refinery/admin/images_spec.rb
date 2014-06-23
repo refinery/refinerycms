@@ -30,7 +30,7 @@ module Refinery
       it_behaves_like 'an image deleter'
     end
 
-  end  # Admin Images Tab
+  end
 
   describe 'Page Edit Images tab' do
     # it_behaves_like 'an image uploader'
@@ -41,6 +41,4 @@ module Refinery
     # it behaves_like 'an image deleter'
   end
 
-end  # Module Refinery
-
-
+end

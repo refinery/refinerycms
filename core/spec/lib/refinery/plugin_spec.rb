@@ -30,88 +30,88 @@ module Refinery
 
     describe '.register' do
       it 'must have a name' do
-        lambda { Plugin.register {} }.should raise_error
+        expect { Plugin.register {} }.to raise_error
       end
     end
 
     describe '#class_name' do
       it 'returns class name' do
-        plugin.class_name.should == 'RefineryRspec'
+        expect(plugin.class_name).to eq('RefineryRspec')
       end
     end
 
     describe '#title' do
       it 'returns plugin title defined by I18n' do
-        plugin.title.should == 'Refinery CMS RSpec'
+        expect(plugin.title).to eq('Refinery CMS RSpec')
       end
     end
 
     describe '#description' do
       it 'returns plugin description defined by I18n' do
-        plugin.description.should == 'RSpec tests for plugin.rb'
+        expect(plugin.description).to eq('RSpec tests for plugin.rb')
       end
     end
 
     describe '#pathname' do
       it 'should be set by default' do
-        plugin.pathname.should_not == nil
+        expect(plugin.pathname).not_to eq(nil)
       end
     end
 
     describe '#pathname=' do
       it 'converts string input to pathname' do
         plugin.pathname = Rails.root.to_s
-        plugin.pathname.should == Rails.root
+        expect(plugin.pathname).to eq(Rails.root)
       end
 
       it 'overrides the default pathname' do
         current_pathname = plugin.pathname
         new_pathname = current_pathname.join('tmp', 'path')
 
-        current_pathname.should_not == new_pathname
+        expect(current_pathname).not_to eq(new_pathname)
 
         plugin.pathname = new_pathname
-        plugin.pathname.should == new_pathname
+        expect(plugin.pathname).to eq(new_pathname)
       end
     end
 
     describe '#always_allow_access' do
       it 'returns false if @always_allow_access is not set or its set to false' do
-        plugin.always_allow_access.should be false
+        expect(plugin.always_allow_access).to be_falsey
       end
 
       it 'returns true if set so' do
-        plugin.stub(:always_allow_access).and_return(true)
-        plugin.always_allow_access.should be
+        allow(plugin).to receive(:always_allow_access).and_return(true)
+        expect(plugin.always_allow_access).to be
       end
     end
 
     describe '#dashboard' do
       it 'returns false if @dashboard is not set or its set to false' do
-        plugin.dashboard.should be false
+        expect(plugin.dashboard).to be_falsey
       end
 
       it 'returns true if set so' do
-        plugin.stub(:dashboard).and_return(true)
-        plugin.dashboard.should be
+        allow(plugin).to receive(:dashboard).and_return(true)
+        expect(plugin.dashboard).to be
       end
     end
 
     describe '#menu_match' do
       it 'returns regexp based on plugin name' do
-        plugin.menu_match.should == %r{refinery/refinery_rspec(/.+?)?$}
+        expect(plugin.menu_match).to eq(%r{refinery/refinery_rspec(/.+?)?$})
       end
     end
 
     describe '#highlighted?' do
       it 'returns true if params[:controller] match menu_match regexp' do
-        plugin.highlighted?({:controller => '/refinery/admin/refinery_rspec'}).should be
-        plugin.highlighted?({:controller => '/refinery/refinery_rspec'}).should be
+        expect(plugin.highlighted?({:controller => '/refinery/admin/refinery_rspec'})).to be
+        expect(plugin.highlighted?({:controller => '/refinery/refinery_rspec'})).to be
       end
 
       it 'returns true if dashboard is true and params[:action] == error_404' do
-        plugin.stub(:dashboard).and_return(true)
-        plugin.highlighted?({:action => 'error_404'}).should be
+        allow(plugin).to receive(:dashboard).and_return(true)
+        expect(plugin.highlighted?({:action => 'error_404'})).to be
       end
     end
 
@@ -126,29 +126,29 @@ module Refinery
 
       context 'when @url is already defined' do
         it 'returns hash' do
-          plugin.stub(:url).and_return({:controller => 'refinery/admin/testa'})
-          plugin.url[:controller].should == 'refinery/admin/testa'
+          allow(plugin).to receive(:url).and_return({:controller => 'refinery/admin/testa'})
+          expect(plugin.url[:controller]).to eq('refinery/admin/testa')
         end
       end
 
       context 'when controller is present' do
         it 'returns hash based on it' do
-          plugin.stub(:controller).and_return('testb')
-          plugin.url[:controller].should == 'refinery/admin/testb'
+          allow(plugin).to receive(:controller).and_return('testb')
+          expect(plugin.url[:controller]).to eq('refinery/admin/testb')
         end
       end
 
       context 'when directory is present' do
 
         it 'returns hash based on it' do
-          plugin.stub(:directory).and_return('first/second/testc')
-          plugin.url[:controller].should == 'refinery/admin/testc'
+          allow(plugin).to receive(:directory).and_return('first/second/testc')
+          expect(plugin.url[:controller]).to eq('refinery/admin/testc')
         end
       end
 
       context 'when controller and directory not present' do
         it 'returns hash based on plugins name' do
-          plugin.url[:controller].should == 'refinery/admin/refinery_rspec'
+          expect(plugin.url[:controller]).to eq('refinery/admin/refinery_rspec')
         end
       end
     end

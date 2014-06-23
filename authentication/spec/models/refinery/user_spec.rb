@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Refinery
-  describe User do
+  describe User, :type => :model do
 
     let(:user) { FactoryGirl.create(:user) }
     let(:refinery_user) { FactoryGirl.create(:refinery_user) }
@@ -9,41 +9,41 @@ module Refinery
     context "Roles" do
       context "add_role" do
         it "raises Exception when Role object is passed" do
-          proc {user.add_role(Refinery::Role.new)}.should raise_exception
+          expect {user.add_role(Refinery::Role.new)}.to raise_exception
         end
 
         it "adds a Role to the User when role not yet assigned to User" do
           expect(proc {
             user.add_role(:new_role)
           }).to change(user.roles, :count).by(1)
-          user.roles.collect(&:title).should include("NewRole")
+          expect(user.roles.collect(&:title)).to include("NewRole")
         end
 
         it "does not add a Role to the User when this Role is already assigned to User" do
           expect(proc {
             refinery_user.add_role(:refinery)
-          }).to_not change(refinery_user.roles, :count)
-          refinery_user.roles.collect(&:title).should include("Refinery")
+          }).not_to change(refinery_user.roles, :count).by(1)
+          expect(refinery_user.roles.collect(&:title)).to include("Refinery")
         end
       end
 
       context "has_role" do
         it "raises Exception when Role object is passed" do
-          proc{ user.has_role?(Refinery::Role.new)}.should raise_exception
+          expect{ user.has_role?(Refinery::Role.new)}.to raise_exception
         end
 
         it "returns the true if user has Role" do
-          refinery_user.has_role?(:refinery).should be true
+          expect(refinery_user.has_role?(:refinery)).to be_truthy
         end
 
         it "returns false if user hasn't the Role" do
-          refinery_user.has_role?(:refinery_fail).should be false
+          expect(refinery_user.has_role?(:refinery_fail)).to be_falsey
         end
       end
 
       describe "role association" do
         it "have a roles attribute" do
-          user.should respond_to(:roles)
+          expect(user).to respond_to(:roles)
         end
       end
     end
@@ -61,35 +61,35 @@ module Refinery
       end
 
       it "requires username" do
-        User.new(attributes.merge(:username => "")).should_not be_valid
+        expect(User.new(attributes.merge(:username => ""))).not_to be_valid
       end
 
       it "rejects duplicate usernames" do
         User.create!(attributes)
-        User.new(attributes.merge(:email => "another@email.com")).should_not be_valid
+        expect(User.new(attributes.merge(:email => "another@email.com"))).not_to be_valid
       end
 
       it "rejects duplicate usernames regardless of case" do
         User.create!(attributes)
-        User.new(attributes.merge(
+        expect(User.new(attributes.merge(
           :username => attributes[:username].upcase,
           :email => "another@email.com")
-        ).should_not be_valid
+        )).not_to be_valid
       end
 
       it "rejects duplicate usernames regardless of whitespace" do
         User.create!(attributes)
         new_user = User.new(attributes.merge(:username => " Refinery   CMS "))
         new_user.valid?
-        new_user.username.should == 'refinery cms'
-        new_user.should_not be_valid
+        expect(new_user.username).to eq('refinery cms')
+        expect(new_user).not_to be_valid
       end
     end
 
     describe ".find_for_database_authentication" do
       it "finds user either by username or email" do
-        User.find_for_database_authentication(:login => user.username).should == user
-        User.find_for_database_authentication(:login => user.email).should == user
+        expect(User.find_for_database_authentication(:login => user.username)).to eq(user)
+        expect(User.find_for_database_authentication(:login => user.email)).to eq(user)
       end
     end
 
@@ -103,31 +103,31 @@ module Refinery
 
       context "won't allow to delete" do
         it "not persisted user record" do
-          refinery_user.can_delete?(user_not_persisted).should be false
+          expect(refinery_user.can_delete?(user_not_persisted)).to be_falsey
         end
 
         it "user with superuser role" do
-          refinery_user.can_delete?(super_user).should be false
+          expect(refinery_user.can_delete?(super_user)).to be_falsey
         end
 
         it "if user count with refinery role < 1" do
           ::Refinery::Role[:refinery].users.delete([ refinery_user, super_user ])
-          super_user.can_delete?(refinery_user).should be false
+          expect(super_user.can_delete?(refinery_user)).to be_falsey
         end
 
         it "user himself" do
-          refinery_user.can_delete?(refinery_user).should be false
+          expect(refinery_user.can_delete?(refinery_user)).to be_falsey
         end
       end
 
       context "allow to delete" do
         it "if user count with refinery role = 1" do
           ::Refinery::Role[:refinery].users.delete(refinery_user)
-          super_user.can_delete?(refinery_user).should be true
+          expect(super_user.can_delete?(refinery_user)).to be_truthy
         end
 
         it "if all conditions return true" do
-          super_user.can_delete?(refinery_user).should be true
+          expect(super_user.can_delete?(refinery_user)).to be_truthy
         end
       end
     end
@@ -143,21 +143,21 @@ module Refinery
 
       context "won't allow to edit" do
         it "non-persisted user record" do
-          refinery_user.can_edit?(user_not_persisted).should be false
+          expect(refinery_user.can_edit?(user_not_persisted)).to be_falsey
         end
 
         it "user is not a super user" do
-          refinery_user.can_edit?(user_persisted).should be false
+          expect(refinery_user.can_edit?(user_persisted)).to be_falsey
         end
       end
 
       context "allows to edit" do
         it "when I am a user super" do
-          super_user.can_edit?(user_persisted).should be true
+          expect(super_user.can_edit?(user_persisted)).to be_truthy
         end
 
         it "if all conditions return true" do
-          super_user.can_edit?(refinery_user).should be true
+          expect(super_user.can_edit?(refinery_user)).to be_truthy
         end
       end
     end
@@ -167,14 +167,14 @@ module Refinery
         it "does not add plugins for this user" do
           new_user = FactoryGirl.build(:user)
           new_user.plugins = ["test"]
-          new_user.plugins.should be_empty
+          expect(new_user.plugins).to be_empty
         end
       end
 
       context "when user is persisted" do
         it "only assigns plugins with names that are of string type" do
           user.plugins = [1, :test, false, "refinery_one"]
-          user.plugins.collect(&:name).should eq(["refinery_one"])
+          expect(user.plugins.collect(&:name)).to eq(["refinery_one"])
         end
 
         it "won't raise exception if plugins position is not a number" do
@@ -185,11 +185,11 @@ module Refinery
 
         context "when no plugins assigned" do
           it "assigns them to user" do
-            user.plugins.should eq([])
+            expect(user.plugins).to eq([])
 
             plugin_list = ["refinery_one", "refinery_two", "refinery_three"]
             user.plugins = plugin_list
-            user.plugins.collect(&:name).should eq(plugin_list)
+            expect(user.plugins.collect(&:name)).to eq(plugin_list)
           end
         end
 
@@ -200,7 +200,7 @@ module Refinery
 
             user.plugins = new_plugin_list
             user.plugins.reload
-            user.plugins.collect(&:name).should eq(new_plugin_list)
+            expect(user.plugins.collect(&:name)).to eq(new_plugin_list)
           end
         end
       end
@@ -211,7 +211,7 @@ module Refinery
         ["refinery_one", "refinery_two", "refinery_three"].each_with_index do |name, index|
           user.plugins.create!(:name => name, :position => index)
         end
-        user.authorized_plugins.should == user.plugins.collect { |p| p.name } | ::Refinery::Plugins.always_allowed.names
+        expect(user.authorized_plugins).to eq(user.plugins.collect { |p| p.name } | ::Refinery::Plugins.always_allowed.names)
       end
     end
 
@@ -220,18 +220,18 @@ module Refinery
       before { user.plugins = plugin_list }
 
       it "have a plugins attribute" do
-        user.should respond_to(:plugins)
+        expect(user).to respond_to(:plugins)
       end
 
       it "returns plugins in ASC order" do
-        user.plugins[0].name.should == plugin_list[0]
-        user.plugins[1].name.should == plugin_list[1]
-        user.plugins[2].name.should == plugin_list[2]
+        expect(user.plugins[0].name).to eq(plugin_list[0])
+        expect(user.plugins[1].name).to eq(plugin_list[1])
+        expect(user.plugins[2].name).to eq(plugin_list[2])
       end
 
       it "deletes associated plugins" do
         user.destroy
-        UserPlugin.find_by_user_id(user.id).should be_nil
+        expect(UserPlugin.find_by_user_id(user.id)).to be_nil
       end
     end
 
@@ -243,28 +243,28 @@ module Refinery
       end
 
       it "adds refinery role" do
-        first_user.roles.collect(&:title).should include("Refinery")
+        expect(first_user.roles.collect(&:title)).to include("Refinery")
       end
 
       it "adds superuser role" do
-        first_user.roles.collect(&:title).should include("Superuser")
+        expect(first_user.roles.collect(&:title)).to include("Superuser")
       end
 
       it "adds registered plugins" do
-        first_user.plugins.collect(&:name).should eq(
+        expect(first_user.plugins.collect(&:name)).to eq(
           ["refinery_users", "refinery_dashboard", "refinery_images",
            "refinery_files", "refinery_pages"]
         )
       end
 
       it "returns true on success" do
-        first_user.stub(:valid?).and_return(true)
-        first_user.create_first.should == true
+        allow(first_user).to receive(:valid?).and_return(true)
+        expect(first_user.create_first).to eq(true)
       end
 
       it "returns false on failure" do
-        first_user.stub(:valid?).and_return(false)
-        first_user.create_first.should == false
+        allow(first_user).to receive(:valid?).and_return(false)
+        expect(first_user.create_first).to eq(false)
       end
     end
 

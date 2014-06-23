@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Refinery
-  describe "Crudify" do
+  describe "Crudify", :type => :feature do
     refinery_login_with :refinery_superuser
 
     describe "xhr_paging", :js => true do
@@ -10,9 +10,9 @@ module Refinery
       let(:last_user) { User.order('username ASC').last }
       before do
         FactoryGirl.create :user
-        Admin::UsersController.should_receive(:xhr_pageable?).
+        expect(Admin::UsersController).to receive(:xhr_pageable?).
                                at_least(1).times.and_return(xhr_pageable)
-        User.stub(:per_page).and_return(1)
+        allow(User).to receive(:per_page).and_return(1)
       end
 
       describe 'when set to true' do

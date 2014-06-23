@@ -19,7 +19,7 @@ module Refinery
       end
 
       it "uses the extension name for the namespace" do
-        destination_root.should have_structure {
+        expect(destination_root).to have_structure {
           directory "vendor" do
             directory "extensions" do
               directory "rspec_product_tests" do
@@ -46,7 +46,7 @@ module Refinery
       end
 
       it "creates a new migration with the new resource" do
-        destination_root.should have_structure {
+        expect(destination_root).to have_structure {
           directory "vendor" do
             directory "extensions" do
               directory "rspec_product_tests" do
@@ -63,13 +63,13 @@ module Refinery
 
       it "appends existing seeds file" do
          File.open("#{destination_root}/vendor/extensions/rspec_product_tests/db/seeds.rb") do |file|
-           file.grep(%r{/rspec_product_tests|/rspec_item_tests}).count.should eq(2)
+           expect(file.grep(%r{/rspec_product_tests|/rspec_item_tests}).count).to eq(2)
          end
        end
 
       it "appends routes to the routes file" do
         File.open("#{destination_root}/vendor/extensions/rspec_product_tests/config/routes.rb") do |file|
-          file.grep(%r{rspec_item_tests}).count.should eq(2)
+          expect(file.grep(%r{rspec_item_tests}).count).to eq(2)
         end
       end
     end

@@ -6,7 +6,7 @@ describe Refinery::Resources do
       Refinery::Core.s3_bucket_name = "kfc"
       described_class.s3_bucket_name = "buckethead"
 
-      described_class.s3_bucket_name.should == "buckethead"
+      expect(described_class.s3_bucket_name).to eq("buckethead")
     end
   end
 
@@ -15,7 +15,7 @@ describe Refinery::Resources do
       described_class.s3_bucket_name = nil
       Refinery::Core.s3_bucket_name = "kfc"
 
-      described_class.s3_bucket_name.should == "kfc"
+      expect(described_class.s3_bucket_name).to eq("kfc")
     end
   end
 
@@ -34,12 +34,12 @@ describe Refinery::Resources do
     end
 
     it "uses the default configuration if present" do
-      described_class.custom_backend_class.should == DummyBackend1
+      expect(described_class.custom_backend_class).to eq(DummyBackend1)
     end
 
     it "prefers custom values over the defaults" do
       described_class.custom_backend_class = 'DummyBackend2'
-      described_class.custom_backend_class.should == DummyBackend2
+      expect(described_class.custom_backend_class).to eq(DummyBackend2)
     end
   end
 end
