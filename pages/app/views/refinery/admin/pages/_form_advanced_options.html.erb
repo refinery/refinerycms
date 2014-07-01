@@ -80,6 +80,12 @@
     </div>
     <div class='field'>
       <span class='label_with_help'>
+        <%= f.label :show_in_footer, t('.show_in_footer_title') %>
+      </span>
+      <%= f.check_box :show_in_footer %> <%= t('.show_in_footer_description') %>
+    </div>
+    <div class='field'>
+      <span class='label_with_help'>
         <%= f.label :site_id, t('.site_select') %>
         <%= refinery_help_tag t('.site_select_help') %>
       </span>
