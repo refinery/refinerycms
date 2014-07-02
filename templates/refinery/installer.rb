@@ -1,5 +1,6 @@
 require 'rbconfig'
-VERSION_BAND = '2.1.1'
+VERSION_BAND = '2.1'
+MINOR_VERSION_BAND = '2.1.2'
 
 # We want to ensure that you have an ExecJS runtime available!
 begin
@@ -18,12 +19,12 @@ append_file 'Gemfile', <<-GEMFILE
 gem 'refinerycms', '~> #{VERSION_BAND}'
 
 # Optionally, specify additional Refinery CMS Extensions here:
-gem 'refinerycms-acts-as-indexed', '~> 1.0.0'
-gem 'refinerycms-wymeditor', '~> 1.0.0'
-#  gem 'refinerycms-blog', '~> #{VERSION_BAND}'
-#  gem 'refinerycms-inquiries', '~> #{VERSION_BAND}'
-#  gem 'refinerycms-search', '~> #{VERSION_BAND}'
-#  gem 'refinerycms-page-images', '~> #{VERSION_BAND}'
+gem 'refinerycms-acts-as-indexed', ['~> 1.0', '>= 1.0.0']
+gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.0']
+#  gem 'refinerycms-blog', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
+#  gem 'refinerycms-inquiries', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
+#  gem 'refinerycms-search', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
+#  gem 'refinerycms-page-images', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
 GEMFILE
 
 begin

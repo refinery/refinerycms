@@ -14,8 +14,8 @@ gem 'refinerycms-acts-as-indexed', git: 'https://github.com/refinery/refinerycms
 
 gem 'seo_meta', git: 'https://github.com/parndt/seo_meta', branch: 'master'
 
-# Add the default visual editor.
-gem 'refinerycms-wymeditor', github: 'parndt/refinerycms-wymeditor', branch: 'take-2'
+# Add the default visual editor, for now.
+gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.0']
 
 # Database Configuration
 unless ENV['TRAVIS']
