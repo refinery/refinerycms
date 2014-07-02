@@ -284,8 +284,8 @@ module Refinery
             def update_positions
               previous = nil
               params[:ul].each do |_, list|
-                list.each do |index, hash|
-                  moved_item_id = hash['id'][/\d+\z/]
+                list.each do |index, item|
+                  moved_item_id = item['id'][/\\d+\\z/]
                   @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
 
                   if @current_#{singular_name}.respond_to?(:move_to_root)
@@ -298,8 +298,8 @@ module Refinery
                     @current_#{singular_name}.update_columns position: index
                   end
 
-                  if hash['children'].present?
-                    update_child_positions(hash, @current_#{singular_name})
+                  if item['children'].present?
+                    update_child_positions(item, @current_#{singular_name})
                   end
 
                   previous = moved_item_id
