@@ -23,8 +23,9 @@ env:
   - DB=postgresql
   - DB=mysql
 rvm:
-  - 2.1.0
+  - 2.1.2
   - 2.0.0
   - 1.9.3
   - rbx
   - jruby-19mode
+sudo: false
