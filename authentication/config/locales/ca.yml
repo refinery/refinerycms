@@ -46,7 +46,6 @@ ca:
         email_reset_sent: "T'hem enviat un e-mail amb un enllaç per canviar la teva contrasenya."
         password_encryption: "Necessites restablir la teva contrasenya perque va haver-hi canvis en els mètodes d'encriptació de contrasenyes que Refinery usa, ja que ara les contrasenyes són emmagatzemades amb una encriptació més forta que abans."
       reset:
-        code_invalid: "Ho sentim, però aquest codi per canviar la contrasenya ha expirat o no és vàlid. Si tens problemes intenta copiar i pegar l'adreça des de l'e-mail que t'enviem o comença de nou el procés per canviar la contrasenya."
         successful: "Contrasenya canviada correctament per a '%{email}'"
         pick_new_password_for: "Tria una nova contrasenya per a %{email}"
         reset_password: Canviar contrasenya

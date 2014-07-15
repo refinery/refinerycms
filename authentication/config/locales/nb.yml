@@ -40,7 +40,6 @@ nb:
         email_reset_sent: En e-post har blitt sendt til deg med en lenke for å tilbakestille passordet ditt.
         password_encryption: Du må tilbakestille ditt passord da det er gjort endringer i krypteringsteknologien som Refinery benttter. Endringene gjør at passordene lagres med en enda sterkere kryptering enn tidlgere.
       reset:
-        code_invalid: "Beklager, men denne koden for å tilbakestille passordet har utløpt eller er ugyldig. Om du opplever problemer så kan du forsøker å kopiere og lime inn lenken fra e-posten du mottok, eller start prosessen med å tilbakestille passordet på nytt."
         successful: "Passordet for %{email} er nå tilbakestilt"
         pick_new_password_for: "Velg et nytt passord for %{email}"
         reset_password: Tilbakestill passord

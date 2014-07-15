@@ -46,7 +46,6 @@ ko:
         email_reset_sent: 비밀번호 초기화 링크를 담은 메일을 발송했습니다.
         password_encryption: 더 강력한 보안을 위해 Refinery의 비밀번호 암호화 방식이 변경되었습니다. 새 암호화를 적용하기 위해 비밀번호를 재설정해주세요.
       reset:
-        code_invalid: "죄송합니다. 초기화 코드의 기한이 만료되었거나 올바르지 않습니다. 문제가 계속되면 메일로 받은 URL을 직접 브라우저 주소창에 붙여넣거나 비밀번호 초기화 과정을 처음부터 다시 시작해주세요."
         successful: "'%{email}' 계정의 비밀번호가 초기화되었습니다"
         pick_new_password_for: "%{email} 계정의 비밀번호를 재설정하세요"
         reset_password: 비밀번호 초기화

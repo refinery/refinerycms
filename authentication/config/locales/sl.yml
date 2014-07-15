@@ -39,7 +39,6 @@ sl:
         email_reset_sent: Poslali smo vam email sporočilo s povezavo za ponastavitev gesla.
         password_encryption: 'Morate ponastaviti geslo, ker je prišlo do sprememb v metodah šifriranja gesla, ki jih uporablja Refinery tako, da so gesla shranjenja še z močnejšo enkripcijo kot prej.'
       reset:
-        code_invalid: "Se opravičujemo, vendar je ponastavitvena koda že potekla ali pa je neveljvna. V kolikor imate težave poizkusite kopirati in prilepiti URL naslov iz email sporočila v vaš brskalnik ali ponovite proces ponastavitve gesla."
         successful: "Ponastavitev gesla za %{email} je bila uspešna."
         pick_new_password_for: 'Izberite novo geslo za %{email}'
         reset_password: Ponastavi geslo

@@ -40,7 +40,6 @@ ja:
         email_reset_sent: パスワードをリセットする為のリンクをメールで送信しました。
         password_encryption: パスワードの暗号が強化されましたので、パスワードをリセットする必要があります。
       reset:
-        code_invalid: "リセット用のコードは失効したか、無効です。メールに書かれているリンクをコピーするか、パスワードのリセット手続きを初めからやり直して下さい。"
         successful: "「%{email}」のパスワードは正しくリセットされました。"
         pick_new_password_for: "%{email}の新しいパスワードを入れて下さい。"
         reset_password: パスワードをリセット

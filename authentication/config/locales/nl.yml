@@ -46,7 +46,6 @@ nl:
         email_reset_sent: Er is een e-mail naar u verzonden met een link om een nieuw wachtwoord in te stellen.
         password_encryption: 'U moet een nieuw wachtwoord instellen omdat de wachtwoordversleuteling van Refinery is verbeterd, hiermee wordt uw wachtwoord nog veiliger opgeslagen.'
       reset:
-        code_invalid: "Het spijt ons, maar deze code is verlopen of ongeldig. U kunt het probleem wellicht verhelpen door de link direct vanuit de e-mail te kopieren en in uw browser te plakken, of door het proces opnieuw te starten."
         successful: "Het instellen van een nieuw wachtwoord voor %{email} is gelukt."
         pick_new_password_for: 'Kies een nieuw wachtwoord voor %{email}'
         reset_password: Nieuw wachtwoord instellen

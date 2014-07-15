@@ -40,7 +40,6 @@ rs:
         email_reset_sent: Poslat ti je mail sa linkom za resetovanje lozinke.
         password_encryption: "Moraš da resetuješ lozinku, zato što je došlo do promene u metodama za enkripciju koje Refinery koristi za zaštitu podataka.Podaci će od sada biti sigurniji nego ranije."
       reset:
-        code_invalid: 'Izvinjavamo se, ali ovaj kod za resetovanje je istekao ili nije validan. Ako imaš problema, probaj da kopiraš URL iz tvog email-a u tvoj brauzer ili ponovo pokreni postupak za reset lozinke.'
         successful: "Lozinka uspešno resetovana za '%{email}'"
         pick_new_password_for: 'Izaberi novu lozinku za %{email}'
         reset_password: Resetuj lozinku

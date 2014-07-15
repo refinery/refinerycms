@@ -40,7 +40,6 @@ da:
         email_reset_sent: En email er blevet sendt til dig med et link til nulstille din adgangskode.
         password_encryption: 'Du er nødt til at nulstille dit password, da vi har opdateret den kryptering som Refinery bruger.'
       reset:
-        code_invalid: "Vi beklager, men denne nulstillingskode er udløbet eller ugyldig. Hvis du har spørgsmål kan du prøve at kopiere og indsætte webadressen fra din email til din browser eller prøve igen."
         successful: "Adgangskode er nulstillet for %{email}"
         pick_new_password_for: "Vælge en ny adgangskode for %{email}"
         reset_password: Nulstil adgangskode

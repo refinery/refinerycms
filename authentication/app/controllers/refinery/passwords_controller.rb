@@ -20,22 +20,22 @@ module Refinery
 
     # GET /registrations/password/edit?reset_password_token=abcdef
     def edit
-      if params[:reset_password_token] and (@refinery_user = User.where(:reset_password_token => params[:reset_password_token]).first).present?
-        respond_with(@refinery_user)
-      else
-        redirect_to refinery.new_refinery_user_password_path,
-                    :flash => ({ :error => t('code_invalid', :scope => 'refinery.users.reset') })
+      if @reset_password_token = params[:reset_password_token]
+        @refinery_user = User.find_or_initialize_with_error_by_reset_password_token(params[:reset_password_token])
+        respond_with(@refinery_user) and return
       end
+
+      redirect_to refinery.new_refinery_user_password_path,
+                  :flash => ({ :error => t('code_invalid', :scope => 'refinery.users.reset') })
     end
 
     # POST /registrations/password
     def create
-      if params[:refinery_user].present? and (email = params[:refinery_user][:email]).present? and
+      if params[:refinery_user].present? && (email = params[:refinery_user][:email]).present? &&
          (user = User.where(:email => email).first).present?
 
-        # Call devise reset function.
-        user.send(:generate_reset_password_token!)
-        UserMailer.reset_notification(user, request).deliver
+        token = user.generate_reset_password_token!
+        UserMailer.reset_notification(user, request, token).deliver
         redirect_to refinery.login_path,
                     :notice => t('email_reset_sent', :scope => 'refinery.users.forgot')
       else

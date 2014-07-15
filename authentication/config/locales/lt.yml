@@ -37,7 +37,6 @@ lt:
         email_not_associated_with_account_html: "Atsiprašome, '%{email}' nėra susietas su jokia paskyra.<br />Ar tikrai nurodėte teisingą el. pašto adresą?"
         email_reset_sent: El. laiškas buvo nusiųstas jums su nuoroda kur galite pakeisti slaptažodį.
       reset:
-        code_invalid: 'Atsiprašome, bet šio kodo galiojimo laikas baigėsi arba jis neteisingas. Jeigu susiduriate su nesklandumais, pabandykite nukopijuoti ir įterpti adresą iš laiško į naršyklę arba iš naujo pradėti slaptažodžio keitimo procedūrą.'
         successful: "'%{email}' slaptažodis sėkmingai atnaujintas"
         pick_new_password_for: 'Nurodykite naują %{email} slaptažodį'
         reset_password:  Pakeisti slaptažodį

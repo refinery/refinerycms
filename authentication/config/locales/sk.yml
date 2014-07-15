@@ -46,7 +46,6 @@ sk:
         email_reset_sent: Bol vám zaslaný email s odkazom na resetovanie hesla.
         password_encryption: 'Musíte si zmeniť heslo, pretože nastala zmena v šifrovacie metóde uložených hesiel. Refinery sa stáva viac bezpečnejšie ako predtým.'
       reset:
-        code_invalid: "Ospravedlňujeme sa, ale kód pre resetovanie hesla je buď chybný alebo expirovaný. Skúste skopírovať adresu pre resetovanie hesle z emailu ktorý ste obdržal/a, alebo si nechajte email zaslať znova."
         successful: "Heslo bolo úspešne resetované pre '%{email}'"
         pick_new_password_for: "Zadajte nové heslo pre %{email}"
         reset_password: Reset hesla
