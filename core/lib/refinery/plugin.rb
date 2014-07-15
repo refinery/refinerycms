@@ -30,19 +30,9 @@ module Refinery
       ::I18n.translate(['refinery', 'plugins', name, 'description'].join('.'))
     end
 
-    # Retrieve information about how to access the latest activities of this plugin.
-    def activity
-      self.plugin_activity ||= []
-    end
-
     # Stores information that can be used to retrieve the latest activities of this plugin
     def activity=(activities)
-      [activities].flatten.each { |activity| add_activity(activity) }
-    end
-
-    # Given a record's class name, find the related activity object.
-    def activity_by_class_name(class_name)
-      self.activity.select{ |a| a.class_name == class_name.to_s.camelize }
+      Refinery.deprecate('Refinery::Plugin#activity=', when: '3.1')
     end
 
     # Used to highlight the current tab in the admin interface
@@ -74,13 +64,8 @@ module Refinery
       end
     end
 
-  # Make this protected, so that only Plugin.register can use it.
-  protected
-
-    def add_activity(options)
-      (self.plugin_activity ||= []) << Activity::new(options)
-    end
-
+    # Make this protected, so that only Plugin.register can use it.
+    protected
     def initialize
       # provide a default pathname to where this plugin is using its lib directory.
       depth = RUBY_VERSION >= "1.9.2" ? 4 : 3
