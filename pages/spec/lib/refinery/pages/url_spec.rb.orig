@@ -6,7 +6,11 @@ module Refinery
       describe ".handle?" do
         it "returns true if link_url is present" do
           page = double(:page, :link_url => "/")
+<<<<<<< HEAD
           expect(Url::Localised.handle?(page)).to be_truthy
+=======
+          Url::Localised.handle?(page).should be true
+>>>>>>> FETCH_HEAD
         end
       end
 
@@ -35,8 +39,13 @@ module Refinery
       describe ".handle?" do
         it "returns true if marketable_url config is set to true" do
           page = double(:page)
+<<<<<<< HEAD
           allow(Refinery::Pages).to receive(:marketable_url).and_return(true)
           expect(Url::Marketable.handle?(page)).to be_truthy
+=======
+          Refinery::Pages.stub(:marketable_url).and_return(true)
+          Url::Marketable.handle?(page).should be true
+>>>>>>> FETCH_HEAD
         end
       end
 
@@ -55,7 +64,11 @@ module Refinery
       describe ".handle?" do
         it "returns true if to_param is present" do
           page = double(:page, :to_param => "test")
+<<<<<<< HEAD
           expect(Url::Normal.handle?(page)).to be_truthy
+=======
+          Url::Normal.handle?(page).should be true
+>>>>>>> FETCH_HEAD
         end
       end
 

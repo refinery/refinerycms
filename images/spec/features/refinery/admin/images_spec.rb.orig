@@ -151,8 +151,13 @@ module Refinery
           # check that image loads after it has been updated
           visit refinery.url_for(page_for_image.url)
           visit find(:css, 'img[src^="/system/images"]')[:src]
+<<<<<<< HEAD
           expect(page).to have_css('img[src*="/system/images"]')
           expect { page }.to_not have_content('Not found')
+=======
+          page.should have_css('img[src*="/system/images"]')
+          expect(page).to_not have_content('Not found')
+>>>>>>> FETCH_HEAD
 
           # update the image
           visit refinery.edit_admin_image_path(image)
@@ -162,8 +167,13 @@ module Refinery
           # check that image loads after it has been updated
           visit refinery.url_for(page_for_image.url)
           visit find(:css, 'img[src^="/system/images"]')[:src]
+<<<<<<< HEAD
           expect(page).to have_css('img[src*="/system/images"]')
           expect { page }.to_not have_content('Not found')
+=======
+          page.should have_css('img[src*="/system/images"]')
+          expect(page).to_not have_content('Not found')
+>>>>>>> FETCH_HEAD
         end
       end
 

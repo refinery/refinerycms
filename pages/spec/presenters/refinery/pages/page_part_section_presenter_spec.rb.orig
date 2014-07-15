@@ -20,9 +20,15 @@ module Refinery
       it "handles a nil page body" do
         part = double(PagePart, :body => nil, :title => nil)
         section = PagePartSectionPresenter.new(part)
+<<<<<<< HEAD
         expect(section.fallback_html).to be_nil
         expect(section.wrapped_html).to be_nil
         expect(section.has_content?).to be_falsey
+=======
+        section.fallback_html.should be_nil
+        section.wrapped_html.should be_nil
+        section.has_content?.should be false
+>>>>>>> FETCH_HEAD
       end
 
       it "has no id if title is nil" do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Refinery
-  describe 'layout' do
+  describe 'layout', :type => :feature do
     refinery_login_with :refinery_user
 
     let(:home_page) do
@@ -12,7 +12,7 @@ module Refinery
       it "id is the page's canonical id" do
         visit home_page.url
 
-        page.should have_css 'body#home-page'
+        expect(page).to have_css 'body#home-page'
       end
     end
   end

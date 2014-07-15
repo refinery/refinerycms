@@ -77,7 +77,11 @@ module Refinery
 
     describe '#always_allow_access' do
       it 'returns false if @always_allow_access is not set or its set to false' do
+<<<<<<< HEAD
         expect(plugin.always_allow_access).to be_falsey
+=======
+        plugin.always_allow_access.should be false
+>>>>>>> FETCH_HEAD
       end
 
       it 'returns true if set so' do
@@ -88,7 +92,11 @@ module Refinery
 
     describe '#dashboard' do
       it 'returns false if @dashboard is not set or its set to false' do
+<<<<<<< HEAD
         expect(plugin.dashboard).to be_falsey
+=======
+        plugin.dashboard.should be false
+>>>>>>> FETCH_HEAD
       end
 
       it 'returns true if set so' do

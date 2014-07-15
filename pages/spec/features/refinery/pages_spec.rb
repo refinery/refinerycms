@@ -2,37 +2,37 @@
 require 'spec_helper'
 
 module Refinery
-  describe 'page frontend' do
+  describe 'page frontend', :type => :feature do
     let(:home_page) { Page.create :title => 'Home', :link_url => '/' }
     let(:about_page) { Page.create :title => 'About' }
     let(:draft_page) { Page.create :title => 'Draft', :draft => true }
     before do
       # Stub the menu pages we're expecting
       ::I18n.default_locale = Globalize.locale = :en
-      Page.stub(:fast_menu).and_return([home_page, about_page])
+      allow(Page).to receive(:fast_menu).and_return([home_page, about_page])
     end
 
     def standard_page_menu_items_exist?
       within('.menu') do
-        page.should have_content(home_page.title)
-        page.should have_content(about_page.title)
-        page.should_not have_content(draft_page.title)
+        expect(page).to have_content(home_page.title)
+        expect(page).to have_content(about_page.title)
+        expect(page).not_to have_content(draft_page.title)
       end
     end
 
     describe 'when marketable urls are' do
       describe 'enabled' do
-        before { Pages.stub(:marketable_urls).and_return(true) }
+        before { allow(Pages).to receive(:marketable_urls).and_return(true) }
 
         it 'shows the homepage' do
-          PagesController.any_instance.stub(:find_page).and_return(:home_page)
+          allow_any_instance_of(PagesController).to receive(:find_page).and_return(:home_page)
           visit '/'
 
           standard_page_menu_items_exist?
         end
 
         it 'shows a show page' do
-          PagesController.any_instance.stub(:find_page).and_return(:about_page)
+          allow_any_instance_of(PagesController).to receive(:find_page).and_return(:about_page)
           visit refinery.page_path(about_page)
 
           standard_page_menu_items_exist?
@@ -40,21 +40,21 @@ module Refinery
       end
 
       describe 'disabled' do
-        before { Pages.stub(:marketable_urls).and_return(false) }
+        before { allow(Pages).to receive(:marketable_urls).and_return(false) }
 
         it 'shows the homepage' do
-          PagesController.any_instance.stub(:find_page).and_return(:home_page)
+          allow_any_instance_of(PagesController).to receive(:find_page).and_return(:home_page)
           visit '/'
 
           standard_page_menu_items_exist?
         end
 
         it 'does not route to /about for About page' do
-          refinery.page_path(about_page).should =~ %r{/pages/about$}
+          expect(refinery.page_path(about_page)).to match(%r{/pages/about$})
         end
 
         it 'shows the about page' do
-          PagesController.any_instance.stub(:find_page).and_return(:about_page)
+          allow_any_instance_of(PagesController).to receive(:find_page).and_return(:about_page)
           visit refinery.page_path(about_page)
 
           standard_page_menu_items_exist?
@@ -66,17 +66,17 @@ module Refinery
       before { visit '/about' }
 
       it "shows title at the top of the page" do
-        find("#body_content_title").text.should == about_page.title
+        expect(find("#body_content_title").text).to eq(about_page.title)
       end
 
       it "should hide title when config is set" do
-        Pages.stub(:show_title_in_body).and_return(false)
+        allow(Pages).to receive(:show_title_in_body).and_return(false)
         visit '/about'
-        page.should_not have_selector("#body_content_title")
+        expect(page).not_to have_selector("#body_content_title")
       end
 
       it "uses title in the menu" do
-        find(".selected").text.strip.should == about_page.title
+        expect(find(".selected").text.strip).to eq(about_page.title)
       end
 
       it "uses title in browser title" do
@@ -88,7 +88,7 @@ module Refinery
       let(:page_mt) { Page.create :title => 'Company News' }
 
       before do
-        Page.stub(:fast_menu).and_return([page_mt])
+        allow(Page).to receive(:fast_menu).and_return([page_mt])
       end
 
       describe 'set' do
@@ -108,8 +108,8 @@ module Refinery
         it "does not affect browser title and page title" do
           visit refinery.url_for(page_mt.url)
 
-          page.should have_title(page_mt.title)
-          find("#body_content_title").text.should == page_mt.title
+          expect(page).to have_title(page_mt.title)
+          expect(find("#body_content_title").text).to eq(page_mt.title)
         end
       end
 
@@ -124,8 +124,8 @@ module Refinery
         it 'the friendly_id and menu are reverted to match the title' do
           visit '/company-news'
 
-          current_path.should == '/company-news'
-          find(".selected").text.strip.should == page_mt.title
+          expect(current_path).to eq('/company-news')
+          expect(find(".selected").text.strip).to eq(page_mt.title)
         end
       end
     end
@@ -135,7 +135,7 @@ module Refinery
         Page.create :title => 'About Us', :browser_title => 'About Our Company'
       }
       before do
-        Page.stub(:fast_menu).and_return([page_bt])
+        allow(Page).to receive(:fast_menu).and_return([page_bt])
       end
       it 'should have the browser_title in the title tag' do
         visit '/about-us'
@@ -146,22 +146,22 @@ module Refinery
       it 'should not effect page title and menu title' do
         visit '/about-us'
 
-        find("#body_content_title").text.should == page_bt.title
-        find(".selected").text.strip.should == page_bt.title
+        expect(find("#body_content_title").text).to eq(page_bt.title)
+        expect(find(".selected").text.strip).to eq(page_bt.title)
       end
     end
 
     describe 'custom_slug' do
       let(:page_cs) { Page.create :title => 'About Us' }
       before do
-        Page.stub(:fast_menu).and_return([page_cs])
+        allow(Page).to receive(:fast_menu).and_return([page_cs])
       end
       
       describe 'canonical url' do
         it 'should have a canonical url' do
           visit '/about-us'
 
-          page.should have_selector('head link[rel="canonical"][href^="http://www.example.com/about-us"]', visible: false)
+          expect(page).to have_selector('head link[rel="canonical"][href^="http://www.example.com/about-us"]', visible: false)
         end
       end
 
@@ -169,7 +169,7 @@ module Refinery
         it 'makes friendly_id from title' do
           visit '/about-us'
 
-          current_path.should == '/about-us'
+          expect(current_path).to eq('/about-us')
         end
       end
 
@@ -182,7 +182,7 @@ module Refinery
         it 'should make and use a new friendly_id' do
           visit '/about-custom'
 
-          current_path.should == '/about-custom'
+          expect(current_path).to eq('/about-custom')
         end
       end
 
@@ -198,18 +198,18 @@ module Refinery
 
       describe 'set with slashes' do
         before do
-          Pages.stub(:scope_slug_by_parent).and_return(false)
+          allow(Pages).to receive(:scope_slug_by_parent).and_return(false)
           page_cs.custom_slug = "products/my product/cool one!"
           page_cs.save
         end
 
         after do
-          Pages.stub(:scope_slug_by_parent).and_return(true)
+          allow(Pages).to receive(:scope_slug_by_parent).and_return(true)
         end
 
         it 'should make and use a new friendly_id' do
           visit '/products/my-product/cool-one'
-          current_path.should == '/products/my-product/cool-one'
+          expect(current_path).to eq('/products/my-product/cool-one')
         end
       end
     end
@@ -221,9 +221,9 @@ module Refinery
         visit "/"
 
         within ".selected" do
-          page.should have_content(home_page.title)
+          expect(page).to have_content(home_page.title)
         end
-        page.should have_content(about_page.title)
+        expect(page).to have_content(about_page.title)
       end
     end
 
@@ -231,9 +231,9 @@ module Refinery
       it "succeeds" do
         visit "/about"
 
-        page.should have_content(home_page.title)
+        expect(page).to have_content(home_page.title)
         within ".selected > a" do
-          page.should have_content(about_page.title)
+          expect(page).to have_content(about_page.title)
         end
       end
     end
@@ -242,17 +242,17 @@ module Refinery
       let(:submenu_page) { about_page.children.create :title => 'Sample Submenu' }
 
       before do
-        Page.stub(:fast_menu).and_return(
+        allow(Page).to receive(:fast_menu).and_return(
           [home_page, submenu_page, about_page.reload].sort_by(&:lft)
         )
       end
 
       it "succeeds" do
         visit refinery.url_for(submenu_page.url)
-        page.should have_content(home_page.title)
-        page.should have_content(about_page.title)
+        expect(page).to have_content(home_page.title)
+        expect(page).to have_content(about_page.title)
         within ".selected * > .selected a" do
-          page.should have_content(submenu_page.title)
+          expect(page).to have_content(submenu_page.title)
         end
       end
     end
@@ -260,7 +260,7 @@ module Refinery
     describe "special characters title" do
       let(:special_page) { Page.create :title => 'ä ö ü spéciål chåråctÉrs' }
       before do
-        Page.stub(:fast_menu).and_return(
+        allow(Page).to receive(:fast_menu).and_return(
           [home_page, about_page, special_page]
         )
       end
@@ -268,10 +268,10 @@ module Refinery
       it "succeeds" do
         visit refinery.url_for(special_page.url)
 
-        page.should have_content(home_page.title)
-        page.should have_content(about_page.title)
+        expect(page).to have_content(home_page.title)
+        expect(page).to have_content(about_page.title)
         within ".selected > a" do
-          page.should have_content(special_page.title)
+          expect(page).to have_content(special_page.title)
         end
       end
     end
@@ -282,7 +282,7 @@ module Refinery
       }
 
       before do
-        Page.stub(:fast_menu).and_return(
+        allow(Page).to receive(:fast_menu).and_return(
           [home_page, special_page, about_page.reload].sort_by &:lft
         )
       end
@@ -290,10 +290,10 @@ module Refinery
       it "succeeds" do
         visit refinery.url_for(special_page.url)
 
-        page.should have_content(home_page.title)
-        page.should have_content(about_page.title)
+        expect(page).to have_content(home_page.title)
+        expect(page).to have_content(about_page.title)
         within ".selected * > .selected a" do
-          page.should have_content(special_page.title)
+          expect(page).to have_content(special_page.title)
         end
       end
     end
@@ -302,17 +302,17 @@ module Refinery
       let(:hidden_page) { Page.create :title => "Hidden", :show_in_menu => false }
 
       before do
-        Page.stub(:fast_menu).and_return([home_page, about_page])
+        allow(Page).to receive(:fast_menu).and_return([home_page, about_page])
       end
 
       it "succeeds" do
         visit refinery.page_path(hidden_page)
 
-        page.should have_content(home_page.title)
-        page.should have_content(about_page.title)
-        page.should have_content(hidden_page.title)
+        expect(page).to have_content(home_page.title)
+        expect(page).to have_content(about_page.title)
+        expect(page).to have_content(hidden_page.title)
         within "nav" do
-          page.should have_no_content(hidden_page.title)
+          expect(page).to have_no_content(hidden_page.title)
         end
       end
     end
@@ -324,14 +324,14 @@ module Refinery
        about.skip_to_first_child = true
        about.save!
 
-       Page.stub(:fast_menu).and_return([home_page, about, child_page].sort_by(&:lft))
+       allow(Page).to receive(:fast_menu).and_return([home_page, about, child_page].sort_by(&:lft))
       end
 
       it "succeeds" do
         visit "/about"
 
         within ".selected * > .selected a" do
-          page.should have_content(child_page.title)
+          expect(page).to have_content(child_page.title)
         end
       end
     end
@@ -339,8 +339,8 @@ module Refinery
     context "with multiple locales" do
 
       describe "redirects" do
-        before { Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru]) }
-        after { Refinery::I18n.unstub(:frontend_locales) }
+        before { allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru]) }
+        after { allow(Refinery::I18n).to receive(:frontend_locales).and_call_original }
         let(:en_page_title) { 'News' }
         let(:en_page_slug) { 'news' }
         let(:ru_page_title) { 'Новости' }
@@ -358,19 +358,19 @@ module Refinery
         it "should recognise when default locale is in the path" do
           visit "/en/#{en_page_slug}"
 
-          current_path.should == "/en/#{en_page_slug}"
+          expect(current_path).to eq("/en/#{en_page_slug}")
         end
 
         it "should redirect to default locale slug" do
           visit "/#{ru_page_slug_encoded}"
 
-          current_path.should == "/#{en_page_slug}"
+          expect(current_path).to eq("/#{en_page_slug}")
         end
 
         it "should redirect to second locale slug" do
           visit "/ru/#{en_page_slug}"
 
-          current_path.should == "/ru/#{ru_page_slug_encoded}"
+          expect(current_path).to eq("/ru/#{ru_page_slug_encoded}")
 
           visit "/en/#{en_page_slug}"
         end
@@ -395,7 +395,7 @@ module Refinery
           it "should redirect to localized url" do
             visit "/ru/#{en_page_slug}/#{nested_page_slug}"
 
-            current_path.should == "/ru/#{ru_page_slug_encoded}/#{nested_page_slug}"
+            expect(current_path).to eq("/ru/#{ru_page_slug_encoded}/#{nested_page_slug}")
 
             visit "/en/#{en_page_slug}/#{nested_page_slug}"
           end

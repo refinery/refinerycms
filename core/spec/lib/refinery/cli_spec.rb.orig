@@ -63,7 +63,11 @@ describe "CLI" do
         Array(spec_success_message).each do |message_fragment|
           expect(msg).to include(message_fragment)
         end
+<<<<<<< HEAD
         expect(File.exists?(Rails.root.join(copied_file_location))).to be_truthy
+=======
+        File.exists?(Rails.root.join(copied_file_location)).should be true
+>>>>>>> FETCH_HEAD
       end
     end
   end

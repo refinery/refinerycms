@@ -112,8 +112,13 @@ module Refinery
 
       it 'only contains items that are registered' do
         subject.class.set_active(%w(my_plugin))
+<<<<<<< HEAD
         expect(subject.class.active.any?).to be_truthy
         expect(subject.class.active.all?{|p| subject.class.registered.include?(p)}).to be_truthy
+=======
+        subject.class.active.any?.should be true
+        subject.class.active.all?{|p| subject.class.registered.include?(p)}.should be true
+>>>>>>> FETCH_HEAD
       end
     end
 
@@ -123,8 +128,13 @@ module Refinery
       end
 
       it 'only contains items that are always allowed' do
+<<<<<<< HEAD
         expect(subject.class.always_allowed.any?).to be_truthy
         expect(subject.class.always_allowed.all? { |p| p.always_allow_access }).to be_truthy
+=======
+        subject.class.always_allowed.any?.should be true
+        subject.class.always_allowed.all? { |p| p.always_allow_access }.should be true
+>>>>>>> FETCH_HEAD
       end
     end
 
@@ -134,8 +144,13 @@ module Refinery
       end
 
       it 'only contains items that are in the menu' do
+<<<<<<< HEAD
         expect(subject.class.registered.in_menu.any?).to be_truthy
         expect(subject.class.registered.in_menu.all? { |p| !p.hide_from_menu }).to be_truthy
+=======
+        subject.class.registered.in_menu.any?.should be true
+        subject.class.registered.in_menu.all? { |p| !p.hide_from_menu }.should be true
+>>>>>>> FETCH_HEAD
       end
     end
 

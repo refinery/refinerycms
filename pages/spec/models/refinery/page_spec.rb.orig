@@ -341,17 +341,29 @@ module Refinery
       context 'when using content_for?' do
 
         it 'return true when page part has content' do
+<<<<<<< HEAD
           expect(page.content_for?(:body)).to be_truthy
+=======
+          page.content_for?(:body).should be true
+>>>>>>> FETCH_HEAD
         end
 
         it 'return false when page part does not exist' do
           page.parts = []
+<<<<<<< HEAD
           expect(page.content_for?(:body)).to be_falsey
+=======
+          page.content_for?(:body).should be false
+>>>>>>> FETCH_HEAD
         end
 
         it 'return false when page part does not have any content' do
           page.parts.first.content = ''
+<<<<<<< HEAD
           expect(page.content_for?(:body)).to be_falsey
+=======
+          page.content_for?(:body).should be false
+>>>>>>> FETCH_HEAD
         end
 
       end
@@ -509,14 +521,21 @@ module Refinery
     describe "#in_menu?" do
       context "when live? and show_in_menu? returns true" do
         it "returns true" do
+<<<<<<< HEAD
           allow(page).to receive(:live?).and_return(true)
           allow(page).to receive(:show_in_menu?).and_return(true)
           expect(page.in_menu?).to be_truthy
+=======
+          page.stub(:live?).and_return(true)
+          page.stub(:show_in_menu?).and_return(true)
+          page.in_menu?.should be true
+>>>>>>> FETCH_HEAD
         end
       end
 
       context "when live? or show_in_menu? doesn't return true" do
         it "returns false" do
+<<<<<<< HEAD
           allow(page).to receive(:live?).and_return(true)
           allow(page).to receive(:show_in_menu?).and_return(false)
           expect(page.in_menu?).to be_falsey
@@ -524,6 +543,15 @@ module Refinery
           allow(page).to receive(:live?).and_return(false)
           allow(page).to receive(:show_in_menu?).and_return(true)
           expect(page.in_menu?).to be_falsey
+=======
+          page.stub(:live?).and_return(true)
+          page.stub(:show_in_menu?).and_return(false)
+          page.in_menu?.should be false
+
+          page.stub(:live?).and_return(false)
+          page.stub(:show_in_menu?).and_return(true)
+          page.in_menu?.should be false
+>>>>>>> FETCH_HEAD
         end
       end
     end
@@ -531,15 +559,25 @@ module Refinery
     describe "#not_in_menu?" do
       context "when in_menu? returns true" do
         it "returns false" do
+<<<<<<< HEAD
           allow(page).to receive(:in_menu?).and_return(true)
           expect(page.not_in_menu?).to be_falsey
+=======
+          page.stub(:in_menu?).and_return(true)
+          page.not_in_menu?.should be false
+>>>>>>> FETCH_HEAD
         end
       end
 
       context "when in_menu? returns false" do
         it "returns true" do
+<<<<<<< HEAD
           allow(page).to receive(:in_menu?).and_return(false)
           expect(page.not_in_menu?).to be_truthy
+=======
+          page.stub(:in_menu?).and_return(false)
+          page.not_in_menu?.should be true
+>>>>>>> FETCH_HEAD
         end
       end
     end
@@ -614,14 +652,22 @@ module Refinery
 
       context "when deletable is true and link_url, and menu_match is blank" do
         it "returns true" do
+<<<<<<< HEAD
           expect(deletable_page.deletable?).to be_truthy
+=======
+          deletable_page.deletable?.should be true
+>>>>>>> FETCH_HEAD
         end
       end
 
       context "when deletable is false and link_url, and menu_match is blank" do
         it "returns false" do
           deletable_page.deletable = false
+<<<<<<< HEAD
           expect(deletable_page.deletable?).to be_falsey
+=======
+          deletable_page.deletable?.should be false
+>>>>>>> FETCH_HEAD
         end
       end
 
@@ -629,10 +675,17 @@ module Refinery
         it "returns false" do
           deletable_page.deletable  = false
           deletable_page.link_url   = "text"
+<<<<<<< HEAD
           expect(deletable_page.deletable?).to be_falsey
 
           deletable_page.menu_match = "text"
           expect(deletable_page.deletable?).to be_falsey
+=======
+          deletable_page.deletable?.should be false
+
+          deletable_page.menu_match = "text"
+          deletable_page.deletable?.should be false
+>>>>>>> FETCH_HEAD
         end
       end
     end

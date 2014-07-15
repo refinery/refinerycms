@@ -13,7 +13,7 @@ module Refinery
     end
 
     specify do
-      destination_root.should have_structure {
+      expect(destination_root).to have_structure {
         directory "vendor" do
           directory "extensions" do
             directory "rspec_product_tests" do

@@ -23,6 +23,7 @@ module Refinery
 
     describe ".home_page?" do
       it "matches root url" do
+<<<<<<< HEAD
         allow(controller).to receive(:root_path).and_return("/")
         allow(request).to receive(:path).and_return("/")
         expect(controller.home_page?).to be_truthy
@@ -38,6 +39,23 @@ module Refinery
         allow(controller.refinery).to receive(:root_path).and_return("/en/")
         allow(request).to receive(:path).and_return("/en/")
         expect(controller.home_page?).to be_truthy
+=======
+        controller.stub(:root_path).and_return("/")
+        request.stub(:path).and_return("/")
+        controller.home_page?.should be true
+      end
+
+      it "matches localised root url" do
+        controller.refinery.stub(:root_path).and_return("/en/")
+        request.stub(:path).and_return("/en")
+        controller.home_page?.should be true
+      end
+
+      it "matches localised root url with trailing slash" do
+        controller.refinery.stub(:root_path).and_return("/en/")
+        request.stub(:path).and_return("/en/")
+        controller.home_page?.should be true
+>>>>>>> FETCH_HEAD
       end
 
       it "escapes regexp" do

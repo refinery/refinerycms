@@ -12,14 +12,14 @@ end
 
 module Refinery
   module Admin
-    describe DummyController do
+    describe DummyController, :type => :controller do
       context "as refinery user" do
         refinery_login_with :refinery
 
         context "with permission" do
           let(:controller_permission) { true }
           it "allows access" do
-            controller.should_not_receive :error_404
+            expect(controller).not_to receive :error_404
             get :index
           end
         end
@@ -27,26 +27,26 @@ module Refinery
         context "without permission" do
           let(:controller_permission) { false }
           it "denies access" do
-            controller.should_receive :error_404
+            expect(controller).to receive :error_404
             get :index
           end
         end
 
         describe "force_ssl!" do
           before do
-            controller.stub(:require_refinery_users!).and_return(false)
+            allow(controller).to receive(:require_refinery_users!).and_return(false)
           end
 
           it "is false so standard HTTP is used" do
-            Refinery::Core.stub(:force_ssl).and_return(false)
-            controller.should_not_receive(:redirect_to).with(:protocol => 'https')
+            allow(Refinery::Core).to receive(:force_ssl).and_return(false)
+            expect(controller).not_to receive(:redirect_to).with(:protocol => 'https')
 
             get :index
           end
 
           it "is true so HTTPS is used" do
-            Refinery::Core.stub(:force_ssl).and_return(true)
-            controller.should_receive(:redirect_to).with(:protocol => 'https')
+            allow(Refinery::Core).to receive(:force_ssl).and_return(true)
+            expect(controller).to receive(:redirect_to).with(:protocol => 'https')
 
             get :index
           end

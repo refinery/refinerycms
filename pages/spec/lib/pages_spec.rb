@@ -12,13 +12,13 @@ module Refinery
 
       context "when pattern match valid templates" do
         it "returns an array of valid templates" do
-          subject.valid_templates('spec', '*html*').should include("ugisozols")
+          expect(subject.valid_templates('spec', '*html*')).to include("ugisozols")
         end
       end
 
       context "when pattern doesn't match valid templates" do
         it "returns empty array" do
-          subject.valid_templates('huh', '*html*').should == []
+          expect(subject.valid_templates('huh', '*html*')).to eq([])
         end
       end
     end

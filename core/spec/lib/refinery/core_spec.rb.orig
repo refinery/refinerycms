@@ -34,7 +34,11 @@ describe Refinery do
     it "should add the extension's module to the array of registered extensions" do
       subject.register_extension(Refinery::Core)
 
+<<<<<<< HEAD
       expect(Refinery.extensions).to include(Refinery::Core)
+=======
+      Refinery.extensions.should include(Refinery::Core)
+>>>>>>> FETCH_HEAD
       expect(Refinery.extensions.size).to eq(1)
     end
 
