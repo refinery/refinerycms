@@ -16,5 +16,11 @@ module Refinery
       image_tag "refinery/icons/#{filename}", {:width => 16, :height => 16}.merge(options)
     end
 
+    def refinery_label_with_help(name)
+       content_tag(:span, class: :label_with_help) do
+        label_tag( name, t(".#{name}")) <<  refinery_help_tag( t(".#{name}"))
+      end
+    end
+
   end
 end

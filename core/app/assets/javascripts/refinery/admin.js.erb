@@ -33,13 +33,13 @@ $.fn.paginateTo = function(stateUrl) {
       // remove caching _ argument.
       $('.pagination_container .pagination a').each(function(i, a){
         $(this).attr('href', $(this).attr('href').replace(/\?\_\=[^&]+&/, '?'));
-      })
+      });
     },
     error: function(data) {
       window.location = popstate_location;
     }
   });
-}
+};
 
 $.fn.slideTo = function(response) {
   $(this).html(response);
@@ -48,7 +48,7 @@ $.fn.slideTo = function(response) {
   init_modal_dialogs();
   init_tooltips();
   return $(this);
-}
+};
 
 $.fn.applyMinimumHeightFromChildren = function() {
   child_heights = 0;
@@ -60,7 +60,7 @@ $.fn.applyMinimumHeightFromChildren = function() {
   });
   $(this).css('min-height', child_heights);
   return $(this);
-}
+};
 
 init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').not('#dialog_container a').each(function(i, anchor) {
@@ -128,7 +128,7 @@ refinery_dialog_success = function(e) {
       init_refinery_admin();
     }
   });
-}
+};
 
 trigger_reordering = function(e, enable) {
   $menu = $("#menu");
@@ -535,13 +535,18 @@ var page_options = {
       // set the page tabs up, but ensure that all tabs are shown so that when the visual editor loads it has a proper height.
       page_options.tabs = $('#page-tabs').tabs();
 
-      part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
+      part_shown = $('#page-tabs .page_part').not('.ui-tabs-hide');
       $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
 
       this.enable_parts = enable_parts;
       this.new_part_url = new_part_url;
       this.del_part_url = del_part_url;
-      this.show_options();
+      this.option_links = $('#page_option_links').find('span');
+
+      option_fields = $('#page_option_links').find('span.options_field');
+      option_links = option_fields.find('a.toggle_visibility');
+      option_divs = $('#page_options').find('div.PageOption');
+      this.hide_options();
 
       $(document).ready($.proxy(function(){
         // hide the tabs that are supposed to be hidden.
@@ -555,13 +560,17 @@ var page_options = {
     }
   },
 
-  show_options: function(){
-    $('#toggle_advanced_options').click(function(e){
+  hide_options: function(){
+    animate_options = {opacity: 'toggle', height: 'toggle'};
+    animate_timing = 250;
+    option_links.on('click', function(e){
       e.preventDefault();
-      $('#more_options').animate({opacity: 'toggle', height: 'toggle'}, 250);
+      href = $(this).attr('href');
+      $(href).animate(animate_options, animate_timing);
+      $(this).parent('span').toggleClass('open');
 
       $('html,body').animate({
-        scrollTop: $('#toggle_advanced_options').parent().offset().top
+        scrollTop: $('#page_option_links').parent().offset().top
       }, 250);
     });
   },
@@ -599,7 +608,7 @@ var page_options = {
               // Add a new tab for the new content section.
               $('#page_part_editors').append(data);
 
-              page_options.tabs.find("ul").append("<li><a href='#page_part_new_"+$('#new_page_part_index').val()+"'>"+part_title+"</a></li>");
+              page_options.tabs.find("ul#page_parts").append("<li><a href='#page_part_new_"+$('#new_page_part_index').val()+"'>"+part_title+"</a></li>");
               page_options.tabs.tabs("refresh");
 
               // this is here because of https://github.com/refinery/refinerycms/issues/2060

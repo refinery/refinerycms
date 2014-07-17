@@ -12,6 +12,10 @@ module Refinery
       "page_part_#{title.downcase.gsub(/\W/, '_')}"
     end
 
+    def anchor(index)
+       "page_part_new_#{index}"
+    end
+
     def body=(value)
       super
 
@@ -22,6 +26,11 @@ module Refinery
       title.present? and # protecting against the problem that occurs when have nil title
         title == other_title.to_s or
         parameterized_title == parameterize(other_title.to_s)
+    end
+
+    def edit_page_template
+      part_plugin = Refinery::Plugins.registered[plugin]
+      part_plugin.nil? ? 'page_part_field' : part_plugin.edit_page_template
     end
 
     protected
