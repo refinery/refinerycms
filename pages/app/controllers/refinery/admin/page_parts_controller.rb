@@ -4,10 +4,9 @@ module Refinery
     helper Refinery::Admin::PagesHelper
 
       def new
-          render :partial => '/refinery/admin/pages/new_page_part_field', :locals => {
-           :title => params[:title], :body => params[:body], :index => params[:part_index]
-         }
+        render text: view_context.new_page_part('dummy', params[:title], params[:body], params[:part_index])
       end
+
 
       def destroy
         part = ::Refinery::PagePart.find(params[:id])
