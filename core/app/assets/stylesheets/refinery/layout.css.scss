@@ -446,6 +446,7 @@ header {
     }
   }
 }
+
 #menu a#menu_reorder, header #menu a#menu_reorder_done {
   height: 14px;
   width: 14px;
@@ -1095,6 +1096,9 @@ ul#page_parts_controls li {
 }
 ul#page_parts_controls li a {
   border: 0px none;
+  &#reorder_page_part_done {
+    display:none
+  }
 }
 ul#page_parts_controls img {
   vertical-align: middle;

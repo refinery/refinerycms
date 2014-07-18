@@ -3,7 +3,8 @@ module Refinery
 
     attr_accessor :name, :class_name, :controller, :directory, :url,
                   :dashboard, :always_allow_access, :menu_match,
-                  :hide_from_menu, :pathname, :plugin_activity
+                  :hide_from_menu, :pathname, :plugin_activity,
+                  :edit_page_template, :options_templage
 
     def self.register(&block)
       yield(plugin = self.new)
@@ -15,6 +16,7 @@ module Refinery
       plugin.always_allow_access ||= false
       plugin.dashboard ||= false
       plugin.class_name ||= plugin.name.camelize
+      plugin.edit_page_template ||= 'refinery/admin/pages/page_part_field'
 
       # add the new plugin to the collection of registered plugins
       ::Refinery::Plugins.registered << plugin
