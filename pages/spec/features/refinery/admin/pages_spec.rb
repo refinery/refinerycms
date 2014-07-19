@@ -682,7 +682,17 @@ module Refinery
         end
       end
 
-      describe 'advanced options' do
+      describe 'Page Options' do
+        describe 'Standard option sections are available' do
+          let(:page) { Page.create title: 'Test Page' }
+          it 'Presents options for Page and SEO' do
+            visit refinery.edit_admin_page_path(page.id)
+            puts page
+            expect(page).to have_content("Page Options")
+            expect(page).to have_content("SEO Options")
+          end
+        end
+
         describe 'view and layout templates' do
           context 'when parent page has templates set' do
             before do
