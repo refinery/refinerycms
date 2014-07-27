@@ -1,10 +1,10 @@
 # Refinery CMS
 
-__An open source Ruby on Rails content management system for Rails 3.__
+__An open source Ruby on Rails content management system for Rails 3 and 4.1.__
 
 More information at [http://refinerycms.com](http://refinerycms.com)
 
-[![Build Status](https://travis-ci.org/refinery/refinerycms.png?branch=master)](https://travis-ci.org/refinery/refinerycms)  [![Code Climate](https://codeclimate.com/github/refinery/refinerycms.png)](https://codeclimate.com/github/refinery/refinerycms)  
+[![Build Status](https://travis-ci.org/refinery/refinerycms.png?branch=master)](https://travis-ci.org/refinery/refinerycms)  [![Code Climate](https://codeclimate.com/github/refinery/refinerycms.png)](https://codeclimate.com/github/refinery/refinerycms)
 
 You can chat with us using Gitter:
 
@@ -27,6 +27,10 @@ You can chat with us using Gitter:
 If you're new to Refinery, start with this guide:
 
 * __[Getting Started](http://refinerycms.com/guides/getting-started)__
+
+If you want to use Rails 4.1.x with Refinery now, install using this template:
+
+    rails new app_name -m http://refinerycms.com/t/edge
 
 ## What's it good at?
 
