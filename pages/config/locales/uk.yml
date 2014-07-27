@@ -6,9 +6,6 @@ uk:
         article: feminine
         description: Управління сторінками з вмістом
     admin:
-      dashboard:
-        recent_activity:
-          empty: Порожній
       pages_dialogs:
         page_link:
           link_to_this_page: Посилання на цю сторінку

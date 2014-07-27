@@ -5,6 +5,7 @@ require 'refinery/i18n'
 
 module Refinery
   module Core
+    require 'refinery/core/default_route'
     require 'refinery/core/engine'
     require 'refinery/core/configuration'
 

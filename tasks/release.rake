@@ -1,4 +1,4 @@
-ENGINES = %w{ authentication core dashboard images pages resources testing }
+ENGINES = %w{ authentication core images pages resources testing }
 
 require File.expand_path('../../core/lib/refinery/version', __FILE__)
 version = Refinery::Version.to_s

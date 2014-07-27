@@ -11,8 +11,6 @@ env:
   - DB=mysql EXTENSION=authentication
   - DB=postgresql EXTENSION=core
   - DB=mysql EXTENSION=core
-  - DB=postgresql EXTENSION=dashboard
-  - DB=mysql EXTENSION=dashboard
   - DB=postgresql EXTENSION=images
   - DB=mysql EXTENSION=images
   - DB=postgresql EXTENSION=pages
