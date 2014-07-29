@@ -40,7 +40,6 @@ fr:
         email_reset_sent: Un e-mail vous a été envoyé. Il contient un lien vous permettant de changer votre mot de passe.
         password_encryption: Vous devez modifier votre mot de passe car Refinery utilise de nouvelles méthodes de cryptage. Les nouveaux mots de passe seront stockés avec un niveau de sécurité plus élevé.
       reset:
-        code_invalid: "Nous sommes désolés mais ce code de changement de mot de passe à expiré ou est invalide. Si vous rencontrez des problèmes veuillez essayer de copier/coller l'URL fournie par l'e-mail dans votre navigateur ou de recommencer la précedure de changement de mot de passe."
         successful: "Le mot de passe pour '%{email}' a bien été changé."
         pick_new_password_for: "Choisissez un nouveau mot de passe pour %{email}"
         reset_password: Changer le mot de passe

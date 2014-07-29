@@ -40,7 +40,6 @@ zh-CN:
         email_reset_sent: 一封包含有重置密码链接的邮件已经发送到您的邮箱.
         password_encryption: '请重置您的密码. （为了更好的安全性，Refinery 改进了加密算法, 您需要重置密码使之生效）'
       reset:
-        code_invalid: "我们很抱歉, 但这个重置号已经过期或者不可用, 如果您遇到问题的话请试着从您的邮件中复制粘贴里面的URL到您的浏览器中以便重新进入密码修改流程."
         successful: "'%{email}' 密码重置成功"
         pick_new_password_for: "为 %{email} 获得一个新密码"
         reset_password: 重置密码

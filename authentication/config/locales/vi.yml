@@ -40,7 +40,6 @@ vi:
         email_reset_sent: Thử điện tử chứa đường dẫn để khởi tạo lại mật khẩu vừa được gửi tới bạn.
         password_encryption: Bạn cần khởi tạo lại mật khẩu vì có thay đổi trong cách chúng tôi mã khoá mật khẩu.
       reset:
-        code_invalid: "Xin lỗi, mã khởi tạo lại này đã hết hạn hoặc không đúng. Xin vui lòng thử cắt và dán URL của đường dẫn trong thư điện tử vào trình duyệt hoặc thực hiện lại quá trình khở tạo lại mật khẩu."
         successful: "Khởi tạo lại mật khẩu thành công cho '%{email}'"
         pick_new_password_for: "Chọn mật khẩu mới cho %{email}"
         reset_password: Khởi tạo lại mật khẩu

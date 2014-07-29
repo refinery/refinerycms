@@ -34,6 +34,22 @@ module Refinery
         value = conditions[authentication_keys.first]
         where(["username = :value OR email = :value", { value: value }]).first
       end
+
+      def find_or_initialize_with_error_by_reset_password_token(original_token)
+        find_or_initialize_with_error_by :reset_password_token,
+          Devise.token_generator.digest(self, :reset_password_token, original_token)
+      end
+    end
+
+    # Call devise reset function, taken from
+    # https://github.com/plataformatec/devise/blob/v3.2.4/lib/devise/models/recoverable.rb#L45-L56
+    def generate_reset_password_token!
+      raw, enc = Devise.token_generator.generate(self.class, :reset_password_token)
+      update_attributes(
+        :reset_password_token => enc,
+        :reset_password_sent_at => Time.now.utc
+      )
+      raw
     end
 
     def plugins=(plugin_names)

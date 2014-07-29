@@ -46,7 +46,6 @@ pt:
         email_reset_sent: Um email foi enviado com um link para fazer reset à password.
         password_encryption: Deve pedir um reset à sua password pois houveram alterações à forma como a plataforma encripta as passwords.
       reset:
-        code_invalid: "Pedimos desculpa, mas este código de reset expirou ou é inválido. Se está a ter problemas tente copiar e colar o URL do seu e-mail no browser ou volte a pedir uma nova password."
         successful: "Nova password para '%{email}'"
         pick_new_password_for: "Nova password para %{email}"
         reset_password: Restabelecer password

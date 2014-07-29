@@ -40,7 +40,6 @@ fi:
         email_reset_sent: "Sinulle on lähetetty sähköposti, jonka kautta voit vaihtaa salasanan."
         password_encryption: "Sinun täytyy vaihtaa salasanasi, koska Refineryn käyttämää salausmenetelmää on vaihdettu turvallisuussyistä."
       reset:
-        code_invalid: "Olemme pahoillamme, mutta tämä vaihtokoodi on joko vanhentunut, tai se on viallinen. Yritä kopioida ja liittää osoite sähköpostistasi selaimeen, tai käynnistää salasanan vaihto uudelleen."
         successful: "Salasana nollattu onnistuneesti osoitteelle '%{email}'"
         pick_new_password_for: "Kirjoita uusi salasana osoitteelle %{email}"
         reset_password: Nollaa salasana

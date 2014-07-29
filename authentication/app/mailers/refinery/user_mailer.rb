@@ -1,11 +1,11 @@
 module Refinery
   class UserMailer < ActionMailer::Base
 
-    def reset_notification(user, request)
+    def reset_notification(user, request, reset_password_token)
       @user = user
       @url = refinery.edit_refinery_user_password_url({
         :host => request.host_with_port,
-        :reset_password_token => @user.reset_password_token
+        :reset_password_token => reset_password_token
       })
 
       mail(:to => user.email,
