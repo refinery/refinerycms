@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.1.4'
 gem 'friendly_id', '~> 5.0.0'
 gem 'friendly_id-globalize', '>= 1.0.0.alpha1'
 gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'master'
