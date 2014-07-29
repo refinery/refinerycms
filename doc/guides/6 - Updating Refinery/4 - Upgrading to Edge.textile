@@ -10,14 +10,6 @@ WARNING: This tutorial is only for advanced Refinery users who are used to conti
 
 Here are the basic steps:
 
-h3. Clone Refinery
-
-First clone the git source in order to get the newest app generator.
-
-<shell>
-$ git clone git://github.com/refinery/refinerycms.git ~/refinerycms-edge
-</shell>
-
 h3. Upgrade your current application
 
 Replace the line that looks like this:
@@ -29,10 +21,10 @@ gem 'refinerycms'
 With a line that looks like this:
 
 <ruby>
-gem 'refinerycms', :path => '~/refinerycms-edge'
+gem 'refinerycms', :git => 'https://github.com/refinery/refinerycms'
 </ruby>
 
-Now use the refinerycms generator to update your application:
+Now, inside the application's directory, use the refinerycms generator to update your application:
 
 <shell>
 $ bundle exec rails generate refinery:cms --update

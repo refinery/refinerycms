@@ -17,15 +17,15 @@ You should be able to match the sections of the raw textile guide with the "live
 
 h3. Submitting the guide
 
-* Login to "http://github.com":http://github.com
-* Go to "http://github.com/refinery/refinerycms":http://github.com/refinery/refinerycms
+* Login to "https://github.com":https://github.com
+* Go to "https://github.com/refinery/refinerycms":https://github.com/refinery/refinerycms
 * If you have a fork of refinerycms already, delete it (_if you're not going to lose work. This makes it much easier for us to integrate your changes back in_)
 * Click on "fork" to make a fresh new fork on your own account.
 * Clone your new fork to your local machine
 
 Next make your changes or new guide in the 'doc/guides' folder.
 
-Now go to "http://github.com/refinery/refinerycms":http://github.com/refinery/refinerycms and click "Pull Request".
+Now go to "https://github.com/refinery/refinerycms":https://github.com/refinery/refinerycms and click "Pull Request".
 
 After we review it, we'll merge it into the master refinerycms repository, and the changes will be up on http://refinerycms.com/guides within a few seconds.
 
