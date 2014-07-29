@@ -45,7 +45,7 @@ In the case of a controller method, you can get easy access to the code with
 the +refinery:uncrudify+ rake task:
 
 <shell>
-$ rake refinery:uncrudify controller=refinery/admin/pages action=create
+$ bundle exec rake refinery:uncrudify controller=refinery/admin/pages action=create
 </shell>
 
 TIP. Running the +rake refinery:uncrudify+ task outputs to +stdout+, and will not modify any files, so you can do so without fear of overwriting your existing controller modifications.
@@ -92,7 +92,7 @@ then you should be in the clear.
 
 h4. How do I hide the page title?
 
-"Phil":http://philiparndt.name, one of the chief maintainers of Refinery CMS, says:
+"Phil":http://p.arndt.io, one of the chief maintainers of Refinery CMS, says:
 
 bq. Add a +content_for :body_content_title+ block in the template you're including from. Just make it blank and tell the +_content_page+ partial to hide empty sections by passing it +:locals => {:hide_sections => [:body_content_title]}+.
 
@@ -112,5 +112,5 @@ In Refinery 1.0.x, you have have two choices. The more severe one is to reset al
 slugs for that model:
 
 <shell>
-MODEL=news_item rake friendly_id:redo_slugs
+MODEL=news_item bundle exec rake friendly_id:redo_slugs
 </shell>

@@ -6,7 +6,7 @@ endprologue.
 
 WARNING. This guide assumes that you will be upgrading from version 2.0.10 of Refinery CMS. If your application is not up-to-date we strongly recommend that you upgrade it to version 2.0.10 before trying to upgrade to version 2.1.0.
 
-WARNING. Before continuing make sure you have a backup copy of your application and database in case something goes wrong.
+WARNING. Before continuing, make sure you have a backup copy of your application and database in case something goes wrong.
 
 h3. Updating gems
 
@@ -36,9 +36,11 @@ This command will do a couple of things:
 * Update +app/views/sitemap/index.xml.builder+ template.
 * Wrap  +config.action_mailer+ config entry in a conditional +if config.respond_to?(:action_mailer)+ clause for each environment file located in +app/config/environments+.
 * Copy new migrations.
-* Run +rake db:migrate+ and +rake db:seed+ commands.
+* Run +bundle exec rake db:migrate+ and +bundle exec rake db:seed+ commands.
 
-NOTE: If you don't want the generator to run +rake db:migrate+ and +rake db:seed+ commands pass the +--skip_db+ option when invoking refinery:cms generator:
+NOTE: Please check that the command has put refinery/formatting and refinery/theme into your CSS manifest file, as per the following "issue on GitHub":https://github.com/refinery/refinerycms/issues/2577
+
+NOTE: If you don't want the generator to run +bundle exec rake db:migrate+ and +bundle exec rake db:seed+ commands pass the +--skip_db+ option when invoking refinery:cms generator:
 
 <shell>
 rails generate refinery:cms --skip_db
@@ -60,6 +62,6 @@ What this will do is check if the +seo_meta+ table has an index named +index_seo
 * Remove the +meta_keywords+ column.
 * Add back the original index but with a shorter name.
 
-Now run +rake db:migrate+.
+Now run +bundle exec rake db:migrate+.
 
 h3. Profit!
