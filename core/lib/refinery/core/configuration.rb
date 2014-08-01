@@ -8,7 +8,8 @@ module Refinery
                     :s3_bucket_name, :s3_region, :s3_access_key_id,
                     :s3_secret_access_key, :force_ssl, :backend_route,
                     :dragonfly_custom_backend_class, :dragonfly_custom_backend_opts,
-                    :visual_editor_javascripts, :visual_editor_stylesheets
+                    :visual_editor_javascripts, :visual_editor_stylesheets, 
+                    :noreply_localpart
 
     self.rescue_not_found = false
     self.s3_backend = false
@@ -29,6 +30,7 @@ module Refinery
     self.dragonfly_custom_backend_opts = {}
     self.visual_editor_javascripts = []
     self.visual_editor_stylesheets = []
+    self.noreply_localpart = "no-reply"
 
     def config.register_javascript(name)
       self.javascripts << name
@@ -70,6 +72,10 @@ module Refinery
 
       def site_name
         ::I18n.t('site_name', :scope => 'refinery.core.config', :default => config.site_name)
+      end
+      
+      def noreply_localpart
+        ::I18n.t('noreply_localpart', :scope => 'refinery.core.config', :default => config.noreply_localpart)
       end
 
       def wymeditor_whitelist_tags=(tags)

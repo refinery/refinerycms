@@ -32,6 +32,37 @@ module Refinery
           end
         end
       end
+      
+      describe '.noreply_localpart' do
+        # reset any previously defined noreply localpart
+        before do
+          Refinery::Core.noreply_localpart = nil
+        end
+        
+        context 'when set in configuration' do
+          it 'returns name set by Refinery::Core.config' do
+            Refinery::Core.stub(:noreply_localpart).and_return('support')
+            Refinery::Core.noreply_localpart.should eq('support')
+          end
+        end
+
+        context 'when set in locale file' do
+          before do
+            ::I18n.backend.store_translations :en, :refinery => {
+              :core => {
+                :config => {
+                  :noreply_localpart => 'supporto'
+                }
+              }
+            }
+          end
+
+          it 'returns name set in locale' do
+            Refinery::Core.noreply_localpart.should eq('supporto')
+          end
+        end
+      end
+      
 
       describe 'custom storage backend' do
         it 'class should be nil by default' do
