@@ -6,7 +6,7 @@ module Refinery
         @<%= singular_name %> = <%= singular_name %>
         mail :subject  => Refinery::<%= namespacing %>::Setting.confirmation_subject,
              :to       => <%= singular_name %>.email,
-             :from     => "\"#{Refinery::Core.site_name}\" <no-reply@#{request.domain}>",
+             :from     => "\"#{Refinery::Core.site_name}\" <#{Refinery::Authentication.email_from_name}@#{request.domain}>",
              :reply_to => Refinery::<%= namespacing %>::Setting.notification_recipients.split(',').first
       end
 
@@ -14,7 +14,7 @@ module Refinery
         @<%= singular_name %> = <%= singular_name %>
         mail :subject  => Refinery::<%= namespacing %>::Setting.notification_subject,
              :to       => Refinery::<%= namespacing %>::Setting.notification_recipients,
-             :from     => "\"#{Refinery::Core.site_name}\" <no-reply@#{request.domain}>"
+             :from     => "\"#{Refinery::Core.site_name}\" <#{Refinery::Authentication.email_from_name}@#{request.domain}>"
       end
 
     end
