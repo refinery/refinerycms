@@ -50,7 +50,7 @@ h4. Contributing a fix
 Make your changes to fix a bug. Next regenerate the dummy app and run the Refinery tests
 
 <shell>
-$ rm -rf spec/dummy
+$ bundle exec rake refinery:testing:clean_dummy_app
 $ bundle exec rake refinery:testing:dummy_app
 $ bundle exec rspec ./*/spec
 </shell>
