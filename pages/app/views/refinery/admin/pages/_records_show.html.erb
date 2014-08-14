@@ -1,0 +1,10 @@
+<%= link_to "Manage Pages", admin_pages_url %>
+<% if @pages.any? %>
+  <ul>
+    <%= render :partial => 'page_show', :collection => @pages.roots  %>
+  </ul>
+<% else %>
+  <p>
+    <strong><%=t('.no_pages_yet')%></strong>
+  </p>
+<% end %>

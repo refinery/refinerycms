@@ -10,6 +10,7 @@ module Refinery
 
       before_filter :load_valid_templates, :only => [:edit, :new, :create, :update]
       before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy]
+      before_filter :find_all_pages, :only => [:index, :edit]
 
       def new
         @page = Page.new(new_page_params)
