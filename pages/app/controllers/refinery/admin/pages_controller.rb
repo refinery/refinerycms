@@ -111,7 +111,7 @@ module Refinery
       end
 
       def new_page_params
-        params.permit(:parent_id)
+        params.permit(:parent_id, :view_template, :layout_template)
       end
     end
   end
