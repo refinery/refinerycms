@@ -39,7 +39,7 @@ module Refinery
 
     it "exits when '--extension' option is used but there is no extension by provided name" do
       lambda {
-        STDERR.should_receive(:puts).with("\nYou can't use '--extension nonexistent' option because extension with name nonexistent doesn't exist.\n\n")
+        STDERR.should_receive(:puts).with("\nYou can't use '--extension nonexistent' option because an extension with the name nonexistent doesn't exist.\n\n")
         run_generator %w{ car title:string --extension nonexistent }
       }.should raise_error
     end
