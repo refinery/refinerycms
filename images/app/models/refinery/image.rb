@@ -6,7 +6,6 @@ module Refinery
 
     include Images::Validators
 
-
     validates :image, :presence  => true
     validates_with ImageSizeValidator
     validates_with ImageUpdateValidator, :on => :update
@@ -50,8 +49,13 @@ module Refinery
 
     # Returns a titleized version of the filename
     # my_file.jpg returns My File
+
     def title
-      CGI::unescape(image_name.to_s).gsub(/\.\w+$/, '').titleize
+      image_title.presence || CGI::unescape(image_name.to_s).gsub(/\.\w+$/, '').titleize
+    end
+
+    def alt
+      image_alt.presence || title
     end
 
     private
