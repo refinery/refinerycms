@@ -79,13 +79,8 @@ module Refinery
     end
 
     context "new/create - insert mode" do
-<<<<<<< HEAD
-      it "uploads image", js: true do
-        visit refinery.insert_admin_images_path(modal: true, wymedtior: true)
-=======
       it "uploads image", :js => true do
         visit refinery.insert_admin_images_path(:modal => true)
->>>>>>> master
 
         attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/image-with-dashes.jpg")
         click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
@@ -94,13 +89,8 @@ module Refinery
         expect(Refinery::Image.count).to eq(1)
       end
 
-<<<<<<< HEAD
-      it "gets error message when uploading non-image", js: true do
-        visit refinery.insert_admin_images_path(modal: true, wymedtior: true)
-=======
       it "gets error message when uploading non-image", :js => true do
         visit refinery.insert_admin_images_path(:modal => true)
->>>>>>> master
 
         attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")
         click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
@@ -112,11 +102,7 @@ module Refinery
 
       it "gets error message when uploading non-image (when an image already exists)", js: true do
         FactoryGirl.create(:image)
-<<<<<<< HEAD
-        visit refinery.insert_admin_images_path(modal: true, wymedtior: true)
-=======
         visit refinery.insert_admin_images_path(:modal => true)
->>>>>>> master
 
         choose 'Upload'
         attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")
