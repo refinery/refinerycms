@@ -1454,36 +1454,6 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 #other_locales li:first-child {
   margin-top: 0px;
 }
-/* Plugin page options */
-section#page_option_links {
-  @include form-actions;
-  span.options_field {
-    background: image_url('refinery/icons/arrow_down.png') no-repeat right;
-    &.open {background: image_url('refinery/icons/arrow_up.png') no-repeat right;}
-    float:left;
-    margin: 10px;
-    margin-right:30px;
-    padding-right:18px;
-    a.toggle_visibility {
-      padding:2px;
-      padding-left: 18px;
-      height:18px;
-      border-bottom: none;
-      background: image_url('refinery/icons/page_white_gear.png') left top no-repeat;
-      &:hover {border-bottom:1px dotted #727272;}
-    }
-  }
-  #draft_field {
-    position: relative;
-    float:right;
-    right: 0;
-    margin-top:10px;
-    padding-right:5px
-  }
-}
-section#page_options div.PageOption {
-  display:none;
-}
 
 
 /* Locale picker */
