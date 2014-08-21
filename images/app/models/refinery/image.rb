@@ -51,11 +51,11 @@ module Refinery
     # my_file.jpg returns My File
 
     def title
-      image_title.presence ? image_title : CGI::unescape(image_name.to_s).gsub(/\.\w+$/, '').titleize
+      image_title.presence || CGI::unescape(image_name.to_s).gsub(/\.\w+$/, '').titleize
     end
 
     def alt
-      image_alt.presence ?  image_alt : title
+      image_alt.presence || title
     end
 
     private
