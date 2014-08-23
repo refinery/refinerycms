@@ -168,7 +168,7 @@ gem install taps
 Now copy the data to your Heroku app.
 
 <shell>
-heroku db:push
+heroku pg:push
 </shell>
 
 If that command gives you the error "no such file to load -- taps/operation",
