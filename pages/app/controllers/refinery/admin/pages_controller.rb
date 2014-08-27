@@ -4,30 +4,30 @@ module Refinery
       include Pages::InstanceMethods
 
       crudify :'refinery/page',
-              :order => "lft ASC",
-              :include => [:translations, :children],
-              :paging => false
+              order: "lft ASC",
+              include: [:translations, :children],
+              paging: false
 
-      before_filter :load_valid_templates, :only => [:edit, :new, :create, :update]
-      before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy]
+      before_filter :load_valid_templates, only: [:edit, :new, :create, :update]
+      before_filter :restrict_access, only: [:create, :update, :update_positions, :destroy]
 
       def new
         @page = Page.new(new_page_params)
         Pages.default_parts_for(@page).each_with_index do |page_part, index|
-          @page.parts << PagePart.new(:title => page_part, :position => index)
+          @page.parts << PagePart.new(title: page_part, position: index)
         end
       end
 
       def children
         @page = find_page
-        render :layout => false
+        render layout: false
       end
 
       def update
         if @page.update_attributes(page_params)
           flash.notice = t(
             'refinery.crudify.updated',
-            :what => "'#{@page.title}'"
+            what: "'#{@page.title}'"
           )
 
           unless from_dialog?
@@ -37,9 +37,9 @@ module Refinery
               unless request.xhr?
                 redirect_to :back
               else
-                render :partial => 'save_and_continue_callback', :locals => {
-                  :new_refinery_page_path => refinery.admin_page_path(@page.nested_url),
-                  :new_page_path => refinery.pages_admin_preview_page_path(@page.nested_url)
+                render partial: 'save_and_continue_callback', locals: {
+                  new_refinery_page_path: refinery.admin_page_path(@page.nested_url),
+                  new_page_path: refinery.pages_admin_preview_page_path(@page.nested_url)
                 }
               end
             end
@@ -50,11 +50,11 @@ module Refinery
           end
         else
           unless request.xhr?
-            render :action => 'edit'
+            render action: 'edit'
           else
-            render :partial => '/refinery/admin/error_messages', :locals => {
-              :object => @page,
-              :include_object_name => true
+            render partial: '/refinery/admin/error_messages', locals: {
+              object: @page,
+              include_object_name: true
             }
           end
         end
@@ -64,7 +64,7 @@ module Refinery
 
       def after_update_positions
         find_all_pages
-        render :partial => '/refinery/admin/pages/sortable_list' and return
+        render partial: '/refinery/admin/pages/sortable_list' and return
       end
 
       def find_page
@@ -95,7 +95,7 @@ module Refinery
       def restrict_access
         if current_refinery_user.has_role?(:translator) && !current_refinery_user.has_role?(:superuser) &&
              (params[:switch_locale].blank? || params[:switch_locale] == Refinery::I18n.default_frontend_locale.to_s)
-          flash[:error] = t('translator_access', :scope => 'refinery.admin.pages')
+          flash[:error] = t('translator_access', scope: 'refinery.admin.pages')
           redirect_to refinery.admin_pages_path
         end
 
@@ -103,11 +103,13 @@ module Refinery
       end
 
       def page_params
-        params.require(:page).permit(
-          :browser_title, :draft, :link_url, :menu_title, :meta_description,
+        page_params = [:browser_title, :draft, :link_url, :menu_title, :meta_description,
           :parent_id, :skip_to_first_child, :show_in_menu, :title, :view_template,
-          :layout_template, :custom_slug, parts_attributes: [:id, :title, :body, :position]
-        )
+          :layout_template, :custom_slug, parts_attributes: [:id, :title, :body, :position]]
+        Refinery::Plugins.registered.each do |plugin|
+          page_params << plugin.page_params unless plugin.page_params.blank?
+        end
+        params.require(:page).permit(page_params)
       end
 
       def new_page_params

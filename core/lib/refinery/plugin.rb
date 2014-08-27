@@ -3,7 +3,7 @@ module Refinery
 
     attr_accessor :name, :class_name, :controller, :directory, :url,
                   :dashboard, :always_allow_access, :menu_match,
-                  :hide_from_menu, :pathname, :plugin_activity
+                  :hide_from_menu, :pathname, :plugin_activity, :page_params
 
     def self.register(&block)
       yield(plugin = self.new)
