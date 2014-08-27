@@ -107,7 +107,7 @@ module Refinery
           :parent_id, :skip_to_first_child, :show_in_menu, :title, :view_template,
           :layout_template, :custom_slug, parts_attributes: [:id, :title, :body, :position]]
         Refinery::Plugins.registered.each do |plugin|
-          page_params << plugin.page_params unless plugin.page_params.blank?
+          page_params << plugin.page_params if plugin.page_params.present?
         end
         params.require(:page).permit(page_params)
       end
