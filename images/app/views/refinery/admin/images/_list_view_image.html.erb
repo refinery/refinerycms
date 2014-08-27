@@ -3,8 +3,9 @@
     <%= list_view_image.title %>
   </span>
   <span class='alt'>
-    <%= refinery_icon_tag('information', title:  "Alt text: #{list_view_image.alt}") %>
+    <%= link_to refinery_icon_tag('information'), '#', title:  "Title: #{list_view_image.title} Alt text: #{list_view_image.alt}" %>
   </span>
+
   <span class="preview">&nbsp;</span>
   <span class="actions">
     <%= link_to refinery_icon_tag('eye'), list_view_image.url,
@@ -23,3 +24,4 @@
                 method: :delete %>
   </span>
 </li>
+

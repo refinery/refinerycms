@@ -1,10 +1,8 @@
 def upload_an_image(host_element, image, title='', alt='')
-  host_element do
-    attach_file "image_image", Refinery.roots('refinery/images').join('spec/fixtures').join(image)
-    fill_in  'image_image_title', with: title
-    fill_in  'image_image_alt', with: alt
-    click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
-  end
+  attach_file "image_image", Refinery.roots('refinery/images').join('spec/fixtures').join(image)
+  fill_in  'image_image_title', with: title
+  fill_in  'image_image_alt', with: alt
+  click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
 end
 
 def image_upload_dialog()
@@ -119,181 +117,12 @@ shared_examples_for 'an image deleter' do |initial_path|
 
 end
 
-shared_examples 'an image_uploader' do
-  context 'always' do
-    it "shows add new image link" do
-    end
-  end
-  it 'shows the image upload dialog', js: true do
-  end
+shared_examples 'an image uploader' do
+end
 
-  describe "It uploads an image" do
-    upload_an_image(host_element, 'image-with-dashes.jpg')
-    it "creates an image", js: true do
-    end
-    it "sets default title and alt attributes", js: true do
-    end
+shared_examples 'an image editor' do
+end
 
-    it 'uses supplied title and alt fields', js: true do
-      upload_an_image('image-with-dashes.jpg', 'Image Title', 'Image Alt')
-    end
+shared_examples 'an image previewer' do
+end
 
-    it 'reports success' do
-    end
-  end
-
-  describe 'uploads multiple images', js: true do
-    it 'will upload more than one image' do
-    end
-
-    it 'gives each image a different name' do
-    end
-  end
-
-  describe "it will not upload a file that is not a defined image type", js: true do
-    context 'no existing images' do
-      upload_an_image('cape-town-tide-table.pdf')
-
-      it 'does not create an image' do
-      end
-
-      it 'reports failure' do
-      end
-
-
-      context 'existing images', js: true do
-
-        FactoryGirl.create(:image)
-        visit refinery.insert_admin_images_path(modal: true)
-
-        choose 'Upload'
-        upload_an_image('cape-town-tide-table.pdf')
-        it 'does not create an image' do
-          expect(Refinery::Image.count).to eq(1)
-        end
-        it 'reports failure' do
-          host_element do
-            expect(dialog_element).to have_content(::I18n.t('incorrect_format', scope: 'activerecord.errors.models.refinery/image'))
-          end
-        end
-      end
-    end
-  end
-
-  shared_examples 'an image editor' do
-
-  end
-
-  shared_examples 'an image previewer' do
-
-  end
-
-      context "when images exist" do
-
-        describe "it can delete images" do
-          it "removes image" do
-            visit refinery.admin_images_path
-            expect(page).to have_selector("a[href='#{refinery.admin_image_path(image)}']")
-
-            click_link ::I18n.t('delete', scope: 'refinery.admin.images')
-
-            expect(page).to have_content(::I18n.t('destroyed', scope: 'refinery.crudify', what: "'Beach'"))
-            expect(Refinery::Image.count).to eq(0)
-          end
-        end
-
-        describe "download" do
-          it "succeeds" do
-            visit refinery.admin_images_path
-            expect { click_link "View this image" }.not_to raise_error
-          end
-        end
-
-        it_behaves_like 'an image_uploader' do
-          host_element = page.within_frame('dialog_iframe')
-          clickon = refinery.new_admin_images_path
-        end
-      end
-    end
-
-  describe "Upload an image from page editor", type: feature do
-
-    it_behaves_like 'an image uploader' do
-    end
-  end
-
-  describe "Edit or update an image" do
-
-    context "edit/update" do
-      it "updates image with a file of the same name" do
-        visit refinery.admin_images_path
-        expect(page).to have_selector("a[href='#{refinery.edit_admin_image_path(image)}']")
-
-        click_link ::I18n.t('edit', scope: 'refinery.admin.images')
-
-        expect(page).to have_content("Use current image or replace it with this one...")
-        expect(page).to have_selector("a[href*='#{refinery.admin_images_path}']")
-
-        attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
-        click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
-
-        expect(page).to have_content(::I18n.t('updated', scope: 'refinery.crudify', what: "'Beach'"))
-        expect(Refinery::Image.count).to eq(1)
-
-        expect { click_link "View this image" }.not_to raise_error
-      end
-
-      it "won't update if image has different file name" do
-        visit refinery.edit_admin_image_path(image)
-
-        attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/fathead.png")
-        click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
-
-        expect(page).to have_content(::I18n.t("different_file_name",
-                                          scope: "activerecord.errors.models.refinery/image"))
-      end
-    end
-
-    context "page" do
-      # Regression test for #2552 (https://github.com/refinery/refinerycms/issues/2552)
-      let :page_for_image do
-        page = Refinery::Page.create title: "Add Image to me"
-        # we need page parts so that there's a visual editor
-        Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
-          page.parts.create(title: default_page_part, body: nil, position: index)
-        end
-        page
-      end
-      it "can add an image to a page and update the image", js: true do
-        visit refinery.edit_admin_page_path(page_for_image)
-
-        # add image to the page
-        expect(page.body).to match(/Add Image/)
-        click_link 'Add Image'
-        expect(page).to have_selector 'iframe#dialog_frame'
-        page.within_frame('dialog_frame') do
-          find(:css, "#existing_image_area img#image_#{image.id}").click
-          find(:css, '#existing_image_size_area #image_dialog_size_0').click
-          click_button ::I18n.t('button_text', scope: 'refinery.admin.images.existing_image')
-        end
-        click_button "Save"
-
-        # check that image loads after it has been updated
-        visit refinery.url_for(page_for_image.url)
-        visit find(:css, 'img[src^="/system/images"]')[:src]
-        expect(page).to have_css('img[src*="/system/images"]')
-        expect { page }.to_not have_content('Not found')
-
-        # update the image
-        visit refinery.edit_admin_image_path(image)
-        attach_file "image_image", Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
-        click_button "Save"
-
-        # check that image loads after it has been updated
-        visit refinery.url_for(page_for_image.url)
-        visit find(:css, 'img[src^="/system/images"]')[:src]
-        expect(page).to have_css('img[src*="/system/images"]')
-        expect { page }.to_not have_content('Not found')
-      end
-    end
-  end

@@ -36,7 +36,6 @@ module Refinery
       it_behaves_like 'an image deleter' do
         before {visit refinery.admin_images_path}
       end
-
     end
 
   end  # Admin Images Tab
