@@ -1,5 +1,5 @@
 <div class='clearfix'>
-  <section id='records' class='clearfix<%= ' one_list' if @recent_activity.empty? or @recent_inquiries.empty? %>'>
+  <section id='records' class='clearfix<%= ' one_list' if @recent_inquiries.empty? %>'>
     <%= render 'records' %>
   </section>
   <aside id='actions'>
