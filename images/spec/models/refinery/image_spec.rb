@@ -70,7 +70,7 @@ module Refinery
       end
 
       it "contains its filename at the end" do
-        expect(created_image.url.split('/').last).to eq(created_image.image_name)
+        expect(created_image.url.split('/').last).to match(/\A#{created_image.image_name}/)
       end
 
       it "becomes different when supplying geometry" do
