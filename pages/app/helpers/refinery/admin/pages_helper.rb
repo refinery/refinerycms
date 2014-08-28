@@ -76,7 +76,7 @@ module Refinery
              |tab, index| {
                title: tab.name.titleize,
                template: tab.partial,
-               anchor:  "#custom_tab_#{index}",
+               anchor:  "custom_tab_#{index}",
                content: '' }
         end
 
