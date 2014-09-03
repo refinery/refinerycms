@@ -19,7 +19,7 @@ Alright, it's time to dive deep into the code.
 
 h3. Adding a +show_in_footer+ column to the +refinery_pages+ database table
 
-The requirement was to persist the data to the database, so we will start by creating a migration that a will add +show_in_footer+ column to the +refinery_pages+ database table. Open up terminal and type:
+The requirement was to persist the data to the database, so we will start by creating a migration that will add a +show_in_footer+ column to the +refinery_pages+ database table. Open up terminal and type:
 
 <shell>
 rails generate migration add_show_in_footer_to_refinery_pages
