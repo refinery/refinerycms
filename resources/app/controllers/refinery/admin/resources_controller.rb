@@ -18,7 +18,14 @@ module Refinery
         @resources = Resource.create_resources(params[:resource])
         @resource = @resources.detect { |r| !r.valid? }
 
-        unless params[:insert]
+        if params[:insert]
+          if @resources.all?(&:valid?)
+            @resource_id = @resources.detect(&:persisted?).id
+            @resource = nil
+
+            self.insert
+          end
+        else
           if @resources.all?(&:valid?)
             flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.map(&:title).join("', '")}'")
             if from_dialog?
@@ -30,13 +37,6 @@ module Refinery
           else
             self.new # important for dialogs
             render :action => 'new'
-          end
-        else
-          if @resources.all?(&:valid?)
-            @resource_id = @resources.detect(&:persisted?).id
-            @resource = nil
-
-            self.insert
           end
         end
       end

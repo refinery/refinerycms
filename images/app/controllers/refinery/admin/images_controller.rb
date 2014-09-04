@@ -53,7 +53,15 @@ module Refinery
           @image = ::Refinery::Image.new
         end
 
-        unless params[:insert]
+        if params[:insert]
+          # if all uploaded images are ok redirect page back to dialog, else show current page with error
+          if @images.all?(&:valid?)
+            @image_id = @image.id if @image.persisted?
+            @image = nil
+          end
+
+          self.insert
+        else
           if @images.all?(&:valid?)
             flash.notice = t('created', scope: 'refinery.crudify', what: "'#{@images.map(&:image_title).join("', '")}'")
             if from_dialog?
@@ -66,14 +74,6 @@ module Refinery
             self.new # important for dialogs
             render action: 'new'
           end
-        else
-          # if all uploaded images are ok redirect page back to dialog, else show current page with error
-          if @images.all?(&:valid?)
-            @image_id = @image.id if @image.persisted?
-            @image = nil
-          end
-
-          self.insert
         end
       end
 
@@ -86,30 +86,30 @@ module Refinery
             what: "'#{@image.title}'"
           )
 
-          unless from_dialog?
-            unless params[:continue_editing] =~ /true|on|1/
-              redirect_back_or_default refinery.admin_images_path
-            else
-              unless request.xhr?
-                redirect_to :back
-              else
-                render partial: '/refinery/message'
-              end
-            end
-          else
+          if from_dialog?
             self.index
             @dialog_successful = true
             render :index
+          else
+            if params[:continue_editing] =~ /true|on|1/
+              if request.xhr?
+                render partial: '/refinery/message'
+              else
+                redirect_to :back
+              end
+            else
+              redirect_back_or_default refinery.admin_images_path
+            end
           end
         else
           @thumbnail = Image.find params[:id]
-          unless request.xhr?
-            render action: 'edit'
-          else
+          if request.xhr?
             render partial: '/refinery/admin/error_messages', locals: {
                      object: @image,
                      include_object_name: true
                    }
+          else
+            render action: 'edit'
           end
         end
       end

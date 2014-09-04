@@ -20,10 +20,10 @@ module Refinery
       # How many images per page should be displayed?
       def per_page(dialog = false, has_size_options = false)
         if dialog
-          unless has_size_options
-            Images.pages_per_dialog
-          else
+          if has_size_options
             Images.pages_per_dialog_that_have_size_options
+          else
+            Images.pages_per_dialog
           end
         else
           Images.pages_per_admin_index
