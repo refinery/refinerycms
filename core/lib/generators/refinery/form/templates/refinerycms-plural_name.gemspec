@@ -12,5 +12,5 @@ Gem::Specification.new do |s|
 
   # Runtime dependencies
   s.add_dependency    'refinerycms-core',     '~> <%= Refinery::Version %>'
-  s.add_dependency    'refinerycms-settings', '~> <%= Refinery::Version %>'
+  s.add_dependency    'refinerycms-settings', '~> <%= [Refinery::Version.major, Refinery::Version.minor, 0].join(".") %>'
 end
