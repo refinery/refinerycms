@@ -9,6 +9,12 @@
 * Removed the latest activity feed from the Dashboard. [Philip Arndt](https://github.com/parndt) [2634](https://github.com/refinery/refinerycms/pull/2633)
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
+## 2.1.3 [5 September 2014]
+
+* Fixed an issue where the seeds in a generated form extension weren't idempotent. [Philip Arndt](https://github.com/parndt) [#2674](https://github.com/refinery/refinerycms/pull/2674)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/2.1.2...2.1.3)
+
 ## 2.1.2 [14 March 2014]
 
 * Fixed bug where `load_valid_templates` wasn't called for create action and caused an exception when creating a new page and saving it with a blank title. [Uģis Ozols](https://github.com/ugisozols). [#2517](https://github.com/refinery/refinerycms/pull/2517)
