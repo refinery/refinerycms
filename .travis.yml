@@ -28,5 +28,4 @@ rvm:
   - 2.0.0
   - 1.9.3
   - rbx
-  - jruby-19mode
 sudo: false
