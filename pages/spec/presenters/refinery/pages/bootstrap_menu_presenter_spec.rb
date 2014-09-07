@@ -10,9 +10,9 @@ module Refinery
       end
 
       describe "config" do
-        expect(bootstrap_menu_presenter.css).to eq('col-xs-12 nav navbar-nav')
-        expect(bootstrap_menu_presenter.menu_tag).to eq(:div)
-        expect(bootstrap_menu_presenter.list_tag_css).to eq('nav')
+        expect(bootstrap_menu_presenter.css).to eq('col-xs-12')
+        expect(bootstrap_menu_presenter.menu_tag).to eq(:nav)
+        expect(bootstrap_menu_presenter.list_tag_css).to eq('nav nav-tabs')
         expect(bootstrap_menu_presenter.selected_css).to eq('active')
         expect(bootstrap_menu_presenter.max_depth).to eq(0)
       end
