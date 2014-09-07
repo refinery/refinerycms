@@ -2,7 +2,7 @@
 ##############################################################################
 ## Author: Robert Miesen
 ## Date Created: 09/06/2014
-## Time-stamp:  <09/06/2014 21:49:24 rmiesen>
+## Time-stamp:  <09/06/2014 23:42:13 rmiesen>
 ##############################################################################
 
 require 'active_support/core_ext/string'
@@ -15,9 +15,9 @@ require_relative 'menu_presenter.rb'
 module Refinery
   module Pages
     class BootstrapMenuPresenter < MenuPresenter
-      self.css = 'col-xs-12 nav navbar-nav'
-      self.menu_tag = :div
-      self.list_tag_css = 'nav'
+      self.css = 'col-xs-12'
+      self.menu_tag = :nav
+      self.list_tag_css = 'nav nav-tabs'
       self.selected_css = 'active'
       self.max_depth = 0
       
