@@ -40,7 +40,6 @@ de:
         email_reset_sent: 'Es wurde Ihnen eine E-Mail mit einem Link geschickt, durch den Sie ihr Passwort zurücksetzen können.'
         password_encryption: 'Sie müssen ihr Passwort zurücksetzen, da es Änderungen in der Art der Passwortverschlüsselung gab, die Refinery nutzt, so dass Passwörter sogar noch stärker verschlüsselt werden als vorher.'
       reset:
-        code_invalid: 'Tut mir leid, aber dieser Zurücksetzungscode ist abgelaufen oder ungültig. Wenn Sie Probleme haben, versuchen Sie, den Link aus der E-Mail zu kopieren und in Ihren Browser einzufügen, oder wiederholen Sie den Vorgang mit dem Passwort zurücksetzen.'
         successful: "Passwort für '%{email}' erfolgreich zurückgesetzt"
         pick_new_password_for: 'Wählen Sie ein neues Passwort für %{email}'
         reset_password: Passwort zurücksetzen

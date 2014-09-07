@@ -40,7 +40,6 @@ it:
         email_reset_sent: Ti è stata inviata una e-mail con il link per reimpostare la password.
         password_encryption: "È necessario reimpostare la password, poiché ci sono stati cambiamenti nei metodi di crittografia della password, in modo da rendere più sicuro l'accesso."
       reset:
-        code_invalid: "Spiacenti, ma il codice per la reimpostazione della password è scaduto o non è valido. Se si hanno problemi provare a copiare e incollare l'URL dalla vostra e-mail al vostro browser, o a ripetere la procedura di reimpostazione password."
         successful: "Il ripristino della password è avvenuto con successo per %{email}"
         pick_new_password_for: "Scegli una nuova password per %{email}"
         reset_password: Reimposta la password

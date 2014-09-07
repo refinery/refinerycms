@@ -46,7 +46,6 @@ tr:
         email_reset_sent: Sifrenizi sifirlamak icin e-posta gonderilmistir.
         password_encryption: Sifreni sifirlamak zorundasin cunku Refinery nin sifreleme metodundaki  degisikliklerden daha guclu bir sifreleme metodu kayitlandi.
       reset:
-        code_invalid: "Uzgunum, sifre sifirlama zaman asimina ugradi yada hatali. Eger tarayiciniza kopyalama ya da yapistir calismiyorsa sayfayi yenileyin"
         successful: "Parola sifirlama basariyle yapildi. %{email}'"
         pick_new_password_for: " %{email} icin yeni bir parola belirleyin"
         reset_password: Parolayi sifirla

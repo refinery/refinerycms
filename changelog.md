@@ -3,11 +3,17 @@
 * Deprecated ':format' syntax in Resources dragonfly_url_format. [#2500](https://github.com/refinery/refinerycms/pull/2500) [Josef Šimánek](https://github.com/simi)
 * Removed Images trust_file_extensions config. [#2500](https://github.com/refinery/refinerycms/pull/2500) [Josef Šimánek](https://github.com/simi)
 * Migrated to Dragonfly ~> 1.0.0. [#2500](https://github.com/refinery/refinerycms/pull/2500) [Josef Šimánek](https://github.com/simi)
-* Removed Page#custom_slug. [#2375](https://github.com/refinery/refinerycms/pull/2375) [Philip Arndt](https://github.com/parndt)
 * Removed Pages#cache_pages_backend. [#2375](https://github.com/refinery/refinerycms/pull/2375) [Philip Arndt](https://github.com/parndt)
 * Updated how `_make_sortable` works to take an options hash, requiring manual file changes. [Philip Arndt](https://github.com/parndt)
 * Removed `attr_accessible` in favour of strong parameters. [Philip Arndt](https://github.com/parndt) [#2518](https://github.com/refinery/refinerycms/pull/2518)
+* Removed the latest activity feed from the Dashboard. [Philip Arndt](https://github.com/parndt) [2634](https://github.com/refinery/refinerycms/pull/2633)
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
+
+## 2.1.3 [5 September 2014]
+
+* Fixed an issue where the seeds in a generated form extension weren't idempotent. [Philip Arndt](https://github.com/parndt) [#2674](https://github.com/refinery/refinerycms/pull/2674)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/2.1.2...2.1.3)
 
 ## 2.1.2 [14 March 2014]
 

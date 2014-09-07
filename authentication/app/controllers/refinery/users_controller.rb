@@ -16,7 +16,7 @@ module Refinery
       @user = User.new(user_params)
 
       if @user.create_first
-        flash[:message] = t('welcome', :scope => 'refinery.users.create', :who => @user.to_s).html_safe
+        flash[:message] = t('welcome', scope: 'refinery.users.create', who: @user)
 
         sign_in(@user)
         redirect_back_or_default(refinery.admin_root_path)

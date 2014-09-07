@@ -40,7 +40,6 @@ lv:
         email_reset_sent: "Uz jūsu epastu tika izsūtīta vēstule, kura satur saiti, lai atjaunotu paroli."
         password_encryption: 'Jums ir jāatjauno parole, jo tika veiktas izmaiņas Refinery paroļu kriptēšanas sistēmā.'
       reset:
-        code_invalid: 'Atvainojiet, šim paroles atjaunošanas kodam ir beidzies izmantošanas termiņš vai arī tas nav derīgs. Ja Jums ir radušās problēmas, tad pamēģiniet nokopēt saņemto saiti no epasta un iekopēt to pārluka adrešu laukā vai arī mēģiniet sākt atjuanošanas procesu no sākuma.'
         successful: "Paroles atjaunošana noritēja sekmīgi priekš '%{email}'"
         pick_new_password_for: 'Izveidojiet jaunu paroli priekš %{email}'
         reset_password: Atjaunot paroli

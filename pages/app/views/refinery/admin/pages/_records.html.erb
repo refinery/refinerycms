@@ -3,10 +3,10 @@
   <%= render 'sortable_list' %>
 <% else %>
   <p>
-    <% unless searching? %>
-      <strong><%=t('.no_pages_yet')%></strong>
-    <% else %>
+    <% if searching? %>
       <%= t('no_results', :scope => 'refinery.admin.search') %>
+    <% else %>
+      <strong><%=t('.no_pages_yet')%></strong>
     <% end %>
   </p>
 <% end %>

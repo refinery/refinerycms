@@ -15,6 +15,10 @@ de:
           replace_image: " mit diesem ersetzen..."
           current_image: Aktuelles Bild
           maximum_image_size: Die maximale Größe eines Bildes beträgt %{bytes}.
+          image_title: Titel
+          image_title_help: Zusatzinformationen über das Bild
+          image_alt: Alt-Attribut
+          image_alt_help: Platzhalter-Text, der angezeigt wird, wenn Bild nicht ordenltich dargestellt werden kann.
         actions:
           create_new_image: Neues Bild anlegen
         records:
@@ -41,3 +45,4 @@ de:
           blank: Sie müssen ein Bild zum Hochladen angeben
           too_big: Bild sollte kleiner als %{size} Megabytes sein
           incorrect_format: 'Ihr Bild sollte ein JPG, PNG oder GIF sein'
+          different_file_name: Neues Bild kann keinen anderen Dateinamen haben

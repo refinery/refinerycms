@@ -40,7 +40,6 @@ es:
         email_reset_sent: Te hemos enviado un e-mail con un enlace para cambiar tu contraseña.
         password_encryption: Necesitas restablecer tu contraseña debido a que hubo cambios en los métodos de encriptación de contraseñas que Refinery usa, ya que ahora las contraseñas son almacenadas con una encriptación más fuerte que antes.
       reset:
-        code_invalid: "Lo sentimos, pero este código para cambiar la contraseña ha expirado o no es válido. Si tienes problemas intenta copiar y pegar la dirección desde el e-mail que te enviamos o comienza de nuevo el proceso para cambiar la contraseña."
         successful: "Contraseña cambiada correctamente para '%{email}'"
         pick_new_password_for: "Elige una nueva contraseña para %{email}"
         reset_password: Cambiar contraseña

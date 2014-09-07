@@ -2,12 +2,12 @@
 <div class="errorExplanation" id="errorExplanation">
   <p><%= t('.problems_in_following_fields') %>:</p>
   <ul>
-  <% unless defined?(include_object_name) and include_object_name %>
-    <% object.errors.each do |key, value| %>
+  <% if defined?(include_object_name) and include_object_name %>
+    <% object.errors.full_messages.each do |value| %>
       <li><%= value %></li>
     <% end %>
   <% else %>
-    <% object.errors.full_messages.each do |value| %>
+    <% object.errors.each do |key, value| %>
       <li><%= value %></li>
     <% end %>
   <% end %>

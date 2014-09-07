@@ -6,7 +6,6 @@ module Refinery
 
     include Images::Validators
 
-
     validates :image, :presence  => true
     validates_with ImageSizeValidator
     validates_with ImageUpdateValidator, :on => :update
@@ -21,10 +20,10 @@ module Refinery
       # How many images per page should be displayed?
       def per_page(dialog = false, has_size_options = false)
         if dialog
-          unless has_size_options
-            Images.pages_per_dialog
-          else
+          if has_size_options
             Images.pages_per_dialog_that_have_size_options
+          else
+            Images.pages_per_dialog
           end
         else
           Images.pages_per_admin_index
@@ -50,8 +49,13 @@ module Refinery
 
     # Returns a titleized version of the filename
     # my_file.jpg returns My File
+
     def title
-      CGI::unescape(image_name.to_s).gsub(/\.\w+$/, '').titleize
+      image_title.presence || CGI::unescape(image_name.to_s).gsub(/\.\w+$/, '').titleize
+    end
+
+    def alt
+      image_alt.presence || title
     end
 
     private

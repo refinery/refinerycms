@@ -243,10 +243,10 @@ module Refinery
           else
             module_eval %(
               def index
-                unless searching?
-                  find_all_#{plural_name}
-                else
+                if searching?
                   search_all_#{plural_name}
+                else
+                  find_all_#{plural_name}
                 end
 
                 render_partial_response?

@@ -61,7 +61,6 @@ module Refinery
         # Sign up and verify!
         click_button "Sign up"
         page.should have_content("Welcome to Refinery, rspec.")
-        page.should have_content("Latest Activity")
         User.count.should == 1
       end
     end

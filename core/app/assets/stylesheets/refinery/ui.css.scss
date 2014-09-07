@@ -5,9 +5,9 @@
   right: 0px;
   bottom: 0px;
   width: auto !important;
-  opacity: .75;
-  filter:Alpha(Opacity=75);
-  background: #000;
+  opacity: .75 !important;
+  filter:Alpha(Opacity=75) !important;
+  background: #000 !important;
 }
 .ui-dialog {
   position: absolute;
@@ -105,4 +105,147 @@
   background-color: #808080;
   padding: 11px 13px;
   margin-top: 0px;
+}
+
+
+/*
+ * Styles so Refinery admin is compatible with jquery-ui stylesheet:
+ */
+#menu {
+  &.ui-corner-all {
+    border: none;
+  }
+
+  &.ui-widget {
+    font-family: inherit;
+    color: inherit;
+  }
+}
+
+#page-tabs {
+  &.ui-widget {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+  }
+
+  &.ui-corner-all {
+    border: none;
+  }
+
+  &.ui-tabs {
+    padding: 0;
+
+    .ui-tabs-panel {
+      padding: 0;
+    }
+
+    .ui-tabs-nav li {
+      &.ui-state-default a {
+        padding: 8px 13px;
+      }
+
+      &.ui-state-active a {
+        padding: 11px 13px;
+      }
+    }
+  }
+
+  #page_parts {
+    &.ui-corner-all {
+      border: none;
+    }
+
+    &.ui-widget-header {
+      background: none;
+
+      .ui-state-default {
+        border: none;
+        background: none;
+        padding-bottom: 0;
+        margin: 0 2px 0 0;
+      }
+    }
+
+    &.ui-helper-reset {
+      line-height: inherit;
+    }
+
+    .ui-tabs-anchor {
+      color: white;
+    }
+  }
+
+  #page_part_editors {
+    .ui-corner-bottom {
+      border: none;
+    }
+  }
+}
+
+.ui-dialog[aria-describedby=editor_dialog],
+.ui-dialog[aria-describedby=dialog_iframe] {
+  outline: none;
+
+  &.ui-dialog {
+    padding: 0;
+  }
+
+  &.ui-corner-all {
+    border: 4px solid #22A7F2;
+    border-radius: 0;
+  }
+
+  &.ui-widget {
+    font-family: inherit;
+    color: inherit;
+  }
+
+  .ui-widget-header {
+    background-image: none;
+
+    &.ui-corner-all {
+      border: none;
+      border-radius: 0;
+    }
+  }
+
+  .ui-dialog-titlebar {
+    padding: 0;
+
+    .ui-dialog-title {
+      font-weight: normal;
+    }
+
+    .ui-dialog-titlebar-close {
+      background-color: #22A7F2;
+      background-image: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      right: 10px;
+
+      .ui-button-text {
+        display: none;
+      }
+
+      &.ui-button-icon-only .ui-icon {
+        position: static;
+        height: 20px;
+      }
+    }
+  }
+
+  .ui-dialog-content {
+    padding: 0;
+    overflow: visible;
+  }
+
+  .editor_dialog {
+    border: none;
+  }
+
+  iframe#dialog_frame, iframe#dialog_iframe {
+    display: block !important;
+  }
 }

@@ -11,21 +11,21 @@ Refinery::I18n.frontend_locales.each do |lang|
   end
 
   if defined?(Refinery::Page)
-    page = Refinery::Page.create(
+    url = "/<%= [(namespacing.underscore if namespacing.underscore != plural_name), plural_name].compact.join('/') %>"
+    page = Refinery::Page.where(:link_url => url).first_or_create!(
       :title => "<%= class_name.pluralize.underscore.titleize %>",
-      :link_url => "/<%= plural_name %>/new",
       :deletable => false,
-      :menu_match => "^/<%= plural_name %>(\/|\/.+?|)$"
+      :menu_match => "^#{url}(\/|\/.+?|)$"
     )
-    thank_you_page = page.children.create(
+    thank_you_page = Refinery::Page.where(:link_url => "#{url}/thank_you").first_or_create!(
       :title => "Thank You",
-      :link_url => "/<%= plural_name %>/thank_you",
       :deletable => false,
       :show_in_menu => false
     )
+    thank_you_page.update_attribute(:parent, page)
     Refinery::Pages.default_parts.each do |default_page_part|
-      page.parts.create(:title => default_page_part, :body => nil)
-      thank_you_page.parts.create(:title => default_page_part, :body => nil)
+      page.parts.where(:title => default_page_part).first_or_create!(:body => nil)
+      thank_you_page.parts.where(:title => default_page_part).first_or_create!(:body => nil)
     end
   end
 end

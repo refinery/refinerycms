@@ -40,7 +40,6 @@ pt-BR:
         email_reset_sent: Um email foi enviado para você com um link para recuperar sua senha.
         password_encryption: Você precisa redefinir sua senha pois existem mudanças nos métodos de criptografia usados pelo Refinery, as senhas são armazenadas com uma encriptação maior do que anteriormente.
       reset:
-        code_invalid: "Lamentamos, mas este código reset expirou ou é inválido. Se você está tendo problemas tente copiar e colar a URL do seu e-mail em seu navegador ou reinicie o processo de mudança de senha."
         successful: "Senha alterada com sucesso para o e-mail %{email}"
         pick_new_password_for: "Digite uma nova senha para o e-mail %{email}"
         reset_password: Recuperar senha

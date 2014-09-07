@@ -13,10 +13,6 @@ module Refinery
           plugin.pathname = root
           plugin.name = 'refinery_users'
           plugin.menu_match = %r{refinery/users$}
-          plugin.activity = {
-            :class_name => :'refinery/user',
-            :title => 'username'
-          }
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_users_path }
         end
       end

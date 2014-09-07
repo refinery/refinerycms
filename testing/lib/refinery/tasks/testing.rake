@@ -52,7 +52,30 @@ namespace :refinery do
     end
 
     task :init_test_database do
-      system "bundle exec rake -f #{File.join(dummy_app_path, 'Rakefile')} db:test:prepare"
+      system "RAILS_ENV=test bundle exec rake -f #{File.join(dummy_app_path, 'Rakefile')} db:{create,migrate}"
+    end
+
+    task :specs do
+      paths = Dir.glob('vendor/extensions/*/spec')
+      paths << Rails.root
+
+      status = 0
+      paths.each do |path|
+        if Rails.root.join(path).basename.to_s == 'spec'
+          path = Rails.root.join(path).parent
+        end
+        cmd = "running specs in #{ path.basename }"
+        puts "\n#{ "-" * cmd.to_s.length }\n#{ cmd }\n#{"-" * cmd.to_s.length }"
+        Dir.chdir(path) do
+          IO.popen("bundle exec bundle install && bundle exec rake refinery:testing:dummy_app") unless path == Rails.root
+          IO.popen("bundle exec rake spec") do |f|
+            f.each { |line| puts line }
+            f.close
+            status = 1 if $?.to_i > 0
+          end
+        end
+      end
+      abort "Some tests failed" if status > 0
     end
 
     def dummy_app_path

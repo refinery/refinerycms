@@ -308,8 +308,8 @@ module Refinery
 
     def prevent_invalid_extension!
       if options[:extension].present? && !extension_pathname.directory?
-        exit_with_message! "You can't use '--extension #{options[:extension]}' option because" \
-                           " extension with name #{options[:extension]} doesn't exist."
+        exit_with_message! "You can't use '--extension #{options[:extension]}' option because an" \
+                           " extension with the name #{options[:extension]} doesn't exist."
       end
     end
 

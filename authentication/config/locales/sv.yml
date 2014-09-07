@@ -40,7 +40,6 @@ sv:
         email_reset_sent: Ett e-post har skickats till dig med instruktioner om hur du återställer ditt lösenord.
         password_encryption: Du måste sätta ett nytt lösenord. Detta på grund av att krypteringmetoden som Refinery använder sig av har bytts ut mot en bättre och säkrare kryptering.
       reset:
-        code_invalid: "Tyvärr, men din återställningskod har är ogiltlig eller har utgått. Om du har problem, pröva att kopiera den URL som du mottagit på din e-post, klistra sedan in i webbläsaren. Eller så börjar du om från början."
         successful: "Återställde lösenordet för '%{email}'"
         pick_new_password_for: 'Välj ett nytt lösenord för %{email}'
         reset_password: Återställ lösenord

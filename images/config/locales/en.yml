@@ -15,6 +15,10 @@ en:
           replace_image: " replace it with this one..."
           current_image: Current Image
           maximum_image_size: The maximum image size is %{bytes}.
+          image_title: Title
+          image_title_help: Extra information about the image
+          image_alt: Alt
+          image_alt_help: Text to use if the image cannot be displayed.
         actions:
           create_new_image: Add new image
         records:

@@ -2,7 +2,7 @@
 require File.expand_path('../../core/lib/refinery/version', __FILE__)
 
 version = Refinery::Version.to_s
-rails_version = '~> 4.1.4'
+rails_version = '~> 4.1.5'
 
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
@@ -20,10 +20,10 @@ Gem::Specification.new do |s|
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
-  s.required_ruby_version = '>= 2.0.0'
+  s.required_ruby_version = '>= 2.1.2'
 
   s.add_dependency 'refinerycms-i18n',            '~> 3.0.0.dev'
-  s.add_dependency 'awesome_nested_set',          '~> 3.0.0.rc.3'
+  s.add_dependency 'awesome_nested_set',          '~> 3.0.0'
   s.add_dependency 'railties',                    rails_version
   s.add_dependency 'activerecord',                rails_version
   s.add_dependency 'actionpack',                  rails_version

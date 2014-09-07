@@ -40,7 +40,6 @@ pl:
         email_reset_sent: Został wysłany e-mail z linkiem umożliwiającym reset hasła.
         password_encryption: Musisz zmienić swoje hasło ponieważ wprowadziliśmy zmiany w używanej w Rafinery metodzie szyfrowania. Teraz hasła są jeszcze lepiej chronione.
       reset:
-        code_invalid: "Niestety, ten kod resetu hasła wygasł lub jest niepoprawny. Jeżeli masz problemy z resetem hasła, skopiuj i wklej link z e-mail do przeglądarki  lub ponownie rozpocznij proces resetu hasła."
         successful: "Hasło zresetowane dla '%{email}'"
         pick_new_password_for: "Wybierz nowe hasło dla  %{email}"
         reset_password: Reset hasła
