@@ -7,6 +7,11 @@ ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../') unless defined?(ENG
 # Configure Rails Environment
 ENV["RAILS_ENV"] ||= 'test'
 
+if ENV['TRAVIS']
+  require 'coveralls'
+  Coveralls.wear!
+end
+
 require File.expand_path("../dummy/config/environment", __FILE__)
 
 require 'rspec/rails'
