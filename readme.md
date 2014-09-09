@@ -1,6 +1,6 @@
 # Refinery CMS
 
-__An open source Ruby on Rails content management system for Rails 4.1+.__
+__An open source content management system for Rails 4.1+__
 
 More information at [http://refinerycms.com](http://refinerycms.com)
 
