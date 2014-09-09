@@ -1,10 +1,10 @@
 # Refinery CMS
 
-__An open source Ruby on Rails content management system for Rails 3 and 4.1.__
+__An open source Ruby on Rails content management system for Rails 4.1+.__
 
 More information at [http://refinerycms.com](http://refinerycms.com)
 
-[![Build Status](https://travis-ci.org/refinery/refinerycms.svg?branch=master)](https://travis-ci.org/refinery/refinerycms)  [![Code Climate](https://codeclimate.com/github/refinery/refinerycms.svg)](https://codeclimate.com/github/refinery/refinerycms)  [![Coverage Status](https://img.shields.io/coveralls/refinery/refinerycms.svg)](https://coveralls.io/r/refinery/refinerycms?branch=coveralls)
+[![Build Status](https://travis-ci.org/refinery/refinerycms.svg?branch=master)](https://travis-ci.org/refinery/refinerycms)  [![Code Climate](https://codeclimate.com/github/refinery/refinerycms.svg)](https://codeclimate.com/github/refinery/refinerycms)  [![Coverage Status](https://img.shields.io/coveralls/refinery/refinerycms.svg)](https://coveralls.io/r/refinery/refinerycms?branch=master)
 
 You can chat with us using Gitter:
 
