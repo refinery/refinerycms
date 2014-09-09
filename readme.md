@@ -47,7 +47,7 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 
 ![Refinery Dashboard](http://refinerycms.com/system/images/0000/0576/dashboard.png)
 
-Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refinery)
+Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refinery).
 
 ## Help and Documentation
 
@@ -55,8 +55,9 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 * [Guides](http://refinerycms.com/guides)
 * [Google Group Discussion](http://group.refinerycms.org)
 * [IRC Channel](http://refinerycms.com/guides/how-to-get-help#irc-channel)
+* [Gitter chat](https://gitter.im/refinery/refinerycms)
 * [GitHub repository](https://github.com/refinery/refinerycms)
-* [Developer/API documentation](http://api.refinerycms.org)
+* [Developer/API documentation](http://rubydoc.info/github/refinery/refinerycms)
 * [Twitter Account](https://twitter.com/refinerycms)
 
 ## Features
