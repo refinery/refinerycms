@@ -35,6 +35,7 @@ group :test do
   gem 'refinerycms-testing', '~> 3.0.0'
   gem 'generator_spec', '~> 0.9.1'
   gem 'launchy'
+  gem 'coveralls', require: false
 end
 
 # Load local gems according to Refinery developer preference.
