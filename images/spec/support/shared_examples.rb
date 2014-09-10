@@ -99,7 +99,7 @@ shared_examples_for 'an image deleter' do |initial_path|
   before  do
     ensure_on(initial_path)
   end
-  let(:deleting_an_image) { -> { first("#records.images li").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))  } }
+  let(:deleting_an_image) { -> { first("#records li").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))  } }
 
   it 'has a delete image link for each image' do
 
@@ -110,8 +110,8 @@ shared_examples_for 'an image deleter' do |initial_path|
   end
 
   it 'says the image has been removed' do
-    image_title = find("#records.images li:first-child span.title").text
-    first("#records.images li").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))
+    image_title = find("#records li:first-child span.title").text
+    first("#records li").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))
     expect(page).to have_content(::I18n.t('destroyed', scope: 'refinery.crudify', what: "'#{image_title}'"))
   end
 
