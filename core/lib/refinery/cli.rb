@@ -13,40 +13,40 @@ module Refinery
     end
 
     OVERRIDES = {
-      :view => {
-        :glob => '*.{erb,builder}',
-        :dir => 'views',
-        :desc => 'view template',
+      view: {
+        glob: '*.{erb,builder}',
+        dir: 'views',
+        desc: 'view template',
       },
-      :controller => {
-        :glob => '*.rb',
-        :dir => 'controllers',
-        :desc => 'controller',
+      controller: {
+        glob: '*.rb',
+        dir: 'controllers',
+        desc: 'controller',
       },
-      :model => {
-        :glob => '*.rb',
-        :dir => 'models',
-        :desc => 'model',
+      model: {
+        glob: '*.rb',
+        dir: 'models',
+        desc: 'model',
       },
-      :helper => {
-        :glob => '*.rb',
-        :dir => 'helpers',
-        :desc => 'helper',
+      helper: {
+        glob: '*.rb',
+        dir: 'helpers',
+        desc: 'helper',
       },
-      :presenter => {
-        :glob => '*.rb',
-        :dir => 'presenters',
-        :desc => 'presenter',
+      presenter: {
+        glob: '*.rb',
+        dir: 'presenters',
+        desc: 'presenter',
       },
-      :javascript => {
-        :glob => '*.js{,.*}',
-        :dir => 'assets/javascripts',
-        :desc => 'javascript',
+      javascript: {
+        glob: '*.js{,.*}',
+        dir: 'assets/javascripts',
+        desc: 'javascript',
       },
-      :stylesheet => {
-        :glob => '*.css{,.scss}',
-        :dir => 'assets/stylesheets',
-        :desc => 'stylesheet',
+      stylesheet: {
+        glob: '*.css{,.scss}',
+        dir: 'assets/stylesheets',
+        desc: 'stylesheet',
       },
     }
 
@@ -60,13 +60,13 @@ module Refinery
 
       puts "You didn't specify anything valid to override. Here are some examples:"
       {
-        :view => ['pages/home', 'refinery/pages/home', '**/*menu', '_menu_branch'],
-        :javascript => %w(admin refinery/site_bar refinery**/{**/}*),
-        :stylesheet => %w(home refinery/site_bar),
-        :controller => %w(pages),
-        :model => %w(page refinery/page),
-        :helper => %w(site_bar refinery/site_bar_helper),
-        :presenter => %w(refinery/page_presenter)
+        view: ['pages/home', 'refinery/pages/home', '**/*menu', '_menu_branch'],
+        javascript: %w(admin refinery/site_bar refinery**/{**/}*),
+        stylesheet: %w(home refinery/site_bar),
+        controller: %w(pages),
+        model: %w(page refinery/page),
+        helper: %w(site_bar refinery/site_bar_helper),
+        presenter: %w(refinery/page_presenter)
       }.each do |type, examples|
         examples.each do |example|
           puts "rake refinery:override #{type}=#{example}"

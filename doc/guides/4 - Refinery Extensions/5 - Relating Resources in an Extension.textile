@@ -121,9 +121,9 @@ module Refinery
 
      attr_accessible :name, :position
 
-      acts_as_indexed :fields => [:name]
+      acts_as_indexed fields: [:name]
 
-      validates :name, :presence => true, :uniqueness => true
+      validates :name, presence: true, uniqueness: true
     end
   end
 end
@@ -138,9 +138,9 @@ module Refinery
     class EventType < Refinery::Core::BaseModel
       attr_accessible :name, :position
 
-      acts_as_indexed :fields => [:name]
+      acts_as_indexed fields: [:name]
 
-      validates :name, :presence => true, :uniqueness => true
+      validates :name, presence: true, uniqueness: true
 
       has_many :events
     end
@@ -161,11 +161,11 @@ module Refinery
 
       attr_accessible :title, :date, :photo_id, :blurb, :position
 
-      acts_as_indexed :fields => [:title, :blurb]
+      acts_as_indexed fields: [:title, :blurb]
 
-      validates :title, :presence => true, :uniqueness => true
+      validates :title, presence: true, uniqueness: true
 
-      belongs_to :photo, :class_name => '::Refinery::Image'
+      belongs_to :photo, class_name: '::Refinery::Image'
     end
   end
 end
@@ -181,11 +181,11 @@ module Refinery
 
       attr_accessible :title, :date, :photo_id, :blurb, :position, :event_type_id
 
-      acts_as_indexed :fields => [:title, :blurb]
+      acts_as_indexed fields: [:title, :blurb]
 
-      validates :title, :presence => true, :uniqueness => true
+      validates :title, presence: true, uniqueness: true
 
-      belongs_to :photo, :class_name => '::Refinery::Image'
+      belongs_to :photo, class_name: '::Refinery::Image'
       belongs_to :event_type
     end
   end
@@ -208,7 +208,7 @@ module Refinery
     module Admin
       class EventsController < ::Refinery::AdminController
 
-        crudify :'refinery/events/event', :xhr_paging => true
+        crudify :'refinery/events/event', xhr_paging: true
 
       end
     end
@@ -217,7 +217,7 @@ end
 </ruby>
 
 
-Now, add a function to "find_all_event_types", and call that function in a before_filter. The @event_types variable will be needed in all actions that utilize the +vendor/extensions/events/app/views/refinery/events/admin/events/_form.rb+ partial (all actions except :show and :destroy). Your controller should look like this when you are done:
+Now, add a function to "find_all_event_types", and call that function in a before_action. The @event_types variable will be needed in all actions that utilize the +vendor/extensions/events/app/views/refinery/events/admin/events/_form.rb+ partial (all actions except :show and :destroy). Your controller should look like this when you are done:
 
 <ruby>
 module Refinery
@@ -225,9 +225,9 @@ module Refinery
     module Admin
       class EventsController < ::Refinery::AdminController
 
-        before_filter :find_all_event_types, :except => [:show, :destroy]
+        before_action :find_all_event_types, except: [:show, :destroy]
 
-        crudify :'refinery/events/event', :xhr_paging => true
+        crudify :'refinery/events/event', xhr_paging: true
 
       protected
 

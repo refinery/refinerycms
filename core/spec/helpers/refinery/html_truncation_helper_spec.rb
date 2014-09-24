@@ -11,7 +11,7 @@ module Refinery
       context "when preserve_html_tags option is present" do
         it "preserve html tags when truncating text" do
           helper.truncate("<p>Turducken frankfurter ham hock bacon</p>",
-                          :preserve_html_tags => true).should eq("<p>Turducken frankfurter ham...</p>")
+                          preserve_html_tags: true).should eq("<p>Turducken frankfurter ham...</p>")
         end
       end
 

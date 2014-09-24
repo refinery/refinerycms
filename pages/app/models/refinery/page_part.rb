@@ -1,9 +1,9 @@
 module Refinery
   class PagePart < Refinery::Core::BaseModel
 
-    belongs_to :page, :foreign_key => :refinery_page_id
+    belongs_to :page, foreign_key: :refinery_page_id
 
-    validates :title, :presence => true, :uniqueness => {:scope => :refinery_page_id}
+    validates :title, presence: true, uniqueness: {scope: :refinery_page_id}
     alias_attribute :content, :body
 
     translates :body

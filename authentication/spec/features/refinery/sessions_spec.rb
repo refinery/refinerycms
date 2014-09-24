@@ -7,9 +7,9 @@ module Refinery
     let(:admin_path) { refinery.admin_root_path }
 
     before do
-      FactoryGirl.create(:refinery_user, :username => "ugisozols",
-                                         :password => "123456",
-                                         :password_confirmation => "123456")
+      FactoryGirl.create(:refinery_user, username: "ugisozols",
+                                         password: "123456",
+                                         password_confirmation: "123456")
 
       visit refinery.login_path
     end
@@ -22,8 +22,8 @@ module Refinery
 
     context "when supplied data is valid" do
       it "logs in user" do
-        fill_in "Username or email", :with => "ugisozols"
-        fill_in "Password", :with => "123456"
+        fill_in "Username or email", with: "ugisozols"
+        fill_in "Password", with: "123456"
         click_button "Sign in"
         page.should have_content("Signed in successfully.")
         current_path.should == admin_path
@@ -32,8 +32,8 @@ module Refinery
 
     context "when supplied data is not valid" do
       it "shows flash error" do
-        fill_in "Username or email", :with => "Hmmm"
-        fill_in "Password", :with => "Hmmm"
+        fill_in "Username or email", with: "Hmmm"
+        fill_in "Password", with: "Hmmm"
         click_button "Sign in"
         page.should have_content("Sorry, your login or password was incorrect.")
         current_path.should == login_retry_path
@@ -53,10 +53,10 @@ module Refinery
         page.should have_content("There are no users yet, so we'll set you up first")
 
         # Fill in user details.
-        fill_in 'user[username]', :with => 'rspec'
-        fill_in 'user[email]', :with => 'rspec@example.com'
-        fill_in 'user[password]', :with => 'spectacular'
-        fill_in 'user[password_confirmation]', :with => 'spectacular'
+        fill_in 'user[username]', with: 'rspec'
+        fill_in 'user[email]', with: 'rspec@example.com'
+        fill_in 'user[password]', with: 'spectacular'
+        fill_in 'user[password_confirmation]', with: 'spectacular'
 
         # Sign up and verify!
         click_button "Sign up"
@@ -72,9 +72,9 @@ module Refinery
 
     before do
       FactoryGirl.create(:refinery_user,
-        :username => "ugisozols",
-        :password => "123456",
-        :password_confirmation => "123456"
+        username: "ugisozols",
+        password: "123456",
+        password_confirmation: "123456"
       )
     end
 
@@ -92,8 +92,8 @@ module Refinery
       end
 
       it "redirects to the protected path on login" do
-        fill_in "Username or email", :with => "ugisozols"
-        fill_in "Password", :with => "123456"
+        fill_in "Username or email", with: "ugisozols"
+        fill_in "Password", with: "123456"
         page.click_button "Sign in"
         current_path.should == protected_path
       end

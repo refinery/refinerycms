@@ -10,7 +10,7 @@ module Refinery
 <% end -%>
 <% if string_attributes.any? -%>
 
-      validates <%= string_attributes.first.name.to_sym.inspect %>, :presence => true, :uniqueness => true
+      validates <%= string_attributes.first.name.to_sym.inspect %>, presence: true, uniqueness: true
 <% else -%>
 
       # def title was created automatically because you didn't specify a string field
@@ -21,16 +21,16 @@ module Refinery
 <% end -%>
 <% image_attributes.each do |a| -%>
 
-      belongs_to :<%= a.name -%>, :class_name => '::Refinery::Image'
+      belongs_to :<%= a.name -%>, class_name: '::Refinery::Image'
 <% end -%>
 <% resource_attributes.each do |a| -%>
 
-      belongs_to :<%= a.name %>, :class_name => '::Refinery::Resource'
+      belongs_to :<%= a.name %>, class_name: '::Refinery::Resource'
 <% end -%>
 
       # To enable admin searching, add acts_as_indexed on searchable fields, for example:
       #
-      #   acts_as_indexed :fields => [:title]
+      #   acts_as_indexed fields: [:title]
 
     end
   end

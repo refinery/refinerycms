@@ -8,7 +8,7 @@ module Refinery
   class Page < Core::BaseModel
     extend FriendlyId
 
-    translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
+    translates :title, :menu_title, :custom_slug, :slug, include: :seo_meta
 
     class Translation
       is_seo_meta
@@ -44,15 +44,15 @@ module Refinery
     end
 
     # Delegate SEO Attributes to globalize translation
-    delegate(*(Translation.seo_fields << {:to => :translation}))
+    delegate(*(Translation.seo_fields << {to: :translation}))
 
-    validates :title, :presence => true
+    validates :title, presence: true
 
-    validates :custom_slug, :uniqueness => true, :allow_blank => true
+    validates :custom_slug, uniqueness: true, allow_blank: true
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
     # rather than :delete_all we want :destroy
-    acts_as_nested_set :dependent => :destroy
+    acts_as_nested_set dependent: :destroy
 
     friendly_id :custom_slug_or_title, FriendlyIdOptions.options
 
@@ -60,12 +60,12 @@ module Refinery
       scope = order('position ASC')
       scope = scope.includes(:translations) if ::Refinery::PagePart.respond_to?(:translation_class)
       scope
-    },       :foreign_key => :refinery_page_id,
-             :class_name => '::Refinery::PagePart',
-             :inverse_of => :page,
-             :dependent => :destroy
+    },       foreign_key: :refinery_page_id,
+             class_name: '::Refinery::PagePart',
+             inverse_of: :page,
+             dependent: :destroy
 
-    accepts_nested_attributes_for :parts, :allow_destroy => true
+    accepts_nested_attributes_for :parts, allow_destroy: true
 
     before_destroy :deletable?
     after_save :reposition_parts!
@@ -74,7 +74,7 @@ module Refinery
       # Live pages are 'allowed' to be shown in the frontend of your website.
       # By default, this is all pages that are not set as 'draft'.
       def live
-        where(:draft => false)
+        where(draft: false)
       end
 
       # Find page by path, checking for scoping rules
@@ -123,7 +123,7 @@ module Refinery
       # This works using a query against the translated content first and then
       # using all of the page_ids we further filter against this model's table.
       def in_menu
-        where(:show_in_menu => true).with_globalize
+        where(show_in_menu: true).with_globalize
       end
 
       # An optimised scope containing only live pages ordered for display in a menu.
@@ -152,7 +152,7 @@ module Refinery
         t_slug = translation_class.arel_table[:slug]
         joins(:translations).group(:locale, :parent_id, t_slug).having(t_slug.count.gt(1)).count.
         each do |(locale, parent_id, slug), count|
-          by_slug(slug, :locale => locale).where(:parent_id => parent_id).drop(1).each do |page|
+          by_slug(slug, locale: locale).where(parent_id: parent_id).drop(1).each do |page|
             page.slug = nil # kill the duplicate slug
             page.save # regenerate the slug
           end
@@ -210,7 +210,7 @@ module Refinery
 
     # If you want to destroy a page that is set to be not deletable this is the way to do it.
     def destroy!
-      self.update_attributes(:menu_match => nil, :link_url => nil, :deletable => true)
+      self.update_attributes(menu_match: nil, link_url: nil, deletable: true)
 
       self.destroy
     end
@@ -219,7 +219,7 @@ module Refinery
     # It automatically prints out this page title and all of it's parent page titles joined by a PATH_SEPARATOR
     def path(options = {})
       # Override default options with any supplied.
-      options = {:reversed => true}.merge(options)
+      options = {reversed: true}.merge(options)
 
       if parent_id
         parts = [title, parent.path(options)]
@@ -279,15 +279,15 @@ module Refinery
 
     def to_refinery_menu_item
       {
-        :id => id,
-        :lft => lft,
-        :depth => depth,
-        :menu_match => menu_match,
-        :parent_id => parent_id,
-        :rgt => rgt,
-        :title => menu_title.presence || title.presence,
-        :type => self.class.name,
-        :url => url
+        id: id,
+        lft: lft,
+        depth: depth,
+        menu_match: menu_match,
+        parent_id: parent_id,
+        rgt: rgt,
+        title: menu_title.presence || title.presence,
+        type: self.class.name,
+        url: url
       }
     end
 

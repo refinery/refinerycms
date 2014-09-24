@@ -8,10 +8,10 @@ describe "User admin page" do
       visit refinery.admin_users_path
       click_link "Add new user"
 
-      fill_in "user[username]", :with => "test"
-      fill_in "user[email]", :with => "test@refinerycms.com"
-      fill_in "user[password]", :with => "123456"
-      fill_in "user[password_confirmation]", :with => "123456"
+      fill_in "user[username]", with: "test"
+      fill_in "user[email]", with: "test@refinerycms.com"
+      fill_in "user[password]", with: "123456"
+      fill_in "user[password_confirmation]", with: "123456"
     end
 
     it "can create a user" do
@@ -47,15 +47,15 @@ describe "User admin page" do
       visit refinery.admin_users_path
       click_link "Edit this user"
 
-      fill_in "Username", :with => "cmsrefinery"
-      fill_in "Email", :with => "cms@refinerycms.com"
+      fill_in "Username", with: "cmsrefinery"
+      fill_in "Email", with: "cms@refinerycms.com"
       click_button "Save"
 
       page.should have_content("cmsrefinery was successfully updated.")
       page.should have_content("cmsrefinery (cms@refinerycms.com)")
     end
 
-    let(:dotty_user) { FactoryGirl.create(:refinery_user, :username => 'user.name.with.lots.of.dots') }
+    let(:dotty_user) { FactoryGirl.create(:refinery_user, username: 'user.name.with.lots.of.dots') }
     it "accepts a username with a '.' in it" do
       dotty_user # create the user
       visit refinery.admin_users_path
@@ -71,7 +71,7 @@ describe "User admin page" do
   end
 
   describe "destroy" do
-    let!(:user) { FactoryGirl.create(:user, :username => "ugisozols") }
+    let!(:user) { FactoryGirl.create(:user, username: "ugisozols") }
 
     it "can only destroy regular users" do
       visit refinery.admin_users_path

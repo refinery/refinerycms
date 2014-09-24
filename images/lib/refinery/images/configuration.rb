@@ -21,9 +21,9 @@ module Refinery
     self.pages_per_dialog_that_have_size_options = 12
     self.pages_per_admin_index = 20
     self.user_image_sizes = {
-      :small => '110x110>',
-      :medium => '225x255>',
-      :large => '450x450>'
+      small: '110x110>',
+      medium: '225x255>',
+      large: '450x450>'
     }
 
     self.whitelisted_mime_types = %w[image/jpeg image/png image/gif image/tiff]

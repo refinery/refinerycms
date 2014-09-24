@@ -26,7 +26,7 @@ module Refinery
       map(&:title).join(' ')
     end
 
-    delegate :inspect, :map, :select, :detect, :first, :last, :length, :size, :to => :items
+    delegate :inspect, :map, :select, :detect, :first, :last, :length, :size, to: :items
 
     protected
     def minimum_depth

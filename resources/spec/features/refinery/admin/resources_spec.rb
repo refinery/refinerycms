@@ -21,7 +21,7 @@ module Refinery
 
 
       context "new/create" do
-        it "uploads file", :js => true do
+        it "uploads file", js: true do
           visit refinery.admin_resources_path
           click_link "Upload new file"
 
@@ -30,7 +30,7 @@ module Refinery
           page.within_frame('dialog_iframe') do
             attach_file "resource_file", Refinery.roots('refinery/resources').
                                                   join("spec/fixtures/refinery_is_awesome.txt")
-            click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
+            click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
           end
 
           page.should have_content("Refinery Is Awesome.txt")
@@ -123,14 +123,14 @@ module Refinery
         context 'when the extension is mounted with a named space' do
           before do
             Rails.application.routes.draw do
-              mount Refinery::Core::Engine, :at => "/about"
+              mount Refinery::Core::Engine, at: "/about"
             end
             Rails.application.routes_reloader.reload!
           end
 
           after do
             Rails.application.routes.draw do
-              mount Refinery::Core::Engine, :at => "/"
+              mount Refinery::Core::Engine, at: "/"
             end
           end
 

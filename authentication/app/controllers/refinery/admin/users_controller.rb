@@ -3,14 +3,14 @@ module Refinery
     class UsersController < Refinery::AdminController
 
       crudify :'refinery/user',
-              :order => 'username ASC',
-              :title_attribute => 'username',
-              :xhr_paging => true
+              order: 'username ASC',
+              title_attribute: 'username',
+              xhr_paging: true
 
-      before_filter :find_available_plugins, :find_available_roles,
-                    :only => [:new, :create, :edit, :update]
-      before_filter :redirect_unless_user_editable!, :only => [:edit, :update]
-      before_filter :exclude_password_assignment_when_blank!, :only => :update
+      before_action :find_available_plugins, :find_available_roles,
+                    only: [:new, :create, :edit, :update]
+      before_action :redirect_unless_user_editable!, only: [:edit, :update]
+      before_action :exclude_password_assignment_when_blank!, only: :update
 
       def new
         @user = Refinery::User.new
@@ -40,7 +40,7 @@ module Refinery
         @selected_plugin_names = params[:user][:plugins]
 
         if user_is_locking_themselves_out?
-          flash.now[:error] = t('lockout_prevented', :scope => 'refinery.admin.users.update')
+          flash.now[:error] = t('lockout_prevented', scope: 'refinery.admin.users.update')
           render :edit and return
         end
 
@@ -67,16 +67,16 @@ module Refinery
         end
 
         redirect_to refinery.admin_users_path,
-                    :notice => t('created', :what => @user.username, :scope => 'refinery.crudify')
+                    notice: t('created', what: @user.username, scope: 'refinery.crudify')
       end
 
       def create_failed
-        render :action => 'new'
+        render action: 'new'
       end
 
       def update_successful
         redirect_to refinery.admin_users_path,
-                    :notice => t('updated', :what => @user.username, :scope => 'refinery.crudify')
+                    notice: t('updated', what: @user.username, scope: 'refinery.crudify')
       end
 
       def update_failed
@@ -87,7 +87,7 @@ module Refinery
 
       def find_available_plugins
         @available_plugins = Refinery::Plugins.registered.in_menu.map { |a|
-          { :name => a.name, :title => a.title }
+          { name: a.name, title: a.title }
         }.sort_by { |a| a[:title] }
       end
 

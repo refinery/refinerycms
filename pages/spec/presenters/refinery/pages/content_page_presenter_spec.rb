@@ -3,12 +3,12 @@ require "spec_helper"
 module Refinery
   module Pages
     describe ContentPagePresenter do
-      let(:part)  { double(PagePart, :body => 'part_body', :title => 'A Wonderful Page Part') }
-      let(:part2) { double(PagePart, :body => 'part_body2', :title => 'Another Wonderful Page Part') }
+      let(:part)  { double(PagePart, body: 'part_body', title: 'A Wonderful Page Part') }
+      let(:part2) { double(PagePart, body: 'part_body2', title: 'Another Wonderful Page Part') }
       let(:title) { 'This Great Page' }
 
       describe "when building for page" do
-        let(:page_with_one_part) { double(Page, :parts => [part]) }
+        let(:page_with_one_part) { double(Page, parts: [part]) }
 
         it "adds page title section before page parts" do
           content = ContentPagePresenter.new(page_with_one_part, title)
@@ -16,7 +16,7 @@ module Refinery
         end
 
         it "adds a section for each page part" do
-          page = double(Page, :parts => [part, part2])
+          page = double(Page, parts: [part, part2])
           content = ContentPagePresenter.new(page, title)
           content.get_section(1).fallback_html.should == 'part_body'
           content.get_section(2).fallback_html.should == 'part_body2'

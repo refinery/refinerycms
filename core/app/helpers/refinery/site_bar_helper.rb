@@ -12,7 +12,7 @@ module Refinery
     end
 
     def site_bar_translate_locale_args
-      { :locale => Refinery::I18n.current_locale }
+      { locale: Refinery::I18n.current_locale }
     end
 
   end

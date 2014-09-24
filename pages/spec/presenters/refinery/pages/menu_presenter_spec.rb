@@ -47,7 +47,7 @@ module Refinery
 
       describe "#to_html" do
         it "returns menu items wrapped in html" do
-          menu_items = Refinery::Menu.new(FactoryGirl.create(:page, :title => "Refinery CMS"))
+          menu_items = Refinery::Menu.new(FactoryGirl.create(:page, title: "Refinery CMS"))
 
           menu_presenter = MenuPresenter.new(menu_items, view)
           expect(menu_presenter.to_html).to eq(%Q{<nav class="menu clearfix" id="menu"><ul class="nav"><li class="first last"><a href="/refinery-cms">Refinery CMS</a></li></ul></nav>})

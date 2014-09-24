@@ -25,10 +25,10 @@ root = File.expand_path('../../', __FILE__)
       sh cmd
     end
 
-    task :build => [:clean, :package]
+    task build: [:clean, :package]
   end
 end
 
 namespace :all do
-  task :build => ENGINES.map { |e| "#{e}:build" } + ['refinerycms:build']
+  task build: ENGINES.map { |e| "#{e}:build" } + ['refinerycms:build']
 end

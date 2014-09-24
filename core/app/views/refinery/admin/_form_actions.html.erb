@@ -13,7 +13,7 @@
       cancel_title = t('.cancel_lose_changes')
     end
     cancel_button_id    ||= "cancel_button"
-    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? refinery.send(Refinery.route_for_model(f.object.class, :plural => true)) : back)
+    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? refinery.send(Refinery.route_for_model(f.object.class, plural: true)) : back)
   end
 
   continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and f.object.persisted?)
@@ -41,33 +41,33 @@
 <div class='form-actions<%= ' form-actions-dialog' if from_dialog? %>'>
   <div class='form-actions-left'>
     <%= submit_tag submit_button_text,
-                   :id => submit_button_id,
-                   :name => nil,
-                   :class => "wymupdate button",
-                   :tooltip => submit_button_title unless hide_submit %>
+                   id: submit_button_id,
+                   name: nil,
+                   class: "wymupdate button",
+                   tooltip: submit_button_title unless hide_submit %>
 
-    <%= render '/refinery/admin/continue_editing', :f => f if continue_editing -%>
+    <%= render '/refinery/admin/continue_editing', f: f if continue_editing -%>
     <%= hidden_field_tag :continue_editing, false if continue_editing %>
 
     <%= local_assigns[:before_cancel_button] -%>
 
     <%= link_to(cancel_button_text, cancel_url,
-                :title => cancel_title,
-                :id => cancel_button_id,
-                :class => "close_dialog button") unless hide_cancel %>
+                title: cancel_title,
+                id: cancel_button_id,
+                class: "close_dialog button") unless hide_cancel %>
 
     <%= local_assigns[:after_cancel_button] -%>
   </div>
   <div class='form-actions-right'>
     <%= local_assigns[:before_delete_button] -%>
     <%= link_to(delete_button_text, delete_url,
-                :title => delete_title,
-                :id => delete_button_id,
-                :method => :delete,
-                :data => {
-                  :confirm => delete_confirmation
+                title: delete_title,
+                id: delete_button_id,
+                method: :delete,
+                data: {
+                  confirm: delete_confirmation
                 },
-                :class => "button confirm-delete") unless hide_delete %>
+                class: "button confirm-delete") unless hide_delete %>
     <%= local_assigns[:after_delete_button] -%>
   </div>
 </div>

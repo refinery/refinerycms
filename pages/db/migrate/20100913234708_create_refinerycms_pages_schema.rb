@@ -17,12 +17,12 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
       t.string    :path
       t.string    :slug
       t.string    :custom_slug
-      t.boolean   :show_in_menu,        :default => true
+      t.boolean   :show_in_menu,        default: true
       t.string    :link_url
       t.string    :menu_match
-      t.boolean   :deletable,           :default => true
-      t.boolean   :draft,               :default => false
-      t.boolean   :skip_to_first_child, :default => false
+      t.boolean   :deletable,           default: true
+      t.boolean   :draft,               default: false
+      t.boolean   :skip_to_first_child, default: false
       t.integer   :lft
       t.integer   :rgt
       t.integer   :depth
@@ -39,14 +39,14 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
     add_index :refinery_pages, :rgt
 
     Refinery::PagePart.create_translation_table!({
-      :body => :text
+      body: :text
     })
 
     Refinery::Page.create_translation_table!({
-      :title => :string,
-      :custom_slug => :string,
-      :menu_title => :string,
-      :slug => :string
+      title: :string,
+      custom_slug: :string,
+      menu_title: :string,
+      slug: :string
     })
   end
 

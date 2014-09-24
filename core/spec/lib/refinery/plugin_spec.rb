@@ -18,11 +18,11 @@ module Refinery
     let(:plugin) { ::Refinery::Plugins.registered.detect { |plugin| plugin.name == 'refinery_rspec' } }
 
     before do
-      ::I18n.backend.store_translations :en, :refinery => {
-        :plugins => {
-          :refinery_rspec => {
-            :title => "Refinery CMS RSpec",
-            :description => "RSpec tests for plugin.rb"
+      ::I18n.backend.store_translations :en, refinery: {
+        plugins: {
+          refinery_rspec: {
+            title: "Refinery CMS RSpec",
+            description: "RSpec tests for plugin.rb"
           }
         }
       }
@@ -105,13 +105,13 @@ module Refinery
 
     describe '#highlighted?' do
       it 'returns true if params[:controller] match menu_match regexp' do
-        plugin.highlighted?({:controller => '/refinery/admin/refinery_rspec'}).should be
-        plugin.highlighted?({:controller => '/refinery/refinery_rspec'}).should be
+        plugin.highlighted?({controller: '/refinery/admin/refinery_rspec'}).should be
+        plugin.highlighted?({controller: '/refinery/refinery_rspec'}).should be
       end
 
       it 'returns true if dashboard is true and params[:action] == error_404' do
         plugin.stub(:dashboard).and_return(true)
-        plugin.highlighted?({:action => 'error_404'}).should be
+        plugin.highlighted?({action: 'error_404'}).should be
       end
     end
 
@@ -126,7 +126,7 @@ module Refinery
 
       context 'when @url is already defined' do
         it 'returns hash' do
-          plugin.stub(:url).and_return({:controller => 'refinery/admin/testa'})
+          plugin.stub(:url).and_return({controller: 'refinery/admin/testa'})
           plugin.url[:controller].should == 'refinery/admin/testa'
         end
       end

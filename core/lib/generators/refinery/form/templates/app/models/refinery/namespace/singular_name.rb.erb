@@ -23,7 +23,7 @@ module Refinery
       # Add some validation here if you want to validate the user's input
 <% if string_fields.any? -%>
       # We have validated the first string field for you.
-      validates :<%= string_fields.first %>, :presence => true
+      validates :<%= string_fields.first %>, presence: true
 <% else %>
       # def name was created automatically because you didn't specify a string field
       # when you ran the refinery:form generator. <3 <3 Refinery CMS.
@@ -33,11 +33,11 @@ module Refinery
 <% end -%>
 <% image_attributes.each do |a| -%>
 
-      belongs_to :<%= a.name -%>, :class_name => 'Refinery::Image'
+      belongs_to :<%= a.name -%>, class_name: 'Refinery::Image'
 <% end -%>
 <% resource_attributes.each do |a| -%>
 
-      belongs_to :<%= a.name %>, :class_name => 'Refinery::Resource'
+      belongs_to :<%= a.name %>, class_name: 'Refinery::Resource'
 <% end -%>
 <% attributes.select{ |a| /radio|select/ === a.type.to_s }.uniq.each do |a| %>
       <%= a.name.pluralize.upcase %> = []

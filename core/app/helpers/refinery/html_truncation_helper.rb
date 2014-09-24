@@ -15,9 +15,9 @@ module Refinery
       omission = options[:omission] || "..."
 
       return truncate_html(text,
-                           :length => max_length,
-                           :word_boundary => true,
-                           :omission => omission)
+                           length: max_length,
+                           word_boundary: true,
+                           omission: omission)
     end
   end
 end

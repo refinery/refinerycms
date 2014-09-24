@@ -130,13 +130,13 @@ describe Refinery do
     end
 
     it "takes when option" do
-      Refinery.deprecate("ugis", :when => "10.0")
+      Refinery.deprecate("ugis", when: "10.0")
       @errors.rewind
       @errors.read.should == "\n-- DEPRECATION WARNING --\nThe use of 'ugis' is deprecated and will be removed at version 10.0.\n"
     end
 
     it "takes replacement option" do
-      Refinery.deprecate("ugis", :when => "10.0", :replacement => "philip")
+      Refinery.deprecate("ugis", when: "10.0", replacement: "philip")
       @errors.rewind
       @errors.read.should == "\n-- DEPRECATION WARNING --\nThe use of 'ugis' is deprecated and will be removed at version 10.0.\nPlease use philip instead.\n"
     end
@@ -151,9 +151,9 @@ describe Refinery do
         Refinery.route_for_model(Refinery::Dummy).should == "admin_dummy_path"
       end
 
-      context ":plural => true" do
+      context "plural: true" do
         it "returns admin_dummies_path" do
-          Refinery.route_for_model(Refinery::Dummy, :plural => true).should == "admin_dummies_path"
+          Refinery.route_for_model(Refinery::Dummy, plural: true).should == "admin_dummies_path"
         end
       end
     end
@@ -175,9 +175,9 @@ describe Refinery do
         Refinery.route_for_model(Refinery::DummyName).should == "admin_dummy_name_path"
       end
 
-      context ":plural => true" do
+      context "plural: true" do
         it "returns admin_dummy_names_path" do
-          Refinery.route_for_model(Refinery::DummyName, :plural => true).should == "admin_dummy_names_path"
+          Refinery.route_for_model(Refinery::DummyName, plural: true).should == "admin_dummy_names_path"
         end
       end
     end
@@ -192,21 +192,21 @@ describe Refinery do
         Refinery.route_for_model(Refinery::Dummy::Name).should == "dummy_admin_name_path"
       end
 
-      context ":plural => true" do
+      context "plural: true" do
         it "returns dummy_admin_names_path" do
-          Refinery.route_for_model(Refinery::Dummy::Name, :plural => true).should == "dummy_admin_names_path"
+          Refinery.route_for_model(Refinery::Dummy::Name, plural: true).should == "dummy_admin_names_path"
         end
       end
 
-      context ":admin => false" do
+      context "admin: false" do
         it "returns dummy_name_path" do
-          Refinery.route_for_model(Refinery::Dummy::Name, :admin => false).should == 'dummy_name_path'
+          Refinery.route_for_model(Refinery::Dummy::Name, admin: false).should == 'dummy_name_path'
         end
       end
 
-      context ":admin => false, :plural => true" do
+      context "admin: false, plural: true" do
         it "returns dummy_names_path" do
-          Refinery.route_for_model(Refinery::Dummy::Name, :admin => false, :plural => true).should == 'dummy_names_path'
+          Refinery.route_for_model(Refinery::Dummy::Name, admin: false, plural: true).should == 'dummy_names_path'
         end
       end
     end

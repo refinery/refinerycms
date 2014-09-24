@@ -1,10 +1,10 @@
-<%= render 'refinery/admin/search_header', :url => refinery.admin_pages_path %>
+<%= render 'refinery/admin/search_header', url: refinery.admin_pages_path %>
 <% if @pages.any? %>
   <%= render 'sortable_list' %>
 <% else %>
   <p>
     <% if searching? %>
-      <%= t('no_results', :scope => 'refinery.admin.search') %>
+      <%= t('no_results', scope: 'refinery.admin.search') %>
     <% else %>
       <strong><%=t('.no_pages_yet')%></strong>
     <% end %>

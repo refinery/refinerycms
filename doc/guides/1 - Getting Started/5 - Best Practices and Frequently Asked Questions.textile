@@ -39,7 +39,7 @@ any models or controllers by hand. If you must add methods, do so with a decorat
 which will limit your impact on the engine to whichever methods you add or override.
 
 If you need to change how an existing method behaves, consider using a
-+before_filter+, +alias_method_chain+ or similar to get around changing the method.
++before_action+, +alias_method_chain+ or similar to get around changing the method.
 If you can't escape this, overwrite the method by redefining it.
 In the case of a controller method, you can get easy access to the code with
 the +refinery:uncrudify+ rake task:
@@ -61,7 +61,7 @@ gem unpack refinerycms-news --version 2.0.0 --target vendor/extensions
 And update the relevant line in your +Gemfile+ to read:
 
 <ruby>
-gem 'refinerycms-news', '2.0.0', :path => 'vendor/extensions/refinerycms-news-2.0.0'
+gem 'refinerycms-news', '2.0.0', path: 'vendor/extensions/refinerycms-news-2.0.0'
 </ruby>
 
 TIP. For convenience, you can rename the folder of the unpacked gem to something short, like 'news', so long as you update the path specified in the Gemfile.
@@ -73,7 +73,7 @@ h4. How do I add a new page part to all existing pages?
 There is no facility for this. In your console, you will have to run:
 
 <ruby>
-Refinery::Page.all.map do {|p| p.parts.create(:title => "My Page Part", :position => 3) }
+Refinery::Page.all.map do {|p| p.parts.create(title: "My Page Part", position: 3) }
 </ruby>
 
 If you wish to make this a default for all new pages, be sure to add it to your
@@ -94,7 +94,7 @@ h4. How do I hide the page title?
 
 "Phil":http://p.arndt.io, one of the chief maintainers of Refinery CMS, says:
 
-bq. Add a +content_for :body_content_title+ block in the template you're including from. Just make it blank and tell the +_content_page+ partial to hide empty sections by passing it +:locals => {:hide_sections => [:body_content_title]}+.
+bq. Add a +content_for :body_content_title+ block in the template you're including from. Just make it blank and tell the +_content_page+ partial to hide empty sections by passing it +locals: {hide_sections: [:body_content_title]}+.
 
 h3. Translation
 

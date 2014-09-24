@@ -4,30 +4,30 @@ module Refinery
       include Pages::InstanceMethods
 
       crudify :'refinery/page',
-              :order => "lft ASC",
-              :include => [:translations, :children],
-              :paging => false
+              order: "lft ASC",
+              include: [:translations, :children],
+              paging: false
 
-      before_filter :load_valid_templates, :only => [:edit, :new, :create, :update]
-      before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy]
+      before_action :load_valid_templates, only: [:edit, :new, :create, :update]
+      before_action :restrict_access, only: [:create, :update, :update_positions, :destroy]
 
       def new
         @page = Page.new(new_page_params)
         Pages.default_parts_for(@page).each_with_index do |page_part, index|
-          @page.parts << PagePart.new(:title => page_part, :position => index)
+          @page.parts << PagePart.new(title: page_part, position: index)
         end
       end
 
       def children
         @page = find_page
-        render :layout => false
+        render layout: false
       end
 
       def update
         if @page.update_attributes(page_params)
           flash.notice = t(
             'refinery.crudify.updated',
-            :what => "'#{@page.title}'"
+            what: "'#{@page.title}'"
           )
 
           if from_dialog?
@@ -37,9 +37,9 @@ module Refinery
           else
             if params[:continue_editing] =~ /true|on|1/
               if request.xhr?
-                render :partial => 'save_and_continue_callback', :locals => {
-                  :new_refinery_page_path => refinery.admin_page_path(@page.nested_url),
-                  :new_page_path => refinery.pages_admin_preview_page_path(@page.nested_url)
+                render partial: 'save_and_continue_callback', locals: {
+                  new_refinery_page_path: refinery.admin_page_path(@page.nested_url),
+                  new_page_path: refinery.pages_admin_preview_page_path(@page.nested_url)
                 }
               else
                 redirect_to :back
@@ -50,12 +50,12 @@ module Refinery
           end
         else
           if request.xhr?
-            render :partial => '/refinery/admin/error_messages', :locals => {
-              :object => @page,
-              :include_object_name => true
+            render partial: '/refinery/admin/error_messages', locals: {
+              object: @page,
+              include_object_name: true
             }
           else
-            render :action => 'edit'
+            render action: 'edit'
           end
         end
       end
@@ -64,7 +64,7 @@ module Refinery
 
       def after_update_positions
         find_all_pages
-        render :partial => '/refinery/admin/pages/sortable_list' and return
+        render partial: '/refinery/admin/pages/sortable_list' and return
       end
 
       def find_page
@@ -73,7 +73,7 @@ module Refinery
       alias_method :page, :find_page
 
       # We can safely assume ::Refinery::I18n is defined because this method only gets
-      # Invoked when the before_filter from the plugin is run.
+      # Invoked when the before_action from the plugin is run.
       def globalize!
         return super unless action_name.to_s == 'index'
 
@@ -95,7 +95,7 @@ module Refinery
       def restrict_access
         if current_refinery_user.has_role?(:translator) && !current_refinery_user.has_role?(:superuser) &&
              (params[:switch_locale].blank? || params[:switch_locale] == Refinery::I18n.default_frontend_locale.to_s)
-          flash[:error] = t('translator_access', :scope => 'refinery.admin.pages')
+          flash[:error] = t('translator_access', scope: 'refinery.admin.pages')
           redirect_to refinery.admin_pages_path
         end
 

@@ -21,13 +21,13 @@ module Refinery
     end
   end
 
-  ::I18n.backend.store_translations :en, :refinery => {
-    :plugins => {
-      :my_plugin => {
-        :title => "my plugin"
+  ::I18n.backend.store_translations :en, refinery: {
+    plugins: {
+      my_plugin: {
+        title: "my plugin"
       },
-      :my_other_plugin => {
-        :title => "my other plugin"
+      my_other_plugin: {
+        title: "my other plugin"
       }
     }
   }

@@ -7,17 +7,17 @@
 -%>
 <li class='clearfix<%= " child#{child}" if child %><%= " linked" if linked%>' id="<%= dom_id(page_link) -%>">
   <%= link_to page_link_url, {
-                :title => t('.link_to_this_page'),
-                :rel => page_link.title,
-                :class => 'page_link'
+                title: t('.link_to_this_page'),
+                rel: page_link.title,
+                class: 'page_link'
               }.merge(link_args) do %>
     <%= page_title_with_translations page_link %>
     <%= page_meta_information page_link %>
   <% end %>
 </li>
-<%= render :partial => 'page_link',
-           :collection => page_link.children,
-           :locals => {
-             :child => (child ||= 0) + 1,
-             :link_to_arguments => link_args
+<%= render partial: 'page_link',
+           collection: page_link.children,
+           locals: {
+             child: (child ||= 0) + 1,
+             link_to_arguments: link_args
            } -%>

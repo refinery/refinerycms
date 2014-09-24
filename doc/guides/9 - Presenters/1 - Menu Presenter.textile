@@ -30,7 +30,7 @@ This will generate an empty migration. Open it and add the following code:
 <ruby>
 class AddShowInFooterToRefineryPages < ActiveRecord::Migration
   def change
-    add_column :refinery_pages, :show_in_footer, :boolean, :default => false
+    add_column :refinery_pages, :show_in_footer, :boolean, default: false
   end
 end
 </ruby>
@@ -50,7 +50,7 @@ Refinery::Page.class_eval do
   attr_accessible :show_in_footer
 
   def self.footer_menu_pages
-    where :show_in_footer => true
+    where show_in_footer: true
   end
 end
 </ruby>

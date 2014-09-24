@@ -3,12 +3,12 @@ module Refinery
 
     def self.included(base)
       base.class_eval do
-        argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
+        argument :attributes, type: :array, default: [], banner: "field:type field:type"
 
-        class_option :namespace, :type => :string, :default => nil, :banner => 'NAMESPACE', :required => false
-        class_option :extension, :type => :string, :default => nil, :banner => 'ENGINE', :required => false
-        class_option :i18n, :type => :array, :default => [], :required => false, :banner => "field field", :desc => 'Indicates generated fields'
-        class_option :install, :type => :boolean, :default => false, :required => false, :banner => nil, :desc => 'Bundles and runs the generated generator, rake db:migrate, rake db:seed for you'
+        class_option :namespace, type: :string, default: nil, banner: 'NAMESPACE', required: false
+        class_option :extension, type: :string, default: nil, banner: 'ENGINE', required: false
+        class_option :i18n, type: :array, default: [], required: false, banner: "field field", desc: 'Indicates generated fields'
+        class_option :install, type: :boolean, default: false, required: false, banner: nil, desc: 'Bundles and runs the generated generator, rake db:migrate, rake db:seed for you'
 
         remove_class_option :skip_namespace
       end
@@ -64,7 +64,7 @@ module Refinery
     end
 
     def attributes_for_translation_table
-      localized_attributes.inject([]) {|memo, attr| memo << ":#{attr.name} => :#{attr.type}"}.join(', ')
+      localized_attributes.inject([]) {|memo, attr| memo << "#{attr.name}: :#{attr.type}"}.join(', ')
     end
 
     def string_attributes
@@ -212,7 +212,7 @@ module Refinery
         tmp_directories << new_file_path.split.first
         current_path = extension_path_for(path, extension_name, false).sub(/\.erb$/, '')
 
-        FileMerger.new(self, current_path, new_file_path, :to => current_path, :mode => 'w+').call
+        FileMerger.new(self, current_path, new_file_path, to: current_path, mode: 'w+').call
       end
 
       tmp_directories.uniq.each(&:rmtree)
@@ -349,7 +349,7 @@ module Refinery
         @templater = templater
         @source = source
         @destination = destination
-        @options = {:to => @destination, :mode => 'a+'}.merge(options)
+        @options = {to: @destination, mode: 'a+'}.merge(options)
       end
 
       def call
@@ -383,7 +383,7 @@ module Refinery
       def templated_merge!
         Dir.mktmpdir do |tmp|
           tmp = Pathname.new(tmp)
-          @templater.template @source, tmp.join(@source.basename), :verbose => false
+          @templater.template @source, tmp.join(@source.basename), verbose: false
           merge! tmp.join(@source.basename).read.to_s
         end
       end

@@ -1,6 +1,6 @@
 extensions = Dir[ 'vendor/extensions/*' ]
 
-guard 'spork', :wait => 60, :cucumber => false, :rspec_env => { 'RAILS_ENV' => 'test' } do
+guard 'spork', wait: 60, cucumber: false, rspec_env: { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch(%r{^config/environments/.+\.rb$})
@@ -13,8 +13,8 @@ guard 'spork', :wait => 60, :cucumber => false, :rspec_env => { 'RAILS_ENV' => '
   end
 end
 
-guard 'rspec', :version => 2, :spec_paths => extensions.map{|e| "#{e}/spec"},
-  :cli => (File.read('.rspec').split("\n").join(' ') if File.exists?('.rspec')) do
+guard 'rspec', version: 2, spec_paths: extensions.map{|e| "#{e}/spec"},
+  cli: (File.read('.rspec').split("\n").join(' ') if File.exists?('.rspec')) do
   extensions.each do |extension|
     watch(%r{^#{extension}/spec/.+_spec\.rb$})
     watch(%r{^#{extension}/app/(.+)\.rb$})                           { |m| "#{extension}/spec/#{m[1]}_spec.rb" }

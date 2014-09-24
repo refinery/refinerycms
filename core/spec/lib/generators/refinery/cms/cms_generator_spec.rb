@@ -27,8 +27,8 @@ end
 Dummy::Application.configure do
   config.action_mailer.test = true
   config.action_mailer.check = {
-    :test => true,
-    :check => true
+    test: true,
+    check: true
   }
 end
       SPEC
@@ -83,8 +83,8 @@ Dummy::Application.configure do
   if config.respond_to?(:action_mailer)
     config.action_mailer.test = true
     config.action_mailer.check = {
-      :test => true,
-      :check => true
+      test: true,
+      check: true
     }
   end
 end

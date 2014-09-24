@@ -50,7 +50,7 @@ module Refinery
         end
 
         context "when some pages exist" do
-          before { 2.times { |i| Page.create :title => "Page #{i}" } }
+          before { 2.times { |i| Page.create title: "Page #{i}" } }
 
           it "shows reorder pages link" do
             visit refinery.admin_pages_path
@@ -63,10 +63,10 @@ module Refinery
         end
 
         context "when sub pages exist" do
-          let!(:company) { Page.create :title => 'Our Company' }
-          let!(:team) { company.children.create :title => 'Our Team' }
-          let!(:locations) { company.children.create :title => 'Our Locations' }
-          let!(:location) { locations.children.create :title => 'New York' }
+          let!(:company) { Page.create title: 'Our Company' }
+          let!(:team) { company.children.create title: 'Our Team' }
+          let!(:locations) { company.children.create title: 'Our Locations' }
+          let!(:location) { locations.children.create title: 'New York' }
 
           context "with auto expand option turned off" do
             before do
@@ -121,7 +121,7 @@ module Refinery
 
           click_link "Add new page"
 
-          fill_in "Title", :with => "My first page"
+          fill_in "Title", with: "My first page"
           click_button "Save"
 
           page.should have_content("'My first page' was successfully added.")
@@ -137,14 +137,14 @@ module Refinery
           Refinery::Page.count.should == 1
         end
 
-        it "includes menu title field", :js => true do
+        it "includes menu title field", js: true do
           visit refinery.new_admin_page_path
 
-          fill_in "Title", :with => "My first page"
+          fill_in "Title", with: "My first page"
 
           click_link "toggle_advanced_options"
 
-          fill_in "Menu title", :with => "The first page"
+          fill_in "Menu title", with: "The first page"
 
           click_button "Save"
 
@@ -153,13 +153,13 @@ module Refinery
         end
 
         it "allows to easily create nested page" do
-          parent_page = Page.create! :title => "Rails 4"
+          parent_page = Page.create! title: "Rails 4"
 
           visit refinery.admin_pages_path
 
-          find("a[href='#{refinery.new_admin_page_path(:parent_id => parent_page.id)}']").click
+          find("a[href='#{refinery.new_admin_page_path(parent_id: parent_page.id)}']").click
 
-          fill_in "Title", :with => "Parent page"
+          fill_in "Title", with: "Parent page"
           click_button "Save"
 
           page.should have_content("'Parent page' was successfully added.")
@@ -168,7 +168,7 @@ module Refinery
 
       describe "edit/update" do
         before do
-          Page.create :title => "Update me"
+          Page.create title: "Update me"
 
           visit refinery.admin_pages_path
           page.should have_content("Update me")
@@ -178,7 +178,7 @@ module Refinery
           it "updates page" do
             click_link "Edit this page"
 
-            fill_in "Title", :with => "Updated"
+            fill_in "Title", with: "Updated"
             find("#submit_button").click
 
             page.should have_content("'Updated' was successfully updated.")
@@ -190,7 +190,7 @@ module Refinery
             find('a[tooltip^=Edit]').visible?
             find('a[tooltip^=Edit]').click
 
-            fill_in "Title", :with => "Updated"
+            fill_in "Title", with: "Updated"
             find("#submit_continue_button").click
             find('#flash').visible?
           end
@@ -211,13 +211,13 @@ module Refinery
 
       describe 'Previewing' do
         context "an existing page" do
-          before { Page.create :title => 'Preview me' }
+          before { Page.create title: 'Preview me' }
 
           it 'will show the preview changes in a new window', :js do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
-            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
+            fill_in "Title", with: "Some changes I'm unsure what they will look like"
             click_button "Preview"
 
             new_window_should_have_content("Some changes I'm unsure what they will look like")
@@ -227,14 +227,14 @@ module Refinery
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
-            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
+            fill_in "Title", with: "Some changes I'm unsure what they will look like"
             click_button "Preview"
 
             new_window_should_not_have_content(
-              ::I18n.t('switch_to_website', :scope => 'refinery.site_bar')
+              ::I18n.t('switch_to_website', scope: 'refinery.site_bar')
             )
             new_window_should_not_have_content(
-              ::I18n.t('switch_to_website_editor', :scope => 'refinery.site_bar')
+              ::I18n.t('switch_to_website_editor', scope: 'refinery.site_bar')
             )
           end
 
@@ -242,7 +242,7 @@ module Refinery
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
-            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
+            fill_in "Title", with: "Some changes I'm unsure what they will look like"
             click_button "Preview"
 
             new_window_should_have_content("Some changes I'm unsure what they will look like")
@@ -255,7 +255,7 @@ module Refinery
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
-            fill_in "Title", :with => "Save this"
+            fill_in "Title", with: "Save this"
             click_button "Save & continue editing"
             page.should have_content("'Save this' was successfully updated")
 
@@ -263,7 +263,7 @@ module Refinery
 
             new_window_should_have_content("Save this")
             new_window_should_not_have_content(
-              ::I18n.t('switch_to_website', :scope => 'refinery.site_bar')
+              ::I18n.t('switch_to_website', scope: 'refinery.site_bar')
             )
           end
 
@@ -271,9 +271,9 @@ module Refinery
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
-            fill_in 'Title', :with => 'Searchable'
+            fill_in 'Title', with: 'Searchable'
             click_link 'Advanced options'
-            select 'Searchable', :from => 'View template'
+            select 'Searchable', from: 'View template'
             click_button 'Preview'
 
             new_window_should_have_content('Form application/search_form')
@@ -285,7 +285,7 @@ module Refinery
             visit refinery.admin_pages_path
 
             click_link "Add new page"
-            fill_in "Title", :with => "My first page"
+            fill_in "Title", with: "My first page"
             click_button "Preview"
 
             new_window_should_have_content("My first page")
@@ -295,8 +295,8 @@ module Refinery
         end
 
         context 'a nested page' do
-          let!(:parent_page) { Page.create :title => "Our Parent Page" }
-          let!(:nested_page) { parent_page.children.create :title => 'Preview Me' }
+          let!(:parent_page) { Page.create title: "Our Parent Page" }
+          let!(:nested_page) { parent_page.children.create title: 'Preview Me' }
 
           it "works like an un-nested page", :js do
             visit refinery.admin_pages_path
@@ -305,7 +305,7 @@ module Refinery
               find('a[tooltip^=Edit]').click
             end
 
-            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
+            fill_in "Title", with: "Some changes I'm unsure what they will look like"
             click_button "Preview"
 
             new_window_should_have_content("Some changes I'm unsure what they will look like")
@@ -315,7 +315,7 @@ module Refinery
 
       describe "destroy" do
         context "when page can be deleted" do
-          before { Page.create :title => "Delete me" }
+          before { Page.create title: "Delete me" }
 
           it "will show delete button" do
             visit refinery.admin_pages_path
@@ -329,7 +329,7 @@ module Refinery
         end
 
         context "when page can't be deleted" do
-          before { Page.create :title => "Indestructible", :deletable => false }
+          before { Page.create title: "Indestructible", deletable: false }
 
           it "wont show delete button" do
             visit refinery.admin_pages_path
@@ -341,12 +341,12 @@ module Refinery
       end
 
       context "duplicate page titles" do
-        before { Page.create :title => "I was here first" }
+        before { Page.create title: "I was here first" }
 
         it "will append nr to url path" do
           visit refinery.new_admin_page_path
 
-          fill_in "Title", :with => "I was here first"
+          fill_in "Title", with: "I was here first"
           click_button "Save"
 
           Refinery::Page.last.url[:path].first.should =~ %r{\Ai-was-here-first-.+?}
@@ -359,9 +359,9 @@ module Refinery
 
           # Create a home page in both locales (needed to test menus)
           home_page = Globalize.with_locale(:en) do
-            Page.create :title => 'Home',
-                        :link_url => '/',
-                        :menu_match => "^/$"
+            Page.create title: 'Home',
+                        link_url: '/',
+                        menu_match: "^/$"
           end
 
           Globalize.with_locale(:ru) do
@@ -374,7 +374,7 @@ module Refinery
           before do
             visit refinery.admin_pages_path
             click_link "Add new page"
-            fill_in "Title", :with => "News"
+            fill_in "Title", with: "News"
             click_button "Save"
           end
 
@@ -412,7 +412,7 @@ module Refinery
 
             within "#menu" do
               # we should only have the home page in the menu
-              page.should have_css('li', :count => 1)
+              page.should have_css('li', count: 1)
             end
           end
         end
@@ -426,7 +426,7 @@ module Refinery
             Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
 
             _page = Globalize.with_locale(:en) {
-              Page.create :title => en_page_title
+              Page.create title: en_page_title
             }
             Globalize.with_locale(:ru) do
               _page.title = ru_page_title
@@ -444,7 +444,7 @@ module Refinery
             within "#switch_locale_picker" do
               click_link "Ru"
             end
-            fill_in "Title", :with => ru_page_title
+            fill_in "Title", with: ru_page_title
             click_button "Save"
 
             within "#page_#{Page.last.id} .actions" do
@@ -453,7 +453,7 @@ module Refinery
             within "#switch_locale_picker" do
               click_link "En"
             end
-            fill_in "Title", :with => en_page_title
+            fill_in "Title", with: en_page_title
             find("#submit_button").click
 
             page.should have_content("'#{en_page_title}' was successfully updated.")
@@ -505,7 +505,7 @@ module Refinery
         describe "add a page with title only for secondary locale" do
           let(:ru_page) {
             Globalize.with_locale(:ru) {
-              Page.create :title => ru_page_title
+              Page.create title: ru_page_title
             }
           }
           let(:ru_page_id) { ru_page.id }
@@ -523,7 +523,7 @@ module Refinery
             within "#switch_locale_picker" do
               click_link "Ru"
             end
-            fill_in "Title", :with => ru_page_title
+            fill_in "Title", with: ru_page_title
             click_button "Save"
 
             page.should have_content("'#{ru_page_title}' was successfully added.")
@@ -568,24 +568,24 @@ module Refinery
 
             within "#menu" do
               # we should only have the home page in the menu
-              page.should have_css('li', :count => 1)
+              page.should have_css('li', count: 1)
             end
           end
 
           context "when page is a child page" do
             it 'succeeds' do
               ru_page.destroy!
-              parent_page = Page.create(:title => "Parent page")
+              parent_page = Page.create(title: "Parent page")
               sub_page = Globalize.with_locale(:ru) {
-                Page.create :title => ru_page_title
-                Page.create :title => ru_page_title, :parent_id => parent_page.id
+                Page.create title: ru_page_title
+                Page.create title: ru_page_title, parent_id: parent_page.id
               }
               sub_page.parent.should == parent_page
               visit refinery.admin_pages_path
               within "#page_#{sub_page.id}" do
                 click_link "Application edit"
               end
-              fill_in "Title", :with => ru_page_title
+              fill_in "Title", with: ru_page_title
               click_button "Save"
               page.should have_content("'#{ru_page_title}' was successfully updated")
             end
@@ -603,7 +603,7 @@ module Refinery
           click_link "add_page_part"
 
           within "#new_page_part_dialog" do
-            fill_in "new_page_part_title", :with => "testy"
+            fill_in "new_page_part_title", with: "testy"
             click_button "Save"
           end
 
@@ -614,12 +614,12 @@ module Refinery
       end
 
       describe "delete existing page part", :js do
-        let!(:some_page) { Page.create! :title => "Some Page" }
+        let!(:some_page) { Page.create! title: "Some Page" }
 
         before do
-          some_page.parts.create! :title => "First Part", :position => 1
-          some_page.parts.create! :title => "Second Part", :position => 2
-          some_page.parts.create! :title => "Third Part", :position => 3
+          some_page.parts.create! title: "First Part", position: 1
+          some_page.parts.create! title: "Second Part", position: 2
+          some_page.parts.create! title: "Third Part", position: 3
 
           Refinery::Pages.stub(:new_page_parts).and_return(true)
         end
@@ -663,13 +663,13 @@ module Refinery
               Refinery::Pages.stub(:use_layout_templates).and_return(true)
               Refinery::Pages.stub(:layout_template_whitelist).and_return(['abc', 'refinery'])
               Refinery::Pages.stub(:valid_templates).and_return(['abc', 'refinery'])
-              parent_page = Page.create :title => 'Parent Page',
-                                        :view_template => 'refinery',
-                                        :layout_template => 'refinery'
-              @page = parent_page.children.create :title => 'Child Page'
+              parent_page = Page.create title: 'Parent Page',
+                                        view_template: 'refinery',
+                                        layout_template: 'refinery'
+              @page = parent_page.children.create title: 'Child Page'
             end
 
-            specify 'sub page should inherit them', :js => true do
+            specify 'sub page should inherit them', js: true do
               visit refinery.edit_admin_page_path(@page.id)
 
               click_link 'toggle_advanced_options'
@@ -689,11 +689,11 @@ module Refinery
       # regression spec for https://github.com/refinery/refinerycms/issues/1891
       describe "page part body" do
         before do
-          page = Refinery::Page.create! :title => "test"
+          page = Refinery::Page.create! title: "test"
           Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
-            page.parts.create(:title => default_page_part,
-                              :body => "<header class='regression'>test</header>",
-                              :position => index)
+            page.parts.create(title: default_page_part,
+                              body: "<header class='regression'>test</header>",
+                              position: index)
           end
         end
 
@@ -714,7 +714,7 @@ module Refinery
 
           click_link "Add new page"
 
-          fill_in "Title", :with => "Huh?"
+          fill_in "Title", with: "Huh?"
           click_button "Save"
 
           page.should have_content("You do not have the required permission to modify pages in this language")
@@ -724,7 +724,7 @@ module Refinery
       describe "add page to second locale" do
         before do
           Refinery::I18n.stub(:frontend_locales).and_return([:en, :lv])
-          Page.create :title => 'First Page'
+          Page.create title: 'First Page'
         end
 
         it "succeeds" do
@@ -735,7 +735,7 @@ module Refinery
           within "#switch_locale_picker" do
             click_link "Lv"
           end
-          fill_in "Title", :with => "Brīva vieta reklāmai"
+          fill_in "Title", with: "Brīva vieta reklāmai"
           click_button "Save"
 
           page.should have_content("'Brīva vieta reklāmai' was successfully added.")
@@ -744,7 +744,7 @@ module Refinery
       end
 
       describe "delete page from main locale" do
-        before { Page.create :title => 'Default Page' }
+        before { Page.create title: 'Default Page' }
 
         it "doesn't succeed" do
           visit refinery.admin_pages_path
@@ -762,7 +762,7 @@ module Refinery
 
           # Create a page in both locales
           about_page = Globalize.with_locale(:en) do
-            Page.create :title => 'About'
+            Page.create title: 'About'
           end
 
           Globalize.with_locale(:ru) do
@@ -775,7 +775,7 @@ module Refinery
           page = Refinery::Page.last
           # we need page parts so that there's a visual editor
           Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
-            page.parts.create(:title => default_page_part, :body => nil, :position => index)
+            page.parts.create(title: default_page_part, body: nil, position: index)
           end
           page
         end
@@ -785,14 +785,14 @@ module Refinery
             before { Refinery::Pages.absolute_page_links = false }
 
             it "shows Russian pages if we're editing the Russian locale" do
-              visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true, :switch_locale => :ru)
+              visit refinery.link_to_admin_pages_dialogs_path(visual_editor: true, switch_locale: :ru)
 
               page.should have_content("About Ru")
               page.should have_selector("a[href='/ru/about-ru']")
             end
 
             it "shows default to the default locale if no query string is added" do
-              visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true)
+              visit refinery.link_to_admin_pages_dialogs_path(visual_editor: true)
 
               page.should have_content("About")
               page.should have_selector("a[href='/about']")
@@ -803,14 +803,14 @@ module Refinery
             before { Refinery::Pages.absolute_page_links = true }
 
             it "shows Russian pages if we're editing the Russian locale" do
-              visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true, :switch_locale => :ru)
+              visit refinery.link_to_admin_pages_dialogs_path(visual_editor: true, switch_locale: :ru)
 
               page.should have_content("About Ru")
               page.should have_selector("a[href='http://www.example.com/ru/about-ru']")
             end
 
             it "shows default to the default locale if no query string is added" do
-              visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true)
+              visit refinery.link_to_admin_pages_dialogs_path(visual_editor: true)
 
               page.should have_content("About")
               page.should have_selector("a[href='http://www.example.com/about']")

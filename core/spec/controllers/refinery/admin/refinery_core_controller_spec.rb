@@ -8,7 +8,7 @@ module Refinery
       it "updates the plugin positions" do
         plugins = logged_in_user.plugins.reverse.map &:name
 
-        post 'update_plugin_positions', :menu => plugins
+        post 'update_plugin_positions', menu: plugins
 
         logged_in_user.plugins.reload.each_with_index do |plugin, idx|
           plugin.name.should eql(plugins[idx])

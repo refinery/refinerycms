@@ -18,7 +18,7 @@ module Refinery
           let(:controller_permission) { true }
           roles = handle_deprecated_roles! roles
           let(:logged_in_user) do
-            user = double 'Refinery::User', :username => 'Joe Fake'
+            user = double 'Refinery::User', username: 'Joe Fake'
 
             roles.each do |role|
               user.stub(:has_role?).with(role).and_return true
@@ -49,10 +49,10 @@ module Refinery
         private
         def handle_deprecated_roles!(*roles)
           mappings = {
-            :user => [],
-            :refinery_user => [:refinery],
-            :refinery_superuser => [:refinery, :superuser],
-            :refinery_translator => [:refinery, :translator]
+            user: [],
+            refinery_user: [:refinery],
+            refinery_superuser: [:refinery, :superuser],
+            refinery_translator: [:refinery, :translator]
           }
           mappings[roles.first] || roles
         end

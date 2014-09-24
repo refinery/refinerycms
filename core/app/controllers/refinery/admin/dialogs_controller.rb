@@ -3,14 +3,14 @@ module ::Refinery
     class DialogsController < ::Refinery::AdminController
       TYPES = %w[image link]
 
-      before_filter :find_dialog_type, :find_iframe_src, :only => [:show]
+      before_action :find_dialog_type, :find_iframe_src, only: [:show]
 
       def index
         redirect_to refinery.admin_root_path
       end
 
       def show
-        render :layout => false
+        render layout: false
       end
 
       def from_dialog?
@@ -27,7 +27,7 @@ module ::Refinery
       def find_iframe_src
         if @dialog_type == 'image'
           @iframe_src = refinery.insert_admin_images_path(
-            url_params.merge(:modal => true)
+            url_params.merge(modal: true)
           )
         elsif @dialog_type == 'link'
           @iframe_src = refinery.link_to_admin_pages_dialogs_path url_params
@@ -36,7 +36,7 @@ module ::Refinery
 
       def url_params
         params.reject {|key, value| /(action)|(controller)/ === key}.
-               merge :id => nil
+               merge id: nil
       end
 
     end

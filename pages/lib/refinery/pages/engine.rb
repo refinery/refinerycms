@@ -27,11 +27,11 @@ module Refinery
         end
       end
 
-      initializer "refinery.pages append marketable routes", :after => :set_routes_reloader_hook do
+      initializer "refinery.pages append marketable routes", after: :set_routes_reloader_hook do
         append_marketable_routes if Refinery::Pages.marketable_urls
       end
 
-      initializer "add marketable route parts to reserved words", :after => :set_routes_reloader_hook do
+      initializer "add marketable route parts to reserved words", after: :set_routes_reloader_hook do
         add_route_parts_as_reserved_words if Refinery::Pages.marketable_urls
       end
 
@@ -43,7 +43,7 @@ module Refinery
 
       def append_marketable_routes
         Refinery::Core::Engine.routes.append do
-          get '*path', :to => 'pages#show', :as => :marketable_page
+          get '*path', to: 'pages#show', as: :marketable_page
         end
         Rails.application.routes_reloader.reload!
       end
@@ -51,7 +51,7 @@ module Refinery
       # Add any parts of routes as reserved words.
       def add_route_parts_as_reserved_words
         ActiveSupport.on_load(:active_record) do
-          # do not add routes with :allow_slug => true
+          # do not add routes with allow_slug: true
           included_routes = Rails.application.routes.named_routes.routes.reject{ |name, route| route.defaults[:allow_slug] }
           route_paths = included_routes.map { |name, route| route.path.spec }
           route_paths.reject! {|path| path.to_s =~ %r{^/(rails|refinery)}}

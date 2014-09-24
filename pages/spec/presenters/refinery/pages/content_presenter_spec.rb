@@ -3,11 +3,11 @@ require "spec_helper"
 module Refinery
   module Pages
     describe ContentPresenter do
-      let(:section1) { double(SectionPresenter, :id => 'foo', :has_content? => true) }
-      let(:section2) { double(SectionPresenter, :id => 'bar', :has_content? => true) }
+      let(:section1) { double(SectionPresenter, id: 'foo', has_content?: true) }
+      let(:section2) { double(SectionPresenter, id: 'bar', has_content?: true) }
 
       describe "when building css classes for blank sections" do
-        let(:section) { double(SectionPresenter, :not_present_css_class => 'no_section1') }
+        let(:section) { double(SectionPresenter, not_present_css_class: 'no_section1') }
 
         it "includes css class for any section which doesnt have content" do
           section.stub(:has_content?).with(true).and_return(false)
@@ -59,7 +59,7 @@ module Refinery
         end
 
         it "yields a section with an id and stores the result in its override html" do
-          section = double(SectionPresenter, :id => 'foo')
+          section = double(SectionPresenter, id: 'foo')
           section.should_receive(:override_html=).with('some override')
           @content.add_section section
 
@@ -70,7 +70,7 @@ module Refinery
         end
 
         it "doesnt yield a section without an id" do
-          section = double(SectionPresenter, :id => nil)
+          section = double(SectionPresenter, id: nil)
           section.should_receive(:override_html=).never
           @content.add_section section
 

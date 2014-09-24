@@ -11,14 +11,14 @@ module Refinery
 
         context "when params[:from_page] > params[:page] or 1" do
           it "does something" do
-            helper.stub(:params).and_return({:from_page => 2, :page => 1})
+            helper.stub(:params).and_return({from_page: 2, page: 1})
             helper.pagination_css_class.should == "frame_left"
           end
         end
 
         context "when params[:from_page] < params[:page] or 1" do
           it "returns frame_right" do
-            helper.stub(:params).and_return({:from_page => 1, :page => 1})
+            helper.stub(:params).and_return({from_page: 1, page: 1})
             helper.pagination_css_class.should == "frame_right"
           end
         end

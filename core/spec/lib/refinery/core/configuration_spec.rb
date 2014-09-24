@@ -18,10 +18,10 @@ module Refinery
 
         context 'when set in locale file' do
           before do
-            ::I18n.backend.store_translations :en, :refinery => {
-              :core => {
-                :config => {
-                  :site_name => 'I18n Site Name'
+            ::I18n.backend.store_translations :en, refinery: {
+              core: {
+                config: {
+                  site_name: 'I18n Site Name'
                 }
               }
             }

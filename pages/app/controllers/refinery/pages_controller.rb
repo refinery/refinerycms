@@ -2,11 +2,11 @@ module Refinery
   class PagesController < ::ApplicationController
     include Pages::RenderOptions
 
-    before_filter :find_page, :set_canonical
-    before_filter :error_404, :unless => :current_user_can_view_page?
+    before_action :find_page, :set_canonical
+    before_action :error_404, unless: :current_user_can_view_page?
 
     # Save whole Page after delivery
-    after_filter :write_cache?
+    after_action :write_cache?
 
     # This action is usually accessed with the root path, normally '/'
     def home
@@ -29,9 +29,8 @@ module Refinery
       elsif page.link_url.present?
         redirect_to page.link_url and return
       elsif should_redirect_to_friendly_url?
-        redirect_to refinery.url_for(page.url), :status => 301 and return
+        redirect_to refinery.url_for(page.url), status: 301 and return
       end
-
       render_with_templates?
     end
 
@@ -71,7 +70,7 @@ module Refinery
     def find_page(fallback_to_404 = true)
       @page ||= case action_name
                 when "home"
-                  Refinery::Page.where(:link_url => '/').first
+                  Refinery::Page.where(link_url: '/').first
                 when "show"
                   Refinery::Page.find_by_path_or_id(params[:path], params[:id])
                 end

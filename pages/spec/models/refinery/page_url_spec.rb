@@ -7,11 +7,11 @@ module Refinery
     let(:child_title) { 'The child page' }
 
     # For when we do not need the page persisted.
-    let(:page) { subject.class.new(:title => page_title, :deletable => true)}
+    let(:page) { subject.class.new(title: page_title, deletable: true)}
 
     # For when we need the page persisted.
-    let(:created_page) { subject.class.create!(:title => page_title, :deletable => true) }
-    let(:created_child) { created_page.children.create!(:title => child_title) }
+    let(:created_page) { subject.class.create!(title: page_title, deletable: true) }
+    let(:created_child) { created_page.children.create!(title: child_title) }
 
     def turn_off_marketable_urls
       Pages.stub(:marketable_urls).and_return(false)
@@ -41,7 +41,7 @@ module Refinery
       end
 
       it 'or normally ;-)' do
-        created_child.path(:reversed => false).should == [child_title, page_title].join(' - ')
+        created_child.path(reversed: false).should == [child_title, page_title].join(' - ')
       end
 
       it 'returns its url' do
@@ -151,13 +151,13 @@ module Refinery
       let(:custom_route) { '/products/my-product' }
       let(:custom_route_slug) { 'products/my-product' }
       let(:page_with_custom_slug) {
-        subject.class.new(:title => page_title, :custom_slug => custom_page_slug)
+        subject.class.new(title: page_title, custom_slug: custom_page_slug)
       }
       let(:child_with_custom_slug) {
-        page.children.new(:title => child_title, :custom_slug => custom_child_slug)
+        page.children.new(title: child_title, custom_slug: custom_child_slug)
       }
       let(:page_with_custom_route) {
-        subject.class.new(:title => page_title, :custom_slug => custom_route)
+        subject.class.new(title: page_title, custom_slug: custom_route)
       }
 
       after(:each) do
@@ -181,7 +181,7 @@ module Refinery
 
       it 'allows slashes in custom routes but slugs everything in between' do
         turn_off_slug_scoping
-        page_needing_a_slugging = subject.class.new(:title => page_title, :custom_slug => 'products/category/sub category/my product is cool!')
+        page_needing_a_slugging = subject.class.new(title: page_title, custom_slug: 'products/category/sub category/my product is cool!')
         page_needing_a_slugging.save
         page_needing_a_slugging.url[:id].should be_nil
         page_needing_a_slugging.url[:path].should == ['products/category/sub-category/my-product-is-cool']
@@ -207,14 +207,14 @@ module Refinery
       end
 
       it "doesn't allow slashes in slug" do
-        page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => '/products/category')
+        page_with_slashes_in_slug = subject.class.new(title: page_title, custom_slug: '/products/category')
         page_with_slashes_in_slug.save
         page_with_slashes_in_slug.url[:path].should == ['productscategory']
       end
 
       it "allow slashes in slug when slug scoping is off" do
         turn_off_slug_scoping
-        page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => 'products/category/subcategory')
+        page_with_slashes_in_slug = subject.class.new(title: page_title, custom_slug: 'products/category/subcategory')
         page_with_slashes_in_slug.save
         page_with_slashes_in_slug.url[:path].should == ['products/category/subcategory']
         turn_on_slug_scoping
@@ -222,7 +222,7 @@ module Refinery
 
       it "strips leading and trailing slashes in slug when slug scoping is off" do
         turn_off_slug_scoping
-        page_with_slashes_in_slug = subject.class.new(:title => page_title, :custom_slug => '/products/category/subcategory/')
+        page_with_slashes_in_slug = subject.class.new(title: page_title, custom_slug: '/products/category/subcategory/')
         page_with_slashes_in_slug.save
         page_with_slashes_in_slug.url[:path].should == ['products/category/subcategory']
         turn_on_slug_scoping
@@ -252,11 +252,11 @@ module Refinery
 
       context "given a page with a custom_slug exists" do
         before do
-          FactoryGirl.create(:page, :custom_slug => custom_page_slug)
+          FactoryGirl.create(:page, custom_slug: custom_page_slug)
         end
 
         it "fails validation when a new record uses that custom_slug" do
-          new_page = Page.new :custom_slug => custom_page_slug
+          new_page = Page.new custom_slug: custom_page_slug
           new_page.valid?
 
           new_page.errors[:custom_slug].should_not be_empty
@@ -267,7 +267,7 @@ module Refinery
     describe "#should_generate_new_friendly_id?" do
       context "when title changes" do
         it "regenerates slug upon save" do
-          page = Page.create!(:title => "Test Title")
+          page = Page.create!(title: "Test Title")
 
           page.title = "Test Title 2"
           page.save!
@@ -280,10 +280,10 @@ module Refinery
     context "should add url suffix" do
       let(:reserved_word) { subject.class.friendly_id_config.reserved_words.last }
       let(:page_with_reserved_title) {
-        subject.class.create!(:title => reserved_word, :deletable => true)
+        subject.class.create!(title: reserved_word, deletable: true)
       }
       let(:child_with_reserved_title_parent) {
-        page_with_reserved_title.children.create(:title => 'reserved title child page')
+        page_with_reserved_title.children.create(title: 'reserved title child page')
       }
 
       before { turn_on_marketable_urls }

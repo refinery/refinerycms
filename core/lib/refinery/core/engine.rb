@@ -65,7 +65,7 @@ module Refinery
         end
       end
 
-      initializer "refinery.routes", :after => :set_routes_reloader_hook do |app|
+      initializer "refinery.routes", after: :set_routes_reloader_hook do |app|
         Refinery::Core::Engine.routes.append do
           get "#{Refinery::Core.backend_route}/*path" => 'admin#error_404'
         end
