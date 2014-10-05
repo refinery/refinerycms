@@ -25,7 +25,7 @@ module Refinery
         end
 
         def url
-          url_hash = base_url_hash.merge(:path => page.nested_url, :id => nil)
+          url_hash = base_url_hash.merge(path: page.nested_url, id: nil)
           with_locale_param(url_hash)
         end
       end
@@ -36,7 +36,7 @@ module Refinery
         end
 
         def url
-          url_hash = base_url_hash.merge(:path => nil, :id => page.to_param)
+          url_hash = base_url_hash.merge(path: nil, id: page.to_param)
           with_locale_param(url_hash)
         end
       end
@@ -60,13 +60,13 @@ module Refinery
 
       def with_locale_param(url_hash)
         if (locale = Refinery::I18n.current_frontend_locale) != ::I18n.locale
-          url_hash.update :locale => locale if locale
+          url_hash.update locale: locale if locale
         end
         url_hash
       end
 
       def base_url_hash
-        { :controller => '/refinery/pages', :action => 'show', :only_path => true }
+        { controller: '/refinery/pages', action: 'show', only_path: true }
       end
 
     end

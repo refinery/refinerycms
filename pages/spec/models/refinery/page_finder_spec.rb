@@ -6,14 +6,14 @@ module Refinery
     let(:page_title) { 'RSpec is great for testing too' }
     let(:child_title) { 'The child page' }
 
-    let(:created_page) { subject.class.create!(:title => page_title, :deletable => true) }
-    let(:created_child) { created_page.children.create!(:title => child_title) }
+    let(:created_page) { subject.class.create!(title: page_title, deletable: true) }
+    let(:created_child) { created_page.children.create!(title: child_title) }
 
     
     describe '.find_by_path' do
       let(:page_title)  { 'team' }
       let(:child_title) { 'about' }
-      let(:created_root_about) { subject.class.create!(:title => child_title, :deletable => true) }
+      let(:created_root_about) { subject.class.create!(title: child_title, deletable: true) }
 
       before do
         # Ensure pages are created.
@@ -31,7 +31,7 @@ module Refinery
     end
 
     describe ".find_by_path_or_id" do
-      let!(:market) { FactoryGirl.create(:page, :title => "market") }
+      let!(:market) { FactoryGirl.create(:page, title: "market") }
       let(:path) { "market" }
       let(:id) { market.id }
 

@@ -1,7 +1,7 @@
 ActionView::Helpers::FormHelper.module_eval do
 
   def required_label(object_name, method, options = {})
-    options = {:class => "required"}.merge!(options)
+    options = {class: "required"}.merge!(options)
 
     label(object_name, method, "#{label_humanize_text(method, options)} *", options)
   end

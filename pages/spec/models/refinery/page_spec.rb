@@ -4,7 +4,7 @@ require 'spec_helper'
 module Refinery
   describe Page do
     let(:page_title) { 'RSpec is great for testing too' }
-    let(:page) { subject.class.new(:title => page_title, :deletable => true)}
+    let(:page) { subject.class.new(title: page_title, deletable: true)}
 
     def page_cannot_be_destroyed
       page.should_receive(:puts_destroy_help)

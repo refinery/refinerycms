@@ -46,8 +46,8 @@ module Refinery
     def generate_reset_password_token!
       raw, enc = Devise.token_generator.generate(self.class, :reset_password_token)
       update_attributes(
-        :reset_password_token => enc,
-        :reset_password_sent_at => Time.now.utc
+        reset_password_token: enc,
+        reset_password_sent_at: Time.now.utc
       )
       raw
     end
@@ -60,7 +60,7 @@ module Refinery
 
       if plugins.empty?
         plugin_names.each_with_index do |plugin_name, index|
-          plugins.create(:name => plugin_name, :position => index)
+          plugins.create(name: plugin_name, position: index)
         end
       else
         assigned_plugins = plugins.load

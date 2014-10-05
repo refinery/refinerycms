@@ -1,14 +1,14 @@
 <% content_for :header, t('.hello_please_sign_in') %>
 
-<%= form_for resource, :as => resource_name,
-                       :url => refinery.refinery_user_session_path do |f| %>
+<%= form_for resource, as: resource_name,
+                       url: refinery.refinery_user_session_path do |f| %>
   <div class='field session_username clearfix'>
     <%= f.label :login %>
-    <%= f.text_field :login, :class => 'larger widest' %>
+    <%= f.text_field :login, class: 'larger widest' %>
   </div>
   <div class='field session_password clearfix'>
     <%= f.label :password %>
-    <%= f.password_field :password, :autocomplete => 'off', :class => 'larger widest' %>
+    <%= f.password_field :password, autocomplete: 'off', class: 'larger widest' %>
   </div>
   <div class='clearfix'>
     <% if devise_mapping.rememberable? %>
@@ -21,7 +21,7 @@
       <%= link_to t('.forgot_password'), refinery.new_refinery_user_password_path %>
     </div>
   </div>
-  <%= render '/refinery/admin/form_actions', :f => f,
-             :submit_button_text => t('.sign_in'),
-             :hide_cancel => true %>
+  <%= render '/refinery/admin/form_actions', f: f,
+             submit_button_text: t('.sign_in'),
+             hide_cancel: true %>
 <% end -%>

@@ -29,7 +29,7 @@ module Refinery
         private
 
         def process_refinery_action(action, http_method = 'GET', options)
-          process(action, http_method, options.merge(:use_route => :refinery))
+          process(action, http_method, options.merge(use_route: :refinery))
         end
       end
     end

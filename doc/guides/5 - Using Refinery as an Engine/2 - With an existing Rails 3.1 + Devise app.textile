@@ -58,7 +58,7 @@ Next we'll add a static, unrestricted home page, the notice and alert flashes to
 
 We'll also add a simple stylesheet, which in a real existing app, would be what we would like Refinery to integrate with on the front end, rather than refinery overriding it.
 
-To demonstrate another wrinkle you might discover, let's customize our use of Devise a tiny bit, by overriding the session controller to handle a before_filter to prevent logging in when the database is undergoing maintenance.
+To demonstrate another wrinkle you might discover, let's customize our use of Devise a tiny bit, by overriding the session controller to handle a before_action to prevent logging in when the database is undergoing maintenance.
 
 
 +app/views/layouts/application.html.erb+
@@ -94,7 +94,7 @@ end
 +app/controllers/users/sessions_controller.rb+
 <ruby>
 class Users::SessionsController < Devise::SessionsController
-  before_filter :block_login_during_maintenance
+  before_action :block_login_during_maintenance
   def block_login_during_maintenance
     return unless DB_UNDER_MAINTENANCE
     redirect_to db_maintenance_message_path
@@ -116,7 +116,7 @@ DB_UNDER_MAINTENANCE = false
 +app/controllers/restricted_content_controller.rb+
 <ruby>
 class RestrictedContentController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 end
 </ruby>
 
@@ -130,9 +130,9 @@ end
   ExistingApp::Routes.draw do
     # ...
 
-    get "vault", :to => "restricted_content#vault"
-    get "static/db_maintenance", :as => "db_maintenance_message"
-    root :to => "static#home"
+    get "vault", to: "restricted_content#vault"
+    get "static/db_maintenance", as: "db_maintenance_message"
+    root to: "static#home"
 
     # ...
   end
@@ -170,7 +170,7 @@ rails console
 </shell>
 
 <ruby>
-User.create :email=>"my_email@my_company.com", :password=>"my_pa$$word"
+User.create email: "my_email@my_company.com", password: "my_pa$$word"
 </ruby>
 
 Go to http://localhost:3000 and you should see the home page.
@@ -191,7 +191,7 @@ Now that we have a baseline example working ExistingApp using Devise, it's time 
   gem 'refinerycms-pages', '~> 2.1.0'
   gem 'refinerycms-resources', '~> 2.1.0'
 
-  gem 'refinerycms-testing', '~> 2.1.0', :group => :test
+  gem 'refinerycms-testing', '~> 2.1.0', group: :test
 
   # ...
 </ruby>
@@ -235,10 +235,10 @@ class Role < Refinery::Core::BaseModel
   attr_accessible :title
 
   # TODO: This works around a bug in rails habtm with namespaces.
-  has_and_belongs_to_many :users, :join_table => ::RolesUsers.table_name
+  has_and_belongs_to_many :users, join_table: ::RolesUsers.table_name
 
   before_validation :camelize_title
-  validates :title, :uniqueness => true
+  validates :title, uniqueness: true
 
   def camelize_title(role_title = self.title)
     self.title = role_title.to_s.camelize
@@ -274,15 +274,15 @@ class User < Refinery::Core::BaseModel
 
   # End of your stuff
 
-  has_and_belongs_to_many :roles, :join_table => ::RolesUsers.table_name
-  has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
+  has_and_belongs_to_many :roles, join_table: ::RolesUsers.table_name
+  has_many :plugins, class_name: "UserPlugin", order: "position ASC", dependent: :destroy
 
   def plugins=(plugin_names)
     if persisted? # don't add plugins when the user_id is nil.
-      UserPlugin.delete_all(:user_id => id)
+      UserPlugin.delete_all(user_id: id)
 
       plugin_names.each_with_index do |plugin_name, index|
-        plugins.create(:name => plugin_name, :position => index) if plugin_name.is_a?(String)
+        plugins.create(name: plugin_name, position: index) if plugin_name.is_a?(String)
       end
     end
   end
@@ -357,7 +357,7 @@ module ExistingApp
       end
 
       ::Refinery::AdminController.send :include, ::RestrictRefineryToRefineryUsers
-      ::Refinery::AdminController.send :before_filter, :restrict_refinery_to_refinery_users
+      ::Refinery::AdminController.send :before_action, :restrict_refinery_to_refinery_users
     end
   end
 end
@@ -370,8 +370,8 @@ rails console
 
 <ruby>
 first_user = User.first # created above to test devise
-first_user.roles << Role.create(:title=>"Superuser")
-first_user.roles << Role.create(:title=>"Refinery")
+first_user.roles << Role.create(title: "Superuser")
+first_user.roles << Role.create(title: "Refinery")
 first_user.save
 exit
 </ruby>
@@ -436,7 +436,7 @@ Last advice: in your routes, map your root with @refinery/pages#home@ if you wan
 ExistingApp::Routes.draw do
   # ...
 
-  root :to => 'refinery/pages#home'
+  root to: 'refinery/pages#home'
 
   # ...
 end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Refinery
-  describe Image, :type => :model do
+  describe Image, type: :model do
 
     let(:image)         { FactoryGirl.build(:image) }
     let(:created_image) { FactoryGirl.create(:image) }
@@ -16,7 +16,7 @@ module Refinery
         end
 
         it "should be valid when size does not exceed .max_image_size" do
-          expect(Image.new(:image => @file)).to be_valid
+          expect(Image.new(image: @file)).to be_valid
         end
       end
 
@@ -24,7 +24,7 @@ module Refinery
         before do
           @file = Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
           allow(Images).to receive(:max_image_size).and_return(0)
-          @image = Image.new(:image => @file)
+          @image = Image.new(image: @file)
         end
 
         it "should not be valid when size exceeds .max_image_size" do
@@ -74,11 +74,11 @@ module Refinery
       end
 
       it "becomes different when supplying geometry" do
-        expect(created_image.url).not_to eq(created_image.thumbnail(:geometry => '200x200').url)
+        expect(created_image.url).not_to eq(created_image.thumbnail(geometry: '200x200').url)
       end
 
       it "has different urls for each geometry string" do
-        expect(created_image.thumbnail(:geometry => '200x200').url).not_to eq(created_image.thumbnail(:geometry => '200x201').url)
+        expect(created_image.thumbnail(geometry: '200x200').url).not_to eq(created_image.thumbnail(geometry: '200x201').url)
       end
 
       it "doesn't call thumb when geometry is nil" do
@@ -88,15 +88,15 @@ module Refinery
 
       it "uses right geometry when given a thumbnail name" do
         name, geometry = Refinery::Images.user_image_sizes.first
-        expect(created_image.thumbnail(:geometry => name).url).to eq(created_image.thumbnail(:geometry => geometry).url)
+        expect(created_image.thumbnail(geometry: name).url).to eq(created_image.thumbnail(geometry: geometry).url)
       end
 
       it "can strip a thumbnail" do
-        expect(created_image.thumbnail(:strip => true).url.blank?).to eq(false)
+        expect(created_image.thumbnail(strip: true).url.blank?).to eq(false)
       end
 
       it "can resize and strip a thumbnail" do
-        expect(created_image.thumbnail(:geometry => '200x200', :strip => true).url.blank?).to eq(false)
+        expect(created_image.thumbnail(geometry: '200x200', strip: true).url.blank?).to eq(false)
       end
     end
 
@@ -157,43 +157,43 @@ module Refinery
     # The sample image has dimensions 500x375
     describe '#thumbnail_dimensions returns correctly with' do
       it 'nil' do
-        expect(created_image.thumbnail_dimensions(nil)).to eq({ :width => 500, :height => 375 })
+        expect(created_image.thumbnail_dimensions(nil)).to eq({ width: 500, height: 375 })
       end
 
       it '200x200#ne' do
-        expect(created_image.thumbnail_dimensions('200x200#ne')).to eq({ :width => 200, :height => 200 })
+        expect(created_image.thumbnail_dimensions('200x200#ne')).to eq({ width: 200, height: 200 })
       end
 
       it '100x150#c' do
-        expect(created_image.thumbnail_dimensions('100x150#c')).to eq({ :width => 100, :height => 150 })
+        expect(created_image.thumbnail_dimensions('100x150#c')).to eq({ width: 100, height: 150 })
       end
 
       it '250x250>' do
-        expect(created_image.thumbnail_dimensions('250x250>')).to eq({ :width => 250, :height => 188 })
+        expect(created_image.thumbnail_dimensions('250x250>')).to eq({ width: 250, height: 188 })
       end
 
       it '600x375>' do
-        expect(created_image.thumbnail_dimensions('600x375>')).to eq({ :width => 500, :height => 375 })
+        expect(created_image.thumbnail_dimensions('600x375>')).to eq({ width: 500, height: 375 })
       end
 
       it '100x475>' do
-        expect(created_image.thumbnail_dimensions('100x475>')).to eq({ :width => 100, :height => 75 })
+        expect(created_image.thumbnail_dimensions('100x475>')).to eq({ width: 100, height: 75 })
       end
 
       it '100x150' do
-        expect(created_image.thumbnail_dimensions('100x150')).to eq({ :width => 100, :height => 75 })
+        expect(created_image.thumbnail_dimensions('100x150')).to eq({ width: 100, height: 75 })
       end
 
       it '200x150' do
-        expect(created_image.thumbnail_dimensions('200x150')).to eq({ :width => 200, :height => 150 })
+        expect(created_image.thumbnail_dimensions('200x150')).to eq({ width: 200, height: 150 })
       end
 
       it '300x150' do
-        expect(created_image.thumbnail_dimensions('300x150')).to eq({ :width => 200, :height => 150 })
+        expect(created_image.thumbnail_dimensions('300x150')).to eq({ width: 200, height: 150 })
       end
 
       it '5x5' do
-        expect(created_image.thumbnail_dimensions('5x5')).to eq({ :width => 5, :height => 4 })
+        expect(created_image.thumbnail_dimensions('5x5')).to eq({ width: 5, height: 4 })
       end
     end
 
@@ -201,21 +201,21 @@ module Refinery
       let(:created_alternate_image) { FactoryGirl.create(:alternate_image) }
 
       it 'nil' do
-        expect(created_alternate_image.thumbnail_dimensions(nil)).to eq({ :width => 376, :height => 184 })
+        expect(created_alternate_image.thumbnail_dimensions(nil)).to eq({ width: 376, height: 184 })
       end
 
       it '225x255>' do
-        expect(created_alternate_image.thumbnail_dimensions('225x255>')).to eq({ :width => 225, :height => 110 })
+        expect(created_alternate_image.thumbnail_dimensions('225x255>')).to eq({ width: 225, height: 110 })
       end
     end
 
     describe '#thumbnail_dimensions returns correctly with user-defined geometries' do
       it ':medium' do
-        expect(created_image.thumbnail_dimensions(:medium)).to eq({ :width => 225, :height => 169 })
+        expect(created_image.thumbnail_dimensions(:medium)).to eq({ width: 225, height: 169 })
       end
 
       it ':large' do
-        expect(created_image.thumbnail_dimensions(:large)).to eq({ :width => 450, :height => 338 })
+        expect(created_image.thumbnail_dimensions(:large)).to eq({ width: 450, height: 338 })
       end
     end
 

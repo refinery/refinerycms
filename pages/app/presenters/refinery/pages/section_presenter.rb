@@ -62,7 +62,7 @@ module Refinery
       attr_writer :id, :fallback_html, :hidden
 
       def wrap_content_in_tag(content)
-        content_tag(:section, content_tag(:div, content, :class => 'inner'), :id => id)
+        content_tag(:section, content_tag(:div, content, class: 'inner'), id: id)
       end
     end
   end

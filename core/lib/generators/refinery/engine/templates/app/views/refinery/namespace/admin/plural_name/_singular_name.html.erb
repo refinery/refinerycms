@@ -7,9 +7,9 @@
       <span class='preview'>
         <%% <%= singular_name %>.translations.each do |translation| %>
           <%% if translation.<%= title_attribute %>.present? %>
-            <%%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
-                         refinery.edit_<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>, :switch_locale => translation.locale),
-                         :class => 'locale' %>
+            <%%= link_to refinery_icon_tag("flags/#{translation.locale}.png", size: '16x11'),
+                         refinery.edit_<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>, switch_locale: translation.locale),
+                         class: 'locale' %>
           <%% end %>
         <%% end %>
       </span>
@@ -19,15 +19,15 @@
   <span class='actions'>
     <% unless skip_frontend? %>
     <%%= link_to refinery_icon_tag("application_go.png"), refinery.<%= namespacing.underscore %>_<%= singular_name %>_path(<%= singular_name %>),
-        :title => t('.view_live_html'),
-        :target => "_blank" %>
+        title: t('.view_live_html'),
+        target: "_blank" %>
     <% end %>
     <%%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>),
-         :title => t('.edit') %>
+         title: t('.edit') %>
     <%%= link_to refinery_icon_tag("delete.png"), refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>),
-        :class => "cancel confirm-delete",
-        :title => t('.delete'),
-        :data => {:confirm => t('message', :scope => 'refinery.admin.delete', :title => <%= singular_name %>.<%= title_attribute %>)},
-        :method => :delete %>
+        class: "cancel confirm-delete",
+        title: t('.delete'),
+        data: {confirm: t('message', scope: 'refinery.admin.delete', title: <%= singular_name %>.<%= title_attribute %>)},
+        method: :delete %>
   </span>
 </li>

@@ -32,20 +32,20 @@ describe Refinery::Admin::UsersController do
 
   describe "#create" do
     it "creates a new user with valid params" do
-      user = Refinery::User.new :username => "bob"
+      user = Refinery::User.new username: "bob"
       user.should_receive(:save).once{ true }
       Refinery::User.should_receive(:new).once.with(instance_of(ActionController::Parameters)){ user }
-      post :create, :user => {:username => 'bobby'}
+      post :create, user: {username: 'bobby'}
       response.should be_redirect
     end
 
     it_should_behave_like "new, create, update, edit and update actions"
 
     it "re-renders #new if there are errors" do
-      user = Refinery::User.new :username => "bob"
+      user = Refinery::User.new username: "bob"
       user.should_receive(:save).once{ false }
       Refinery::User.should_receive(:new).once.with(instance_of(ActionController::Parameters)){ user }
-      post :create, :user => {:username => 'bobby'}
+      post :create, user: {username: 'bobby'}
       response.should be_success
       response.should render_template("refinery/admin/users/new")
     end
@@ -55,7 +55,7 @@ describe Refinery::Admin::UsersController do
     refinery_login_with_factory :refinery_superuser
 
     it "renders the edit template" do
-      get :edit, :id => logged_in_user.id
+      get :edit, id: logged_in_user.id
       response.should be_success
       response.should render_template("refinery/admin/users/edit")
     end
@@ -69,14 +69,14 @@ describe Refinery::Admin::UsersController do
     let(:additional_user) { FactoryGirl.create :refinery_user }
     it "updates a user" do
       Refinery::User.stub_chain(:includes, :find) { additional_user }
-      patch "update", :id => additional_user.id.to_s, :user => {:username => 'bobby'}
+      patch "update", id: additional_user.id.to_s, user: {username: 'bobby'}
       response.should be_redirect
     end
 
     context "when specifying plugins" do
       it "won't allow to remove 'Users' plugin from self" do
         Refinery::User.stub_chain(:includes, :find) { logged_in_user }
-        patch "update", :id => logged_in_user.id.to_s, :user => {:plugins => ["some plugin"]}
+        patch "update", id: logged_in_user.id.to_s, user: {plugins: ["some plugin"]}
 
         flash[:error].should eq("You cannot remove the 'Users' plugin from the currently logged in account.")
       end
@@ -84,7 +84,7 @@ describe Refinery::Admin::UsersController do
       it "will update to the plugins supplied" do
         logged_in_user.should_receive(:update_attributes).with({"plugins" => %w(refinery_users some_plugin)})
         Refinery::User.stub_chain(:includes, :find) { logged_in_user }
-        patch "update", :id => logged_in_user.id.to_s, :user => {:plugins => %w(refinery_users some_plugin)}
+        patch "update", id: logged_in_user.id.to_s, user: {plugins: %w(refinery_users some_plugin)}
       end
     end
 

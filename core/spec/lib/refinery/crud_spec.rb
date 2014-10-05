@@ -1,7 +1,7 @@
 require "spec_helper"
 
 ActiveRecord::Schema.define do
-  create_table :refinery_crud_dummies, :force => true do |t|
+  create_table :refinery_crud_dummies, force: true do |t|
     t.integer :parent_id
     t.integer :lft
     t.integer :rgt
@@ -20,7 +20,7 @@ module Refinery
 end
 
 module Refinery
-  describe CrudDummyController, :type => :controller do
+  describe CrudDummyController, type: :controller do
 
     describe "#update_positions" do
       context "with existing dummies" do
@@ -53,8 +53,8 @@ module Refinery
         end
 
         it "orders nested dummies" do
-          nested_crud_dummy_one = Refinery::CrudDummy.create! :parent_id => crud_dummy_one.id
-          nested_crud_dummy_two = Refinery::CrudDummy.create! :parent_id => crud_dummy_one.id
+          nested_crud_dummy_one = Refinery::CrudDummy.create! parent_id: crud_dummy_one.id
+          nested_crud_dummy_two = Refinery::CrudDummy.create! parent_id: crud_dummy_one.id
 
           post :update_positions, {
             "ul" => {

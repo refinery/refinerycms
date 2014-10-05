@@ -5,7 +5,7 @@ module Refinery
   class DummyGenerator < Rails::Generators::Base
     desc "Creates blank Rails application, installs Refinery CMS, and all sample data"
 
-    class_option :database, :default => ''
+    class_option :database, default: ''
 
     def self.source_paths
       paths = self.superclass.source_paths
@@ -29,12 +29,12 @@ module Refinery
     def test_dummy_config
       @database = options[:database]
 
-      template "rails/database.yml", "#{dummy_path}/config/database.yml", :force => true
-      template "rails/boot.rb.erb", "#{dummy_path}/config/boot.rb", :force => true
-      template "rails/application.rb.erb", "#{dummy_path}/config/application.rb", :force => true
-      template "rails/routes.rb", "#{dummy_path}/config/routes.rb", :force => true
-      template "rails/Rakefile", "#{dummy_path}/Rakefile", :force => true
-      template "rails/application.js", "#{dummy_path}/app/assets/javascripts/application.js", :force => true
+      template "rails/database.yml", "#{dummy_path}/config/database.yml", force: true
+      template "rails/boot.rb.erb", "#{dummy_path}/config/boot.rb", force: true
+      template "rails/application.rb.erb", "#{dummy_path}/config/application.rb", force: true
+      template "rails/routes.rb", "#{dummy_path}/config/routes.rb", force: true
+      template "rails/Rakefile", "#{dummy_path}/Rakefile", force: true
+      template "rails/application.js", "#{dummy_path}/app/assets/javascripts/application.js", force: true
     end
 
     def test_dummy_clean
@@ -55,10 +55,10 @@ module Refinery
     def test_dummy_inherited_templates
       template "rails/search_form.html.erb",
         "#{dummy_path}/app/views/application/_search_form.html.erb",
-        :force => true
+        force: true
       template "rails/searchable.html.erb",
         "#{dummy_path}/app/views/refinery/pages/searchable.html.erb",
-        :force => true
+        force: true
     end
 
     attr :database

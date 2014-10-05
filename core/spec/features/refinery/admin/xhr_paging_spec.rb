@@ -4,8 +4,8 @@ module Refinery
   describe "Crudify" do
     refinery_login_with :refinery_superuser
 
-    describe "xhr_paging", :js => true do
-      # Refinery::Admin::UsersController specifies :order => 'username ASC' in crudify
+    describe "xhr_paging", js: true do
+      # Refinery::Admin::UsersController specifies order: 'username ASC' in crudify
       let(:first_user) { User.order('username ASC').first }
       let(:last_user) { User.order('username ASC').last }
       before do
@@ -20,7 +20,7 @@ module Refinery
         it 'should perform ajax paging of index' do
           visit refinery.admin_users_path
 
-          expect(page).to have_selector('li.record', :count => 1)
+          expect(page).to have_selector('li.record', count: 1)
           expect(page).to have_content(first_user.email)
 
           within '.pagination' do
@@ -37,7 +37,7 @@ module Refinery
         it 'should not perform ajax paging of index' do
           visit refinery.admin_users_path
 
-          expect(page).to have_selector('li.record', :count => 1)
+          expect(page).to have_selector('li.record', count: 1)
           expect(page).to have_content(first_user.email)
 
           within '.pagination' do

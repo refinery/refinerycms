@@ -1,10 +1,10 @@
 require "spec_helper"
 
 module Refinery
-  describe ApplicationController, :type => :controller do
+  describe ApplicationController, type: :controller do
     before do
       Rails.application.routes.draw {
-        mount Refinery::Core::Engine, :at => '/'
+        mount Refinery::Core::Engine, at: '/'
         get "anonymous/index"
       }
     end
@@ -17,7 +17,7 @@ module Refinery
       include ::Refinery::ApplicationController
 
       def index
-        render :nothing => true
+        render nothing: true
       end
     end
 

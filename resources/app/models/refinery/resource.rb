@@ -4,14 +4,14 @@ module Refinery
   class Resource < Refinery::Core::BaseModel
     include Resources::Validators
 
-    dragonfly_accessor :file, :app => :refinery_resources
+    dragonfly_accessor :file, app: :refinery_resources
 
-    validates :file, :presence => true
+    validates :file, presence: true
     validates_with FileSizeValidator
 
-    delegate :ext, :size, :mime_type, :url, :to => :file
+    delegate :ext, :size, :mime_type, :url, to: :file
 
-    before_destroy :cached_mime_type, :prepend => true
+    before_destroy :cached_mime_type, prepend: true
 
     def cached_mime_type
       @cached_mime_type ||= mime_type
@@ -46,7 +46,7 @@ module Refinery
 
         if params.present? and params[:file].is_a?(Array)
           params[:file].each do |resource|
-            resources << create({:file => resource}.merge(params.except(:file)))
+            resources << create({file: resource}.merge(params.except(:file)))
           end
         else
           resources << create(params)

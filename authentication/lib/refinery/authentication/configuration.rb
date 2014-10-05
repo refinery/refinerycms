@@ -9,7 +9,7 @@ module Refinery
 
     class << self
       def email_from_name
-        ::I18n.t('email_from_name', :scope => 'refinery.authentication.config', :default => config.email_from_name)
+        ::I18n.t('email_from_name', scope: 'refinery.authentication.config', default: config.email_from_name)
       end
     end
   end

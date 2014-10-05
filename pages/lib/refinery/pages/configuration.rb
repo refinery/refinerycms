@@ -28,16 +28,16 @@ module Refinery
     end
     self.use_layout_templates = false
     self.page_title = {
-      :chain_page_title => false,
-      :ancestors => {
-        :separator => " | ",
-        :class => 'ancestors',
-        :tag => 'span'
+      chain_page_title: false,
+      ancestors: {
+        separator: " | ",
+        class: 'ancestors',
+        tag: 'span'
       },
-      :page_title => {
-        :class => nil,
-        :tag => nil,
-        :wrap_if_not_chained => false
+      page_title: {
+        class: nil,
+        tag: nil,
+        wrap_if_not_chained: false
       }
     }
     self.show_title_in_body = true

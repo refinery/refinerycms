@@ -3,15 +3,15 @@
 # Don't forget to add:
 #   resources :plural_model_name_here
 # or for scoped:
-#   scope(:as => 'module_module', :module => 'module_name') do
+#   scope(as: 'module_module', module: 'module_name') do
 #      resources :plural_model_name_here
 #    end
 # to your routes.rb file.
 # Full documentation about CRUD and resources go here:
 # -> http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Resources.html#method-i-resources
 # Example (add to your controller):
-# crudify :foo, :title_attribute => 'name' for CRUD on Foo model
-# crudify :'foo/bar', :title_attribute => 'name' for CRUD on Foo::Bar model
+# crudify :foo, title_attribute: 'name' for CRUD on Foo model
+# crudify :'foo/bar', title_attribute: 'name' for CRUD on Foo::Bar model
 # Note: @singular_name will result in @foo for :foo and @bar for :'foo/bar'
 
 module Refinery
@@ -24,20 +24,20 @@ module Refinery
       plural_name = singular_name.pluralize
 
       {
-        :conditions => '',
-        :include => [],
-        :order => ('position ASC' if this_class.table_exists? && this_class.column_names.include?('position')),
-        :paging => true,
-        :per_page => false,
-        :redirect_to_url => "refinery.#{Refinery.route_for_model(class_name.constantize, :plural => true)}",
-        :searchable => true,
-        :search_conditions => '',
-        :sortable => true,
-        :title_attribute => "title",
-        :xhr_paging => false,
-        :class_name => class_name,
-        :singular_name => singular_name,
-        :plural_name => plural_name
+        conditions: '',
+        include: [],
+        order: ('position ASC' if this_class.table_exists? && this_class.column_names.include?('position')),
+        paging: true,
+        per_page: false,
+        redirect_to_url: "refinery.#{Refinery.route_for_model(class_name.constantize, plural: true)}",
+        searchable: true,
+        search_conditions: '',
+        sortable: true,
+        title_attribute: "title",
+        xhr_paging: false,
+        class_name: class_name,
+        singular_name: singular_name,
+        plural_name: plural_name
       }
     end
 
@@ -59,9 +59,9 @@ module Refinery
             #{options.inspect}
           end
 
-          prepend_before_filter :find_#{singular_name},
-                                :only => [:update, :destroy, :edit, :show]
-          prepend_before_filter :merge_position_into_params!, :only => :create
+          prepend_before_action :find_#{singular_name},
+                                only: [:update, :destroy, :edit, :show]
+          prepend_before_action :merge_position_into_params!, only: :create
 
           def new
             @#{singular_name} = #{class_name}.new
@@ -71,7 +71,7 @@ module Refinery
             if (@#{singular_name} = #{class_name}.create(#{singular_name}_params)).valid?
               flash.notice = t(
                 'refinery.crudify.created',
-                :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
+                what: "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
               )
 
               create_or_update_successful
@@ -88,7 +88,7 @@ module Refinery
             if @#{singular_name}.update_attributes(#{singular_name}_params)
               flash.notice = t(
                 'refinery.crudify.updated',
-                :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
+                what: "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
               )
 
               create_or_update_successful
@@ -101,7 +101,7 @@ module Refinery
             # object gets found by find_#{singular_name} function
             title = @#{singular_name}.#{options[:title_attribute]}
             if @#{singular_name}.destroy
-              flash.notice = t('destroyed', :scope => 'refinery.crudify', :what => "'\#{title}'")
+              flash.notice = t('destroyed', scope: 'refinery.crudify', what: "'\#{title}'")
             end
 
             redirect_to redirect_url
@@ -141,7 +141,7 @@ module Refinery
             # If we have already found a set then we don't need to again
             find_all_#{plural_name} if @#{plural_name}.nil?
 
-            @#{plural_name} = @#{plural_name}.paginate(:page => params[:page], :per_page => paginate_per_page)
+            @#{plural_name} = @#{plural_name}.paginate(page: params[:page], per_page: paginate_per_page)
           end
 
           def paginate_per_page
@@ -155,8 +155,8 @@ module Refinery
           def redirect_url
             if params[:page].present?
               page = params[:page].to_i rescue 1
-              page -= 1 while #{class_name}.paginate(:page => page).empty? && page > 1
-              #{options[:redirect_to_url]}(:page => page)
+              page -= 1 while #{class_name}.paginate(page: page).empty? && page > 1
+              #{options[:redirect_to_url]}(page: page)
             else
               #{options[:redirect_to_url]}
             end
@@ -166,8 +166,8 @@ module Refinery
           # then render only the collection of items.
           def render_partial_response?
             if request.xhr?
-              render :text => render_to_string(:partial => '#{plural_name}', :layout => false).html_safe,
-                     :layout => 'refinery/flash' and return false
+              render text: render_to_string(partial: '#{plural_name}', layout: false).html_safe,
+                     layout: 'refinery/flash' and return false
             end
           end
 
@@ -179,7 +179,7 @@ module Refinery
             else
               if /true|on|1/ === params[:continue_editing]
                 if request.xhr?
-                  render :partial => '/refinery/message'
+                  render partial: '/refinery/message'
                 else
                   redirect_to :back
                 end
@@ -191,12 +191,12 @@ module Refinery
 
           def create_or_update_unsuccessful(action)
             if request.xhr?
-              render :partial => '/refinery/admin/error_messages', :locals => {
-                       :object => @#{singular_name},
-                       :include_object_name => true
+              render partial: '/refinery/admin/error_messages', locals: {
+                       object: @#{singular_name},
+                       include_object_name: true
                      }
             else
-              render :action => action
+              render action: action
             end
           end
 
@@ -315,7 +315,7 @@ module Refinery
               list = _node['children']['0']
               list.sort_by {|k, v| k.to_i}.map { |item| item[1] }.each_with_index do |child, index|
                 child_id = child['id'].split(/#{singular_name}\_?/).reject(&:empty?).first
-                child_#{singular_name} = #{class_name}.where(:id => child_id).first
+                child_#{singular_name} = #{class_name}.where(id: child_id).first
                 child_#{singular_name}.move_to_child_of(#{singular_name})
 
                 if child['children'].present?
@@ -325,7 +325,7 @@ module Refinery
             end
 
             def after_update_positions
-              render :nothing => true
+              render nothing: true
             end
 
             protected :after_update_positions

@@ -9,7 +9,7 @@ module Refinery
           sha = img.match(%r{/system/images/(.+?)/})[1]
           job = Dragonfly::Job.deserialize sha, Dragonfly[:refinery_images]
 
-          image_fu Image.where(:image_uid => job.uid).first, thumbnail
+          image_fu Image.where(image_uid: job.uid).first, thumbnail
         rescue Dragonfly::Serializer::BadString
           img
         end
@@ -24,9 +24,9 @@ module Refinery
       if image.present?
         dimensions = (image.thumbnail_dimensions(geometry) rescue {})
 
-        image_tag(image.thumbnail(:geometry => geometry,
-                                  :strip => options[:strip]).url, {
-          :alt => image.respond_to?(:title) ? image.title : image.image_name,
+        image_tag(image.thumbnail(geometry: geometry,
+                                  strip: options[:strip]).url, {
+          alt: image.respond_to?(:title) ? image.title : image.image_name,
         }.merge(dimensions).merge(options))
       end
     end

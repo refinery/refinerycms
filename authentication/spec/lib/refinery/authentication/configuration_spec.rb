@@ -19,10 +19,10 @@ module Refinery
 
         context 'when set in locale file' do
           before do
-            ::I18n.backend.store_translations :en, :refinery => {
-              :authentication => {
-                :config => {
-                  :email_from_name => 'supporto'
+            ::I18n.backend.store_translations :en, refinery: {
+              authentication: {
+                config: {
+                  email_from_name: 'supporto'
                 }
               }
             }

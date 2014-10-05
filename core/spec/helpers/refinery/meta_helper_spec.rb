@@ -13,7 +13,7 @@ module Refinery
       end
 
       context 'when page exists' do
-        let(:page) { Page.new :slug => 'testing' }
+        let(:page) { Page.new slug: 'testing' }
 
         it "returns the page's canonical slug with '-page' appended" do
           helper.canonical_id(page).should == page.canonical_slug << '-page'

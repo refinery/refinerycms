@@ -1,7 +1,7 @@
 module Refinery
   class PagesGenerator < Rails::Generators::Base
-    class_option :skip_migrations, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
-                           :desc => "Skip over installing or running migrations."
+    class_option :skip_migrations, type: :boolean, default: false, aliases: nil, group: :runtime,
+                           desc: "Skip over installing or running migrations."
 
     source_root File.expand_path('../templates', __FILE__)
 
@@ -16,7 +16,7 @@ module Refinery
 
     def append_load_seed_data
       create_file "db/seeds.rb" unless File.exists?(File.join(destination_root, 'db', 'seeds.rb'))
-      append_file 'db/seeds.rb', :verbose => true do
+      append_file 'db/seeds.rb', verbose: true do
         <<-EOH
 
 # Added by Refinery CMS Pages extension

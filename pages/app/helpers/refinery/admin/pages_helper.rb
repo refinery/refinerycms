@@ -12,13 +12,13 @@ module Refinery
       end
 
       def template_options(template_type, current_page)
-        html_options = { :selected => send("default_#{template_type}", current_page) }
+        html_options = {selected: send("default_#{template_type}", current_page)}
 
         if (template = current_page.send(template_type).presence)
-          html_options.update :selected => template
+          html_options.update selected: template
         elsif current_page.parent_id? && !current_page.send(template_type).presence
           template = current_page.parent.send(template_type).presence
-          html_options.update :selected => template if template
+          html_options.update selected: template if template
         end
 
         html_options
@@ -36,12 +36,12 @@ module Refinery
       # to inform the which pages are draft or hidden pages
       def page_meta_information(page)
         meta_information = ActiveSupport::SafeBuffer.new
-        meta_information << content_tag(:span, :class => 'label') do
-          ::I18n.t('hidden', :scope => 'refinery.admin.pages.page')
+        meta_information << content_tag(:span, class: 'label') do
+          ::I18n.t('hidden', scope: 'refinery.admin.pages.page')
         end unless page.show_in_menu?
 
-        meta_information << content_tag(:span, :class => 'label notice') do
-          ::I18n.t('draft', :scope => 'refinery.admin.pages.page')
+        meta_information << content_tag(:span, class: 'label notice') do
+          ::I18n.t('draft', scope: 'refinery.admin.pages.page')
         end if page.draft?
 
         meta_information

@@ -1,4 +1,4 @@
-<%= render '/refinery/admin/form_advanced_options_menu', :f => f %>
+<%= render '/refinery/admin/form_advanced_options_menu', f: f %>
 
 <div id="more_options" style="display:none;">
   <div class="hemisquare">
@@ -8,7 +8,7 @@
         <%= f.label :parent_id, t('.parent_page') %>
         <%= refinery_help_tag t('.parent_page_help') %>
       </span>
-      <%= f.select :parent_id, parent_id_nested_set_options(@page), :include_blank => true %>
+      <%= f.select :parent_id, parent_id_nested_set_options(@page), include_blank: true %>
     </div>
     <% if Refinery::Pages.use_layout_templates %>
     <div class='field'>
@@ -34,7 +34,7 @@
         <%= f.label :menu_title, t('.menu_title') %>
         <%= refinery_help_tag t('.menu_title_help') %>
       </span>
-      <%= f.text_field :menu_title, :style=> 'width:400px;' %>
+      <%= f.text_field :menu_title, style: 'width:400px;' %>
     </div>
     <% if Refinery::Pages.use_custom_slugs %>
     <div class='field'>
@@ -42,7 +42,7 @@
         <%= f.label :custom_slug, t('.custom_slug') %>
         <%= refinery_help_tag t('.custom_slug_help') %>
       </span>
-      <%= f.text_field :custom_slug, :style=> 'width:400px;' %>
+      <%= f.text_field :custom_slug, style: 'width:400px;' %>
     </div>
     <% end %>
     <div class='field'>
@@ -52,14 +52,14 @@
       </span>
       <%= f.check_box :skip_to_first_child %>
       <%= f.label :skip_to_first_child, t('.skip_to_first_child_label'),
-                  :class => "stripped" %>
+                  class: "stripped" %>
     </div>
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :link_url, t('.link_url') %>
         <%= refinery_help_tag t('.link_url_help') %>
       </span>
-      <%= f.text_field :link_url, :style=> 'width:400px;' %>
+      <%= f.text_field :link_url, style: 'width:400px;' %>
       <% content_for :javascripts do %>
       <script>
         $(document).ready(function(){
@@ -71,14 +71,14 @@
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :show_in_menu, t('.show_in_menu_title'),
-                    :id => 'page_show_in_menu_heading' %>
+                    id: 'page_show_in_menu_heading' %>
         <%= refinery_help_tag t('.show_in_menu_help') %>
       </span>
       <%= f.check_box :show_in_menu %>
       <%= f.label :show_in_menu, t('.show_in_menu_description'),
-                  :class => "stripped" %>
+                  class: "stripped" %>
     </div>
   </div>
 
-  <%= render 'form_advanced_options_seo', :f => f %>
+  <%= render 'form_advanced_options_seo', f: f %>
 </div>

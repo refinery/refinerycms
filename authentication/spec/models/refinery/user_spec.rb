@@ -53,33 +53,33 @@ module Refinery
       # module so those validations are not tested here
       let(:attributes) do
         {
-          :username => "Refinery CMS",
-          :email => "refinery@cms.com",
-          :password => "123456",
-          :password_confirmation => "123456"
+          username: "Refinery CMS",
+          email: "refinery@cms.com",
+          password: "123456",
+          password_confirmation: "123456"
         }
       end
 
       it "requires username" do
-        User.new(attributes.merge(:username => "")).should_not be_valid
+        User.new(attributes.merge(username: "")).should_not be_valid
       end
 
       it "rejects duplicate usernames" do
         User.create!(attributes)
-        User.new(attributes.merge(:email => "another@email.com")).should_not be_valid
+        User.new(attributes.merge(email: "another@email.com")).should_not be_valid
       end
 
       it "rejects duplicate usernames regardless of case" do
         User.create!(attributes)
         User.new(attributes.merge(
-          :username => attributes[:username].upcase,
-          :email => "another@email.com")
+          username: attributes[:username].upcase,
+          email: "another@email.com")
         ).should_not be_valid
       end
 
       it "rejects duplicate usernames regardless of whitespace" do
         User.create!(attributes)
-        new_user = User.new(attributes.merge(:username => " Refinery   CMS "))
+        new_user = User.new(attributes.merge(username: " Refinery   CMS "))
         new_user.valid?
         new_user.username.should == 'refinery cms'
         new_user.should_not be_valid
@@ -88,8 +88,8 @@ module Refinery
 
     describe ".find_for_database_authentication" do
       it "finds user either by username or email" do
-        User.find_for_database_authentication(:login => user.username).should == user
-        User.find_for_database_authentication(:login => user.email).should == user
+        User.find_for_database_authentication(login: user.username).should == user
+        User.find_for_database_authentication(login: user.email).should == user
       end
     end
 
@@ -178,7 +178,7 @@ module Refinery
         end
 
         it "won't raise exception if plugins position is not a number" do
-          Refinery::UserPlugin.create! :name => "refinery_one", :user_id => user.id
+          Refinery::UserPlugin.create! name: "refinery_one", user_id: user.id
 
           expect { user.plugins = ["refinery_one", "refinery_two"] }.to_not raise_error
         end
@@ -209,7 +209,7 @@ module Refinery
     describe "#authorized_plugins" do
       it "returns array of user and always allowd plugins" do
         ["refinery_one", "refinery_two", "refinery_three"].each_with_index do |name, index|
-          user.plugins.create!(:name => name, :position => index)
+          user.plugins.create!(name: name, position: index)
         end
         user.authorized_plugins.should == user.plugins.collect { |p| p.name } | ::Refinery::Plugins.always_allowed.names
       end

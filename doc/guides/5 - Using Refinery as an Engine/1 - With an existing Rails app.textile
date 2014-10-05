@@ -54,7 +54,7 @@ h3. Mounting to a directory other than root
 It is possible to mount Refinery to a subfolder.  To do this, simply change the mount line in your +config/routes.rb+ file to:
 
 <shell>
-    mount Refinery::Core::Engine, :at => '/subfolder'
+    mount Refinery::Core::Engine, at: '/subfolder'
 </shell>
 
 After starting your rails server and navigating to +localhost:3000/subfolder+, you should see a dummy home page.

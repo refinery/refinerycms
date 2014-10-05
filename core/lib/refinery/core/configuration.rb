@@ -69,7 +69,7 @@ module Refinery
       end
 
       def site_name
-        ::I18n.t('site_name', :scope => 'refinery.core.config', :default => config.site_name)
+        ::I18n.t('site_name', scope: 'refinery.core.config', default: config.site_name)
       end
 
       def wymeditor_whitelist_tags=(tags)

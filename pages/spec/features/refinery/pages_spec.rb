@@ -3,9 +3,9 @@ require 'spec_helper'
 
 module Refinery
   describe 'page frontend' do
-    let(:home_page) { Page.create :title => 'Home', :link_url => '/' }
-    let(:about_page) { Page.create :title => 'About' }
-    let(:draft_page) { Page.create :title => 'Draft', :draft => true }
+    let(:home_page) { Page.create title: 'Home', link_url: '/' }
+    let(:about_page) { Page.create title: 'About' }
+    let(:draft_page) { Page.create title: 'Draft', draft: true }
     before do
       # Stub the menu pages we're expecting
       ::I18n.default_locale = Globalize.locale = :en
@@ -85,7 +85,7 @@ module Refinery
     end
 
     describe 'when menu_title is' do
-      let(:page_mt) { Page.create :title => 'Company News' }
+      let(:page_mt) { Page.create title: 'Company News' }
 
       before do
         Page.stub(:fast_menu).and_return([page_mt])
@@ -132,7 +132,7 @@ module Refinery
 
     describe 'when browser_title is set' do
       let(:page_bt) {
-        Page.create :title => 'About Us', :browser_title => 'About Our Company'
+        Page.create title: 'About Us', browser_title: 'About Our Company'
       }
       before do
         Page.stub(:fast_menu).and_return([page_bt])
@@ -152,7 +152,7 @@ module Refinery
     end
 
     describe 'custom_slug' do
-      let(:page_cs) { Page.create :title => 'About Us' }
+      let(:page_cs) { Page.create title: 'About Us' }
       before do
         Page.stub(:fast_menu).and_return([page_cs])
       end
@@ -239,7 +239,7 @@ module Refinery
     end
 
     describe "submenu page" do
-      let(:submenu_page) { about_page.children.create :title => 'Sample Submenu' }
+      let(:submenu_page) { about_page.children.create title: 'Sample Submenu' }
 
       before do
         Page.stub(:fast_menu).and_return(
@@ -258,7 +258,7 @@ module Refinery
     end
 
     describe "special characters title" do
-      let(:special_page) { Page.create :title => 'ä ö ü spéciål chåråctÉrs' }
+      let(:special_page) { Page.create title: 'ä ö ü spéciål chåråctÉrs' }
       before do
         Page.stub(:fast_menu).and_return(
           [home_page, about_page, special_page]
@@ -278,7 +278,7 @@ module Refinery
 
     describe "special characters title as submenu page" do
       let(:special_page) {
-        about_page.children.create :title => 'ä ö ü spéciål chåråctÉrs'
+        about_page.children.create title: 'ä ö ü spéciål chåråctÉrs'
       }
 
       before do
@@ -299,7 +299,7 @@ module Refinery
     end
 
     describe "hidden page" do
-      let(:hidden_page) { Page.create :title => "Hidden", :show_in_menu => false }
+      let(:hidden_page) { Page.create title: "Hidden", show_in_menu: false }
 
       before do
         Page.stub(:fast_menu).and_return([home_page, about_page])
@@ -318,7 +318,7 @@ module Refinery
     end
 
     describe "skip to first child" do
-      let!(:child_page) { about_page.children.create :title => "Child Page" }
+      let!(:child_page) { about_page.children.create title: "Child Page" }
       before do
        about = about_page.reload
        about.skip_to_first_child = true
@@ -382,7 +382,7 @@ module Refinery
           let!(:nested_page) do
             Globalize.fallbacks = [:ru]
             _page = Globalize.with_locale(:en) {
-              news_page.children.create :title => nested_page_title
+              news_page.children.create title: nested_page_title
             }
 
             Globalize.with_locale(:ru) do

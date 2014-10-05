@@ -4,18 +4,18 @@ module Refinery
   class CmsGenerator < Rails::Generators::Base
     source_root Pathname.new(File.expand_path('../templates', __FILE__))
 
-    class_option :update,  :type => :boolean, :aliases => nil, :group => :runtime,
-                           :desc => "Update an existing Refinery CMS based application"
-    class_option :fresh_installation, :type => :boolean, :aliases => nil, :group => :runtime, :default => false,
-                           :desc => "Allow Refinery to remove default Rails files in a fresh installation"
-    class_option :heroku,  :type => :string, :default => nil, :group => :runtime, :banner => 'APP_NAME',
-                           :desc => "Deploy to Heroku after the generator has run."
-    class_option :stack,   :type => :string, :default => 'cedar', :group => :runtime,
-                           :desc => "Specify which Heroku stack you want to use. Requires --heroku option to function."
-    class_option :skip_db, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
-                           :desc => "Skip over any database creation, migration or seeding."
-    class_option :skip_migrations, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
-                           :desc => "Skip over installing or running migrations."
+    class_option :update,  type: :boolean, aliases: nil, group: :runtime,
+                           desc: "Update an existing Refinery CMS based application"
+    class_option :fresh_installation, type: :boolean, aliases: nil, group: :runtime, default: false,
+                           desc: "Allow Refinery to remove default Rails files in a fresh installation"
+    class_option :heroku,  type: :string, default: nil, group: :runtime, banner: 'APP_NAME',
+                           desc: "Deploy to Heroku after the generator has run."
+    class_option :stack,   type: :string, default: 'cedar', group: :runtime,
+                           desc: "Specify which Heroku stack you want to use. Requires --heroku option to function."
+    class_option :skip_db, type: :boolean, default: false, aliases: nil, group: :runtime,
+                           desc: "Skip over any database creation, migration or seeding."
+    class_option :skip_migrations, type: :boolean, default: false, aliases: nil, group: :runtime,
+                           desc: "Skip over installing or running migrations."
 
     def generate
       start_pretending?
@@ -56,7 +56,7 @@ module Refinery
       if destination_path.join(application_css).file?
         insert_into_file application_css, %q{*= require refinery/formatting
  *= require refinery/theme
- },      :before => "*= require_self"
+ },      before: "*= require_self"
       end
     end
 
@@ -175,10 +175,10 @@ gem 'pg'
             "  end"
           ].join("\n")
 
-          gsub_file env, current_mailer_config, new_mailer_config, :verbose => false
+          gsub_file env, current_mailer_config, new_mailer_config, verbose: false
         end
 
-        gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
+        gsub_file env, "config.assets.compile = false", "config.assets.compile = true", verbose: false
       end
     end
 
@@ -196,7 +196,7 @@ gem 'pg'
       %w(public/index.html app/views/layouts/application.html.erb).each do |roadblock|
         if (roadblock_path = destination_path.join(roadblock)).file?
           if self.options[:fresh_installation]
-            remove_file roadblock_path, :verbose => true
+            remove_file roadblock_path, verbose: true
           else
             say_status :"-- You may need to remove '#{roadblock}' for Refinery to function properly --", nil, :yellow
           end

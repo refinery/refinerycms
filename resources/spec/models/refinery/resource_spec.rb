@@ -55,26 +55,26 @@ module Refinery
 
       context "only one resource uploaded" do
         it "returns an array containing one resource" do
-          Resource.create_resources(:file => file).should have(1).item
+          Resource.create_resources(file: file).should have(1).item
         end
       end
 
       context "many resources uploaded at once" do
         it "returns an array containing all those resources" do
-          Resource.create_resources(:file => [file, file, file]).should have(3).items
+          Resource.create_resources(file: [file, file, file]).should have(3).items
         end
       end
 
       specify "each returned array item should be an instance of resource" do
-        Resource.create_resources(:file => [file, file, file]).each do |r|
+        Resource.create_resources(file: [file, file, file]).each do |r|
           r.should be_an_instance_of(Resource)
         end
       end
 
       specify "each returned array item should be passed form parameters" do
-        params = {:file => [file, file, file], :fake_param => 'blah'}
+        params = {file: [file, file, file], fake_param: 'blah'}
 
-        Resource.should_receive(:create).exactly(3).times.with({:file => file, :fake_param => 'blah'})
+        Resource.should_receive(:create).exactly(3).times.with({file: file, fake_param: 'blah'})
         Resource.create_resources(params)
       end
     end
@@ -87,7 +87,7 @@ module Refinery
         end
 
         it "should be valid when size does not exceed .max_file_size" do
-          Resource.new(:file => @file).should be_valid
+          Resource.new(file: @file).should be_valid
         end
       end
 
@@ -95,7 +95,7 @@ module Refinery
         before do
           @file = Refinery.roots('refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
           Resources.max_file_size = (File.read(@file).size - 10)
-          @resource = Resource.new(:file => @file)
+          @resource = Resource.new(file: @file)
         end
 
         it "should not be valid when size exceeds .max_file_size" do
@@ -106,8 +106,8 @@ module Refinery
           @resource.valid?
           @resource.errors.should_not be_empty
           @resource.errors[:file].should == Array(::I18n.t(
-            'too_big', :scope => 'activerecord.errors.models.refinery/resource',
-                       :size => Resources.max_file_size
+            'too_big', scope: 'activerecord.errors.models.refinery/resource',
+                       size: Resources.max_file_size
           ))
         end
       end
@@ -121,7 +121,7 @@ module Refinery
           @resource.valid?
           @resource.errors.should_not be_empty
           @resource.errors[:file].should == Array(::I18n.t(
-            'blank', :scope => 'activerecord.errors.models.refinery/resource'
+            'blank', scope: 'activerecord.errors.models.refinery/resource'
           ))
         end
       end

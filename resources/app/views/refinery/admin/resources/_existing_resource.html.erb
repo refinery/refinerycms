@@ -7,20 +7,20 @@
           <% resource_linked = ((@resource_id.present? && @resource_id == resource.id) || (params[:current_link].present? && resource.url == params[:current_link])) %>
           <li<%= ' class="linked"'.html_safe if resource_linked %>>
             <%= link_to "#{resource.title} (#{resource.file_name})", path_to_asset(resource.url),
-                        :title => t('.link_to_file'),
-                        :rel => resource.title,
-                        :class => 'page_link',
-                        :id => "resource_#{resource.id}" %>
+                        title: t('.link_to_file'),
+                        rel: resource.title,
+                        class: 'page_link',
+                        id: "resource_#{resource.id}" %>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
 
-  <%= will_paginate @resources, :params => params.dup.merge(:action => "insert") %>
+  <%= will_paginate @resources, params: params.dup.merge(action: "insert") %>
 
-  <%= render '/refinery/admin/form_actions', :f => nil,
-             :submit_button_text => t('.button_text'),
-             :hide_cancel => true,
-             :hide_delete => true if @app_dialog or @resources.any? %>
+  <%= render '/refinery/admin/form_actions', f: nil,
+             submit_button_text: t('.button_text'),
+             hide_cancel: true,
+             hide_delete: true if @app_dialog or @resources.any? %>
 </div>

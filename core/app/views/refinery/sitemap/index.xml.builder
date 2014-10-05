@@ -8,7 +8,7 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
      # exclude sites that are external to our own domain.
      page_url = if page.url.is_a?(Hash)
        # This is how most pages work without being overriden by link_url
-       page.url.merge({:only_path => false})
+       page.url.merge({only_path: false})
      elsif page.url.to_s !~ /^http/
        # handle relative link_url addresses.
        [request.protocol, request.host_with_port, page.url].join

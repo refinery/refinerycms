@@ -4,14 +4,14 @@ require 'spec_helper'
 module Refinery
   describe Page do
     let(:page_title) { 'RSpec is great for testing too' }
-    let(:page) { subject.class.new(:title => page_title, :deletable => true)}
+    let(:page) { subject.class.new(title: page_title, deletable: true)}
 
     describe "#to_refinery_menu_item" do
       let(:page) do
         Page.new(
-          :id => 5,
-          :parent_id => 8,
-          :menu_match => "^/foo$"
+          id: 5,
+          parent_id: 8,
+          menu_match: "^/foo$"
 
         # Page does not allow setting lft and rgt, so stub them.
         ).tap do |p|

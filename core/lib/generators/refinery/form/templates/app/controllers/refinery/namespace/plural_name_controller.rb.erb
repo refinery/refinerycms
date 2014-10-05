@@ -2,10 +2,10 @@ module Refinery
   module <%= class_name.pluralize %>
     class <%= class_name.pluralize %>Controller < ::ApplicationController
 
-      before_filter :find_page, :only => [:create, :new]
+      before_action :find_page, only: [:create, :new]
 
       def index
-        redirect_to :action => "new"
+        redirect_to action: "new"
       end
 
       def thank_you
@@ -39,7 +39,7 @@ module Refinery
 
           redirect_to refinery.thank_you_<%= namespacing.underscore %>_<%= plural_name %>_path
         else
-          render :action => 'new'
+          render action: 'new'
         end
       end
 

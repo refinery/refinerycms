@@ -26,11 +26,11 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
 
   def down
     if defined?(::Refinery::UserPlugin)
-      ::Refinery::UserPlugin.destroy_all({:name => "<%= plural_name %>"})
+      ::Refinery::UserPlugin.destroy_all({name: "<%= plural_name %>"})
     end
 
     if defined?(::Refinery::Page)
-      ::Refinery::Page.delete_all({:link_url => "/<%= plural_name %>"})
+      ::Refinery::Page.delete_all({link_url: "/<%= plural_name %>"})
     end
 
     drop_table :refinery_<%= table_name %>

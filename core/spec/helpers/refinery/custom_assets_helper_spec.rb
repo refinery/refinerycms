@@ -36,9 +36,9 @@ module Refinery
       end
 
       it "should return stylesheet class with path and options when both are specified" do
-        Refinery::Core.config.register_stylesheet("test", :media => 'screen')
+        Refinery::Core.config.register_stylesheet("test", media: 'screen')
         helper.custom_stylesheets.last.path.should == "test"
-        helper.custom_stylesheets.last.options.should eq({:media => 'screen'})
+        helper.custom_stylesheets.last.options.should eq({media: 'screen'})
       end
     end
   end

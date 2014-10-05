@@ -7,7 +7,7 @@ module Refinery
             plugin.update_attributes position: index
           end
         end
-        render :nothing => true
+        render nothing: true
       end
     end
   end

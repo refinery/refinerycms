@@ -28,7 +28,7 @@ module Refinery
       end
 
       attr_accessor :context, :collection
-      delegate :output_buffer, :output_buffer=, :to => :context
+      delegate :output_buffer, :output_buffer=, to: :context
 
       def initialize(collection, context)
         @collection = collection
@@ -41,14 +41,14 @@ module Refinery
 
       private
       def render_menu(items)
-        content_tag(menu_tag, :id => dom_id, :class => css) do
+        content_tag(menu_tag, id: dom_id, class: css) do
           render_menu_items(items)
         end
       end
 
       def render_menu_items(menu_items)
         if menu_items.present?
-          content_tag(list_tag, :class => list_tag_css) do
+          content_tag(list_tag, class: list_tag_css) do
             menu_items.each_with_index.inject(ActiveSupport::SafeBuffer.new) do |buffer, (item, index)|
               buffer << render_menu_item(item, index)
             end
@@ -57,11 +57,11 @@ module Refinery
       end
 
       def render_menu_item_link(menu_item)
-        link_to(menu_item.title, context.refinery.url_for(menu_item.url), :class => link_tag_css)
+        link_to(menu_item.title, context.refinery.url_for(menu_item.url), class: link_tag_css)
       end
 
       def render_menu_item(menu_item, index)
-        content_tag(list_item_tag, :class => menu_item_css(menu_item, index)) do
+        content_tag(list_item_tag, class: menu_item_css(menu_item, index)) do
           buffer = ActiveSupport::SafeBuffer.new
           buffer << render_menu_item_link(menu_item)
           buffer << render_menu_items(menu_item_children(menu_item))

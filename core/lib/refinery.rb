@@ -83,7 +83,7 @@ module Refinery
     #   caller - who called the deprecated feature
     #
     # Example:
-    #   Refinery.deprecate('foo', :when => 'tomorrow', :replacement => 'bar') =>
+    #   Refinery.deprecate('foo', when: 'tomorrow', replacement: 'bar') =>
     #       "The use of 'foo' is deprecated and will be removed at version 2.0. Please use 'bar' instead."
     def deprecate(what, options = {})
       # Build a warning.
@@ -134,12 +134,12 @@ module Refinery
     #
     # Example:
     #   Refinery.route_for_model(Refinery::Image) => "admin_image_path"
-    #   Refinery.route_for_model(Refinery::Image, {:plural => true}) => "admin_images_path"
+    #   Refinery.route_for_model(Refinery::Image, {plural: true}) => "admin_images_path"
     #   Refinery.route_for_model(Refinery::Blog::Post) => "blog_admin_post_path"
-    #   Refinery.route_for_model(Refinery::Blog::Post, {:plural => true}) => "blog_admin_posts_path"
-    #   Refinery.route_for_model(Refinery::Blog::Post, {:admin => false}) => "blog_post_path"
+    #   Refinery.route_for_model(Refinery::Blog::Post, {plural: true}) => "blog_admin_posts_path"
+    #   Refinery.route_for_model(Refinery::Blog::Post, {admin: false}) => "blog_post_path"
     def route_for_model(klass, options = {})
-      options = {:plural => false, :admin => true}.merge options
+      options = {plural: false, admin: true}.merge options
 
       klass = klass.constantize if klass.respond_to?(:constantize)
       active_name = ::ActiveModel::Name.new(

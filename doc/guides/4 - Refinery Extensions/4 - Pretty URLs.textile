@@ -40,7 +40,7 @@ In your model, add the following lines after the opening +class+ line:
 
 <ruby>
   extend FriendlyId
-  friendly_id :title, :use => [:slugged]
+  friendly_id :title, use: [:slugged]
 </ruby>
 
 If you want to use a different field than +title+ from which to generate the URL, be sure to change the first symbol after +friendly_id+ to be in accordance (for example, many extensions use +name+ instead).

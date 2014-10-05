@@ -8,10 +8,10 @@
       <div id='editor_switch'>
         <%= site_bar_switch_link -%>
       </div>
-      <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request? || request.ssl? }refinery/logo-site-bar.png", :alt => "Refinery (tm) Content Manager"),
+      <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request? || request.ssl? }refinery/logo-site-bar.png", alt: "Refinery (tm) Content Manager"),
                   'http://refinerycms.com',
-                  :target => '_blank',
-                  :id => 'site_bar_refinery_cms_logo' %>
+                  target: '_blank',
+                  id: 'site_bar_refinery_cms_logo' %>
 
       <div id='site_bar_branding'>
         <span id='site_bar_company_name'>
@@ -19,7 +19,7 @@
         </span>
 
         <%= link_to t('.log_out', site_bar_translate_locale_args),
-                    refinery.logout_path, :id => 'logout' %>
+                    refinery.logout_path, id: 'logout' %>
       </div>
     </div>
   </div>

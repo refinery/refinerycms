@@ -3,12 +3,12 @@ require 'spec_helper'
 module Refinery
   module Pages
     describe ContentPagesHelper do
-      let(:content_presenter) { double(ContentPresenter, :hide_sections => nil, :fetch_template_overrides => nil, :to_html => nil) }
+      let(:content_presenter) { double(ContentPresenter, hide_sections: nil, fetch_template_overrides: nil, to_html: nil) }
 
       describe "when rendering content presenter" do
         it "asks to content presenter to hide sections if told to" do
           content_presenter.should_receive(:hide_sections).with(['foo', 'bar'])
-          render_content_presenter(content_presenter, :hide_sections => ['foo', 'bar'])
+          render_content_presenter(content_presenter, hide_sections: ['foo', 'bar'])
         end
 
         it "attempts to fetch template overrides declared elsewhere via content_for" do
@@ -24,7 +24,7 @@ module Refinery
 
         it "passes can_use_fallback option through to html rendering" do
           content_presenter.should_receive(:to_html).with(true)
-          render_content_presenter(content_presenter, :can_use_fallback => true)
+          render_content_presenter(content_presenter, can_use_fallback: true)
         end
       end
 
