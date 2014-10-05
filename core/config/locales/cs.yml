@@ -55,7 +55,7 @@ cs:
         problems_in_following_fields: Vyskytl se problém s těmito údaji
       help: nápověda
       form_advanced_options_menu:
-        advanced_options: Zpřístupní rozšířené nastavení ako například nastavení menu a meta tagů
+        advanced_options: Zpřístupní rozšířené nastavení jako například nastavení menu a meta tagů
         toggle_advanced_options: Rozšířené nastavení
         save_as_draft: Uložit jako pracovní verzi
     message:
