@@ -110,7 +110,9 @@ shared_examples_for 'an image deleter' do |initial_path|
   end
 
   it 'says the image has been removed' do
-    image_title = find("#records li:first-child span.title").text
+    expect(page).to have_selector("#records li.image_0")
+    image_list_item = find("#records li.image_0")
+    image_title = image_list_item.first("img")[:title]
     first("#records li").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))
     expect(page).to have_content(::I18n.t('destroyed', scope: 'refinery.crudify', what: "'#{image_title}'"))
   end
