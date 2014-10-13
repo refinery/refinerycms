@@ -5,7 +5,20 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - "bundle exec rake refinery:testing:dummy_app"
 script:
-  - "DISPLAY=:99.0 bundle exec rspec ./*/spec"
+  - "DISPLAY=:99.0 bundle exec rspec $EXTENSION/spec"
+env:
+  - DB=postgresql EXTENSION=authentication
+  - DB=mysql EXTENSION=authentication
+  - DB=postgresql EXTENSION=core
+  - DB=mysql EXTENSION=core
+  - DB=postgresql EXTENSION=dashboard
+  - DB=mysql EXTENSION=dashboard
+  - DB=postgresql EXTENSION=images
+  - DB=mysql EXTENSION=images
+  - DB=postgresql EXTENSION=pages
+  - DB=mysql EXTENSION=pages
+  - DB=postgresql EXTENSION=resources
+  - DB=mysql EXTENSION=resources
 notifications:
   email: true
   irc:
@@ -20,9 +33,6 @@ notifications:
       - secure: "X5X39BTgXacSdc32F8mIjJKPqm5dZzmgZfJ14qYpJeMETTdA5JfByt2uCfU8\njJkkxT+XGWta0bSSlRIHQJO6pK26U94A95VYDX0jNuneKEnsoAsqJ6U0VY6v\nH5oxXMAZ2perP/FH9ZsPNR+ulyFfbMQCeGPJw5AXKZQqzf6qPOI="
   webhooks:
     - https://webhooks.gitter.im/e/b5d48907cdc89864b874
-env:
-  - DB=postgresql
-  - DB=mysql
 rvm:
   - 2.1
 sudo: false
