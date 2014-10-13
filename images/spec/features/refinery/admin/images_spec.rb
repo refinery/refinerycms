@@ -14,20 +14,22 @@ module Refinery
 
     context 'when there is one image' do
       let!(:image) { FactoryGirl.create(:image) }
+      let(:image_to_delete) { image }
 
-        it_behaves_like 'an image index' do
-          before {visit refinery.admin_images_path}
-        end
+      it_behaves_like 'an image index' do
+        before {visit refinery.admin_images_path}
+      end
 
-        it_behaves_like 'an image deleter' do  #deletes an image
-          before {visit refinery.admin_images_path}
-        end
+      it_behaves_like 'an image deleter' do  #deletes an image
+        before {visit refinery.admin_images_path}
+      end
     end
 
     context 'when there are many images' do
       let!(:image) { FactoryGirl.create(:image) }
       let!(:alt_image) { FactoryGirl.create(:alternate_image) }
       let!(:another_image) { FactoryGirl.create(:another_image) }
+      let(:image_to_delete) { another_image }
 
       it_behaves_like 'an image index' do
         before {visit refinery.admin_images_path}
