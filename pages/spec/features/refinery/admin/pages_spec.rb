@@ -2,15 +2,13 @@
 require "spec_helper"
 
 def new_window_should_have_content(content)
-  new_window = page.driver.browser.window_handles.last
-  page.within_window new_window do
+  page.within_window windows.last do
     page.should have_content(content)
   end
 end
 
 def new_window_should_not_have_content(content)
-  new_window = page.driver.browser.window_handles.last
-  page.within_window new_window do
+  page.within_window windows.last do
     page.should_not have_content(content)
   end
 end
