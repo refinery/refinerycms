@@ -20,7 +20,7 @@ module Refinery
       end
 
       it "should contain its filename at the end" do
-        resource.url.split('/').last.should == resource.file_name
+        URI(resource.url).path.split('/').last.should == resource.file_name
       end
     end
 
