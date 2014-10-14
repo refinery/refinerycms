@@ -9,5 +9,3 @@
       window.history.pushState path: current_state_location, "", navigate_to
       $(document).paginateTo navigate_to
       e.preventDefault()
-  $(".pagination_container").applyMinimumHeightFromChildren()
-  $(".pagination_frame").css "top", "0px"  if $(".pagination_container").find(".pagination").length == 0

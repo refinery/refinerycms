@@ -100,9 +100,9 @@ var create_sortable_list = function(options){
         , enable_reordering: function(e) {
             if(e) { e.preventDefault(); }
             this.list.sortable_list.addClass("reordering");
-            $('.actions', this.list.sortable_list).fadeTo(500, 0.3);
-            this.list.div_with_list_and_actions.parents().siblings('div').fadeTo(500,0.3);
-            $('*:not("#reorder_action_done, #reorder_action")',this.list.actions).not(this.list.reorder_action_done.parents('li, ul, div')).fadeTo(500, 0.55);
+            $('.actions', this.list.sortable_list).fadeTo(0, 0.3);
+            this.list.div_with_list_and_actions.parents().siblings('div').fadeTo(0, 0.3);
+            $('*:not("#reorder_action_done, #reorder_action")', this.list.actions).not(this.list.reorder_action_done.parents('li, ul, div')).fadeTo(0, 0.55);
             this.list.sortable_list.nestedSortable("enable");
             this.list.reorder_action.hide();
             this.list.reorder_action_done.show();
@@ -127,9 +127,9 @@ var create_sortable_list = function(options){
 
         , restore_controls: function(e) {
             this.list.sortable_list.removeClass('reordering');
-            $('.actions',this.list.sortable_list).fadeTo(250, 1);
-            this.list.div_with_list_and_actions.parents().siblings('div').fadeTo(250,1);
-            $('*:not("#reorder_action_done, #reorder_action")',this.list.actions).not($('#reorder_action_done').parents('li, ul, div')).fadeTo(250, 1);
+            $('.actions',this.list.sortable_list).fadeTo(0, 1);
+            this.list.div_with_list_and_actions.parents().siblings('div').fadeTo(0,1);
+            $('*:not("#reorder_action_done, #reorder_action")',this.list.actions).not($('#reorder_action_done').parents('li, ul, div')).fadeTo(0, 1);
             this.list.reorder_action_done.hide().removeClass('loading');
             this.list.reorder_action.show();
             if (this.list.replaceContentsAfterUpdate) {
