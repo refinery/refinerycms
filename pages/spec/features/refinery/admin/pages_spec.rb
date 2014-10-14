@@ -135,7 +135,7 @@ module Refinery
           Refinery::Page.count.should == 1
         end
 
-        it "includes menu title field", :js => true do
+        it "includes menu title field", :js, :selenium do
           visit refinery.new_admin_page_path
 
           fill_in "Title", :with => "My first page"
@@ -207,7 +207,7 @@ module Refinery
         end
       end
 
-      describe 'Previewing' do
+      describe 'Previewing', :selenium do
         context "an existing page" do
           before { Page.create :title => 'Preview me' }
 
@@ -622,7 +622,7 @@ module Refinery
           Refinery::Pages.stub(:new_page_parts).and_return(true)
         end
 
-        it "deletes page parts" do
+        it "deletes page parts", :selenium do
           visit refinery.edit_admin_page_path(some_page.id)
 
           within "#page_parts" do
@@ -818,7 +818,7 @@ module Refinery
           # see https://github.com/refinery/refinerycms/pull/1583
           # this test needs to be moved to refinerycms-wymeditor somehow
           context "when switching locales" do
-            specify "dialog has correct links", :js do
+            specify "dialog has correct links", :js, :selenium do
               visit refinery.edit_admin_page_path(about_page)
 
               find("#page_part_body .wym_tools_link a").click

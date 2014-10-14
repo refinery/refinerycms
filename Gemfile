@@ -38,6 +38,8 @@ group :test do
   gem 'coveralls', require: false
 end
 
+gem 'poltergeist'
+
 # Load local gems according to Refinery developer preference.
 if File.exist? local_gemfile = File.expand_path('../.gemfile', __FILE__)
   eval File.read(local_gemfile)
