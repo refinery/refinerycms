@@ -33,7 +33,9 @@ $.fn.paginateTo = function(stateUrl) {
       // remove caching _ argument.
       $('.pagination_container .pagination a').each(function(i, a){
         $(this).attr('href', $(this).attr('href').replace(/\?\_\=[^&]+&/, '?'));
-      })
+      });
+
+      init_ajaxy_pagination();
     },
     error: function(data) {
       window.location = popstate_location;
