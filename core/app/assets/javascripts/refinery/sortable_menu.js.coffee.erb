@@ -13,8 +13,8 @@
       )
   ).tabs()
   $menu.sortable "disable"
-  $menu.find("#menu_reorder").click (e) ->
+  $menu.find("#menu_reorder").on 'click', (e) ->
     trigger_reordering e, true
 
-  $menu.find("#menu_reorder_done").click (e) ->
+  $menu.find("#menu_reorder_done").on 'click', (e) ->
     trigger_reordering e, false
