@@ -39,7 +39,7 @@ any models or controllers by hand. If you must add methods, do so with a decorat
 which will limit your impact on the engine to whichever methods you add or override.
 
 If you need to change how an existing method behaves, consider using a
-+before_filter+, +alias_method_chain+ or similar to get around changing the method.
++before_action+, +alias_method_chain+ or similar to get around changing the method.
 If you can't escape this, overwrite the method by redefining it.
 In the case of a controller method, you can get easy access to the code with
 the +refinery:uncrudify+ rake task:

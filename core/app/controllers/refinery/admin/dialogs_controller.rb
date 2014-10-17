@@ -3,7 +3,7 @@ module ::Refinery
     class DialogsController < ::Refinery::AdminController
       TYPES = %w[image link]
 
-      before_filter :find_dialog_type, :find_iframe_src, :only => [:show]
+      before_action :find_dialog_type, :find_iframe_src, :only => [:show]
 
       def index
         redirect_to refinery.admin_root_path

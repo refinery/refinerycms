@@ -2,11 +2,11 @@ module Refinery
   class PagesController < ::ApplicationController
     include Pages::RenderOptions
 
-    before_filter :find_page, :set_canonical
-    before_filter :error_404, :unless => :current_user_can_view_page?
+    before_action :find_page, :set_canonical
+    before_action :error_404, :unless => :current_user_can_view_page?
 
     # Save whole Page after delivery
-    after_filter :write_cache?
+    after_action :write_cache?
 
     # This action is usually accessed with the root path, normally '/'
     def home

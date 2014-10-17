@@ -59,9 +59,9 @@ module Refinery
             #{options.inspect}
           end
 
-          prepend_before_filter :find_#{singular_name},
+          prepend_before_action :find_#{singular_name},
                                 :only => [:update, :destroy, :edit, :show]
-          prepend_before_filter :merge_position_into_params!, :only => :create
+          prepend_before_action :merge_position_into_params!, :only => :create
 
           def new
             @#{singular_name} = #{class_name}.new

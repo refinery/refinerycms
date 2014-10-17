@@ -8,7 +8,7 @@ module Refinery
                 :order => "created_at DESC"
 <% if @includes_spam -%>
 
-        before_filter :get_spam_count, :only => [:index, :spam]
+        before_action :get_spam_count, :only => [:index, :spam]
 
         def index
           @<%= plural_name %> = find_all_<%= plural_name %>.ham

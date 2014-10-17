@@ -6,7 +6,7 @@ module Refinery
               :order => "updated_at DESC",
               :xhr_paging => true
 
-      before_filter :init_dialog
+      before_action :init_dialog
 
       def new
         @resource = Resource.new if @resource.nil?

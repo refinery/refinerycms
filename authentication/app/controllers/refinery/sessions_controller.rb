@@ -3,7 +3,7 @@ module Refinery
     helper Refinery::Core::Engine.helpers
     layout 'refinery/layouts/login'
 
-    before_filter :clear_unauthenticated_flash, :only => [:new]
+    before_action :clear_unauthenticated_flash, :only => [:new]
 
     def create
       super

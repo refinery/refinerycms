@@ -7,10 +7,10 @@ module Refinery
       def self.included(base)
         base.layout :layout?
 
-        base.before_filter :require_refinery_users!, :force_ssl!,
+        base.before_action :require_refinery_users!, :force_ssl!,
                            :authenticate_refinery_user!, :restrict_plugins,
                            :restrict_controller
-        base.after_filter :store_location?, :only => [:index] # for redirect_back_or_default
+        base.after_action :store_location?, :only => [:index] # for redirect_back_or_default
 
         base.helper_method :searching?, :group_by_date
       end
