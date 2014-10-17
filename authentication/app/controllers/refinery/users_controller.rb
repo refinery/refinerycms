@@ -2,7 +2,7 @@ module Refinery
   class UsersController < Devise::RegistrationsController
 
     # Protect these actions behind an admin login
-    before_filter :redirect?, :only => [:new, :create]
+    before_action :redirect?, :only => [:new, :create]
 
     helper Refinery::Core::Engine.helpers
     layout 'refinery/layouts/login'

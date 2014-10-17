@@ -2,8 +2,8 @@ module Refinery
   module <%= namespacing %>
     class <%= class_name.pluralize %>Controller < ::ApplicationController
 
-      before_filter :find_all_<%= plural_name %>
-      before_filter :find_page
+      before_action :find_all_<%= plural_name %>
+      before_action :find_page
 
       def index
         # you can use meta fields from your model instead (e.g. browser_title)
