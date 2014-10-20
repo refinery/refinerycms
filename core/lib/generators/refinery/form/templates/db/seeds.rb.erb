@@ -12,7 +12,7 @@ Refinery::I18n.frontend_locales.each do |lang|
 
   if defined?(Refinery::Page)
     url = "/<%= [(namespacing.underscore if namespacing.underscore != plural_name), plural_name].compact.join('/') %>"
-    page = Refinery::Page.where(:link_url => url).first_or_create!(
+    page = Refinery::Page.where(:link_url => "#{url}/new").first_or_create!(
       :title => "<%= class_name.pluralize.underscore.titleize %>",
       :deletable => false,
       :menu_match => "^#{url}(\/|\/.+?|)$"
