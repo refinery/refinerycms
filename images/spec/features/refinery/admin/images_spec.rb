@@ -14,28 +14,20 @@ module Refinery
 
     context 'when there is one image' do
       let!(:image) { FactoryGirl.create(:image) }
+      let(:initial_path) { refinery.admin_images_path(view: %w(grid list).sample) }
 
-        it_behaves_like 'an image index' do
-          before {visit refinery.admin_images_path}
-        end
-
-        it_behaves_like 'an image deleter' do  #deletes an image
-          before {visit refinery.admin_images_path}
-        end
+      it_behaves_like 'an image index'
+      it_behaves_like 'an image deleter'
     end
 
     context 'when there are many images' do
       let!(:image) { FactoryGirl.create(:image) }
       let!(:alt_image) { FactoryGirl.create(:alternate_image) }
       let!(:another_image) { FactoryGirl.create(:another_image) }
+      let(:initial_path) { refinery.admin_images_path(view: %w(grid list).sample) }
 
-      it_behaves_like 'an image index' do
-        before {visit refinery.admin_images_path}
-      end
-
-      it_behaves_like 'an image deleter' do
-        before {visit refinery.admin_images_path}
-      end
+      it_behaves_like 'an image index'
+      it_behaves_like 'an image deleter'
     end
 
   end  # Admin Images Tab
