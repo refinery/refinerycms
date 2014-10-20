@@ -1,0 +1,20 @@
+<h2><%= t(".headline") %></h2>
+
+<%= form_tag refinery.new_admin_page_path, :method => :get do %>
+  <%= hidden_field_tag :parent_id, params[:parent_id] %>
+  <%= hidden_field_tag :layout_template, params[:layout_template] %>
+  
+  <div class='field'>
+    <span class='label_with_help'>
+      <%= label_tag :view_template, t('refinery.admin.pages.form_advanced_options.view_template') %>
+      <%= refinery_help_tag t('refinery.admin.pages.form_advanced_options.view_template_help') %>
+    </span>
+    <%= select_tag :view_template, options_for_select(@valid_view_templates.map { |t| [t.titleize, t] }, template_options(:view_template, @page)) %>
+  </div>
+
+  <div class='form-actions'>
+    <div class='form-actions-left'>
+      <%= submit_tag t(".next"), :class => "wymupdate button" %>
+    </div>
+  </div>
+<% end %>

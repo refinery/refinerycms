@@ -10,11 +10,17 @@ module Refinery
 
       before_action :load_valid_templates, :only => [:edit, :new, :create, :update]
       before_action :restrict_access, :only => [:create, :update, :update_positions, :destroy]
-
+      
       def new
         @page = Page.new(new_page_params)
-        Pages.default_parts_for(@page).each_with_index do |page_part, index|
-          @page.parts << PagePart.new(:title => page_part, :position => index)
+        @page.view_template = @valid_view_templates.first if @valid_view_templates.length == 1
+        if @page.view_template.blank?
+          render "select_view_template"
+        else
+          Pages.default_parts_for(@page).each_with_index do |page_part, index|
+            @page.parts << PagePart.new(title: page_part, position: index)
+          end
+          render "new"
         end
       end
 
