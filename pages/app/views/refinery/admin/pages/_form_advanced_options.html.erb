@@ -21,7 +21,7 @@
     </div>
     <% end %>
     
-    <% unless @page.new_record? %>
+    <% if @page.persisted? %>
       <div class='field'>
         <span class='label_with_help'>
           <%= f.label :view_template, t('.view_template') %>
