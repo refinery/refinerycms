@@ -868,7 +868,7 @@ var image_picker = {
     this.image.src = $(this.image).attr('data-' + size);
     current_image = $(this.container).find(this.picker.options.image_display);
     current_image.replaceWith(
-      $("<img src='"+this.image.src+"?"+Math.floor(Math.random() * 100000)+"' id='"+current_image.attr('id')+"' class='"+this.picker.options.image_display.replace(/^./, '')+" brown_border' />")
+      $("<img src='"+this.image.src+"' id='"+current_image.attr('id')+"' class='"+this.picker.options.image_display.replace(/^./, '')+" brown_border' />")
     );
 
     $(this.container).find(this.picker.options.remove_image_button).show();
