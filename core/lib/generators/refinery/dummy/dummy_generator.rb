@@ -35,6 +35,8 @@ module Refinery
       template "rails/routes.rb", "#{dummy_path}/config/routes.rb", :force => true
       template "rails/Rakefile", "#{dummy_path}/Rakefile", :force => true
       template "rails/application.js", "#{dummy_path}/app/assets/javascripts/application.js", :force => true
+      template 'rails/blank.png', "#{dummy_path}/public/apple-touch-icon.png", :force => true
+      template 'rails/blank.png', "#{dummy_path}/public/apple-touch-icon-precomposed.png", :force => true
     end
 
     def test_dummy_clean
