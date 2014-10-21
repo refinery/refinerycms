@@ -13,9 +13,9 @@ module Refinery
 
       def new
         @page = Page.new(new_page_params)
-        Pages.default_parts_for(@page).each_with_index do |page_part, index|
-          @page.parts << PagePart.new(:title => page_part, :position => index)
-        end
+        @page.view_template = @valid_view_templates.first if @valid_view_templates.length == 1
+        render "select_view_template" and return if @page.view_template.blank?
+        assign_default_parts
       end
 
       def children
@@ -113,6 +113,15 @@ module Refinery
       def new_page_params
         params.permit(:parent_id, :view_template, :layout_template)
       end
+
+      private
+
+      def assign_default_parts
+        Pages.default_parts_for(@page).each_with_index do |page_part, index|
+          @page.parts << PagePart.new(title: page_part, position: index)
+        end
+      end
+
     end
   end
 end
