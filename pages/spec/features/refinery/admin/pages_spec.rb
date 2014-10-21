@@ -114,18 +114,18 @@ module Refinery
       end
 
       describe "new/create" do
-        
+
         it "allows to create page if only one view_template is available" do
           Refinery::Pages.stub(:valid_templates).and_return(['refinery'])
-          
+
           visit refinery.admin_pages_path
           click_link "Add new page"
-          
+
           fill_in "Title", :with => "My first page"
           click_button "Save"
 
           page.should have_content("'My first page' was successfully added.")
-          
+
           page.body.should =~ /Remove this page forever/
           page.body.should =~ /Edit this page/
           page.body.should =~ %r{/#{Refinery::Core.backend_route}/pages/my-first-page/edit}
@@ -134,43 +134,43 @@ module Refinery
           page.body.should =~ /View this page live/
           page.body.should =~ %r{href="/my-first-page"}
         end
-        
+
         before do
           Refinery::Pages.stub(:valid_templates).and_return(['abc', 'refinery'])
         end
-        
+
         it "allows to create page without view_template as get parameter" do
           visit refinery.admin_pages_path
-          
+
           click_link "Add new page"
-          
+
           current_path.should == "/#{Refinery::Core.backend_route}/pages/new"
-          
+
           page.should have_content("Choose your view template")
           page.should have_content("Abc")
           page.should have_content("Refinery")
-          
+
           select 'Abc', :from => 'View template'
-          
+
           click_button "Next"
-          
+
           page.should have_content("Title")
           page.should have_content("Advanced options")
-          
+
           fill_in "Title", :with => "My first page"
           click_button "Save"
 
           Refinery::Page.count.should == 1
           Refinery::Page.first.view_template.should == "abc"
         end
-        
+
         it "allows to create page with view_template as get parameter" do
           visit refinery.new_admin_page_path(:view_template => "refinery")
 
           current_path.should == "/#{Refinery::Core.backend_route}/pages/new"
-          
+
           page.should_not have_content("Choose your view template")
-          
+
           fill_in "Title", :with => "My page"
           click_button "Save"
 
@@ -179,7 +179,7 @@ module Refinery
           Refinery::Page.count.should == 1
           Refinery::Page.first.view_template.should == "refinery"
         end
-        
+
         context 'when parent_id and layout parameter' do
           before do
             Refinery::Pages.stub(:use_layout_templates).and_return(true)
@@ -189,7 +189,7 @@ module Refinery
                                       :view_template => 'refinery',
                                       :layout_template => 'abc'
           end
-          
+
           it 'allows to create page and pass also parent_id and layout_template as get parameter' do          
             visit refinery.new_admin_page_path(:parent_id => @parent_page.id, :layout_template => 'refinery')
 
@@ -208,14 +208,14 @@ module Refinery
             child.view_template.should == 'abc'
           end
         end
-        
+
         it "not includes view template field", :js => true do
           visit refinery.new_admin_page_path
           select 'Abc', :from => 'View template'
           click_button "Next"
-          
+
           click_link "toggle_advanced_options"
-          
+
           page.should_not have_content("View template")
         end
 
@@ -284,7 +284,7 @@ module Refinery
           it "updates page", :js do
             page.should have_content("'Updated' was successfully updated.")
           end
-          
+
           it "includes view template field", :js => true do
             click_link "toggle_advanced_options"
             page.should have_content("View template")
