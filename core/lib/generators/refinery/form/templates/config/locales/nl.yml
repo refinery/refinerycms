@@ -11,8 +11,8 @@ nl:
           privacy_policy: Wij respecteren uw privacy
       admin:
         <%= plural_name %>:
-          delete: Deze <%= singular_name.humanize.downcase %> definitief verwijderen
           <%= singular_name %>:
+            delete_<%= singular_name %>: Deze <%= singular_name.humanize.downcase %> definitief verwijderen
             read_<%= singular_name %>: Lees de <%= singular_name.humanize.downcase %>
             said: zei
             mark_as_spam: Als spam markeren

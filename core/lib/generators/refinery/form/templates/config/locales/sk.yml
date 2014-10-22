@@ -11,8 +11,8 @@ sk:
           privacy_policy: Chránime vaše súkromie
       admin:
         <%= plural_name %>:
-          delete: Trvalo odstrániť <%= singular_name.humanize.downcase %>
           <%= singular_name %>:
+            delete_<%= singular_name %>: Trvalo odstrániť <%= singular_name.humanize.downcase %>
             read_<%= singular_name %>: Prečítať <%= singular_name.humanize.downcase %>
             said: povedal
             mark_as_spam: Označiť ako spam

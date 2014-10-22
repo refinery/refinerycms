@@ -13,14 +13,8 @@ da:
       admin:
         <%= plural_name %>:
           <%= singular_name %>:
-            move_<%= singular_name %>_to_closed: Flyt til lukkede henvendelser
-            move_<%= singular_name %>_to_open: Flyt til åbne henvendelser
             read_<%= singular_name %>: Læs henvendelse
-            remove_<%= singular_name %>: "Er du sikker på du vil slette denne henvendelse fra '%{name}'?"
-            title: <%= plural_name.titleize %>
-          toggle_status:
-            closed: "Henvendelsen '%{<%= singular_name %>}' er lukket"
-            reopened: "Henvendelsen '%{<%= singular_name %>}' er genåbnet"
+            delete_<%= singular_name %>: "Er du sikker på du vil slette denne henvendelse fra '%{name}'?"
           index:
             no_<%= plural_name %>: Du har endnu ikke modtaget nogen henvendelser.
           show:

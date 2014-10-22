@@ -11,9 +11,9 @@ en:
           privacy_policy: We value your privacy
       admin:
         <%= plural_name %>:
-          delete: Remove this <%= singular_name.humanize.downcase %> forever
           <%= singular_name %>:
             read_<%= singular_name %>: Read the <%= singular_name.humanize.downcase %>
+            delete_<%= singular_name %>: Remove this <%= singular_name.humanize.downcase %> forever
             said: said
             mark_as_spam: Mark as spam
             mark_as_ham: Move to inbox

@@ -11,8 +11,8 @@ pt-BR:
           privacy_policy: "Nós valorizamos sua privacidade"
       admin:
         <%= plural_name %>:
-          delete: Remover esta mensagem para sempre
           <%= singular_name %>:
+            delete_<%= singular_name %>: Remover esta mensagem para sempre
             read_<%= singular_name %>: Ler a mensagem
             said: disse
             mark_as_spam: Marcar como spam

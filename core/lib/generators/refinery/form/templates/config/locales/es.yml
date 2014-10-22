@@ -13,14 +13,8 @@ es:
       admin:
         <%= plural_name %>:
           <%= singular_name %>:
-            move_<%= singular_name %>_to_closed: Cambiar esta consulta a cerrada
-            move_<%= singular_name %>_to_open: Cambiar esta consulta a abierta
             read_<%= singular_name %>: Leer esta consulta
-            remove_<%= singular_name %>: "Estas seguro que quieres borrar esta consulta de '%{name}'?"
-            title: <%= plural_name.titleize %>
-          toggle_status:
-            closed: "La consulta '%{<%= singular_name %>}' esta cerrada"
-            reopened: "La consulta '%{<%= singular_name %>}' esta abierta"
+            delete_<%= singular_name %>: "Estas seguro que quieres borrar esta consulta de '%{name}'?"
           index:
             no_<%= plural_name %>: No has recibido ninguna consulta aun.
           show:
