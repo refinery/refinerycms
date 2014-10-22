@@ -9,11 +9,11 @@ module Refinery
         before do
           Refinery::Authentication.email_from_name = nil
         end
-        
+
         context 'when set in configuration' do
           it 'returns name set by Refinery::Authentication.config' do
             Refinery::Authentication.stub(:email_from_name).and_return('support')
-            Refinery::Authentication.email_from_name.should eq('support')
+            expect(Refinery::Authentication.email_from_name).to eq('support')
           end
         end
 
@@ -29,7 +29,7 @@ module Refinery
           end
 
           it 'returns name set in locale' do
-            Refinery::Authentication.email_from_name.should eq('supporto')
+            expect(Refinery::Authentication.email_from_name).to eq('supporto')
           end
         end
       end

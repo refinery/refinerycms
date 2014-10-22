@@ -29,10 +29,10 @@ module Refinery
           end
 
           before do
-            controller.should_receive(:require_refinery_users!).and_return false
-            controller.should_receive(:authenticate_refinery_user!).and_return true
-            controller.should_receive(:restrict_plugins).and_return true
-            controller.should_receive(:allow_controller?).and_return controller_permission
+            expect(controller).to receive(:require_refinery_users!).and_return false
+            expect(controller).to receive(:authenticate_refinery_user!).and_return true
+            expect(controller).to receive(:restrict_plugins).and_return true
+            expect(controller).to receive(:allow_controller?).and_return controller_permission
             controller.stub(:refinery_user?).and_return true
             controller.stub(:current_refinery_user).and_return logged_in_user
           end
