@@ -2,16 +2,27 @@ require "spec_helper"
 
 module Refinery
   module <%= namespacing %>
-    describe "<%= plural_name %> request specs" do
 
-      # routes { Refinery::Core::Engine.routes }
+    Refinery::<%= namespacing %>::Engine::load_seed
 
-      it "redirects the index path to new" do
-subject { get "/<%= plural_name %>" }
+    describe "<%= namespacing %> request specs" do
 
-        expect(response).to redirect_to(:wq
-                                        "/<%= plural_name %>/new")
+      it "successfully gets the index path as redirection" do
+        get("/<%= plural_name %>")
+        expect(response).to be_redirect
+        expect(response).to redirect_to("/<%= plural_name %>/new")
+      end
 
+      it "successfully gets the new path" do
+        get("/<%= plural_name %>/new")
+        expect(response).to be_success
+        expect(response).to render_template(:new)
+      end
+
+      it "successfully gets the thank_you path" do
+        get("/<%= plural_name %>/thank_you")
+        expect(response).to be_success
+        expect(response).to render_template(:thank_you)
       end
 
     end

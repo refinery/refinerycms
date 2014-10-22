@@ -4,8 +4,15 @@ describe "<%= namespacing %> front-end routing" do
 
   routes { Refinery::Core::Engine.routes }
 
+  it "can route to index" do
+    expect( :get => "/<%= plural_name %>" ).to route_to(
+      :controller => "refinery/<%= plural_name %>/<%= plural_name %>",
+      :action => "index",
+      :locale => :en
+    )
+  end
+
   it "can route to new" do
-    expect( :get => "/<%= plural_name %>/new" ).to be_routable
     expect( :get => "/<%= plural_name %>/new" ).to route_to(
       :controller => "refinery/<%= plural_name %>/<%= plural_name %>",
       :action => "new",
@@ -14,7 +21,6 @@ describe "<%= namespacing %> front-end routing" do
   end
 
   it "can route to create" do
-    expect( :post => "/<%= plural_name %>" ).to be_routable
     expect( :post => "/<%= plural_name %>" ).to route_to(
       :controller => "refinery/<%= plural_name %>/<%= plural_name %>",
       :action => "create",
@@ -26,14 +32,6 @@ describe "<%= namespacing %> front-end routing" do
     expect( :get => "/<%= plural_name %>/thank_you" ).to route_to(
       :controller => "refinery/<%= plural_name %>/<%= plural_name %>",
       :action => "thank_you",
-      :locale => :en
-    )
-  end
-
-  it "does not route to index" do
-    expect( :get => "/<%= plural_name %>" ).not_to route_to(
-      :controller => "refinery/<%= plural_name %>/<%= plural_name %>",
-      :action => "index",
       :locale => :en
     )
   end

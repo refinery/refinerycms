@@ -12,7 +12,7 @@ module Refinery
       describe "Create <%= singular_name %>" do
 
         before do
-          visit refinery.<%= plural_name %>_new_<%= singular_name %>_path
+          visit refinery.new_<%= plural_name %>_<%= singular_name %>_path
         end
 
         it "should create a new item" do
