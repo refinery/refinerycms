@@ -11,8 +11,8 @@ tr:
           privacy_policy: Mahremiyetinize onem veriyoruz.
       admin:
         <%= plural_name %>:
-          delete: Sonsuza dek <%= singular_name.humanize.downcase %> sil
           <%= singular_name %>:
+            delete_<%= singular_name %>: Sonsuza dek <%= singular_name.humanize.downcase %> sil
             read_<%= singular_name %>: Read the <%= singular_name.humanize.downcase %>
             said: dedi
             mark_as_spam: Spam olarak isaretle

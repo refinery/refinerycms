@@ -11,8 +11,8 @@ fr:
           privacy_policy: Nous respectons votre vie privée
       admin:
         <%= plural_name %>:
-          delete: Supprimer définitivement cette requête
           <%= singular_name %>:
+            delete_<%= singular_name %>: Supprimer définitivement cette requête
             read_<%= singular_name %>: Lire la requête
             said: a dit
             mark_as_spam: Marquer comme spam
