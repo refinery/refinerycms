@@ -13,14 +13,8 @@ it:
       admin:
         <%= plural_name %>:
           <%= singular_name %>:
-            move_<%= singular_name %>_to_closed: Spostare questa inchiesta chiusa
-            move_<%= singular_name %>_to_open: Spostare questa indagine per aprire
             read_<%= singular_name %>: Leggi l'inchiesta
-            remove_<%= singular_name %>: "Sei sicuro di voler cancellare la richiesta di '%{name}'?"
-            title: <%= plural_name.titleize %>
-          toggle_status:
-            closed: "Inchiesta '%{<%= singular_name %>}' è chiuso"
-            reopened: "Inchiesta '%{<%= singular_name %>}' si riapre"
+            delete_<%= singular_name %>: "Sei sicuro di voler cancellare la richiesta di '%{name}'?"
           index:
             no_<%= plural_name %>: Non hai ancora ricevuto alcuna richiesta in.
           show:
