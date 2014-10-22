@@ -5,7 +5,7 @@ module Refinery
       before_action :find_page, :only => [:create, :new]
 
       def index
-        redirect_to :action => "new"
+        redirect_to refinery.new_<%= plural_name %>_<%= singular_name %>_path
       end
 
       def thank_you
