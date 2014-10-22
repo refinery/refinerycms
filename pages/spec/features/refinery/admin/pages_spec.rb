@@ -702,6 +702,7 @@ module Refinery
     end
 
     describe "TranslatePages", :type => :feature do
+      before { Globalize.locale = :en }
       refinery_login_with :refinery_translator
 
       describe "add page to main locale" do
