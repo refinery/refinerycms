@@ -12,18 +12,12 @@ $background_color: #555555;
   box-sizing: $box-model;
 }
 
-#site_bar,
-#site_bar *,
-#site_bar *:before,
-#site_bar *:after {
+#site_bar {
   @include box-sizing(content-box);
   color: white;
   font-family: Arial;
   font-size: 14px;
   font-weight: normal;
-  line-height: 1.5em;
-}
-#site_bar {
   padding: 0px;
   background: $background_color;
   background: $background_color image_url('refinery/page_bg.png') repeat;
@@ -40,7 +34,7 @@ $background_color: #555555;
     float: left;
     background: #333333;
     padding: 0.25em 1em;
-    margin: 0.25em 0.5em 0.25em 0;
+    margin: 3px 0.5em 3px 0;
     height: auto;
     &:hover {
       background: black;
@@ -51,6 +45,7 @@ $background_color: #555555;
     position: relative;
     margin: 0 2em 0 2em;
     text-align: left;
+
   }
   .refinerycms-site_bar-user {
     float: right;
@@ -59,7 +54,7 @@ $background_color: #555555;
     padding-left: 2em;
     .refinerycms-site_bar-user-name {
       float: left;
-      line-height: 32px
+      padding-top: 8px;
     }
     a {
       font-weight: normal;
