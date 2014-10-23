@@ -201,8 +201,15 @@ submit_and_continue = function(e, redirect_to) {
 
         init_flash_messages();
 
-        //updates the form action with new URL
+        //updates the form action and locale picker links with new URLs
         $('form').attr('action', $('#new_action').attr('value'));
+        $('#switch_locale_picker > li > a').each(function(i, anchor) {
+          ($anchor = $(anchor)).attr('href',
+            $('#new_refinery_edit_page_path').attr('value')
+              + "?switch_locale="
+              + $anchor.attr('href').split('?switch_locale=').slice(-1)[0]
+          );
+        });
       }
     }, 'html'
   );
