@@ -52,7 +52,7 @@ acronym {
 label[for] {
   cursor: pointer;
 }
-#page_container, #site_bar_content, header {
+#page_container, header {
   margin: 0px auto 10px auto;
   text-align: left;
   width: 990px;
@@ -60,9 +60,6 @@ label[for] {
 #page_container {
   width: 960px;
   padding: 30px 15px;
-}
-#site_bar_content {
-  margin-bottom: 0px;
 }
 #content .field, #content .form-actions {
   width: 100%;
@@ -275,9 +272,6 @@ a:hover {
 .less-important {
   color: #727272;
 }
-a#site_bar_refinery_cms_logo {
-  left: 448px;
-}
 #content, #page_container {
   background-color: white;
 }
@@ -291,12 +285,6 @@ header, footer, nav {
   line-height:22px
 }
 body.login {
-  #site_bar_content {
-    width: 650px;
-    a#site_bar_refinery_cms_logo {
-      left: 247px;
-    }
-  }
   #page_container {
     width: 620px;
     div.remember_me label, label.inline {
@@ -1026,10 +1014,6 @@ body.dialog form {
 }
 ul#menu.reordering_menu li a {
   cursor: move;
-}
-#site_bar {
-  background: #22a7f2;
-  border-bottom: 0px none;
 }
 #search {
   border: 1px solid #b3b3b3;

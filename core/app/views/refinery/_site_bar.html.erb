@@ -5,21 +5,26 @@
   <% end -%>
   <div id='site_bar'>
     <div id='site_bar_content' class='clearfix'>
-      <div id='editor_switch'>
-        <%= site_bar_switch_link -%>
-      </div>
       <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request? || request.ssl? }refinery/logo-site-bar.png", :alt => "Refinery (tm) Content Manager"),
                   'http://refinerycms.com',
                   :target => '_blank',
                   :id => 'site_bar_refinery_cms_logo' %>
+      <div id='editor_switch'>
+        <%= site_bar_switch_link -%>
+      </div>
 
-      <div id='site_bar_branding'>
-        <span id='site_bar_company_name'>
-          <%= Refinery::Core.site_name %>
-        </span>
-
+      <div class='refinerycms-site_bar-user'>
+        <% if refinery_user? && current_refinery_user.can_edit?(current_refinery_user) %>
+          <%= link_to current_refinery_user.username,
+                      refinery.edit_admin_user_path(current_refinery_user),
+                      :title => t('edit', :scope => 'refinery.admin.users'),
+                      class:"refinerycms-site_bar-user-name",
+                      'data-no-turbolink' => true %>
+        <% end %>
         <%= link_to t('.log_out', site_bar_translate_locale_args),
-                    refinery.logout_path, :id => 'logout' %>
+                    refinery.logout_path,
+                    class: "button",
+                    :id => 'logout' %>
       </div>
     </div>
   </div>
