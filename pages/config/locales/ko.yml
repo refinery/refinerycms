@@ -53,7 +53,7 @@ ko:
           skip_to_first_child_label: 방문자들을 첫 하위 페이지로 보냅니다.
           skip_to_first_child_help: 이것을 설정하면 이 페이지가 첫 하위 페이지로 링크됩니다. 여러 페이지를 한 데 묶을 때 유용한 옵션입니다.
           link_url: 다른 웹 사이트나 페이지로 포워딩
-          link_url_help: 이 페이지를 클릭했을 때 다른 웹사이트나 페이지로 이동하게 하려면 여기에 http://google.com과 같은 주소를 입력하세요.
+          link_url_help: 이 페이지를 클릭했을 때 다른 웹사이트나 페이지로 이동하게 하려면 여기에 https://google.com과 같은 주소를 입력하세요.
           parent_page_help: 이 페이지의 상위 페이지를 목록에서 선택할 수 있습니다. 이 페이지를 최상위 페이지로 만들고 싶다면 빈 칸으로 남겨 두세요.
         actions:
           create_new_page: 새 페이지

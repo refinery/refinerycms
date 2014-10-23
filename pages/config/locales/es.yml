@@ -63,7 +63,7 @@ es:
           skip_to_first_child_label: Redirigir a los visitantes a la primera página hija.
           skip_to_first_child_help: Esta opción hace que esta página enlace a su primera página hija. Puede ser útil para agrupar varias páginas juntas.
           link_url: Redirigir esta página a otra web o a otra página
-          link_url_help: "Si quieres que esta página envíe a otra web o página entonces pulsa esta página en el menú y introduce una URL (por ej: http://google.com). En caso contrario déjalo en blanco."
+          link_url_help: "Si quieres que esta página envíe a otra web o página entonces pulsa esta página en el menú y introduce una URL (por ej: https://google.com). En caso contrario déjalo en blanco."
           parent_page_help: Puedes incluir una página dentro de otra seleccionándola en la lista. Si quieres que sea una página de primer nivel, déjalo en blanco.
           layout_template: Plantilla para la disposición
           layout_template_help: Puedes elegir una plantilla para la dispoción diferente

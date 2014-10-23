@@ -54,7 +54,7 @@ pt-BR:
           skip_to_first_child_label: Redieciona os visitante para a primeira página a baixo desta no menu.
           skip_to_first_child_help: "Está opção faz com que o link desta página aponte para o primeiro link do menu a baixo dessa. Usado quando você tem sub-páginas."
           link_url: "Redirecionar esta página para outro site ou página."
-          link_url_help: "Se você quer que esta página seja redicionada para outro site ou página quando você clicar nesta página no menu, digite a URL. ex. http://google.com ou deixe em branco."
+          link_url_help: "Se você quer que esta página seja redicionada para outro site ou página quando você clicar nesta página no menu, digite a URL. ex. https://google.com ou deixe em branco."
           parent_page_help: "Se você quer colocar está página a baixo de outra página no menu, selecione qual página aqui ou deixe em branco caso queria a página na raiz do menu."
         actions:
           create_new_page: Criar uma nova página

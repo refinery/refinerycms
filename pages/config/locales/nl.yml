@@ -61,7 +61,7 @@ nl:
           skip_to_first_child_label: Bezoekers doorsturen naar de eerste onderliggende pagina
           skip_to_first_child_help: Deze optie zorgt er voor deze pagina verwijst naar de eerste onderliggende pagina. Dit kan handig zijn om pagina's te groeperen.
           link_url: Stuur de bezoeker door naar een andere pagina.
-          link_url_help: Als u wilt dat deze pagina naar een andere website of pagina verwijst, wanneer deze pagina in het menu geselecteerd wordt, vul dan een adres in. Bijvoorbeeld http://google.com. Laat het leeg om de pagina zelf te laten zien.
+          link_url_help: Als u wilt dat deze pagina naar een andere website of pagina verwijst, wanneer deze pagina in het menu geselecteerd wordt, vul dan een adres in. Bijvoorbeeld https://google.com. Laat het leeg om de pagina zelf te laten zien.
           parent_page_help: U kunt een pagina onder een andere pagina hangen, door de bovenliggende pagina te selecteren in deze lijst. Als de pagina op het hoogste niveau moet liggen, selecteert u de lege optie.
           menu_title_help: Als u wilt dat de pagina in het menu een andere titel heeft dan op de pagina zelf, voer die dan hier in.
           custom_slug_help: Een 'slug' is een leesbare aanduiding die in het adres van de pagina gebruikt wordt, bijvoorbeeld 'over'. Refinery genereert automatisch slugs, hier kunt u een aangepaste slug instellen.

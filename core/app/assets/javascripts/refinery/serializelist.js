@@ -10,7 +10,7 @@
  * will be read by PHP as a multidimensional array which you may
  * use for saving state.
  *
- * http://github.com/botskonet/jquery.serialize-list
+ * https://github.com/botskonet/jquery.serialize-list
  */
 (function($) {
   $.fn.serializelist = function(options) {

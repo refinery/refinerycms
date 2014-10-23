@@ -62,7 +62,7 @@ pt:
           skip_to_first_child_label: Redireccionar visitantes para a primeira página dependente desta página.
           skip_to_first_child_help: Esta opção linka para a página abaixo. Pode ser útil para agrupar as páginas.
           link_url: Enviar esta página para outros websites ou páginas
-          link_url_help: "Se quiser que esta página aponte para outro website ou página, insira o URL. exemplo: http://google.com caso contrário deixe em branco."
+          link_url_help: "Se quiser que esta página aponte para outro website ou página, insira o URL. exemplo: https://google.com caso contrário deixe em branco."
           parent_page_help: "Se você quer colocar esta página abaixo de outra página no menu, selecione aqui qual é a página ou deixe em branco caso queria a página na raiz do menu."
           menu_title_help: Se quer apresentar um nome diferente no menu escreva-o aqui.
           custom_slug_help: "Uma slug (permalink) é um ID de fácil leitura para os humanos usado para criar o URL da página. Exemplo: &apos;about-us&apos;. Para alterar escreva o que pretende aqui."

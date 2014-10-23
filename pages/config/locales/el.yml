@@ -54,7 +54,7 @@ el:
           skip_to_first_child_label: Redirect visitors to the first sub-level page.
           skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
           link_url: Forward this page to another website or page
-          link_url_help: 'If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank'
+          link_url_help: 'If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. https://google.com otherwise leave it blank'
           parent_page_help: 'You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.'
         actions:
           create_new_page: Προσθήκη νέας σελίδας

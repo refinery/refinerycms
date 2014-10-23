@@ -6,5 +6,5 @@
     gem build refinerycms-<%= extension_plural_name %>.gemspec
     gem install refinerycms-<%= extension_plural_name %>.gem
 
-    # Sign up for a http://rubygems.org/ account and publish the gem
+    # Sign up for a https://rubygems.org/ account and publish the gem
     gem push refinerycms-<%= extension_plural_name %>.gem

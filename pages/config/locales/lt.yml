@@ -55,7 +55,7 @@ lt:
           skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
           skip_to_first_child_help: Šis nustatymas leidžia puslapiui nukreipti į pirmą puslapį žemesniame lygyje. Tai gali būti naudinga grupuojant puslapius.
           link_url: Nukreipti šį puslapį į kitą puslapį ar svetainę
-          link_url_help: "Jei norite, kad šis puslapis vestų į kitą svetainę ar puslapį, kai jį paspaudžiate meniu, tai įveskite adresą pvz. http://google.com arba palikite tuščią"
+          link_url_help: "Jei norite, kad šis puslapis vestų į kitą svetainę ar puslapį, kai jį paspaudžiate meniu, tai įveskite adresą pvz. https://google.com arba palikite tuščią"
           parent_page_help: "Galite sukurti puslapį, po kitu puslapių, tai pasirinkite jį sąraše. Jei norite, kad šis puslapis taptų aukščiausio lygio puslapiu, tiesiog palikite tuščią."
         actions:
           create_new_page: Pridėti naują puslapį

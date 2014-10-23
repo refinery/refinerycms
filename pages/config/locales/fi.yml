@@ -53,7 +53,7 @@ fi:
           skip_to_first_child_label: "Uudelleenohjaa kävijät ensimmäiseen alisivuun"
           skip_to_first_child_help: "Tämä ominaisuus linkittää tämän sivun ensimmäiseen alisivuun, joka sillä on. Tämä on hyödyllistä, kun haluat ryhmitellä sivuja yhteen."
           link_url: Uudelleenohjaa tämä sivu toiselle nettisivustolle tai sivulle
-          link_url_help: "Jos haluat tämän sivun uudelleenohjaavan käyttäjän toiselle nettisivustolle tai sivulle, kirjoita URL (esim. http://google.com) tai jätä muuten tyhjäksi"
+          link_url_help: "Jos haluat tämän sivun uudelleenohjaavan käyttäjän toiselle nettisivustolle tai sivulle, kirjoita URL (esim. https://google.com) tai jätä muuten tyhjäksi"
           parent_page_help: "Voit asettaa sivun toisen sivun alisivuksi valitsemalla yläsivun valikosta. Jos haluat tämän sivun olevan pääsivu, jätä sivu valitsematta."
         actions:
           create_new_page: Lisää uusi sivu

@@ -52,7 +52,7 @@ sl:
           skip_to_first_child_label: Preusmeri obiskovalce na prvo podstran.
           skip_to_first_child_help: "Ta opcija poveže to stran s prvo podstranjo. To je lahko priročno pri združevanju strani."
           link_url: "Preusmeri to stran na drugo spletno stran ali stran"
-          link_url_help: "Če želite da stran kaže na drugo spletno stran ali stran, ko boste kliknili na njo v meniju, vnesite URL naslov npr. http://google.com v nasprotnem primeru pustite prazno."
+          link_url_help: "Če želite da stran kaže na drugo spletno stran ali stran, ko boste kliknili na njo v meniju, vnesite URL naslov npr. https://google.com v nasprotnem primeru pustite prazno."
           parent_page_help: "Stran lahko postavite pod neko drugo, tako da jo izberite iz seznama. Če želite da je ta stran na najvišjem nivoju, pustite prazno."
         actions:
           create_new_page: Dodaj novo stran

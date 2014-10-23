@@ -53,7 +53,7 @@ sv:
           skip_to_first_child_label: Vidarebefodrar besökare till den första undersidan.
           skip_to_first_child_help: Det här alternativet vidarebefodrar besökaren till den första undersidan. Detta alternativ kan vara användbart vid gruppering av sidor.
           link_url: Vidarebefodra från den här sidan till en annan sida eller webbplats
-          link_url_help: Om du vill att den här sidan vidarebefodrar till en annan sida när du väljer den i menyn, fyll i en URL. Tex. http://www.google.com/. Annars lämna tom.
+          link_url_help: Om du vill att den här sidan vidarebefodrar till en annan sida när du väljer den i menyn, fyll i en URL. Tex. https://google.com/. Annars lämna tom.
           parent_page_help: Du kan låta sidor bli undersidor till varandra. Om du vill att den här sidan ska vara en toppnivåsida, lämna tom.
         actions:
           create_new_page: Lägg till en ny sida

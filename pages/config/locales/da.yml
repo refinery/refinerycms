@@ -61,7 +61,7 @@ da:
           skip_to_first_child_label: Videresend besøgende til den første underliggende side.
           skip_to_first_child_help: Dette vil vise den første underliggende side i stedet for denne side. Kan benyttes når man vil gruppere sider.
           link_url: Videresend besøgende til andet website eller anden side
-          link_url_help: Hvis du vil have denne side går til et andet website eller en anden side, når besøgende klikker på den i menuen, skal du indtaste URLen, fx http://google.com
+          link_url_help: Hvis du vil have denne side går til et andet website eller en anden side, når besøgende klikker på den i menuen, skal du indtaste URLen, fx https://google.com
           parent_page_help: Du kan placere siden under en anden side ved at vælge den i listen. Hvis siden skal ligge på øverste niveau skal du ikke vælge noget.
           menu_title_help: Hvis siden skal have en anden titel i menuen, så vælg &apos;Tekst&apos; og indtast titlen her.
           custom_slug_help: En slug er et letlæseligt id, som bruges til at lave en sides fulde internetadresse (URL), fx &apos;om-os&apos. For at overskrive den slug der automatisk bliver oprettet af Refinery, kan du skrive din brugerdefinerede slug her.

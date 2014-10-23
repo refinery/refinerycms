@@ -62,7 +62,7 @@ fr:
           skip_to_first_child_label: Rediriger les visiteurs vers la première page fille.
           skip_to_first_child_help: Cette option assure que cette page est liée à la première page sous-jacente. Cela peut être utile losque l'on groupe des pages.
           link_url: Cette page redirige le visiteur vers un autre site ou une autre page
-          link_url_help: "Si vous souhaitez que cette page mène à un autre site internet ou à une autre page lorsque l'on clique dessus dans le menu, entrez une URL '(par exemple http://google.com)'. Sinon laissez ce champ vide."
+          link_url_help: "Si vous souhaitez que cette page mène à un autre site internet ou à une autre page lorsque l'on clique dessus dans le menu, entrez une URL '(par exemple https://google.com)'. Sinon laissez ce champ vide."
           parent_page_help: "Vous pouvez placer une page sous une autre page en la sélectionnant dans la liste. Si vous voulez que cette page soit une page parente, laissez ce champ vide."
           menu_title_help: Si vous voulez que le menu affiche un titre différent que celui qui sera affiché sur la page, entrez-le ici.
           custom_slug_help: Un slug est un identifiant plus humain utilisé dans l'adresse d'une page, par exemple &apos;a-propos&apos;. Pour écraser le slug généré automatiquement par Refinery, entrez votre slug personnalisé ici.
