@@ -52,7 +52,7 @@ namespace :refinery do
     end
 
     task :init_test_database do
-      system "RAILS_ENV=test bundle exec rake -f #{File.join(dummy_app_path, 'Rakefile')} db:{create,migrate}"
+      system "RAILS_ENV=test bundle exec rake -f #{File.join(dummy_app_path, 'Rakefile')} db:create db:migrate"
     end
 
     task :specs do
