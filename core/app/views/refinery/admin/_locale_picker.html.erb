@@ -1,10 +1,21 @@
 <input type="hidden" name="switch_locale" id="switch_locale" value="<%= local_assigns[:current_locale] %>" />
 <% if Refinery::I18n.frontend_locales.many? %>
+  <label>Language</label> 
   <ul id="switch_locale_picker" class="clearfix">
+    <% locales = Refinery::I18n.locales.clone %>
     <% Refinery::I18n.frontend_locales.each do |locale| %>
+      <% locale_name = locales.delete(locale) %>
+      
       <li<%= %Q{ class=selected} if locale.to_s == local_assigns[:current_locale].to_s %>>
-        <%= link_to refinery_icon_tag(%Q{flags/#{locale}.png}, :size => '32x22'),
-                    refinery.url_for(:switch_locale => locale, :parent_id => params[:parent_id]) %>
+        <%= link_to refinery.url_for(:switch_locale => locale, :parent_id => params[:parent_id]) do %>
+          <%#= refinery_icon_tag(%Q{flags/#{locale}.png}, :size => '32x22') %>
+          <div class="locale_icon">
+            <%= refinery_icon_tag('locale.svg', :size => '24x24') %>
+            <span><%= locale.upcase %></span>
+          </div>
+          <%= locale_name %>
+        <% end %>
+                
       </li>
     <% end %>
   </ul>

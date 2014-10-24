@@ -1457,22 +1457,69 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   li {
     float: left;
     padding: 0px;
-    margin: 0px 12px 0px 0px;
+    margin: 0;
     list-style: none;
     a {
-      border-bottom: 0px none;
-      img {
-        border-width: 4px;
-        border-style: solid;
-        border-color: transparent;
-        display: block;
+      background-color: #cdcdcd;
+      background-position: 12px;
+      background-repeat: no-repeat;
+      border-bottom: 0;
+      border-right: solid 1px white;
+      display: block;
+      padding: 3px 14px 3px 9px;
+      line-height: 0;
+      &:hover {
+        background-color: #cae7fb;
+      }
+      &:active {
+        background-color: #22A7F2;
+      }
+
+      .locale_icon {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        width: 24px;
+        height: 24px;
+        margin-right: 3px;
+        padding-top: 1px;
+          
+        span {
+          display: block;
+          position: absolute;
+          top: 12px;
+          text-align: center;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+          width: 100%;
+          text-align: center;
+          font-weight: bold;
+          font-size: 80%;
+        }
       }
     }
-    &.selected a img {
-      border-color: #22A7F2;
+    &:first-child a {
+      border-radius-left: 5px;
+      -moz-border-radius-topleft: 5px;
+      -moz-border-radius-bottomleft: 5px;
+      -webkit-border-top-left-radius: 5px;
+      -webkit-border-bottom-left-radius: 5px;
+    }
+    &:last-child a {
+      border-radius-right: 5px;
+      -moz-border-radius-topright: 5px;
+      -moz-border-radius-bottomright: 5px;
+      -webkit-border-top-right-radius: 5px;
+      -webkit-border-bottom-right-radius: 5px;
+    }
+    &.selected a {
+      background-color: #65c3f7;
     }
   }
 }
+
+
 #content #records .title .preview a.locale {
   border-bottom: 0px none;
 }
