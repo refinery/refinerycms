@@ -49,12 +49,6 @@ ru:
         reset_request_received_for: "Получен запрос на сброс пароля для %{username}"
         visit_this_url: Для ввода нового пароля пройдите по этой ссылке
         remain_same_if_no_action: Вы также можете проигнорировать это письмо. В этом случае пароль не будет изменён.
-  devise:
-    failure:
-      unauthenticated: "Вам необходимо войти в систему или зарегистрироваться."
-      invalid: "Неверный адрес e-mail или пароль."
-    sessions:
-      signed_in: "Вход в систему выполнен."
   activerecord:
     models:
       refinery/user: пользователь

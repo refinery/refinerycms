@@ -52,12 +52,6 @@ el:
     roles:
       superuser: Διαχειριστής
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Πρέπει να συνδεθείτε για να συνεχίσετε.
-      invalid: 'Συγγνώμη, το όνομα χρήστη ή ο κωδικός δεν είναι έγκυρα.'
-    sessions:
-      signed_in: Συνδεθείκατε επιτυχώς.
   activerecord:
     models:
       refinery/user: χρήστης

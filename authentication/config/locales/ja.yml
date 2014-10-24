@@ -52,12 +52,6 @@ ja:
     roles:
       superuser: 管理人
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: サインインして下さい。
-      invalid: ログイン、またはパスワードが違います。
-    sessions:
-      signed_in: サインインしました。
   activerecord:
     models:
       refinery/user: ユーザ

@@ -52,12 +52,6 @@ rs:
     roles:
       superuser: Superuser
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Moraš da se uloguješ da bi nastavio.
-      invalid: 'Izvinjavamo se, pogrešio si username ili lozinku.'
-    sessions:
-      signed_in: Uspešno logovanje.
   activerecord:
     models:
       refinery/user: administrator

@@ -56,9 +56,3 @@ it:
         email: email
         password: password
         remember_me: Ricordati di me
-  devise:
-    failure:
-      unauthenticated: "Devi accedere o registrarti per continuare."
-      invalid: "Indirizzo email o password non validi."
-    sessions:
-      signed_in: "Accesso effettuato con successo."

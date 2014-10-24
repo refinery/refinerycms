@@ -52,12 +52,6 @@ ko:
     roles:
       superuser: 관리자
       refinery: Refinery 사용자
-  devise:
-    failure:
-      unauthenticated: 계속하기 위해서는 로그인하셔야 합니다.
-      invalid: "계정 혹은 비밀번호가 잘못되었습니다."
-    sessions:
-      signed_in: 로그인에 성공했습니다.
   activerecord:
     models:
       refinery/user: 사용자

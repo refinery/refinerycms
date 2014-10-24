@@ -49,12 +49,6 @@ pt-BR:
         reset_request_received_for: 'Solicitação para alterar a senha foi recebida por %{username}'
         visit_this_url: Visite esse endereço para escolher uma nova senha
         remain_same_if_no_action: Sua senha irá continuar a mesma caso não prossiga
-  devise:
-    failure:
-      unauthenticated: 'Para continuar, faça login.'
-      invalid: Email ou senha inválidos.
-    sessions:
-      signed_in: Fez login com sucesso.
   activerecord:
     models:
       refinery/user: Usuário

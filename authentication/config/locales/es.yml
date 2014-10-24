@@ -63,9 +63,3 @@ es:
         password: Contraseña
         password_confirmation: Confirmar contraseña
         remember_me: Recordarme
-  devise:
-    failure:
-      unauthenticated: 'Necesitas acceder a tu cuenta o registrarte antes de continuar.'
-      invalid: 'Contraseña o Email incorrecto.'
-    sessions:
-      signed_in: 'Has ingresado correctamente.'

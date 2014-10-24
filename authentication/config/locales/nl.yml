@@ -52,12 +52,6 @@ nl:
     roles:
       superuser: Beheerder
       refinery: Refinery-gebruiker
-  devise:
-    failure:
-      unauthenticated: U moet inloggen om verder te kunnen
-      invalid: 'Sorry, uw wachtwoord, of gebruikersnaam is onjuist.'
-    sessions:
-      signed_in: U bent ingelogd.
   activerecord:
     models:
       refinery/user: gebruiker

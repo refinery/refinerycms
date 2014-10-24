@@ -52,12 +52,6 @@ zh-CN:
     roles:
       superuser: 超级用户
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: 您尚未登录.
-      invalid: "对不起, 您的用户名或密码不正确."
-    sessions:
-      signed_in: 登录成功.
   activerecord:
     models:
       refinery/user: 用户

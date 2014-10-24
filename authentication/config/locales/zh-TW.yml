@@ -53,12 +53,6 @@ zh-TW:
     roles:
       superuser: 管理者
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: 您必須登入之後才能繼續.
-      invalid: '抱歉, 您輸入的帳號或是密碼不正確.'
-    sessions:
-      signed_in: 登入成功.
   activerecord:
     models:
       refinery/user: 使用者

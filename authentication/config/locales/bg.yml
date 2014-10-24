@@ -52,12 +52,6 @@ bg:
     roles:
       superuser: Привилегирован потребител
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Трябва да влезете в системата преди да продължите.
-      invalid: "За съжаление сте въвели грешно потребителско име или парола."
-    sessions:
-      signed_in: Успешен вход в системата.
   activerecord:
     models:
       refinery/user: потребител
