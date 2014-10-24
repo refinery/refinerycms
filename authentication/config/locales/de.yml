@@ -52,12 +52,6 @@ de:
     roles:
       superuser: Superuser
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: 'Sie müssen sich anmelden, um fortzufahren.'
-      invalid: 'Tut mir leid, Ihr Login oder Passwort war nicht korrekt.'
-    sessions:
-      signed_in: Erfolgreich angemeldet.
   activerecord:
     models:
       refinery/user: Benutzer

@@ -49,9 +49,6 @@ sv:
         reset_request_received_for: "Önskan om att återställa lösenordet för %{username}"
         visit_this_url: Använd den här länken för att välja ett nytt lösenord
         remain_same_if_no_action: Ditt lösenord kommer att vara det samma som tidigare om du inte gör något
-  devise:
-    failure:
-      unauthenticated: Du måste logga in innan du kan fortsätta.
   activerecord:
     models:
       refinery/user: användare

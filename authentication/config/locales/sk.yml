@@ -52,12 +52,6 @@ sk:
     roles:
       superuser: Superužívateľ
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Pre pokračovanie sa musíte prihlásiť.
-      invalid: "Prepáčte, vaše užívateľské meno alebo heslo je neplatné."
-    sessions:
-      signed_in: Úspešné prihlásenie.
   activerecord:
     models:
       refinery/user: užívateľ

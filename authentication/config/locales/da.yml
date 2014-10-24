@@ -52,12 +52,6 @@ da:
     roles:
       superuser: Administrator
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Du skal logge ind for at kunne fortsætte.
-      invalid: "Email eller kodeord er ikke gyldig."
-    sessions:
-      signed_in: Du er nu logget ind.
   activerecord:
     models:
       refinery/user: bruger

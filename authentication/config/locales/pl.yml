@@ -63,9 +63,3 @@ pl:
         password: Hasło
         password_confirmation: Potwierdzenie hasła
         remember_me: Zapamiętaj mnie
-  devise:
-    failure:
-      unauthenticated: 'Musisz się zalogować lub zarejestrować aby kontynuować.'
-      invalid: 'Niepoprawny email lub hasło.'
-    sessions:
-      signed_in: 'Użytkownik został zalogowany.'

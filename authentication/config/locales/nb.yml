@@ -52,12 +52,6 @@ nb:
     roles:
       superuser: Superbruker
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Du må logge deg inn før du kan fortsette.
-      invalid: "Beklager, brukernavnet eller passordet du oppga var ikke riktig."
-    sessions:
-      signed_in: Du er nå logget inn.
   activerecord:
       models:
         refinery/user: bruker

@@ -52,12 +52,6 @@ fr:
     roles:
       superuser: Superuser
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Vous devez vous connecter ou vous inscrire pour continuer.
-      invalid: Courriel ou mot de passe incorrect.
-    sessions:
-      signed_in: Réussite de la connexion.
   activerecord:
     models:
       refinery/user: utilisateur

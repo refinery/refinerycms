@@ -50,12 +50,6 @@ uk:
         reset_request_received_for: "Одержаний запит на скидання пароля для %{username}"
         visit_this_url: Для введення нового пароля перейдіть за цим посиланням
         remain_same_if_no_action: Ви також можете проігнорувати цей лист. У цьому випадку пароль не буде змінено.
-  devise:
-    failure:
-      unauthenticated: "Вам необхідно увійти в систему або зареєструватися."
-      invalid: "Неправильна адреса ел. пошти або пароль."
-    sessions:
-      signed_in: "Вхід у систему виконаний."
   activerecord:
     models:
       refinery/user: користувач

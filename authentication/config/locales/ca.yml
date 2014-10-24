@@ -52,13 +52,6 @@ ca:
     roles:
       superuser: Superusuari
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Necessites accedir al teu compte o registrar-te abans de continuar.
-      invalid: Contrasenya o Email incorrecte.
-      not_found_in_database: "Sorry, your login or password was incorrect."
-    sessions:
-      signed_in: 'Has accedit correctament.'
   activerecord:
     models:
       refinery/user: usuari

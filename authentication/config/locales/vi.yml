@@ -52,12 +52,6 @@ vi:
     roles:
       superuser: Superuser
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Bạn cần đăng nhập trước khi tiếp tục.
-      invalid: "Xin lỗi, mật khẩu của bạn không đúng."
-    sessions:
-      signed_in: Đăng nhập thành công.
   activerecord:
     models:
       refinery/user: người dùng

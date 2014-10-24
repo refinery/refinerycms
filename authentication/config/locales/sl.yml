@@ -48,9 +48,6 @@ sl:
         reset_request_received_for: 'Zahteva za ponastavitev gesla za %{username}'
         visit_this_url: Za izbiro novega gesla obiščite to povezavo
         remain_same_if_no_action: V kolikor ne boste izvedli nobene akcije bo vaše ostalo nespremenjeno
-  devise:
-    failure:
-      unauthenticated: Za nadaljevanje se morate prijaviti.
   activerecord:
     attributes:
       refinery/user:

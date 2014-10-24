@@ -52,15 +52,6 @@ cs:
     roles:
       superuser: Super uživatel
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Pro pokračování se musíte přihlásit.
-      invalid: "Promiňte, vaše uživatelské jméno nebo heslo je neplatné."
-      not_found_in_database: "Promiňte, vaše uživatelské jméno nebo heslo je neplatné."
-    sessions:
-      signed_in: Úspěšné přihlášení.
-      refinery_user:
-        signed_out: Úspěšně odhlášení.
   activerecord:
     models:
       refinery/user: uživatel

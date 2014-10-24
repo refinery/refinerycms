@@ -52,12 +52,6 @@ fi:
     roles:
       superuser: Superuser
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Sinun täytyy kirjautua sisään.
-      invalid: "Käyttäjää ei löytynyt, tai salasana oli väärä."
-    sessions:
-      signed_in: Kirjautuminen onnistui.
   activerecord:
     models:
       refinery/user: käyttäjä

@@ -52,12 +52,6 @@ tr:
     roles:
       superuser: Sistem Yoneticisi
       refinery: Refinery
-  devise:
-    failure:
-      unauthenticated: Devam edebilmek icin giris yapmak zorundasiniz
-      invalid: "Uzgunum, kullanici adiniz yada parolaniz hatali."
-    sessions:
-      signed_in: Giris basariyla yapildi
   activerecord:
     models:
       refinery/user: kullanici
