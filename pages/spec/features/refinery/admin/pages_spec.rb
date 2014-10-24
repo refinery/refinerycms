@@ -410,7 +410,7 @@ module Refinery
           it "shows locale flag for page" do
             p = ::Refinery::Page.by_slug('news').first
             within "#page_#{p.id}" do
-              expect(page).to have_css("img[src='/assets/refinery/icons/flags/en.png']")
+              expect(page).to have_css(".locale_icon.en")
             end
           end
 
@@ -488,8 +488,8 @@ module Refinery
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
-              expect(page).to have_css("img[src='/assets/refinery/icons/flags/en.png']")
-              expect(page).to have_css("img[src='/assets/refinery/icons/flags/ru.png']")
+              expect(page).to have_css(".locale_icon.en")
+              expect(page).to have_css(".locale_icon.ru")
             end
           end
 
@@ -556,7 +556,7 @@ module Refinery
 
           it "shows locale flag for page" do
             within "#page_#{ru_page_id}" do
-              expect(page).to have_css("img[src='/assets/refinery/icons/flags/ru.png']")
+              expect(page).to have_css(".locale_icon.ru")
             end
           end
 
