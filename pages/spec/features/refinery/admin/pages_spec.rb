@@ -466,7 +466,7 @@ module Refinery
 
             click_link "Add new page"
             within "#switch_locale_picker" do
-              click_link "Ru"
+              click_link "ru"
             end
             fill_in "Title", :with => ru_page_title
             click_button "Save"
@@ -475,7 +475,7 @@ module Refinery
               find("a[href^='/#{Refinery::Core.backend_route}/pages/#{ru_page_slug_encoded}/edit']").click
             end
             within "#switch_locale_picker" do
-              click_link "En"
+              click_link "en"
             end
             fill_in "Title", :with => en_page_title
             find("#submit_button").click
@@ -545,7 +545,7 @@ module Refinery
             ru_page.destroy!
             click_link "Add new page"
             within "#switch_locale_picker" do
-              click_link "Ru"
+              click_link "ru"
             end
             fill_in "Title", :with => ru_page_title
             click_button "Save"
@@ -745,7 +745,7 @@ module Refinery
           click_link "Add new page"
 
           within "#switch_locale_picker" do
-            click_link "Lv"
+            click_link "lv"
           end
           fill_in "Title", :with => "Brīva vieta reklāmai"
           click_button "Save"
@@ -834,7 +834,7 @@ module Refinery
               end
 
               within "#switch_locale_picker" do
-                click_link "Ru"
+                click_link "ru"
               end
 
               find("#page_part_body .wym_tools_link a").click
