@@ -6,10 +6,13 @@ module Refinery
     refinery_login_with :refinery_user
 
     context 'when there are no images' do
+      let(:initial_path) { refinery.admin_images_path(view: %w(grid list).sample) }
       it 'says there are no images'do
         visit refinery.admin_images_path
         expect(page).to have_content(::I18n.t('no_images_yet', scope: 'refinery.admin.images.records'))
       end
+
+      it_behaves_like 'an image uploader'
     end
 
     context 'when there is one image' do
@@ -18,6 +21,7 @@ module Refinery
 
       it_behaves_like 'an image index'
       it_behaves_like 'an image deleter'
+      it_behaves_like 'an image uploader'
     end
 
     context 'when there are many images' do
@@ -28,6 +32,7 @@ module Refinery
 
       it_behaves_like 'an image index'
       it_behaves_like 'an image deleter'
+      it_behaves_like 'an image uploader'
     end
 
   end
