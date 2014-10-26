@@ -14,10 +14,9 @@ module Refinery
   module Admin
     describe DummyController, :type => :controller do
       context "as refinery user" do
-        refinery_login_with :refinery
+        refinery_login_with :refinery_user
 
         context "with permission" do
-          let(:controller_permission) { true }
           it "allows access" do
             expect(controller).not_to receive :error_404
             get :index
@@ -25,8 +24,8 @@ module Refinery
         end
 
         context "without permission" do
-          let(:controller_permission) { false }
           it "denies access" do
+            allow(controller).to receive(:allow_controller?).and_return(false)
             expect(controller).to receive :error_404
             get :index
           end
