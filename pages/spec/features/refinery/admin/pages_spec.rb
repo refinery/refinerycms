@@ -16,7 +16,7 @@ end
 module Refinery
   module Admin
     describe "Pages", :type => :feature do
-      refinery_login_with :refinery_user
+      refinery_login
 
       context "when no pages" do
         it "invites to create one" do
