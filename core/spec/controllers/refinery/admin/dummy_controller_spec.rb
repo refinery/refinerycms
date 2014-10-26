@@ -14,7 +14,7 @@ module Refinery
   module Admin
     describe DummyController, :type => :controller do
       context "as refinery user" do
-        refinery_login_with :refinery
+        refinery_login
 
         context "with permission" do
           it "allows access" do
