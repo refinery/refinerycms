@@ -53,7 +53,7 @@ vi:
           skip_to_first_child_label: Chuyển hướng truy cập của người dùng tới trang con đầu tiên.
           skip_to_first_child_help: Tùy chọn này cho phép trang này được chuyển hướng tới trang con đầu tiên. Điều này có thể hữu ích khi bạn muốn nhóm các trang lại với nhau.
           link_url: Chuyển hướng truy cập vào trang này sang mội trang khác hoặc một website khác
-          link_url_help: Nếu bạn muốn khi ấn vào trang này trên menu, người dùng sẽ được đưa tới một trang kháchay website khác, bạn hãy nhập vào một địa chỉ (ví dụ http://google.com), nếu không để trống ô này.
+          link_url_help: Nếu bạn muốn khi ấn vào trang này trên menu, người dùng sẽ được đưa tới một trang kháchay website khác, bạn hãy nhập vào một địa chỉ (ví dụ https://google.com), nếu không để trống ô này.
           parent_page_help: Bạn có thể đặt trang này ở dưới (làm con) một trang khác bằng cách chọn trang cha từ danh sách dưới đây. Hãy để trống nếu bạn muốn trang này là trang ở lớp ngoài cùng.
         actions:
           create_new_page: Tạo trang mới

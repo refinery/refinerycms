@@ -19,12 +19,12 @@ module Refinery
     context 'allows us to assign to' do
       it 'meta_description' do
         page.meta_description = 'This is my description of the page for search results.'
-        page.meta_description.should == 'This is my description of the page for search results.'
+        expect(page.meta_description).to eq('This is my description of the page for search results.')
       end
 
       it 'browser_title' do
         page.browser_title = 'An awesome browser title for SEO'
-        page.browser_title.should == 'An awesome browser title for SEO'
+        expect(page.browser_title).to eq('An awesome browser title for SEO')
       end
     end
 
@@ -34,7 +34,7 @@ module Refinery
         page.save
 
         page.reload
-        page.meta_description.should == 'This is my description of the page for search results.'
+        expect(page.meta_description).to eq('This is my description of the page for search results.')
       end
 
       it 'browser_title' do
@@ -42,7 +42,7 @@ module Refinery
         page.save
 
         page.reload
-        page.browser_title.should == 'An awesome browser title for SEO'
+        expect(page.browser_title).to eq('An awesome browser title for SEO')
       end
     end
   end

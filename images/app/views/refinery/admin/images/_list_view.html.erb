@@ -3,7 +3,7 @@
     <% date_time = (image_group = container.last).first.created_at %>
     <% date = Date.parse(date_time.to_s) %>
     <h3><%= l(date, format: :long ) %></h3>
-    <ul>
+    <ul class='images_list'>
       <%= render partial: 'list_view_image', collection: image_group %>
     </ul>
   <% end %>

@@ -2,13 +2,13 @@ require "spec_helper"
 
 module Refinery
   module Users
-    describe "password recovery" do
+    describe "password recovery", :type => :feature do
       let!(:user) { FactoryGirl.create(:refinery_user, :email => "refinery@refinerycms.com") }
 
       it "asks user to specify email address" do
         visit refinery.login_path
         click_link "I forgot my password"
-        page.should have_content("Please enter the email address for your account.")
+        expect(page).to have_content("Please enter the email address for your account.")
       end
 
       context "when existing email specified" do
@@ -16,7 +16,7 @@ module Refinery
           visit refinery.new_refinery_user_password_path
           fill_in "refinery_user_email", :with => user.email
           click_button "Reset password"
-          page.should have_content("An email has been sent to you with a link to reset your password.")
+          expect(page).to have_content("An email has been sent to you with a link to reset your password.")
         end
       end
 
@@ -25,8 +25,8 @@ module Refinery
           visit refinery.new_refinery_user_password_path
           fill_in "refinery_user_email", :with => "none@refinerycms.com"
           click_button "Reset password"
-          page.should have_content("Sorry, 'none@refinerycms.com' isn't associated with any accounts.")
-          page.should have_content("Are you sure you typed the correct email address?")
+          expect(page).to have_content("Sorry, 'none@refinerycms.com' isn't associated with any accounts.")
+          expect(page).to have_content("Are you sure you typed the correct email address?")
         end
       end
 
@@ -35,13 +35,13 @@ module Refinery
 
         it "allows to change password" do
           visit refinery.edit_refinery_user_password_path(:reset_password_token => token)
-          page.should have_content("Pick a new password for #{user.email}")
+          expect(page).to have_content("Pick a new password for #{user.email}")
 
           fill_in "refinery_user_password", :with => "123456"
           fill_in "refinery_user_password_confirmation", :with => "123456"
           click_button "Reset password"
 
-          page.should have_content("Password reset successfully for '#{user.email}'")
+          expect(page).to have_content("Password reset successfully for '#{user.email}'")
         end
       end
 
@@ -50,7 +50,7 @@ module Refinery
 
         it "shows error message" do
           visit refinery.edit_refinery_user_password_path(:reset_password_token => "hmmm")
-          page.should have_content("Reset password token is invalid")
+          expect(page).to have_content("Reset password token is invalid")
         end
       end
 
@@ -67,7 +67,7 @@ module Refinery
           fill_in "refinery_user_password_confirmation", :with => "123456"
           click_button "Reset password"
 
-          page.should have_content("Reset password token has expired, please request a new one")
+          expect(page).to have_content("Reset password token has expired, please request a new one")
         end
       end
     end

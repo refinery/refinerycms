@@ -53,7 +53,7 @@ rs:
           skip_to_first_child_label: Preusmeri posetioce na prvu podstranu.
           skip_to_first_child_help: Ova opcija omogućava strani da linkuje na prvu stranu ispod. Ovo može biti korisno pri grupisanju strana.
           link_url: Preusmeri ovu stranu na drugi websajt ili stranu
-          link_url_help: Ako želiš da ova strana vodi na drugi websajt ili stranu kada klikneš na stranu u meniju, upiši URL (npr. http://google.com), u suprotnom ostavi prazno
+          link_url_help: Ako želiš da ova strana vodi na drugi websajt ili stranu kada klikneš na stranu u meniju, upiši URL (npr. https://google.com), u suprotnom ostavi prazno
           parent_page_help: Možeš postaviti stranu ispod druge strane, tako što ćeš je izabrati na listi. Ako želiš da ova strana bude na glavnom nivou ostavi prazno.
         actions:
           create_new_page: Dodaj novu stranu

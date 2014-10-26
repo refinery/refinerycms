@@ -38,6 +38,7 @@ module Refinery
             if params[:continue_editing] =~ /true|on|1/
               if request.xhr?
                 render :partial => 'save_and_continue_callback', :locals => {
+                  :new_refinery_edit_page_path => refinery.admin_edit_page_path(@page.nested_url),
                   :new_refinery_page_path => refinery.admin_page_path(@page.nested_url),
                   :new_page_path => refinery.pages_admin_preview_page_path(@page.nested_url)
                 }

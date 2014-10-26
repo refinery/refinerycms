@@ -53,7 +53,7 @@ zh-TW:
           skip_to_first_child_label: 將訪客重新導向到第一個次層頁面.
           skip_to_first_child_help: 這個選項讓這個頁面可以連結到第一個頁面之下. 當您想要分類頁面的時這會很有用.
           link_url: 將這個頁面重新導向到另外一個網站或是頁面
-          link_url_help: 如果您想要在選單中點選這個頁面就跳到另外一個網站或是頁面的話, 在這裡輸入網址, 例如 http://google.com, 不然就空白不填
+          link_url_help: 如果您想要在選單中點選這個頁面就跳到另外一個網站或是頁面的話, 在這裡輸入網址, 例如 https://google.com, 不然就空白不填
           parent_page_help: 您可以在列表中讓一個頁面依附在另一個頁面之下. 如果您想要讓這個頁面是第一層的頁面, 就不要填這個欄位.
         actions:
           create_new_page: 新增頁面

@@ -3,26 +3,26 @@ require "spec_helper"
 
 def new_window_should_have_content(content)
   page.within_window windows.last do
-    page.should have_content(content)
+    expect(page).to have_content(content)
   end
 end
 
 def new_window_should_not_have_content(content)
   page.within_window windows.last do
-    page.should_not have_content(content)
+    expect(page).not_to have_content(content)
   end
 end
 
 module Refinery
   module Admin
-    describe "Pages" do
+    describe "Pages", :type => :feature do
       before { ::I18n.default_locale = Globalize.locale = :en }
       refinery_login_with :refinery_user
 
       context "when no pages" do
         it "invites to create one" do
           visit refinery.admin_pages_path
-          page.should have_content(%q{There are no pages yet. Click "Add new page" to add your first page.})
+          expect(page).to have_content(%q{There are no pages yet. Click "Add new page" to add your first page.})
         end
       end
 
@@ -31,8 +31,8 @@ module Refinery
           visit refinery.admin_pages_path
 
           within "#actions" do
-            page.should have_content("Add new page")
-            page.should have_selector("a[href='/#{Refinery::Core.backend_route}/pages/new']")
+            expect(page).to have_content("Add new page")
+            expect(page).to have_selector("a[href='/#{Refinery::Core.backend_route}/pages/new']")
           end
         end
 
@@ -41,8 +41,8 @@ module Refinery
             visit refinery.admin_pages_path
 
             within "#actions" do
-              page.should have_no_content("Reorder pages")
-              page.should have_no_selector("a[href='/#{Refinery::Core.backend_route}/pages']")
+              expect(page).to have_no_content("Reorder pages")
+              expect(page).to have_no_selector("a[href='/#{Refinery::Core.backend_route}/pages']")
             end
           end
         end
@@ -54,8 +54,8 @@ module Refinery
             visit refinery.admin_pages_path
 
             within "#actions" do
-              page.should have_content("Reorder pages")
-              page.should have_selector("a[href='/#{Refinery::Core.backend_route}/pages']")
+              expect(page).to have_content("Reorder pages")
+              expect(page).to have_selector("a[href='/#{Refinery::Core.backend_route}/pages']")
             end
           end
         end
@@ -68,46 +68,46 @@ module Refinery
 
           context "with auto expand option turned off" do
             before do
-              Refinery::Pages.stub(:auto_expand_admin_tree).and_return(false)
+              allow(Refinery::Pages).to receive(:auto_expand_admin_tree).and_return(false)
 
               visit refinery.admin_pages_path
             end
 
             it "show parent page" do
 
-              page.should have_content(company.title)
+              expect(page).to have_content(company.title)
             end
 
             it "doesn't show children" do
-              page.should_not have_content(team.title)
-              page.should_not have_content(locations.title)
+              expect(page).not_to have_content(team.title)
+              expect(page).not_to have_content(locations.title)
             end
 
             it "expands children", :js do
               find("#page_#{company.id} .title.toggle").click
 
-              page.should have_content(team.title)
-              page.should have_content(locations.title)
+              expect(page).to have_content(team.title)
+              expect(page).to have_content(locations.title)
             end
 
             it "expands children when nested mutliple levels deep", :js do
               find("#page_#{company.id} .title.toggle").click
               find("#page_#{locations.id} .title.toggle").click
 
-              page.should have_content("New York")
+              expect(page).to have_content("New York")
             end
           end
 
           context "with auto expand option turned on" do
             before do
-              Refinery::Pages.stub(:auto_expand_admin_tree).and_return(true)
+              allow(Refinery::Pages).to receive(:auto_expand_admin_tree).and_return(true)
 
               visit refinery.admin_pages_path
             end
 
             it "shows children" do
-              page.should have_content(team.title)
-              page.should have_content(locations.title)
+              expect(page).to have_content(team.title)
+              expect(page).to have_content(locations.title)
             end
           end
         end
@@ -120,19 +120,17 @@ module Refinery
           click_link "Add new page"
 
           fill_in "Title", :with => "My first page"
-          click_button "Save"
+          expect { click_button "Save" }.to change(Refinery::Page, :count).from(0).to(1)
 
-          page.should have_content("'My first page' was successfully added.")
+          expect(page).to have_content("'My first page' was successfully added.")
 
-          page.body.should =~ /Remove this page forever/
-          page.body.should =~ /Edit this page/
-          page.body.should =~ %r{/#{Refinery::Core.backend_route}/pages/my-first-page/edit}
-          page.body.should =~ /Add a new child page/
-          page.body.should =~ %r{/#{Refinery::Core.backend_route}/pages/new\?parent_id=}
-          page.body.should =~ /View this page live/
-          page.body.should =~ %r{href="/my-first-page"}
-
-          Refinery::Page.count.should == 1
+          expect(page.body).to match(/Remove this page forever/)
+          expect(page.body).to match(/Edit this page/)
+          expect(page.body).to match(%r{/#{Refinery::Core.backend_route}/pages/my-first-page/edit})
+          expect(page.body).to match(/Add a new child page/)
+          expect(page.body).to match(%r{/#{Refinery::Core.backend_route}/pages/new\?parent_id=})
+          expect(page.body).to match(/View this page live/)
+          expect(page.body).to match(%r{href="/my-first-page"})
         end
 
         it "includes menu title field", :js => true do
@@ -146,8 +144,8 @@ module Refinery
 
           click_button "Save"
 
-          page.should have_content("'My first page' was successfully added.")
-          page.body.should =~ %r{/pages/the-first-page}
+          expect(page).to have_content("'My first page' was successfully added.")
+          expect(page.body).to match(%r{/pages/the-first-page})
         end
 
         it "allows to easily create nested page" do
@@ -160,7 +158,7 @@ module Refinery
           fill_in "Title", :with => "Parent page"
           click_button "Save"
 
-          page.should have_content("'Parent page' was successfully added.")
+          expect(page).to have_content("'Parent page' was successfully added.")
         end
       end
 
@@ -169,7 +167,7 @@ module Refinery
           Page.create :title => "Update me"
 
           visit refinery.admin_pages_path
-          page.should have_content("Update me")
+          expect(page).to have_content("Update me")
         end
 
         context 'when saving and returning to index' do
@@ -179,7 +177,7 @@ module Refinery
             fill_in "Title", :with => "Updated"
             find("#submit_button").click
 
-            page.should have_content("'Updated' was successfully updated.")
+            expect(page).to have_content("'Updated' was successfully updated.")
           end
         end
 
@@ -194,14 +192,14 @@ module Refinery
           end
 
           it "updates page", :js do
-            page.should have_content("'Updated' was successfully updated.")
+            expect(page).to have_content("'Updated' was successfully updated.")
           end
 
           # Regression test for https://github.com/refinery/refinerycms/issues/1892
           context 'when saving to exit (a second time)' do
             it 'updates page', :js do
               find("#submit_button").click
-              page.should have_content("'Updated' was successfully updated.")
+              expect(page).to have_content("'Updated' was successfully updated.")
             end
           end
         end
@@ -245,7 +243,7 @@ module Refinery
 
             new_window_should_have_content("Some changes I'm unsure what they will look like")
 
-            Page.by_title("Some changes I'm unsure what they will look like").should be_empty
+            expect(Page.by_title("Some changes I'm unsure what they will look like")).to be_empty
           end
 
           # Regression test for previewing after save-and_continue
@@ -255,7 +253,7 @@ module Refinery
             find('a[tooltip^=Edit]').click
             fill_in "Title", :with => "Save this"
             click_button "Save & continue editing"
-            page.should have_content("'Save this' was successfully updated")
+            expect(page).to have_content("'Save this' was successfully updated")
 
             click_button "Preview"
 
@@ -288,7 +286,7 @@ module Refinery
 
             new_window_should_have_content("My first page")
 
-            Page.count.should == 0
+            expect(Page.count).to eq(0)
           end
         end
 
@@ -320,9 +318,9 @@ module Refinery
 
             click_link "Remove this page forever"
 
-            page.should have_content("'Delete me' was successfully removed.")
+            expect(page).to have_content("'Delete me' was successfully removed.")
 
-            Refinery::Page.count.should == 0
+            expect(Refinery::Page.count).to eq(0)
           end
         end
 
@@ -332,8 +330,8 @@ module Refinery
           it "wont show delete button" do
             visit refinery.admin_pages_path
 
-            page.should have_no_content("Remove this page forever")
-            page.should have_no_selector("a[href='/#{Refinery::Core.backend_route}/pages/indestructible']")
+            expect(page).to have_no_content("Remove this page forever")
+            expect(page).to have_no_selector("a[href='/#{Refinery::Core.backend_route}/pages/indestructible']")
           end
         end
       end
@@ -347,13 +345,13 @@ module Refinery
           fill_in "Title", :with => "I was here first"
           click_button "Save"
 
-          Refinery::Page.last.url[:path].first.should =~ %r{\Ai-was-here-first-.+?}
+          expect(Refinery::Page.last.url[:path].first).to match(%r{\Ai-was-here-first-.+?})
         end
       end
 
       context "with translations" do
         before do
-          Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
+          allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru])
 
           # Create a home page in both locales (needed to test menus)
           home_page = Globalize.with_locale(:en) do
@@ -377,22 +375,22 @@ module Refinery
           end
 
           it "succeeds" do
-            page.should have_content("'News' was successfully added.")
-            Refinery::Page.count.should == 2
+            expect(page).to have_content("'News' was successfully added.")
+            expect(Refinery::Page.count).to eq(2)
           end
 
           it "shows locale flag for page" do
             p = ::Refinery::Page.by_slug('news').first
             within "#page_#{p.id}" do
-              page.should have_css("img[src='/assets/refinery/icons/flags/en.png']")
+              expect(page).to have_css("img[src='/assets/refinery/icons/flags/en.png']")
             end
           end
 
           it "shows title in the admin menu" do
             p = ::Refinery::Page.by_slug('news').first
             within "#page_#{p.id}" do
-              page.should have_content('News')
-              page.find_link('Edit this page')[:href].should include('news')
+              expect(page).to have_content('News')
+              expect(page.find_link('Edit this page')[:href]).to include('news')
             end
           end
 
@@ -400,8 +398,8 @@ module Refinery
             visit "/"
 
             within "#menu" do
-              page.should have_content('News')
-              page.should have_selector("a[href='/news']")
+              expect(page).to have_content('News')
+              expect(page).to have_selector("a[href='/news']")
             end
           end
 
@@ -410,7 +408,7 @@ module Refinery
 
             within "#menu" do
               # we should only have the home page in the menu
-              page.should have_css('li', :count => 1)
+              expect(page).to have_css('li', :count => 1)
             end
           end
         end
@@ -421,7 +419,7 @@ module Refinery
           let(:ru_page_title) { 'Новости' }
           let(:ru_page_slug_encoded) { '%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8' }
           let!(:news_page) do
-            Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
+            allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru])
 
             _page = Globalize.with_locale(:en) {
               Page.create :title => en_page_title
@@ -454,16 +452,16 @@ module Refinery
             fill_in "Title", :with => en_page_title
             find("#submit_button").click
 
-            page.should have_content("'#{en_page_title}' was successfully updated.")
-            Refinery::Page.count.should == 2
+            expect(page).to have_content("'#{en_page_title}' was successfully updated.")
+            expect(Refinery::Page.count).to eq(2)
           end
 
           it "shows both locale flags for page" do
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
-              page.should have_css("img[src='/assets/refinery/icons/flags/en.png']")
-              page.should have_css("img[src='/assets/refinery/icons/flags/ru.png']")
+              expect(page).to have_css("img[src='/assets/refinery/icons/flags/en.png']")
+              expect(page).to have_css("img[src='/assets/refinery/icons/flags/ru.png']")
             end
           end
 
@@ -471,7 +469,7 @@ module Refinery
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
-              page.should have_content(en_page_title)
+              expect(page).to have_content(en_page_title)
             end
           end
 
@@ -479,7 +477,7 @@ module Refinery
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
-              page.find_link('Edit this page')[:href].should include(en_page_slug)
+              expect(page.find_link('Edit this page')[:href]).to include(en_page_slug)
             end
           end
 
@@ -487,7 +485,7 @@ module Refinery
             visit "/"
 
             within "#menu" do
-              page.find_link(news_page.title)[:href].should include(en_page_slug)
+              expect(page.find_link(news_page.title)[:href]).to include(en_page_slug)
             end
           end
 
@@ -495,7 +493,7 @@ module Refinery
             visit "/ru"
 
             within "#menu" do
-              page.find_link(ru_page_title)[:href].should include(ru_page_slug_encoded)
+              expect(page.find_link(ru_page_title)[:href]).to include(ru_page_slug_encoded)
             end
           end
         end
@@ -524,31 +522,31 @@ module Refinery
             fill_in "Title", :with => ru_page_title
             click_button "Save"
 
-            page.should have_content("'#{ru_page_title}' was successfully added.")
-            Refinery::Page.count.should == 2
+            expect(page).to have_content("'#{ru_page_title}' was successfully added.")
+            expect(Refinery::Page.count).to eq(2)
           end
 
           it "shows locale flag for page" do
             within "#page_#{ru_page_id}" do
-              page.should have_css("img[src='/assets/refinery/icons/flags/ru.png']")
+              expect(page).to have_css("img[src='/assets/refinery/icons/flags/ru.png']")
             end
           end
 
           it "doesn't show locale flag for primary locale" do
             within "#page_#{ru_page_id}" do
-              page.should_not have_css("img[src='/assets/refinery/icons/flags/en.png']")
+              expect(page).not_to have_css("img[src='/assets/refinery/icons/flags/en.png']")
             end
           end
 
           it "shows title in the admin menu" do
             within "#page_#{ru_page_id}" do
-              page.should have_content(ru_page_title)
+              expect(page).to have_content(ru_page_title)
             end
           end
 
           it "uses slug in admin" do
             within "#page_#{ru_page_id}" do
-              page.find_link('Edit this page')[:href].should include(ru_page_slug_encoded)
+              expect(page.find_link('Edit this page')[:href]).to include(ru_page_slug_encoded)
             end
           end
 
@@ -556,8 +554,8 @@ module Refinery
             visit "/ru"
 
             within "#menu" do
-              page.should have_content(ru_page_title)
-              page.should have_selector("a[href*='/#{ru_page_slug_encoded}']")
+              expect(page).to have_content(ru_page_title)
+              expect(page).to have_selector("a[href*='/#{ru_page_slug_encoded}']")
             end
           end
 
@@ -566,7 +564,7 @@ module Refinery
 
             within "#menu" do
               # we should only have the home page in the menu
-              page.should have_css('li', :count => 1)
+              expect(page).to have_css('li', :count => 1)
             end
           end
 
@@ -578,14 +576,14 @@ module Refinery
                 Page.create :title => ru_page_title
                 Page.create :title => ru_page_title, :parent_id => parent_page.id
               }
-              sub_page.parent.should == parent_page
+              expect(sub_page.parent).to eq(parent_page)
               visit refinery.admin_pages_path
               within "#page_#{sub_page.id}" do
                 click_link "Application edit"
               end
               fill_in "Title", :with => ru_page_title
               click_button "Save"
-              page.should have_content("'#{ru_page_title}' was successfully updated")
+              expect(page).to have_content("'#{ru_page_title}' was successfully updated")
             end
           end
         end
@@ -593,7 +591,7 @@ module Refinery
 
       describe "new page part", :js do
         before do
-          Refinery::Pages.stub(:new_page_parts).and_return(true)
+          allow(Refinery::Pages).to receive(:new_page_parts).and_return(true)
         end
 
         it "adds new page part" do
@@ -606,7 +604,7 @@ module Refinery
           end
 
           within "#page_parts" do
-            page.should have_content("testy")
+            expect(page).to have_content("testy")
           end
         end
       end
@@ -619,16 +617,16 @@ module Refinery
           some_page.parts.create! :title => "Second Part", :position => 2
           some_page.parts.create! :title => "Third Part", :position => 3
 
-          Refinery::Pages.stub(:new_page_parts).and_return(true)
+          allow(Refinery::Pages).to receive(:new_page_parts).and_return(true)
         end
 
         it "deletes page parts" do
           visit refinery.edit_admin_page_path(some_page.id)
 
           within "#page_parts" do
-            page.should have_content("First Part")
-            page.should have_content("Second Part")
-            page.should have_content("Third Part")
+            expect(page).to have_content("First Part")
+            expect(page).to have_content("Second Part")
+            expect(page).to have_content("Third Part")
           end
 
           2.times do
@@ -637,9 +635,9 @@ module Refinery
           end
 
           within "#page_parts" do
-            page.should have_no_content("First Part")
-            page.should have_no_content("Second Part")
-            page.should have_content("Third Part")
+            expect(page).to have_no_content("First Part")
+            expect(page).to have_no_content("Second Part")
+            expect(page).to have_content("Third Part")
           end
 
           click_button "submit_button"
@@ -647,9 +645,9 @@ module Refinery
           visit refinery.edit_admin_page_path(some_page.id)
 
           within "#page_parts" do
-            page.should have_no_content("First Part")
-            page.should have_no_content("Second Part")
-            page.should have_content("Third Part")
+            expect(page).to have_no_content("First Part")
+            expect(page).to have_no_content("Second Part")
+            expect(page).to have_content("Third Part")
           end
         end
       end
@@ -658,9 +656,9 @@ module Refinery
         describe 'view and layout templates' do
           context 'when parent page has templates set' do
             before do
-              Refinery::Pages.stub(:use_layout_templates).and_return(true)
-              Refinery::Pages.stub(:layout_template_whitelist).and_return(['abc', 'refinery'])
-              Refinery::Pages.stub(:valid_templates).and_return(['abc', 'refinery'])
+              allow(Refinery::Pages).to receive(:use_layout_templates).and_return(true)
+              allow(Refinery::Pages).to receive(:layout_template_whitelist).and_return(['abc', 'refinery'])
+              allow(Refinery::Pages).to receive(:valid_templates).and_return(['abc', 'refinery'])
               parent_page = Page.create :title => 'Parent Page',
                                         :view_template => 'refinery',
                                         :layout_template => 'refinery'
@@ -673,11 +671,11 @@ module Refinery
               click_link 'toggle_advanced_options'
 
               within '#page_layout_template' do
-                page.find('option[value=refinery]').should be_selected
+                expect(page.find('option[value=refinery]')).to be_selected
               end
 
               within '#page_view_template' do
-                page.find('option[value=refinery]').should be_selected
+                expect(page.find('option[value=refinery]')).to be_selected
               end
             end
           end
@@ -698,12 +696,13 @@ module Refinery
         specify "html shouldn't be stripped" do
           visit refinery.admin_pages_path
           click_link "Edit this page"
-          page.should have_content("header class='regression'")
+          expect(page).to have_content("header class='regression'")
         end
       end
     end
 
-    describe "TranslatePages" do
+    describe "TranslatePages", :type => :feature do
+      before { Globalize.locale = :en }
       refinery_login_with :refinery_translator
 
       describe "add page to main locale" do
@@ -715,13 +714,13 @@ module Refinery
           fill_in "Title", :with => "Huh?"
           click_button "Save"
 
-          page.should have_content("You do not have the required permission to modify pages in this language")
+          expect(page).to have_content("You do not have the required permission to modify pages in this language")
         end
       end
 
       describe "add page to second locale" do
         before do
-          Refinery::I18n.stub(:frontend_locales).and_return([:en, :lv])
+          allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :lv])
           Page.create :title => 'First Page'
         end
 
@@ -736,8 +735,8 @@ module Refinery
           fill_in "Title", :with => "Brīva vieta reklāmai"
           click_button "Save"
 
-          page.should have_content("'Brīva vieta reklāmai' was successfully added.")
-          Refinery::Page.count.should == 2
+          expect(page).to have_content("'Brīva vieta reklāmai' was successfully added.")
+          expect(Refinery::Page.count).to eq(2)
         end
       end
 
@@ -749,14 +748,14 @@ module Refinery
 
           click_link "Remove this page forever"
 
-          page.should have_content("You do not have the required permission to modify pages in this language.")
-          Refinery::Page.count.should == 1
+          expect(page).to have_content("You do not have the required permission to modify pages in this language.")
+          expect(Refinery::Page.count).to eq(1)
         end
       end
 
       describe "Pages Link-to Dialog" do
         before do
-          Refinery::I18n.stub(:frontend_locales).and_return [:en, :ru]
+          allow(Refinery::I18n).to receive(:frontend_locales).and_return [:en, :ru]
 
           # Create a page in both locales
           about_page = Globalize.with_locale(:en) do
@@ -785,15 +784,15 @@ module Refinery
             it "shows Russian pages if we're editing the Russian locale" do
               visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true, :switch_locale => :ru)
 
-              page.should have_content("About Ru")
-              page.should have_selector("a[href='/ru/about-ru']")
+              expect(page).to have_content("About Ru")
+              expect(page).to have_selector("a[href='/ru/about-ru']")
             end
 
             it "shows default to the default locale if no query string is added" do
               visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true)
 
-              page.should have_content("About")
-              page.should have_selector("a[href='/about']")
+              expect(page).to have_content("About")
+              expect(page).to have_selector("a[href='/about']")
             end
           end
 
@@ -803,15 +802,15 @@ module Refinery
             it "shows Russian pages if we're editing the Russian locale" do
               visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true, :switch_locale => :ru)
 
-              page.should have_content("About Ru")
-              page.should have_selector("a[href='http://www.example.com/ru/about-ru']")
+              expect(page).to have_content("About Ru")
+              expect(page).to have_selector("a[href='http://www.example.com/ru/about-ru']")
             end
 
             it "shows default to the default locale if no query string is added" do
               visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true)
 
-              page.should have_content("About")
-              page.should have_selector("a[href='http://www.example.com/about']")
+              expect(page).to have_content("About")
+              expect(page).to have_selector("a[href='http://www.example.com/about']")
             end
           end
 
@@ -823,11 +822,11 @@ module Refinery
 
               find("#page_part_body .wym_tools_link a").click
 
-              page.should have_selector("iframe#dialog_frame")
+              expect(page).to have_selector("iframe#dialog_frame")
 
               page.within_frame("dialog_frame") do
-                page.should have_content("About")
-                page.should have_css("a[href$='/about']")
+                expect(page).to have_content("About")
+                expect(page).to have_css("a[href$='/about']")
 
                 click_link "cancel_button"
               end
@@ -838,11 +837,11 @@ module Refinery
 
               find("#page_part_body .wym_tools_link a").click
 
-              page.should have_selector("iframe#dialog_frame")
+              expect(page).to have_selector("iframe#dialog_frame")
 
               page.within_frame("dialog_frame") do
-                page.should have_content("About Ru")
-                page.should have_css("a[href$='/ru/about-ru']")
+                expect(page).to have_content("About Ru")
+                expect(page).to have_css("a[href$='/ru/about-ru']")
               end
             end
           end

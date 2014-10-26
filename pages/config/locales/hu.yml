@@ -62,7 +62,7 @@ hu:
           skip_to_first_child_label: 'Az első aloldalra irányítja a látogatókat.'
           skip_to_first_child_help: 'Ez az opció az oldalt az első aloldalra linkeli. Hasznos lehet, ha csoportosítani szeretnéd az oldalakat. '
           link_url: 'Oldal továbbítsa másik weboldalra vagy oldalra'
-          link_url_help: 'Ha azt szeretnéd, hogy egy másik weboldalra ugorjon, ha a menüben rákattintanak, akkor adj meg egy URL-t pl.: http://google.com egyébként hagyd üresen'
+          link_url_help: 'Ha azt szeretnéd, hogy egy másik weboldalra ugorjon, ha a menüben rákattintanak, akkor adj meg egy URL-t pl.: https://google.com egyébként hagyd üresen'
           parent_page_help: 'Elhelyezheted az oldalt egy másik alatt, a listából történő választással. Ha azt szeretnéd, hogy felső szintű oldal legyen, akkor hagyd üresen.'
           menu_title_help: 'Ha azt szeretnéd, hogy a menüben a címtől különböző szöveg jelenjen meg, add meg itt.'
           custom_slug_help: 'A slug egy ember számára jól olvasható azonosító, ami az URL-ben jelenik meg, pl: kapcsolat-velunk. Hogy felülírd a Refinery által generált értéket, add meg a saját slug-ot itt.'

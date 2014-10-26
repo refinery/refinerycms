@@ -6,7 +6,7 @@ module Refinery
   describe Menu do
     it 'constructs a menu given items' do
       Menu.new([{:id => 1}, {:id => 2}]).items.each {|item|
-        item.should be_kind_of MenuItem
+        expect(item).to be_kind_of MenuItem
       }
     end
 
@@ -20,8 +20,8 @@ module Refinery
       menu = Menu.new([{:id => 1, :depth => 0, :parent_id => nil},
                         {:id => 2, :depth => 0, :parent_id => nil},
                         {:id => 3, :depth => 1, :parent_id => nil}])
-      menu.roots.length.should == 2
-      menu.roots.map(&:original_id).should include(1,2)
+      expect(menu.roots.length).to eq(2)
+      expect(menu.roots.map(&:original_id)).to include(1,2)
     end
   end
 end

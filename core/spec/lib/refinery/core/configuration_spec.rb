@@ -11,8 +11,8 @@ module Refinery
 
         context 'when set in configuration' do
           it 'returns name set by Refinery::Core.config' do
-            Refinery::Core.stub(:site_name).and_return('Test Site Name')
-            Refinery::Core.site_name.should eq('Test Site Name')
+            allow(Refinery::Core).to receive(:site_name).and_return('Test Site Name')
+            expect(Refinery::Core.site_name).to eq('Test Site Name')
           end
         end
 
@@ -28,14 +28,14 @@ module Refinery
           end
 
           it 'returns name set in locale' do
-            Refinery::Core.site_name.should eq('I18n Site Name')
+            expect(Refinery::Core.site_name).to eq('I18n Site Name')
           end
         end
       end
 
       describe 'custom storage backend' do
         it 'class should be nil by default' do
-          Refinery::Core.dragonfly_custom_backend_class.should == nil
+          expect(Refinery::Core.dragonfly_custom_backend_class).to eq(nil)
         end
 
         context 'is set in core' do
@@ -45,7 +45,7 @@ module Refinery
 
           it 'and is set to a class that exists' do
             Refinery::Core.dragonfly_custom_backend_class = 'Refinery::Core::DummyBackend'
-            Refinery::Core.dragonfly_custom_backend_class.should == backend.class
+            expect(Refinery::Core.dragonfly_custom_backend_class).to eq(backend.class)
           end
         end
       end

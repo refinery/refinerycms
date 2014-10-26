@@ -63,7 +63,7 @@ ca:
           skip_to_first_child_label: Redirigir als visitants a la primera pàgina filla.
           skip_to_first_child_help: Aquesta opció fa que aquesta pàgina enllaci a la seva primera pàgina filla. Pot ser útil per agrupar diverses pàgines juntes.
           link_url: Redirigir aquesta pàgina a una altra web o a una altra pàgina
-          link_url_help: Si vols que aquesta pàgina enviï a una altra web o pàgina llavors prem aquesta pàgina en el menú i introdueix una URL (per example http://google.com). En cas contrari deixa-ho en blanc.
+          link_url_help: Si vols que aquesta pàgina enviï a una altra web o pàgina llavors prem aquesta pàgina en el menú i introdueix una URL (per example https://google.com). En cas contrari deixa-ho en blanc.
           parent_page_help: "Pots incloure una pàgina dins d'una altra seleccionant-la en la llista. Si vols que sigui una pàgina de primer nivell, deixa-ho en blanc."
           menu_title_help: Si vols que el menú mostri un títol diferent al que es mostra a la pàgina, introdueix-ho aquí.
           custom_slug_help: "Un slug és un ID entendible pels humans. Per exemple 'sobre-nosaltres'. Per sobreescriure el slug que Refinery crea automàticament, introdueix el teu slug personalitzat aquí."

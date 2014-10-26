@@ -38,7 +38,7 @@ end
     end
 
     specify do
-      destination_root.should have_structure {
+      expect(destination_root).to have_structure {
         directory "app" do
           directory "decorators" do
             directory "controllers" do
@@ -68,7 +68,7 @@ end
 
     describe "#ensure_environments_are_sane" do
       it "wraps single line config.action_mailer setting" do
-        File.read("#{destination_root}/config/environments/development.rb").should eq <<-SPEC
+        expect(File.read("#{destination_root}/config/environments/development.rb")).to eq <<-SPEC
 Dummy::Application.configure do
   if config.respond_to?(:action_mailer)
     config.action_mailer.test = true
@@ -78,7 +78,7 @@ end
       end
 
       it "wraps multi line config.action_mailer settings" do
-        File.read("#{destination_root}/config/environments/production.rb").should eq <<-SPEC
+        expect(File.read("#{destination_root}/config/environments/production.rb")).to eq <<-SPEC
 Dummy::Application.configure do
   if config.respond_to?(:action_mailer)
     config.action_mailer.test = true
@@ -94,7 +94,7 @@ end
 
     describe "#mount!" do
       it 'adds Refinery to routes.rb' do
-        File.read("#{destination_root}/config/routes.rb").should match /Refinery/
+        expect(File.read("#{destination_root}/config/routes.rb")).to match /Refinery/
       end
     end
 

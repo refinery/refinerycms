@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Refinery
-  describe "sign in" do
+  describe "sign in", :type => :feature do
     let(:login_path) { refinery.new_refinery_user_session_path }
     let(:login_retry_path) { refinery.refinery_user_session_path }
     let(:admin_path) { refinery.admin_root_path }
@@ -15,9 +15,9 @@ module Refinery
     end
 
     it "shows login form" do
-      page.should have_content("Hello! Please sign in.")
-      page.should have_content("I forgot my password")
-      page.should have_selector("a[href*='/refinery/users/password/new']")
+      expect(page).to have_content("Hello! Please sign in.")
+      expect(page).to have_content("I forgot my password")
+      expect(page).to have_selector("a[href*='/refinery/users/password/new']")
     end
 
     context "when supplied data is valid" do
@@ -25,8 +25,8 @@ module Refinery
         fill_in "Username or email", :with => "ugisozols"
         fill_in "Password", :with => "123456"
         click_button "Sign in"
-        page.should have_content("Signed in successfully.")
-        current_path.should == admin_path
+        expect(page).to have_content("Signed in successfully.")
+        expect(current_path).to eq(admin_path)
       end
     end
 
@@ -35,13 +35,13 @@ module Refinery
         fill_in "Username or email", :with => "Hmmm"
         fill_in "Password", :with => "Hmmm"
         click_button "Sign in"
-        page.should have_content("Sorry, your login or password was incorrect.")
-        current_path.should == login_retry_path
+        expect(page).to have_content("Sorry, your login or password was incorrect.")
+        expect(current_path).to eq(login_retry_path)
       end
     end
   end
 
-  describe 'user sign up' do
+  describe 'user sign up', :type => :feature do
     before do
       User.delete_all
     end
@@ -50,7 +50,7 @@ module Refinery
       it 'allows user creation' do
         # Verify that we can access the sign up page.
         visit refinery.admin_root_path
-        page.should have_content("There are no users yet, so we'll set you up first")
+        expect(page).to have_content("There are no users yet, so we'll set you up first")
 
         # Fill in user details.
         fill_in 'user[username]', :with => 'rspec'
@@ -59,14 +59,13 @@ module Refinery
         fill_in 'user[password_confirmation]', :with => 'spectacular'
 
         # Sign up and verify!
-        click_button "Sign up"
-        page.should have_content("Welcome to Refinery, rspec.")
-        User.count.should == 1
+        expect { click_button "Sign up" }.to change(User, :count).from(0).to(1)
+        expect(page).to have_content("Welcome to Refinery, rspec.")
       end
     end
   end
 
-  describe 'redirects' do
+  describe 'redirects', :type => :feature do
     let(:protected_path) { refinery.new_admin_user_path }
     let(:login_path) { refinery.new_refinery_user_session_path }
 
@@ -82,20 +81,20 @@ module Refinery
       before { visit protected_path }
 
       it "redirects to the login" do
-        current_path.should == login_path
+        expect(current_path).to eq(login_path)
       end
 
       it "shows login form" do
-        page.should have_content("Hello! Please sign in.")
-        page.should have_content("I forgot my password")
-        page.should have_selector("a[href*='/refinery/users/password/new']")
+        expect(page).to have_content("Hello! Please sign in.")
+        expect(page).to have_content("I forgot my password")
+        expect(page).to have_selector("a[href*='/refinery/users/password/new']")
       end
 
       it "redirects to the protected path on login" do
         fill_in "Username or email", :with => "ugisozols"
         fill_in "Password", :with => "123456"
         page.click_button "Sign in"
-        current_path.should == protected_path
+        expect(current_path).to eq(protected_path)
       end
     end
 

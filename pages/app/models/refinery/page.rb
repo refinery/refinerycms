@@ -24,7 +24,7 @@ module Refinery
       end
 
       def self.options
-        # Docs for friendly_id http://github.com/norman/friendly_id
+        # Docs for friendly_id https://github.com/norman/friendly_id
         friendly_id_options = {
           use: [:reserved],
           reserved_words: self.reserved_words

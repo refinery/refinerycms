@@ -280,7 +280,7 @@ module Refinery
               find_all_#{plural_name}
             end
 
-            # Based upon http://github.com/matenia/jQuery-Awesome-Nested-Set-Drag-and-Drop
+            # Based upon https://github.com/matenia/jQuery-Awesome-Nested-Set-Drag-and-Drop
             def update_positions
               previous = nil
               params[:ul].each do |_, list|

@@ -2,29 +2,29 @@ require "spec_helper"
 
 module Refinery
   module Admin
-    describe PagesHelper do
+    describe PagesHelper, :type => :helper do
       describe "#template_options" do
         context "when page layout/view template is set" do
           it "returns those templates as selected" do
             page = FactoryGirl.create(:page)
 
             page.view_template = "rspec_template"
-            helper.template_options(:view_template, page).should eq(:selected => "rspec_template")
+            expect(helper.template_options(:view_template, page)).to eq(:selected => "rspec_template")
 
             page.layout_template = "rspec_layout"
-            helper.template_options(:layout_template, page).should eq(:selected => "rspec_layout")
+            expect(helper.template_options(:layout_template, page)).to eq(:selected => "rspec_layout")
           end
         end
 
         context "when page layout template is set using symbols" do
           before do
-            Pages.config.stub(:layout_template_whitelist).and_return [:three, :one, :two]
+            allow(Pages.config).to receive(:layout_template_whitelist).and_return [:three, :one, :two]
           end
 
           it "works as expected" do
             page = FactoryGirl.create(:page, :layout_template => "three")
 
-            helper.template_options(:layout_template, page).should eq(:selected => 'three')
+            expect(helper.template_options(:layout_template, page)).to eq(:selected => 'three')
           end
         end
 
@@ -35,7 +35,7 @@ module Refinery
               page = FactoryGirl.create(:page, :parent_id => parent.id)
 
               expected_layout = { :selected => parent.layout_template }
-              helper.template_options(:layout_template, page).should eq(expected_layout)
+              expect(helper.template_options(:layout_template, page)).to eq(expected_layout)
             end
           end
 
@@ -44,7 +44,7 @@ module Refinery
               page = FactoryGirl.create(:page)
 
               expected_layout = { :selected => "application" }
-              helper.template_options(:layout_template, page).should eq(expected_layout)
+              expect(helper.template_options(:layout_template, page)).to eq(expected_layout)
             end
           end
         end
@@ -57,7 +57,7 @@ module Refinery
           it "adds 'hidden' label" do
             page.show_in_menu = false
 
-            helper.page_meta_information(page).should eq(
+            expect(helper.page_meta_information(page)).to eq(
               %Q{<span class="label">#{::I18n.t('refinery.admin.pages.page.hidden')}</span>}
             )
           end
@@ -67,7 +67,7 @@ module Refinery
           it "adds 'draft' label" do
             page.draft = true
 
-            helper.page_meta_information(page).should eq(
+            expect(helper.page_meta_information(page)).to eq(
               %Q{<span class="label notice">#{::I18n.t('refinery.admin.pages.page.draft')}</span>}
             )
           end
@@ -91,14 +91,14 @@ module Refinery
 
         context "when title is present" do
           it "returns it" do
-            helper.page_title_with_translations(page).should eq("draft")
+            expect(helper.page_title_with_translations(page)).to eq("draft")
           end
         end
 
         context "when title for current locale isn't available" do
           it "returns existing title from translations" do
             Page.translation_class.where(:locale => :en).first.destroy
-            helper.page_title_with_translations(page).should eq("melnraksts")
+            expect(helper.page_title_with_translations(page)).to eq("melnraksts")
           end
         end
       end

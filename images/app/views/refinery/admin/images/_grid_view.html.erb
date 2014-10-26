@@ -1,4 +1,4 @@
-<ul id="image_grid" class="<%= ['clearfix', 'pagination_frame', pagination_css_class].compact.join(' ') %>">
+<ul id="image_grid" class="<%= ['clearfix', 'pagination_frame', 'images_list', pagination_css_class].compact.join(' ') %>">
   <% @images.each_with_index do |image, index| -%>
     <li id="image_<%= image.id %>" class="image_<%= index % 5 %>">
       <%= image_fu image, '135x135#c', title: image.title %>

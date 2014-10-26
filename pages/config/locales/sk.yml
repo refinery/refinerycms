@@ -62,7 +62,7 @@ sk:
           skip_to_first_child_label: Presmeruje návštevníka na prvú podstránku sekcie.
           skip_to_first_child_help: Táto stránka sa nezobrazí, namiesto toho bude odkaz na nej presmerovaný na jej prvú podstránku. To sa môže hodiť pre zoskupovanie stránok.
           link_url: Presmerovať túto stránku na iný web alebo stránku.
-          link_url_help: Ak chcete, aby po kliknutí na odkaz na tútu stránku bol návštevník presmerovaný na iný web, vložte adresu (napr. http://google.com), inak ponechajte prázdne.
+          link_url_help: Ak chcete, aby po kliknutí na odkaz na tútu stránku bol návštevník presmerovaný na iný web, vložte adresu (napr. https://google.com), inak ponechajte prázdne.
           parent_page_help: Môžete umiestniť túto stránku v hierarchii pod inú stránku. Ak nevyberiete nič, bude táto stránka umiestnená na prvej úrovni.
           menu_title_help: Ak chcete, aby sa v menu zobrazil odlišný názov ako ten, ktorý sa zobrazuje na stránke, napíšte ho sem.
           custom_slug_help: Url identifikátor je človekom čitateľný identifikátor, ktorý sa používa na vytvorenie celej url adresy stránky, napríklad &apos;o-nas&apos;. Ak chcete zmeniť url identifikátor, ktorý automaticky vytvorí Refinery, napíšte váš vlastný url identifikátor sem.

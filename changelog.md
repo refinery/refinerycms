@@ -1,24 +1,24 @@
 ## 3.0.0 [unreleased]
 
-* Deprecated ':format' syntax in Resources dragonfly_url_format. [#2500](https://github.com/refinery/refinerycms/pull/2500) [Josef Šimánek](https://github.com/simi)
-* Removed Images trust_file_extensions config. [#2500](https://github.com/refinery/refinerycms/pull/2500) [Josef Šimánek](https://github.com/simi)
-* Migrated to Dragonfly ~> 1.0.0. [#2500](https://github.com/refinery/refinerycms/pull/2500) [Josef Šimánek](https://github.com/simi)
-* Removed Pages#cache_pages_backend. [#2375](https://github.com/refinery/refinerycms/pull/2375) [Philip Arndt](https://github.com/parndt)
+* Deprecated ':format' syntax in Resources dragonfly_url_format. [#2500](https://github.com/refinery/refinerycms/pull/2500). [Josef Šimánek](https://github.com/simi)
+* Removed Images trust_file_extensions config. [#2500](https://github.com/refinery/refinerycms/pull/2500). [Josef Šimánek](https://github.com/simi)
+* Migrated to Dragonfly ~> 1.0.0. [#2500](https://github.com/refinery/refinerycms/pull/2500). [Josef Šimánek](https://github.com/simi)
+* Removed Pages#cache_pages_backend. [#2375](https://github.com/refinery/refinerycms/pull/2375). [Philip Arndt](https://github.com/parndt)
 * Updated how `_make_sortable` works to take an options hash, requiring manual file changes. [Philip Arndt](https://github.com/parndt)
-* Removed `attr_accessible` in favour of strong parameters. [Philip Arndt](https://github.com/parndt) [#2518](https://github.com/refinery/refinerycms/pull/2518)
-* Removed the latest activity feed from the Dashboard. [Philip Arndt](https://github.com/parndt) [2634](https://github.com/refinery/refinerycms/pull/2633)
+* Removed `attr_accessible` in favour of strong parameters. [#2518](https://github.com/refinery/refinerycms/pull/2518). [Philip Arndt](https://github.com/parndt)
+* Removed the latest activity feed from the Dashboard. [#2634](https://github.com/refinery/refinerycms/pull/2634). [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
 ## 2.1.3 [5 September 2014]
 
-* Fixed an issue where the seeds in a generated form extension weren't idempotent. [Philip Arndt](https://github.com/parndt) [#2674](https://github.com/refinery/refinerycms/pull/2674)
+* Fixed an issue where the seeds in a generated form extension weren't idempotent. [#2674](https://github.com/refinery/refinerycms/pull/2674). [Philip Arndt](https://github.com/parndt)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2.1.2...2.1.3)
 
 ## 2.1.2 [14 March 2014]
 
-* Fixed bug where `load_valid_templates` wasn't called for create action and caused an exception when creating a new page and saving it with a blank title. [Uģis Ozols](https://github.com/ugisozols). [#2517](https://github.com/refinery/refinerycms/pull/2517)
-* Fixed bug where adding a link for a translated page via wymeditor it wasn't localised. Also updated the regex for `switch_locale` to match hyphenated language code, e.g. zh-CN or pt-BR. [Daniel Brooker](https://github.com/DanBrooker). [#2533](https://github.com/refinery/refinerycms/pull/2533)
+* Fixed bug where `load_valid_templates` wasn't called for create action and caused an exception when creating a new page and saving it with a blank title. [#2517](https://github.com/refinery/refinerycms/pull/2517). [Uģis Ozols](https://github.com/ugisozols)
+* Fixed bug where adding a link for a translated page via wymeditor it wasn't localised. Also updated the regex for `switch_locale` to match hyphenated language code, e.g. zh-CN or pt-BR. [#2533](https://github.com/refinery/refinerycms/pull/2533). [Daniel Brooker](https://github.com/DanBrooker)
 * [See full list](https://github.com/refinery/refinerycms/compare/2.1.1...2.1.2)
 
 ## 2.1.1 [26 November 2013]
@@ -27,7 +27,7 @@
 * Fixed bug in serializelist.js where we were iterating through object fields instead of the array elements. [#2360](https://github.com/refinery/refinerycms/pull/2360). [Uģis Ozols](https://github.com/ugisozols)
 * Bumped `selenium-webdriver` gem dependency version to `~> 2.34.0`.
 * Fixed bug which occurred when trying to save a child page with no default translation. [#2379](https://github.com/refinery/refinerycms/pull/2379). [Jess Brown](https://github.com/jess) & [Uģis Ozols](https://github.com/ugisozols)
-* Upgraded Globalize dependency to `~> 3.0.1`. [Chris Salzberg](https://github.com/shioyama) [#2462](https://github.com/refinery/refinerycms/pull/2462)
+* Upgraded Globalize dependency to `~> 3.0.1`. [#2462](https://github.com/refinery/refinerycms/pull/2462). [Chris Salzberg](https://github.com/shioyama)
 * [See full list](https://github.com/refinery/refinerycms/compare/2.1.0...2.1.1)
 
 ## 2.1.0 [5 August 2013]

@@ -15,8 +15,8 @@ describe Refinery do
 
           it "shows two items" do
             visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
-            page.should have_content("UniqueTitleOne")
-            page.should have_content("UniqueTitleTwo")
+            expect(page).to have_content("UniqueTitleOne")
+            expect(page).to have_content("UniqueTitleTwo")
           end
         end
 
@@ -30,19 +30,17 @@ describe Refinery do
           context "valid data" do
             it "should succeed" do
               fill_in "<%= title.name.titleize %>", :with => "This is a test of the first string field"
-              click_button "Save"
+              expect { click_button "Save" }.to change(Refinery::<%= namespacing %>::<%= class_name %>, :count).from(0).to(1)
 
-              page.should have_content("'This is a test of the first string field' was successfully added.")
-              Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
+              expect(page).to have_content("'This is a test of the first string field' was successfully added.")
             end
           end
 
           context "invalid data" do
             it "should fail" do
-              click_button "Save"
+              expect { click_button "Save" }.not_to change(Refinery::<%= namespacing %>::<%= class_name %>, :count)
 
-              page.should have_content("<%= title.name.titleize %> can't be blank")
-              Refinery::<%= namespacing %>::<%= class_name %>.count.should == 0
+              expect(page).to have_content("<%= title.name.titleize %> can't be blank")
             end
           end
 
@@ -55,10 +53,9 @@ describe Refinery do
               click_link "Add New <%= singular_name.titleize %>"
 
               fill_in "<%= title.name.titleize %>", :with => "UniqueTitle"
-              click_button "Save"
+              expect { click_button "Save" }.to change(Refinery::<%= namespacing %>::<%= class_name %>, :count).from(0).to(1)
 
-              page.should have_content("There were problems")
-              Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
+              expect(page).to have_content("There were problems")
             end
           end
 <% if localized? %>
@@ -76,20 +73,20 @@ describe Refinery do
               end
 
               it "should succeed" do
-                Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
+                expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq(1)
               end
 
               it "should show locale flag for page" do
                 p = Refinery::<%= namespacing %>::<%= class_name %>.last
                 within "#<%= singular_name %>_#{p.id}" do
-                  page.should have_css("img[src='/assets/refinery/icons/flags/en.png']")
+                  expect(page).to have_css("img[src='/assets/refinery/icons/flags/en.png']")
                 end
               end
 
               it "should show <%= title.name %> in the admin menu" do
                 p = Refinery::<%= namespacing %>::<%= class_name %>.last
                 within "#<%= singular_name %>_#{p.id}" do
-                  page.should have_content('First column')
+                  expect(page).to have_content('First column')
                 end
               end
             end
@@ -113,22 +110,22 @@ describe Refinery do
               end
 
               it "should succeed" do
-                Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
-                Refinery::<%= namespacing %>::<%= class_name %>::Translation.count.should == 2
+                expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq(1)
+                expect(Refinery::<%= namespacing %>::<%= class_name %>::Translation.count).to eq(2)
               end
 
               it "should show locale flag for page" do
                 p = Refinery::<%= namespacing %>::<%= class_name %>.last
                 within "#<%= singular_name %>_#{p.id}" do
-                  page.should have_css("img[src='/assets/refinery/icons/flags/en.png']")
-                  page.should have_css("img[src='/assets/refinery/icons/flags/cs.png']")
+                  expect(page).to have_css("img[src='/assets/refinery/icons/flags/en.png']")
+                  expect(page).to have_css("img[src='/assets/refinery/icons/flags/cs.png']")
                 end
               end
 
               it "should show <%= title.name %> in backend locale in the admin menu" do
                 p = Refinery::<%= namespacing %>::<%= class_name %>.last
                 within "#<%= singular_name %>_#{p.id}" do
-                  page.should have_content('First column')
+                  expect(page).to have_content('First column')
                 end
               end
             end
@@ -148,14 +145,14 @@ describe Refinery do
               it "should show title in backend locale in the admin menu" do
                 p = Refinery::<%= namespacing %>::<%= class_name %>.last
                 within "#<%= singular_name %>_#{p.id}" do
-                  page.should have_content('First translated column')
+                  expect(page).to have_content('First translated column')
                 end
               end
 
               it "should show locale flag for page" do
                 p = Refinery::<%= namespacing %>::<%= class_name %>.last
                 within "#<%= singular_name %>_#{p.id}" do
-                  page.should have_css("img[src='/assets/refinery/icons/flags/cs.png']")
+                  expect(page).to have_css("img[src='/assets/refinery/icons/flags/cs.png']")
                 end
               end
             end
@@ -176,8 +173,8 @@ describe Refinery do
             fill_in "<%= title.name.titleize %>", :with => "A different <%= title.name %>"
             click_button "Save"
 
-            page.should have_content("'A different <%= title.name %>' was successfully updated.")
-            page.should have_no_content("A <%= title.name %>")
+            expect(page).to have_content("'A different <%= title.name %>' was successfully updated.")
+            expect(page).not_to have_content("A <%= title.name %>")
           end
         end
 
@@ -189,8 +186,8 @@ describe Refinery do
 
             click_link "Remove this <%= singular_name.titleize.downcase %> forever"
 
-            page.should have_content("'UniqueTitleOne' was successfully removed.")
-            Refinery::<%= namespacing %>::<%= class_name %>.count.should == 0
+            expect(page).to have_content("'UniqueTitleOne' was successfully removed.")
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq(0)
           end
         end
 <% end %>

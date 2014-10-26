@@ -9,7 +9,6 @@ module Refinery
     let(:created_page) { subject.class.create!(:title => page_title, :deletable => true) }
     let(:created_child) { created_page.children.create!(:title => child_title) }
 
-    
     describe '.find_by_path' do
       let(:page_title)  { 'team' }
       let(:child_title) { 'about' }
@@ -22,11 +21,11 @@ module Refinery
       end
 
       it "should return (root) about page when looking for '/about'" do
-        Page.find_by_path('/about').should == created_root_about
+        expect(Page.find_by_path('/about')).to eq(created_root_about)
       end
 
       it "should return child about page when looking for '/team/about'" do
-        Page.find_by_path('/team/about').should == created_child
+        expect(Page.find_by_path('/team/about')).to eq(created_child)
       end
     end
 
@@ -38,20 +37,20 @@ module Refinery
       context "when path param is present" do
         context "when path is friendly_id" do
           it "finds page using path" do
-            Page.find_by_path_or_id(path, "").should eq(market)
+            expect(Page.find_by_path_or_id(path, "")).to eq(market)
           end
         end
 
         context "when path is not friendly_id" do
           it "finds page using id" do
-            Page.find_by_path_or_id(id, "").should eq(market)
+            expect(Page.find_by_path_or_id(id, "")).to eq(market)
           end
         end
       end
 
       context "when id param is present" do
         it "finds page using id" do
-          Page.find_by_path_or_id("", id).should eq(market)
+          expect(Page.find_by_path_or_id("", id)).to eq(market)
         end
       end
     end

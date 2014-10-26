@@ -12,30 +12,30 @@ module Refinery
 
         it "adds page title section before page parts" do
           content = ContentPagePresenter.new(page_with_one_part, title)
-          content.get_section(0).fallback_html.should == title
+          expect(content.get_section(0).fallback_html).to eq(title)
         end
 
         it "adds a section for each page part" do
           page = double(Page, :parts => [part, part2])
           content = ContentPagePresenter.new(page, title)
-          content.get_section(1).fallback_html.should == 'part_body'
-          content.get_section(2).fallback_html.should == 'part_body2'
+          expect(content.get_section(1).fallback_html).to eq('part_body')
+          expect(content.get_section(2).fallback_html).to eq('part_body2')
         end
 
         it "adds body content left and right after page parts" do
           content = ContentPagePresenter.new(page_with_one_part, title)
-          content.get_section(2).id.should == :body
-          content.get_section(3).id.should == :side_body
+          expect(content.get_section(2).id).to eq(:body)
+          expect(content.get_section(3).id).to eq(:side_body)
         end
 
         it "doesnt add page parts if page is nil" do
           content = ContentPagePresenter.new(nil, title)
-          content.get_section(1).id.should == :body
+          expect(content.get_section(1).id).to eq(:body)
         end
 
         it "doesnt add title if it is blank" do
           content = ContentPagePresenter.new(nil, '')
-          content.get_section(0).id.should == :body
+          expect(content.get_section(0).id).to eq(:body)
         end
       end
     end

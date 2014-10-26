@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Refinery
   module Admin
-    describe CoreController do
+    describe CoreController, :type => :controller do
       refinery_login_with_factory :refinery_user
 
       it "updates the plugin positions" do
@@ -11,7 +11,7 @@ module Refinery
         post 'update_plugin_positions', :menu => plugins
 
         logged_in_user.plugins.reload.each_with_index do |plugin, idx|
-          plugin.name.should eql(plugins[idx])
+          expect(plugin.name).to eql(plugins[idx])
         end
       end
     end

@@ -12,11 +12,12 @@ def ensure_on(path)
   visit(path) unless current_path == path
 end
 
-shared_examples_for 'an image index' do |initial_path|
+shared_examples_for 'an image index' do
 
   let(:image_count) {[Refinery::Image.count, Refinery::Images.pages_per_admin_index].min}
 
   before do
+    raise "please set let(:initial_path)" if initial_path.blank?
     ensure_on(initial_path)
   end
 
@@ -30,9 +31,7 @@ shared_examples_for 'an image index' do |initial_path|
 
   context "when in grid view" do
 
-    before  do
-      ensure_on(current_path + "?view=grid")
-    end
+    before { ensure_on(current_path + "?view=grid") }
 
     it 'shows the images with thumbnails' do
       expect(page).to have_selector('#records li>img', count: image_count)
@@ -62,8 +61,8 @@ shared_examples_for 'an image index' do |initial_path|
 
   end # list view
 
-  describe 'pagination', unless: Refinery::Image.count<=2 do
-    Refinery::Images.pages_per_admin_index=2
+  describe 'pagination', unless: Refinery::Image.count <= 2 do
+    before { Refinery::Images.pages_per_admin_index = 2 }
 
     it 'divides the index into pages' do
       expect(page).to have_selector("div.pagination em.current")
@@ -94,15 +93,20 @@ shared_examples_for 'an image index' do |initial_path|
   end  # pagination
 end # image index
 
-shared_examples_for 'an image deleter' do |initial_path|
-
-  before  do
+shared_examples_for 'an image deleter' do
+  before do
+    raise "please set let(:initial_path)" if initial_path.blank?
     ensure_on(initial_path)
   end
-  let(:deleting_an_image) { -> { first("#records li").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))  } }
+
+  let(:deleting_an_image) {
+    -> {
+      first("#records li").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))
+    }
+  }
 
   it 'has a delete image link for each image' do
-
+    pending
   end
 
   it "removes an image" do
@@ -110,10 +114,11 @@ shared_examples_for 'an image deleter' do |initial_path|
   end
 
   it 'says the image has been removed' do
-    expect(page).to have_selector("#records li.image_0")
-    image_list_item = find("#records li.image_0")
-    image_title = image_list_item.first("img")[:title]
-    first("#records li").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))
+    expect(page).to have_selector(".images_list li:first")
+    image_title = find(".images_list li:first").first("img")[:title] || # grid view
+                  find(".images_list li:first").first("span.title").text # list view
+    expect(image_title).to be_present
+    first(".images_list li:first").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))
     expect(page).to have_content(::I18n.t('destroyed', scope: 'refinery.crudify', what: "'#{image_title}'"))
   end
 

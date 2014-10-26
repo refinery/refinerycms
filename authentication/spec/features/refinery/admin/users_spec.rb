@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "User admin page" do
+describe "User admin page", :type => :feature do
   refinery_login_with :refinery_superuser
 
   describe "new/create" do
@@ -19,13 +19,13 @@ describe "User admin page" do
 
       click_button "Save"
 
-      page.should have_content("test was successfully added.")
-      page.should have_content("test (test@refinerycms.com)")
+      expect(page).to have_content("test was successfully added.")
+      expect(page).to have_content("test (test@refinerycms.com)")
     end
 
     context "when assigning roles config is enabled" do
       before do
-        Refinery::Authentication.stub(:superuser_can_assign_roles).and_return(true)
+        allow(Refinery::Authentication).to receive(:superuser_can_assign_roles).and_return(true)
       end
 
       it "allows superuser to assign roles" do
@@ -36,8 +36,8 @@ describe "User admin page" do
         end
         click_button "Save"
 
-        page.should have_content("test was successfully added.")
-        page.should have_content("test (test@refinerycms.com)")
+        expect(page).to have_content("test was successfully added.")
+        expect(page).to have_content("test (test@refinerycms.com)")
       end
     end
   end
@@ -51,8 +51,8 @@ describe "User admin page" do
       fill_in "Email", :with => "cms@refinerycms.com"
       click_button "Save"
 
-      page.should have_content("cmsrefinery was successfully updated.")
-      page.should have_content("cmsrefinery (cms@refinerycms.com)")
+      expect(page).to have_content("cmsrefinery was successfully updated.")
+      expect(page).to have_content("cmsrefinery (cms@refinerycms.com)")
     end
 
     let(:dotty_user) { FactoryGirl.create(:refinery_user, :username => 'user.name.with.lots.of.dots') }
@@ -60,13 +60,13 @@ describe "User admin page" do
       dotty_user # create the user
       visit refinery.admin_users_path
 
-      page.should have_css("#sortable_#{dotty_user.id}")
+      expect(page).to have_css("#sortable_#{dotty_user.id}")
 
       within "#sortable_#{dotty_user.id}" do
         click_link "Edit this user"
       end
 
-      page.should have_css("form#edit_user_#{dotty_user.id}")
+      expect(page).to have_css("form#edit_user_#{dotty_user.id}")
     end
   end
 
@@ -75,12 +75,12 @@ describe "User admin page" do
 
     it "can only destroy regular users" do
       visit refinery.admin_users_path
-      page.should have_selector("a[href='/refinery/users/#{user.username}']")
-      page.should have_no_selector("a[href='/refinery/users/#{logged_in_user.username}']")
+      expect(page).to have_selector("a[href='/refinery/users/#{user.username}']")
+      expect(page).to have_no_selector("a[href='/refinery/users/#{logged_in_user.username}']")
 
       click_link "Remove this user"
-      page.should have_content("'#{user.username}' was successfully removed.")
-      page.should have_content("#{logged_in_user.username} (#{logged_in_user.email})")
+      expect(page).to have_content("'#{user.username}' was successfully removed.")
+      expect(page).to have_content("#{logged_in_user.username} (#{logged_in_user.email})")
     end
   end
 end

@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Refinery
-  describe "custom" do
+  describe "custom", :type => :feature do
     refinery_login_with :refinery_user
     after do
       Refinery::Core.javascripts.reject! {|j| %w[custom_js].include?(j) }
@@ -12,7 +12,7 @@ module Refinery
       it "should be rendered when specified" do
         ::Refinery::Core.config.register_javascript('custom_js')
         visit refinery.admin_dashboard_path
-        page.body.include?('custom_js.js').should be
+        expect(page.body.include?('custom_js.js')).to be
       end
     end
 
@@ -20,7 +20,7 @@ module Refinery
       it "should be rendered when specified" do
         ::Refinery::Core.config.register_stylesheet('custom_css')
         visit refinery.admin_dashboard_path
-        page.body.include?('custom_css.css').should be
+        expect(page.body.include?('custom_css.css')).to be
       end
     end
 
