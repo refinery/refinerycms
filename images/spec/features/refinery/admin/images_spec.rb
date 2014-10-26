@@ -10,6 +10,8 @@ module Refinery
         visit refinery.admin_images_path
         expect(page).to have_content(::I18n.t('no_images_yet', scope: 'refinery.admin.images.records'))
       end
+
+      it_behaves_like 'an image uploader'
     end
 
     context 'when there is one image' do

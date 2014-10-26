@@ -1,13 +1,3 @@
-def upload_an_image(host_element, image, title='', alt='')
-  attach_file "image_image", Refinery.roots('refinery/images').join('spec/fixtures').join(image)
-  fill_in  'image_image_title', with: title
-  fill_in  'image_image_alt', with: alt
-  click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
-end
-
-def image_upload_dialog()
-end
-
 def ensure_on(path)
   visit(path) unless current_path == path
 end
@@ -20,6 +10,7 @@ shared_examples_for 'an image index' do
     raise "please set let(:initial_path)" if initial_path.blank?
     ensure_on(initial_path)
   end
+
 
   it 'shows all the images' do
     expect(page).to have_selector('#records.images li', count: image_count)
@@ -99,6 +90,7 @@ shared_examples_for 'an image deleter' do
     ensure_on(initial_path)
   end
 
+  let(:image_count) {[Refinery::Image.count, Refinery::Images.pages_per_admin_index].min}
   let(:deleting_an_image) {
     -> {
       first("#records li").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))
@@ -106,7 +98,7 @@ shared_examples_for 'an image deleter' do
   }
 
   it 'has a delete image link for each image' do
-    pending
+    expect(page).to have_selector('#records.images li a.confirm-delete', count: image_count)
   end
 
   it "removes an image" do
@@ -118,6 +110,7 @@ shared_examples_for 'an image deleter' do
     image_title = find(".images_list li:first").first("img")[:title] || # grid view
                   find(".images_list li:first").first("span.title").text # list view
     expect(image_title).to be_present
+
     first(".images_list li:first").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))
     expect(page).to have_content(::I18n.t('destroyed', scope: 'refinery.crudify', what: "'#{image_title}'"))
   end
@@ -125,6 +118,40 @@ shared_examples_for 'an image deleter' do
 end
 
 shared_examples 'an image uploader' do
+  before do
+    raise "please set let(:initial_path)" if initial_path.blank?
+    ensure_on(initial_path)
+  end
+
+  let(:uploading_an_image) {
+    -> {
+        click_link ::I18n.t('create_new_image', :scope => 'refinery.admin.images.actions')
+        page.within_frame('dialog_iframe') do
+          attach_file 'image_image', image_path
+          fill_in  'image_image_title', with: 'Image With Dashes'
+          fill_in  'image_image_alt', with: "Alt description for image"
+          click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
+        end
+    }
+  }
+
+  context 'the image type is acceptable' do
+    let(:image_path) {Refinery.roots('refinery/images').join("spec/fixtures/image-with-dashes.jpg")}
+    it 'uploads an image', :js => true do
+      expect(uploading_an_image).to change(Refinery::Image, :count).by(1)
+      expect(page).to have_content(::I18n.t('created', :scope => 'refinery.crudify', :what => "'Image With Dashes'"))
+    end
+  end
+
+  context 'the image type is not acceptable' do
+    let(:image_path) {Refinery.roots('refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")}
+    it 'rejects the image', :js => true do
+      expect(uploading_an_image).to_not change(Refinery::Image, :count)
+      page.within_frame('dialog_iframe') do
+        expect(page).to have_content(::I18n.t('incorrect_format', :scope => 'activerecord.errors.models.refinery/image'))
+      end
+    end
+  end
 end
 
 shared_examples 'an image editor' do
