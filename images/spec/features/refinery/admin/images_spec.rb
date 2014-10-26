@@ -1,15 +1,14 @@
 require "spec_helper"
 
 module Refinery
-
-  describe "the Admin Images Tab" do
-    refinery_login_with :refinery_user
+  describe "the Admin Images Tab", type: :feature do
+    refinery_login
     include_context 'admin images tab'
 
     context 'When there are no images' do
       include_context 'no existing images'
 
-      it 'says there are no images'do
+      it 'says there are no images' do
         visit refinery.admin_images_path
         expect(page).to have_content(::I18n.t('no_images_yet', scope: 'refinery.admin.images.records'))
       end
@@ -72,4 +71,3 @@ module Refinery
 
   end
 end
-

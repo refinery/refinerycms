@@ -2,23 +2,27 @@ module Refinery
   module ApplicationController
 
     def self.included(base) # Extend controller
-      base.helper_method :home_page?, :local_request?, :just_installed?,
-                         :from_dialog?, :admin?, :login?
+      base.helper_method :home_page?,
+                         :local_request?,
+                         :from_dialog?,
+                         :admin?,
+                         :refinery_logout_path,
+                         :current_refinery_user
 
       base.protect_from_forgery # See ActionController::RequestForgeryProtection
 
       base.send :include, Refinery::Crud # basic create, read, update and delete methods
 
       if Refinery::Core.rescue_not_found
-        base.rescue_from ActiveRecord::RecordNotFound,
+        base.rescue_from ::ActiveRecord::RecordNotFound,
                          ::AbstractController::ActionNotFound,
-                         ActionView::MissingTemplate,
+                         ::ActionView::MissingTemplate,
                          :with => :error_404
       end
     end
 
     def admin?
-      %r{^admin/} === controller_name
+      %r{\Aadmin/} === controller_name
     end
 
     def error_404(exception = nil)
@@ -26,31 +30,31 @@ module Refinery
       file = Rails.root.join 'public', '404.html'
       file = Refinery.roots('refinery/core').join('public', '404.html') unless file.exist?
       render :file => file.cleanpath.to_s.gsub(%r{#{file.extname}$}, ''),
-             :layout => false, :status => 404, :formats => [:html]
+             :layout  => false, :status => 404, :formats => [:html]
       return false
     end
 
     def from_dialog?
-      params[:dialog] == 'true' or params[:modal] == 'true'
+      params[:dialog] == 'true' || params[:modal] == 'true'
     end
 
     def home_page?
       %r{^#{Regexp.escape(request.path)}} === refinery.root_path
     end
 
-    def just_installed?
-      Refinery::Role[:refinery].users.empty?
-    end
-
     def local_request?
       Rails.env.development? || /(::1)|(127.0.0.1)|((192.168).*)/ === request.remote_ip
     end
 
-    def login?
-      (/^(user|session)(|s)/ === controller_name && !admin?) || just_installed?
+    def refinery_logout_path
+      nil
     end
 
-  protected
+    def current_refinery_user
+      Zilch::AuthorisationManager.instance.current_user
+    end
+
+    protected
 
     # use a different model for the meta information.
     def present(model)

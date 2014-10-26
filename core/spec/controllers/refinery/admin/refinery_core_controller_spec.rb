@@ -3,7 +3,7 @@ require 'spec_helper'
 module Refinery
   module Admin
     describe CoreController, :type => :controller do
-      refinery_login_with_factory :refinery_user
+      refinery_login
 
       it "updates the plugin positions" do
         plugins = logged_in_user.plugins.reverse.map &:name

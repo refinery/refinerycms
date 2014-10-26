@@ -2,7 +2,7 @@ require "spec_helper"
 
 module Refinery
   describe "custom", :type => :feature do
-    refinery_login_with :refinery_user
+    refinery_login
     after do
       Refinery::Core.javascripts.reject! { |j| %w[custom_js].include?(j) }
       Refinery::Core.stylesheets.reject! { |s| %w[custom_css].include?(s.path) }
