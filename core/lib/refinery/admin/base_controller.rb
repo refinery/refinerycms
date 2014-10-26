@@ -1,4 +1,6 @@
 require 'action_controller'
+require 'zilch/authorisation_manager'
+require 'zilch/users_manager'
 
 module Refinery
   module Admin

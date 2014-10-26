@@ -1,3 +1,5 @@
+require 'zilch/authorisation_manager'
+
 module Refinery
   module ApplicationController
 
