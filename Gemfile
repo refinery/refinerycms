@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'zilch', git: 'https://github.com/robyurkowski/zilch'
 gem 'quiet_assets'
 gem 'spring'
 gem 'spring-commands-rspec'

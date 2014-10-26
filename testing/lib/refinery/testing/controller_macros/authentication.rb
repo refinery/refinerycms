@@ -14,8 +14,9 @@ module Refinery
         end
 
         def refinery_login
-          # NO-OP for now.
+          let(:logged_in_user) { Zilch::NilUser.new }
         end
+
       end
     end
   end
