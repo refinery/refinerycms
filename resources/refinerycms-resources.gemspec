@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
-  s.authors           = ['Philip Arndt', 'Uģis Ozols']
+  s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}
   s.require_paths     = %w(lib)
 
@@ -23,4 +23,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'dragonfly',               '~> 1.0.0'
   s.add_dependency 'dragonfly-s3_data_store', '~> 1.0.0'
   s.add_dependency 'refinerycms-core',        version
+
+  s.required_ruby_version = '>= 2.1.2'
 end
