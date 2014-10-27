@@ -11,6 +11,12 @@
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
+## 2.1.4 [28 October 2014]
+
+* Changed Dragonfly to load before `:build_middleware_stack` instead of after `:load_config_initializers`.  [#2721](https://github.com/refinery/refinerycms/pull/2721). [Thilo-Alexander Ginkel](https://github.com/ginkel)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/2.1.3...2.1.4)
+
 ## 2.1.3 [5 September 2014]
 
 * Fixed an issue where the seeds in a generated form extension weren't idempotent. [#2674](https://github.com/refinery/refinerycms/pull/2674). [Philip Arndt](https://github.com/parndt)
