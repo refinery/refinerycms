@@ -12,13 +12,13 @@ module Refinery
       self.item_tag = :li
 
       def initialize(page_part)
-        super(page_part[:options]) unless page_part[:options].blank?
+        super(page_part[:options]) if page_part[:options].present?
         @collection = page_part[:data]
         self.collection_class = page_part[:id]
       end
 
       def has_content?(can_use_fallback = true)
-        !@collection.blank?
+        @collection.present?
       end
 
       def wrap_content_in_tag(content)
@@ -29,11 +29,11 @@ module Refinery
       private
 
       def content_html(can_use_fallback)
-        override_html.present? ? override_html : collection_markup()
+        override_html.presence || collection_markup
       end
 
-      def collection_markup()
-        unless @collection.blank?
+      def collection_markup
+        if @collection.present?
           content_tag(collection_tag.to_sym, class: collection_class ) do
             @collection.each.inject(ActiveSupport::SafeBuffer.new) do |buffer, item|
               buffer << item_markup(item)
