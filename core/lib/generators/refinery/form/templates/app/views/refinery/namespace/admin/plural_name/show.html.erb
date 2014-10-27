@@ -28,7 +28,7 @@
   <h2><%%= t('.details')%></h2>
   <p>
     <strong><%%= t('.age') %>:</strong> <%%= time_ago_in_words(@<%= singular_name %>.created_at) %>
-  </p><% if @includes_spam %>
+  </p><% if include_spam? %>
   <%% if @<%= singular_name %>.spam? %>
     <p>
       <strong><%%= t('.spam') %>:</strong> <%%= t('.spam_yes') %>

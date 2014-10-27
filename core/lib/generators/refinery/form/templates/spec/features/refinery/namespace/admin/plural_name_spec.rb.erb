@@ -21,6 +21,7 @@ module Refinery
           end
         end
 
+      <% if include_spam? %>
         describe "mark as ham" do
 
           it "should succeed" do
@@ -45,8 +46,10 @@ module Refinery
 
             fail("Implement this test")
 
+    end
           end
         end
+      <% end %>
 
         describe "destroy" do
           before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
@@ -64,5 +67,4 @@ module Refinery
       end
     end
   end
-end
 end
