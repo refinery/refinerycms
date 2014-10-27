@@ -52,6 +52,10 @@ module Refinery
         config.backend_route.to_s.gsub(%r{\A/}, '')
       end
 
+      def backend_path
+        "/#{backend_route}"
+      end
+
       def clear_javascripts!
         self.javascripts = []
       end

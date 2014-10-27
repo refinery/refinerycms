@@ -12,7 +12,7 @@ module Refinery
                            :restrict_controller
         base.after_action :store_location?, :only => [:index] # for redirect_back_or_default
 
-        base.helper_method :searching?, :group_by_date
+        base.helper_method :searching?, :group_by_date, :refinery_admin_root_path
       end
 
       def admin?
@@ -21,6 +21,13 @@ module Refinery
 
       def searching?
         params[:search].present?
+      end
+
+      def refinery_admin_root_path
+        current_refinery_user.plugins.map { |plugin|
+          user_plugin = Refinery::Plugins.active.find_by_name(plugin.name)
+          user_plugin.url if user_plugin && !user_plugin.hide_from_menu && user_plugin.url.present?
+        }.compact.first
       end
 
       protected

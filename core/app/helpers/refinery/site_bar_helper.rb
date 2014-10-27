@@ -7,7 +7,7 @@ module Refinery
                          refinery.root_path(site_bar_translate_locale_args),
                          'data-no-turbolink' => true) do
         link_to t('.switch_to_your_website_editor', site_bar_translate_locale_args),
-                refinery.admin_root_path, 'data-no-turbolink' => true
+                Refinery::Core.backend_path, 'data-no-turbolink' => true
       end
     end
 

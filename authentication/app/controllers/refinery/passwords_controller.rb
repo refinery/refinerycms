@@ -5,7 +5,7 @@ module Refinery
 
     before_action :store_password_reset_return_to, :only => [:update]
     def store_password_reset_return_to
-      session[:'refinery_user_return_to'] = refinery.admin_root_path
+      session[:'refinery_user_return_to'] = Refinery::Core.backend_path
     end
     protected :store_password_reset_return_to
 

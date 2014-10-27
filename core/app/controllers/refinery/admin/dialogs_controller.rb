@@ -6,7 +6,7 @@ module ::Refinery
       before_action :find_dialog_type, :find_iframe_src, :only => [:show]
 
       def index
-        redirect_to refinery.admin_root_path
+        redirect_to Refinery::Core.backend_path
       end
 
       def show
