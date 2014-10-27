@@ -32,7 +32,7 @@ module Refinery
 
           if section_presenter && section_data
           # Add an id to the data so it is sufficiently like a page_part for a presenter to handle it
-            section_data  = {id: section_id, data:section_data } if section_data.present?
+            section_data  = {id: section_id, data:section_data } unless section_data.blank?
           else
           # default presenter and data
             section_presenter = PagePartSectionPresenter
