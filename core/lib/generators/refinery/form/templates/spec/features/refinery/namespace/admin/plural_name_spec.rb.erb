@@ -63,6 +63,19 @@ module Refinery
             Refinery::<%= namespacing %>::<%= class_name %>.count.should == 0
           end
         end
+
+          describe "destroy from <%= singular_name %> show page" do
+          before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
+
+          it "should succeed" do
+            visit refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path( :id => '1')
+
+            click_link "Remove this <%= singular_name.titleize.downcase %> forever"
+
+            page.should have_content("'UniqueTitleOne' was successfully removed.")
+            Refinery::<%= namespacing %>::<%= class_name %>.count.should == 0
+          end
+        end
 <% end %>
       end
     end

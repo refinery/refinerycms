@@ -41,10 +41,10 @@
                    :class => "back_icon" %>
     </li>
     <li>
-      <%%= link_to t('delete', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>'),
+      <%%= link_to t('delete_<%= singular_name %>', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.<%= singular_name %>'),
                   refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(@<%= singular_name %>),
                   :class => 'delete_icon no-tooltip confirm-delete',
-                  :title => t('delete', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>'),
+                  :title => t('delete_<%= singular_name %>', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.<%= singular_name %>'),                  
                   :'data-confirm' => t('message', :scope => 'refinery.admin.delete', :title => @<%= singular_name %>.name),
                   :'data-method' => "delete" %>
     </li>
