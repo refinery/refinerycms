@@ -17,16 +17,16 @@ module Refinery
         refinery_login_with :refinery
 
         context "with permission" do
-          let(:controller_permission) { true }
           it "allows access" do
+            allow(controller).to receive(:allow_controller?).and_return(true)
             expect(controller).not_to receive :error_404
             get :index
           end
         end
 
         context "without permission" do
-          let(:controller_permission) { false }
           it "denies access" do
+            allow(controller).to receive(:allow_controller?).and_return(false)
             expect(controller).to receive :error_404
             get :index
           end

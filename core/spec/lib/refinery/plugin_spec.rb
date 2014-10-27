@@ -86,17 +86,6 @@ module Refinery
       end
     end
 
-    describe '#dashboard' do
-      it 'returns false if @dashboard is not set or its set to false' do
-        expect(plugin.dashboard).to be_falsey
-      end
-
-      it 'returns true if set so' do
-        allow(plugin).to receive(:dashboard).and_return(true)
-        expect(plugin.dashboard).to be
-      end
-    end
-
     describe '#menu_match' do
       it 'returns regexp based on plugin name' do
         expect(plugin.menu_match).to eq(%r{refinery/refinery_rspec(/.+?)?$})
@@ -107,11 +96,6 @@ module Refinery
       it 'returns true if params[:controller] match menu_match regexp' do
         expect(plugin.highlighted?({:controller => '/refinery/admin/refinery_rspec'})).to be
         expect(plugin.highlighted?({:controller => '/refinery/refinery_rspec'})).to be
-      end
-
-      it 'returns true if dashboard is true and params[:action] == error_404' do
-        allow(plugin).to receive(:dashboard).and_return(true)
-        expect(plugin.highlighted?({:action => 'error_404'})).to be
       end
     end
 

@@ -24,10 +24,8 @@ module Refinery
       home_path = "#{scope}_root_path"
       if respond_to?(home_path, true)
         refinery.send(home_path)
-      elsif respond_to?(:admin_root_path)
-        refinery.admin_root_path
       else
-        "/"
+        Refinery::Core.backend_path
       end
     end
 

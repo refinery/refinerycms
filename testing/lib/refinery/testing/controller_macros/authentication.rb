@@ -7,35 +7,22 @@ module Refinery
         end
 
         def refinery_login_with(*roles)
-          mock_user roles
+          roles = handle_deprecated_roles!(roles).flatten
+          let(:logged_in_user) do
+            user = FactoryGirl.create :user
+            roles.each do |role|
+              user.add_role(role)
+            end
+            user
+          end
+          before do
+            @request.env["devise.mapping"] = Devise.mappings[:admin]
+            sign_in logged_in_user
+          end
         end
 
         def refinery_login_with_factory(factory)
           factory_user factory
-        end
-
-        def mock_user(roles)
-          let(:controller_permission) { true }
-          roles = handle_deprecated_roles! roles
-          let(:logged_in_user) do
-            user = double 'Refinery::User', :username => 'Joe Fake'
-
-            roles.each do |role|
-              user.stub(:has_role?).with(role).and_return true
-            end
-            user.stub(:has_role?).with(:superuser).and_return false if roles.exclude? :superuser
-
-            user
-          end
-
-          before do
-            expect(controller).to receive(:require_refinery_users!).and_return false
-            expect(controller).to receive(:authenticate_refinery_user!).and_return true
-            expect(controller).to receive(:restrict_plugins).and_return true
-            expect(controller).to receive(:allow_controller?).and_return controller_permission
-            controller.stub(:refinery_user?).and_return true
-            controller.stub(:current_refinery_user).and_return logged_in_user
-          end
         end
 
         def factory_user(factory)

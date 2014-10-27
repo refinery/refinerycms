@@ -4,13 +4,14 @@ module Refinery
   describe "sign in", :type => :feature do
     let(:login_path) { refinery.new_refinery_user_session_path }
     let(:login_retry_path) { refinery.refinery_user_session_path }
-    let(:admin_path) { refinery.admin_root_path }
-
-    before do
+    let(:admin_path) { "/#{Refinery::Core.backend_route}" }
+    let!(:user) {
       FactoryGirl.create(:refinery_user, :username => "ugisozols",
                                          :password => "123456",
                                          :password_confirmation => "123456")
+    }
 
+    before do
       visit refinery.login_path
     end
 
@@ -26,7 +27,7 @@ module Refinery
         fill_in "Password", :with => "123456"
         click_button "Sign in"
         expect(page).to have_content("Signed in successfully.")
-        expect(current_path).to eq(admin_path)
+        expect(current_path).to match(/\A#{admin_path}/)
       end
     end
 
@@ -49,7 +50,7 @@ module Refinery
     describe 'when there are no users' do
       it 'allows user creation' do
         # Verify that we can access the sign up page.
-        visit refinery.admin_root_path
+        visit Refinery::Core.backend_path
         expect(page).to have_content("There are no users yet, so we'll set you up first")
 
         # Fill in user details.

@@ -5,14 +5,14 @@ module Refinery
     refinery_login_with :refinery_user
 
     it "have logout link" do
-      visit refinery.admin_dashboard_path
+      visit Refinery::Core.backend_path
 
       expect(page).to have_content("Log out")
       expect(page).to have_selector("a[href='/refinery/logout']")
     end
 
     context "when in backend" do
-      before { visit refinery.admin_dashboard_path }
+      before { visit Refinery::Core.backend_path }
 
       it "have a 'switch to your website button'" do
         expect(page).to have_content("Switch to your website")
@@ -20,7 +20,7 @@ module Refinery
       end
 
       it "switches to frontend" do
-        expect(page.current_path).to eq(refinery.admin_dashboard_path)
+        expect(page.current_path).to match(/\A#{Refinery::Core.backend_path}/)
         click_link "Switch to your website"
         expect(page.current_path).to eq(refinery.root_path)
       end
@@ -42,7 +42,7 @@ module Refinery
       it "switches to backend" do
         expect(page.current_path).to eq(refinery.root_path)
         click_link "Switch to your website editor"
-        expect(page.current_path).to eq(refinery.admin_root_path)
+        expect(page.current_path).to match(/\A#{Refinery::Core.backend_path}/)
       end
     end
   end

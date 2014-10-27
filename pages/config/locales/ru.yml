@@ -6,9 +6,6 @@ ru:
         article: feminine
         description: Управление страницами с содержимым
     admin:
-      dashboard:
-        recent_activity:
-          empty: Пустой
       pages_dialogs:
         page_link:
           link_to_this_page: Ссылка на эту страницу

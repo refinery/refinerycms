@@ -1,11 +1,10 @@
 require "spec_helper"
 
 describe Refinery::Admin::UsersController, :type => :controller do
-  refinery_login_with :refinery_superuser
+  refinery_login_with [:refinery, :superuser]
 
   shared_examples_for "new, create, update, edit and update actions" do
     it "loads roles" do
-      expect(Refinery::Role).to receive(:all).once{ [] }
       get :new
     end
 

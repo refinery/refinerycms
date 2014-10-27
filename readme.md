@@ -45,7 +45,7 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 * Sticks to __"the Rails way"__ as much as possible; we don't force you to learn new templating languages.
 * Uses [jQuery](http://jquery.com/) for fast and concise Javascript.
 
-![Refinery Dashboard](http://refinerycms.com/system/images/0000/0576/dashboard.png)
+![Refinery Pages UI](http://refinerycms.com/system/images/0000/0576/dashboard.png)
 
 Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refinery).
 

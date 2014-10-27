@@ -252,8 +252,7 @@ module Refinery
 
       it "adds registered plugins" do
         expect(first_user.plugins.collect(&:name)).to eq(
-          ["refinery_users", "refinery_dashboard", "refinery_images",
-           "refinery_files", "refinery_pages"]
+          %w(refinery_users refinery_images refinery_files refinery_pages)
         )
       end
 

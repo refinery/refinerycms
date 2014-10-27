@@ -6,7 +6,6 @@ lib/**/*
 Rakefile
 authentication/**/*.rb
 core/**/*.rb
-dashboard/**/*.rb
 images/**/*.rb
 pages/**/*.rb
 resources/**/*.rb
