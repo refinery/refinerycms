@@ -7,7 +7,7 @@
 * Updated how `_make_sortable` works to take an options hash, requiring manual file changes. [Philip Arndt](https://github.com/parndt)
 * Removed `attr_accessible` in favour of strong parameters. [Philip Arndt](https://github.com/parndt) [#2518](https://github.com/refinery/refinerycms/pull/2518)
 * Removed `attr_accessible` in favour of strong parameters. [#2518](https://github.com/refinery/refinerycms/pull/2518). [Philip Arndt](https://github.com/parndt)
-* Removed the Dashboard extension, now the left most tab is selected when logging in. [2634](https://github.com/refinery/refinerycms/pull/2634). [Philip Arndt](https://github.com/parndt)
+* Removed the Dashboard extension, now the left most tab is selected when logging in. [#2727](https://github.com/refinery/refinerycms/pull/2727). [Philip Arndt](https://github.com/parndt)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
