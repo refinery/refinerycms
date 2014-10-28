@@ -74,10 +74,6 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 * Uses the popular [Dragonfly](https://github.com/markevans/dragonfly).
 * Supports storage on Amazon S3.
 
-### Dashboard
-
-* Get an overview of what has been updated recently and see recent inquiries.
-
 ### Authentication & Users
 
 * Manage who can access Refinery.
