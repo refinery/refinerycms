@@ -22,7 +22,7 @@
     </li>
     <li>
       <%%= link_to t('.edit_confirmation_email'),
-                  refinery.edit_<%= namespacing.underscore %>_admin_setting_path(:<%= singular_name %>_confirmation_body, :dialog => true),
+                  refinery.edit_<%= namespacing.underscore %>_admin_setting_path(:<%= singular_name %>_confirmation_message, :dialog => true),
                   :class => "edit_email_icon" %>
     </li>
   </ul>
