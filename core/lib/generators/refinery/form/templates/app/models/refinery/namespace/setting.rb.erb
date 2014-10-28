@@ -1,10 +1,10 @@
 module Refinery
   module <%= namespacing %>
-    class Setting < Refinery::Core::BaseModel
+    class Setting
 
       class << self
-        def confirmation_body
-          Refinery::Setting.find_or_set(:<%= singular_name %>_confirmation_body,
+        def confirmation_message
+          Refinery::Setting.find_or_set(:<%= singular_name %>_confirmation_message,
             "Thank you for your <%= singular_name.humanize.downcase %> %name%,\n\nThis email is a receipt to confirm we have received your <%= singular_name.humanize.downcase %> and we'll be in touch shortly.\n\nThanks."
           )
         end
@@ -12,10 +12,6 @@ module Refinery
         def confirmation_subject
           Refinery::Setting.find_or_set(:<%= singular_name %>_confirmation_subject,
                                         "Thank you for your <%= singular_name.humanize.downcase %>")
-        end
-
-        def confirmation_subject=(value)
-          Refinery::Setting.set(:<%= singular_name %>_confirmation_subject, value)
         end
 
         def notification_recipients
@@ -27,8 +23,20 @@ module Refinery
           Refinery::Setting.find_or_set(:<%= singular_name %>_notification_subject,
                                         "New <%= singular_name.humanize.downcase %> from your website")
         end
-      end
 
+        def confirmation_message=(value)
+          Refinery::Setting.set(:<%= singular_name %>_confirmation_message, value)
+        end
+
+        def confirmation_subject=(value)
+          Refinery::Setting.set(:<%= singular_name %>_confirmation_subject, value)
+        end
+
+        def notification_recipients=(value)
+          Refinery::Setting.set(:<%= singular_name %>_notification_recipients, value)
+        end
+
+      end
     end
   end
 end

@@ -29,3 +29,10 @@ Refinery::I18n.frontend_locales.each do |lang|
     end
   end
 end
+
+(Refinery::<%= namespacing %>::Setting.methods.sort - Refinery::Setting.methods).each do |setting|
+
+    Refinery::<%= namespacing %>::Setting.send(setting) unless setting.to_s =~ /=$/
+
+end
+
