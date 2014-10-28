@@ -31,17 +31,17 @@ module Refinery
         end
 
         def check_setting
-          setting = params[:id].gsub("<%= singular_name %>_", "")
+          scoped_setting_id = params[:id].gsub("<%= singular_name %>_", "")
 
-          Refinery::<%= namespacing %>::Setting.send(setting) if Refinery::<%= namespacing %>::Setting.respond_to?(setting)
+          Refinery::Setting.send(scoped_setting_id) if Refinery::<%= namespacing %>::Setting.respond_to?(params[:id])
         end
 
         def save_subject_for_confirmation
-          Refinery::<%= namespacing %>::Setting.confirmation_subject = params[:subject] if params.keys.include?('subject')
+          Refinery::<%= namespacing %>::Setting.confirmation_subject = params[:confirmation_subject] if params.keys.include?('confirmation_subject')
         end
 
         def save_message_for_confirmation
-          Refinery::<%= namespacing %>::Setting.confirmation_message = params[:message] if params.keys.include?('message')
+          Refinery::<%= namespacing %>::Setting.confirmation_message = params[:confirmation_message] if params.keys.include?('confirmation_message')
         end
 
       end

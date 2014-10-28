@@ -12,17 +12,18 @@ Refinery::Core::Engine.routes.draw do
   # Admin routes
   namespace :<%= namespacing.underscore %>, :path => '' do
     namespace :admin, :path => "#{Refinery::Core.backend_route}" do
-      resources :<%= plural_name %> do
-      <% if include_spam? %>
+      resources :<%= plural_name %> do <% if include_spam? %>
         collection do
           get :spam
         end
         member do
           get :toggle_spam
-        end
-    <% end %>
+        end <% end %>
+  end
+
+      scope :path => '<%= plural_name %>' do
+        resources :settings, :only => [:edit, :update]
       end
-      resources :settings, :only => [:edit, :update]
     end
   end
 end
