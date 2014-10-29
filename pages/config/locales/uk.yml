@@ -70,7 +70,6 @@ uk:
           reorder_pages_done: Зберегти такий порядок сторінок
         records:
           no_pages_yet: Сторінок ще немає.
-        translator_access: У вас немає дозволу на редагування сторінок цією мовою
   activerecord:
     models:
       refinery/page: сторінка

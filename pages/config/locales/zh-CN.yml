@@ -66,7 +66,6 @@ zh-CN:
           reorder_pages_done: 完成编排
         records:
           no_pages_yet: 这里还没有页面. 点击 "添加新页面" 去添加您的第一个页面.
-        translator_access: 您没有权限来更改使用这种语言的页面
   activerecord:
     models:
       refinery/page: 页面

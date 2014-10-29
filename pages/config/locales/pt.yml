@@ -76,7 +76,6 @@ pt:
           reorder_pages_done: Terminei de ordenar as páginas
         records:
           no_pages_yet: Não existem páginas de momento. Clique em 'Adicionar nova página' para criar a primeira.
-        translator_access: Não tem as permissões necessárias para modificar esta página.
   activerecord:
     models:
       refinery/page: página

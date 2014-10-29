@@ -76,7 +76,6 @@ en:
           reorder_pages_done: Done reordering pages
         records:
           no_pages_yet: There are no pages yet. Click "Add new page" to add your first page.
-        translator_access: You do not have the required permission to modify pages in this language.
   activerecord:
     models:
       refinery/page: page

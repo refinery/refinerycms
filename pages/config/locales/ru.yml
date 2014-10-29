@@ -77,7 +77,6 @@ ru:
           reorder_pages_done: Сохранить такой порядок страниц
         records:
           no_pages_yet: Страниц ещё нет.
-        translator_access: У вас нет разрешения на редактирование страниц на этом языке
   activerecord:
     models:
       refinery/page: страница

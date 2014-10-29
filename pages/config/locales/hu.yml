@@ -76,7 +76,6 @@ hu:
           reorder_pages_done: 'Oldalak átrendezésének befejezése'
         records:
           no_pages_yet: 'Jelenleg nincsenek oldalak. Kattints az "Új oldal hozzáadása" linkre, az első oldal létrehozásához.'
-        translator_access: 'Nincs meg a szükséges engedélyed, hogy módosítsd az oldalakat ezen a nyelven.'
   activerecord:
     models:
       refinery/page: oldal
