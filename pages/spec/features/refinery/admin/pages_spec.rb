@@ -90,7 +90,7 @@ module Refinery
               expect(page).to have_content(locations.title)
             end
 
-            it "expands children when nested mutliple levels deep", :js do
+            it "expands children when nested multiple levels deep", :js do
               find("#page_#{company.id} .title.toggle").click
               find("#page_#{locations.id} .title.toggle").click
 
