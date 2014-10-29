@@ -61,7 +61,6 @@ ko:
           reorder_pages_done: 재정렬 완료
         records:
           no_pages_yet: 페이지가 없습니다. "새 페이지"를 클릭하여 페이지를 추가하세요.
-        translator_access: 해당 언어로 페이지를 수정할 권한이 없습니다.
   activerecord:
     models:
       refinery/page: 페이지

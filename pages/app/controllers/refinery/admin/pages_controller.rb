@@ -9,7 +9,6 @@ module Refinery
               :paging => false
 
       before_action :load_valid_templates, :only => [:edit, :new, :create, :update]
-      before_action :restrict_access, :only => [:create, :update, :update_positions, :destroy]
 
       def new
         @page = Page.new(new_page_params)
@@ -91,16 +90,6 @@ module Refinery
                                   Pages.valid_templates('app', 'views', '{layouts,refinery/layouts}', '*html*')
 
         @valid_view_templates = Pages.valid_templates('app', 'views', '{pages,refinery/pages}', '*html*')
-      end
-
-      def restrict_access
-        if current_refinery_user.has_role?(:translator) && !current_refinery_user.has_role?(:superuser) &&
-             (params[:switch_locale].blank? || params[:switch_locale] == Refinery::I18n.default_frontend_locale.to_s)
-          flash[:error] = t('translator_access', :scope => 'refinery.admin.pages')
-          redirect_to refinery.admin_pages_path
-        end
-
-        return true
       end
 
       def page_params

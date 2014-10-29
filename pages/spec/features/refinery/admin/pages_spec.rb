@@ -703,20 +703,7 @@ module Refinery
 
     describe "TranslatePages", :type => :feature do
       before { Globalize.locale = :en }
-      refinery_login_with :refinery_translator
-
-      describe "add page to main locale" do
-        it "doesn't succeed" do
-          visit refinery.admin_pages_path
-
-          click_link "Add new page"
-
-          fill_in "Title", :with => "Huh?"
-          click_button "Save"
-
-          expect(page).to have_content("You do not have the required permission to modify pages in this language")
-        end
-      end
+      refinery_login_with :refinery_user
 
       describe "add page to second locale" do
         before do
@@ -737,19 +724,6 @@ module Refinery
 
           expect(page).to have_content("'Brīva vieta reklāmai' was successfully added.")
           expect(Refinery::Page.count).to eq(2)
-        end
-      end
-
-      describe "delete page from main locale" do
-        before { Page.create :title => 'Default Page' }
-
-        it "doesn't succeed" do
-          visit refinery.admin_pages_path
-
-          click_link "Remove this page forever"
-
-          expect(page).to have_content("You do not have the required permission to modify pages in this language.")
-          expect(Refinery::Page.count).to eq(1)
         end
       end
 

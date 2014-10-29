@@ -76,7 +76,6 @@ de:
           reorder_pages_done: Umsortieren erledigt
         records:
           no_pages_yet: Es sind noch keine Seiten vorhanden. Klicken Sie auf "Neue Seite anlegen", um Ihre erste Seite zu erstellen.
-        translator_access: Sie haben nicht die benötigten Rechte, um Seiten in dieser Sprache zu bearbeiten.
   activerecord:
     models:
       refinery/page: Seite

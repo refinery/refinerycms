@@ -76,7 +76,6 @@ fr:
           reorder_pages_done: Fin de réordonnancement des pages
         records:
           no_pages_yet: "Il n'y a actuellement aucune page. Cliquer sur 'Créer une nouvelle page' pour en ajouter une."
-        translator_access: Vous n'avez pas les permissions requises pour modifier les pages dans cette langue.
   activerecord:
     models:
       refinery/page: page

@@ -61,7 +61,6 @@ fi:
           reorder_pages_done: Tallenna
         records:
           no_pages_yet: Sivuja ei ole vielä. Paina "Lisää uusi sivu-" painiketta lisätäksesi ensimmäisen sivun.
-        translator_access: Sinulla ei ole lupaa muokata sivuja tällä kielellä.
   activerecord:
     models:
       refinery/page: sivu

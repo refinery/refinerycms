@@ -75,7 +75,6 @@ da:
           reorder_pages_done: Gem rækkefølgen
         records:
           no_pages_yet: Der er ingen sider endnu. Klik på "Tilføj en ny side" for at oprette den første."
-        translator_access: Du har ikke tilstrækkelige rettigheder til at ændre siden på det valgte sprog.
   activerecord:
     models:
       refinery/page: side

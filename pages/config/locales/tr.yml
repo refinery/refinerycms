@@ -76,7 +76,6 @@ tr:
           reorder_pages_done: Yeniden hizalama bitti
         records:
           no_pages_yet: Henuz yaratilmis bir sayfa yok.Lutfen "Yeni Sayfa Ekle" tusuna basarak ilk sayfamizi yaratalimdd.
-        translator_access: Bu sayfada degisiklik yapabilecek gerekli yetkiye sahip degilsiniz.
   activerecord:
     models:
       refinery/page: sayfa

@@ -77,7 +77,6 @@ ca:
           reorder_pages_done: Reordenació de pàgines completada
         records:
           no_pages_yet: Encara no hi ha pàgines. Prem "Crear nova pàgina" per afegir la teva primera pàgina.
-        translator_access: No tens el permís requerit per modificar pàgines en aquesta llengua.
   activerecord:
     models:
       refinery/page: "pàgina"

@@ -38,8 +38,7 @@ module Refinery
           mappings = {
             :user => [],
             :refinery_user => [:refinery],
-            :refinery_superuser => [:refinery, :superuser],
-            :refinery_translator => [:refinery, :translator]
+            :refinery_superuser => [:refinery, :superuser]
           }
           mappings[roles.first] || roles
         end

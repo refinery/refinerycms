@@ -27,12 +27,4 @@ FactoryGirl.define do
   factory :refinery_superuser, :parent => :refinery_user do
     roles { [ ::Refinery::Role[:refinery], ::Refinery::Role[:superuser] ]}
   end
-
-  factory :refinery_translator, :parent => :user do
-    roles { [ ::Refinery::Role[:refinery], ::Refinery::Role[:translator] ] }
-
-    after(:create) do |user|
-      user.plugins.create(:name => 'refinery_pages', :position => 0)
-    end
-  end
 end

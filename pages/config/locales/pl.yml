@@ -76,7 +76,6 @@ pl:
           reorder_pages_done: Zakończono zmianę kolejności stron
         records:
           no_pages_yet: Nie ma jeszcze żadnej strony. Kliknij "Dodaj nową stronę" aby stworzyć pierwszą.
-        translator_access: Nie masz wystarczających uprawnień do modyfikacji strony w tym języku.
   activerecord:
     models:
       refinery/page: strona

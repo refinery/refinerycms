@@ -73,7 +73,6 @@ nl:
           reorder_pages_done: Klaar met het wijzingen van de paginavolgorde
         records:
           no_pages_yet: Er zijn nog geen pagina's. Druk op 'Nieuwe pagina toevoegen' om de eerste aan te maken.
-        translator_access: U heeft niet de benodigde permissies om pagina's in deze taal te wijzigen.
   activerecord:
     models:
       refinery/page: pagina
