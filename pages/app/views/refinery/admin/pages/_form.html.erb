@@ -45,18 +45,15 @@
       );
 
       $("#preview-button").click(function(e) {
-        var form = $(this).parents('form');
-        var prev_url = form.attr('action');
-        var prev_target = form.attr('target');
-        form.attr({
+        var $form = $(this).parents('form');
+        var prev_url = $form.attr('action');
+        var prev_target = $form.attr('target') || '';
+        $form.attr({
           'action': '<%= @page.persisted? ? refinery.pages_admin_preview_page_path(@page.nested_url) : refinery.pages_admin_preview_pages_path %>'
           , 'target': '_blank'
         });
-        form.submit();
-        form.attr({
-          'action': prev_url
-          , 'target': prev_target
-        });
+        $form.submit();
+        $form.attr({'action': prev_url, 'target': prev_target});
         e.preventDefault();
       });
     });
