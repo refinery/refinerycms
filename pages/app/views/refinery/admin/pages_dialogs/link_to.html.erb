@@ -118,7 +118,7 @@
 
 <% content_for :javascripts do %>
   <script>
-    $(document).ready(function(){
+    $(document).on('ready page:load', function(){
       link_dialog.init();
 
       $('.link_list a').click(function(e){

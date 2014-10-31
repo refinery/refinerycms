@@ -7,7 +7,7 @@
 
 <% content_for :javascripts do %>
   <script>
-    $(document).ready(function(){
+    $(document).on('ready page:load', function(){
       create_sortable_list(
         <%= raw({
               update_url: refinery.url_for(action: "update_positions", only_path: true),

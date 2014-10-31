@@ -57,7 +57,7 @@
 
 <%% content_for :javascripts do -%>
   <script>
-    $(document).ready(function(){
+    $(document).on('ready page:load', function(){
       page_options.init(false, '', '');
     });
   </script>

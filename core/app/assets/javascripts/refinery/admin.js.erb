@@ -8,9 +8,12 @@ init_refinery_admin = function(){
   init_modal_dialogs();
   init_tooltips();
   init_ajaxy_pagination();
+  if(typeof(Turbolinks) != 'undefined') {
+    Turbolinks.enableTransitionCache();
+  }
 };
 
-$(document).ready(init_refinery_admin);
+$(document).on('ready page:load', init_refinery_admin);
 
 if(typeof(window.onpopstate) == "object"){
   $(window).bind('popstate', function(e) {
@@ -552,7 +555,7 @@ var page_options = {
       this.del_part_url = del_part_url;
       this.show_options();
 
-      $(document).ready($.proxy(function(){
+      $(document).on('ready page:load', $.proxy(function(){
         // hide the tabs that are supposed to be hidden.
         $('#page-tabs .page_part.field').not(this).addClass('ui-tabs-hide');
       }, part_shown));

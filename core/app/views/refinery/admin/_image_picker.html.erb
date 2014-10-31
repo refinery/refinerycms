@@ -34,7 +34,7 @@
 <% content_for :javascripts do -%>
   <script>
     var image_picker_<%= randomiser %> = {};
-    $(document).ready(function(e) {
+    $(document).on('ready page:load', function(e) {
       $.extend(true, image_picker_<%= randomiser %>, image_picker)
       image_picker_<%= randomiser %> = image_picker_<%= randomiser %>.init({
         thumbnail: '<%= thumbnail.html_safe %>'

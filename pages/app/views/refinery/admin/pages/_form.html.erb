@@ -37,7 +37,7 @@
 
 <% content_for :javascripts do %>
   <script>
-    $(document).ready(function(){
+    $(document).on('ready page:load', function(){
       page_options.init(
         <%= Refinery::Pages.new_page_parts.to_s %>
         , "<%= refinery.new_admin_page_part_path %>"

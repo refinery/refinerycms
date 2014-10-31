@@ -79,6 +79,12 @@ module Refinery
 
       # set assets to be precompiled
       config.to_prepare do
+        if defined?(JqueryTurbolinks)
+          Rails.application.config.assets.precompile += %w(jquery.turbolinks.js)
+        end
+        if defined?(Turbolinks)
+          Rails.application.config.assets.precompile += %w(turbolinks.js)
+        end
 
         # scripts
         Rails.application.config.assets.precompile += %w(
