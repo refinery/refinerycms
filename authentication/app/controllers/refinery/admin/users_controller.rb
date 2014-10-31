@@ -4,8 +4,7 @@ module Refinery
 
       crudify :'refinery/user',
               :order => 'username ASC',
-              :title_attribute => 'username',
-              :xhr_paging => true
+              :title_attribute => 'username'
 
       before_action :find_available_plugins, :find_available_roles,
                     :only => [:new, :create, :edit, :update]

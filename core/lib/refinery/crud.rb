@@ -34,7 +34,6 @@ module Refinery
         :search_conditions => '',
         :sortable => true,
         :title_attribute => "title",
-        :xhr_paging => false,
         :class_name => class_name,
         :singular_name => singular_name,
         :plural_name => plural_name
@@ -50,6 +49,7 @@ module Refinery
 
       def crudify(model_name, options = {})
         options = ::Refinery::Crud.default_options(model_name).merge(options)
+        Refinery.deprecate :xhr_paging, when: '3.1' if options[:xhr_paging]
         class_name = options[:class_name]
         singular_name = options[:singular_name]
         plural_name = options[:plural_name]
@@ -231,7 +231,7 @@ module Refinery
 
         # Methods that are only included when this controller is searchable.
         if options[:searchable]
-          if options[:paging] || options[:xhr_paging]
+          if options[:paging]
             module_eval %(
               def index
                 search_all_#{plural_name} if searching?
@@ -255,7 +255,7 @@ module Refinery
           end
 
         else
-          if options[:paging] || options[:xhr_paging]
+          if options[:paging]
             module_eval %(
               def index
                 paginate_all_#{plural_name}
@@ -335,13 +335,9 @@ module Refinery
         module_eval %(
           class << self
             def pageable?
-              #{options[:paging].to_s} || #{options[:xhr_paging].to_s}
+              #{options[:paging].to_s}
             end
             alias_method :paging?, :pageable?
-
-            def xhr_pageable?
-              #{options[:xhr_paging].to_s}
-            end
 
             def sortable?
               #{options[:sortable].to_s}
