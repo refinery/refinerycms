@@ -3,8 +3,7 @@ module Refinery
     class ResourcesController < ::Refinery::AdminController
 
       crudify :'refinery/resource',
-              :order => "updated_at DESC",
-              :xhr_paging => true
+              :order => "updated_at DESC"
 
       before_action :init_dialog
 
