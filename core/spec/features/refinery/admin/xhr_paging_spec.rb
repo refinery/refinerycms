@@ -5,19 +5,21 @@ module Refinery
     refinery_login_with :refinery_superuser
 
     describe "xhr_paging", :js do
-      # Refinery::Admin::UsersController specifies :order => 'username ASC' in crudify
-      let(:first_user) { User.order('username ASC').first }
-      let(:last_user) { User.order('username ASC').last }
-      let!(:user) { FactoryGirl.create :user }
+      # Refinery::Admin::ImagesController specifies :order => 'created_at DESC' in crudify
+      let(:first_image) { Image.order('created_at DESC').first }
+      let(:last_image) { Image.order('created_at DESC').last }
+      let!(:image_1) { FactoryGirl.create :image }
+      let!(:image_2) { FactoryGirl.create :image }
+
       before do
-        allow(User).to receive(:per_page).and_return(1)
+        allow(Image).to receive(:per_page).and_return(1)
       end
 
       it 'performs ajax paging of index' do
-        visit refinery.admin_users_path
+        visit refinery.admin_images_path
 
-        expect(page).to have_selector('li.record', count: 1)
-        expect(page).to have_content(first_user.email)
+        expect(page).to have_selector('ul#image_grid li > img', count: 1)
+        expect(page).to have_css(%Q{img[alt="#{first_image.title}"]})
 
         # placeholder which would disappear in a full page refresh.
         page.evaluate_script(
@@ -28,7 +30,7 @@ module Refinery
           click_link '2'
         end
 
-        expect(page).to have_content(last_user.email)
+        expect(page).to have_css(%Q{img[alt="#{last_image.title}"]})
         expect(page.evaluate_script(
           %{$('i#has_not_refreshed_entire_page').length}
         )).to eq(1)

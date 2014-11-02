@@ -1,4 +1,4 @@
-require 'zilch/authorisation_manager'
+require 'refinery/authorisation_manager'
 
 module Refinery
   module ApplicationController
@@ -8,7 +8,6 @@ module Refinery
                          :local_request?,
                          :from_dialog?,
                          :admin?,
-                         :refinery_logout_path,
                          :current_refinery_user
 
       base.protect_from_forgery # See ActionController::RequestForgeryProtection
@@ -48,12 +47,8 @@ module Refinery
       Rails.env.development? || /(::1)|(127.0.0.1)|((192.168).*)/ === request.remote_ip
     end
 
-    def refinery_logout_path
-      nil
-    end
-
     def current_refinery_user
-      Zilch::AuthorisationManager.instance.current_user
+      Refinery::Core::AuthorisationManager.instance.current_user
     end
 
     protected

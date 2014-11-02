@@ -20,6 +20,7 @@ module Refinery
       detect { |plugin| plugin.title == title }
     end
 
+    # TODO: Review necessary?
     def in_menu
       self.class.new(reject(&:hide_from_menu))
     end
@@ -35,6 +36,15 @@ module Refinery
     def titles
       map(&:title)
     end
+
+    def first_in_menu_with_url
+      find(&:landable?)
+    end
+
+    def first_url_in_menu
+      first_in_menu_with_url.try(:url)
+    end
+
 
     class << self
       def active

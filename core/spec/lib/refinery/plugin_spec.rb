@@ -13,7 +13,7 @@ module Refinery
 end
 
 module Refinery
-  describe Plugin do
+  RSpec.describe Plugin do
 
     let(:plugin) { ::Refinery::Plugins.registered.detect { |plugin| plugin.name == 'refinery_rspec' } }
 
@@ -137,5 +137,43 @@ module Refinery
       end
     end
 
+
+    describe "#landable?" do
+      context "when hidden from menu" do
+        before do
+          allow(plugin).to receive(:hide_from_menu).and_return(true)
+        end
+
+        it "is false" do
+          expect(plugin.landable?).to be false
+        end
+      end
+
+      context "when not hidden from menu" do
+        before do
+          allow(plugin).to receive(:hide_from_menu).and_return(false)
+        end
+
+        context "when has url" do
+          before do
+            allow(plugin).to receive(:url).and_return("/blah")
+          end
+
+          it "is true" do
+            expect(plugin.landable?).to be true
+          end
+        end
+
+        context "when doesn't have url" do
+          before do
+            allow(plugin).to receive(:url).and_return(nil)
+          end
+
+          it "is false" do
+            expect(plugin.landable?).to be false
+          end
+        end
+      end
+    end
   end
 end

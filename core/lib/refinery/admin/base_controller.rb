@@ -1,5 +1,5 @@
 require 'action_controller'
-require 'zilch/authorisation_manager'
+require 'refinery/authorisation_manager'
 require 'zilch/users_manager'
 
 module Refinery
@@ -27,10 +27,7 @@ module Refinery
       end
 
       def refinery_admin_root_path
-        current_refinery_user.plugins.map { |plugin|
-          user_plugin = Refinery::Plugins.active.find_by_name(plugin.name)
-          user_plugin.url if user_plugin && !user_plugin.hide_from_menu && user_plugin.url.present?
-        }.compact.first
+        current_refinery_user.landing_url
       end
 
       protected
@@ -40,7 +37,7 @@ module Refinery
       end
 
       def authenticate_refinery_user!
-        ::Zilch::AuthorisationManager.instance.authenticate!
+        ::Refinery::Core::AuthorisationManager.instance.authenticate!
       end
 
       def group_by_date(records)

@@ -14,7 +14,7 @@ module Refinery
         end
 
         def refinery_login
-          let(:logged_in_user) { Zilch::NilUser.new }
+          let(:logged_in_user) { Refinery::Core::NilUser.new }
         end
 
       end

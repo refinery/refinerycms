@@ -4,15 +4,34 @@ module Refinery
   describe "site bar", :type => :feature do
     refinery_login
 
-    it "has a logout link" do
-      visit Refinery::Core.backend_path
+    describe "logout link" do
+      let(:logout_path) { '/refinery/logout' }
 
-      expect(page).to have_content("Log out")
-      expect(page).to have_selector("a[href='/refinery/logout']")
+      context "when set" do
+        before do
+          allow(Refinery::Core).to receive(:refinery_logout_path).and_return(logout_path)
+          visit Refinery::Core.backend_path
+        end
+
+        it "is present" do
+          expect(page).to have_selector("a[href='#{logout_path}']")
+          expect(page).to have_content("Log out")
+        end
+      end
+
+      context "when not set" do
+        it "is not present" do
+          visit Refinery::Core.backend_path
+          expect(page).not_to have_content("Log out")
+          expect(page).not_to have_selector("a[href='#{logout_path}']")
+        end
+      end
     end
 
     context "when in backend" do
-      before { visit Refinery::Core.backend_path }
+      before do
+        visit Refinery::Core.backend_path
+      end
 
       it "has a 'switch to your website button'" do
         expect(page).to have_content("Switch to your website")
