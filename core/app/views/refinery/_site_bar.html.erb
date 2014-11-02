@@ -21,7 +21,8 @@
         </span>
 
         <%= link_to t('.log_out', site_bar_translate_locale_args),
-                    refinery_logout_path, :id => 'logout' %>
+                    ::Refinery::Core.refinery_logout_path,
+                    :id => 'logout' if ::Refinery::Core.refinery_logout_path.present? %>
       </div>
     </div>
   </div>
