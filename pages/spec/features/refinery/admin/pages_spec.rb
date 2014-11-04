@@ -1,14 +1,14 @@
 # encoding: utf-8
 require "spec_helper"
 
-def new_window_should_have_content(content)
-  page.within_window windows.last do
+def expect_window_with_content(content, window: windows.last)
+  page.within_window window do
     expect(page).to have_content(content)
   end
 end
 
-def new_window_should_not_have_content(content)
-  page.within_window windows.last do
+def expect_window_without_content(content, window: windows.last)
+  page.within_window window do
     expect(page).not_to have_content(content)
   end
 end
@@ -206,6 +206,7 @@ module Refinery
       end
 
       describe 'Previewing' do
+        let(:preview_content) { "Some changes I'm unsure what they will look like".freeze }
         context "an existing page" do
           before { Page.create :title => 'Preview me' }
 
@@ -213,37 +214,54 @@ module Refinery
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
-            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
-            click_button "Preview"
+            fill_in "Title", with: preview_content
+            window = window_opened_by do
+              click_button "Preview"
+            end
 
-            new_window_should_have_content("Some changes I'm unsure what they will look like")
+            expect_window_with_content(preview_content, window: window)
+
+            window.close
           end
 
           it 'will not show the site bar', :js do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
-            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
-            click_button "Preview"
+            fill_in "Title", with: preview_content
+            window = window_opened_by do
+              click_button "Preview"
+            end
 
-            new_window_should_not_have_content(
-              ::I18n.t('switch_to_website', :scope => 'refinery.site_bar')
+            expect_window_without_content(
+              ::I18n.t('switch_to_website', scope: 'refinery.site_bar'),
+              window: window
             )
-            new_window_should_not_have_content(
-              ::I18n.t('switch_to_website_editor', :scope => 'refinery.site_bar')
+            expect_window_without_content(
+              ::I18n.t('switch_to_website_editor', scope: 'refinery.site_bar'),
+              window: window
             )
+
+            window.close
           end
 
           it 'will not save the preview changes', :js do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
-            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
-            click_button "Preview"
+            fill_in "Title", with: preview_content
+            window = window_opened_by do
+              click_button "Preview"
+            end
 
-            new_window_should_have_content("Some changes I'm unsure what they will look like")
+            expect_window_with_content(
+              preview_content,
+              window: window
+            )
 
-            expect(Page.by_title("Some changes I'm unsure what they will look like")).to be_empty
+            window.close
+
+            expect(Page.by_title(preview_content)).to be_empty
           end
 
           # Regression test for previewing after save-and_continue
@@ -255,12 +273,17 @@ module Refinery
             click_button "Save & continue editing"
             expect(page).to have_content("'Save this' was successfully updated")
 
-            click_button "Preview"
+            window = window_opened_by do
+              click_button "Preview"
+            end
 
-            new_window_should_have_content("Save this")
-            new_window_should_not_have_content(
-              ::I18n.t('switch_to_website', :scope => 'refinery.site_bar')
+            expect_window_with_content("Save this", window: window)
+            expect_window_without_content(
+              ::I18n.t('switch_to_website', :scope => 'refinery.site_bar'),
+              window: window
             )
+
+            window.close
           end
 
           it 'will show pages with inherited templates', :js do
@@ -272,7 +295,7 @@ module Refinery
             select 'Searchable', :from => 'View template'
             click_button 'Preview'
 
-            new_window_should_have_content('Form application/search_form')
+            expect_window_with_content('Form application/search_form')
           end
         end
 
@@ -282,11 +305,14 @@ module Refinery
 
             click_link "Add new page"
             fill_in "Title", :with => "My first page"
-            click_button "Preview"
+            window = window_opened_by do
+              click_button "Preview"
+            end
 
-            new_window_should_have_content("My first page")
+            expect_window_with_content("My first page", window: window)
 
             expect(Page.count).to eq(0)
+            window.close
           end
         end
 
@@ -301,10 +327,12 @@ module Refinery
               find('a[tooltip^=Edit]').click
             end
 
-            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
-            click_button "Preview"
+            fill_in "Title", with: preview_content
+            window = window_opened_by do
+              click_button "Preview"
+            end
 
-            new_window_should_have_content("Some changes I'm unsure what they will look like")
+            expect_window_with_content(preview_content)
           end
         end
       end
