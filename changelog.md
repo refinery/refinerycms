@@ -9,8 +9,8 @@
 * Removed `attr_accessible` in favour of strong parameters. [#2518](https://github.com/refinery/refinerycms/pull/2518). [Philip Arndt](https://github.com/parndt)
 * Removed the Dashboard extension, now the left most tab is selected when logging in. [#2727](https://github.com/refinery/refinerycms/pull/2727). [Philip Arndt](https://github.com/parndt)
 * Removed special 'Refinery Translator' role, introduced in 0.9.22, from the core. [#2730](https://github.com/refinery/refinerycms/pull/2730). [Philip Arndt](https://github.com/parndt)
-* Enabled XHR paging by default, no configuration is needed. [Philip Arndt](https://github.com/parndt)
-* Limited the jquery-ui assets loaded in the backend to the ones we use in the core. [Philip Arndt](https://github.com/parndt)
+* Enabled XHR paging by default, no configuration is needed. [#2733](https://github.com/refinery/refinerycms/pull/2733). [Philip Arndt](https://github.com/parndt)
+* Limited the jquery-ui assets loaded in the backend to the ones we use in the core. [#2735](https://github.com/refinery/refinerycms/pull/2735). [Philip Arndt](https://github.com/parndt)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
