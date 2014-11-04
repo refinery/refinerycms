@@ -7,7 +7,7 @@ el:
     admin:
       pages_dialogs:
         page_link:
-          link_to_this_page: Σύνδεσμος στη σελίδα
+          link_to_this_page: Σύνδεσμος προς αυτήν τη σελίδα
         link_to:
           insert: Εισαγωγή
           your_page:
@@ -16,52 +16,66 @@ el:
             tab_name: Ιστοσελίδα
             location: Τοποθεσία
             new_window: Νέο παράθυρο
-            new_window_label: Κάντε κλικ εδώ για να ανοίγει ο σύνδεσμος σε νέο παράθυρο.
-            not_sure: Δεν είστε σίγουροι τι να γράψετε;
-            step1: Βρείτε τη σελίδα στον Ιστό που θέλετε να βάλετε σύνδεσμο.
-            step2: Αντιγράψτε τη διεύθυνση από το φυλλομετρητή σας και αντιγράψτε τη στο πιο πάνω πεδίο.
+            new_window_label: Επιλέξτε αυτό το πεδίο για να ανοίγει ο σύνδεσμος σε νέο παράθυρο.
+            not_sure: Δεν είστε σίγουροι τι να γράψετε στα παραπάνω πεδία;
+            step1: Βρείτε στο διαδίκτυο τη σελίδα προς την οποία θέλετε να βάλετε σύνδεσμο.
+            step2: Αντιγράψτε τη διεύθυνση από το φυλλομετρητή σας και επικολλήστε τη στο παραπάνω πεδίο.
           email_address:
-            tab_name: Διεύθυνση Email
+            tab_name: Διεύθυνση Ηλεκτρονικού Ταχυδρομείου
             subject_line_optional: Προαιρετικό θέμα
             body_optional: Προαιρετικό σώμα
-            not_sure: Δεν είστε σίγουροι τι να γράψετε;
-            step1_html: Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above.
-            step2_html: Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>.
-            step3_html: Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>.
+            not_sure: Δεν είστε σίγουροι τι να γράψετε στα παραπάνω πεδία;
+            step1_html: Τυπογραφήστε ή αντιγράψτε και επικολλήστε (π.χ. από το μπλοκ διευθύνσεών σας) τη διεύθυνση ηλεκτρονικού ταχυδρομείου που θέλετε να συνδέσετε στο πεδίο '<strong>Διεύθυνση ηλεκτρονικού ταχυδρομείου</strong>'.
+            step2_html: Χρησιμοποιήστε το πεδίο '<strong>Θέμα</strong>' αν επιθυμείτε τα μηνύματα να έχουν ένα <strong>προκαθορισμένο θέμα</strong>.
+            step3_html: Χρησιμοποιήστε το πεδίο <strong>Μήνυμα</strong> αν επιθυμείτε τα μηνύματα να έχουν ένα <strong>προκαθορισμένο περιεχόμενο</strong>.
           your_resource:
             tab_name: Το αρχείο σας
-            link_to_this_resource: Σύνδεσμος σε αυτό το αρχείο
+            link_to_this_resource: Σύνδεσμος προς αυτό το αρχείο
       pages:
         delete: Διαγραφή σελίδας
         edit: Επεξεργασία σελίδας
+        new: Προσθέστε μία υποσελίδα
+        expand_collapse: Εμφάνιση ή απόκρυψη υποσελίδων
         page:
-          view_live_html: Δείτε αυτή τη σελίδα live <br/><em>(ανοίγει σε νέο παράθυρο)</em>
+          view_live_html: Δείτε αυτή τη σελίδα ζωντανά <br/><em>(ανοίγει σε νέο παράθυρο)</em>
           hidden: κρυφό
           draft: πρόχειρο
+        form:
+          preview: Προεπισκόπηση
+          preview_changes: Προεπισκόπηση των αλλαγών πριν να γίνουν ορατές στους επισκέπτες
         form_new_page_parts:
           title: Τίτλος
         form_page_parts:
-          create_content_section: Προσθήκη περιοχής περιεχομένου
-          delete_content_section: Διαγραφή περιοχής περιεχομένου
-          reorder_content_section: Αναδιάταξη περιοχής περιεχομένου
+          create_content_section: Προσθήκη τμήματος περιεχομένου
+          delete_content_section: Διαγραφή τμήματος περιεχομένου
+          reorder_content_section: Αναδιάταξη τμημάτων περιεχομένου
+          reorder_content_section_done: Έχω ολοκληρώσει την αναδιάταξη τμημάτων περιεχομένου
         form_advanced_options:
           page_options: Επιλογές Σελίδας
-          parent_page: Ανήκει
-          show_in_menu_title: Εμφάνιση στο μενού
+          parent_page: Μητρική σελίδα
+          menu_title: Εμφάνιση στο μενού ως
+          custom_slug: Προσαρμοσμένο slug
+          show_in_menu_title: Να εμφανίζεται στο μενού
           show_in_menu_description: Να εμφανίζεται αυτή η σελίδα στο μενού
-          show_in_menu_help: Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu.
-          skip_to_first_child: Skip top-level page
-          skip_to_first_child_label: Redirect visitors to the first sub-level page.
-          skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
-          link_url: Forward this page to another website or page
-          link_url_help: 'If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. https://google.com otherwise leave it blank'
-          parent_page_help: 'You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.'
+          show_in_menu_help: Καταργήστε την επιλογή αυτού του πεδίου αν επιθυμείτε να μην εμφανίζεται η σελίδα αυτή στο μενού. Αυτό είναι χρήσιμο σε περίπτωση που επιθυμείτε να κατευθύνετε τους επισκέπτες απευθείας σε μία σελίδα, αλλά δεν επιθυμείτε η σελίδα αυτή να εμφανίζεται στο μενού.
+          skip_to_first_child: Παράκαμψη της σελίδας που ανήκει στο ανώτατο επίπεδο ιεραρχίας
+          skip_to_first_child_label: Ανακατεύθυνση επισκεπτών στην πρώτη υποσελίδα.
+          skip_to_first_child_help: Αυτή η επιλογή ανακατευθύνει τους επισκέπτες στην πρώτη υποσελίδα. Αυτό είναι χρήσιμο σε περίπτωση ομαδοποίσης σελίδων.
+          link_url: Διαβίβαση αυτής της σελίδας σε άλλη ιστοσελίδα ή σε άλλη σελίδα
+          link_url_help: 'Αν επιθυμείτε, μετά από επιλογή αυτής της σελίδας από το μενού, οι επισκέπτες να ανακατευθύνονται σε άλλη ιστοσελίδα ή απλά σε μία άλλη σελίδα, εισάγετε μια ηλεκτρονική διεύθυνση, π.χ. https://duckduckgo.com/ ειδάλλως αφήστε το πεδίο κενό'
+          parent_page_help: 'Μπορείτε να τοποθετήσετε μία σελίδα κάτω από μία άλλη σελίδα, επιλέγοντας την από τον κατάλογο. Αν επιθυμείτε αυτή σελίδα να ανήκει στο ανώτατο επίπεδο ιεραρχίας σελίδων, απλά αφήστε αυτό το πεδίο κενό.'
+          menu_title_help: Αν επιθυμείτε το μενού να εμφανίζει διαφορετικό τίτλο από αυτόν που εμφανίζεται στη σελίδα, εισάγετέ τον εδώ.
+	        custom_slug_help: Το slug είναι μια εύκολα αναγνώσιμη ταυτότητα που χρησιμοποιείται για τη δημιουργία πλήρων ηλεκτρονικών διευθύνσεων, π.χ. &apos;about-us&apos;. Για να παρακάμψετε το slug που δημιουργεί αυτόματα το Refinery, εισάγετε το επιθυμητό slug εδώ.
+	        layout_template: Διάταξη σελίδας (layout template)
+	        layout_template_help: Μπορείτε να επιλέξετε μια διαφορετική διάταξη (layout template) για αυτήν τη σελίδα
+	        view_template: Πρότυπο σελίδας (view template)
+	        view_template_help: Μπορείτε να επιλέξετε ένα διαφορετικό πρότυπο (view template) για αυτήν τη σελίδα
         actions:
           create_new_page: Προσθήκη νέας σελίδας
-          reorder_pages: Αναδιάταξη σελιδών
-          reorder_pages_done: Έγινε αναδιάταξη σελιδών
+          reorder_pages: Αναδιάταξη σελίδων
+          reorder_pages_done: Έγινε αναδιάταξη σελίδων
         records:
-          no_pages_yet: There are no pages yet. Click "Add new page" to add your first page.
+          no_pages_yet: Δεν υπάρχουν σελίδες ακόμη. Επιλέξτε "Προσθήκη νέας σελίδας" για να δημιουργήσετε την πρώτη σας σελίδα.
   activerecord:
     models:
       refinery/page: σελίδα
