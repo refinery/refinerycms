@@ -4,8 +4,7 @@ module Refinery
 
       crudify :'refinery/image',
               order: "created_at DESC",
-              sortable: false,
-              xhr_paging: true
+              sortable: false
 
       before_action :change_list_mode_if_specified, :init_dialog
 
