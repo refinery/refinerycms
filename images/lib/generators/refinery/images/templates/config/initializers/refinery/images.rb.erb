@@ -36,7 +36,7 @@ Refinery::Images.configure do |config|
   # Configure Dragonfly
   # This is where in the middleware stack to insert the Dragonfly middleware
   # config.dragonfly_insert_before = <%= Refinery::Images.dragonfly_insert_before.inspect %>
-  # config.dragonfly_secret = <%= Refinery::Images.dragonfly_secret.inspect %>
+  config.dragonfly_secret = <%= Refinery::Images.dragonfly_secret.inspect %>
   # config.dragonfly_url_format = <%= Refinery::Images.dragonfly_url_format.inspect %>
   # config.dragonfly_url_host = <%= Refinery::Images.dragonfly_url_host.inspect %>
   # config.datastore_root_path = <%= Refinery::Images.datastore_root_path.inspect %>
