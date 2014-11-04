@@ -37,7 +37,7 @@
   <h2><%%= t('.actions') %></h2>
   <ul>
     <li>
-      <%%= link_to t('.back_to_all_<%= plural_name %>'), refinery.url_for(:action => 'index'),
+    <%%= link_to t('.back_to_all_<%= plural_name %>'), refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path,
                    :class => "back_icon" %>
     </li>
     <li>
