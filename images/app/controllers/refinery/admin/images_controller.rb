@@ -77,7 +77,6 @@ module Refinery
       end
 
       def update
-        attributes_before_assignment = @image.attributes
         @image.attributes = image_params
         if @image.valid? && @image.save
           flash.notice = t(
