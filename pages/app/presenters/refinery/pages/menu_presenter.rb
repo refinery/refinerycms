@@ -82,21 +82,14 @@ module Refinery
 
       # Determine whether the supplied item is the currently open item according to Refinery.
       def selected_item?(item)
-        path = context.request.path
-        path = path.force_encoding('utf-8') if path.respond_to?(:force_encoding)
-
         # Ensure we match the path without the locale, if present.
-        if %r{^/#{::I18n.locale}/} === path
-          path = path.split(%r{^/#{::I18n.locale}}).last.presence || "/"
-        end
+        path = match_locale_for(encoded_path)
 
         # First try to match against a "menu match" value, if available.
-        return true if item.try(:menu_match).present? && path =~ Regexp.new(item.menu_match)
+        return true if menu_match_is_available?(item, path)
 
         # Find the first url that is a string.
-        url = [item.url]
-        url << ['', item.url[:path]].compact.flatten.join('/') if item.url.respond_to?(:keys)
-        url = url.last.match(%r{^/#{::I18n.locale.to_s}(/.*)}) ? $1 : url.detect{|u| u.is_a?(String)}
+        url = find_url_for(item)
 
         # Now use all possible vectors to try to find a valid match
         [path, URI.decode(path)].include?(url) || path == "/#{item.original_id}"
@@ -120,6 +113,30 @@ module Refinery
         !max_depth || menu_item.depth < max_depth
       end
 
+      private
+      def encoded_path
+        path = context.request.path
+        path.force_encoding('utf-8') if path.respond_to?(:force_encoding)
+        path
+      end
+
+      def match_locale_for(path)
+        if %r{^/#{::I18n.locale}/} === path
+          path.split(%r{^/#{::I18n.locale}}).last.presence || "/"
+        else
+          path
+        end
+      end
+
+      def menu_match_is_available?(item, path)
+        item.try(:menu_match).present? && path =~ Regexp.new(item.menu_match)
+      end
+
+      def find_url_for(item)
+        url = [item.url]
+        url << ['', item.url[:path]].compact.flatten.join('/') if item.url.respond_to?(:keys)
+        url = url.last.match(%r{^/#{::I18n.locale.to_s}(/.*)}) ? $1 : url.detect{|u| u.is_a?(String)}
+      end
     end
   end
 end
