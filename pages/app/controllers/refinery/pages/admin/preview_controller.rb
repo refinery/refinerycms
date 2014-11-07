@@ -1,11 +1,14 @@
 module Refinery
   module Pages
     module Admin
-      class PreviewController < AdminController
-        include Pages::InstanceMethods
+      class PreviewController < Refinery::PagesController
+        include ::Refinery::ApplicationController
+        helper ApplicationHelper
+        helper Refinery::Core::Engine.helpers
+        include Refinery::Admin::BaseController
         include Pages::RenderOptions
 
-        before_filter :find_page
+        skip_before_filter :error_404, :set_canonical
 
         layout :layout
 

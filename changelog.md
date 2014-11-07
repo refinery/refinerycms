@@ -1,3 +1,9 @@
+## 2.1.5 [8 November 2014]
+
+* Fixed preview when using inherited templates. [#2748](https://github.com/refinery/refinerycms/pull/2748). [Alexander Stanko](https://github.com/Rakoth)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/2.1.4...2.1.5)
+
 ## 2.1.4 [28 October 2014]
 
 * Changed Dragonfly to load before `:build_middleware_stack` instead of after `:load_config_initializers`.  [#2721](https://github.com/refinery/refinerycms/pull/2721). [Thilo-Alexander Ginkel](https://github.com/ginkel)
