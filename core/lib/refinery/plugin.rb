@@ -50,13 +50,7 @@ module Refinery
 
     # Returns a hash that can be used to create a url that points to the administration part of the plugin.
     def url
-      @url ||= if controller.present?
-        { :controller => "refinery/admin/#{controller}" }
-      elsif directory.present?
-        { :controller => "refinery/admin/#{directory.split('/').pop}" }
-      else
-        { :controller => "refinery/admin/#{name}" }
-      end
+      @url ||= build_url
 
       if @url.is_a?(Hash)
         {:only_path => true}.merge(@url)
@@ -73,6 +67,17 @@ module Refinery
       # provide a default pathname to where this plugin is using its lib directory.
       depth = RUBY_VERSION >= "1.9.2" ? 4 : 3
       self.pathname ||= Pathname.new(caller(depth).first.match("(.*)#{File::SEPARATOR}lib")[1])
+    end
+
+    private
+    def build_url
+      if controller.present?
+        { :controller => "refinery/admin/#{controller}" }
+      elsif directory.present?
+        { :controller => "refinery/admin/#{directory.split('/').pop}" }
+      else
+        { :controller => "refinery/admin/#{name}" }
+      end
     end
   end
 end
