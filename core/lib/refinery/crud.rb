@@ -335,16 +335,16 @@ module Refinery
         module_eval %(
           class << self
             def pageable?
-              #{options[:paging].to_s}
+              #{options[:paging]}
             end
             alias_method :paging?, :pageable?
 
             def sortable?
-              #{options[:sortable].to_s}
+              #{options[:sortable]}
             end
 
             def searchable?
-              #{options[:searchable].to_s}
+              #{options[:searchable]}
             end
           end
         )
