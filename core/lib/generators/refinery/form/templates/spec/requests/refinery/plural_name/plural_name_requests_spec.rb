@@ -3,9 +3,11 @@ require "spec_helper"
 module Refinery
   module <%= namespacing %>
 
-    Refinery::<%= namespacing %>::Engine::load_seed
-
     describe "<%= namespacing %> request specs" do
+
+      before(:each) do
+        Refinery::<%= namespacing %>::Engine.load_seed
+      end
 
       it "successfully gets the index path as redirection" do
         get("/<%= plural_name %>")
