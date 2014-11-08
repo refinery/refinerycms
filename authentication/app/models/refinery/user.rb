@@ -54,30 +54,15 @@ module Refinery
 
     def plugins=(plugin_names)
       return unless persisted?
-
-      plugin_names = plugin_names.dup
-      plugin_names.reject! { |plugin_name| !plugin_name.is_a?(String) }
+      plugin_names = string_plugin_names(plugin_names)
 
       if plugins.empty?
         plugin_names.each_with_index do |plugin_name, index|
           plugins.create(:name => plugin_name, :position => index)
         end
       else
-        assigned_plugins = plugins.load
-        assigned_plugins.each do |assigned_plugin|
-          if plugin_names.include?(assigned_plugin.name)
-            plugin_names.delete(assigned_plugin.name)
-          else
-            assigned_plugin.destroy
-          end
-        end
-
-        plugin_names.each do |plugin_name|
-          if plugin_name.is_a?(String)
-            plugins.create name: plugin_name,
-                           position: plugins.select(:position).map{|p| p.position.to_i}.max + 1
-          end
-        end
+        filtered_names = filter_existing_plugins_for(plugin_names)
+        create_plugins_for(filtered_names)
       end
     end
 
@@ -140,5 +125,28 @@ module Refinery
       self.username = self.username.strip.gsub(/\ {2,}/, ' ') if self.username?
     end
 
+    def string_plugin_names(plugin_names)
+      plugin_names.select{ |plugin_name| plugin_name.is_a?(String) }
+    end
+
+    def create_plugins_for(plugin_names)
+      plugin_names.each {|plugin_name| plugins.create name: plugin_name, position: plugin_position}
+    end
+
+    def plugin_position
+      plugins.select(:position).map{|p| p.position.to_i}.max + 1
+    end
+
+    def filter_existing_plugins_for(plugin_names)
+      assigned_plugins = plugins.load
+      assigned_plugins.each do |assigned_plugin|
+        if plugin_names.include?(assigned_plugin.name)
+          plugin_names.delete(assigned_plugin.name)
+        else
+          assigned_plugin.destroy
+        end
+      end
+      plugin_names
+    end
   end
 end
