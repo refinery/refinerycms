@@ -20,6 +20,7 @@ module Refinery
       let(:initial_path) { refinery.admin_images_path(view: %w(grid list).sample) }
 
       it_behaves_like 'an image index'
+      it_behaves_like 'an image previewer'
       it_behaves_like 'an image deleter'
       it_behaves_like 'an image uploader'
     end
@@ -31,6 +32,7 @@ module Refinery
       let(:initial_path) { refinery.admin_images_path(view: %w(grid list).sample) }
 
       it_behaves_like 'an image index'
+      it_behaves_like 'an image previewer'
       it_behaves_like 'an image deleter'
       it_behaves_like 'an image uploader'
     end
