@@ -36,12 +36,12 @@ module Refinery
         expect(page.path).to eq(page_title)
       end
 
-      it 'and all of its parent page titles, reversed' do
+      it 'and all of its parent page titles, ancestors first' do
         expect(created_child.path).to eq([page_title, child_title].join(' - '))
       end
 
       it 'or normally ;-)' do
-        expect(created_child.path(:reversed => false)).to eq([child_title, page_title].join(' - '))
+        expect(created_child.path(ancestors_first: false)).to eq([child_title, page_title].join(' - '))
       end
 
       it 'returns its url' do

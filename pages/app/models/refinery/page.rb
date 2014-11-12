@@ -215,15 +215,14 @@ module Refinery
       self.destroy
     end
 
-    # Used for the browser title to get the full path to this page
-    # It automatically prints out this page title and all of its parent page
-    # titles joined by a PATH_SEPARATOR
-    def path(reversed: true)
+    # Returns the full path to this page.
+    # This automatically prints out this page title and all parent page titles.
+    # The result is joined by the path_separator argument.
+    def path(path_separator: ' - ', ancestors_first: true)
       return title if root?
 
-      titles = self_and_ancestors.reverse.map(&:title)
-      titles.reverse! if reversed
-      titles.join(' - ')
+      chain = ancestors_first ? self_and_ancestors : self_and_ancestors.reverse
+      chain.map(&:title).join(path_separator)
     end
 
     def url
