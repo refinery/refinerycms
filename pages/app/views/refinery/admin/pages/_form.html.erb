@@ -44,7 +44,7 @@
         , "<%= refinery.admin_page_parts_path %>"
       );
 
-      $("#preview-button").click(function(e) {
+      $("#preview-button").on('click', function(e) {
         var $form = $(this).parents('form');
         var prev_url = $form.attr('action');
         var prev_target = $form.attr('target') || '';

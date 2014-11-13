@@ -394,18 +394,13 @@ var link_tester = {
 };
 
 var link_dialog = {
-  initialised: false
-  , init: function(){
-
-    if (!this.initialised) {
-      this.init_tabs();
-      this.init_resources_submit();
-      this.init_close();
-      this.page_tab();
-      this.web_tab();
-      this.email_tab();
-      this.initialised = true;
-    }
+  init: function(){
+    this.init_tabs();
+    this.init_resources_submit();
+    this.init_close();
+    this.page_tab();
+    this.web_tab();
+    this.email_tab();
   },
 
   init_tabs: function(){
@@ -540,30 +535,25 @@ var link_dialog = {
 };
 
 var page_options = {
-  initialised: false
-  , init: function(enable_parts, new_part_url, del_part_url){
+  init: function(enable_parts, new_part_url, del_part_url) {
+    // set the page tabs up, but ensure that all tabs are shown so that when the visual editor loads it has a proper height.
+    page_options.tabs = $('#page-tabs').tabs();
 
-    if (!this.initialised) {
-      // set the page tabs up, but ensure that all tabs are shown so that when the visual editor loads it has a proper height.
-      page_options.tabs = $('#page-tabs').tabs();
+    part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
+    $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
 
-      part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
-      $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
+    this.enable_parts = enable_parts;
+    this.new_part_url = new_part_url;
+    this.del_part_url = del_part_url;
+    this.show_options();
 
-      this.enable_parts = enable_parts;
-      this.new_part_url = new_part_url;
-      this.del_part_url = del_part_url;
-      this.show_options();
+    $(document).on('ready page:load', $.proxy(function(){
+      // hide the tabs that are supposed to be hidden.
+      $('#page-tabs .page_part.field').not(this).addClass('ui-tabs-hide');
+    }, part_shown));
 
-      $(document).on('ready page:load', $.proxy(function(){
-        // hide the tabs that are supposed to be hidden.
-        $('#page-tabs .page_part.field').not(this).addClass('ui-tabs-hide');
-      }, part_shown));
-
-      if(this.enable_parts){
-        this.page_part_dialog();
-      }
-      this.initialised = true;
+    if(this.enable_parts){
+      this.page_part_dialog();
     }
   },
 
@@ -835,8 +825,7 @@ function ImageDialog(options) {
 }
 
 var image_picker = {
-  initialised: false
-  , options: {
+  options: {
     selected: ''
     , thumbnail: 'medium'
     , field: '#image'
@@ -851,15 +840,11 @@ var image_picker = {
 
   , init: function(new_options){
 
-    if (!this.initialised) {
-      this.options = $.extend(this.options, new_options);
-      $(this.options.picker_container).find(this.options.remove_image_button)
-        .click($.proxy(this.remove_image, {container: this.options.picker_container, picker: this}));
-      $(this.options.picker_container).find(this.options.image_toggler)
-        .click($.proxy(this.toggle_image, {container: this.options.picker_container, picker: this}));
-
-      this.initialised = true;
-    }
+    this.options = $.extend(this.options, new_options);
+    $(this.options.picker_container).find(this.options.remove_image_button)
+      .click($.proxy(this.remove_image, {container: this.options.picker_container, picker: this}));
+    $(this.options.picker_container).find(this.options.image_toggler)
+      .click($.proxy(this.toggle_image, {container: this.options.picker_container, picker: this}));
 
     return this;
   }
@@ -903,15 +888,10 @@ var image_picker = {
 };
 
 var resource_picker = {
-  initialised: false
-  , callback: null
+  callback: null
 
   , init: function(callback) {
-
-    if (!this.initialised) {
-      this.callback = callback;
-      this.initialised = true;
-    }
+    this.callback = callback;
   }
 };
 
