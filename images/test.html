@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" class=" js no-flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange h
+istory draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflect
+ions csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippa
+ths"><!--<![endif]--><head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+
+  <title>Company Name - Refinery</title>
+
+  <link rel="stylesheet" media="screen" href="/assets/refinery/refinery.css" />
+    <link rel="stylesheet" media="screen" href="/assets/wymeditor.css" />
+    <link rel="stylesheet" media="screen" href="/assets/wymeditor/skins/refinery/skin.css" />
+
+  <script type="text/javascript">
+  var refinery = window.refinery || {};
+  refinery.current_admin_locale = 'en';
+</script>
+<script src="/assets/admin.js"></script><script src="/assets/refinery/refinery.js"></script><script src="/assets/refinery/application.js"></script>  <script src="/assets/re
+finery/wymeditor.js"></script>
+  <script src="/assets/wymeditor/lang/en.js"></script>
+  <script src="/assets/wymeditor/skins/refinery/skin.js"></script>
+  <script>
+    $(document).ready(function(){
+      new ImageDialog({
+        callback: null,
+        multiple: false
+      }).create();
+
+      $('input[type=radio][value=upload_image]:checked').click();
+    });
+  </script>
+
+
+
+</head>
+
+    <body class="dialog en visual_editor_iframe_body iframed" id="dialog_container">
+      <div id="tooltip_container"></div>
+      <div id="flash_container">
+
+      </div>
+      <div class="clearfix" id="content">
+        <div id="dialog_menu_left">
+    <span class="radio selected_radio" id="existing_image_radio">
+      <input type="radio" checked="checked" id="image_type_existing" value="existing_image" name="image_type" />
+      <label class="stripped" for="image_type_existing">Library</label>
+    </span>
+    <span class="radio" id="upload_image_radio">
+      <input type="radio" id="image_type_upload" value="upload_image" name="image_type" />
+      <label class="stripped" for="image_type_upload">Upload</label>
+    </span>
+</div>
+
+<div id="dialog_main">
+    <div class="dialog_area" id="existing_image_area" style="display: block;">
+  <form class="search_form" action="/refinery/images/insert?modal=true&amp;visual_editor=true" method="GET">
+  <input type="search" title="Put here a string of at least 3 characters containing what you are looking for." name="search" id="search" />
+
+  <input type="hidden" value="true" name="dialog" />
+
+  <input type="submit" value="Search" class="button" />
+</form>
+
+
+  <input type="hidden" id="selected_image" name="selected_image" />
+  <div class="clearfix" id="existing_image_area_content">
+    <ul>
+        <li>
+          <img width="106.0" height="106.0" title="Beach" src="/system/images/W1siZiIsIjIwMTQvMTEvMTIvMXF0dTdhbXJ3ZV9iZWFjaC5qcGVnIl0sWyJwIiwidGh1bWIiLCIxMDZ4MTA2I2MiXV0/be
+ach.jpeg?sha=43ca720216235709" id="image_1" data-small="/system/images/W1siZiIsIjIwMTQvMTEvMTIvMXF0dTdhbXJ3ZV9iZWFjaC5qcGVnIl0sWyJwIiwidGh1bWIiLCIxMTB4MTEwXHUwMDNlIl1d/beac
+h.jpeg?sha=aab05b698aa59c89" data-original="/system/images/W1siZiIsIjIwMTQvMTEvMTIvMXF0dTdhbXJ3ZV9iZWFjaC5qcGVnIl1d/beach.jpeg?sha=993a7cb375e69ce9" data-medium="/system/im
+ages/W1siZiIsIjIwMTQvMTEvMTIvMXF0dTdhbXJ3ZV9iZWFjaC5qcGVnIl0sWyJwIiwidGh1bWIiLCIyMjV4MjU1XHUwMDNlIl1d/beach.jpeg?sha=c61a802c6fa3d254" data-large="/system/images/W1siZiIsIj
+IwMTQvMTEvMTIvMXF0dTdhbXJ3ZV9iZWFjaC5qcGVnIl0sWyJwIiwidGh1bWIiLCI0NTB4NDUwXHUwMDNlIl1d/beach.jpeg?sha=90ea3e3a23793b9e" data-id="1" data-grid="/system/images/W1siZiIsIjIwMT
+QvMTEvMTIvMXF0dTdhbXJ3ZV9iZWFjaC5qcGVnIl0sWyJwIiwidGh1bWIiLCIxMzV4MTM1I2MiXV0/beach.jpeg?sha=d58200a272859983" alt="Beach" />        </li>
+    </ul>
+  </div>
+
+
+    <div class="clearfix" id="existing_image_size_area">
+      <input type="hidden" id="selected_image_size" name="selected_image_size" />
+      <p>
+        <input type="checkbox" checked="checked" value="1" name="wants_to_resize_image" id="wants_to_resize_image" />
+        <label style="font-weight: bold;" class="stripped" for="wants_to_resize_image">
+          Resize the image?
+        </label>
+      </p>
+      <ul>
+            <li class="image_dialog_size" id="image_dialog_size_0">
+              <a tooltip="small image (110x110)" href="#small" data-size="small" data-geometry="110x110&gt;">small</a>
+            </li>
+            <li class="image_dialog_size selected" id="image_dialog_size_1">
+              <a tooltip="medium image (225x255)" href="#medium" data-size="medium" data-geometry="225x255&gt;">medium</a>
+            </li>
+            <li class="image_dialog_size" id="image_dialog_size_2">
+              <a tooltip="large image (450x450)" href="#large" data-size="large" data-geometry="450x450&gt;">large</a>
+            </li>
+      </ul>
+    </div>
+
+  <input type="hidden" value="true" name="modal" />
+<input type="hidden" value="true" name="dialog" />
+
+<div class="form-actions form-actions-dialog">
+  <div class="form-actions-left">
+    <input type="submit" value="Insert" id="submit_button" class="wymupdate button" />
+
+
+
+
+    <a id="cancel_button" href="" class="close_dialog button">Cancel</a>
+
+      </div>
+  <div class="form-actions-right">
+
+      </div>
+</div>
+
+</div>
+
+
+      <div style="display:none;" class="dialog_area" id="upload_image_area">
+        <form method="post" id="new_image" enctype="multipart/form-data" class="new_image" action="/refinery/images?insert=true&amp;modal=true&amp;visual_editor=true" accep
+t-charset="UTF-8"><div style="display:none"><input type="hidden" value="✓" name="utf8" /></div>
+
+
+
+  <div class="field">
+      <input type="file" name="image[image][]" multiple="multiple" id="image_image" />
+  </div>
+
+  <div class="field">
+    <label>The maximum image size is 5 MB.</label>
+  </div>
+  <div id="title" class="field">
+    <span class="label_with_help">
+      <label for="image_image_title">Title</label>
+      <img width="16" height="16" tooltip="Extra information about the image" src="/assets/refinery/icons/information.png" class="help" alt="Information" />
+    </span>
+    <input type="text" placeholder="Title" name="image[image_title]" id="image_image_title" />
+  </div>
+
+  <div id="alt" class="field">
+    <span class="label_with_help">
+      <label for="image_image_alt">Alt</label>
+      <img width="16" height="16" tooltip="Text to use if the image cannot be displayed." src="/assets/refinery/icons/information.png" class="help" alt="Information" />
+    </span>
+    <input type="text" placeholder="Alt" name="image[image_alt]" id="image_image_alt" />
+  </div>
+
+  <input type="hidden" value="" name="wymeditor" />
+
+  <input type="hidden" value="true" name="modal" />
+<input type="hidden" value="true" name="dialog" />
+
+<div class="form-actions form-actions-dialog">
+  <div class="form-actions-left">
+    <input type="submit" value="Save" id="submit_button" class="wymupdate button" />
+
+
+
+
+
+
+      </div>
+  <div class="form-actions-right">
+
+      </div>
+</div>
+
+</form>
+
+      </div>
+</div>
+
+
+      </div>
+
+
+</body></html>
