@@ -41,7 +41,7 @@ module Refinery
 
         records.each do |record|
           key = record.created_at.strftime("%Y-%m-%d")
-          record_group = new_records.collect{ |records| records.last if records.first == key }.flatten.compact << record
+          record_group = new_records.map{ |r| r.last if r.first == key }.flatten.compact << record
           (new_records.delete_if { |i| i.first == key}) << [key, record_group]
         end
 
