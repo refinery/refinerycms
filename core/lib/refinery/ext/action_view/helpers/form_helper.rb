@@ -13,7 +13,7 @@ ActionView::Helpers::FormHelper.module_eval do
       object.class.human_attribute_name(method)
     end
 
-    content ||= method.humanize
+    content || method.humanize
   end
 
 end
