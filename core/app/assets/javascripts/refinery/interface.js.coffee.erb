@@ -15,7 +15,7 @@
       itemTag: $menu.children(":first").get(0).tagName.toLowerCase()
 
   $("#current_locale li a").click (e) ->
-    $("#current_locale li a span").each (span) ->
+    $("#current_locale li a span.action").each (span) ->
       $(this).css "display", (if $(this).css("display") == "none" then "" else "none")
 
     $("#other_locales").animate

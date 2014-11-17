@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.1.1 (8761) - http://www.bohemiancoding.com/sketch -->
+    <title>Speech Bubble</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="speech_bubble" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M200,340 C340,340 400,280 400,170 C400,60 340,1.6655197e-14 200,0 C60,-1.6655197e-14 7.92418517e-15,60 0,170 C7.9241855e-15,280 60,340 200,340 Z" id="bubble" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+        <path d="M340,295.253607 C340,380 260.78072,400.000008 220,400 C260.78072,360 260.78072,359.999997 260.780719,301.357599 C260.780718,242.715201 340,210.507214 340,295.253607 Z" id="tail" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+    </g>
+</svg>

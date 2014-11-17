@@ -410,7 +410,7 @@ module Refinery
           it "shows locale flag for page" do
             p = ::Refinery::Page.by_slug('news').first
             within "#page_#{p.id}" do
-              expect(page).to have_css("img[src='/assets/refinery/icons/flags/en.png']")
+              expect(page).to have_css(".locale_icon.en")
             end
           end
 
@@ -466,7 +466,7 @@ module Refinery
 
             click_link "Add new page"
             within "#switch_locale_picker" do
-              click_link "Ru"
+              click_link "ru"
             end
             fill_in "Title", :with => ru_page_title
             click_button "Save"
@@ -475,7 +475,7 @@ module Refinery
               find("a[href^='/#{Refinery::Core.backend_route}/pages/#{ru_page_slug_encoded}/edit']").click
             end
             within "#switch_locale_picker" do
-              click_link "En"
+              click_link "en"
             end
             fill_in "Title", :with => en_page_title
             find("#submit_button").click
@@ -488,8 +488,8 @@ module Refinery
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
-              expect(page).to have_css("img[src='/assets/refinery/icons/flags/en.png']")
-              expect(page).to have_css("img[src='/assets/refinery/icons/flags/ru.png']")
+              expect(page).to have_css(".locale_icon.en")
+              expect(page).to have_css(".locale_icon.ru")
             end
           end
 
@@ -545,7 +545,7 @@ module Refinery
             ru_page.destroy!
             click_link "Add new page"
             within "#switch_locale_picker" do
-              click_link "Ru"
+              click_link "ru"
             end
             fill_in "Title", :with => ru_page_title
             click_button "Save"
@@ -556,7 +556,7 @@ module Refinery
 
           it "shows locale flag for page" do
             within "#page_#{ru_page_id}" do
-              expect(page).to have_css("img[src='/assets/refinery/icons/flags/ru.png']")
+              expect(page).to have_css(".locale_icon.ru")
             end
           end
 
@@ -745,7 +745,7 @@ module Refinery
           click_link "Add new page"
 
           within "#switch_locale_picker" do
-            click_link "Lv"
+            click_link "lv"
           end
           fill_in "Title", :with => "Brīva vieta reklāmai"
           click_button "Save"
@@ -834,7 +834,7 @@ module Refinery
               end
 
               within "#switch_locale_picker" do
-                click_link "Ru"
+                click_link "ru"
               end
 
               find("#page_part_body .wym_tools_link a").click

@@ -13,9 +13,17 @@
     <% if Refinery::I18n.frontend_locales.many? %>
       <span class='locales'>
         <% page.translations.sort_by{|t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
-          <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
-                      refinery.admin_edit_page_path(page.nested_url, :switch_locale => translation.locale),
-                      :class => 'locale' if translation.title.present? %>
+          <% if translation.title.present? %>
+            <%= link_to refinery.admin_edit_page_path(page.nested_url, :switch_locale => translation.locale),
+                        :class => 'locale' do %>
+              
+              <div class="locale_icon <%= translation.locale %>">
+                <%= refinery_icon_tag('locale-blue.svg', :size => '24x24') %>
+                <span class="code"><%= translation.locale.upcase %></span>
+              </div>
+              
+            <% end %>
+          <% end %>
         <% end %>
       </span>
     <% end %>

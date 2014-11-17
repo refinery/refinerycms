@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="380px" height="380px" viewBox="0 0 380 380" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.1.1 (8761) - http://www.bohemiancoding.com/sketch -->
+    <title>Locale - blue</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="speech_bubble" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="locale" sketch:type="MSLayerGroup" fill="#CDE6FB">
+            <g id="speech_bubble" sketch:type="MSShapeGroup">
+                <path d="M190,323 C323,323 380,266 380,161.5 C380,57 323,1.58224371e-14 190,0 C57,-1.58224371e-14 7.52797591e-15,57 0,161.5 C7.52797622e-15,266 57,323 190,323 L190,323 Z" id="bubble"></path>
+                <path d="M323,280.490927 C323,361 247.741684,380.000008 209,380 C247.741684,342 247.741684,341.999997 247.741683,286.289719 C247.741682,230.579441 323,199.981853 323,280.490927 L323,280.490927 Z" id="tail"></path>
+            </g>
+        </g>
+    </g>
+</svg>
