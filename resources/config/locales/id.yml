@@ -6,15 +6,15 @@ id:
         description: Upload dan link ke file
     admin:
       resources:
-        delete: Hapus file ini selamanya
+        delete: Hapus file ini
         edit: Ubah file
         form:
-          download_current: Download file ini
+          download_current: Download file
           or: atau
           replace: " ganti file..."
           maximum_file_size: Maksimal file adalah %{bytes}.
         resource:
-          download: Download file ini (%{size})
+          download: Download file (%{size})
         actions:
           upload_new: Upload file baru
         records:
