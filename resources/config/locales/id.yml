@@ -1,0 +1,36 @@
+id:
+  refinery:
+    plugins:
+      refinery_files:
+        title: File
+        description: Upload dan link ke file
+    admin:
+      resources:
+        delete: Hapus file ini selamanya
+        edit: Ubah file
+        form:
+          download_current: Download file ini
+          or: atau
+          replace: " ganti file..."
+          maximum_file_size: Maksimal file adalah %{bytes}.
+        resource:
+          download: Download file ini (%{size})
+        actions:
+          upload_new: Upload file baru
+        records:
+          no_files_yet: Tidak ada file. Klik "Upload file baru" untuk menambahkan file.
+        insert:
+          existing: File sudah ada
+          new: File Baru
+          no_files: Tidak ada file.
+        existing_resource:
+          link_to_file: Link ke file
+          button_text: Insert
+  activerecord:
+    models:
+      refinery/resource: file
+    errors:
+      models:
+        refinery/resource:
+          blank: Tentukan file untuk upload
+          too_big: File harus lebih kecil dari %{size} byte
