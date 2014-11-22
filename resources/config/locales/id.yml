@@ -2,35 +2,35 @@ id:
   refinery:
     plugins:
       refinery_files:
-        title: File
-        description: Upload dan link ke file
+        title: Berkas
+        description: Unggah dan link ke berkas
     admin:
       resources:
-        delete: Hapus file ini selamanya
-        edit: Ubah file
+        delete: Hapus berkas ini
+        edit: Ubah berkas
         form:
-          download_current: Download file ini
+          download_current: Unduh berkas ini
           or: atau
-          replace: " ganti file..."
-          maximum_file_size: Maksimal file adalah %{bytes}.
+          replace: " ganti berkas..."
+          maximum_file_size: Maksimal berkas adalah %{bytes}.
         resource:
-          download: Download file ini (%{size})
+          download: Unduh berkas ini (%{size})
         actions:
-          upload_new: Upload file baru
+          upload_new: Unggah berkas baru
         records:
-          no_files_yet: Tidak ada file. Klik "Upload file baru" untuk menambahkan file.
+          no_files_yet: Tidak ada berkas. Klik "Unggah berkas baru" untuk menambahkan berkas.
         insert:
-          existing: File sudah ada
-          new: File Baru
-          no_files: Tidak ada file.
+          existing: Berkas sudah ada
+          new: Berkas Baru
+          no_files: Tidak ada berkas.
         existing_resource:
-          link_to_file: Link ke file
-          button_text: Insert
+          link_to_file: Link ke berkas
+          button_text: Sisipkan
   activerecord:
     models:
-      refinery/resource: file
+      refinery/resource: berkas
     errors:
       models:
         refinery/resource:
-          blank: Tentukan file untuk upload
-          too_big: File harus lebih kecil dari %{size} byte
+          blank: Tentukan berkas untuk diunggah
+          too_big: Berkas harus lebih kecil dari %{size} byte
