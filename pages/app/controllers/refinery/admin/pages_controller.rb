@@ -101,7 +101,9 @@ module Refinery
         params.permit(:parent_id, :view_template, :layout_template)
       end
 
-      private def save_and_continue_locals(page)
+      private
+      
+      def save_and_continue_locals(page)
         nested_url = page.nested_url
         {
           new_refinery_edit_page_path: refinery.admin_edit_page_path(nested_url),
