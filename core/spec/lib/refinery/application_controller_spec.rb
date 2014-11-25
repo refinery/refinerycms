@@ -13,7 +13,7 @@ module Refinery
       Rails.application.reload_routes!
     end
 
-    controller do
+    controller(ActionController::Base) do
       include ::Refinery::ApplicationController
 
       def index

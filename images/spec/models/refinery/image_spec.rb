@@ -54,7 +54,7 @@ module Refinery
         it "doesn't allow to replace it with image which has different file name" do
           created_image.image = Refinery.roots('refinery/images').join("spec/fixtures/beach-alternate.jpeg")
           expect(created_image).not_to be_valid
-          expect(created_image.error_on(:image_name).size).to be >= 1
+          expect(created_image.errors.messages[:image_name].size).to be >= 1
         end
 
         it "allows to replace it with image which has the same file name" do
