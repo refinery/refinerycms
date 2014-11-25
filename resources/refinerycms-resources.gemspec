@@ -24,5 +24,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'dragonfly-s3_data_store', '~> 1.0.0'
   s.add_dependency 'refinerycms-core',        version
 
-  s.required_ruby_version = '>= 2.1.2'
+  s.required_ruby_version = Refinery::Version.required_ruby_version
 end
