@@ -40,7 +40,7 @@ module Refinery
 
     # If title changes tell friendly_id to regenerate slug when saving record
     def should_generate_new_friendly_id?
-      changes.keys.include?("title")
+      changes.keys.include?("title") || changes.keys.include?("custom_slug")
     end
 
     # Delegate SEO Attributes to globalize translation
@@ -180,7 +180,8 @@ module Refinery
     # Returns in cascading order: custom_slug or menu_title or title depending on
     # which attribute is first found to be present for this page.
     def custom_slug_or_title
-      custom_slug.presence || menu_title.presence || title.presence
+      (Refinery::Pages.use_custom_slugs && custom_slug.presence) ||
+        menu_title.presence || title.presence
     end
 
     # Am I allowed to delete this page?
