@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'refinerycms-core',        version
   s.add_dependency 'database_cleaner',        '~> 1.3.0'
   s.add_dependency 'factory_girl_rails',      '~> 4.4.1'
-  s.add_dependency 'rspec-rails',             '~> 2.13'
+  s.add_dependency 'rspec-rails',             '~> 3.0'
   s.add_dependency 'capybara',                '~> 2.4.3'
   s.add_dependency 'selenium-webdriver',      '~> 2.43'
 

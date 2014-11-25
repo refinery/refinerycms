@@ -26,7 +26,7 @@ describe Refinery::Resources do
     end
 
     before(:each) do
-      Refinery::Core.stub(:dragonfly_custom_backend_class => DummyBackend1)
+      allow(Refinery::Core).to receive_messages(:dragonfly_custom_backend_class => DummyBackend1)
     end
 
     after(:each) do
