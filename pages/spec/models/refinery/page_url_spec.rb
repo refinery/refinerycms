@@ -29,6 +29,14 @@ module Refinery
       allow(Pages).to receive(:scope_slug_by_parent).and_return(true)
     end
 
+    def turn_on_custom_slugs
+      allow(Pages).to receive(:use_custom_slugs).and_return(true)
+    end
+
+    def turn_off_custom_slugs
+      allow(Pages).to receive(:use_custom_slugs).and_return(false)
+    end
+
     context 'page urls' do
       let(:page_path) { 'rspec-is-great-for-testing-too' }
       let(:child_path) { 'the-child-page' }
@@ -159,8 +167,12 @@ module Refinery
       let(:page_with_custom_route) {
         subject.class.new(:title => page_title, :custom_slug => custom_route)
       }
+      before do
+        turn_on_custom_slugs
+      end
 
       after(:each) do
+        turn_off_custom_slugs
         allow(Refinery::I18n).to receive(:current_frontend_locale).and_return(I18n.default_frontend_locale)
         allow(Refinery::I18n).to receive(:current_locale).and_return(I18n.default_locale)
       end
@@ -261,6 +273,14 @@ module Refinery
 
           expect(new_page.errors[:custom_slug]).not_to be_empty
         end
+      end
+
+      it 'correctly assigns slug when custom_slug updates.' do
+        page_without_custom_slug = subject.class.create(:title => page_title)
+        page_without_custom_slug.custom_slug = custom_page_slug
+        expect {
+          page_without_custom_slug.save
+        }.to change(page_without_custom_slug, :slug).to(custom_page_slug)
       end
     end
 
