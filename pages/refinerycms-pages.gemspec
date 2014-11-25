@@ -26,5 +26,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'refinerycms-core',            version
   s.add_dependency 'babosa',                      '!= 0.3.6'
 
-  s.required_ruby_version = '>= 2.1.2'
+  s.required_ruby_version = Refinery::Version.required_ruby_version
 end

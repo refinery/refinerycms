@@ -11,6 +11,10 @@ module Refinery
       def to_s
         [@major, @minor, @tiny, @build].compact.join('.')
       end
+
+      def required_ruby_version
+        '>= 2.1.2'
+      end
     end
   end
 end
