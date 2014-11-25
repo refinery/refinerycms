@@ -13,7 +13,7 @@ module Refinery
       end
 
       def required_ruby_version
-        '>= 2.1.2'
+        '>= 2.0.0'
       end
     end
   end
