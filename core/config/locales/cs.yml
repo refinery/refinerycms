@@ -16,7 +16,7 @@ cs:
     site_bar:
       log_out: Odhlásit
       switch_to_your_website: Přepnout na web
-      switch_to_your_website_editor: Přepnout do editoru
+      switch_to_your_website_editor: Přepnout do administrace
     admin:
       menu:
         reorder_menu: Přeuspořádat menu
