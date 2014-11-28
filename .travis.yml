@@ -34,4 +34,5 @@ notifications:
 rvm:
   - 2.0
   - 2.1
+  - rbx-2
 sudo: false
