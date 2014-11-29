@@ -15,6 +15,10 @@ cs:
           replace_image: " nahradit jej tímto..."
           current_image: Vybraný obrázek
           maximum_image_size: Maximální velikost obrázku je %{bytes}.
+          image_title: Název
+          image_title_help: Extra informace o obrázku
+          image_alt: Alternativní text
+          image_alt_help: "Text místo obrázku, když nemůže být obrázek zobrazen."
         actions:
           create_new_image: Přidat nový obrázek
         records:
@@ -41,3 +45,4 @@ cs:
           blank: Musíte zadat obrázek který chcete nahrát
           too_big: Maximální velikost obrázku je %{size} MB
           incorrect_format: 'Obrázek musí být ve formátu JPG, PNG nebo GIF'
+          different_file_name: Nový obrázek nesmí mít jiný název
