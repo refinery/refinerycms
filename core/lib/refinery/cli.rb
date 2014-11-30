@@ -82,7 +82,7 @@ module Refinery
       if (matches = crud_lines.scan(/(\ +)(def #{action}.+?protected)/m).first).present? &&
          (method_lines = "#{matches.last.split(%r{^#{matches.first}end}).first.strip}\nend".split("\n")).many?
         indent = method_lines.second.index %r{[^ ]}
-        crud_method = method_lines.join("\n").gsub /^#{" " * indent}/, "  "
+        crud_method = method_lines.join("\n").gsub(/^#{" " * indent}/, "  ")
 
         crud_options = controller_class.try(:crudify_options) || {}
         crud_method.gsub! '#{options[:redirect_to_url]}', crud_options[:redirect_to_url].to_s
