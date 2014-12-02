@@ -1,14 +1,19 @@
 namespace :refinery do
   namespace :testing do
     desc "Generates a dummy app for testing"
-    task :dummy_app do
-      unless dummy_app_path.exist?
-        Rake::Task["refinery:testing:setup_dummy_app"].invoke
-        Rake::Task["refinery:testing:setup_extension"].invoke
-        Rake::Task["refinery:testing:init_test_database"].invoke
-      end
+    task :dummy_app => [
+      :report_dummy_app_status,
+      :setup_dummy_app,
+      :setup_extension,
+      :init_test_database
+    ]
+
+    desc "raises if there is already a dummy app"
+    task :report_dummy_app_status do
+      raise "\nPlease rm -rf '#{dummy_app_path}'\n\n" if dummy_app_path.exist?
     end
 
+    desc "Sets up just the dummy application for testing, no migrations or extensions"
     task :setup_dummy_app do
       require 'refinerycms-core'
 
@@ -16,9 +21,6 @@ namespace :refinery do
       params << "--database=#{ENV['DB']}" if ENV['DB']
 
       Refinery::DummyGenerator.start params
-
-      # Ensure the database is not there from a previous run.
-      Rake::Task['refinery:testing:drop_dummy_app_database'].invoke
 
       Refinery::CmsGenerator.start %w[--quiet --fresh-installation]
 
@@ -41,8 +43,7 @@ namespace :refinery do
     end
 
     desc "Remove the dummy app used for testing"
-    task :clean_dummy_app do
-      Rake::Task['refinery:testing:drop_dummy_app_database'].invoke
+    task :clean_dummy_app => [:drop_dummy_app_database] do
       dummy_app_path.rmtree if dummy_app_path.exist?
     end
 
