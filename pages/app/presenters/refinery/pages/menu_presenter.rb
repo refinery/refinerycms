@@ -113,7 +113,6 @@ module Refinery
         !max_depth || menu_item.depth < max_depth
       end
 
-      private
       def encoded_path
         path = context.request.path
         path.force_encoding('utf-8') if path.respond_to?(:force_encoding)
