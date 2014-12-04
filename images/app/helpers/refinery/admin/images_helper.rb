@@ -13,7 +13,7 @@ module Refinery
           :"data-grid" => image_path(image.thumbnail(:geometry => '135x135#c').url)
         }
 
-        Refinery::Images.user_image_sizes.sort_by{ |key,geometry| geometry}.each do |size, pixels|
+        Refinery::Images.user_image_sizes.sort_by{ |key, geometry| geometry}.each do |size, pixels|
           thumbnail_urls[:"data-#{size.to_s.parameterize}"] = image_path(image.thumbnail(:geometry => pixels).url)
         end
 
