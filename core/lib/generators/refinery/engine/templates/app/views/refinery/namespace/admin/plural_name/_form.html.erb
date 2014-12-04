@@ -1,5 +1,5 @@
 <%
-  text_areas = attributes.reject{|a| a.field_type.to_s != 'text_area'}
+  text_areas = attributes.reject{ |a| a.field_type.to_s != 'text_area'}
   generated_text_areas = false
 -%>
 <%%= form_for [refinery, :<%= namespacing.underscore %>_admin, @<%= singular_name %>] do |f| -%>
@@ -35,7 +35,7 @@
   <div class='field'>
     <%%= render '/refinery/admin/wysiwyg',
                 :f => f,
-                :fields => <%= text_areas.map{|t| t.name.to_sym}.inspect -%>,
+                :fields => <%= text_areas.map{ |t| t.name.to_sym}.inspect -%>,
                 :object => "<%= namespacing.underscore -%>/<%= singular_name -%>" -%>
   </div>
 

@@ -3,12 +3,12 @@ module Refinery
     module PagesHelper
       def parent_id_nested_set_options(current_page)
         pages = []
-        nested_set_options(::Refinery::Page, current_page) {|page| pages << page}
+        nested_set_options(::Refinery::Page, current_page) { |page| pages << page}
         # page.title needs the :translations association, doing something like
         # nested_set_options(::Refinery::Page.includes(:translations), page) doesn't work, yet.
         # See https://github.com/collectiveidea/awesome_nested_set/pull/123
         ActiveRecord::Associations::Preloader.new.preload(pages, :translations)
-        pages.map {|page| ["#{'-' * page.level} #{page.title}", page.id]}
+        pages.map { |page| ["#{'-' * page.level} #{page.title}", page.id]}
       end
 
       def template_options(template_type, current_page)
@@ -50,7 +50,7 @@ module Refinery
       # We show the title from the next available locale
       # if there is no title for the current locale
       def page_title_with_translations(page)
-        page.title.presence || page.translations.detect {|t| t.title.present?}.title
+        page.title.presence || page.translations.detect { |t| t.title.present?}.title
       end
     end
   end

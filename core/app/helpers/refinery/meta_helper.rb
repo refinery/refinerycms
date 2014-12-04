@@ -3,7 +3,7 @@ module Refinery
 
     # This is used to display the title of the current object (normally a page) in the browser's titlebar.
     #
-    def browser_title(yield_title=nil)
+    def browser_title(yield_title = nil)
       [
         yield_title,
         @meta.browser_title.presence || @meta.path,

@@ -3,7 +3,7 @@ module Refinery
     module Admin
       module InstanceMethods
 
-        def error_404(exception=nil)
+        def error_404(exception = nil)
           if (@page = ::Refinery::Page.where(:menu_match => "^/404$").includes(:parts).first).present?
             params[:action] = 'error_404'
             # change any links in the copy to the Refinery::Core.backend_path

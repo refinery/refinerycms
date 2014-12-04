@@ -113,7 +113,7 @@ module Refinery
       it 'only contains items that are registered' do
         subject.class.set_active(%w(my_plugin))
         expect(subject.class.active.any?).to be_truthy
-        expect(subject.class.active.all?{|p| subject.class.registered.include?(p)}).to be_truthy
+        expect(subject.class.active.all?{ |p| subject.class.registered.include?(p)}).to be_truthy
       end
     end
 

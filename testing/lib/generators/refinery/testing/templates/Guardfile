@@ -13,7 +13,7 @@ guard 'spork', :wait => 60, :cucumber => false, :rspec_env => { 'RAILS_ENV' => '
   end
 end
 
-guard 'rspec', :version => 2, :spec_paths => extensions.map{|e| "#{e}/spec"},
+guard 'rspec', :version => 2, :spec_paths => extensions.map{ |e| "#{e}/spec"},
   :cli => (File.read('.rspec').split("\n").join(' ') if File.exists?('.rspec')) do
   extensions.each do |extension|
     watch(%r{^#{extension}/spec/.+_spec\.rb$})

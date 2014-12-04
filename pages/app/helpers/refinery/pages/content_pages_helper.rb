@@ -18,7 +18,7 @@ module Refinery
       # so avoid common layout names such as :header, :footer, etc.
       def render_content_presenter(content_page, options = {})
         content_page.hide_sections(options[:hide_sections]) if options[:hide_sections]
-        content_page.fetch_template_overrides {|section_id| content_for(section_id)}
+        content_page.fetch_template_overrides { |section_id| content_for(section_id)}
         content_page.to_html(options[:can_use_fallback])
       end
     end

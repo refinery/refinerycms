@@ -13,7 +13,7 @@ module Refinery
         FinderByTitle.new(title).find
       end
 
-      def self.by_slug(slug, conditions={})
+      def self.by_slug(slug, conditions = {})
         FinderBySlug.new(slug, conditions).find
       end
 

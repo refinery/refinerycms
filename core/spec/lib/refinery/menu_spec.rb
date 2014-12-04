@@ -5,7 +5,7 @@ require 'refinery/menu_item'
 module Refinery
   describe Menu do
     it 'constructs a menu given items' do
-      Menu.new([{:id => 1}, {:id => 2}]).items.each {|item|
+      Menu.new([{:id => 1}, {:id => 2}]).items.each { |item|
         expect(item).to be_kind_of MenuItem
       }
     end

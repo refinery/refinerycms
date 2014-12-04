@@ -142,7 +142,6 @@ module Refinery
         CGI::unescape(filename.to_s).gsub(/\.\w+$/, '').titleize
       end
 
-
       def image_params
         params.require(:image).permit(:image, :image_size, :image_title, :image_alt)
       end

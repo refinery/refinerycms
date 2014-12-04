@@ -16,7 +16,7 @@ module Refinery
 
     # We don't like this alert.
     def clear_unauthenticated_flash
-      if flash.keys.include?(:alert) and flash.any?{|k, v|
+      if flash.keys.include?(:alert) and flash.any?{ |k, v|
         ['unauthenticated', t('unauthenticated', :scope => 'devise.failure')].include?(v)
       }
         flash.delete(:alert)

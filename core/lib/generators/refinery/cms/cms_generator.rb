@@ -99,7 +99,7 @@ gem 'pg'
 
     def copy_files!
       # The extension installer only installs database templates.
-      Pathname.glob(self.class.source_root.join('**', '*')).reject{|f|
+      Pathname.glob(self.class.source_root.join('**', '*')).reject{ |f|
         f.directory? or f.to_s =~ /\/db\//
       }.sort.each do |path|
         copy_file path, path.to_s.gsub(self.class.source_root.to_s, destination_path.to_s)
@@ -157,7 +157,7 @@ gem 'pg'
 
     def ensure_environments_are_sane!
       # Massage environment files
-      %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
+      %w(development test production).map{ |e| "config/environments/#{e}.rb"}.each do |env|
         next unless destination_path.join(env).file?
 
         # Refinery does not necessarily expect action_mailer to be available as

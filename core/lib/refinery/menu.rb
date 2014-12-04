@@ -19,7 +19,7 @@ module Refinery
     end
 
     def roots
-      @roots ||= select {|item| item.orphan? && item.depth == minimum_depth }
+      @roots ||= select { |item| item.orphan? && item.depth == minimum_depth }
     end
 
     def to_s

@@ -88,7 +88,7 @@ module Refinery
 
     def has_role?(title)
       raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(::Refinery::Role)
-      roles.any?{|r| r.title == title.to_s.camelize}
+      roles.any?{ |r| r.title == title.to_s.camelize}
     end
 
     def create_first
@@ -130,11 +130,11 @@ module Refinery
     end
 
     def create_plugins_for(plugin_names)
-      plugin_names.each {|plugin_name| plugins.create name: plugin_name, position: plugin_position}
+      plugin_names.each { |plugin_name| plugins.create name: plugin_name, position: plugin_position}
     end
 
     def plugin_position
-      plugins.select(:position).map{|p| p.position.to_i}.max + 1
+      plugins.select(:position).map{ |p| p.position.to_i}.max + 1
     end
 
     def filter_existing_plugins_for(plugin_names)
