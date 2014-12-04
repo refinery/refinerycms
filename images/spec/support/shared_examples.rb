@@ -11,7 +11,6 @@ shared_examples_for 'an image index' do
     ensure_on(initial_path)
   end
 
-
   it 'shows all the images' do
     expect(page).to have_selector('#records.images li', count: image_count)
   end
@@ -159,4 +158,3 @@ end
 
 shared_examples 'an image previewer' do
 end
-

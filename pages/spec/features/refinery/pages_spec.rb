@@ -156,7 +156,7 @@ module Refinery
       before do
         allow(Page).to receive(:fast_menu).and_return([page_cs])
       end
-      
+
       describe 'canonical url' do
         it 'should have a canonical url' do
           visit '/about-us'

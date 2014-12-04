@@ -8,7 +8,7 @@ module Refinery
 
       @original_width = original_width.to_f
       @original_height = original_height.to_f
-      
+
       process
     end
       

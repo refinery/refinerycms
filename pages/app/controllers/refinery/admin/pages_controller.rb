@@ -102,7 +102,7 @@ module Refinery
       end
 
       private
-      
+
       def save_and_continue_locals(page)
         nested_url = page.nested_url
         {

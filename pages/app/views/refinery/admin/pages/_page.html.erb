@@ -16,7 +16,7 @@
           <% if translation.title.present? %>
             <%= link_to refinery.admin_edit_page_path(page.nested_url, :switch_locale => translation.locale),
                         :class => 'locale' do %>
-              
+
               <div class="locale_icon <%= translation.locale %>">
                 <%= refinery_icon_tag('locale-blue.svg', :size => '24x24') %>
                 <span class="code"><%= translation.locale.upcase %></span>
