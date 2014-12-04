@@ -75,7 +75,7 @@ module Refinery
         super unless action_name == 'insert'
       end
 
-      def paginate_resources(conditions={})
+      def paginate_resources(conditions = {})
         @resources = Resource.where(conditions).
                               paginate(:page => params[:page], :per_page => Resource.per_page(from_dialog?)).
                               order('created_at DESC')

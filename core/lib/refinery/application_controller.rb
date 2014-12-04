@@ -21,7 +21,7 @@ module Refinery
       %r{^admin/} === controller_name
     end
 
-    def error_404(exception=nil)
+    def error_404(exception = nil)
       # fallback to the default 404.html page.
       file = Rails.root.join 'public', '404.html'
       file = Refinery.roots('refinery/core').join('public', '404.html') unless file.exist?
@@ -57,7 +57,7 @@ module Refinery
       @meta = presenter_for(model).new(model)
     end
 
-    def presenter_for(model, default=BasePresenter)
+    def presenter_for(model, default = BasePresenter)
       return default if model.nil?
 
       "#{model.class.name}Presenter".constantize

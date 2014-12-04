@@ -3,7 +3,7 @@ module Refinery
 
     # Returns <img class='help' tooltip='Your Input' src='refinery/icons/information.png' />
     # Remember to wrap your block with <span class='label_with_help'></span> if you're using a label next to the help tag.
-    def refinery_help_tag(title='')
+    def refinery_help_tag(title = '')
       title = h(title) unless title.html_safe?
 
       refinery_icon_tag('information', :class => 'help', :tooltip => title)

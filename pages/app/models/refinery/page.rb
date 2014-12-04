@@ -114,7 +114,7 @@ module Refinery
       # are translated which means the slug attribute does not exist on the
       # pages table thus requiring us to find the attribute on the translations table
       # and then join to the pages table again to return the associated record.
-      def by_slug(slug, conditions={})
+      def by_slug(slug, conditions = {})
         Pages::Finder.by_slug(slug, conditions)
       end
 
