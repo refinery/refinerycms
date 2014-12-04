@@ -73,7 +73,7 @@ h4. How do I add a new page part to all existing pages?
 There is no facility for this. In your console, you will have to run:
 
 <ruby>
-Refinery::Page.all.map do {|p| p.parts.create(:title => "My Page Part", :position => 3) }
+Refinery::Page.all.map do { |p| p.parts.create(:title => "My Page Part", :position => 3) }
 </ruby>
 
 If you wish to make this a default for all new pages, be sure to add it to your

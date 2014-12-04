@@ -6,8 +6,8 @@ module Refinery
 
     no_tasks do
       def source_paths
-        Refinery::Plugins.registered.pathnames.map{|p|
-          %w(app vendor).map{|dir| p.join(dir, @override_kind[:dir])}
+        Refinery::Plugins.registered.pathnames.map{ |p|
+          %w(app vendor).map{ |dir| p.join(dir, @override_kind[:dir])}
         }.flatten.uniq
       end
     end
@@ -118,11 +118,11 @@ module Refinery
     end
 
     def find_matches(pattern)
-      Set.new source_paths.map {|path| Dir[path.join(pattern)] }.flatten
+      Set.new source_paths.map { |path| Dir[path.join(pattern)] }.flatten
     end
 
     def find_relative_matches(pattern)
-      find_matches(pattern).map {|match| strip_source_paths(match) }
+      find_matches(pattern).map { |match| strip_source_paths(match) }
     end
 
     def strip_source_paths(match)

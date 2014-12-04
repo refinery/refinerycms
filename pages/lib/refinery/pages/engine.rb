@@ -54,7 +54,7 @@ module Refinery
           # do not add routes with :allow_slug => true
           included_routes = Rails.application.routes.named_routes.routes.reject{ |name, route| route.defaults[:allow_slug] }
           route_paths = included_routes.map { |name, route| route.path.spec }
-          route_paths.reject! {|path| path.to_s =~ %r{^/(rails|refinery)}}
+          route_paths.reject! { |path| path.to_s =~ %r{^/(rails|refinery)}}
           Refinery::Page.friendly_id_config.reserved_words |= route_paths.map { |path|
             path.to_s.gsub(%r{^/}, '').to_s.split('(').first.to_s.split(':').first.to_s.split('/')
           }.flatten.reject { |w| w =~ %r{_|\.} }.uniq

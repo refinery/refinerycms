@@ -12,7 +12,7 @@
     </span>
     <% if Refinery::I18n.frontend_locales.many? %>
       <span class='locales'>
-        <% page.translations.sort_by{|t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
+        <% page.translations.sort_by{ |t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
           <% if translation.title.present? %>
             <%= link_to refinery.admin_edit_page_path(page.nested_url, :switch_locale => translation.locale),
                         :class => 'locale' do %>

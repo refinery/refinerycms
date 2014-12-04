@@ -54,7 +54,7 @@ module Refinery
       end
 
       def deactivate(name)
-        active.delete_if {|p| p.name == name}
+        active.delete_if { |p| p.name == name}
       end
 
       def set_active(names)

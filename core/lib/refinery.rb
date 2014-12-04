@@ -148,7 +148,7 @@ module Refinery
 
       if options[:admin]
         # Most of the time this gets rid of 'refinery'
-        parts = active_name.to_s.underscore.split('/').reject{|name|
+        parts = active_name.to_s.underscore.split('/').reject{ |name|
           active_name.singular_route_key.exclude?(name)
         }
 
@@ -171,14 +171,14 @@ module Refinery
     private
     def detect_invoker(the_caller = caller)
       return '' unless the_caller && the_caller.respond_to?(:detect)
-      the_caller.detect{|c| /#{Rails.root}/ === c }.inspect.to_s.split(':in').first
+      the_caller.detect{ |c| /#{Rails.root}/ === c }.inspect.to_s.split(':in').first
     end
 
     # plain Module#included? or Module#included_modules doesn't cut it here
     def included_extension_module?(base, extension_module)
       if base.kind_of?(Class)
         direct_superclass = base.superclass
-        base.ancestors.take_while {|ancestor| ancestor != direct_superclass}.include?(extension_module)
+        base.ancestors.take_while { |ancestor| ancestor != direct_superclass}.include?(extension_module)
       else
         base < extension_module # can't do better than that for modules
       end
