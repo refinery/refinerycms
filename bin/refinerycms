@@ -30,12 +30,12 @@ if ARGV.empty?
 end
 
 case ARGV.first
-  when "-h", "--help"
-    show_help_message
-    exit 0
-  when "-v", "--version"
-    puts "Refinery CMS #{Gem.loaded_specs['refinerycms'].version}"
-    exit 0
+when "-h", "--help"
+  show_help_message
+  exit 0
+when "-v", "--version"
+  puts "Refinery CMS #{Gem.loaded_specs['refinerycms'].version}"
+  exit 0
 end
 
 application_name = ARGV.shift
