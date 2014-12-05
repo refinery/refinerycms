@@ -15,7 +15,7 @@ module Refinery
     self.dragonfly_url_host = ''
 
     self.content_disposition = :attachment
-    self.max_file_size = 52428800
+    self.max_file_size = 52_428_800
     self.pages_per_dialog = 12
     self.pages_per_admin_index = 20
 
