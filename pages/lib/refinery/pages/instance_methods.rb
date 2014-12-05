@@ -26,7 +26,8 @@ module Refinery
         Menu.new Page.fast_menu
       end
 
-    protected
+      protected
+
       def render_with_presenters(*args)
         present @page unless admin? || @meta
         render_without_presenters(*args)

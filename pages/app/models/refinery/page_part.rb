@@ -25,6 +25,7 @@ module Refinery
     end
 
     protected
+
     def normalise_text_fields
       if body? && body !~ %r{^<}
         self.body = "<p>#{body.gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>"

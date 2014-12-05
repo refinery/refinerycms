@@ -29,6 +29,7 @@ module Refinery
     delegate :inspect, :map, :select, :detect, :first, :last, :length, :size, :to => :items
 
     protected
+
     def minimum_depth
       map(&:depth).compact.min
     end

@@ -54,6 +54,7 @@ module Refinery
       end
 
       protected
+
       def create_successful
         @user.plugins = @selected_plugin_names
 

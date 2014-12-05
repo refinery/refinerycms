@@ -63,6 +63,7 @@ module Refinery
 
     # Make this protected, so that only Plugin.register can use it.
     protected
+
     def initialize
       # provide a default pathname to where this plugin is using its lib directory.
       depth = RUBY_VERSION >= "1.9.2" ? 4 : 3
@@ -70,6 +71,7 @@ module Refinery
     end
 
     private
+
     def build_url
       if controller.present?
         { :controller => "refinery/admin/#{controller}" }
