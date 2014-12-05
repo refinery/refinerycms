@@ -70,7 +70,7 @@ module Refinery
       end
 
       def create_failed
-        render :action => 'new'
+        render 'new'
       end
 
       def update_successful

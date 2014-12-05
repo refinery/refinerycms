@@ -29,13 +29,13 @@ module Refinery
             flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.map(&:title).join("', '")}'")
             if from_dialog?
               @dialog_successful = true
-              render :template => "/refinery/admin/dialog_success", :layout => true
+              render '/refinery/admin/dialog_success', layout: true
             else
               redirect_to refinery.admin_resources_path
             end
           else
             self.new # important for dialogs
-            render :action => 'new'
+            render 'new'
           end
         end
       end
@@ -55,7 +55,7 @@ module Refinery
         else
           paginate_resources
         end
-        render :action => "insert"
+        render 'insert'
       end
 
     protected

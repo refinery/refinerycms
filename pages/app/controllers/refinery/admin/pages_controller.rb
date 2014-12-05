@@ -49,7 +49,7 @@ module Refinery
               :include_object_name => true
             }
           else
-            render :action => 'edit'
+            render 'edit'
           end
         end
       end
