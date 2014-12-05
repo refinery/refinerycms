@@ -11,7 +11,7 @@ module Refinery
 
       process
     end
-      
+
     def process
       if valid_geometry && resize_geometry && resize_necessary
         scale
