@@ -45,7 +45,7 @@ In the case of a controller method, you can get easy access to the code with
 the +refinery:uncrudify+ rake task:
 
 <shell>
-$ bundle exec rake refinery:uncrudify controller=refinery/admin/pages action=create
+$ bin/rake refinery:uncrudify controller=refinery/admin/pages action=create
 </shell>
 
 TIP. Running the +rake refinery:uncrudify+ task outputs to +stdout+, and will not modify any files, so you can do so without fear of overwriting your existing controller modifications.
@@ -112,5 +112,5 @@ In Refinery 1.0.x, you have have two choices. The more severe one is to reset al
 slugs for that model:
 
 <shell>
-MODEL=news_item bundle exec rake friendly_id:redo_slugs
+MODEL=news_item bin/rake friendly_id:redo_slugs
 </shell>

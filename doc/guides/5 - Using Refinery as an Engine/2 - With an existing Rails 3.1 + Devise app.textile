@@ -51,7 +51,7 @@ cd ExistingApp
 bundle
 rails generate devise:install
 rails generate devise User # Devise might be using another model name in your existing application
-bundle exec rake db:migrate
+bin/rake db:migrate
 </shell>
 
 Next we'll add a static, unrestricted home page, the notice and alert flashes to the application default layout, and a restricted_content controller and view.
@@ -321,7 +321,7 @@ end
 </ruby>
 
 <shell>
-bundle exec rake db:migrate
+bin/rake db:migrate
 </shell>
 
 Now we need to add authentication goodness manually, it will just consist in telling refinery to use your devise helpers.
@@ -410,7 +410,7 @@ If you try to access http://localhost:3000/refinery (Refinery's administrative b
 Indeed, we have to correct one view to set the proper url helper.
 
 <shell>
-bundle exec rake refinery:override view=refinery/_site_bar
+bin/rake refinery:override view=refinery/_site_bar
 </shell>
 
 Now the partial has been moved to your app, change @destroy_refinery_user_session_path@, with @destroy_user_session_path@.

@@ -43,7 +43,7 @@ Refinery::Testing::Railtie.load_dummy_tasks ENGINE_PATH
 And run the dummy application generator:
 
 <shell>
-$ bundle exec rake refinery:testing:dummy_app
+$ bin/rake refinery:testing:dummy_app
 </shell>
 
 NOTE: To successfully run rake tasks within your project you may need to add the +refinerycms-testing+ gem to your application's Gemfile, too.
@@ -51,14 +51,14 @@ NOTE: To successfully run rake tasks within your project you may need to add the
 h3. Running the tests with Rake
 
 <shell>
-$ bundle exec rake spec
+$ bin/rake spec
 </shell>
 
 This will run the rspec specs.
 
 This is the most simple way to execute the test suite and useful for a one time run.
 
-NOTE: If you get +Could not find table+ errors, it may help to delete the +spec/dummy+ directory and run +bundle exec rake refinery:testing:dummy_app+ again.
+NOTE: If you get +Could not find table+ errors, it may help to delete the +spec/dummy+ directory and run +bin/rake refinery:testing:dummy_app+ again.
 
 h3. Running the tests with Guard
 
@@ -67,7 +67,7 @@ We recommend using Guard if you like to develop using TDD. Guard will watch your
 At your extension's root directory run:
 
 <shell>
-$ bundle exec guard start
+$ bin/guard start
 </shell>
 
 Larger Rails apps, particularly on Ruby 1.9.2, may take several seconds (or more) to start up. If that's the case, you might also want to use Spork, which loads a single instance of the Rails environment and forks it to run tests, for even faster feedback cycles.
