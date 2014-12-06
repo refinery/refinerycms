@@ -22,10 +22,7 @@ namespace :refinery do
     task :setup_dummy_app do
       require 'refinerycms-core'
 
-      params = %w(--quiet)
-      params << "--database=#{ENV['DB']}" if ENV['DB']
-
-      Refinery::DummyGenerator.start params
+      Refinery::DummyGenerator.start %W[--quiet --database=#{ENV['DB'].presence || 'sqlite3'}]
 
       Refinery::CmsGenerator.start %w[--quiet --fresh-installation]
 
