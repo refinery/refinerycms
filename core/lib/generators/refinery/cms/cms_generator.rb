@@ -206,8 +206,9 @@ gem 'pg'
 
     def migrate_database!
       unless self.options[:skip_migrations]
-        rake 'railties:install:migrations'
-        rake 'db:create db:migrate' unless self.options[:skip_db]
+        command = %w[railties:install:migrations]
+        command |= %w[db:create db:migrate] unless self.options[:skip_db]
+        rake command.join(' ')
       end
     end
 
