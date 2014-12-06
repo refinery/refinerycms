@@ -12,7 +12,7 @@ Always run tests first. Quick start for tests (requires a dummy application) :
 
     bundle install
     bundle exec rake refinery:testing:dummy_app
-    rake
+    bundle exec rake
 
 ## Making a pull request ##
 
