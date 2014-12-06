@@ -19,7 +19,6 @@ describe "CLI" do
       expect(msg).to match("rake refinery:override view=pages/home")
       expect(msg).to match("rake refinery:override view=refinery/pages/home")
       expect(msg).to match(%r{rake refinery:override view=\*\*/\*menu})
-      expect(msg).to match("rake refinery:override view=_menu_branch")
       expect(msg).to match("rake refinery:override javascript=admin")
       expect(msg).to match("rake refinery:override javascript=refinery/site_bar")
       expect(msg).to match("rake refinery:override stylesheet=home")
