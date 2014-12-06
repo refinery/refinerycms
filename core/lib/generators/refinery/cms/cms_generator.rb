@@ -42,9 +42,7 @@ module Refinery
 
       run_additional_generators! if self.options[:fresh_installation]
 
-      migrate_database!
-
-      seed_database!
+      prepare_database!
 
       deploy_to_hosting?
     end
@@ -204,10 +202,13 @@ gem 'pg'
       end
     end
 
-    def migrate_database!
+    def prepare_database!
       unless self.options[:skip_migrations]
         command = %w[railties:install:migrations]
-        command |= %w[db:create db:migrate] unless self.options[:skip_db]
+        unless self.options[:skip_db]
+          command |= %w[db:create db:migrate]
+          command |= %w[db:seed] unless self.options[:skip_migrations]
+        end
         rake command.join(' ')
       end
     end
@@ -261,10 +262,6 @@ gem 'pg'
       end
 
       options[:heroku] = '' if options[:heroku] == 'heroku'
-    end
-
-    def seed_database!
-      rake 'db:seed' unless self.options[:skip_db] || self.options[:skip_migrations]
     end
 
     def start_pretending?
