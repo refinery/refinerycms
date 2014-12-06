@@ -142,7 +142,7 @@ module Refinery
 
           fill_in "Menu title", :with => "The first page"
 
-          click_button "Save"
+          expect { click_button "Save" }.to change(Refinery::Page, :count).from(0).to(1)
 
           expect(page).to have_content("'My first page' was successfully added.")
           expect(page.body).to match(%r{/pages/the-first-page})
