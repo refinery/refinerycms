@@ -5,7 +5,7 @@
     <% locales = Refinery::I18n.locales.clone %>
     <% Refinery::I18n.frontend_locales.each do |locale| %>
       <% locale_name = locales.delete(locale) %>
-      
+
       <li<%= %Q{ class=selected} if locale.to_s == local_assigns[:current_locale].to_s %>>
         <%= link_to refinery.url_for(:switch_locale => locale, :parent_id => params[:parent_id]), id: locale do %>
           <div class="locale_icon">

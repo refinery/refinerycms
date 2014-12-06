@@ -16,7 +16,7 @@ module Refinery
     self.dragonfly_url_format = '/system/images/:job/:basename.:ext'
     self.dragonfly_url_host = ''
 
-    self.max_image_size = 5242880
+    self.max_image_size = 5_242_880
     self.pages_per_dialog = 18
     self.pages_per_dialog_that_have_size_options = 12
     self.pages_per_admin_index = 20

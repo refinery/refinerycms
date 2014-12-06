@@ -18,6 +18,7 @@ module ::Refinery
       end
 
       protected
+
       def find_dialog_type
         error_404 if TYPES.exclude? params[:id].downcase
 
