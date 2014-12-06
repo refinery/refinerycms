@@ -15,9 +15,10 @@ You can do this by making use of the after_inclusion hook refinery provides:
 <ruby>
 # config/application.rb
 # refinery change content-disipotion
-Refinery::Core::Engine.after_inclusion do
-  Refinery::Resource # force autoload
-  ::Dragonfly[:refinery_resources].content_disposition = nil
+  Refinery::Core::Engine.after_inclusion do
+    Refinery::Resource # force autoload
+    ::Dragonfly.app(:refinery_resources).response_header('Content-Disposition', nil)
+  end
 end
 </ruby>
 
