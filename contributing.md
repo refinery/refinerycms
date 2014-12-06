@@ -23,6 +23,7 @@ If you'd like to submit a pull request please adhere to the following:
 3. Two-spaces instead of tabs.
 4. Double-quoted strings are fine for all use cases.
 5. General Rails/Ruby naming conventions for files and classes.
+6. Please add `[ci skip]` to your commit message for purely documentation changes **only**.
 
 Please note that you must adhere to each of the above mentioned rules.
 Failure to do so will result in an immediate closing of the pull
