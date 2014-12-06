@@ -27,7 +27,7 @@ gem 'refinerycms', :git => 'https://github.com/refinery/refinerycms'
 Now, inside the application's directory, use the refinerycms generator to update your application:
 
 <shell>
-$ bundle exec rails generate refinery:cms --update
+$ bin/rails generate refinery:cms --update
 </shell>
 
 h3. Solve any deprecation problems.

@@ -3,9 +3,9 @@ cache: bundler
 bundler_args: --without development
 before_script:
   - "sh -e /etc/init.d/xvfb start"
-  - "bundle exec rake refinery:testing:dummy_app"
+  - "bin/rake refinery:testing:dummy_app"
 script:
-  - "DISPLAY=:99.0 bundle exec rspec $EXTENSION/spec"
+  - "DISPLAY=:99.0 bin/rspec $EXTENSION/spec"
 env:
   - DB=postgresql EXTENSION=authentication
   - DB=mysql EXTENSION=authentication

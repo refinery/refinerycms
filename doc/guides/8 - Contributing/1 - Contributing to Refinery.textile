@@ -33,7 +33,7 @@ h5. In terminal
 $ git clone git@github.com:USERNAME/refinerycms.git
 $ cd refinerycms
 $ bundle install
-$ bundle exec rake refinery:testing:dummy_app
+$ bin/rake refinery:testing:dummy_app
 $ rails server
 </shell>
 
@@ -50,9 +50,9 @@ h4. Contributing a fix
 Make your changes to fix a bug. Next regenerate the dummy app and run the Refinery tests
 
 <shell>
-$ bundle exec rake refinery:testing:clean_dummy_app
-$ bundle exec rake refinery:testing:dummy_app
-$ bundle exec rspec ./*/spec
+$ bin/rake refinery:testing:clean_dummy_app
+$ bin/rake refinery:testing:dummy_app
+$ bin/rspec ./*/spec
 </shell>
 
 If this doesn't work. Follow the "How to test Refinery guide":/guides/testing
