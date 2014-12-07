@@ -142,7 +142,7 @@ module Refinery
 
           fill_in "Menu title", :with => "The first page"
 
-          click_button "Save"
+          expect { click_button "Save" }.to change(Refinery::Page, :count).from(0).to(1)
 
           expect(page).to have_content("'My first page' was successfully added.")
           expect(page.body).to match(%r{/pages/the-first-page})
@@ -205,12 +205,12 @@ module Refinery
         end
       end
 
-      describe 'Previewing' do
+      describe 'Previewing', :js, :firefox do
         let(:preview_content) { "Some changes I'm unsure what they will look like".freeze }
         context "an existing page" do
           before { Page.create :title => 'Preview me' }
 
-          it 'will show the preview changes in a new window', :js do
+          it 'will show the preview changes in a new window' do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
@@ -224,7 +224,7 @@ module Refinery
             window.close
           end
 
-          it 'will not show the site bar', :js do
+          it 'will not show the site bar' do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
@@ -245,7 +245,7 @@ module Refinery
             window.close
           end
 
-          it 'will not save the preview changes', :js do
+          it 'will not save the preview changes' do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
@@ -265,7 +265,7 @@ module Refinery
           end
 
           # Regression test for previewing after save-and_continue
-          it 'will show the preview in a new window after save-and-continue', :js do
+          it 'will show the preview in a new window after save-and-continue' do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
@@ -286,7 +286,7 @@ module Refinery
             window.close
           end
 
-          it 'will show pages with inherited templates', :js do
+          it 'will show pages with inherited templates' do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
@@ -300,7 +300,7 @@ module Refinery
         end
 
         context 'a brand new page' do
-          it "will not save when just previewing", :js do
+          it "will not save when just previewing" do
             visit refinery.admin_pages_path
 
             click_link "Add new page"
@@ -320,7 +320,7 @@ module Refinery
           let!(:parent_page) { Page.create :title => "Our Parent Page" }
           let!(:nested_page) { parent_page.children.create :title => 'Preview Me' }
 
-          it "works like an un-nested page", :js do
+          it "works like an un-nested page" do
             visit refinery.admin_pages_path
 
             within "#page_#{nested_page.id}" do
@@ -659,7 +659,10 @@ module Refinery
 
           2.times do
             click_link "delete_page_part"
-            page.driver.browser.switch_to.alert.accept
+            # Poltergeist automatically accepts dialogues.
+            if Capybara.javascript_driver != :poltergeist
+              page.driver.browser.switch_to.alert.accept
+            end
           end
 
           within "#page_parts" do
@@ -819,7 +822,7 @@ module Refinery
           # see https://github.com/refinery/refinerycms/pull/1583
           # this test needs to be moved to refinerycms-wymeditor somehow
           context "when switching locales" do
-            specify "dialog has correct links", :js do
+            specify "dialog has correct links", :js, :firefox do
               visit refinery.edit_admin_page_path(about_page)
 
               find("#page_part_body .wym_tools_link a").click
