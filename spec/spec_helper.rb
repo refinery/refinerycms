@@ -19,8 +19,6 @@ require 'capybara/rspec'
 
 Rails.backtrace_cleaner.remove_silencers!
 
-I18n.locale = :en
-
 RSpec.configure do |config|
   config.mock_with :rspec
   config.filter_run :focus => true
@@ -34,6 +32,10 @@ RSpec.configure do |config|
     Capybara.javascript_driver = :selenium
     example.call
     Capybara.javascript_driver = :poltergeist
+  end
+
+  config.before(:each) do
+    ::I18n.default_locale = I18n.locale = Globalize.locale = :en
   end
 end
 
