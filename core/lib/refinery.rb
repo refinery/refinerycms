@@ -148,9 +148,9 @@ module Refinery
 
       if options[:admin]
         # Most of the time this gets rid of 'refinery'
-        parts = active_name.to_s.underscore.split('/').reject{ |name|
+        parts = active_name.to_s.underscore.split('/').reject do |name|
           active_name.singular_route_key.exclude?(name)
-        }
+        end
 
         # Get the singular resource_name from the url parts
         resource_name = parts.pop
