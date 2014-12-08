@@ -215,19 +215,14 @@ module Refinery
       self.destroy
     end
 
-    # Used for the browser title to get the full path to this page
-    # It automatically prints out this page title and all of it's parent page titles joined by a PATH_SEPARATOR
-    def path(options = {})
-      # Override default options with any supplied.
-      options = {:reversed => true}.merge(options)
+    # Returns the full path to this page.
+    # This automatically prints out this page title and all parent page titles.
+    # The result is joined by the path_separator argument.
+    def path(path_separator: ' - ', ancestors_first: true)
+      return title if root?
 
-      if parent_id
-        parts = [title, parent.path(options)]
-        parts.reverse! if options[:reversed]
-        parts.join(' - ')
-      else
-        title
-      end
+      chain = ancestors_first ? self_and_ancestors : self_and_ancestors.reverse
+      chain.map(&:title).join(path_separator)
     end
 
     def url
@@ -235,11 +230,12 @@ module Refinery
     end
 
     def nested_url
-      globalized_slug = Globalize.with_locale(slug_locale) { to_param.to_s }
-      if ::Refinery::Pages.scope_slug_by_parent
-        [parent.try(:nested_url), globalized_slug].compact.flatten
-      else
-        [globalized_slug]
+      Globalize.with_locale(slug_locale) do
+        if ::Refinery::Pages.scope_slug_by_parent && !root?
+          self_and_ancestors.includes(:translations).map(&:to_param)
+        else
+          [to_param.to_s]
+        end
       end
     end
 

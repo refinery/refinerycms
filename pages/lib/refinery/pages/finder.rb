@@ -34,8 +34,10 @@ module Refinery
         translations_conditions = translations_conditions(globalized_conditions)
 
         # A join implies readonly which we don't really want.
-        Page.where(globalized_conditions).joins(:translations).where(translations_conditions).
-                                               readonly(false)
+        Page.where(globalized_conditions).
+             joins(:translations).
+             where(translations_conditions).
+             readonly(false)
       end
 
       private

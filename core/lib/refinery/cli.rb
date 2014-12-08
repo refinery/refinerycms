@@ -58,20 +58,7 @@ module Refinery
         end
       end
 
-      puts "You didn't specify anything valid to override. Here are some examples:"
-      {
-        :view => ['pages/home', 'refinery/pages/home', '**/*menu', '_menu_branch'],
-        :javascript => %w(admin refinery/site_bar refinery**/{**/}*),
-        :stylesheet => %w(home refinery/site_bar),
-        :controller => %w(pages),
-        :model => %w(page refinery/page),
-        :helper => %w(site_bar refinery/site_bar_helper),
-        :presenter => %w(refinery/page_presenter)
-      }.each do |type, examples|
-        examples.each do |example|
-          puts "rake refinery:override #{type}=#{example}"
-        end
-      end
+      handle_invalid_override_input
     end
 
     desc "uncrudify", "shows you the code that your controller using crudify is running for a given action"
@@ -140,6 +127,23 @@ module Refinery
 
     def strip_source_paths(match)
       match.gsub Regexp.new(source_paths.join('\/?|')), ''
+    end
+
+    def handle_invalid_override_input
+      puts "You didn't specify anything valid to override. Here are some examples:"
+      {
+        :view => ['pages/home', 'refinery/pages/home', '**/*menu', '_menu_branch'],
+        :javascript => %w(admin refinery/site_bar refinery**/{**/}*),
+        :stylesheet => %w(home refinery/site_bar),
+        :controller => %w(pages),
+        :model => %w(page refinery/page),
+        :helper => %w(site_bar refinery/site_bar_helper),
+        :presenter => %w(refinery/page_presenter)
+      }.each do |type, examples|
+        examples.each do |example|
+          puts "rake refinery:override #{type}=#{example}"
+        end
+      end
     end
   end
 end
