@@ -21,7 +21,7 @@ module Refinery
         original_dimensions
       end
     end
-    
+
     def valid_geometry
       (original_width * original_height > 0) && thumb_geometry === geometry.geometry
     end
