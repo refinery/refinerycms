@@ -1,3 +1,5 @@
+@import '_mixins';
+
 .ui-widget-overlay {
   position: absolute;
   top: 0px;
@@ -95,6 +97,7 @@
   margin-right: 2px;
 }
 .ui-tabs .ui-state-default a {
+  @include top-rounded(5px);
   background-color: #bcbcbc;
   color: white;
   padding: 8px 13px;
