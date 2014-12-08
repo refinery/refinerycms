@@ -412,9 +412,10 @@ header {
   }
   a {
     @include box-sizing(border-box);
+    @include left-rounded(5px);
     display: block;
-    padding: 7px 13px;
-    font-size: 13px;
+    padding: 8px 16px;
+    font-size: 16px;
     background: #CCB;
     margin-top: 1px;
     color: black;
@@ -473,11 +474,17 @@ pre {
   ul li, > #recent_activity > ul li, > #recent_inquiries > ul li,
   .pagination_container > ul li, .pagination_frame > ul {
     list-style: none;
-    padding: 0px 5px;
+    padding: 0;
     vertical-align: top;
     margin-bottom: 2px;
     line-height: 35px;
     position: relative;
+    .icon {
+      margin-left: 5px;
+    }
+    .actions {
+      margin-right: 5px;
+    }
   }
   > #recent_activity > ul li, > #recent_inquiries > ul li {
     max-height: 35px;
