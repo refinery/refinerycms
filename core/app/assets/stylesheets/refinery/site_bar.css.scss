@@ -1,14 +1,11 @@
-@mixin rounded($radius) {
-  border-radius: $radius;
-  -moz-border-radius: $radius;
-  -webkit-border-radius: $radius;
-}
+@import '_mixins';
+
 #site_bar_content {
   height:47px;
   position: relative;
   margin: 0px auto 10px auto;
   text-align: left;
-  width: 990px;
+  width: 1000px;
 }
 #site_bar {
   background: #22a7f2;
@@ -43,9 +40,6 @@ a#site_bar_refinery_cms_logo {
     margin-top: 9px;
     display: block;
     cursor: pointer;
-  }
-  a, span {
-    @include rounded(6px);
   }
 }
 #site_bar {
