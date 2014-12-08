@@ -5,7 +5,7 @@ languages:
 rules:
   documentation:
     except:
-      - */spec/**
+      - '*/spec/**'
   copy_paste:
     except:
-      - */spec/**
+      - '*/spec/**'
