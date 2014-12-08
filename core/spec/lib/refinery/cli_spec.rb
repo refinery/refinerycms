@@ -18,6 +18,7 @@ describe "CLI" do
       expect(msg).to match("You didn't specify anything valid to override. Here are some examples:")
       expect(msg).to match("rake refinery:override view=pages/home")
       expect(msg).to match("rake refinery:override view=refinery/pages/home")
+      expect(msg).to match("rake refinery:override view=layouts/application")
       expect(msg).to match("rake refinery:override javascript=admin")
       expect(msg).to match("rake refinery:override javascript=refinery/site_bar")
       expect(msg).to match("rake refinery:override stylesheet=home")
