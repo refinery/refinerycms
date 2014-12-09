@@ -36,7 +36,7 @@ end
 
 group :test do
   gem 'refinerycms-testing', '~> 3.0.0'
-  gem 'generator_spec', '~> 0.9.1'
+  gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'coveralls', require: false
 end
