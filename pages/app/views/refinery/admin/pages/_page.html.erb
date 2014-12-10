@@ -15,13 +15,12 @@
         <% page.translations.sort_by{ |t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
           <% if translation.title.present? %>
             <%= link_to refinery.admin_edit_page_path(page.nested_url, :switch_locale => translation.locale),
-                        :class => 'locale' do %>
+                        :class => 'locale', :title => translation.locale.upcase do %>
 
               <div class="locale_icon <%= translation.locale %>">
-                <%= refinery_icon_tag('locale-blue.svg', :size => '24x24') %>
-                <span class="code"><%= translation.locale.upcase %></span>
+                <%= refinery_icon_tag('locale-blue.svg', :size => '24x24', :alt => translation.locale.upcase) %>
+                <span class="code"><%= locale_country(translation.locale) %></span>
               </div>
-
             <% end %>
           <% end %>
         <% end %>
