@@ -20,7 +20,7 @@
 
               <div class="locale_icon <%= translation.locale %>">
                 <%= refinery_icon_tag('locale-blue.svg', :size => '24x24', :alt => translation.locale.upcase) %>
-                <span class="code"><%= truncate_locale(translation.locale) %></span>
+                <span class="code"><%= locale_country(translation.locale) %></span>
               </div>
 
             <% end %>

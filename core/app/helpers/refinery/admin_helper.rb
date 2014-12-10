@@ -6,7 +6,7 @@ module Refinery
       ::I18n.locale
     end
     
-    def truncate_locale(locale)
+    def locale_country(locale)
       locale =~ /\-/ ? locale.upcase.to_s.split('-')[1] : locale.upcase
     
     end
