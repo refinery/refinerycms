@@ -15,7 +15,6 @@ shared_context 'Visual Editor - add image' do
     refinery.edit_admin_page_path(page_for_image)
     click_link("Add Image")
   }
-#  let(:open_image_dialog) { click_link("Add Image") }
   let(:dialog_frame_id) {'dialog_frame'}
   let(:index_item_selector) {'#existing_image_area_content ul li img'}
   let(:title_attribute_selector) {'[title]'}
