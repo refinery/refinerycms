@@ -25,5 +25,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'devise',            ['~> 3.0', '>= 3.2.4']
   s.add_dependency 'friendly_id',       '>= 5.0.0.rc1'
 
-  s.required_ruby_version = '>= 2.1.2'
+  s.required_ruby_version = Refinery::Version.required_ruby_version
 end

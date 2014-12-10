@@ -49,7 +49,7 @@ module Refinery
               :include_object_name => true
             }
           else
-            render :action => 'edit'
+            render 'edit'
           end
         end
       end
@@ -102,7 +102,7 @@ module Refinery
       end
 
       private
-      
+
       def save_and_continue_locals(page)
         nested_url = page.nested_url
         {

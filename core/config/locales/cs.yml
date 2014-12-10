@@ -1,5 +1,8 @@
 cs:
   refinery:
+    js:
+      admin:
+        confirm_changes: Změny které jste udělal budou ztraceny. Jste si jist pokračováním bez uložení?
     plugins:
       refinery_core:
         title: Refinery
@@ -16,7 +19,7 @@ cs:
     site_bar:
       log_out: Odhlásit
       switch_to_your_website: Přepnout na web
-      switch_to_your_website_editor: Přepnout do editoru
+      switch_to_your_website_editor: Přepnout do administrace
     admin:
       menu:
         reorder_menu: Přeuspořádat menu
@@ -49,6 +52,8 @@ cs:
         button_text: Hledat
         results_for_html: "Výsledky hledání pro &#8216;<em>%{query}</em>&#8217;"
         no_results: Žádné záznamy nenalezeny
+        cancel_search: 'Zrušit vyhledávání'
+        search_input_notice: "Vložte nejméně 3 znaky ze slova, které vyhledáváte."
       delete:
         message: Opravdu chcete smazat '%{title}'?
       error_messages:

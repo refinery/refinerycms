@@ -113,7 +113,6 @@ module Refinery
         !max_depth || menu_item.depth < max_depth
       end
 
-      private
       def encoded_path
         path = context.request.path
         path.force_encoding('utf-8') if path.respond_to?(:force_encoding)
@@ -135,7 +134,7 @@ module Refinery
       def find_url_for(item)
         url = [item.url]
         url << ['', item.url[:path]].compact.flatten.join('/') if item.url.respond_to?(:keys)
-        url = url.last.match(%r{^/#{::I18n.locale.to_s}(/.*)}) ? $1 : url.detect{|u| u.is_a?(String)}
+        url = url.last.match(%r{^/#{::I18n.locale.to_s}(/.*)}) ? $1 : url.detect{ |u| u.is_a?(String)}
       end
     end
   end

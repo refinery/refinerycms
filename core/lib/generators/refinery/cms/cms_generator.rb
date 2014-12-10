@@ -42,9 +42,7 @@ module Refinery
 
       run_additional_generators! if self.options[:fresh_installation]
 
-      migrate_database!
-
-      seed_database!
+      prepare_database!
 
       deploy_to_hosting?
     end
@@ -99,7 +97,7 @@ gem 'pg'
 
     def copy_files!
       # The extension installer only installs database templates.
-      Pathname.glob(self.class.source_root.join('**', '*')).reject{|f|
+      Pathname.glob(self.class.source_root.join('**', '*')).reject{ |f|
         f.directory? or f.to_s =~ /\/db\//
       }.sort.each do |path|
         copy_file path, path.to_s.gsub(self.class.source_root.to_s, destination_path.to_s)
@@ -157,7 +155,7 @@ gem 'pg'
 
     def ensure_environments_are_sane!
       # Massage environment files
-      %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
+      %w(development test production).map{ |e| "config/environments/#{e}.rb"}.each do |env|
         next unless destination_path.join(env).file?
 
         # Refinery does not necessarily expect action_mailer to be available as
@@ -204,10 +202,14 @@ gem 'pg'
       end
     end
 
-    def migrate_database!
+    def prepare_database!
       unless self.options[:skip_migrations]
-        rake 'railties:install:migrations'
-        rake 'db:create db:migrate' unless self.options[:skip_db]
+        command = %w[railties:install:migrations]
+        unless self.options[:skip_db]
+          command |= %w[db:create db:migrate]
+          command |= %w[db:seed] unless self.options[:skip_migrations]
+        end
+        rake command.join(' ')
       end
     end
 
@@ -260,10 +262,6 @@ gem 'pg'
       end
 
       options[:heroku] = '' if options[:heroku] == 'heroku'
-    end
-
-    def seed_database!
-      rake 'db:seed' unless self.options[:skip_db] || self.options[:skip_migrations]
     end
 
     def start_pretending?

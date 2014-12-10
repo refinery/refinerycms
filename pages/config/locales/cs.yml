@@ -35,18 +35,26 @@ cs:
         delete: Smazat tuto stránku
         edit: Upravit tuto stránku
         new: Přidat podstránku
+        expand_collapse: Rozbalit nebo sbalit podstránky
         page:
           view_live_html: Zobrazit tuto stránku <br/><em>(otevře se v novém okně)</em>
           hidden: skrytá
           draft: pracovní verze
+        form:
+          preview: Náhled
+          preview_changes: Náhled změn před publikováním online
         form_new_page_parts:
           title: Název
         form_page_parts:
           create_content_section: Přidat sekci
           delete_content_section: Smazat sekci
+          reorder_content_section: Změnit pořadí obsahových sekcí
+          reorder_content_section_done: Ukončit řazení obsahových sekcí
         form_advanced_options:
           page_options: Nastavení stránky
           parent_page: Nadřazená stránka
+          menu_title: Název stránky v menu
+          custom_slug: Volitelný slug
           show_in_menu_title: Zobrazit v menu
           show_in_menu_description: Zobrazit tuto stránku v menu webu
           show_in_menu_help: Odškrtněte pokud chcete odstranit odkaz na tuto stránku z menu webu.
@@ -56,6 +64,10 @@ cs:
           link_url: Přesměrovat tuto stránku na jiný web nebo stránku.
           link_url_help: Pokud chcete aby po kliknutí na odkaz na tutu stránku byl návštěvník přesměrován na jiný web, vložte adresu (např. https://google.com), jinak nechte prázdné
           parent_page_help: Můžete umístit tuto stránku v hierarchii pod jinou stránku. Pokud nevyberete nic, bude tato stránka umístěna na první úrovni.
+          menu_title_help: Chcete-li v menu zobrazit jiný název, než ten, který se zobrazí na stránce, zadejte jej zde.
+          custom_slug_help: Slug je uživatelsky přívětivé ID stránky v adrese URL, například &apos;o-nas&apos;. Pokud chcete vlastní ID, napište ho zde.
+          layout_template: Šablona vzhledu
+          layout_template_help: Můžete si vybrat mezi několika šablonami pro tuto stránku
           view_template: Šablona
           view_template_help: Můžete zvolit odlišnou šablonu pro tuto stránku
         actions:

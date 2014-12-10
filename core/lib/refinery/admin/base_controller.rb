@@ -41,8 +41,8 @@ module Refinery
 
         records.each do |record|
           key = record.created_at.strftime("%Y-%m-%d")
-          record_group = new_records.collect{|records| records.last if records.first == key }.flatten.compact << record
-          (new_records.delete_if {|i| i.first == key}) << [key, record_group]
+          record_group = new_records.collect{ |records| records.last if records.first == key }.flatten.compact << record
+          (new_records.delete_if { |i| i.first == key}) << [key, record_group]
         end
 
         new_records
@@ -75,7 +75,7 @@ module Refinery
       private
 
       def allow_controller?(controller_path)
-        ::Refinery::Plugins.active.any? {|plugin|
+        ::Refinery::Plugins.active.any? { |plugin|
           Regexp.new(plugin.menu_match) === controller_path
         }
       end

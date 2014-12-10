@@ -12,7 +12,7 @@ module Refinery
 
         context 'when set in configuration' do
           it 'returns name set by Refinery::Authentication.config' do
-            Refinery::Authentication.stub(:email_from_name).and_return('support')
+            allow(Refinery::Authentication).to receive(:email_from_name).and_return('support')
             expect(Refinery::Authentication.email_from_name).to eq('support')
           end
         end

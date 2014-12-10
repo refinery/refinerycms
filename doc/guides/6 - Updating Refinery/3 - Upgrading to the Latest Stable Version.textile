@@ -39,6 +39,6 @@ $ rails generate refinery:cms --update
 Database migrations and new gem dependencies may have been added, so finish your Refinery update with:
 
 <shell>
-$ bundle exec rake db:migrate
+$ bin/rake db:migrate
 $ bundle install
 </shell>

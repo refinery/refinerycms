@@ -33,7 +33,7 @@ module Refinery
 
         paginate_images
 
-        render action: "insert"
+        render 'insert'
       end
 
       def create
@@ -65,13 +65,13 @@ module Refinery
             flash.notice = t('created', scope: 'refinery.crudify', what: "'#{@images.map(&:image_title).join("', '")}'")
             if from_dialog?
               @dialog_successful = true
-              render template: "/refinery/admin/dialog_success", layout: true
+              render '/refinery/admin/dialog_success', layout: true
             else
               redirect_to refinery.admin_images_path
             end
           else
             self.new # important for dialogs
-            render action: 'new'
+            render 'new'
           end
         end
       end
@@ -107,7 +107,7 @@ module Refinery
                      include_object_name: true
                    }
           else
-            render action: 'edit'
+            render 'edit'
           end
         end
       end
@@ -141,7 +141,6 @@ module Refinery
       def auto_title(filename)
         CGI::unescape(filename.to_s).gsub(/\.\w+$/, '').titleize
       end
-
 
       def image_params
         params.require(:image).permit(:image, :image_size, :image_title, :image_alt)

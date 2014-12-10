@@ -8,10 +8,10 @@ module Refinery
 
       @original_width = original_width.to_f
       @original_height = original_height.to_f
-      
+
       process
     end
-      
+
     def process
       if valid_geometry && resize_geometry && resize_necessary
         scale

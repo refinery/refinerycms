@@ -17,6 +17,7 @@ module Refinery
         end
 
         protected
+
         def admin?
           false
         end

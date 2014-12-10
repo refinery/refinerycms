@@ -252,7 +252,7 @@ Open up +vendor/extensions/events/app/views/refinery/events/admin/events/_form.r
 <ruby>
 <div class="field">
   <%= f.label :event_type -%>
-  <%= f.select(:event_type_id, @event_types.collect {|d| [d.name, d.id] })%>
+  <%= f.select(:event_type_id, @event_types.collect { |d| [d.name, d.id] })%>
 </div>
 </ruby>
 

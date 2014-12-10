@@ -22,9 +22,15 @@ cs:
           preview: '(%{who}) přidán %{created_at}'
     sessions:
       new:
-        hello_please_sign_in: Prosím přihlašte se
+        hello_please_sign_in: "Přihlašte se, prosím"
         sign_in: Přihlásit se
         forgot_password: Zapomenuté heslo
+    user_mailer:
+      reset_notification:
+        subject: Odkaz pro vytvoření nového hesla
+        reset_request_received_for: "Požadavek pro vytvoření nového hesla pro uživatelský účet %{username}"
+        visit_this_url: Navštivte tuto URL pro zvolení nového hesla
+        remain_same_if_no_action: 'Vaše heslo zůstane nezměněné, pokud neprovedete žádnou akci.'
     users:
       new:
         fill_form: Vyplňte údaje níže a můžeme začít.
@@ -33,7 +39,7 @@ cs:
         welcome: 'Vítejte %{who}'
       forgot:
         email_address: Emailová adresa
-        enter_email_address: Prosím zadejte emailovou adresu.
+        enter_email_address: "Prosím, zadejte emailovou adresu."
         reset_password: Resetovat heslo
         blank_email: Musíte zadat emailovou adresu.
         email_not_associated_with_account_html:  "Email '%{email}' není asociován z žádným uživatelským kontem.<br />Jste si jisti, že jste použili správnou adresu?"
@@ -43,15 +49,6 @@ cs:
         successful: "Heslo bylo úspěšně resetováno pro '%{email}'"
         pick_new_password_for: 'Zadejte nové heslo pro %{email}'
         reset_password: Reset hesla
-    user_mailer:
-      reset_notification:
-        subject: Odkaz pro reset hesla
-    user_mailer:
-      reset_notification:
-        subject: Odkaz pro vytvoření nového hesla
-        reset_request_received_for: "Požadavek pro vytvoření nového hesla pro uživatelský účet %{username}"
-        visit_this_url: Navštivte tuto URL pro zvolení nového hesla
-        remain_same_if_no_action: 'Vaše heslo zůstane nezměněné, pokud neprovedete žádnou akci.'
     roles:
       superuser: Super uživatel
       refinery: Refinery
@@ -59,8 +56,11 @@ cs:
     failure:
       unauthenticated: Pro pokračování se musíte přihlásit.
       invalid: "Promiňte, vaše uživatelské jméno nebo heslo je neplatné."
+      not_found_in_database: "Promiňte, vaše uživatelské jméno nebo heslo je neplatné."
     sessions:
       signed_in: Úspěšné přihlášení.
+      refinery_user:
+        signed_out: Úspěšně odhlášení.
   activerecord:
     models:
       refinery/user: uživatel
@@ -72,3 +72,4 @@ cs:
         password: Heslo
         password_confirmation: Potvrdit heslo
         remember_me: Zapamatovat heslo
+        full_name: Celé jméno

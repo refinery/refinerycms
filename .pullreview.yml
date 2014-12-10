@@ -1,0 +1,11 @@
+---
+languages:
+  - ruby
+  - javascript
+rules:
+  documentation:
+    except:
+      - */spec/**
+  copy_paste:
+    except:
+      - */spec/**

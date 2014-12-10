@@ -7,7 +7,7 @@ module Refinery
       end
 
       def find_by_name(name)
-        detect {|type| type.name.to_s.downcase == name.to_s.downcase}
+        detect { |type| type.name.to_s.downcase == name.to_s.downcase}
       end
 
       class << self

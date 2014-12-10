@@ -40,7 +40,7 @@ module Refinery
     end
 
     def orphan?
-      parent_id.nil? || menu.detect{|item| compatible_with?(item) && item.original_id == parent_id}.nil?
+      parent_id.nil? || menu.detect{ |item| compatible_with?(item) && item.original_id == parent_id}.nil?
     end
 
     def leaf?

@@ -75,7 +75,7 @@ module Refinery
         app.config.autoload_paths += [
           Rails.root.join('app', 'presenters'),
           Rails.root.join('vendor', '**', '**', 'app', 'presenters'),
-          Refinery.roots.map{|r| r.join('**', 'app', 'presenters')}
+          Refinery.roots.map{ |r| r.join('**', 'app', 'presenters')}
         ].flatten
       end
 

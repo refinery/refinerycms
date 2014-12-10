@@ -19,7 +19,6 @@ module Refinery
         expect(page).to have_selector("a[href*='/refinery/resources/new']")
       end
 
-
       context "new/create" do
         it "uploads file", :js => true do
           visit refinery.admin_resources_path

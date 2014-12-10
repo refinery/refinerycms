@@ -12,13 +12,13 @@ module Refinery
       end
 
       def blank_section_css_classes(can_use_fallback = true)
-        @sections.reject {|section| section.has_content?(can_use_fallback)}
+        @sections.reject { |section| section.has_content?(can_use_fallback)}
                  .map(&:not_present_css_class)
       end
 
       def hide_sections(*ids_to_hide)
         ids_to_hide.flatten!
-        @sections.select {|section| ids_to_hide.include?(section.id)}.each(&:hide) if ids_to_hide.any?
+        @sections.select { |section| ids_to_hide.include?(section.id)}.each(&:hide) if ids_to_hide.any?
       end
 
       def hidden_sections
@@ -57,7 +57,7 @@ module Refinery
       end
 
       def has_section?(id)
-        @sections.detect {|section| section.id == id}
+        @sections.detect { |section| section.id == id}
       end
     end
   end

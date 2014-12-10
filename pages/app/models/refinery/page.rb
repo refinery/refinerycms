@@ -14,7 +14,7 @@ module Refinery
       is_seo_meta
 
       def self.seo_fields
-        ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
+        ::SeoMeta.attributes.keys.map{ |a| [a, :"#{a}="]}.flatten
       end
     end
 
@@ -40,7 +40,7 @@ module Refinery
 
     # If title changes tell friendly_id to regenerate slug when saving record
     def should_generate_new_friendly_id?
-      changes.keys.include?("title")
+      changes.keys.include?("title") || changes.keys.include?("custom_slug")
     end
 
     # Delegate SEO Attributes to globalize translation
@@ -114,7 +114,7 @@ module Refinery
       # are translated which means the slug attribute does not exist on the
       # pages table thus requiring us to find the attribute on the translations table
       # and then join to the pages table again to return the associated record.
-      def by_slug(slug, conditions={})
+      def by_slug(slug, conditions = {})
         Pages::Finder.by_slug(slug, conditions)
       end
 
@@ -161,7 +161,7 @@ module Refinery
     end
 
     def translated_to_default_locale?
-      persisted? && translations.any?{|t| t.locale == Refinery::I18n.default_frontend_locale}
+      persisted? && translations.any?{ |t| t.locale == Refinery::I18n.default_frontend_locale}
     end
 
     # The canonical page for this particular page.
@@ -180,7 +180,8 @@ module Refinery
     # Returns in cascading order: custom_slug or menu_title or title depending on
     # which attribute is first found to be present for this page.
     def custom_slug_or_title
-      custom_slug.presence || menu_title.presence || title.presence
+      (Refinery::Pages.use_custom_slugs && custom_slug.presence) ||
+        menu_title.presence || title.presence
     end
 
     # Am I allowed to delete this page?
@@ -332,7 +333,7 @@ module Refinery
           .sub(%r{/*$}, '')
           .split('/')
           .select(&:present?)
-          .map {|slug| self.normalize_friendly_id_with_marketable_urls(slug) }.join('/')
+          .map { |slug| self.normalize_friendly_id_with_marketable_urls(slug) }.join('/')
       end
 
       def self.normalize_friendly_id_with_marketable_urls(slug_string)

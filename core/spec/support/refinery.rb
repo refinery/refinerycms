@@ -8,8 +8,8 @@ RSpec.configure do |config|
 
   # set some config values so that image and resource factories don't fail to create
   config.before do
-    Refinery::Images.max_image_size = 5242880 if defined?(Refinery::Images)
-    Refinery::Resources.max_file_size = 52428800 if defined?(Refinery::Resources)
+    Refinery::Images.max_image_size = 5_242_880 if defined?(Refinery::Images)
+    Refinery::Resources.max_file_size = 52_428_800 if defined?(Refinery::Resources)
   end
 
   config.after do

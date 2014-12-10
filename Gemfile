@@ -4,6 +4,9 @@ gemspec
 
 gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'master'
 gem 'quiet_assets'
+gem 'spring'
+gem 'spring-commands-rspec'
+gem 'poltergeist'
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.0']
@@ -33,7 +36,7 @@ end
 
 group :test do
   gem 'refinerycms-testing', '~> 3.0.0'
-  gem 'generator_spec', '~> 0.9.1'
+  gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'coveralls', require: false
 end

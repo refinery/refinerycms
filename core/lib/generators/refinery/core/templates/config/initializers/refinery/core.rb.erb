@@ -41,5 +41,6 @@ Refinery::Core.configure do |config|
   # config.register_stylesheet "custom", :media => 'screen'
 
   # Specify a different backend path than the default of /refinery.
+  # Make sure you clear the `tmp/cache` directory after changing this setting.
   # config.backend_route = <%= Refinery::Core.backend_route.inspect %>
 end

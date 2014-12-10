@@ -54,6 +54,7 @@ module Refinery
       end
 
       protected
+
       def create_successful
         @user.plugins = @selected_plugin_names
 
@@ -70,7 +71,7 @@ module Refinery
       end
 
       def create_failed
-        render :action => 'new'
+        render 'new'
       end
 
       def update_successful

@@ -60,15 +60,15 @@ module Refinery
     end
 
     def localized_attributes
-      @localized_attributes ||= attributes.select{|a| options[:i18n].include?(a.name)}
+      @localized_attributes ||= attributes.select{ |a| options[:i18n].include?(a.name)}
     end
 
     def attributes_for_translation_table
-      localized_attributes.inject([]) {|memo, attr| memo << ":#{attr.name} => :#{attr.type}"}.join(', ')
+      localized_attributes.inject([]) { |memo, attr| memo << ":#{attr.name} => :#{attr.type}"}.join(', ')
     end
 
     def string_attributes
-      @string_attributes ||= attributes.select {|a| /string|text/ === a.type.to_s}.uniq
+      @string_attributes ||= attributes.select { |a| /string|text/ === a.type.to_s}.uniq
     end
 
     def image_attributes

@@ -22,19 +22,19 @@ h3. Finding missing keys
 
 First, you must create a 'dummy' application to enable additional useful +rake+ tasks. Do so with the following command:
 <shell>
-$ bundle exec rake refinery:testing:dummy_app
+$ bin/rake refinery:testing:dummy_app
 </shell>
 
 Then execute the following to get a list of missing translations for all locales:
 
 <shell>
-$ bundle exec rake app:translate:lost_in_translation_all
+$ bin/rake app:translate:lost_in_translation_all
 </shell>
 
 Or execute the following rake task to get a list of missing translations for a given locale:
 
 <shell>
-$ bundle exec rake app:translate:lost_in_translation LOCALE=nl
+$ bin/rake app:translate:lost_in_translation LOCALE=nl
 </shell>
 
 The output of this will look like this:
@@ -74,7 +74,7 @@ h3. Run the Refinery tests
 Run the Refinery tests to be sure you didn't break something, and that your YAML is valid.
 
 <shell>
-$ bundle exec rake spec
+$ bin/rake spec
 </shell>
 
 h3. Commit & Push

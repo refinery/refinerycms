@@ -19,7 +19,7 @@ module Refinery
     end
 
     def roots
-      @roots ||= select {|item| item.orphan? && item.depth == minimum_depth }
+      @roots ||= select { |item| item.orphan? && item.depth == minimum_depth }
     end
 
     def to_s
@@ -29,6 +29,7 @@ module Refinery
     delegate :inspect, :map, :select, :detect, :first, :last, :length, :size, :to => :items
 
     protected
+
     def minimum_depth
       map(&:depth).compact.min
     end
