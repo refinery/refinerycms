@@ -3,10 +3,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'master'
-gem 'quiet_assets'
-gem 'spring'
-gem 'spring-commands-rspec'
-gem 'poltergeist'
+gem 'quiet_assets', group: :development
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.0']
@@ -39,6 +36,7 @@ group :test do
   gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'coveralls', require: false
+  gem 'poltergeist'
 end
 
 # Load local gems according to Refinery developer preference.
