@@ -10,7 +10,7 @@ def preview_image
   preview_window.close
 end
 
-shared_examples 'an image previewer' do
+shared_examples 'shows an image preview' do
   before do
     raise "please set let(:initial_path)" if initial_path.blank?
     ensure_on(initial_path)

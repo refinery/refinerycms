@@ -1,4 +1,4 @@
-shared_examples 'an image uploader' do
+shared_examples 'uploads images' do
   before do
     raise "please set let(:initial_path)" if initial_path.blank?
     ensure_on(initial_path)

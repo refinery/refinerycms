@@ -1,4 +1,4 @@
-shared_examples_for 'an image deleter' do
+shared_examples_for 'deletes an image' do
   before do
     raise "please set let(:initial_path)" if initial_path.blank?
     ensure_on(initial_path)
