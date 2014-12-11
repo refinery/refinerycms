@@ -7,7 +7,7 @@ module Refinery
     end
     
     def locale_country(locale)
-      locale =~ /\-/ ? locale.upcase.to_s.split('-')[1] : locale.upcase
+      locale.to_s.upcase.split('-').last
     
     end
 
