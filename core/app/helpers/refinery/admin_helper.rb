@@ -8,7 +8,6 @@ module Refinery
     
     def locale_country(locale)
       locale.to_s.upcase.split('-').last
-    
     end
 
   end
