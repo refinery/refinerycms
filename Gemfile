@@ -6,7 +6,7 @@ gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', bra
 gem 'quiet_assets'
 gem 'spring'
 gem 'spring-commands-rspec'
-gem 'poltergeist'
+gem 'poltergeist', github: 'teampoltergeist/poltergeist'
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.0']
