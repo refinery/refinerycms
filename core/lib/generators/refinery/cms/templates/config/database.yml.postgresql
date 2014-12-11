@@ -15,7 +15,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: refinery_database_development
+  database: <%= Rails.application.engine_name.gsub(/_application/,'').downcase %>_development
   pool: 5
   username: postgres
   password: postgres
@@ -42,7 +42,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: refinery_database_test
+  database: <%= Rails.application.engine_name.gsub(/_application/,'').downcase %>_test
   pool: 5
   username: postgres
   password: postgres
@@ -51,7 +51,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: refinery_database_production
+  database: <%= Rails.application.engine_name.gsub(/_application/,'').downcase %>_production
   pool: 5
   username: postgres
   password: postgres
