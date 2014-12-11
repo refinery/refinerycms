@@ -293,7 +293,7 @@ body {
 
 TIP: You can add CSS for specific pages by using their slug with -page. The default for the home page is 'home-page'.
 
-Now when you view your front end at "http://localhost:3000":http://localhost:3000 you'll notice your site has a grey background, with a horizontal menu and two white content areas.
+Now when you view your front end at "http://localhost:3000/about":http://localhost:3000/about you'll notice your site has a grey background, with a horizontal menu and two white content areas.
 
 !/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfMjI3X2RlZmF1bHRfZGVzaWduX3NtYWxsLnBuZyJdXQ/14_24_51_227_default_design_small.png!
 
