@@ -16,7 +16,6 @@ end
 module Refinery
   module Admin
     describe "Pages", :type => :feature do
-      before { ::I18n.default_locale = Globalize.locale = :en }
       refinery_login_with :refinery_user
 
       context "when no pages" do
