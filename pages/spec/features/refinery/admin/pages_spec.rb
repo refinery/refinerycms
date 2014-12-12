@@ -204,7 +204,7 @@ module Refinery
         end
       end
 
-      describe 'Previewing', :js, :firefox do
+      describe 'Previewing', :js do
         let(:preview_content) { "Some changes I'm unsure what they will look like".freeze }
         context "an existing page" do
           before { Page.create :title => 'Preview me' }
@@ -815,38 +815,6 @@ module Refinery
 
               expect(page).to have_content("About")
               expect(page).to have_selector("a[href='http://www.example.com/about']")
-            end
-          end
-
-          # see https://github.com/refinery/refinerycms/pull/1583
-          # this test needs to be moved to refinerycms-wymeditor somehow
-          context "when switching locales" do
-            specify "dialog has correct links", :js, :firefox do
-              visit refinery.edit_admin_page_path(about_page)
-
-              find("#page_part_body .wym_tools_link a").click
-
-              expect(page).to have_selector("iframe#dialog_frame")
-
-              page.within_frame("dialog_frame") do
-                expect(page).to have_content("About")
-                expect(page).to have_css("a[href$='/about']")
-
-                click_link "cancel_button"
-              end
-
-              within "#switch_locale_picker" do
-                click_link "ru"
-              end
-
-              find("#page_part_body .wym_tools_link a").click
-
-              expect(page).to have_selector("iframe#dialog_frame")
-
-              page.within_frame("dialog_frame") do
-                expect(page).to have_content("About Ru")
-                expect(page).to have_css("a[href$='/ru/about-ru']")
-              end
             end
           end
         end

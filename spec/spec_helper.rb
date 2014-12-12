@@ -28,12 +28,6 @@ RSpec.configure do |config|
   config.include ActionView::TestCase::Behavior, :file_path => %r{spec/presenters}
   config.infer_spec_type_from_file_location!
 
-  config.around(:each, :firefox) do |example|
-    Capybara.javascript_driver = :selenium
-    example.call
-    Capybara.javascript_driver = :poltergeist
-  end
-
   config.before(:each) do
     ::I18n.default_locale = I18n.locale = Globalize.locale = :en
   end

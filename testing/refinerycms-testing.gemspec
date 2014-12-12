@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'factory_girl_rails',      '~> 4.4.1'
   s.add_dependency 'rspec-rails',             '~> 3.0'
   s.add_dependency 'capybara',                '~> 2.4.3'
-  s.add_dependency 'selenium-webdriver',      '~> 2.43'
 
   s.required_ruby_version = Refinery::Version.required_ruby_version
 end
