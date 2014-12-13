@@ -11,3 +11,5 @@ Refinery::Core::Engine.routes.draw do
 
   get '/sitemap.xml' => 'sitemap#index', :defaults => { :format => 'xml' }
 end
+
+Refinery::Core::Engine.draw_routes
