@@ -11,6 +11,13 @@ module Refinery
       end
     end
 
+    def site_bar_edit_link
+      return nil if admin? || @page.nil?
+      link_to t('refinery.admin.pages.edit', site_bar_translate_locale_args),
+              refinery.admin_edit_page_path(@page.nested_url,
+              :switch_locale => (@page.translations.first.locale unless @page.translated_to_default_locale?))
+    end
+
     def site_bar_translate_locale_args
       { :locale => Refinery::I18n.current_locale }
     end

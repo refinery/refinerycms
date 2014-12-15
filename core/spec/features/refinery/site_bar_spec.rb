@@ -27,12 +27,9 @@ module Refinery
     end
 
     context "when in frontend" do
-      before do
-        # make a page in order to avoid 404
-        FactoryGirl.create(:page, :link_url => "/")
-
-        visit refinery.root_path
-      end
+      # make a page in order to avoid 404
+      let!(:root_page) { FactoryGirl.create(:page, :link_url => "/") }
+      before { visit refinery.root_path }
 
       it "has a 'switch to your website editor' button" do
         expect(page).to have_content("Switch to your website editor")
@@ -44,6 +41,11 @@ module Refinery
         click_link "Switch to your website editor"
         expect(page.current_path).to match(/\A#{Refinery::Core.backend_path}/)
       end
+
+      it "has an 'edit this page' button" do
+        expect(page).to have_link("Edit this page", :href => refinery.edit_admin_page_path(root_page))
+      end
+
     end
   end
 end
