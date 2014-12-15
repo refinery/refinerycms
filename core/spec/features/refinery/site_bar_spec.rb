@@ -4,7 +4,7 @@ module Refinery
   describe "site bar", :type => :feature do
     refinery_login_with :refinery_user
 
-    it "have logout link" do
+    it "has a logout link" do
       visit Refinery::Core.backend_path
 
       expect(page).to have_content("Log out")
@@ -14,7 +14,7 @@ module Refinery
     context "when in backend" do
       before { visit Refinery::Core.backend_path }
 
-      it "have a 'switch to your website button'" do
+      it "has a 'switch to your website button'" do
         expect(page).to have_content("Switch to your website")
         expect(page).to have_selector("a[href='/']")
       end
@@ -34,7 +34,7 @@ module Refinery
         visit refinery.root_path
       end
 
-      it "have a 'switch to your website editor' button" do
+      it "has a 'switch to your website editor' button" do
         expect(page).to have_content("Switch to your website editor")
         expect(page).to have_selector("a[href='/refinery']")
       end
