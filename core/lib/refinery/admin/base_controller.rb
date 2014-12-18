@@ -75,9 +75,9 @@ module Refinery
       private
 
       def allow_controller?(controller_path)
-        ::Refinery::Plugins.active.any? { |plugin|
+        ::Refinery::Plugins.active.any? do |plugin|
           Regexp.new(plugin.menu_match) === controller_path
-        }
+        end
       end
 
       def layout?

@@ -148,6 +148,7 @@ module Refinery
       alias_method_chain :rebuild!, :slug_nullification
 
       protected
+
       def nullify_duplicate_slugs_under_the_same_parent!
         t_slug = translation_class.arel_table[:slug]
         joins(:translations).group(:locale, :parent_id, t_slug).having(t_slug.count.gt(1)).count.

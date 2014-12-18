@@ -25,9 +25,9 @@ module Refinery
 
       def valid_templates(*pattern)
         ([Rails.root] | Refinery::Plugins.registered.pathnames).map { |p|
-          Dir[p.join(*pattern).to_s].flatten.map { |f|
+          Dir[p.join(*pattern).to_s].flatten.map do |f|
             File.basename(f).split('.').first
-          }
+          end
         }.flatten.uniq
       end
 
