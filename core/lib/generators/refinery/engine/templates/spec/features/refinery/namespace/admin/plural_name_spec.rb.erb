@@ -53,7 +53,7 @@ describe Refinery do
               click_link "Add New <%= singular_name.titleize %>"
 
               fill_in "<%= title.name.titleize %>", :with => "UniqueTitle"
-              expect { click_button "Save" }.to change(Refinery::<%= namespacing %>::<%= class_name %>, :count).from(0).to(1)
+              expect { click_button "Save" }.not_to change(Refinery::<%= namespacing %>::<%= class_name %>, :count)
 
               expect(page).to have_content("There were problems")
             end
