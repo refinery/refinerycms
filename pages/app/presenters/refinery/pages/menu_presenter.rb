@@ -134,7 +134,7 @@ module Refinery
       def find_url_for(item)
         url = [item.url]
         url << ['', item.url[:path]].compact.flatten.join('/') if item.url.respond_to?(:keys)
-        url = url.last.match(%r{^/#{::I18n.locale.to_s}(/.*)}) ? $1 : url.detect{ |u| u.is_a?(String)}
+        url.last.match(%r{^/#{::I18n.locale.to_s}(/.*)}) ? $1 : url.detect{ |u| u.is_a?(String) }
       end
     end
   end
