@@ -4,7 +4,7 @@ module Refinery
   describe "site bar", :type => :feature do
     refinery_login_with :refinery_user
 
-    it "have logout link" do
+    it "has a logout link" do
       visit Refinery::Core.backend_path
 
       expect(page).to have_content("Log out")
@@ -14,7 +14,7 @@ module Refinery
     context "when in backend" do
       before { visit Refinery::Core.backend_path }
 
-      it "have a 'switch to your website button'" do
+      it "has a 'switch to your website button'" do
         expect(page).to have_content("Switch to your website")
         expect(page).to have_selector("a[href='/']")
       end
@@ -27,14 +27,11 @@ module Refinery
     end
 
     context "when in frontend" do
-      before do
-        # make a page in order to avoid 404
-        FactoryGirl.create(:page, :link_url => "/")
+      # make a page in order to avoid 404
+      let!(:root_page) { FactoryGirl.create(:page, :link_url => "/") }
+      before { visit refinery.root_path }
 
-        visit refinery.root_path
-      end
-
-      it "have a 'switch to your website editor' button" do
+      it "has a 'switch to your website editor' button" do
         expect(page).to have_content("Switch to your website editor")
         expect(page).to have_selector("a[href='/refinery']")
       end
@@ -44,6 +41,11 @@ module Refinery
         click_link "Switch to your website editor"
         expect(page.current_path).to match(/\A#{Refinery::Core.backend_path}/)
       end
+
+      it "has an 'edit this page' button" do
+        expect(page).to have_link("Edit this page", :href => refinery.edit_admin_page_path(root_page))
+      end
+
     end
   end
 end
