@@ -25,7 +25,7 @@ Now it's time to create your Refinery application using the built in +--heroku+
 option:
 
 <shell>
-refinerycms myapp --heroku
+rails refinerycms myapp --heroku
 </shell>
 
 NOTE: Heroku relies on "Git":http://git-scm.com/download being installed on your system. You should install it beforehand.
