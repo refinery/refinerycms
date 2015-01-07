@@ -1,8 +1,8 @@
-h2. Generates a custom form
+h2. Generate a custom form
 
 h3. Description
 
-Generates a custom form based extension for Refinery automatically.
+Generate a custom form based extension for Refinery automatically.
 It works very similarly to the Refinery Engine generator.
 
 The first string attribute should always be the one which is the title or name field in your model.
