@@ -220,7 +220,7 @@ module Refinery
     # Returns the full path to this page.
     # This automatically prints out this page title and all parent page titles.
     # The result is joined by the path_separator argument.
-    def path(path_separator: ' - ', ancestors_first: true)
+    def path(path_separator = ' - ', ancestors_first = true)
       return title if root?
 
       chain = ancestors_first ? self_and_ancestors : self_and_ancestors.reverse
