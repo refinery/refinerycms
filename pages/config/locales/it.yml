@@ -33,7 +33,7 @@ it:
             link_to_this_resource: Link a questo file
       pages:
         delete: Eliminare per sempre questa pagina
-        edit: Modificare questa pagina
+        edit: Modifica questa pagina
         new: Aggiungi una nuova sotto-pagina
         page:
           view_live_html: Visualizza questa pagina<br/><em>(apre una nuova finestra del browser)</em>
