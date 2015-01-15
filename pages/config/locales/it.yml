@@ -39,6 +39,9 @@ it:
           view_live_html: Visualizza questa pagina<br/><em>(apre una nuova finestra del browser)</em>
           hidden: nascosto
           draft: bozza
+        form:
+          preview: Anteprima
+          preview_changes: Guarda in anteprima le tue modifiche prima di pubblicarle
         form_new_page_parts:
           title: Titolo
         form_page_parts:
