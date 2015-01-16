@@ -421,7 +421,7 @@ header {
     font-weight: normal;
     position: relative;
     &.active, &:hover, &:focus {
-      background: white;
+      background-color: white;
       color: #ff5500;
     }
     &.active {
