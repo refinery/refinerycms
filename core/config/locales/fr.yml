@@ -2,7 +2,7 @@ fr:
   refinery:
     js:
       admin:
-        confirm_changes: Toute modification sera perdue. Êtes-vous sûr de vouloir de vouloir continuer ?
+        confirm_changes: Toute modification sera perdue. Êtes-vous sûr(e) de vouloir de vouloir continuer ?
     plugins:
       refinery_core:
         title: Refinery
@@ -33,7 +33,7 @@ fr:
       form_actions:
         save: Enregistrer
         cancel: Annuler
-        cancel_lose_changes: Si vous annulez, tout les changements non sauvegardés seront perdus
+        cancel_lose_changes: Si vous annulez, tous les changements non sauvegardés seront perdus
         delete: Supprimer
         close: Fermer
       image_picker:
@@ -49,19 +49,19 @@ fr:
         name: Ajouter un fichier
         current: Fichier courrant
       search:
-        button_text: Chercher
+        button_text: Rechercher
         results_for_html: "Résultats de la recherche &#8216;<em>%{query}</em>&#8217;"
         no_results: Aucun résultat ne correspond à votre recherche
         cancel_search: 'Annuler la recherche'
         search_input_notice: "Entrez ici le texte recherché. La longueur minimale est de 3 caractères."
       delete:
-        message: "Êtes-vous sûr de vouloir supprimer '%{title}'?"
+        message: "Êtes-vous sûr(e) de vouloir supprimer '%{title}'?"
       error_messages:
         problems_in_following_fields: Les champs suivants comportent des problèmes
       help: aide
       form_advanced_options_menu:
         advanced_options: Options avancées
-        toggle_advanced_options: Cliquer ici pour paraméter les étiquettes et accéder au menu des options
+        toggle_advanced_options: Cliquez ici pour paramétrer les étiquettes et accéder au menu des options
         save_as_draft: Enregistrer comme brouillon
     message:
       close: Fermer
@@ -69,7 +69,7 @@ fr:
     draft_page_message:
       not_live: Cette page n'est pas visible par le public.
     footer:
-      copyright: Copyright © %{year} %{site_name}
+      copyright: Tous droits réservés © %{year} %{site_name}
     no_script:
       enable_javascript_html: Pour obtenir l'ensemble des fonctionnalités de cette page il est nécessaire d'activer JavaScript.
       here_are: Ici sont les
