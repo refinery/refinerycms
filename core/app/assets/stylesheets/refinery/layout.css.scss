@@ -1,25 +1,8 @@
-/*==================================
-=     Mixins
-==================================*/
-@mixin rounded($radius) {
-  border-radius: $radius;
-  -moz-border-radius: $radius;
-  -webkit-border-radius: $radius;
-}
-@mixin top-rounded($radius) {
-  border-radius-top: $radius;
-  -moz-border-radius-topleft: $radius;
-  -moz-border-radius-topright: $radius;
-  -webkit-border-top-left-radius: $radius;
-  -webkit-border-top-right-radius: $radius;
-}
-@mixin bottom-rounded($radius) {
-  border-radius-bottom: $radius;
-  -moz-border-radius-bottomleft: $radius;
-  -moz-border-radius-bottomright: $radius;
-  -webkit-border-bottom-left-radius: $radius;
-  -webkit-border-bottom-right-radius: $radius;
-}
+@import '_mixins';
+
+$admin_width: 1080px;
+$menu_width: 120px;
+$standard_rounding: 0px;
 
 @mixin form_actions() {
   position: relative;
@@ -52,25 +35,42 @@ acronym {
 label[for] {
   cursor: pointer;
 }
-#page_container, #site_bar_content, header {
-  margin: 0px auto 10px auto;
+#admin_container, #login_container, #site_bar_content {
+  margin: 0px auto 15px auto;
   text-align: left;
-  width: 990px;
+}
+#admin_container, #login_container {
+  @include rounded($standard_rounding);
+  position: relative;
+  height: 100%;
+  margin-top: 15px;
+}
+#login_container {
+  background: white;
+  width: 620px;
+}
+#admin_container {
+  @include faux_columns_2($menu_width, transparent, white);
+  width: $admin_width;
 }
 #page_container {
-  width: 960px;
-  padding: 30px 15px;
+  @include box-sizing(border-box);
+  @include right-rounded($standard_rounding);
+  background-color: white;
+  padding: 1.5em 1em;
+  position: relative;
+  float: left;
+  width: $admin_width - $menu_width;
 }
 #site_bar_content {
   margin-bottom: 0px;
 }
 #content .field, #content .form-actions {
-  width: 100%;
   position: relative;
 }
 #dialog_container #content .field, .dialog_container .field {
   width: auto;
-  margin:5px 0;
+  margin: 5px 0;
 }
 input.widest, textarea.widest {
   width: 99%;
@@ -84,7 +84,7 @@ select.widest {
 }
 #actions {
   float: right;
-  width: 30.7%;
+  width: 30%;
   padding-left: 15px;
   padding-top: 0px;
   ul {
@@ -275,7 +275,7 @@ a:hover {
 a#site_bar_refinery_cms_logo {
   left: 448px;
 }
-#content, #page_container {
+#content {
   background-color: white;
 }
 header, footer, nav {
@@ -287,15 +287,10 @@ header, footer, nav {
   font-size: 20px;
   line-height:22px
 }
-body.login {
-  #site_bar_content {
-    width: 650px;
-    a#site_bar_refinery_cms_logo {
-      left: 247px;
-    }
-  }
+#login_container {
   #page_container {
-    width: 620px;
+    background: transparent;
+    width: 100%;
     div.remember_me label, label.inline {
       display: inline;
     }
@@ -313,16 +308,17 @@ body.login {
   }
   header {
     background: #eaeaea;
-    width: 620px;
-    padding: 0px 15px 1em;
     height: auto;
+    float: none;
+    width: 100%;
+    @include top-rounded($standard_rounding);
     h1 {
       color: #41403c;
       vertical-align: middle;
       text-align: center;
       font-weight: bold;
       font-size: 18px;
-      padding-bottom: 0px;
+      padding-bottom: 15px;
       line-height: 30px;
       padding-top: 15px;
     }
@@ -371,39 +367,19 @@ div.field.checkbox_access {
     font-weight: normal;
   }
 }
-#menu, header .jcarousel-container {
+#menu, {
   display: block;
   margin: 0px;
   padding: 0px;
   position: absolute;
-  bottom: -1px;
-  left: 0px;
-  right: 0px;
   background: transparent;
 }
 header {
-  height: 60px;
-  position: relative;
+  float: left;
   margin-bottom: 0px;
+  width: $menu_width;
   a, a:hover {
     border-bottom: 0px none;
-  }
-  .jcarousel-container {
-    position: absolute !important;
-    .jcarousel-prev, .jcarousel-next {
-      position: absolute;
-      top: 13px;
-      cursor: pointer;
-    }
-    .jcarousel-prev {
-      left: -20px;
-    }
-    .jcarousel-next {
-      right: -20px;
-    }
-    .jcarousel-prev-disabled, .jcarousel-next-disabled {
-      display: none !important;
-    }
   }
   #logo {
     position: absolute;
@@ -426,6 +402,8 @@ header {
   }
 }
 #menu {
+  display: block;
+  position: relative;
   &.ui-sortable a {
     cursor: move;
   }
@@ -433,35 +411,41 @@ header {
     cursor: pointer;
   }
   a {
+    @include box-sizing(border-box);
     display: block;
-    padding: 7px 13px;
-    font-size: 13px;
-    background: image_url('refinery/nav_inactive_background.png') transparent repeat;
-    margin-top:4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 2px;
     color: white;
     font-weight: normal;
-    float: left;
-    margin-right: 2px;
     position: relative;
     &.active, &:hover, &:focus {
       background-color: white;
       color: #ff5500;
     }
     &.active {
-      padding: 9px 13px;
-      margin-top: 0px;
+      margin-left: -0.5em;
     }
   }
+
+  a#menu_reorder,
+  a#menu_reorder_done {
+    height: 14px;
+    width: 14px;
+    margin-bottom: 0;
+    padding: 6px;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    float: right;
+    @include box-sizing(content-box);
+  }
+  a#menu_reorder_done {
+    background: white;
+  }
 }
-#menu a#menu_reorder, header #menu a#menu_reorder_done {
-  height: 14px;
-  width: 14px;
-  margin-top: 11px;
-  padding: 6px;
-  cursor: pointer;
-  vertical-align: middle;
-  text-align: center;
-}
+
 pre {
   margin: 0;
   padding: 0;
@@ -480,22 +464,25 @@ pre {
 .filter {
   float: right;
 }
-#records > ul, #records > #recent_activity > ul, #records > #recent_inquiries > ul,
-  #records .pagination_container > ul, #records .pagination_frame > ul {
-  margin-left: 0;
-  padding-left: 0;
-}
-#records > ul li, #records > #recent_activity > ul li, #records > #recent_inquiries > ul li,
-  #records .pagination_container > ul li, #records .pagination_frame > ul {
-  list-style: none;
-  padding: 0px 5px;
-  vertical-align: top;
-  margin-bottom: 2px;
-  line-height: 35px;
-  position: relative;
-}
-#records > #recent_activity > ul li, #records > #recent_inquiries > ul li {
-  max-height: 35px;
+#records {
+  > ul, > #recent_activity > ul, > #recent_inquiries > ul,
+  .pagination_container > ul, .pagination_frame > ul {
+    margin-left: 0;
+    margin-top: 0;
+    padding-left: 0;
+  }
+  ul li, > #recent_activity > ul li, > #recent_inquiries > ul li,
+  .pagination_container > ul li, .pagination_frame > ul {
+    list-style: none;
+    padding: 0px 5px;
+    vertical-align: top;
+    margin-bottom: 2px;
+    line-height: 35px;
+    position: relative;
+  }
+  > #recent_activity > ul li, > #recent_inquiries > ul li {
+    max-height: 35px;
+  }
 }
 #recent_activity li a, #recent_inquiries li a {
   overflow: hidden;
@@ -504,8 +491,10 @@ pre {
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-#content #records > ul li .actions a, #content #records .pagination_container > ul li .actions a {
-  line-height: 29px;
+#content #records {
+  > ul li .actions a, .pagination_container > ul li .actions a {
+    line-height: 29px;
+  }
 }
 #records {
   ul {
@@ -547,9 +536,6 @@ pre {
   ul.empty {
     display: none;
   }
-  ul#sortable_list, ul.sortable_list {
-    margin-top: 6px;
-  }
   > #recent_activity, > #recent_inquiries {
     float: left;
     width: 48%;
@@ -564,34 +550,14 @@ pre {
 #pagination ul a:hover, #pagination .on {
   background: image_url('refinery/hover-gradient.jpg') repeat-x bottom #D4D4C6;
 }
-#records.tree ul li ul, .tree ul li ul {
-  padding: 0;
-}
-#records.tree ul li, .tree ul li {
-  margin: 0px;
-  padding: 4px 0 0 40px;
-  background: image_url('refinery/branch.gif') no-repeat 15px 0px;
-}
 #records.tree li.record ul {
   margin-left: 0;
 }
 #records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
   background: image_url('refinery/branch.gif') no-repeat 15px 0px;
 }
-#records.tree ul li.branch_start, .tree ul li.branch_start {
-  background-image: image_url('refinery/branch-start.gif');
-}
-#records.tree ul li.branch_end, .tree ul li.branch_end {
-  background-image: image_url('refinery/branch-end.gif');
-}
 #records.tree li {
   line-height: 25px;
-}
-#records.tree li span.spacing, .tree li span.spacing {
-  display: none;
-}
-#records.tree ul li > div:hover, .tree ul li > div:hover {
-  background-color: #EAEAEA;
 }
 #sortable_list.reordering > li, .sortable_list.reordering > li {
   cursor: move;
@@ -609,16 +575,18 @@ pre {
     padding: 0px 6px;
   }
 }
-.pagination .disabled {
-  color: #A8B9C1;
-}
-.pagination a, #content .pagination a, .pagination .current, .disabled, .pagination em  {
-  padding: 7px;
-  line-height: 20px;
-  border-bottom: 0px none;
-}
-.pagination .current, .pagination a:hover, .pagination em {
-  background: #A8B9C1;
+.pagination {
+  .disabled {
+    color: #A8B9C1;
+  }
+  a, #content a, .current, .disabled, em  {
+    padding: 7px;
+    line-height: 20px;
+    border-bottom: 0px none;
+  }
+  .current, a:hover, em {
+    background: #A8B9C1;
+  }
 }
 #dialog-form-actions .pagination {
   margin: -4px 6px -4px 0px;
@@ -1033,23 +1001,23 @@ ul#menu.reordering_menu li a {
   line-height: 18px;
   padding: 2px;
   font-size: 16px;
-  width: 180px;
+  width: 10em;
 }
 .cancel-search {
   float: right;
 }
 .pt-BR #search {
-  width: 187px;
+  width: 107px;
 }
 .en #search {
-  width: 210px;
+  width: 130px;
 }
 .search_form {
   position: relative;
   .button, .button-wrapper {
     position: absolute;
     right: 0px;
-    top: 0px;
+    top: 2px;
   }
 }
 form input[type=submit]:hover {
@@ -1080,7 +1048,7 @@ a img {
 .add_icon             { background-image: image_url('refinery/icons/add.png'); }
 .delete_icon          { background-image: image_url('refinery/icons/delete.png'); }
 .edit_icon            { background-image: image_url('refinery/icons/application_edit.png'); }
-.reorder_icon         { background-image: image_url('refinery/icons/arrow_switch.png'); }
+.reorder_icon         { background-image: image_url('refinery/icons/arrow_up_down.png'); }
 .reorder_icon.loading { background-image:image_url('refinery/icons/ajax-loader.gif'); }
 .user_comment_icon    { background-image: image_url('refinery/icons/user_comment.png'); }
 .edit_email_icon      { background-image: image_url('refinery/icons/email_edit.png'); }
@@ -1318,8 +1286,8 @@ input.button, a.button, #content a.button, span.button-wrapper, span.button-wrap
   color: white;
   padding: 0px 14px 0px 14px;
   font-size: 14px;
-  line-height: 25px;
-  height: 25px;
+  line-height: 24px;
+  height: 24px;
   display: inline-block;
   border: 0px none;
   margin-top: 0px;
@@ -1543,7 +1511,7 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   height: 24px;
   margin-right: 3px;
   padding-top: 1px;
-    
+
   span.code {
     display: block;
     position: absolute;
@@ -1581,10 +1549,10 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   top: 40px;
 }
 .pagination_frame.frame_left {
-  left: -1000px;
+  left: -3000px;
 }
 .pagination_frame.frame_right {
-  left: 1000px;
+  left: 3000px;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -1605,31 +1573,6 @@ a.information:hover {
   display: inline-block;
   width: auto;
 }
-/* cornering */
-.button, #editor_switch a, #editor_switch span {
-  @include rounded(6px);
-}
-#page_container, .visual_editor_box {
-  @include bottom-rounded(5px);
-}
-.visual_editor_iframe iframe {
-  @include bottom-rounded(2px);
-}
-.form-actions {
-  @include rounded(5px);
-}
-.form-actions.form-actions-dialog {
-  @include rounded(0px);
-}
-#menu > a {
-  @include top-rounded(5px);
-}
-.ui-tabs .ui-state-default a {
-  @include top-rounded(5px);
-}
-.tooltip, .tooltip span {
-  @include rounded(6px);
-}
 .label {
   padding: 1px 3px 2px;
   font-size: 9.75px;
@@ -1638,9 +1581,6 @@ a.information:hover {
   text-transform: uppercase;
   white-space: nowrap;
   background-color: #bfbfbf;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
 }
 .label.important {
   background-color: #c43c35;
@@ -1663,9 +1603,6 @@ a.information:hover {
   text-transform: uppercase;
   white-space: nowrap;
   background-color: #bfbfbf;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
 }
 .label.important {
   background-color: #c43c35;
@@ -1701,10 +1638,10 @@ a.information:hover {
   padding-bottom: 6px;
 }
 .ie7 .pt-BR #search {
-  width: 177px;
+  width: 97px;
 }
 .ie7 .en #search {
-  width: 200px;
+  width: 170px;
 }
 /* IE 8 */
 .ie8 body.login .field input.larger, .ie8 body.login .field input.larger:focus {

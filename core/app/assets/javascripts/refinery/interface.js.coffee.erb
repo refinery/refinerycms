@@ -5,15 +5,6 @@
   if typeof(visual_editor_init_interface_hook) != 'undefined'
     visual_editor_init_interface_hook()
 
-  if ($menu = $("#menu")).length > 0
-    $menu.jcarousel
-      vertical: false
-      scroll: 1
-      buttonNextHTML: "<img src='<%= asset_path 'refinery/carousel-right.png' %>' alt='down' height='15' width='10' />"
-      buttonPrevHTML: "<img src='<%= asset_path 'refinery/carousel-left.png' %>' alt='up' height='15' width='10' />"
-      listTag: $menu.get(0).tagName.toLowerCase()
-      itemTag: $menu.children(":first").get(0).tagName.toLowerCase()
-
   $("#current_locale li a").click (e) ->
     $("#current_locale li a span.action").each (span) ->
       $(this).css "display", (if $(this).css("display") == "none" then "" else "none")

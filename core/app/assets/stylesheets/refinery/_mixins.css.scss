@@ -1,0 +1,77 @@
+@mixin rounded($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+@mixin top-rounded($radius) {
+  border-radius-top: $radius;
+  -moz-border-radius-topleft: $radius;
+  -moz-border-radius-topright: $radius;
+  -webkit-border-top-left-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+}
+@mixin right-rounded($radius) {
+  border-radius-right: $radius;
+  -moz-border-radius-topright: $radius;
+  -moz-border-radius-bottomright: $radius;
+  -webkit-border-top-right-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+}
+@mixin left-rounded($radius) {
+  border-radius-left: $radius;
+  -moz-border-radius-topleft: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  -webkit-border-top-left-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+}
+@mixin bottom-rounded($radius) {
+  border-radius-bottom: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  -moz-border-radius-bottomright: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+}
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+@mixin faux_columns_2($col1_width, $col1_bg, $col2_bg) {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0, $col1_bg),
+    color-stop($col1_width, $col1_bg),
+    color-stop($col1_width, $col2_bg),
+    color-stop(100%, $col2_bg)
+  );
+  background-image: -webkit-linear-gradient(
+    left,
+    $col1_bg,
+    $col1_bg $col1_width,
+    $col2_bg $col1_width,
+    $col2_bg 100%
+  );
+  background-image: -moz-linear-gradient(
+    left,
+    $col1_bg,
+    $col1_bg $col1_width,
+    $col2_bg $col1_width,
+    $col2_bg 100%
+  );
+  background-image: -ms-linear-gradient(
+    left,
+    $col1_bg,
+    $col1_bg $col1_width,
+    $col2_bg $col1_width,
+    $col2_bg 100%
+  );
+  background-image: -o-linear-gradient(
+    left,
+    $col1_bg,
+    $col1_bg $col1_width,
+    $col2_bg $col1_width,
+    $col2_bg 100%
+  );
+}
