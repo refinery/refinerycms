@@ -16,7 +16,7 @@ append_file 'Gemfile' do
 gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', branch: 'master'
 gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'master'
 
-gem 'quiet_assets'
+gem 'quiet_assets', :group => :development
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.0']
