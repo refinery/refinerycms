@@ -8,7 +8,7 @@ module Refinery
       def new
         @manual = ::Refinery::Manual.find_by_id(1)
         if @manual
-          redirect_to refinery.edit_resources_admin_manual_path(:id => 1)
+          redirect_to refinery.edit_admin_manual_path(:id => 1)
         else
           @manual = ::Refinery::Manual.new
         end
@@ -16,12 +16,14 @@ module Refinery
 
       # overwriting crudified create
       def create
-        # There is only one PageInfo object with several translations.
-        # In the unlikely case that it will be deleted manually from the databse,
-        # ensure that the newly created PageInfo object will always have the id 1,
-        # as this is hard coded in several places.
-        @manual = ::Refinery::Manual.new(params[:manual]) do |item|
+        # There is only one manual, no translations. Hard coding the id makes sure that there will never be multiple manuals by some accident.
+        # The params are assigned manually as create(params) requires more model attributes than is usefull for storing a manual.
+        @manual = ::Refinery::Manual.new() do |item|
           item.id = 1
+          item.title = params[:manual][:title]
+          item.attachment = params[:manual][:attachment].read
+          item.filename = params[:manual][:attachment].original_filename
+          item.mimetype = params[:manual][:attachment].content_type
         end
         if @manual.save
           flash.notice = t(
@@ -31,6 +33,30 @@ module Refinery
           create_or_update_successful
         else
           create_or_update_unsuccessful 'new'
+        end
+      end
+
+      # overwriting crudified edit
+      def edit
+        @manual = ::Refinery::Manual.find_by_id(1)
+      end
+
+      # overwriting crudified update
+      def update
+        # The params are assigned manually as update_attributes(params) requires more model attributes than is usefull for storing a manual.
+        @manual.title = params[:manual][:title]
+        @manual.attachment = params[:manual][:attachment].read
+        @manual.filename = params[:manual][:attachment].original_filename
+        @manual.mimetype = params[:manual][:attachment].content_type
+
+        if @manual.save
+          flash.notice = t(
+                'refinery.crudify.updated',
+                :what => @manual[:title]
+              )
+          create_or_update_successful
+        else
+          create_or_update_unsuccessful 'edit'
         end
       end
 

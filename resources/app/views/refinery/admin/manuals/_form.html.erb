@@ -1,4 +1,4 @@
-<%= form_for [refinery, :resources_admin, @manual] do |f| -%>
+<%= form_for [refinery, :admin, @manual] do |f| -%>
   
   <%= render '/refinery/admin/error_messages',
               :object => @manual,
@@ -10,12 +10,12 @@
   </div>
 
   <div class="field">
-    <% if @manual.send("filename") && !@manual.errors.any? %>
-      <%= f.label "attachment".to_sym, @message.send("filename") %>
+    <% if @manual[:filename] && !@manual.errors.any? %>
+      <%= f.label :attachment, @manual[:filename] %>
     <% else %>
-      <%= f.label "attachment".to_sym, "Attachment" %>
+      <%= f.label :attachment, "Attachment" %>
     <% end %>
-    <%= f.file_field "attachment".to_sym %>
+    <%= f.file_field :attachment %>
     <br />
   </div>
   
