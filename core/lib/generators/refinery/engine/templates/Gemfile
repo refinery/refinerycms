@@ -10,7 +10,7 @@ git 'https://github.com/refinery/refinerycms.git', :branch => 'master' do
   end
 end
 
-gem 'refinerycms-i18n', :git => 'https://github.com/refinery/refinerycms-i18n', :branch => 'master'
+gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'master'
 
 # Database Configuration
 platforms :jruby do
