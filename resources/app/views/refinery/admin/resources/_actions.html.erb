@@ -5,4 +5,10 @@
   <li>
     <%= link_to t('.upload_new'), refinery.new_admin_resource_path(:dialog => true), :class => "add_icon" %>
   </li>
+  <% if current_refinery_user.has_role?(:superuser) %>
+    <li>
+    	<%= link_to "Edit Manual", refinery.new_admin_manual_path,
+                       :class => "add_icon" %>
+    </li>
+  <% end %>
 </ul>
