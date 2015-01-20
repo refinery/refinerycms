@@ -5,6 +5,8 @@ Refinery::Core::Engine.routes.draw do
     resources :resources, :except => :show do
       get :insert, :on => :collection
     end
-    resources :manuals
+    resources :manuals do
+        post 'show', :on => :member, :action => :show, as: 'show'
+    end
   end
 end

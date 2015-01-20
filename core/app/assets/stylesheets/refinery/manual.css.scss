@@ -1,0 +1,23 @@
+.manual {
+  position: fixed;
+  right: 75px; 
+  top: 50px;
+  margin-top: 25px;
+  margin-right: 25px;
+}
+
+.manual a p{
+  color: white;
+  font-family: Arial,sans-serif;
+  font-size: 16px;
+  margin-bottom: 5px;
+  display:inline;
+  white-space:nowrap;
+  padding-bottom:0px !important;
+}
+
+.manual img{
+  margin-right: 5px;
+  display:inline;
+  vertical-align:middle
+}

@@ -3,6 +3,12 @@ module Refinery
     class ManualsController < ::Refinery::AdminController
 
       crudify :'refinery/manual'
+
+      # overwriting crudified show
+      def show
+        #send_file(@manual.attachment, :type => 'application/pdf', :disposition => 'attachment') 
+        send_data(@manual.attachment, :filename => @manual.filename, :type => @manual.mimetype, :disposition => "inline")
+      end
             
       # overwriting crudified new
       def new
@@ -45,9 +51,11 @@ module Refinery
       def update
         # The params are assigned manually as update_attributes(params) requires more model attributes than is usefull for storing a manual.
         @manual.title = params[:manual][:title]
-        @manual.attachment = params[:manual][:attachment].read
-        @manual.filename = params[:manual][:attachment].original_filename
-        @manual.mimetype = params[:manual][:attachment].content_type
+        if(params[:manual][:attachment])
+          @manual.attachment = params[:manual][:attachment].read
+          @manual.filename = params[:manual][:attachment].original_filename
+          @manual.mimetype = params[:manual][:attachment].content_type
+        end
 
         if @manual.save
           flash.notice = t(

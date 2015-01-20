@@ -5,6 +5,12 @@
   <body class="<%= action_name %> <%= I18n.locale %>">
     <%= render '/refinery/site_bar' %>
     <div id='tooltip_container'></div>
+    <% if manual = ::Refinery::Manual.find_by_id(1) %>
+      <div class="manual">
+        <%= link_to image_tag('refinery/icons/info.png') + "<p>".html_safe + manual[:title] + "</p>".html_safe,
+            "/eproduct/refinery/manuals/1", :method => :post, :target => "_blank" %>
+      </div>
+    <% end %>
     <header>
       <%= render 'refinery/admin/menu' %>
     </header>
