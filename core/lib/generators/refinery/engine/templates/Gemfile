@@ -31,6 +31,8 @@ group :development, :test do
       gem 'therubyracer', '~> 0.11.4'
     end
   end
+
+  gem 'rspec-its'
 end
 
 # Gems used only for assets and not required
