@@ -1,85 +1,129 @@
-@import '_mixins';
-
-#site_bar_content {
-  height:47px;
-  position: relative;
-  margin: 0px auto 10px auto;
-  text-align: left;
-  width: 1000px;
-}
 #site_bar {
   background: #22a7f2;
-  border-bottom: 0px none;
-}
-a#site_bar_refinery_cms_logo {
-  left: 448px;
-}
-#site_bar, #site_bar * {
-  color: white;
-  font-family: Arial;
-  font-size: 14px;
-  font-weight: normal;
-}
-#editor_switch, #site_bar_branding, a#site_bar_refinery_cms_logo { position: absolute; }
-#editor_switch {
-  left: 0px;
-  a, a:hover {
+
+  #site_bar_content {
     color: white;
-    background: #e7682c image_url('refinery/orange_button.png') repeat-x;
-    border-bottom: 0px none;
-    padding: 4px 14px;
-    border: 1px solid #fca87f;
-    height: 24px;
-    line-height: 24px;
-    cursor: pointer;
-  }
-  span {
-    border: 1px solid #0280c7;
-    height: 26px;
-    line-height: 26px;
-    margin-top: 9px;
-    display: block;
-    cursor: pointer;
-  }
-}
-#site_bar {
-  height: 47px;
-  padding: 0px;
-  * {
-    line-height: 47px;
-  }
-  a {
-    text-decoration: none;
-  }
-  #site_bar_branding {
-    right: 0px;
+    font-family: Arial;
+    font-size: 0.9em;
+    font-weight: normal;
+    overflow: auto;
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 0.8em;
+
     a {
-      font-weight: normal;
-      &#logout {
-        margin-left: 12px;
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    #editor_switch {
+      text-align: center;
+
+      @media screen and (min-width: 37.5em) {
+        text-align: left;
+      }
+
+      a {
+        background: #ff8951;
+        background: -moz-linear-gradient(top, #ff8951 0%, #d14808 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, #ff8951), color-stop(100%, #d14808));
+        background: -webkit-linear-gradient(top, #ff8951 0%, #d14808 100%);
+        background: -o-linear-gradient(top, #ff8951 0%, #d14808 100%);
+        background: -ms-linear-gradient(top, #ff8951 0%, #d14808 100%);
+        background: linear-gradient(to bottom, #ff8951 0%, #d14808 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8951', endColorstr='#d14808', GradientType=0 );
+        border: 1px solid #fca87f;
+        border-bottom: 0px none;
+        display: inline-block;
+        margin-right: 0.3em;
+        padding: 0.15em 1em 0.25em;
+
+        &:hover {
+          background: #d14908;
+          text-decoration: none;
+        }
+      }
+    }
+
+    #site_bar_refinery_cms_logo {
+      background: image_url('refinery/logo-site-bar.png') no-repeat 0 0;
+      display: none;
+      height: 29px;
+      overflow: hidden;
+      margin-top: -2px;
+      position: relative;
+      width: 96px;
+
+      @media screen and (min-width: 58em) {
+        display: block;
+      }
+
+      span {
+        position: absolute;
+        left: -1000em;
+      }
+
+      &:hover {
+        background-position: 0 100%;
+      }
+    }
+
+    #site_bar_branding {
+      display: block;
+      text-align: center;
+      margin-top: 0.9em;
+
+      @media screen and (min-width: 37.5em) {
+        margin-top: 0.25em;
+        text-align: right;
+      }
+
+      #site_bar_company_name {
+        font-weight: bold;
+      }
+
+      #logout {
+        margin-left: 0.9em;
       }
     }
   }
-  #site_bar_company_name {
-    font-weight: bold;
-  }
 }
-a#site_bar_refinery_cms_logo {
-  left: 44.5%;
-  border-bottom: none;
-  line-height: 29px;
-  height: 29px;
-  margin-top: 9px;
-  overflow: hidden;
-  &:hover {
-    border-bottom: none;
-    opacity: 1;
-    img {
-      margin-top: -29px;
+
+@media screen and (min-width: 37.5em) {
+  #site_bar {
+    #site_bar_content {
+      #editor_switch {
+        float: left;
+        width: 60%;
+      }
+
+      #site_bar_branding {
+        float: left;
+        width: 40%;
+      }
     }
   }
 }
-.ie7 #site_bar #editor_switch a {
-  height: 26px;
-  line-height: 26px;
+
+@media screen and (min-width: 58em) {
+  #site_bar {
+    #site_bar_content {
+      #editor_switch {
+        width: 52%;
+      }
+
+      #site_bar_branding {
+        width: 36%;
+      }
+
+      #site_bar_refinery_cms_logo {
+        float: left;
+        width: 12%;
+      }
+    }
+  }
 }
