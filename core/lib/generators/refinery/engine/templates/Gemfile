@@ -25,6 +25,7 @@ platforms :ruby do
 end
 
 group :development, :test do
+  gem 'rspec-its' # for the model's validation tests.
   platforms :ruby do
     require 'rbconfig'
     if RbConfig::CONFIG['target_os'] =~ /linux/i

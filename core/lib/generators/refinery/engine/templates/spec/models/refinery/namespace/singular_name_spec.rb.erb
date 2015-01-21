@@ -3,7 +3,7 @@ require 'spec_helper'
 module Refinery
   module <%= namespacing %>
     describe <%= class_name %> do
-      describe "validations" do
+      describe "validations", type: :model do
         subject do
           FactoryGirl.create(:<%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? -%>,
           :<%= title.name %> => "Refinery CMS"<% end %>)
