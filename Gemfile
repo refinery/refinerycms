@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'master'
 gem 'quiet_assets'
 gem 'spring'
 gem 'spring-commands-rspec'
