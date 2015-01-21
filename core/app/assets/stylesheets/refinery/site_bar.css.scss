@@ -1,7 +1,3 @@
-@import '_mixins';
-
-$standard_rounding: 0px;
-
 #site_bar {
   background: #22a7f2;
 
@@ -48,7 +44,6 @@ $standard_rounding: 0px;
         display: inline-block;
         margin-right: 0.3em;
         padding: 0.15em 1em 0.25em;
-        @include rounded($standard_rounding);
 
         &:hover {
           background: #d14908;
