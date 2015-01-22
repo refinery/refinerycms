@@ -5,14 +5,15 @@
   <% end -%>
   <div id='site_bar'>
     <div id='site_bar_content' class='clearfix'>
+
       <div id='editor_switch'>
         <%= site_bar_switch_link -%>
         <%= site_bar_edit_link -%>
       </div>
-      <%= link_to image_tag("refinery/logo-site-bar.png", :alt => "Refinery CMS™"),
-                  'http://refinerycms.com',
-                  :target => '_blank',
-                  :id => 'site_bar_refinery_cms_logo' %>
+
+      <%= link_to 'http://refinerycms.com', :id => 'site_bar_refinery_cms_logo', :target => '_blank' do %>
+        <span>Refinery CMS™</span>
+      <% end %>
 
       <div id='site_bar_branding'>
         <span id='site_bar_company_name'>
