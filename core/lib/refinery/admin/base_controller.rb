@@ -1,6 +1,6 @@
 require 'action_controller'
 require 'refinery/authorisation_manager'
-require 'zilch/users_manager'
+require 'zilch/authorisation/users_manager'
 
 module Refinery
   module Admin
@@ -37,7 +37,7 @@ module Refinery
       end
 
       def authenticate_refinery_user!
-        ::Refinery::Core::AuthorisationManager.instance.authenticate!
+        authorisation_manager.authenticate!
       end
 
       def group_by_date(records)
@@ -53,7 +53,7 @@ module Refinery
       end
 
       def restrict_controller
-        unless allow_controller? params[:controller].gsub 'admin/', ''
+        unless allow_controller?(params[:controller].gsub('admin/', ''))
           logger.warn "'#{current_refinery_user}' tried to access '#{params[:controller]}' but was rejected."
           error_404
         end
@@ -61,8 +61,12 @@ module Refinery
 
       private
 
-      def allow_controller?(controller_path)
-        ::Zilch::AuthorisationManager.instance.allow_access_to_controller?(controller_path)
+      def allow_controller?(controller_name)
+        authorisation_manager.allow?(:access_controller, controller_name)
+      end
+
+      def authorisation_manager
+        @authorisation_manager ||= ::Refinery::Core::AuthorisationManager.new
       end
 
       def layout?
@@ -94,18 +98,6 @@ module Refinery
       def redirect_back_or_default(default)
         redirect_to(pop_stored_location || default)
       end
-
-
-      # Override authorized? so that only users with the Refinery role can admin the website.
-      # def authorized?
-      #   refinery_user?
-      # end
-
-
-      # def refinery_user?
-      #   auth_manager = Refinery::AuthenticationManager.instance
-      #   auth_manager.authenticated? && auth_manager.
-      #     Zilch::AuthorisationManager.instance.current_user.has_role?(:refinery)
     end
   end
 end

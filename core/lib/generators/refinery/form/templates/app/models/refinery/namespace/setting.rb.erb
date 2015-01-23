@@ -1,4 +1,4 @@
-require 'zilch/users_manager'
+require 'zilch/authorisation/users_manager'
 
 module Refinery
   module <%= namespacing %>
@@ -22,7 +22,7 @@ module Refinery
 
         def notification_recipients
           Refinery::Setting.find_or_set(:<%= singular_name %>_notification_recipients,
-                                        (Zilch::UsersManager.instance.primary_user.try(:email)).to_s)
+                                        (users_manager.primary_user.try(:email)).to_s)
         end
 
         def notification_subject
