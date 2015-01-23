@@ -9,7 +9,7 @@ module Refinery
       @plugins = Array.new(*args)
     end
 
-    def_delegators :@plugins, :<<, :each, :delete_if
+    def_delegators :@plugins, :<<, :each, :delete_if, :reverse
 
     def find_by_name(name)
       detect { |plugin| plugin.name == name }
@@ -43,6 +43,13 @@ module Refinery
 
     def first_url_in_menu
       first_in_menu_with_url.try(:url)
+    end
+
+    def update_positions(plugin_list)
+      plugins = plugin_list.map {|p| find_by_name(p) }.reject(&:blank?)
+      plugins.each_with_index do |plugin, index|
+        plugin.update_attributes(position: index)
+      end
     end
 
 

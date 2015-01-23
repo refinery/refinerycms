@@ -10,6 +10,7 @@ module Refinery
         end
       end
 
+
       describe "landing url" do
         let(:plugins) { double("plugins") }
 
@@ -20,6 +21,18 @@ module Refinery
         it "queries for the first landable url" do
           expect(plugins).to receive(:first_url_in_menu)
           subject.landing_url
+        end
+      end
+
+
+      describe "roles" do
+        it "responds to #has_role?" do
+          expect(subject).to respond_to(:has_role?)
+        end
+
+        it "should have all roles by default" do
+          expect(subject).to have_role(:zilch)
+          expect(subject).to have_role(:arbitrary)
         end
       end
     end

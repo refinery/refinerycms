@@ -48,7 +48,7 @@ module Refinery
     end
 
     def current_refinery_user
-      Refinery::Core::AuthorisationManager.instance.current_user
+      authorisation_manager.current_user
     end
 
     protected
@@ -64,6 +64,11 @@ module Refinery
       "#{model.class.name}Presenter".constantize
     rescue NameError
       default
+    end
+
+    private
+    def authorisation_manager
+      @authorisation_manager ||= ::Refinery::Core::AuthorisationManager.new
     end
   end
 end
