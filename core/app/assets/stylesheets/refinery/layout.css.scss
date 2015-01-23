@@ -47,12 +47,16 @@ label[for] {
     color: #000;
     border-bottom: 1px solid #727272;
   }
-}
-#admin_container, #login_container {
+
   @include rounded($standard_rounding);
   position: relative;
   height: 100%;
   margin-top: 15px;
+  #menu {
+    a:hover {
+      border-bottom: 0px;
+    }
+  }
 }
 #login_container {
   background: white;
