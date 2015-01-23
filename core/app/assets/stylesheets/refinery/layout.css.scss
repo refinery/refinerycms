@@ -471,7 +471,7 @@ pre {
     margin-top: 0;
     padding-left: 0;
   }
-  ul li, > #recent_activity > ul li, > #recent_inquiries > ul li,
+  > ul li, > #recent_activity > ul li, > #recent_inquiries > ul li,
   .pagination_container > ul li, .pagination_frame > ul {
     list-style: none;
     padding: 0px 5px;
@@ -536,6 +536,9 @@ pre {
   ul.empty {
     display: none;
   }
+  ul#sortable_list, ul.sortable_list {
+    margin-top: 6px;
+  }
   > #recent_activity, > #recent_inquiries {
     float: left;
     width: 48%;
@@ -550,14 +553,34 @@ pre {
 #pagination ul a:hover, #pagination .on {
   background: image_url('refinery/hover-gradient.jpg') repeat-x bottom #D4D4C6;
 }
+#records.tree ul li ul, .tree ul li ul {
+  padding: 0;
+}
+#records.tree ul li, .tree ul li {
+  margin: 0px;
+  padding: 4px 0 0 40px;
+  background: image_url('refinery/branch.gif') no-repeat 15px 0px;
+}
 #records.tree li.record ul {
   margin-left: 0;
 }
 #records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
   background: image_url('refinery/branch.gif') no-repeat 15px 0px;
 }
+#records.tree ul li.branch_start, .tree ul li.branch_start {
+  background-image: image_url('refinery/branch-start.gif');
+}
+#records.tree ul li.branch_end, .tree ul li.branch_end {
+  background-image: image_url('refinery/branch-end.gif');
+}
 #records.tree li {
   line-height: 25px;
+}
+#records.tree li span.spacing, .tree li span.spacing {
+  display: none;
+}
+#records.tree ul li > div:hover, .tree ul li > div:hover {
+  background-color: #EAEAEA;
 }
 #sortable_list.reordering > li, .sortable_list.reordering > li {
   cursor: move;
