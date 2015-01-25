@@ -20,7 +20,7 @@ gem 'refinerycms', '~> #{VERSION_BAND}'
 
 # Optionally, specify additional Refinery CMS Extensions here:
 gem 'refinerycms-acts-as-indexed', ['~> 1.0', '>= 1.0.0']
-gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.4']
+gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.5']
 #  gem 'refinerycms-blog', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
 #  gem 'refinerycms-inquiries', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
 #  gem 'refinerycms-search', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
