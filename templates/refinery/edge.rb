@@ -21,7 +21,7 @@ gem 'quiet_assets', :group => :development
 gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.0']
 
 # Add support for refinerycms-wymeditor
-gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.5']
+gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6']
 
 gem 'seo_meta', git: 'https://github.com/parndt/seo_meta', branch: 'master'
 
