@@ -298,7 +298,7 @@ module Refinery
     end
 
     context "should add url suffix" do
-      let(:reserved_word) { subject.class.friendly_id_config.reserved_words.last }
+      let(:reserved_word) { subject.class.friendly_id_config.reserved_words.sample }
       let(:page_with_reserved_title) {
         subject.class.create!(:title => reserved_word, :deletable => true)
       }

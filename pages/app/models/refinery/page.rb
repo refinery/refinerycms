@@ -19,15 +19,11 @@ module Refinery
     end
 
     class FriendlyIdOptions
-      def self.reserved_words
-        %w(index new session login logout users refinery admin images)
-      end
-
       def self.options
         # Docs for friendly_id https://github.com/norman/friendly_id
         friendly_id_options = {
           use: [:reserved],
-          reserved_words: self.reserved_words
+          reserved_words: Refinery::Pages.friendly_id_reserved_words
         }
         if ::Refinery::Pages.scope_slug_by_parent
           friendly_id_options[:use] << :scoped
@@ -349,7 +345,9 @@ module Refinery
 
       def self.protected_slug_string(slug_string)
         sluggified = slug_string.to_slug.normalize!
-        sluggified << "-page" if Pages.marketable_urls && FriendlyIdOptions.reserved_words.include?(sluggified)
+        if Pages.marketable_urls && Refinery::Pages.friendly_id_reserved_words.include?(sluggified)
+          sluggified << "-page"
+        end
         sluggified
       end
     end
