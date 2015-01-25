@@ -7,7 +7,8 @@ module Refinery
                     :default_parts, :use_custom_slugs, :scope_slug_by_parent,
                     :cache_pages_backend, :cache_pages_full, :layout_template_whitelist,
                     :use_layout_templates, :page_title, :absolute_page_links, :types,
-                    :auto_expand_admin_tree, :show_title_in_body
+                    :auto_expand_admin_tree, :show_title_in_body,
+                    :friendly_id_reserved_words
 
     self.pages_per_dialog = 14
     self.pages_per_admin_index = 20
@@ -44,5 +45,8 @@ module Refinery
     self.absolute_page_links = false
     self.types = Types.registered
     self.auto_expand_admin_tree = true
+    self.friendly_id_reserved_words = %w(
+      index new session login logout users refinery admin images
+    )
   end
 end
