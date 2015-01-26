@@ -75,13 +75,19 @@ end}  end
     end
 
     def append_heroku_gems!
-      append_file 'Gemfile', %q{
+      append_file 'Gemfile', %Q{
+# The Ruby version is specified here so that Heroku uses the right version.
+ruby #{ENV['RUBY_VERSION'].inspect}
+
 # The Heroku gem allows you to interface with Heroku's API
 gem 'heroku'
 
 group :production do
   # Fog allows you to use S3 assets (added for Heroku)
   gem 'dragonfly-s3_data_store'
+
+  # Gems that Heroku recommend using:
+  gem 'rails_12factor'
 
 }
       # If postgres is not the database in use, Heroku still needs it.
