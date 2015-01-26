@@ -156,6 +156,9 @@ end
       say_status "Setting up the Heroku database..", nil
       run "heroku#{' run' if options[:stack] == 'cedar'} rake db:migrate"
 
+      say_status "Seeding the Heroku database..", nil
+      run "heroku#{' run' if options[:stack] == 'cedar'} rake db:seed"
+
       say_status "Restarting servers...", nil
       run "heroku restart"
     end
