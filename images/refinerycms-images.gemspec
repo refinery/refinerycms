@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
   s.add_dependency 'dragonfly',               '~> 1.0.0'
-  s.add_dependency 'dragonfly-s3_data_store', '~> 1.0.0'
   s.add_dependency 'refinerycms-core',        version
 
   s.required_ruby_version = Refinery::Version.required_ruby_version

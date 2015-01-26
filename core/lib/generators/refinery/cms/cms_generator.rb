@@ -79,8 +79,10 @@ end}  end
 # The Heroku gem allows you to interface with Heroku's API
 gem 'heroku'
 
-# Fog allows you to use S3 assets (added for Heroku)
-gem 'fog'
+group :production do
+  # Fog allows you to use S3 assets (added for Heroku)
+  gem 'dragonfly-s3_data_store'
+
 }
       # If postgres is not the database in use, Heroku still needs it.
       if destination_path.join('Gemfile').file? && destination_path.join('Gemfile').read !~ %r{gem ['"]pg['"]}
@@ -89,6 +91,10 @@ gem 'fog'
 gem 'pg'
 }
       end
+
+      append_file 'Gemfile', %q{
+end
+      } # close the production group that was opened for dragonfly, and pg.
     end
 
     def bundle!
