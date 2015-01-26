@@ -219,4 +219,13 @@ describe Refinery do
       end
     end
   end
+
+  describe "backend_path" do
+    let(:root_path) { "/custom/path" }
+
+    it "should take into account the mount point" do
+      allow(Refinery::Core).to receive(:mounted_path).and_return(root_path)
+      expect(Refinery::Core.backend_path).to eq("#{root_path}/refinery")
+    end
+  end
 end

@@ -15,7 +15,13 @@ module Refinery
             current_url = "/#{Refinery::I18n.current_frontend_locale}#{current_url}"
           end
 
-          current_url
+          # See https://github.com/refinery/refinerycms/issues/2740
+          if current_url == '/'
+            Refinery::Core.mounted_path
+          else
+            [Refinery::Core.mounted_path, current_url.sub(%r{\A/}, '')].
+              join("/").sub("//", "/").sub(%r{/\z}, '')
+          end
         end
       end
 

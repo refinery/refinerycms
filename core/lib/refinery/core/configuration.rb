@@ -4,7 +4,7 @@ module Refinery
 
     config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name,
                     :google_analytics_page_code, :authenticity_token_on_frontend,
-                    :dragonfly_secret, :javascripts, :stylesheets,
+                    :dragonfly_secret, :javascripts, :stylesheets, :mounted_path,
                     :s3_bucket_name, :s3_region, :s3_access_key_id,
                     :s3_secret_access_key, :force_ssl, :backend_route,
                     :dragonfly_custom_backend_class, :dragonfly_custom_backend_opts,
@@ -25,6 +25,7 @@ module Refinery
     self.s3_secret_access_key = ENV['S3_SECRET']
     self.force_ssl = false
     self.backend_route = "refinery"
+    self.mounted_path = "/"
     self.dragonfly_custom_backend_class = ''
     self.dragonfly_custom_backend_opts = {}
     self.visual_editor_javascripts = []
@@ -52,8 +53,9 @@ module Refinery
         config.backend_route.to_s.gsub(%r{\A/}, '')
       end
 
+      # See https://github.com/refinery/refinerycms/issues/2740
       def backend_path
-        "/#{backend_route}"
+        [mounted_path.gsub(%r{/\z}, ''), backend_route].join("/")
       end
 
       def clear_javascripts!

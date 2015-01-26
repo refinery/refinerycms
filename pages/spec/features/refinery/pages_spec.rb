@@ -214,14 +214,13 @@ module Refinery
       end
     end
 
-    # Following specs are converted from one of the cucumber features.
-    # Maybe we should clean up this spec file a bit...
     describe "home page" do
       it "succeeds" do
-        visit "/"
+        visit refinery.root_path
 
         within ".selected" do
           expect(page).to have_content(home_page.title)
+          expect(page).not_to have_content(about_page.title)
         end
         expect(page).to have_content(about_page.title)
       end
@@ -229,10 +228,11 @@ module Refinery
 
     describe "content page" do
       it "succeeds" do
-        visit "/about"
+        visit refinery.marketable_page_path(about_page.url)
 
         expect(page).to have_content(home_page.title)
         within ".selected > a" do
+          expect(page).not_to have_content(home_page.title)
           expect(page).to have_content(about_page.title)
         end
       end
