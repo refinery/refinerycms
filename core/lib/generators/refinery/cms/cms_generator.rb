@@ -93,8 +93,8 @@ group :production do
       # If postgres is not the database in use, Heroku still needs it.
       if destination_path.join('Gemfile').file? && destination_path.join('Gemfile').read !~ %r{gem ['"]pg['"]}
         append_file 'Gemfile', %q{
-# Postgres support (added for Heroku)
-gem 'pg'
+  # Postgres support (added for Heroku)
+  gem 'pg'
 }
       end
 
