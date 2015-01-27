@@ -10,7 +10,7 @@ module Refinery
                            :desc => "Allow Refinery to remove default Rails files in a fresh installation"
     class_option :heroku,  :type => :string, :default => nil, :group => :runtime, :banner => 'APP_NAME',
                            :desc => "Deploy to Heroku after the generator has run."
-    class_option :stack,   :type => :string, :default => 'cedar', :group => :runtime,
+    class_option :stack,   :type => :string, :default => 'cedar-14', :group => :runtime,
                            :desc => "Specify which Heroku stack you want to use. Requires --heroku option to function."
     class_option :skip_db, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
                            :desc => "Skip over any database creation, migration or seeding."
@@ -155,10 +155,10 @@ end
       run "git push heroku master"
 
       say_status "Setting up the Heroku database..", nil
-      run "heroku#{' run' if options[:stack] == 'cedar'} rake db:migrate"
+      run "heroku#{' run' if options[:stack] == 'cedar-14'} rake db:migrate"
 
       say_status "Seeding the Heroku database..", nil
-      run "heroku#{' run' if options[:stack] == 'cedar'} rake db:seed"
+      run "heroku#{' run' if options[:stack] == 'cedar-14'} rake db:seed"
 
       say_status "Restarting servers...", nil
       run "heroku restart"
