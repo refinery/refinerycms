@@ -83,7 +83,7 @@ ruby #{ENV['RUBY_VERSION'].inspect}
 gem 'heroku'
 
 group :production do
-  # Fog allows you to use S3 assets (added for Heroku)
+  # Dragonfly's S3 Data Store extension allows you to use S3 assets (added for Heroku)
   gem 'dragonfly-s3_data_store'
 
   # Gems that are recommended for using Heroku:
