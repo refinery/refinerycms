@@ -86,9 +86,9 @@ group :production do
   # Fog allows you to use S3 assets (added for Heroku)
   gem 'dragonfly-s3_data_store'
 
-  # Gems that Heroku recommend using:
+  # Gems that are recommended for using Heroku:
   gem 'rails_12factor'
-
+  gem 'puma'
 }
       # If postgres is not the database in use, Heroku still needs it.
       if destination_path.join('Gemfile').file? && destination_path.join('Gemfile').read !~ %r{gem ['"]pg['"]}
@@ -125,14 +125,41 @@ end
       end
     end
 
+    def create_heroku_procfile!
+      create_file "Procfile" do
+        "web: bundle exec puma -C config/puma.rb"
+      end unless destination_path.join('Procfile').file?
+
+      create_file "config/puma.rb" do
+%{threads Integer(ENV['MIN_THREADS']  || 1), Integer(ENV['MAX_THREADS'] || 16)
+
+workers Integer(ENV['PUMA_WORKERS'] || 3)
+
+rackup DefaultRackup
+port ENV['PORT'] || 3000
+environment ENV['RACK_ENV'] || 'development'
+preload_app!
+
+on_worker_boot do
+  # worker specific setup
+  ActiveSupport.on_load(:active_record) do
+    ActiveRecord::Base.establish_connection
+  end
+end
+}
+      end unless destination_path.join('config', 'puma.rb').file?
+    end
+
     def deploy_to_hosting?
       if heroku?
         append_heroku_gems!
 
-        bundle!
-
         # Sanity check the heroku application name and save whatever messages are produced.
         message = sanity_check_heroku_application_name!
+
+        create_heroku_procfile!
+
+        bundle!
 
         # Supply the deploy process with the previous messages to make them visible.
         deploy_to_hosting_heroku!(message)
