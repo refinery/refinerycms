@@ -16,7 +16,7 @@ end
 
 append_file 'Gemfile' do
 "
-gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', branch: 'template_test'
+gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', branch: 'master'
 
 gem 'quiet_assets', :group => :development
 
