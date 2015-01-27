@@ -3,9 +3,16 @@ require "spec_helper"
 module Refinery
   module Pages
     describe MenuPresenter do
+      let!(:original_mounted_path) { Core.mounted_path }
       let(:mounted_path) { "/" }
+
       before do
         allow(Core).to receive(:mounted_path).and_return(mounted_path)
+        Rails.application.reload_routes!
+      end
+
+      after do
+        allow(Core).to receive(:mounted_path).and_return(original_mounted_path)
         Rails.application.reload_routes!
       end
 
