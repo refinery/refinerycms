@@ -100,7 +100,8 @@ group :production do
 
       append_file 'Gemfile', %q{
 end
-      } # close the production group that was opened for dragonfly, and pg.
+
+} # close the production group that was opened for dragonfly, and pg.
     end
 
     def bundle!
