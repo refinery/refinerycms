@@ -2,48 +2,74 @@ require "spec_helper"
 
 module Refinery
 
-  describe "Admin Images Tab", type: :feature do
+  describe "the Admin Images Tab" do
     refinery_login_with :refinery_user
+    include_context 'admin images tab'
 
-    context 'when there are no images' do
-      let(:initial_path) { refinery.admin_images_path(view: %w(grid list).sample) }
+    context 'When there are no images' do
+      include_context 'no existing images'
+
       it 'says there are no images'do
         visit refinery.admin_images_path
         expect(page).to have_content(::I18n.t('no_images_yet', scope: 'refinery.admin.images.records'))
       end
 
-      it_behaves_like 'an image uploader'
+      it_has_behaviour 'uploads images'
     end
 
-    context 'when there is one image' do
-      let!(:image) { FactoryGirl.create(:image) }
-      let(:initial_path) { refinery.admin_images_path(view: %w(grid list).sample) }
+    context 'When there is one image' do
+      include_context 'one image'
 
-      it_behaves_like 'an image index'
-      it_behaves_like 'an image deleter'
-      it_behaves_like 'an image uploader'
+      it_has_behaviour 'indexes images'
+      it_has_behaviour 'shows list and grid views'
+      it_has_behaviour 'shows an image preview'
+      it_has_behaviour 'deletes an image'
+      it_has_behaviour 'edits an image'
+      it_has_behaviour 'uploads images'
     end
 
-    context 'when there are many images' do
-      let!(:image) { FactoryGirl.create(:image) }
-      let!(:alt_image) { FactoryGirl.create(:alternate_image) }
-      let!(:another_image) { FactoryGirl.create(:another_image) }
-      let(:initial_path) { refinery.admin_images_path(view: %w(grid list).sample) }
+    context 'When there are many images' do
+      include_context 'many images'
 
-      it_behaves_like 'an image index'
-      it_behaves_like 'an image deleter'
-      it_behaves_like 'an image uploader'
+      it_has_behaviour 'indexes images'
+      it_has_behaviour 'shows list and grid views'
+      it_has_behaviour 'paginates the list of images'
+      it_has_behaviour 'shows an image preview'
+      it_has_behaviour 'deletes an image'
+      it_has_behaviour 'uploads images'
+      it_has_behaviour 'edits an image'
+    end
+  end
+
+  describe 'Page Visual Editor - Add Image' do
+
+    refinery_login_with :refinery_user
+
+    include_context 'Visual Editor - add image'
+
+    context 'When there are no images' do
+      include_context 'no existing images'
+      it_has_behaviour 'uploads images'
+    end
+
+    context 'When there is one image' do
+      include_context 'one image'
+
+      it_has_behaviour 'indexes images'
+      it_has_behaviour 'paginates the list of images'
+      it_has_behaviour 'uploads images'
+      it_has_behaviour 'inserts images'
+    end
+
+    context 'When there are many images' do
+      include_context 'many images'
+
+      it_has_behaviour 'indexes images'
+      it_has_behaviour 'paginates the list of images'
+      it_has_behaviour 'uploads images'
+      it_has_behaviour 'inserts images'
     end
 
   end
-
-  describe 'Page Edit Images tab' do
-    # it_behaves_like 'an image uploader'
-    # it behaves_like 'an image editor'
-    # it behaves_like 'an image previewer'
-    # it_behaves_like 'an image index'
-    # it behaves_like 'an image inserter'
-    # it behaves_like 'an image deleter'
-  end
-
 end
+
