@@ -41,6 +41,8 @@ en:
         remove_current: Remove current image
         change: Click here to pick an image
         show: Show
+      locale_picker:
+        language: Language
       resource_picker:
         download_current: Download current file
         opens_in_new_window: Opens in a new window

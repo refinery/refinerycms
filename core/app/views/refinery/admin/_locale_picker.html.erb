@@ -1,6 +1,6 @@
 <input type="hidden" name="switch_locale" id="switch_locale" value="<%= local_assigns[:current_locale] %>" />
 <% if Refinery::I18n.frontend_locales.many? %>
-  <label>Language</label>
+  <label><%= t('.language') %></label>
   <ul id="switch_locale_picker" class="clearfix">
     <% locales = Refinery::I18n.locales.clone %>
     <% Refinery::I18n.frontend_locales.each do |locale| %>
