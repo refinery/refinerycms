@@ -41,6 +41,8 @@ fr:
         remove_current: Supprimer l'image actuelle
         change: Cliquer ici pour sélectionner une image
         show: Afficher
+      locale_picker:
+        language: Langue
       resource_picker:
         download_current: Télécharger le fichier actuel
         opens_in_new_window: Ouvre une nouvelle fenêtre
