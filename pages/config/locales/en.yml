@@ -45,6 +45,7 @@ en:
           preview_changes: Preview your changes before making them live
         form_new_page_parts:
           title: Title
+          slug: Slug
         form_page_parts:
           create_content_section: Add content section
           delete_content_section: Delete content section

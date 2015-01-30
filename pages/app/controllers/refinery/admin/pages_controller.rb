@@ -12,7 +12,7 @@ module Refinery
       def new
         @page = Page.new(new_page_params)
         Pages.default_parts_for(@page).each_with_index do |page_part, index|
-          @page.parts << PagePart.new(:title => page_part, :position => index)
+          @page.parts << PagePart.new(:title => page_part, :slug => page_part, :position => index)
         end
       end
 
@@ -102,7 +102,7 @@ module Refinery
         [
           :browser_title, :draft, :link_url, :menu_title, :meta_description,
           :parent_id, :skip_to_first_child, :show_in_menu, :title, :view_template,
-          :layout_template, :custom_slug, parts_attributes: [:id, :title, :body, :position]
+          :layout_template, :custom_slug, parts_attributes: [:id, :title, :slug, :body, :position]
         ]
       end
 

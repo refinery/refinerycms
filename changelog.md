@@ -13,6 +13,8 @@
 * Moved the tabs to the left hand side of the screen. [#2734](https://github.com/refinery/refinerycms/pull/2734). [Isaac Freeman](https://github.com/isaacfreeman) & [Philip Arndt](https://github.com/parndt) & [Brice Sanchez](https://github.com/bricesanchez)
 * Add extra fields partial in Admin Pages form advanced options [#2943](https://github.com/refinery/refinerycms/pull/2943). [Brice Sanchez](https://github.com/bricesanchez)
 * Remove required_label formhelper. [#2954](https://github.com/refinery/refinerycms/pull/2954). [Johan Bruning](https://github.com/johanb)
+* Added ability to create page part title different form slug. [#2875](https://github.com/refinery/refinerycms/pull/2875). [Brice Sanchez](https://github.com/bricesanchez) & [Philip Arndt](https://github.com/parndt) & [Josef Šimánek](https://github.com/simi)
+* Deprecated `part_with_title` method in `Refinery#Page` and `title_matches?` method in `Refinery#PagePart`. [#2875](https://github.com/refinery/refinerycms/pull/2875). [Brice Sanchez](https://github.com/bricesanchez) & [Philip Arndt](https://github.com/parndt) & [Josef Šimánek](https://github.com/simi)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 

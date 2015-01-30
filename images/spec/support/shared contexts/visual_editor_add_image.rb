@@ -4,7 +4,7 @@ shared_context 'Visual Editor - add image' do
     page = Refinery::Page.create :title => "Add Image to me"
     # we need page parts so that there's a visual editor
     Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
-      page.parts.create(:title => default_page_part, :body => nil, :position => index)
+      page.parts.create(:title => default_page_part, :slug => default_page_part, :body => nil, :position => index)
     end
     page
   }

@@ -7,8 +7,8 @@ module Refinery
     let(:page) { subject.class.new(:title => page_title, :deletable => true)}
 
     before do
-      page.parts.new(:title => 'body', :content => "I'm the first page part for this page.", :position => 0)
-      page.parts.new(:title => 'side body', :content => 'Closely followed by the second page part.', :position => 1)
+      page.parts.new(:title => 'body', :slug => 'body', :content => "I'm the first page part for this page.", :position => 0)
+      page.parts.new(:title => 'side body', :slug => 'side_body', :content => 'Closely followed by the second page part.', :position => 1)
     end
 
     it 'return the content when using content_for' do
@@ -16,19 +16,19 @@ module Refinery
       expect(page.content_for('BoDY')).to eq("<p>I'm the first page part for this page.</p>")
     end
 
-    it 'requires a unique title' do
+    it 'requires a unique slug' do
       page.save
-      page.parts.create(:title => 'body')
-      duplicate_title_part = page.parts.create(:title => 'body')
+      page.parts.create(:title => 'body', :slug => 'body')
+      duplicate_title_part = page.parts.create(:title => 'body', :slug => 'body')
 
-      expect(duplicate_title_part.errors[:title]).to be_present
+      expect(duplicate_title_part.errors[:slug]).to be_present
     end
 
-    it 'only requires a unique title on the same page' do
-      part_one = Page.create(:title => 'first page').parts.create(:title => 'body')
-      part_two = Page.create(:title => 'second page').parts.create(:title => 'body')
+    it 'only requires a unique slug on the same page'  do
+      part_one = Page.create(:title => 'first page', :slug => 'first_page').parts.create(:title => 'body',  :slug => 'body')
+      part_two = Page.create(:title => 'second page', :slug => 'second_page').parts.create(:title => 'body', :slug => 'body')
 
-      expect(part_two.errors[:title]).to be_empty
+      expect(part_two.errors[:slug]).to be_empty
     end
 
     context 'when using content_for?' do

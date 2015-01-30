@@ -576,13 +576,17 @@ var page_options = {
   },
 
   page_part_dialog: function(){
+    var slugOptions = {
+      separator: '_'
+    }
+
     $('#new_page_part_dialog').dialog({
       title: 'Create Content Section',
       modal: true,
       resizable: false,
       autoOpen: false,
       width: 600,
-      height: 200
+      height: 300
     });
 
     $('#add_page_part').click(function(e){
@@ -590,19 +594,30 @@ var page_options = {
       $('#new_page_part_dialog').dialog('open');
     });
 
+    $('#new_page_part_title').on('input propertychange', function() {
+      var part_title = $(this).val();
+
+      if(part_title.length > 0) {
+        var part_slug = getSlug(part_title, slugOptions);
+        $('#new_page_part_slug').val(part_slug);
+      }
+    });
+
     $('#new_page_part_save').click(function(e){
       e.preventDefault();
 
       var part_title = $('#new_page_part_title').val();
+      var part_slug = $('#new_page_part_slug').val();
 
-      if(part_title.length > 0){
-        var tab_title = part_title.toLowerCase().replace(" ", "_");
+      if(part_slug.length > 0){
+        var tab_slug = getSlug(part_slug, slugOptions);
 
-        if ($('#page_part_' + tab_title).size() === 0) {
+        if ($('#page_part_' + tab_slug).size() === 0) {
           $.get(page_options.new_part_url, {
-              title: part_title
-              , part_index: $('#new_page_part_index').val()
-              , body: ''
+              title: part_title,
+              part_index: $('#new_page_part_index').val(),
+              slug: tab_slug,
+              body: ''
             }, function(data, status){
               $('#submit_continue_button').remove();
               // Add a new tab for the new content section.
@@ -621,15 +636,16 @@ var page_options = {
               // Wipe the title and increment the index counter by one.
               $('#new_page_part_index').val(parseInt($('#new_page_part_index').val(), 10) + 1);
               $('#new_page_part_title').val('');
+              $('#new_page_part_slug').val('');
 
               $('#new_page_part_dialog').dialog('close');
             }, 'html'
           );
         }else{
-          alert("A content section with that title already exists, please choose another.");
+          alert("A content section with that slug already exists, please choose another.");
         }
       }else{
-        alert("You have not entered a title for the content section, please enter one.");
+        alert("You have not entered a slug for the content section, please enter one.");
       }
     });
 
@@ -637,6 +653,7 @@ var page_options = {
       e.preventDefault();
       $('#new_page_part_dialog').dialog('close');
       $('#new_page_part_title').val('');
+      $('#new_page_part_slug').val('');
     });
 
     $('#delete_page_part').click(function(e){

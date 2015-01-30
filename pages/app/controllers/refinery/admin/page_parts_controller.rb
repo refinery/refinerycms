@@ -4,7 +4,7 @@ module Refinery
 
       def new
         render :partial => '/refinery/admin/pages/page_part_field', :locals => {
-                 :part => ::Refinery::PagePart.new(:title => params[:title], :body => params[:body]),
+                 :part => ::Refinery::PagePart.new(new_page_part_params),
                  :new_part => true,
                  :part_index => params[:part_index]
                }
@@ -20,6 +20,11 @@ module Refinery
           render :text => "'#{part.title}' not deleted."
         end
       end
+
+      protected
+        def new_page_part_params
+          params.permit(:title, :slug, :body)
+        end
 
     end
   end
