@@ -10,7 +10,7 @@ module Refinery
                            :desc => "Allow Refinery to remove default Rails files in a fresh installation"
     class_option :heroku,  :type => :string, :default => nil, :group => :runtime, :banner => 'APP_NAME',
                            :desc => "Deploy to Heroku after the generator has run."
-    class_option :stack,   :type => :string, :default => 'cedar', :group => :runtime,
+    class_option :stack,   :type => :string, :default => 'cedar-14', :group => :runtime,
                            :desc => "Specify which Heroku stack you want to use. Requires --heroku option to function."
     class_option :skip_db, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
                            :desc => "Skip over any database creation, migration or seeding."
@@ -75,20 +75,33 @@ end}  end
     end
 
     def append_heroku_gems!
-      append_file 'Gemfile', %q{
+      append_file 'Gemfile', %Q{
+# The Ruby version is specified here so that Heroku uses the right version.
+ruby #{ENV['RUBY_VERSION'].inspect}
+
 # The Heroku gem allows you to interface with Heroku's API
 gem 'heroku'
 
-# Fog allows you to use S3 assets (added for Heroku)
-gem 'fog'
+group :production do
+  # Dragonfly's S3 Data Store extension allows you to use S3 assets (added for Heroku)
+  gem 'dragonfly-s3_data_store'
+
+  # Gems that are recommended for using Heroku:
+  gem 'rails_12factor'
+  gem 'puma'
 }
       # If postgres is not the database in use, Heroku still needs it.
       if destination_path.join('Gemfile').file? && destination_path.join('Gemfile').read !~ %r{gem ['"]pg['"]}
         append_file 'Gemfile', %q{
-# Postgres support (added for Heroku)
-gem 'pg'
+  # Postgres support (added for Heroku)
+  gem 'pg'
 }
       end
+
+      append_file 'Gemfile', %q{
+end
+
+} # close the production group that was opened for dragonfly, and pg.
     end
 
     def bundle!
@@ -112,14 +125,41 @@ gem 'pg'
       end
     end
 
+    def create_heroku_procfile!
+      create_file "Procfile" do
+        "web: bundle exec puma -C config/puma.rb"
+      end unless destination_path.join('Procfile').file?
+
+      create_file "config/puma.rb" do
+%{threads Integer(ENV['MIN_THREADS']  || 1), Integer(ENV['MAX_THREADS'] || 16)
+
+workers Integer(ENV['PUMA_WORKERS'] || 3)
+
+rackup DefaultRackup
+port ENV['PORT'] || 3000
+environment ENV['RACK_ENV'] || 'development'
+preload_app!
+
+on_worker_boot do
+  # worker specific setup
+  ActiveSupport.on_load(:active_record) do
+    ActiveRecord::Base.establish_connection
+  end
+end
+}
+      end unless destination_path.join('config', 'puma.rb').file?
+    end
+
     def deploy_to_hosting?
       if heroku?
         append_heroku_gems!
 
-        bundle!
-
         # Sanity check the heroku application name and save whatever messages are produced.
         message = sanity_check_heroku_application_name!
+
+        create_heroku_procfile!
+
+        bundle!
 
         # Supply the deploy process with the previous messages to make them visible.
         deploy_to_hosting_heroku!(message)
@@ -142,7 +182,10 @@ gem 'pg'
       run "git push heroku master"
 
       say_status "Setting up the Heroku database..", nil
-      run "heroku#{' run' if options[:stack] == 'cedar'} rake db:migrate"
+      run "heroku#{' run' if options[:stack] == 'cedar-14'} rake db:migrate"
+
+      say_status "Seeding the Heroku database..", nil
+      run "heroku#{' run' if options[:stack] == 'cedar-14'} rake db:seed"
 
       say_status "Restarting servers...", nil
       run "heroku restart"
