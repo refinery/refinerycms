@@ -17,12 +17,12 @@ module Refinery
         # a before_inclusion and after_inclusion step that calls procs registered by the
         # Refinery::Engine#before_inclusion and Refinery::Engine#after_inclusion class methods
         def refinery_inclusion!
-          before_inclusion_procs.each(&:call).clear
+          before_inclusion_procs.each(&:call).tap{ |c| c.clear if Rails.application.config.cache_classes }
 
           Refinery.include_once(::ApplicationController, Refinery::ApplicationController)
           ::ApplicationController.send :helper, Refinery::Core::Engine.helpers
 
-          after_inclusion_procs.each(&:call).clear
+          after_inclusion_procs.each(&:call).tap{ |c| c.clear if Rails.application.config.cache_classes }
         end
       end
 
