@@ -1,11 +1,9 @@
 language: ruby
 cache: bundler
 bundler_args: --without development
-before_script:
-  - "sh -e /etc/init.d/xvfb start"
-  - "bin/rake refinery:testing:dummy_app"
+before_script: "bin/rake refinery:testing:dummy_app"
 script:
-  - "DISPLAY=:99.0 bin/rspec $EXTENSION/spec"
+  - "bin/rspec $EXTENSION/spec"
 env:
   - DB=postgresql EXTENSION=core
   - DB=postgresql EXTENSION=pages
