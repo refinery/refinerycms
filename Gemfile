@@ -6,6 +6,7 @@ gem 'quiet_assets'
 gem 'spring'
 gem 'spring-commands-rspec'
 gem 'poltergeist', github: 'teampoltergeist/poltergeist'
+gem 'routing-filter', github: 'simi/routing-filter'
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.0']
