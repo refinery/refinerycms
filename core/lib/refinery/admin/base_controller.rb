@@ -27,7 +27,7 @@ module Refinery
         current_refinery_user.plugins.map { |plugin|
           user_plugin = Refinery::Plugins.active.find_by_name(plugin.name)
           user_plugin.url if user_plugin && !user_plugin.hide_from_menu && user_plugin.url.present?
-        }.compact.first
+        }.compact.first || refinery.root_path
       end
 
       protected
