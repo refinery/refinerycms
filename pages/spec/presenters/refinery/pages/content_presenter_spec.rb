@@ -83,14 +83,14 @@ module Refinery
       describe "when rendering as html" do
         it "is empty section tag if it has no sections" do
           content = ContentPresenter.new
-          expect(content.to_html).to eq(%q{<section class="" id="body_content"></section>})
+          expect(content.to_html).to xml_eq(%q{<section class="" id="body_content"></section>})
         end
 
         it "returns sections joined by a newline inside section tag" do
           allow(section1).to receive(:wrapped_html).and_return('foo')
           allow(section2).to receive(:wrapped_html).and_return('bar')
           content = ContentPresenter.new([section1, section2])
-          expect(content.to_html).to eq(%Q{<section class="" id="body_content">foo\nbar</section>})
+          expect(content.to_html).to xml_eq(%Q{<section class="" id="body_content">foo\nbar</section>})
         end
 
         it "passes can_use_fallback option on to sections" do
@@ -103,7 +103,7 @@ module Refinery
           allow(section1).to receive(:wrapped_html).and_return('foo')
           allow(section2).to receive(:wrapped_html).and_return(nil)
           content = ContentPresenter.new([section1, section2])
-          expect(content.to_html).to eq(%q{<section class="" id="body_content">foo</section>})
+          expect(content.to_html).to xml_eq(%q{<section class="" id="body_content">foo</section>})
         end
       end
     end
