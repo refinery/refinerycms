@@ -371,9 +371,9 @@ module Refinery
     end
 
     def slug_locale
-      return Globalize.locale if translation_for(Globalize.locale).try(:slug).present?
+      return Globalize.locale if translation_for(Globalize.locale, false).try(:slug).present?
 
-      if translations.empty? || translation_for(Refinery::I18n.default_frontend_locale).present?
+      if translations.empty? || translation_for(Refinery::I18n.default_frontend_locale, false).present?
         Refinery::I18n.default_frontend_locale
       else
         translations.first.locale
