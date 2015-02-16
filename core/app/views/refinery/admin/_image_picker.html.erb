@@ -18,8 +18,7 @@
         <img class="current_picked_image" src="" alt="" style='display: none' />
       <% else -%>
         <%= image_fu image, Refinery::Images.user_image_sizes[thumbnail.to_sym],
-                     :class => "brown_border",
-                     :class => "current_picked_image" %>
+                     :class => "brown_border current_picked_image" %>
       <% end -%>
       <span class='no_picked_image_selected nothing_selected'<%= " style='display: none;'".html_safe if image.present? %>>
         <%= t('.none_selected') %>
