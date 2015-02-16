@@ -44,7 +44,7 @@ module Refinery
         :desc => 'javascript',
       },
       :stylesheet => {
-        :glob => '*.css{,.scss}',
+        :glob => '*.{s,}css',
         :dir => 'assets/stylesheets',
         :desc => 'stylesheet',
       },
