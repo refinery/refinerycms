@@ -1,6 +1,6 @@
 require 'refinerycms-core'
 require 'rspec-rails'
-require 'factory_girl_rails'
+require 'factory_girl'
 
 module Refinery
   autoload :TestingGenerator, 'generators/refinery/testing/testing_generator'
