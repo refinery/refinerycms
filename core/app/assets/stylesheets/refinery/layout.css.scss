@@ -26,7 +26,7 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.5em;
   color: #41403C;
-  background: #303030 image_url('refinery/page_bg.png') repeat;
+  background: rgb(217, 217, 217);
 }
 acronym {
   cursor: help;
@@ -65,6 +65,7 @@ label[for] {
 #admin_container {
   @include faux_columns_2($menu_width, transparent, white);
   width: $admin_width;
+  margin: -5px auto 0px auto;
 }
 #page_container {
   @include box-sizing(border-box);
@@ -369,7 +370,7 @@ div.field.checkbox_access {
 }
 #menu, {
   display: block;
-  margin: 0px;
+  margin: 45px 0px 0px 0px;
   padding: 0px;
   position: absolute;
   background: transparent;
@@ -415,17 +416,18 @@ header {
     display: block;
     padding: 8px 16px;
     font-size: 14px;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin-bottom: 2px;
-    color: white;
+    background-color: rgba(233, 233, 233, 1);
+    margin-bottom: 1px;
+    color: rgba(7, 112, 173, 1);
     font-weight: normal;
     position: relative;
     &.active, &:hover, &:focus {
-      background-color: white;
-      color: #ff5500;
+      background-color: rgba(37, 169, 244, 1);
+      color: white;
     }
     &.active {
       margin-left: -0.5em;
+      font-weight: bold;
     }
   }
 
