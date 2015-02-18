@@ -11,7 +11,7 @@ Refinery::I18n.frontend_locales.each do |lang|
   end
 
   if defined?(Refinery::Page)
-    url = "/<%= [(namespacing.underscore if namespacing.underscore != plural_name), plural_name].compact.join('/') %>"
+    url = "/<%= [(namespacing.underscore if namespacing.underscore != plural_name), plural_name, 'new'].compact.join('/') %>"
     page = Refinery::Page.where(:link_url => url).first_or_create!(
       :title => "<%= class_name.pluralize.underscore.titleize %>",
       :deletable => false,
