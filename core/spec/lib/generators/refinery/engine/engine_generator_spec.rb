@@ -12,6 +12,14 @@ module Refinery
       run_generator %w{ rspec_product_test title:string description:text image:image brochure:resource }
     end
 
+    it "uses reference columns for image and resource attributes" do
+      File.open("#{destination_root}/vendor/extensions/rspec_product_tests/app/controllers/refinery/rspec_product_tests/admin/rspec_product_tests_controller.rb") do |file|
+        content = file.read
+        expect(content.include?('image_id')).to be_truthy
+        expect(content.include?('brochure_id')).to be_truthy
+      end
+    end
+
     specify do
       expect(destination_root).to have_structure {
         directory "vendor" do
