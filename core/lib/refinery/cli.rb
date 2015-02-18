@@ -6,7 +6,7 @@ module Refinery
 
     no_tasks do
       def source_paths
-        Refinery::Plugins.registered.pathnames.map{ |p|
+        Refinery::Plugins.registered.pathnames.reverse.map{ |p|
           %w(app vendor).map{ |dir| p.join(dir, @override_kind[:dir])}
         }.flatten.uniq
       end
