@@ -1,5 +1,6 @@
 require 'rails/generators/named_base'
 require 'refinery/extension_generation'
+require 'refinery/generators/generated_attribute'
 
 module Refinery
   class EngineGenerator < Rails::Generators::NamedBase
@@ -30,6 +31,13 @@ module Refinery
     end
 
     protected
+
+    def parse_attributes! #:nodoc:
+      self.attributes = (attributes || []).map do |attr|
+        Refinery::Generators::GeneratedAttribute.parse(attr)
+      end
+    end
+
 
     def generator_command
       'rails generate refinery:engine'
