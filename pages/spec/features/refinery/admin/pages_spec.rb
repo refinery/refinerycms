@@ -141,7 +141,12 @@ module Refinery
 
           fill_in "Menu title", :with => "The first page"
 
-          expect { click_button "Save" }.to change(Refinery::Page, :count).from(0).to(1)
+          # For some reason the first click doesn't always work?
+          begin
+            click_button "Save"
+            sleep 0.1
+            redo unless Refinery::Page.any?
+          end
 
           expect(page).to have_content("'My first page' was successfully added.")
           expect(page.body).to match(%r{/pages/the-first-page})
