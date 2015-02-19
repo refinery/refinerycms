@@ -42,7 +42,7 @@ module Refinery
         it "will use the specified id" do
           section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode')
           expect(section.has_content?(true)).to be_truthy
-          expect(section.wrapped_html(true)).to eq('<section id="mynode"><div class="inner">foobar</div></section>')
+          expect(section.wrapped_html(true)).to xml_eq('<section id="mynode"><div class="inner">foobar</div></section>')
         end
 
         describe "if allowed to use fallback html" do
@@ -55,14 +55,14 @@ module Refinery
           it "uses wrapped fallback html" do
             section = SectionPresenter.new(:fallback_html => 'foobar')
             expect(section.has_content?(true)).to be_truthy
-            expect(section.wrapped_html(true)).to eq('<section><div class="inner">foobar</div></section>')
+            expect(section.wrapped_html(true)).to xml_eq('<section><div class="inner">foobar</div></section>')
           end
 
           it "uses wrapped override html if present" do
             section = SectionPresenter.new(:fallback_html => 'foobar')
             section.override_html = 'hello world'
             expect(section.has_content?(true)).to be_truthy
-            expect(section.wrapped_html(true)).to eq('<section><div class="inner">hello world</div></section>')
+            expect(section.wrapped_html(true)).to xml_eq('<section><div class="inner">hello world</div></section>')
           end
         end
 
@@ -77,7 +77,7 @@ module Refinery
             section = SectionPresenter.new(:fallback_html => 'foobar')
             section.override_html = 'hello world'
             expect(section.has_content?(false)).to be_truthy
-            expect(section.wrapped_html(false)).to eq('<section><div class="inner">hello world</div></section>')
+            expect(section.wrapped_html(false)).to xml_eq('<section><div class="inner">hello world</div></section>')
           end
         end
       end

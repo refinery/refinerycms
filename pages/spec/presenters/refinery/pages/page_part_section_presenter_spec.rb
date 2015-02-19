@@ -14,7 +14,7 @@ module Refinery
         part = double(PagePart, :body => '<p>part_body</p>', :title => nil)
         section = PagePartSectionPresenter.new(part)
         expect(section.fallback_html).to be_html_safe
-        expect(section.wrapped_html).to eq(%q{<section><div class="inner"><p>part_body</p></div></section>})
+        expect(section.wrapped_html).to xml_eq(%q{<section><div class="inner"><p>part_body</p></div></section>})
       end
 
       it "handles a nil page body" do

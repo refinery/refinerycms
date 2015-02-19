@@ -63,7 +63,7 @@ module Refinery
         }
         let(:menu_presenter) { MenuPresenter.new(menu_items, view) }
         it "returns menu items wrapped in html" do
-          expect(menu_presenter.to_html).to eq(
+          expect(menu_presenter.to_html).to xml_eq(
             %Q{<nav class="menu clearfix" id="menu"><ul class="nav"><li class="first last"><a href="/refinery-cms">Refinery CMS</a></li></ul></nav>}
           )
         end
@@ -72,7 +72,7 @@ module Refinery
           let(:mounted_path) { "/subfolder"}
 
           it "for normal pages" do
-            expect(menu_presenter.to_html).to eq(
+            expect(menu_presenter.to_html).to xml_eq(
               %Q{<nav class="menu clearfix" id="menu"><ul class="nav"><li class="first last"><a href="#{mounted_path}/refinery-cms">Refinery CMS</a></li></ul></nav>}
             )
           end
@@ -82,7 +82,7 @@ module Refinery
               Menu.new(FactoryGirl.create(:page, title: "Home", link_url: "/"))
             }
             it "the menu item URL includes the mounted path" do
-              expect(menu_presenter.to_html).to eq(
+              expect(menu_presenter.to_html).to xml_eq(
                 %Q{<nav class="menu clearfix" id="menu"><ul class="nav"><li class="first last"><a href="#{mounted_path}">Home</a></li></ul></nav>}
               )
             end
