@@ -600,7 +600,6 @@ module Refinery
               ru_page.destroy!
               parent_page = Page.create(:title => "Parent page")
               sub_page = Globalize.with_locale(:ru) {
-                Page.create :title => ru_page_title
                 Page.create :title => ru_page_title, :parent_id => parent_page.id
               }
               expect(sub_page.parent).to eq(parent_page)

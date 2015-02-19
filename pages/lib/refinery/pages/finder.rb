@@ -134,7 +134,12 @@ module Refinery
       end
 
       def parent_page
-        by_slug(path_segments.shift, :parent_id => nil).first
+        parent_page_segment = path_segments.shift
+        if parent_page_segment.friendly_id?
+          by_slug(parent_page_segment, :parent_id => nil).first
+        else
+          Page.find(parent_page_segment)
+        end
       end
 
       def next_page(page)
@@ -158,7 +163,7 @@ module Refinery
       def find
         if path.present?
           if path.friendly_id?
-            Page.friendly.find_by_path(path)
+            FinderByPath.new(path).find
           else
             Page.friendly.find(path)
           end
