@@ -72,7 +72,7 @@ module Refinery
                 when "home"
                   Refinery::Page.find_by(link_url: '/')
                 when "show"
-                  Refinery::Page.find_by_path_or_id(params[:path], params[:id])
+                  Refinery::Page.friendly.find_by_path_or_id(params[:path], params[:id])
                 end
       @page || (error_404 if fallback_to_404)
     end
