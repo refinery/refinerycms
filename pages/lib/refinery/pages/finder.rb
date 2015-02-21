@@ -144,7 +144,8 @@ module Refinery
 
       def next_page(page)
         slug_or_id = path_segments.shift
-        page.children.by_slug(slug_or_id).first || page.children.find(slug_or_id)
+
+        page.children.where(slug: slug_or_id).first || page.children.find(slug_or_id)
       end
     end
 
