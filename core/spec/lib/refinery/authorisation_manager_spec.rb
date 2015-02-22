@@ -1,5 +1,5 @@
 require 'spec_helper_no_rails'
-require 'refinery/authorisation_manager'
+require 'refinery/core/authorisation_manager'
 
 module Refinery
   module Core

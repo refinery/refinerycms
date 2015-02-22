@@ -1,5 +1,5 @@
 require 'action_controller'
-require 'refinery/authorisation_manager'
+require 'refinery/core/authorisation_manager'
 require 'zilch/authorisation/users_manager'
 
 module Refinery

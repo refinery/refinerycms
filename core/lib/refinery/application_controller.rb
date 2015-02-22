@@ -1,4 +1,4 @@
-require 'refinery/authorisation_manager'
+require 'refinery/core/authorisation_manager'
 
 module Refinery
   module ApplicationController
