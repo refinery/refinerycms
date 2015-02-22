@@ -8,16 +8,6 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      before_inclusion do
-        ::ApplicationController.send :helper, Refinery::Pages::ContentPagesHelper
-        Refinery::AdminController.send :helper, Refinery::Pages::ContentPagesHelper
-      end
-
-      after_inclusion do
-        Refinery.include_once(::ApplicationController, Refinery::Pages::InstanceMethods)
-        Refinery.include_once(Refinery::AdminController, Refinery::Pages::Admin::InstanceMethods)
-      end
-
       initializer "refinery.pages register plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
