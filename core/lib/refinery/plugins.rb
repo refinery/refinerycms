@@ -9,7 +9,7 @@ module Refinery
       @plugins = Array.new(*args)
     end
 
-    def_delegators :@plugins, :<<, :each, :delete_if, :reverse
+    def_delegators :@plugins, :<<, :each, :delete_if
 
     def find_by_name(name)
       detect { |plugin| plugin.name == name }
