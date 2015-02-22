@@ -297,9 +297,11 @@ module Refinery
             fill_in 'Title', :with => 'Searchable'
             click_link 'Advanced options'
             select 'Searchable', :from => 'View template'
-            click_button 'Preview'
-
-            expect_window_with_content('Form application/search_form')
+            Timeout::timeout(5) do
+              click_button 'Preview'
+              sleep 0.1 and redo unless windows.many?
+              expect_window_with_content('Form application/search_form')
+            end
           end
         end
 
