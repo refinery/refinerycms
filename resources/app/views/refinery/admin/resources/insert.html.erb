@@ -1,4 +1,4 @@
-<% user_can_modify_resources = ::Refinery::Plugins.active.names.include?("refinery_files") %>
+<% user_can_modify_resources = current_refinery_user.has_plugin?("refinery_files") %>
 <div class="clearfix">
   <div id="dialog_menu_left">
     <% if (any_resources = @resources.any?) %>

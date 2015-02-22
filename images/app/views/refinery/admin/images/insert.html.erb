@@ -1,4 +1,4 @@
-<% user_can_modify_images = ::Refinery::Plugins.active.names.include?('refinery_images') %>
+<% user_can_modify_images = current_refinery_user.has_plugin?('refinery_images') %>
 <div id="dialog_menu_left">
   <% if (any_images = @images.any?) or searching? %>
     <span id="existing_image_radio" class="radio<%= ' selected_radio' if (no_errors = @image.errors.empty?) %>">

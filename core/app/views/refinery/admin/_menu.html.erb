@@ -1,10 +1,10 @@
 <nav id="menu">
-  <% ::Refinery::Plugins.active.in_menu.each do |plugin| -%>
+  <% current_refinery_user.plugins.in_menu.each do |plugin| -%>
     <%= link_to plugin.title, refinery.url_for(plugin.url),
                 :class => ("active" if plugin.highlighted?(params)),
                 :id => "plugin_#{plugin.name}" %>
   <% end -%>
-  <% if ::Refinery::Plugins.active.in_menu.many? -%>
+  <% if current_refinery_user.plugins.in_menu.many? -%>
     <%= link_to refinery_icon_tag('arrow_up_down.png'), "",
                 :id => "menu_reorder",
                 :title => t('.reorder_menu') %>
