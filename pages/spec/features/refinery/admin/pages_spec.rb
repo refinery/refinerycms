@@ -412,14 +412,14 @@ module Refinery
           end
 
           it "shows locale flag for page" do
-            p = ::Refinery::Page.by_slug('news').first
+            p = ::Refinery::Pages::Finder.by_slug('news').first
             within "#page_#{p.id}" do
               expect(page).to have_css(".locale_icon.en")
             end
           end
 
           it "shows title in the admin menu" do
-            p = ::Refinery::Page.by_slug('news').first
+            p = ::Refinery::Pages::Finder.by_slug('news').first
             within "#page_#{p.id}" do
               expect(page).to have_content('News')
               expect(page.find_link('Edit this page')[:href]).to include('news')

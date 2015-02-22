@@ -71,9 +71,9 @@ module Refinery
     def find_page(fallback_to_404 = true)
       @page ||= case action_name
                 when "home"
-                  Refinery::Page.where(:link_url => '/').first
+                  Refinery::Page.find_by(link_url: '/')
                 when "show"
-                  Refinery::Page.find_by_path_or_id(params[:path], params[:id])
+                  Refinery::Pages::Finder.by_path_or_id(params[:path], params[:id])
                 end
       @page || (error_404 if fallback_to_404)
     end

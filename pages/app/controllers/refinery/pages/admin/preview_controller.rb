@@ -23,7 +23,7 @@ module Refinery
         end
 
         def find_page
-          if @page = Refinery::Page.find_by_path_or_id(params[:path], params[:id])
+          if @page = Refinery::Pages::Finder.by_path_or_id(params[:path], params[:id])
             # Preview existing pages
             @page.attributes = page_params
           elsif params[:page]

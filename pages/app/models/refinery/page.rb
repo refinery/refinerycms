@@ -75,6 +75,12 @@ module Refinery
 
       # Find page by path, checking for scoping rules
       def find_by_path(path)
+        Refinery.deprecate(
+          "Refinery::Page#find_by_path(path)",
+          when: '3.1.0',
+          replacement: "Refinery::Pages::Finder.by_path(path)"
+        )
+
         Pages::Finder.by_path(path)
       end
 
@@ -82,6 +88,12 @@ module Refinery
       # and if the path is unfriendly then a different finder method is required
       # than find_by_path.
       def find_by_path_or_id(path, id)
+        Refinery.deprecate(
+          "Refinery::Page#find_by_path_or_id(path, id)",
+          when: '3.1.0',
+          replacement: "Refinery::Pages::Finder.by_path_or_id(path, id)"
+        )
+
         Pages::Finder.by_path_or_id(path, id)
       end
 
@@ -91,11 +103,13 @@ module Refinery
       #
       # raise ActiveRecord::RecordNotFound if not found.
       def find_by_path_or_id!(path, id)
-        page = find_by_path_or_id(path, id)
+        Refinery.deprecate(
+          "Refinery::Page#find_by_path_or_id!(path, id)",
+          when: '3.1.0',
+          replacement: "Refinery::Pages::Finder.by_path_or_id!(path, id)"
+        )
 
-        raise ActiveRecord::RecordNotFound unless page
-
-        page
+        Pages::Finder.by_path_or_id!(path, id)
       end
 
       # Finds pages by their title.  This method is necessary because pages
@@ -103,6 +117,11 @@ module Refinery
       # pages table thus requiring us to find the attribute on the translations table
       # and then join to the pages table again to return the associated record.
       def by_title(title)
+        Refinery.deprecate(
+          "Refinery::Page#by_title(title)",
+          when: '3.1.0',
+          replacement: "Refinery::Pages::Finder.by_title(title)"
+        )
         Pages::Finder.by_title(title)
       end
 
@@ -110,8 +129,13 @@ module Refinery
       # are translated which means the slug attribute does not exist on the
       # pages table thus requiring us to find the attribute on the translations table
       # and then join to the pages table again to return the associated record.
-      def by_slug(slug, conditions = {})
-        Pages::Finder.by_slug(slug, conditions)
+      def by_slug(slug, conditions: {})
+        Refinery.deprecate(
+          "Refinery::Page#by_slug(slug, conditions: {})",
+          when: '3.1.0',
+          replacement: "Refinery::Pages::Finder.new(conditions: {}).by_slug(slug)"
+        )
+        Pages::Finder.new(scope: scoped, conditions: conditions).by_slug(slug)
       end
 
       # Shows all pages with :show_in_menu set to true, but it also
@@ -129,6 +153,11 @@ module Refinery
 
       # Wrap up the logic of finding the pages based on the translations table.
       def with_globalize(conditions = {})
+        Refinery.deprecate(
+          "Refinery::Page#with_globalize(conditions)",
+          when: '3.1.0',
+          replacement: "Refinery::Pages::Finder.with_globalize(conditions)"
+        )
         Pages::Finder.with_globalize(conditions)
       end
 
@@ -224,7 +253,7 @@ module Refinery
     end
 
     def url
-      Pages::Url.build(self)
+      @url ||= Pages::Url.build(self)
     end
 
     def nested_url

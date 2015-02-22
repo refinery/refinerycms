@@ -21,11 +21,11 @@ module Refinery
       end
 
       it "should return (root) about page when looking for '/about'" do
-        expect(Page.find_by_path('/about')).to eq(created_root_about)
+        expect(Pages::Finder.by_path('/about')).to eq(created_root_about)
       end
 
       it "should return child about page when looking for '/team/about'" do
-        expect(Page.find_by_path('/team/about')).to eq(created_child)
+        expect(Pages::Finder.by_path('/team/about')).to eq(created_child)
       end
     end
 
@@ -37,20 +37,20 @@ module Refinery
       context "when path param is present" do
         context "when path is friendly_id" do
           it "finds page using path" do
-            expect(Page.find_by_path_or_id(path, "")).to eq(market)
+            expect(Pages::Finder.by_path_or_id(path, "")).to eq(market)
           end
         end
 
         context "when path is not friendly_id" do
           it "finds page using id" do
-            expect(Page.find_by_path_or_id(id, "")).to eq(market)
+            expect(Pages::Finder.by_path_or_id(id, "")).to eq(market)
           end
         end
       end
 
       context "when id param is present" do
         it "finds page using id" do
-          expect(Page.find_by_path_or_id("", id)).to eq(market)
+          expect(Pages::Finder.by_path_or_id("", id)).to eq(market)
         end
       end
     end
@@ -59,12 +59,12 @@ module Refinery
       it "delegates to find_by_path_or_id" do
         lambda do
           expect(Page).to receive(:find_by_path_or_id).with("path", "id")
-          Page.find_by_path_or_id!("path", "id")
+          Pages::Finder.by_path_or_id!("path", "id")
         end
       end
 
       it "throws exception when page isn't found" do
-        expect { Page.find_by_path_or_id!("not", "here") }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { Pages::Finder.by_path_or_id!("not", "here") }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
