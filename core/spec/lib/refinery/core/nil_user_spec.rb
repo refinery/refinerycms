@@ -1,5 +1,5 @@
 require 'spec_helper_no_rails'
-require 'refinery/nil_user'
+require 'refinery/core/nil_user'
 
 module Refinery
   module Core
@@ -9,7 +9,6 @@ module Refinery
           expect(subject.plugins).to eq(Refinery::Plugins.registered)
         end
       end
-
 
       describe "landing url" do
         let(:plugins) { double("plugins") }
