@@ -2,9 +2,7 @@ module Refinery
   module Admin
     class ImagesController < ::Refinery::AdminController
 
-      crudify :'refinery/image',
-              order: "created_at DESC",
-              sortable: false
+      crudify :'refinery/image', order: "created_at DESC", sortable: false
 
       before_action :change_list_mode_if_specified, :init_dialog
 
@@ -79,10 +77,7 @@ module Refinery
       def update
         @image.attributes = image_params
         if @image.valid? && @image.save
-          flash.notice = t(
-            'refinery.crudify.updated',
-            what: "'#{@image.title}'"
-          )
+          flash.notice = t('refinery.crudify.updated', what: "'#{@image.title}'")
 
           if from_dialog?
             self.index

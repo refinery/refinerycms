@@ -42,7 +42,7 @@ module Refinery
 
   describe 'Page Visual Editor - Add Image' do
 
-    refinery_login_with :refinery_user
+    refinery_login
 
     include_context 'Visual Editor - add image'
 

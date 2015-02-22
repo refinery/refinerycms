@@ -2,7 +2,7 @@ require "spec_helper"
 
 module Refinery
   describe "Crudify", type: :feature do
-    refinery_login_with :refinery_superuser
+    refinery_login
 
     describe "xhr_paging", :js do
       # Refinery::Admin::ImagesController specifies :order => 'created_at DESC' in crudify
