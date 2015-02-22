@@ -1,16 +1,4 @@
 <nav id="menu">
-  <% current_refinery_user.plugins.in_menu.each do |plugin| -%>
-    <%= link_to plugin.title, refinery.url_for(plugin.url),
-                class: ("active" if plugin.highlighted?(params)),
-                id: "plugin_#{plugin.name}" %>
-  <% end -%>
-  <% if current_refinery_user.plugins.in_menu.many? -%>
-    <%= link_to refinery_icon_tag('arrow_up_down.png'), "",
-                :id => "menu_reorder",
-                :title => t('.reorder_menu') %>
-
-    <%= action_icon :reorder, '', t('.reorder_menu'), id: :menu_reorder %>
-    <%= action_icon :reorder_done, '', t('.reorder_done'), id: :menu_reorder_done %>
-
-  <% end %>
+  <%= render partial: "menu_item",
+             collection: current_refinery_user.plugins.in_menu -%>
 </nav>
