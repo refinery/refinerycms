@@ -2,7 +2,7 @@ require File.expand_path('../../refinery', __FILE__)
 require 'truncate_html'
 require 'will_paginate'
 require 'refinery/i18n'
-# require 'zilch/authorisation'
+require 'zilch/authorisation'
 
 module Refinery
   module Core
