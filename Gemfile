@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'zilch-authorisation', git: 'https://github.com/robyurkowski/zilch-authorisation'
+gem 'zilch-authorisation', git: 'https://github.com/parndt/zilch-authorisation', branch: "master"
 gem 'quiet_assets'
 gem 'spring'
 gem 'spring-commands-rspec'
