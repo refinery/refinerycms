@@ -51,7 +51,6 @@ label[for] {
 
   @include rounded($standard_rounding);
   position: relative;
-  height: 100%;
   margin-top: 15px;
   #menu {
     a:hover {
@@ -67,6 +66,7 @@ label[for] {
   @include faux_columns_2($menu_width, transparent, white);
   width: $admin_width;
   margin: -5px auto 0px auto;
+  height: 100%;
 }
 #page_container {
   @include box-sizing(border-box);
