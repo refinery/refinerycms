@@ -44,7 +44,7 @@ module Refinery
         it "returns hash" do
           page = double(:page, :nested_url => "test")
           expect(Url::Marketable.new(page).url).to eq({
-            :controller => "/refinery/pages", :action => "show", :only_path => true,
+            :controller => "/refinery/pages", :action => "show",
             :path => "test", :id => nil
           })
         end
@@ -63,7 +63,7 @@ module Refinery
         it "returns hash" do
           page = double(:page, :to_param => "test")
           expect(Url::Normal.new(page).url).to eq({
-            :controller => "/refinery/pages", :action => "show", :only_path => true,
+            :controller => "/refinery/pages", :action => "show",
             :path => nil, :id => "test"
           })
         end
