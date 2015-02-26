@@ -20,13 +20,12 @@ shared_examples_for 'deletes an image' do
   end
 
   it 'says the image has been removed' do
-    expect(page).to have_selector(".images_list li:first")
-    image_title = find(".images_list li:first").first("img")[:title] || # grid view
-                  find(".images_list li:first").first("span.title").text # list view
+    image_title = page.has_selector?('#image_grid') ? find("#image_grid li:first").first("img")[:title] :
+                                                      find("#image_list li:first").first("span.title").text
+
     expect(image_title).to be_present
 
     first(".images_list li:first").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))
     expect(page).to have_content(::I18n.t('destroyed', scope: 'refinery.crudify', what: "'#{image_title}'"))
   end
-
 end

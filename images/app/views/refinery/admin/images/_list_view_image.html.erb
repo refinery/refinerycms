@@ -3,25 +3,15 @@
     <%= list_view_image.title %>
   </span>
   <span class='alt'>
-    <%= link_to refinery_icon_tag('information'), '#', title:  "Title: #{list_view_image.title} Alt text: #{list_view_image.alt}" %>
+     <%= action_icon :info,    '#', "Title: #{list_view_image.title} Alt text: #{list_view_image.alt}" %>
   </span>
 
   <span class="preview">&nbsp;</span>
   <span class="actions">
-    <%= link_to refinery_icon_tag('eye'), list_view_image.url,
-                target: '_blank',
-                title: t('view_live_html', scope: 'refinery.admin.images') %>
-    <%= link_to refinery_icon_tag('application_edit'),
-                refinery.edit_admin_image_path(list_view_image),
-                title: t('edit', scope: 'refinery.admin.images') %>
-    <%= link_to refinery_icon_tag('delete'),
-                refinery.admin_image_path(list_view_image),
-                class: 'cancel confirm-delete',
-                title: t('delete', scope: 'refinery.admin.images'),
-                data: {
-                  confirm: t('message', scope: 'refinery.admin.delete', title: list_view_image.title)
-                },
-                method: :delete %>
+
+    <%= action_icon :preview, list_view_image.url, t('view_live_html', scope: 'refinery.admin.images') %>
+    <%= action_icon :edit,    refinery.edit_admin_image_path(list_view_image), t('edit', scope: 'refinery.admin.images') %>
+    <%= action_icon :delete,  refinery.admin_image_path(list_view_image),  t('delete', scope: 'refinery.admin.images'),
+                           data: { confirm: t('message', scope: 'refinery.admin.delete', title: list_view_image.title) } %>
   </span>
 </li>
-

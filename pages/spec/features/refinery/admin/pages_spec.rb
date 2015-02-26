@@ -1,17 +1,46 @@
 # encoding: utf-8
 require "spec_helper"
 
-def expect_window_with_content(content, window: windows.last)
-  page.within_window window do
-    expect(page).to have_content(content)
+# def expect_window_with_content(content, preview_window)
+  # page.within_window preview_window do
+    # expect(page).to have_content(content)
+  # end
+# end
+#
+# def expect_window_without_content(content, preview_window)
+  # page.within_window preview_window do
+    # expect(page).not_to have_content(content)
+  # end
+# end
+  def expect_window_with_content(content, window: windows.last)
+    page.within_window window do
+      expect(page).to have_content(content)
+    end
   end
-end
 
-def expect_window_without_content(content, window: windows.last)
-  page.within_window window do
-    expect(page).not_to have_content(content)
+  def expect_window_without_content(content, window: windows.last)
+    page.within_window window do
+      expect(page).not_to have_content(content)
+    end
   end
-end
+
+# def edit_and_preview(new_title)
+  # visit refinery.admin_pages_path
+  # find('a[tooltip^=Edit]').click
+  # fill_in "Title", with: preview_content
+#
+  # preview = window_opened_by do
+    # click_button "Preview"
+  # end
+  # preview
+#
+#
+  # page.within_window preview do
+    # expect(page).to have_content(preview_content)
+  # end
+  # preview.close
+
+# end
 
 module Refinery
   module Admin
@@ -214,14 +243,14 @@ module Refinery
         context "an existing page" do
           before { Page.create :title => 'Preview me' }
 
-          it 'will show the preview changes in a new window' do
-            visit refinery.admin_pages_path
+   it 'will show the preview changes in a new window' do
+      visit refinery.admin_pages_path
 
-            find('a[tooltip^=Edit]').click
-            fill_in "Title", with: preview_content
-            window = window_opened_by do
-              click_button "Preview"
-            end
+      find('a[tooltip^=Edit]').click
+      fill_in "Title", with: preview_content
+      window = window_opened_by do
+        click_button "Preview"
+      end
 
             expect_window_with_content(preview_content, window: window)
 
@@ -249,7 +278,7 @@ module Refinery
             window.close
           end
 
-          it 'will not save the preview changes' do
+           it 'will not save the preview changes' do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
@@ -290,12 +319,13 @@ module Refinery
             window.close
           end
 
+
           it 'will show pages with inherited templates' do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
             fill_in 'Title', :with => 'Searchable'
-            click_link 'Advanced options'
+            click_link 'toggle_advanced_options'
             select 'Searchable', :from => 'View template'
             Timeout::timeout(5) do
               click_button 'Preview'
@@ -415,8 +445,9 @@ module Refinery
 
           it "shows locale flag for page" do
             p = ::Refinery::Page.by_slug('news').first
-            within "#page_#{p.id}" do
-              expect(page).to have_css(".locale_icon.en")
+            within "#page_#{p.id} .locales" do
+              expect(page).to have_css('.locale_marker')
+              expect(page).to have_content('EN')
             end
           end
 
@@ -493,9 +524,10 @@ module Refinery
           it "shows both locale flags for page" do
             visit refinery.admin_pages_path
 
-            within "#page_#{news_page.id}" do
-              expect(page).to have_css(".locale_icon.en")
-              expect(page).to have_css(".locale_icon.ru")
+            within "#page_#{news_page.id} .locales" do
+              expect(page).to have_css('.locale_marker', count: 2)
+              expect(page).to have_content('EN')
+              expect(page).to have_content('RU')
             end
           end
 
@@ -562,7 +594,8 @@ module Refinery
 
           it "shows locale flag for page" do
             within "#page_#{ru_page_id}" do
-              expect(page).to have_css(".locale_icon.ru")
+              expect(page).to have_css('.locale_marker')
+              expect(page).to have_content('RU')
             end
           end
 
@@ -612,7 +645,7 @@ module Refinery
               expect(sub_page.parent).to eq(parent_page)
               visit refinery.admin_pages_path
               within "#page_#{sub_page.id}" do
-                click_link "Application edit"
+                click_link "Edit this page"
               end
               fill_in "Title", :with => ru_page_title
               click_button "Save"
@@ -663,7 +696,7 @@ module Refinery
           end
 
           2.times do
-            click_link "delete_page_part"
+            find("a#delete_page_part").click
             # Poltergeist automatically accepts dialogues.
             if Capybara.javascript_driver != :poltergeist
               page.driver.browser.switch_to.alert.accept

@@ -1,7 +1,7 @@
 def preview_image
-   preview_window = window_opened_by do
+  preview_window = window_opened_by do
     image_url
-    first("#records li").click_link('Eye')
+    find(:linkhref, image_url).click
   end
 
   page.within_window preview_window do
@@ -16,7 +16,7 @@ shared_examples 'shows an image preview' do
     ensure_on(initial_path)
   end
 
-  let(:image_url) {first("#records li .actions").find_link('Eye')[:href]}
+  let(:image_url) {first(:xpath, "//a[@class=' preview_icon']")[:href]}
 
   context "when in list view" do
     before  do
