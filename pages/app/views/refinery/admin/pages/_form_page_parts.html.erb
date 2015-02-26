@@ -1,28 +1,19 @@
 <% if ::Refinery::Pages.new_page_parts %>
   <ul id="page_parts_controls">
-    <li>
-      <%= link_to refinery_icon_tag('arrow_left_right.png'), '#',
-                  :id => 'reorder_page_part',
-                  :title => t('.reorder_content_section') %>
-      <%= link_to refinery_icon_tag('tick.png'), "",
-                  :id => 'reorder_page_part_done',
-                  :title => t('.reorder_content_section_done'),
-                  :style => "display: none;" %>
+     <li>
+      <%= action_icon(:reorder_h, '#', t('.reorder_content_section'), id: 'reorder_page_part' ) %>
+      <%= action_icon(:reorder_done, '#',  t('.reorder_content_section_done'), id: 'reorder_page_part_done')%>
     </li>
     <li>
-      <%= link_to refinery_icon_tag('add.png'), '#',
-                  :id => 'add_page_part',
-                  :title => t('.create_content_section') %>
-    </li>
+      <%= action_icon(:add, '#', t('.create_content_section'), id: 'add_page_part')%>
     <li>
-      <%= link_to refinery_icon_tag('delete.png'), '#',
-                  :title => t('.delete_content_section'),
-                  :class => 'delete_page_part',
-                  :name => t('.delete_content_section'),
-                  :id => 'delete_page_part' %>
+      <%= action_icon(:delete, '#', t('.delete_content_section'), id: 'delete_page_part', class: 'delete_page_part', name: t('.delete_content_section') )
+      %>
+
     </li>
   </ul>
 <% end %>
+
 <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
   <ul id='page_parts'>
     <% @page.parts.each_with_index do |part, part_index| %>
@@ -41,13 +32,13 @@
     <% part_index = -1 %>
     <%= f.fields_for :parts do |p| %>
       <%= render 'page_part_field',
-                 :part => p.object,
-                 :part_index => (part_index += 1),
-                 :new_part => @page.new_record? -%>
+                 part: p.object,
+                 part_index: (part_index += 1),
+                 new_part: @page.new_record? -%>
     <% end %>
     <% ::Refinery::Pages.tabs_for_template(@page.view_template).each_with_index do |tab, tab_index| %>
       <div class='page_part' id='<%= "custom_tab_#{tab_index}" %>'>
-        <%= render tab.partial, :f => f %>
+        <%= render tab.partial, f: f %>
       </div>
     <% end %>
   </div>

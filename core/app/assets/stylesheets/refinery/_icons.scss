@@ -1,0 +1,76 @@
+
+// we use a content block in the basic icon mixin
+@mixin icon-base($colour, $size, $float:none) {
+  @content;
+  &:before {
+    @extend .fa;
+    font-size: $size;
+    color: $colour;
+    text-decoration: inherit;
+    width: auto;
+    height:auto;
+    float:$float;
+  }
+}
+
+// Any icon
+@mixin icon($icon-selector, $color: $icon_default_colour, $padding: 4px, $size: 1.2em, $float: none) {
+  @include icon-base($color, $size, $float) {
+    @extend .fa-#{$icon-selector};
+    &:before { margin-right: 0.3em!important; }
+  };
+}
+
+
+%icon-font { font-family: 'FontAwesome', Helvetica, Arial, sans-serif; }
+
+/* icons */
+
+.add_icon             {@include icon('plus-circle');}
+.back_icon            {@include icon('arrow-left');}
+.delete_icon          {@include icon('minus-circle', $icon_delete_colour);}
+.download_icon        {@include icon('download');}
+.edit_icon            {@include icon('edit', $icon_edit_colour);}
+.edit_email_icon      {@include icon('envelope-o');}
+.email_icon           {@include icon('envelope-o');}
+.error_icon           {@include icon('question-circle', $icon_error_colour);}
+.failure_icon         {@include icon('times');}
+.folder_icon          {@include icon('folder',$icon_folder_colour)}
+.go_icon              {@include icon('caret-square-o-right');}
+.info_icon            {@include icon('info-circle',$info_icon_blue)}
+.page_icon            {@include icon('file-o',$icon_page_colour)}
+.preview_icon         {@include icon('eye', $icon_preview_colour)}
+.reorder_icon         {@include icon('unsorted');}
+.reorder_done_icon    {@include icon('thumbs-o-up')}
+.reorder_h_icon       {@include icon('exchange');}
+.reorder_icon.loading {@include icon('spinner')}
+.settings_icon        {@include icon('gear')}
+.spam_icon            {@include icon('trash');}
+.spam_empty_icon      {@include icon('trash-o');}
+.success_icon         {@include icon('check');}
+.switch_view_grid_icon {@include icon('th')}
+.switch_view_list_icon {@include icon('list')}
+.upload_icon          {@include icon('upload');}
+.user_comment_icon    {@include icon('comment-o');}
+//TODO insert, remove (see resource picker)
+// .locale_icon          {@include icon('comment', $icon_locale_colour);}
+
+// special code for stacked icon/text used for locales
+.locale_marker {
+    display: inline-block;
+    font-size: 8px;
+    margin-right: 10px;
+    position: relative;
+    top: -8px;
+    .fa-stack strong {
+      left: 8px;
+      line-height: 1em;
+      position: absolute;
+      top: 8px;
+      z-index: 10;
+    }
+}
+
+// don't want underlines
+// #content a[class$='icon'] {border-bottom: none}
+// #content a[class$='icon']:hover {border-bottom: none}
