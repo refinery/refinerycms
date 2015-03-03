@@ -24,8 +24,7 @@ env:
   - DB=postgresql
   - DB=mysql
 rvm:
-  - 2.1.2
+  - 2.1
   - 2.0.0
-  - 1.9.3
-  - rbx
+  - rbx-2
 sudo: false
