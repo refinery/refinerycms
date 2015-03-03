@@ -43,6 +43,11 @@ In your model, add the following lines after the opening +class+ line:
   friendly_id :title, :use => [:slugged]
 </ruby>
 
+And in your controller, use the following instead of StaffMember.find
+<ruby>
+  StaffMember.friendly.find(params[:id])
+</ruby>
+
 If you want to use a different field than +title+ from which to generate the URL, be sure to change the first symbol after +friendly_id+ to be in accordance (for example, many extensions use +name+ instead).
 
 Also be sure to remove any +to_param+ method that exists, or this will interfere.
