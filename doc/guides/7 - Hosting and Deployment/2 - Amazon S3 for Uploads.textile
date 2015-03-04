@@ -17,7 +17,9 @@ file system, you'll need an additional gem. Create a bucket called "my_app_produ
 and add this line in your Gemfile:
 
 <ruby>
-gem 'fog'
+group :production do
+  gem 'dragonfly-s3_data_store'
+end
 </ruby>
 
 h3. Telling Refinery to use S3
