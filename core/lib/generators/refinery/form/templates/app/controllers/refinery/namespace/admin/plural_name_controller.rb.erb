@@ -6,7 +6,7 @@ module Refinery
         crudify :'refinery/<%= namespacing.underscore %>/<%= singular_name %>', <% if (title = attributes.detect { |a| a.refinery_type.to_s == "string" }).present? %>
                 :title_attribute => "<%= title.name %>", <% end %>
                 :order => "created_at DESC"
-<% if @includes_spam -%>
+<% if include_spam? -%>
 
         before_action :get_spam_count, :only => [:index, :spam]
 
