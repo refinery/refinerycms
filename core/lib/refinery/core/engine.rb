@@ -80,14 +80,15 @@ module Refinery
       end
 
       # set the manifests and assets to be precompiled
+      # refinery/icons/* may still be used by plugins
       config.to_prepare do
         Rails.application.config.assets.precompile += %w(
           refinery/*
-           modernizr-min.js
+          refinery/icons/*
+          modernizr-min.js
           admin.js
         )
       end
-#          refinery/icons/* removed from manifest
 
       # active model fields which may contain sensitive data to filter
       initializer "refinery.params.filter" do |app|

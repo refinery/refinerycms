@@ -16,7 +16,7 @@ shared_examples 'shows an image preview' do
     ensure_on(initial_path)
   end
 
-  let(:image_url) {first(:xpath, "//a[@class=' preview_icon']")[:href]}
+  let(:image_url) {first(:xpath, "//a[@class='preview_icon']")[:href]}
 
   context "when in list view" do
     before  do

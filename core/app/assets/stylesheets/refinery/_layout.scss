@@ -171,6 +171,7 @@ hr {
 }
 .flash.flash_notice #flash_close, .flash.flash_error #flash_close, .flash.flash_alert #flash_close {
   text-transform: lowercase;
+  @include icon('times-circle', $icon_done_colour, 1.2em)
 }
 .flash.flash_message {
   background: #E0F5E0;
@@ -1043,7 +1044,7 @@ ul#page_parts {
   width: 92%;
 }
 ul#page_parts, ul#page_parts_controls {
-  margin: 20px 0 0 0;
+  margin: 0;
   padding: 0;
 }
 ul#page_parts_controls {
@@ -1053,7 +1054,7 @@ ul#page_parts_controls {
 ul#page_parts_controls li {
   list-style: none;
   float: right;
-  margin: 12px 3px 0px 3px;
+  margin: 0 3px;
 }
 ul#page_parts_controls li a {
   border: 0px none;
@@ -1313,6 +1314,9 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   line-height: 20px;
 }
 /* ## Advanced Page Options --------------------------------------------- */
+#more_options_field {
+  span#draft_field {float: right;}
+}
 #more_options{
   overflow:hidden;
 }

@@ -1,11 +1,15 @@
-$icon_page_colour:    #00ffff;   // cyan
+$icon_default_colour: #888;
+$icon_page_colour:    #82C4FC;   //
 $icon_folder_colour:  #e6cb47;   // dark yellow
-$icon_add_colour:     #7fff00;   // chartreuse
+$icon_add_colour: $icon_default_colour;
+// $icon_add_colour:     #7fff00;   // chartreuse
 $icon_delete_colour:  #ff707f;   // rose
-$icon_edit_colour:    #007fff;   // azure
+$icon_edit_colour: $icon_default_colour;
+// $icon_edit_colour:    #007fff;   // azure
 $icon_error_colour:   #ff0;     //RED
-$icon_preview_colour: #7f00ff;   // violet
+$icon_preview_colour: $icon_default_colour;
+// $icon_preview_colour: #7f00ff;   // violet
 $icon_locale_colour:  #cde6fb;    // pale blue
-$icon_done_colour:    #00FF7F;  // spring greeen
+$icon_done_colour:    #00a017;  //
 $icon_default_colour: #888;
 $info_icon_blue:      #316CC8;
