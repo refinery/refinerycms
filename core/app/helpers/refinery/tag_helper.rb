@@ -1,6 +1,8 @@
 module Refinery
   module TagHelper
 
+    # Returns <img class='help' tooltip='Your Input' src='refinery/icons/information.png' />
+
     # Remember to wrap your block with <span class='label_with_help'></span> if you're using a label next to the help tag.
     def refinery_help_tag(title='Tip')
       action_icon(:info, '#', title.html_safe? ? title : h(title), {tooltip: title})
@@ -23,15 +25,15 @@ module Refinery
 
     def action_icon_label(action, url, title, options={}, label = true)
 #   See icons.scss for defined icons/classes
+
       options[:title] = title
-      options[:class].presence ? options[:class] << " #{action}_icon" : options[:class] = " #{action}_icon"
+      options[:class].presence ? options[:class] << " #{action}_icon " : options[:class] = "#{action}_icon"
 
       case action
       when :preview
         options[:target] = '_blank'
       when :delete
         options[:method] = :delete
-        options[:class] << ' cancel confirm-delete'
       when :reorder_done
         options[:class] << ' hidden'
       end

@@ -131,7 +131,7 @@ refinery_dialog_success = function(e) {
       init_refinery_admin();
     }
   });
-};
+}
 
 trigger_reordering = function(e, enable) {
   $menu = $("#menu");
@@ -649,19 +649,11 @@ var page_options = {
         var tabId = page_options.tabs.find('.ui-tabs-active a').attr('id').match(/\d+/)[0] - 1;
 
         if($('#page_parts_attributes_' + tabId + '_id').length > 0) {
-          $.when(
-            $.ajax({
-              url: page_options.del_part_url + '/' + $('#page_parts_attributes_' + tabId + '_id').val(),
-              type: 'DELETE'}))
-          .then(
-              function(data,status){
-                if (($flash_container = $('#flash_container')).length > 0) {
-                  $flash_container.html($('<div class="flash" id="flash">').text(data).append('<a href="#" class="close_icon" id="flash_close"></a>')
-                    .addClass((status=='success')? 'flash_notice' : 'flash_error'));
-                  $('#flash').css({'width': 'auto', 'visibility': null}).show();
-                }
+          $.ajax({
+            url: page_options.del_part_url + '/' + $('#page_parts_attributes_' + tabId + '_id').val(),
+            type: 'DELETE'
           });
-        };
+        }
 
         page_options.tabs.find(".ui-tabs-active").remove();
         page_options.tabs.find("#page_part_" + tabName.toLowerCase()).remove();

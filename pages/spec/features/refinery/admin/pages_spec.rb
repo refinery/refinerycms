@@ -1,46 +1,17 @@
 # encoding: utf-8
 require "spec_helper"
 
-# def expect_window_with_content(content, preview_window)
-  # page.within_window preview_window do
-    # expect(page).to have_content(content)
-  # end
-# end
-#
-# def expect_window_without_content(content, preview_window)
-  # page.within_window preview_window do
-    # expect(page).not_to have_content(content)
-  # end
-# end
-  def expect_window_with_content(content, window: windows.last)
-    page.within_window window do
-      expect(page).to have_content(content)
-    end
+def expect_window_with_content(content, window: windows.last)
+  page.within_window window do
+    expect(page).to have_content(content)
   end
+end
 
-  def expect_window_without_content(content, window: windows.last)
-    page.within_window window do
-      expect(page).not_to have_content(content)
-    end
+def expect_window_without_content(content, window: windows.last)
+  page.within_window window do
+    expect(page).not_to have_content(content)
   end
-
-# def edit_and_preview(new_title)
-  # visit refinery.admin_pages_path
-  # find('a[tooltip^=Edit]').click
-  # fill_in "Title", with: preview_content
-#
-  # preview = window_opened_by do
-    # click_button "Preview"
-  # end
-  # preview
-#
-#
-  # page.within_window preview do
-    # expect(page).to have_content(preview_content)
-  # end
-  # preview.close
-
-# end
+end
 
 module Refinery
   module Admin
@@ -166,7 +137,7 @@ module Refinery
 
           fill_in "Title", :with => "My first page"
 
-          click_link "toggle_advanced_options"
+          find('#toggle_advanced_options').trigger(:click)
 
           fill_in "Menu title", :with => "The first page"
 
@@ -319,13 +290,12 @@ module Refinery
             window.close
           end
 
-
           it 'will show pages with inherited templates' do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
             fill_in 'Title', :with => 'Searchable'
-            click_link 'toggle_advanced_options'
+            find('#toggle_advanced_options').trigger(:click)
             select 'Searchable', :from => 'View template'
             Timeout::timeout(5) do
               click_button 'Preview'
@@ -592,16 +562,15 @@ module Refinery
             expect(Refinery::Page.count).to eq(2)
           end
 
-          it "shows locale flag for page" do
+          it "shows locale indicator for page" do
             within "#page_#{ru_page_id}" do
-              expect(page).to have_css('.locale_marker')
-              expect(page).to have_content('RU')
+              expect(page).to have_selector('.locale_marker', text: 'RU')
             end
           end
 
-          it "doesn't show locale flag for primary locale" do
+          it "doesn't show locale indicator for primary locale" do
             within "#page_#{ru_page_id}" do
-              expect(page).not_to have_css("img[src='/assets/refinery/icons/flags/en.png']")
+              expect(page).to_not have_selector('.locale_marker', text: 'EN')
             end
           end
 
@@ -635,7 +604,7 @@ module Refinery
             end
           end
 
-          context "when page is a child page" do
+          context "when page is a child page", js: true do
             it 'succeeds' do
               ru_page.destroy!
               parent_page = Page.create(:title => "Parent page")
@@ -645,7 +614,7 @@ module Refinery
               expect(sub_page.parent).to eq(parent_page)
               visit refinery.admin_pages_path
               within "#page_#{sub_page.id}" do
-                click_link "Edit this page"
+                find("a.edit_icon").trigger(:click)
               end
               fill_in "Title", :with => ru_page_title
               click_button "Save"
@@ -662,7 +631,7 @@ module Refinery
 
         it "adds new page part" do
           visit refinery.new_admin_page_path
-          click_link "add_page_part"
+          find("#add_page_part").trigger(:click)
 
           within "#new_page_part_dialog" do
             fill_in "new_page_part_title", :with => "testy"
@@ -696,7 +665,7 @@ module Refinery
           end
 
           2.times do
-            find("a#delete_page_part").click
+            find("#delete_page_part").trigger(:click)
             # Poltergeist automatically accepts dialogues.
             if Capybara.javascript_driver != :poltergeist
               page.driver.browser.switch_to.alert.accept
@@ -737,7 +706,7 @@ module Refinery
             specify 'sub page should inherit them', :js => true do
               visit refinery.edit_admin_page_path(@page.id)
 
-              click_link 'toggle_advanced_options'
+              find('#toggle_advanced_options').trigger(:click)
 
               within '#page_layout_template' do
                 expect(page.find('option[value=refinery]')).to be_selected

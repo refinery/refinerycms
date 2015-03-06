@@ -8,10 +8,8 @@
   <span class='actions'>
 
     <%= mail_to user.email, '', class: 'email_icon', title: t('.email_user') %>
-    <% if current_refinery_user.can_edit?(user) %>
-      <%= action_icon :edit, refinery.edit_admin_user_path(user), t('edit', scope: 'refinery.admin.users')   %>
-      <%= action_icon :delete, refinery.admin_user_path(user), t('delete', scope: 'refinery.admin.users'),
-            data: {confirm: t('message', scope: 'refinery.admin.delete', title: user.username) } if current_refinery_user.can_delete?(user) %>
-     <% end %>
+    <%= action_icon :edit, refinery.edit_admin_user_path(user), t('edit', scope: 'refinery.admin.users') if current_refinery_user.can_edit?(user)  %>
+    <%= action_icon :delete, refinery.admin_user_path(user), t('delete', scope: 'refinery.admin.users'),
+          data: {confirm: t('message', scope: 'refinery.admin.delete', title: user.username) } if current_refinery_user.can_delete?(user) %>
   </span>
 </li>

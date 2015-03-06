@@ -4,7 +4,6 @@ ul {
       position: relative;
       span.arrow {
         background-repeat: no-repeat;
-        // background-image: image_url('refinery/icons/up.gif');
         @include icon('sort-up');
         position: absolute;
         right: 10px;
@@ -15,7 +14,6 @@ ul {
       }
       &.closed span.arrow {
         @include icon('sort-down');
-        // background-image: image_url('refinery/icons/down.gif');
       }
     }
     > div {
