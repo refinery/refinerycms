@@ -44,6 +44,13 @@ module Refinery
           Refinery::<%= namespacing %>::Setting.confirmation_message = params[:confirmation_message] if params.keys.include?('confirmation_message')
         end
 
+        private
+
+        def setting_params
+          params.require(:setting).permit(:value,
+                                          subject: Refinery::I18n.frontend_locales,
+                                          message: Refinery::I18n.frontend_locales)
+        end
       end
     end
   end

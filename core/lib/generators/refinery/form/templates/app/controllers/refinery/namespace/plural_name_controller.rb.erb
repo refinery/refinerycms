@@ -53,7 +53,16 @@ module Refinery
         @page = Refinery::Page.where(link_url: "/<%= plural_name %>/new").
                                includes(:parts).first_or_create!
       end
+    private
 
+    # Only allow a trusted parameter "white list" through.
+    def <%= "#{singular_table_name}_params" %>
+    <%- if attributes_names.empty? -%>
+            params[:<%= singular_table_name %>]
+          <%- else -%>
+            params.require(:<%= singular_table_name %>).permit(<%= attributes.map { |attr| ":#{attr.column_name}" }.join(', ') %>)
+          <%- end -%>
     end
+  end
   end
 end
