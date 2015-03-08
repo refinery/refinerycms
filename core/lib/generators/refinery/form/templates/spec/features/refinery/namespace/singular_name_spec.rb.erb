@@ -3,7 +3,7 @@ require "spec_helper"
 
 module Refinery
   module <%= namespacing %>
-    describe "<%= plural_name %>" do
+    describe "<%= plural_name %>", type: :feature do
 
       before(:each) do
         Refinery::<%= namespacing %>::Engine::load_seed

@@ -2,7 +2,7 @@ require "spec_helper"
 
 module Refinery
   module <%= namespacing %>
-    describe <%= class_name.pluralize %>Controller do
+    describe <%= class_name.pluralize %>Controller, type: :controller do
 
       routes { Refinery::Core::Engine.routes }
 

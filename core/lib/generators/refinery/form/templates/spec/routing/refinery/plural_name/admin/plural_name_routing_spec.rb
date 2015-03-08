@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "<%= plural_name %> admin routing" do
+describe "<%= plural_name %> admin routing", type: :routing do
 
   routes { Refinery::Core::Engine.routes }
 

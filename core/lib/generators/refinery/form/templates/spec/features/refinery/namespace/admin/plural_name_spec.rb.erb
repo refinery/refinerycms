@@ -4,7 +4,7 @@ require "spec_helper"
 module Refinery
   module <%= namespacing %>
     module Admin
-      describe <%= class_name %> do
+      describe <%= class_name %>, type: :feature do
         refinery_login_with :refinery_user
 
 <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
