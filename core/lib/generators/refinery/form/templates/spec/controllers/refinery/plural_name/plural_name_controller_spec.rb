@@ -9,7 +9,7 @@ module Refinery
         Refinery::<%= namespacing %>::Engine::load_seed
 
         @new_page = Refinery::Page.new
-        Refinery::Page.stub(:find_by_link_url).and_return(@new_page)
+        allow(Refinery::Page).to receive_messages(:where => [ @new_page ])
       end
 
       describe "GET new" do
@@ -26,7 +26,7 @@ module Refinery
       describe "POST create" do
 
         before(:each){
-          <%= class_name %>.any_instance.stub(:save).and_return( true )
+          allow_any_instance_of(<%= class_name %>).to receive(:save).and_return( true )
         }
 
         it "before_filter assigns page to <%= plural_name %>/new" do
@@ -40,18 +40,18 @@ module Refinery
         end
 
         it "redirects to thank_you" do
-          post :create #, <%= singular_name %>: FactoryGirl.attributes_for(:<%= singular_name %>)
+          post :create
           response.should redirect_to "/<%= plural_name %>/thank_you"
         end
 
         describe "when it can't save the <%= singular_name %>" do
 
           before(:each) {
-            <%= class_name %>.any_instance.stub(:save).and_return( false )
+          allow_any_instance_of(<%= class_name %>).to receive(:save).and_return( false )
           }
 
           it "redirects to new if it can't save" do
-            post :create #, <%= singular_name %>: @no_save_<%= singular_name %>
+            post :create
 
             response.should render_template(:new)
           end
