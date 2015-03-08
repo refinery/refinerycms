@@ -17,7 +17,7 @@ module Refinery
       end
 
       def create
-        @<%= singular_name %> = <%= class_name %>.new(<%= singular_table_name %>_params)
+        @<%= singular_name %> = <%= class_name %>.new
 
         if @<%= singular_name %>.save
           begin

@@ -4,9 +4,8 @@ module Refinery
   module <%= namespacing %>
     describe <%= class_name.pluralize %>Controller, type: :controller do
 
-      routes { Refinery::Core::Engine.routes }
-
       before(:each) do
+        @route = Refinery::<%= namespacing %>::Engine.routes
         Refinery::<%= namespacing %>::Engine::load_seed
 
         @new_page = Refinery::Page.new
