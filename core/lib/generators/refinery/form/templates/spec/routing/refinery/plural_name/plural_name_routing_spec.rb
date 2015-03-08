@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "<%= namespacing %> front-end routing" do
+describe "<%= namespacing %> front-end routing", type: :routing do
 
   routes { Refinery::Core::Engine.routes }
 

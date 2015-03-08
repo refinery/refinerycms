@@ -3,7 +3,7 @@ require "spec_helper"
 module Refinery
   module <%= namespacing %>
 
-    describe "<%= namespacing %> request specs" do
+    describe "<%= namespacing %> request specs", type: :request do
 
       before(:each) do
         Refinery::<%= namespacing %>::Engine.load_seed

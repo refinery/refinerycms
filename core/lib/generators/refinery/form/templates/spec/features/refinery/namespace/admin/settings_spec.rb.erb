@@ -3,7 +3,7 @@ require "spec_helper"
 
 module Refinery
   module <%= namespacing %>
-  describe "Settings" do
+  describe "Settings", type: :feature do
     refinery_login_with :refinery_user
 
     <% if (title = attributes.detect { |a| a.type.to_s == "string"  }).present? %>
