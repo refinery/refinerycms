@@ -10,7 +10,7 @@ module Refinery
         def url
           current_url = page.link_url
 
-          if current_url =~ %r{^/} &&
+          if Refinery::I18n.url_filter_enabled? && current_url =~ %r{^/} &&
             Refinery::I18n.current_frontend_locale != Refinery::I18n.default_frontend_locale
             current_url = "/#{Refinery::I18n.current_frontend_locale}#{current_url}"
           end
