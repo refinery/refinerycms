@@ -9,8 +9,7 @@ module Refinery
       end
 
       def thank_you
-        @page = Refinery::Page.where(link_url: "/<%= plural_name %>/thank_you").
-                               includes(:parts).first_or_create!
+        @page = Refinery::Page.where(link_url: "/<%= plural_name %>/thank_you").first
       end
 
       def new
