@@ -17,8 +17,8 @@ module Refinery
 
           it "shows two items" do
             visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
-            page.should have_content("UniqueTitleOne")
-            page.should have_content("UniqueTitleTwo")
+            expect(page).to have_content("UniqueTitleOne")
+            expect(page).to have_content("UniqueTitleTwo")
           end
         end
 
@@ -99,9 +99,9 @@ module Refinery
               click_link ::I18n.t('mark_as_spam', :scope => "refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.<%= singular_name %>")
             end
 
-            Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
-            Refinery::<%= namespacing %>::<%= class_name %>.ham.count.should == 0
-            Refinery::<%= namespacing %>::<%= class_name %>.spam.count.should == 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.ham.count).to eq 0
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.spam.count).to eq 1
 
 
             visit refinery.spam_<%= namespacing.underscore %>_admin_<%= plural_name %>_path
@@ -110,9 +110,9 @@ module Refinery
               click_link ::I18n.t('mark_as_ham', :scope => "refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.<%= singular_name %>")
             end
 
-            Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
-            Refinery::<%= namespacing %>::<%= class_name %>.ham.count.should == 1
-            Refinery::<%= namespacing %>::<%= class_name %>.spam.count.should == 0
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.ham.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.spam.count).to eq 0
         end
         end
 
@@ -122,18 +122,18 @@ module Refinery
           it "should succeed" do
             visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
 
-            Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
-            Refinery::<%= namespacing %>::<%= class_name %>.ham.count.should == 1
-            Refinery::<%= namespacing %>::<%= class_name %>.spam.count.should == 0
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.ham.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.spam.count).to eq 0
 
             within ".actions" do
               click_link ::I18n.t('mark_as_spam', :scope => "refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.<%= singular_name %>")
 
             end
 
-            Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
-            Refinery::<%= namespacing %>::<%= class_name %>.ham.count.should == 0
-            Refinery::<%= namespacing %>::<%= class_name %>.spam.count.should == 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.ham.count).to eq 0
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.spam.count).to eq 1
           end
         end
       <% end %>
@@ -146,8 +146,8 @@ module Refinery
 
             click_link "Remove this <%= singular_name.titleize.downcase %> forever"
 
-            page.should have_content("'UniqueTitleOne' was successfully removed.")
-            Refinery::<%= namespacing %>::<%= class_name %>.count.should == 0
+            expect(page).to have_content("'UniqueTitleOne' was successfully removed.")
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 0
           end
         end
 
@@ -159,8 +159,8 @@ module Refinery
 
             click_link "Remove this <%= singular_name.titleize.downcase %> forever"
 
-            page.should have_content("'UniqueTitleOne' was successfully removed.")
-            Refinery::<%= namespacing %>::<%= class_name %>.count.should == 0
+            expect(page).to have_content("'UniqueTitleOne' was successfully removed.")
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 0
           end
           end
         <% end %>
