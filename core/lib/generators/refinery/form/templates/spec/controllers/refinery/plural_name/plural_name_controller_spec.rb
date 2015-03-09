@@ -41,7 +41,7 @@ module Refinery
 
         it "redirects to thank_you" do
           post :create
-          response.should redirect_to "/<%= plural_name %>/thank_you"
+          expect(response).to redirect_to "/<%= plural_name %>/thank_you"
         end
 
         describe "when it can't save the <%= singular_name %>" do
@@ -53,7 +53,7 @@ module Refinery
           it "redirects to new if it can't save" do
             post :create
 
-            response.should render_template(:new)
+            expect(response).to render_template(:new)
           end
         end
 
