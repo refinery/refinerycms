@@ -90,3 +90,5 @@ Gemfile.lock
 # Local Gemfile for developing without sharing dependencies
 .gemfile
 *.txt
+
+*.orig
