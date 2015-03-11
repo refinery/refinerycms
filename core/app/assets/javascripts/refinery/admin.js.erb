@@ -609,7 +609,7 @@ var page_options = {
               // Add a new tab for the new content section.
               $('#page_part_editors').append(data);
 
-              page_options.tabs.find("ul").append("<li><a href='#page_part_new_"+$('#new_page_part_index').val()+"'>"+part_title+"</a></li>");
+              page_options.tabs.find("ul#page_parts").append("<li><a href='#page_part_new_"+$('#new_page_part_index').val()+"'>"+part_title+"</a></li>");
               page_options.tabs.tabs("refresh");
 
               // this is here because of https://github.com/refinery/refinerycms/issues/2060
