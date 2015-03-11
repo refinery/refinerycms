@@ -75,5 +75,5 @@
 }
 
 // don't want underlines on icons
-#content a[class$='icon'] {border-bottom: none}
-#content a[class$='icon']:hover {border-bottom: none}
+#content a[class$='icon'] {text-decoration: none}
+#content a[class$='icon']:hover {text-decoration: none}
