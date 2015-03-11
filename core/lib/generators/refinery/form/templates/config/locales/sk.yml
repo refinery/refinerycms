@@ -42,7 +42,7 @@ sk:
             message: Správa
         settings:
           notification_recipients_form:
-            settings_value_name: Poslať upozornenie pre
+            <%= singular_name %>_settings_value_name: Poslať upozornenie pre
             explanation: Zakaždým, keď Vás niekto kontaktuje cez vaše webové stránky, Refinery odošle e-mail s upozornením na nový <%= singular_name.humanize.downcase %>.
             hint: Keď je odoslaný nový <%= singular_name.humanize.downcase %>, Refinery odošle upozornenie na Váš e-mail.
             example: "Zadajte e-mailovú adresu(y) ako: jack@work.com, jill@office.com"
