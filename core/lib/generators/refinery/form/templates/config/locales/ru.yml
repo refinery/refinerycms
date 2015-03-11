@@ -44,7 +44,7 @@ ru:
           update:
             updated: "'%{setting}' были успешно обновлены."
           notification_recipients_form:
-            settings_value_name: "Отправить уведомления"
+            <%= singular_name %>_settings_value_name: "Отправить уведомления"
             explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет уведомление на электронную почту."
             hint: "Когда поступит новый запрос, Refinery CMS отправит вам уведомление на электронную почту."
             example: "Введите адрес(а) электронной почты через запятую: anna@mail.ru, ivanov@yandex.ru"
