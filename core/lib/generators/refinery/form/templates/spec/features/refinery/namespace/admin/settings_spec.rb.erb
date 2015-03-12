@@ -5,9 +5,7 @@ module Refinery
   module <%= namespacing %>
   describe "Settings", type: :feature do
     refinery_login_with :refinery_user
-
-    <% if (title = attributes.detect { |a| a.type.to_s == "string"  }).present? %>
-
+<% if (title = attributes.detect { |a| a.type.to_s == "string"  }).present? %>
     describe "update who gets notified" do
       before do
         Rails.cache.clear
@@ -50,7 +48,7 @@ module Refinery
         expect(page).to have_content("Confirmation Message was successfully updated.")
       end
     end
-    <% end %>
+<% end %>
   end
   end
 end

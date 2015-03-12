@@ -4,7 +4,7 @@ module Refinery
   module <%= namespacing %>
     describe <%= class_name.pluralize %>Controller, type: :controller do
 
-      before(:each) do
+      before do
         @route = Refinery::<%= namespacing %>::Engine.routes
         Refinery::<%= namespacing %>::Engine::load_seed
 
@@ -25,7 +25,7 @@ module Refinery
 
       describe "POST create" do
 
-        before(:each){
+        before{
           allow_any_instance_of(<%= class_name %>).to receive(:save).and_return( true )
         }
 <% @creationParams =  singular_name + ": {" +
@@ -59,7 +59,7 @@ attributes.each.map { |attribute|
 
         describe "when it can't save the <%= singular_name %>" do
 
-          before(:each) {
+          before {
           allow_any_instance_of(<%= class_name %>).to receive(:save).and_return( false )
           }
 

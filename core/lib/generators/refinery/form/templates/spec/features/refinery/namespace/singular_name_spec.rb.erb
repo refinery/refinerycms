@@ -16,17 +16,16 @@ module Refinery
         end
 
         it "should create a new item" do
-<% attributes.each do |a| -%>
-            <% if a.type == :string -%>
-            fill_in "<%= singular_name %>_<%= a.name %>", :with => "Test"
-                 <% elsif a.type == :text -%>
-            fill_in "<%= singular_name %>_<%= a.name %>", :with => "Test"
-                 <% end -%>
-               <% end -%>
-             click_button ::I18n.t('.refinery.<%= plural_name %>.<%= plural_name %>.new.send')
+<% attributes.each do |a| -%><% if a.type == :string -%>
+          fill_in "<%= singular_name %>_<%= a.name %>", :with => "Test"
+<% elsif a.type == :text -%>
+          fill_in "<%= singular_name %>_<%= a.name %>", :with => "Test"
+<% end -%><% end -%>
 
-               page.should have_content("Thank You")
-               Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
+          click_button ::I18n.t('.refinery.<%= plural_name %>.<%= plural_name %>.new.send')
+
+          page.should have_content("Thank You")
+          Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
         end
       end
     end

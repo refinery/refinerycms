@@ -50,13 +50,13 @@ module Refinery
 
       private
 
-      # Only allow a trusted parameter "white list" through.
-      def <%= singular_table_name %>_params
-        <%- if attributes_names.empty? -%>
+    # Only allow a trusted parameter "white list" through.
+      def <%= "#{singular_table_name}_params" %>
+<%- if attributes_names.empty? -%>
         params[:<%= singular_table_name %>]
-        <%- else -%>
+<%- else -%>
         params.require(:<%= singular_table_name %>).permit(<%= attributes.map { |attr| ":#{attr.column_name}" }.join(', ') %>)
-        <%- end -%>
+<%- end -%>
       end
     end
   end
