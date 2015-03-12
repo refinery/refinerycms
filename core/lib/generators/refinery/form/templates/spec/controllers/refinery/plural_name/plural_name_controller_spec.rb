@@ -28,19 +28,32 @@ module Refinery
         before(:each){
           allow_any_instance_of(<%= class_name %>).to receive(:save).and_return( true )
         }
+<% @creationParams =  singular_name + ": {" +
+attributes.each.map { |attribute|
+  case attribute.type
+  when :integer
+  value = "1"
+  when :string
+  value = '"foo"'
+  when :boolean
+  value = "false"
+  end
+  attribute.name + ": " + value
+}.join(", ") + "}"
+%>
 
         it "before_filter assigns page to <%= plural_name %>/new" do
-          post :create
+          post :create, <%= @creationParams %>
           expect(assigns(:page)).to eq @new_page
         end
 
         it "before_filter assigns a new <%= singular_name %>" do
-          post :create
+          post :create, <%= @creationParams %>
           expect(assigns(:<%= singular_name %>)).to be_a_new(<%= class_name %>)
         end
 
         it "redirects to thank_you" do
-          post :create
+          post :create, <%= @creationParams %>
           expect(response).to redirect_to "/<%= plural_name %>/thank_you"
         end
 
@@ -51,7 +64,7 @@ module Refinery
           }
 
           it "redirects to new if it can't save" do
-            post :create
+            post :create, <%= @creationParams %>
 
             expect(response).to render_template(:new)
           end
