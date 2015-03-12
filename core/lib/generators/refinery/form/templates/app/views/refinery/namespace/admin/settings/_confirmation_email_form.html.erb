@@ -25,15 +25,15 @@
     </tr>
     <tr>
       <td>
-        <%%= label_tag "confirmation_subject", t('.subject'), :class => 'stripped' %>
+        <%%= label_tag "setting[subject[#{locale.to_s}]]", t('.subject'), :class => 'stripped' %>
       </td>
       <td>
-        <%%= text_field_tag "setting[subject[#{locale.to_s}]]", Refinery::<%= namespacing %>::Setting.confirmation_subject(locale), :class => 'widest' %>
+        <%%= text_field_tag "setting[subject[#{locale.to_s}]]", Refinery::<%= namespacing %>::Setting.confirmation_subject, :class => 'widest' %>
       </td>
     </tr>
     <tr>
       <td valign='top'>
-        <%%= label_tag "confirmation_message", t('.message'), :class => 'stripped' %>
+        <%%= label_tag "setting[message[#{locale.to_s}]]", t('.message'), :class => 'stripped' %>
       </td>
       <td>
         <%%= text_area_tag "setting[message[#{locale.to_s}]]", Refinery::<%= namespacing %>::Setting.confirmation_message, :rows => "7", :class => 'widest' %>

@@ -20,7 +20,7 @@ module Refinery
         click_link ::I18n.t('update_notified', scope: 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.submenu')
 
         within_frame "dialog_iframe" do
-          fill_in ::I18n.t('settings_value_name', scope: 'refinery.<%= namespacing.underscore %>.admin.settings.notification_recipients_form'), :with => "phil@refinerycms.com"
+          fill_in ::I18n.t('<%= singular_name %>_settings_value_name', scope: 'refinery.<%= namespacing.underscore %>.admin.settings.notification_recipients_form'), :with => "phil@refinerycms.com"
           click_button "submit_button"
         end
 
