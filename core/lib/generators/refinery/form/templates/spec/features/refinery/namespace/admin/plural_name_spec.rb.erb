@@ -6,9 +6,7 @@ module Refinery
     module Admin
       describe <%= class_name %>, type: :feature do
         refinery_login_with :refinery_user
-
 <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
-
        describe "<%= plural_name %> list" do
           before do
             FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne")
@@ -56,7 +54,7 @@ module Refinery
 
             end
            end
-           <% if include_spam? %>
+<% if include_spam? %>
          context "spam <%= plural_name %>" do
             it "shows expected message" do
               visit refinery.spam_<%= plural_name %>_admin_<%= plural_name %>_path
@@ -64,8 +62,8 @@ module Refinery
               expect(page).to have_content("Hooray! You don't have any spam.")
             end
          end
-          <% end %>
-       end
+<% end %>
+     end
 
       describe "action links" do
         before { visit refinery.<%= plural_name %>_admin_<%= plural_name %>_path }
@@ -74,10 +72,10 @@ module Refinery
           within "#actions" do
             expect(page).to have_content("Inbox")
             expect(page).to have_selector("a[href='/#{Refinery::Core.backend_route}/<%= plural_name %>']")
-           <% if include_spam? %>
+<% if include_spam? %>
             expect(page).to have_content("Spam")
             expect(page).to have_selector("a[href='/#{Refinery::Core.backend_route}/<%= plural_name %>/spam']")
-          <% end %>
+<% end %>
             expect(page).to have_content("Update who gets notified")
             expect(page).to have_selector("a[href*='/#{Refinery::Core.backend_route}/<%= plural_name %>/settings/<%= singular_name %>_notification_recipients/edit']")
             expect(page).to have_content("Edit confirmation email")
@@ -86,9 +84,7 @@ module Refinery
         end
       end
 
-
-       <% if include_spam? %>
-
+<% if include_spam? %>
         describe "mark as ham" do
           before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
 
@@ -136,7 +132,7 @@ module Refinery
             expect(Refinery::<%= namespacing %>::<%= class_name %>.spam.count).to eq 1
           end
         end
-      <% end %>
+<% end %>
 
         describe "destroy" do
           before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
@@ -163,7 +159,7 @@ module Refinery
             expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 0
           end
           end
-        <% end %>
+<% end %>
       end
     end
   end
