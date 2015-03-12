@@ -38,7 +38,7 @@
 .failure_icon         {@include icon('times');}
 .folder_icon          {@include icon('folder',$icon_folder_colour)}
 .go_icon              {@include icon('caret-square-o-right');}
-.info_icon            {@include icon('info-circle',$info_icon_blue)}
+.info_icon            {@include icon('info-circle');}
 .page_icon            {@include icon('file-o',$icon_page_colour)}
 .preview_icon         {@include icon('eye', $icon_preview_colour)}
 .reorder_done_icon    {@include icon('thumbs-o-up')}
@@ -58,7 +58,7 @@
 //TODO insert, remove (see resource picker)
 // .locale_icon          {@include icon('comment', $icon_locale_colour);}
 
-// special code for stacked icon/text used for locales
+// stacked icon/text used for locales
 .locale_marker {
     display: inline-block;
     font-size: 8px;
@@ -75,5 +75,5 @@
 }
 
 // don't want underlines on icons
-#content a[class$='icon'] {text-decoration: none}
-#content a[class$='icon']:hover {text-decoration: none}
+#content a[class$='icon'] {border-bottom: none}
+#content a[class$='icon']:hover {border-bottom: none}

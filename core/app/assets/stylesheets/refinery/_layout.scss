@@ -102,22 +102,11 @@ select.widest {
   }
   li {
     margin-bottom: 10px;
-    a {
-      background-color: #dbedff;
-      background-position: 12px;
-      background-repeat: no-repeat;
-      border: 1px solid #65C3F7;
-      display: block;
-      padding: 9px;
-      img {
-        vertical-align: bottom;
-        border: 0;
-      }
-    }
-    &.selected a {
-      background-color: #22A7F2;
-      color: white;
-    }
+    background-color: $action-background-colour;
+    border: 1px solid $action-border-colour;
+    padding: 9px;
+    display: block;
+
   }
 }
 #sort-status {
