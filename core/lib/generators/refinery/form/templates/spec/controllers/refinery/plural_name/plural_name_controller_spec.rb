@@ -30,17 +30,16 @@ module Refinery
         }
 <% @creationParams =  singular_name + ": {" +
 attributes.map { |attribute|
-  case attribute.type
+case attribute.type
   when :image, :resource, :integer
     attribute.name + ": " + "1"
-  when :string, :radio, :select
+  when :string, :radio, :select, :dropdown, :text
     attribute.name + ": " + '"foo"'
   when :boolean, :checkbox
     attribute.name + ": " + "false"
   end
 }.join(", ") + "}"
 %>
-
         it "before_filter assigns page to <%= plural_name %>/new" do
           post :create, <%= @creationParams %>
           expect(assigns(:page)).to eq @new_page

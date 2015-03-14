@@ -19,7 +19,13 @@ module Refinery
 <% attributes.each do |a| -%><% if a.type == :string -%>
           fill_in "<%= singular_name %>_<%= a.name %>", :with => "Test"
 <% elsif a.type == :text -%>
-          fill_in "<%= singular_name %>_<%= a.name %>", :with => "Test"
+         fill_in "<%= singular_name %>_<%= a.name %>", :with => "Test Text"
+<% end -%>
+ <% if a.type == :radio -%>
+        choose("<%= singular_name %>_<%= a.name %>_a")
+<% end -%>
+<% if a.type == :dropdown -%>
+         find(:select, "<%=singular_name%>_<%= a.name %>").find(:option, 'a').select_option
 <% end -%><% end -%>
 
           click_button ::I18n.t('.refinery.<%= plural_name %>.<%= plural_name %>.new.send')

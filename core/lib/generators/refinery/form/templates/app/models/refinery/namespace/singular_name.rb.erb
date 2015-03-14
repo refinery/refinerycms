@@ -44,8 +44,8 @@ module Refinery
 
       belongs_to :<%= a.name %>, :class_name => 'Refinery::Resource'
 <% end -%>
-<% attributes.select{ |a| /radio|select/ === a.type.to_s }.uniq.each do |a| %>
-      <%= a.name.pluralize.upcase %> = []
+<% attributes.select{ |a| /radio|select|dropdown/ === a.type.to_s }.uniq.each do |a| %>
+      <%= a.name.pluralize.upcase %> = ['a', 'b', 'c']
 <% end -%>
     end
   end
