@@ -29,16 +29,15 @@ module Refinery
           allow_any_instance_of(<%= class_name %>).to receive(:save).and_return( true )
         }
 <% @creationParams =  singular_name + ": {" +
-attributes.each.map { |attribute|
+attributes.map { |attribute|
   case attribute.type
-  when :integer
-  value = "1"
-  when :string
-  value = '"foo"'
-  when :boolean
-  value = "false"
+  when :image, :resource, :integer
+    attribute.name + ": " + "1"
+  when :string, :radio, :select
+    attribute.name + ": " + '"foo"'
+  when :boolean, :checkbox
+    attribute.name + ": " + "false"
   end
-  attribute.name + ": " + value
 }.join(", ") + "}"
 %>
 
