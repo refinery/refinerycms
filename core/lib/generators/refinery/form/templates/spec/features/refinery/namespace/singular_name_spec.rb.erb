@@ -24,8 +24,8 @@ module Refinery
 
           click_button ::I18n.t('.refinery.<%= plural_name %>.<%= plural_name %>.new.send')
 
-          page.should have_content("Thank You")
-          Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
+          expect(page).to have_content("Thank You")
+          expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq(1)
         end
       end
     end
