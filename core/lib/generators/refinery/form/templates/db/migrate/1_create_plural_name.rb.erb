@@ -7,12 +7,12 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
     # turn image or resource into what it was supposed to be which is an integer reference to an image or resource.
     case attribute.type
     when :image, :resource
-      attribute.type = 'integer'
+      attribute.type = :integer
       attribute.name = "#{attribute.name}_id"
     when :radio, :select
-      attribute.type = 'string'
+      attribute.type = :string
     when :checkbox
-      attribute.type = 'boolean'
+      attribute.type = :boolean
     end
 -%>
       t.<%= attribute.type %> :<%= attribute.name %>
