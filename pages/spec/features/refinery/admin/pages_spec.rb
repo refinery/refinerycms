@@ -113,10 +113,10 @@ module Refinery
       end
 
       describe "new/create" do
-        it "allows to create page" do
+        it "Creates a page", js:true do
           visit refinery.admin_pages_path
 
-          click_link "Add new page"
+          find('a', text: 'Add new page').trigger(:click)
 
           fill_in "Title", :with => "My first page"
           expect { click_button "Save" }.to change(Refinery::Page, :count).from(0).to(1)
@@ -175,8 +175,8 @@ module Refinery
         end
 
         context 'when saving and returning to index' do
-          it "updates page" do
-            click_link "Edit this page"
+          it "updates page", js:true do
+            find('a[tooltip="Edit this page"]').trigger(:click)
 
             fill_in "Title", :with => "Updated"
             find("#submit_button").click
@@ -290,7 +290,7 @@ module Refinery
             window.close
           end
 
-          it 'will show pages with inherited templates' do
+          it 'will show pages with inherited templates', js:true do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
@@ -306,10 +306,10 @@ module Refinery
         end
 
         context 'a brand new page' do
-          it "will not save when just previewing" do
+          it "will not save when just previewing", js:true do
             visit refinery.admin_pages_path
 
-            click_link "Add new page"
+            find('a', text: 'Add new page').trigger(:click)
             fill_in "Title", :with => "My first page"
             window = window_opened_by do
               click_button "Preview"
@@ -344,13 +344,13 @@ module Refinery
       end
 
       describe "destroy" do
-        context "when page can be deleted" do
+        context "when page can be deleted", js:true do
           before { Page.create :title => "Delete me" }
 
           it "will show delete button" do
             visit refinery.admin_pages_path
 
-            click_link "Remove this page forever"
+            find('a[tooltip="Remove this page forever"]').trigger(:click)
 
             expect(page).to have_content("'Delete me' was successfully removed.")
 
@@ -400,15 +400,15 @@ module Refinery
           end
         end
 
-        describe "add a page with title for default locale" do
+        describe "add a page with title for default locale", js:true do
           before do
             visit refinery.admin_pages_path
-            click_link "Add new page"
+            find('a', text: "Add new page").trigger(:click)
             fill_in "Title", :with => "News"
             click_button "Save"
           end
 
-          it "succeeds" do
+          it "creates a page" do
             expect(page).to have_content("'News' was successfully added.")
             expect(Refinery::Page.count).to eq(2)
           end
@@ -425,11 +425,12 @@ module Refinery
             p = ::Refinery::Page.by_slug('news').first
             within "#page_#{p.id}" do
               expect(page).to have_content('News')
-              expect(page.find_link('Edit this page')[:href]).to include('news')
+              expect(page.find('a[tooltip="Edit this page"]')[:href]).to include('news')
             end
           end
 
           it "shows in frontend menu for 'en' locale" do
+            # page.driver.debug
             visit "/"
 
             within "#menu" do
@@ -448,7 +449,7 @@ module Refinery
           end
         end
 
-        describe "add a page with title for both locales" do
+        describe "a page with two locales", js:true do
           let(:en_page_title) { 'News' }
           let(:en_page_slug) { 'news' }
           let(:ru_page_title) { 'Новости' }
@@ -467,13 +468,13 @@ module Refinery
             _page
           end
 
-          it "succeeds" do
+          it "can have a title for each locale" do
             news_page.destroy!
             visit refinery.admin_pages_path
 
-            click_link "Add new page"
+            find('a', text:"Add new page").trigger(:click)
             within "#switch_locale_picker" do
-              click_link "ru"
+              find('a', text: "RU").trigger(:click)
             end
             fill_in "Title", :with => ru_page_title
             click_button "Save"
@@ -482,7 +483,7 @@ module Refinery
               find("a[href^='/#{Refinery::Core.backend_route}/pages/#{ru_page_slug_encoded}/edit']").click
             end
             within "#switch_locale_picker" do
-              click_link "en"
+              find('a', text: "EN").trigger(:click)
             end
             fill_in "Title", :with => en_page_title
             find("#submit_button").click
@@ -491,7 +492,7 @@ module Refinery
             expect(Refinery::Page.count).to eq(2)
           end
 
-          it "shows both locale flags for page" do
+          it "is shown with both locales in the index" do
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id} .locales" do
@@ -501,7 +502,7 @@ module Refinery
             end
           end
 
-          it "shows title in admin menu in current admin locale" do
+          it "shows title in current admin locale in the index" do
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
@@ -513,7 +514,7 @@ module Refinery
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
-              expect(page.find_link('Edit this page')[:href]).to include(en_page_slug)
+              expect(page.find('a[tooltip="Edit this page"]')[:href]).to include(en_page_slug)
             end
           end
 
@@ -534,7 +535,7 @@ module Refinery
           end
         end
 
-        describe "add a page with title only for secondary locale" do
+        describe "add a page with title only for secondary locale", js:true do
           let(:ru_page) {
             Globalize.with_locale(:ru) {
               Page.create :title => ru_page_title
@@ -549,11 +550,11 @@ module Refinery
             visit refinery.admin_pages_path
           end
 
-          it "succeeds" do
+          it "lets you add a Russian title without an English title" do
             ru_page.destroy!
-            click_link "Add new page"
+            find('a', text: 'Add new page').trigger(:click)
             within "#switch_locale_picker" do
-              click_link "ru"
+              find('a', text: "RU").trigger(:click)
             end
             fill_in "Title", :with => ru_page_title
             click_button "Save"
@@ -582,7 +583,7 @@ module Refinery
 
           it "uses slug in admin" do
             within "#page_#{ru_page_id}" do
-              expect(page.find_link('Edit this page')[:href]).to include(ru_page_slug_encoded)
+              expect(page.find('a[tooltip="Edit this page"]')[:href]).to include(ru_page_slug_encoded)
             end
           end
 
@@ -721,7 +722,7 @@ module Refinery
       end
 
       # regression spec for https://github.com/refinery/refinerycms/issues/1891
-      describe "page part body" do
+      describe "a page part with HTML", js:true do
         before do
           page = Refinery::Page.create! :title => "test"
           Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
@@ -732,30 +733,29 @@ module Refinery
         end
 
         specify "html shouldn't be stripped" do
-          visit refinery.admin_pages_path
-          click_link "Edit this page"
-          expect(page).to have_content("header class='regression'")
+          visit refinery.admin_edit_page_path('test')
+          expect(page).to have_content('header class="regression"')
         end
-      end
+       end
     end
 
     describe "TranslatePages", :type => :feature do
       before { Globalize.locale = :en }
       refinery_login_with :refinery_user
 
-      describe "add page to second locale" do
+      describe "a page with a single locale", js: true do
         before do
           allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :lv])
           Page.create :title => 'First Page'
         end
 
-        it "succeeds" do
+        it "can have a second locale added to it" do
           visit refinery.admin_pages_path
 
-          click_link "Add new page"
+          find('a', text: 'Add new page').trigger(:click)
 
           within "#switch_locale_picker" do
-            click_link "lv"
+            find('a', text: "LV").trigger(:click)
           end
           fill_in "Title", :with => "Brīva vieta reklāmai"
           click_button "Save"
