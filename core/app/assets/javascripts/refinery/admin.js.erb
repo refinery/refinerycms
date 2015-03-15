@@ -42,7 +42,7 @@ $.fn.paginateTo = function(stateUrl) {
       window.location = popstate_location;
     }
   });
-}
+};
 
 $.fn.slideTo = function(response) {
   $(this).html(response);
@@ -51,7 +51,7 @@ $.fn.slideTo = function(response) {
   init_modal_dialogs();
   init_tooltips();
   return $(this);
-}
+};
 
 $.fn.applyMinimumHeightFromChildren = function() {
   child_heights = 0;
@@ -63,7 +63,7 @@ $.fn.applyMinimumHeightFromChildren = function() {
   });
   $(this).css('min-height', child_heights);
   return $(this);
-}
+};
 
 init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').not('#dialog_container a').each(function(i, anchor) {

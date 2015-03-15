@@ -41,5 +41,10 @@ end
   require support_file
 end
 
+Capybara.register_driver :poltergeist_debug do |app|
+  Capybara::Poltergeist::Driver.new(app, debug: false, js_errors:  true, inspector: :open)
+end
+
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
+Capybara.always_include_port = true
