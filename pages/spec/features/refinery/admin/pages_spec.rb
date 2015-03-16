@@ -732,10 +732,13 @@ module Refinery
           end
         end
 
-        specify "html shouldn't be stripped" do
-          visit refinery.admin_edit_page_path('test')
-          expect(page).to have_content('header class="regression"')
-        end
+        specify "should retain the html" do
+          visit refinery.admin_pages_path
+          find('a[tooltip="Edit this page"]').trigger(:click)
+          Capybara.ignore_hidden_elements = false
+          expect(page).to have_content("header class='regression'")
+          Capybara.ignore_hidden_elements = true
+         end
        end
     end
 
