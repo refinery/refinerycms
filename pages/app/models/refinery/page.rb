@@ -9,6 +9,7 @@ module Refinery
     extend FriendlyId
 
     translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
+    default_scope { includes(:translations) }
 
     class Translation
       is_seo_meta
