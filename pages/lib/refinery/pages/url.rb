@@ -9,6 +9,12 @@ module Refinery
 
         def url
           current_url = page.link_url
+          # Don't mess around with absolute URLs, just accept them.  Examples:
+          #
+          # * https://github.com/parndt
+          # * http://github.com/parndt
+          # * //github.com/parndt
+          return current_url if current_url =~ %r{\A(https?:)?//}
 
           if Refinery::I18n.url_filter_enabled? && current_url =~ %r{^/} &&
             Refinery::I18n.current_frontend_locale != Refinery::I18n.default_frontend_locale
