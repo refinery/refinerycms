@@ -8,8 +8,7 @@
 
   <div class="field">
     <% if action_name =~ /(edit)|(update)/ %>
-      <%= link_to t('.download_current'), @resource.url,
-                  :title => @resource.title %>
+      <%= action_label :download, @resource.url, t('.download_current') %>
       <em><%= t('.or')%></em><%= t('.replace') %>
       <%= f.file_field :file %>
     <% else %>

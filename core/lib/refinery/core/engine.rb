@@ -80,6 +80,7 @@ module Refinery
       end
 
       # set the manifests and assets to be precompiled
+      # refinery/icons/* may still be used by plugins
       config.to_prepare do
         Rails.application.config.assets.precompile += %w(
           refinery/*

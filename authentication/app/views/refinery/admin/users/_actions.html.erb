@@ -3,7 +3,6 @@
     <%= render '/refinery/admin/search', :url => refinery.admin_users_path %>
   </li>
   <li>
-    <%= link_to t('.create_new_user'),
-                refinery.new_admin_user_path, :class => "add_icon" %>
+    <%= action_label :add, refinery.new_admin_user_path, t('.create_new_user')%>
   </li>
 </ul>

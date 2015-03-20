@@ -25,6 +25,5 @@ Gem::Specification.new do |s|
   s.add_dependency    'refinerycms-images',         version
   s.add_dependency    'refinerycms-pages',          version
   s.add_dependency    'refinerycms-resources',      version
-
   s.required_ruby_version = Refinery::Version.required_ruby_version
 end
