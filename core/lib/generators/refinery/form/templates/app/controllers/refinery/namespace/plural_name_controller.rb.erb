@@ -18,7 +18,7 @@ module Refinery
       end
 
       def create
-        @<%= singular_name %> = <%= class_name %>.new(params[:<%= singular_name %>])
+        @<%= singular_name %> = <%= class_name %>.new(<%= singular_name %>_params)
 
         if @<%= singular_name %>.save
           begin
@@ -44,6 +44,10 @@ module Refinery
       end
 
     protected
+
+      def <%= singular_name %>_params
+        params.require(:<%= singular_name %>).permit(<%= attributes.map { |a| ":" << a.name }.join(", ") %>)
+      end
 
       def find_page
         @page = Refinery::Page.where(link_url: "/<%= plural_name %>/new").
