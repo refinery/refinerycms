@@ -45,6 +45,7 @@
 .reorder_h_icon       {@include icon('exchange');}
 .reorder_icon         {@include icon('unsorted');}
 .reorder_icon.loading {@include icon('spinner')}
+.search_icon          {@include icon('search')}
 .settings_icon        {@include icon('gear')}
 .sortdown_icon        {@include icon('sort-down')}
 .sortup_icon          {@include icon('sort-up')}
@@ -77,3 +78,6 @@
 // don't want underlines on icons
 #content a[class$='icon'] {border-bottom: none}
 #content a[class$='icon']:hover {border-bottom: none}
+
+// hover effect on icons
+#content a[class$='_icon']:hover:before {font-size: 1.3rem;}
