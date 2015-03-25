@@ -27,30 +27,14 @@
     #editor_switch {
       text-align: center;
 
-      @media screen and (min-width: 37.5em) {
-        text-align: left;
-      }
-
       a {
-        background: #ff8951;
-        background: -moz-linear-gradient(top, #ff8951 0%, #d14808 100%);
-        background: -webkit-gradient(left top, left bottom, color-stop(0%, #ff8951), color-stop(100%, #d14808));
-        background: -webkit-linear-gradient(top, #ff8951 0%, #d14808 100%);
-        background: -o-linear-gradient(top, #ff8951 0%, #d14808 100%);
-        background: -ms-linear-gradient(top, #ff8951 0%, #d14808 100%);
-        background: linear-gradient(to bottom, #ff8951 0%, #d14808 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8951', endColorstr='#d14808', GradientType=0 );
-        border: 1px solid #fca87f;
-        border-bottom: 0px none;
         display: inline-block;
         margin-right: 0.3em;
         margin-bottom: 0.5em;
-        padding: 0.15em 1em 0.25em;
-
-        &:hover {
-          background: #d14908;
-          text-decoration: none;
-        }
+        padding: 0em 1em 0em;
+      }
+      @media screen and (min-width: 37.5em) {
+        text-align: left;
       }
     }
 
@@ -73,13 +57,19 @@
       }
     }
 
-    #site_bar_branding {
+    #site_bar_branding, #editor_switch {
       display: block;
-      text-align: center;
       margin-top: 0.5em;
 
       @media screen and (min-width: 37.5em) {
         margin-top: 0.25em;
+      }
+    }
+
+    #site_bar_branding {
+      text-align: center;
+
+      @media screen and (min-width: 37.5em) {
         text-align: right;
       }
 
