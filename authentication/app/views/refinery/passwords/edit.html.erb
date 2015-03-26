@@ -1,25 +1,53 @@
-<% content_for :header, t('pick_new_password_for', :scope => 'refinery.users.reset', :email => @refinery_user.email) %>
+<% username_capitalized = @resource.username.present? ? @resource.username.split.map(&:capitalize).join(' ') : @resource.username -%>
+
+<% unless @resource.confirmed? %>
+  <div class="margin-bottom-sm">
+    <p>
+      Please create a super secret password below.
+    </p>
+    <p>
+      In the future, use your full name '<%= username_capitalized %>' or email address '<%= @resource.email %>' to log in.
+      You have the option of changing your name/email later.
+    </p>
+  </div>
+<% else %>
+  <div class="margin-bottom-sm">
+    <p>
+      Pick a new password
+    </p>
+  </div>
+<% end %>
 
 <%= form_for resource, :as => resource_name,
              :url => refinery.refinery_user_password_path,
              :html => { :method => :put } do |f| %>
-  <%= f.hidden_field :reset_password_token, :value => @reset_password_token %>
+  <%= f.hidden_field :reset_password_token %>
 
-  <%= render '/refinery/admin/error_messages', :object => @refinery_user, :include_object_name => true %>
+  <%= render '/refinery/admin/error_messages', :object => @resource, :include_object_name => true %>
 
-  <div class='field'>
-    <%= f.label :password %>
-    <%= f.password_field :password, :class => 'larger widest' %>
+  <div class='form-group'>
+    <%= f.text_field :username, value: username_capitalized,class: 'form-control input-lg', readonly: true %>
   </div>
 
-  <div class='field'>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, :class => 'larger widest' %>
+  <div class='form-group'>
+    <div class='validate'>
+      <span></span>
+    </div>
+    <%= f.password_field :password, :autocomplete => 'off', :class => 'form-control input-lg',
+                         :placeholder => 'Password', 'data-validate'=> 'required' -%>
+  </div>
+
+  <div class='form-group'>
+    <div class='validate'>
+      <span></span>
+    </div>
+    <%= f.password_field :password_confirmation, :autocomplete => 'off', :class => 'form-control input-lg',
+                         :placeholder => 'Password Confirmation', 'data-validate'=> 'required' -%>
   </div>
 
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
-             :submit_button_text => t('reset_password', :scope => 'refinery.users.reset'),
+             :submit_button_text => @resource.confirmed? ? t('reset_password', :scope => 'refinery.users.reset') : 'Set Password & Log in',
              :cancel_url => refinery.login_path,
              :cancel_title => nil,
              :hide_delete => true -%>

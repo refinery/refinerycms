@@ -1,13 +1,15 @@
-<nav id="menu">
-  <% ::Refinery::Plugins.active.in_menu.each do |plugin| -%>
-    <%= link_to plugin.title, refinery.url_for(plugin.url),
-                class: ("active" if plugin.highlighted?(params)),
-                id: "plugin_#{plugin.name}" %>
+<ul class="list-unstyled">
+  <!-- NOTE: refinery/glass/plugin_sorter.rb helps with this sorting -->
+  <% ::Refinery::Plugins.active.in_menu.find_all{|p| p.position > 0}.sort_by {|p| p.position}.each do |plugin| -%>
+    <% next if plugin.show_for_superuser_only && !current_refinery_user.has_role?(:superuser) %>
+
+    <li>
+      <%= link_to "<i class='#{plugin.icon}'></i> #{plugin.title}".html_safe, refinery.url_for(plugin.url),
+        :class => ("active" if plugin.highlighted?(params)),
+        :id => "plugin_#{plugin.name}" %>
+      <% if plugin.highlighted?(params) %>
+        <%#= yield :admin_submenu %>
+      <% end %>
+    </li>
   <% end -%>
-  <% if ::Refinery::Plugins.active.in_menu.many? -%>
-
-    <%= action_icon :reorder, '', t('.reorder_menu'), id: :menu_reorder %>
-    <%= action_icon :reorder_done, '', t('.reorder_done'), id: :menu_reorder_done %>
-
-  <% end %>
-</nav>
+</ul>

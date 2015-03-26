@@ -1,0 +1,74 @@
+/******************************************************************************
+ * For full documentation of what is being included where, see:
+ * refinery-glass gem: /app/assets/stylesheets/refinery-glass.scss
+ ******************************************************************************/
+
+// Config
+@import "glass/config/base-variables";
+@import "glass/config/base-mixins";
+
+// BOOTSTRAP: Core variables and mixins
+@import "glass/bootstrap/variables";
+@import "glass/bootstrap/mixins";
+
+// BOOTSTRAP: Reset
+@import "glass/bootstrap/normalize";
+@import "glass/bootstrap/print";
+
+// BOOTSTRAP: Core CSS
+@import "glass/bootstrap/scaffolding";
+@import "glass/bootstrap/type";
+@import "glass/bootstrap/code";
+@import "glass/bootstrap/grid";
+@import "glass/bootstrap/tables";
+@import "glass/bootstrap/forms";
+@import "glass/bootstrap/buttons";
+
+// BOOTSTRAP: Components
+@import "glass/bootstrap/component-animations";
+//@import "glass/bootstrap/glyphicons";
+@import "glass/bootstrap/dropdowns";
+@import "glass/bootstrap/button-groups";
+@import "glass/bootstrap/input-groups";
+@import "glass/bootstrap/navs";
+@import "glass/bootstrap/navbar";
+@import "glass/bootstrap/breadcrumbs";
+@import "glass/bootstrap/pagination";
+@import "glass/bootstrap/pager";
+@import "glass/bootstrap/labels";
+@import "glass/bootstrap/badges";
+@import "glass/bootstrap/jumbotron";
+@import "glass/bootstrap/thumbnails";
+@import "glass/bootstrap/alerts";
+@import "glass/bootstrap/progress-bars";
+@import "glass/bootstrap/_responsive-embed.scss";
+@import "glass/bootstrap/media";
+@import "glass/bootstrap/list-group";
+@import "glass/bootstrap/panels";
+@import "glass/bootstrap/wells";
+@import "glass/bootstrap/close";
+@import "glass/partials/components/browser-update";
+
+// BOOTSTRAP: Components w/ JavaScript
+@import "glass/bootstrap/popovers";
+@import "glass/bootstrap/tooltip";
+@import "glass/bootstrap/carousel";
+
+// BOOTSTRAP: Utility classes
+@import "glass/bootstrap/utilities";
+@import "glass/bootstrap/responsive-utilities";
+
+// SEMANTIC-UI: Components
+// @import "glass/semantic-ui/popup";
+@import "glass/semantic-ui/modal";
+@import "glass/semantic-ui/sidebar";
+@import "glass/semantic-ui/dimmer";
+@import "glass/semantic-ui/transition";
+@import "glass/semantic-ui/loader";
+@import "glass/semantic-ui/button";
+
+// Base
+@import "glass/config/base";
+
+// Bootstrap Datetimepicker
+@import "glass/bootstrap-datetimepicker";

@@ -1,15 +1,42 @@
-<li id="sortable_<%= user.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
-  <span class='title'>
-    <strong><%= user.username %></strong>
-    <span class="preview">
-      <%= t('.preview', who: user.email, created_at: l(user.created_at, format: :short)) %>
-    </span>
-  </span>
-  <span class='actions'>
+<%
+   editable = false
+   if current_refinery_user.has_role?(:superuser) || current_refinery_user.can_edit?(user)
+     editable = true
+   end
+%>
 
-    <%= mail_to user.email, '', class: 'email_icon', title: t('.email_user') %>
-    <%= action_icon :edit, refinery.edit_admin_user_path(user), t('edit', scope: 'refinery.admin.users') if current_refinery_user.can_edit?(user)  %>
-    <%= action_icon :delete, refinery.admin_user_path(user), t('delete', scope: 'refinery.admin.users'),
-          data: {confirm: t('message', scope: 'refinery.admin.delete', title: user.username) } if current_refinery_user.can_delete?(user) %>
-  </span>
+<li class='page-listing' id="<%= dom_id(user) -%>">
+  <div class="page-row">
+    <i class="gcicon gcicon-user-1"></i>&nbsp;
+
+    <% link_elem = editable ? 'a' : 'div' %>
+    <<%= link_elem %> <%= "href=#{refinery.edit_admin_user_path(user)}" if editable %> class="page-title">
+      <span class='title'>
+        <%= user.username %>
+        <% if user.attributes.keys.include?('reset_password_token') &&
+            user.reset_password_token.present? &&
+            !user.confirmed_on.present? %>
+          <span class="label">Invitation Sent</span>
+        <% end %>
+      </span>
+    </<%= link_elem %>>
+
+    <span class='actions actions-col-2'>
+      <span class="edit pull-right">
+        <%= link_to '<i class="gcicon gcicon-edit"></i>'.html_safe, refinery.edit_admin_user_path(user),
+                    :class => "circle-icon",
+                    :title => t('.edit') if current_refinery_user.can_edit?(user) %>
+      </span>
+      <span class="delete pull-right">
+        <%= render 'refinery/admin/glass/delete_button',
+                   css_class: 'cancel confirm-delete circle-icon',
+                   delete_url: refinery.admin_user_path(user),
+                   after_delete_url: refinery.admin_users_path,
+                   confirm_text: 'Are you sure you want to delete this User?',
+                   delete_btn_text: '<i class="gcicon gcicon-trash"></i>'
+        -%>
+      </span>
+    </span>
+  </div>
 </li>
+

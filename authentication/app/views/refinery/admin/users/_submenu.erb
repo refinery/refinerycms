@@ -1,0 +1,13 @@
+<% content_for :admin_submenu do %>
+<ul class='list-unstyled'>
+  <li class='list-heading'>
+    Users
+  </li>
+  <li>
+    <%= link_to '<i class="gcicon gcicon-index"></i>'.html_safe + "Manage Users", refinery.admin_users_path %>
+  </li>
+  <li>
+    <%= link_to '<i class="gcicon gcicon-add"></i>'.html_safe + "Create New User", refinery.new_admin_user_path %>
+  </li>
+</ul>
+<% end %>

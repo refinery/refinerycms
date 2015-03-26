@@ -1,0 +1,259 @@
+$primary-hover: lighten($primary-color, 8%);
+$primary-fade: lighten($primary-color, 25%);
+$primary-light: lighten($primary-color, 15%);
+$primary-bright: saturate($primary-light, 45%);
+$primary-dark: darken($primary-color, 5%);
+$white: #fff;
+$white-fade: rgba(255,255,255,0.15);
+$white-opaque: rgba(255,255,255,0.75);
+$off-white: #f2f2f2;
+$off-white-1: #f5f5f5;
+$off-white-2: #f0f0f0;
+$black: #000;
+$black-fade: rgba(0, 0, 0, 0.15);
+$black-opaque: rgba(50, 50, 50, 0.75);
+$grey-1: #e7e7e7;
+$grey-2: #dedede;
+$grey-3: #c4c4c4;
+$grey-4: #aeaeae;
+$grey-5: #999999;
+$grey-6: #5a5a5a;
+$grey-7: #303030;
+$grey-8: #2c2c2c;
+$grey-9: #1f1f1f;
+$beige: #e1dcd9;
+$brown: #8c8987;
+$red: #a94442;
+$red-fade: #bf4d4b;
+$red-bg: #ffdfcf;
+$green: #5bc890;
+$mint: #5bc9a9;
+$salmon: #FC9797;
+$yellow: #fec641;
+$yellow-fade: #EEE28D;
+$orange: #e99c00;
+$start: rgba(0,0,0,0.12);
+$stop: rgba(0,0,0,0);
+$radius: 4px;
+$radius-half: $radius / 2;
+$radius-double: $radius * 2;
+$radius-none: 0;
+$margin: 30px;
+$margin-half: $margin / 2;
+$margin-double: $margin * 2;
+$shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.1);
+$shadow-solid: inset 0px -2px 0px 0px rgba(50, 50, 50, 0.25);
+$transition: 0.2s;
+$bezier: cubic-bezier(0,.5,.5,1);
+$flip: -1, 1;
+$flip-vertical: 1, -1;
+$scale: 1.1;
+$degrees45: 45deg;
+$negdegrees45: 315deg;
+$ellipsis-width: 100%;
+
+$icon-css-prefix: icon !default;
+$icon-border-color: #eee !default;
+$icon-inverse: #fff !default;
+$icon-li-width: (30em / 14) !default;
+
+
+
+/* -------------------- COLORS -------------------- */
+
+.primary-color{
+  color: $primary-color;
+}
+
+.primary-hover{
+  color: $primary-hover;
+}
+
+.primary-fade{
+  color: $primary-light;
+}
+
+.white{
+  color: $white;
+}
+
+.off-white{
+  color: $off-white;
+}
+
+
+.off-white-1{
+  color: $off-white-1;
+}
+
+.off-white-2{
+  color: $off-white-2;
+}
+
+.black{
+  color: $black;
+}
+
+.grey-1{
+  color: $grey-1;
+}
+
+.grey-2{
+  color: $grey-2;
+}
+
+.grey-3{
+  color: $grey-3;
+}
+
+.grey-4{
+  color: $grey-4;
+}
+
+.grey-5{
+  color: $grey-5;
+}
+
+.grey-6{
+  color: $grey-6;
+}
+
+.grey-7{
+  color: $grey-7;
+}
+
+.grey-8{
+  color: $grey-8;
+}
+
+.grey-9{
+  color: $grey-9;
+}
+
+.beige{
+  color: $beige;
+}
+
+.brown{
+  color: $beige;
+}
+
+.red{
+  color: $red;
+}
+
+.yellow{
+  color: $yellow;
+}
+
+.green{
+  color: $green;
+}
+
+.mint{
+  color: $mint;
+}
+
+.salmon{
+  color: $salmon;
+}
+
+
+
+/* -------------------- BG COLORS -------------------- */
+
+.primary-color-bg{
+  background-color: $primary-color !important;
+}
+
+.primary-hover-bg{
+  background-color: $primary-hover !important;
+}
+
+.primary-fade-bg{
+  background-color: $primary-light !important;
+}
+
+.white-bg{
+  background-color: $white !important;
+}
+
+.off-white-bg{
+  background-color: $off-white !important;
+}
+
+.off-white-1-bg{
+  background-color: $off-white-1 !important;
+}
+
+.off-white--2bg{
+  background-color: $off-white-2 !important;
+}
+
+.black-bg{
+  background-color: $black !important;
+}
+
+.grey-1-bg{
+  background-color: $grey-1 !important;
+}
+
+.grey-2-bg{
+  background-color: $grey-2 !important;
+}
+
+.grey-3-bg{
+  background-color: $grey-3 !important;
+}
+
+.grey-4-bg{
+  background-color: $grey-4 !important;
+}
+
+.grey-5-bg{
+  background-color: $grey-5 !important;
+}
+
+.grey-6-bg{
+  background-color: $grey-6 !important;
+}
+
+.grey-7-bg{
+  background-color: $grey-7 !important;
+}
+
+.grey-8-bg{
+  background-color: $grey-8 !important;
+}
+
+.grey-9-bg{
+  background-color: $grey-9 !important;
+}
+
+.beige-bg{
+  background-color: $beige !important;
+}
+
+.brown-bg{
+  background-color: $brown !important;
+}
+
+.red-bg{
+  background-color: $red !important;
+}
+
+.yellow-bg{
+  background-color: $yellow !important;
+}
+
+.green-bg{
+  background-color: $green !important;
+}
+
+.mint-bg{
+  background-color: $mint !important;
+}
+
+.salmon-bg{
+  background-color: $salmon !important;
+}

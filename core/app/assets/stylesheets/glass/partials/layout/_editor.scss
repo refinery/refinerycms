@@ -1,0 +1,219 @@
+/* -------------------- EDITOR -------------------- */
+
+[contenteditable=true]:empty,
+[contenteditable=true] .empty{
+  /* NOTE: this 'display: block;' allows the user to click on an empty spot, but often throws the page alignment off... */
+  /* NOTE: ... I'm open to suggestions! [SS] */
+  display: block;
+  &:before{
+    content: attr(glass-placeholder);
+    display: block; /* For Firefox */
+    color: $grey-5;
+    transition: .15s ease-out;
+    cursor: text;
+  }
+  &:focus{
+    &:before{
+      color: $grey-4;
+    }
+  }
+}
+
+[contenteditable=true] p.empty:first-of-type:before{
+  content: 'New paragraph...';
+  position: absolute;
+}
+
+[contenteditable=true] p.empty{
+  min-height: 18px;
+  z-index: 0;
+}
+
+[contenteditable=true]{
+  outline: none;
+  border-color: $primary-fade !important;
+}
+
+.input-group{
+  .input-group-addon{
+    background: $off-white;
+    border-color: $grey-2;
+  }
+  .form-control{
+    border-color: $grey-2;
+  }
+}
+
+.selected-module {
+  /*background: $grey-4;*/
+}
+
+#page-preview{
+  .add-module{
+    position: absolute;
+    left: -50px;
+    margin-top: -2px;
+  }
+  .new-module{
+    display: block;
+    clear: both;
+    margin-bottom: 15px;
+    top: -1px;
+  }
+  .media-chooser{
+    .form-group{
+      margin: 0;
+      .input-group{
+        top: -5px;
+        max-width: 500px;
+        .input-group-btn{
+          width: auto;
+          display: block;
+          .btn{
+            height: 42px;
+          }
+        }
+      }
+    }
+  }
+  .inline-editable-image-container{
+    .progress{
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.settings{
+  background: $off-white;
+  border-left: 1px solid $grey-1;
+  position: fixed !important;
+  right: 0;
+}
+
+#page-preview{
+  .navbar-fixed-top{
+    position: absolute;
+    top: 0px;
+  }
+}
+
+.click-pads {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .click-pad {
+    cursor: text;
+    position: absolute;
+
+    &.bottom, &.top {
+      left: 0;
+      right: 0;
+    }
+    &.top {
+      height: 20px;
+      top: -20px;
+    }
+    &.bottom {
+      height: 20px;
+      bottom: -20px;
+    }
+
+    &.left, &.right {
+      top: 0;
+      bottom: 0;
+    }
+    &.left {
+      left: -100px;
+      width: 100px;
+    }
+    &.right {
+      right: -100px;
+      width: 100px;
+    }
+  }
+}
+
+.inline-module{
+  &-fw{
+    width: 100vw;
+    transform: translateX(-50vw);
+    left: 50%;
+    .img-responsive{
+      width: 100%;
+    }
+  }
+  &-lg{
+    @media (min-width: 768px) {
+      width: calc(100% + 200px);
+      margin-left: -100px;
+    }
+  }
+}
+
+.image-group{
+  &.active{
+    display: flex;
+    flex-wrap: wrap;
+    .inline-editable-image-container{
+      .img-layout{
+        display: none;
+      }
+    }
+  }
+  .inline-editable-image-container{
+    flex: 1;
+    margin: 0 15px;
+  }
+}
+
+.link-items{
+  width: 20px !important;
+  height: 20px !important;
+  position: absolute;
+  z-index: 100;
+  .gcicon{
+    font-size: 10px;
+    top: -4px;
+  }
+  &.link{
+    left: 50%;
+    bottom: -25px;
+    margin-left: -10px;
+  }
+  &.unlink{
+    left: 100%;
+    top: 50%;
+    margin: -10px 0 0 5px;
+  }
+}
+
+.inline-module{
+  &:hover{
+    .module-layout{
+      opacity: 1 !important;
+    }
+  }
+  .module-layout{
+    top: 15px;
+    left: 15px;
+    position: absolute;
+    opacity: 0;
+    transition: .2s ease-out;
+    z-index: 50;
+    button{
+      background: $white;
+      border-color: $white;
+      color: $grey-6;
+      margin-right: 5px;
+      transition: .2s ease-out;
+      &:hover{
+        background: $primary-hover;
+        border-color: $primary-color;
+        color: $white;
+      }
+    }
+  }
+}

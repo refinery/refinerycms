@@ -1,0 +1,26 @@
+var $showMoreButton = $('.btn-paginate-show-more');
+var $infiniteScrollContainer = $('.infinite-scrolling-container');
+
+if($showMoreButton.length > 0){
+  $showMoreButton.attr('data-url', '<%= refinery.admin_users_path(:page => @users.next_page) %>');
+
+} else if($infiniteScrollContainer.length > 0){
+  $infiniteScrollContainer.attr('data-url', '<%= refinery.admin_users_path(:page => @users.next_page) %>');
+}
+
+$('#users ').append('<%= j render 'users' %>');
+
+Main.contentReady('#users-index');
+
+<% unless @users.next_page %>
+
+  if($showMoreButton.length > 0){
+    $showMoreButton.fadeOut(500, function(){
+      $(this).remove();
+    });
+  } else if($infiniteScrollContainer.length > 0){
+    $infiniteScrollContainer.removeClass('infinite-scrolling-container');
+  }
+
+<% end %>
+$(document).trigger('pagination-content-loaded');

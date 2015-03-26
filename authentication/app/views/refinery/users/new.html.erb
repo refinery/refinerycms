@@ -1,24 +1,22 @@
 <% content_for :header, t('there_are_no_users', :scope => 'refinery.welcome') %>
 
 <%= form_for :user, :url => refinery.signup_path do |f| -%>
+  
+  <h5 class="grey-6">Please create your account.</h5>
 
   <%= render '/refinery/admin/error_messages', :object => @user, :include_object_name => true %>
 
-  <div class='field'>
-    <%= f.label :username %>
-    <%= f.text_field :username, :class => 'larger widest' %>
+  <div class='form-group'>
+    <%= f.text_field :username, :placeholder => 'Full name', :class => 'form-control input-lg', 'autofocus' => 'autofocus' %>
   </div>
-  <div class='field'>
-    <%= f.label :email %>
-    <%= f.text_field :email, :class => 'larger widest' %>
+  <div class='form-group'>
+    <%= f.text_field :email, :placeholder => 'Email', :class => 'form-control input-lg' %>
   </div>
-  <div class='field'>
-    <%= f.label :password %>
-    <%= f.password_field :password, :class => 'larger widest' %>
+  <div class='form-group'>
+    <%= f.password_field :password, :placeholder => 'Password', :class => 'form-control input-lg' %>
   </div>
-  <div class='field'>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, :class => 'larger widest' %>
+  <div class='form-group'>
+    <%= f.password_field :password_confirmation, :placeholder => 'Password confirmation', :class => 'form-control input-lg' %>
   </div>
 
   <%= render '/refinery/admin/form_actions', :f => f,

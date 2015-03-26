@@ -1,0 +1,33 @@
+/* -------------------- MODULES -------------------- */
+
+.circle-icon{
+  @include circle(30px);
+  color: $black;
+  border: 1px solid $black;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  &:link, &:visited {
+    color: $black;
+  }
+  &:hover, &:focus{
+    color: $white;
+    border-color: $primary-dark;
+    background: $primary-dark;
+  }
+}
+
+.circle-icon.fluid-width{
+  padding: 0 10px 0 10px;
+  min-width: 30px;
+  width: auto;
+  span{
+    padding-top: 2px;
+  }
+}
+
+
+
+
+
+

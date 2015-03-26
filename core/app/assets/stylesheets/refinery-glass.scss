@@ -1,0 +1,34 @@
+/******************************************************************************
+ *
+ *      ***** CSS Documentation for use with feast multi-site *****
+ *
+ * ***** SINGLE SITE *****
+ * site.css                 BOTH                    refinery-glass.css
+ *                          config/_variables
+ * glass/_manifest-site                             glass/_manifest-refinery-glass
+ *                          glass/_manifest-back-and-frontend
+ *                          _manifest-custom-back-and-frontend
+ *                           | styles for frontend, that
+ *                           | backend will use too
+ * _manifest-frontend                               glass/_manifest-backend
+ *  | can usually be blank                           | backend specific styles
+ *
+ *
+ *
+ *
+ * ***** FEAST MULTI-SITE *****
+ * site-<slug>.css          BOTH                    refinery-glass-<slug>.css
+ *                          config/_variables-<slug>
+ * glass/_manifest-site                             glass/_manifest-refinery-glass
+ *               --- same as single site from here down ---
+ * 
+ *
+ * Result: you get:
+ *  - site-<slug>.css
+ *  - refinery-glass-<slug>.css
+ * For each different slug (org OR unique theme), these are dynamically
+ * included from in the <head>
+ ******************************************************************************/
+
+@import "config/variables";
+@import "glass/manifest-refinery-glass";

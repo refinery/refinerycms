@@ -1,0 +1,192 @@
+/* -------------------- ICONS -------------------- */
+
+@font-face {
+  font-family: "refinery-glass";
+  src:url("/assets/refinery-glass.eot");
+  src:url("/assets/refinery-glass.eot?#iefix") format("embedded-opentype"),
+    url("/assets/refinery-glass.woff") format("woff"),
+    url("/assets/refinery-glass.ttf") format("truetype"),
+    url("/assets/refinery-glass.svg#refinery") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$gcicon-css-prefix: gcicon !default;
+
+/* Base Class Definition */
+
+.#{$gcicon-css-prefix} {
+  display: inline-block;
+  font-family: "refinery-glass";
+  line-height: 1;
+  vertical-align: middle;
+}
+
+[data-icon]:before {
+  font-family: "refinery-glass" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  top: -1px;
+}
+
+[class^="gcicon-"]:before,
+[class*=" gcicon-"]:before {
+  font-family: "refinery-glass" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  top: -1px;
+}
+
+
+
+/* Mixins */
+
+@mixin icon-rotate($degrees, $rotation) {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=#{$rotation});
+  -webkit-transform: rotate($degrees);
+     -moz-transform: rotate($degrees);
+      -ms-transform: rotate($degrees);
+       -o-transform: rotate($degrees);
+          transform: rotate($degrees);
+}
+
+@mixin icon-flip($horiz, $vert, $rotation) {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=#{$rotation});
+  -webkit-transform: scale($horiz, $vert);
+     -moz-transform: scale($horiz, $vert);
+      -ms-transform: scale($horiz, $vert);
+       -o-transform: scale($horiz, $vert);
+          transform: scale($horiz, $vert);
+}
+
+/* Bordered & Pulled */
+
+.#{$gcicon-css-prefix}-border {
+  padding: .2em .25em .15em;
+  border: solid .08em $icon-border-color;
+  border-radius: .1em;
+}
+
+.pull-right { float: right; }
+.pull-left { float: left; }
+
+.#{$gcicon-css-prefix} {
+  &.pull-left { margin-right: .3em; }
+  &.pull-right { margin-left: .3em; }
+}
+
+/* Rotated & Flipped */
+
+.#{$gcicon-css-prefix}-rotate-90  { @include icon-rotate(90deg, 1);  }
+.#{$gcicon-css-prefix}-rotate-180 { @include icon-rotate(180deg, 2); }
+.#{$gcicon-css-prefix}-rotate-270 { @include icon-rotate(270deg, 3); }
+
+.#{$gcicon-css-prefix}-flip-horizontal { @include icon-flip(-1, 1, 0); }
+.#{$gcicon-css-prefix}-flip-vertical   { @include icon-flip(1, -1, 2); }
+
+
+/* Spinning */
+
+.#{$gcicon-css-prefix}-spin {
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+
+@-moz-keyframes spin {
+  0% { -moz-transform: rotate(0deg); }
+  100% { -moz-transform: rotate(359deg); }
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(359deg); }
+}
+@-o-keyframes spin {
+  0% { -o-transform: rotate(0deg); }
+  100% { -o-transform: rotate(359deg); }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+/* Stacked */
+
+.#{$gcicon-css-prefix}-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle;
+}
+.#{$gcicon-css-prefix}-stack-1x, .#{$gcicon-css-prefix}-stack-2x {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.#{$gcicon-css-prefix}-stack-1x { line-height: inherit; }
+.#{$gcicon-css-prefix}-stack-2x { font-size: 2em; }
+.#{$gcicon-css-prefix}-inverse { color: $icon-inverse; }
+
+/* Fluid width */
+
+.#{$gcicon-css-prefix}-fw {
+  width: (18em / 14);
+  text-align: center;
+}
+
+/* List */
+
+.#{$gcicon-css-prefix}-ul {
+  padding-left: 0;
+  margin-left: $icon-li-width;
+  list-style-type: none;
+  > li { position: relative; }
+}
+.#{$gcicon-css-prefix}-li {
+  position: absolute;
+  left: -$icon-li-width;
+  width: $icon-li-width;
+  top: (2em / 14);
+  text-align: center;
+  &.#{$gcicon-css-prefix}-lg {
+    left: -$icon-li-width + (4em / 14);
+  }
+}
+
+/* Icon sized */
+
+/* makes the font 33% larger relative to the icon container */
+.#{$gcicon-css-prefix}-lg {
+  font-size: (4em / 3);
+  line-height: (3em / 4);
+  vertical-align: -15%;
+}
+.#{$gcicon-css-prefix}-2x { font-size: 2em; }
+.#{$gcicon-css-prefix}-3x { font-size: 3em; }
+.#{$gcicon-css-prefix}-4x { font-size: 4em; }
+.#{$gcicon-css-prefix}-5x { font-size: 5em; }

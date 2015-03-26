@@ -1,0 +1,24 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require refinery/formatting
+ *= require refinery/theme
+ */
+
+/******************************************************************************
+ * For full documentation of what is being included where, see:
+ * refinery-glass gem: /app/assets/stylesheets/refinery-glass.scss
+ ******************************************************************************/
+
+/******* Org specific variables ********/
+@import "config/variables";
+
+/******* The rest of the styles ********/
+@import "glass/manifest-site";
