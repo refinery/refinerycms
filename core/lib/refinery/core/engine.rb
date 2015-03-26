@@ -19,9 +19,6 @@ module Refinery
         def refinery_inclusion!
           before_inclusion_procs.each(&:call).tap{ |c| c.clear if Rails.application.config.cache_classes }
 
-          Refinery.include_once(::ApplicationController, Refinery::ApplicationController)
-          ::ApplicationController.send :helper, Refinery::Core::Engine.helpers
-
           after_inclusion_procs.each(&:call).tap{ |c| c.clear if Rails.application.config.cache_classes }
         end
       end

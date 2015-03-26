@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Refinery
   describe 'layout', :type => :feature do
-    refinery_login_with :refinery_user
+    refinery_login
 
     let(:home_page) do
       FactoryGirl.create :page, :title => 'Home', :link_url => '/'
