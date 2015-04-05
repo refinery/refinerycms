@@ -137,7 +137,7 @@ module Refinery
 
           fill_in "Title", :with => "My first page"
 
-          click_link "toggle_advanced_options"
+          click_link "Page Options"
 
           fill_in "Menu title", :with => "The first page"
 
@@ -295,7 +295,7 @@ module Refinery
 
             find('a[tooltip^=Edit]').click
             fill_in 'Title', :with => 'Searchable'
-            click_link 'Advanced options'
+            click_link 'Page Options'
             select 'Searchable', :from => 'View template'
             Timeout::timeout(5) do
               click_button 'Preview'
@@ -688,7 +688,18 @@ module Refinery
         end
       end
 
-      describe 'advanced options' do
+      describe 'Page Options' do
+        describe 'Standard option sections are available' do
+          let(:test_page) { Page.create title: 'Test Page' }
+
+          it 'Presents options for Page and SEO' do
+            visit refinery.edit_admin_page_path(test_page)
+            expect(page).to have_content("Page Options")
+            expect(page).to have_content("SEO Options")
+          end
+
+        end
+
         describe 'view and layout templates' do
           context 'when parent page has templates set' do
             before do
@@ -704,7 +715,7 @@ module Refinery
             specify 'sub page should inherit them', :js => true do
               visit refinery.edit_admin_page_path(@page.id)
 
-              click_link 'toggle_advanced_options'
+              click_link 'Page Options'
 
               within '#page_layout_template' do
                 expect(page.find('option[value=refinery]')).to be_selected

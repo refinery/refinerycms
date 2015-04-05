@@ -1,0 +1,7 @@
+<section id='page_options' class='clearfix'>
+  <% templates.each_with_index do | template, ix| %>
+    <div  id='option<%=ix%>' class='PageOption'>
+     <%= render template, f: f%>
+    </div>
+  <% end %>
+</section>
