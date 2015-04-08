@@ -77,6 +77,10 @@
       <%= f.check_box :show_in_menu %>
       <%= f.label :show_in_menu, t('.show_in_menu_description'),
                   :class => "stripped" %>
+
+      <% if lookup_context.template_exists?('form_fields_after_show_in_menu', 'refinery/admin/pages', true) %>
+        <%= render 'form_fields_after_show_in_menu', :f => f %>
+      <% end %>
     </div>
   </div>
 
