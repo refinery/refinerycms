@@ -78,6 +78,8 @@
       <%= f.label :show_in_menu, t('.show_in_menu_description'),
                   :class => "stripped" %>
     </div>
+
+    <%= render 'form_extra_fields_for_more_options', :f => f %>
   </div>
 
   <%= render 'form_advanced_options_seo', :f => f %>
