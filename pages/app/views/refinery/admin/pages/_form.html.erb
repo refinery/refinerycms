@@ -10,7 +10,9 @@
     <%= f.text_field :title, :class => "larger widest" %>
   </div>
 
-  <%= render 'form_fields_after_title', :f => f %>
+  <% if lookup_context.template_exists?('form_fields_after_title', 'refinery/admin/pages', true) %>
+    <%= render 'form_fields_after_title', :f => f %>
+  <% end %>
 
   <div class='field'>
     <%= render 'form_page_parts', :f => f %>
