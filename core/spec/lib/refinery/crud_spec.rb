@@ -10,16 +10,6 @@ ActiveRecord::Schema.define do
 end
 
 module Refinery
-  class CrudDummyEngine < ::Rails::Engine
-    isolate_namespace Refinery
-  end
-
-  CrudDummyEngine.routes.draw do
-    resources :crud_dummy do
-      post :update_positions, on: :collection
-    end
-  end
-
   class CrudDummy < ActiveRecord::Base
     acts_as_nested_set
   end
@@ -31,8 +21,17 @@ end
 
 module Refinery
   describe CrudDummyController, :type => :controller do
-
-    routes{ CrudDummyEngine.routes }
+    before do
+      @routes = ActionDispatch::Routing::RouteSet.new.tap do |r|
+        r.draw do
+          namespace :refinery do
+            resources :crud_dummy, except: :show do
+              post :update_positions, on: :collection
+            end
+          end
+        end
+      end
+    end
 
     describe "#update_positions" do
       context "with existing dummies" do

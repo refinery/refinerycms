@@ -2,7 +2,7 @@ module Refinery
   module Testing
     module ControllerMacros
       autoload :Authentication, 'refinery/testing/controller_macros/authentication'
-      autoload :Methods, 'refinery/testing/controller_macros/methods'
+      autoload :Routes        , 'refinery/testing/controller_macros/routes'
     end
   end
 end
