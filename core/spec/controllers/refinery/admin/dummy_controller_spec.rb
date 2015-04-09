@@ -13,6 +13,18 @@ end
 module Refinery
   module Admin
     describe DummyController, :type => :controller do
+      before do
+        @routes = ActionDispatch::Routing::RouteSet.new.tap do |r|
+          r.draw do
+            namespace :refinery do
+              namespace :admin do
+                resources :dummy
+              end
+            end
+          end
+        end
+      end
+
       context "as refinery user" do
         refinery_login_with :refinery
 
