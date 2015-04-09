@@ -2,14 +2,6 @@ require "spec_helper"
 
 module Refinery
   module Admin
-    class Engine < ::Rails::Engine
-      isolate_namespace Refinery::Admin
-    end
-
-    Engine.routes.draw do
-      resources :dummy
-    end
-
     class DummyController < Refinery::AdminController
       def index
         render :nothing => true
@@ -21,8 +13,6 @@ end
 module Refinery
   module Admin
     describe DummyController, :type => :controller do
-      routes { Refinery::Admin::Engine.routes }
-
       context "as refinery user" do
         refinery_login_with :refinery
 
