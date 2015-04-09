@@ -13,7 +13,7 @@ describe "CLI" do
 
   context "when called with no args" do
     it "shows info message" do
-      msg = capture(:stdout) { rake["refinery:override"].invoke }
+      msg = capture { rake["refinery:override"].invoke }
 
       expect(msg).to match("You didn't specify anything valid to override. Here are some examples:")
       expect(msg).to match("rake refinery:override view=pages/home")
@@ -38,7 +38,7 @@ describe "CLI" do
       it "shows message" do
         ENV[env] = "non-existent"
 
-        msg = capture(:stdout) { rake["refinery:override"].invoke }
+        msg = capture { rake["refinery:override"].invoke }
 
         expect(msg).to include(not_found_message)
       end
@@ -57,7 +57,7 @@ describe "CLI" do
       it "copies file to app folder" do
         ENV[env] = env_file_location
 
-        msg = capture(:stdout) { rake["refinery:override"].invoke }
+        msg = capture { rake["refinery:override"].invoke }
 
         Array(spec_success_message).each do |message_fragment|
           expect(msg).to include(message_fragment)
@@ -131,5 +131,32 @@ describe "CLI" do
       let(:env_file_location) { "refinery/#{file_name.sub(%r{\..+}, "")}" }
       let(:copied_file_location) { "app/assets/stylesheets/refinery/#{file_name}" }
     end
+  end
+
+  private
+
+  # From episode 029 of Ruby Tapas by Avdi
+  # https://rubytapas.dpdcart.com/subscriber/post?id=88
+  def capture(stream=STDOUT, &block)
+    old_stdout = stream.clone
+    pipe_r, pipe_w = IO.pipe
+    pipe_r.sync    = true
+    output         = ""
+    reader = Thread.new do
+      begin
+        loop do
+          output << pipe_r.readpartial(1024)
+        end
+      rescue EOFError
+      end
+    end
+    stream.reopen(pipe_w)
+    yield
+  ensure
+    stream.reopen(old_stdout)
+    pipe_w.close
+    reader.join
+    pipe_r.close
+    return output
   end
 end
