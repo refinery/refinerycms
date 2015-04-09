@@ -12,6 +12,7 @@
 * Enabled XHR paging by default, no configuration is needed. [#2733](https://github.com/refinery/refinerycms/pull/2733). [Philip Arndt](https://github.com/parndt)
 * Limited the jquery-ui assets loaded in the backend to the ones we use in the core. [#2735](https://github.com/refinery/refinerycms/pull/2735). [Philip Arndt](https://github.com/parndt)
 * Moved the tabs to the left hand side of the screen. [#2734](https://github.com/refinery/refinerycms/pull/2734). [Isaac Freeman](https://github.com/isaacfreeman) & [Philip Arndt](https://github.com/parndt) & [Brice Sanchez](https://github.com/bricesanchez)
+* Add extra fields partial in Admin Pages form advanced options [#2943](https://github.com/refinery/refinerycms/pull/2943). [Brice Sanchez](https://github.com/bricesanchez)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
