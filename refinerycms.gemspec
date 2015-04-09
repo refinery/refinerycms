@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}
-  s.bindir            = 'bin'
+  s.bindir            = 'exe'
   s.executables       = %w(refinerycms)
   s.require_paths     = %w(lib)
 
