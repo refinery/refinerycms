@@ -16,6 +16,7 @@ require File.expand_path("../dummy/config/environment", __FILE__)
 
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'rspec/retry'
 
 Rails.backtrace_cleaner.remove_silencers!
 
@@ -31,6 +32,12 @@ RSpec.configure do |config|
   config.before(:each) do
     ::I18n.default_locale = I18n.locale = Globalize.locale = :en
   end
+
+  # rspec-retry
+  config.verbose_retry = true
+  config.default_sleep_interval = 0.33
+  config.clear_lets_on_failure = true
+  config.default_retry_count = 3
 end
 
 # Requires supporting files with custom matchers and macros, etc,
