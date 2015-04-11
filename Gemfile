@@ -38,6 +38,7 @@ group :test do
   gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'coveralls', require: false
+  gem 'rspec-retry'
 end
 
 # Load local gems according to Refinery developer preference.
