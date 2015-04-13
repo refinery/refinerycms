@@ -20,6 +20,14 @@ module Refinery
       FileUtils.rm_r(temp_dir)
     end
 
+    it "generates strong parameters for the form fields" do
+      File.open("#{destination_root}/vendor/extensions/rspec_form_tests/app/controllers/refinery/rspec_form_tests/rspec_form_tests_controller.rb") do |file|
+        content = file.read
+        expect(content.include?('@rspec_form_test = RspecFormTest.new(rspec_form_test_params)')).to be_truthy
+        expect(content.include?('params.require(:rspec_form_test).permit(:title, :description, :choice, :another, :enable)')).to be_truthy
+      end
+    end
+
     specify do
       expect(destination_root).to have_structure {
         directory "vendor" do
