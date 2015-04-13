@@ -1,0 +1,16 @@
+<% @creationParams = attributes.map { |attribute|
+  case attribute.type
+  when :image, :resource, :integer
+    "    sequence( :" + attribute.name + " ) { |n| n }"
+  when :string, :radio, :select, :dropdown, :text
+    "    sequence( :" + attribute.name + " ) { |n| " + '"foo\#{n}"' + " }"
+  when :boolean, :checkbox
+    attribute.name + " false"
+  end
+}.join("\n")
+%>
+FactoryGirl.define do
+  factory :<%= singular_name %>, :class => Refinery::<%= namespacing %>::<%= class_name %> do
+    <%= @creationParams %>
+  end
+end

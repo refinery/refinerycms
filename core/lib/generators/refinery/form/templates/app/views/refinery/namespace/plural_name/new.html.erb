@@ -22,7 +22,7 @@
         <%% end %>
 <% when :checkbox -%>
         <%%= f.check_box :<%= attribute.name %> %>
-<% when :select -%>
+<% when :select, :dropdown -%>
         <%%= f.select :<%= attribute.name %>, Refinery::<%= namespacing %>::<%= class_name %>::<%= attribute.name.pluralize.upcase %>,
                       :include_blank => true %>
 <% when :datetime -%>

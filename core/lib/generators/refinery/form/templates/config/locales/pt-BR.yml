@@ -11,8 +11,8 @@ pt-BR:
           privacy_policy: "Nós valorizamos sua privacidade"
       admin:
         <%= plural_name %>:
-          delete: Remover esta mensagem para sempre
           <%= singular_name %>:
+            delete_<%= singular_name %>: Remover esta mensagem para sempre
             read_<%= singular_name %>: Ler a mensagem
             said: disse
             mark_as_spam: Marcar como spam
@@ -42,7 +42,7 @@ pt-BR:
             message: Mensagem
         settings:
           notification_recipients_form:
-            settings_value_name: Enviar notificações para
+            <%= singular_name %>_settings_value_name: Enviar notificações para
             explanation: "Toda vez que alguém contactar você no seu website, enviamos um email para notificar a essa pessoa o recebimento de uma mensagem."
             hint: "Digite um endereço de email acima. Deseja que a notificação vá para mais de uma pessoa? Digite vários endereços de email separados por vírgulas."
             example: "Digite os endereços da seguinte forma: eu@dominio.com, amigo@msn.com, colegadetrabalho@trabalho.com"

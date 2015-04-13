@@ -13,14 +13,8 @@ es:
       admin:
         <%= plural_name %>:
           <%= singular_name %>:
-            move_<%= singular_name %>_to_closed: Cambiar esta consulta a cerrada
-            move_<%= singular_name %>_to_open: Cambiar esta consulta a abierta
             read_<%= singular_name %>: Leer esta consulta
-            remove_<%= singular_name %>: "Estas seguro que quieres borrar esta consulta de '%{name}'?"
-            title: <%= plural_name.titleize %>
-          toggle_status:
-            closed: "La consulta '%{<%= singular_name %>}' esta cerrada"
-            reopened: "La consulta '%{<%= singular_name %>}' esta abierta"
+            delete_<%= singular_name %>: "Estas seguro que quieres borrar esta consulta de '%{name}'?"
           index:
             no_<%= plural_name %>: No has recibido ninguna consulta aun.
           show:
@@ -40,7 +34,7 @@ es:
           update:
             updated: "'%{setting}' fue actualizado exitosamente."
           notification_recipients_form:
-            settings_value_name: Mandar notificaciones a
+            <%= singular_name %>_settings_value_name: Mandar notificaciones a
             explanation: "Cada vez que alguien se comunique con usted en su sitio web, Refinery enviara un correo electrónico respecto a esta nueva consulta."
             hint: "Ingrese una dirección de correo. Ingrese la dirección de correo de las persona que vaya a ser notificada, si quiere que varias personas sean notificadas ingrese las direcciones de correo separadas por comas."
             example: "Ejemplo: me@domain.com, friend@msn.com, workmate@work.com"

@@ -11,8 +11,8 @@ tr:
           privacy_policy: Mahremiyetinize onem veriyoruz.
       admin:
         <%= plural_name %>:
-          delete: Sonsuza dek <%= singular_name.humanize.downcase %> sil
           <%= singular_name %>:
+            delete_<%= singular_name %>: Sonsuza dek <%= singular_name.humanize.downcase %> sil
             read_<%= singular_name %>: Read the <%= singular_name.humanize.downcase %>
             said: dedi
             mark_as_spam: Spam olarak isaretle
@@ -42,7 +42,7 @@ tr:
             message: Mesaj
         settings:
           notification_recipients_form:
-            settings_value_name: Bildirimleri gonderecegin  adres
+            <%= singular_name %>_settings_value_name: Bildirimleri gonderecegin  adres
             explanation: Her kim olursa seninle web sitesi uzerinden iletisime gecen, Refinery yeni bir <%= singular_name.humanize.downcase %>  diye e-posta atar.
             hint: Yeni Bir <%= singular_name.humanize.downcase %> teslim edildiginde, Refinery bir e-posta bildirisi yollayacak sana.
             example: "Lutfen e-posta adres(ler)inizi giriniz. Ornek olarak: jack@work.com, jill@office.com gibi"

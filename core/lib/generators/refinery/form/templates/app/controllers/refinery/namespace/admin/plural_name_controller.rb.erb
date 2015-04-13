@@ -6,7 +6,7 @@ module Refinery
         crudify :'refinery/<%= namespacing.underscore %>/<%= singular_name %>', <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
                 :title_attribute => "<%= title.name %>", <% end %>
                 :order => "created_at DESC"
-<% if @includes_spam -%>
+<% if include_spam? -%>
 
         before_action :get_spam_count, :only => [:index, :spam]
 
@@ -48,6 +48,17 @@ module Refinery
         end
 
 <% end -%>
+
+        private
+
+        # Only allow a trusted parameter "white list" through.
+        def <%= "#{singular_table_name}_params" %>
+          <%- if attributes_names.empty? -%>
+          params[:<%= singular_table_name %>]
+          <%- else -%>
+          params.require(:<%= singular_table_name %>).permit(<%= attributes.map { |attr| ":#{attr.column_name}" }.join(', ') %>)
+          <%- end -%>
+        end
       end
     end
   end

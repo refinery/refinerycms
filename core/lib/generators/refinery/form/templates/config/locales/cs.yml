@@ -11,8 +11,8 @@ cs:
           privacy_policy: Chráníme vaše soukromí
       admin:
         <%= plural_name %>:
-          delete: Trvale odstranit <%= singular_name.humanize.downcase %>
           <%= singular_name %>:
+            delete_<%= singular_name %>: Trvale odstranit <%= singular_name.humanize.downcase %>
             read_<%= singular_name %>: Přečíst <%= singular_name.humanize.downcase %>
             said: řekl
             mark_as_spam: Označit jako spam
@@ -42,7 +42,7 @@ cs:
             message: Zpráva
         settings:
           notification_recipients_form:
-            settings_value_name: Zaslat upozornění pro
+            <%= singular_name %>_settings_value_name: Zaslat upozornění pro
             explanation: Pokaždé, když Vás někdo kontaktuje přes vaše webové stránky, Refinery odešle e-mail s upozorněním na nový <%= singular_name.humanize.downcase %>.
             hint: Když je odeslán nový <%= singular_name.humanize.downcase %>, Refinery pošle upozornení na Váš e-mail.
             example: "Zadejte e-mailové adresy jako: jack@work.com, jill@office.com"

@@ -5,12 +5,11 @@ module Refinery
       before_action :find_page, :only => [:create, :new]
 
       def index
-        redirect_to :action => "new"
+        redirect_to refinery.new_<%= plural_name %>_<%= singular_name %>_path
       end
 
       def thank_you
-        @page = Refinery::Page.where(link_url: "/<%= plural_name %>/thank_you").
-                               includes(:parts).first_or_create!
+        @page = Refinery::Page.where(link_url: "/<%= plural_name %>/thank_you").first
       end
 
       def new
@@ -18,21 +17,21 @@ module Refinery
       end
 
       def create
-        @<%= singular_name %> = <%= class_name %>.new(params[:<%= singular_name %>])
+        @<%= singular_name %> = <%= class_name %>.new(<%= singular_name %>_params)
 
         if @<%= singular_name %>.save
           begin
             Mailer.notification(@<%= singular_name %>, request).deliver
           rescue => e
             logger.warn "There was an error delivering the <%= singular_name %> notification.\n#{e.message}\n"
-          end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>
+          end<% if include_spam? %> if @<%= singular_name %>.ham?<% end %>
 
           if <%= class_name %>.column_names.map(&:to_s).include?('email')
             begin
               Mailer.confirmation(@<%= singular_name %>, request).deliver
             rescue => e
               logger.warn "There was an error delivering the <%= singular_name %> confirmation:\n#{e.message}\n"
-            end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>
+            end<% if include_spam? %> if @<%= singular_name %>.ham?<% end %>
           else
             logger.warn "Please add an 'email' field to <%= class_name %> if you wish to send confirmation emails when forms are submitted."
           end
@@ -43,13 +42,22 @@ module Refinery
         end
       end
 
-    protected
+      protected
 
       def find_page
-        @page = Refinery::Page.where(link_url: "/<%= plural_name %>/new").
-                               includes(:parts).first_or_create!
+        @page = Refinery::Page.where(link_url: "/<%= plural_name %>/new").first
       end
 
+      private
+
+    # Only allow a trusted parameter "white list" through.
+      def <%= "#{singular_table_name}_params" %>
+<%- if attributes_names.empty? -%>
+        params[:<%= singular_table_name %>]
+<%- else -%>
+        params.require(:<%= singular_table_name %>).permit(<%= attributes.map { |attr| ":#{attr.column_name}" }.join(', ') %>)
+<%- end -%>
+      end
     end
   end
 end

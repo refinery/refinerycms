@@ -3,17 +3,13 @@ module Refinery
     module Admin
       class SettingsController < Refinery::AdminController
 
-        before_action :check_setting, :only => [:edit, :update]
-        after_action :save_subject_for_confirmation, :save_message_for_confirmation, :only => :update
+        before_action :find_setting, :only => [:edit, :update]
+        after_action :save_subject_for_confirmation, :save_message_for_confirmation, :save_notification_recipients, :only => :update
 
         def edit
-          @setting = Refinery::Setting.find(params[:id])
         end
 
         def update
-          @setting = Refinery::Setting.find(params[:id])
-
-          if @setting.update_attributes(params[:setting])
             flash[:notice] = t('refinery.crudify.updated', :what => @setting.name.gsub("<%= singular_name %>_", "").titleize)
 
             if request.xhr? or from_dialog?
@@ -21,24 +17,36 @@ module Refinery
             else
               redirect_back_or_default(refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path)
             end
-          end
         end
 
       protected
-        def check_setting
+        def find_setting
           setting = params[:id].gsub("<%= singular_name %>_", "")
 
           Refinery::<%= namespacing %>::Setting.send(setting) if Refinery::<%= namespacing %>::Setting.respond_to?(setting)
+
+          @setting = Refinery::Setting.friendly.find(params[:id])
+        end
+
+        def save_notification_recipients
+          Refinery::<%= namespacing %>::Setting.notification_recipients = setting_params[:value] if setting_params.include?('value')
         end
 
         def save_subject_for_confirmation
-          Refinery::<%= namespacing %>::Setting.confirmation_subject = params[:subject] if params.keys.include?('subject')
+          Refinery::<%= namespacing %>::Setting.confirmation_subject = setting_params[:subject] if setting_params.include?('subject')
         end
 
         def save_message_for_confirmation
-          Refinery::<%= namespacing %>::Setting.confirmation_message = params[:message] if params.keys.include?('message')
+          Refinery::<%= namespacing %>::Setting.confirmation_message = setting_params[:message] if setting_params.include?('message')
         end
 
+        private
+
+        def setting_params
+          params.require(:setting).permit(:value,
+            subject: Refinery::I18n.frontend_locales,
+            message: Refinery::I18n.frontend_locales)
+        end
       end
     end
   end
