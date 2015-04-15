@@ -8,9 +8,9 @@
                  :include_object_name => true  %>
 <% string_fields = string_attributes.map(&:name) -%>
 <% attributes.each do |attribute| %>
-      <div class='field <%= attribute.name %>_field <%= attribute.type %>_field'>
+      <div class='field <%= attribute.name %>_field <%= attribute.refinery_type %>_field'>
         <%%= f.<%= 'required_' if string_fields.any? && attribute.name == string_fields.first %>label :<%= attribute.name %> %>
-<% case attribute.type
+<% case attribute.refinery_type
    when :string -%>
         <%%= f.text_field :<%= attribute.name %> %>
 <% when :text -%>

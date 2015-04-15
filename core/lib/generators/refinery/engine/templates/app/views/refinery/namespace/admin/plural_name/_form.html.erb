@@ -12,23 +12,23 @@
               :current_locale => Globalize.locale %>
 <% end -%>
 <% attributes.each_with_index do |attribute, index| -%>
-<% if attribute.type.to_s == 'image' -%>
+<% if attribute.refinery_type == :image -%>
   <div class='field'>
     <%%= f.label :<%= attribute.name %> -%>
     <%%= render '/refinery/admin/image_picker',
                :f => f,
-               :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
-               :image => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %>,
+               :field => :<%= attribute.column_name %>,
+               :image => @<%= singular_name %>.<%= attribute.name %>,
                :toggle_image_display => false -%>
   </div>
 
-<% elsif attribute.type.to_s == 'resource' -%>
+<% elsif attribute.refinery_type == :resource -%>
   <div class='field'>
     <%%= f.label :<%= attribute.name %> -%>
     <%%= render '/refinery/admin/resource_picker',
                :f => f,
-               :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
-               :resource => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %> -%>
+               :field => :<%= attribute.column_name %>,
+               :resource => @<%= singular_name %>.<%= attribute.name %> -%>
   </div>
 
 <% elsif attribute.field_type.to_s == "text_area" and !generated_text_areas -%>

@@ -1,8 +1,8 @@
 require 'refinery/extension_generation'
-require 'rails/generators/migration'
+require 'refinery/generators/named_base'
 
 module Refinery
-  class FormGenerator < Rails::Generators::NamedBase
+  class FormGenerator < Refinery::Generators::NamedBase
     source_root Pathname.new(File.expand_path('../templates', __FILE__))
 
     include Refinery::ExtensionGeneration
@@ -20,6 +20,5 @@ module Refinery
     def generator_command
       'rails generate refinery:form'
     end
-
   end
 end

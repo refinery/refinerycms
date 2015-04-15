@@ -68,15 +68,15 @@ module Refinery
     end
 
     def string_attributes
-      @string_attributes ||= attributes.select { |a| /string|text/ === a.type.to_s}.uniq
+      @string_attributes ||= attributes.select { |a| /string|text/ === a.refinery_type.to_s}.uniq
     end
 
     def image_attributes
-      @image_attributes ||= attributes.select { |a| a.type == :image }.uniq
+      @image_attributes ||= attributes.select { |a| a.refinery_type == :image }.uniq
     end
 
     def resource_attributes
-      @resource_attributes ||= attributes.select { |a| a.type == :resource }.uniq
+      @resource_attributes ||= attributes.select { |a| a.refinery_type == :resource }.uniq
     end
 
     protected
