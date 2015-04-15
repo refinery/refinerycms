@@ -2,20 +2,8 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
 
   def up
     create_table :refinery_<%= table_name %> do |t|
-<%
-  attributes.each do |attribute|
-    # turn image or resource into what it was supposed to be which is an integer reference to an image or resource.
-    case attribute.type
-    when :image, :resource
-      attribute.type = 'integer'
-      attribute.name = "#{attribute.name}_id"
-    when :radio, :select
-      attribute.type = 'string'
-    when :checkbox
-      attribute.type = 'boolean'
-    end
--%>
-      t.<%= attribute.type %> :<%= attribute.name %>
+<% attributes.each do |attribute| -%>
+      t.<%= attribute.type %> :<%= attribute.column_name %>
 <% end -%>
 
       t.timestamps

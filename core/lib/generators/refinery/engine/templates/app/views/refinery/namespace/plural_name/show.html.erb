@@ -7,11 +7,11 @@
   <section>
     <h1><%= attribute.name.titleize %></h1>
     <p>
-<% if attribute.type.to_s == 'image' -%>
-      <%%= image_fu @<%= singular_name %>.<%= attribute.name %>, nil %>
-<% elsif attribute.type.to_s == 'resource' -%>
+<% if attribute.refinery_type == :image -%>
+      <%%= image_fu @<%= singular_name %>.<%= attribute.name.gsub('_id', '') %>, nil %>
+<% elsif attribute.refinery_type == :resource -%>
       <%% if @<%= singular_name %>.<%= attribute.name %>.present? %>
-        <%%= link_to <%= "'#{attribute.name}'" %>, @<%= singular_name %>.<%= attribute.name %>.url %>
+        <%%= link_to <%= "'#{attribute.name}'" %>, @<%= singular_name %>.<%= attribute.name.gsub('_id', '') %>.url %>
       <%% else %>
         <%= attribute.name %>
       <%% end %>
