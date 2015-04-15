@@ -17,17 +17,17 @@ if Refinery::Page.where(menu_match: "^/$").empty?
   )
 
   home_page_position = -1
-  page_not_found_page = home_page.children.create(
-    title: "Page not found",
-    menu_match: "^/404$",
-    show_in_menu: false,
-    deletable: false
-  )
-  page_not_found_page.parts.create(
-    title: "Body",
-    body: "<h2>Sorry, there was a problem...</h2><p>The page you requested was not found.</p><p><a href='/'>Return to the home page</a></p>",
-    position: 0
-  )
+  page_not_found_page = home_page.children.create(:title => "Page not found",
+              title: "Page not found",
+              :menu_match => "^/404$",
+              :show_in_menu => false,
+              :deletable => false)
+  page_not_found_page.parts.create({
+                :title => "Body",
+                :body => '<div class="col-sm-8 col-sm-offset-2"><h2>Uh-Oh. Yikes. Woops!</h2>
+<p>The page you’re looking for doesn\'t currently exist. Unless you were looking for our error page, in which case: well done, Sherlock. You totally found it. You may have followed an old link or typed the URL incorrectly.</p><p>All roads lead <a href="/">HOME</a> (including this one)</p></div>',
+                :position => 0
+              })
 
   if Refinery::Page.by_title("About").empty?
     about_us_page = ::Refinery::Page.create title: "About"
