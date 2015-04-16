@@ -3,6 +3,7 @@ h2. Additional Menus
 This guide will show you how to:
 * configure and use +Refinery::Pages::MenuPresenter+
 * use a decorator to add custom functionality to +Refinery::Page+ class
+* use a decorator to allow attributes in +Refinery::Admin::PagesController+
 * override Refinery's view
 
 endprologue.
@@ -30,7 +31,7 @@ This will generate an empty migration. Open it and add the following code:
 <ruby>
 class AddShowInFooterToRefineryPages < ActiveRecord::Migration
   def change
-    add_column :refinery_pages, :show_in_footer, :boolean, :default => false
+    add_column :refinery_pages, :show_in_footer, :boolean, default: false
   end
 end
 </ruby>
@@ -41,31 +42,44 @@ Run the migration:
 rake db:migrate
 </shell>
 
-h3. Decorating the Refinery::Page model
+h3. Decorating the +Refinery::Page+ model
 
-Before overriding Refinery's form view, we want to decorate the +Refinery::Page+ class. Create a file +app/decorators/models/refinery/page_decorator.rb+ with this content:
+We want to decorate the +Refinery::Page+ class. Create a file +app/decorators/models/refinery/page_decorator.rb+ with this content:
 
 <ruby>
 Refinery::Page.class_eval do
-  attr_accessible :show_in_footer
-
   def self.footer_menu_pages
-    where :show_in_footer => true
+    where show_in_footer: true
   end
 end
 </ruby>
 
-We added +show_in_footer+ to the allowed attributes list so that it doesn't raise a mass-assignment error each time someone tries to save the page. We also added +footer_menu_pages+ class method to abstract away ActiveRecord query method.
+We added +footer_menu_pages+ class method to abstract away ActiveRecord query method.
+
+h3. Allow +show_in_footer+ attribute in +Refinery::Admin::PagesController+
+
+Before overriding Refinery's form view, we want to decorate the +Refinery::Admin::PagesController+ class. Create a file +app/decorators/controllers/refinery/admin/pages_controller_decorator.rb+ with this content:
+
+<ruby>
+Refinery::Admin::PagesController.class_eval do
+  def page_params_with_show_in_footer
+    page_params_without_show_in_footer.permit(:show_in_footer)
+  end
+  alias_method :page_params, :show_in_footer
+end
+</ruby>
+
+We added +show_in_footer+ to the allowed attributes list so that it doesn't raise a mass-assignment error each time someone tries to save the page.
 
 h3. Overriding the form view
 
-As I previously mentioned, let's make it so that a "Show in footer" checkbox appears right after Admin expands the "Advanced options" when editing a page. To do this, we have to override the file [_form_advaned_options.html.erb partial](https://github.com/refinery/refinerycms/blob/2-1-stable/pages/app/views/refinery/admin/pages/_form_advanced_options.html.erb). Type this in the terminal:
+As I previously mentioned, let's make it so that a "Show in footer" checkbox appears right after Admin expands the "Advanced options" when editing a page. To do this, we have to override the file [_form_extra_fields_for_more_options.html.erb partial](https://github.com/refinery/refinerycms/blob/master/pages/app/views/refinery/admin/pages/_form_extra_fields_for_more_options.html.erb). Type this in the terminal:
 
 <shell>
-rake refinery:override view=refinery/admin/pages/_form_advanced_options.html
+rake refinery:override view=refinery/admin/pages/_form_extra_fields_for_more_options.html
 </shell>
 
-Now open the +_form_advanced_options.html.erb+ partial and add the following code right after the h2 HTML tag:
+Now open the +_form_extra_fields_for_more_options.html.erb+ partial and add the following code right after the commented line :
 
 <html>
 <div class='field'>
@@ -75,10 +89,6 @@ Now open the +_form_advanced_options.html.erb+ partial and add the following cod
   <%= f.check_box :show_in_footer %> Show this page in the footer menu
 </div>
 </html>
-
-The end result should look like this:
-
-!/system/images/W1siZiIsIjIwMTMvMTAvMDMvMDZfMzdfMTNfOTMzX3Nob3dfaW5fZm9vdGVyLnBuZyJdXQ/show_in_footer.png!
 
 h3. Creating and configuring the Presenter
 
