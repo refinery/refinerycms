@@ -13,6 +13,7 @@
 * Limited the jquery-ui assets loaded in the backend to the ones we use in the core. [#2735](https://github.com/refinery/refinerycms/pull/2735). [Philip Arndt](https://github.com/parndt)
 * Moved the tabs to the left hand side of the screen. [#2734](https://github.com/refinery/refinerycms/pull/2734). [Isaac Freeman](https://github.com/isaacfreeman) & [Philip Arndt](https://github.com/parndt) & [Brice Sanchez](https://github.com/bricesanchez)
 * Add extra fields partial in Admin Pages form advanced options [#2943](https://github.com/refinery/refinerycms/pull/2943). [Brice Sanchez](https://github.com/bricesanchez)
+* Remove required_label formhelper. [#2954](https://github.com/refinery/refinerycms/pull/2954). [Johan Bruning](https://github.com/johanb)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
