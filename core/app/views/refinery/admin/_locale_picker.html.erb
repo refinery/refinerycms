@@ -7,9 +7,8 @@
       <% locale_name = locales.delete(locale) %>
       <li<%= %Q{ class=selected} if locale.to_s == local_assigns[:current_locale].to_s %>>
         <%= link_to refinery.url_for(:switch_locale => locale, :parent_id => params[:parent_id]), id: locale do %>
-          <div class="locale_icon">
-            <%= refinery_icon_tag('locale.svg', :size => '24x24', :alt => locale.upcase) %>
-            <span class="code"><%= locale_country(locale) %></span>
+          <div class="<%=locale %> locale_marker">
+            <%= locale_text_icon(locale.upcase) %>
           </div>
           <%= locale_name %>
         <% end %>

@@ -78,10 +78,10 @@ describe Refinery do
                 expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq(1)
               end
 
-              it "should show locale flag for page" do
+              it "should show locale marker for page" do
                 p = Refinery::<%= namespacing %>::<%= class_name %>.last
                 within "#<%= singular_name %>_#{p.id}" do
-                  expect(page).to have_css("img[src='/assets/refinery/icons/flags/en.png']")
+                  expect(page).to have_css(".locale_marker", content: 'EN')
                 end
               end
 
@@ -119,8 +119,8 @@ describe Refinery do
               it "should show locale flag for page" do
                 p = Refinery::<%= namespacing %>::<%= class_name %>.last
                 within "#<%= singular_name %>_#{p.id}" do
-                  expect(page).to have_css("img[src='/assets/refinery/icons/flags/en.png']")
-                  expect(page).to have_css("img[src='/assets/refinery/icons/flags/cs.png']")
+                  expect(page).to have_css(".locale_marker", content: 'EN')
+                  expect(page).to have_css(".locale_marker", content: 'CS')
                 end
               end
 
@@ -154,7 +154,7 @@ describe Refinery do
               it "should show locale flag for page" do
                 p = Refinery::<%= namespacing %>::<%= class_name %>.last
                 within "#<%= singular_name %>_#{p.id}" do
-                  expect(page).to have_css("img[src='/assets/refinery/icons/flags/cs.png']")
+                  expect(page).to have_css(".locale_marker", content: 'CS')
                 end
               end
             end

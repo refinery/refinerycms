@@ -1,21 +1,14 @@
 <ul>
   <li>
-    <%= render '/refinery/admin/search', :url => refinery.admin_pages_path %>
+    <%= render '/refinery/admin/search', url: refinery.admin_pages_path %>
   </li>
   <li>
-    <%= link_to t('.create_new_page'), refinery.new_admin_page_path,
-                :class => "add_icon" %>
+    <%= action_label :add, refinery.new_admin_page_path, t('.create_new_page') %>
   </li>
 <% if @pages.many? and !searching? %>
   <li>
-    <%= link_to t('.reorder_pages'), refinery.admin_pages_path,
-                :id => "reorder_action",
-                :class => "reorder_icon" %>
-
-    <%= link_to t('.reorder_pages_done'), refinery.admin_pages_path,
-                :id => "reorder_action_done",
-                :style => "display: none;",
-                :class => "reorder_icon" %>
+    <%= action_label :reorder, refinery.admin_pages_path, t('.reorder_pages'), id: 'reorder_action'%>
+    <%= action_label :reorder_done, refinery.admin_pages_path, t('.reorder_pages_done'), id: 'reorder_action_done', class: 'hidden'%>
   </li>
 <% end %>
 </ul>

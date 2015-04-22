@@ -6,11 +6,10 @@ $(document).ready(function(){
 });
 
 init_flash_messages = function() {
-  $('#flash_close').on('click', function(e) {
+
+  $('#flash_container').on('click', '#flash_close', function(e) {
     $('#flash').hide();
     e.preventDefault();
   });
   $('#flash.flash_message').prependTo('#records');
 };
-
-
