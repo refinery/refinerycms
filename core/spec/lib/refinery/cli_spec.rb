@@ -11,23 +11,59 @@ describe "CLI" do
     Rake::Task.define_task(:environment)
   end
 
+  context "rake refinery:override:list" do
+    it "shows info message" do
+      msg = capture { rake["refinery:override:list"].invoke }
+
+      expect(msg).to include("You didn't specify a valid type to list overrides for.  Here are some examples:")
+
+      expect(msg).to include("type=view")
+      expect(msg).to include("view=pages/home")
+      expect(msg).to include("view=refinery/pages/home")
+      expect(msg).to include("view=layouts/application")
+
+      expect(msg).to include("type=javascript")
+      expect(msg).to include("javascript=admin")
+      expect(msg).to include("javascript=refinery/site_bar")
+      expect(msg).to include("javascript=refinery**/{**/}*")
+
+      expect(msg).to include("type=stylesheet")
+      expect(msg).to include("stylesheet=home")
+      expect(msg).to include("stylesheet=refinery/site_bar")
+
+      expect(msg).to include("type=controller")
+      expect(msg).to include("controller=pages")
+
+      expect(msg).to include("type=model")
+      expect(msg).to include("model=page")
+      expect(msg).to include("model=refinery/page")
+
+      expect(msg).to include("type=helper")
+      expect(msg).to include("helper=site_bar")
+      expect(msg).to include("helper=refinery/site_bar_helper")
+
+      expect(msg).to include("type=presenter")
+      expect(msg).to include("presenter=refinery/page_presenter")
+    end
+  end
+
   context "when called with no args" do
     it "shows info message" do
       msg = capture { rake["refinery:override"].invoke }
 
-      expect(msg).to match("You didn't specify anything valid to override. Here are some examples:")
-      expect(msg).to match("rake refinery:override view=pages/home")
-      expect(msg).to match("rake refinery:override view=refinery/pages/home")
-      expect(msg).to match("rake refinery:override view=layouts/application")
-      expect(msg).to match("rake refinery:override javascript=admin")
-      expect(msg).to match("rake refinery:override javascript=refinery/site_bar")
-      expect(msg).to match("rake refinery:override stylesheet=home")
-      expect(msg).to match("rake refinery:override stylesheet=refinery/site_bar")
-      expect(msg).to match("rake refinery:override controller=pages")
-      expect(msg).to match("rake refinery:override model=page")
-      expect(msg).to match("rake refinery:override model=refinery/page")
-      expect(msg).to match("rake refinery:override helper=site_bar")
-      expect(msg).to match("rake refinery:override helper=refinery/site_bar_helper")
+      expect(msg).to include("You didn't specify anything valid to override. Here are some examples:")
+      expect(msg).to include("rake refinery:override view=pages/home")
+      expect(msg).to include("rake refinery:override view=refinery/pages/home")
+      expect(msg).to include("rake refinery:override view=layouts/application")
+      expect(msg).to include("rake refinery:override javascript=admin")
+      expect(msg).to include("rake refinery:override javascript=refinery/site_bar")
+      expect(msg).to include("rake refinery:override stylesheet=home")
+      expect(msg).to include("rake refinery:override stylesheet=refinery/site_bar")
+      expect(msg).to include("rake refinery:override controller=pages")
+      expect(msg).to include("rake refinery:override model=page")
+      expect(msg).to include("rake refinery:override model=refinery/page")
+      expect(msg).to include("rake refinery:override helper=site_bar")
+      expect(msg).to include("rake refinery:override helper=refinery/site_bar_helper")
     end
   end
 
