@@ -61,15 +61,16 @@ h3. Allow +show_in_footer+ attribute in +Refinery::Admin::PagesController+
 Before overriding Refinery's form view, we want to decorate the +Refinery::Admin::PagesController+ class. Create a file +app/decorators/controllers/refinery/admin/pages_controller_decorator.rb+ with this content:
 
 <ruby>
-Refinery::Admin::PagesController.class_eval do
-  def page_params_with_show_in_footer
-    page_params_without_show_in_footer.permit(:show_in_footer)
+Refinery::Admin::PagesController.prepend(
+  Module.new do
+    def permitted_page_params
+      super << :show_in_footer
+    end
   end
-  alias_method :page_params, :show_in_footer
-end
+)
 </ruby>
 
-We added +show_in_footer+ to the allowed attributes list so that it doesn't raise a mass-assignment error each time someone tries to save the page.
+We added +show_in_footer+ to the permitted attributes list so that it doesn't raise a mass-assignment error each time someone tries to save the page.
 
 h3. Overriding the form view
 
@@ -100,11 +101,11 @@ Open the ApplicationHelper and add this code:
 def footer_menu
   menu_items = Refinery::Menu.new(Refinery::Page.footer_menu_pages)
 
-  presenter = Refinery::Pages::MenuPresenter.new(menu_items, self)
-  presenter.dom_id = "footer_menu"
-  presenter.css = "footer_menu"
-  presenter.menu_tag = :div
-  presenter
+  Refinery::Pages::MenuPresenter.new(menu_items, self).tap do |presenter|
+    presenter.dom_id = "footer_menu"
+    presenter.css = "footer_menu"
+    presenter.menu_tag = :div
+  end
 end
 </ruby>
 
