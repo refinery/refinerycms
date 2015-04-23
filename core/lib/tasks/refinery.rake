@@ -4,6 +4,13 @@ namespace :refinery do
     Refinery::CLI.new.override(ENV)
   end
 
+  desc "Override files for use in an application"
+  namespace :override do
+    task :list => :environment do
+      Refinery::CLI.new.override_list(ENV)
+    end
+  end
+
   desc "Un-crudify a method on a controller that uses crudify"
   task :uncrudify => :environment do
     Refinery::CLI.new.uncrudify(ENV['controller'], ENV['action'])

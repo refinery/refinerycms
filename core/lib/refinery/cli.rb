@@ -61,6 +61,23 @@ module Refinery
       handle_invalid_override_input
     end
 
+    desc "override_list", "lists files that you can override from any Refinery extension that you are using into your application"
+    def override_list(env)
+      OVERRIDES.keys.each do |kind|
+        which = env[kind.to_s] || (kind if env['type'] == kind.to_s)
+        if which.present? && @override_kind = OVERRIDES[kind]
+          matcher = [
+            "{refinery#{File::SEPARATOR},}", (which.presence || "**/*"), @override_kind[:glob]
+          ].flatten.join
+
+          puts find_relative_matches(matcher).sort.join("\n")
+          return
+        end
+      end
+
+      handle_invalid_override_list_input
+    end
+
     desc "uncrudify", "shows you the code that your controller using crudify is running for a given action"
     def uncrudify(controller, action)
       unless (controller_name = controller).present? && (action = action).present?
@@ -131,6 +148,24 @@ module Refinery
 
     def handle_invalid_override_input
       puts "You didn't specify anything valid to override. Here are some examples:"
+      input_examples.each do |type, examples|
+        examples.each do |example|
+          puts "rake refinery:override #{type}=#{example}"
+        end
+      end
+    end
+
+    def handle_invalid_override_list_input
+      puts "You didn't specify a valid type to list overrides for.  Here are some examples:"
+      input_examples.each do |type, examples|
+        puts "\nrake refinery:override:list type=#{type}"
+        examples.each do |example|
+          puts "rake refinery:override:list #{type}=#{example}"
+        end
+      end
+    end
+
+    def input_examples
       {
         :view => ['pages/home', 'refinery/pages/home', 'layouts/application'],
         :javascript => %w(admin refinery/site_bar refinery**/{**/}*),
@@ -139,11 +174,7 @@ module Refinery
         :model => %w(page refinery/page),
         :helper => %w(site_bar refinery/site_bar_helper),
         :presenter => %w(refinery/page_presenter)
-      }.each do |type, examples|
-        examples.each do |example|
-          puts "rake refinery:override #{type}=#{example}"
-        end
-      end
+      }.freeze
     end
   end
 end
