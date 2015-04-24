@@ -23,7 +23,7 @@ en:
     admin:
       menu:
         reorder_menu: Reorder menu
-        reorder_menu_done: I'm done reordering the menu
+        reorder_menu_done: I've finished reordering the menu
       dialogs:
         show:
           save: Save
@@ -51,11 +51,12 @@ en:
         name: Add File
         current: Current File
       search:
-        button_text: Search
+        button_text: Go
         results_for_html: "Search results for &#8216;<em>%{query}</em>&#8217;"
         no_results: 'Sorry, no results found'
         cancel_search: 'Cancel search'
-        search_input_notice: "Put here a string of at least 3 characters containing what you are looking for."
+        search_input_notice: "Search&#8230"
+        search_input_help: 'Enter a word or name you want to search for'
       delete:
         message: "Are you sure you want to remove '%{title}'?"
       error_messages:
