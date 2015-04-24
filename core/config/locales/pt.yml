@@ -53,7 +53,8 @@ pt:
         results_for_html: "Resultados para &#8216;<em>%{query}</em>&#8217;"
         no_results: 'Não existem resultados para a sua procura'
         cancel_search: 'Cancelar procura'
-        search_input_notice: "Escreva aqui o que está à procura, o mínimo são 3 caractéres."
+        search_input_placeholder: "Procurar&8230;"
+        search_input_help: "Escreva aqui o que está à procura, o mínimo são 3 caractéres."
       delete:
         message: "Tem a certeza que quer remover '%{title}'?"
       error_messages:
@@ -72,7 +73,7 @@ pt:
       copyright: "Copyright © %{year} %{site_name}"
     no_script:
       enable_javascript_html: É necessário que tenha o JavaScript ligado.
-      here_are: Aqui estão as 
+      here_are: Aqui estão as
       instructions_enable_javascript_html: instruções para ligar o JavaScript no seu browser.
   time:
     formats:

@@ -53,7 +53,8 @@ hu:
         results_for_html: "Keresési eredmények a következőhöz: &#8216;<em>%{query}</em>&#8217;"
         no_results: 'Sajnáljuk, nincs találat'
         cancel_search: 'Keresés megszakítása'
-        search_input_notice: "Írd ide amit keresel. Minimális hossz 3 karakter."
+        search_input_placeholder: "Keres&8230;"
+        search_input_help: "Írd ide amit keresel. Minimális hossz 3 karakter."
       delete:
         message: "Biztosan ez akarod távolítani ezt: '%{title}'?"
       error_messages:

@@ -53,7 +53,8 @@ ru:
         results_for_html: "Результаты поиска для &#8216;<em>%{query}</em>&#8217;"
         no_results: Ничего не найдено
         cancel_search: Отмена поиска
-        search_input_notice: Введите строку содержащую то, что вы ищете, минимум 3 символа.
+        search_input_placeholder: "Поиск&8230;"
+        search_input_help: Введите строку содержащую то, что вы ищете, минимум 3 символа.
       delete:
         message: Вы уверены, что хотите удалить '%{title}'?
       error_messages:
