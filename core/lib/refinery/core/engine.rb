@@ -79,21 +79,6 @@ module Refinery
         ].flatten
       end
 
-      # set the manifests and assets to be precompiled
-      # refinery/icons/* may still be used by plugins
-      config.to_prepare do
-        Rails.application.config.assets.precompile += %w(
-          refinery/*.js
-          refinery/refinery.css
-          refinery/formatting.css
-          refinery/site_bar.css
-          refinery/theme.css
-          refinery/icons/*
-          modernizr-min.js
-          admin.js
-        )
-      end
-
       # active model fields which may contain sensitive data to filter
       initializer "refinery.params.filter" do |app|
         app.config.filter_parameters += [:password, :password_confirmation]
