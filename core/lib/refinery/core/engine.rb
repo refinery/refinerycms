@@ -83,7 +83,11 @@ module Refinery
       # refinery/icons/* may still be used by plugins
       config.to_prepare do
         Rails.application.config.assets.precompile += %w(
-          refinery/*
+          refinery/*.js
+          refinery/refinery.css
+          refinery/formatting.css
+          refinery/site_bar.css
+          refinery/theme.css
           refinery/icons/*
           modernizr-min.js
           admin.js
