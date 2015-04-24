@@ -79,14 +79,37 @@ module Refinery
         ].flatten
       end
 
-      # set the manifests and assets to be precompiled
-      # refinery/icons/* may still be used by plugins
+      # set assets to be precompiled
       config.to_prepare do
+
+        # scripts
         Rails.application.config.assets.precompile += %w(
-          refinery/*
+          refinery/*.js
           refinery/icons/*
           modernizr-min.js
           admin.js
+        )
+
+        # stylesheets
+        Rails.application.config.assets.precompile += %w(
+          refinery/refinery.css
+          refinery/formatting.css
+          refinery/site_bar.css
+          refinery/theme.css
+        )
+
+        # images
+        Rails.application.config.assets.precompile += %w(
+          refinery/images/*
+        )
+
+        # fonts
+        Rails.application.config.assets.precompile += %w(
+          font-awesome/fontawesome-webfont.eot
+          font-awesome/fontawesome-webfont.woff2
+          font-awesome/fontawesome-webfont.woff
+          font-awesome/fontawesome-webfont.ttf
+          font-awesome/fontawesome-webfont.svg
         )
       end
 
