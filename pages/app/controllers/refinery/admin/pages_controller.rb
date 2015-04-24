@@ -90,11 +90,7 @@ module Refinery
       end
 
       def page_params
-        params.require(:page).permit(
-          :browser_title, :draft, :link_url, :menu_title, :meta_description,
-          :parent_id, :skip_to_first_child, :show_in_menu, :title, :view_template,
-          :layout_template, :custom_slug, parts_attributes: [:id, :title, :body, :position]
-        )
+        params.require(:page).permit(permitted_page_params)
       end
 
       def new_page_params
@@ -102,6 +98,14 @@ module Refinery
       end
 
       private
+
+      def permitted_page_params
+        [
+          :browser_title, :draft, :link_url, :menu_title, :meta_description,
+          :parent_id, :skip_to_first_child, :show_in_menu, :title, :view_template,
+          :layout_template, :custom_slug, parts_attributes: [:id, :title, :body, :position]
+        ]
+      end
 
       def save_and_continue_locals(page)
         nested_url = page.nested_url
