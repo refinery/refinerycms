@@ -56,7 +56,7 @@ en:
         no_results: 'Sorry, no results found'
         cancel_search: 'Cancel search'
         search_input_notice: "Search&#8230"
-        search_input_help: 'Enter a word or name you want to search for'
+        search_input_help: 'Enter a phrase to search for'
       delete:
         message: "Are you sure you want to remove '%{title}'?"
       error_messages:
