@@ -138,7 +138,7 @@ hr {
   border-color: red !important;
 }
 #message, .flash {
-  padding: 8px 8px 8px 30px;
+  padding: 8px;
   margin-bottom: 15px;
   position: relative;
 }
@@ -156,7 +156,6 @@ hr {
   @include icon('question-circle', red)
 }
 .flash.flash_notice #flash_close, .flash.flash_error #flash_close, .flash.flash_alert #flash_close {
-  text-transform: lowercase;
   @include icon('times-circle', $icon_done_colour, 1.2em)
 }
 .flash.flash_message {
@@ -188,6 +187,8 @@ noscript .flash.flash_alert a, noscript .flash.flash_alert a:hover {
 }
 .flash a#flash_close {
   position: absolute;
+  border: none;
+
   right: 9px;
   top: 7px;
 }
