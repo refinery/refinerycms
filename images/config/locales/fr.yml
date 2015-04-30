@@ -15,6 +15,10 @@ fr:
           replace_image: " la remplacer par celle-ci..."
           current_image: Image actuelle
           maximum_image_size: "La taille de l'image ne doit pas excéder %{bytes}."
+          image_title: Titre
+          image_title_help: Information complémentaire sur l'image
+          image_alt: Alt
+          image_alt_help: Texte utilise si l'image ne peut pas être affichée.
         actions:
           create_new_image: Ajouter une image
         records:

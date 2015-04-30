@@ -16,6 +16,7 @@
 * Added ability to create page part title different form slug. [#2875](https://github.com/refinery/refinerycms/pull/2875). [Brice Sanchez](https://github.com/bricesanchez) & [Philip Arndt](https://github.com/parndt) & [Josef Šimánek](https://github.com/simi)
 * Deprecated `part_with_title` method in `Refinery#Page` and `title_matches?` method in `Refinery#PagePart`. [#2875](https://github.com/refinery/refinerycms/pull/2875). [Brice Sanchez](https://github.com/bricesanchez) & [Philip Arndt](https://github.com/parndt) & [Josef Šimánek](https://github.com/simi)
 * Added ability to customize and translate filename. [#2966](https://github.com/refinery/refinerycms/pull/2966). [Brice Sanchez](https://github.com/bricesanchez)
+* Added ability to translate images title and alt attributes. [#2965](https://github.com/refinery/refinerycms/pull/2965). [Brice Sanchez](https://github.com/bricesanchez)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 
