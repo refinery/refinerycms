@@ -32,7 +32,7 @@ module Refinery
             click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
           end
 
-          expect(page).to have_content("Refinery Is Awesome.txt")
+          expect(page).to have_content("Refinery Is Awesome")
           expect(Refinery::Resource.count).to eq(1)
         end
 
@@ -78,7 +78,7 @@ module Refinery
 
         it "updates file" do
           visit refinery.admin_resources_path
-          expect(page).to have_content("Refinery Is Awesome.txt")
+          expect(page).to have_content("Refinery Is Awesome")
           expect(page).to have_selector("a[href='/refinery/resources/#{resource.id}/edit']")
 
           click_link "Edit this file"
@@ -91,6 +91,30 @@ module Refinery
 
           expect(page).to have_content("Refinery Is Awesome2")
           expect(Refinery::Resource.count).to eq(1)
+        end
+
+        describe "translate", focus: true do
+          before do
+            allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :fr])
+          end
+
+          it "can have a second locale added to it" do
+            visit refinery.admin_resources_path
+            expect(page).to have_content("Refinery Is Awesome")
+            expect(page).to have_selector("a[href='/refinery/resources/#{resource.id}/edit']")
+
+            click_link "Edit this file"
+
+            within "#switch_locale_picker" do
+              click_link "FR"
+            end
+
+            fill_in "Title", :with => "Premier fichier"
+            click_button "Save"
+
+            expect(page).to have_content("'Premier fichier' was successfully updated.")
+            expect(Resource.translation_class.count).to eq(1)
+          end
         end
       end
 

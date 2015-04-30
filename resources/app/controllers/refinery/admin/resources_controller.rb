@@ -83,9 +83,9 @@ module Refinery
       def resource_params
         # update only supports a single file, create supports many.
         if action_name == 'update'
-          params.require(:resource).permit(:file)
+          params.require(:resource).permit(:resource_title, :file)
         else
-          params.require(:resource).permit(:file => [])
+          params.require(:resource).permit(:resource_title, :file => [])
         end
       end
 
