@@ -12,15 +12,15 @@
                   :height => 480,
                   :conditions => local_assigns[:conditions]
                 })
-  download_title = (%Q{#{resource.title} (#{resource.file_name})} if resource).to_s,:id => "current_resource_text_#{field}")
+  download_title = ("#{resource.title} (#{resource.file_name})" if resource).to_s
  %>
 <%= f.hidden_field field %>
 
 <div>
   <%= action_link :insert, insert_link, t('.name'),  :id => "current_resource_link_#{field}"  %>
 
-  <div id="current_resource_container_<%= field %>" style="margin-top: 10px;<%= 'display: none' unless resource %>">
-    <%= action_link :download,  "#{resource.url if resource}", content_tag(:span, download_text), :id => "current_resource_#{field}" %>
+  <div id="current_resource_container_<%= field %>" style="margin-top: 10px;<%= ' display: none;' unless resource %>">
+    <%= action_link :download, "#{resource.url if resource}", content_tag(:span, download_title, id: "current_resource_text_#{field}"), id: "current_resource_#{field}" %>
     <%= action_link :remove, '#', t('.remove_current'),:id => "remove_resource_#{field}", :style => "#{'display:none;' unless resource}"   %>
   </div>
 </div>
