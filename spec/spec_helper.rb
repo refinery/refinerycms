@@ -38,6 +38,13 @@ RSpec.configure do |config|
   config.default_sleep_interval = 0.33
   config.clear_lets_on_failure = true
   config.default_retry_count = 3
+
+  unless ENV['FULL_BACKTRACE']
+    config.backtrace_exclusion_patterns = %w(
+      rails actionpack railties capybara activesupport rack warden rspec actionview
+      activerecord dragonfly benchmark quiet_assets rubygems
+    ).map { |noisy| /\b#{noisy}\b/ }
+  end
 end
 
 # Requires supporting files with custom matchers and macros, etc,
