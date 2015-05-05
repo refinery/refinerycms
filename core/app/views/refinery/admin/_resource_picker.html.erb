@@ -1,7 +1,4 @@
 <%
-  insert_text = %Q{<span id="no_resource_selected_#{field}" class="nothing_selected" #{'style="display: none;"'.html_safe if resource}>
-                   #{t('.no_resource_selected')}
-                 </span>}.html_safe
   insert_link = refinery.insert_admin_resources_path({
                   :dialog => true,
                   :update_resource => "current_resource_#{field}",
@@ -17,11 +14,14 @@
 <%= f.hidden_field field %>
 
 <div>
-  <%= action_link :insert, insert_link, t('.name'),  :id => "current_resource_link_#{field}"  %>
+  <%= action_icon :add, insert_link, t('.name') ,  :id => "current_resource_link_#{field}" unless resource %>
 
   <div id="current_resource_container_<%= field %>" style="margin-top: 10px;<%= ' display: none;' unless resource %>">
-    <%= action_link :download, "#{resource.url if resource}", content_tag(:span, download_title, id: "current_resource_text_#{field}"), id: "current_resource_#{field}" %>
-    <%= action_link :remove, '#', t('.remove_current'),:id => "remove_resource_#{field}", :style => "#{'display:none;' unless resource}"   %>
+    <span class="current_resource" id="<%="current_resource_text_#{field}"%>"><%= download_title %></span>
+    <div id='resource_actions'>
+      <%= action_icon :download, "#{resource.url if resource}", t('.download_current'), id: "current_resource_#{field}" %>
+      <%= action_icon :delete, '#', t('.remove_current'), :id => "remove_resource_#{field}"   %>
+    </div>
   </div>
 </div>
 
