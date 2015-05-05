@@ -9,17 +9,18 @@
                   :height => 480,
                   :conditions => local_assigns[:conditions]
                 })
-  download_title = ("#{resource.title} (#{resource.file_name})" if resource).to_s
  %>
 <%= f.hidden_field field %>
 
 <div>
-  <%= action_icon :add, insert_link, t('.name') ,  :id => "current_resource_link_#{field}" unless resource %>
+  <%= action_icon :add, insert_link, t('.name'), id: "current_resource_link_#{field}" unless resource %>
 
   <div id="current_resource_container_<%= field %>" style="margin-top: 10px;<%= ' display: none;' unless resource %>">
-    <span class="current_resource" id="<%="current_resource_text_#{field}"%>"><%= download_title %></span>
+    <span class="current_resource" id="<%="current_resource_text_#{field}"%>">
+      <%= "#{resource.title} (#{resource.file_name})" if resource %>
+    </span>
     <div id='resource_actions'>
-      <%= action_icon :download, "#{resource.url if resource}", t('.download_current'), id: "current_resource_#{field}" %>
+      <%= action_icon :download, resource.try(:url), t('.download_current'), id: "current_resource_#{field}" %>
       <%= action_icon :delete, '#', t('.remove_current'), :id => "remove_resource_#{field}"   %>
     </div>
   </div>
