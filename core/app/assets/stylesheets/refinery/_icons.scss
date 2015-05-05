@@ -56,8 +56,6 @@
 .switch_view_list_icon {@include icon('list')}
 .upload_icon          {@include icon('upload');}
 .user_comment_icon    {@include icon('comment-o');}
-//TODO insert, remove (see resource picker)
-// .locale_icon          {@include icon('comment', $icon_locale_colour);}
 
 // stacked icon/text used for locales
 .locale_marker {
@@ -78,6 +76,3 @@
 // don't want underlines on icons
 #content a[class$='icon'] {border-bottom: none}
 #content a[class$='icon']:hover {border-bottom: none}
-
-// hover effect on icons
-#content a[class$='_icon']:hover:before {font-size: 1.3rem;}
