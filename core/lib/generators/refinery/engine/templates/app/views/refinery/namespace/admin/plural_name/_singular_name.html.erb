@@ -18,16 +18,11 @@
   </span>
   <span class='actions'>
     <% unless skip_frontend? %>
-    <%%= link_to icon("eye"), refinery.<%= namespacing.underscore %>_<%= singular_name %>_path(<%= singular_name %>),
-        :title => t('.view_live_html'),
-        :target => "_blank" %>
-    <% end %>
-    <%%= link_to icon("pencil-square-o"), refinery.edit_<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>),
-         :title => t('.edit') %>
-    <%%= link_to icon("minus-circle"), refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>),
-        :class => "cancel confirm-delete",
-        :title => t('.delete'),
-        :data => {:confirm => t('message', :scope => 'refinery.admin.delete', :title => <%= singular_name %>.<%= title_attribute %>)},
-        :method => :delete %>
+      <%%= action_icon(:preview, refinery.<%= namespacing.underscore %>_<%= singular_name %>_path(<%= singular_name %>), t('.view_live_html')) %>
+    <%end %>
+    <%%= action_icon(:edit,    refinery.edit_<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>), t('.edit') ) %>
+    <%%= action_icon(:delete,  refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>), t('.delete'),
+      { class: "cancel confirm-delete",
+        data: {confirm: t('message',  scope: 'refinery.admin.delete', title: <%=singular_name%>.<%=title_attribute %>)}}  ) %>
   </span>
 </li>
