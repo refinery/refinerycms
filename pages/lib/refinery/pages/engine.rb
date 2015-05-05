@@ -8,7 +8,7 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer "refinery.pages register plugin" do
+      before_inclusion do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_pages'
@@ -29,7 +29,7 @@ module Refinery
         Refinery.register_extension(Refinery::Pages)
       end
 
-    protected
+      protected
 
       def append_marketable_routes
         Refinery::Core::Engine.routes.append do

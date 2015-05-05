@@ -20,6 +20,8 @@ module Refinery
           before_inclusion_procs.each(&:call).tap{ |c| c.clear if Rails.application.config.cache_classes }
 
           after_inclusion_procs.each(&:call).tap{ |c| c.clear if Rails.application.config.cache_classes }
+
+          register_decorators!
         end
       end
 
@@ -27,8 +29,6 @@ module Refinery
 
       # Include the refinery controllers and helpers dynamically
       config.to_prepare(&method(:refinery_inclusion!).to_proc)
-
-      after_inclusion(&method(:register_decorators!).to_proc)
 
       # Wrap errors in spans
       config.to_prepare do
@@ -41,7 +41,7 @@ module Refinery
         WillPaginate.per_page = 20
       end
 
-      initializer "register refinery_core plugin" do
+      before_inclusion do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_core'
@@ -50,9 +50,7 @@ module Refinery
           plugin.always_allow_access = true
           plugin.menu_match = /refinery\/(refinery_)?core$/
         end
-      end
 
-      initializer "register refinery_dialogs plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_dialogs'
