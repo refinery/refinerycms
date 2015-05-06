@@ -10,6 +10,14 @@ module Refinery
         true
       end
 
+      # Returns all plugins that the user has access to, that are currently
+      # loaded in the system.
+      # For NilUser, this returns all registered plugins.
+      # Should be overridden in authentication solutions
+      def active_plugins
+        Refinery::Plugins.registered
+      end
+
       # Returns all registered plugins.
       # Should be overridden in authentication solutions.
       def plugins
@@ -27,7 +35,7 @@ module Refinery
       # admin users' root admin url.
       # Should be overridden in authentication solutions.
       def landing_url
-        plugins.first_url_in_menu
+        active_plugins.first_url_in_menu
       end
     end
   end

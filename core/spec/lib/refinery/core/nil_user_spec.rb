@@ -11,14 +11,14 @@ module Refinery
       end
 
       describe "landing url" do
-        let(:plugins) { double("plugins") }
+        let(:active_plugins) { double("active_plugins") }
 
         before do
-          allow(subject).to receive(:plugins).and_return(plugins)
+          allow(subject).to receive(:active_plugins).and_return(active_plugins)
         end
 
         it "queries for the first landable url" do
-          expect(plugins).to receive(:first_url_in_menu)
+          expect(active_plugins).to receive(:first_url_in_menu)
           subject.landing_url
         end
       end
