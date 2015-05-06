@@ -103,7 +103,9 @@ select.widest {
     border: 1px solid $action-border-colour;
     padding: 9px;
     display: block;
-
+    &:empty {
+      display: none
+    }
   }
 }
 #sort-status {
