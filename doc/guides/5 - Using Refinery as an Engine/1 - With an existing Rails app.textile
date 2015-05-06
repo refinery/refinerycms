@@ -6,7 +6,7 @@ This guide covers integration with Refinery CMS. After reading it, you should be
 
 endprologue.
 
-WARNING. This guide is based on Refinery CMS 2.0.0. Much of the code shown here will not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 3.0.0. Much of the code shown here will not work in earlier versions of Refinery.
 
 h3. Guide Assumptions
 
@@ -21,10 +21,19 @@ h4. Add Refinery CMS as a dependency in your Gemfile
 Open up your Gemfile and add the latest version (a later version than the one shown "may exist":https://rubygems.org/gems/refinerycms/versions):
 
 <ruby>
-  gem 'refinerycms', '~> 2.0.0'
+  gem 'refinerycms', '~> 3.0.0'
 </ruby>
 
-Now, to install the gem, run:
+Refinery doesn't ship with authentication by default, but you will need to add it
+unless you want every visitor to be automatically logged in.
+
+If you want to use the default authentication system:
+
+<ruby>
+  gem 'refinerycms-authentication-devise', '~> 1.0'
+</ruby>
+
+Now, to install the gems, run:
 
 <shell>
   bundle install
@@ -51,11 +60,11 @@ After this, you should be all set. Don't forget to revisit the initializers in +
 
 h3. Mounting to a directory other than root
 
-It is possible to mount Refinery to a subfolder.  To do this, simply change the mount line in your +config/routes.rb+ file to:
+It is possible to mount Refinery to a subfolder.  To do this, simply change the following setting in +config/initializers/refinery/core.rb+:
 
-<shell>
-    mount Refinery::Core::Engine, :at => '/subfolder'
-</shell>
+<ruby>
+  config.mounted_path = "/subfolder"
+</ruby>
 
 After starting your rails server and navigating to +localhost:3000/subfolder+, you should see a dummy home page.
 
