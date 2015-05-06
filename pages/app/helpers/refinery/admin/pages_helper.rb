@@ -52,6 +52,7 @@ module Refinery
       def page_title_with_translations(page)
         page.title.presence || page.translations.detect { |t| t.title.present?}.title
       end
+
     end
   end
 end

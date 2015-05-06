@@ -5,21 +5,16 @@
     </li>
   <%% end %>
   <li>
-    <%%= link_to t('.create_new'), refinery.new_<%= namespacing.underscore %>_admin_<%= singular_name %>_path,
-                 :class => "add_icon" %>
+    <%%= action_label :add, refinery.new_<%= namespacing.underscore %>_admin_<%= singular_name %>_path, t('.create_new') %>
   </li>
 <%% if !searching? && ::Refinery::<%= namespacing %>::Admin::<%= class_name.pluralize %>Controller.sortable? && ::Refinery::<%= namespacing %>::<%= class_name %>.many? %>
   <li>
-    <%%= link_to t('.reorder', :what => "<%= singular_name.titleize.pluralize %>"),
-                 refinery.<%= namespacing.underscore %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path,
-                 :id => "reorder_action",
-                 :class => "reorder_icon" %>
-
-    <%%= link_to t('.reorder_done', :what => "<%= singular_name.titleize.pluralize %>"),
-                 refinery.<%= namespacing.underscore %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path,
-                 :id => "reorder_action_done",
-                 :style => "display: none;",
-                 :class => "reorder_icon" %>
+    <%%= action_label :reorder,
+                     refinery.<%= namespacing.underscore %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path,
+                     t('.reorder', what:  "<%= singular_name.titleize.pluralize %>"), id: 'reorder_action'%>
+    <%%= action_label :reorder_done,
+                     refinery.<%= namespacing.underscore %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path,
+                      t('.reorder_done', what: "<%= singular_name.titleize.pluralize %>"), id: 'reorder_action_done', class: 'hidden'%>
   </li>
 <%% end %>
 </ul>
