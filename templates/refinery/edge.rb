@@ -14,17 +14,30 @@ if File.read("#{destination_root}/Gemfile") !~ /assets.+coffee-rails/m
   gem "coffee-rails", :group => :assets
 end
 
-append_file 'Gemfile' do
+if ENV['REFINERY_PATH']
+  append_file 'Gemfile' do
+"
+gem 'refinerycms', path: '#{ENV['REFINERY_PATH']}'
+"
+else
+  append_file 'Gemfile' do
 "
 gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', branch: 'master'
+"
+end
 
-gem 'quiet_assets', :group => :development
+append_file 'Gemfile' do
+"
+gem 'quiet_assets', group: :development
 
 # Add support for searching inside Refinery's admin interface.
 gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.0']
 
 # Add support for Refinery's custom fork of the visual editor WYMeditor.
 gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6']
+
+# The default authentication adapter
+gem 'refinerycms-authentication-devise', '~> 1.0'
 "
 end
 
