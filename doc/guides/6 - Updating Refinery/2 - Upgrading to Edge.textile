@@ -21,7 +21,7 @@ gem 'refinerycms'
 With a line that looks like this:
 
 <ruby>
-gem 'refinerycms', :git => 'https://github.com/refinery/refinerycms'
+gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', branch: 'master'
 </ruby>
 
 Now, inside the application's directory, use the refinerycms generator to update your application:
