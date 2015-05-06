@@ -8,7 +8,8 @@ module Refinery
                          :local_request?,
                          :from_dialog?,
                          :admin?,
-                         :current_refinery_user
+                         :current_refinery_user,
+                         :authorisation_manager, :authorization_manager
 
       base.protect_from_forgery # See ActionController::RequestForgeryProtection
 
@@ -66,9 +67,10 @@ module Refinery
       default
     end
 
-    private
     def authorisation_manager
       @authorisation_manager ||= ::Refinery::Core::AuthorisationManager.new
     end
+    # We ❤ you, too ️
+    alias_method :authorization_manager, :authorisation_manager
   end
 end

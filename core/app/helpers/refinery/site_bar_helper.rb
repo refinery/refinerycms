@@ -23,5 +23,10 @@ module Refinery
       { :locale => Refinery::I18n.current_locale }
     end
 
+    def display_site_bar?
+      authorisation_manager.allow?(:read, :site_bar) &&
+        "#{controller_name}##{action_name}" !~ %r{preview#show}
+    end
+
   end
 end

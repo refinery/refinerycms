@@ -62,7 +62,7 @@ module Refinery
       private
 
       def allow_controller?(controller_name)
-        authorisation_manager.allow?(:access_controller, controller_name)
+        authorisation_manager.allow?(:controller, controller_name)
       end
 
       def authorisation_manager

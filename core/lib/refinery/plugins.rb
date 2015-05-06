@@ -52,34 +52,13 @@ module Refinery
       end
     end
 
-
     class << self
-      def active
-        @active_plugins ||= new
-      end
-
       def always_allowed
         new registered.select(&:always_allow_access)
       end
 
       def registered
         @registered_plugins ||= new
-      end
-
-      def activate(name)
-        active << registered[name] if registered[name] && !active[name]
-      end
-
-      def deactivate(name)
-        active.delete_if { |p| p.name == name}
-      end
-
-      def set_active(names)
-        @active_plugins = new
-
-        names.each do |name|
-          activate(name)
-        end
       end
     end
 
