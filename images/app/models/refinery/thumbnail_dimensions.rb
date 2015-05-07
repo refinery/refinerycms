@@ -25,28 +25,28 @@ module Refinery
     def valid_geometry
       (original_width * original_height > 0) && thumb_geometry === geometry.geometry
     end
-    
+
     def resize_geometry
       ::Dragonfly::ImageMagick::Processors::Thumb::RESIZE_GEOMETRY === geometry.geometry
     end
-    
+
     def resize_necessary
-      !geometry.custom? || 
-          (geometry.custom? && 
-            (original_width > geometry.width || 
+      !geometry.custom? ||
+          (geometry.custom? &&
+            (original_width > geometry.width ||
               original_height > geometry.height))
     end
-    
+
     def original_dimensions
       @width = original_width
       @height = original_height
     end
-    
+
     def crop
       @width = geometry.width
       @height = geometry.height
     end
-    
+
     def scale
       # Try scaling with width factor first. (wf = width factor)
       wf_width = geometry.width.round
@@ -70,13 +70,13 @@ module Refinery
         @height = hf_height
       end
     end
-    
+
     def thumb_geometry
       Regexp.union(::Dragonfly::ImageMagick::Processors::Thumb::RESIZE_GEOMETRY,
                    ::Dragonfly::ImageMagick::Processors::Thumb::CROPPED_RESIZE_GEOMETRY,
                    ::Dragonfly::ImageMagick::Processors::Thumb::CROP_GEOMETRY)
     end
-    
+
     class Geometry
       attr_reader :geometry, :height, :width
       def initialize(geometry)
@@ -85,10 +85,10 @@ module Refinery
         else
           geometry.to_s
         end
-        
+
         @width, @height = @geometry.split(%r{\#{1,2}|\+|>|!|x}im)[0..1].map(&:to_f)
       end
-      
+
       def custom?
         %r{\d+x\d+>} === geometry
       end

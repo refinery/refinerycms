@@ -214,14 +214,14 @@ module Refinery
         context "an existing page" do
           before { Page.create :title => 'Preview me' }
 
-   it 'will show the preview changes in a new window' do
-      visit refinery.admin_pages_path
+          it 'will show the preview changes in a new window' do
+            visit refinery.admin_pages_path
 
-      find('a[tooltip^=Edit]').click
-      fill_in "Title", with: preview_content
-      window = window_opened_by do
-        click_button "Preview"
-      end
+            find('a[tooltip^=Edit]').click
+            fill_in "Title", with: preview_content
+            window = window_opened_by do
+              click_button "Preview"
+            end
 
             expect_window_with_content(preview_content, window: window)
 
@@ -240,16 +240,16 @@ module Refinery
             expect_window_without_content(
               ::I18n.t('switch_to_website', scope: 'refinery.site_bar'),
               window: window
-            )
+              )
             expect_window_without_content(
               ::I18n.t('switch_to_website_editor', scope: 'refinery.site_bar'),
               window: window
-            )
+              )
 
             window.close
           end
 
-           it 'will not save the preview changes' do
+          it 'will not save the preview changes' do
             visit refinery.admin_pages_path
 
             find('a[tooltip^=Edit]').click
@@ -261,7 +261,7 @@ module Refinery
             expect_window_with_content(
               preview_content,
               window: window
-            )
+              )
 
             window.close
 
@@ -285,7 +285,7 @@ module Refinery
             expect_window_without_content(
               ::I18n.t('switch_to_website', :scope => 'refinery.site_bar'),
               window: window
-            )
+              )
 
             window.close
           end
@@ -390,8 +390,8 @@ module Refinery
           # Create a home page in both locales (needed to test menus)
           home_page = Globalize.with_locale(:en) do
             Page.create :title => 'Home',
-                        :link_url => '/',
-                        :menu_match => "^/$"
+            :link_url => '/',
+            :menu_match => "^/$"
           end
 
           Globalize.with_locale(:ru) do
@@ -699,8 +699,8 @@ module Refinery
               allow(Refinery::Pages).to receive(:layout_template_whitelist).and_return(['abc', 'refinery'])
               allow(Refinery::Pages).to receive(:valid_templates).and_return(['abc', 'refinery'])
               parent_page = Page.create :title => 'Parent Page',
-                                        :view_template => 'refinery',
-                                        :layout_template => 'refinery'
+              :view_template => 'refinery',
+              :layout_template => 'refinery'
               @page = parent_page.children.create :title => 'Child Page'
             end
 
@@ -726,9 +726,11 @@ module Refinery
         before do
           page = Refinery::Page.create! :title => "test"
           Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
-            page.parts.create(:title => default_page_part,
-                              :body => "<header class='regression'>test</header>",
-                              :position => index)
+            page.parts.create(
+              title: default_page_part,
+              body: "<header class='regression'>test</header>",
+              position: index
+            )
           end
         end
 
@@ -738,8 +740,8 @@ module Refinery
           Capybara.ignore_hidden_elements = false
           expect(page).to have_content("header class='regression'")
           Capybara.ignore_hidden_elements = true
-         end
-       end
+        end
+      end
     end
 
     describe "TranslatePages", :type => :feature do

@@ -43,7 +43,7 @@ module Refinery
 
       def refinery_form_type?(type)
         [:radio, :select, :checkbox].include? type
-        
+
       end
 
       def refinery_engine_type?(type)
