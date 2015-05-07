@@ -41,6 +41,8 @@ it:
         remove_current: "Rimuovi immagine corrente"
         change: "Clicca qui per scegliere un'immagine"
         show: Visualizza
+      locale_picker:
+        language: Lingua
       resource_picker:
         download_current: "Scarica il file corrente"
         opens_in_new_window: Apri in una nuova finestra
