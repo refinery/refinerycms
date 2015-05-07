@@ -191,6 +191,14 @@ module Refinery
             user.plugins = plugin_list
             expect(user.plugins.collect(&:name)).to eq(plugin_list)
           end
+
+          it "assigns them to user with unique positions" do
+            expect(user.plugins).to eq([])
+
+            plugin_list = ["refinery_one", "refinery_two", "refinery_three"]
+            user.plugins = plugin_list
+            expect(user.plugins.pluck(:position)).to match_array([1,2,3])
+          end
         end
 
         context "when plugins are already assigned" do
