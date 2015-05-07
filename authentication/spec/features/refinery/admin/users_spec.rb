@@ -55,6 +55,19 @@ describe "User admin page", :type => :feature do
       expect(page).to have_content("cmsrefinery (cms@refinerycms.com)")
     end
 
+    it "can give a user access to 0 plugins" do
+      test_user = FactoryGirl.create(:refinery_user)
+
+      visit refinery.edit_admin_user_path(test_user)
+
+      all(:css, 'ul#plugins input[type=checkbox]').each { |e| e.set(false) }
+
+      click_button "Save"
+
+      test_user.reload
+      expect(test_user.plugins.count).to eql(0)
+    end
+
     let(:dotty_user) { FactoryGirl.create(:refinery_user, :username => 'user.name.with.lots.of.dots') }
     it "accepts a username with a '.' in it" do
       dotty_user # create the user
