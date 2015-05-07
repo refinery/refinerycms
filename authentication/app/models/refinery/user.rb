@@ -134,7 +134,7 @@ module Refinery
     end
 
     def plugin_position
-      plugins.select(:position).map{ |p| p.position.to_i}.max + 1
+      plugins.select(:position).map{ |p| p.position.to_i}.max.to_i + 1
     end
 
     def filter_existing_plugins_for(plugin_names)
