@@ -3,6 +3,7 @@ it:
     plugins:
       refinery_files:
         title: Risorse
+        description: Carica ed effettua il link a dei file
     admin:
       resources:
         delete: Elimina il file corrente
@@ -26,6 +27,8 @@ it:
           link_to_file: Collegamento a questo file
           button_text: Inserisci
   activerecord:
+    models:
+      refinery/resource: file
     errors:
       models:
         refinery/resource:

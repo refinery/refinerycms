@@ -35,6 +35,7 @@ it:
         delete: Eliminare per sempre questa pagina
         edit: Modifica questa pagina
         new: Aggiungi una nuova sotto-pagina
+        expand_collapse: Espandi o riduci le sotto-pagine
         page:
           view_live_html: Visualizza questa pagina<br/><em>(apre una nuova finestra del browser)</em>
           hidden: nascosto
@@ -47,6 +48,8 @@ it:
         form_page_parts:
           create_content_section: Aggiungi la sezione dei contenuti
           delete_content_section: Elimina la sezione dei contenuti
+          reorder_content_section: Riordina la sezione dei contenuti
+          reorder_content_section_done: Ho finito di riordinare la sezione dei contenuti
         form_advanced_options:
           page_options: Opzioni avanzate
           parent_page: Pagina Superiore
@@ -63,9 +66,19 @@ it:
           parent_page_help: "Si può fare in modo che questa pagina sia figlia di un'altra pagina selezionandola dalla lista; se invece si desidera che questa pagina sia una pagina di primo livello, lasciare in bianco."
           menu_title_help: Se si desidera che il menu mostri un titolo diverso da quello mostrato nella pagigna, inserirlo qui.
           custom_slug_help: Uno slug è un identificatore leggibile usato per creare l'URL assoluto di una pagina. Per sovrascrivere lo slug che è automaticamente creato da Refinery, scrivere il proprio slug qui.
+          layout_template: Layout template
+          layout_template_help: Puoi scegliere un differente template di layout per questa pagina
+          view_template: Mostra il template
+          view_template_help: Puoi scegliere un differente template di visualizzazione per questa pagina
         actions:
           create_new_page: Crea una nuova pagina
           reorder_pages: Riordina le pagine
           reorder_pages_done: Riordino Pagine terminato
         records:
           no_pages_yet: Non è stata ancora creata nessuna pagina. Clicca su "Crea nuova pagina" per aggiungere la tua prima pagina.
+  activerecord:
+    models:
+      refinery/page: pagina
+    attributes:
+      refinery/page:
+        title: Titolo
