@@ -20,7 +20,7 @@
       <%= "#{resource.title} (#{resource.file_name})" if resource %>
     </span>
     <div id='resource_actions'>
-      <%= action_icon :download, resource.try(:url), t('.download_current'), id: "current_resource_#{field}" %>
+      <%= action_icon :download, "#{resource.url if resource}", t('.download_current'), id: "current_resource_#{field}" %>
       <%= action_icon :delete, '#', t('.remove_current'), :id => "remove_resource_#{field}"   %>
     </div>
   </div>
