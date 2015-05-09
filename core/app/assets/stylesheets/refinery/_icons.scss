@@ -41,6 +41,7 @@
 .info_icon            {@include icon('info-circle');}
 .page_icon            {@include icon('file-o',$icon_page_colour)}
 .preview_icon         {@include icon('eye', $icon_preview_colour)}
+.remove_icon          {@include icon('unlink', $icon_delete_colour);}
 .reorder_done_icon    {@include icon('thumbs-o-up')}
 .reorder_h_icon       {@include icon('exchange');}
 .reorder_icon         {@include icon('unsorted');}
