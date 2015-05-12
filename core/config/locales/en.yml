@@ -44,12 +44,13 @@ en:
       locale_picker:
         language: Language
       resource_picker:
-        download_current: Download current file
+        download_current: Download this file
         opens_in_new_window: Opens in a new window
-        remove_current: "Remove current file"
-        no_resource_selected: 'There is currently no file selected, click here to add one.'
+        remove_current: "Detach this file"
+        no_resource_selected: 'There is no file attached, click here to add one.'
         name: Add File
-        current: Current File
+        name_replace: Replace File
+        current: This File
       search:
         button_text: Search
         results_for_html: "Search results for &#8216;<em>%{query}</em>&#8217;"

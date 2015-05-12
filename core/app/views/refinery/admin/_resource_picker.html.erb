@@ -1,4 +1,5 @@
 <%
+# add and replace use the same url
   insert_link = refinery.insert_admin_resources_path({
                   :dialog => true,
                   :update_resource => "current_resource_#{field}",
@@ -8,46 +9,71 @@
                   :current_link => "#{resource.url if resource}",
                   :height => 480,
                   :conditions => local_assigns[:conditions]
-                })
- %>
+                });
+# if there is no resource attached show the add resource field
+  add_resource_id = "#new_resource_link_#{field}"
+  replace_resource_id = "#current_resource_link_#{field}"
+  manage_resource_id = "#current_resource_container_#{field}"
+  add_class = resource ? 'hidden' : ''
+  manage_class = resource ? '' :  'hidden'
+%>
 <%= f.hidden_field field %>
 
 <div>
-  <%= action_icon :add, insert_link, t('.name'), id: "current_resource_link_#{field}" unless resource %>
+  <%= action_label :add, insert_link, t('.no_resource_selected'), {id: add_resource_id, class: add_class } %>
 
-  <div id="current_resource_container_<%= field %>" style="margin-top: 10px;<%= ' display: none;' unless resource %>">
+  <div id="<%= manage_resource_id%>"  class="<%= manage_class %>" >
     <span class="current_resource" id="<%="current_resource_text_#{field}"%>">
       <%= "#{resource.title} (#{resource.file_name})" if resource %>
     </span>
     <div id='resource_actions'>
-      <%= action_icon :download, "#{resource.url if resource}", t('.download_current'), id: "current_resource_#{field}" %>
       <%= action_icon :remove, '#', t('.remove_current'), :id => "remove_resource_#{field}"%>
+      <%= action_icon :replace, insert_link, t('.name_replace'), id: replace_resource_id %>
+      <%= action_icon :download, "#{resource.url if resource}", t('.download_current'), id: "current_resource_#{field}" %>
     </div>
   </div>
 </div>
 
 <% content_for :javascripts do %>
   <script>
+  // when a resource is attached or replaced
     resource_changed_<%= field %> = function(callback_args) {
-      $('#remove_resource_<%= field %>').show();
-      $('#current_resource_container_<%= field %>').show();
-      $('#no_resource_selected_<%= field %>').hide();
+      var manage_fields = document.getElementById('<%=manage_resource_id%>'),
+          add_field     = document.getElementById('<%=add_resource_id%>'),
+          replace_field = document.getElementById('<%=replace_resource_id%>'),
+          new_href = $(add_field).attr('href').replace(/current_link=([^&])*&/, 'current_link=' + callback_args.href + '&');
+
+    // 1. ensure correct fields are visible
+      $(manage_fields).removeClass('hidden');
+      $(add_field).addClass('hidden');
+
+    // 2. close and remove the dialog
       $('iframe#dialog_iframe').dialog('close');
       $('iframe#dialog_iframe').remove().parents('.ui-dialog').remove();
+
+    // 3. propagate the callback parameters to the form
       $('#<%= f.object_name.gsub(/\]\[|[^-a-zA-Z0-9:.]/, '_').sub(/_$/, '') %>_<%= field %>').val(callback_args.id);
-      $('#current_resource_link_<%= field %>').attr('href', $('#current_resource_link_<%= field %>').attr('href').replace(/current_link=([^&])*&/, 'current_link=' + callback_args.href + '&'));
+      $(replace_field).attr('href', $(replace_field).attr('href').replace(/current_link=([^&])*&/, 'current_link=' + callback_args.href + '&'));
       $('#current_resource_<%= field %>').attr('href', callback_args.href);
       $('#current_resource_text_<%= field %>').html(callback_args.html);
     };
 
+
     $(document).ready(function(e) {
       $('#remove_resource_<%= field %>').click(function(e) {
+        //When a resource is detached/removed from the parent object
+        var manage_fields = document.getElementById('<%=manage_resource_id%>'),
+            add_field = document.getElementById('<%=add_resource_id%>');
+
+        // 1. ensure correct fields are visible
+
+        $(add_field).removeClass('hidden');
+        $(manage_fields).addClass('hidden');
+
+        // 2. clear out values
         $('#<%= f.object_name %>_<%= field %>').val('');
-        $('#current_resource_container_<%= field %>').hide();
         $('#current_resource_text_<%= field %>').html('');
-        $('#no_resource_selected_<%= field %>').show();
-        $('#current_resource_link_<%= field %>').attr('href', $('#current_resource_link_<%= field %>').attr('href').replace(/current_link=([^&])*&/, 'current_link=&'));
-        $(this).hide();
+        $(add_field).attr('href', $(add_field).attr('href').replace(/current_link=([^&])*&/, 'current_link=&'));
         e.preventDefault();
       });
     });

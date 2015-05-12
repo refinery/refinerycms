@@ -424,7 +424,7 @@ var link_dialog = {
       e.preventDefault();
       if((resource_selected = $('#existing_resource_area_content ul li.linked a')).length > 0) {
         resourceUrl = parseURL(resource_selected.attr('href'));
-        relevant_href = <%= absolute_page_links ? "resource_selected.attr('href')" : "resourceUrl.pathname" %>;
+        relevant_href = <%= absolute_page_links ? "resource_selected.attr('href')" : "resourceUrl.pathname" %> + "?" + resourceUrl.options;
 
         <% unless absolute_page_links %>
         // Add any alternate resource stores that need a absolute URL in the regex below
