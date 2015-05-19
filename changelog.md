@@ -5,7 +5,6 @@
 * Migrated to Dragonfly ~> 1.0.0. [#2500](https://github.com/refinery/refinerycms/pull/2500). [Josef Šimánek](https://github.com/simi)
 * Removed Pages#cache_pages_backend. [#2375](https://github.com/refinery/refinerycms/pull/2375). [Philip Arndt](https://github.com/parndt)
 * Updated how `_make_sortable` works to take an options hash, requiring manual file changes. [Philip Arndt](https://github.com/parndt)
-* Removed `attr_accessible` in favour of strong parameters. [Philip Arndt](https://github.com/parndt) [#2518](https://github.com/refinery/refinerycms/pull/2518)
 * Removed `attr_accessible` in favour of strong parameters. [#2518](https://github.com/refinery/refinerycms/pull/2518). [Philip Arndt](https://github.com/parndt)
 * Removed the Dashboard extension, now the left most tab is selected when logging in. [#2727](https://github.com/refinery/refinerycms/pull/2727). [Philip Arndt](https://github.com/parndt)
 * Removed special 'Refinery Translator' role, introduced in 0.9.22, from the core. [#2730](https://github.com/refinery/refinerycms/pull/2730). [Philip Arndt](https://github.com/parndt)
