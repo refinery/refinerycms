@@ -47,7 +47,8 @@ module Refinery
         end
 
         context "when some pages exist" do
-          before { 2.times { |i| Page.create :title => "Page #{i}" } }
+          let!(:page_0) { Page.create! title: 'Page 0' }
+          let!(:page_1) { Page.create! title: 'Page 1' }
 
           it "shows reorder pages link" do
             visit refinery.admin_pages_path
@@ -55,6 +56,22 @@ module Refinery
             within "#actions" do
               expect(page).to have_content("Reorder pages")
               expect(page).to have_selector("a[href='/#{Refinery::Core.backend_route}/pages']")
+            end
+          end
+
+          context "when reordering pages" do
+            let(:reorder_url) { "/#{Refinery::Core.backend_route}/pages/update_positions" }
+            before do
+              visit refinery.admin_pages_path
+              page.driver.post(reorder_url, {
+                'ul[0][0][id]' => "page_#{page_1.id}",
+                'ul[0][1][id]' => "page_#{page_0.id}",
+              })
+            end
+
+            it "shows pages in the new order" do
+              visit refinery.admin_pages_path
+              expect(page.body).to match(/Page 1.*Page 0/m)
             end
           end
         end

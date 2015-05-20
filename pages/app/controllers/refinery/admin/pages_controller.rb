@@ -4,7 +4,6 @@ module Refinery
       include Pages::InstanceMethods
 
       crudify :'refinery/page',
-              :order => "lft ASC",
               :include => [:translations, :children],
               :paging => false
 
