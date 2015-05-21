@@ -1355,13 +1355,9 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 
 .nothing_selected {
-  border-bottom: 1px dotted #727272;
   width: auto;
   margin-bottom: 12px;
   display: inline-block;
-}
-.nothing_selected:hover {
-  border-bottom: 1px solid #727272;
 }
 #upgrade_wrapper li a {
   line-height: 20px;
