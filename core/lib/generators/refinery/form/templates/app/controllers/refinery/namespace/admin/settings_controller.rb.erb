@@ -27,7 +27,7 @@ module Refinery
       protected
 
         def setting_params
-           params.require(:setting).permit(:value)
+          params.require(:setting).permit(:value)
         end
 
         def check_setting
