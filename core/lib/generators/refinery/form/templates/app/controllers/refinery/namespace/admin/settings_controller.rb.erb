@@ -13,7 +13,7 @@ module Refinery
         def update
           @setting = Refinery::Setting.find(params[:id])
 
-          if @setting.update_attributes(params[:setting])
+          if @setting.update_attributes(setting_params)
             flash[:notice] = t('refinery.crudify.updated', :what => @setting.name.gsub("<%= singular_name %>_", "").titleize)
 
             if request.xhr? or from_dialog?
@@ -25,6 +25,11 @@ module Refinery
         end
 
       protected
+
+        def setting_params
+          params.require(:setting).permit(:value)
+        end
+
         def check_setting
           setting = params[:id].gsub("<%= singular_name %>_", "")
 
