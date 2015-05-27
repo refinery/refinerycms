@@ -8,7 +8,7 @@ module Refinery
                     :cache_pages_backend, :cache_pages_full, :layout_template_whitelist,
                     :use_layout_templates, :page_title, :absolute_page_links, :types,
                     :auto_expand_admin_tree, :show_title_in_body,
-                    :friendly_id_reserved_words
+                    :friendly_id_reserved_words, :layout_templates_pattern, :view_templates_pattern
 
     self.pages_per_dialog = 14
     self.pages_per_admin_index = 20
@@ -48,5 +48,7 @@ module Refinery
     self.friendly_id_reserved_words = %w(
       index new session login logout users refinery admin images
     )
+    self.layout_templates_pattern = 'app', 'views', '{layouts,refinery/layouts}', '*html*'
+    self.view_templates_pattern = 'app', 'views', '{pages,refinery/pages}', '*html*'
   end
 end
