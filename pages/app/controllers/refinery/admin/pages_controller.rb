@@ -79,13 +79,11 @@ module Refinery
       end
 
       def valid_layout_templates
-        Pages.layout_template_whitelist & Pages.valid_templates(
-            'app', 'views', '{layouts,refinery/layouts}', '*html*'
-          )
+        Pages.layout_template_whitelist & Pages.valid_templates(*Pages.layout_templates_pattern)
       end
 
       def valid_view_templates
-        Pages.valid_templates('app', 'views', '{pages,refinery/pages}', '*html*')
+        Pages.valid_templates(*Pages.view_templates_pattern)
       end
 
       def page_params

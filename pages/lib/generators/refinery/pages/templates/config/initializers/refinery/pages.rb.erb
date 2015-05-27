@@ -53,6 +53,14 @@ Refinery::Pages.configure do |config|
 
   # config.use_layout_templates = <%= Refinery::Pages.use_layout_templates.inspect %>
 
+  # Use these if you want to use layout or view templates whose filenames do not match the default pattern
+  # For more information on the patterns see Dir.glob (http://ruby-doc.org/core-2.2.0/Dir.html#method-c-glob)
+  # example: for .erb, .html and .rb view templates use
+  #         config.view_templates_pattern = 'app', 'views', '{pages,refinery/pages}', '*.{erb,html,rb}'
+
+  # config.layout_templates_pattern = 'app', 'views', '{layouts,refinery/layouts}', '*html*'
+  # config.view_templates_pattern = 'app', 'views', '{pages,refinery/pages}', '*html*'
+
   # config.page_title = <%= Refinery::Pages.page_title.inspect %>
 
   # config.absolute_page_links = <%= Refinery::Pages.absolute_page_links.inspect %>
