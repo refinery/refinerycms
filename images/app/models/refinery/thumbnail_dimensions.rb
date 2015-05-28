@@ -57,7 +57,7 @@ module Refinery
       hf_height = geometry.height.round
 
       # Take the highest value that doesn't exceed either axis limit.
-      use_wf = wf_width <= geometry.width && wf_height <= geometry.height
+      use_wf = wf_width > 0 && wf_width <= geometry.width && wf_height <= geometry.height
       if use_wf && hf_width <= geometry.width && hf_height <= geometry.height
         use_wf = wf_width * wf_height > hf_width * hf_height
       end
