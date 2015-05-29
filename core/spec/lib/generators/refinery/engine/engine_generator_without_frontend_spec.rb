@@ -41,6 +41,8 @@ module Refinery
                       directory "admin" do
                         directory "rspec_product_tests" do
                           file "_form.html.erb"
+                          file "_image_input.html.erb"
+                          file "_image_preview.html.erb"
                           file "_sortable_list.html.erb"
                           file "edit.html.erb"
                           file "index.html.erb"

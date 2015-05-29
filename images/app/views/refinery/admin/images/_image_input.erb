@@ -1,0 +1,8 @@
+<%
+   field_name_id = "#{field_name.to_s}_id"
+   has_image     = image.present?
+%>
+
+<div class="image-upload-container" data-field-name="<%= field_name %>">
+  <%= f.text_field field_name_id, class: 'image-id-field' %>
+</div>

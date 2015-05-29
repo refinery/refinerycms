@@ -7,6 +7,7 @@ module Refinery
               sortable: false
 
       before_action :change_list_mode_if_specified, :init_dialog
+      before_filter :redirect_index_view, only: [:index]
 
       def new
         @image = ::Refinery::Image.new if @image.nil?
@@ -37,82 +38,42 @@ module Refinery
       end
 
       def create
-        @images = []
+
         begin
-          if params[:image].present? && params[:image][:image].is_a?(Array)
-            params[:image][:image].each do |image|
-              params[:image][:image_title] = params[:image][:image_title].presence || auto_title(image.original_filename)
-              @images << (@image = ::Refinery::Image.create({image: image}.merge(image_params.except(:image))))
-            end
-          else
-            @images << (@image = ::Refinery::Image.create(image_params))
-          end
-        rescue NotImplementedError
+          @image = ::Refinery::Image.create(:image => params[:image][:image])
+        rescue Dragonfly::FunctionManager::UnableToHandle
           logger.warn($!.message)
           @image = ::Refinery::Image.new
+        rescue Exception => e
+          logger.warn e
+          return render json: {image_id: nil, message: 'Something went wrong', errors: [e]}, status: 500
         end
 
-        if params[:insert]
-          # if all uploaded images are ok redirect page back to dialog, else show current page with error
-          if @images.all?(&:valid?)
-            @image_id = @image.id if @image.persisted?
-            @image = nil
-          end
-
-          self.insert
+        if @image.valid?
+          return render json: {image_id: @image.id, message: 'created!', url: @image.thumbnail({geometry: '1400x>'}).url}, status: 200
         else
-          if @images.all?(&:valid?)
-            flash.notice = t('created', scope: 'refinery.crudify', what: "'#{@images.map(&:image_title).join("', '")}'")
-            if from_dialog?
-              @dialog_successful = true
-              render '/refinery/admin/dialog_success', layout: true
-            else
-              redirect_to refinery.admin_images_path
-            end
-          else
-            self.new # important for dialogs
-            render 'new'
-          end
+          return render json: {image_id: nil, message: 'validation failed', errors: @image.errors}, status: 400
         end
+
       end
 
       def update
-        @image.attributes = image_params
-        if @image.valid? && @image.save
-          flash.notice = t(
-            'refinery.crudify.updated',
-            what: "'#{@image.title}'"
-          )
+        create
+      end
 
-          if from_dialog?
-            self.index
-            @dialog_successful = true
-            render :index
-          else
-            if params[:continue_editing] =~ /true|on|1/
-              if request.xhr?
-                render partial: '/refinery/message'
-              else
-                redirect_to :back
-              end
-            else
-              redirect_back_or_default refinery.admin_images_path
-            end
-          end
-        else
-          @thumbnail = Image.find params[:id]
-          if request.xhr?
-            render partial: '/refinery/admin/error_messages', locals: {
-                     object: @image,
-                     include_object_name: true
-                   }
-          else
-            render 'edit'
-          end
+      def destroy
+        begin
+          ::Refinery::Image.find(params[:id]).destroy
+          return render json: {image_id: nil, old_id: params[:id], message: 'image removed', status: 200}
+        rescue
+          return render json: {image_id: nil, old_id: params[:id], message: 'Something went wrong', status: 500}
         end
       end
 
-      protected
+    protected
+      def redirect_index_view
+        error_404
+      end
 
       def init_dialog
         @app_dialog = params[:app_dialog].present?
