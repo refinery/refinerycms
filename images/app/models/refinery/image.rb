@@ -76,6 +76,8 @@ module Refinery
           geometry = '800x1200#'
         when 'square'
           geometry = '600x600#'
+        when 'square_sm'
+          geometry = '200x200#'
         else
           geometry = aspect == :landscape ? 'x700' : '1000X'
       end

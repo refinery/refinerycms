@@ -1,0 +1,47 @@
+<%
+   has_image = image.present?
+   # Set a default image usecase
+   unless defined?(use_case)
+    use_case = :h_md
+   end
+   unless defined?(preview_padding_top)
+     preview_padding_top = '67%'
+   end
+   unless defined?(title_text)
+     title_text = "Featured Image"
+   end
+%>
+
+<div class="upload-preview-container" <%= "style=padding-top:#{preview_padding_top};" %> data-field-name="<%= field_name %>">
+  <div class="upload-preview-inner">
+    <% unless defined?(buttons_only) && buttons_only %>
+      <div class="file-preview"
+        <% if has_image -%>
+          style="background-image: url(<%= image.thumbnail(geometry: image.geometry_string(use_case)).url %>)"
+        <% else -%>
+          style="display: none;"
+        <% end -%>
+      >
+      </div>
+    <% end %>
+
+
+    <div class="upload-overlay">
+      <span><%= title_text %></span>
+      <button type="button" class="btn btn-primary image-upload-btn">
+        <%= has_image ? 'Replace image' : 'Upload an Image' %>
+      </button>
+    </div>
+
+    <button type="button" class="btn btn-link image-delete-btn" <%= 'style=display:none;' if !has_image %>
+            title="Delete">
+      <i class="icon icon-trash"></i>
+    </button>
+    <!-- Bootstrap progress bar -->
+    <div class="progress-box" style="display:none;">
+      <div class="status-text"></div>
+      <progress class="progress progress-success progress-bar" value="25" max="100"></progress>
+    </div>
+    <div id="output"></div>
+  </div>
+</div>

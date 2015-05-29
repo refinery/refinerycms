@@ -16,7 +16,7 @@ module Refinery
     self.dragonfly_url_host = ''
     self.dragonfly_verify_urls = true
 
-    self.max_image_size = 5_242_880
+    self.max_image_size = (5242880 * 20) # 100 mb max file size.
     self.pages_per_dialog = 18
     self.pages_per_dialog_that_have_size_options = 12
     self.pages_per_admin_index = 20

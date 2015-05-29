@@ -50,6 +50,8 @@ module Refinery
                         directory "rspec_product_tests" do
                           file "_actions.html.erb"
                           file "_form.html.erb"
+                          file "_image_input.html.erb"
+                          file "_image_preview.html.erb"
                           file "_records.html.erb"
                           file "_rspec_product_test.html.erb"
                           file "_rspec_product_tests.html.erb"
