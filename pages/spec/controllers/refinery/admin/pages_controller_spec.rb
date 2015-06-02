@@ -17,6 +17,13 @@ module Refinery
           allow(Refinery::Pages).to receive(:view_templates_pattern).and_return(['tmp', '*.{rb,erb}'])
         end
 
+        after do
+          File.delete(Rails.root.join('tmp', 'abc.html.erb'))
+          File.delete(Rails.root.join('tmp', 'def.rb'))
+          File.delete(Rails.root.join('tmp', 'xyz.html.erb'))
+          File.delete(Rails.root.join('tmp', 'odd.file.name'))
+        end
+
         describe 'layout templates' do
           it 'returns the names of all files which fit the pattern and are in the whitelist' do
             expect(subject.send(:valid_layout_templates)).to include('abc')
