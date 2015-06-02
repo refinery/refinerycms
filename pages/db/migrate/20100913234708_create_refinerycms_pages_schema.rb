@@ -38,22 +38,38 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
     add_index :refinery_pages, :parent_id
     add_index :refinery_pages, :rgt
 
-    Refinery::PagePart.create_translation_table!({
-      :body => :text
-    })
+    begin
+      ::Refinery::PagePart.create_translation_table!({
+        :body => :text
+      })
+    rescue NameError
+      warn "Refinery::PagePart was not defined!"
+    end
 
-    Refinery::Page.create_translation_table!({
-      :title => :string,
-      :custom_slug => :string,
-      :menu_title => :string,
-      :slug => :string
-    })
+    begin
+      ::Refinery::Page.create_translation_table!({
+        :title => :string,
+        :custom_slug => :string,
+        :menu_title => :string,
+        :slug => :string
+      })
+    rescue NameError
+      warn "Refinery::Page was not defined!"
+    end
   end
 
   def down
     drop_table :refinery_page_parts
     drop_table :refinery_pages
-    Refinery::PagePart.drop_translation_table!
-    Refinery::Page.drop_translation_table!
+    begin
+      ::Refinery::PagePart.drop_translation_table!
+    rescue NameError
+      warn "Refinery::PagePart was not defined!"
+    end
+    begin
+      ::Refinery::Page.drop_translation_table! if defined?(::Refinery::Page)
+    rescue NameError
+      warn "Refinery::Page was not defined!"
+    end
   end
 end
