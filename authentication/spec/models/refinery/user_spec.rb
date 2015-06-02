@@ -260,7 +260,7 @@ module Refinery
 
       it "adds registered plugins" do
         expect(first_user.plugins.collect(&:name)).to eq(
-          %w(refinery_users refinery_images refinery_files refinery_pages)
+          %w(refinery_pages refinery_files refinery_images refinery_users)
         )
       end
 

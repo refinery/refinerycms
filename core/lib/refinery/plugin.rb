@@ -16,7 +16,7 @@ module Refinery
       plugin.class_name ||= plugin.name.camelize
 
       # add the new plugin to the collection of registered plugins
-      ::Refinery::Plugins.registered << plugin
+      ::Refinery::Plugins.registered.unshift plugin
     end
 
     # Returns the internationalized version of the title
