@@ -8,14 +8,31 @@ Refinery::I18n.frontend_locales.each do |lang|
   end if defined?(Refinery::Authentication::Devise::User)
 
 <% unless skip_frontend? -%>
-  Refinery::Page.where(link_url: (url = "/<%= [(namespacing.underscore if namespacing.underscore != plural_name), plural_name].compact.join('/') %>")).first_or_create!(
-    title: '<%= class_name.pluralize.underscore.titleize %>',
-    deletable: false,
-    menu_match: "^#{url}(\/|\/.+?|)$"
-  ) do |page|
+  if defined?(Refinery::Page)
+    parent_identifier = "<%= [namespacing.underscore, plural_name].compact.join('-') %>"
+    url               = "/<%= [(namespacing.underscore if namespacing.underscore != plural_name), plural_name].compact.join('/') %>"
+    page = Refinery::Page.where(identifier: parent_identifier).first_or_create!(
+      :title => "<%= class_name.pluralize.underscore.titleize %>",
+      :identifier => parent_identifier,
+      :deletable => false,
+      :menu_match => "^#{url}(\/|\/.+?|)$"
+    )
+<%   if include_form? -%>
+    thankyou_identifier = "<%= [namespacing.underscore, plural_name, 'thank-you'].compact.join('-') %>"
+    thank_you_page = Refinery::Page.where(identifier: thankyou_identifier).first_or_create!(
+      :title => "Thank You",
+      :identifier => thankyou_identifier,
+      :deletable => false,
+      :show_in_menu => false
+    )
+    thank_you_page.update_attribute(:parent, page)
+<%   end -%>
     Refinery::Pages.default_parts.each_with_index do |part, index|
-      page.parts.build title: part, body: nil, position: index
+      page.parts.where(:title => part).first_or_create!(:body => nil, :position => index)
+<%   if include_form? -%>
+      thank_you_page.parts.where(:title => part).first_or_create!(:body => nil, :position => index)
+<%   end -%>
     end
-  end if defined?(Refinery::Page)
+  end
 <% end -%>
 end

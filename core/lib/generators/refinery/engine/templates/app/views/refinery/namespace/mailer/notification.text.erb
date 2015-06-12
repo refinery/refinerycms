@@ -1,0 +1,13 @@
+<%%=raw t('.greeting') %>,
+
+<%%=raw t('.from') %>: <%%= @<%= singular_name %>.name %>
+<%%=raw t('.email') %>: <%%= @<%= singular_name %>.email %>
+<%%=raw t('.phone') %>: <%%= @<%= singular_name %>.phone %>
+<%%=raw t('.message') %>:
+<%%=raw strip_tags(@<%= singular_name %>.message) %>
+
+
+<%%=raw t('.closing_line') %>,
+<%%=raw Refinery::Core.site_name %>
+
+<%%=raw t('.ps') -%>

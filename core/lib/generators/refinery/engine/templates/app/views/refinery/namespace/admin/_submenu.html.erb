@@ -1,0 +1,16 @@
+<%% content_for :admin_submenu do %>
+  <ul class='list-unstyled'>
+    <li class='list-heading'>
+      <%%= t('.<%= plural_name %>.title') %>
+    </li>
+
+    <li>
+      <%%= link_to '<i class="icon icon-index"></i>'.html_safe + t('.<%= plural_name %>.manage'),
+                  refinery.<%= namespacing.underscore %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path %>
+    </li>
+    <li>
+      <%%= link_to '<i class="icon icon-add"></i>'.html_safe + t('.<%= plural_name %>.new'),
+                  refinery.new_<%= namespacing.underscore %>_admin_<%= singular_name %>_path %>
+    </li>
+  </ul>
+<%% end %>

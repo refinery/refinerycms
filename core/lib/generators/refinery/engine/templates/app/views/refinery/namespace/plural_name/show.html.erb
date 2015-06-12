@@ -2,38 +2,49 @@
   <%%= @<%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>.<%= title.name %><% else %>.title<% end %> %>
 <%% end %>
 
-<%% content_for :body do %>
+<section id="cover" style="height: 200px">
+</section>
+
+<section id="<%= singular_name %>">
+  <div class="container">
+    <div class="row">
+      <div class="sidebar col-xs-12 col-sm-4 col-md-3">
+        <ul id="page-sub-nav" class="list-unstyled">
+          <%% ::Refinery::<%= namespacing %>::<%= class_name %>.get_all.each do |<%= singular_name %>| %>
+            <li><%%= link_to <%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>.<%= title.name %><% else %>.title<% end %>, refinery.<%= namespacing.underscore %>_<%= singular_name %>_path(<%= singular_name %>) %></li>
+          <%% end %>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-8 col-md-9">
 <% attributes.each do |attribute| -%>
-  <section>
-    <h1><%= attribute.name.titleize %></h1>
-    <p>
-<% if attribute.refinery_type == :image -%>
-      <%%= image_fu @<%= singular_name %>.<%= attribute.name.gsub('_id', '') %>, nil %>
-<% elsif attribute.refinery_type == :resource -%>
-      <%% if @<%= singular_name %>.<%= attribute.name %>.present? %>
-        <%%= link_to <%= "'#{attribute.name}'" %>, @<%= singular_name %>.<%= attribute.name.gsub('_id', '') %>.url %>
-      <%% else %>
-        <%= attribute.name %>
-      <%% end %>
+<% if attribute.type.to_s == 'image' -%>
+        <h4><%= attribute.name.titleize %></h4>
+        <p>
+          <%%= image_fu @<%= singular_name %>.<%= attribute.name %>, '300x200' %>
+        </p>
+<% elsif attribute.type.to_s == 'resource' -%>
+        <h4><%= attribute.name.titleize %></h4>
+        <p>
+          <%% if @<%= singular_name %>.<%= attribute.name %>.present? %>
+            <%%= link_to <%= "'#{attribute.name}'" %>, @<%= singular_name %>.<%= attribute.name %>.url %>
+          <%% else %>
+            <%= attribute.name %>
+          <%% end %>
+        </p>
+<%
+  elsif attribute.type.to_s == 'string'
+    live_editor_options = include_live_editor? ? "  class=\"glass-edit\"                 data-glass-options=\'{\"form_id\": \"#{singular_name}_#{attribute.name}\"}\' glass-placeholder=\"#{attribute.name.titleize}\"" : ""
+-%>
+        <h1<%= live_editor_options %>><%%= @<%= singular_name %>.<%= attribute.name %> %></h1>
+<% elsif attribute.field_type.to_s == 'text_area' and include_live_editor? -%>
+        <div class="glass-edit glass-edit-html" data-glass-options='{"form_id": "<%= singular_name %>_<%= attribute.name %>", "type": "html"}'>
+          <%%= raw @<%= singular_name %>.<%= attribute.name %>.present? ? @<%= singular_name %>.<%= attribute.name %> : '<p><br></p>' %>
+        </div>
 <% else -%>
-      <%%=raw @<%= singular_name %>.<%= attribute.name %> %>
+        <%%=raw @<%= singular_name %>.<%= attribute.name %> %>
 <% end -%>
-    </p>
-  </section>
 <% end -%>
-<%% end %>
-
-<%% content_for :side_body do %>
-  <aside>
-    <h2><%%= t('.other') %></h2>
-    <ul id="<%= plural_name %>">
-      <%% @<%= "all_" if plural_name == singular_name%><%= plural_name %>.each do |<%= singular_name %>| %>
-        <li>
-          <%%= link_to <%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>.<%= title.name %><% else %>.title<% end %>, refinery.<%= namespacing.underscore %>_<%= singular_name %>_path(<%= singular_name %>) %>
-        </li>
-      <%% end %>
-    </ul>
-  </aside>
-<%% end %>
-
-<%%= render '/refinery/content_page' %>
+      </div>
+    </div>
+  </div>
+</section>

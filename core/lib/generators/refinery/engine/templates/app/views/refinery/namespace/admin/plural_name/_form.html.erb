@@ -1,15 +1,37 @@
+<%%= render 'refinery/<%= namespacing.underscore %>/admin/submenu' %>
+
 <%
-  text_areas = attributes.reject{ |a| a.field_type.to_s != 'text_area'}
-  generated_text_areas = false
+  delete_title = (title = attributes.detect { |a| a.type.to_s == "string" }).present? ? ", :title => @#{singular_name}.#{title.name}" : ''
 -%>
-<%%= form_for [refinery, :<%= namespacing.underscore %>_admin, @<%= singular_name %>] do |f| -%>
-  <%%= render '/refinery/admin/error_messages',
-              :object => @<%= singular_name %>,
-              :include_object_name => true %>
+<% if include_live_editor? -%>
+<%% content_for :admin_page_preview do %>
+  <%%= render template: 'refinery/<%= namespacing.underscore %>/<%= plural_name %>/show' %>
+<%% end %>
+
+<%% content_for :admin_sidebar do %>
+<% end -%>
+<% if include_live_editor? -%>
+  <div class="page-options">
+    <div class="sidebar-section">
+      <div class="sidebar-section-heading">
+        <i class="icon icon-pencil"></i> <span class="flex-1">Status: <strong>Draft</strong></span>
+      </div>
+    </div>
+<% else -%>
+<%% content_for :admin_content do %>
+
+<div class="admin-page container-fluid">
+ <div class="row">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+<% end -%>
+    <%%= form_for [refinery, :<%= namespacing.underscore %>_admin, @<%= singular_name %>], :html => {:class => "ajax-form"} do |f| -%>
+      <%%= render '/refinery/admin/error_messages',
+                  :object => @<%= singular_name %>,
+                  :include_object_name => true %>
 
 <% if localized? -%>
-  <%%= render '/refinery/admin/locale_picker',
-              :current_locale => Globalize.locale %>
+      <%%= render '/refinery/admin/locale_picker',
+                  :current_locale => Globalize.locale %>
 <% end -%>
 <% attributes.each_with_index do |attribute, index|  -%>
 <%   if attribute.refinery_type == :image -%>
@@ -36,44 +58,46 @@
                    :resource => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %> -%>
       </div>
 
-<% elsif attribute.refinery_type == :resource -%>
-  <div class='field'>
-    <%%= f.label :<%= attribute.name %> -%>
-    <%%= render '/refinery/admin/resource_picker',
-               :f => f,
-               :field => :<%= attribute.column_name %>,
-               :resource => @<%= singular_name %>.<%= attribute.name %> -%>
+<%   elsif attribute.type.to_s == 'time' -%>
+       TODO: put the time input field in here
+<%   elsif attribute.type.to_s.start_with?('date') -%>
+      <div class="sidebar-section sidebar-date">
+        <%%= f.hidden_field :<%= attribute.name %>, :value => @<%= singular_name %>.<%= attribute.name %>.present? ? @<%= singular_name %>.<%= attribute.name %>.iso8601 : nil %>
+        <button class="datepicker-opener<%= ' date-only' if attribute.type.to_s == 'date' %>" type="button" data-io-selector="#<%= singular_name %>_<%= attribute.name %>">
+          <div class="sidebar-section-heading">
+            <i class="icon icon-calendar"></i>
+            <span class="flex-1">
+              Published: <strong class="update-date"> <%%= @<%= singular_name %>.<%= attribute.name %>.present? ? @<%= singular_name %>.<%= attribute.name %>.strftime("%b. %e %Y<%= ' %l:%M %p' if attribute.type.to_s == 'datetime' %>") : "Choose date" %></strong>
+            </span>
+            <i class="icon icon-down"></i>
+          </div>
+        </button>
+        <%%= render '/glass/datepicker' %>
+      </div>
+
+<%   else -%>
+<%     if include_live_editor? -%>
+      <%%= f.hidden_field :<%= attribute.name %> -%>
+<%     else -%>
+      <div class='form-group'>
+        <%%= f.label :<%= attribute.name %>, class: 'control-label' -%>
+        <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%>, :class => 'form-control'<%= ", :checked => @#{singular_name}[:#{attribute.name}]" if attribute.field_type == :check_box %> -%>
+      </div>
+
+<%     end -%>
+<%   end # switch attribute type -%>
+<% end # attributes.each -%>
+      <%%= render '/refinery/admin/form_actions', :f => f, <%= ':sidebar => true,' if include_live_editor? %>
+                 :continue_editing => false,
+                 :delete_title => t('delete', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.<%= singular_name %>'),
+                 :delete_confirmation => t('message', :scope => 'refinery.admin.delete'<%= delete_title %>) -%>
+    <%% end # form_for -%>
   </div>
+<% if include_live_editor? -%>
+<%% end # content_for :admin_sidebar %>
+<% else -%>
+ </div>
+</div>
 
-<% elsif attribute.field_type.to_s == "text_area" and !generated_text_areas -%>
-  <div class='field'>
-    <%%= render '/refinery/admin/wysiwyg',
-                :f => f,
-                :fields => <%= text_areas.map{ |t| t.name.to_sym}.inspect -%>,
-                :object => "<%= namespacing.underscore -%>/<%= singular_name -%>" -%>
-  </div>
-
-<% generated_text_areas = true -%>
-<% elsif attribute.field_type.to_s != 'text_area' -%>
-  <div class='field'>
-    <%%= f.label :<%= attribute.name %> -%>
-    <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%><%= ", :class => 'larger widest'" if (index == 0 && attribute.field_type == :text_field) -%><%= ", :checked => @#{singular_name}[:#{attribute.name}]" if attribute.field_type == :check_box %> -%>
-  </div>
-
-<% end -%>
-<% end -%>
-  <%%= render '/refinery/admin/form_actions', :f => f,
-             :continue_editing => false,
-             :delete_title => t('delete', :scope => 'refinery.<%= plural_name %>.admin.<%= plural_name %>.<%= singular_name %>'),
-             :delete_confirmation => t('message', :scope => 'refinery.admin.delete'<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>, :title => @<%= singular_name %>.<%= title.name %><% end %>) -%>
-<%% end -%>
-<% if text_areas.any? -%>
-
-<%% content_for :javascripts do -%>
-  <script>
-    $(document).ready(function(){
-      page_options.init(false, '', '');
-    });
-  </script>
-<%% end -%>
+<%% end # content_for :admin_content %>
 <% end -%>

@@ -18,6 +18,38 @@ module Refinery
         # by swapping @page for @<%= singular_name %> in the line below:
         present(@page)
       end
+<% if include_form? -%>
+
+      def new
+        @<%= singular_name %> = <%= class_name %>.new
+      end
+
+      def create
+        @<%= singular_name %> = <%= class_name %>.new(<%= singular_name %>_params)
+
+        if @<%= singular_name %>.save
+          begin
+            Mailer.notification(@<%= singular_name %>, request).deliver
+          rescue => e
+            logger.warn "There was an error delivering the <%= singular_name %> notification.\n#{e.message}\n"
+          end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>
+
+          if <%= class_name %>.column_names.map(&:to_s).include?('email')
+            begin
+              Mailer.confirmation(@<%= singular_name %>, request).deliver
+            rescue => e
+              logger.warn "There was an error delivering the <%= singular_name %> confirmation:\n#{e.message}\n"
+            end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>
+          else
+            logger.warn "Please add an 'email' field to <%= class_name %> if you wish to send confirmation emails when forms are submitted."
+          end
+
+          redirect_to Refinery::Page.where(:identifier => "<%= [namespacing.underscore, plural_name, 'thank-you'].compact.join('-') %>").first().nested_path
+        else
+          render :action => 'new'
+        end
+      end
+<% end -%>
 
     protected
 
@@ -27,6 +59,12 @@ module Refinery
 
       def find_page
         @page = ::Refinery::Page.where(:link_url => "/<%= plural_name %>").first
+      end
+
+    private
+
+      def <%= singular_name %>_params
+        params.require(:<%= singular_name %>).permit(<%= attributes.map { |a| ":" << a.name }.join(", ") %>)
       end
 
     end

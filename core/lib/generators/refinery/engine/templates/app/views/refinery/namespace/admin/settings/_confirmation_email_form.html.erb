@@ -1,0 +1,65 @@
+<%%= form_for @setting, :url => refinery.<%= namespacing.underscore %>_admin_setting_path(@setting) do |f| %>
+
+  <div class="text-left">
+    <p>
+      <%%= t('.explanation') %>
+    </p>
+
+    <p>
+      <%%= t('.below_edit_email_sent') %>
+    </p>
+  </div>
+  <div class="row m-t" id='<%= singular_name %>'>
+    <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 text-right text-right">
+          <label class='stripped'><%%= t('.to') %>:</label>
+        </div>
+        <div class="col-xs-12 col-sm-9 text-left">
+          <%%= t('.the_customer_making_<%= singular_name %>') %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 text-right">
+          <label class='stripped'><%%= t('.from') %>:</label>
+        </div>
+        <div class="col-xs-12 col-sm-9 text-left">
+          <%%= "#{Refinery::Core.site_name} &lt;no-reply@#{request.domain}&gt;".html_safe %>
+        </div>
+      </div>
+      <div class="row">
+      <%% Refinery::I18n.frontend_locales.each do |locale| %>
+        <div class="col-xs-12 col-sm-3 text-right">
+          <label class='stripped'><%%= t('.subject') %> (<%%= locale.to_s %>):</label>
+        </div>
+        <div class="col-xs-12 col-sm-9 text-left">
+          <div class="form-group">
+            <%%= text_field_tag "subject",  Refinery::<%= namespacing %>::Setting.confirmation_subject,
+                               :class => 'widest form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 text-right">
+          <%%= f.label :value, t('.message'),
+                      :class => 'stripped' %> (<%%= locale.to_s %>):
+        </div>
+        <div class="col-xs-12 col-sm-9 text-left">
+          <div class="form-group">
+            <%%= f.text_area :value, :value => @setting.value, # required, we can't use :value
+                              :rows => "5",
+                              :class => 'widest form-control' %>
+            <br/>
+            <em><%%= t('.note') %></em>
+          </div>
+        </div>
+      <%% end %>
+      </div>
+    </div>
+  </div>
+
+<%%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :cancel_url => refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_url,
+             :hide_delete => true %>
+<%% end %>

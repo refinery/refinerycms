@@ -1,7 +1,161 @@
-<section id='records'>
-  <%%= render 'records' %>
-</section>
-<aside id='actions'>
-  <%%= render 'actions' %>
-</aside>
-<%%= render '/refinery/admin/make_sortable', options: {tree: false} if !searching? and ::Refinery::<%= namespacing %>::Admin::<%= class_name.pluralize %>Controller.sortable? and ::Refinery::<%= namespacing %>::<%= class_name %>.many? %>
+<% if include_moderation? -%>
+<%%
+  submenu_btns = [
+    {
+      :title  => "Inbox (#{@inbox_count})",
+      :href   => refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path,
+      :icon   => 'index',
+    },
+    {
+      :title  => "Approved (#{@approved_count})",
+      :href   => refinery.approved_<%= namespacing.underscore %>_admin_<%= plural_name %>_path,
+      :icon   => 'check',
+    },
+    {
+      :title  => "Rejected (#{@rejected_count})",
+      :href   => refinery.rejected_<%= namespacing.underscore %>_admin_<%= plural_name %>_path,
+      :icon   => 'trash',
+    },
+  ]
+%>
+
+<% end -%>
+<%% content_for :admin_content do %>
+	<section id='admin-page-content' class='admin-index container-fluid'>
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="admin-title"><%%= t('.title') %></h2>
+        <div class="contextual-menu">
+          <!-- FILTERING -->
+          <!--
+          <div class="dropdown">
+            <button class="btn btn-link-gray" type="button" id="dropdown-filter" data-toggle="dropdown" aria-expanded="true">
+              <i class="icon icon-filter"></i> Filter by: <strong>Cats</strong> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-filter">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Newest</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Oldest </a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Alphabetical</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reverse Alphabetical</a></li>
+            </ul>
+          </div>
+          -->
+
+          <!-- SORTING -->
+          <!--
+          <div class="dropdown">
+            <button class="btn btn-link-gray" type="button" id="dropdown-sort" data-toggle="dropdown" aria-expanded="true">
+              <i class="icon icon-sort"></i> Sort by: <strong>Newest</strong> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-sort">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="icon icon-sort"></i> Newest</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="icon icon-sort-two"></i> Oldest </a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="icon icon-sort-alpha"></i> Alphabetical</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="icon icon-sort-alpha-two"></i> Reverse Alphabetical</a></li>
+            </ul>
+          </div>
+          -->
+
+          <%% if !searching? && ::Refinery::<%= namespacing %>::Admin::<%= class_name.pluralize %>Controller.sortable? && ::Refinery::<%= namespacing %>::<%= class_name %>.many? %>
+            <button id='reorder_action' class="btn btn-link-gray">
+              <i class="icon icon-reorder bump-down"></i> <strong><%%= t('reorder',      :scope => 'refinery.admin.search') %></strong>
+            </button>
+            <button id='reorder_action_done' class="btn btn-link-gray" style="display: none;">
+              <i class="icon icon-reorder bump-down"></i> <strong><%%= t('reorder_done', :scope => 'refinery.admin.search') %></strong>
+            </button>
+          <%% end %>
+
+<% if include_form? -%>
+            <div class="dropdown">
+              <button class="btn btn-link-gray" type="button" id="dropdown-sort">
+                <i class="icon icon-gear"></i> Options <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+<%   if include_moderation? -%>
+                <li role="presentation">
+                  <%%= link_to t('.toggle_moderation'),
+                              refinery.moderation_<%= namespacing.underscore %>_admin_settings_path,
+                              :class => "#{::Refinery::<%= namespacing %>::<%= class_name %>::Moderation.enabled? ? 'success' : 'failure'}_icon" %>
+                </li>
+<%   end -%>
+                <li role="presentation">
+                  <a href="<%%= refinery.edit_<%= namespacing.underscore %>_admin_setting_path(:<%= singular_name %>_notification_recipients) %>" class="open-modal" role="menuitem" data-modal-selector="#notification-modal">
+                    <i class="icon icon-edit"></i> Who to notify
+                  </a>
+                </li>
+                <li role="presentation">
+                  <a href="<%%= refinery.edit_<%= namespacing.underscore %>_admin_setting_path(:<%= singular_name %>_confirmation_body) %>" class="open-modal" role="menuitem" data-modal-selector="#response-email-modal">
+                    <i class="icon icon-edit"></i> Response email
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+
+            <div id="notification-modal" class="ui standard modal">
+              <i class="icon icon-close close"></i>
+              <div class="header">
+                Who should be notified?
+              </div>
+              <div class="content">
+                <div class="description">
+                </div>
+              </div>
+              <div class="actions">
+                <div class="buttons">
+                  <button class="btn btn-secondary-outline btn-modal-cancel">
+                    Cancel
+                  </button>
+                  <button class="btn btn-primary btn-submit-modal">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="response-email-modal" class="ui standard modal">
+              <i class="icon icon-close close"></i>
+              <div class="header">
+                Response Email
+              </div>
+              <div class="content">
+                <div class="description">
+                </div>
+              </div>
+              <div class="actions">
+                <div class="buttons">
+                  <button class="btn btn-secondary-outline btn-modal-cancel">
+                    Cancel
+                  </button>
+                  <button class="btn btn-primary btn-submit-modal">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+<% end -%>
+
+          <%% if ::Refinery::<%= namespacing %>::Admin::<%= class_name.pluralize %>Controller.searchable? %>
+            <%%= render '/refinery/admin/search', :url => refinery.<%= namespacing.underscore %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path %>
+          <%% end %>
+<% if include_moderation? -%>
+          <%% submenu_btns.each do |btn| %>
+            <a href="<%%= btn[:href] %>" class="btn btn-secondary-outline <%%= 'active' if request.fullpath == btn[:href] %>">
+              <i class="icon icon-<%%= btn[:icon] %>"></i> <span class="hidden-xs-down"><strong><%%= btn[:title] %></strong></span>
+            </a>
+          <%% end %>
+<% end -%>
+          <a href="<%%= refinery.new_<%= namespacing.underscore %>_admin_<%= singular_name %>_path %>" class="btn btn-primary">
+            <i class="icon icon-add"></i> <span class="hidden-xs-down"><strong>New <%= singular_name %></strong></span>
+          </a>
+        </div>
+      </div>
+      <div class="col-xs-12 index-listing">
+        <%%= render 'records' %>
+      </div>
+    </div>
+	</section>
+  <%%= render '/refinery/admin/make_sortable', options: {tree: false} if !searching? and ::Refinery::<%= namespacing %>::Admin::<%= class_name.pluralize %>Controller.sortable? and ::Refinery::<%= namespacing %>::<%= class_name %>.many? %>
+
+<%% end %>
+<%%= render 'refinery/<%= namespacing.underscore %>/admin/submenu' %>

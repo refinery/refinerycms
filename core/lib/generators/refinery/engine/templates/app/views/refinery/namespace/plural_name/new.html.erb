@@ -1,0 +1,54 @@
+<% if include_form? -%>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 m-b-lg placeholder-labels <%= plural_name %>">
+      <div style="height: 100px"><!-- I'm just a spacer --></div>
+      <%%#=raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) %>
+
+      <%%= form_for [refinery, :<%= namespacing.underscore %>, @<%= singular_name %>], :html => {:class => "ajax-form ajax-thank-you"} do |f| %>
+        <%%= render '/refinery/admin/error_messages',
+                   :object => @<%= singular_name %>,
+                   :include_object_name => true  %>
+<% attributes.each do |attribute| %>
+
+        <div class='form-group <%= attribute.name %>_field <%= attribute.type %>_field'>
+<% case attribute.type -%>
+<% when :string -%>
+          <%%#= f.label :<%= attribute.name %> %>
+          <%%= f.text_field :<%= attribute.name %>, :class => 'form-control form-control-lg', :placeholder => @<%= singular_name %>.class.human_attribute_name('<%= attribute.name %>') %>
+<% when :text -%>
+          <%%#= f.label :<%= attribute.name %> %>
+          <%%= f.text_area :<%= attribute.name %>, :rows => 8, :class => 'form-control', :placeholder => @<%= singular_name %>.class.human_attribute_name('<%= attribute.name %>') %>
+<% when :radio -%>
+          <%%= f.label :<%= attribute.name %> %>
+          <%% Refinery::<%= namespacing %>::<%= class_name %>::<%= attribute.name.pluralize.upcase %>.each do |value, name| %>
+            <%%= f.radio_button :<%= attribute.name %>, (name || value), :value => value %>
+            <%%= f.label :"<%= attribute.name %>_#{(name || value)}", value.humanize %>
+          <%% end %>
+<% when :checkbox -%>
+          <%%= f.check_box :<%= attribute.name %> %>
+          <%%= f.label :<%= attribute.name %> %>
+<% when :select -%>
+          <%%= f.label :<%= attribute.name %> %>
+          <%%= f.select :<%= attribute.name %>, Refinery::<%= namespacing %>::<%= class_name %>::<%= attribute.name.pluralize.upcase %>,
+                        :include_blank => true, :class => 'form-control' %>
+<% when :datetime -%>
+          <%%= f.label :<%= attribute.name %> %>
+          <%%= f.text_field :<%= attribute.name %>, :class => 'form-control form-control-lg datetimepicker default', :value => @<%= singular_name %>.<%= attribute.name %>.present? ? @<%= singular_name %>.<%= attribute.name %>.strftime('%m/%d/%Y %I:%M %p') : nil %>
+<% when :date -%>
+          <%%= f.label :<%= attribute.name %> %>
+          <%%= f.text_field :<%= attribute.name %>, :class => 'form-control form-control-lg datetimepicker date-only', :value => @<%= singular_name %>.<%= attribute.name %>.present? ? @<%= singular_name %>.<%= attribute.name %>.strftime('%m/%d/%Y') : nil %>
+<% when :time -%>
+          <%%= f.label :<%= attribute.name %> %>
+          <%%= f.text_field :<%= attribute.name %>, :class => 'form-control form-control-lg datetimepicker time-only', :value => @<%= singular_name %>.<%= attribute.name %>.present? ? @<%= singular_name %>.<%= attribute.name %>.strftime('%I:%M %p') : nil %>
+<% end -%>
+        </div>
+<% end %>
+        <div class='actions'>
+          <%%= f.button t('.send'), :class => 'btn btn-primary btn-lg' %>
+        </div>
+      <%% end %>
+    </div>
+  </div>
+</div>
+<% end -%>

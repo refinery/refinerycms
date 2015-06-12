@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 module Refinery
   module <%= namespacing %>
     module Admin
@@ -5,8 +7,102 @@ module Refinery
 
         crudify :'refinery/<%= namespacing.underscore %>/<%= singular_name %>'<% if (title = attributes.detect { |a| a.type.to_s =~ /string|text/ }).present? and title.name != 'title' -%>,
                 :title_attribute => '<%= title.name %>'<% end -%><% if plural_name == singular_name -%>,
-                :redirect_to_url => :refinery_<%= namespacing.underscore %>_admin_<%= singular_name %>_index_path<% end %>
+                :redirect_to_url => :refinery_<%= namespacing.underscore %>_admin_<%= singular_name %>_index_path<% end %>,
+                :searchable => false,
+                :sortable => false
 
+        # NOTE: when making searchable: remember to add to your model `acts_as_indexed :fields => [:title, :body]`
+
+<% if @includes_spam -%>
+        def index
+          @<%= plural_name %> = find_all_<%= plural_name %>.ham
+          @<%= plural_name %> = @<%= plural_name %>.with_query('^' + params[:search].split.join(' ^')) if searching?
+
+          @grouped_<%= plural_name %> = group_by_date(@<%= plural_name %>)
+
+          respond_to do |format|
+            format.html
+          end
+        end
+
+        def spam
+          @<%= plural_name %> = find_all_<%= plural_name %>.spam
+          @<%= plural_name %> = @<%= plural_name %>.with_query('^' + params[:search].split.join(' ^')) if searching?
+
+          @grouped_<%= plural_name %> = group_by_date(@<%= plural_name %>)
+        end
+
+        def toggle_spam
+          find_<%= singular_name %>
+          @<%= singular_name %>.toggle!(:spam)
+
+          redirect_to :back
+        end
+
+<% else -%>
+<%   if include_moderation? -%>
+        before_filter :get_approved_and_rejected_counts
+
+<%   end -%>
+        def index
+          unless searching?
+<%   if include_moderation? -%>
+            @<%= plural_name %> = <%= class_name %>.unmoderated
+<%   else -%>
+            find_all_<%= plural_name %>
+<%   end -%>
+          else
+            search_all_<%= plural_name %>
+          end
+
+          @grouped_<%= plural_name %> = group_by_date(@<%= plural_name %>)
+
+          @<%= plural_name %> = @<%= plural_name %>.paginate(page: params[:page])
+
+          respond_to do |format|
+            format.html
+          end
+        end
+
+<%   if include_moderation? -%>
+        def approved
+          unless params[:id].present?
+            @<%= plural_name %> = <%= class_name %>.approved.page(params[:page])
+            @grouped_<%= plural_name %> = group_by_date(@<%= plural_name %>)
+
+            render :action => 'index'
+          else
+            @<%= singular_name %> = <%= class_name %>.find(params[:id])
+            @<%= singular_name %>.approve!
+
+            redirect_to refinery.url_for(:action => params[:return_to] || 'index', :id => nil)
+          end
+        end
+
+        def rejected
+          unless params[:id].present?
+            @<%= plural_name %> = <%= class_name %>.rejected.page(params[:page])
+            @grouped_<%= plural_name %> = group_by_date(@<%= plural_name %>)
+
+            render :action => 'index'
+          else
+            @<%= singular_name %> = <%= class_name %>.find(params[:id])
+            @<%= singular_name %>.reject!
+
+            redirect_to refinery.url_for(:action => params[:return_to] || 'index', :id => nil)
+          end
+        end
+
+        protected
+
+        def get_approved_and_rejected_counts
+          @approved_count = <%= class_name %>.approved.count
+          @rejected_count = <%= class_name %>.rejected.count
+          @inbox_count    = <%= class_name %>.unmoderated.count
+        end
+
+<%    end -%>
+<%  end -%>
         private
 
         # Only allow a trusted parameter "white list" through.

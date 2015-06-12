@@ -1,19 +1,62 @@
+<% frontend_actions = include_form? ? ':new, :create' : ':index, :show' -%>
 Refinery::Core::Engine.routes.draw do
 <% unless skip_frontend? %>
   # Frontend routes
   namespace :<%= namespacing.underscore %> do
-    resources :<%= plural_name %><%= ", :path => ''" if namespacing.underscore == plural_name %>, :only => [:index, :show]
+    resources :<%= plural_name %><%= ", :path => ''" if namespacing.underscore == plural_name %>, :only => [<%= frontend_actions %>]
   end
 <% end %>
   # Admin routes
   namespace :<%= namespacing.underscore %>, :path => '' do
     namespace :admin, :path => <%= backend_route %> do
-      resources :<%= plural_name %>, :except => :show do
+      resources :<%= plural_name %><%= ', :except => :show' if !include_form? %> do
+<% if @includes_spam -%>
         collection do
           post :update_positions
+          get :spam
         end
+        member do
+          get :toggle_spam
+        end
+<% else -%>
+        collection do
+          post :update_positions
+<%   if include_moderation? -%>
+          get :approved
+          get :rejected
+        end
+
+        member do
+          get :approved
+          get :rejected
+<%   end -%>
+        end
+<% end -%>
       end
     end
-  end
 
+<% if include_form? -%>
+    namespace :admin, :path => "#{Refinery::Core.backend_route}/<%= namespacing.underscore %>" do
+      resources :settings, :only => [:edit, :update] do
+        collection do
+<% if include_moderation? -%>
+          get :moderation
+          get :approved
+          get :rejected
+<% end -%>
+        end
+<% if include_moderation? -%>
+        member do
+          get :approved
+          get :rejected
+        end
+        collection do
+          get :moderation
+        end
+<% end -%>
+      end
+    end
+<% end %>
+  end
 end
+

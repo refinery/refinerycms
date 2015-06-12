@@ -3,6 +3,9 @@ module Refinery
 
     def rake_db
       rake "refinery_<%= extension_plural_name %>:install:migrations"
+<% if include_form? -%>
+      rake "refinery_settings:install:migrations"
+<% end -%>
     end
 
     def append_load_seed_data
