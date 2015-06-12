@@ -1280,7 +1280,8 @@ input:not([type="checkbox"]):focus, .form-control:focus, input[type="submit"]:fo
 .placeholder-labels{
   .form-control{
     &:focus{
-      &::placeholder, :-moz-placeholder{
+      /* &::placeholder, :-moz-placeholder{ */
+      &::placeholder{
         top: -25px;
         visibility: visible !important;
         font-size: 14px;
@@ -1291,7 +1292,8 @@ input:not([type="checkbox"]):focus, .form-control:focus, input[type="submit"]:fo
         background: red;
       }
     }
-    &::placeholder, :-moz-placeholder{
+    /* &::placeholder, :-moz-placeholder{ */
+    &::placeholder{
       position: relative;
       transition: 0s ease-out;
       top: 0;

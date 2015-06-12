@@ -1,0 +1,26 @@
+var $showMoreButton = $('.btn-paginate-show-more');
+var $infiniteScrollContainer = $('.infinite-scrolling-container');
+
+if($showMoreButton.length > 0){
+  $showMoreButton.attr('data-url', '<%%= refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path(:page => @<%= plural_name %>.next_page) %>');
+
+} else if($infiniteScrollContainer.length > 0){
+  $infiniteScrollContainer.attr('data-url', '<%%= refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path(:page => @<%= plural_name %>.next_page) %>');
+}
+
+$('#<%= plural_name %> ').append('<%%= j render 'sortable_list' %>');
+
+Main.contentReady('#<%= plural_name %>-index');
+
+<%% unless @<%= plural_name %>.next_page %>
+
+  if($showMoreButton.length > 0){
+    $showMoreButton.fadeOut(500, function(){
+      $(this).remove();
+    });
+  } else if($infiniteScrollContainer.length > 0){
+    $infiniteScrollContainer.removeClass('infinite-scrolling-container');
+  }
+
+<%% end %>
+$(document).trigger('pagination-content-loaded');

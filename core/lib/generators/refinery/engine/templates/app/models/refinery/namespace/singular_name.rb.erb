@@ -9,8 +9,10 @@ module Refinery
       translates <%= localized_attributes.map { |a| ":#{a.name}" }.join(', ') %>
 <% end -%>
 <% if string_attributes.any? -%>
+<%   if include_form? -%>
 
       validates <%= string_attributes.first.name.to_sym.inspect %>, :presence => true, :uniqueness => true
+<%   end -%>
 <% else -%>
 
       # def title was created automatically because you didn't specify a string field
@@ -32,6 +34,73 @@ module Refinery
       #
       #   acts_as_indexed :fields => [:title]
 
+<% if include_moderation? -%>
+      class << self
+        def unmoderated
+          where(:state => nil)
+        end
+
+        def approved
+          where(:state => 'approved')
+        end
+
+        def rejected
+          where(:state => 'rejected')
+        end
+      end
+
+      def approve!
+        self.update_column(:state, 'approved')
+      end
+
+      def reject!
+        self.update_column(:state, 'rejected')
+      end
+
+      def rejected?
+        self[:state] == 'rejected'
+      end
+
+      def approved?
+        self[:state] == 'approved'
+      end
+
+      def unmoderated?
+        self[:state].nil?
+      end
+
+      before_create do |<%= singular_name %>|
+        unless Moderation.enabled?
+          <%= singular_name %>[:state] = 'approved'
+        end
+      end
+
+      module Moderation
+        class << self
+          def enabled?
+            Refinery::Setting.find_or_set(:<%= singular_name %>_moderation, true, {
+              :scoping => '<%= plural_name %>',
+              :restricted => false
+            })
+          end
+
+          def toggle!
+            new_value = {
+              :value => !<%= class_name %>::Moderation.enabled?,
+              :scoping => '<%= plural_name %>',
+              :restricted => false
+            }
+            Refinery::Setting.set(:<%= singular_name %>_moderation, new_value)
+          end
+        end
+      end
+<% end -%>
+      class << self
+        def get_all
+          order('position ASC')
+        end
+
+      end
     end
   end
 end
