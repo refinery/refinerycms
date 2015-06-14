@@ -39,6 +39,10 @@
 .folder_icon          {@include icon('folder',$icon_folder_colour)}
 .go_icon              {@include icon('caret-square-o-right');}
 .info_icon            {@include icon('info-circle');}
+.loading_icon         {
+  @include icon('spinner');
+  @extend .fa-spin
+}
 .page_icon            {@include icon('file-o',$icon_page_colour)}
 .preview_icon         {@include icon('eye', $icon_preview_colour)}
 .remove_icon          {@include icon('unlink', $icon_delete_colour);}
@@ -57,6 +61,9 @@
 .switch_view_list_icon {@include icon('list')}
 .upload_icon          {@include icon('upload');}
 .user_comment_icon    {@include icon('comment-o');}
+
+.hidden_icon  {display:none}
+.unhidden_icon {display: inline-block}
 
 // stacked icon/text used for locales
 .locale_marker {
