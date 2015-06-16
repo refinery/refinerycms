@@ -64,7 +64,7 @@ module Refinery
       end
     end
 
-    context "image url" do
+    describe "image url" do
       it "responds to .thumbnail" do
         expect(image).to respond_to(:thumbnail)
       end
@@ -98,6 +98,21 @@ module Refinery
       it "can resize and strip a thumbnail" do
         expect(created_image.thumbnail(:geometry => '200x200', :strip => true).url.blank?).to eq(false)
       end
+
+      context "when Dragonfly.verify_urls is true" do
+        Refinery::Images.dragonfly_verify_urls = true
+        it 'has an SHA parameter at the end of the URL' do
+          expect(created_image.url).to match(/\?sha=[\da-fA-F]{16}\z/)
+        end
+      end
+
+      context "when Dragonfly.verify_urls is false" do
+        Refinery::Images.dragonfly_verify_urls = false
+        it "returns a url without an SHA parameter" do
+          expect(created_image.url).not_to match(/\?sha=[\da-fA-F]{16}\z/)
+        end
+      end
+
     end
 
     describe "#title" do

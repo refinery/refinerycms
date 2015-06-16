@@ -2,7 +2,7 @@ module Refinery
   module Resources
     include ActiveSupport::Configurable
 
-    config_accessor :dragonfly_secret, :dragonfly_url_format, :dragonfly_url_host,
+    config_accessor :dragonfly_secret, :dragonfly_url_format, :dragonfly_url_host, :dragonfly_verify_urls,
                     :max_file_size, :pages_per_dialog, :pages_per_admin_index,
                     :s3_backend, :s3_bucket_name, :s3_region,
                     :s3_access_key_id, :s3_secret_access_key,
@@ -12,6 +12,7 @@ module Refinery
     self.dragonfly_secret = Core.dragonfly_secret
     self.dragonfly_url_format = '/system/resources/:job/:basename.:ext'
     self.dragonfly_url_host = ''
+    self.dragonfly_verify_urls = true
 
     self.content_disposition = :attachment
     self.max_file_size = 52_428_800

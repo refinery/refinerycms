@@ -2,7 +2,7 @@ module Refinery
   module Images
     include ActiveSupport::Configurable
 
-    config_accessor :dragonfly_secret, :dragonfly_url_format, :dragonfly_url_host,
+    config_accessor :dragonfly_secret, :dragonfly_url_format, :dragonfly_url_host, :dragonfly_verify_urls,
                     :max_image_size, :pages_per_dialog, :pages_per_admin_index,
                     :pages_per_dialog_that_have_size_options, :user_image_sizes,
                     :image_views, :preferred_image_view, :datastore_root_path,
@@ -14,6 +14,7 @@ module Refinery
     self.dragonfly_secret = Core.dragonfly_secret
     self.dragonfly_url_format = '/system/images/:job/:basename.:ext'
     self.dragonfly_url_host = ''
+    self.dragonfly_verify_urls = true
 
     self.max_image_size = 5_242_880
     self.pages_per_dialog = 18
