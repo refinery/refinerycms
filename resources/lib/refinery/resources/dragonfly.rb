@@ -17,6 +17,7 @@ module Refinery
             }
             url_format Refinery::Resources.dragonfly_url_format
             url_host Refinery::Resources.dragonfly_url_host
+            verify_urls Refinery::Resources.dragonfly_verify_urls
             secret Refinery::Resources.dragonfly_secret
             response_header 'Content-Disposition' do |job, request, headers|
               "attachment; #{headers['Content-Disposition']}"

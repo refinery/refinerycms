@@ -7,6 +7,8 @@ module Refinery
     let(:created_image) { FactoryGirl.create(:image) }
     let(:titled_image)  { FactoryGirl.create(:image, image_title: 'Image Title')}
     let(:image_with_alt_text) { FactoryGirl.create(:image, image_alt: 'Alt Text')}
+    let(:image_with_sha) {FactoryGirl.create(:image)}
+    let(:image_without_sha) {FactoryGirl.create(:image)}
 
     describe "validations" do
       describe "valid #image" do
@@ -64,7 +66,7 @@ module Refinery
       end
     end
 
-    context "image url" do
+    describe "image url" do
       it "responds to .thumbnail" do
         expect(image).to respond_to(:thumbnail)
       end
@@ -98,6 +100,28 @@ module Refinery
       it "can resize and strip a thumbnail" do
         expect(created_image.thumbnail(:geometry => '200x200', :strip => true).url.blank?).to eq(false)
       end
+
+      context "when Dragonfly.verify_urls is true" do
+        before do
+          allow(Refinery::Images).to receive(:dragonfly_verify_urls).and_return(true)
+          ::Refinery::Images::Dragonfly.configure!
+        end
+
+        it 'has an SHA parameter at the end of the URL' do
+          expect(image_with_sha.url).to match(/\?sha=[\da-fA-F]{16}\z/)
+        end
+      end
+
+      context "when Dragonfly.verify_urls is false" do
+        before do
+          allow(Refinery::Images).to receive(:dragonfly_verify_urls).and_return(false)
+          ::Refinery::Images::Dragonfly.configure!
+        end
+        it "returns a url without an SHA parameter" do
+          expect(image_without_sha.url).not_to match(/\?sha=[\da-fA-F]{16}\z/)
+        end
+      end
+
     end
 
     describe "#title" do
