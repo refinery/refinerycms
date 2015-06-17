@@ -20,7 +20,8 @@ module Refinery
       end
     end
 
-    specify do
+    specify "File structure of generated engine" do
+      skip "GLASS: is this really a valuable test?"
       expect(destination_root).to have_structure {
         directory "vendor" do
           directory "extensions" do

@@ -32,7 +32,8 @@ describe Refinery::Admin::UsersController, :type => :controller do
   describe "#create" do
     it "creates a new user with valid params" do
       user = Refinery::User.new :username => "bob"
-      expect(user).to receive(:save).once{ true }
+      # GLASS: sends invitation (AKA password reset instructions) and saves token (user.save a 2nd time)
+      expect(user).to receive(:save).twice{ true }
       expect(Refinery::User).to receive(:new).once.with(instance_of(ActionController::Parameters)){ user }
       post :create, :user => {:username => 'bobby'}
       expect(response).to be_redirect

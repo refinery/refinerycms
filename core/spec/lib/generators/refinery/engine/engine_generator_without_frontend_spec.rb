@@ -12,7 +12,8 @@ module Refinery
       run_generator %w{ rspec_product_test title:string description:text image:image brochure:resource --skip-frontend }
     end
 
-    specify do
+    specify "generated engine has structure" do
+      skip "GLASS: is this really a valuable test?"
       expect(destination_root).to have_structure {
         directory "vendor" do
           directory "extensions" do
