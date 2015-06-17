@@ -16,6 +16,7 @@ module Refinery
       end
 
       it 'performs ajax paging of index' do
+        skip "GLASS: remove this test - ajax forms now redirect to index and we need the entire index"
         visit refinery.admin_images_path
 
         expect(page).to have_selector('ul#image_grid li > img', count: 1)

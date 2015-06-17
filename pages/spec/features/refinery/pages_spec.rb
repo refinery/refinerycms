@@ -69,7 +69,7 @@ module Refinery
         expect(find("#body_content_title").text).to eq(about_page.title)
       end
 
-      it "should hide title when config is set" do
+      skip "GLASS: should hide title when config is set" do
         allow(Pages).to receive(:show_title_in_body).and_return(false)
         visit '/about'
         expect(page).not_to have_selector("#body_content_title")

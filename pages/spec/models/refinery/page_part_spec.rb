@@ -12,8 +12,8 @@ module Refinery
     end
 
     it 'return the content when using content_for' do
-      expect(page.content_for(:body)).to eq("<p>I'm the first page part for this page.</p>")
-      expect(page.content_for('BoDY')).to eq("<p>I'm the first page part for this page.</p>")
+      expect(page.content_for(:body)).to eq("I'm the first page part for this page.")
+      expect(page.content_for('BoDY')).to eq("I'm the first page part for this page.")
     end
 
     it 'requires a unique slug' do
