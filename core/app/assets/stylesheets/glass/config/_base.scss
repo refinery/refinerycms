@@ -1,5 +1,9 @@
 /* -------------------- MAIN -------------------- */
 
+html, body{
+  overflow: auto !important;  
+}
+
 html{
 	height: 100%;
 }
@@ -28,18 +32,6 @@ a:focus{
 
 a:active{
 	color: $primary-hover;
-}
-
-button{
-	background: none;
-	border: none;
-	padding: 0;
-	color: $primary-color;
-	text-decoration: none !important;
-	&:hover, &:focus{
-		color: $primary-hover;
-		text-decoration: none !important;
-	}
 }
 
 .bump-up{
@@ -148,6 +140,14 @@ button{
   display: block;
 }
 
+.inline-block {
+	display: inline-block;
+}
+
+.static{
+  position: static;
+}
+
 .inner-wrapper{
   position: absolute;
   top: 0;
@@ -248,6 +248,10 @@ p::-moz-selection {
   margin-bottom: $margin * 3;
 }
 
+.margin-bottom-xl{
+  margin-bottom: $margin * 4;
+}
+
 .margin-top-none{
   margin-top: 0;
 }
@@ -274,6 +278,10 @@ p::-moz-selection {
 
 .margin-top-lg{
   margin-top: $margin * 3;
+}
+
+.margin-top-xl{
+  margin-top: $margin * 4;
 }
 
 .margin-right-none{
@@ -304,6 +312,10 @@ p::-moz-selection {
   margin-right: $margin * 3;
 }
 
+.margin-right-xl{
+  margin-right: $margin * 4;
+}
+
 .margin-left-none{
   margin-left: 0;
 }
@@ -330,6 +342,10 @@ p::-moz-selection {
 
 .margin-left-lg{
   margin-left: $margin * 3;
+}
+
+.margin-left-xl{
+  margin-left: $margin * 4;
 }
 
 .flip-wrapper{
@@ -373,6 +389,12 @@ p::-moz-selection {
 
 .border-radius-double{
   border-radius: $radius-double;
+}
+
+.pseudo-hidden-field, .image-id-field {
+	opacity: 0;
+	height: 0px;
+	width: 0px;
 }
 
 
@@ -579,7 +601,7 @@ p::-moz-selection {
   line-height: 1;
   border: 1px solid $grey-3;
   display: inline-block;
-  .icon{
+  .icon, .gcicon{
     font-size: 16px;
     line-height: 1;
     margin: 0 2px 0 0;
@@ -618,7 +640,7 @@ a.pill{
   padding: 0 12px 0 15px;
   font-size: 14px;
   line-height: 26px;
-  .icon{
+  .icon, .gcicon{
     font-size: 12px;
   }
 }
@@ -628,7 +650,7 @@ a.pill{
   padding: 0 8px 0 10px;
   font-size: 12px;
   line-height: 18px;
-  .icon{
+  .icon, .gcicon{
     font-size: 12px;
   }
 }
@@ -779,27 +801,39 @@ a.pill{
 
 .datepicker-wrapper{
   position: absolute;
-  width: 230px;
+  width: 290px;
   padding: 15px;
   background: $white;
   @include box-shadow($shadow);
   z-index: 150;
   border-radius: $radius;
   margin-top: 5px;
+  visibility:hidden;
+  opacity: 0;
+  transform: scale(1.2);
+  transition: visibility 0s $bezier .2s, all .2s $bezier;
   .datepicker-fields{
     display: flex;
     flex-wrap: nowrap;
     margin-left: -5px;
     margin-right: -5px;
     .form-group{
-      margin-left: 5px;
-      margin-right: 5px;
+      margin-left: 5px !important;
+      margin-right: 5px !important;
+      .form-control{
+        font-size: 14px;
+      }
     }
   }
   .close{
     position: absolute;
     top: 10px;
     right: 10px;
+    z-index: 100;
+    font-size: 12px;
+  }
+  .bootstrap-datetimepicker-widget{
+    width: 100%;
   }
   &.left{
     left: 0;
@@ -807,7 +841,22 @@ a.pill{
   &.right{
     right: 0;
   }
+  &.lg{
+    width: 320px;
+  }
+  &.active{
+    visibility :visible;
+    opacity: 1;
+    transition-delay: 0s;
+    transform: scale(1.0);
+  }
 }
+
+.ui.modal > .content {
+	font-size: $font-size-base !important;
+}
+
+
 
 /* -------------------- BROWSER UPDATE -------------------- */
 
@@ -846,6 +895,7 @@ a.pill{
     }
   }
 }
+
 
 
 /* -------------------- TYPOGRAPHY -------------------- */
@@ -1023,6 +1073,7 @@ ul li{
 }
 
 
+
 /* -------------------- FORMS -------------------- */
 
 form{
@@ -1053,6 +1104,10 @@ form{
 .form-group{
   .form-control, textarea{
 	  @include border-radius($radius);
+	  &:hover{
+  	    @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075), 0px 0px 6px 0px rgba($grey-6,0.1));
+
+	  }
   }
   .btn{
 	  @include border-radius($radius);
@@ -1166,10 +1221,16 @@ form{
    line-height: 1.6;
 }
 
-input:not([type="checkbox"]):focus, .form-control:focus, input[type="submit"]:focus, .btn:focus, input[type="select"]:focus, .dropdown-wrapper select:focus{
+input:not([type="checkbox"]):focus, .form-control:focus, input[type="select"]:focus, .dropdown-wrapper select:focus{
+  border-color: $grey-4 !important;
+  outline: 0 !important;
+  @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075), 0px 0px 6px 0px rgba($grey-6,0.15));
+}
+
+.btn:focus, input[type="submit"]:focus{
   border-color: $primary-hover !important;
   outline: 0 !important;
-  @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075), 0px 0px 6px 0px rgba($primary-color,0.3));
+  @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075), 0px 0px 6px 0px rgba($primary-color,0.25));
 }
 
 .btn-link:focus, .btn-link-grey:focus{
@@ -1274,40 +1335,45 @@ input:not([type="checkbox"]):focus, .form-control:focus, input[type="submit"]:fo
   padding: 5px;
 }
 
-.select-options .optgroup ul a { padding-left: 30px; }
+.select-options .optgroup ul a {
+  padding-left: 30px;
+}
 
-
-.placeholder-labels{
-  .form-control{
-    &:focus{
-      /* &::placeholder, :-moz-placeholder{ */
-      &::placeholder{
-        top: -25px;
-        visibility: visible !important;
-        font-size: 14px;
-        transition: .15s ease-out;
-      }  
-      &::shadow{
-        top: 15px;
-        background: red;
+body:not(.mozilla){
+  .placeholder-labels{
+    .form-control{
+      &:focus{
+        &::-webkit-input-placeholder{
+          top: -20px;
+          visibility: visible !important;
+          font-size: 12px;
+          transition: .15s ease-out;
+        }  
+        &::shadow{
+          top: 15px;
+          background: red;
+        }
+      }
+      &::-webkit-input-placeholder{
+        position: relative;
+        transition: 0s ease-out;
+        top: 0;
       }
     }
-    /* &::placeholder, :-moz-placeholder{ */
-    &::placeholder{
-      position: relative;
-      transition: 0s ease-out;
-      top: 0;
+    .input-lg{
+      &:focus{
+        padding-top: 25px;
+      }
+      &:not(textarea){
+        &:focus{
+          height: 68px;
+        }
+      }
     }
-  }
-  .input-lg{
-    &:focus{
-      height: 68px;
-      padding-top: 25px;
-    }
-  }
-  textarea{
-    &:focus{
-      padding-top: 30px;
+    textarea{
+      &:focus{
+        padding-top: 30px;
+      }
     }
   }
 }
@@ -1317,6 +1383,7 @@ input:not([type="checkbox"]):focus, .form-control:focus, input[type="submit"]:fo
   color: $white;
   padding-bottom: 0px;
   padding-left: 15px;
+  padding-right: 15px;
   font-size: 12px;
   bottom: -5px;
   margin-top: -5px;
@@ -1327,6 +1394,7 @@ input:not([type="checkbox"]):focus, .form-control:focus, input[type="submit"]:fo
   z-index: 5;
   transition: .2s ease-out;
   white-space: nowrap;
+  @include ellipsis(100%);
   &.active{
     height: 25px;
   }
@@ -1337,11 +1405,52 @@ input:not([type="checkbox"]):focus, .form-control:focus, input[type="submit"]:fo
   box-shadow: none;
 }
 
+.left-inner-addon input {
+	padding-left: 30px;
+}
+
+.right-inner-addon input {
+	padding-right: 30px;
+}
+
+.left-inner-addon .addon, .right-inner-addon .addon{
+	position: absolute;
+	padding: 8px 12px 6px;
+	pointer-events: none;
+	z-index: 999;
+	color: #aeaeae;
+}
+
+.right-inner-addon .addon {
+	right: 0;
+}
+.left-inner-addon .addon {
+	left: 0;
+}
+
+.right-inner-addon, .left-inner-addon {
+	position: relative;
+}
+
+.pseudo-hidden-field{
+  display: none;
+}
+
 
 
 /* -------------------- BUTTONS -------------------- */
 
+
 button{
+	background: none;
+	border: none;
+	padding: 0;
+	color: $primary-color;
+	text-decoration: none !important;
+	&:hover, &:focus{
+		color: $primary-hover;
+		text-decoration: none !important;
+	}
   &:active{
 		@include box-shadow(none);
 		outline: 0 !important;
@@ -1387,8 +1496,13 @@ button{
   font-weight: 600;
 }
 
+.btn-xs{
+  font-size: 12px;
+}
+
 .btn-sm{
-  padding: 5px 20px;
+  padding: 2px 10px;
+  font-size: 14px;
 }
 
 .btn-md{
@@ -1538,11 +1652,11 @@ button{
 }
 
 .btn-hover-spin{
-  .icon{
+  .icon, .gcicon{
     transition: $transition ease-out;
   }
   &:hover{
-    .icon{
+    .icon, .gcicon{
       transform: rotate(180deg) scale(-1, 1) translate(0, 1px);
     }
   }
@@ -1556,13 +1670,13 @@ button{
 }
 
 .btn-hover-remove{
-  .icon-minus-circle{
+  .icon, .gcicon{
     display: none;
   }
   &:hover{
     background: $red;
     color: $white;
-    .icon{
+    .icon, .gcicon{
       display: none;
     }
     .icon-minus-circle{
@@ -1571,49 +1685,13 @@ button{
   }
 }
 
-.pseudo-hidden-field, .image-id-field {
-	opacity: 0;
-	height: 0px;
-	width: 0px;
-}
-
-.left-inner-addon input {
-	padding-left: 30px;
-}
-
-.right-inner-addon input {
-	padding-right: 30px;
-}
-
-.left-inner-addon .addon, .right-inner-addon .addon{
-	position: absolute;
-	padding: 8px 12px 6px;
-	pointer-events: none;
-	z-index: 999;
-	color: #aeaeae;
-}
-
-.right-inner-addon .addon {
-	right: 0;
-}
-.left-inner-addon .addon {
-	left: 0;
-}
-
-.right-inner-addon, .left-inner-addon {
-	position: relative;
-}
-
-.inline-block {
-	display: inline-block;
-}
-
 .btn-file {
 	position: relative;
 	overflow: hidden;
 	padding-top: 8px !important;
 	padding-bottom: 9px !important;
 }
+
 .btn-file input[type=file] {
 	position: absolute;
 	top: 0;
@@ -1629,29 +1707,64 @@ button{
 	display: block;
 }
 
-.btn-toggle-icons{
-  .icon{
-    margin: 0 !important;
-    &:first-child{
-      display: inline;
-
-    }
-    &:last-child{
-      display: none;
-    }
+.btn-rotate{
+  -webkit-transform: translateZ(0);
+  .icon, .gcicon{
+    transition: .15s $bezier;  
   }
-  &.toggled{
-    .icon{
-      &:first-child{
-        display: none;
-        }
-      &:last-child{
-        display: inline;
-      }
+  &:hover{
+    .icon, .gcicon{
+      transform: rotate(360deg);
     }
   }
 }
 
-.ui.modal > .content {
-	font-size: $font-size-base !important
+.btn-toggle-icons{
+  white-space: nowrap;
+  .icon, .gcicon{
+    margin: 0 !important;
+    width: 22px;
+    height: 22px;
+    &:first-child{
+      opacity: 1;
+
+    }
+    &:last-child{
+      opacity: 0;
+      margin-left: -22px !important;
+    }
+    transition: .15s $bezier;
+  }
+  &:hover{
+    .icon, .gcicon{
+      transform: rotate(360deg);
+      &:first-child{
+        opacity: 0;
+      }
+      &:last-child{
+        opacity: 1;
+      }
+    }
+  }
+  &.toggled{
+    .icon, .gcicon{
+      &:first-child{
+        opacity: 0;
+        }
+      &:last-child{
+        opacity: 1;
+      }
+    }
+    &:hover{
+      .icon, .gcicon{
+        transform: rotate(360deg);
+        &:first-child{
+          opacity: 1;
+        }
+        &:last-child{
+          opacity: 0;
+        }
+      }
+    }
+  }
 }

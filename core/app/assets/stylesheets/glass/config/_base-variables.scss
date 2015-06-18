@@ -23,7 +23,8 @@ $grey-8: #2c2c2c;
 $grey-9: #1f1f1f;
 $beige: #e1dcd9;
 $brown: #8c8987;
-$red: #a94442;
+$blue: #3076d8;
+$red: #e94d4d;
 $red-fade: #bf4d4b;
 $red-bg: #ffdfcf;
 $green: #5bc890;
@@ -43,7 +44,7 @@ $margin-half: $margin / 2;
 $margin-double: $margin * 2;
 $shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.1);
 $shadow-solid: inset 0px -2px 0px 0px rgba(50, 50, 50, 0.25);
-$transition: 0.2s;
+$transition: .2s;
 $bezier: cubic-bezier(0,.5,.5,1);
 $flip: -1, 1;
 $flip-vertical: 1, -1;
@@ -146,6 +147,10 @@ $icon-li-width: (30em / 14) !default;
   color: $yellow;
 }
 
+.blue{
+  color: $blue;
+}
+
 .green{
   color: $green;
 }
@@ -236,6 +241,10 @@ $icon-li-width: (30em / 14) !default;
 
 .brown-bg{
   background-color: $brown !important;
+}
+
+.blue-bg{
+  background-color: $blue !important;
 }
 
 .red-bg{
