@@ -11,11 +11,11 @@ module Glass
       #::Dragonfly[:refinery_images].fetch(image_uid).url(:name => File.basename(image_uid))
 
       # Just serve up the S3 url instead (for now)
-      ::Dragonfly[:refinery_images].remote_url_for(image_uid)
+      Dragonfly.app(:refinery_images).remote_url_for(image_uid)
     end
 
     def glass_vid_src(vid_uid)
-      ::Dragonfly[:refinery_images].remote_url_for(vid_uid)
+      Dragonfly.app(:refinery_images).remote_url_for(vid_uid)
     end
   end
 end
