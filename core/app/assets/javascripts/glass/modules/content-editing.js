@@ -529,7 +529,7 @@ var GlassContentEditing = (function ($) {
     this.newModuleHtml = function(module_id) {
       var $module_html = $('#glass-parking #' + module_id + '-template');
       if ($module_html.length > 0) {
-        $module_html = $module_html.clone();
+        $module_html = $module_html.first().clone();
         $module_html.removeAttr('id'); //The id only stays on the one in the parking
       }
       else if (module_id == 'glass-module-p') {
