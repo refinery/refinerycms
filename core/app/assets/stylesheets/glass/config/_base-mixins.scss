@@ -93,7 +93,7 @@ border-bottom-right-radius: $radius;
 	-moz-transform: translateZ(0);
 }
 
-@mixin transform($transform...){
+@mixin transform($transform...) {
   -webkit-transform: $transform;
      -moz-transform: $transform;
       -ms-transform: $transform;
