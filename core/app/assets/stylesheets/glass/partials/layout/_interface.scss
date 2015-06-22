@@ -658,12 +658,15 @@ body{
   position: fixed;
   top: 10px;
   color: $white;
+  border: none !important;
   z-index: 1050;
   padding: 9px 10px;
   @include transition($transition);
   &:hover{
+    background: $white;
+    color: $primary-color;
     .gcicon{
-      color: $primary-fade;
+      color: $primary-color;
     }
   }
   &-left{
@@ -678,7 +681,7 @@ body{
     font-size: 18px;
     color: $white !important;
     &:hover{
-      color: $primary-fade !important;
+      color: $primary-color !important;
     }
     .gcicon{
       margin-right: 5px;
