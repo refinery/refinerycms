@@ -4,7 +4,7 @@
  */
 
 var GlassInfiniteScroll = (function ($) {
-  var next_page = 1;
+  var next_page = 2;
   var fetch_in_progress = false;
   var container_selector = '.infinite-scroll-container';
 
