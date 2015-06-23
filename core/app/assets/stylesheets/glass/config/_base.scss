@@ -1087,6 +1087,7 @@ ul li {
   @include circle(30px);
   color: $black;
   border: 1px solid $black;
+  transition: .2s $bezier;
   &-sm {
     @include circle(20px);
     line-height: 1;
