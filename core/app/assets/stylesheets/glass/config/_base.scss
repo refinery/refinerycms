@@ -1087,9 +1087,6 @@ ul li {
   @include circle(30px);
   color: $black;
   border: 1px solid $black;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   &:link, &:visited {
     color: $black;
   }
