@@ -1,7 +1,14 @@
-// This is a manifest file that'll be compiled into kitchen-sink.js, which will include all the files
-// listed below.
+// This is a manifest file, kitchen-sink.js, is included on all frontend pages when an admin is logged in.
+// This allows for full admin interface functionality from the frontend of the site.
 //
-// To add project specific modules, please use config.register_javascript from config/initializers/refinery/core.rb 
+// To add site / app specific modules, please override and modify:
+//  - javascripts/manifest-custom-back-and-frontend.js (for frontend of site, but also backend UI [glass live editor])
+//  - javascripts/manifest-frontend.js                 (only for front of site - ommitted from admin interface views)
+//
+// *************************************************************************
+// * This JS follows the same pattern as the scss, for details see:        *
+// * refinerycms gem: /core/app/assets/stylesheets/refinery-glass.scss     *
+// *************************************************************************
 //
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.

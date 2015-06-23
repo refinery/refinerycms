@@ -1,34 +1,22 @@
 /******************************************************************************
  *
- *      ***** CSS Documentation for use with feast multi-site *****
- *
- * ***** SINGLE SITE *****
- * site.css                 BOTH                    refinery-glass.css
+ * site.scss          <---- BOTH ---->              refinery-glass.scss
  *                          config/_variables
- * glass/_manifest-site                             glass/_manifest-refinery-glass
  *                          glass/_manifest-back-and-frontend
  *                          _manifest-custom-back-and-frontend
- *                           | styles for frontend, that
- *                           | backend will use too
  * _manifest-frontend                               glass/_manifest-backend
- *  | can usually be blank                           | backend specific styles
  *
+ * Files in the 'glass' dir are intended to stay in refinery. The following are purely
+ * here to be overwritten by the site / app:
+ *  - config/_variables                   - customize backend without overriding
+ *  - _manifest-custom-back-and-frontend  - styles for frontend, that backend will use too.
+ *                                          you can also override any backend styles
+ *  - _manifest-frontend                  - styles to exclude from backend, or if
+ *                                          backend already includes them
  *
- *
- *
- * ***** FEAST MULTI-SITE *****
- * site-<slug>.css          BOTH                    refinery-glass-<slug>.css
- *                          config/_variables-<slug>
- * glass/_manifest-site                             glass/_manifest-refinery-glass
- *               --- same as single site from here down ---
- * 
- *
- * Result: you get:
- *  - site-<slug>.css
- *  - refinery-glass-<slug>.css
- * For each different slug (org OR unique theme), these are dynamically
- * included from in the <head>
  ******************************************************************************/
 
 @import "config/variables";
-@import "glass/manifest-refinery-glass";
+@import "glass/manifest-back-and-frontend";
+@import "glass/manifest-backend";
+@import "manifest-custom-back-and-frontend";

@@ -1,9 +1,13 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
+// This is a manifest file, site.js, is included on all frontend pages.
 //
-// To add project specific modules, please override and modify:
-//  - javascripts/manifest-back-and-frontend.js (stuff for frontend of site, but also backend UI [edit content in place])
-//  - javascripts/manifest-frontend.js          (stuff only for front of site - not backend UI)
+// To add site / app specific modules, please override and modify:
+//  - javascripts/manifest-custom-back-and-frontend.js (for frontend of site, but also backend UI [glass live editor])
+//  - javascripts/manifest-frontend.js                 (only for front of site - ommitted from admin interface views)
+//
+// *************************************************************************
+// * This JS follows the same pattern as the scss, for details see:        *
+// * refinerycms gem: /core/app/assets/stylesheets/refinery-glass.scss     *
+// *************************************************************************
 //
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
