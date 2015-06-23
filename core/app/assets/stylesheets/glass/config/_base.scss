@@ -1087,14 +1087,6 @@ ul li {
   @include circle(30px);
   color: $black;
   border: 1px solid $black;
-  &:link, &:visited {
-    color: $black;
-  }
-  &:hover, &:focus {
-    color: $white;
-    border-color: $primary-dark;
-    background: $primary-dark;
-  }
   &-sm {
     @include circle(20px);
     line-height: 1;
@@ -1125,6 +1117,17 @@ ul li {
   }
   .icon, .gcicon {
     margin: 0 !important;
+  }
+}
+
+a.circle-icon, button.circle-icon{
+  &:link, &:visited {
+    color: $black;
+  }
+  &:hover, &:focus {
+    color: $white;
+    border-color: $primary-dark;
+    background: $primary-dark;
   }
 }
 
