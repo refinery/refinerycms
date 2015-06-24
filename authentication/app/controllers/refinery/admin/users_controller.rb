@@ -66,7 +66,7 @@ module Refinery
           if params[:user_id].present?
             users = users.where("id NOT IN ('#{params[:user_id]}')").select('email')
           end
-          render json: {collection: users.map!{|u| u.email.downcase} }, status: 200
+          render json: {collection: users.all.to_a.map!{|u| u.email.downcase} }, status: 200
         rescue Exception => e
           logger.warn(e)
           render json: {message: e.message}, status: 500
@@ -79,7 +79,7 @@ module Refinery
           if params[:username].present?
             users = users.where("username NOT IN ('#{params[:username].strip}')").select('username')
           end
-          render json: {collection: users.map!{|u| u.username.downcase} }, status: 200
+          render json: {collection: users.all.to_a.map!{|u| u.username.downcase} }, status: 200
         rescue Exception => e
           logger.warn(e)
           render json: {message: e.message}, status: 500
