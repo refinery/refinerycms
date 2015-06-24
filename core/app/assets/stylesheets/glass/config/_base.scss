@@ -1084,10 +1084,17 @@ ul li {
 }
 
 .circle-icon {
+  display: inline-block;
+  text-align: center;
   @include circle(30px);
   color: $black;
   border: 1px solid $black;
   transition: .2s $bezier;
+  .icon, .gcicon {
+    margin: 0 !important;
+    line-height: 30px;
+    font-size: 14px;
+  }
   &-sm {
     @include circle(20px);
     line-height: 1;
@@ -1095,6 +1102,7 @@ ul li {
       width: 10px;
       height: 10px;
       font-size: 10px;
+      line-height: 20px;
       &:last-child {
         margin-left: -10px !important
       }
@@ -1104,6 +1112,7 @@ ul li {
     @include circle(45px);
     .icon, .gcicon {
       font-size: 21px;
+      line-height: 45px;
     }
   }
   &-white {
@@ -1115,9 +1124,6 @@ ul li {
       background-color: $primary-color;;
       color: $white;
     }
-  }
-  .icon, .gcicon {
-    margin: 0 !important;
   }
 }
 
