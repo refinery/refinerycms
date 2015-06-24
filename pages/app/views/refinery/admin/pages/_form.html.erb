@@ -104,28 +104,3 @@
 
   <%= yield :outside_main_form %>
 </div>
-
-<% content_for :javascripts do %>
-  <script>
-    $(document).ready(function(){
-      page_options.init(
-        <%= Refinery::Pages.new_page_parts.to_s %>
-        , "<%= refinery.new_admin_page_part_path %>"
-        , "<%= refinery.admin_page_parts_path %>"
-      );
-
-      $("#preview-button").click(function(e) {
-        var $form = $(this).parents('form');
-        var prev_url = $form.attr('action');
-        var prev_target = $form.attr('target') || '';
-        $form.attr({
-          'action': '<%= @page.persisted? ? refinery.pages_admin_preview_page_path(@page.nested_url) : refinery.pages_admin_preview_pages_path %>'
-          , 'target': '_blank'
-        });
-        $form.submit();
-        $form.attr({'action': prev_url, 'target': prev_target});
-        e.preventDefault();
-      });
-    });
-  </script>
-<% end %>
