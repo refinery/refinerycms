@@ -290,6 +290,9 @@ var GlassContentEditing = (function ($) {
         case 'delete-btn':
           $control = $('#glass-parking .delete-module').clone().glassHtmlControl();
           break;
+        case 'link-items-btn':
+          $control = $('#glass-parking .link-items').clone().glassHtmlControl();
+          break;
         case 'click-pads':
           $control = $('#glass-parking .click-pads').clone().glassHtmlControl();
           break;
@@ -388,12 +391,22 @@ var GlassContentEditing = (function ($) {
 
     this.parentModule = function($elem) {
       var $parent_module = null;
-      if ($elem.hasClass('glass-control') || $elem.parents('.glass-control').length > 0 || $elem.parents('.glass-edit-html').length == 0) {
-        // It is within a control section, or is outside of the editor "chunk"
+      if ($elem.hasClass('glass-control') ||
+          $elem.parents('.glass-control').length > 0 ||
+          $elem.parents('.glass-edit-html').length == 0 ||
+          $elem.hasClass('glass-module-group'))
+      {
+        // It is within a control section, is a module group, or is outside of the editor "chunk"
         return null;
       }
 
-      var $parent_elem = $elem.parent().hasClass('glass-edit-html') ? $elem : $elem.parents('.glass-edit-html > *');
+      var $parent_elem = $elem;
+      if (!$elem.parent().hasClass('glass-edit-html') && !$elem.parent().hasClass('glass-module-group')) {
+        $parent_elem = $elem.parents('.glass-module-group > *');
+        if ($parent_elem.length < 1) {
+          $parent_elem = $elem.parents('.glass-edit-html > *');
+        }
+      }
 
       if ($parent_elem) {
         $parent_module = $parent_elem.glassHtmlModule(this);
@@ -405,8 +418,12 @@ var GlassContentEditing = (function ($) {
     this.modules = function() {
       var modules = [];
       this.h.elem.children().each(function () {
-        //if ($(this).parents('.glass-no-edit').length == 0) {
-        if (!$(this).hasClass('glass-control')) {
+        if ($(this).hasClass('glass-module-group')) {
+          $(this).children().each(function () {
+            modules.push($(this).glassHtmlModule(this_editor));
+          });
+        }
+        else if (!$(this).hasClass('glass-control')) {
           modules.push($(this).glassHtmlModule(this_editor));
         }
       });
@@ -453,6 +470,20 @@ var GlassContentEditing = (function ($) {
       }
 
       return $module;
+    };
+
+    var flexValueStyles = function(val) {
+      return ['-webkit-box-flex: ', val, ';',
+              '-webkit-flex: ', val, ';',
+              '-ms-flex: ', val, ';',
+              'flex: ', val, ';'].join('');
+    };
+
+    this.adjustGroupImages = function ($group) {
+      $group.children().each(function () {
+        var $img = $(this).find('img').first();
+        $(this).attr('style', flexValueStyles(1.0 * $img.width() / $img.height()));
+      });
     };
 
 
@@ -538,6 +569,48 @@ var GlassContentEditing = (function ($) {
       return $module_html;
     };
 
+    this.add_or_update_link_btn = function() {
+      if (this.module_type() == 'img-module' &&
+          this.next_module() &&
+          this.next_module().module_type() == 'img-module' &&
+          this.element().find('.glass-control.link-items').length == 0)
+      {
+        this.editor().attachControl('link-items-btn', this);
+      }
+
+      var $link_btn_icon = this.element().find('.glass-control.link-items .gcicon');
+      if ($link_btn_icon.length == 1) {
+        if (this.element().parents('.glass-module-group').length > 0 && $link_btn_icon.hasClass('link')) {
+          $link_btn_icon.removeClass('link gcicon-link').addClass('unlink gcicon-unlink');
+        }
+        else if (this.element().parents('.glass-module-group').length <= 0 && $link_btn_icon.hasClass('unlink')) {
+          $link_btn_icon.removeClass('unlink gcicon-unlink').addClass('link gcicon-link');
+        }
+        else {
+        }
+      }
+    };
+
+    this.module_type = function() {
+      var module_type = 'unknown';
+      if (this.element().find('img, .cur-uploading-img').length > 0 && this.element().hasClass('glass-no-edit')) {
+        module_type = 'img-module';
+      }
+      return module_type;
+    };
+
+    this.sibling_module = function($sibling) {
+      return $sibling.parent().attr('class') == this.element().parent().attr('class') ? this.editor().parentModule($sibling) : null;
+    };
+
+    this.prev_module = function() {
+      return this.sibling_module(this.element().prev());
+    };
+
+    this.next_module = function() {
+      return this.sibling_module(this.element().next());
+    };
+
     // Initialization
     // ##########################################
     //this.focus();
@@ -548,6 +621,10 @@ var GlassContentEditing = (function ($) {
       this.element().attr('contenteditable', false);
       this.editor().attachControl('delete-btn', this);
       this.editor().attachControl('click-pads', this);
+    }
+
+    if (this.module_type() == 'img-module') {
+      this.add_or_update_link_btn();
     }
   }
 
@@ -660,10 +737,21 @@ var GlassContentEditing = (function ($) {
 
           $image_element.addClass('cur-uploading-img');
           $cur_module.remove();
-          var $new_p = $new_module.editor().newModule('glass-module-p', 'after', $new_module);
-          // FIXME - this doesn't seem to want to focus()
-          // FIXME: $new_p.element().attr('contenteditable', true);
-          // FIXME: $new_p.element().focus();
+
+          var $next_module = $new_module.next_module();
+          if (!($next_module && $next_module.module_type() == 'img-module')) {
+            // Add a <p> unless another image directly follows (user may want to link them)
+            var $new_p = $new_module.editor().newModule('glass-module-p', 'after', $new_module);
+            // FIXME - this doesn't seem to want to focus()
+            // FIXME: $new_p.element().attr('contenteditable', true);
+            // FIXME: $new_p.element().focus();
+          }
+
+          var $prev_module = $new_module.prev_module();
+          if ($prev_module && $prev_module.module_type() == 'img-module') {
+            $prev_module.add_or_update_link_btn();
+          }
+          $new_module.add_or_update_link_btn();
         }
       });
     }
@@ -674,6 +762,26 @@ var GlassContentEditing = (function ($) {
         this_control.module().element().fadeOut(500, function() {
           this_control.module().remove();
         });
+      });
+    }
+
+    if (this.element().hasClass('link-items')) {
+      this.element().click(function (e) {
+        e.preventDefault();
+        var $next_module = this_control.module().next_module();
+        if ($next_module && $next_module.module_type() == 'img-module') {
+          var $group = $next_module.element().parent();
+          if ($group.hasClass('glass-module-group')) {
+            $group.children().unwrap();
+          }
+          else {
+            this_control.module().element().wrap($('#glass-parking .glass-module-group.image-group').clone());
+            $next_module.element().insertAfter(this_control.module().element());
+            $group = this_control.module().element().parents('.glass-module-group.image-group');
+            this_control.module().editor().adjustGroupImages($group);
+          }
+          this_control.module().add_or_update_link_btn();
+        }
       });
     }
 
