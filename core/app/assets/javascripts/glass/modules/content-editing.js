@@ -389,19 +389,20 @@ var GlassContentEditing = (function ($) {
       return $new_module;
     };
 
+    // Get the parent module for an element, the module may be based off the element directly (not a parent)
     this.parentModule = function($elem) {
       var $parent_module = null;
       if ($elem.hasClass('glass-control') ||
           $elem.parents('.glass-control').length > 0 ||
-          $elem.parents('.glass-edit-html').length == 0 ||
-          $elem.hasClass('glass-module-group'))
+          $elem.parents('.glass-edit-html').length == 0)
       {
         // It is within a control section, is a module group, or is outside of the editor "chunk"
         return null;
       }
 
       var $parent_elem = $elem;
-      if (!$elem.parent().hasClass('glass-edit-html') && !$elem.parent().hasClass('glass-module-group')) {
+
+      if (!$parent_elem.parent().hasClass('glass-edit-html') && !$parent_elem.parent().hasClass('glass-module-group')) {
         $parent_elem = $elem.parents('.glass-module-group > *');
         if ($parent_elem.length < 1) {
           $parent_elem = $elem.parents('.glass-edit-html > *');
@@ -431,6 +432,7 @@ var GlassContentEditing = (function ($) {
     };
 
     this.isaModule = function($elem) {
+      // TODO: this is broken!
       return $elem.glassIsaModule();
     };
 
@@ -472,20 +474,6 @@ var GlassContentEditing = (function ($) {
       return $module;
     };
 
-    var flexValueStyles = function(val) {
-      return ['-webkit-box-flex: ', val, ';',
-              '-webkit-flex: ', val, ';',
-              '-ms-flex: ', val, ';',
-              'flex: ', val, ';'].join('');
-    };
-
-    this.adjustGroupImages = function ($group) {
-      $group.children().each(function () {
-        var $img = $(this).find('img').first();
-        $(this).attr('style', flexValueStyles(1.0 * $img.width() / $img.height()));
-      });
-    };
-
 
     // Initialization
     // ##########################################
@@ -494,6 +482,10 @@ var GlassContentEditing = (function ($) {
     // modules() initializes them as well as returns them
     $.each(this.modules(), function (i, $module) {
       this_editor.triggerChangeFocus($module.element(), null);
+
+      if ($module.isGroupable()) {
+        $module.resetLinkButtons();
+      }
     });
 
     this.h.elem.mouseup(function(e) {
@@ -569,39 +561,59 @@ var GlassContentEditing = (function ($) {
       return $module_html;
     };
 
-    this.add_or_update_link_btn = function() {
-      if (this.module_type() == 'img-module' &&
-          this.next_module() &&
-          this.next_module().module_type() == 'img-module' &&
-          this.element().find('.glass-control.link-items').length == 0)
-      {
-        this.editor().attachControl('link-items-btn', this);
+    this.isGroupable = function() {
+      var type = this.module_type();
+      return type == 'module-group' || type == 'img-module';
+    };
+
+    this.resetLinkButtons = function() {
+      if (this.isGroupable() && this.next_module() && this.next_module().isGroupable()) {
+        if (this.element().children('.glass-control.link-items').length == 0) {
+          this.editor().attachControl('link-items-btn', this);
+        }
+      }
+      else {
+        // TODO: is there a better way to detachControl?
+        this.element().find('.glass-control.link-items').remove();
       }
 
-      var $link_btn_icon = this.element().find('.glass-control.link-items .gcicon');
-      if ($link_btn_icon.length == 1) {
-        if (this.element().parents('.glass-module-group').length > 0 && $link_btn_icon.hasClass('link')) {
-          $link_btn_icon.removeClass('link gcicon-link').addClass('unlink gcicon-unlink');
-        }
-        else if (this.element().parents('.glass-module-group').length <= 0 && $link_btn_icon.hasClass('unlink')) {
-          $link_btn_icon.removeClass('unlink gcicon-unlink').addClass('link gcicon-link');
+      if (this.isaGroup()) {
+        $.each(this.subModules(), function(i, $val) {
+          $val.resetLinkButtons();
+        });
+      }
+      else {
+        var $link_btn_icon = this.element().find('.glass-control.link-items .gcicon');
+        if ($link_btn_icon.length == 1) {
+          if (this.getGroup() && $link_btn_icon.hasClass('link')) {
+            $link_btn_icon.removeClass('link gcicon-link').addClass('unlink gcicon-unlink');
+          }
+          else if (!this.getGroup() && $link_btn_icon.hasClass('unlink')) {
+            $link_btn_icon.removeClass('unlink gcicon-unlink').addClass('link gcicon-link');
+          }
         }
       }
     };
 
     this.module_type = function() {
       var module_type = 'unknown';
-      if (this.element().find('img, .cur-uploading-img').length > 0 && this.element().hasClass('glass-no-edit')) {
+      if (this.element().hasClass('glass-module-group')) {
+        module_type = 'module-group';
+      }
+      else if (this.element().find('img, .cur-uploading-img').length > 0 && this.element().hasClass('glass-no-edit')) {
         module_type = 'img-module';
       }
       return module_type;
     };
 
     this.sibling_module = function(direction) {
-      var $sibling = direction > 0 ? this.element().next() : this.element().prev();
-      if ($sibling.hasClass('glass-module-group')) {
-        $sibling = direction > 0 ? $sibling.children().first() : $sibling.children().last();
-      }
+      var $sibling = this.element();
+      var i = 0;
+
+      do {
+        $sibling = direction > 0 ? $sibling.next() : $sibling.prev();
+      } while (i++ < 5 && !this.editor().isaModule($sibling));
+
       return this.editor().parentModule($sibling);
     };
 
@@ -613,6 +625,51 @@ var GlassContentEditing = (function ($) {
       return this.sibling_module(1);
     };
 
+    this.isaGroup = function() {
+      return this.module_type() == 'module-group';
+    };
+
+    this.subModules = function() {
+      var children = [];
+      this.element().children().each(function () {
+        var $module = this_module.editor().parentModule($(this));
+        if ($module) {
+          children.push($module);
+        }
+      });
+      return children;
+    };
+
+    this.unGroup = function() {
+      var children = [];
+      if (this.isaGroup()) {
+        children = this.subModules();
+        this.element().children().unwrap();
+      }
+      return children;
+    };
+
+    this.getGroup = function() {
+      var $parent_module;
+      $parent_module = this.editor().parentModule(this.element().parent());
+      return ($parent_module && $parent_module.isaGroup()) ? $parent_module : null;
+    };
+
+    var flexValueStyles = function(val) {
+      return ['-webkit-box-flex: ', val, ';',
+              '-webkit-flex: ', val, ';',
+              '-ms-flex: ', val, ';',
+              'flex: ', val, ';'].join('');
+    };
+
+    this.adjustGroupImages = function () {
+      this.element().children().each(function () {
+        var $img = $(this).find('img').first();
+        $(this).attr('style', flexValueStyles(1.0 * $img.width() / $img.height()));
+      });
+    };
+
+
     // Initialization
     // ##########################################
     //this.focus();
@@ -621,12 +678,10 @@ var GlassContentEditing = (function ($) {
 
     if (this.element().find('img, iframe').length > 0 || this.element().hasClass('glass-no-edit')) {
       this.element().attr('contenteditable', false);
-      this.editor().attachControl('delete-btn', this);
+      if (!this.isaGroup()) {
+        this.editor().attachControl('delete-btn', this);
+      }
       this.editor().attachControl('click-pads', this);
-    }
-
-    if (this.module_type() == 'img-module') {
-      this.add_or_update_link_btn();
     }
   }
 
@@ -751,9 +806,9 @@ var GlassContentEditing = (function ($) {
 
           var $prev_module = $new_module.prev_module();
           if ($prev_module && $prev_module.module_type() == 'img-module') {
-            $prev_module.add_or_update_link_btn();
+            $prev_module.resetLinkButtons();
           }
-          $new_module.add_or_update_link_btn();
+          $new_module.resetLinkButtons();
         }
       });
     }
@@ -772,38 +827,36 @@ var GlassContentEditing = (function ($) {
         e.preventDefault();
         var $this_module = this_control.module();
         var $next_module = $this_module.next_module();
+        var $group;
 
-        if ($next_module && $next_module.module_type() == 'img-module') {
-          // 2 consecutive images
-          var $group = $next_module.element().parent();
-
-          if (!$group.hasClass('glass-module-group')) {
-            $group = $this_module.element().parent();
-          }
-
-          if ($group.hasClass('glass-module-group') && $(this).find('.gcicon').hasClass('unlink')) {
-            // In a group, wanting to unlink... unwrap it
-            $group.children().unwrap();
-          }
-          else {
-            // Linking...
-            if (!$group.hasClass('glass-module-group')) {
-              // No group found, create it
-              $this_module.element().wrap($('#glass-parking .glass-module-group.image-group').clone());
-              $group = $this_module.element().parents('.glass-module-group.image-group');
+        if ($next_module) {
+          if ($(this).find('.gcicon').hasClass('link')) {
+            if ($this_module.isaGroup()) {
+              $group = $this_module;
+              $group.element().append( $next_module.element());
             }
-
-            if ($this_module.element().parent()[0] != $group[0]) {
-              $group.prepend($this_module.element());
+            else if ($next_module.isaGroup()) {
+              $group = $next_module;
+              $group.element().prepend($this_module.element());
             }
-
-            if ($next_module.element().parent()[0] != $group[0]) {
-              $group.append($next_module.element());
+            else { // Could check here that neither are in a group already.  That would be bad.
+              $group = $this_module.editor().newModule('glass-module-group', 'after', $this_module);
+              $group.element().append( $next_module.element());
+              $group.element().prepend($this_module.element());
             }
-
-            $this_module.editor().adjustGroupImages($group);
+            $group.adjustGroupImages();
+            $group.resetLinkButtons();
           }
-          this_control.module().add_or_update_link_btn();
+          else if ($(this).find('.gcicon').hasClass('unlink')) {
+            $group = $this_module.isaGroup() ? $this_module : $this_module.getGroup();
+
+            if ($group) {
+              var $children = $group.unGroup();
+              $.each($children, function (i, $val) {
+                $val.resetLinkButtons();
+              });
+            }
+          }
         }
       });
     }
