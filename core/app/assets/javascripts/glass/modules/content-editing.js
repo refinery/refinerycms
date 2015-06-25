@@ -586,8 +586,6 @@ var GlassContentEditing = (function ($) {
         else if (this.element().parents('.glass-module-group').length <= 0 && $link_btn_icon.hasClass('unlink')) {
           $link_btn_icon.removeClass('unlink gcicon-unlink').addClass('link gcicon-link');
         }
-        else {
-        }
       }
     };
 
@@ -599,16 +597,20 @@ var GlassContentEditing = (function ($) {
       return module_type;
     };
 
-    this.sibling_module = function($sibling) {
-      return $sibling.parent().attr('class') == this.element().parent().attr('class') ? this.editor().parentModule($sibling) : null;
+    this.sibling_module = function(direction) {
+      var $sibling = direction > 0 ? this.element().next() : this.element().prev();
+      if ($sibling.hasClass('glass-module-group')) {
+        $sibling = direction > 0 ? $sibling.children().first() : $sibling.children().last();
+      }
+      return this.editor().parentModule($sibling);
     };
 
     this.prev_module = function() {
-      return this.sibling_module(this.element().prev());
+      return this.sibling_module(-1);
     };
 
     this.next_module = function() {
-      return this.sibling_module(this.element().next());
+      return this.sibling_module(1);
     };
 
     // Initialization
@@ -768,17 +770,38 @@ var GlassContentEditing = (function ($) {
     if (this.element().hasClass('link-items')) {
       this.element().click(function (e) {
         e.preventDefault();
-        var $next_module = this_control.module().next_module();
+        var $this_module = this_control.module();
+        var $next_module = $this_module.next_module();
+
         if ($next_module && $next_module.module_type() == 'img-module') {
+          // 2 consecutive images
           var $group = $next_module.element().parent();
-          if ($group.hasClass('glass-module-group')) {
+
+          if (!$group.hasClass('glass-module-group')) {
+            $group = $this_module.element().parent();
+          }
+
+          if ($group.hasClass('glass-module-group') && $(this).find('.gcicon').hasClass('unlink')) {
+            // In a group, wanting to unlink... unwrap it
             $group.children().unwrap();
           }
           else {
-            this_control.module().element().wrap($('#glass-parking .glass-module-group.image-group').clone());
-            $next_module.element().insertAfter(this_control.module().element());
-            $group = this_control.module().element().parents('.glass-module-group.image-group');
-            this_control.module().editor().adjustGroupImages($group);
+            // Linking...
+            if (!$group.hasClass('glass-module-group')) {
+              // No group found, create it
+              $this_module.element().wrap($('#glass-parking .glass-module-group.image-group').clone());
+              $group = $this_module.element().parents('.glass-module-group.image-group');
+            }
+
+            if ($this_module.element().parent()[0] != $group[0]) {
+              $group.prepend($this_module.element());
+            }
+
+            if ($next_module.element().parent()[0] != $group[0]) {
+              $group.append($next_module.element());
+            }
+
+            $this_module.editor().adjustGroupImages($group);
           }
           this_control.module().add_or_update_link_btn();
         }
