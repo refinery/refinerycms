@@ -419,13 +419,14 @@ var GlassContentEditing = (function ($) {
     this.modules = function() {
       var modules = [];
       this.h.elem.children().each(function () {
-        if ($(this).hasClass('glass-module-group')) {
-          $(this).children().each(function () {
-            modules.push($(this).glassHtmlModule(this_editor));
-          });
-        }
-        else if (!$(this).hasClass('glass-control')) {
-          modules.push($(this).glassHtmlModule(this_editor));
+        if (!$(this).hasClass('glass-control')) {
+          var $module = $(this).glassHtmlModule(this_editor);
+          modules.push($module);
+          if ($module.isaGroup()) {
+            $.each($module.subModules(), function (i, $submodule) {
+              modules.push($submodule);
+            });
+          }
         }
       });
       return modules;
