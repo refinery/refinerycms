@@ -296,6 +296,9 @@ var GlassContentEditing = (function ($) {
         case 'click-pads':
           $control = $('#glass-parking .click-pads').clone().glassHtmlControl();
           break;
+        case 'module-layout':
+          $control = $('#glass-parking .module-layout').clone().glassHtmlControl();
+          break;
         default:
           $control = null;
       }
@@ -487,6 +490,10 @@ var GlassContentEditing = (function ($) {
       if ($module.isGroupable()) {
         $module.resetLinkButtons();
       }
+
+      if ($module.isWidenable()) {
+        $module.editor().attachControl('module-layout', $module);
+      }
     });
 
     this.h.elem.mouseup(function(e) {
@@ -567,6 +574,11 @@ var GlassContentEditing = (function ($) {
       return type == 'module-group' || type == 'img-module';
     };
 
+    this.isWidenable = function() {
+      var type = this.module_type();
+      return !this.getGroup() && (type == 'module-group' || type == 'img-module' || type == 'vid-module');
+    };
+
     this.resetLinkButtons = function() {
       if (this.isGroupable() && this.next_module() && this.next_module().isGroupable()) {
         if (this.element().children('.glass-control.link-items').length == 0) {
@@ -601,8 +613,11 @@ var GlassContentEditing = (function ($) {
       if (this.element().hasClass('glass-module-group')) {
         module_type = 'module-group';
       }
-      else if (this.element().find('img, .cur-uploading-img').length > 0 && this.element().hasClass('glass-no-edit')) {
+      else if (this.element().hasClass('inline-editable-image-container')) {
         module_type = 'img-module';
+      }
+      else if (this.element().hasClass('video-wrapper')) {
+        module_type = 'vid-module';
       }
       return module_type;
     };
@@ -859,6 +874,14 @@ var GlassContentEditing = (function ($) {
             }
           }
         }
+      });
+    }
+
+    if (this.element().hasClass('module-layout')) {
+      this.element().find('button').click(function (e) {
+        var $elem = this_control.module().element();
+        $elem.removeClass("inline-module-lg inline-module-fw inline-module-md");
+        $elem.addClass($(this).data('layout-class'));
       });
     }
 
