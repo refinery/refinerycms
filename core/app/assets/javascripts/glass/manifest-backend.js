@@ -30,4 +30,5 @@
 //= require glass/modules/image-upload
 //= require glass/modules/modal-create
 //= require glass/modules/search
+//= require_tree ./editor/
 //  # The rest should be in glass/manifest-back-and-frontend.js
