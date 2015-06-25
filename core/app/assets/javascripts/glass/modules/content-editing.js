@@ -596,13 +596,15 @@ var GlassContentEditing = (function ($) {
         });
       }
       else {
-        var $link_btn_icon = this.element().find('.glass-control.link-items .gcicon');
-        if ($link_btn_icon.length == 1) {
-          if (this.getGroup() && $link_btn_icon.hasClass('link')) {
-            $link_btn_icon.removeClass('link gcicon-link').addClass('unlink gcicon-unlink');
+        var $link_btn = this.element().find('.glass-control.link-items');
+        if ($link_btn.length == 1) {
+          if (this.getGroup() && $link_btn.hasClass('link')) {
+            $link_btn.removeClass('link').addClass('unlink');
+            $link_btn.find('.gcicon').removeClass('gcicon-link').addClass('gcicon-unlink');
           }
-          else if (!this.getGroup() && $link_btn_icon.hasClass('unlink')) {
-            $link_btn_icon.removeClass('unlink gcicon-unlink').addClass('link gcicon-link');
+          else if (!this.getGroup() && $link_btn.hasClass('unlink')) {
+            $link_btn.removeClass('unlink').addClass('link');
+            $link_btn.find('.gcicon').removeClass('gcicon-unlink').addClass('gcicon-link');
           }
         }
       }
@@ -812,7 +814,7 @@ var GlassContentEditing = (function ($) {
           $cur_module.remove();
 
           var $next_module = $new_module.next_module();
-          if (!($next_module && $next_module.module_type() == 'img-module')) {
+          if (!($next_module && $next_module.isGroupable())) {
             // Add a <p> unless another image directly follows (user may want to link them)
             var $new_p = $new_module.editor().newModule('glass-module-p', 'after', $new_module);
             // FIXME - this doesn't seem to want to focus()
@@ -821,7 +823,7 @@ var GlassContentEditing = (function ($) {
           }
 
           var $prev_module = $new_module.prev_module();
-          if ($prev_module && $prev_module.module_type() == 'img-module') {
+          if ($prev_module && $prev_module.isGroupable()) {
             $prev_module.resetLinkButtons();
           }
           $new_module.resetLinkButtons();
@@ -846,7 +848,7 @@ var GlassContentEditing = (function ($) {
         var $group;
 
         if ($next_module) {
-          if ($(this).find('.gcicon').hasClass('link')) {
+          if ($(this).hasClass('link')) {
             if ($this_module.isaGroup()) {
               $group = $this_module;
               $group.element().append( $next_module.element());
@@ -863,7 +865,7 @@ var GlassContentEditing = (function ($) {
             $group.adjustGroupImages();
             $group.resetLinkButtons();
           }
-          else if ($(this).find('.gcicon').hasClass('unlink')) {
+          else if ($(this).hasClass('unlink')) {
             $group = $this_module.isaGroup() ? $this_module : $this_module.getGroup();
 
             if ($group) {
