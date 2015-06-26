@@ -26,9 +26,9 @@
 //= require glass/modules/file-upload
 //= require glass/modules/menus
 //= require glass/modules/semantic-ui-initializers
-//= require glass/modules/content-editing
 //= require glass/modules/image-upload
 //= require glass/modules/modal-create
 //= require glass/modules/search
 //= require_tree ./editor/
+//= require glass/modules/content-editing
 //  # The rest should be in glass/manifest-back-and-frontend.js

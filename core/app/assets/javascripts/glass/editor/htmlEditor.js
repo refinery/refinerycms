@@ -257,11 +257,12 @@ function GlassHtmlEditor($elem) {
     this_editor.triggerChangeFocus($module.element(), null);
 
     if ($module.isGroupable()) {
+      // this happens at init time, but needs to happen again because it looks at next_module() before it is initialized
       $module.resetLinkButtons();
     }
 
     if ($module.isWidenable()) {
-      $module.editor().attachControl('module-layout', $module);
+      $module.attachControl('module-layout');
     }
   });
 

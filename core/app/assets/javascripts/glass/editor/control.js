@@ -116,12 +116,6 @@ function GlassControl($elem) {
           // FIXME: $new_p.element().attr('contenteditable', true);
           // FIXME: $new_p.element().focus();
         }
-
-        var $prev_module = $new_module.prev_module();
-        if ($prev_module && $prev_module.isGroupable()) {
-          $prev_module.resetLinkButtons();
-        }
-        $new_module.resetLinkButtons();
       }
     });
   }

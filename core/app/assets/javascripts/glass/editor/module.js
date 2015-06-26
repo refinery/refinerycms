@@ -54,18 +54,41 @@ function GlassModule($elem, $editor) {
 
   this.isWidenable = function() {
     var type = this.module_type();
-    return !this.getGroup() && (type == 'module-group' || type == 'img-module' || type == 'vid-module');
+    return !this.inaGroup() && (type == 'module-group' || type == 'img-module' || type == 'vid-module');
   };
 
-  this.resetLinkButtons = function() {
-    if (this.isGroupable() && this.next_module() && this.next_module().isGroupable()) {
-      if (this.element().children('.glass-control.link-items').length == 0) {
-        this.editor().attachControl('link-items-btn', this);
-      }
+  this.attachControl = function(key) {
+    var key2selector = {
+      'link-items-btn': '.glass-control.link-items',
+      'module-layout': '.glass-control.module-layout',
+    };
+
+    if ((key in key2selector) && this.element().children(key2selector[key]).length > 0) {
+      return null;
+    }
+
+    this.editor().attachControl(key, this);
+  };
+
+  this.resetModuleLayoutButtons = function() {
+    if (this.isWidenable()) {
+      this.attachControl('module-layout');
     }
     else {
       // TODO: is there a better way to detachControl?
-      this.element().find('.glass-control.link-items').remove();
+      this.element().children('.glass-control.module-layout').remove();
+    }
+  };
+
+  this.resetLinkButtons = function() {
+    this.resetModuleLayoutButtons();
+
+    if (this.isGroupable() && this.next_module() && this.next_module().isGroupable()) {
+      this.attachControl('link-items-btn');
+    }
+    else {
+      // TODO: is there a better way to detachControl?
+      this.element().children('.glass-control.link-items').remove();
     }
 
     if (this.isaGroup()) {
@@ -76,11 +99,11 @@ function GlassModule($elem, $editor) {
     else {
       var $link_btn = this.element().find('.glass-control.link-items');
       if ($link_btn.length == 1) {
-        if (this.getGroup() && $link_btn.hasClass('link')) {
+        if (this.inaGroup() && $link_btn.hasClass('link')) {
           $link_btn.removeClass('link').addClass('unlink');
           $link_btn.find('.gcicon').removeClass('gcicon-link').addClass('gcicon-unlink');
         }
-        else if (!this.getGroup() && $link_btn.hasClass('unlink')) {
+        else if (!this.inaGroup() && $link_btn.hasClass('unlink')) {
           $link_btn.removeClass('unlink').addClass('link');
           $link_btn.find('.gcicon').removeClass('gcicon-unlink').addClass('gcicon-link');
         }
@@ -145,6 +168,10 @@ function GlassModule($elem, $editor) {
     return children;
   };
 
+  this.inaGroup = function() {
+    return this.element().parents('.glass-module-group').length > 0;
+  };
+
   this.getGroup = function() {
     var $parent_module;
     $parent_module = this.editor().parentModule(this.element().parent());
@@ -175,8 +202,14 @@ function GlassModule($elem, $editor) {
   if (this.element().find('img, iframe').length > 0 || this.element().hasClass('glass-no-edit')) {
     this.element().attr('contenteditable', false);
     if (!this.isaGroup()) {
-      this.editor().attachControl('delete-btn', this);
+      this.attachControl('delete-btn');
     }
-    this.editor().attachControl('click-pads', this);
+    this.attachControl('click-pads');
   }
+
+  var $prev_module = this.prev_module();
+  if ($prev_module && $prev_module.isGroupable()) {
+    $prev_module.resetLinkButtons();
+  }
+  this.resetLinkButtons();
 }
