@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "refinery-glass";
-  src:url("/assets/refinery-glass.eot");
-  src:url("/assets/refinery-glass.eot?#iefix") format("embedded-opentype"),
-    url("/assets/refinery-glass.woff") format("woff"),
-    url("/assets/refinery-glass.ttf") format("truetype"),
-    url("/assets/refinery-glass.svg#refinery") format("svg");
+  src:font-url("refinery-glass.eot");
+  src:font-url("refinery-glass.eot?#iefix") format("embedded-opentype"),
+    font-url("refinery-glass.woff") format("woff"),
+    font-url("refinery-glass.ttf") format("truetype"),
+    font-url("refinery-glass.svg#refinery") format("svg");
   font-weight: normal;
   font-style: normal;
 }
