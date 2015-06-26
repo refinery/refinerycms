@@ -256,6 +256,9 @@ body{
           border-color: $primary-dark;
         }
       }
+      .article-title{
+        width: 100%;
+      }
       .deliver{
         margin-bottom: 15px;
         display: block;
@@ -479,6 +482,12 @@ body{
     &:last-child{
       border: 0;
     }
+    .validation{
+      bottom: 0;
+      margin: 0;
+      border-radius: 0;
+      padding-top: 3px;
+    }
     .collapse-toggle{
       .gcicon-down{
         transition: .2s ease-out;
@@ -504,6 +513,9 @@ body{
         font-size: 21px;
         color: $grey-5;
         font-weight: 500;
+      }
+      p{
+        margin-bottom: 0;
       }
       .page-title{
         margin-bottom: 0;
