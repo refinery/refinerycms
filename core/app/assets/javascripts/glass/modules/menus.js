@@ -20,57 +20,22 @@ var GlassMenus = (function ($) {
       $cmsLeftSidebar.toggleClass('sidebar-open');
     });
 
+    var sidebar_settings = {
+      onVisible : function() { showSidebar(); },
+      onHide    : function() { hideSidebar(); }
+    };
+
     // set callback listeners for semantic-ui sidebars that cause the no-scroll class to be toggled.
-    $cmsLeftSidebar.sidebar('attach events', '.sidebar-left-opener', 'overlay', 'show')
-      .sidebar('setting', {
-        onVisible : function(){
-          showSidebar();
-        },
-        onHide : function(){
-          hideSidebar();
-        }
-      });
-
-    $cmsRightSidebar.sidebar('attach events', '.sidebar-right-opener', 'overlay', 'show')
-      .sidebar('setting', {
-        onVisible : function(){
-          showSidebar();
-        },
-        onHide : function(){
-          hideSidebar();
-        }
-      });
-
-    $(element).find('.sidebar-left-opener').click(function (e) {
-      e.preventDefault();
-    });
-    $(element).find('.sidebar-right-opener').click(function (e) {
-      e.preventDefault();
-    });
-
+    $cmsLeftSidebar.sidebar( 'attach events', '.sidebar-left-opener',  'overlay', 'show').sidebar('setting', sidebar_settings);
+    $cmsRightSidebar.sidebar('attach events', '.sidebar-right-opener', 'overlay', 'show').sidebar('setting', sidebar_settings);
   });
 
-  function hideSidebar(){
-    var wrapperDiv = $('#wrapper');
-    if(wrapperDiv.length == 0){
-      wrapperDiv = $('.pusher').first();
-    }
-    var top = wrapperDiv.css('top');
-
-    wrapperDiv.css({top : '0px'}).removeClass('no-scroll');
-    $('body').scrollTop(top.slice(1,-2));
+  function hideSidebar() {
+    $('html').removeClass('no-scroll');
   }
 
-  function showSidebar(){
-    var wrapperDiv = $('#wrapper');
-    var $body = $('body');
-    var topAmt = '-' + $body.scrollTop() + 'px';
-
-    if(wrapperDiv.length == 0){
-      wrapperDiv = $('.pusher').first();
-    }
-
-    wrapperDiv.css({top : topAmt}).addClass('no-scroll');
+  function showSidebar() {
+    $('html').addClass('no-scroll');
   }
 
   // Return API for other modules

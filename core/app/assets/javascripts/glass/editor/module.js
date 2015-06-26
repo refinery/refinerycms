@@ -119,7 +119,6 @@ function GlassModule($elem, $editor) {
 
   this.resetDeleteBtn = function() {
     var doDelete = (this.module_type() != 'unknown' && !this.isaGroup());
-    console.log("FIXME: add delete button = " + (doDelete ? 'yes' : 'no'));
     doDelete ? this.attachControl('delete-btn') : this.detatchControl('delete-btn');
   };
 

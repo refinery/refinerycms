@@ -377,8 +377,9 @@ p::-moz-selection {
 }
 
 .no-scroll {
-  position: fixed !important;
-  width: 100%;
+  /* position: fixed !important; */
+  /* width: 100%; */
+  overflow: hidden !important;
 }
 
 .no-border {
