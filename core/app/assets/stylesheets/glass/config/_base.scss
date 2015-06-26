@@ -59,6 +59,10 @@ a:active {
   transition: .2s ease-out;
 }
 
+.no-flicker{
+  -webkit-transform:translate3d(0,0,0);
+}
+
 .rotate-45 {
   transform: rotate(45deg);
 }
