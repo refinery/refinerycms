@@ -52,52 +52,14 @@ function GlassModule($elem, $editor) {
     return type == 'module-group' || type == 'img-module';
   };
 
-  this.isWidenable = function() {
-    var type = this.module_type();
-    return !this.inaGroup() && (type == 'module-group' || type == 'img-module' || type == 'vid-module');
-  };
-
   this.attachControl = function(key) {
-    var key2selector = {
-      'link-items-btn': '.glass-control.link-items',
-      'module-layout': '.glass-control.module-layout',
-    };
-
-    if ((key in key2selector) && this.element().children(key2selector[key]).length > 0) {
-      return null;
+    var key2selector = GlassControl.key2selector;
+    if (!((key in key2selector) && this.element().children(key2selector[key]).length > 0)) {
+      this.editor().attachControl(key, this);
     }
 
-    this.editor().attachControl(key, this);
-  };
-
-  this.resetModuleLayoutButtons = function() {
-    if (this.isWidenable()) {
-      this.attachControl('module-layout');
-    }
-    else {
-      // TODO: is there a better way to detachControl?
-      this.element().children('.glass-control.module-layout').remove();
-    }
-  };
-
-  this.resetLinkButtons = function() {
-    this.resetModuleLayoutButtons();
-
-    if (this.isGroupable() && this.next_module() && this.next_module().isGroupable()) {
-      this.attachControl('link-items-btn');
-    }
-    else {
-      // TODO: is there a better way to detachControl?
-      this.element().children('.glass-control.link-items').remove();
-    }
-
-    if (this.isaGroup()) {
-      $.each(this.subModules(), function(i, $val) {
-        $val.resetLinkButtons();
-      });
-    }
-    else {
-      var $link_btn = this.element().find('.glass-control.link-items');
+    if (key == 'link-items-btn') { // SPECIAL CASE: Change 'link' icon into 'unlink' icon or vice versa
+      var $link_btn = this.element().children(key2selector[key]);
       if ($link_btn.length == 1) {
         if (this.inaGroup() && $link_btn.hasClass('link')) {
           $link_btn.removeClass('link').addClass('unlink');
@@ -109,6 +71,67 @@ function GlassModule($elem, $editor) {
         }
       }
     }
+  };
+
+  this.detatchControl = function(key) {
+    var key2selector = GlassControl.key2selector;
+
+    if (!(key in key2selector)) {
+      return null;
+    }
+
+    var $elem = this.element().children(key2selector[key]);
+
+    // TODO: var $control = $elem.glassHtmlControl();
+    // TODO: $control.detatchFromModule();
+    // Big hammer.  I'm not confident in getting the GlassControl from the element yet :(
+    $elem.remove();
+  };
+
+  this.detatchAllControl = function() {
+    this.element().children('.glass-control.singleton').each(function () {
+      var $control = $(this).glassHtmlControl();
+      $control.bringBackModule();
+      $control.detatchFromModule();
+    });
+
+    // Big hammer.  I'm not confident in getting the GlassControl from the element yet :(
+    this.element().children('.glass-control').remove();
+  };
+
+  this.resetControl = function() {
+    this.resetClickPads();
+    this.resetDeleteBtn();
+    this.resetModuleLayoutButtons();
+    this.resetLinkButtons();
+
+    if (this.isaGroup()) {
+      $.each(this.subModules(), function(i, $val) {
+        $val.resetLinkButtons();
+      });
+    }
+  };
+
+  this.resetClickPads = function() {
+    var doClickPads = (this.module_type() != 'unknown' && !this.inaGroup());
+    doClickPads ? this.attachControl('click-pads') : this.detatchControl('click-pads');
+  };
+
+  this.resetDeleteBtn = function() {
+    var doDelete = (this.module_type() != 'unknown' && !this.isaGroup());
+    console.log("FIXME: add delete button = " + (doDelete ? 'yes' : 'no'));
+    doDelete ? this.attachControl('delete-btn') : this.detatchControl('delete-btn');
+  };
+
+  this.resetModuleLayoutButtons = function() {
+    var type = this.module_type();
+    var doLayoutButtons = !this.inaGroup() && (type == 'module-group' || type == 'img-module' || type == 'vid-module');
+    doLayoutButtons ? this.attachControl('module-layout') : this.detatchControl('module-layout');
+  };
+
+  this.resetLinkButtons = function() {
+    var doLinkButtons = this.isGroupable() && this.next_module() && this.next_module().isGroupable();
+    doLinkButtons ? this.attachControl('link-items-btn') : this.detatchControl('link-items-btn');
   };
 
   this.module_type = function() {
@@ -163,6 +186,7 @@ function GlassModule($elem, $editor) {
     var children = [];
     if (this.isaGroup()) {
       children = this.subModules();
+      this.detatchAllControl();
       this.element().children().unwrap();
     }
     return children;
@@ -179,9 +203,9 @@ function GlassModule($elem, $editor) {
   };
 
   var flexValueStyles = function(val) {
-    return ['-webkit-box-flex: ', val, ';',
-            '-webkit-flex: ', val, ';',
-            '-ms-flex: ', val, ';',
+    return ['-webkit-box-flex: ', val, '; ',
+            '-webkit-flex: ', val, '; ',
+            '-ms-flex: ', val, '; ',
             'flex: ', val, ';'].join('');
   };
 
@@ -201,15 +225,13 @@ function GlassModule($elem, $editor) {
 
   if (this.element().find('img, iframe').length > 0 || this.element().hasClass('glass-no-edit')) {
     this.element().attr('contenteditable', false);
-    if (!this.isaGroup()) {
-      this.attachControl('delete-btn');
-    }
-    this.attachControl('click-pads');
   }
 
+  // TODO: this doesn't seem to work
   var $prev_module = this.prev_module();
   if ($prev_module && $prev_module.isGroupable()) {
     $prev_module.resetLinkButtons();
   }
-  this.resetLinkButtons();
+
+  this.resetControl();
 }

@@ -116,6 +116,11 @@ function GlassControl($elem) {
           // FIXME: $new_p.element().attr('contenteditable', true);
           // FIXME: $new_p.element().focus();
         }
+
+        var $prev_module = $new_module.prev_module();
+        if ($prev_module && $prev_module.isGroupable()) {
+          $prev_module.resetLinkButtons();
+        }
       }
     });
   }
@@ -152,7 +157,12 @@ function GlassControl($elem) {
             $group.element().prepend($this_module.element());
           }
           $group.adjustGroupImages();
-          $group.resetLinkButtons();
+          $group.resetControl();
+
+          var $children = $group.subModules();
+          $.each($children, function (i, $val) {
+            $val.resetControl();
+          });
         }
         else if ($(this).hasClass('unlink')) {
           $group = $this_module.isaGroup() ? $this_module : $this_module.getGroup();
@@ -160,7 +170,7 @@ function GlassControl($elem) {
           if ($group) {
             var $children = $group.unGroup();
             $.each($children, function (i, $val) {
-              $val.resetLinkButtons();
+              $val.resetControl();
             });
           }
         }
@@ -238,3 +248,9 @@ function GlassControl($elem) {
     var $new_p = $new_module.editor().newModule('glass-module-p', 'after', $new_module);
   });
 }
+
+GlassControl.key2selector = {
+  'link-items-btn': '.glass-control.link-items',
+  'module-layout': '.glass-control.module-layout',
+};
+

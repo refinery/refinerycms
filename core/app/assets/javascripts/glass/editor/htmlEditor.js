@@ -256,14 +256,7 @@ function GlassHtmlEditor($elem) {
   $.each(this.modules(), function (i, $module) {
     this_editor.triggerChangeFocus($module.element(), null);
 
-    if ($module.isGroupable()) {
-      // this happens at init time, but needs to happen again because it looks at next_module() before it is initialized
-      $module.resetLinkButtons();
-    }
-
-    if ($module.isWidenable()) {
-      $module.attachControl('module-layout');
-    }
+    $module.resetControl();
   });
 
   this.h.elem.mouseup(function(e) {
@@ -289,4 +282,3 @@ function GlassHtmlEditor($elem) {
 
   grande.bind(document.querySelectorAll(".glass-edit-html"));
 }
-
