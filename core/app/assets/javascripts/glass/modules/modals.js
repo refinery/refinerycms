@@ -12,9 +12,11 @@ var GlassModals = (function ($) {
       var $modal = $(this).closest('.modal');
       $modal.modal('hide');
     });
-    $(element).find('.open-modal').unbind('click').click(function (e) {
-      e.preventDefault();
-      openBtnClickHandler($(this), undefined);
+    $(element).find('.open-modal').each(function () {
+      $(this).click(function (e) {
+        e.preventDefault();
+        openBtnClickHandler($(this), undefined);
+      });
     });
   });
 
