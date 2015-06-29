@@ -70,20 +70,8 @@
 .gcicon-quote:before {
   content: "y";
 }
-.gcicon-heading:before {
-  content: "z";
-}
-.gcicon-paragraph:before {
-  content: "A";
-}
 .gcicon-gear:before {
   content: "C";
-}
-.gcicon-index:before {
-  content: "D";
-}
-.gcicon-list:before {
-  content: "E";
 }
 .gcicon-move:before {
   content: "F";
@@ -105,12 +93,6 @@
 }
 .gcicon-down-lg:before {
   content: "M";
-}
-.gcicon-bars:before {
-  content: "N";
-}
-.gcicon-gears:before {
-  content: "O";
 }
 .gcicon-sort-alpha-two:before {
   content: "P";
@@ -142,9 +124,6 @@
 .gcicon-filter:before {
   content: "Y";
 }
-.gcicon-close:before {
-  content: "Z";
-}
 .gcicon-dashboard:before {
   content: "0";
 }
@@ -159,30 +138,6 @@
 }
 .gcicon-projection-screen:before {
   content: "7";
-}
-.gcicon-wrench:before {
-  content: "8";
-}
-.gcicon-sliders:before {
-  content: "9";
-}
-.gcicon-pages:before {
-  content: "!";
-}
-.gcicon-paperclip:before {
-  content: "\"";
-}
-.gcicon-crop:before {
-  content: "%";
-}
-.gcicon-flag:before {
-  content: "&";
-}
-.gcicon-chat:before {
-  content: "$";
-}
-.gcicon-fullscreen:before {
-  content: "'";
 }
 .gcicon-feather:before {
   content: "6";
@@ -232,24 +187,66 @@
 .gcicon-down:before {
   content: "L";
 }
-.gcicon-crosshair:before {
-  content: "=";
-}
-.gcicon-cancel:before {
-  content: ">";
-}
 .gcicon-link:before {
   content: "p";
 }
 .gcicon-unlink:before {
   content: "?";
 }
-.gcicon-img-fw:before {
+.gcicon-index:before {
+  content: "Z";
+}
+.gcicon-flag:before {
+  content: "^";
+}
+.gcicon-list:before {
+  content: "_";
+}
+.gcicon-gears:before {
+  content: "{";
+}
+.gcicon-chat:before {
+  content: "|";
+}
+.gcicon-wrench:before {
+  content: "}";
+}
+.gcicon-sliders:before {
+  content: "~";
+}
+.gcicon-fullscreen:before {
+  content: "\\";
+}
+.gcicon-pages:before {
+  content: "\e000";
+}
+.gcicon-paperclip:before {
+  content: "\e001";
+}
+.gcicon-bars:before {
+  content: "\e002";
+}
+.gcicon-crop:before {
+  content: "\e003";
+}
+.gcicon-heading:before {
+  content: "\e004";
+}
+.gcicon-paragraph:before {
+  content: "\e005";
+}
+.gcicon-close:before {
+  content: "z";
+}
+.gcicon-cancel:before {
+  content: "A";
+}
+.gcicon-full-width:before {
   content: "B";
 }
-.gcicon-img-lg:before {
-  content: "@";
+.gcicon-normal:before {
+  content: "D";
 }
-.gcicon-img-md:before {
-  content: "[";
+.gcicon-theatre:before {
+  content: "E";
 }
