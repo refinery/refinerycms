@@ -141,7 +141,7 @@ function GlassModule($elem, $editor) {
     else if (this.element().hasClass('inline-editable-image-container')) {
       module_type = 'img-module';
     }
-    else if (this.element().hasClass('video-wrapper')) {
+    else if (this.element().hasClass('video-module')) {
       module_type = 'vid-module';
     }
     return module_type;
