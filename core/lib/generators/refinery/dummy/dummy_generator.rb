@@ -1,20 +1,29 @@
-require 'rails/generators'
 require 'rails/generators/rails/app/app_generator'
 
 module Refinery
   class DummyGenerator < Rails::Generators::Base
-    desc "Creates blank Rails application, installs Refinery CMS, and all sample data"
+    desc "Creates a blank Rails application with Refinery CMS installed."
 
     class_option :database, :default => ''
 
     def self.source_paths
-      paths = self.superclass.source_paths
-      paths << File.expand_path('../templates', __FILE__)
-      paths.flatten
+      [
+        self.superclass.source_paths,
+        File.expand_path('../templates', __FILE__)
+      ].flatten.compact
     end
 
     PASSTHROUGH_OPTIONS = [
-      :skip_active_record, :skip_javascript, :skip_action_cable, :skip_action_mailer, :database, :javascript, :quiet, :pretend, :force, :skip
+      :database,
+      :force,
+      :javascript,
+      :pretend,
+      :quiet,
+      :skip,
+      :skip_action_cable,
+      :skip_action_mailer,
+      :skip_active_record,
+      :skip_javascript
     ]
 
     def generate_test_dummy
@@ -24,8 +33,13 @@ module Refinery
       opts[:skip_bundle] = true
       opts[:skip_action_cable] = true
       opts[:skip_action_mailer] = true
+      opts[:skip_keeps] = true
+      opts[:skip_migrate] = true
+      opts[:template] = refinery_path.join("templates", "refinery", "edge.rb").to_s
 
-      invoke Rails::Generators::AppGenerator, [ File.expand_path(dummy_path, destination_root) ], opts
+      invoke Rails::Generators::AppGenerator,
+             [ File.expand_path(dummy_path, destination_root) ],
+             opts
     end
 
     def test_dummy_config
@@ -67,10 +81,14 @@ module Refinery
 
     attr :database
 
-  protected
+    protected
 
     def dummy_path
       'spec/dummy'
+    end
+
+    def dummy_application_path
+      File.expand_path("#{dummy_path}/config/application.rb", destination_root)
     end
 
     def module_name
@@ -79,7 +97,6 @@ module Refinery
 
     def application_definition
       @application_definition ||= begin
-        dummy_application_path = File.expand_path("#{dummy_path}/config/application.rb", destination_root)
         unless options[:pretend] || !File.exists?(dummy_application_path)
           contents = File.read(dummy_application_path)
           contents[(contents.index("module #{module_name}"))..-1]
@@ -93,7 +110,11 @@ module Refinery
     end
 
     def gemfile_path
-      '../../../../Gemfile'
+      "../../../../Gemfile"
+    end
+
+    def refinery_path
+      Pathname.new File.expand_path("../../../../../../", __FILE__)
     end
   end
 end

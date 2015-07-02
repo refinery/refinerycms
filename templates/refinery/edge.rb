@@ -16,22 +16,16 @@ if File.read("#{destination_root}/Gemfile") !~ /assets.+coffee-rails/m
   gem "coffee-rails", :group => :assets
 end
 
-if ENV['REFINERY_PATH']
-  append_file 'Gemfile' do
-"
-gem 'refinerycms', path: '#{ENV['REFINERY_PATH']}'
-"
-  end
+refinerycms_source = if ENV['REFINERY_PATH']
+  "path: '#{ENV['REFINERY_PATH']}'"
 else
-  append_file 'Gemfile' do
-"
-gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', branch: 'master'
-"
-  end
+  "git: 'https://github.com/refinery/refinerycms', branch: 'master'"
 end
 
 append_file 'Gemfile' do
 "
+gem 'refinerycms', #{refinerycms_source}
+
 # Add support for searching inside Refinery's admin interface.
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
@@ -46,10 +40,12 @@ end
 run 'bundle install'
 
 rake 'db:create'
+require 'refinery/core/environment_checker'
+Refinery::Core::EnvironmentChecker.new(destination_root).call
 generate "refinery:cms --fresh-installation #{ARGV.join(' ')}"
 
 say <<-SAY
   ============================================================================
-    Your new Refinery CMS application is now running on edge and mounted to /.
+    Your new Refinery CMS application is now running on edge and mounted at '/'
   ============================================================================
 SAY

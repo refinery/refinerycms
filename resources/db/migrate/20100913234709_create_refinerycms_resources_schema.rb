@@ -7,7 +7,7 @@ class CreateRefinerycmsResourcesSchema < ActiveRecord::Migration[4.2]
       t.string   :file_uid
       t.string   :file_ext
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

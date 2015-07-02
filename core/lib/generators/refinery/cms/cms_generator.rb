@@ -1,5 +1,6 @@
 require 'pathname'
 require 'mkmf'
+require 'refinery/core/environment_checker'
 
 module Refinery
   class CmsGenerator < Rails::Generators::Base
@@ -190,36 +191,14 @@ end
       run "heroku restart"
     end
 
-    # Helper method to quickly convert destination_root to a Pathname for easy file path manipulation
+    # Helper method to quickly convert destination_root to a Pathname
+    # for easy file path manipulation
     def destination_path
       @destination_path ||= Pathname.new(self.destination_root)
     end
 
     def ensure_environments_are_sane!
-      # Massage environment files
-      %w(development test production).map{ |e| "config/environments/#{e}.rb"}.each do |env|
-        next unless destination_path.join(env).file?
-
-        # Refinery does not necessarily expect action_mailer to be available as
-        # we may not always require it (currently only the authentication extension).
-        # Rails, however, will optimistically place config entries for action_mailer.
-        current_mailer_config = File.read(destination_path.join(env)).to_s.
-                                     match(%r{^\s.+?config\.action_mailer\..+([\w\W]*\})?}).
-                                     to_a.flatten.first
-
-        if current_mailer_config.present?
-          new_mailer_config = [
-            "  if config.respond_to?(:action_mailer)",
-            current_mailer_config.gsub(%r{\A\n+?}, ''). # remove extraneous newlines at the start
-                                  gsub(%r{^\ \ }) { |line| "  #{line}" }, # add indentation on each line
-            "  end"
-          ].join("\n")
-
-          gsub_file env, current_mailer_config, new_mailer_config, :verbose => false
-        end
-
-        gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
-      end
+      Refinery::Core::EnvironmentChecker.new(destination_path).call
     end
 
     def forced_overwriting?
@@ -322,7 +301,7 @@ end
         message.join("\n")
       end
 
-      options[:heroku] = '' if options[:heroku] == 'heroku'
+      options.delete(:heroku) if options[:heroku] == 'heroku'
     end
 
     def start_pretending?

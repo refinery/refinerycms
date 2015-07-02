@@ -98,3 +98,6 @@ Gemfile.lock
 
 # rspec failures
 .rspec_failures
+
+db/
+config/initializers
