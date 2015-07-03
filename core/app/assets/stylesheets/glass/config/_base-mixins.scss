@@ -104,8 +104,8 @@ border-bottom-right-radius: $radius;
 @mixin circle($radius) {
   height: $radius;
   width: $radius;
-  -moz-border-radius: $radius / 2; 
-  -webkit-border-radius: $radius / 2; 
+  -moz-border-radius: $radius / 2;
+  -webkit-border-radius: $radius / 2;
   border-radius: $radius / 2;
 }
 
@@ -147,7 +147,6 @@ border-bottom-right-radius: $radius;
 	overflow: hidden;
 	-ms-text-overflow: ellipsis;
 	text-overflow: ellipsis;
-	display: block;
 }
 
 @mixin placeholder($white) {

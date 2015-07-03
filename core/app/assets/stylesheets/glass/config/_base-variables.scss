@@ -32,6 +32,8 @@ $red-bg: #ffdfcf;
 $green: #5bc890;
 $mint: #5bc9a9;
 $salmon: #FC9797;
+$maroon: #85144b;
+$olive: #3D9970;
 $yellow: #fec641;
 $yellow-fade: #EEE28D;
 $orange: #e99c00;
@@ -47,8 +49,8 @@ $radius-none: 0;
 $margin: 30px;
 $margin-half: $margin / 2;
 $margin-double: $margin * 2;
-$shadow: 0px 1px 4px 0px rgba(50, 50, 50, .1);
-$shadow-solid: inset 0px -2px 0px 0px rgba(50, 50, 50, .25);
+$shadow: 0 1px 4px 0 rgba(50, 50, 50, .1);
+$shadow-solid: inset 0 -2px 0 0 rgba(50, 50, 50, .25);
 $flip: -1, 1;
 $flip-vertical: 1, -1;
 $scale: 1.1;
@@ -186,6 +188,14 @@ $icon-li-width: (30em / 14) !default;
   color: $salmon;
 }
 
+.maroon {
+  color: $olive;
+}
+
+.maroon {
+  color: $olive;
+}
+
 
 
 /* -------------------- BG COLOR CLASSES -------------------- */
@@ -288,4 +298,12 @@ $icon-li-width: (30em / 14) !default;
 
 .salmon-bg {
   background-color: $salmon !important;
+}
+
+.maroon-bg {
+  background-color: $maroon !important;
+}
+
+.olive-bg {
+  background-color: $olive !important;
 }

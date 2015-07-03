@@ -1,26 +1,29 @@
 /* -------------------- MAIN -------------------- */
 
-html, body {
-  overflow: auto !important; 
-  min-height: 100% 
+html,
+body {
+  overflow: auto !important;
+  min-height: 100%;
 }
 
 body {
   overflow-x: hidden;
-	font-family: $primary-font;
+  font-family: $primary-font;
 }
 
 a {
-	@include transition($transition);
+  @include transition($transition);
 }
 
-a:link, a:visited {
-	color: $primary-color;
+a:link,
+a:visited {
+  color: $primary-color;
 }
 
-a:hover, a:focus {
-	color: $primary-hover;
-	text-decoration: none;
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: $primary-hover;
 }
 
 a:focus {
@@ -28,7 +31,7 @@ a:focus {
 }
 
 a:active {
-	color: $primary-hover;
+  color: $primary-hover;
 }
 
 .bump-up {
@@ -59,8 +62,8 @@ a:active {
   transition: .2s ease-out;
 }
 
-.no-flicker{
-  -webkit-transform:translate3d(0,0,0);
+.no-flicker {
+  -webkit-transform: translate3d(0,0,0);
 }
 
 .rotate-45 {
@@ -78,13 +81,14 @@ a:active {
 
 /* -------------------- LAYOUT -------------------- */
 
-.clear:before, .clear:after {
-    content: " ";
-    display: table;
+.clear:before,
+.clear:after {
+  display: table;
+  content: " ";
 }
 
 .clear:after {
-    clear: both;
+  clear: both;
 }
 
 .list-flex {
@@ -120,8 +124,9 @@ a:active {
 
 .vertical-align {
   display: flex;
-  align-items: center;
   height: 100%;
+
+  align-items: center;
 }
 
 .horizontal-align {
@@ -142,12 +147,12 @@ a:active {
 }
 
 .inline-block {
-	display: inline-block;
+  display: inline-block;
 }
 
 .centered {
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 .static {
@@ -157,32 +162,34 @@ a:active {
 .inner-wrapper {
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
 }
 
 .card-index {
   display: flex;
-  margin-left: -15px;
-  margin-right: -15px;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
   .card {
-    flex: 1 1 300px;
     margin: 0 15px 30px;
+
+    flex: 1 1 300px;
     @media (min-width: 768px) {
       max-width: calc(50% - 15px);
     }
     .card-top {
-      padding-top: 60%;
       display: block;
+      padding-top: 60%;
       color: $grey-6;
       .inner-wrapper {
         display: flex;
-        align-items: center;
         justify-content: center;
         text-align: center;
+
+        align-items: center;
         .feature-icon {
           font-size: 120px;
         }
@@ -193,8 +200,8 @@ a:active {
     }
     a.card-top {
       .inner-wrapper {
-        opacity: 1;
         transition: .2s ease-out;
+        opacity: 1;
       }
       &:hover {
         .inner-wrapper {
@@ -212,18 +219,18 @@ a:active {
 }
 
 * {
-  background-repeat: no-repeat;
   position: relative;
+  background-repeat: no-repeat;
 }
 
 *::selection {
-	background: $primary-light; /* Safari */
-	color: $white;
+  color: $white;
+  background: $primary-light; /* Safari */
 }
 
 p::-moz-selection {
-	background: $primary-light; /* Firefox */
-	color: $white;
+  color: $white;
+  background: $primary-light; /* Firefox */
 }
 
 .margin-bottom-none {
@@ -365,17 +372,18 @@ p::-moz-selection {
   }
   .flip {
     position: absolute;
-    backface-visibility: hidden;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     transition: .5s ease-out;
+
+    backface-visibility: hidden;
     &-front {
       z-index: 10;
     }
     &-back {
-    -webkit-transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
     }
   }
 }
@@ -398,10 +406,11 @@ p::-moz-selection {
   border-radius: $radius-double;
 }
 
-.pseudo-hidden-field, .image-id-field {
-	opacity: 0;
-	height: 0px;
-	width: 0px;
+.pseudo-hidden-field,
+.image-id-field {
+  width: 0;
+  height: 0;
+  opacity: 0;
 }
 
 
@@ -409,23 +418,35 @@ p::-moz-selection {
 /* -------------------- ELEMENTS -------------------- */
 
 .section {
-	padding-top: $margin;
-	padding-bottom: $margin;
+  padding-top: $margin;
+  padding-bottom: $margin;
 }
 
 .cover {
-	color: $white;
-	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-		color: $white;
-	}
+  color: $white;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    color: $white;
+  }
 }
 
 .circle {
-  border-radius: 50%;
+  display: block;
   width: 30px;
   height: 30px;
-  display: block;
+  border-radius: 50%;
   background: $grey-5;
+
   @include transition($transition);
 }
 
@@ -442,8 +463,8 @@ p::-moz-selection {
 }
 
 .quote-wrapper {
-  padding-left: 15px;
   padding-right: 15px;
+  padding-left: 15px;
 }
 
 .note {
@@ -452,8 +473,8 @@ p::-moz-selection {
 }
 
 .image-link {
-  background: $grey-5;
   display: block;
+  background: $grey-5;
   &:hover img {
     opacity: .8;
   }
@@ -464,66 +485,69 @@ p::-moz-selection {
 }
 
 .grid-img {
+  display: block;
+  overflow: hidden;
   width: 100%;
   max-width: 300px;
+  height: 0;
   margin: 0 auto;
   padding-bottom: 64%;
-  overflow: hidden;
-  height: 0;
-  display: block;
   color: $black;
 }
 
-.badge, .btn .badge {
+.badge,
+.btn .badge {
   min-width: 20px;
   height: 20px;
   padding: 6px 5px 3px;
   font-size: 10px;
+  color: $grey-6;
   border-radius: 10px;
   background-color: $grey-2;
-  color: $grey-6;
   &.floating {
     position: absolute;
     top: -7px;
     right: -7px;
   }
   &-dark {
-    background: $grey-6;
     color: $off-white;
+    background: $grey-6;
   }
   &-red {
-    background: $red;
     color: $white;
+    background: $red;
   }
 }
 
 .video-link {
-	display: block;
-	background: $white;
-	&:hover {
-		.icon-stack {
-			@include scale($scale);
-		}
-		img {
-			opacity: .8;
-		}
-	}
-	img {
-		@include transition($transition);
-		@include transition-fix();
-		opacity: 1;
-	}
-	.icon-stack {
+  display: block;
+  background: $white;
+  &:hover {
+    .icon-stack {
+      @include scale($scale);
+    }
+    img {
+      opacity: .8;
+    }
+  }
+  img {
+    opacity: 1;
+
+    @include transition-fix();
+    @include transition($transition);
+  }
+  .icon-stack {
     position: absolute;
+    z-index: 10;
     top: 50%;
     left: 50%;
     margin-top: -21px;
     margin-left: -21px;
-    z-index: 10;
+
     @include transition($transition);
     .icon-circle-thin {
-      color: $white;
       font-size: 50px;
+      color: $white;
     }
     .icon-play {
       top: 4px;
@@ -533,62 +557,63 @@ p::-moz-selection {
 }
 
 .video-wrapper {
-	padding-bottom: 56.25%;
-	height: 0;
-	margin-top: 45px;
-	margin-bottom: 45px;
+  height: 0;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  padding-bottom: 56.25%;
 }
 
 .video-wrapper iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .video-16-9 {
-	padding-bottom: 56.25%;
-	height: 0;
-	margin-top: 45px;
-	margin-bottom: 45px;
+  height: 0;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  padding-bottom: 56.25%;
 }
 
 .video-16-9 iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .video-ws {
-	padding-bottom: 42.18%;
-	height: 0;
-	margin-top: 45px;
-	margin-bottom: 45px;
+  height: 0;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  padding-bottom: 42.18%;
 }
 
 .video-ws iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .dropdown-menu {
-	@include box-shadow($shadow);
-	border: 1px solid $grey-1;
-	li {
-		margin: 0;
-		a {
-			padding: 5px 15px;
-		}
-	}
-	.divider {
-		margin: 5px 0;
-	}
+  border: 1px solid $grey-1;
+
+  @include box-shadow($shadow);
+  li {
+    margin: 0;
+    a {
+      padding: 5px 15px;
+    }
+  }
+  .divider {
+    margin: 5px 0;
+  }
 }
 
 .load-more {
@@ -599,34 +624,36 @@ p::-moz-selection {
 }
 
 .pill {
-  padding: 5px 15px 5px 18px;
+  display: inline-block;
   height: 40px;
-  @include border-radius(20px);
-  @include transition($transition ease-out);
-  color: $black;
+  padding: 5px 15px 5px 18px;
   font-size: 18px;
   line-height: 1;
+  color: $black;
   border: 1px solid $grey-3;
-  display: inline-block;
-  .icon, .gcicon {
+
+  @include transition($transition ease-out);
+  @include border-radius(20px);
+  .icon,
+  .gcicon {
+    top: -1px;
+    left: -5px;
+    margin: 0 2px 0 0;
     font-size: 16px;
     line-height: 1;
-    margin: 0 2px 0 0;
-    left: -5px;
-    top: -1px;
   }
   .icon-last {
-    margin: 0 0 0 2px;
     left: 2px;
+    margin: 0 0 0 2px;
   }
   .delete {
+    top: 2px;
+    left: 2px;
+    display: inline-block;
+    margin-left: 2px;
+    padding-bottom: 3px;
     font-size: 24px;
     color: #aeaeae;
-    left: 2px;
-    top: 2px;
-    margin-left: 2px;
-    display: inline-block;
-    padding-bottom: 3px;
     &:hover {
       color: $primary-hover;
     }
@@ -636,9 +663,9 @@ p::-moz-selection {
 a.pill {
   color: $black;
   &:hover {
-    background: $grey-6;
     color: $white;
     border-color: $grey-6;
+    background: $grey-6;
   }
 }
 
@@ -647,7 +674,8 @@ a.pill {
   padding: 0 12px 0 15px;
   font-size: 14px;
   line-height: 26px;
-  .icon, .gcicon {
+  .icon,
+  .gcicon {
     font-size: 12px;
   }
 }
@@ -657,51 +685,52 @@ a.pill {
   padding: 0 8px 0 10px;
   font-size: 12px;
   line-height: 18px;
-  .icon, .gcicon {
+  .icon,
+  .gcicon {
     font-size: 12px;
   }
 }
 
 .corner-label {
-  width: 40px;
-  height: 40px;
+  position: absolute;
+  z-index: 100;
   top: 0;
   right: 0;
-  z-index: 100;
-  font-size: .75em;
-  border-radius: 0 $radius-double 0 0;
-  border-color: #f2c61f;
-  position: absolute;
-  color: rgba(0,0,0,.6);
   overflow: hidden;
+  width: 40px;
+  height: 40px;
+  font-size: .75em;
+  color: rgba(0,0,0,.6);
+  border-color: #f2c61f;
+  border-radius: 0 $radius-double 0 0;
   &:after {
     position: absolute;
-    content: "";
-    right: 0;
-    top: 0;
     z-index: -1;
+    top: 0;
+    right: 0;
     width: 0;
     height: 0;
-    background-color: transparent !important;
+    content: "";
+    -webkit-transition: border-color .2s ease;
+            transition: border-color .2s ease;
     border-top: 0 solid transparent;
     border-right: 3.25em solid transparent;
+    border-right-color: inherit;
     border-bottom: 3.25em solid transparent;
     border-left: 0 solid transparent;
-    border-right-color: inherit;
-    -webkit-transition: border-color .2s ease;
-    transition: border-color .2s ease;
+    background-color: transparent !important;
   }
   span {
-    transform: rotate(45deg);
-    display: block;
-    top: 6px;
     position: absolute;
+    top: 6px;
     right: 2px;
+    display: block;
     width: 22px;
-    text-align: center;
-    text-transform: uppercase;
     font-size: 10px;
     font-weight: 600;
+    transform: rotate(45deg);
+    text-align: center;
+    text-transform: uppercase;
   }
 }
 
@@ -709,24 +738,24 @@ a.pill {
   .divider-right {
     &:after {
       position: absolute;
-      content: "";
-      right: 14px;
-      height: 100%;
-      width: 2px;
-      background-color: $grey-1;
       top: 0;
+      right: 14px;
+      width: 2px;
+      height: 100%;
+      content: "";
+      background-color: $grey-1;
     }
     &-md {
       &:after {
-        height: 120px;
         top: 50%;
+        height: 120px;
         margin-top: -60px;
       }
     }
     &-sm {
       &:after {
-        height: 60px;
         top: 50%;
+        height: 60px;
         margin-top: -30px;
       }
     }
@@ -735,10 +764,10 @@ a.pill {
 
 .tooltip {
   .tooltip-inner {
-    background: $grey-5;
-    font-family: $primary-font;
     padding: 10px 15px;
+    font-family: $primary-font;
     font-weight: 600;
+    background: $grey-5;
   }
   &.top {
     .tooltip-arrow {
@@ -763,17 +792,19 @@ a.pill {
       }
     }
   }
-  .inline-editable-image-container, .image-group-img {
-    flex: 1;
+  .inline-editable-image-container,
+  .image-group-img {
     margin: 0 15px;
+
+    flex: 1;
   }
 }
 
 .inline-module {
   &-fw {
+    left: 50%;
     width: 100vw;
     transform: translateX(-50vw);
-    left: 50%;
     .img-responsive {
       width: 100%;
     }
@@ -797,16 +828,16 @@ a.pill {
 }
 
 .caption-lg {
+  margin-top: 15px;
   font-size: 21px;
   font-weight: 600;
-  margin-top: 15px;
   color: $grey-5;
 }
 
 .message {
-  background: $white;
-  border-radius: $radius;
   padding: 30px;
+  border-radius: $radius;
+  background: $white;
   p {
     &:last-child {
       margin-bottom: 0 !important;
@@ -814,20 +845,20 @@ a.pill {
   }
   &-right {
     &:before {
-      content: "";
       position: absolute;
       top: 50%;
       left: -10px;
-      margin-top: -10px;
       width: 0;
       height: 0;
-      border-style: solid;
+      margin-top: -10px;
+      content: "";
       border-width: 10px 10px 10px 0;
+      border-style: solid;
       border-color: transparent $white transparent transparent;
       @media (max-width: 767px) {
         top: 0;
         left: 50%;
-        margin-left: -10px; 
+        margin-left: -10px;
         border-width: 0 10px 10px 10px;
         border-color: transparent transparent $white transparent;
       }
@@ -837,25 +868,26 @@ a.pill {
 
 .datepicker-wrapper {
   position: absolute;
-  width: 290px;
-  padding: 15px;
-  background: $white;
-  @include box-shadow($shadow);
   z-index: 150;
-  border-radius: $radius;
+  visibility: hidden;
+  width: 290px;
   margin-top: 5px;
-  visibility:hidden;
-  opacity: 0;
-  transform: scale(1.2);
+  padding: 15px;
   transition: visibility 0s $bezier .2s, all .2s $bezier;
+  transform: scale(1.2);
+  opacity: 0;
+  border-radius: $radius;
+  background: $white;
+
+  @include box-shadow($shadow);
   .datepicker-fields {
     display: flex;
     flex-wrap: nowrap;
-    margin-left: -5px;
     margin-right: -5px;
+    margin-left: -5px;
     .form-group {
-      margin-left: 5px !important;
       margin-right: 5px !important;
+      margin-left: 5px !important;
       .form-control {
         font-size: 14px;
       }
@@ -863,9 +895,9 @@ a.pill {
   }
   .close {
     position: absolute;
+    z-index: 100;
     top: 10px;
     right: 10px;
-    z-index: 100;
     font-size: 12px;
   }
   .bootstrap-datetimepicker-widget {
@@ -881,15 +913,15 @@ a.pill {
     width: 320px;
   }
   &.active {
-    visibility :visible;
-    opacity: 1;
+    visibility: visible;
     transition-delay: 0s;
     transform: scale(1.0);
+    opacity: 1;
   }
 }
 
 .ui.modal > .content {
-	font-size: $font-size-base !important;
+  font-size: $font-size-base !important;
 }
 
 
@@ -898,9 +930,9 @@ a.pill {
 
 .browser-update-wrapper {
   position: fixed;
+  z-index: 1000000;
   width: 100%;
   height: 100%;
-  z-index: 1000000;
   background: rgba($white,.95);
   .browser-update {
     padding-top: 120px;
@@ -912,17 +944,17 @@ a.pill {
     }
     .browser-download {
       display: block;
-      text-align: center;
       font-size: 21px;
       font-weight: 600;
+      text-align: center;
       &:hover {
         img {
           opacity: .85;
         }
       }
       img {
-        margin: 0 auto 15px;
         max-width: 128px;
+        margin: 0 auto 15px;
         transition: .2s ease-out;
       }
     }
@@ -936,77 +968,92 @@ a.pill {
 
 /* -------------------- TYPOGRAPHY -------------------- */
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    margin-bottom: $margin-half;
-    font-weight: 400;
-    letter-spacing: .05em;
-    color: $grey-8;
-    &:first-child {
-      margin-top: 0;
-    }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin-bottom: $margin-half;
+  font-weight: 400;
+  letter-spacing: .05em;
+  color: $grey-8;
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 h1 {
-	margin-bottom: $margin;
+  margin-bottom: $margin;
 }
 
 h1 hr {
-	width: 160px;
-	color: $grey-3;
-	margin: 30px auto 30px;
+  width: 160px;
+  margin: 30px auto 30px;
+  color: $grey-3;
 }
 
-h2 hr, h3 hr, h4 hr, h5 hr, h6 hr {
-	width: 125px;
-	margin-bottom: 60px;
-	color: $grey-8;
-	background-color: $grey-8;
-	height: 1px;
+h2 hr,
+h3 hr,
+h4 hr,
+h5 hr,
+h6 hr {
+  width: 125px;
+  height: 1px;
+  margin-bottom: 60px;
+  color: $grey-8;
+  background-color: $grey-8;
 }
 hr {
-  margin: 30px auto; //margin subject to change
   width: 100%;
   height: 4px;
+  margin: 30px auto; //margin subject to change
   border: 0;
   background-color: $grey-1;
 }
 
 .article-body hr {
-  margin: 30px auto; //margin subject to change
   width: 150px;
   height: 4px;
+  margin: 30px auto; //margin subject to change
   border: 0;
   background-color: $grey-2;
 }
 
 @media (max-width: 767px) {
-	h1 {
-		font-size: $font-size-h1 * .75;
-	}
-	h2 {
-		font-size: $font-size-h2 * .75;
-	}
-	h3 {
-		font-size: $font-size-h3 * .75;
-	}
-	h4 {
-		font-size: 18px;
-	}
+  h1 {
+    font-size: $font-size-h1 * .75;
+  }
+  h2 {
+    font-size: $font-size-h2 * .75;
+  }
+  h3 {
+    font-size: $font-size-h3 * .75;
+  }
+  h4 {
+    font-size: 18px;
+  }
 }
 
 p {
-	margin-bottom: .75em;
+  margin-bottom: .75em;
 }
 
 p.small {
-	font-size: 14px;
-	line-height: 1.4em;
-	font-weight: 600;
-	color: $grey-4;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+  color: $grey-4;
 }
 
 ul li {
-	margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .tight {
@@ -1021,122 +1068,132 @@ ul li {
 }
 
 .list-circle-numbers {
-  counter-reset: li; /* Initiate a counter */
+  margin-bottom: 30px;
   margin-left: 0; /* Remove the default left margin */
   padding-left: 0; /* Remove the default left padding */
-  margin-bottom: 30px;
-  &> li {
+  counter-reset: li; /* Initiate a counter */
+  & > li {
     margin: 0 0 6px 30px; /* Give each list item a left margin to make room for the numbers */
     padding: 4px 8px 4px 15px; /* Add some spacing around the content */
     list-style: none; /* Disable the normal item numbering */
     &:before {
-       content: counter(li); /* Use the counter as content */
-       counter-increment: li; /* Increment the counter by 1 */
-       /* Position and style the number */
-       position: absolute;
-       top: 0px;
-       left: -2em;
-       -moz-box-sizing: border-box;
-       -webkit-box-sizing: border-box;
-       box-sizing: border-box;
-       width: 2em;
-       /* Some space between the number and the content in browsers that support
+      /* Position and style the number */
+      position: absolute;
+      top: 0;
+      left: -2em;
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+      width: 2em;
+      width: 26px;
+      height: 26px;
+      margin: 5px 0 0;
+      font-size: 12px;
+      line-height: 26px;
+      content: counter(li); /* Use the counter as content */
+      counter-increment: li; /* Increment the counter by 1 */
+      text-align: center;
+      color: $grey-6;
+      /* Some space between the number and the content in browsers that support
           generated content but not positioning it (Camino 2 is one example) */
-       border: 1px solid $grey-6;
-       color: $grey-6;
-       @include border-radius(50%);
-       text-align: center;
-       width: 26px;
-       height: 26px;
-       margin: 5px 0 0;  
-       font-size: 12px;
-       line-height: 26px;
+      border: 1px solid $grey-6;
+
+      @include border-radius(50%);
     }
   }
 }
 
 .list-circle-icon {
-	counter-reset: li; /* Initiate a counter */
-	margin-left: 0; /* Remove the default left margin */
-	padding-left: 0; /* Remove the default left padding */
-	margin-bottom: 30px;
-	&> li {
-		margin: 0 0 6px 30px; /* Give each list item a left margin to make room for the numbers */
-		padding: 4px 8px 4px 15px; /* Add some spacing around the content */
-		list-style: none; /* Disable the normal item numbering */
-		.gcicon {
-			/* Position and style the number */
-			position: absolute;
-			top: 0px;
-			left: -2em;
-			-moz-box-sizing: border-box;
-			-webkit-box-sizing: border-box;
-			box-sizing: border-box;
-			width: 2em;
-			/* Some space between the number and the content in browsers that support
-					generated content but not positioning it (Camino 2 is one example) */
-			border: 1px solid $grey-6;
-			color: $grey-6;
-			@include border-radius(50%);
-			text-align: center;
-			width: 26px;
-			height: 26px;
-			margin: 5px 0 0;
-			font-size: 12px;
-			line-height: 26px;
-		}
-	}
+  margin-bottom: 30px;
+  margin-left: 0; /* Remove the default left margin */
+  padding-left: 0; /* Remove the default left padding */
+  counter-reset: li; /* Initiate a counter */
+  & > li {
+    margin: 0 0 6px 30px; /* Give each list item a left margin to make room for the numbers */
+    padding: 4px 8px 4px 15px; /* Add some spacing around the content */
+    list-style: none; /* Disable the normal item numbering */
+    .gcicon {
+      /* Position and style the number */
+      position: absolute;
+      top: 0;
+      left: -2em;
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+      width: 2em;
+      width: 26px;
+      height: 26px;
+      margin: 5px 0 0;
+      font-size: 12px;
+      line-height: 26px;
+      text-align: center;
+      color: $grey-6;
+      /* Some space between the number and the content in browsers that support
+          generated content but not positioning it (Camino 2 is one example) */
+      border: 1px solid $grey-6;
+
+      @include border-radius(50%);
+    }
+  }
 }
 
 .circle-icon {
   display: inline-block;
+  transition: .2s $bezier;
   text-align: center;
-  @include circle(30px);
   color: $black;
   border: 1px solid $black;
-  transition: .2s $bezier;
-  .icon, .gcicon {
+
+  @include circle(30px);
+  .icon,
+  .gcicon {
     margin: 0 !important;
-    line-height: 30px;
     font-size: 14px;
+    line-height: 30px;
   }
   &-sm {
-    @include circle(20px);
     line-height: 1;
-    .icon, .gcicon {
+
+    @include circle(20px);
+    .icon,
+    .gcicon {
       width: 10px;
       height: 10px;
       font-size: 10px;
       line-height: 20px;
       &:last-child {
-        margin-left: -10px !important
+        margin-left: -10px !important;
       }
     }
   }
   &-md {
     @include circle(45px);
-    .icon, .gcicon {
+    .icon,
+    .gcicon {
       font-size: 21px;
       line-height: 45px;
     }
   }
   &-white {
+    color: $primary-color;
     border-color: $white;
     background-color: $white;
-    color: $primary-color;
     &:hover {
-      border-color: $primary-color;;
-      background-color: $primary-color;;
       color: $white;
+      border-color: $primary-color;
+      background-color: $primary-color;;;
     }
   }
 }
 
-a.circle-icon, button.circle-icon{
-  &:link, &:visited {
+a.circle-icon,
+button.circle-icon {
+  &:link,
+  &:visited {
     color: $black;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: $white;
     border-color: $primary-dark;
     background: $primary-dark;
@@ -1144,9 +1201,9 @@ a.circle-icon, button.circle-icon{
 }
 
 .circle-icon.fluid-width {
-  padding: 0 10px 0 10px;
-  min-width: 30px;
   width: auto;
+  min-width: 30px;
+  padding: 0 10px 0 10px;
   span {
     padding-top: 2px;
   }
@@ -1178,8 +1235,8 @@ a.circle-icon, button.circle-icon{
 
 form {
   label {
-    text-align: left;
     font-weight: 400;
+    text-align: left;
   }
   .form-control-static {
     padding-top: 7px;
@@ -1202,32 +1259,33 @@ form {
 }
 
 .form-group {
-  .form-control, textarea {
-	  @include border-radius($radius);
-	  &:hover {
-  	    @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0px 0px 6px 0px rgba($grey-6,.1));
-
-	  }
+  .form-control,
+  textarea {
+    @include border-radius($radius);
+    &:hover {
+      @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0px 0px 6px 0px rgba($grey-6,.1));
+    }
   }
   .btn {
-	  @include border-radius($radius);
+    @include border-radius($radius);
   }
   textarea {
-		resize: none;
-		height: 137px;
-	}
+    height: 137px;
+    resize: none;
+  }
   &.checkbox-group {
-    input, label {
+    input,
+    label {
       float: left;
     }
     input[type="checkbox"] {
       margin: 4px 0 0;
     }
     label {
-      margin: 0 0 0 10px;
       width: 85%;
-      font-weight: normal;
+      margin: 0 0 0 10px;
       font-size: 16px;
+      font-weight: normal;
     }
   }
 }
@@ -1248,194 +1306,217 @@ form {
   }
 }
 
-.submit, .btn {
-  .icon, .gcicon {
+.submit,
+.btn {
+  .icon,
+  .gcicon {
     &:last-child {
-  		margin-right: 0;
-  		margin-left: 10px;
-  	}
+      margin-right: 0;
+      margin-left: 10px;
+    }
     &:first-child {
-  		margin-left: 0;
-  		margin-right: 10px;
-  	}
-	}
+      margin-right: 10px;
+      margin-left: 0;
+    }
+  }
 }
 
-.icon-only, .icon-left {
-  .icon, .gcicon {
-    margin-left: 0 !important;
+.icon-only,
+.icon-left {
+  .icon,
+  .gcicon {
     margin-right: 0 !important;
+    margin-left: 0 !important;
   }
 }
 
 .icon-last {
-  .icon, .gcicon {
-    margin-left: 10px !important;
+  .icon,
+  .gcicon {
     margin-right: 0 !important;
+    margin-left: 10px !important;
   }
 }
 
-.select-area, .form-control {
-	@include transition($transition);
-  @include box-shadow(none);
+.select-area,
+.form-control {
   font-size: 18px;
+
+  @include box-shadow(none);
+  @include transition($transition);
 }
 
 ::-webkit-input-placeholder {
-   font-size: 16px;
-   line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-:-moz-placeholder { /* Firefox 18- */
-   font-size: 16px;
-   line-height: 1.6;
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
-   font-size: 16px;
-   line-height: 1.6;
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-:-ms-input-placeholder {  
-   font-size: 16px;
-   line-height: 1.6;
+:-ms-input-placeholder {
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .input-lg::-webkit-input-placeholder {
-   font-size: 16px;
-   line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-.input-lg:-moz-placeholder { /* Firefox 18- */
-   font-size: 16px;
-   line-height: 1.8;
+.input-lg:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 16px;
+  line-height: 1.8;
 }
 
-.input-lg::-moz-placeholder {  /* Firefox 19+ */
-   font-size: 16px;
-   line-height: 1.8;
+.input-lg::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 16px;
+  line-height: 1.8;
 }
 
-.input-lg:-ms-input-placeholder {  
-   font-size: 16px;
-   line-height: 1.6;
+.input-lg:-ms-input-placeholder {
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-input:not([type="checkbox"]):focus, .form-control:focus, input[type="select"]:focus, .dropdown-wrapper select:focus {
+input:not([type="checkbox"]):focus,
+.form-control:focus,
+input[type="select"]:focus,
+.dropdown-wrapper select:focus {
   border-color: $grey-4 !important;
   outline: 0 !important;
+
   @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0px 0px 6px 0px rgba($grey-6,.15));
 }
 
-.btn:focus, input[type="submit"]:focus {
+.btn:focus,
+input[type="submit"]:focus {
   border-color: $primary-hover !important;
   outline: 0 !important;
+
   @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0px 0px 6px 0px rgba($primary-color,.25));
 }
 
-.btn-link:focus, .btn-link-grey:focus {
+.btn-link:focus,
+.btn-link-grey:focus {
+  color: $primary-hover;
   border: 0;
   box-shadow: none;
-  color: $primary-hover;
 }
 
 .dropdown-wrapper {
-  background: $white;
-  border-radius: 8px;
   padding: 0;
+  border-radius: 8px;
+  background: $white;
   &:hover {
     @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075), 0px 0px 6px 0px rgba($grey-6,.1));
   }
   select {
-    -webkit-appearance: none;
-    -moz-appearance: window !important;
-    appearance: none;
-    text-indent: .01px;
-    text-overflow: '';
-    background: transparent;
-    font-size: 16px;
+    z-index: 20;
     width: 100%;
     padding: 5px 10px !important;
+    font-size: 16px;
     line-height: 1.2;
-    z-index: 20;
+    text-indent: .01px;
+    text-overflow: "";
     border-color: $grey-3;
+    background: transparent;
+
+    -webkit-appearance: none;
+       -moz-appearance: window !important;
+            appearance: none;
     &:-moz-focusring {
       color: transparent;
-    text-shadow: 0 0 0 #000;
+      text-shadow: 0 0 0 #000;
     }
   }
   select::-ms-expand {
-		display: none; /* to ie 10 */
-	}
+    display: none; /* to ie 10 */
+  }
 }
 
 .dropdown-wrapper:after {
-  content:"";
-  width:0;
-  height:0;
-  border-style: solid;
-  border-width: 8px 7.5px 0 7.5px;
-  border-color: $grey-4 transparent transparent transparent;
+  position: absolute;
+  z-index: 10;
   top: 50%;
   right: 10px;
-  position: absolute;
+  width: 0;
+  height: 0;
   margin-top: -2px;
-  z-index: 10;
+  content: "";
+  border-width: 8px 7.5px 0 7.5px;
+  border-style: solid;
+  border-color: $grey-4 transparent transparent transparent;
 }
 
 .moz-appearance .dropdown-wrapper {
-	 border: 1px solid $grey-1 !important;
+  border: 1px solid $grey-1 !important;
 }
 
 .select-options {
   position: absolute;
-  overflow: hidden;
-  background: #fff;
-  margin:4px 0 0;
   z-index: 2000;
+  overflow: hidden;
+  margin: 4px 0 0;
+  background: #fff;
+  box-shadow: 1px 2px 2px 0 rgba(0,0,0,.1);
+
   @include border-radius($radius);
-  box-shadow:1px 2px 2px 0 rgba(0,0,0,.1);
 }
 
 .select-options .drop-holder {
-  border: 1px solid #c4c4c4;
   overflow: hidden;
-  @include border-radius($radius);
   height: 1%;
+  border: 1px solid #c4c4c4;
+
+  @include border-radius($radius);
 }
 
 .select-options ul {
-  list-style: none;
   overflow: hidden;
-  padding: 0;
   margin: 7px 0 9px;
-  font-size:14px;
-  line-height:18px;
-  font-weight:bold;
+  padding: 0;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+  list-style: none;
 }
 
 .select-options ul li {
-  width: 100%;
   float: left;
+  width: 100%;
 }
 
 .select-options ul a {
-  text-decoration: none;
-  padding: 4px 14px 3px;
   display: block;
-  cursor: default;
-  color: #000;
   height: 1%;
+  padding: 4px 14px 3px;
+  cursor: default;
+  text-decoration: none;
+  color: #000;
 }
 
 .select-options .item-selected a {
   text-decoration: none;
-  background: #ebebeb;
   color: #000;
+  background: #ebebeb;
 }
 
 /* select options optgroup example styles */
-.select-options .optgroup { clear: both; }
+.select-options .optgroup {
+  clear: both;
+}
 .select-options .optgroup strong {
   display: block;
   padding: 5px;
@@ -1454,7 +1535,7 @@ body:not(.mozilla) {
           visibility: visible !important;
           font-size: 12px;
           transition: .15s ease-out;
-        }  
+        }
         &::shadow {
           top: 15px;
           background: red;
@@ -1462,8 +1543,8 @@ body:not(.mozilla) {
       }
       &::-webkit-input-placeholder {
         position: relative;
-        transition: 0s ease-out;
         top: 0;
+        transition: 0s ease-out;
       }
     }
     .input-lg {
@@ -1485,21 +1566,22 @@ body:not(.mozilla) {
 }
 
 .validation {
-  background: $red;
-  color: $white;
-  padding-bottom: 0px;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 12px;
+  z-index: 5;
   bottom: -5px;
-  margin-top: -5px;
-  border-top-left-radius: $radius;
-  border-top-right-radius: $radius;
   display: block;
   height: 0;
-  z-index: 5;
+  margin-top: -5px;
+  padding-right: 15px;
+  padding-bottom: 0;
+  padding-left: 15px;
+  font-size: 12px;
   transition: .2s ease-out;
   white-space: nowrap;
+  color: $white;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+  background: $red;
+
   @include ellipsis(100%);
   &.active {
     height: 25px;
@@ -1512,30 +1594,32 @@ body:not(.mozilla) {
 }
 
 .left-inner-addon input {
-	padding-left: 30px;
+  padding-left: 30px;
 }
 
 .right-inner-addon input {
-	padding-right: 30px;
+  padding-right: 30px;
 }
 
-.left-inner-addon .addon, .right-inner-addon .addon {
-	position: absolute;
-	padding: 8px 12px 6px;
-	pointer-events: none;
-	z-index: 999;
-	color: #aeaeae;
+.left-inner-addon .addon,
+.right-inner-addon .addon {
+  position: absolute;
+  z-index: 999;
+  padding: 8px 12px 6px;
+  pointer-events: none;
+  color: #aeaeae;
 }
 
 .right-inner-addon .addon {
-	right: 0;
+  right: 0;
 }
 .left-inner-addon .addon {
-	left: 0;
+  left: 0;
 }
 
-.right-inner-addon, .left-inner-addon {
-	position: relative;
+.right-inner-addon,
+.left-inner-addon {
+  position: relative;
 }
 
 .pseudo-hidden-field {
@@ -1548,58 +1632,62 @@ body:not(.mozilla) {
 
 
 button {
-	background: none;
-	border: none;
-	padding: 0;
-	color: $primary-color;
-	text-decoration: none !important;
-	&:hover, &:focus {
-		color: $primary-hover;
-		text-decoration: none !important;
-	}
-  &:active {
-		@include box-shadow(none);
-		outline: 0 !important;
-	}
+  padding: 0;
+  text-decoration: none !important;
+  color: $primary-color;
+  border: none;
+  background: none;
+  &:hover,
   &:focus {
-		outline: 0 !important;
-	}
-	&:active:focus {
-  	outline: 0 !important;
-	}
+    text-decoration: none !important;
+    color: $primary-hover;
+  }
+  &:active {
+    outline: 0 !important;
+
+    @include box-shadow(none);
+  }
+  &:focus {
+    outline: 0 !important;
+  }
+  &:active:focus {
+    outline: 0 !important;
+  }
 }
 
 .btn {
-	font-weight: 400;
-	font-size: 16px;
-	@include border-radius($radius);
-	@include transition($transition);
-	@include box-shadow(none);
-	text-shadow: 0;
-	background-image: none;
-	border: none;
-	&:active {
-		@include box-shadow(none);
-		outline: 0 !important;
-	}
-	&:focus {
-		outline: 0 !important;
-	}
-	&:active:focus {
-  	outline: 0 !important;
-	}
-	&:disabled {
-  	cursor: not-allowed;
-	}
-	&.bold {
-  	font-weight: 600;
-	}
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+  background-image: none;
+  text-shadow: 0;
+
+  @include box-shadow(none);
+  @include transition($transition);
+  @include border-radius($radius);
+  &:active {
+    outline: 0 !important;
+
+    @include box-shadow(none);
+  }
+  &:focus {
+    outline: 0 !important;
+  }
+  &:active:focus {
+    outline: 0 !important;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+  &.bold {
+    font-weight: 600;
+  }
 }
 
 .btn-uppercase {
-  text-transform: uppercase;
-  letter-spacing: .1em;
   font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
 
 .btn-xs {
@@ -1617,8 +1705,8 @@ button {
 
 .btn-lg {
   padding: 15px 20px;
-  font-weight: 600;
   font-size: 18px;
+  font-weight: 600;
 }
 
 .btn-xl {
@@ -1640,117 +1728,139 @@ button {
 }
 
 .btn-primary {
-	background: $primary-color;
-	border: 1px solid $primary-color;
-	font-weight: 600;
-	color: $white;
-	&:link, &:visited {
-		color: $white;
-	}
-	&:hover, &:focus, &:active {
-		background: $primary-hover;
-		border-color: $primary-hover;
-	}
+  font-weight: 600;
+  color: $white;
+  border: 1px solid $primary-color;
+  background: $primary-color;
+  &:link,
+  &:visited {
+    color: $white;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: $primary-hover;
+    background: $primary-hover;
+  }
 }
 
 .btn-default {
-	background: none;
-	border: 1px solid $grey-3;
-	color: $grey-5;
-	&:link, &:visited {
-		color: $grey-5;
-	}
-	&:hover, &:focus, &:active {
-	  background: $primary-hover;
-		border: 1px solid $primary-hover;
-		color: $white;
-	}
+  color: $grey-5;
+  border: 1px solid $grey-3;
+  background: none;
+  &:link,
+  &:visited {
+    color: $grey-5;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    border: 1px solid $primary-hover;
+    background: $primary-hover;
+  }
 }
 
 .btn-white {
-	background: $white;
-	color: $primary-color;
-	&:link, &:visited {
-		color: $primary-color;
-	}
-	&:hover, &:focus, &:active {
-	  background: $primary-hover;
-		color: $white;
-	}
+  color: $primary-color;
+  background: $white;
+  &:link,
+  &:visited {
+    color: $primary-color;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    background: $primary-hover;
+  }
 }
 
 .btn-dark {
-	background: $grey-6;
-	color: $white;
-	&:link, &:visited {
-		color: $white;
-	}
-	&:hover, &:focus, &:active {
-	  background: $grey-5;
-		color: $white;
-	}
+  color: $white;
+  background: $grey-6;
+  &:link,
+  &:visited {
+    color: $white;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    background: $grey-5;
+  }
 }
 
 .btn-light {
-	background: $grey-5;
-	color: $white;
-	&:link, &:visited {
-		color: $white;
-	}
-	&:hover, &:focus, &:active {
-	  background: $primary-hover;
-		color: $white;
-	}
+  color: $white;
+  background: $grey-5;
+  &:link,
+  &:visited {
+    color: $white;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    background: $primary-hover;
+  }
 }
 
 .btn-green {
-	background: $green;
-	color: $white;
-	&:link, &:visited {
-		color: $white;
-	}
-	&:hover, &:focus, &:active {
-	  background: lighten($green, 10);
-		color: $white;
-	}
+  color: $white;
+  background: $green;
+  &:link,
+  &:visited {
+    color: $white;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    background: lighten($green, 10);
+  }
 }
 
 .btn-link {
-  &:link, &:visited {
-	  color: $primary-color;
-	}
-	&:hover {
-		color: $primary-hover;
-		text-decoration: none;
-	}
+  &:link,
+  &:visited {
+    color: $primary-color;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $primary-hover;
+  }
 }
 
 .btn-link-grey {
   color: $grey-6;
-  &:link, &:visited {
-	  color: $grey-6;
-	}
-	&:hover {
-		color: $primary-hover;
-		text-decoration: none;
-	}
+  &:link,
+  &:visited {
+    color: $grey-6;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $primary-hover;
+  }
 }
 
 .btn-link-red {
   color: $red;
-  &:link, &:visited {
-	  color: $red;
-	}
-	&:hover {
-		color: lighten($red, 15);
-		text-decoration: none;
-	}
+  &:link,
+  &:visited {
+    color: $red;
+  }
+  &:hover {
+    text-decoration: none;
+    color: lighten($red, 15);
+  }
 }
 
 
 .btn-link-basic {
-  &:link, &:visited {
-	  color: $primary-color;
+  &:link,
+  &:visited {
+    color: $primary-color;
   }
   &:hover {
     color: $primary-hover;
@@ -1758,11 +1868,13 @@ button {
 }
 
 .btn-hover-spin {
-  .icon, .gcicon {
+  .icon,
+  .gcicon {
     transition: $transition ease-out;
   }
   &:hover {
-    .icon, .gcicon {
+    .icon,
+    .gcicon {
       transform: rotate(180deg) scale(-1, 1) translate(0, 1px);
     }
   }
@@ -1770,19 +1882,21 @@ button {
 
 .btn-hover-red {
   &:hover {
-    background: $red;
     color: $white;
+    background: $red;
   }
 }
 
 .btn-hover-remove {
-  .icon, .gcicon {
+  .icon,
+  .gcicon {
     display: none;
   }
   &:hover {
-    background: $red;
     color: $white;
-    .icon, .gcicon {
+    background: $red;
+    .icon,
+    .gcicon {
       display: none;
     }
     .icon-minus-circle {
@@ -1792,34 +1906,36 @@ button {
 }
 
 .btn-file {
-	position: relative;
-	overflow: hidden;
-	padding-top: 8px !important;
-	padding-bottom: 9px !important;
+  position: relative;
+  overflow: hidden;
+  padding-top: 8px !important;
+  padding-bottom: 9px !important;
 }
 
 .btn-file input[type=file] {
-	position: absolute;
-	top: 0;
-	right: 0;
-	min-width: 100%;
-	min-height: 100%;
-	font-size: 100px;
-	text-align: right;
-	opacity: 0;
-	outline: none;
-	background: white;
-	cursor: inherit;
-	display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  cursor: inherit;
+  text-align: right;
+  opacity: 0;
+  outline: none;
+  background: white;
 }
 
 .btn-rotate {
   -webkit-transform: translateZ(0);
-  .icon, .gcicon {
-    transition: .15s $bezier;  
+  .icon,
+  .gcicon {
+    transition: .15s $bezier;
   }
   &:hover {
-    .icon, .gcicon {
+    .icon,
+    .gcicon {
       transform: rotate(360deg);
     }
   }
@@ -1827,22 +1943,23 @@ button {
 
 .btn-toggle-icons {
   white-space: nowrap;
-  .icon, .gcicon {
-    margin: 0 !important;
+  .icon,
+  .gcicon {
     width: 22px;
     height: 22px;
+    margin: 0 !important;
+    transition: .15s $bezier;
     &:first-child {
       opacity: 1;
-
     }
     &:last-child {
-      opacity: 0;
       margin-left: -22px !important;
+      opacity: 0;
     }
-    transition: .15s $bezier;
   }
   &:hover {
-    .icon, .gcicon {
+    .icon,
+    .gcicon {
       transform: rotate(360deg);
       &:first-child {
         opacity: 0;
@@ -1853,16 +1970,18 @@ button {
     }
   }
   &.toggled {
-    .icon, .gcicon {
+    .icon,
+    .gcicon {
       &:first-child {
         opacity: 0;
-        }
+      }
       &:last-child {
         opacity: 1;
       }
     }
     &:hover {
-      .icon, .gcicon {
+      .icon,
+      .gcicon {
         transform: rotate(360deg);
         &:first-child {
           opacity: 1;
