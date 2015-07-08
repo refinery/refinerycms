@@ -124,9 +124,8 @@ a:active {
 
 .vertical-align {
   display: flex;
-  height: 100%;
-
   align-items: center;
+  height: 100%;
 }
 
 .horizontal-align {
@@ -174,9 +173,8 @@ a:active {
   margin-right: -15px;
   margin-left: -15px;
   .card {
-    margin: 0 15px 30px;
-
     flex: 1 1 300px;
+    margin: 0 15px 30px;
     @media (min-width: 768px) {
       max-width: calc(50% - 15px);
     }
@@ -186,10 +184,9 @@ a:active {
       color: $grey-6;
       .inner-wrapper {
         display: flex;
+        align-items: center;
         justify-content: center;
         text-align: center;
-
-        align-items: center;
         .feature-icon {
           font-size: 120px;
         }
@@ -533,8 +530,8 @@ p::-moz-selection {
   img {
     opacity: 1;
 
-    @include transition-fix();
     @include transition($transition);
+    @include transition-fix();
   }
   .icon-stack {
     position: absolute;
@@ -632,8 +629,8 @@ p::-moz-selection {
   color: $black;
   border: 1px solid $grey-3;
 
-  @include transition($transition ease-out);
   @include border-radius(20px);
+  @include transition($transition ease-out);
   .icon,
   .gcicon {
     top: -1px;
@@ -794,9 +791,15 @@ a.pill {
   }
   .inline-editable-image-container,
   .image-group-img {
-    margin: 0 15px;
-
     flex: 1;
+    margin-left: 15px;
+    margin-right: 15px;
+    &.first-child{
+      margin-left: 0;
+    }
+    &.last-child{
+      margin-right: 0;
+    }
   }
 }
 
@@ -814,6 +817,9 @@ a.pill {
       width: calc(100% + 200px);
       margin-left: -100px;
     }
+  }
+  .img-responsive{
+    width: 100%;
   }
 }
 
@@ -1342,8 +1348,8 @@ form {
 .form-control {
   font-size: 18px;
 
-  @include box-shadow(none);
   @include transition($transition);
+  @include box-shadow(none);
 }
 
 ::-webkit-input-placeholder {
@@ -1662,9 +1668,9 @@ button {
   background-image: none;
   text-shadow: 0;
 
-  @include box-shadow(none);
-  @include transition($transition);
   @include border-radius($radius);
+  @include transition($transition);
+  @include box-shadow(none);
   &:active {
     outline: 0 !important;
 
