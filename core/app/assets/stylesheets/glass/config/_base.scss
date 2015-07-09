@@ -792,8 +792,7 @@ a.pill {
   .inline-editable-image-container,
   .image-group-img {
     flex: 1;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 0 15px;
     &.first-child{
       margin-left: 0;
     }
