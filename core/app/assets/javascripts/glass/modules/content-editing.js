@@ -45,6 +45,7 @@ var GlassContentEditing = (function ($) {
       if (!module) {
         module = new GlassModule(this, $glass_html_editor);
         this.data('glass-module', module);
+        module.resetControl();
       }
       return module;
     },

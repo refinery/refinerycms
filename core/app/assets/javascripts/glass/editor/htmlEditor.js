@@ -257,6 +257,11 @@ function GlassHtmlEditor($elem) {
     this_editor.triggerChangeFocus($module.element(), null);
 
     $module.resetControl();
+
+    var $prev_module = $module.prev_module();
+    if ($prev_module && $prev_module.isGroupable()) {
+      $prev_module.resetLinkButtons();
+    }
   });
 
   this.h.elem.mouseup(function(e) {

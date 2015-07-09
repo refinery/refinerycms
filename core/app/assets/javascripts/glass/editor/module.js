@@ -225,12 +225,4 @@ function GlassModule($elem, $editor) {
   if (this.element().find('img, iframe').length > 0 || this.element().hasClass('glass-no-edit')) {
     this.element().attr('contenteditable', false);
   }
-
-  // TODO: this doesn't seem to work
-  var $prev_module = this.prev_module();
-  if ($prev_module && $prev_module.isGroupable()) {
-    $prev_module.resetLinkButtons();
-  }
-
-  this.resetControl();
 }
