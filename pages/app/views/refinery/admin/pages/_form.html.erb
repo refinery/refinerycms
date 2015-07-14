@@ -41,6 +41,7 @@
       <%= f.hidden_field :custom_slug %>
     <% end %>
 
+    <% @valid_view_templates = valid_view_templates %>
     <% if @valid_view_templates.length > 1 %>
     <% use_view_templates = Refinery::Pages.config.use_view_templates.nil? ? true : Refinery::Pages.config.use_view_templates %>
     <%   if use_view_templates || current_refinery_user.super_user? %>
