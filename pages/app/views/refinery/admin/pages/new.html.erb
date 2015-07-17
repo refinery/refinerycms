@@ -1,1 +1,12 @@
-<%= render 'form' %>
+<% content_for :admin_sidebar do %>
+  <%= render 'form' %>
+<% end %>
+
+<% content_for :admin_page_preview do %>
+  <%
+    render_options = {}
+    render_options[:template] = "refinery/pages/show"
+  %>
+  <%= render render_options %>
+<% end %>
+

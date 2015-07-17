@@ -16,24 +16,24 @@ module Refinery
     end
 
     it "shows login form" do
-      expect(page).to have_content("Hello! Please sign in.")
+      expect(page).to have_content("Refinery CMS")
       expect(page).to have_content("I forgot my password")
       expect(page).to have_selector("a[href*='/refinery/users/password/new']")
     end
 
     context "when supplied data is valid" do
       it "logs in user" do
-        fill_in "Username or email", :with => "ugisozols"
+        fill_in "Email or full name", :with => "ugisozols"
         fill_in "Password", :with => "123456"
         click_button "Sign in"
-        expect(page).to have_content("Signed in successfully.")
+        expect(page).to have_content("Log Out")
         expect(current_path).to match(/\A#{admin_path}/)
       end
     end
 
     context "when supplied data is not valid" do
       it "shows flash error" do
-        fill_in "Username or email", :with => "Hmmm"
+        fill_in "Email or full name", :with => "Hmmm"
         fill_in "Password", :with => "Hmmm"
         click_button "Sign in"
         expect(page).to have_content("Sorry, your login or password was incorrect.")
@@ -51,7 +51,7 @@ module Refinery
       it 'allows user creation' do
         # Verify that we can access the sign up page.
         visit Refinery::Core.backend_path
-        expect(page).to have_content("There are no users yet, so we'll set you up first")
+        expect(page).to have_content("Please create your account")
 
         # Fill in user details.
         fill_in 'user[username]', :with => 'rspec'
@@ -60,8 +60,8 @@ module Refinery
         fill_in 'user[password_confirmation]', :with => 'spectacular'
 
         # Sign up and verify!
-        expect { click_button "Sign up" }.to change(User, :count).from(0).to(1)
-        expect(page).to have_content("Welcome to Refinery, rspec.")
+        expect { click_button "Get Started" }.to change(User, :count).from(0).to(1)
+        expect(page).to have_content("Log Out")
       end
     end
   end
@@ -86,13 +86,13 @@ module Refinery
       end
 
       it "shows login form" do
-        expect(page).to have_content("Hello! Please sign in.")
+        expect(page).to have_content("Refinery CMS")
         expect(page).to have_content("I forgot my password")
         expect(page).to have_selector("a[href*='/refinery/users/password/new']")
       end
 
       it "redirects to the protected path on login" do
-        fill_in "Username or email", :with => "ugisozols"
+        fill_in "Email or full name", :with => "ugisozols"
         fill_in "Password", :with => "123456"
         page.click_button "Sign in"
         expect(current_path).to eq(protected_path)

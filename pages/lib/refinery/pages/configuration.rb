@@ -16,7 +16,7 @@ module Refinery
     self.marketable_urls = true
     self.approximate_ascii = false
     self.strip_non_ascii = false
-    self.default_parts = ["Body", "Side Body"]
+    self.default_parts = ["content0", "content1", "content2", "content3", "content4", "content5", "content6"]
     self.use_custom_slugs = false
     self.scope_slug_by_parent = true
     self.cache_pages_backend = false

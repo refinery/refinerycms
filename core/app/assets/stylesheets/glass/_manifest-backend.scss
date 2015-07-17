@@ -1,0 +1,23 @@
+/******************************************************************************
+ * For full documentation of what is being included where, see:
+ * refinery-glass gem: /app/assets/stylesheets/refinery-glass.scss
+ ******************************************************************************/
+
+/* The jquery-ui is for autocomplete (select-to-autocomplete) */
+@import "glass/jquery-ui";
+/* @import "canvas/jquery-ui.theme"; */
+/* @import "canvas/jquery-ui.structure"; */
+
+// Canvas
+// @import "canvas/cropper";
+// @import "canvas/image_cropping";
+
+// Glass
+@import "glass/partials/layout/editor";
+@import "glass/partials/layout/interface";
+@import "glass/partials/layout/pages";
+@import "glass/partials/components/icons";
+@import "glass/partials/components/icon-styles";
+@import "glass/partials/components/images";
+@import "glass/partials/components/onboarding";
+@import "glass/partials/components/grande-menu";

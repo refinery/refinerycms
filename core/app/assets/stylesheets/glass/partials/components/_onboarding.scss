@@ -1,0 +1,451 @@
+/* -------------------- ONBOARDING -------------------- */
+
+.onboarding-menu{
+  display: flex;
+  padding: 0;
+  margin-bottom: 60px;
+  .btn{
+    flex: 1;
+    border-right: 1px solid $grey-1;
+    height: 100%;
+    padding: 18px;
+    color: $grey-4;
+    margin: 0;
+    &:last-child{
+      border-right: 0;
+    }
+    &:hover{
+      color: $primary-hover;
+      .gcicon{
+        color: $primary-hover;
+      }
+    }
+    .gcicon{
+      transition: $transition;
+    }
+    .gcicon-check{
+      display: none;
+    }
+    .icon{
+      margin: 5px auto 5px;
+      display: block;
+      font-size: 24px;
+    }
+    &.completed-step{
+      box-shadow: none;
+      .gcicon-check{
+        color: $green;
+        display: inline;
+      }
+      &:hover{
+        color: $primary-hover;
+        .gcicon{
+          color: $primary-hover;
+        }
+      }
+    }
+    &.active{
+      color: $grey-6;
+      box-shadow: none;
+      font-weight: 600;
+      .gcicon-check{
+        display: none;
+      }
+      &:hover{
+        color: $primary-hover;
+        .gcicon{
+          color: $primary-hover;
+        }
+      }
+    }
+    &.completed-step.active{
+      .gcicon-check{
+        display: inline;
+      }
+    }
+  }
+}
+
+.onboarding{
+  h1, h2, h3, h4, h5{
+    text-align: center;
+  }
+  
+  p{
+    text-align: left;
+    font-size: 21px;
+    line-height: 1.8em;
+  }
+  .message{
+    p{
+      font-size: 18px;
+    }
+  }
+  ul{
+    text-align: left;
+    font-size: 21px;
+    line-height: 1.8em;
+  }
+  .feature-icon{
+    color: $grey-2;
+    font-size: 160px;
+    display: block;
+    margin: 0 auto 15px;
+    text-align: center;
+  }
+  hr{
+    height: 2px;
+  }
+  .lesson-body{
+  	hr{
+    	height: 4px;
+    	width: 150px;
+    	margin: 30px auto 45px;
+  	}
+   	.mini-lesson{
+    	margin-bottom: 30px;
+  	}
+	}
+	.onboarding-sm{
+  	font-size: 16px;
+	}
+	.well-sm{
+  	padding: 15px;
+  	margin-bottom: 30px;
+  	p{
+    	font-size: 16px;
+    	&:last-child{
+    	  margin-bottom: 0;
+    	}
+  	}
+	}
+	.large-label, .lesson h1 {
+		font-size: 32px;
+		color: $grey-6;
+		margin-top: 75px;
+		line-height: 1.6;
+		&:after {
+			margin: 35px auto;
+			width: 100px;
+			display: block;
+			border-bottom: 6px solid $primary-color;
+			content: "";
+		}
+	}
+	.step-heading{
+  	.step-display{
+    	border: 0 !important;
+    	.next-step, .next-lesson, .previous-step, .previous-lesson{
+      	top: 15px;
+    	}
+    	span{
+      	font-size: 32px;
+        color: $grey-6;
+        line-height: 1.6;
+      	&:after {
+    			margin: 35px auto;
+    			width: 100px;
+    			display: block;
+    			border-bottom: 6px solid $primary-color;
+    			content: "";
+    		}
+    	}
+  	}
+	}	
+	.input-lg {
+		font-size: 21px;
+		text-align: left;
+	}
+	
+  .input-lg::-webkit-input-placeholder {
+     font-size: 16px;
+     line-height: 1.8 !important;
+  }
+  .onboarding-footer {
+		margin-top: 15px;
+		margin-bottom: 90px;
+		hr{
+  		margin-bottom: 60px;
+		}
+	}
+	.subscription-collapse{
+  	margin-bottom: 45px;
+  	.form-group{
+      text-align: left;
+    	margin: 10px 0 0 0;
+  	}
+	}
+	#mail_address{
+  	h4{
+    	margin-top: 30px;
+  	}
+	}
+}
+
+.scrollable{
+	max-height: 300px;
+}
+
+#org-setup-nav {
+	.btn {
+		a:link, a:visited {
+			color: $black;
+		}
+		.gcicon {
+			margin-right: 5px;
+			color: white;
+			border-radius: 50%;
+			background-color: $grey-3;
+		}
+		&.completed-step {
+			.gcicon {
+				background-color: limegreen;
+			}
+		}
+	}
+}
+
+#accept-terms-modal {
+	ul {
+		margin-bottom: 45px;
+		border-top: 5px solid $grey-2;
+		border-bottom: 5px solid $grey-2;
+		padding: 30px 45px;
+	}
+	.btn-success {
+		margin-bottom: 45px;
+	}
+	footer{
+  	span{
+    	a{
+      	font-weight: 600;
+      	color: $primary-color;
+      	&:hover{
+        	color: $primary-hover;
+      	}
+    	}
+  	}
+	}
+}
+.well {
+	color: $grey-6 !important;
+}
+
+.btn-success {
+	background-color: $primary-color !important;
+	&:hover, &:focus {
+		background-color: $primary-hover !important;
+	}
+}
+
+.lesson{
+  .step-display{
+    padding: 5px 20px !important;
+    display: inline-block;
+  }
+
+  .next-step, .next-lesson, .previous-step, .previous-lesson{
+    font-size: 32px;
+    top: 5px;
+    position: absolute;
+    color: $grey-5;
+    &:hover{
+      cursor: pointer;
+      color: $primary-hover;
+    }
+  }
+	.previous-step, .previous-lesson{
+		left: -40px;
+	}
+	.next-step, .next-lesson {
+		right: -40px;
+	}
+}
+
+
+
+/* -------------------- COVER IMAGE PICKER -------------------- */
+
+.cover-image-picker{
+  margin-top: 30px;
+  #preview-area {
+  	width: calc(100% - 10px);
+  	height: 175px;
+  	padding: 15px 15px 0 15px;
+  	overflow: hidden;
+  	display: flex;
+  	align-items: center;
+  	font-weight: 600;
+  	border: 1px solid $grey-2;
+  }
+  
+  #cover-carousel .carousel-inner > .item {
+    background: none !important;
+    padding-right: 11px;
+    padding-left: 11px;
+  	&.well {
+  		margin-bottom: 0;
+  	}
+  	.col-xs-6 {
+  		padding: 0;
+  		.thumbnail {
+  			margin-bottom: 10px;
+  		}
+  
+  		&:nth-child(even) {
+  			padding-right: 10px;
+  			.thumbnail {
+  				margin-left: 7px;
+  			}
+  		}
+  		&:nth-child(odd) {
+  			padding-left: 10px;
+  			.thumbnail {
+  				margin-right: 7px;
+  			}
+  		}
+  		&:nth-child(4n+4), &:nth-child(4n+3){
+  			.thumbnail{
+  				margin-bottom: 0;
+  			}
+  		}
+  
+  	}
+  }
+  
+  .carousel-fade {
+  	.carousel-inner {
+  		.item {
+  			opacity: 0;
+  			transition-property: opacity;
+  		}
+  
+  		.active {
+  			opacity: 1;
+  		}
+  	}
+  }
+  #preview-area {
+    background-size: cover;
+    border-radius: $radius;
+  	button {
+  		vertical-align: middle;
+  	}
+  }
+  
+  .carousel-control{
+    width: 30px;
+    background: none !important;
+    .icon{
+      color: $grey-5;
+      opacity: 1;
+      margin-top: -16px;
+    }
+    &.left{
+      left: -30px;
+      .icon{
+        left: 0;
+      }
+    }
+    &.right{
+      right: -30px;
+      .icon{
+        right: 0;
+      }
+    }
+  }
+  
+  #cover-carousel .carousel-inner > .item {
+  	.thumbnail {
+  		padding: 0; 
+  		padding-top: 66%; 		
+  		overflow: hidden;
+  		cursor: pointer;
+  		img {
+  			opacity: 0.9;
+  			border-radius: $radius;
+  			position: absolute;
+  			top: 0;
+  			border: 0;
+  			box-shadow: none;
+  		}
+  		&:hover, &:focus, &.selected {
+  			border-color: $primary-color;
+  			img {
+  				opacity: 1.0;
+  			}
+  		}
+  	}
+  }
+}
+
+
+
+/* -------------------- COLOR PICKER -------------------- */
+
+$color_choice_dimension: 40px;
+
+
+.input-color-label {
+	height: $color_choice_dimension;
+	width: $color_choice_dimension;
+	border-radius: 50%;
+	cursor: pointer;
+	margin: -10px 0 0 -10px;
+	max-width: none;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	box-sizing: border-box;
+	&.input-color-border {
+		box-shadow: 0 0 0 3px $off-white-1, 0 0 0 4px $grey-5;
+	}
+}
+
+.input-color-container {
+	height: 100px;
+	position: relative;
+	margin-top: 55px;
+	margin-bottom: 75px;
+	padding-top: 50px;
+	padding-bottom: 60px;
+	display: block;
+	width: 360px;
+	float: right;
+}
+
+.input-color-block {
+  margin-top: 60px;
+  margin-bottom: 45px;
+	.color-sampler {
+		width: $color_choice_dimension;
+		height: $color_choice_dimension;
+		border-radius: 50%;
+		margin: -15px 0 0 -10px;
+		top: 16px;
+		left: -$color_choice_dimension;
+		position: absolute;
+	}
+	.color-input-container {
+		display: inline-block;
+		padding-left: 90px;
+		&.color-input-container-sm {
+			margin-top: 30px;
+		}
+		&.color-input-container-md {
+			margin-top: 55px;
+		}
+		&.color-input-container-lg {
+			margin-top: 80px;
+		}
+		.color-field{
+			height: 42px;
+		}
+	}
+	.divider-right{
+    &:after{
+      width: 4px;
+      right: -2px;
+    }
+  }
+}

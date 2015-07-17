@@ -1,0 +1,22 @@
+/*
+ * This is a manifest file that'll be compiled and make up the bulk of site.css, which will
+ * be included in all frontend views of your site / app.  It will also be compiled into
+ * refinery-glass.scss for when frontend views are used for live editing (and they look identical).
+ *
+ * RELATIVE PATHS
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * STYLES IN THIS FILE
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ * REQUIRE VS IMPORT
+ * sass (or scss) is recommended over plain css.  sass' @import is recommended over sprockets require.
+ * You can read up about it online.  For example, to include a .scss file here:
+ * @import "partials/my-site-styles";
+ *
+ ******************************************************************************
+ * For full documentation of what is being included where, see:
+ * refinerycms gem: /core/app/assets/stylesheets/refinery-glass.scss
+ ******************************************************************************/

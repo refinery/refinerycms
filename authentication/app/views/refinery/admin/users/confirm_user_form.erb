@@ -1,0 +1,42 @@
+<% username_capitalized = @user.username.present? ? @user.username.split.map(&:capitalize).join(' ') : @user.username -%>
+<h1>Getting to know you!</h1>
+
+<div class="margin-bottom-sm">
+  <p>
+    To get started, we need you to create your personal account page (we’ll get to your organization’s account next). This is the account that you’ll use in order to log in to the Content Management System (CMS).
+  </p>
+  <p>
+    In the future, use your full name '<%= username_capitalized %>' or email address '<%= @user.email %>' to log in.
+    You have the option of changing your name/email later.
+  </p>
+</div>
+<div>
+  <div>
+    <div>
+
+      <%= form_tag(refinery.glass_accept_invitation_path(), method: "put") do %>
+        <%= render '/refinery/admin/error_messages',
+                   :object => @user,
+                   :include_object_name => true %>
+        <div class='form-group'>
+          <%= f.text_field :username, value: username_capitalized,class: 'form-control input-lg', readonly: true %>
+        </div>
+
+        <div class='form-group'>
+          <%= f.password_field :password, placeholder: 'New Password', class: 'form-control input-lg', 'data-validate'=> "required_w_name", 'data-val-field' => 'password' -%>
+          <span class='tip text-danger'></span>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, placeholder: 'Password confirmation', class: 'form-control input-lg', 'data-validate'=> "required_w_name", 'data-val-field' => 'password confirmation' -%>
+          <span class='tip text-danger'></span>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit 'Create password', :class => 'btn btn-primary btn-lg' %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

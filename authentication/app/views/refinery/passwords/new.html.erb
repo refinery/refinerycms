@@ -4,9 +4,12 @@
                        :url => refinery.refinery_user_password_path,
                        :html => { :method => :post } do |f| %>
 
-  <div class='field'>
-    <%= f.text_field :email, :class => "larger widest",
-                     :placeholder => t('email_address', :scope => 'refinery.users.forgot') %>
+  <div class='form-group'>
+    <div class='validate'>
+      <span></span>
+    </div>
+    <%= f.text_field :email, :class => "form-control",
+                     :placeholder => t('email_address', :scope => 'refinery.users.forgot'), 'data-validate'=> 'required,email' -%>
   </div>
 
   <%= render '/refinery/admin/form_actions', :f => f,

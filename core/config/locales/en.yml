@@ -55,7 +55,9 @@ en:
         results_for_html: "Search results for &#8216;<em>%{query}</em>&#8217;"
         no_results: 'Sorry, no results found'
         cancel_search: 'Cancel search'
-        search_input_notice: "Put here a string of at least 3 characters containing what you are looking for."
+        search_input_notice: Search
+        reorder: Reorder
+        reorder_done: Done
       delete:
         message: "Are you sure you want to remove '%{title}'?"
       error_messages:
@@ -82,3 +84,7 @@ en:
   will_paginate:
     previous_label: "&laquo;"
     next_label: "&raquo;"
+  layouts:
+    refinery:
+      admin:
+        log_out: Log Out

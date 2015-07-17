@@ -14,9 +14,10 @@ module Refinery
       end
 
       it 'performs ajax paging of index' do
+        skip "GLASS: remove this test - ajax forms now redirect to index and we need the entire index"
         visit refinery.admin_users_path
 
-        expect(page).to have_selector('li.record', count: 1)
+        expect(page).to have_selector('li.page-row', count: 1)
         expect(page).to have_content(first_user.email)
 
         # placeholder which would disappear in a full page refresh.

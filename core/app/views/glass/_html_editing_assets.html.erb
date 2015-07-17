@@ -1,0 +1,59 @@
+<div id="glass-parking" style="display: none;">
+  <a id="glass-module-switcher-template" href="" class="circle-icon add-module glass-control singleton transitionable" contenteditable=false><i class="gcicon gcicon-plus"></i></a>
+  <div id="glass-choose-module" class="new-module media-chooser clear glass-control singleton" contenteditable=false>
+    <a href="" id="glass-choose-module-img" class="circle-icon media-type"><i class="gcicon gcicon-photo bump-down"></i></a>
+    <a href="" id="glass-choose-module-vid" class="circle-icon media-type"><i class="gcicon gcicon-film"></i></a>
+    <% if current_refinery_user.has_role?(:superuser) -%>
+      <a href="" id="glass-choose-custom"     class="circle-icon media-type"><i class="gcicon gcicon-code"></i></a>
+    <% end %>
+  </div>
+  <div id="glass-module-settings-vid" class="new-module media-chooser clear glass-control singleton" contenteditable=false>
+    <form id="glass-add-vid-form" role="form">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Vimeo or YouTube URL</div>
+          <input class="url-input form-control glass-autofocus" type="text" placeholder="http://...">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">Insert</button>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button class="circle-icon delete-module             glass-control append" contenteditable=false><i class="gcicon gcicon-trash"></i></button>
+  <button class="circle-icon icon-only link-items link glass-control append" contenteditable=false><i class="gcicon gcicon-link" ></i></button>
+  <div class="click-pads glass-control append" contenteditable=false>
+    <div class="click-pad top"></div>
+    <div class="click-pad right"></div>
+    <div class="click-pad bottom"></div>
+    <div class="click-pad left"></div>
+  </div>
+  <div class="module-layout glass-control append" contenteditable=false>
+    <button class="circle-icon" data-layout-class="inline-module-md"><i class="gcicon gcicon-normal"></i></button>
+    <button class="circle-icon" data-layout-class="inline-module-lg"><i class="gcicon gcicon-theatre"></i></button>
+    <button class="circle-icon" data-layout-class="inline-module-fw"><i class="gcicon gcicon-full-width"></i></button>
+  </div>
+
+  <div id="glass-module-vid-template" class="video-module inline-module glass-no-edit" contenteditable=false>
+    <div class="video-wrapper">
+      <iframe data-video-link="" src="" frameborder="0" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" scrolling="no" hspace="0">
+      </iframe>
+    </div>
+  </div>
+
+  <div id="glass-module-group-template" class="glass-module-group image-group inline-module active glass-no-edit" contenteditable=false></div>
+
+  <div id="glass-module-img-template" class="inline-editable-image-container inline-module glass-no-edit" contenteditable=false>
+    <div class="progress progress-box glass-control">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+      <div class="status-text"></div>
+    </div>
+    <img class="inline-editable-image img-responsive" src=""/>
+  </div>
+
+  <div id="glass-module-custom-template" class="glass-no-edit" contenteditable=false>
+    <div class="whatever-you-want-here">
+      <p>Change this to whatever custom html you want using your browser inspector</p>
+    </div>
+  </div>
+</div>

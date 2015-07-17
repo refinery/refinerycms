@@ -16,6 +16,7 @@
 	$.widget("mjs.nestedSortable", $.extend({}, $.ui.sortable.prototype, {
 
 		options: {
+      scroll: false,
 			tabSize: 20,
 			disableNesting: 'mjs-nestedSortable-no-nesting',
 			errorClass: 'mjs-nestedSortable-error',
@@ -57,8 +58,8 @@
 			var o = this.options;
 
 			//Do scrolling
+      var o = this.options, scrolled = false;
 			if(this.options.scroll) {
-				var scrolled = false;
 				if(this.scrollParent[0] != document && this.scrollParent[0].tagName != 'HTML') {
 
 					if((this.overflowOffset.top + this.scrollParent[0].offsetHeight) - event.pageY < o.scrollSensitivity)

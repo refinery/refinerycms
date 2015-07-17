@@ -32,6 +32,13 @@ Refinery::Core::Engine.routes.draw do
   end
 
   namespace :admin, :path => Refinery::Core.backend_route do
-    resources :users, :except => :show
+    resources :users, :except => :show do
+      collection do
+        # Not sure what this 'update-password' was for
+        #get 'update-password',       to: 'users#update_password', as: 'update_password'
+        get 'usernames/(:username)', to: 'users#get_usernames',   as: 'usernames'
+        get 'emails/(:user_id)',     to: 'users#get_emails',      as: 'emails'
+      end
+    end
   end
 end

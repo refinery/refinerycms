@@ -1,92 +1,121 @@
-<%= form_for [refinery, :admin, @user] do |f| %>
+<h2 class="admin-title hide-in-modal"><%= @user.id.present? ? "#{@user.username}'s Profile" : 'Add A New Admin' %></h2>
+
+<%
+  html_options = {
+    :class => 'ajax-form admin-form',
+    :'data-ajax-replace-selector' => '.admin-form',
+    :'data-item-id' => @user.id
+  }
+%>
+<%= form_for [refinery, :admin, @user], html: html_options do |f| %>
 
   <%= render '/refinery/admin/error_messages',
              :object => @user,
              :include_object_name => true %>
 
-  <div class='field'>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </div>
-  <div class='field'>
-    <%= f.label :full_name %>
-    <%= f.text_field :full_name %>
-  </div>
-  <div class='field'>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class='field'>
-    <%= f.label :password %>
-    <%= f.password_field :password, :autocomplete => 'off' %>
-    <% if @user.persisted? %>
-      <br>
-      <%= content_tag(:span, t('.blank_password_keeps_current')) %>
-    <% end %>
-  </div>
-  <div class='field'>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, :autocomplete => 'off' %>
-  </div>
-  <div class='field plugin_access'>
-    <span class='label_with_help'>
-      <%= f.label :plugin_access, t('.plugin_access'), :class => "title_label" %>
-      <%= link_to "(#{t('.enable_all')})", "", :id => "user_plugins_enable_all" %>
-    </span>
-    <ul id='plugins' class='checkboxes'>
-      <% @available_plugins.each do |plugin| -%>
-        <% if Refinery::Plugins.always_allowed.names.include?(plugin[:name]) or
-              (plugin[:name] == 'refinery_users' && @user.id == current_refinery_user.id) %>
-          <%= hidden_field_tag 'user[plugins][]', plugin[:name],
-                               :id => "plugins_#{plugin[:name]}" %>
-        <% else %>
-          <li>
-            <%= check_box_tag 'user[plugins][]', plugin[:name],
-                              @selected_plugin_names.include?(plugin[:name]),
-                              :id => "plugins_#{plugin[:name]}" %>
-            <%= f.label 'user[plugins][]',
-                        t('title', :scope => "refinery.plugins.#{plugin[:name].downcase}", :default => plugin[:title]),
-                        :class => "stripped",
-                        :for => "plugins_#{plugin[:name]}" %>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
+  <%= render 'customize_form', :f => f %>
+
+  <div class='form-group'>
+    <%= f.label :username, "Username for login" %>
+    <div class="validation">
+      <span></span>
+    </div>
+    <%= f.text_field :username, :placeholder => 'Username', :class => 'form-control input-lg','data-validate'=>'unique_value,required_w_name', 'data-val-field' => 'username', 'data-unique-collection-url' => "#{refinery.usernames_admin_users_path @user.username}"  %>
   </div>
 
-  <% if current_refinery_user.has_role?(:superuser) && Refinery::Authentication.superuser_can_assign_roles %>
-    <div class='field role_access'>
-      <span class='label_with_help'>
-        <%= f.label :role_access, t('.role_access'), :class => "title_label" %>
-      </span>
-      <ul id='roles' class='checkboxes'>
-        <% @available_roles.each do |role|
-          downcased_title = (title = role[:title]).downcase -%>
-          <li>
-            <%= check_box_tag 'user[roles][]', downcased_title, @user.has_role?(title),
-                              :id => "roles_#{downcased_title}" %>
-            <%= f.label 'user[roles][]',
-                        t(downcased_title, :scope => 'refinery.roles', :default => title),
-                        :class => 'stripped',
-                        :for => "roles_#{downcased_title}" %>
-          </li>
-        <% end %>
-      </ul>
+  <%= yield :after_username %>
+
+  <div class='form-group'>
+    <div class="validation">
+      <span></span>
+    </div>
+    <%= f.text_field :email, :class => 'form-control input-lg', :placeholder => 'Email','data-validate'=>'unique_value,email,required_w_name', 'data-val-field' => 'email', 'data-unique-collection-url' => "#{refinery.emails_admin_users_path(@user.id)}"  %>
+  </div>
+  <% if @edit_user.present? %>
+    <% if @user.persisted? %>
+      <%= content_tag(:span, t('.blank_password_keeps_current')) %>
+      <br/>
+    <% end %>
+
+    <div class='form-group'>
+      <%= f.label :password %>
+      <%= f.password_field :password, :autocomplete => 'off', :class => 'form-control input-lg' %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, :autocomplete => 'off', :class => 'form-control input-lg' %>
     </div>
   <% end %>
 
+  <%= yield :before_plugin_access %>
+
+  <div class="well collapse in" id="admin-advanced">
+    <%= yield :advanced_settings %>
+
+    <div class='form-group plugin_access'>
+      <span class='label_with_help'>
+        <%= f.label :plugin_access, t('.plugin_access'), :class => "title_label" %>
+        <%= link_to "(#{t('.enable_all')})", "", :id => "user_plugins_enable_all" %>
+      </span>
+      <ul id='plugins' class='list-unstyled checkboxes'>
+        <% @available_plugins.each do |plugin| -%>
+          <% if Refinery::Plugins.always_allowed.names.include?(plugin[:name]) or
+                (plugin[:name] == 'refinery_users' && @user.id == current_refinery_user.id) %>
+            <%= hidden_field_tag 'user[plugins][]', plugin[:name],
+                                 :id => "plugins_#{plugin[:name]}" %>
+          <% else %>
+            <li>
+              <%= check_box_tag 'user[plugins][]', plugin[:name],
+                                @selected_plugin_names.include?(plugin[:name]),
+                                :id => "plugins_#{plugin[:name]}" %>
+              <%= f.label 'user[plugins][]',
+                          t('title', :scope => "refinery.plugins.#{plugin[:name].downcase}", :default => plugin[:title]),
+                          :class => "stripped",
+                          :for => "plugins_#{plugin[:name]}" %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <% if current_refinery_user.has_role?(:superuser) && Refinery::Authentication.superuser_can_assign_roles %>
+      <div class='form-group role_access'>
+        <span class='label_with_help'>
+          <%= f.label :role_access, t('.role_access'), :class => "title_label" %>
+        </span>
+        <ul id='roles' class='checkboxes'>
+          <% @available_roles.each do |role|
+            downcased_title = (title = role[:title]).downcase -%>
+            <li>
+              <%= check_box_tag 'user[roles][]', downcased_title, @user.has_role?(title),
+                                :id => "roles_#{downcased_title}" %>
+              <%= f.label 'user[roles][]',
+                          t(downcased_title, :scope => 'refinery.roles', :default => title),
+                          :class => 'stripped',
+                          :for => "roles_#{downcased_title}" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
+             :submit_button_text => @submit_button_text ||= 'Send Invitation',
              :hide_delete => !current_refinery_user.can_delete?(@user),
              :delete_title => t('delete', :scope => 'refinery.admin.users'),
              :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @user.username) %>
 <% end %>
 
+<%= render 'refinery/admin/users/submenu' %>
+
 <% content_for :javascripts do %>
   <script>
     $(document).ready(function() {
       $('#user_plugins_enable_all').click(function(e, a) {
-        $('div.field.plugin_access ul#plugins li input:checkbox').prop('checked', true);
+        $('div.plugin_access ul#plugins li input:checkbox').prop('checked', true);
         e.preventDefault();
       });
     });

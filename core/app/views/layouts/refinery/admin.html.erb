@@ -1,25 +1,131 @@
 <!DOCTYPE html>
+<!-- DOCUMENTATION
+
+html
+  head
+    glass/head
+    glass/stylesheets
+  /head
+  body
+    sidebar-left (main admin nav)
+    sidebar-right
+    page-preview OR admin_content [OR legacy admin content]
+      _body partial (shared)
+        header (main nav)
+        content
+        footer
+      /_body partial
+    /page-preview
+    modal wrapper
+    glass/javascripts
+  /body
+/html
+
+html
+  head
+    glass/head
+    glass/stylesheets
+  /head
+  body
+    _body partial (shared)
+    glass/javascripts
+  /body
+/html
+-->
+<% is_admin_preview_page =  content_for?(:admin_page_preview) %>
+
 <%= render '/refinery/html_tag' %>
   <% content_for :meta, "<meta refinerycms='#{Refinery.version}' />".html_safe %>
-  <%= render 'refinery/admin/head' %>
-  <body class="<%= action_name %> <%= I18n.locale %>">
-    <%= render '/refinery/site_bar' %>
-    <div id='tooltip_container'></div>
-    <div id="admin_container" class="clearfix">
-      <header id="header">
-        <%= render 'refinery/admin/menu' %>
-      </header>
-      <div id="page_container">
-        <div id="page">
-          <div id="content" class="clearfix">
-            <div id="flash_container">
-              <%= render '/refinery/no_script' %>
-              <%= render '/refinery/message' %>
-            </div>
-            <%= yield %>
+  <head>
+    <%= render partial: '/glass/head',        locals: {admin: true} %>
+    <%= render partial: '/glass/stylesheets', locals: {admin: true} %>
+  </head>
+
+  <body class="<%= yield :body_class %> <%= action_name %> <%= I18n.locale %> small-sidebar">
+    <%#= render '/glass/alerts_status' %>
+    <%= render 'refinery/admin/custom_layout' %>
+
+    <% if !defined?(@hide_main_nav) || !@hide_main_nav %>
+      <section id="sidebar-left" class="ui sidebar left overlay">
+        <div class="sidebar-top-nav">
+          <div class="site-name">
+            <% if content_for?(:custom_sidebar_header_link) %>
+              <%= yield :custom_sidebar_header_link %>
+            <% else %>
+              <i class="gcicon gcicon-glass-canvas hidden"></i> <%= link_to Refinery::Core.site_name, '/' %>
+            <% end %>
+            <button class="close-cms-menu visible-xs menu-link"><i class="gcicon gcicon-cancel"></i></button>
           </div>
         </div>
-      </div>
-    </div>
+        <div id="sidebar-left-inner">
+          <%= render 'refinery/admin/menu' %>
+        </div>
+        <%= link_to (t('.log_out', site_bar_translate_locale_args) + ' <i class="gcicon gcicon-log-out"></i>').html_safe,
+                    refinery.logout_path, :id => 'logout', :class => 'log-out' %>
+      </section>
+
+      <section id="mobile-menu" class="mobile-menu">
+        <%= render 'refinery/admin/mobile_menu' %>
+      </section>
+    <% end %>
+
+    <%= yield :body_top %>
+
+
+    <% if content_for?(:admin_sidebar) %>
+      <section id="sidebar-right" class="ui sidebar overlay right">
+        <div class="sidebar-top-nav">
+           <span>Publish / Save</span> <button type="button" class="sidebar-right-opener menu-link menu-link-right"><i class="gcicon gcicon-cancel"></i></button>
+        </div>
+        <div id="sidebar-right-inner">
+          <%= yield :admin_sidebar %>
+        </div>
+      </section>
+    <% end %>
+
+    <section id="wrapper" class="pusher">
+      <% if !defined?(@hide_main_nav) || !@hide_main_nav %>
+        <button type="button" class="sidebar-left-opener menu-link menu-link-left"><i class="gcicon gcicon-bars"></i></button>
+        <% if content_for?(:admin_sidebar) %>
+          <button type="button" class="sidebar-right-opener menu-link menu-link-right menu-link-text"><i class="gcicon gcicon-publish"></i> Publish / Save</button>
+        <% end %>
+      <% end %>
+      <% if !current_refinery_user.has_role?(:superuser) %>
+        <div id="flash_container" class="container-fluid">
+          <div class="row">
+            <div class="col-sm-12">
+              <%= render '/refinery/no_script' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% if is_admin_preview_page %>
+        <section id="page-preview">
+          <!-- this partial yields to :admin_page_preview -->
+          <%= render partial: '/glass/body', locals: {admin: true} %>
+          <!-- Assets for editing -->
+          <%= render '/glass/html_editing_assets' %>
+          <!-- Hidden image upload form -->
+          <%= render 'refinery/admin/images/form' %>
+        </section>
+      <% elsif content_for?(:admin_content) %>
+        <%= yield :admin_content %>
+      <% else %>
+        <div class="admin-page container-fluid">
+          <div class="row">
+            <div class="col-sm-12">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <%= render 'refinery/admin/glass/modal' %>
+    </section>
+
+    <%= yield :body_bottom %>
+
+
+    <%= render partial: '/glass/javascripts', locals: {admin: true} %>
   </body>
 </html>

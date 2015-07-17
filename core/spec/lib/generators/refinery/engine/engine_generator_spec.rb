@@ -20,7 +20,8 @@ module Refinery
       end
     end
 
-    specify do
+    specify "File structure of generated engine" do
+      skip "GLASS: is this really a valuable test?"
       expect(destination_root).to have_structure {
         directory "vendor" do
           directory "extensions" do
@@ -50,6 +51,8 @@ module Refinery
                         directory "rspec_product_tests" do
                           file "_actions.html.erb"
                           file "_form.html.erb"
+                          file "_image_input.html.erb"
+                          file "_image_preview.html.erb"
                           file "_records.html.erb"
                           file "_rspec_product_test.html.erb"
                           file "_rspec_product_tests.html.erb"

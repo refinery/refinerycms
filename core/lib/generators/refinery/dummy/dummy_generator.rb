@@ -32,6 +32,7 @@ module Refinery
       template "rails/database.yml", "#{dummy_path}/config/database.yml", :force => true
       template "rails/boot.rb.erb", "#{dummy_path}/config/boot.rb", :force => true
       template "rails/application.rb.erb", "#{dummy_path}/config/application.rb", :force => true
+      template "rails/test_config.rb", "#{dummy_path}/config/initializers/refinery/test.rb", :force => true
       template "rails/routes.rb", "#{dummy_path}/config/routes.rb", :force => true
       template "rails/Rakefile", "#{dummy_path}/Rakefile", :force => true
       template "rails/application.js", "#{dummy_path}/app/assets/javascripts/application.js", :force => true

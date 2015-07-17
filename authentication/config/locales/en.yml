@@ -34,7 +34,7 @@ en:
     users:
       new:
         fill_form: Fill out your details below so that we can get you started.
-        sign_up: Sign up
+        sign_up: Get Started
       create:
         welcome: 'Welcome to Refinery, %{who}.'
       forgot:

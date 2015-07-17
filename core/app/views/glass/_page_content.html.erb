@@ -1,0 +1,28 @@
+<%
+  if !defined?(part_num)
+    part_num = 0
+  end
+
+  if !defined?(content_type)
+    content_type = 'html'
+  end
+
+  if !defined?(html_tag)
+    html_tag = content_type == 'html' ? 'div' : 'span'
+  end
+
+  unless defined?(placeholder)
+    placeholder = 'Content'
+  end
+
+  default_content   = content_type == 'html' ? '<p><br></p>' : ''
+
+%>
+
+<% content = @page.content_for("content#{part_num}".to_sym) %>
+<<%= html_tag %>
+  class="glass-edit <%= 'glass-edit-html' if content_type == 'html' %>" glass-placeholder="<%= placeholder %>"
+  data-glass-options='{"form_id": "page_part_content<%= part_num %>_body", "type": "<%= content_type %>"}'
+><%=
+  raw content.blank? ? default_content : content
+%></<%= html_tag %>>

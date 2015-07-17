@@ -10,6 +10,8 @@ module Refinery
                     :only => [:new, :create, :edit, :update]
       before_action :redirect_unless_user_editable!, :only => [:edit, :update]
       before_action :exclude_password_assignment_when_blank!, :only => :update
+      before_action :check_user,               :only => [:update]
+      before_action :set_tmp_password,         :only => [:create]
 
       def new
         @user = Refinery::User.new
@@ -22,6 +24,9 @@ module Refinery
         @selected_role_names = params[:user][:roles] || []
 
         if @user.save
+          flash.now[:notice]  = "Invitation sent to #{@user.email}"
+          @user.inviting_user = current_refinery_user.username.split.map(&:capitalize).join(' ')
+          @user.send_reset_password_instructions
           create_successful
         else
           create_failed
@@ -29,7 +34,9 @@ module Refinery
       end
 
       def edit
+        @submit_button_text = 'Update'
         @selected_plugin_names = find_user.plugins.map(&:name)
+        @edit_user = true
       end
 
       def update
@@ -50,6 +57,32 @@ module Refinery
           update_successful
         else
           update_failed
+        end
+      end
+
+      def get_emails
+        begin
+          users = Refinery::User.select('email')
+          if params[:user_id].present?
+            users = users.where("id NOT IN ('#{params[:user_id]}')").select('email')
+          end
+          render json: {collection: users.all.to_a.map!{|u| u.email.downcase} }, status: 200
+        rescue Exception => e
+          logger.warn(e)
+          render json: {message: e.message}, status: 500
+        end
+      end
+
+      def get_usernames
+        begin
+          users = Refinery::User.select('username')
+          if params[:username].present?
+            users = users.where("username NOT IN ('#{params[:username].strip}')").select('username')
+          end
+          render json: {collection: users.all.to_a.map!{|u| u.username.downcase} }, status: 200
+        rescue Exception => e
+          logger.warn(e)
+          render json: {message: e.message}, status: 500
         end
       end
 
@@ -75,11 +108,16 @@ module Refinery
       end
 
       def update_successful
+        if params[:user][:password] && @user.id == current_refinery_user.id
+          sign_in @user, :bypass => true
+        end
+
         redirect_to refinery.admin_users_path,
                     :notice => t('updated', :what => @user.username, :scope => 'refinery.crudify')
       end
 
       def update_failed
+        @edit_user = true
         user_memento_rollback!
 
         render :edit
@@ -98,6 +136,7 @@ module Refinery
       def redirect_unless_user_editable!
         redirect_to refinery.admin_users_path unless current_refinery_user.can_edit? find_user
       end
+
 
       private
       def exclude_password_assignment_when_blank!
@@ -136,6 +175,21 @@ module Refinery
           :email, :password, :password_confirmation, :remember_me, :username,
           :login, :full_name, plugins: []
         )
+      end
+
+      def check_user
+        unless current_refinery_user.plugins.map(&:name).include?('refinery_users') ||
+            @user.username == current_refinery_user.username ||
+            current_refinery_user.super_user?
+          logger.warn "Someone without permission tried to modify user #{@user.inspect}"
+          flash.now[:error] = 'Sorry, you may not access that'
+          return redirect_to refinery.admin_dashboard_path
+        end
+      end
+
+      def set_tmp_password
+        params[:user][:password] = Devise.friendly_token
+        params[:user][:password_confirmation] = params[:user][:password]
       end
     end
   end

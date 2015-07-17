@@ -1,0 +1,22 @@
+/******************************************************************************
+ *
+ * site.scss          <---- BOTH ---->              refinery-glass.scss
+ *                          config/_variables
+ *                          glass/_manifest-back-and-frontend
+ *                          _manifest-custom-back-and-frontend
+ * _manifest-frontend                               glass/_manifest-backend
+ *
+ * Files in the 'glass' dir are intended to stay in refinery. The following are purely
+ * here to be overwritten by the site / app:
+ *  - config/_variables                   - customize backend without overriding
+ *  - _manifest-custom-back-and-frontend  - styles for frontend, that backend will use too.
+ *                                          you can also override any backend styles
+ *  - _manifest-frontend                  - styles to exclude from backend, or if
+ *                                          backend already includes them
+ *
+ ******************************************************************************/
+
+@import "config/variables";
+@import "glass/manifest-back-and-frontend";
+@import "glass/manifest-backend";
+@import "manifest-custom-back-and-frontend";
