@@ -78,13 +78,15 @@ module Refinery
         ))
         return true
       end
-      if include_form?
-        if file.to_s.scan(/views\/refinery\/namespace\/plural_name\/show|views\/refinery\/namespace\/plural_name\/index/).present?
-          return true
-        elsif !include_moderation? && (file.to_s.scan(/views\/refinery\/namespace\/admin\/plural_name\/spam/).present?)
-          return true
-        end
+
+      if include_form? && file.to_s.scan(/views\/refinery\/namespace\/plural_name\/show|views\/refinery\/namespace\/plural_name\/index/).present?
+        return true
       end
+
+      if !include_moderation? && (file.to_s.scan(/views\/refinery\/namespace\/admin\/plural_name\/spam/).present?)
+        return true
+      end
+
       return reject_file_without_extra_checks?(file)
     end
     alias_method_chain :reject_file?, :extra_checks
