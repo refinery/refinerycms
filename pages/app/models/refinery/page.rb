@@ -320,6 +320,16 @@ module Refinery
       end
     end
 
+    # Protects generated slugs from title if they are in the list of reserved words
+    # This applies mostly to plugin-generated pages.
+    # This only kicks in when Refinery::Pages.marketable_urls is enabled.
+    # Also check for global scoping, and if enabled, allow slashes in slug.
+    #
+    # Returns the sluggified string
+    def normalize_friendly_id(slug_string)
+      FriendlyIdPath.normalize_friendly_id(slug_string)
+    end
+
     private
 
     class FriendlyIdPath
@@ -330,10 +340,10 @@ module Refinery
           .sub(%r{/*$}, '')
           .split('/')
           .select(&:present?)
-          .map { |slug| self.normalize_friendly_id_with_marketable_urls(slug) }.join('/')
+          .map { |slug| self.normalize_friendly_id(slug) }.join('/')
       end
 
-      def self.normalize_friendly_id_with_marketable_urls(slug_string)
+      def self.normalize_friendly_id(slug_string)
         # If we are scoping by parent, no slashes are allowed. Otherwise, slug is
         # potentially a custom slug that contains a custom route to the page.
         if !Pages.scope_slug_by_parent && slug_string.include?('/')
@@ -351,17 +361,6 @@ module Refinery
         sluggified
       end
     end
-
-    # Protects generated slugs from title if they are in the list of reserved words
-    # This applies mostly to plugin-generated pages.
-    # This only kicks in when Refinery::Pages.marketable_urls is enabled.
-    # Also check for global scoping, and if enabled, allow slashes in slug.
-    #
-    # Returns the sluggified string
-    def normalize_friendly_id_with_marketable_urls(slug_string)
-      FriendlyIdPath.normalize_friendly_id_with_marketable_urls(slug_string)
-    end
-    alias_method_chain :normalize_friendly_id, :marketable_urls
 
     def puts_destroy_help
       puts "This page is not deletable. Please use .destroy! if you really want it deleted "
