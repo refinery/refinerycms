@@ -21,6 +21,11 @@ module Refinery
         content_page.fetch_template_overrides { |section_id| content_for(section_id)}
         content_page.to_html(options[:can_use_fallback])
       end
+
+      # Compiles the default menu.
+      def refinery_menu_pages
+        Refinery::Menu.new Refinery::Page.fast_menu
+      end
     end
   end
 end

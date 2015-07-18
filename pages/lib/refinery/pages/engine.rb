@@ -15,6 +15,14 @@ module Refinery
           plugin.menu_match = %r{refinery/page(_part|s_dialog)?s(/preview)?$}
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_pages_path }
         end
+
+        ::ApplicationController.send :helper, Refinery::Pages::ContentPagesHelper
+        Refinery::AdminController.send :helper, Refinery::Pages::ContentPagesHelper
+      end
+
+      after_inclusion do
+        Refinery.include_once(::ApplicationController, Refinery::Pages::InstanceMethods)
+        Refinery.include_once(Refinery::AdminController, Refinery::Pages::Admin::InstanceMethods)
       end
 
       initializer "refinery.pages append marketable routes", :after => :set_routes_reloader_hook do

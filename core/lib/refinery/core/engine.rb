@@ -7,21 +7,24 @@ module Refinery
       engine_name :refinery
 
       class << self
-        # Register all decorators from app/decorators/ and registered plugins' paths.
-        def register_decorators!
-          Decorators.register! Rails.root, Refinery::Plugins.registered.pathnames
-        end
-
         # Performs the Refinery inclusion process which extends the currently loaded Rails
         # applications with Refinery's controllers and helpers. The process is wrapped by
         # a before_inclusion and after_inclusion step that calls procs registered by the
         # Refinery::Engine#before_inclusion and Refinery::Engine#after_inclusion class methods
         def refinery_inclusion!
-          before_inclusion_procs.each(&:call).tap{ |c| c.clear if Rails.application.config.cache_classes }
+          before_inclusion_procs.each(&:call).tap do |c|
+            c.clear if Rails.application.config.cache_classes
+          end
 
-          after_inclusion_procs.each(&:call).tap{ |c| c.clear if Rails.application.config.cache_classes }
+          Refinery.include_once(::ApplicationController, Refinery::ApplicationController)
+          ::ApplicationController.send :helper, Refinery::Core::Engine.helpers
 
-          register_decorators!
+          after_inclusion_procs.each(&:call).tap do |c|
+            c.clear if Rails.application.config.cache_classes
+          end
+
+          # Register all decorators from app/decorators/ and registered plugins' paths.
+          Decorators.register! Rails.root, Refinery::Plugins.registered.pathnames
         end
       end
 
