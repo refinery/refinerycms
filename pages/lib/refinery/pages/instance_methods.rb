@@ -16,8 +16,6 @@ module Refinery
         end
       end
 
-      protected
-
       def render(*args)
         present @page unless admin? || @meta
         super
