@@ -16,7 +16,7 @@ end
 module Refinery
   module Admin
     describe "Pages", :type => :feature do
-      refinery_login_with :refinery_user
+      refinery_login
 
       context "when no pages" do
         it "invites to create one" do
@@ -763,7 +763,7 @@ module Refinery
 
     describe "TranslatePages", :type => :feature do
       before { Globalize.locale = :en }
-      refinery_login_with :refinery_user
+      refinery_login
 
       describe "a page with a single locale", js: true do
         before do

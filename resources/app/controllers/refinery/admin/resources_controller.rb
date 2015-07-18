@@ -2,8 +2,7 @@ module Refinery
   module Admin
     class ResourcesController < ::Refinery::AdminController
 
-      crudify :'refinery/resource',
-              :order => "updated_at DESC"
+      crudify :'refinery/resource', order: "updated_at DESC"
 
       before_action :init_dialog
 

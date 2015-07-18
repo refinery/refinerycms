@@ -1,7 +1,5 @@
 <ul>
-  <li>
-    <%= render '/refinery/admin/search', :url => refinery.admin_resources_path %>
-  </li>
+  <li><%= render '/refinery/admin/search', :url => refinery.admin_resources_path -%></li>
   <li>
     <%= action_label(:upload,  refinery.new_admin_resource_path(:dialog => true), t('.upload_new'))%>
   </li>

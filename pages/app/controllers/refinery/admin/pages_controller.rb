@@ -1,7 +1,7 @@
 module Refinery
   module Admin
     class PagesController < Refinery::AdminController
-      include Pages::InstanceMethods
+      prepend Pages::InstanceMethods
 
       crudify :'refinery/page',
               :include => [:translations, :children],

@@ -7,22 +7,24 @@ module Refinery
       engine_name :refinery
 
       class << self
-        # Register all decorators from app/decorators/ and registered plugins' paths.
-        def register_decorators!
-          Decorators.register! Rails.root, Refinery::Plugins.registered.pathnames
-        end
-
         # Performs the Refinery inclusion process which extends the currently loaded Rails
         # applications with Refinery's controllers and helpers. The process is wrapped by
         # a before_inclusion and after_inclusion step that calls procs registered by the
         # Refinery::Engine#before_inclusion and Refinery::Engine#after_inclusion class methods
         def refinery_inclusion!
-          before_inclusion_procs.each(&:call).tap{ |c| c.clear if Rails.application.config.cache_classes }
+          before_inclusion_procs.each(&:call).tap do |c|
+            c.clear if Rails.application.config.cache_classes
+          end
 
           Refinery.include_once(::ApplicationController, Refinery::ApplicationController)
           ::ApplicationController.send :helper, Refinery::Core::Engine.helpers
 
-          after_inclusion_procs.each(&:call).tap{ |c| c.clear if Rails.application.config.cache_classes }
+          after_inclusion_procs.each(&:call).tap do |c|
+            c.clear if Rails.application.config.cache_classes
+          end
+
+          # Register all decorators from app/decorators/ and registered plugins' paths.
+          Decorators.register! Rails.root, Refinery::Plugins.registered.pathnames
         end
       end
 
@@ -30,8 +32,6 @@ module Refinery
 
       # Include the refinery controllers and helpers dynamically
       config.to_prepare(&method(:refinery_inclusion!).to_proc)
-
-      after_inclusion(&method(:register_decorators!).to_proc)
 
       # Wrap errors in spans
       config.to_prepare do
@@ -44,7 +44,7 @@ module Refinery
         WillPaginate.per_page = 20
       end
 
-      initializer "register refinery_core plugin" do
+      before_inclusion do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_core'
@@ -53,9 +53,7 @@ module Refinery
           plugin.always_allow_access = true
           plugin.menu_match = /refinery\/(refinery_)?core$/
         end
-      end
 
-      initializer "register refinery_dialogs plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_dialogs'

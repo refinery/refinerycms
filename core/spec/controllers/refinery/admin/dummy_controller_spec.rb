@@ -26,7 +26,7 @@ module Refinery
       end
 
       context "as refinery user" do
-        refinery_login_with :refinery
+        refinery_login
 
         context "with permission" do
           it "allows access" do

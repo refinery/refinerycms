@@ -48,6 +48,10 @@ module Refinery
       @pathname = value
     end
 
+    def landable?
+      !hide_from_menu && url.present?
+    end
+
     # Returns a hash that can be used to create a url that points to the administration part of the plugin.
     def url
       @url ||= build_url

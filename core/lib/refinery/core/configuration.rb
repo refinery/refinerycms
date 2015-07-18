@@ -8,7 +8,8 @@ module Refinery
                     :s3_bucket_name, :s3_region, :s3_access_key_id,
                     :s3_secret_access_key, :force_ssl, :backend_route,
                     :dragonfly_custom_backend_class, :dragonfly_custom_backend_opts,
-                    :visual_editor_javascripts, :visual_editor_stylesheets
+                    :visual_editor_javascripts, :visual_editor_stylesheets,
+                    :refinery_logout_path
 
     self.rescue_not_found = false
     self.s3_backend = false

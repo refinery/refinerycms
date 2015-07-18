@@ -53,15 +53,14 @@ module Refinery
     end
 
     def should_redirect_to_friendly_url?
-      requested_friendly_id != page.friendly_id || ::Refinery::Pages.scope_slug_by_parent && params[:path].present? && params[:path].match(page.root.slug).nil?
+      requested_friendly_id != page.friendly_id || (
+        ::Refinery::Pages.scope_slug_by_parent &&
+        params[:path].present? && params[:path].match(page.root.slug).nil?
+      )
     end
 
     def current_user_can_view_page?
-      page.live? || current_refinery_user_can_access?("refinery_pages")
-    end
-
-    def current_refinery_user_can_access?(plugin)
-      refinery_user? && current_refinery_user.authorized_plugins.include?(plugin)
+      page.live? || authorisation_manager.allow?(:plugin, "refinery_pages")
     end
 
     def first_live_child
@@ -71,7 +70,7 @@ module Refinery
     def find_page(fallback_to_404 = true)
       @page ||= case action_name
                 when "home"
-                  Refinery::Page.where(:link_url => '/').first
+                  Refinery::Page.find_by(link_url: '/')
                 when "show"
                   Refinery::Page.find_by_path_or_id(params[:path], params[:id])
                 end
@@ -85,7 +84,8 @@ module Refinery
     end
 
     def write_cache?
-      if Refinery::Pages.cache_pages_full && !refinery_user?
+      # Don't cache the page with the site bar showing.
+      if Refinery::Pages.cache_pages_full && !authorisation_manager.allow?(:read, :site_bar)
         cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path).to_s)
       end
     end

@@ -1,5 +1,5 @@
 <% page_code = Refinery::Core.google_analytics_page_code.to_s.strip %>
-<% unless local_request? or refinery_user? or page_code =~ /^(UA-xxxxxx-x)?$/ -%>
+<% unless local_request? or admin? or page_code =~ /^(UA-xxxxxx-x)?$/ -%>
 <!-- asynchronous google analytics snippet -->
 <script type="text/javascript">
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
