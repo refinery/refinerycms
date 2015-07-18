@@ -292,11 +292,7 @@ module Refinery
     #
     # Will return the body page part of the first page.
     def content_for(part_slug)
-      begin
-        part_with_slug(part_slug).try(:body)
-      rescue
-        raise ActiveRecord::RecordNotFound
-      end
+      part_with_slug(part_slug).try(:body)
     end
 
     # Accessor method to test whether a page part
