@@ -33,6 +33,12 @@ module Refinery
         add_route_parts_as_reserved_words if Refinery::Pages.marketable_urls
       end
 
+      config.to_prepare do
+        Rails.application.config.assets.precompile += %w(
+          speakingurl.js
+        )
+      end
+
       config.after_initialize do
         Refinery.register_extension(Refinery::Pages)
       end

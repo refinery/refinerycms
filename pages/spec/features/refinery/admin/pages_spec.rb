@@ -666,9 +666,9 @@ module Refinery
         let!(:some_page) { Page.create! :title => "Some Page" }
 
         before do
-          some_page.parts.create! :title => "First Part", :position => 1
-          some_page.parts.create! :title => "Second Part", :position => 2
-          some_page.parts.create! :title => "Third Part", :position => 3
+          some_page.parts.create! :title => "First Part",  :slug => "first_part",  :position => 1
+          some_page.parts.create! :title => "Second Part", :slug => "second_part", :position => 2
+          some_page.parts.create! :title => "Third Part",  :slug => "third_part",  :position => 3
 
           allow(Refinery::Pages).to receive(:new_page_parts).and_return(true)
         end
@@ -745,6 +745,7 @@ module Refinery
           Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
             page.parts.create(
               title: default_page_part,
+              slug: default_page_part,
               body: "<header class='regression'>test</header>",
               position: index
             )

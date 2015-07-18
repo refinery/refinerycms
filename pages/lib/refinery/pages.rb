@@ -51,3 +51,4 @@ end
 require 'friendly_id'
 require 'seo_meta'
 require 'babosa'
+require 'speakingurl-rails'

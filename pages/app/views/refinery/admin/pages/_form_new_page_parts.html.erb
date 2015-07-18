@@ -2,6 +2,10 @@
   <div class='field'>
     <label for='new_page_part_title'><%= t('.title')  %></label>
     <input id='new_page_part_title' value='' class='larger widest' />
+
+    <label for='new_page_part_slug'><%= t('.slug')  %></label>
+    <input id='new_page_part_slug' value='' class='larger widest' />
+
     <input id='new_page_part_index' type='hidden' value='<%= @page.parts.size %>' />
   </div>
   <%= render '/refinery/admin/form_actions', :f => f,
@@ -10,3 +14,7 @@
              :cancel_button_id => "new_page_part_cancel",
              :hide_delete => true %>
 </div>
+
+<% content_for :after_javascript_libraries do %>
+  <%= javascript_include_tag 'speakingurl' %>
+<% end %>

@@ -291,8 +291,8 @@ module Refinery
     #    ::Refinery::Page.first.content_for(:body)
     #
     # Will return the body page part of the first page.
-    def content_for(part_title)
-      part_with_title(part_title).try(:body)
+    def content_for(part_slug)
+      part_with_slug(part_slug).try(:body)
     end
 
     # Accessor method to test whether a page part
@@ -302,22 +302,27 @@ module Refinery
     #   ::Refinery::Page.first.content_for?(:body)
     #
     # Will return true if the page has a body page part and it is not blank.
-    def content_for?(part_title)
-      content_for(part_title).present?
+    def content_for?(part_slug)
+      content_for(part_slug).present?
     end
 
     # Accessor method to get a page part object from a page.
     # Example:
     #
-    #    ::Refinery::Page.first.part_with_title(:body)
+    #    ::Refinery::Page.first.part_with_slug(:body)
     #
-    # Will return the Refinery::PagePart object with that title using the first page.
-    def part_with_title(part_title)
+    # Will return the Refinery::PagePart object with that slug using the first page.
+    def part_with_slug(part_slug)
       # self.parts is usually already eager loaded so we can now just grab
       # the first element matching the title we specified.
       self.parts.detect do |part|
-        part.title_matches?(part_title)
+        part.slug_matches?(part_slug)
       end
+    end
+
+    def part_with_title(part_title)
+      Refinery.deprecate("Refinery::Page#part_with_title", when: "3.1", replacement: "part_with_slug")
+      part_with_slug(part_title.to_s.parameterize.underscore)
     end
 
     # Protects generated slugs from title if they are in the list of reserved words

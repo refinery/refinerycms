@@ -3,13 +3,16 @@ module Refinery
 
     belongs_to :page, :foreign_key => :refinery_page_id
 
-    validates :title, :presence => true, :uniqueness => {:scope => :refinery_page_id}
+    before_validation :set_default_slug
+
+    validates :title, :presence => true
+    validates :slug, :presence => true, :uniqueness => {:scope => :refinery_page_id}
     alias_attribute :content, :body
 
     translates :body
 
     def to_param
-      "page_part_#{title.downcase.gsub(/\W/, '_')}"
+      "page_part_#{slug.downcase.gsub(/\W/, '_')}"
     end
 
     def body=(value)
@@ -18,10 +21,16 @@ module Refinery
       normalise_text_fields
     end
 
+    def slug_matches?(other_slug)
+      slug.present? && (# protecting against the problem that occurs when have two nil slugs
+        slug == other_slug.to_s ||
+        parameterized_slug == parameterize(other_slug.to_s)
+      )
+    end
+
     def title_matches?(other_title)
-      title.present? and # protecting against the problem that occurs when have nil title
-        title == other_title.to_s or
-        parameterized_title == parameterize(other_title.to_s)
+      Refinery.deprecate("Refinery::PagePart#title_matches?", when: "3.1", replacement: "slug_matches?")
+      slug_matches?(other_title.to_s.parameterize.underscore)
     end
 
     protected
@@ -37,8 +46,12 @@ module Refinery
       string.downcase.gsub(" ", "_")
     end
 
-    def parameterized_title
-      parameterize(title)
+    def parameterized_slug
+      parameterize(slug)
+    end
+
+    def set_default_slug
+      self.slug = title.to_s.parameterize.underscore.presence if self.slug.blank?
     end
   end
 end
