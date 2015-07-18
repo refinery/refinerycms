@@ -53,7 +53,8 @@ tr:
         results_for_html: " &#8216;<em>%{query}</em>&#8217; için arama sonucu"
         no_results: 'Üzgünüm, herhangi bir sonuç bulunamadı'
         cancel_search: 'Aramayı iptal et'
-        search_input_notice: "Buraya aradığınız karakterleri içeren en az 3 tane harf girin."
+        search_input_placeholder: "Arama&8230;"
+        search_input_help: "Buraya aradığınız karakterleri içeren en az 3 tane harf girin."
       delete:
         message: " '%{title}' Silmek istediğinize emin misiniz?"
       error_messages:
