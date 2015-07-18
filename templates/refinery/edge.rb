@@ -19,11 +19,13 @@ if ENV['REFINERY_PATH']
 "
 gem 'refinerycms', path: '#{ENV['REFINERY_PATH']}'
 "
+  end
 else
   append_file 'Gemfile' do
 "
 gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', branch: 'master'
 "
+  end
 end
 
 append_file 'Gemfile' do
