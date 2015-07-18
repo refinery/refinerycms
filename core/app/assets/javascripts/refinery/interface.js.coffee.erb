@@ -21,7 +21,7 @@
     $("form.edit_image .form-actions").css "margin-top": margin_top if margin_top > 0
 
   $(".form-actions .form-actions-left input:submit#submit_button").click (e) ->
-    $("<span class='fa fa-circle-o-notch fa-spin' />").appendTo $(this).parent()
+    $(this).nextAll('#spinner').removeClass('hidden_icon').addClass('unhidden_icon')
 
   $(".form-actions.form-actions-dialog .form-actions-left a.close_dialog").click (e) ->
     titlebar_close_button = $('.ui-dialog-titlebar-close')
