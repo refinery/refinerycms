@@ -55,8 +55,9 @@ fr:
         results_for_html: "Résultats de la recherche &#8216;<em>%{query}</em>&#8217;"
         no_results: Aucun résultat ne correspond à votre recherche
         cancel_search: 'Annuler la recherche'
-        search_input_placeholder: "Rechercher&8230;"
-        search_input_help: "Entrez ici le texte recherché. La longueur minimale est de 3 caractères."
+        input:
+          placeholder: "Rechercher&8230;"
+          help: "Entrez ici le texte recherché. La longueur minimale est de 3 caractères."
       delete:
         message: "Êtes-vous sûr(e) de vouloir supprimer '%{title}'?"
       error_messages:

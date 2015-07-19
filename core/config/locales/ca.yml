@@ -53,8 +53,9 @@ ca:
         results_for_html: "Resultats de la recerca &#8216;<em>%{query}</em>&#8217;"
         no_results: "No s'han trobat resultats"
         cancel_search: 'Cancelar recerca'
-        search_input_placeholder: "Buscar&#8230;"
-        search_input_help:  "Posa aquí una cadena d'almenys 3 caràcters que conté el que estas buscant."
+        input:
+          placeholder: "Buscar&#8230;"
+          help:  "Posa aquí una cadena d'almenys 3 caràcters que conté el que estas buscant."
       delete:
         message: "Segur que vols suprimir '%{title}'?"
       error_messages:

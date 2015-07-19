@@ -55,8 +55,9 @@ it:
         results_for_html: "Risultati della ricerca per &#8216;<em>%{query}</em>&#8217;"
         no_results: "Spiacenti, nessun risultato trovato"
         cancel_search: 'Annulla ricerca'
-        search_input_placeholder: "Cerca&8230;"
-        search_input_help: "Scrivi qui una stringa di almeno 3 caratteri contenente quello che stai cercando."
+        input:
+          placeholder: "Cerca&8230;"
+          help: "Scrivi qui una stringa di almeno 3 caratteri contenente quello che stai cercando."
       delete:
         message: "Sei sicuro di voler rimuovere '%{title}'?"
       error_messages:

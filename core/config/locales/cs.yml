@@ -53,10 +53,11 @@ cs:
         results_for_html: "Výsledky hledání pro &#8216;<em>%{query}</em>&#8217;"
         no_results: Žádné záznamy nenalezeny
         cancel_search: 'Zrušit vyhledávání'
-        search_input_placeholder: "Hledat&8230;"
-        search_input_help: "Vložte nejméně 3 znaky ze slova, které vyhledáváte."
+        input:
+          placeholder: "Hledat&8230;"
+          help: "Vložte nejméně 3 znaky ze slova, které vyhledáváte."
       delete:
-        message: Opravdu chcete smazat '%{title}'?
+        message: "Opravdu chcete smazat '%{title}'?"
       error_messages:
         problems_in_following_fields: Vyskytl se problém s těmito údaji
       help: nápověda
