@@ -4,8 +4,7 @@
 </script>
 <%= javascript_include_tag 'admin' -%>
 <%= javascript_include_tag 'refinery/refinery' -%>
-<%= javascript_include_tag 'jquery.turbolinks' if defined?(JqueryTurbolinks) -%>
-<%= javascript_include_tag 'turbolinks' if defined?(Turbolinks) -%>
+<%= refinery_turbolinks_include_tags -%>
 <%= javascript_include_tag 'refinery/application' -%>
 <% visual_editor_javascripts.each do |js| %>
   <%= javascript_include_tag js %>
