@@ -13,6 +13,8 @@ class AddCustomSlugToRefineryPages < ActiveRecord::Migration
 
   private
   def page_column_names
+    return [] unless defined?(::Refinery::Page)
+
     Refinery::Page.column_names.map(&:to_s)
   end
 end
