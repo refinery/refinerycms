@@ -6,13 +6,7 @@ module Refinery
       def initialize(page_part)
         super()
         self.fallback_html = page_part.body.html_safe if page_part.body
-        self.id = convert_title_to_id(page_part.title) if page_part.title
-      end
-
-    private
-
-      def convert_title_to_id(title)
-        title.to_s.gsub(/\ /, '').underscore.to_sym
+        self.id = page_part.slug.to_sym if page_part.slug
       end
     end
   end
