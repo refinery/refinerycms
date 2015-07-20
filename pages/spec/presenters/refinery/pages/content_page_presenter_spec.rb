@@ -3,8 +3,8 @@ require "spec_helper"
 module Refinery
   module Pages
     describe ContentPagePresenter do
-      let(:part)  { double(PagePart, :body => 'part_body', :title => 'A Wonderful Page Part') }
-      let(:part2) { double(PagePart, :body => 'part_body2', :title => 'Another Wonderful Page Part') }
+      let(:part)  { double(PagePart, :body => 'part_body', :slug => 'a_wonderful_page_part', :title => 'A Wonderful Page Part') }
+      let(:part2) { double(PagePart, :body => 'part_body2', :slug => 'a_wonderful_page_part', :title => 'Another Wonderful Page Part') }
       let(:title) { 'This Great Page' }
 
       describe "when building for page" do

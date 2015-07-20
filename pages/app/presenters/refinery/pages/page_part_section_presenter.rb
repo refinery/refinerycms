@@ -6,7 +6,7 @@ module Refinery
       def initialize(page_part)
         super()
         self.fallback_html = page_part.body.html_safe if page_part.body
-        self.id = page_part.slug
+        self.id = page_part.slug.to_sym if page_part.slug
       end
     end
   end
