@@ -22,7 +22,7 @@ a:visited {
 
 a:hover,
 a:focus {
-  text-decoration: none;
+  text-decoration: none !important;
   color: $primary-hover;
 }
 
@@ -921,6 +921,9 @@ p+.inline-module{
   &.lg {
     width: 320px;
   }
+  &.fluid{
+    width: 100%;
+  }
   &.active {
     visibility: visible;
     transition-delay: 0s;
@@ -1252,6 +1255,11 @@ form {
   }
   .required {
     color: $red;
+  }
+  &.on-white{
+    .form-control{
+      border: 1px solid $grey-1;
+    }
   }
 }
 
