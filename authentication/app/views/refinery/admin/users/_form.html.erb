@@ -20,7 +20,7 @@
     <div class="validation">
       <span></span>
     </div>
-    <%= f.text_field :username, :placeholder => 'Username', :class => 'form-control input-lg','data-validate'=>'unique_value,required_w_name', 'data-val-field' => 'username', 'data-unique-collection-url' => "#{refinery.usernames_admin_users_path @user.username}"  %>
+    <%= f.text_field :username, :placeholder => 'Username', :class => 'form-control input-lg','data-validate'=>'required_w_name', 'data-val-field' => 'username'  %>
   </div>
 
   <%= yield :after_username %>
@@ -29,7 +29,7 @@
     <div class="validation">
       <span></span>
     </div>
-    <%= f.text_field :email, :class => 'form-control input-lg', :placeholder => 'Email','data-validate'=>'unique_value,email,required_w_name', 'data-val-field' => 'email', 'data-unique-collection-url' => "#{refinery.emails_admin_users_path(@user.id)}"  %>
+    <%= f.text_field :email, :class => 'form-control input-lg', :placeholder => 'Email','data-validate'=>'email,required_w_name', 'data-val-field' => 'email'  %>
   </div>
   <% if @edit_user.present? %>
     <% if @user.persisted? %>
