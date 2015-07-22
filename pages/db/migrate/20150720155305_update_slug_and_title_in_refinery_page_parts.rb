@@ -1,11 +1,13 @@
 class UpdateSlugAndTitleInRefineryPageParts < ActiveRecord::Migration
   def change
-    Refinery::PagePart.all.each do |pp|
-      unless pp.title
-        pp.title = pp.slug
+    begin
+      ::Refinery::PagePart.all.each do |pp|
+        pp.title ||= pp.slug
+        pp.slug = pp.slug.downcase.gsub(" ", "_")
+        pp.save!
       end
-      pp.slug = pp.slug.downcase.gsub(" ", "_")
-      pp.save!
+    rescue NameError
+      warn "Refinery::PagePart was not defined!"
     end
   end
 end
