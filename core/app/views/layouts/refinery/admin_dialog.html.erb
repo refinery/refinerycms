@@ -6,9 +6,6 @@
     <%= render '/refinery/admin/head' %>
     <body id='dialog_container' class='dialog <%= I18n.locale %><%= ' visual_editor_iframe_body' if params[:visual_editor].presence %>'>
       <div id='tooltip_container'></div>
-      <div id="flash_container">
-        <%= render '/refinery/message' %>
-      </div>
       <div id='content' class='clearfix'>
         <%= yield %>
       </div>
