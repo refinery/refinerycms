@@ -163,7 +163,7 @@ var CanvasForms = (function ($) {
         var $errorContainer, $validationContainer = $(element).parents('.form-group').find('.validation');
 
         if($validationContainer.length > 0 && ($errorContainer = $validationContainer.find('span')).length > 0){
-          
+
           if($errorContainer.length > 1){
             $validationContainer = $errorContainer = $(element).parent().find('.validation').first();
             $errorContainer = $validationContainer.find('span');
@@ -292,8 +292,6 @@ var CanvasForms = (function ($) {
     var $error_response  = ($(data).attr('id') === 'errorExplanation') ? $(data) : $(data).find('#errorExplanation');
     var $modal           = $(selector).parents('.modal');
     var $replacement     = null;
-    var $thankYouPageContent = $(data).find('.glass-edit');
-    var isThankyouPage = ($thankYouPageContent.length > 0 && $thankYouPageContent.html().indexOf('Thank You') !== -1) || $form.hasClass('ajax-thank-you');
     var callback = $form.data('on-complete-callback');
     var redirect_on_success = true;
 
@@ -328,17 +326,9 @@ var CanvasForms = (function ($) {
       $replacement = $replace_form;
     }
     else if ($page_body.length > 0) {
-      if(isThankyouPage){
-        $replacement = $thankYouPageContent;
-      } else {
-        $replacement = $page_body.first();
-      }
+      $replacement = $page_body.first();
     } else {
-      if(isThankyouPage){
-        $replacement = $thankYouPageContent;
-      } else {
-        $replacement = $('<p>Thank you</p>'); // Default response message
-      }
+      $replacement = $('<p>Thank you</p>'); // Default response message
     }
 
     if ($modal.length === 0 && redirect_on_success) {
