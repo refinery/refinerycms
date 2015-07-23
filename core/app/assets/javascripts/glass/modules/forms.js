@@ -314,8 +314,10 @@ var CanvasForms = (function ($) {
       if ($cur_error.length > 0) {
         replaceContent($cur_error, $error_response);
       }
-      else {
+      else if ($formActions.length > 0)
         $error_response.insertBefore($formActions);
+      else {
+        $error_response.appendTo($form); // not an ideal location, but just so the error is visible somewhere
       }
       $submit_btn.html($submit_btn.data('orig-btn-txt'));
       $submit_btns.removeAttr('disabled');
