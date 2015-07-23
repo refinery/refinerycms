@@ -11,6 +11,10 @@ body {
   font-family: $primary-font;
 }
 
+#page{
+  overflow-x: hidden;
+}
+
 a {
   @include transition($transition);
 }
@@ -792,7 +796,10 @@ a.pill {
   .inline-editable-image-container,
   .image-group-img {
     flex: 1;
-    margin: 0 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 15px;
+    margin-right: 15px;
     &.first-child{
       margin-left: 0;
     }
@@ -806,15 +813,23 @@ a.pill {
   &-fw {
     left: 50%;
     width: 100vw;
-    transform: translateX(-50vw);
+    transform: translateX(-50%);
     .img-responsive {
       width: 100%;
+    }
+    &.image-group{
+      width: calc(100vw + 30px);
+      margin-left: 0;
     }
   }
   &-lg {
     @media (min-width: 768px) {
       width: calc(100% + 200px);
       margin-left: -100px;
+    }
+    &.image-group{
+      width: calc(100% + 230px);
+      margin-left: -115px;
     }
   }
   .img-responsive{

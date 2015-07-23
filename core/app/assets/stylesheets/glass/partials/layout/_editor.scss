@@ -136,21 +136,15 @@
   }
 }
 
-.inline-module {
-  &-fw {
-    width: 100vw;
-    transform: translateX(-50vw);
-    left: 50%;
-    .img-responsive {
-      width: 100%;
-    }
+.image-group{
+  &.inline-module-fw{
+    width: calc(100vw - 15px);
+    margin-left: 0;
   }
-  &-lg {
-    @media (min-width: 768px) {
-      width: calc(100% + 200px);
-      margin-left: -100px;
-    }
-  }
+}
+
+.inline-module-fw{
+  width: calc(100vw - 45px);
 }
 
 .image-group {
