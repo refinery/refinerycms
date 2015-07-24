@@ -3,6 +3,7 @@ require 'spec_helper'
 module Refinery
   describe Resource, :type => :model do
     let(:resource) { FactoryGirl.create(:resource) }
+    let(:titled_resource) { FactoryGirl.create(:resource, resource_title: 'Resource Title')}
 
     context "with valid attributes" do
       it "should create successfully" do
@@ -31,8 +32,15 @@ module Refinery
     end
 
     describe "#title" do
-      it "returns a titleized version of the filename" do
-        expect(resource.title).to eq("Refinery Is Awesome")
+      context 'when a specific title has not been given' do
+        it "returns a titleized version of the filename" do
+          expect(resource.title).to eq("Refinery Is Awesome")
+        end
+      end
+      context 'when a specific title has been given' do
+        it 'returns that title' do
+          expect(titled_resource.title).to eq('Resource Title')
+        end
       end
     end
 

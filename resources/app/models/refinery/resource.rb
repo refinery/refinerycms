@@ -4,6 +4,8 @@ module Refinery
   class Resource < Refinery::Core::BaseModel
     include Resources::Validators
 
+    translates :resource_title
+
     dragonfly_accessor :file, :app => :refinery_resources
 
     validates :file, :presence => true
@@ -25,7 +27,7 @@ module Refinery
     # Returns a titleized version of the filename
     # my_file.pdf returns My File
     def title
-      CGI::unescape(file_name.to_s).gsub(/\.\w+$/, '').titleize
+      resource_title.presence || CGI::unescape(file_name.to_s).gsub(/\.\w+$/, '').titleize
     end
 
     def update_index
