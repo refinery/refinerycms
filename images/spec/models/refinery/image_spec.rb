@@ -100,14 +100,21 @@ module Refinery
       end
 
       context "when Dragonfly.verify_urls is true" do
-        Refinery::Images.dragonfly_verify_urls = true
+        before {
+          allow(Refinery::Images).to receive(:dragonfly_verify_urls).and_return(true)
+          ::Refinery::Images::Dragonfly.configure!
+        }
         it 'has an SHA parameter at the end of the URL' do
           expect(created_image.url).to match(/\?sha=[\da-fA-F]{16}\z/)
         end
       end
 
       context "when Dragonfly.verify_urls is false" do
-        Refinery::Images.dragonfly_verify_urls = false
+        before {
+          allow(Refinery::Images).to receive(:dragonfly_verify_urls).and_return(false)
+          ::Refinery::Images::Dragonfly.configure!
+        }
+
         it "returns a url without an SHA parameter" do
           expect(created_image.url).not_to match(/\?sha=[\da-fA-F]{16}\z/)
         end
