@@ -95,7 +95,13 @@ These application templates are another very easy way to install Refinery, and a
 $ rails new rickrockstar -m http://refinerycms.com/t/2.1.0
 </shell>
 
-TIP. As *Refinery CMS is not compatible with Rails 4* you may also need to specify the Rails version in case you are not using an RVM gemset:
+If you want to use Rails 4.1.x with Refinery now, install using this template:
+
+<shell>
+$ rails new app_name -m http://refinerycms.com/t/edge
+</shell>
+
+TIP. As *Refinery CMS versions prior to 3.0.0 are not compatible with Rails 4* you may also need to specify the Rails version in case you are not using an RVM gemset:
 
 <shell>
 $ rails _3.2.15_ new rickrockstar -m http://refinerycms.com/t/2.1.0
