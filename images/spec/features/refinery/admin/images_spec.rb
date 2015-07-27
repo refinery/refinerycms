@@ -25,6 +25,7 @@ module Refinery
       it_has_behaviour 'deletes an image'
       it_has_behaviour 'edits an image'
       it_has_behaviour 'uploads images'
+      it_has_behaviour 'translates an image'
     end
 
     context 'When there are many images' do

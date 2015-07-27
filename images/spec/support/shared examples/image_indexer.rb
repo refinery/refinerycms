@@ -61,8 +61,8 @@ shared_examples_for 'shows list and grid views' do
       expect(page).to have_selector(index_item_selector <<  listview_title_selector, count: image_count)
     end
 
-    it 'makes the alt attribute of each image available' do
-      expect(page).to have_selector(index_item_selector << listview_alt_selector, count: image_count)
+    it 'makes the filename of each image available' do
+      expect(page).to have_selector(index_item_selector << listview_filename_selector, count: image_count)
     end
 
     it 'has an option to switch to grid view' do
