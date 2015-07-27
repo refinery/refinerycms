@@ -1,5 +1,5 @@
 <%%= render 'refinery/admin/search_header', :url => refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path %>
-<div id="<%= plural_name %>-index" <%%= "class=infinite-scrolling-container data-url=#{refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path(:page => @<%= plural_name %>.next_page)} data-total-pages=#{@<%= plural_name %>.total_pages}" if @<%= plural_name %>.any? %>>
+<div id="<%= plural_name %>-index" <%%= "class=infinite-scroll-container data-url=#{refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path(:page => @<%= plural_name %>.next_page)} data-pages-total=#{@<%= plural_name %>.total_pages}" if @<%= plural_name %>.any? %>>
   <%% if @<%= plural_name %>.any? %>
     <ul id='<%= plural_name %>' class='list-unstyled sortable_list'>
       <%%= render '<%= plural_name %>' %>
@@ -15,8 +15,8 @@
   <%% end %>
 </div>
 
-<div class="row pagination-spinner" style="display:none;">
-  <div class="col-sm-12">
+<div class="row pagination-spinner">
+  <div class="col-sm-12" style="display:none;">
     <div class="load-more">
       <div class="ui active inverted dimmer">
         <div class="ui large loader"></div>
