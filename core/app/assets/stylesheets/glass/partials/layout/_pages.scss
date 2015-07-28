@@ -47,6 +47,9 @@
 
 .admin-index {
   padding-top: 60px;
+  & > .row {
+    min-height: 450px; /* need room for dropdowns */
+  }
   .index-listing {
     margin-bottom: 90px;
     @media (min-width: 768px) {
