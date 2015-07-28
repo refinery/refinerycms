@@ -33,7 +33,10 @@ Refinery::Core::Engine.routes.draw do
         end
 <% end -%>
       end
-<% if include_form? %>
+    end
+
+<% if include_form? -%>
+    namespace :admin, :path => "#{Refinery::Core.backend_route}/<%= namespacing.underscore %>" do
       resources :settings, :only => [:edit, :update] do
         collection do
 <% if include_moderation? -%>
@@ -52,8 +55,8 @@ Refinery::Core::Engine.routes.draw do
         end
 <% end -%>
       end
-<% end %>
     end
+<% end %>
   end
 end
 
