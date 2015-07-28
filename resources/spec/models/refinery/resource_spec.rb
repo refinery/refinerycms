@@ -24,10 +24,10 @@ module Refinery
       end
 
       context "when Dragonfly.verify_urls is true" do
-        before {
+        before do
           allow(Refinery::Resources).to receive(:dragonfly_verify_urls).and_return(true)
           ::Refinery::Resources::Dragonfly.configure!
-        }
+        end
 
         it "returns a url with an SHA parameter" do
           expect(resource.url).to match(/\?sha=[\da-fA-F]{16}\z/)
@@ -35,11 +35,10 @@ module Refinery
       end
 
       context "when Dragonfly.verify_urls is false" do
-        before {
+        before do
           allow(Refinery::Resources).to receive(:dragonfly_verify_urls).and_return(false)
           ::Refinery::Resources::Dragonfly.configure!
-        }
-
+        end
         it "returns a url without an SHA parameter" do
           expect(resource.url).not_to match(/\?sha=[\da-fA-F]{16}\z/)
         end
