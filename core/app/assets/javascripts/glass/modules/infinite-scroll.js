@@ -26,7 +26,7 @@ var GlassInfiniteScroll = (function ($) {
     if (next_page <= total_pages && !fetch_in_progress && spinner_is_almost_on_the_screen) {
       fetch_in_progress = true;
       $spinner.children().show();
-      
+
       var url = buildURL(next_page);
 
       $.get(url, function(data) {
@@ -52,7 +52,7 @@ var GlassInfiniteScroll = (function ($) {
     var $adminSearchInput = $('#search');
     var searchVal = $adminSearchInput.length === 1 ? $adminSearchInput.val().trim() : null;
     // Append search param if there was one.
-    if(searchVal.length > 0 && searchVal !== null){
+    if(searchVal !== null && searchVal.length > 0){
       var paramName = url.indexOf('?') !== -1 ? '&search=' : '?search='
       url += (paramName + searchVal);
       hasGetParam = true;
