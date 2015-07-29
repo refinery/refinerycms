@@ -416,7 +416,7 @@ p::-moz-selection {
 
 
 
-/* -------------------- ELEMENTS -------------------- */
+/* -------------------- COMPONENTS -------------------- */
 
 .section {
   padding-top: $margin;
@@ -951,6 +951,28 @@ p+.inline-module{
   font-size: $font-size-base !important;
 }
 
+[data-note] {
+  position: relative;
+  outline: $red dotted 2px;
+}
+
+[data-note]:hover:after {
+  content: "**Note**\A" attr(data-note);
+  font-size: 18px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  background-color: $grey-2;
+  font-weight: normal;
+  color: black;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: $shadow;
+  width: 300px;
+  display: inline-block;
+  position: absolute;
+  z-index: 90;
+}
+
 
 
 /* -------------------- BROWSER UPDATE -------------------- */
@@ -1037,18 +1059,18 @@ h6 hr {
   color: $grey-8;
   background-color: $grey-8;
 }
+
 hr {
   width: 100%;
-  height: 4px;
-  margin: 30px auto; //margin subject to change
-  border: 0;
-  background-color: $grey-1;
+  margin: 30px auto;
+  border: 2px solid;
+  border-color: inherit;
 }
 
 .article-body hr {
   width: 150px;
   height: 4px;
-  margin: 30px auto; //margin subject to change
+  margin: 30px auto;
   border: 0;
   background-color: $grey-2;
 }
@@ -1296,6 +1318,7 @@ form {
     @include border-radius($radius);
     &:hover {
       @include box-shadow(0px 0px 6px 0px rgba($grey-6,.1));
+      border-color: $grey-3;
     }
   }
   .btn {
@@ -1562,9 +1585,12 @@ body:not(.mozilla) {
   .placeholder-labels {
     .form-control {
       &:focus {
+        padding-top: 20px;
         &::-webkit-input-placeholder {
           top: -20px;
           visibility: visible !important;
+          color: $grey-6;
+          display: block !important;
           font-size: 12px;
           transition: .15s ease-out;
         }
@@ -1578,10 +1604,18 @@ body:not(.mozilla) {
         top: 0;
         transition: 0s ease-out;
       }
+      &:not(textarea) {
+        &:focus {
+          height: 58px;
+        }
+      }
     }
     .input-lg {
       &:focus {
         padding-top: 25px;
+        &::-webkit-input-placeholder {
+          top: -20px;
+        }
       }
       &:not(textarea) {
         &:focus {
@@ -1777,7 +1811,7 @@ button {
 }
 
 .btn-default {
-  color: $grey-5;
+  color: $grey-6;
   border: 1px solid $grey-3;
   background: none;
   &:link,
@@ -1981,45 +2015,47 @@ button {
     height: 22px;
     margin: 0 !important;
     transition: .15s $bezier;
-    &:first-child {
-      opacity: 1;
-    }
-    &:last-child {
+    &:last-of-type {
       margin-left: -22px !important;
       opacity: 0;
     }
-  }
-  &:hover {
-    .icon,
-    .gcicon {
-      transform: rotate(360deg);
-      &:first-child {
-        opacity: 0;
-      }
-      &:last-child {
-        opacity: 1;
-      }
+    &:first-of-type {
+      opacity: 1;
     }
   }
-  &.toggled {
-    .icon,
-    .gcicon {
-      &:first-child {
-        opacity: 0;
-      }
-      &:last-child {
-        opacity: 1;
-      }
-    }
+  &:not(.focused) {
     &:hover {
       .icon,
       .gcicon {
         transform: rotate(360deg);
-        &:first-child {
+        &:first-of-type {
+          opacity: 0;
+        }
+        &:last-of-type {
           opacity: 1;
         }
-        &:last-child {
+      }
+    }
+    &.toggled {
+      .icon,
+      .gcicon {
+        &:first-child {
           opacity: 0;
+        }
+        &:last-child {
+          opacity: 1;
+        }
+      }
+      &:hover {
+        .icon,
+        .gcicon {
+          transform: rotate(360deg);
+          &:first-child {
+            opacity: 1;
+          }
+          &:last-child {
+            opacity: 0;
+          }
         }
       }
     }
