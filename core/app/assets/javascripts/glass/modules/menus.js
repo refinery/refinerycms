@@ -8,26 +8,32 @@ var GlassMenus = (function ($) {
     var $cmsLeftSidebar = $('#sidebar-left').first();
     var $cmsRightSidebar = $('#sidebar-right').first();
     var $toggleCMSMenuButton = $('#toggle-cms-menu');
-
     var $closeBtn = $('.close-cms-menu');
-    $closeBtn.click(function(e){
-      e.preventDefault();
-      $cmsLeftSidebar.removeClass('sidebar-open');
-    });
-
-    $toggleCMSMenuButton.unbind('click').click(function(e){
-      e.preventDefault();
-      $cmsLeftSidebar.toggleClass('sidebar-open');
-    });
-
     var sidebar_settings = {
       onVisible : function() { showSidebar(); },
       onHide    : function() { hideSidebar(); }
     };
 
     // set callback listeners for semantic-ui sidebars that cause the no-scroll class to be toggled.
-    $cmsLeftSidebar.sidebar( 'attach events', '.sidebar-left-opener',  'overlay', 'show').sidebar('setting', sidebar_settings);
-    $cmsRightSidebar.sidebar('attach events', '.sidebar-right-opener', 'overlay', 'show').sidebar('setting', sidebar_settings);
+    //
+    if($cmsLeftSidebar){
+      $closeBtn.click(function(e){
+        e.preventDefault();
+        $cmsLeftSidebar.removeClass('sidebar-open');
+      });
+
+      $toggleCMSMenuButton.unbind('click').click(function(e){
+        e.preventDefault();
+        $cmsLeftSidebar.toggleClass('sidebar-open');
+      });
+
+      $cmsLeftSidebar.sidebar( 'attach events', '.sidebar-left-opener',  'overlay', 'show').sidebar('setting', sidebar_settings);
+    }
+
+    if($cmsRightSidebar){
+      $cmsRightSidebar.sidebar('attach events', '.sidebar-right-opener', 'overlay', 'show').sidebar('setting', sidebar_settings);
+    }
+
   });
 
   function hideSidebar() {
