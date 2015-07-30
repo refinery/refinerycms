@@ -88,6 +88,10 @@ module Refinery
 
       protected
 
+      def redirect_url
+        refinery.admin_users_path
+      end
+
       def create_successful
         @user.plugins = @selected_plugin_names
 
@@ -99,7 +103,7 @@ module Refinery
           @user.add_role :refinery
         end
 
-        redirect_to refinery.admin_users_path,
+        redirect_to redirect_url,
                     :notice => t('created', :what => @user.username, :scope => 'refinery.crudify')
       end
 
@@ -112,7 +116,7 @@ module Refinery
           sign_in @user, :bypass => true
         end
 
-        redirect_to refinery.admin_users_path,
+        redirect_to redirect_url,
                     :notice => t('updated', :what => @user.username, :scope => 'refinery.crudify')
       end
 
