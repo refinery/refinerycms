@@ -23,6 +23,27 @@ module Refinery
       it "should contain its filename at the end" do
         expect(resource.url.split('/').last).to match(/\A#{resource.file_name}/)
       end
+
+      context "when Dragonfly.verify_urls is true" do
+        before do
+          allow(Refinery::Resources).to receive(:dragonfly_verify_urls).and_return(true)
+          ::Refinery::Resources::Dragonfly.configure!
+        end
+
+        it "returns a url with an SHA parameter" do
+          expect(resource.url).to match(/\?sha=[\da-fA-F]{16}\z/)
+        end
+      end
+
+      context "when Dragonfly.verify_urls is false" do
+        before do
+          allow(Refinery::Resources).to receive(:dragonfly_verify_urls).and_return(false)
+          ::Refinery::Resources::Dragonfly.configure!
+        end
+        it "returns a url without an SHA parameter" do
+          expect(resource.url).not_to match(/\?sha=[\da-fA-F]{16}\z/)
+        end
+      end
     end
 
     describe "#type_of_content" do
