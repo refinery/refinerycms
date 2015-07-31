@@ -8,7 +8,8 @@ This guide will show you how to:
 
 endprologue.
 
-WARNING: This method is tested with Refinery CMS v. 2.0.0 only. It should be applicable to later versions, but not earlier versions (1.0.9 or earlier). Always ensure your code is backed up or under version control before making substantial change.
+WARNING: This method is tested with Refinery CMS v. 2.0.0 only. It should be applicable to later versions, but not earlier versions (1.0.9 or earlier). It is known to work with Refinery CMS v. 3.0, but has not been tested extensively.
+Always ensure your code is backed up or under version control before making substantial changes.
 
 h3. Fresh Slugs
 
@@ -18,10 +19,10 @@ To do so, create a new migration file in the +db/migrate+ folder of your extensi
 
 Inside your migration, write something like this:
 <ruby>
-  class AddSlugToStaffMembers < ActiveRecord::Migration
+  class AddSlugToRefineryStaffMembers < ActiveRecord::Migration
     def change
-      add_column :staff_members, :slug, :string
-      add_index :staff_members, :slug
+      add_column :refinery_staff_members, :slug, :string
+      add_index :refinery_staff_members, :slug
     end
   end
 </ruby>
