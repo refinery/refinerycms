@@ -9,7 +9,7 @@ shared_examples 'translates an image' do
       ensure_on(current_path + "?view=list")
     end
 
-    it "can have a second locale added to it", focus: true do
+    it "can have a second locale added to it" do
       expect(page).to have_content("Beach")
       expect(page).to have_selector("a[href='/refinery/images/#{image.id}/edit']")
 

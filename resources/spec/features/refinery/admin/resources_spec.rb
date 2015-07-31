@@ -93,7 +93,7 @@ module Refinery
           expect(Refinery::Resource.count).to eq(1)
         end
 
-        describe "translate", focus: true do
+        describe "translate" do
           before do
             allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :fr])
           end
