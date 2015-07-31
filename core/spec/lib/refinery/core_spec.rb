@@ -88,7 +88,7 @@ describe Refinery do
       it "should raise invalid extension exception" do
         expect {
           subject.send(:validate_extension!, Refinery::InvalidEngine)
-        }.to raise_error
+        }.to raise_error(::Refinery::InvalidEngineError)
       end
     end
   end
