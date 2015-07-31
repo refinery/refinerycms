@@ -13,6 +13,9 @@ gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.0']
 # Add the default visual editor, for now.
 gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6']
 
+# Add the default image handler, for now
+gem 'refinerycms-dragonfly', path: '/Applications/MAMP/www/refinerycms-dragonfly'
+
 # Database Configuration
 unless ENV['TRAVIS']
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.3.0.rc1', platform: :jruby
