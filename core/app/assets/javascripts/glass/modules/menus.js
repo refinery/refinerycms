@@ -5,8 +5,8 @@
 var GlassMenus = (function ($) {
   $(document).on('content-ready', function (e, element) {
 
-    var $cmsLeftSidebar = $('#sidebar-left').first();
-    var $cmsRightSidebar = $('#sidebar-right').first();
+    var $cmsLeftSidebar = $('#sidebar-left');
+    var $cmsRightSidebar = $('#sidebar-right');
     var $toggleCMSMenuButton = $('#toggle-cms-menu');
     var $closeBtn = $('.close-cms-menu');
     var sidebar_settings = {
@@ -16,7 +16,7 @@ var GlassMenus = (function ($) {
 
     // set callback listeners for semantic-ui sidebars that cause the no-scroll class to be toggled.
     //
-    if($cmsLeftSidebar){
+    if($cmsLeftSidebar.length > 0){
       $closeBtn.click(function(e){
         e.preventDefault();
         $cmsLeftSidebar.removeClass('sidebar-open');
@@ -30,7 +30,7 @@ var GlassMenus = (function ($) {
       $cmsLeftSidebar.sidebar( 'attach events', '.sidebar-left-opener',  'overlay', 'show').sidebar('setting', sidebar_settings);
     }
 
-    if($cmsRightSidebar){
+    if($cmsRightSidebar.length > 0){
       $cmsRightSidebar.sidebar('attach events', '.sidebar-right-opener', 'overlay', 'show').sidebar('setting', sidebar_settings);
     }
 
