@@ -11,7 +11,7 @@ body {
   font-family: $primary-font;
 }
 
-#page{
+#page {
   overflow-x: hidden;
 }
 
@@ -534,8 +534,8 @@ p::-moz-selection {
   img {
     opacity: 1;
 
-    @include transition($transition);
     @include transition-fix();
+    @include transition($transition);
   }
   .icon-stack {
     position: absolute;
@@ -633,8 +633,8 @@ p::-moz-selection {
   color: $black;
   border: 1px solid $grey-3;
 
-  @include border-radius(20px);
   @include transition($transition ease-out);
+  @include border-radius(20px);
   .icon,
   .gcicon {
     top: -1px;
@@ -797,13 +797,13 @@ a.pill {
   .image-group-img {
     flex: 1;
     margin-top: 0;
+    margin-right: 15px;
     margin-bottom: 0;
     margin-left: 15px;
-    margin-right: 15px;
-    &.first-child{
+    &.first-child {
       margin-left: 0;
     }
-    &.last-child{
+    &.last-child {
       margin-right: 0;
     }
   }
@@ -817,7 +817,7 @@ a.pill {
     .img-responsive {
       width: 100%;
     }
-    &.image-group{
+    &.image-group {
       width: calc(100vw + 30px);
       margin-left: 0;
     }
@@ -827,12 +827,12 @@ a.pill {
       width: calc(100% + 200px);
       margin-left: -100px;
     }
-    &.image-group{
+    &.image-group {
       width: calc(100% + 230px);
       margin-left: -115px;
     }
   }
-  .img-responsive{
+  .img-responsive {
     width: 100%;
   }
 }
@@ -847,7 +847,7 @@ a.pill {
   margin-bottom: 30px;
 }
 
-p+.inline-module{
+p + .inline-module {
   margin-top: 60px;
 }
 
@@ -903,7 +903,7 @@ p+.inline-module{
   border-radius: $radius;
   background: $white;
 
-  @include box-shadow($shadow);
+  @include box-shadow(0 0 6px 0 rgba(50, 50, 50, .2));
   .datepicker-fields {
     display: flex;
     flex-wrap: nowrap;
@@ -914,6 +914,11 @@ p+.inline-module{
       margin-left: 5px !important;
       .form-control {
         font-size: 14px;
+      }
+    }
+    .bootstrap-datetimepicker-widget {
+      .disabled {
+        color: $grey-4 !important;
       }
     }
   }
@@ -936,7 +941,7 @@ p+.inline-module{
   &.lg {
     width: 320px;
   }
-  &.fluid{
+  &.fluid {
     width: 100%;
   }
   &.active {
@@ -957,20 +962,20 @@ p+.inline-module{
 }
 
 [data-note]:hover:after {
-  content: "**Note**\A" attr(data-note);
-  font-size: 18px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  background-color: $grey-2;
-  font-weight: normal;
-  color: black;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: $shadow;
-  width: 300px;
-  display: inline-block;
   position: absolute;
   z-index: 90;
+  display: inline-block;
+  width: 300px;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.6;
+  content: "**Note**\A" attr(data-note);
+  white-space: pre-wrap;
+  color: black;
+  border-radius: 5px;
+  background-color: $grey-2;
+  box-shadow: $shadow;
 }
 
 
@@ -1293,8 +1298,8 @@ form {
   .required {
     color: $red;
   }
-  &.on-white{
-    .form-control{
+  &.on-white {
+    .form-control {
       border: 1px solid $grey-1;
     }
   }
@@ -1317,8 +1322,9 @@ form {
   textarea {
     @include border-radius($radius);
     &:hover {
-      @include box-shadow(0px 0px 6px 0px rgba($grey-6,.1));
       border-color: $grey-3;
+
+      @include box-shadow(0px 0px 6px 0px rgba($grey-6,.1));
     }
   }
   .btn {
@@ -1397,8 +1403,8 @@ form {
 .form-control {
   font-size: 18px;
 
-  @include transition($transition);
   @include box-shadow(none);
+  @include transition($transition);
 }
 
 ::-webkit-input-placeholder {
@@ -1583,16 +1589,16 @@ input[type="submit"]:focus {
 
 body:not(.mozilla) {
   .placeholder-labels {
-    .form-control {
+    .form-control:not(.no-placeholder) {
       &:focus {
         padding-top: 20px;
         &::-webkit-input-placeholder {
           top: -20px;
-          visibility: visible !important;
-          color: $grey-6;
           display: block !important;
+          visibility: visible !important;
           font-size: 12px;
           transition: .15s ease-out;
+          color: $grey-6;
         }
         &::shadow {
           top: 15px;
@@ -1728,9 +1734,9 @@ button {
   background-image: none;
   text-shadow: 0;
 
-  @include border-radius($radius);
-  @include transition($transition);
   @include box-shadow(none);
+  @include transition($transition);
+  @include border-radius($radius);
   &:active {
     outline: 0 !important;
 
@@ -1816,7 +1822,7 @@ button {
   background: none;
   &:link,
   &:visited {
-    color: $grey-5;
+    color: $grey-6;
   }
   &:hover,
   &:focus,
@@ -1875,6 +1881,7 @@ button {
 .btn-green {
   color: $white;
   background: $green;
+  border: 1px solid $green;
   &:link,
   &:visited {
     color: $white;
@@ -1884,6 +1891,22 @@ button {
   &:active {
     color: $white;
     background: lighten($green, 10);
+    border-color: lighten($green, 10);
+  }
+}
+
+.btn-red {
+  color: $white;
+  background: $red;
+  &:link,
+  &:visited {
+    color: $white;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    background: lighten($red, 10);
   }
 }
 
@@ -1896,6 +1919,10 @@ button {
     text-decoration: none;
     color: $primary-hover;
   }
+}
+
+.btn-link-first {
+  padding-left: 0;
 }
 
 .btn-link-grey {
@@ -1916,9 +1943,11 @@ button {
   &:visited {
     color: $red;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: none;
     color: lighten($red, 15);
+    box-shadow: none;;
   }
 }
 
@@ -2023,10 +2052,9 @@ button {
       opacity: 1;
     }
   }
-  &:not(.focused) {
+  &:not(.delay-toggle) {
     &:hover {
-      .icon,
-      .gcicon {
+      .icon {
         transform: rotate(360deg);
         &:first-of-type {
           opacity: 0;
@@ -2036,19 +2064,9 @@ button {
         }
       }
     }
-    &.toggled {
-      .icon,
-      .gcicon {
-        &:first-child {
-          opacity: 0;
-        }
-        &:last-child {
-          opacity: 1;
-        }
-      }
+    .toggled {
       &:hover {
-        .icon,
-        .gcicon {
+        .icon {
           transform: rotate(360deg);
           &:first-child {
             opacity: 1;
@@ -2057,6 +2075,21 @@ button {
             opacity: 0;
           }
         }
+      }
+    }
+  }
+  &.delay-toggle {
+    &:hover {
+      color: $secondary-hover;
+    }
+  }
+  &.toggled {
+    .icon {
+      &:first-child {
+        opacity: 0;
+      }
+      &:last-child {
+        opacity: 1;
       }
     }
   }

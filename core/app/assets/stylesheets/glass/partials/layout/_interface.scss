@@ -1145,3 +1145,11 @@ body {
     font-size: 16px;
   }
 }
+
+.inline-table {
+  tr {
+    td {
+      padding: 3px 30px 3px 0;
+    }
+  }
+}
