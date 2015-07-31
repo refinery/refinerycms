@@ -2,6 +2,10 @@ var CanvasForms = (function ($) {
 
   setVerify();
 
+  String.prototype.capitalizeFirstLetter = function() {
+      return this.charAt(0).toUpperCase() + this.slice(1);
+  }
+
   $(document).on('content-ready', function (e, element) {
     // initialize verify (form validation library)
 
@@ -246,7 +250,7 @@ var CanvasForms = (function ($) {
           }
 
           if (status !== 'success') {
-            handleUnexpectedError(xhr, selector);
+            handleUnexpectedError(xhr, selector, $submit_btn, $submit_btns);
             return;
           }
           xhr.done(function (data) {
@@ -263,16 +267,24 @@ var CanvasForms = (function ($) {
    * @param xhr
    * @param selector
    */
-  function handleUnexpectedError(xhr, selector){
-    if(xhr.responseJSON && xhr.responseJSON.message !== undefined){
-      $(selector).append(['<div id="errorExplanation" class="errorExplanation text-center">',xhr.responseJSON.message,'</div>'].join(''));
-    }
-    else {
+  function handleUnexpectedError(xhr, selector, $submit_btn, $submit_btns){
+    var jsonResponse = xhr.responseJSON;
+
+    if(jsonResponse){
+       var message = jsonResponse.message === undefined ? 'Unknown Error' : jsonResponse.message;
+       message = jsonResponse.errors === undefined ? message : jsonResponse.errors;
+
+      $(selector).append(['<div id="errorExplanation" class="errorExplanation text-center">',message,'</div>'].join(''));
+    } else {
       $(selector).append(['<div id="errorExplanation" class="errorExplanation text-center">',
         '<p>Uh oh! This never happened while we were testing! ',
         'The developers have been notified and will probably have this fixed in the next 10 seconds. ',
         'Just kidding, it may take until tomorrow morning. Thank you for your patience.</p></div>'].join(''));
     }
+
+    $submit_btn.html($submit_btn.data('orig-btn-txt'));
+    $submit_btns.removeAttr('disabled');
+    return;
   }
 
   /**

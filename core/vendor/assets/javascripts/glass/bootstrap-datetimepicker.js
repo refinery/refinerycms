@@ -1913,12 +1913,12 @@
         disabledDates: false,
         enabledDates: false,
         icons: {
-            time: 'gcicon gcicon-clock',
-            date: 'gcicon gcicon-calendar',
-            up: 'gcicon gcicon-up',
-            down: 'gcicon gcicon-down',
-            previous: 'gcicon gcicon-left',
-            next: 'gcicon gcicon-right',
+            time: 'icon icon-clock',
+            date: 'icon icon-calendar',
+            up: 'icon icon-up',
+            down: 'icon icon-down',
+            previous: 'icon icon-angle-left',
+            next: 'icon icon-angle-right',
             today: 'gcicon gcicon-crosshair',
             clear: 'gcicon gcicon-trash',
             close: 'gcicon gcicon-cancel'
