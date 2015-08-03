@@ -63,11 +63,11 @@ function GlassModule($elem, $editor) {
       if ($link_btn.length == 1) {
         if (this.inaGroup() && $link_btn.hasClass('link')) {
           $link_btn.removeClass('link').addClass('unlink');
-          $link_btn.find('.gcicon').removeClass('gcicon-link').addClass('gcicon-unlink');
+          $link_btn.find('.icon').removeClass('icon-link').addClass('icon-unlink');
         }
         else if (!this.inaGroup() && $link_btn.hasClass('unlink')) {
           $link_btn.removeClass('unlink').addClass('link');
-          $link_btn.find('.gcicon').removeClass('gcicon-unlink').addClass('gcicon-link');
+          $link_btn.find('.icon').removeClass('icon-unlink').addClass('icon-link');
         }
       }
     }

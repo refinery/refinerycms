@@ -9,6 +9,9 @@ body {
 body {
   overflow-x: hidden;
   font-family: $primary-font;
+  font-size: 16px;
+  line-height: 1.6;
+  color: $grey-6;
 }
 
 #page {
@@ -635,8 +638,7 @@ p::-moz-selection {
 
   @include transition($transition ease-out);
   @include border-radius(20px);
-  .icon,
-  .gcicon {
+  .icon {
     top: -1px;
     left: -5px;
     margin: 0 2px 0 0;
@@ -675,8 +677,7 @@ a.pill {
   padding: 0 12px 0 15px;
   font-size: 14px;
   line-height: 26px;
-  .icon,
-  .gcicon {
+  .icon {
     font-size: 12px;
   }
 }
@@ -686,8 +687,7 @@ a.pill {
   padding: 0 8px 0 10px;
   font-size: 12px;
   line-height: 18px;
-  .icon,
-  .gcicon {
+  .icon {
     font-size: 12px;
   }
 }
@@ -1166,7 +1166,7 @@ ul li {
     margin: 0 0 6px 30px; /* Give each list item a left margin to make room for the numbers */
     padding: 4px 8px 4px 15px; /* Add some spacing around the content */
     list-style: none; /* Disable the normal item numbering */
-    .gcicon {
+    .icon {
       /* Position and style the number */
       position: absolute;
       top: 0;
@@ -1199,18 +1199,16 @@ ul li {
   border: 1px solid $black;
 
   @include circle(30px);
-  .icon,
-  .gcicon {
+  .icon {
     margin: 0 !important;
     font-size: 14px;
-    line-height: 30px;
+    line-height: 28px;
   }
   &-sm {
     line-height: 1;
 
     @include circle(20px);
-    .icon,
-    .gcicon {
+    .icon {
       width: 10px;
       height: 10px;
       font-size: 10px;
@@ -1222,8 +1220,7 @@ ul li {
   }
   &-md {
     @include circle(45px);
-    .icon,
-    .gcicon {
+    .icon {
       font-size: 21px;
       line-height: 45px;
     }
@@ -1369,8 +1366,7 @@ form {
 
 .submit,
 .btn {
-  .icon,
-  .gcicon {
+  .icon {
     &:last-child {
       margin-right: 0;
       margin-left: 10px;
@@ -1384,16 +1380,14 @@ form {
 
 .icon-only,
 .icon-left {
-  .icon,
-  .gcicon {
+  .icon {
     margin-right: 0 !important;
     margin-left: 0 !important;
   }
 }
 
 .icon-last {
-  .icon,
-  .gcicon {
+  .icon {
     margin-right: 0 !important;
     margin-left: 10px !important;
   }
@@ -1963,13 +1957,11 @@ button {
 }
 
 .btn-hover-spin {
-  .icon,
-  .gcicon {
+  .icon {
     transition: $transition ease-out;
   }
   &:hover {
-    .icon,
-    .gcicon {
+    .icon {
       transform: rotate(180deg) scale(-1, 1) translate(0, 1px);
     }
   }
@@ -1983,15 +1975,13 @@ button {
 }
 
 .btn-hover-remove {
-  .icon,
-  .gcicon {
+  .icon {
     display: none;
   }
   &:hover {
     color: $white;
     background: $red;
-    .icon,
-    .gcicon {
+    .icon {
       display: none;
     }
     .icon-minus-circle {
@@ -2024,13 +2014,11 @@ button {
 
 .btn-rotate {
   -webkit-transform: translateZ(0);
-  .icon,
-  .gcicon {
+  .icon {
     transition: .15s $bezier;
   }
   &:hover {
-    .icon,
-    .gcicon {
+    .icon {
       transform: rotate(360deg);
     }
   }
@@ -2038,8 +2026,7 @@ button {
 
 .btn-toggle-icons {
   white-space: nowrap;
-  .icon,
-  .gcicon {
+  .icon {
     width: 22px;
     height: 22px;
     margin: 0 !important;

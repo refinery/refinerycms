@@ -84,7 +84,7 @@
         @media (min-width: 768px) {
           &:hover {
             background: $primary-hover;
-            .gcicon {
+            .icon {
               color: $white;
             }
             .actions {
@@ -118,11 +118,11 @@
               }
               &:hover {
                 color: $white;
-                .gcicon {
+                .icon {
                   color: $white;
                 }
               }
-              .gcicon {
+              .icon {
                 color: $primary-color;
               }
             }
@@ -132,7 +132,7 @@
               .circle-icon {
                 width: auto;
                 padding: 0 10px;
-                .gcicon {
+                .icon {
                   font-size: 18px;
                 }
               }
@@ -140,7 +140,7 @@
           }
           &:hover {
             background: $white;
-            .gcicon {
+            .icon {
               color: $primary-color;
             }
             .page-title {
@@ -171,18 +171,18 @@
           margin-right: 10px;
         }
         .child-toggle {
-          .gcicon-folder {
+          .icon-folder {
             display: none;
           }
-          .gcicon-folder-open {
+          .icon-folder-open {
             display: inline-block;
           }
         }
         .child-toggle.collapsed {
-          .gcicon-folder {
+          .icon-folder {
             display: inline-block;
           }
-          .gcicon-folder-open {
+          .icon-folder-open {
             display: none;
           }
         }
@@ -263,7 +263,7 @@
               border-color: $primary-dark;
               background: $primary-dark;
             }
-            .gcicon-cancel {
+            .icon-cancel {
               font-size: 14px;
             }
           }

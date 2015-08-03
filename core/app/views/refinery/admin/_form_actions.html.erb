@@ -48,12 +48,12 @@
 <!--
 <div class="deliver row">
   <div class="pull-left">
-    <a href="" class="circle-icon"><i class="gcicon gcicon-screen bump-down"></i></a>
+    <a href="" class="circle-icon"><i class="icon icon-screen bump-down"></i></a>
   </div>
   <div class="pull-right">
-    <a href="" class="circle-icon save-page"><i class="gcicon gcicon-save"></i></a>
-    <a href="" class="circle-icon fluid-width publish-page"><i class="gcicon gcicon-publish"></i> <span>Publish</span></a>
-    <%= button_tag "<i class='gcicon gcicon-save'></i> <span>#{submit_button_text}</span>".html_safe,
+    <a href="" class="circle-icon save-page"><i class="icon icon-save"></i></a>
+    <a href="" class="circle-icon fluid-width publish-page"><i class="icon icon-publish"></i> <span>Publish</span></a>
+    <%= button_tag "<i class='icon icon-save'></i> <span>#{submit_button_text}</span>".html_safe,
                    :type => :submit,
                    :id => submit_button_id,
                    :name => nil,
@@ -62,12 +62,12 @@
   </div>
 </div>
 
-<a href="" class="delete"><i class="gcicon gcicon-trash"></i> Delete</a>
+<a href="" class="delete"><i class="icon icon-trash"></i> Delete</a>
 -->
 
 <div class='form-actions<%= ' sidebar-section no-border margin-top-sm' if in_sidebar %><%= ' form-actions-dialog' if from_dialog? %>'>
   <div class='<%= in_sidebar ? "sidebar-section-body" : "form-actions-left" %>'>
-    <%= button_tag "#{'<i class="gcicon gcicon-publish"></i>' if in_sidebar} <span>#{submit_button_text}</span>".html_safe,
+    <%= button_tag "#{'<i class="icon icon-publish"></i>' if in_sidebar} <span>#{submit_button_text}</span>".html_safe,
                    :type => :submit,
                    :id => submit_button_id,
                    :name => nil,
@@ -89,7 +89,7 @@
 
 <!--     <%= local_assigns[:after_cancel_button] -%> -->
     <%= local_assigns[:before_delete_button] -%>
-    <%= button_tag("<i class='gcicon gcicon-trash'></i> <span>#{delete_button_text}</span>".html_safe,
+    <%= button_tag("<i class='icon icon-trash'></i> <span>#{delete_button_text}</span>".html_safe,
         :type                => :button,
         :'data-url'          => delete_url,
         :'data-redirect-url' => delete_redirect_url,

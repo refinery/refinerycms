@@ -1,17 +1,17 @@
 module Refinery
   class Plugin
     META = {
-      "refinery_dashboard"    => {position: 0 , icon: 'gcicon gcicon-dashboard'},
-      "refinery_pages"        => {position: 5, icon: 'gcicon gcicon-pages'    },
-      "refinerycms_blog"      => {position: 15, icon: 'gcicon gcicon-feather'  },
-      "refinerycms_inquiries" => {position: 85, icon: 'gcicon gcicon-wrench'    },
-      "refinery_users"        => {position: 90, icon: 'gcicon gcicon-group'    },
-      "refinery_settings"     => {position: 0 , icon: 'gcicon gcicon-wrench'   }, #hide
-      "refinery_images"       => {position: 0 , icon: 'gcicon gcicon-wrench'   }, #hide
-      "refinery_files"        => {position: 0 , icon: 'gcicon gcicon-wrench'   }, #hide
+      "refinery_dashboard"    => {position: 0 , icon: 'icon icon-dashboard'},
+      "refinery_pages"        => {position: 5, icon: 'icon icon-pages'     },
+      "refinerycms_blog"      => {position: 15, icon: 'icon icon-feather'  },
+      "refinerycms_inquiries" => {position: 85, icon: 'icon icon-chat'     },
+      "refinery_users"        => {position: 90, icon: 'icon icon-group'    },
+      "refinery_settings"     => {position: 0 , icon: 'icon icon-wrench'   }, #hide
+      "refinery_images"       => {position: 0 , icon: 'icon icon-wrench'   }, #hide
+      "refinery_files"        => {position: 0 , icon: 'icon icon-wrench'   }, #hide
     }
 
-    META.default     =  {position: 50, icon: 'gcicon gcicon-wrench'}
+    META.default     =  {position: 50, icon: 'icon icon-wrench'}
 
     attr_accessor :name, :class_name, :controller, :directory, :url,
                   :always_allow_access, :menu_match, :hide_from_menu,

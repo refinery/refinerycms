@@ -46,14 +46,14 @@
 
   function attachToolbarTemplate() {
     var div = document.createElement("div"),
-        toolbarTemplate = "<div class='highlight-menu-inner'> \
+        toolbarTemplate = "<div class='highlight-menu-inner glass-ui'> \
           <span class='menu-buttons'> \
-            <button class='bold'><i class='gcicon gcicon-bold'></i></button> \
-            <button class='italic'><i class='gcicon gcicon-italic'></i></button> \
-            <button class='header2'><i class='gcicon gcicon-heading'></i><sub>1</sub></button> \
-            <button class='header3'><i class='gcicon gcicon-heading'></i><sub>2</sub></button> \
-            <button class='quote'><i class='gcicon gcicon-quote'></i></button> \
-            <button class='url'><i class='gcicon gcicon-link'></i></button> \
+            <button class='bold'><i class='icon icon-bold'></i></button> \
+            <button class='italic'><i class='icon icon-italic'></i></button> \
+            <button class='header2'><i class='icon icon-heading'></i><sub>1</sub></button> \
+            <button class='header3'><i class='icon icon-heading'></i><sub>2</sub></button> \
+            <button class='quote'><i class='icon icon-quote'></i></button> \
+            <button class='url'><i class='icon icon-link'></i></button> \
           </span> \
           <input class='url-input' type='text' placeholder='Paste or type a link'/> \
         </div>",

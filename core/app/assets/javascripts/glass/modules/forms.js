@@ -513,7 +513,7 @@ var CanvasForms = (function ($) {
       // Add a semantic modal to the body of the page.
       $('body').append([
         '<div id="delete-confirm-modal" class="ui basic modal">',
-        '<i class="gcicon gcicon-close close"></i>',
+        '<i class="icon icon-close close"></i>',
         '<div class="header">',
         'Confirm Deletion',
         '</div>',

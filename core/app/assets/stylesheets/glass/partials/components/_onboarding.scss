@@ -16,14 +16,14 @@
     }
     &:hover{
       color: $primary-hover;
-      .gcicon{
+      .icon{
         color: $primary-hover;
       }
     }
-    .gcicon{
+    .icon{
       transition: $transition;
     }
-    .gcicon-check{
+    .icon-check{
       display: none;
     }
     .icon{
@@ -33,13 +33,13 @@
     }
     &.completed-step{
       box-shadow: none;
-      .gcicon-check{
+      .icon-check{
         color: $green;
         display: inline;
       }
       &:hover{
         color: $primary-hover;
-        .gcicon{
+        .icon{
           color: $primary-hover;
         }
       }
@@ -48,18 +48,18 @@
       color: $grey-6;
       box-shadow: none;
       font-weight: 600;
-      .gcicon-check{
+      .icon-check{
         display: none;
       }
       &:hover{
         color: $primary-hover;
-        .gcicon{
+        .icon{
           color: $primary-hover;
         }
       }
     }
     &.completed-step.active{
-      .gcicon-check{
+      .icon-check{
         display: inline;
       }
     }
@@ -70,7 +70,7 @@
   h1, h2, h3, h4, h5{
     text-align: center;
   }
-  
+
   p{
     text-align: left;
     font-size: 21px;
@@ -151,12 +151,12 @@
     		}
     	}
   	}
-	}	
+	}
 	.input-lg {
 		font-size: 21px;
 		text-align: left;
 	}
-	
+
   .input-lg::-webkit-input-placeholder {
      font-size: 16px;
      line-height: 1.8 !important;
@@ -191,14 +191,14 @@
 		a:link, a:visited {
 			color: $black;
 		}
-		.gcicon {
+		.icon {
 			margin-right: 5px;
 			color: white;
 			border-radius: 50%;
 			background-color: $grey-3;
 		}
 		&.completed-step {
-			.gcicon {
+			.icon {
 				background-color: limegreen;
 			}
 		}
@@ -278,7 +278,7 @@
   	font-weight: 600;
   	border: 1px solid $grey-2;
   }
-  
+
   #cover-carousel .carousel-inner > .item {
     background: none !important;
     padding-right: 11px;
@@ -291,7 +291,7 @@
   		.thumbnail {
   			margin-bottom: 10px;
   		}
-  
+
   		&:nth-child(even) {
   			padding-right: 10px;
   			.thumbnail {
@@ -309,17 +309,17 @@
   				margin-bottom: 0;
   			}
   		}
-  
+
   	}
   }
-  
+
   .carousel-fade {
   	.carousel-inner {
   		.item {
   			opacity: 0;
   			transition-property: opacity;
   		}
-  
+
   		.active {
   			opacity: 1;
   		}
@@ -332,7 +332,7 @@
   		vertical-align: middle;
   	}
   }
-  
+
   .carousel-control{
     width: 30px;
     background: none !important;
@@ -354,11 +354,11 @@
       }
     }
   }
-  
+
   #cover-carousel .carousel-inner > .item {
   	.thumbnail {
-  		padding: 0; 
-  		padding-top: 66%; 		
+  		padding: 0;
+  		padding-top: 66%;
   		overflow: hidden;
   		cursor: pointer;
   		img {

@@ -1919,9 +1919,9 @@
             down: 'icon icon-down',
             previous: 'icon icon-angle-left',
             next: 'icon icon-angle-right',
-            today: 'gcicon gcicon-crosshair',
-            clear: 'gcicon gcicon-trash',
-            close: 'gcicon gcicon-cancel'
+            today: 'icon icon-crosshair',
+            clear: 'icon icon-trash',
+            close: 'icon icon-cancel'
         },
         useStrict: false,
         sideBySide: false,

@@ -9,7 +9,7 @@
 
     <div class="sidebar-section">
       <div class="sidebar-section-heading">
-        <i class="gcicon gcicon-<%= status_draft ? 'pencil' : 'publish' %>"></i> <span class="flex-1">Status: <strong><%= status_draft ? 'Draft' : 'Published' -%></strong></span>
+        <i class="icon icon-<%= status_draft ? 'pencil' : 'publish' %>"></i> <span class="flex-1">Status: <strong><%= status_draft ? 'Draft' : 'Published' -%></strong></span>
       </div>
     </div>
 
@@ -48,7 +48,7 @@
       <div class="sidebar-section">
         <button type="button" class="collapse-toggle collapsed" data-toggle="collapse" data-target="#template-collapse" aria-expanded="true" aria-controls="demo">
           <div class="sidebar-section-heading">
-            <i class="gcicon gcicon-index"></i> <span class="flex-1">Page Template</span> <i class="gcicon gcicon-down"></i>
+            <i class="icon icon-index"></i> <span class="flex-1">Page Template</span> <i class="icon icon-down"></i>
           </div>
         </button>
         <div id="template-collapse" class="collapse">
@@ -77,7 +77,7 @@
                :delete_title => t('delete', :scope => 'refinery.admin.pages'),
                :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @page.title),
                :delete_redirect_url => refinery.admin_pages_path,
-               :before_delete_button => button_tag("<i class='gcicon gcicon-pencil'></i> <span>#{status_draft ? 'Save as Draft' : 'Unpublish'}</span>".html_safe,
+               :before_delete_button => button_tag("<i class='icon icon-pencil'></i> <span>#{status_draft ? 'Save as Draft' : 'Unpublish'}</span>".html_safe,
                  :type => :submit,
                  :id => 'draft-button',
                  :class => "btn btn-default btn-lg mark-as-draft",

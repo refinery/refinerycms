@@ -41,7 +41,7 @@ html
     <%= render partial: '/glass/stylesheets', locals: {admin: true} %>
   </head>
 
-  <body class="<%= yield :body_class %> <%= action_name %> <%= I18n.locale %> small-sidebar">
+  <body class="<%= yield :body_class %> <%= action_name %> <%= I18n.locale %> small-sidebar cms-interface">
     <%#= render '/glass/alerts_status' %>
     <%= render 'refinery/admin/custom_layout' %>
 
@@ -52,15 +52,15 @@ html
             <% if content_for?(:custom_sidebar_header_link) %>
               <%= yield :custom_sidebar_header_link %>
             <% else %>
-              <i class="gcicon gcicon-glass-canvas hidden"></i> <%= link_to Refinery::Core.site_name, '/' %>
+              <i class="icon icon-glass-canvas hidden"></i> <%= link_to Refinery::Core.site_name, '/', :class => 'ellipsis' %>
             <% end %>
-            <button class="close-cms-menu visible-xs menu-link"><i class="gcicon gcicon-cancel"></i></button>
+            <button class="close-cms-menu visible-xs menu-link"><i class="icon icon-cancel"></i></button>
           </div>
         </div>
         <div id="sidebar-left-inner">
           <%= render 'refinery/admin/menu' %>
         </div>
-        <%= link_to (t('.log_out', site_bar_translate_locale_args) + ' <i class="gcicon gcicon-log-out"></i>').html_safe,
+        <%= link_to (t('.log_out', site_bar_translate_locale_args) + ' <i class="icon icon-log-out"></i>').html_safe,
                     refinery.logout_path, :id => 'logout', :class => 'log-out' %>
       </section>
 
@@ -75,7 +75,7 @@ html
     <% if content_for?(:admin_sidebar) %>
       <section id="sidebar-right" class="ui sidebar overlay right">
         <div class="sidebar-top-nav">
-           <span>Publish / Save</span> <button type="button" class="sidebar-right-opener menu-link menu-link-right"><i class="gcicon gcicon-cancel"></i></button>
+           <span>Publish / Save</span> <button type="button" class="sidebar-right-opener menu-link menu-link-right"><i class="icon icon-cancel"></i></button>
         </div>
         <div id="sidebar-right-inner">
           <%= yield :admin_sidebar %>
@@ -85,9 +85,9 @@ html
 
     <section id="wrapper" class="pusher">
       <% if !defined?(@hide_main_nav) || !@hide_main_nav %>
-        <button type="button" class="sidebar-left-opener menu-link menu-link-left"><i class="gcicon gcicon-bars"></i></button>
+        <button type="button" class="sidebar-left-opener menu-link menu-link-left"><i class="icon icon-bars"></i></button>
         <% if content_for?(:admin_sidebar) %>
-          <button type="button" class="sidebar-right-opener menu-link menu-link-right menu-link-text"><i class="gcicon gcicon-publish"></i> Publish / Save</button>
+          <button type="button" class="sidebar-right-opener menu-link menu-link-right menu-link-text"><i class="icon icon-publish"></i> Publish / Save</button>
         <% end %>
       <% end %>
       <% if !current_refinery_user.has_role?(:superuser) %>

@@ -3,7 +3,7 @@
     <% content_for :stylesheets, stylesheet_link_tag('refinery/site_bar') unless !!local_assigns[:exclude_css] %>
     <%= yield(:stylesheets) unless local_assigns[:head] || local_assigns[:exclude_css] %>
   <% end -%>
-  
+
   <nav class="navbar navbar-default navbar-fixed-top <%= @additional_top_nav_classes if @additional_top_nav_classes %>" id="site-bar" role="navigation">
     <div class="container-fluid">
       <div class="site-link pull-left">
@@ -11,11 +11,11 @@
         <%= link_to Refinery::Core.site_name, '/' %>
       </div>
       <div class="pull-right">
-        <%= link_to (t('.log_out', site_bar_translate_locale_args) + ' <i class="gcicon gcicon-log-out"></i>').html_safe,
+        <%= link_to (t('.log_out', site_bar_translate_locale_args) + ' <i class="icon icon-log-out"></i>').html_safe,
             refinery.logout_path, :id => 'logout' %>
       </div>
 
     </div>
   </nav>
-  
+
 <% end %>

@@ -53,6 +53,9 @@
     position: absolute;
     left: -50px;
     margin-top: -2px;
+    .icon-plus {
+      font-size: 12px;
+    }
   }
   .new-module {
     display: block;
@@ -168,7 +171,7 @@
   height: 20px !important;
   position: absolute;
   z-index: 100;
-  .gcicon {
+  .icon {
     font-size: 10px;
     top: -4px;
   }
@@ -209,7 +212,7 @@
         border-color: $primary-color;
         color: $white;
       }
-      .gcicon {
+      .icon {
         font-size: 17px;
       }
     }

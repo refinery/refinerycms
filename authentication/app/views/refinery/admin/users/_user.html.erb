@@ -7,7 +7,7 @@
 
 <li class='page-listing' id="<%= dom_id(user) -%>">
   <div class="page-row">
-    <i class="gcicon gcicon-user-1"></i>&nbsp;
+    <i class="icon icon-user-1"></i>&nbsp;
 
     <% link_elem = editable ? 'a' : 'div' %>
     <<%= link_elem %> <%= "href=#{refinery.edit_admin_user_path(user)}" if editable %> class="page-title">
@@ -23,7 +23,7 @@
 
     <span class='actions actions-col-2'>
       <span class="edit pull-right">
-        <%= link_to '<i class="gcicon gcicon-edit"></i>'.html_safe, refinery.edit_admin_user_path(user),
+        <%= link_to '<i class="icon icon-edit"></i>'.html_safe, refinery.edit_admin_user_path(user),
                     :class => "circle-icon",
                     :title => t('.edit') if current_refinery_user.can_edit?(user) %>
       </span>
@@ -33,7 +33,7 @@
                    delete_url: refinery.admin_user_path(user),
                    after_delete_url: refinery.admin_users_path,
                    confirm_text: 'Are you sure you want to delete this User?',
-                   delete_btn_text: '<i class="gcicon gcicon-trash"></i>'
+                   delete_btn_text: '<i class="icon icon-trash"></i>'
         -%>
       </span>
     </span>
