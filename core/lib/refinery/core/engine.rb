@@ -103,15 +103,6 @@ module Refinery
         Rails.application.config.assets.precompile += %w(
           refinery/images/*
         )
-
-        # fonts
-        Rails.application.config.assets.precompile += %w(
-          font-awesome/fontawesome-webfont.eot
-          font-awesome/fontawesome-webfont.woff2
-          font-awesome/fontawesome-webfont.woff
-          font-awesome/fontawesome-webfont.ttf
-          font-awesome/fontawesome-webfont.svg
-        )
       end
 
       # active model fields which may contain sensitive data to filter

@@ -916,10 +916,10 @@ p + .inline-module {
         font-size: 14px;
       }
     }
-    .bootstrap-datetimepicker-widget {
-      .disabled {
-        color: $grey-4 !important;
-      }
+  }
+  .bootstrap-datetimepicker-widget {
+    .disabled {
+      color: $grey-4 !important;
     }
   }
   .close {
