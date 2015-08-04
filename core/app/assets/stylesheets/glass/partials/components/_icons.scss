@@ -194,9 +194,7 @@
 }
 
 body {
-  section:not(#page-preview) {
-
-    .icon-trash:before {
+.icon-trash:before {
   content: '\f700';
 }
 
@@ -540,5 +538,5 @@ body {
   content: '\f759';
 }
 
-  }
+
 }
