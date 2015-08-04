@@ -130,7 +130,7 @@ var GlassModals = (function ($) {
           $saveBtn.html(saveBtnHtml);
           $saveBtn.removeAttr('disabled');
           if(successCallback !== undefined){
-            successCallback();
+            successCallback(response);
           }
           if(! $saveBtn.hasClass('positive')){
             $modal.modal('hide');
