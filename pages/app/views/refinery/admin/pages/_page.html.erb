@@ -21,7 +21,7 @@
     <% end %>
 
     <% link_elem = editable ? 'a' : 'div' %>
-    <<%= link_elem %> href="<%= refinery.edit_admin_page_path(page.nested_url, :switch_locale => (page.translations.first.locale unless page.translated_to_default_locale?)) %>" class="page-title">
+    <<%= link_elem %> href="<%= refinery.admin_edit_page_path(page.nested_url, :switch_locale => (page.translations.first.locale unless page.translated_to_default_locale?)) %>" class="page-title">
       <span class='title'>
         <%= page_title_with_translations page %>
         <%= page_meta_information page %>
@@ -33,7 +33,7 @@
         <span class='locales'>
           <% page.translations.sort_by{|t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
             <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
-                        refinery.edit_admin_page_path(page.nested_url, :switch_locale => translation.locale),
+                        refinery.admin_edit_page_path(page.nested_url, :switch_locale => translation.locale),
                         :class => 'locale' if translation.title.present? %>
           <% end %>
         </span>
@@ -74,7 +74,7 @@
         <span class="delete">
           <%= render 'refinery/admin/glass/delete_button',
                      css_class: 'cancel confirm-delete circle-icon',
-                     delete_url: refinery.admin_page_path(page.nested_url),
+                     delete_url: refinery.admin_delete_page_path(page.nested_url),
                      after_delete_url: refinery.admin_pages_path,
                      confirm_text: "Are you sure you want to delete '#{page_title_with_translations(page)}'?",
                      delete_btn_text: '<i class="icon icon-trash"></i>'
