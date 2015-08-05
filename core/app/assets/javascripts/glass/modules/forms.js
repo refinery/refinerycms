@@ -9,7 +9,7 @@ var CanvasForms = (function ($) {
   $(document).on('content-ready', function (e, element) {
     // initialize verify (form validation library)
 
-    initVerify();
+    initVerify(element);
 
     initFormSelectsWithin(element);
     initFormOptionalFieldsWithin(element);
@@ -27,7 +27,7 @@ var CanvasForms = (function ($) {
 
     // Fire an event to allow a user to leave a page if they are on a blocked
     // page when a submit button is pressed
-    $('button[type=submit]').click(function(e){
+    $(element).find('button[type=submit]').click(function(e){
       $(document).trigger('allow-page-unload', {
         src: 'Submit Button',
         selector:'button[type=submit]',
@@ -47,20 +47,22 @@ var CanvasForms = (function ($) {
   var COUNT = 0;
 
   // Set custom validation rules and initialize verify.
-  function initVerify(){
+  function initVerify(element){
+
+    var $element = $(element);
     // Add the disabled attribute to buttons in the form
-    var $formButtons = $('form button');
+    var $formButtons = $element.find('form button');
     $formButtons.attr('disabled', 'disabled');
     // Set data values for evaluating unique fields
     var url;
 
-    $('[data-unique-collection-url]').each(function(){
-      var $element = $(this);
-      url = $element.data('unique-collection-url');
+    $element.find('[data-unique-collection-url]').each(function(){
+      var $field = $(this);
+      url = $field.data('unique-collection-url');
       $.get(url, function(response) {
         var collection = response.collection;
         if(collection !== undefined){
-          $element.data('unique-collection', collection);
+          $field.data('unique-collection', collection);
         }
       });
     });
@@ -69,7 +71,7 @@ var CanvasForms = (function ($) {
     if($.verify._hidden.ruleManager.getRawRule('required_w_name') === undefined){
       $.verify.addRules(customValidationRules());
     }
-    initVerifyForm();
+    initVerifyForm($element);
     // remove the disabled attribute from all buttons within
     // forms once the js has loaded.
     $formButtons.removeAttr('disabled');
@@ -121,8 +123,9 @@ var CanvasForms = (function ($) {
     };
   };
 
-  function initVerifyForm(){
-    $("form").filter(function() {
+  function initVerifyForm($element){
+
+    $element.find('form').filter(function() {
       return $(this).find("[" + $.verify.globals.validateAttribute + "]").length > 0;
     }).verify();
   }
