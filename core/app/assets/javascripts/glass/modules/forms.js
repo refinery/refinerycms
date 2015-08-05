@@ -377,6 +377,8 @@ var CanvasForms = (function ($) {
           $modal.modal('hide');
         }
         return;
+      } else {
+        replaceContent($(selector), $replacement);
       }
     }
 
@@ -433,6 +435,7 @@ var CanvasForms = (function ($) {
   }
 
   function replaceContent($orig, $replacement) {
+
     $(document).trigger('content-ready', $replacement.parent()[0]);
     $orig.fadeOut(function () {
       $(this).replaceWith($replacement);
