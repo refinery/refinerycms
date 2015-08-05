@@ -396,8 +396,8 @@ var CanvasForms = (function ($) {
       if ($elem.length > 0) {
         ajaxUpdateContent($elem.data('selector'));
         // Clear input values from the form (except for hidden values)
-        $resetForm.trigger("reset");
       }
+      $resetForm.trigger("reset");
     }
   }
 
@@ -561,6 +561,7 @@ var CanvasForms = (function ($) {
     insertStripeErrors: insertStripeErrors,
     insertErrors: insertErrors,
     resetState: resetState,
+    resetForm: resetForm,
     showAndGoToErrors: showAndGoToErrors,
     liveValidateRequiredFields: liveValidateRequiredFields,
     initFormSubmitWithin: initFormSubmitWithin,
