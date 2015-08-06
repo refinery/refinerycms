@@ -8,6 +8,10 @@ endprologue.
 
 One of Refinery's key principles is "Encourage and Help Others" so if you have any problems just let us know and we'll do our best to help you. And one day you might help someone else out too!
 
+h3. Gitter
+
+You can chat with us in our "Gitter room":https://gitter.im/refinery/refinerycms which is, currently, the most active place.
+
 h3. IRC Channel
 
 Use your favourite IRC client to connect to #refinerycms on freenode.net, or use this "Online IRC Client":http://webchat.freenode.net/?randomnick=1&amp;channels=refinerycms&amp;prompt=1&amp;uio=d4.
