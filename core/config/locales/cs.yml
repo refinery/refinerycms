@@ -41,6 +41,8 @@ cs:
         remove_current: Smazat vybraný obrázek
         change: Klikněte zde pro vybrání obrázku
         show: Zobrazit
+      locale_picker:
+        language: Jazyk
       resource_picker:
         download_current: Stáhnout vybraný soubor
         opens_in_new_window: Otevřít v novém okně
