@@ -1,0 +1,80 @@
+<%#
+  The dp (datetimepicker) module takes many locale options. They are as follow:
+
+  f:                            The form the this datepicker is part of.
+  record:                       The ActiveRecord that the datepicker is being used to set the datetime for.
+
+  date_field_name:              A string specifying the record's attribute name for the datetime or date
+  time_field_name:              A string specifying the record's attribute name for the datetime or time
+
+  show_date         (optional): Set to false if the date portion of the dp should not be shown.
+                                default: true
+  show_time         (optional): Set to false if the time portion of the dp should not be shown.
+                                default: true
+  has_instructions  (optional): If you would like to display a message at the top of the date picker, set this to true.
+                                default: false
+  instructions_msg  (optional): The message that should be displayed at the top of the dp if has_instructions is true.
+                                default: 'Choose a prefered time and we will call you as close to that time as possible.'
+  button_text       (optional): Text that should show in the button that opens the datepicker
+                                default: ' Choose a time'
+  anytime           (optional): If set to true, there will be a button that clears and closes the dp if the datetime
+                                is optional.
+                                default: undefined
+  disabled_weekdays (optional): If some weekdays that shouldn't be selectable from the datepicker pass them here as an array ex. [1] or [1,2]
+                                default: undefined
+  toggled           (optional): If the checkbox for the dp button should be checked by default or not.
+  default_datetime  (optional): A default datetime string to set the dp to.
+%>
+
+<%
+  # Set variables used in the rendering of the datetimepicker
+  #
+  has_instructions = defined?(has_instructions) && has_instructions
+  if has_instructions
+    instructions_msg = defined?(instructions_msg) ? instructions_msg : 'Choose a prefered time and we will call you as close to that time as possible.'
+  end
+  anytime = defined?(anytime) && anytime
+%>
+
+<div class="form-group">
+  <div class="<%= 'flex' if anytime %> datepicker-buttons">
+    <% if anytime %>
+      <button type="button" class="btn btn-white flex-1 btn-toggle-icons delay-toggle <%= 'toggled' if !(defined?(toggled) && toggled) %> clear-dp"><i class="icon icon-unchecked"></i><i class="icon icon-checked"></i> Anytime</button>
+    <% end %>
+    <button type="button" class="btn btn-white <%= 'flex-1' if anytime %> btn-toggle-icons delay-toggle datepicker-opener <%= 'toggled' if (defined?(toggled) && toggled) %>" <%= defined?(disabled_weekdays) ? "data-disabled-weekdays=#{disabled_weekdays}" : nil %> data-container-selector="#<%= class_container_selector %>"
+    <% if defined?(btn_date_format) %>data-date-format='<%= btn_date_format %>'  <% end %>
+    <% if defined?(default_datetime) && default_datetime.present? %>data-default-datetime='<%= default_datetime %>'<% end %>>
+      <i class="icon icon-unchecked"></i><i class="icon icon-checked"></i>  <%= defined?(button_text) ? button_text : ' Choose a time' %>
+    </button>
+  </div>
+  <div id="<%= class_container_selector %>" class="datepicker-container has-time-field">
+    <div class="datepicker-wrapper <%= anytime ? 'fluid' : 'lg' %> left">
+      <button class="close close-dp"><i class="icon icon-cancel"></i></button>
+      <% if has_instructions %>
+        <p><%= instructions_msg %></p>
+      <% end %>
+      <div class="datepicker-fields">
+        <% if (defined?(show_date) ? show_date : true) %>
+        <div class='form-group available_date_field date_field'>
+          <label for="<%= "#{(record.class.name.demodulize).underscore}_#{date_field_name}" %>">Date</label>
+          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{date_field_name.to_sym}][date]" %>" class="form-control date-only inline" value="<%= record[time_field_name.to_sym].present? ? record[date_field_name.to_sym].strftime('%m/%d/%Y') : '' %>" placeholder="MM/DD/YYYY"/>
+        </div>
+        <% end %>
+        <% if (defined?(show_time) ? show_time : true) %>
+        <div class='form-group available_time_field time_field'>
+          <label for="<%= "#{(record.class.name.demodulize).underscore}_#{time_field_name}" %>">Time</label>
+          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{date_field_name.to_sym}][time]" %>" class="form-control time-only inline" value="<%= record[time_field_name.to_sym].present? ? record[time_field_name.to_sym].strftime('%I:%M %p') : '' %>" placeholder="HH:MM PM"/>
+        </div>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inline-dp-root"></div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary pull-right close-dp save-dp">Save</button>
+    </div>
+  </div>
+</div>
