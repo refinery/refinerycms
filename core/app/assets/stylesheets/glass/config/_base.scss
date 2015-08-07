@@ -915,6 +915,10 @@ p + .inline-module {
       flex: 1;
       .form-control {
         font-size: 14px;
+        height: 42px !important;
+        &:placeholder {
+          font-size: 14px;
+        }
       }
     }
   }
@@ -1058,7 +1062,7 @@ h1 {
 h1 hr {
   width: 160px;
   margin: 30px auto 30px;
-  color: $grey-3;
+  border-color: inherit;
 }
 
 h2 hr,
@@ -1076,8 +1080,11 @@ h6 hr {
 hr {
   width: 100%;
   margin: 30px auto;
-  border: 2px solid;
-  border-color: inherit;
+  border: 1px solid;
+  border-color: $grey-1;
+  &.lg{
+    border-width: 2px;
+  }
 }
 
 .article-body hr {
@@ -2071,11 +2078,6 @@ button {
           }
         }
       }
-    }
-  }
-  &.delay-toggle {
-    &:hover {
-      color: $secondary-hover;
     }
   }
   &.toggled {

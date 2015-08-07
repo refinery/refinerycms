@@ -2,9 +2,7 @@
 
 [contenteditable=true]:empty,
 [contenteditable=true] .empty {
-  /* NOTE: this 'display: block;' allows the user to click on an empty spot, but often throws the page alignment off... */
-  /* NOTE: ... I'm open to suggestions! [SS] */
-  display: block;
+  display: inline-block;
   &:before {
     content: attr(glass-placeholder);
     display: block; /* For Firefox */
