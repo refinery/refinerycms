@@ -912,10 +912,14 @@ p + .inline-module {
     .form-group {
       margin-right: 5px !important;
       margin-left: 5px !important;
+      flex: 1;
       .form-control {
         font-size: 14px;
       }
     }
+  }
+  .form-group {
+    margin-bottom: 15px !important;
   }
   .bootstrap-datetimepicker-widget {
     .disabled {
@@ -937,6 +941,10 @@ p + .inline-module {
   }
   &.right {
     right: 0;
+  }
+  &.center {
+    left: 50%;
+    transform:translateX(-50%);
   }
   &.lg {
     width: 320px;
