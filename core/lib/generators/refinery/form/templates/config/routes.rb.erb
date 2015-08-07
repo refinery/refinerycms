@@ -1,7 +1,8 @@
 Refinery::Core::Engine.routes.draw do
   # Frontend routes
   namespace :<%= namespacing.underscore %> do
-    resources :<%= plural_name %><%= ", :path => ''" if namespacing.underscore == plural_name %>, :only => [:new, :create] do
+
+    resources :<%= plural_name %><%= ", :path => ''" if namespacing.underscore == plural_name %>, :only => [:index, :new, :create] do
       collection do
         get :thank_you
       end
@@ -10,16 +11,19 @@ Refinery::Core::Engine.routes.draw do
 
   # Admin routes
   namespace :<%= namespacing.underscore %>, :path => '' do
-    namespace :admin, :path => "#{Refinery::Core.backend_route}/<%= namespacing.underscore %>" do
-      resources :<%= plural_name %>, :path => '' <% if @includes_spam %> do
+    namespace :admin, :path => "#{Refinery::Core.backend_route}" do
+      resources :<%= plural_name %> do <% if include_spam? %>
         collection do
           get :spam
         end
         member do
           get :toggle_spam
-        end
-      end<% end %>
-      resources :settings, :only => [:edit, :update]
+        end <% end %>
+  end
+
+      scope :path => '<%= plural_name %>' do
+        resources :settings, :only => [:edit, :update]
+      end
     end
   end
 end

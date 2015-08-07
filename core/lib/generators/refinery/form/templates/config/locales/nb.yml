@@ -13,17 +13,11 @@ nb:
       admin:
         <%= plural_name %>:
           <%= singular_name %>:
-            move_<%= singular_name %>_to_closed: Flytt denne forespørselen til lukket
-            move_<%= singular_name %>_to_open: Flytt denne forespørselen til åpen
             read_<%= singular_name %>: Les forespørselen
-            remove_<%= singular_name %>: "Er du sikker på at du ønsker å slette denne forespørselen fra '%{name}'?"
-            title: <%= plural_name.titleize %>
+            delete_<%= singular_name %>: "Er du sikker på at du ønsker å slette denne forespørselen fra '%{name}'?"
             said: sa
             mark_as_spam: Merk som søppel
             mark_as_ham: Flytt til innboksen
-          toggle_status:
-            closed: "Forespørselen '%{<%= singular_name %>}' er lukket"
-            reopened: "Forespørselen '%{<%= singular_name %>}' er gjenåpnet"
           submenu:
             update_notified: Oppdater hvem som blir informert
             edit_confirmation_email: Rediger bekreftelses e-posten

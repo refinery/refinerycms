@@ -10,8 +10,8 @@ lv:
           privacy_policy: Mēs cienam Jūsu privātumu
       admin:
         <%= plural_name %>:
-          delete: Dzēst šo pieprasījumu
           <%= singular_name %>:
+            delete_<%= singular_name %>: Dzēst šo pieprasījumu
             read_<%= singular_name %>: Lasīt pieprasījumu
             said: sacīja
             mark_as_spam: Atzīmēt kā spamu

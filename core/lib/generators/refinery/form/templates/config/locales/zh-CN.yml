@@ -11,8 +11,8 @@ zh-CN:
           privacy_policy: 我们重视您的隐私
       admin:
         <%= plural_name %>:
-          delete: 永久删除 <%= singular_name.humanize.downcase %>
           <%= singular_name %>:
+            delete_<%= singular_name %>: 永久删除 <%= singular_name.humanize.downcase %>
             read_<%= singular_name %>: 阅读这个 <%= singular_name.humanize.downcase %>
             said: 说
             mark_as_spam: 标记为垃圾邮件
