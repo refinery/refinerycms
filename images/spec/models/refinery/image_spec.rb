@@ -101,27 +101,6 @@ module Refinery
         expect(created_image.thumbnail(:geometry => '200x200', :strip => true).url.blank?).to eq(false)
       end
 
-      context "when Dragonfly.verify_urls is true" do
-        before do
-          allow(Refinery::Images).to receive(:dragonfly_verify_urls).and_return(true)
-          ::Refinery::Images::Dragonfly.configure!
-        end
-
-        it 'has an SHA parameter at the end of the URL' do
-          expect(image_with_sha.url).to match(/\?sha=[\da-fA-F]{16}\z/)
-        end
-      end
-
-      context "when Dragonfly.verify_urls is false" do
-        before do
-          allow(Refinery::Images).to receive(:dragonfly_verify_urls).and_return(false)
-          ::Refinery::Images::Dragonfly.configure!
-        end
-        it "returns a url without an SHA parameter" do
-          expect(image_without_sha.url).not_to match(/\?sha=[\da-fA-F]{16}\z/)
-        end
-      end
-
     end
 
     describe "#title" do
