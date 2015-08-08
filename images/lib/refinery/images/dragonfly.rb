@@ -18,10 +18,9 @@ module Refinery
             }
             url_format Refinery::Images.dragonfly_url_format
             url_host Refinery::Images.dragonfly_url_host
+            verify_urls Refinery::Images.dragonfly_verify_urls
             if Refinery::Images.dragonfly_verify_urls
               secret Refinery::Images.dragonfly_secret
-            else
-              verify_urls Refinery::Images.dragonfly_verify_urls
             end
             dragonfly_url nil
             processor :strip do |content|
