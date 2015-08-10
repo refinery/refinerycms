@@ -50,8 +50,8 @@ module Refinery
               visit refinery.admin_resources_path
               click_link "Upload new file"
 
-              within('#maximum_file_size') do
-                expect(page).to have_content "1.2 KB"
+              within('#file') do
+                expect(page).to have_selector("a[tooltip='The maximum file size is 1.2 KB.']")
               end
             end
           end
@@ -65,8 +65,8 @@ module Refinery
               visit refinery.admin_resources_path
 
               click_link "Tilføj en ny fil"
-              within "#maximum_file_size" do
-                expect(page).to have_content "1,2 KB"
+              within "#file" do
+                expect(page).to have_selector("a[tooltip='Filen må maksimalt fylde 1,2 KB.']")
               end
             end
           end
@@ -83,7 +83,7 @@ module Refinery
 
           click_link "Edit this file"
 
-          expect(page).to have_content("Download current file or replace it with this one...")
+          expect(page).to have_content("Refinery Is Awesome or replace it with this one...")
           expect(page).to have_selector("a[href*='/refinery/resources']")
 
           attach_file "resource_file", Refinery.roots('refinery/resources').join("spec/fixtures/refinery_is_awesome2.txt")

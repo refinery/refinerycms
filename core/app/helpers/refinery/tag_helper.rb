@@ -28,6 +28,7 @@ module Refinery
 
       options[:title] = title
       options[:class].presence ? options[:class] << " #{action}_icon " : options[:class] = "#{action}_icon"
+      options[:class] << ' icon_label' if label
 
       case action
       when :preview
@@ -37,6 +38,7 @@ module Refinery
       when :reorder_done
         options[:class] << ' hidden'
       end
+
       link_to(label && title || '', url, options)
     end
 
