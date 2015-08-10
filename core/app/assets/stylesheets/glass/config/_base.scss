@@ -532,7 +532,10 @@ p::-moz-selection {
   background: $white;
   &:hover {
     .icon-stack {
-      @include scale($scale);
+      transform: scale(1.1);
+    }
+    .icon {
+      transform: scale(1.1);
     }
     img {
       opacity: .8;
@@ -540,19 +543,20 @@ p::-moz-selection {
   }
   img {
     opacity: 1;
+    transition: .2s $bezier;
 
     @include transition-fix();
-    @include transition($transition);
   }
-  .icon-stack {
+  .icon-stack, .icon {
     position: absolute;
     z-index: 10;
     top: 50%;
     left: 50%;
     margin-top: -21px;
     margin-left: -21px;
+    color: $white;
 
-    @include transition($transition);
+    transition: .2s $bezier;
     .icon-circle-thin {
       font-size: 50px;
       color: $white;
@@ -560,6 +564,9 @@ p::-moz-selection {
     .icon-play {
       top: 4px;
       left: 2px;
+    }
+    .icon-play-circle {
+      font-size: 42px;
     }
   }
 }
