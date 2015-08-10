@@ -419,7 +419,20 @@ var CanvasForms = (function ($) {
           selector: '.confirm-model-delete',
           value: false
         });
-        window.location.href = $confirmBtn.attr('data-redirect-url');
+        
+        console.log($confirmBtn.attr('data-no-redirect'));
+        if($confirmBtn.attr('data-no-redirect')){
+          var containerSelector = $confirmBtn.attr('data-container-selector');
+
+          if(containerSelector){
+            var $containerElement =  $($confirmBtn.attr('data-container-selector'));
+            $containerElement.fadeOut(300, function(){
+              $(this).remove();
+            });
+          }
+        } else {
+          window.location.href = $confirmBtn.attr('data-redirect-url');
+        }
       });
     });
   }
@@ -534,7 +547,9 @@ var CanvasForms = (function ($) {
         'Cancel',
         '</div>',
         '<div class="ui green basic inverted button confirm-modal-delete" data-url="',
-        $btn.attr('data-url'),'" data-redirect-url="',$btn.attr('data-redirect-url'),'">',
+        $btn.attr('data-url'),'" data-redirect-url="',$btn.attr('data-redirect-url'),
+        '" data-no-redirect="',$btn.attr('data-no-redirect'),
+        '" data-container-selector="',$btn.attr('data-container-selector'),'">',
         'Delete',
         '</div></div></div></div>'].join(""));
     }
