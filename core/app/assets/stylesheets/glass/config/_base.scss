@@ -365,6 +365,10 @@ p::-moz-selection {
   margin-left: $margin * 4;
 }
 
+.padded {
+  padding: 30px;
+}
+
 .flip-wrapper {
   &:hover {
     .flip-front {
