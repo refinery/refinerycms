@@ -101,7 +101,7 @@ TIP. As *the latest stable version of Refinery CMS is not compatible with Rails 
 $ rails _3.2.15_ new rickrockstar -m http://refinerycms.com/t/2.1.0
 </shell>
 
-TIP. If you want to create a Rails 4 application with refinerycms, you'll have to use the edge version. This works with Rails 4.1.10, 4.2.0 and 4.2.1:
+TIP. If you want to create a Rails 4 application with refinerycms, you'll have to use the edge version. This works with Rails 4.2.3:
 
 <shell>
 $ rails new rickrockstar -m http://refinerycms.com/t/edge
