@@ -1,6 +1,6 @@
 # Refinery CMS
 
-__An open source content management system for Rails 4.1+__
+__An open source content management system for Rails 4.2+__
 
 More information at [http://refinerycms.com](http://refinerycms.com)
 
@@ -28,7 +28,7 @@ If you're new to Refinery, start with this guide:
 
 * __[Getting Started](http://refinerycms.com/guides/getting-started)__
 
-If you want to use Rails 4.1.x with Refinery now, install using this template:
+If you want to use Rails 4.2.x with Refinery now, install using this template:
 
     rails new app_name -m http://refinerycms.com/t/edge
 
@@ -45,7 +45,7 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 * Sticks to __"the Rails way"__ as much as possible; we don't force you to learn new templating languages.
 * Uses [jQuery](http://jquery.com/) for fast and concise Javascript.
 
-![Refinery Pages UI](http://refinerycms.com/system/images/0000/0576/dashboard.png)
+### Demo
 
 Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refinery).
 
