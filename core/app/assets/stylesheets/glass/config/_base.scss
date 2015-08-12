@@ -1427,48 +1427,19 @@ form {
   @include transition($transition);
 }
 
-::-webkit-input-placeholder {
-  font-size: 16px;
-  line-height: 1.6;
+
+.form-control {
+  ::placeholder {
+    font-size: 16px;
+    line-height: 1.6;
+  }
 }
 
-:-moz-placeholder {
-  /* Firefox 18- */
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-::-moz-placeholder {
-  /* Firefox 19+ */
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-:-ms-input-placeholder {
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.input-lg::-webkit-input-placeholder {
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.input-lg:-moz-placeholder {
-  /* Firefox 18- */
-  font-size: 16px;
-  line-height: 1.8;
-}
-
-.input-lg::-moz-placeholder {
-  /* Firefox 19+ */
-  font-size: 16px;
-  line-height: 1.8;
-}
-
-.input-lg:-ms-input-placeholder {
-  font-size: 16px;
-  line-height: 1.6;
+.input-lg {
+  &::placeholder {
+    font-size: 16px;
+    line-height: 1.8;
+  }
 }
 
 input:not([type="checkbox"]):focus,
