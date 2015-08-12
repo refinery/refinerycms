@@ -941,7 +941,7 @@ p + .inline-module {
       color: $grey-4 !important;
     }
   }
-  .close {
+  .close-btn, .close {
     position: absolute;
     z-index: 100;
     top: 10px;
