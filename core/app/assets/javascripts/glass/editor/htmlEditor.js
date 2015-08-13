@@ -121,16 +121,22 @@ function GlassHtmlEditor($elem) {
 
     // Ensure no contenteditable or style overrides get out to front of site
     this.h.elem.find('[contenteditable=true]').removeAttr('contenteditable');
-    this.h.elem.find().removeAttr('style');
+    this.h.elem.find(':not(.glass-no-edit *)').removeAttr('style');
 
-    // Sometimes <br>'s or <div>'s or <span>'s get in somehow.  Remove them cleanly
-    this.h.elem.find('div').not('.glass-no-edit').children().unwrap();
+    // Unwrap <div>'s that accidentally get nested or pasted
+    this.h.elem.find('div').each(function () {
+      if (!$(this).hasClass('glass-no-edit') && $(this).parents('.glass-no-edit').length == 0) {
+        $(this).children().unwrap();
+      }
+    });
+
+    // Ensure all highest level elements are within our set,  make them into <p>'s if not
     this.h.elem.children(':not(p, ul, ol, h1, h2, h3, h4, h5, h6, blockquote, .glass-no-edit)').each(function () {
       $('<p></p>').html($(this).html()).insertAfter($(this));
       $(this).remove();
     });
 
-    // Sometimes text goes directly in the div.  Wrap it in a <p>. (nodeType 3 is text)
+    // Same thing with text nodes, make them into <p>'s (nodeType 3 is text)
     this.h.elem.contents().filter(function() { return (this.nodeType === 3 && /\S/.test(this.textContent)); }).wrap("<p></p>");
 
     // Get rid of unwanted tags that may have been pasted in
