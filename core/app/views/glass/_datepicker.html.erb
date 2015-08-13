@@ -59,7 +59,7 @@
         <% if show_date %>
         <div class='form-group available_date_field date_field'>
           <label for="<%= "#{(record.class.name.demodulize).underscore}_#{date_field_name}" %>">Date</label>
-          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{date_field_name.to_sym}][date]" %>" class="form-control date-only inline" value="<%= record[time_field_name.to_sym].present? ? record[date_field_name.to_sym].strftime('%m/%d/%Y') : '' %>" placeholder="MM/DD/YYYY"/>
+          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{date_field_name.to_sym}][date]" %>" class="form-control date-only inline" value="<%= record[date_field_name.to_sym].present? ? record[date_field_name.to_sym].strftime('%m/%d/%Y') : '' %>" placeholder="MM/DD/YYYY"/>
         </div>
         <% end %>
         <% if  show_time %>
