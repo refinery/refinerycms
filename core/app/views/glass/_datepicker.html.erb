@@ -34,6 +34,8 @@
     instructions_msg = defined?(instructions_msg) ? instructions_msg : 'Choose a prefered time and we will call you as close to that time as possible.'
   end
   anytime = defined?(anytime) && anytime
+  show_time = (defined?(show_time) ? show_time : true)
+  show_date = (defined?(show_date) ? show_date : true)
 %>
 
 <div class="form-group">
@@ -47,20 +49,20 @@
       <i class="icon icon-unchecked"></i><i class="icon icon-checked"></i>  <%= defined?(button_text) ? button_text : ' Choose a time' %>
     </button>
   </div>
-  <div id="<%= class_container_selector %>" class="datepicker-container has-time-field">
+  <div id="<%= class_container_selector %>" class="datepicker-container has-time-field<%= show_time && !(show_date) ? ' time-only' : '' %>">
     <div class="datepicker-wrapper <%= anytime ? 'fluid' : 'lg' %> left">
       <button class="close-btn close-dp"><i class="icon icon-cancel"></i></button>
       <% if has_instructions %>
         <p><%= instructions_msg %></p>
       <% end %>
       <div class="datepicker-fields">
-        <% if (defined?(show_date) ? show_date : true) %>
+        <% if show_date %>
         <div class='form-group available_date_field date_field'>
           <label for="<%= "#{(record.class.name.demodulize).underscore}_#{date_field_name}" %>">Date</label>
           <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{date_field_name.to_sym}][date]" %>" class="form-control date-only inline" value="<%= record[time_field_name.to_sym].present? ? record[date_field_name.to_sym].strftime('%m/%d/%Y') : '' %>" placeholder="MM/DD/YYYY"/>
         </div>
         <% end %>
-        <% if (defined?(show_time) ? show_time : true) %>
+        <% if  show_time %>
         <div class='form-group available_time_field time_field'>
           <label for="<%= "#{(record.class.name.demodulize).underscore}_#{time_field_name}" %>">Time</label>
           <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{time_field_name.to_sym}][time]" %>" class="form-control time-only inline" value="<%= record[time_field_name.to_sym].present? ? record[time_field_name.to_sym].strftime('%I:%M %p') : '' %>" placeholder="HH:MM PM"/>
