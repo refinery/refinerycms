@@ -29,26 +29,27 @@
   # Set variables used in the rendering of the datetimepicker
   #
   has_instructions = defined?(has_instructions) && has_instructions
+  has_datetime = defined?(datetime) && datetime.present?
+
   if has_instructions
     instructions_msg = defined?(instructions_msg) ? instructions_msg : 'Choose a prefered time and we will call you as close to that time as possible.'
   end
   anytime = defined?(anytime) && anytime
   show_time_field = (defined?(show_time) ? show_time : true)
   show_date_field = (defined?(show_date) ? show_date : true)
-  dt_object= DateTime.parse(datetime.to_s).utc if datetime.present?
-  toggled = datetime.present?
+  dt_object= DateTime.parse(datetime.to_s).utc if has_datetime
 %>
 
 <div class="form-group">
   <div class="<%= 'flex' if anytime %> datepicker-buttons">
     <% if anytime %>
-      <button type="button" class="btn btn-white flex-1 btn-toggle-icons delay-toggle <%= 'toggled' unless toggled %> clear-dp"><i class="icon icon-unchecked"></i><i class="icon icon-checked"></i> Anytime</button>
+      <button type="button" class="btn btn-white flex-1 btn-toggle-icons delay-toggle <%= 'toggled' unless has_datetime %> clear-dp"><i class="icon icon-unchecked"></i><i class="icon icon-checked"></i> Anytime</button>
     <% end %>
-    <button type="button" class="btn btn-white <%= 'flex-1' if anytime %> btn-toggle-icons delay-toggle datepicker-opener <%= 'toggled' if (toggled) %>" <%= defined?(disabled_weekdays) ? "data-disabled-weekdays=#{disabled_weekdays}" : nil %> data-container-selector="#<%= class_container_selector %>"
+    <button type="button" class="btn btn-white <%= 'flex-1' if anytime %> btn-toggle-icons delay-toggle datepicker-opener <%= 'toggled' if has_datetime %>" <%= defined?(disabled_weekdays) ? "data-disabled-weekdays=#{disabled_weekdays}" : nil %> data-container-selector="#<%= class_container_selector %>"
     <% if defined?(btn_date_format) %>data-date-format='<%= btn_date_format %>'  <% end %>
     <% if defined?(datetime) && datetime.present? %>data-default-datetime='<%= dt_object.to_s %>'<% end %>>
       <i class="icon icon-unchecked"></i><i class="icon icon-checked"></i>  
-        <% if datetime.present?  %>
+        <% if has_datetime  %>
           <%# if There is a datetime then display it as the text in the button %>
           <%= dt_object.strftime(ruby_dt_format) %>
         <% elsif defined?(button_text) %>
@@ -70,13 +71,13 @@
         <% if show_date_field %>
         <div class='form-group available_date_field date_field'>
           <label for="<%= "#{(record.class.name.demodulize).underscore}_#{date_field_name}" %>">Date</label>
-          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{date_field_name.to_sym}][date]" %>" class="form-control date-only inline" value="<%= datetime.present? ? datetime.strftime('%m/%d/%Y') : '' %>" placeholder="MM/DD/YYYY"/>
+          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{date_field_name.to_sym}][date]" %>" class="form-control date-only inline" value="<%= has_datetime ? datetime.strftime('%m/%d/%Y') : '' %>" placeholder="MM/DD/YYYY"/>
         </div>
         <% end %>
         <% if  show_time_field %>
         <div class='form-group available_time_field time_field'>
           <label for="<%= "#{(record.class.name.demodulize).underscore}_#{time_field_name}" %>">Time</label>
-          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{time_field_name.to_sym}][time]" %>" class="form-control time-only inline" value="<%= datetime.present? ? dt_object.strftime('%I:%M %p') : '' %>" placeholder="HH:MM PM"/>
+          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{time_field_name.to_sym}][time]" %>" class="form-control time-only inline" value="<%= has_datetime ? dt_object.strftime('%I:%M %p') : '' %>" placeholder="HH:MM PM"/>
         </div>
         <% end %>
       </div>
