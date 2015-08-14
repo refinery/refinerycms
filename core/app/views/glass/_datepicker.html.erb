@@ -76,7 +76,7 @@
         <% if  show_time_field %>
         <div class='form-group available_time_field time_field'>
           <label for="<%= "#{(record.class.name.demodulize).underscore}_#{time_field_name}" %>">Time</label>
-          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{time_field_name.to_sym}][time]" %>" class="form-control time-only inline" value="<%= datetime.present? ? datetime.strftime('%I:%M %p') : '' %>" placeholder="HH:MM PM"/>
+          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{time_field_name.to_sym}][time]" %>" class="form-control time-only inline" value="<%= datetime.present? ? dt_object.strftime('%I:%M %p') : '' %>" placeholder="HH:MM PM"/>
         </div>
         <% end %>
       </div>
