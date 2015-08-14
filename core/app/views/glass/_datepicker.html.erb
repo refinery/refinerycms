@@ -22,7 +22,6 @@
                                 default: undefined
   disabled_weekdays (optional): If some weekdays that shouldn't be selectable from the datepicker pass them here as an array ex. [1] or [1,2]
                                 default: undefined
-  toggled           (optional): If the checkbox for the dp button should be checked by default or not.
   default_datetime  (optional): A default datetime string to set the dp to.
 %>
 
@@ -36,17 +35,29 @@
   anytime = defined?(anytime) && anytime
   show_time_field = (defined?(show_time) ? show_time : true)
   show_date_field = (defined?(show_date) ? show_date : true)
+  dt_object= DateTime.parse(datetime.to_s).utc if datetime.present?
+  toggled = datetime.present?
 %>
 
 <div class="form-group">
   <div class="<%= 'flex' if anytime %> datepicker-buttons">
     <% if anytime %>
-      <button type="button" class="btn btn-white flex-1 btn-toggle-icons delay-toggle <%= 'toggled' if !(defined?(toggled) && toggled) %> clear-dp"><i class="icon icon-unchecked"></i><i class="icon icon-checked"></i> Anytime</button>
+      <button type="button" class="btn btn-white flex-1 btn-toggle-icons delay-toggle <%= 'toggled' unless toggled %> clear-dp"><i class="icon icon-unchecked"></i><i class="icon icon-checked"></i> Anytime</button>
     <% end %>
-    <button type="button" class="btn btn-white <%= 'flex-1' if anytime %> btn-toggle-icons delay-toggle datepicker-opener <%= 'toggled' if (defined?(toggled) && toggled) %>" <%= defined?(disabled_weekdays) ? "data-disabled-weekdays=#{disabled_weekdays}" : nil %> data-container-selector="#<%= class_container_selector %>"
+    <button type="button" class="btn btn-white <%= 'flex-1' if anytime %> btn-toggle-icons delay-toggle datepicker-opener <%= 'toggled' if (toggled) %>" <%= defined?(disabled_weekdays) ? "data-disabled-weekdays=#{disabled_weekdays}" : nil %> data-container-selector="#<%= class_container_selector %>"
     <% if defined?(btn_date_format) %>data-date-format='<%= btn_date_format %>'  <% end %>
-    <% if defined?(default_datetime) && default_datetime.present? %>data-default-datetime='<%= default_datetime %>'<% end %>>
-      <i class="icon icon-unchecked"></i><i class="icon icon-checked"></i>  <%= defined?(button_text) ? button_text : ' Choose a time' %>
+    <% if defined?(datetime) && datetime.present? %>data-default-datetime='<%= dt_object.to_s %>'<% end %>>
+      <i class="icon icon-unchecked"></i><i class="icon icon-checked"></i>  
+        <% if datetime.present?  %>
+          <%# if There is a datetime then display it as the text in the button %>
+          <%= dt_object.strftime(ruby_dt_format) %>
+        <% elsif defined?(button_text) %>
+          <%# otherwise display some explicitly defined text %>
+          <%= button_text %>
+        <% else %>
+          <%# or fall through to default %>
+          Choose a time
+        <% end %>
     </button>
   </div>
   <div id="<%= class_container_selector %>" class="datepicker-container has-time-field<%= show_time_field && !(show_date_field) ? ' time-only' : '' %>">
@@ -59,13 +70,13 @@
         <% if show_date_field %>
         <div class='form-group available_date_field date_field'>
           <label for="<%= "#{(record.class.name.demodulize).underscore}_#{date_field_name}" %>">Date</label>
-          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{date_field_name.to_sym}][date]" %>" class="form-control date-only inline" value="<%= record[date_field_name.to_sym].present? ? record[date_field_name.to_sym].strftime('%m/%d/%Y') : '' %>" placeholder="MM/DD/YYYY"/>
+          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{date_field_name.to_sym}][date]" %>" class="form-control date-only inline" value="<%= datetime.present? ? datetime.strftime('%m/%d/%Y') : '' %>" placeholder="MM/DD/YYYY"/>
         </div>
         <% end %>
         <% if  show_time_field %>
         <div class='form-group available_time_field time_field'>
           <label for="<%= "#{(record.class.name.demodulize).underscore}_#{time_field_name}" %>">Time</label>
-          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{time_field_name.to_sym}][time]" %>" class="form-control time-only inline" value="<%= record[time_field_name.to_sym].present? ? record[time_field_name.to_sym].strftime('%I:%M %p') : '' %>" placeholder="HH:MM PM"/>
+          <input type="text" name="<%= "#{(record.class.name.demodulize).underscore}[#{time_field_name.to_sym}][time]" %>" class="form-control time-only inline" value="<%= datetime.present? ? datetime.strftime('%I:%M %p') : '' %>" placeholder="HH:MM PM"/>
         </div>
         <% end %>
       </div>
