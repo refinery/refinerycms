@@ -1011,7 +1011,7 @@ p + .inline-module {
     padding: 5px 12px;
     font-weight: normal;
     content: attr(data-tooltip);
-    transform: scale(1.1) translateX(-50%);
+    transform: scale(.9) translateX(-50%);
     white-space: pre-wrap;
     color: $off-white;
     border-radius: 5px;
@@ -1027,7 +1027,7 @@ p + .inline-module {
     position: absolute;
     top: -3px;
     left: 50%;
-    transform: scale(1.1) translateX(-50%);
+    transform: scale(.9) translateX(-50%);
     width: 0;
     height: 0;
     border-style: solid;
