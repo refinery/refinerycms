@@ -13,6 +13,7 @@ fr:
           or: ou
           replace: " le remplacer par celui-ci..."
           maximum_file_size: "La taille du fichier ne doit pas excéder %{bytes}."
+          resource_file: Fichier
           resource_title: Titre
           resource_title_help: Le titre visible pour les utilisateurs.
         resource:

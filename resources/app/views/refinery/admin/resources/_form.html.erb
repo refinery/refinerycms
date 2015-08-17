@@ -8,21 +8,20 @@
 
   <%= render '/refinery/admin/locale_picker', :current_locale => Globalize.locale if @resource.persisted? %>
 
-  <div class="field">
+  <div class="field" id="file">
+    <span class='label_with_help'>
+      <%= f.label :file, t('.resource_file') %>
+      <%= refinery_help_tag t('.maximum_file_size', :bytes => number_to_human_size(Refinery::Resources.max_file_size)) %>
+    </span>
+
     <% if action_name =~ /(edit)|(update)/ %>
-      <%= action_label :download, @resource.url, t('.download_current') %>
+      <%= action_label :download, @resource.url, @resource.title, { tooltip: t('.download_current') } %>
       <em><%= t('.or')%></em><%= t('.replace') %>
       <%= f.file_field :file %>
     <% else %>
       <% # we must only hint at multiple when it's a *new* record otherwise update fails. %>
       <%= f.file_field :file, :multiple => (true unless @resource.persisted?) %>
     <% end %>
-  </div>
-
-  <div class="field" id="maximum_file_size">
-    <label>
-      <%= t('.maximum_file_size', :bytes => number_to_human_size(Refinery::Resources.max_file_size)) %>
-    </label>
   </div>
 
   <div class="field" id="title">
