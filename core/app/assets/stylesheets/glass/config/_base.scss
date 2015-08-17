@@ -542,21 +542,21 @@ p::-moz-selection {
     }
   }
   img {
-    opacity: 1;
     transition: .2s $bezier;
+    opacity: 1;
 
     @include transition-fix();
   }
-  .icon-stack, .icon {
+  .icon-stack,
+  .icon {
     position: absolute;
     z-index: 10;
     top: 50%;
     left: 50%;
     margin-top: -21px;
     margin-left: -21px;
-    color: $white;
-
     transition: .2s $bezier;
+    color: $white;
     .icon-circle-thin {
       font-size: 50px;
       color: $white;
@@ -647,8 +647,8 @@ p::-moz-selection {
   color: $black;
   border: 1px solid $grey-3;
 
-  @include transition($transition ease-out);
   @include border-radius(20px);
+  @include transition($transition ease-out);
   .icon {
     top: -1px;
     left: -5px;
@@ -921,12 +921,12 @@ p + .inline-module {
     margin-right: -5px;
     margin-left: -5px;
     .form-group {
+      flex: 1;
       margin-right: 5px !important;
       margin-left: 5px !important;
-      flex: 1;
       .form-control {
-        font-size: 14px;
         height: 42px !important;
+        font-size: 14px;
         &:placeholder {
           font-size: 14px;
         }
@@ -941,7 +941,8 @@ p + .inline-module {
       color: $grey-4 !important;
     }
   }
-  .close-btn, .close {
+  .close-btn,
+  .close {
     position: absolute;
     z-index: 100;
     top: 10px;
@@ -959,7 +960,7 @@ p + .inline-module {
   }
   &.center {
     left: 50%;
-    transform:translateX(-50%);
+    transform: translateX(-50%);
   }
   &.lg {
     width: 320px;
@@ -980,7 +981,6 @@ p + .inline-module {
 }
 
 [data-note] {
-  position: relative;
   outline: $red dotted 2px;
 }
 
@@ -999,6 +999,51 @@ p + .inline-module {
   border-radius: 5px;
   background-color: $grey-2;
   box-shadow: $shadow;
+}
+
+[data-tooltip] {
+  &:after {
+    position: absolute;
+    z-index: 90;
+    top: -35px;
+    left: 50%;
+    display: inline-block;
+    padding: 5px 12px;
+    font-weight: normal;
+    content: attr(data-tooltip);
+    transform: scale(1.1) translateX(-50%);
+    white-space: pre-wrap;
+    color: $off-white;
+    border-radius: 5px;
+    background-color: $grey-6;
+    box-shadow: $shadow;
+    opacity: 0;
+    transition: .2s $bezier;
+    user-select: none;
+    pointer-events: none;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: scale(1.1) translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 0 5px;
+    border-color: $grey-6 transparent transparent transparent;
+    opacity: 0;
+    transition: .2s $bezier;
+    user-select: none;
+    pointer-events: none;
+  }
+  &:hover {
+    &:before, &:after {
+      opacity: 1;
+      transform: scale(1) translateX(-50%);
+    }
+  }
 }
 
 
@@ -1073,6 +1118,7 @@ h1 {
 h1 hr {
   width: 160px;
   margin: 30px auto 30px;
+  border-width: 2px;
   border-color: inherit;
 }
 
@@ -1093,7 +1139,7 @@ hr {
   margin: 30px auto;
   border: 1px solid;
   border-color: $grey-1;
-  &.lg{
+  &.lg {
     border-width: 2px;
   }
 }
@@ -1423,8 +1469,8 @@ form {
 .form-control {
   font-size: 18px;
 
-  @include box-shadow(none);
   @include transition($transition);
+  @include box-shadow(none);
 }
 
 
@@ -1725,9 +1771,9 @@ button {
   background-image: none;
   text-shadow: 0;
 
-  @include box-shadow(none);
-  @include transition($transition);
   @include border-radius($radius);
+  @include transition($transition);
+  @include box-shadow(none);
   &:active {
     outline: 0 !important;
 
@@ -1871,8 +1917,8 @@ button {
 
 .btn-green {
   color: $white;
-  background: $green;
   border: 1px solid $green;
+  background: $green;
   &:link,
   &:visited {
     color: $white;
@@ -1881,8 +1927,8 @@ button {
   &:focus,
   &:active {
     color: $white;
-    background: lighten($green, 10);
     border-color: lighten($green, 10);
+    background: lighten($green, 10);
   }
 }
 
