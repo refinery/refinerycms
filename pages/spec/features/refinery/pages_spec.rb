@@ -251,7 +251,7 @@ module Refinery
         visit refinery.url_for(submenu_page.url)
         expect(page).to have_content(home_page.title)
         expect(page).to have_content(about_page.title)
-        within ".selected * > .selected a" do
+        within ".active * > .selected a" do
           expect(page).to have_content(submenu_page.title)
         end
       end
@@ -292,7 +292,7 @@ module Refinery
 
         expect(page).to have_content(home_page.title)
         expect(page).to have_content(about_page.title)
-        within ".selected * > .selected a" do
+        within ".active * > .selected a" do
           expect(page).to have_content(special_page.title)
         end
       end
@@ -330,7 +330,7 @@ module Refinery
       it "succeeds" do
         visit "/about"
 
-        within ".selected * > .selected a" do
+        within ".active * > .selected a" do
           expect(page).to have_content(child_page.title)
         end
       end

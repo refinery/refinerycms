@@ -6,7 +6,7 @@ Here we will implement a simple navigation bar with markup for Foundation.
 
 h2. Setup
 
-Override the refinery file which creates the menu, and replace it with the following code 
+Override the refinery file which creates the menu, and replace it with the following code
 
 bc.. rake refinery:override view=refinery/_header.html
 
@@ -21,7 +21,7 @@ bc.. rake refinery:override view=refinery/_header.html
 
 p. Next an application helper.
 
-bc.. 
+bc..
  #app/helpers/ApplicationHelper
   Module ApplicationHelper
   # Creates a dropdown menu with items matching Refinery pages
@@ -34,10 +34,11 @@ bc..
   # * +:list_dropdown_css+ - The css class of the submenu list
   # * +:list_item_dropdown_css+ - The css class of the main menu item that has a dropdown
   # * +:list_tag_css+ - The css class of the main menu
-  # * +:selected_css+ - The css class denoting a selected/active menu item
+  # * +:active_css+ - The css class denoting a active menu item
+  # * +:selected_css+ - The css class denoting a current menu item
   def foundation_menu(items, options = {})
     presenter = Refinery::Pages::FoundationMenuPresenter.new(items, self)
-    %w(menu_tag dom_id css list_dropdown_css list_item_dropdown_css list_tag_css selected_css).map(&:to_sym).each do |k|
+    %w(menu_tag dom_id css list_dropdown_css list_item_dropdown_css list_tag_css active_css selected_css).map(&:to_sym).each do |k|
       presenter.send("#{k}=", options[k]) if options.has_key?(k)
     end
     presenter
@@ -60,6 +61,7 @@ module Refinery
       self.list_dropdown_css = 'dropdown'
       self.list_item_dropdown_css = 'has-dropdown'
       self.list_tag_css = nil
+      self.active_css = 'active'
       self.selected_css = 'active'
 
       private
@@ -102,7 +104,8 @@ module Refinery
       def menu_item_css(menu_item, index)
         css = []
 
-        css << selected_css if selected_item_or_descendant_item_selected?(menu_item)
+        css << active_css if descendant_item_selected?(menu_item)
+        css << selected_css if selected_item?(menu_item)
         css << list_item_dropdown_css if check_for_dropdown_item(menu_item)
         css << first_css if index == 0
         css << last_css if index == menu_item.shown_siblings.length

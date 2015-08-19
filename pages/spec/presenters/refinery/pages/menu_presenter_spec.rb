@@ -31,6 +31,7 @@ module Refinery
           expect(menu_presenter.menu_tag).to eq(:nav)
           expect(menu_presenter.list_tag).to eq(:ul)
           expect(menu_presenter.list_item_tag).to eq(:li)
+          expect(menu_presenter.active_css).to eq(:active)
           expect(menu_presenter.selected_css).to eq(:selected)
           expect(menu_presenter.first_css).to eq(:first)
           expect(menu_presenter.last_css).to eq(:last)

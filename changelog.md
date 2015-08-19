@@ -19,6 +19,7 @@
 * Added ability to translate images title and alt attributes. [#2965](https://github.com/refinery/refinerycms/pull/2965). [Brice Sanchez](https://github.com/bricesanchez)
 * Decouple Refinery CMS from Devise. [#2940](https://github.com/refinery/refinerycms/pull/2940). [Philip Arndt](https://github.com/parndt)
 * Refinery CMS Core now requires Rails >= 4.2.3. [#3034](https://github.com/refinery/refinerycms/pull/3034). [Brice Sanchez](https://github.com/bricesanchez)
+* Deprecated `selected_item_or_descendant_item_selected?` method in `Refinery::Pages::MenuPresenter`. [#3038](https://github.com/refinery/refinerycms/pull/3038). [Brice Sanchez](https://github.com/bricesanchez)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
 

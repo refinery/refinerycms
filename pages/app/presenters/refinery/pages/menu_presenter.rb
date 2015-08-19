@@ -11,13 +11,14 @@ module Refinery
       include ActiveSupport::Configurable
 
       config_accessor :roots, :menu_tag, :list_tag, :list_item_tag, :css, :dom_id,
-                      :max_depth, :selected_css, :first_css, :last_css, :list_tag_css,
+                      :max_depth, :active_css, :selected_css, :first_css, :last_css, :list_tag_css,
                       :link_tag_css
       self.dom_id = 'menu'
       self.css = 'menu clearfix'
       self.menu_tag = :nav
       self.list_tag = :ul
       self.list_item_tag = :li
+      self.active_css = :active
       self.selected_css = :selected
       self.first_css = :first
       self.last_css = :last
@@ -77,6 +78,7 @@ module Refinery
       end
 
       def selected_item_or_descendant_item_selected?(item)
+        Refinery.deprecate('Refinery::Pages::MenuPresenter#selected_item_or_descendant_item_selected?', when: '3.1')
         selected_item?(item) || descendant_item_selected?(item)
       end
 
@@ -98,7 +100,8 @@ module Refinery
       def menu_item_css(menu_item, index)
         css = []
 
-        css << selected_css if selected_item_or_descendant_item_selected?(menu_item)
+        css << active_css if descendant_item_selected?(menu_item)
+        css << selected_css if selected_item?(menu_item)
         css << first_css if index == 0
         css << last_css if index == menu_item.shown_siblings.length
 
