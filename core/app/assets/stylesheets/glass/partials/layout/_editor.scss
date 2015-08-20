@@ -3,6 +3,7 @@
 [contenteditable=true]:empty,
 [contenteditable=true] .empty {
   display: inline-block;
+  min-width: 150px;
   &:before {
     content: attr(glass-placeholder);
     display: block; /* For Firefox */
