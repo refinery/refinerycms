@@ -242,7 +242,7 @@ function GlassHtmlEditor($elem) {
       newly_empty = true;
     }
 
-    if (newly_empty) {
+    if (!$cur_elem.hasClass('glass-no-edit') && newly_empty) {
       $cur_elem.addClass('empty');
       this.attachControl('module-switcher');
     }
