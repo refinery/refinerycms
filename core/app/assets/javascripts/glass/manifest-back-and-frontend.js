@@ -11,6 +11,7 @@
 //= require glass/form-validation
 //= require glass/modules/forms
 //= require glass/modules/main
+//= require glass/modules/buttons
 //= require glass/moment.min
 //= require glass/moment-timezone.min
 //= require glass/bootstrap-datetimepicker
