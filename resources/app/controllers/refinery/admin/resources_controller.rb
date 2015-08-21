@@ -57,7 +57,7 @@ module Refinery
         render 'insert'
       end
 
-    protected
+      protected
 
       def init_dialog
         @app_dialog = params[:app_dialog].present?
@@ -89,7 +89,7 @@ module Refinery
         end
       end
 
-    private
+      private
 
       def permitted_resource_params
         [
