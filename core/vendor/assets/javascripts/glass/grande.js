@@ -98,7 +98,7 @@
 
     document.onkeydown = preprocessKeyDown;
 
-    document.onkeyup = function(event){
+    $(editableNodes).on('keyup', function(event){
       var sel = window.getSelection();
 
       // FF will return sel.anchorNode to be the parentNode when the triggered keyCode is 13
@@ -109,7 +109,7 @@
           triggerTextParse(event);
         }
       }
-    };
+    });
 
     // Handle window resize events
     root.onresize = triggerTextSelection;
