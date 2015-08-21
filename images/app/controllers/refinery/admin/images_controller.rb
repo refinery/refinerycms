@@ -138,7 +138,15 @@ module Refinery
       end
 
       def image_params
-        params.require(:image).permit(:image, :image_size, :image_title, :image_alt)
+        params.require(:image).permit(permitted_image_params)
+      end
+
+      private
+
+      def permitted_image_params
+        [
+          :image, :image_size, :image_title, :image_alt
+        ]
       end
 
     end
