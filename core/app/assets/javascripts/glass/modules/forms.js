@@ -231,38 +231,42 @@ var CanvasForms = (function ($) {
         $form.trigger('form-before-submit');
       });
 
-      $form.ajaxForm({
-        beforeSubmit: function(arr, $form, options){
-          $submit_btn.html('<i class="ui active inline inverted xs loader"></i> Sending');
-          $submit_btns.attr('disabled', 'disabled');
-        },
-
-        success: function(e, response, statusText, xhr, element) {
-          $form.trigger('form-submit-success', [e, response, statusText, xhr, element]);
-        },
-
-        complete: function (xhr, status) {
-          if ($form.hasClass('mailchimp')) {
-            $form.find('input[type="email"]').val('Thank you!');
-            return;
-          }
-
-          var $previousError = $form.find('#errorExplanation');
-          if($previousError.length > 0){
-            $previousError.remove();
-          }
-
-          if (status !== 'success') {
-            handleUnexpectedError(xhr, selector, $submit_btn, $submit_btns);
-            return;
-          }
-          xhr.done(function (data) {
-            handleXHRDone($form, data, selector, $submit_btn, $submit_btns);
-            return;
-          });
-        }
-      });
+      $form.ajaxForm(paramsForAjaxSubmit($form, selector, $submit_btn, $submit_btns));
     });
+  }
+
+  function paramsForAjaxSubmit($form, selector, $submit_btn, $submit_btns) {
+    return {
+      beforeSubmit: function(arr, $form, options){
+        $submit_btn.html('<i class="ui active inline inverted xs loader"></i> Sending');
+        $submit_btns.attr('disabled', 'disabled');
+      },
+
+      success: function(e, response, statusText, xhr, element) {
+        $form.trigger('form-submit-success', [e, response, statusText, xhr, element]);
+      },
+
+      complete: function (xhr, status) {
+        if ($form.hasClass('mailchimp')) {
+          $form.find('input[type="email"]').val('Thank you!');
+          return;
+        }
+
+        var $previousError = $form.find('#errorExplanation');
+        if($previousError.length > 0){
+          $previousError.remove();
+        }
+
+        if (status !== 'success') {
+          handleUnexpectedError(xhr, selector, $submit_btn, $submit_btns);
+          return;
+        }
+        xhr.done(function (data) {
+          handleXHRDone($form, data, selector, $submit_btn, $submit_btns);
+          return;
+        });
+      }
+    };
   }
 
   /**
@@ -419,7 +423,7 @@ var CanvasForms = (function ($) {
           selector: '.confirm-model-delete',
           value: false
         });
-        
+
         console.log($confirmBtn.attr('data-no-redirect'));
         if($confirmBtn.attr('data-no-redirect')){
           var containerSelector = $confirmBtn.attr('data-container-selector');
@@ -583,6 +587,7 @@ var CanvasForms = (function ($) {
     showAndGoToErrors: showAndGoToErrors,
     liveValidateRequiredFields: liveValidateRequiredFields,
     initFormSubmitWithin: initFormSubmitWithin,
-    initVerify: initVerify
+    initVerify: initVerify,
+    paramsForAjaxSubmit: paramsForAjaxSubmit
   };
 })(jQuery);
