@@ -21,6 +21,33 @@ module Refinery
     end
   end
 
+  module MyOrderedPlugin
+    class Engine < ::Rails::Engine
+      isolate_namespace ::Refinery
+      ::Refinery::Plugin.register do |plugin|
+        plugin.name = "my_ordered_plugin"
+      end
+    end
+  end
+
+  module MyOtherOrderedPlugin
+    class Engine < ::Rails::Engine
+      isolate_namespace ::Refinery
+      ::Refinery::Plugin.register do |plugin|
+        plugin.name = "my_other_ordered_plugin"
+      end
+    end
+  end
+
+  module MyUnorderedPlugin
+    class Engine < ::Rails::Engine
+      isolate_namespace ::Refinery
+      ::Refinery::Plugin.register do |plugin|
+        plugin.name = "my_unordered_plugin"
+      end
+    end
+  end
+
   ::I18n.backend.store_translations :en, :refinery => {
     :plugins => {
       :my_plugin => {
@@ -28,6 +55,15 @@ module Refinery
       },
       :my_other_plugin => {
         :title => "my other plugin"
+      },
+      :my_ordered_plugin => {
+        :title => "my ordered plugin"
+      },
+      :my_other_ordered_plugin => {
+        :title => "my other ordered plugin"
+      },
+      :my_unodered_plugin => {
+        :title => "my unordered plugin"
       }
     }
   }
@@ -60,6 +96,11 @@ module Refinery
       it 'only contains items that are in the menu' do
         expect(subject.registered.in_menu.any?).to be_truthy
         expect(subject.registered.in_menu.all? { |p| !p.hide_from_menu }).to be_truthy
+      end
+
+      it "orders by plugin_priority config" do
+        Core.config.plugin_priority = %w(my_ordered_plugin my_plugin my_other_ordered_plugin)
+        expect(subject.registered.in_menu.names.take(2)).to eq %w(my_ordered_plugin my_other_ordered_plugin)
       end
     end
 
