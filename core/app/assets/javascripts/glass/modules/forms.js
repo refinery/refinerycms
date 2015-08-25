@@ -368,6 +368,7 @@ var CanvasForms = (function ($) {
       if ($elem.length > 0) {
         ajaxUpdateContent($elem.data('selector'));
       }
+      $submit_btn.html('Sent');
       $modal.modal('hide');
     }
 
