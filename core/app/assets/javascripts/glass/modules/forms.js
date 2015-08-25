@@ -377,13 +377,12 @@ var CanvasForms = (function ($) {
         // the previous modal to be displayed.
         if (callback_modal_btn.length > 0) {
           $(callback_modal_btn.data('selector')).click();
-        } else {
-          $modal.modal('hide');
         }
         return;
       } else {
         replaceContent($(selector), $replacement);
       }
+      $modal.modal('hide');
     }
 
     resetForm(); // resets the content of a form if necessary.
