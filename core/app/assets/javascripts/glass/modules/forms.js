@@ -367,20 +367,6 @@ var CanvasForms = (function ($) {
 
       if ($elem.length > 0) {
         ajaxUpdateContent($elem.data('selector'));
-
-        // The button that on click, will trigger the modal that was displayed
-        // before the current modal was displayed.
-        var callback_modal_btn = $('#callback-modal');
-
-        // If there is another modal to display after this one's form has
-        // been submitted, then don't hide the modal, but rather, trigger
-        // the previous modal to be displayed.
-        if (callback_modal_btn.length > 0) {
-          $(callback_modal_btn.data('selector')).click();
-        }
-        return;
-      } else {
-        replaceContent($(selector), $replacement);
       }
       $modal.modal('hide');
     }
