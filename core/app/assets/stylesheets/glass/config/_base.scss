@@ -2094,7 +2094,7 @@ button {
         }
       }
     }
-    .toggled {
+    &.toggled {
       &:hover {
         .icon {
           transform: rotate(360deg);
