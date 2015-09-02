@@ -34,7 +34,7 @@
         </div>
         <div class="col-sm-9 text-left">
           <div class="form-group">
-            <%%= text_field_tag "subject[][#{locale.to_s}]",  Refinery::<%= namespacing %>::Setting.confirmation_subject,
+            <%%= text_field_tag "subject",  Refinery::<%= namespacing %>::Setting.confirmation_subject,
                                :class => 'widest form-control' %>
           </div>
         </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="col-sm-9 text-left">
           <div class="form-group">
-            <%%= text_area_tag "message[][#{locale.to_s}]", @setting.value, # required, we can't use :value
+            <%%= f.text_area :value, :value => @setting.value, # required, we can't use :value
                               :rows => "5",
                               :class => 'widest form-control' %>
             <br/>
