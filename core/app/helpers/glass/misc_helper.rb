@@ -8,14 +8,14 @@ module Glass
       # This has a few advantages (that we don't seem to need at the moment)
       #  1. Can resize and crop images
       #  2. All images are hosted from a single domain (may be an issue with https??)
-      #::Dragonfly[:refinery_images].fetch(image_uid).url(:name => File.basename(image_uid))
+      Dragonfly.app(:refinery_images).fetch(image_uid).url(:name => File.basename(image_uid))
 
-      # Just serve up the S3 url instead (for now)
-      Dragonfly.app(:refinery_images).remote_url_for(image_uid)
+      # This was just serving up the S3 url directly for a while
+      # Dragonfly.app(:refinery_images).remote_url_for(image_uid)
     end
 
     def glass_vid_src(vid_uid)
-      Dragonfly.app(:refinery_images).remote_url_for(vid_uid)
+      Dragonfly.app(:refinery_images).fetch(vid_uid).url(:name => File.basename(vid_uid))
     end
   end
 end
