@@ -52,6 +52,7 @@ function GlassModule($elem, $editor) {
     return type == 'module-group' || type == 'img-module';
   };
 
+  //Could be what is breaking tabbing in mozilla
   this.attachControl = function(key) {
     var key2selector = GlassControl.key2selector;
     if (!((key in key2selector) && this.element().children(key2selector[key]).length > 0)) {
