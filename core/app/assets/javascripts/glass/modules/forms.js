@@ -203,6 +203,16 @@ var CanvasForms = (function ($) {
     $(element).find("#registration_how_find").change();
   }
 
+  function initAjaxForm($form) {
+    var $submit_btns = $form.find('.btn[type="submit"]');
+
+    $submit_btns.each(function () {
+      $(this).data('orig-btn-txt', $(this).html());
+    });
+
+    $form.data("submit-btns", $submit_btns);
+  }
+
   function initFormSubmitWithin(element) {
     $(element).find('form').each(function () {
       if ($(this).hasClass('no-ajax')) {
@@ -214,12 +224,10 @@ var CanvasForms = (function ($) {
       }
       var selector = "#" + $(this).attr('id');
       var $form = $(this);
-      var $submit_btns = $form.find('.btn[type="submit"]');
-      var $submit_btn = $submit_btns.first();
 
-      $submit_btns.each(function () {
-        $(this).data('orig-btn-txt', $(this).html());
-      });
+      initAjaxForm($form);
+      var $submit_btns = $form.data("submit-btns");
+      var $submit_btn = $submit_btns.first();
 
       $submit_btns.click(function (e) {
         $submit_btn = $(this);
@@ -398,7 +406,6 @@ var CanvasForms = (function ($) {
           value: false
         });
 
-        console.log($confirmBtn.attr('data-no-redirect'));
         if($confirmBtn.attr('data-no-redirect')){
           var containerSelector = $confirmBtn.attr('data-container-selector');
 
@@ -562,6 +569,7 @@ var CanvasForms = (function ($) {
     liveValidateRequiredFields: liveValidateRequiredFields,
     initFormSubmitWithin: initFormSubmitWithin,
     initVerify: initVerify,
-    paramsForAjaxSubmit: paramsForAjaxSubmit
+    paramsForAjaxSubmit: paramsForAjaxSubmit,
+    initAjaxForm: initAjaxForm
   };
 })(jQuery);
