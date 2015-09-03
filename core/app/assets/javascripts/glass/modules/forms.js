@@ -465,7 +465,7 @@ var CanvasForms = (function ($) {
     }
 
     var errorContainer = [
-      '<div class="payment-error-explanation errorExplanation" id="errorExplanation">',
+      '<div class="payment-error-explanation errorExplanation red" id="errorExplanation">',
       '<p>Please check below for errors</p></div>'].join("");
 
     form.find('#errorExplanation').replaceWith(errorContainer);
@@ -498,7 +498,7 @@ var CanvasForms = (function ($) {
   function insertStripeErrors(form, messages) {
 
     var errorContainer = [
-      '<div class="payment-error-explanation errorExplanation" id="errorExplanation">',
+      '<div class="payment-error-explanation errorExplanation red" id="errorExplanation">',
       '<p>There were problems with the following:</p>'];
 
     errorContainer.push("<ul class='payment-errors list-unstyled'>");
