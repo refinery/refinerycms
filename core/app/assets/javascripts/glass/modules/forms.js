@@ -362,6 +362,9 @@ var CanvasForms = (function ($) {
       } else if($replacement !== null) {
         // inquiries engine puts an h1 in there
         $replacement.find('h1').remove();
+        $('html, body').animate({
+          scrollTop: $(selector).offset().top - 200
+        }, 500);
         replaceContent($(selector), $replacement);
       }
     } else if ($modal.length > 0) {
