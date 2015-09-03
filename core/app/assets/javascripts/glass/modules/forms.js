@@ -271,23 +271,6 @@ var CanvasForms = (function ($) {
   }
 
   /**
-   *
-   * @param xhr
-   * @param selector
-   */
-  function handleUnexpectedError(xhr, selector, $submit_btn, $submit_btns){
-      $(selector).append(['<div id="errorExplanation" class="errorExplanation text-center">',
-        '<p>Uh oh! This never happened while we were testing! ',
-        'The developers have been notified and will probably have this fixed in the next 10 seconds. ',
-        'Just kidding, it may take until tomorrow morning. Thank you for your patience.</p></div>'].join(''));
-    }
-
-    $submit_btn.html($submit_btn.data('orig-btn-txt'));
-    $submit_btns.removeAttr('disabled');
-    return;
-  }
-
-  /**
    * Handles behavior of a page with a form on it after that form has been submitted via ajax.
    * @param $form {object} - The form that was submitted.
    * @param data           - The data that the server responded with
