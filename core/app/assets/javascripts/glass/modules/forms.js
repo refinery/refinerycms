@@ -257,12 +257,13 @@ var CanvasForms = (function ($) {
           $previousError.remove();
         }
 
-        if (status !== 'success') {
-          handleUnexpectedError(xhr, selector, $submit_btn, $submit_btns);
-          return;
-        }
+        //if (status !== 'success') {
+        //  - older errors come back with a 200 response, we we hadle all in 'done' for now
+        //  return;
+        //}
+
         xhr.done(function (data) {
-          handleXHRDone($form, data, selector, $submit_btn, $submit_btns);
+          handleXHRDone(xhr, $form, data, selector, $submit_btn, $submit_btns);
           return;
         });
       }
@@ -275,14 +276,6 @@ var CanvasForms = (function ($) {
    * @param selector
    */
   function handleUnexpectedError(xhr, selector, $submit_btn, $submit_btns){
-    var jsonResponse = xhr.responseJSON;
-
-    if(jsonResponse){
-       var message = jsonResponse.message === undefined ? 'Unknown Error' : jsonResponse.message;
-       message = jsonResponse.errors === undefined ? message : jsonResponse.errors;
-
-      $(selector).append(['<div id="errorExplanation" class="errorExplanation text-center">',message,'</div>'].join(''));
-    } else {
       $(selector).append(['<div id="errorExplanation" class="errorExplanation text-center">',
         '<p>Uh oh! This never happened while we were testing! ',
         'The developers have been notified and will probably have this fixed in the next 10 seconds. ',
@@ -302,7 +295,7 @@ var CanvasForms = (function ($) {
    * @param $submit_btn    - The submit button for the form
    * @param $submit_btns   - Other submit buttons for the page.
    */
-  function handleXHRDone($form, data, selector, $submit_btn, $submit_btns){
+  function handleXHRDone(xhr, $form, data, selector, $submit_btn, $submit_btns){
     var replace_selector = $form.data('ajax-replace-selector');
     // if the same form that was submitted is in response, replace it
     var $replace_form    = replace_selector ? $(data).find(replace_selector) : $(data).find(selector);
@@ -313,6 +306,7 @@ var CanvasForms = (function ($) {
     var $replacement     = null;
     var callback = $form.data('on-complete-callback');
     var redirect_on_success = true;
+    var jsonResponse = xhr.responseJSON;
 
     // If there is a callback call it.
     if (callback !== undefined && callback !== null) {
@@ -323,6 +317,14 @@ var CanvasForms = (function ($) {
       if (result === 'no-redirect') {
         redirect_on_success = false;
       }
+    }
+
+    if(jsonResponse) {
+       var message = jsonResponse.message === undefined ? 'Unknown Error' : jsonResponse.message;
+       message = jsonResponse.errors === undefined ? message : jsonResponse.errors;
+
+      $(selector).append(['<div id="errorExplanation" class="errorExplanation text-center">',message,'</div>'].join(''));
+      return;
     }
 
     if ($error_response.length > 0) {
