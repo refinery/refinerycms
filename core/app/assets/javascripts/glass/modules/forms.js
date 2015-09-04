@@ -204,8 +204,7 @@ var CanvasForms = (function ($) {
   }
 
   function initAjaxForm($form) {
-    var $submit_btns = $form.find('.btn[type="submit"]');
-
+    var $submit_btns = $form.find('.btn[type="submit"], .sudo-submit');
     $submit_btns.each(function () {
       $(this).data('orig-btn-txt', $(this).html());
     });
@@ -229,7 +228,10 @@ var CanvasForms = (function ($) {
       var $submit_btns = $form.data("submit-btns");
 
       $submit_btns.click(function (e) {
-        var $submit_btn = $form.data("submit-btn", $(this));
+        var $submit_btn = $(this);
+        $form.data("submit-btn", $submit_btn);
+        $submit_btn.html('<i class="ui active inline inverted xs loader"></i> Sending');
+        $submit_btns.attr('disabled', 'disabled');
         var $draft_field = $form.find('.draft-field');
         if ($draft_field.length > 0) {
           $draft_field.val($submit_btn.hasClass('mark-as-draft'));
