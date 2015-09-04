@@ -227,10 +227,9 @@ var CanvasForms = (function ($) {
 
       initAjaxForm($form);
       var $submit_btns = $form.data("submit-btns");
-      var $submit_btn = $submit_btns.first();
 
       $submit_btns.click(function (e) {
-        $submit_btn = $(this);
+        var $submit_btn = $form.data("submit-btn", $(this));
         var $draft_field = $form.find('.draft-field');
         if ($draft_field.length > 0) {
           $draft_field.val($submit_btn.hasClass('mark-as-draft'));
@@ -239,15 +238,15 @@ var CanvasForms = (function ($) {
         $form.trigger('form-before-submit');
       });
 
-      $form.ajaxForm(paramsForAjaxSubmit($form, selector, $submit_btn, $submit_btns));
+      $form.ajaxForm(paramsForAjaxSubmit($form, selector));
     });
   }
 
-  function paramsForAjaxSubmit($form, selector, $submit_btn, $submit_btns) {
+  function paramsForAjaxSubmit($form, selector) {
     return {
       beforeSubmit: function(arr, $form, options){
-        $submit_btn.html('<i class="ui active inline inverted xs loader"></i> Sending');
-        $submit_btns.attr('disabled', 'disabled');
+        $form.data("submit-btn").html('<i class="ui active inline inverted xs loader"></i> Sending');
+        $form.data("submit-btns").attr('disabled', 'disabled');
       },
 
       success: function(e, response, statusText, xhr, element) {
@@ -271,7 +270,7 @@ var CanvasForms = (function ($) {
         //}
 
         xhr.done(function (data) {
-          handleXHRDone(xhr, $form, data, selector, $submit_btn, $submit_btns);
+          handleXHRDone(xhr, $form, data, selector);
           return;
         });
       }
@@ -286,7 +285,7 @@ var CanvasForms = (function ($) {
    * @param $submit_btn    - The submit button for the form
    * @param $submit_btns   - Other submit buttons for the page.
    */
-  function handleXHRDone(xhr, $form, data, selector, $submit_btn, $submit_btns){
+  function handleXHRDone(xhr, $form, data, selector){
     var replace_selector = $form.data('ajax-replace-selector');
     // if the same form that was submitted is in response, replace it
     var $replace_form    = replace_selector ? $(data).find(replace_selector) : $(data).find(selector);
@@ -298,6 +297,8 @@ var CanvasForms = (function ($) {
     var callback = $form.data('on-complete-callback');
     var redirect_on_success = true;
     var jsonResponse = xhr.responseJSON;
+    var $submit_btn = $form.data("submit-btn");
+    var $submit_btns = $form.data("submit-btns");
 
     // If there is a callback call it.
     if (callback !== undefined && callback !== null) {
@@ -501,14 +502,17 @@ var CanvasForms = (function ($) {
     showAndGoToErrors(form);
   }
 
-  function showAndGoToErrors(form) {
-    form.find('.payment-error-explanation').removeClass('hidden');
+  function showAndGoToErrors($form) {
+    var $submit_btn = $form.data("submit-btn");
+    console.log($submit_btn.data('orig-btn-txt'));
+    $submit_btn.html($submit_btn.data('orig-btn-txt')); // reset the text on the submit button
+    $form.find('.payment-error-explanation').removeClass('hidden');
 
     $('html, body').animate({
       scrollTop: $('.payment-error-explanation').offset().top - 73
     }, 500);
 
-    form.find('button').prop('disabled', false);
+    $form.find('button').prop('disabled', false);
   }
 
   function openDeleteConfirmModal($btn){
