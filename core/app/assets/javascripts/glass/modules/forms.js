@@ -329,11 +329,10 @@ var CanvasForms = (function ($) {
       if ($cur_error.length > 0) {
         replaceContent($cur_error, $error_response);
       }
-      else if ($formActions.length > 0)
-        $error_response.insertBefore($formActions);
       else {
-        $error_response.appendTo($form); // not an ideal location, but just so the error is visible somewhere
+        $error_response.prependTo($form);
       }
+      showAndGoToErrors($form);
       $submit_btn.html($submit_btn.data('orig-btn-txt'));
       $submit_btns.removeAttr('disabled');
       return; // if there was an error return early so that page doesn't get redirected.
@@ -449,24 +448,24 @@ var CanvasForms = (function ($) {
     $('.error').removeClass('error');
   }
 
-  function insertErrors(form, errorMessages, imageForm) {
-    resetState();
 
-    if (imageForm !== undefined) {
+  function insertErrors(form, errorMessages, imageForm) {
+    if (imageForm !== null) {
       insertMessage('image', errorMessages);
       return 0;
     }
 
     var errorContainer = [
-      '<div class="payment-error-explanation errorExplanation red" id="errorExplanation">',
-      '<p>Please check below for errors</p></div>'].join("");
+      '<div class="errorExplanation" id="errorExplanation">',
+      '<p class="red">There were problems with the following:</p>'];
+
+    errorContainer.push("<ul class='payment-errors list-unstyled'>");
+    $(errorMessages).each(function (index, message) {
+      errorContainer.push("<li class='red'>" + message + "</li>");
+    });
+    errorContainer.push("</ul></div>");
 
     form.find('#errorExplanation').replaceWith(errorContainer);
-
-
-    for (var attribute in errorMessages) {
-      insertMessage(attribute, errorMessages);
-    }
 
     showAndGoToErrors(form);
   }
@@ -488,30 +487,13 @@ var CanvasForms = (function ($) {
     }
   }
 
-  function insertStripeErrors(form, messages) {
-
-    var errorContainer = [
-      '<div class="payment-error-explanation errorExplanation red" id="errorExplanation">',
-      '<p>There were problems with the following:</p>'];
-
-    errorContainer.push("<ul class='payment-errors list-unstyled'>");
-    $(messages).each(function (index, message) {
-      errorContainer.push("<li>", message, "</li>");
-    });
-    errorContainer.push("</ul></div>");
-    form.find('#errorExplanation').replaceWith(errorContainer.join(""));
-
-    showAndGoToErrors(form);
-  }
-
   function showAndGoToErrors($form) {
     var $submit_btn = $form.data("submit-btn");
-    console.log($submit_btn.data('orig-btn-txt'));
     $submit_btn.html($submit_btn.data('orig-btn-txt')); // reset the text on the submit button
-    $form.find('.payment-error-explanation').removeClass('hidden');
+    $form.find('.errorExplanation').removeClass('hidden');
 
     $('html, body').animate({
-      scrollTop: $('.payment-error-explanation').offset().top - 73
+      scrollTop: $('.errorExplanation').offset().top - 73
     }, 500);
 
     $form.find('button').prop('disabled', false);
@@ -567,7 +549,6 @@ var CanvasForms = (function ($) {
   return {
     replaceContent: replaceContent,
     ajaxUpdateContent: ajaxUpdateContent,
-    insertStripeErrors: insertStripeErrors,
     insertErrors: insertErrors,
     resetState: resetState,
     resetForm: resetForm,
