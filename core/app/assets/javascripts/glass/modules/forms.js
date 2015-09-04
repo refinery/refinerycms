@@ -317,7 +317,7 @@ var CanvasForms = (function ($) {
        var message = jsonResponse.message === undefined ? 'Unknown Error' : jsonResponse.message;
        message = jsonResponse.errors === undefined ? message : jsonResponse.errors;
 
-      $(selector).append(['<div id="errorExplanation" class="errorExplanation text-center">',message,'</div>'].join(''));
+      $(selector).prepend(['<div id="errorExplanation" class="errorExplanation text-center red">',message,'</div>'].join(''));
       return;
     }
 
