@@ -187,13 +187,14 @@ var GlassContentEditing = (function ($) {
           if ($slugify_if.length > 0 && $slugify_if.is(':checked') && $element != this_chunk.element()) {
             this_chunk.element().html($element.text().trim().toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-'));
           }
-
-          if ($slugify_if.length > 0) {
-            this_chunk.element().keyup(function (e) {
-              $slugify_if.prop("checked", false);
-            });
-          }
         });
+
+        // sever the link if this field changes (user has chosen a custom slug themselves)
+        if ($slugify_if.length > 0) {
+          this_chunk.element().keyup(function (e) {
+            $slugify_if.prop("checked", false);
+          });
+        }
       }
     };
 
