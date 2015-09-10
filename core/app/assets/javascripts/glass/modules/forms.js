@@ -188,7 +188,7 @@ var CanvasForms = (function ($) {
   }
 
   function initFormOptionalFieldsWithin(element) {
-    // TODO: make this generic so any form can use it
+    // TODO: make this generic so any form can use it - I think rccav funeral form has a good function
     $(element).find("#registration_situation").change(function () {
       $("#registration_situation_other").parents('.form-group')
         .toggle($(this).val() === "Other");
@@ -210,6 +210,7 @@ var CanvasForms = (function ($) {
     });
 
     $form.data("submit-btns", $submit_btns);
+    $form.data("submit-btn",  $submit_btns.first());
   }
 
   function initFormSubmitWithin(element) {
@@ -237,7 +238,7 @@ var CanvasForms = (function ($) {
           $draft_field.val($submit_btn.hasClass('mark-as-draft'));
         }
 
-        $form.trigger('form-before-submit');
+        return true;
       });
 
       $form.ajaxForm(paramsForAjaxSubmit($form, selector));
@@ -249,6 +250,7 @@ var CanvasForms = (function ($) {
       beforeSubmit: function(arr, $form, options){
         $form.data("submit-btn").html('<i class="ui active inline inverted xs loader"></i> Sending');
         $form.data("submit-btns").attr('disabled', 'disabled');
+        $form.trigger('form-before-submit');
       },
 
       success: function(e, response, statusText, xhr, element) {
