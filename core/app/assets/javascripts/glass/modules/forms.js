@@ -275,10 +275,7 @@ var CanvasForms = (function ($) {
         //  return;
         //}
 
-        xhr.done(function (data) {
-          handleXHRDone(xhr, $form, data, selector);
-          return;
-        });
+        handleXHRDone(xhr, $form, xhr.responseText, selector);
       }
     };
   }
