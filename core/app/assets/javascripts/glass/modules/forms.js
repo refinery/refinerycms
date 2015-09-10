@@ -8,7 +8,6 @@ var CanvasForms = (function ($) {
 
   $(document).on('content-ready', function (e, element) {
     // initialize verify (form validation library)
-
     initVerify(element);
 
     initFormSelectsWithin(element);
@@ -231,8 +230,7 @@ var CanvasForms = (function ($) {
       $submit_btns.click(function (e) {
         var $submit_btn = $(this);
         $form.data("submit-btn", $submit_btn);
-        $submit_btn.html('<i class="ui active inline inverted xs loader"></i> Sending');
-        $submit_btns.attr('disabled', 'disabled');
+
         var $draft_field = $form.find('.draft-field');
         if ($draft_field.length > 0) {
           $draft_field.val($submit_btn.hasClass('mark-as-draft'));
@@ -245,11 +243,15 @@ var CanvasForms = (function ($) {
     });
   }
 
+  function disableSubmit($form) {
+    $form.data("submit-btn").html('<i class="ui active inline inverted xs loader"></i> Sending');
+    $form.data("submit-btns").attr('disabled', 'disabled');
+  }
+
   function paramsForAjaxSubmit($form, selector) {
     return {
       beforeSubmit: function(arr, $form, options){
-        $form.data("submit-btn").html('<i class="ui active inline inverted xs loader"></i> Sending');
-        $form.data("submit-btns").attr('disabled', 'disabled');
+        disableSubmit($form);
         $form.trigger('form-before-submit');
       },
 
@@ -559,6 +561,7 @@ var CanvasForms = (function ($) {
     initFormSubmitWithin: initFormSubmitWithin,
     initVerify: initVerify,
     paramsForAjaxSubmit: paramsForAjaxSubmit,
-    initAjaxForm: initAjaxForm
+    initAjaxForm: initAjaxForm,
+    disableSubmit: disableSubmit
   };
 })(jQuery);
