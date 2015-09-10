@@ -110,6 +110,8 @@ html
         </section>
       <% elsif content_for?(:admin_content) %>
         <%= yield :admin_content %>
+        <!-- Hidden image upload form -->
+        <%= render 'refinery/admin/images/form' %>
       <% else %>
         <div class="admin-page container-fluid">
           <div class="row">
