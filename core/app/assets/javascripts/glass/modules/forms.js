@@ -243,6 +243,11 @@ var CanvasForms = (function ($) {
     });
   }
 
+  function resetSubmit($form) {
+    $form.data("submit-btn").html($form.data("submit-btn").data('orig-btn-txt'));
+    $form.data("submit-btns").removeAttr('disabled');
+  }
+
   function disableSubmit($form) {
     $form.data("submit-btn").html('<i class="ui active inline inverted xs loader"></i> Sending');
     $form.data("submit-btns").attr('disabled', 'disabled');
@@ -334,8 +339,7 @@ var CanvasForms = (function ($) {
         $error_response.prependTo($form);
       }
       showAndGoToErrors($form);
-      $submit_btn.html($submit_btn.data('orig-btn-txt'));
-      $submit_btns.removeAttr('disabled');
+      resetSubmit($form);
       return; // if there was an error return early so that page doesn't get redirected.
     }
 
@@ -559,6 +563,7 @@ var CanvasForms = (function ($) {
     initVerify: initVerify,
     paramsForAjaxSubmit: paramsForAjaxSubmit,
     initAjaxForm: initAjaxForm,
-    disableSubmit: disableSubmit
+    disableSubmit: disableSubmit,
+    resetSubmit: resetSubmit
   };
 })(jQuery);
