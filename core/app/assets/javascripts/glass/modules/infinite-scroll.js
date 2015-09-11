@@ -31,7 +31,10 @@ var GlassInfiniteScroll = (function ($) {
 
       $.get(url, function(data) {
         $spinner.children().hide(); // don't hide the container so we can still get the offset()
-        var $new_container = $('<div></div>').append($(data).find(container_selector).contents());
+
+        var $new_items = $(data).find(container_selector);
+        $new_items = $new_items.length > 0 ? $new_items.contents() : $new_items = $(data);
+        var $new_container = $('<div></div>').append($new_items);
 
         $container.append($new_container);
         $(document).trigger('content-ready', $new_container); // only on the new items
