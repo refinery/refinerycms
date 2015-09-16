@@ -306,7 +306,7 @@ var CanvasForms = (function ($) {
     var $replace_form    = replace_selector ? $(data).find(replace_selector) : $(data).find(selector);
     // if response is a page, use inner content
     var $page_body       = $(data).find('#body_content, .glass-edit-html');
-    var $error_response  = ($(data).attr('id') === 'errorExplanation') ? $(data) : $(data).find('#errorExplanation');
+    var $error_response  = ($(data).attr('id') === 'errorExplanation') ? $(data) : $form.find('#errorExplanation');
     var $modal           = $(selector).parents('.modal');
     var $replacement     = null;
     var callback = $form.data('on-complete-callback');
@@ -447,7 +447,6 @@ var CanvasForms = (function ($) {
   }
 
   function replaceContent($orig, $replacement) {
-
     $(document).trigger('content-ready', $replacement.parent()[0]);
     $orig.fadeOut(function () {
       $(this).replaceWith($replacement);
@@ -477,7 +476,8 @@ var CanvasForms = (function ($) {
     });
     errorContainer.push("</ul></div>");
 
-    form.find('#errorExplanation').replaceWith(errorContainer);
+    var errorString = errorContainer.join("");
+    form.find('#errorExplanation').replaceWith(errorString);
 
     showAndGoToErrors(form);
   }
