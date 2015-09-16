@@ -142,6 +142,7 @@ var CanvasForms = (function ($) {
 
         if($errorInputs.length > 0){
           scrollToVerifyErrors($form, $errorInputs);
+          return false;
         }
         $form.trigger('validation-success');
         return true;
