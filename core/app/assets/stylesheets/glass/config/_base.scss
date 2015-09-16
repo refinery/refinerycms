@@ -629,6 +629,12 @@ p::-moz-selection {
   .divider {
     margin: 5px 0;
   }
+
+  &.scroll-menu {
+    height: auto;
+    max-height: 450px;
+    overflow-x: hidden;
+  }
 }
 
 .load-more {
