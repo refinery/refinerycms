@@ -141,25 +141,7 @@ var CanvasForms = (function ($) {
         var $errorInputs = $form.find('.validation.active');
 
         if($errorInputs.length > 0){
-          var $firstError = $errorInputs.first();
-
-          // after a short delay, scroll to the input with the error.
-          if (COUNT < 1) {
-            COUNT++;
-
-            $(document).trigger('allow-page-unload', {
-              src: 'validation fail',
-              selector: 'button[type=submit]',
-              value: true
-            });
-            setTimeout(function () {
-              $('html, body').animate({
-                scrollTop: parseInt($firstError.offset().top) - 73
-              }, 500);
-              COUNT = 0;
-            }, 100);
-          }
-          return false;
+          scrollToVerifyErrors($form, $errorInputs);
         }
         $form.trigger('validation-success');
         return true;
@@ -184,6 +166,31 @@ var CanvasForms = (function ($) {
         }
       }
     });
+  }
+
+  function scrollToVerifyErrors($form, $errorInputs)
+  {
+    var COUNT = 0;
+    if($errorInputs.length > 0){
+      var $firstError = $errorInputs.first();
+
+          // after a short delay, scroll to the input with the error.
+          if (COUNT < 1) {
+            COUNT++;
+
+            $(document).trigger('allow-page-unload', {
+              src: 'validation fail',
+              selector: 'button[type=submit]',
+              value: true
+            });
+            setTimeout(function () {
+              $('html, body').animate({
+                scrollTop: parseInt($firstError.offset().top) - 73
+              }, 500);
+              COUNT = 0;
+            }, 100);
+          }
+        }
   }
 
   function initFormOptionalFieldsWithin(element) {
@@ -564,6 +571,7 @@ var CanvasForms = (function ($) {
     paramsForAjaxSubmit: paramsForAjaxSubmit,
     initAjaxForm: initAjaxForm,
     disableSubmit: disableSubmit,
-    resetSubmit: resetSubmit
+    resetSubmit: resetSubmit,
+    scrollToVerifyErrors: scrollToVerifyErrors
   };
 })(jQuery);
