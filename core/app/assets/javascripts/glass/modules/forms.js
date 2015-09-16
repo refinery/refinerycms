@@ -174,23 +174,23 @@ var CanvasForms = (function ($) {
     if($errorInputs.length > 0){
       var $firstError = $errorInputs.first();
 
-          // after a short delay, scroll to the input with the error.
-          if (COUNT < 1) {
-            COUNT++;
+      // after a short delay, scroll to the input with the error.
+      if (COUNT < 1) {
+        COUNT++;
 
-            $(document).trigger('allow-page-unload', {
-              src: 'validation fail',
-              selector: 'button[type=submit]',
-              value: true
-            });
-            setTimeout(function () {
-              $('html, body').animate({
-                scrollTop: parseInt($firstError.offset().top) - 73
-              }, 500);
-              COUNT = 0;
-            }, 100);
-          }
-        }
+        $(document).trigger('allow-page-unload', {
+          src: 'validation fail',
+          selector: 'button[type=submit]',
+          value: true
+        });
+        setTimeout(function () {
+          $('html, body').animate({
+            scrollTop: parseInt($firstError.offset().top) - 73
+          }, 500);
+          COUNT = 0;
+        }, 100);
+      }
+    }
   }
 
   function initFormOptionalFieldsWithin(element) {
