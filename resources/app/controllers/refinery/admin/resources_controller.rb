@@ -2,7 +2,10 @@ module Refinery
   module Admin
     class ResourcesController < ::Refinery::AdminController
 
-      crudify :'refinery/resource', order: "updated_at DESC"
+      crudify :'refinery/resource',
+              include: [:translations],
+              order: "updated_at DESC",
+              sortable: false
 
       before_action :init_dialog
 
