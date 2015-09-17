@@ -1,6 +1,6 @@
 <div class="errorExplanation error_icon red" id="errorExplanation">
   <% if object.errors.any? %>
-    <p><%= t('.problems_in_following_fields') %>:</p>
+    <p id="errorExplanationContent"><%= t('.problems_in_following_fields') %>:</p>
     <ul>
     <% if defined?(include_object_name) and include_object_name %>
       <% object.errors.full_messages.each do |value| %>

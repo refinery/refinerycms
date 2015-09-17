@@ -308,7 +308,7 @@ var CanvasForms = (function ($) {
     var $replace_form    = replace_selector ? $(data).find(replace_selector) : $(data).find(selector);
     // if response is a page, use inner content
     var $page_body       = $(data).find('#body_content, .glass-edit-html');
-    var $error_response  = ($(data).attr('id') === 'errorExplanation') ? $(data) : $form.find('#errorExplanation');
+    var $error_response  = ($(data).attr('id') === 'errorExplanationContent') ? $(data) : $form.find('#errorExplanationContent');
     var $modal           = $(selector).parents('.modal');
     var $replacement     = null;
     var callback = $form.data('on-complete-callback');
