@@ -244,6 +244,8 @@ var CanvasForms = (function ($) {
           $draft_field.val($submit_btn.hasClass('mark-as-draft'));
         }
 
+        //Might be tempting to put this in paramsForAjaxSubmit...but DON'T (timing issue)
+        $form.trigger('form-before-submit');
         return true;
       });
 
@@ -265,7 +267,6 @@ var CanvasForms = (function ($) {
     return {
       beforeSubmit: function(arr, $form, options){
         disableSubmit($form);
-        $form.trigger('form-before-submit');
       },
 
       success: function(e, response, statusText, xhr, element) {
