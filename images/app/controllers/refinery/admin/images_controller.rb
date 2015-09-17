@@ -2,7 +2,10 @@ module Refinery
   module Admin
     class ImagesController < ::Refinery::AdminController
 
-      crudify :'refinery/image', order: "created_at DESC", sortable: false
+      crudify :'refinery/image',
+              include: [:translations],
+              order: "updated_at DESC",
+              sortable: false
 
       before_action :change_list_mode_if_specified, :init_dialog
 
