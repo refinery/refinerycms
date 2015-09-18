@@ -249,7 +249,35 @@ var CanvasForms = (function ($) {
         return true;
       });
 
-      $form.ajaxForm(paramsForAjaxSubmit($form, selector));
+      $form.ajaxForm({
+        dataType: 'json',
+        beforeSubmit: function(arr, $form, options){
+          disableSubmit($form);
+        },
+
+        success: function(e, response, statusText, xhr, element) {
+          $form.trigger('form-submit-success', [e, response, statusText, xhr, element]);
+        },
+
+        complete: function (xhr, status) {
+          if ($form.hasClass('mailchimp')) {
+            $form.find('input[type="email"]').val('Thank you!');
+            return;
+          }
+
+          var $previousError = $form.find('#errorExplanation');
+          if($previousError.length > 0){
+            $previousError.remove();
+          }
+
+        //if (status !== 'success') {
+        //  - older errors come back with a 200 response, we we hadle all in 'done' for now
+        //  return;
+        //}
+
+        handleXHRDone(xhr, $form, xhr.responseText, selector);
+        }
+      });
     });
   }
 
@@ -264,34 +292,7 @@ var CanvasForms = (function ($) {
   }
 
   function paramsForAjaxSubmit($form, selector) {
-    return {
-      beforeSubmit: function(arr, $form, options){
-        disableSubmit($form);
-      },
-
-      success: function(e, response, statusText, xhr, element) {
-        $form.trigger('form-submit-success', [e, response, statusText, xhr, element]);
-      },
-
-      complete: function (xhr, status) {
-        if ($form.hasClass('mailchimp')) {
-          $form.find('input[type="email"]').val('Thank you!');
-          return;
-        }
-
-        var $previousError = $form.find('#errorExplanation');
-        if($previousError.length > 0){
-          $previousError.remove();
-        }
-
-        //if (status !== 'success') {
-        //  - older errors come back with a 200 response, we we hadle all in 'done' for now
-        //  return;
-        //}
-
-        handleXHRDone(xhr, $form, xhr.responseText, selector);
-      }
-    };
+    return ;
   }
 
   /**
@@ -304,8 +305,20 @@ var CanvasForms = (function ($) {
    */
   function handleXHRDone(xhr, $form, data, selector){
     var replace_selector = $form.data('ajax-replace-selector');
+
+    //do this here in case we get Stripe card errors (declined, etc.)
+    var jsonResponse = xhr.responseJSON;
+    if(jsonResponse) {
+      var message = jsonResponse.message === undefined ? 'Unknown Error' : jsonResponse.message;
+      message = jsonResponse.errors === undefined ? message : jsonResponse.errors;
+
+      insertErrors($form, message, null);
+      return;
+    }
+
     // if the same form that was submitted is in response, replace it
     var $replace_form    = replace_selector ? $(data).find(replace_selector) : $(data).find(selector);
+
     // if response is a page, use inner content
     var $page_body       = $(data).find('#body_content, .glass-edit-html');
     var $error_response  = ($(data).attr('id') === 'errorExplanationContent') ? $(data) : $form.find('#errorExplanationContent');
@@ -313,7 +326,7 @@ var CanvasForms = (function ($) {
     var $replacement     = null;
     var callback = $form.data('on-complete-callback');
     var redirect_on_success = true;
-    var jsonResponse = xhr.responseJSON;
+
     var $submit_btn = $form.data("submit-btn");
     var $submit_btns = $form.data("submit-btns");
 
@@ -413,7 +426,6 @@ var CanvasForms = (function ($) {
         url: $confirmBtn.attr('data-url'),
         type: 'DELETE',
         success: function(result) {
-
         }
       }).always(function(){
         $(document).trigger('allow-page-unload', {
