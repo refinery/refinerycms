@@ -455,6 +455,11 @@ body {
           color: $primary-dark;
         }
       }
+      .sidebar-date .datepicker-opener {
+        width: 100%;
+        text-align: left;
+        color: $grey-6;
+      }
       .settings-collapse {
         .dropdown-wrapper {
           margin-bottom: 10px;
