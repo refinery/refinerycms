@@ -342,17 +342,7 @@ var CanvasForms = (function ($) {
     }
 
     if ($error_response.length > 0) {
-      var $cur_error = $(selector + ' #errorExplanationContent');
-
-      var $formActions = $(selector + ' .form-actions').length > 0 ? $(selector + ' .form-actions') : $(selector + ' .actions');
-
-      if ($cur_error.length > 0) {
-        replaceContent($cur_error, $error_response);
-      }
-      else {
-        $error_response.prependTo($form);
-      }
-      showAndGoToErrors($form);
+      insertErrors($form, $error_response, null);
       resetSubmit($form);
       return; // if there was an error return early so that page doesn't get redirected.
     }
