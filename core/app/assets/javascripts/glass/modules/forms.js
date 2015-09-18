@@ -337,11 +337,12 @@ var CanvasForms = (function ($) {
     }
 
     if ($error_response.length > 0 && $error_response.hasClass('active')) {
-      var error = $('<div>').append($($error_response.find('li').contents()).clone()).html();
-      insertErrors($form, error, null);
+      insertErrorBlock($form, $error_response);
       resetSubmit($form);
       return; // if there was an error return early so that page doesn't get redirected.
     }
+
+    $form.find('.errorExplanation').addClass('hidden');
 
     if ($replace_form.length > 0) {
       $replacement = $replace_form;
@@ -451,7 +452,6 @@ var CanvasForms = (function ($) {
     $('.error').removeClass('error');
   }
 
-
   function insertErrors(form, errorMessages, imageForm) {
     if (imageForm !== null) {
       insertMessage('image', errorMessages);
@@ -459,6 +459,7 @@ var CanvasForms = (function ($) {
     }
 
     var errorContainer = [
+      '<div>',
       '<p>There were problems with the following:</p>'
     ];
     errorContainer.push("<ul class='payment-errors list-unstyled'>");
@@ -471,12 +472,9 @@ var CanvasForms = (function ($) {
     else {
       errorContainer.push("<li>" + errorMessages + "</li>");
     }
-    errorContainer.push("</ul>");
+    errorContainer.push("</ul></div>");
 
-    var $error_explanation = form.find('#errorExplanation');
-    $error_explanation.html(errorContainer.join(""));
-    $error_explanation.addClass('active');
-    showAndGoToErrors(form);
+    insertErrorBlock(form, $(errorContainer.join('')));
   }
 
   function insertMessage(attribute, errorMessages) {
@@ -496,13 +494,17 @@ var CanvasForms = (function ($) {
     }
   }
 
-  function showAndGoToErrors($form) {
+  function insertErrorBlock($form, $error_block) {
+    var $error_explanation = $form.find('#errorExplanation');
+    $error_explanation.empty().append($error_block.contents());
+    $error_explanation.addClass('active');
+
     var $submit_btn = $form.data("submit-btn");
     $submit_btn.html($submit_btn.data('orig-btn-txt')); // reset the text on the submit button
     $form.find('.errorExplanation').removeClass('hidden');
 
     $('html, body').animate({
-      scrollTop: $('.errorExplanation').offset().top - 73
+      scrollTop: $('.errorExplanation.active').offset().top - 73
     }, 500);
 
     $form.find('button').prop('disabled', false);
@@ -561,7 +563,6 @@ var CanvasForms = (function ($) {
     insertErrors: insertErrors,
     resetState: resetState,
     resetForm: resetForm,
-    showAndGoToErrors: showAndGoToErrors,
     liveValidateRequiredFields: liveValidateRequiredFields,
     initFormSubmitWithin: initFormSubmitWithin,
     initVerify: initVerify,
