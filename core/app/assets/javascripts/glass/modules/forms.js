@@ -265,12 +265,12 @@ var CanvasForms = (function ($) {
             return;
           }
 
-        //if (status !== 'success') {
-        //  - older errors come back with a 200 response, we we hadle all in 'done' for now
-        //  return;
-        //}
+          //if (status !== 'success') {
+          //  - older errors come back with a 200 response, we we hadle all in 'done' for now
+          //  return;
+          //}
 
-        handleXHRDone(xhr, $form, xhr.responseText, selector);
+          handleXHRDone(xhr, $form, xhr.responseText, selector);
         }
       });
     });
