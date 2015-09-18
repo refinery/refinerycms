@@ -316,7 +316,7 @@ var CanvasForms = (function ($) {
 
     // if response is a page, use inner content
     var $page_body       = $(data).find('#body_content, .glass-edit-html');
-    var $error_response  = ($(data).attr('id') === 'errorExplanation') ? $(data) : $(data).find('#errorExplanation');
+    var $error_response  = ($(data).attr('id') === 'errorExplanation') ? $(data) : $replace_form.find('#errorExplanation');
     var $modal           = $(selector).parents('.modal');
     var $replacement     = null;
     var callback = $form.data('on-complete-callback');
@@ -337,7 +337,8 @@ var CanvasForms = (function ($) {
     }
 
     if ($error_response.length > 0 && $error_response.hasClass('active')) {
-      insertErrors($form, $error_response, null);
+      var error = $('<div>').append($($error_response.find('li').contents()).clone()).html();
+      insertErrors($form, error, null);
       resetSubmit($form);
       return; // if there was an error return early so that page doesn't get redirected.
     }
