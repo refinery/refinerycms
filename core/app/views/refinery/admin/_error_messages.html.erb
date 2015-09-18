@@ -1,7 +1,7 @@
 <div class="errorExplanation error_icon red <%= 'active' if object.errors.any? %>" id="errorExplanation">
   <% if object.errors.any? %>
     <p><%= t('.problems_in_following_fields') %>:</p>
-    <ul>
+    <ul class='payment-errors list-unstyled'>
     <% if defined?(include_object_name) and include_object_name %>
       <% object.errors.full_messages.each do |value| %>
         <li><%= value %></li>
