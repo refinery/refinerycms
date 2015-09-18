@@ -490,8 +490,6 @@ var CanvasForms = (function ($) {
 
     if($error instanceof jQuery) {
          errorContainer.push($('<div>').append($($error.contents()).clone()).html());
-         console.log("FIXME: errCont = " + errorContainer);
-
     }
     else {
       errorContainer.push("<div>");
