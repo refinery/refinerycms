@@ -336,7 +336,7 @@ var CanvasForms = (function ($) {
       }
     }
 
-    if ($error_response.length > 0) {
+    if ($error_response.length > 0 && $error_response.hasClass('active')) {
       insertErrors($form, $error_response, null);
       resetSubmit($form);
       return; // if there was an error return early so that page doesn't get redirected.
