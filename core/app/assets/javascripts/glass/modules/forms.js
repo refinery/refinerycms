@@ -341,16 +341,8 @@ var CanvasForms = (function ($) {
       }
     }
 
-    if(jsonResponse) {
-       var message = jsonResponse.message === undefined ? 'Unknown Error' : jsonResponse.message;
-       message = jsonResponse.errors === undefined ? message : jsonResponse.errors;
-
-      $(selector).prepend(['<div id="errorExplanation" class="errorExplanation text-center red">',message,'</div>'].join(''));
-      return;
-    }
-
     if ($error_response.length > 0) {
-      var $cur_error = $(selector + ' #errorExplanation');
+      var $cur_error = $(selector + ' #errorExplanationContent');
 
       var $formActions = $(selector + ' .form-actions').length > 0 ? $(selector + ' .form-actions') : $(selector + ' .actions');
 
@@ -482,17 +474,23 @@ var CanvasForms = (function ($) {
 
     var errorContainer = [
       '<div class="errorExplanation" id="errorExplanation">',
-      '<p class="red">There were problems with the following:</p>'];
-
+      '<p id="errorExplanationContent" class="red">There were problems with the following:</p>'
+    ];
     errorContainer.push("<ul class='payment-errors list-unstyled'>");
-    $(errorMessages).each(function (index, message) {
-      errorContainer.push("<li class='red'>" + message + "</li>");
-    });
+
+    if(Array.isArray(errorMessages)) {
+      $(errorMessages).each(function (index, message) {
+        errorContainer.push("<li class='red'>" + message + "</li>");
+      });
+    }
+    else {
+      errorContainer.push("<li class='red'>" + errorMessages + "</li>");
+    }
     errorContainer.push("</ul></div>");
 
     var errorString = errorContainer.join("");
-    form.find('#errorExplanation').replaceWith(errorString);
 
+    form.find('#errorExplanationWrapper').html(errorString);
     showAndGoToErrors(form);
   }
 
