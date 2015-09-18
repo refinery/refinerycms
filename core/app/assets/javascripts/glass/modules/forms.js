@@ -458,23 +458,14 @@ var CanvasForms = (function ($) {
       return 0;
     }
 
-    var errorContainer = [
-      '<div>',
-      '<p>There were problems with the following:</p>'
-    ];
-    errorContainer.push("<ul class='payment-errors list-unstyled'>");
+    var errorContainer = prepareErrorContainer(errorMessages);
 
-    if(Array.isArray(errorMessages)) {
-      $(errorMessages).each(function (index, message) {
-        errorContainer.push("<li>" + message + "</li>");
-      });
-    }
-    else {
-      errorContainer.push("<li>" + errorMessages + "</li>");
-    }
-    errorContainer.push("</ul></div>");
+    var $error_explanation = form.find('#errorExplanation');
+    $error_explanation.empty().append(errorContainer);
+    $error_explanation.addClass('active');
 
-    insertErrorBlock(form, $(errorContainer.join('')));
+    resetSubmit(form);
+    scrollToVerifyErrors(form, $error_explanation);
   }
 
   function insertMessage(attribute, errorMessages) {
@@ -492,6 +483,25 @@ var CanvasForms = (function ($) {
         inputSelector.after(errorMessage);
       }
     }
+  }
+
+  function prepareErrorContainer($error) {
+    var errorContainer = [
+      '<div>',
+      '<p>There were problems with the following:</p>'
+    ];
+    errorContainer.push("<ul class='payment-errors list-unstyled'>");
+
+    if(Array.isArray($error)) {
+      $($error).each(function (index, message) {
+        errorContainer.push("<li>" + message + "</li>");
+      });
+    }
+    else {
+      errorContainer.push("<li>" + $error + "</li>");
+    }
+    errorContainer.push("</ul></div>");
+    return errorContainer;
   }
 
   function insertErrorBlock($form, $error_block) {
