@@ -265,11 +265,6 @@ var CanvasForms = (function ($) {
             return;
           }
 
-          var $previousError = $form.find('#errorExplanation');
-          if($previousError.length > 0){
-            $previousError.remove();
-          }
-
         //if (status !== 'success') {
         //  - older errors come back with a 200 response, we we hadle all in 'done' for now
         //  return;
@@ -321,7 +316,7 @@ var CanvasForms = (function ($) {
 
     // if response is a page, use inner content
     var $page_body       = $(data).find('#body_content, .glass-edit-html');
-    var $error_response  = ($(data).attr('id') === 'errorExplanationContent') ? $(data) : $(data).find('#errorExplanationContent');
+    var $error_response  = ($(data).attr('id') === 'errorExplanation') ? $(data) : $(data).find('#errorExplanation');
     var $modal           = $(selector).parents('.modal');
     var $replacement     = null;
     var callback = $form.data('on-complete-callback');
@@ -463,24 +458,23 @@ var CanvasForms = (function ($) {
     }
 
     var errorContainer = [
-      '<div class="errorExplanation" id="errorExplanation">',
-      '<p id="errorExplanationContent" class="red">There were problems with the following:</p>'
+      '<p>There were problems with the following:</p>'
     ];
     errorContainer.push("<ul class='payment-errors list-unstyled'>");
 
     if(Array.isArray(errorMessages)) {
       $(errorMessages).each(function (index, message) {
-        errorContainer.push("<li class='red'>" + message + "</li>");
+        errorContainer.push("<li>" + message + "</li>");
       });
     }
     else {
-      errorContainer.push("<li class='red'>" + errorMessages + "</li>");
+      errorContainer.push("<li>" + errorMessages + "</li>");
     }
-    errorContainer.push("</ul></div>");
+    errorContainer.push("</ul>");
 
-    var errorString = errorContainer.join("");
-
-    form.find('#errorExplanationWrapper').html(errorString);
+    var $error_explanation = form.find('#errorExplanation');
+    $error_explanation.html(errorContainer.join(""));
+    $error_explanation.addClass('active');
     showAndGoToErrors(form);
   }
 
