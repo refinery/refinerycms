@@ -337,8 +337,7 @@ var CanvasForms = (function ($) {
     }
 
     if ($error_response.length > 0 && $error_response.hasClass('active')) {
-      insertErrorBlock($form, $error_response);
-      resetSubmit($form);
+      insertErrors($form, $error_response, null);
       return; // if there was an error return early so that page doesn't get redirected.
     }
 
@@ -497,27 +496,14 @@ var CanvasForms = (function ($) {
         errorContainer.push("<li>" + message + "</li>");
       });
     }
+    else if($error instanceof jQuery) {
+      errorContainer.push($error.find('ul').contents());
+    }
     else {
       errorContainer.push("<li>" + $error + "</li>");
     }
     errorContainer.push("</ul></div>");
     return errorContainer;
-  }
-
-  function insertErrorBlock($form, $error_block) {
-    var $error_explanation = $form.find('#errorExplanation');
-    $error_explanation.empty().append($error_block.contents());
-    $error_explanation.addClass('active');
-
-    var $submit_btn = $form.data("submit-btn");
-    $submit_btn.html($submit_btn.data('orig-btn-txt')); // reset the text on the submit button
-    $form.find('.errorExplanation').removeClass('hidden');
-
-    $('html, body').animate({
-      scrollTop: $('.errorExplanation.active').offset().top - 73
-    }, 500);
-
-    $form.find('button').prop('disabled', false);
   }
 
   function openDeleteConfirmModal($btn){
