@@ -497,13 +497,14 @@ var CanvasForms = (function ($) {
       });
     }
     else if($error instanceof jQuery) {
-      errorContainer.push($error.find('ul').contents());
+      errorContainer.push($('<div>').append($($error.find('ul').contents()).clone()).html());
     }
     else {
       errorContainer.push("<li>" + $error + "</li>");
     }
     errorContainer.push("</ul></div>");
-    return errorContainer;
+
+    return errorContainer.join("");
   }
 
   function openDeleteConfirmModal($btn){
