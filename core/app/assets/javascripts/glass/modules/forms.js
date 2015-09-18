@@ -485,27 +485,34 @@ var CanvasForms = (function ($) {
   }
 
   function prepareErrorContainer($error) {
-    var errorContainer = [
-      '<div>',
-      '<p>There were problems with the following:</p>'
-    ];
-    errorContainer.push("<ul class='payment-errors list-unstyled'>");
 
-    if(Array.isArray($error)) {
-      $($error).each(function (index, message) {
-        errorContainer.push("<li>" + message + "</li>");
-      });
-    }
-    else if($error instanceof jQuery) {
-      errorContainer.push($('<div>').append($($error.find('ul').contents()).clone()).html());
+    var errorContainer = [];
+
+    if($error instanceof jQuery) {
+         errorContainer.push($('<div>').append($($error.contents()).clone()).html());
+         console.log("FIXME: errCont = " + errorContainer);
+
     }
     else {
-      errorContainer.push("<li>" + $error + "</li>");
-    }
-    errorContainer.push("</ul></div>");
+      errorContainer.push("<div>");
+      errorContainer.push("<p>There were problems with the following:</p>");
+      errorContainer.push("<ul class='payment-errors list-unstyled'>");
 
+      if(Array.isArray($error)) {
+        $($error).each(function (index, message) {
+          errorContainer.push("<li>" + message + "</li>");
+        });
+      }
+      else if($error instanceof jQuery) {
+        errorContainer.push($('<div>').append($($error.contents()).clone()).html());
+      }
+      else {
+        errorContainer.push("<li>" + $error + "</li>");
+      }
+      errorContainer.push("</ul></div>");
+    }
     return errorContainer.join("");
-  }
+}
 
   function openDeleteConfirmModal($btn){
 
