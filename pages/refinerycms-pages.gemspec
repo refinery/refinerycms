@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version           = version
   s.summary           = %q{Pages extension for Refinery CMS}
   s.description       = %q{The default content extension of Refinery CMS. This extension handles the administration and display of user-editable pages.}
-  s.email             = %q{info@refinerycms.com}
+  s.email             = %q{refinerycms@p.arndt.io}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']

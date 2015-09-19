@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{refinerycms}
   s.version           = version
-  s.description       = %q{A Ruby on Rails CMS that supports Rails 4.2. It's easy to extend and sticks to 'the Rails way' where possible.}
+  s.description       = %q{A Ruby on Rails CMS that supports Rails 4.2. It's developer friendly and easy to extend.}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 4.2}
-  s.email             = %q{info@refinerycms.com}
+  s.email             = %q{refinerycms@p.arndt.io}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
