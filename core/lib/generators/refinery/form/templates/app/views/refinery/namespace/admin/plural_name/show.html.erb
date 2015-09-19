@@ -1,6 +1,6 @@
 <div id='records'>
   <h2><%%= t('.<%= singular_name %>') %></h2>
-  <table id='<%= singular_name %>' class='inquiry'>
+  <table id='<%= singular_name %>' class='<%= singular_name %>'>
 <% attributes.each do |attribute| -%>
       <tr>
         <td<%= " valign='top'" if attribute.type.to_s == 'text' %>>
@@ -28,7 +28,7 @@
   <h2><%%= t('.details')%></h2>
   <p>
     <strong><%%= t('.age') %>:</strong> <%%= time_ago_in_words(@<%= singular_name %>.created_at) %>
-  </p><% if @includes_spam %>
+  </p><% if include_spam? %>
   <%% if @<%= singular_name %>.spam? %>
     <p>
       <strong><%%= t('.spam') %>:</strong> <%%= t('.spam_yes') %>
@@ -37,14 +37,14 @@
   <h2><%%= t('.actions') %></h2>
   <ul>
     <li>
-      <%%= link_to t('.back_to_all_<%= plural_name %>'), refinery.url_for(:action => 'index'),
+    <%%= link_to t('.back_to_all_<%= plural_name %>'), refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path,
                    :class => "back_icon" %>
     </li>
     <li>
-      <%%= link_to t('delete', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>'),
+      <%%= link_to t('delete_<%= singular_name %>', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.<%= singular_name %>'),
                   refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(@<%= singular_name %>),
                   :class => 'delete_icon no-tooltip confirm-delete',
-                  :title => t('delete', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>'),
+                  :title => t('delete_<%= singular_name %>', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.<%= singular_name %>'),
                   :'data-confirm' => t('message', :scope => 'refinery.admin.delete', :title => @<%= singular_name %>.name),
                   :'data-method' => "delete" %>
     </li>

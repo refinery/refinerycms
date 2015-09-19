@@ -1,11 +1,17 @@
+<% if include_spam? %>
+require 'filters_spam'
+<% end %>
 module Refinery
   module <%= class_name.pluralize %>
     class <%= class_name %> < Refinery::Core::BaseModel
 <% if table_name == namespacing.underscore.pluralize -%>
       self.table_name = 'refinery_<%= plural_name %>'
 <% end -%>
-<% if (text_fields = attributes.map { |a| a.name if a.refinery_type == :text }.compact.uniq).any? && text_fields.detect{ |a| a.to_s == 'message' }.nil? -%>
+<% if include_spam? %>
+      filters_spam author_field: :name
+<% end %>
 
+<% if (text_fields = attributes.map { |a| a.name if a.refinery_type == :text }.compact.uniq).any? && text_fields.detect{ |a| a.to_s == 'message' }.nil? -%>
       alias_attribute :message, :<%= text_fields.first %>
 <% elsif text_fields.empty? -%>
 

@@ -11,9 +11,9 @@ en:
           privacy_policy: We value your privacy
       admin:
         <%= plural_name %>:
-          delete: Remove this <%= singular_name.humanize.downcase %> forever
           <%= singular_name %>:
             read_<%= singular_name %>: Read the <%= singular_name.humanize.downcase %>
+            delete_<%= singular_name %>: Remove this <%= singular_name.humanize.downcase %> forever
             said: said
             mark_as_spam: Mark as spam
             mark_as_ham: Move to inbox
@@ -42,7 +42,7 @@ en:
             message: Message
         settings:
           notification_recipients_form:
-            settings_value_name: Send notifications to
+            <%= singular_name %>_settings_value_name: Send notifications to
             explanation: Every time someone contacts you on your website, Refinery sends out an email to say there is a new <%= singular_name.humanize.downcase %>.
             hint: When a new <%= singular_name.humanize.downcase %> is submitted, Refinery will send an email notification to you.
             example: "Enter your email address(es) like: jack@work.com, jill@office.com"

@@ -7,9 +7,9 @@
     <%% end %>
     <li <%%= "class='selected'" if params[:action] == "index" %>>
       <%%= link_to t('.inbox'), refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path, :class => "email_icon" %>
-    </li><% if @includes_spam %>
+    </li><% if include_spam? %>
     <li <%%= "class='selected'" if params[:action] == "spam" %>>
-      <%% if @spam_count.any?  %>
+      <%% if @spam_count > 0 %>
         <%%= link_to "#{t('.spam')} (#{@spam_count})", refinery.spam_<%= namespacing.underscore %>_admin_<%= plural_name %>_path, :class => "spam_icon" %>
       <%% else %>
         <%%= link_to t('.spam'), refinery.spam_<%= namespacing.underscore %>_admin_<%= plural_name %>_path, :class => "spam_empty_icon" %>
@@ -22,7 +22,7 @@
     </li>
     <li>
       <%%= link_to t('.edit_confirmation_email'),
-                  refinery.edit_<%= namespacing.underscore %>_admin_setting_path(:<%= singular_name %>_confirmation_body, :dialog => true),
+                  refinery.edit_<%= namespacing.underscore %>_admin_setting_path(:<%= singular_name %>_confirmation_message, :dialog => true),
                   :class => "edit_email_icon" %>
     </li>
   </ul>

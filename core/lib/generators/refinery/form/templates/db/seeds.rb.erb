@@ -11,8 +11,9 @@ Refinery::I18n.frontend_locales.each do |lang|
   end
 
   if defined?(Refinery::Page)
-    url = "/<%= [(namespacing.underscore if namespacing.underscore != plural_name), plural_name, 'new'].compact.join('/') %>"
-    page = Refinery::Page.where(:link_url => url).first_or_create!(
+    url = "/<%= [(namespacing.underscore if namespacing.underscore != plural_name), plural_name].compact.join('/') %>"
+
+    page = Refinery::Page.where(:link_url => "#{url}/new").first_or_create!(
       :title => "<%= class_name.pluralize.underscore.titleize %>",
       :deletable => false,
       :menu_match => "^#{url}(\/|\/.+?|)$"
@@ -29,3 +30,10 @@ Refinery::I18n.frontend_locales.each do |lang|
     end
   end
 end
+
+(Refinery::<%= namespacing %>::Setting.methods.sort - Refinery::Setting.methods).each do |setting|
+
+    Refinery::<%= namespacing %>::Setting.send(setting) unless setting.to_s =~ /=$/
+
+end
+

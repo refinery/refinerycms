@@ -1,10 +1,10 @@
-<%%= form_for @setting, :url => refinery.<%= namespacing.underscore %>_admin_setting_path do |f| %>
+<%%= form_for @setting, :url => refinery.<%= namespacing.underscore %>_admin_setting_path(@setting) do |f| %>
 
   <div class='field'>
     <span class='label_with_help'>
-      <%%= f.label :value, t('.settings_value_name') %>
+      <%%= f.label :value, t('.<%= singular_name %>_settings_value_name') %>
     </span>
-    <%%= f.text_field :value, :value => @setting.value, :class => "larger widest" %>
+    <%%= f.text_field :value, :value => f.object.value, :class => "larger widest" %>
   </div>
 
   <p>

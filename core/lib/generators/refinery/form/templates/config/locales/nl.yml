@@ -11,8 +11,8 @@ nl:
           privacy_policy: Wij respecteren uw privacy
       admin:
         <%= plural_name %>:
-          delete: Deze <%= singular_name.humanize.downcase %> definitief verwijderen
           <%= singular_name %>:
+            delete_<%= singular_name %>: Deze <%= singular_name.humanize.downcase %> definitief verwijderen
             read_<%= singular_name %>: Lees de <%= singular_name.humanize.downcase %>
             said: zei
             mark_as_spam: Als spam markeren
@@ -42,7 +42,7 @@ nl:
             message: Bericht
         settings:
           notification_recipients_form:
-            settings_value_name: Stuur notificaties naar
+            <%= singular_name %>_settings_value_name: Stuur notificaties naar
             explanation: "Telkens wanneer iemand het contactformulier invult op uw website, stuurt Refinery een bevestiging naar de verzender."
             hint: "Wilt u naar meerdere adressen notificaties sturen? Vul dan meerdere e-mailadressen in gescheiden door komma's"
             example: "Bijvoorbeeld: jan@werk.nl, els@kantoor.nl"

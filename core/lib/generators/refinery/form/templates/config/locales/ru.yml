@@ -13,17 +13,11 @@ ru:
       admin:
         <%= plural_name %>:
           <%= singular_name %>:
-            move_<%= singular_name %>_to_closed: "Переместить этот запрос в закрытые"
-            move_<%= singular_name %>_to_open: "Переместить этот запрос в открытые"
             read_<%= singular_name %>: "Прочитать запрос"
-            remove_<%= singular_name %>: "Вы уверены, что хотите удалить запрос от '%{name}'?"
-            title: <%= plural_name.titleize %>
+            delete_<%= singular_name %>: "Вы уверены, что хотите удалить запрос от '%{name}'?"
             said: "пишет"
             mark_as_spam: "Пометить как спам"
             mark_as_ham: "Переместить во Входящие"
-          toggle_status:
-            closed: "Запрос '%{<%= singular_name %>}' закрыт"
-            reopened: "Запрос '%{<%= singular_name %>}' открыт заново"
           submenu:
             inbox: "Входящие"
             spam: "Спам"
@@ -50,7 +44,7 @@ ru:
           update:
             updated: "'%{setting}' были успешно обновлены."
           notification_recipients_form:
-            settings_value_name: "Отправить уведомления"
+            <%= singular_name %>_settings_value_name: "Отправить уведомления"
             explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет уведомление на электронную почту."
             hint: "Когда поступит новый запрос, Refinery CMS отправит вам уведомление на электронную почту."
             example: "Введите адрес(а) электронной почты через запятую: anna@mail.ru, ivanov@yandex.ru"

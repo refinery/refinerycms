@@ -1,0 +1,166 @@
+# encoding: utf-8
+require "spec_helper"
+
+module Refinery
+  module <%= namespacing %>
+    module Admin
+      describe <%= class_name %>, type: :feature do
+        refinery_login_with :refinery_user
+<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
+       describe "<%= plural_name %> list" do
+          before do
+            FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne")
+            FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleTwo")
+          end
+
+          it "shows two items" do
+            visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
+            expect(page).to have_content("UniqueTitleOne")
+            expect(page).to have_content("UniqueTitleTwo")
+          end
+        end
+
+       describe "show" do
+         let!(:<%= singular_name %>) do
+            FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne")
+          end
+
+         it "has expected text and menu" do
+           visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
+
+           click_link "Read the <%= singular_name %>"
+
+           expect(page).to have_content("UniqueTitleOne")
+           expect(page).not_to have_content("UniqueTitleTwo")
+
+           within "#actions" do
+             expect(page).to have_content("Age")
+             expect(page).to have_content("Back to all <%= plural_name %>")
+             expect(page).to have_selector("a[href='/#{Refinery::Core.backend_route}/<%= plural_name %>']")
+             expect(page).to have_content("Remove this <%= singular_name %> forever")
+             expect(page).to have_selector("a[href='/#{Refinery::Core.backend_route}/<%= plural_name %>/#{<%= singular_name %>.id}']")
+           end
+         end
+       end
+
+       describe "when no " do
+         before { Refinery::<%= namespacing %>::<%= class_name %>.destroy_all }
+
+         context "<%= plural_name %>" do
+           it "shows expected message" do
+            visit refinery.<%= plural_name %>_admin_<%= plural_name %>_path
+
+            expect(page).to have_content("You have not received any <%= plural_name %> yet.")
+
+            end
+           end
+<% if include_spam? %>
+         context "spam <%= plural_name %>" do
+            it "shows expected message" do
+              visit refinery.spam_<%= plural_name %>_admin_<%= plural_name %>_path
+
+              expect(page).to have_content("Hooray! You don't have any spam.")
+            end
+         end
+<% end %>
+     end
+
+      describe "action links" do
+        before { visit refinery.<%= plural_name %>_admin_<%= plural_name %>_path }
+
+        specify "in the side pane" do
+          within "#actions" do
+            expect(page).to have_content("Inbox")
+            expect(page).to have_selector("a[href='/#{Refinery::Core.backend_route}/<%= plural_name %>']")
+<% if include_spam? %>
+            expect(page).to have_content("Spam")
+            expect(page).to have_selector("a[href='/#{Refinery::Core.backend_route}/<%= plural_name %>/spam']")
+<% end %>
+            expect(page).to have_content("Update who gets notified")
+            expect(page).to have_selector("a[href*='/#{Refinery::Core.backend_route}/<%= plural_name %>/settings/<%= singular_name %>_notification_recipients/edit']")
+            expect(page).to have_content("Edit confirmation email")
+            expect(page).to have_selector("a[href*='/#{Refinery::Core.backend_route}/<%= plural_name %>/settings/<%= singular_name %>_confirmation_message/edit']")
+          end
+        end
+      end
+
+<% if include_spam? %>
+        describe "mark as ham" do
+          before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
+
+          it "should succeed" do
+            visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
+
+            within ".actions" do
+              click_link ::I18n.t('mark_as_spam', :scope => "refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.<%= singular_name %>")
+            end
+
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.ham.count).to eq 0
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.spam.count).to eq 1
+
+
+            visit refinery.spam_<%= namespacing.underscore %>_admin_<%= plural_name %>_path
+
+            within ".actions" do
+              click_link ::I18n.t('mark_as_ham', :scope => "refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.<%= singular_name %>")
+            end
+
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.ham.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.spam.count).to eq 0
+        end
+        end
+
+        describe "mark as spam" do
+          before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "A <%= title.name %>") }
+
+          it "should succeed" do
+            visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
+
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.ham.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.spam.count).to eq 0
+
+            within ".actions" do
+              click_link ::I18n.t('mark_as_spam', :scope => "refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.<%= singular_name %>")
+
+            end
+
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 1
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.ham.count).to eq 0
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.spam.count).to eq 1
+          end
+        end
+<% end %>
+
+        describe "destroy" do
+          before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
+
+          it "should succeed" do
+            visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
+
+            click_link "Remove this <%= singular_name.titleize.downcase %> forever"
+
+            expect(page).to have_content("'UniqueTitleOne' was successfully removed.")
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 0
+          end
+        end
+
+          describe "destroy from <%= singular_name %> show page" do
+          before { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
+
+          it "should succeed" do
+            visit refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path( :id => '1')
+
+            click_link "Remove this <%= singular_name.titleize.downcase %> forever"
+
+            expect(page).to have_content("'UniqueTitleOne' was successfully removed.")
+            expect(Refinery::<%= namespacing %>::<%= class_name %>.count).to eq 0
+          end
+          end
+<% end %>
+      end
+    end
+  end
+end

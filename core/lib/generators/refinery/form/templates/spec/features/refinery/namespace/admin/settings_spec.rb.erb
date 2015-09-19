@@ -1,0 +1,54 @@
+# encoding: utf-8
+require "spec_helper"
+
+module Refinery
+  module <%= namespacing %>
+  describe "Settings", type: :feature do
+    refinery_login_with :refinery_user
+<% if (title = attributes.detect { |a| a.type.to_s == "string"  }).present? %>
+    describe "update who gets notified" do
+      before do
+        Rails.cache.clear
+        Refinery::<%= namespacing %>::Setting.notification_recipients
+      end
+
+      it "sets receiver", :js => true do
+        visit refinery.<%= plural_name %>_admin_<%= plural_name %>_path
+
+        click_link ::I18n.t('update_notified', scope: 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.submenu')
+
+        within_frame "dialog_iframe" do
+          fill_in ::I18n.t('<%= singular_name %>_settings_value_name', scope: 'refinery.<%= namespacing.underscore %>.admin.settings.notification_recipients_form'), :with => "phil@refinerycms.com"
+          click_button "submit_button"
+        end
+
+        expect(page).to have_content("Notification Recipients was successfully updated.")
+      end
+    end
+
+    describe "updating confirmation email copy" do
+      before do
+        Rails.cache.clear
+        Refinery::<%= namespacing %>::Setting.confirmation_message
+        Refinery::<%= namespacing %>::Setting.confirmation_subject
+      end
+
+      it "sets subject and message", :js => true do
+        visit refinery.<%= plural_name %>_admin_<%= plural_name %>_path
+
+        click_link ::I18n.t('edit_confirmation_email', scope: 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.submenu')
+
+        within_frame "dialog_iframe" do
+          fill_in ::I18n.t('subject', scope: 'refinery.<%= namespacing.underscore %>.admin.settings.confirmation_email_form'), :with => "subject"
+          fill_in ::I18n.t('message', scope: 'refinery.<%= namespacing.underscore %>.admin.settings.confirmation_email_form'), :with => "message"
+
+          click_button "submit_button"
+        end
+
+        expect(page).to have_content("Confirmation Message was successfully updated.")
+      end
+    end
+<% end %>
+  end
+  end
+end

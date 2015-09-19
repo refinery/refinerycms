@@ -5,8 +5,10 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
 <% attributes.each do |attribute| -%>
       t.<%= attribute.type %> :<%= attribute.column_name %>
 <% end -%>
-
-      t.timestamps
+<% if include_spam? %>
+       t.boolean :spam, :default => false
+     <% end %>
+     t.timestamps
     end
 
     add_index :refinery_<%= table_name %>, :id

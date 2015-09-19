@@ -14,14 +14,8 @@ sl:
         <%= plural_name %>:
           <%= singular_name %>:
             said: pravi
-            move_<%= singular_name %>_to_closed: Premakni povpraševanje v zaprto
-            move_<%= singular_name %>_to_open: Premakni povpraševanje v odprto
             read_<%= singular_name %>: Preberi povpraševanje
-            remove_<%= singular_name %>: "Ali ste prepričani da želite odstraniti povpraševanje od '%{name}'?"
-            title: <%= plural_name.titleize %>
-          toggle_status:
-            closed: "Povpraševanje '%{<%= singular_name %>}' je zaprto"
-            reopened: "Povpraševanje '%{<%= singular_name %>}' je ponovno odprto"
+            delete_<%= singular_name %>: "Ali ste prepričani da želite odstraniti povpraševanje od '%{name}'?"
           index:
             no_<%= plural_name %>: Trenutno še ni nobenega povpraševanja.
           submenu:
@@ -41,7 +35,7 @@ sl:
           update:
             updated: "'%{setting}' je bila uspešno posodobljena."
           notification_recipients_form:
-            settings_value_name: Pošlji obvestilo na
+            <%= singular_name %>_settings_value_name: Pošlji obvestilo na
             explanation: "Vedno ko vas nekdo kontaktira na vaši spletni strani, vam Refinery pošlje email obvestilo o novem povpraševanju."
             hint: "V zgornje polje vnesite email naslov. Želite da obvestila prejme več oseb? Vnesite več email naslovov ločenih z vejicami."
             example: "Primer: jaz@domena.com, prijatelj@msn.com, sodelavec@work.com"

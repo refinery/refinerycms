@@ -11,8 +11,8 @@ zh-CN:
           privacy_policy: 我们重视您的隐私
       admin:
         <%= plural_name %>:
-          delete: 永久删除 <%= singular_name.humanize.downcase %>
           <%= singular_name %>:
+            delete_<%= singular_name %>: 永久删除 <%= singular_name.humanize.downcase %>
             read_<%= singular_name %>: 阅读这个 <%= singular_name.humanize.downcase %>
             said: 说
             mark_as_spam: 标记为垃圾邮件
@@ -42,7 +42,7 @@ zh-CN:
             message: 信息
         settings:
           notification_recipients_form:
-            settings_value_name: 发通知给
+            <%= singular_name %>_settings_value_name: 发通知给
             explanation: 每当有人联系您时， Refinery都会发邮件给您.
             hint: 当有新的 <%= singular_name.humanize.downcase %> 被提交时， Refinery 会发邮件告知您。
             example: "输入您的Email地址, 形如： jack@work.com, jill@office.com"

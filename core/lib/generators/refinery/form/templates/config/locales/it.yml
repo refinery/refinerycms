@@ -13,14 +13,8 @@ it:
       admin:
         <%= plural_name %>:
           <%= singular_name %>:
-            move_<%= singular_name %>_to_closed: Spostare questa inchiesta chiusa
-            move_<%= singular_name %>_to_open: Spostare questa indagine per aprire
             read_<%= singular_name %>: Leggi l'inchiesta
-            remove_<%= singular_name %>: "Sei sicuro di voler cancellare la richiesta di '%{name}'?"
-            title: <%= plural_name.titleize %>
-          toggle_status:
-            closed: "Inchiesta '%{<%= singular_name %>}' è chiuso"
-            reopened: "Inchiesta '%{<%= singular_name %>}' si riapre"
+            delete_<%= singular_name %>: "Sei sicuro di voler cancellare la richiesta di '%{name}'?"
           index:
             no_<%= plural_name %>: Non hai ancora ricevuto alcuna richiesta in.
           show:
@@ -40,7 +34,7 @@ it:
           update:
             updated: "'%{setting}' stato aggiornato con successo."
           notification_recipients_form:
-            settings_value_name: Invia a notifiche
+            <%= singular_name %>_settings_value_name: Invia a notifiche
             explanation: "Ogni volta che qualcuno ti contatti sul suo sito web, Refinery invia una mail a dire che c'è una nuova indagine."
             hint: "Inserisci un indirizzo email di cui sopra. Vuoi la notifica di andare a più di una persona? Inserisci più indirizzi email separati da virgole."
             example: "E.g. me@domain.com, friend@msn.com, workmate@work.com"
