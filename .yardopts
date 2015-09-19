@@ -4,7 +4,6 @@
 Gemfile
 lib/**/*
 Rakefile
-authentication/**/*.rb
 core/**/*.rb
 images/**/*.rb
 pages/**/*.rb
