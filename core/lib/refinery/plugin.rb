@@ -5,10 +5,10 @@ module Refinery
                   :always_allow_access, :menu_match, :hide_from_menu,
                   :pathname
 
-    def self.register(&block)
-      yield(plugin = self.new)
+    def self.register(&_block)
+      yield(plugin = new)
 
-      raise "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.blank?
+      raise ArgumentError, "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.blank?
 
       # Set defaults.
       plugin.menu_match ||= %r{refinery/#{plugin.name}(/.+?)?$}
@@ -30,11 +30,11 @@ module Refinery
     end
 
     # Stores information that can be used to retrieve the latest activities of this plugin
-    def activity=(activities)
+    def activity=(_)
       Refinery.deprecate('Refinery::Plugin#activity=', when: '3.1')
     end
 
-    def dashboard=(dashboard)
+    def dashboard=(_)
       Refinery.deprecate('Refinery::Plugin#dashboard=', when: '3.1')
     end
 
@@ -57,16 +57,13 @@ module Refinery
       @url ||= build_url
 
       if @url.is_a?(Hash)
-        {:only_path => true}.merge(@url)
+        { only_path: true }.merge(@url)
       elsif @url.respond_to?(:call)
         @url.call
       else
         @url
       end
     end
-
-    # Make this protected, so that only Plugin.register can use it.
-    protected
 
     def initialize
       # provide a default pathname to where this plugin is using its lib directory.
@@ -77,13 +74,11 @@ module Refinery
     private
 
     def build_url
-      if controller.present?
-        { :controller => "refinery/admin/#{controller}" }
-      elsif directory.present?
-        { :controller => "refinery/admin/#{directory.split('/').pop}" }
-      else
-        { :controller => "refinery/admin/#{name}" }
-      end
+      action = controller.presence ||
+               directory.to_s.split('/').pop.presence ||
+               name
+
+      { controller: "refinery/admin/#{action}" }
     end
   end
 end

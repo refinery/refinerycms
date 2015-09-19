@@ -30,7 +30,7 @@ module Refinery
 
     describe '.register' do
       it 'must have a name' do
-        expect { Plugin.register {} }.to raise_error
+        expect { Plugin.register {} }.to raise_error(ArgumentError)
       end
     end
 

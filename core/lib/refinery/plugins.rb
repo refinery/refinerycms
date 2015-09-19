@@ -22,7 +22,8 @@ module Refinery
 
     # TODO: Review necessary?
     def in_menu
-      self.class.new(reject(&:hide_from_menu))
+      items_in_menu = reject(&:hide_from_menu)
+      self.class.new((prioritised & items_in_menu) | items_in_menu)
     end
 
     def names
@@ -65,5 +66,9 @@ module Refinery
     private
 
     attr_reader :plugins
+
+    def prioritised
+      Refinery::Core.config.plugin_priority.map { |name| find_by_name(name) }
+    end
   end
 end

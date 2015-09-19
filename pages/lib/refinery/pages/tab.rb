@@ -21,8 +21,8 @@ module Refinery
 
         yield tab
 
-        raise "A tab MUST have a name!: #{tab.inspect}" if tab.name.blank?
-        raise "A tab MUST have a partial!: #{tab.inspect}" if tab.partial.blank?
+        raise ArgumentError, "A tab MUST have a name!: #{tab.inspect}" if tab.name.blank?
+        raise ArgumentError, "A tab MUST have a partial!: #{tab.inspect}" if tab.partial.blank?
 
         tab.templates = %w[all] if tab.templates.blank?
         tab.templates = Array(tab.templates)

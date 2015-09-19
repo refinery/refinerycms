@@ -33,45 +33,69 @@ module Refinery
   }
 
   RSpec.describe Plugins do
-    subject { Refinery::Plugins }
+    def mock_plugin(name)
+      ::Refinery::Plugin.new.tap do |plugin|
+        plugin.name = name
+      end
+    end
 
     describe '#registered' do
       it 'identifies as Refinery::Plugins' do
-        expect(subject.registered.class).to eq(subject)
+        expect(described_class.registered.class).to eq(described_class)
       end
     end
 
     describe '#always_allowed' do
       it 'should identify as Refinery::Plugins' do
-        expect(subject.always_allowed.class).to eq(subject)
+        expect(described_class.always_allowed.class).to eq(described_class)
       end
 
       it 'only contains items that are always allowed' do
-        expect(subject.always_allowed.any?).to be_truthy
-        expect(subject.always_allowed.all?(&:always_allow_access)).to be_truthy
+        expect(described_class.always_allowed.any?).to be_truthy
+        expect(described_class.always_allowed.all?(&:always_allow_access)).to be_truthy
       end
     end
 
     describe '#in_menu' do
       it 'identifies as Refinery::Plugins' do
-        expect(subject.registered.in_menu.class).to eq(subject)
+        expect(described_class.registered.in_menu.class).to eq(described_class)
       end
 
       it 'only contains items that are in the menu' do
-        expect(subject.registered.in_menu.any?).to be_truthy
-        expect(subject.registered.in_menu.all? { |p| !p.hide_from_menu }).to be_truthy
+        expect(described_class.registered.in_menu.any?).to be_truthy
+        expect(described_class.registered.in_menu.all? { |p| !p.hide_from_menu }).to be_truthy
+      end
+
+      it "orders by plugin_priority config" do
+        allow(described_class).to receive(:registered).and_return(
+          described_class.new([
+            mock_plugin("one"),
+            mock_plugin("two"),
+            mock_plugin("three"),
+            mock_plugin("four"),
+            mock_plugin("five")
+          ])
+        )
+
+        expect {
+          Core.config.plugin_priority = %w(three five two four)
+        }.to change { described_class.registered.in_menu.names }.from(
+          %w(one two three four five)
+        ).to(
+          %w(three five two four one)
+        )
       end
     end
 
     describe ".find_by_name" do
       it "finds plugin by given name" do
-        expect(subject.registered.find_by_name("my_plugin").name).to eq("my_plugin")
+        expect(described_class.registered.find_by_name("my_plugin").name).to eq("my_plugin")
       end
     end
 
     describe ".find_by_title" do
       it "finds plugin by given title" do
-        expect(subject.registered.find_by_title("my plugin").title).to eq("my plugin")
+        expect(described_class.registered.find_by_title("my plugin").title).to eq("my plugin")
       end
     end
 
