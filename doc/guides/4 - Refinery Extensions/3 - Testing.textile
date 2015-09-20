@@ -70,4 +70,4 @@ At your extension's root directory run:
 $ bin/guard start
 </shell>
 
-Larger Rails apps, particularly on Ruby 1.9.2, may take several seconds (or more) to start up. If that's the case, you might also want to use Spork, which loads a single instance of the Rails environment and forks it to run tests, for even faster feedback cycles.
+Larger Rails apps may take several seconds (or more) to start up. If that's the case, you might also want to use Spork, which loads a single instance of the Rails environment and forks it to run tests, for even faster feedback cycles.
