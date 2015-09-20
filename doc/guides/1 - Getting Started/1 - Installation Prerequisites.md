@@ -34,7 +34,7 @@ Otherwise, choose your operating system below.
 TIP. If you’re planning on using Ruby a lot, the best way to install it
 is using the [Ruby Version Manager](https://rvm.io/rvm/install) (RVM)
 
-<shell>sudo apt-get install ruby</shell>
+	$ sudo apt-get install ruby
 
 WARNING. Do not install Ruby 1.9.1, there is a known bug which will not
 allow Refinery to work.
@@ -43,22 +43,21 @@ allow Refinery to work.
 
 TIP. If you used RVM above then this step will not be necessary.
 
-<shell>sudo apt-get install rubygems</shell>
+	$ sudo apt-get install rubygems
 
 #### Database
 
 For SQLite:
 
-<shell>sudo apt-get install sqlite3 libsqlite3-dev</shell>
+	$ sudo apt-get install sqlite3 libsqlite3-dev
 
 For MySQL:
 
-<shell>sudo apt-get install mysql-client mysql-server
-libmysqlclient-dev</shell>
+	$ sudo apt-get install mysql-client mysql-server libmysqlclient-dev
 
 #### ImageMagick
 
-<shell>sudo apt-get install imagemagick</shell>
+$ sudo apt-get install imagemagick
 
 ### Mac OS X
 
@@ -72,11 +71,11 @@ Manager](https://rvm.io/rvm/install) (RVM)
 Rubygems also comes installed by default, however, it is an old version
 which will cause problems. Update using:
 
-<shell>gem update —system</shell>
+	$ gem update --system
 
 Also, due to an RDoc bug, you’ll need to update it as well:
 
-<shell>gem install rdoc</shell>
+	$ gem install rdoc
 
 #### Database
 
@@ -88,7 +87,7 @@ Use this shell script: <https://github.com/maddox/magick-installer>. Or,
 if you have [Homebrew](http://mxcl.github.io/homebrew/) installed, you
 can use:
 
-<shell>brew install imagemagick</shell>
+	$ brew install imagemagick
 
 ### Windows
 
