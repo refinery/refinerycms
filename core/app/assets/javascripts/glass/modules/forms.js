@@ -244,7 +244,7 @@ var CanvasForms = (function ($) {
           $draft_field.val($submit_btn.hasClass('mark-as-draft'));
         }
 
-        //Might be tempting to put this in paramsForAjaxSubmit...but DON'T (timing issue)
+        //Might be tempting to put this in beforeSubmit... but DON'T (timing issue)
         $form.trigger('form-before-submit');
         return true;
       });
@@ -265,12 +265,66 @@ var CanvasForms = (function ($) {
             return;
           }
 
-          //if (status !== 'success') {
-          //  - older errors come back with a 200 response, we we hadle all in 'done' for now
-          //  return;
-          //}
+          var replace_selector = $form.data('ajax-replace-selector');
+          var callback = $form.data('on-complete-callback');
+          var $replace_form; // if the same form that was submitted is in response, replace it
+          var $calback_param;
 
-          handleXHRDone(xhr, $form, xhr.responseText, selector);
+          $form.data('redirect-on-success', true);
+
+          if (xhr.responseJSON) {
+            $callback_param = xhr.responseJSON;
+          }
+          else {
+            $replace_form = replace_selector ? $(xhr.responseText).find(replace_selector) : $(xhr.responseText).find(selector);
+            $callback_param = $replace_form;
+          }
+
+          // If there is a callback call it.
+          if (callback !== undefined && callback !== null) {
+            var result = callback($callback_param);
+            if (result === false) {
+              return;
+            }
+            if (result === 'no-redirect') {
+              $form.data('redirect-on-success', false);
+            }
+          }
+
+          if (xhr.responseJSON) {
+            var message = xhr.responseJSON.message === undefined ? 'Unknown Error' : xhr.responseJSON.message;
+
+            if (xhr.status == 200) {
+              handleSuccess($form, $("<p>" + message + "</p>"));
+            }
+            else {
+              insertErrors($form, xhr.responseJSON.errors === undefined ? message : xhr.responseJSON.errors, null);
+            }
+          }
+          else if (xhr.responseText) {
+            var $page_body      = $(xhr.responseText).find('#body_content, .glass-edit-html'); // if response is a page, use inner content
+            var $error_response = ($(xhr.responseText).attr('id') === 'errorExplanation') ? $(xhr.responseText) : $replace_form.find('#errorExplanation');
+
+            if ($error_response.length > 0 && $error_response.hasClass('active')) {
+              insertErrors($form, $error_response, null);
+            }
+            else {
+              var $replacement = null;
+
+              if ($replace_form.length > 0) {
+                $replacement = $replace_form;
+              }
+              else if ($page_body.length > 0) {
+                $replacement = $page_body.first();
+              } else {
+                $replacement = $('<p>Thank you</p>'); // Default response message
+              }
+
+              handleSuccess($form, $replacement);
+            }
+          }
+
+          resetSubmit($form);
         }
       });
     });
@@ -286,73 +340,20 @@ var CanvasForms = (function ($) {
     $form.data("submit-btns").attr('disabled', 'disabled');
   }
 
-  function paramsForAjaxSubmit($form, selector) {
-    return ;
-  }
-
-  /**
-   * Handles behavior of a page with a form on it after that form has been submitted via ajax.
-   * @param $form {object} - The form that was submitted.
-   * @param data           - The data that the server responded with
-   * @param selector       - The unique selector for the form.
-   * @param $submit_btn    - The submit button for the form
-   * @param $submit_btns   - Other submit buttons for the page.
-   */
-  function handleXHRDone(xhr, $form, data, selector){
-    var replace_selector = $form.data('ajax-replace-selector');
-
-    //do this here in case we get Stripe card errors (declined, etc.)
-    var jsonResponse = xhr.responseJSON;
-    if(jsonResponse) {
-      var message = jsonResponse.message === undefined ? 'Unknown Error' : jsonResponse.message;
-      message = jsonResponse.errors === undefined ? message : jsonResponse.errors;
-
-      insertErrors($form, message, null);
-      return;
-    }
-
-    // if the same form that was submitted is in response, replace it
-    var $replace_form    = replace_selector ? $(data).find(replace_selector) : $(data).find(selector);
-
-    // if response is a page, use inner content
-    var $page_body       = $(data).find('#body_content, .glass-edit-html');
-    var $error_response  = ($(data).attr('id') === 'errorExplanation') ? $(data) : $replace_form.find('#errorExplanation');
-    var $modal           = $(selector).parents('.modal');
-    var $replacement     = null;
-    var callback = $form.data('on-complete-callback');
-    var redirect_on_success = true;
-
-    var $submit_btn = $form.data("submit-btn");
-    var $submit_btns = $form.data("submit-btns");
-
-    // If there is a callback call it.
-    if (callback !== undefined && callback !== null) {
-      var result = callback($replace_form);
-      if (result === false) {
-        return;
-      }
-      if (result === 'no-redirect') {
-        redirect_on_success = false;
-      }
-    }
-
-    if ($error_response.length > 0 && $error_response.hasClass('active')) {
-      insertErrors($form, $error_response, null);
-      return; // if there was an error return early so that page doesn't get redirected.
-    }
-
+  function handleSuccess($form, $replacement) {
+    var $submit_btn      = $form.data("submit-btn");
+    var $modal           = $form.parents('.modal');
     $form.find('.errorExplanation').addClass('hidden');
 
-    if ($replace_form.length > 0) {
-      $replacement = $replace_form;
-    }
-    else if ($page_body.length > 0) {
-      $replacement = $page_body.first();
-    } else {
-      $replacement = $('<p>Thank you</p>'); // Default response message
-    }
+    if ($modal.length > 0) {
+      var $elem = $modal.find('.update-on-close');
 
-    if ($modal.length === 0 && redirect_on_success) {
+      if ($elem.length > 0) {
+        ajaxUpdateContent($elem.data('selector'));
+      }
+      $modal.modal('hide');
+    }
+    else if ($form.data('redirect-on-success')) {
       var redirect_url = $submit_btn.data('redirect-url');
 
       if (redirect_url !== undefined && redirect_url !== null) {
@@ -361,38 +362,10 @@ var CanvasForms = (function ($) {
         // inquiries engine puts an h1 in there
         $replacement.find('h1').remove();
         $('html, body').animate({
-          scrollTop: $(selector).offset().top - 200
+          scrollTop: $form.offset().top - 200
         }, 500);
-        replaceContent($(selector), $replacement);
+        replaceContent($form, $replacement);
       }
-    } else if ($modal.length > 0) {
-      var $elem = $modal.find('.update-on-close');
-
-      if ($elem.length > 0) {
-        ajaxUpdateContent($elem.data('selector'));
-      }
-      $submit_btn.html('Sent');
-      $modal.modal('hide');
-    }
-
-    resetForm(); // resets the content of a form if necessary.
-
-    return;
-  }
-
-  // A reset form is a form that doesn't have to be rendered again,
-  // because it already exists on a page and wasn't pulled in using 'load'.
-  // It simply needs its input values wiped.
-  function resetForm(){
-    var $resetForm = $('.ajax-reset-form');
-
-    if ($resetForm.length > 0) {
-      var $elem = $resetForm.find('.update-on-close');
-      if ($elem.length > 0) {
-        ajaxUpdateContent($elem.data('selector'));
-        // Clear input values from the form (except for hidden values)
-      }
-      $resetForm.trigger("reset");
     }
   }
 
@@ -463,7 +436,6 @@ var CanvasForms = (function ($) {
     $error_explanation.empty().append(errorContainer);
     $error_explanation.addClass('active');
 
-    resetSubmit(form);
     scrollToVerifyErrors(form, $error_explanation);
   }
 
@@ -485,11 +457,10 @@ var CanvasForms = (function ($) {
   }
 
   function prepareErrorContainer($error) {
-
     var errorContainer = [];
 
     if($error instanceof jQuery) {
-         errorContainer.push($('<div>').append($($error.contents()).clone()).html());
+      return $error;
     }
     else {
       errorContainer.push("<div>");
@@ -501,16 +472,13 @@ var CanvasForms = (function ($) {
           errorContainer.push("<li>" + message + "</li>");
         });
       }
-      else if($error instanceof jQuery) {
-        errorContainer.push($('<div>').append($($error.contents()).clone()).html());
-      }
       else {
         errorContainer.push("<li>" + $error + "</li>");
       }
       errorContainer.push("</ul></div>");
     }
     return errorContainer.join("");
-}
+  }
 
   function openDeleteConfirmModal($btn){
 
@@ -564,11 +532,9 @@ var CanvasForms = (function ($) {
     ajaxUpdateContent: ajaxUpdateContent,
     insertErrors: insertErrors,
     resetState: resetState,
-    resetForm: resetForm,
     liveValidateRequiredFields: liveValidateRequiredFields,
     initFormSubmitWithin: initFormSubmitWithin,
     initVerify: initVerify,
-    paramsForAjaxSubmit: paramsForAjaxSubmit,
     initAjaxForm: initAjaxForm,
     disableSubmit: disableSubmit,
     resetSubmit: resetSubmit,
