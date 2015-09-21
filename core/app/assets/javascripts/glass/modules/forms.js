@@ -268,7 +268,7 @@ var CanvasForms = (function ($) {
           var replace_selector = $form.data('ajax-replace-selector');
           var callback = $form.data('on-complete-callback');
           var $replace_form; // if the same form that was submitted is in response, replace it
-          var $calback_param;
+          var $callback_param;
 
           $form.data('redirect-on-success', true);
 
