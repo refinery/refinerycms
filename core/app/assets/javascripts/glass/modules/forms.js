@@ -436,6 +436,7 @@ var CanvasForms = (function ($) {
     $error_explanation.empty().append(errorContainer);
     $error_explanation.addClass('active');
 
+    resetSubmit(form);
     scrollToVerifyErrors(form, $error_explanation);
   }
 
