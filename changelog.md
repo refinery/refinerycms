@@ -1,4 +1,9 @@
-## 3.0.0 [unreleased]
+## 3.1.0 [unreleased]
+
+* [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...master)
+
+
+## 3.0.0 [19 September 2015]
 
 * Deprecated ':format' syntax in Resources dragonfly_url_format. [#2500](https://github.com/refinery/refinerycms/pull/2500). [Josef Šimánek](https://github.com/simi)
 * Removed Images trust_file_extensions config. [#2500](https://github.com/refinery/refinerycms/pull/2500). [Josef Šimánek](https://github.com/simi)
@@ -20,8 +25,10 @@
 * Decouple Refinery CMS from Devise. [#2940](https://github.com/refinery/refinerycms/pull/2940). [Philip Arndt](https://github.com/parndt)
 * Refinery CMS Core now requires Rails >= 4.2.3. [#3034](https://github.com/refinery/refinerycms/pull/3034). [Brice Sanchez](https://github.com/bricesanchez)
 * Deprecated `selected_item_or_descendant_item_selected?` method in `Refinery::Pages::MenuPresenter`. [#3038](https://github.com/refinery/refinerycms/pull/3038). [Brice Sanchez](https://github.com/bricesanchez)
+* Added plugin ordering set by config option. [#3053](https://github.com/refinery/refinerycms/pull/3053). [Graham Wagener](https://github.com/gwagener) & [Philip Arndt](https://github.com/parndt)
+* Update and Decouple Refinery CMS from forms generator engine. [42e253d05dc8b8a33beb1c6b25892d7646583573](https://github.com/refinery/refinerycms/commit/42e253d05dc8b8a33beb1c6b25892d7646583573). [CJBrew](https://github.com/CJBrew) & [Philip Arndt](https://github.com/parndt)
 
-* [See full list](https://github.com/refinery/refinerycms/compare/2-1-stable...master)
+* [See full list](https://github.com/refinery/refinerycms/compare/2.1.5...3.0.0)
 
 ## 2.1.4 [28 October 2014]
 
