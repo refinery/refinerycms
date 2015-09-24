@@ -331,8 +331,10 @@ var CanvasForms = (function ($) {
   }
 
   function resetSubmit($form) {
-    $form.data("submit-btn").html($form.data("submit-btn").data('orig-btn-txt'));
-    $form.data("submit-btns").removeAttr('disabled');
+    var submit_btn = $form.data("submit-btn");
+    var submit_btns = $form.data("submit-btns");
+    submit_btn !== undefined ? submit_btn.html($form.data("submit-btn").data('orig-btn-txt')) : '';
+    submit_btns !== undefined ? submit_btns.removeAttr('disabled');
   }
 
   function disableSubmit($form) {
