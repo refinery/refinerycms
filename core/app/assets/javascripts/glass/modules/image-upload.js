@@ -127,12 +127,11 @@ var GlassImageUploader = (function ($) {
   }
 
   function handleSuccess(response) {
-
     if($CURRENT_IMAGE_CONTAINER !== undefined){
       var imageIdField = $CURRENT_IMAGE_CONTAINER.find('.image-id-field');
 
       if (imageIdField.length > 0) {
-        imageIdField.val(response.image_id)
+        imageIdField.val(response.image_id);
       }
     }
 
@@ -149,7 +148,7 @@ var GlassImageUploader = (function ($) {
       $('<img/>').attr('src', response.url).load(function() {
         $(this).remove(); // prevent memory leaks as @benweet suggested
         $previewDiv.css('background-image', 'url(' + response.url + ')');
-        
+
         if ($deleteBtns.length > 0){
           $deleteBtns.attr('data-path', '/admin/images/' + response.image_id);
           $deleteBtns.fadeIn(500);
@@ -181,8 +180,8 @@ var GlassImageUploader = (function ($) {
     }
 
     $statusText.html(percentComplete + '%');
-    
-    $progressBar.width(percentComplete + '%').attr('aria-valuenow', percentComplete);  
+
+    $progressBar.width(percentComplete + '%').attr('aria-valuenow', percentComplete);
     if(percentComplete === 100){
       setTimeout(function(){
         $progressBar.replaceWith(processingProgressBar());

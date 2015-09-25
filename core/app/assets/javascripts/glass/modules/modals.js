@@ -111,39 +111,41 @@ var GlassModals = (function ($) {
       var $saveBtn = $modal.find('.btn-submit-modal');
       var saveBtnHtml = $saveBtn.html();
 
+      $modal.find('.header'          ).html(contentParams['modalTitle']);
+      $modal.find('.btn-submit-modal').html(contentParams['submitBtnTxt']);
+      $modal.modal('show');
+
       $saveBtn.unbind().click(function(e){
         $saveBtn.html('<i class="ui active inline inverted xs loader"></i> Sending');
         $saveBtn.attr('disabled', 'disabled');
         $form.submit();
       });
 
-        $form.data('on-complete-callback', function(response) {
-          // Remove form (Simple solution atm to remove image)
-          $saveBtn.html(saveBtnHtml);
-          $saveBtn.removeAttr('disabled');
-          if(successCallback !== undefined){
-            successCallback(response);
-          }
+      $form.data('on-complete-callback', function(response) {
+        // Remove form (Simple solution atm to remove image)
 
-          if(updateOnSuccess){
-            CanvasForms.ajaxUpdateContent(updateOnSuccess);
-          }
+        $saveBtn.html(saveBtnHtml);
+        $saveBtn.removeAttr('disabled');
 
-          $modalContent.find('#form-wrapper').remove();
-          $modal.modal('hide');
+        if(successCallback !== undefined){
+          successCallback(response);
+        }
 
-          // reopen the right sidebar
-          var $rightSidebar = $('#sidebar-right');
-          if($rightSidebar.length > 0){
-            $rightSidebar.sidebar('show');
-          }
+        if(updateOnSuccess){
+          CanvasForms.ajaxUpdateContent(updateOnSuccess);
+        }
 
-          return false;
-        });
+        $modalContent.find('#form-wrapper').remove();
+        $modal.modal('hide');
 
-      $modal.find('.header'          ).html(contentParams['modalTitle']);
-      $modal.find('.btn-submit-modal').html(contentParams['submitBtnTxt']);
-      $modal.modal('show');
+        // reopen the right sidebar
+        var $rightSidebar = $('#sidebar-right');
+        if($rightSidebar.length > 0){
+          $rightSidebar.sidebar('show');
+        }
+
+        return false;
+      });
     });
   }
   return {
