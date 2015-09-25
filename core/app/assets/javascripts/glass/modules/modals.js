@@ -13,10 +13,7 @@ var GlassModals = (function ($) {
       $modal.modal('hide');
     });
     $(element).find('.open-modal').each(function () {
-      $(this).click(function (e) {
-        e.preventDefault();
-        openBtnClickHandler($(this), undefined);
-      });
+      setOpenBtnListeners($(this), undefined);
     });
   });
 
@@ -26,8 +23,8 @@ var GlassModals = (function ($) {
    * @param successCallback - Method to call on completion of something (typically a form being submitted)
    */
   function setOpenBtnListeners($openBtn, successCallback){
-    $openBtn.unbind('click').click(function(e){
-      e.preventDefault();
+    $openBtn.click(function(e) {
+      e.preventDefault(); // Stops this from submitting a form if it is in one
       openBtnClickHandler($openBtn, successCallback);
     });
   }
@@ -105,47 +102,45 @@ var GlassModals = (function ($) {
    * @param contentParams    <Hash>       - Content for the modal like submit btn text and modal title
    */
   function loadAndDisplayFormModal(formSourceUrl, formSourceSelector, $modalContent, $modal, successCallback, updateOnSuccess, contentParams){
-    var $saveBtn        = $modal.find('.btn-submit-modal');
-    var $removeImageBtn = null;
-
     formSourceUrl = (formSourceSelector === '') || (formSourceSelector === undefined) ? formSourceUrl : formSourceUrl+formSourceSelector;
 
     $modalContent.load(formSourceUrl, function(){
       $(document).trigger('content-ready', $modalContent);
 
+      var $form = $modal.find('form');
+      var $saveBtn = $modal.find('.btn-submit-modal');
+      var saveBtnHtml = $saveBtn.html();
+
       $saveBtn.unbind().click(function(e){
-        var saveBtnHtml = $saveBtn.html();
         $saveBtn.html('<i class="ui active inline inverted xs loader"></i> Sending');
         $saveBtn.attr('disabled', 'disabled');
-
-        e.preventDefault();
-        var $form = $modal.find('form');
-        var $rightSidebar = $('#sidebar-right');
         $form.submit();
+      });
 
-        // Listen for 'form-submit-success' event fired from
-        // CanvasForms after success.
-        $form.on('form-submit-success', function(e, response, statusText, xhr, element) {
+        $form.data('on-complete-callback', function(response) {
           // Remove form (Simple solution atm to remove image)
           $saveBtn.html(saveBtnHtml);
           $saveBtn.removeAttr('disabled');
           if(successCallback !== undefined){
             successCallback(response);
           }
-          if(! $saveBtn.hasClass('positive')){
-            $modal.modal('hide');
-          }
+
           if(updateOnSuccess){
             CanvasForms.ajaxUpdateContent(updateOnSuccess);
           }
 
           $modalContent.find('#form-wrapper').remove();
+          $modal.modal('hide');
+
           // reopen the right sidebar
+          var $rightSidebar = $('#sidebar-right');
           if($rightSidebar.length > 0){
             $rightSidebar.sidebar('show');
           }
+
+          return false;
         });
-      });
+
       $modal.find('.header'          ).html(contentParams['modalTitle']);
       $modal.find('.btn-submit-modal').html(contentParams['submitBtnTxt']);
       $modal.modal('show');
