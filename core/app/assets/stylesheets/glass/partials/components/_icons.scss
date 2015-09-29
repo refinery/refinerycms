@@ -3,11 +3,11 @@
   font-weight: normal;
   font-style: normal;
 
-  src: url("dc6e589a.eot?#iefix") format("embedded-opentype"),
-  url("dc6e589a.woff") format("woff"),
-  url("dc6e589a.ttf") format("truetype"),
-  url("dc6e589a.otf") format("opentype");
   src: url("dc6e589a.eot");
+  src: url("dc6e589a.eot?#iefix") format("embedded-opentype"),
+       url("dc6e589a.woff") format("woff"),
+       url("dc6e589a.ttf") format("truetype"),
+       url("dc6e589a.otf") format("opentype");
 }
 
 .icon {
