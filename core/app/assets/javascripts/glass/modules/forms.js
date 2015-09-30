@@ -277,7 +277,7 @@ var CanvasForms = (function ($) {
           }
           else {
             $replace_form = replace_selector ? $(xhr.responseText).find(replace_selector) : $(xhr.responseText).find(selector);
-            $callback_param = $replace_form;
+            $callback_param = $replace_form.length > 0 ? $replace_form : $(xhr.responseText);
           }
 
           // If there is a callback call it.
