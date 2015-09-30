@@ -427,7 +427,7 @@ var CanvasForms = (function ($) {
   }
 
   function insertErrors(form, errorMessages, imageForm) {
-    if (imageForm !== null) {
+    if (imageForm !== null && imageForm !== undefined) {
       insertMessage('image', errorMessages);
       return 0;
     }
