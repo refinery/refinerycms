@@ -5,6 +5,8 @@ en:
         title: Images
         description: Manage images
     admin:
+      locale_picker:
+        language: Language
       images:
         delete: Remove this image forever
         edit: Edit this image
