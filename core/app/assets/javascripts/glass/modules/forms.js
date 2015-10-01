@@ -244,6 +244,11 @@ var CanvasForms = (function ($) {
           $draft_field.val($submit_btn.hasClass('mark-as-draft'));
         }
 
+        var $publish_field = $form.find('.publish-field');
+        if ($publish_field.length > 0) {
+          $publish_field.val($submit_btn.hasClass('publish-button'));
+        }
+
         //Might be tempting to put this in beforeSubmit... but DON'T (timing issue)
         $form.trigger('form-before-submit');
         return true;
