@@ -23,6 +23,7 @@ module Refinery
             processor :strip do |content|
               content.process!(:convert, '-strip')
             end
+            verify_urls false
           end
 
           if ::Refinery::Images.s3_backend
