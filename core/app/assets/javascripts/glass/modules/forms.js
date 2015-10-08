@@ -266,7 +266,7 @@ var CanvasForms = (function ($) {
 
         complete: function (xhr, status) {
           if ($form.hasClass('mailchimp')) {
-            $form.find('input[type="email"]').val('Thank you!');
+            replaceContent($form, $("<p>Thank you!</p>"));
             return;
           }
 
