@@ -62,6 +62,7 @@ module Refinery
           prepend_before_action :find_#{singular_name},
                                 :only => [:update, :destroy, :edit, :show]
           prepend_before_action :merge_position_into_params!, :only => :create
+          prepend_before_action :authenticate_refinery_user!
 
           def new
             @#{singular_name} = #{class_name}.new
