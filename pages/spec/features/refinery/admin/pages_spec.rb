@@ -133,7 +133,9 @@ module Refinery
         it "Creates a page", js:true do
           visit refinery.admin_pages_path
 
-          find('a', text: 'Add new page').trigger(:click)
+          find('a', text: 'New page').trigger(:click)
+          #find('button', text: 'Publish settings').trigger(:click)
+          #find('.sidebar-right-opener').trigger(:click)
 
           fill_in "Title", :with => "My first page"
           expect { click_button "Save" }.to change(Refinery::Page, :count).from(0).to(1)

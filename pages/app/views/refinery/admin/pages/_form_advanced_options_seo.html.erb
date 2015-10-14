@@ -1,3 +1,11 @@
-<div class="hemisquare right_side">
-  <%= render '/seo_meta/form', :form => f %>
+<div class="sidebar-section">
+  <button id="toggle_seo_options" type="button" class="collapse-toggle collapsed" data-toggle="collapse" data-target="#seo_options" aria-expanded="true" aria-controls="demo">
+    <div class="sidebar-section-heading">
+      <i class="icon icon-sliders"></i> <span class="flex-1">SEO Advanced Settings</span> <i class="icon icon-down"></i>
+    </div>
+  </button>
+
+  <div id="seo_options" class="collapse">
+    <%= render '/seo_meta/form', :form => f %>
+  </div>
 </div>

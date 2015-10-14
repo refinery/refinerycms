@@ -1,22 +1,16 @@
 <!DOCTYPE html>
-<%= render "/refinery/html_tag" %>
-  <% site_bar = render('/refinery/site_bar', :head => true) -%>
+<%= render '/refinery/html_tag' %>
   <head>
-    <%= render "/refinery/head" %>
+    <%= render partial: '/glass/head',        locals: {admin: false} %>
+    <%= render partial: '/glass/stylesheets', locals: {admin: false} %>
   </head>
-  <body id="<%= canonical_id @page %>">
-    <%= site_bar -%>
-    <div id="page_container">
-      <header id="header">
-        <%= render "/refinery/header" -%>
-      </header>
-      <section id="page">
-        <%= yield %>
-      </section>
-      <footer>
-        <%= render "/refinery/footer" -%>
-      </footer>
-    </div>
-    <%= render "/refinery/javascripts" %>
+
+  <%= render partial: 'refinery/custom_layout', locals: {admin: false} %>
+
+  <body class="<%= yield :body_class %>">
+    <%= yield :body_top %>
+    <%= render partial: '/glass/body',        locals: {admin: false} %>
+    <%= render partial: '/glass/javascripts', locals: {admin: false} %>
+    <%= yield :body_bottom %>
   </body>
 </html>

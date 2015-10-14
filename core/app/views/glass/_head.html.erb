@@ -1,0 +1,39 @@
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+<% admin = false unless defined?(admin) %>
+
+<% if admin %>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Refinery - <%= Refinery::Core.site_name -%></title>
+  <%= csrf_meta_tags %>
+<% else %>
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <title><%= browser_title(yield(:title)) %></title>
+  <%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
+  <%= raw %(<link rel="canonical" href="#{request.protocol}#{request.host_with_port}#{@canonical}" />) if @canonical.present? -%>
+  <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
+  <%= render '/refinery/google_analytics' %>
+
+  <% if defined?(@og) && @og.present? %>
+    <% @og.each_key do |property| %>
+      <% unless @og[property].blank? %>
+        <meta property="og:<%= property %>" content="<%= @og[property] %>" />
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <meta property='og:url' content="<%= @canonical.present? ? @canonical : request.original_url %>" />
+  <meta property="og:site_name" content="<%= Refinery::Core.site_name %>" />
+<% end %>
+
+<meta charset='<%= Rails.application.config.encoding %>' />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon" href="/touch-icon.png">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<%= yield :meta %>
+
+<%= render partial: '/refinery/head', locals: {admin: admin} %>
+
+<!-- Latest compiled and minified JavaScript at end of body element -->

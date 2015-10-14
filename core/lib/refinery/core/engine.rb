@@ -82,6 +82,9 @@ module Refinery
 
         # scripts
         Rails.application.config.assets.precompile += %w(
+          refinery-glass.js
+          site.js
+          kitchen-sink.js
           refinery/*.js
           refinery/icons/*
           modernizr-min.js
@@ -90,24 +93,13 @@ module Refinery
 
         # stylesheets
         Rails.application.config.assets.precompile += %w(
-          refinery/refinery.css
-          refinery/formatting.css
-          refinery/site_bar.css
-          refinery/theme.css
+          site.css
+          refinery-glass.css
         )
 
         # images
         Rails.application.config.assets.precompile += %w(
           refinery/images/*
-        )
-
-        # fonts
-        Rails.application.config.assets.precompile += %w(
-          font-awesome/fontawesome-webfont.eot
-          font-awesome/fontawesome-webfont.woff2
-          font-awesome/fontawesome-webfont.woff
-          font-awesome/fontawesome-webfont.ttf
-          font-awesome/fontawesome-webfont.svg
         )
       end
 

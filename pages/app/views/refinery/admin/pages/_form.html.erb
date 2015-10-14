@@ -1,61 +1,103 @@
-<%= form_for [refinery, :admin, @page],
-             :url => (refinery.admin_update_page_path(@page.nested_url) if @page.persisted?) do |f| %>
+<div class="page-options">
+  <%= form_for [refinery, :admin, @page], :html => {:class => 'ajax-form'},
+               :url => (refinery.admin_update_page_path(@page.nested_url) if @page.persisted?) do |f| %>
 
-  <%= render '/refinery/admin/error_messages', :object => @page, :include_object_name => true %>
+    <%= render '/refinery/admin/error_messages', :object => @page, :include_object_name => true %>
+    <%= render 'customize_form', :f => f -%>
 
-  <%= render '/refinery/admin/locale_picker', :current_locale => Globalize.locale %>
+    <% status_draft = @page.id.blank? || @page.draft %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, :class => "larger widest" %>
-  </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-heading gray-5">
+        <i class="icon icon-<%= status_draft ? 'pencil' : 'publish' %>"></i> <span class="flex-1">Status: <strong><%= status_draft ? 'Draft' : 'Published' -%></strong></span>
+      </div>
+    </div>
 
-  <%= render 'form_fields_after_title', :f => f %>
+    <%= f.hidden_field :draft, :class => 'draft-field' %>
 
-  <div class='field'>
-    <%= render 'form_page_parts', :f => f %>
-  </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-heading">
+        <p class="page-title glass-edit" data-glass-options='{"form_id": "page_title"}' glass-placeholder="Title"><%= @page.title %></p>
+      </div>
+    </div>
 
-  <%= render 'form_advanced_options', :f => f %>
+    <% if Refinery::Pages.use_custom_slugs %>
+      <% parent_slug = @page.parent.present? ? @page.parent.nested_path : '' %>
+      <div class="sidebar-section">
+        <div class='form-group hidden-xs-up'>
+          <%= f.check_box :slugify_title %>
+          <%= f.label :slugify_title %>
+        </div>
+        <div class="sidebar-section-heading">
+          <div class="url">
+            <span id="domain-name"></span><%= parent_slug %>/<span
+              class="slug glass-edit"
+              data-glass-options='{"form_id": "page_custom_slug", "slugify": "page_title", "slugify_if": "page_slugify_title"}'
+            ><%= @page.slug %></span>/
+          </div>
+        </div>
+      </div>
 
-  <%= render '/refinery/admin/form_actions', :f => f,
-             :continue_editing => true,
-             :delete_title => t('delete', :scope => 'refinery.admin.pages'),
-             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @page.title),
-             :before_cancel_button => submit_tag(
-               t('.preview'),
-               :id => 'preview-button',
-               :title => 'Preview page',
-               :name => nil,
-               :class => "wymupdate button",
-               :tooltip => t('.preview_changes')
-             ),
-             :cancel_url => refinery.admin_pages_path %>
+      <%= f.hidden_field :custom_slug %>
+    <% end %>
 
-  <%= render 'form_new_page_parts', :f => f if Refinery::Pages.new_page_parts %>
-<% end %>
+    <% @valid_view_templates = valid_view_templates %>
+    <% if @valid_view_templates.length > 1 %>
+    <% use_view_templates = Refinery::Pages.config.use_view_templates.nil? ? true : Refinery::Pages.config.use_view_templates %>
+    <%   if use_view_templates || current_refinery_user.super_user? %>
+      <div class="sidebar-section">
+        <button type="button" class="collapse-toggle collapsed" data-toggle="collapse" data-target="#template-collapse" aria-expanded="true" aria-controls="demo">
+          <div class="sidebar-section-heading">
+            <i class="icon icon-index"></i> <span class="flex-1">Page Template</span> <i class="icon icon-down"></i>
+          </div>
+        </button>
+        <div id="template-collapse" class="collapse">
+          <div class="sidebar-section-body">
+            <div class='form-group'>
+              <%= f.select :view_template, @valid_view_templates.map { |t| [t.titleize, t] },
+                             template_options(:view_template, @page), {class: 'form-control c-select'}  %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%   end %>
+    <% end %>
 
-<% content_for :javascripts do %>
-  <script>
-    $(document).ready(function(){
-      page_options.init(
-        <%= Refinery::Pages.new_page_parts.to_s %>
-        , "<%= refinery.new_admin_page_part_path %>"
-        , "<%= refinery.admin_page_parts_path %>"
-      );
+    <%= yield :after_main_options %>
 
-      $("#preview-button").click(function(e) {
-        var $form = $(this).parents('form');
-        var prev_url = $form.attr('action');
-        var prev_target = $form.attr('target') || '';
-        $form.attr({
-          'action': '<%= @page.persisted? ? refinery.pages_admin_preview_page_path(@page.nested_url) : refinery.pages_admin_preview_pages_path %>'
-          , 'target': '_blank'
-        });
-        $form.submit();
-        $form.attr({'action': prev_url, 'target': prev_target});
-        e.preventDefault();
-      });
-    });
-  </script>
-<% end %>
+    <%= render 'form_advanced_options', :f => f %>
+    <%= render 'form_advanced_options_seo', :f => f %>
+
+    <%= render '/refinery/admin/form_actions', :f => f, :sidebar => true,
+               :continue_editing => true,
+               :submit_button_text   => status_draft ? 'Publish' : 'Update',
+               :submit_redirect_url  => refinery.admin_pages_path,
+               :delete_title => t('delete', :scope => 'refinery.admin.pages'),
+               :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @page.title),
+               :delete_redirect_url => refinery.admin_pages_path,
+               :before_delete_button => button_tag("<i class='icon icon-pencil'></i> <span>#{status_draft ? 'Save as Draft' : 'Unpublish'}</span>".html_safe,
+                 :type => :submit,
+                 :id => 'draft-button',
+                 :class => "btn btn-secondary-outline btn-lg mark-as-draft",
+                 :'data-redirect-url' => refinery.admin_pages_path,
+                 :title => "Save this page but omit from menus and hide from the public",
+                 :name => nil
+               ),
+               :cancel_url => refinery.admin_pages_path %>
+
+    <%= render '/refinery/admin/locale_picker', :current_locale => Globalize.locale %>
+
+    <%= f.hidden_field :title %>
+    <%= yield :fields_after_title %>
+
+    <% part_index = -1 %>
+    <%= f.fields_for :parts do |p| %>
+      <%= render 'page_part_field',
+                 :part => p.object,
+                 :part_index => (part_index += 1),
+                 :new_part => @page.new_record? -%>
+    <% end %>
+  <% end %>
+
+  <%= yield :outside_main_form %>
+</div>

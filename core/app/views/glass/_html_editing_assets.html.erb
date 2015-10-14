@@ -1,0 +1,70 @@
+<div class="auto-save-state">
+  <div class="saving">
+    <i class="loader inline xs inverted active m-r-xs bump-up"></i> Saving
+  </div>
+  <div class="finished-state">
+    <p class="msg">Save failed</p>
+  </div>
+</div>
+
+<div id="glass-parking" style="display: none;">
+  <input id="autosave_field" class="autosave-field" name="autosave" type="hidden" value="">
+
+  <a id="glass-module-switcher-template" href="" class="circle-icon add-module glass-control singleton glass-ui transitionable" contenteditable=false><i class="icon icon-plus"></i></a>
+  <div id="glass-choose-module" class="new-module media-chooser clear glass-control singleton glass-ui" contenteditable=false>
+    <a href="" id="glass-choose-module-img" class="circle-icon media-type"><i class="icon icon-photo bump-down"></i></a>
+    <a href="" id="glass-choose-module-vid" class="circle-icon media-type"><i class="icon icon-film"></i></a>
+    <% if current_refinery_user.has_role?(:superuser) -%>
+      <a href="" id="glass-choose-custom"     class="circle-icon media-type"><i class="icon icon-code"></i></a>
+    <% end %>
+  </div>
+  <div id="glass-module-settings-vid" class="new-module media-chooser clear glass-control singleton glass-ui" contenteditable=false>
+    <form id="glass-add-vid-form" role="form">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">Vimeo or YouTube URL</div>
+          <input class="url-input form-control glass-autofocus" type="text" placeholder="http://...">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-secondary-outline">Insert</button>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button class="circle-icon delete-module             glass-control append glass-ui" contenteditable=false><i class="icon icon-trash"></i></button>
+  <button class="circle-icon icon-only link-items link glass-control append glass-ui" contenteditable=false><i class="icon icon-link" ></i></button>
+  <div class="click-pads glass-control append" contenteditable=false>
+    <div class="click-pad top"></div>
+    <div class="click-pad right"></div>
+    <div class="click-pad bottom"></div>
+    <div class="click-pad left"></div>
+  </div>
+  <div class="module-layout glass-control append glass-ui" contenteditable=false>
+    <button class="circle-icon" data-layout-class="inline-module-md"><i class="icon icon-normal"></i></button>
+    <button class="circle-icon" data-layout-class="inline-module-lg"><i class="icon icon-theatre"></i></button>
+    <button class="circle-icon" data-layout-class="inline-module-fw"><i class="icon icon-full-width"></i></button>
+  </div>
+
+  <div id="glass-module-vid-template" class="video-module inline-module glass-no-edit glass-ui" contenteditable=false>
+    <div class="video-wrapper">
+      <iframe data-video-link="" src="" frameborder="0" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" scrolling="no" hspace="0">
+      </iframe>
+    </div>
+  </div>
+
+  <div id="glass-module-group-template" class="glass-module-group image-group inline-module active glass-no-edit" contenteditable=false></div>
+
+  <div id="glass-module-img-template" class="inline-editable-image-container inline-module glass-no-edit glass-ui" contenteditable=false>
+    <div class="progress-box glass-control" style="display:none;">
+      <div class="status-text"></div>
+      <progress class="progress progress-success progress-bar" value="25" max="100"></progress>
+    </div>
+    <img class="inline-editable-image img-fluid" src=""/>
+  </div>
+
+  <div id="glass-module-custom-template" class="glass-no-edit" contenteditable=false>
+    <div class="whatever-you-want-here">
+      <p>Change this to whatever custom html you want using your browser inspector</p>
+    </div>
+  </div>
+</div>

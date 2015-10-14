@@ -58,6 +58,9 @@ en:
         input:
           placeholder: "Search &#8230;"
           help: 'Enter a word or phrase you want to search for'
+        search_input_notice: Search
+        reorder: Reorder
+        reorder_done: Done
       delete:
         message: "Are you sure you want to remove '%{title}'?"
       error_messages:
@@ -84,3 +87,7 @@ en:
   will_paginate:
     previous_label: "&laquo;"
     next_label: "&raquo;"
+  layouts:
+    refinery:
+      admin:
+        log_out: Log Out

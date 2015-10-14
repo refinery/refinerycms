@@ -3,12 +3,12 @@
     <% content_for :stylesheets, stylesheet_link_tag('refinery/site_bar') unless !!local_assigns[:exclude_css] %>
     <%= yield(:stylesheets) unless local_assigns[:head] || local_assigns[:exclude_css] %>
   <% end -%>
-  <div id='site_bar'>
-    <div id='site_bar_content' class='clearfix'>
 
-      <div id='editor_switch'>
-        <%= site_bar_switch_link -%>
-        <%= site_bar_edit_link -%>
+  <nav class="navbar navbar-default navbar-fixed-top <%= @additional_top_nav_classes if @additional_top_nav_classes %>" id="site-bar" role="navigation">
+    <div class="container-fluid">
+      <div class="site-link pull-left">
+        <!-- <%= site_bar_switch_link -%> -->
+        <%= link_to Refinery::Core.site_name, '/' %>
       </div>
 
       <%= link_to 'http://refinerycms.com', :id => 'site_bar_refinery_cms_logo', :target => '_blank' do %>
@@ -24,6 +24,8 @@
                     ::Refinery::Core.refinery_logout_path,
                     :id => 'logout' if ::Refinery::Core.refinery_logout_path.present? %>
       </div>
+
     </div>
-  </div>
+  </nav>
+
 <% end %>

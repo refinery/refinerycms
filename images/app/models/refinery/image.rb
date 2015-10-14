@@ -49,6 +49,39 @@ module Refinery
       { :width => dimensions.width, :height => dimensions.height }
     end
 
+    def geometry_string(use_case)
+      use_case = use_case.to_s
+      aspect = self.image_width >= self.image_height ? :landscape : :portrait
+
+      case use_case
+        when 'card'
+          geometry = aspect == :landscape ? 'x500' : '600x'
+        when 'page'
+          geometry = aspect == :landscape ? 'x1000' : '1400x'
+        when 'cover'
+          geometry = '1400x700#'
+        when 'slideshow'
+          geometry = '1500x500#'
+        when 'h_sm'
+          geometry = '300x200#'
+        when 'h_md'
+          geometry = '600x400#'
+        when 'h_lg'
+          geometry = '1200x800#'
+        when 'v_sm'
+          geometry = '200x300#'
+        when 'v_md'
+          geometry = '400x600#'
+        when 'v_lg'
+          geometry = '800x1200#'
+        when 'square'
+          geometry = '600x600#'
+        else
+          geometry = aspect == :landscape ? 'x700' : '1000X'
+      end
+      return geometry
+    end
+
     # Returns a titleized version of the filename
     # my_file.jpg returns My File
 

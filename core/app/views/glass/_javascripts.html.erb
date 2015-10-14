@@ -1,0 +1,54 @@
+<% admin = false unless defined?(admin) %>
+
+<% if admin %>
+  <!-- WAS views/refinery/admin/_javascripts -->
+  <script type="text/javascript" >
+    var refinery = window.refinery || {};
+    refinery.current_admin_locale = '<%= current_admin_locale %>';
+  </script>
+
+  <%= javascript_include_tag 'refinery-glass' -%>
+
+  <!-- TODO: these are needed to make WYMEDITOR to work.  But cause dup js (jquery) so break other JS.  Just remove them for good soon -->
+  <%#= javascript_include_tag 'admin' -%>
+  <%#= javascript_include_tag 'refinery/refinery' -%>
+  <%#= javascript_include_tag 'refinery/wymeditor', "wymeditor/lang/en", "wymeditor/skins/refinery/skin" %>
+
+  <%= yield :after_javascript_libraries -%>
+  <% custom_javascripts.each do |js| %>
+    <%= javascript_include_tag js %>
+  <% end %>
+
+  <% if controller.class.respond_to?(:xhr_pageable?) && !controller.class.xhr_pageable? %>
+    <script>
+      $(document).ready(function() {
+        $('.pagination_container .pagination a').off('click');
+      });
+    </script>
+  <% end %>
+  <!-- WAS views/refinery/admin/_javascripts -->
+
+<% elsif current_refinery_user.present? %>
+  <%= javascript_include_tag 'kitchen-sink' %>
+<% else %>
+  <%= javascript_include_tag 'site' %>
+<% end %>
+
+<!-- WAS entire views/refinery/_javascripts -->
+<% if content_for? :before_javascript_libraries %>
+  <% Refinery.deprecate "content_for :before_javascript_libraries", :when => '2.2', :replacement => "content_for :javascripts" %>
+  <% content_for :javascripts, yield(:before_javascript_libraries) %>
+<% end %>
+
+<% if content_for? :javascript_libraries %>
+  <% Refinery.deprecate "content_for :javascript_libraries", :when => '2.2', :replacement => "content_for :javascripts" %>
+  <% content_for :javascripts, yield(:javascript_libraries) %>
+<% end %>
+
+<% if content_for? :after_javascript_libraries %>
+  <% Refinery.deprecate "content_for :after_javascript_libraries", :when => '2.2', :replacement => "content_for :javascripts" %>
+  <% content_for :javascripts, yield(:after_javascript_libraries) %>
+<% end %>
+
+<%= yield :javascripts -%>
+<!-- WAS entire views/refinery/_javascripts -->

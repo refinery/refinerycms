@@ -1,0 +1,32 @@
+.dimmer {
+  &.dimmed, &.dimmed-editing {
+    &:after {
+      position: fixed;
+      top: 0;
+      left: 0;
+      visibility: visible;
+      content: "";
+      transition: opacity .3s $bezier;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      background: rgba(255, 255, 255, .85);
+    }
+  }
+  &.dimmed-editing {
+    &:after {
+      z-index: 900;
+    }
+    .glass-edit {
+      z-index: 950;
+    }
+    .navbar {
+      z-index: 850;
+    }
+  }
+  &.dimmed {
+    &:after {
+      z-index: 1032;
+    }
+  }
+}

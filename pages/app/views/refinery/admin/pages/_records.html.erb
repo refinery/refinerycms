@@ -2,11 +2,18 @@
 <% if @pages.any? %>
   <%= render 'sortable_list' %>
 <% else %>
-  <p>
-    <% if searching? %>
-      <%= t('no_results', :scope => 'refinery.admin.search') %>
+  <div class="col-xs-12 text-center m-t-md m-b-md">
+    <% unless searching? %>
+      <h3 class="text-uppercase">
+        <%= t('.no_pages_yet') %>
+      </h3>
+        <a href="<%= refinery.new_admin_page_path %>" class="btn btn-primary m-t btn-lg">
+          <i class="icon icon-add"></i> Create one now
+        </a>
     <% else %>
-      <strong><%=t('.no_pages_yet')%></strong>
+      <h3 class="text-uppercase">
+        <%= t('no_results', :scope => 'refinery.admin.search') %>
+      </h3>
     <% end %>
-  </p>
+  </div>
 <% end %>

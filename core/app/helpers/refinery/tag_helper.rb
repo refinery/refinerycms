@@ -36,7 +36,7 @@ module Refinery
       when :delete
         options[:method] = :delete
       when :reorder_done
-        options[:class] << ' hidden'
+        options[:class] << ' hidden-xs-up'
       end
 
       link_to(label && title || '', url, options)
@@ -44,8 +44,8 @@ module Refinery
 
     # this stacks the text onto the locale icon (actually a comment balloon)
     def locale_text_icon(text)
-      content_tag(:span, class: 'fa-stack') do
-        content_tag(:i, '', class: 'fa fa-comment') << content_tag(:strong, text)
+      content_tag(:span, class: 'icon-stack') do
+        content_tag(:i, '', class: 'icon icon-comment') << content_tag(:strong, text)
       end
     end
 

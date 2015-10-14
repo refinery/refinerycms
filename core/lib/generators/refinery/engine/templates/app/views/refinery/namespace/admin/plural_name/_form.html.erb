@@ -11,16 +11,30 @@
   <%%= render '/refinery/admin/locale_picker',
               :current_locale => Globalize.locale %>
 <% end -%>
-<% attributes.each_with_index do |attribute, index| -%>
-<% if attribute.refinery_type == :image -%>
-  <div class='field'>
-    <%%= f.label :<%= attribute.name %> -%>
-    <%%= render '/refinery/admin/image_picker',
-               :f => f,
-               :field => :<%= attribute.column_name %>,
-               :image => @<%= singular_name %>.<%= attribute.name %>,
-               :toggle_image_display => false -%>
-  </div>
+<% attributes.each_with_index do |attribute, index|  -%>
+<%   if attribute.refinery_type == :image -%>
+      <div class="m-b-md">
+        <div class='form-group'>
+          <%%= render '/refinery/admin/images/image_input',
+            :f => f,
+            :field_name => :<%= attribute.name %>,
+            :image => @<%= singular_name %>.<%= attribute.name %>
+          -%>
+          <%%= render '/refinery/admin/images/image_preview',
+            :field_name => :<%= attribute.name %>,
+            :image => @<%= singular_name %>.<%= attribute.name %>
+          -%>
+        </div>
+      </div>
+
+<%   elsif attribute.type.to_s == 'resource' -%>
+      <div class='form-group'>
+        <%%= f.label :<%= attribute.name %>, class: 'control-label' -%>
+        <%%= render '/refinery/admin/resource_picker',
+                   :f => f,
+                   :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
+                   :resource => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %> -%>
+      </div>
 
 <% elsif attribute.refinery_type == :resource -%>
   <div class='field'>

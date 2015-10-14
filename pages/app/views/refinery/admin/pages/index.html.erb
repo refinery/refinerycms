@@ -1,7 +1,33 @@
-<section id='records' class='tree'>
-  <%= render 'records' %>
+<%= render 'refinery/admin/pages/addons/general' %>
+<% content_for :admin_content do %>
+<section class="admin-index container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="admin-title">Pages</h2>
+      <% if content_for?(:top_message) %>
+        <%= yield :top_message %>
+      <% end %>
+      <div class="contextual-menu">
+          <button id='reorder_action' class="btn btn-link-gray">
+            <i class="icon icon-reorder bump-down"></i> <strong>Reorder</strong>
+          </button>
+          <button id='reorder_action_done' class="btn btn-link-gray" style="display: none;">
+            <i class="icon icon-reorder"></i> <strong>Done</strong>
+          </button>
+          <a href="<%= refinery.new_admin_page_path %>" class="btn btn-primary">
+            <i class="icon icon-add"></i> <strong>New page</strong>
+          </a>
+      </div>
+    </div>
+    <div class="col-xs-12 index-listing">
+      <% cache_if(Refinery::Pages.cache_pages_backend, [Refinery::Core.base_cache_key, "pages_backend", Globalize.locale].join('_')) do %>
+        <%= render 'records' %>
+      <% end %>
+    </div>
+  </div>
 </section>
-<section id='actions'>
+<section>
   <%= render 'actions' %>
 </section>
 <%= render '/refinery/admin/make_sortable', options: {tree: true, replaceContentsAfterUpdate: true} if @pages.many? -%>
+<% end %>

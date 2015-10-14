@@ -1,1 +1,13 @@
-<%= render '/refinery/content_page' %>
+<div id="home-page">
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+          <h1 id="body_content_title" class="glass-edit" data-glass-options='{"form_id": "page_title"}' glass-placeholder="Title"><%= @page.title %></h1>
+          <%= render partial: '/glass/page_content' %>
+          <%= yield :extra_page_content %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,9 @@
+<%=
+    ("<button class='#{css_class} delete delete-modal'" +
+      "data-url='#{delete_url}' " +
+      (defined?(after_delete_url) ? "data-redirect-url='#{after_delete_url}' " : '') +
+      "data-text='#{CGI.escapeHTML(confirm_text)}' " +
+      (defined?(no_redirect) ? "data-no-redirect='#{no_redirect}' " : '')  +
+      (defined?(container_selector) ? "data-container-selector='#{container_selector}'" : '') +
+      	">#{delete_btn_text}</button>").html_safe
+-%>

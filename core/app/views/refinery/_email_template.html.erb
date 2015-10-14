@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>*|MC:SUBJECT|*</title>
+    <%= render '/refinery/mailer/email_styles' %>
+  </head>
+  <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+    <center>
+      <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+        <tr>
+          <td align="center" valign="top" id="bodyCell">
+            <!-- BEGIN TEMPLATE // -->
+            <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer">
+              <tr>
+                <td align="center" valign="top">
+                  <!-- BEGIN PREHEADER // -->
+                  <table border="0" cellpadding="0" cellspacing="0" width="600" id="templatePreheader">
+                    <tr>
+                      <td valign="top" class="preheaderContainer" style="padding-top:9px; padding-bottom: 9px;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
+                          <tbody class="mcnTextBlockOuter">
+                            <tr>
+                              <td valign="top" class="mcnTextBlockInner">
+                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="366" class="mcnTextContentContainer">
+                                  <tbody>
+                                    <tr>
+                                      <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-left:0; padding-bottom:9px; padding-right:0;">
+                                        <%= yield :email_title %>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <table align="right" border="0" cellpadding="0" cellspacing="0" width="197" class="mcnTextContentContainer">
+                                  <tbody>
+                                    <tr>
+                                      <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right:0; padding-bottom:9px; padding-left:0; text-align: right;">
+<!--                                         <a href="*|ARCHIVE|*" target="_blank">View this email in your browser</a> -->
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- // END PREHEADER -->
+              </td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">
+                <!-- BEGIN BODY // -->
+                <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+                  <tr>
+                    <td valign="top" class="bodyContainer">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
+                        <tbody class="mcnTextBlockOuter">
+                          <tr>
+                            <td valign="top" class="mcnTextBlockInner">
+                              <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
+                                <tbody>
+                                  <tr>
+                                    <td valign="top" class="mcnTextContent" style="padding-top:20px; padding-right: 30px; padding-bottom: 45px; padding-left: 30px;">
+                                      <%= yield :email_body %>
+
+                                      <% if content_for?(:action_link) %>
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock">
+                                          <tbody class="mcnButtonBlockOuter">
+                                            <tr>
+                                              <td style="padding-top:0; padding-right:0; padding-bottom:0; padding-left:0;" valign="top" align="left" class="mcnButtonBlockInner">
+                                                <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse: separate !important;border: 2px none #3399bb;border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;background-color: #3399bb;">
+                                                  <tbody>
+                                                    <tr>
+                                                      <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial; font-size: 16px; color: #ffffff;">
+                                                        <%= yield :action_link %>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      <% end %>
+                                      <br>
+                                      <%= yield :email_signoff %>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+                <!-- // END BODY -->
+              </td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">
+                <!-- BEGIN FOOTER // -->
+                <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateFooter">
+                  <tr>
+                    <td valign="top" class="footerContainer" style="padding-bottom:9px;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
+                        <tbody class="mcnTextBlockOuter">
+                          <tr>
+                            <td valign="top" class="mcnTextBlockInner">
+                              <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
+                                <tbody>
+                                  <tr>
+                                    <td valign="top" class="mcnTextContent" style="padding-top:30px; padding-right: 0; padding-bottom: 9px; padding-left: 0;">
+                                      <%= yield :email_footer %>
+                                     <!--
+ <em>Copyright © *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.</em>
+                                      <br>
+                                      *|IFNOT:ARCHIVE_PAGE|*
+                                      *|LIST:DESCRIPTION|*
+                                      <br>
+                                      <br>
+                                      <strong>Our mailing address is:</strong>
+                                      <br>
+                                      *|HTML:LIST_ADDRESS_HTML|* *|END:IF|*
+                                      <br>
+                                      <br>
+                                      <a href="*|UNSUB|*" class="utilityLink">unsubscribe from this list</a>&nbsp;&nbsp;&nbsp;
+                                      <a href="*|UPDATE_PROFILE|*" class="utilityLink">update subscription preferences</a>&nbsp;
+                                      <br>
+                                      <br>
+                                      *|IF:REWARDS|* *|HTML:REWARDS|*
+                                      *|END:IF|*
+-->
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                             </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- // END FOOTER -->
+                </td>
+              </tr>
+            </table>
+            <!-- // END TEMPLATE -->
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+</html>
+

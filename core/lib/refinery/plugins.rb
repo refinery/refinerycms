@@ -20,10 +20,8 @@ module Refinery
       detect { |plugin| plugin.title == title }
     end
 
-    # TODO: Review necessary?
     def in_menu
-      items_in_menu = reject(&:hide_from_menu)
-      self.class.new((prioritised & items_in_menu) | items_in_menu)
+      self.class.new(reject(&:hide_from_menu).reject { |p| p.position == 0 }.sort_by {|p| p.position})
     end
 
     def names

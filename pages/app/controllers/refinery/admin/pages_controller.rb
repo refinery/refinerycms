@@ -100,7 +100,7 @@ module Refinery
         [
           :browser_title, :draft, :link_url, :menu_title, :meta_description,
           :parent_id, :skip_to_first_child, :show_in_menu, :title, :view_template,
-          :layout_template, :custom_slug, parts_attributes: [:id, :title, :slug, :body, :position]
+          :layout_template, :custom_slug, :slugify_title, parts_attributes: [:id, :title, :slug, :body, :position]
         ]
       end
 
@@ -111,6 +111,10 @@ module Refinery
           new_refinery_page_path: refinery.admin_page_path(nested_url),
           new_page_path: refinery.pages_admin_preview_page_path(nested_url)
         }
+      end
+
+      def render_partial_response?
+        false
       end
     end
   end

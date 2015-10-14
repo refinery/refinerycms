@@ -1,0 +1,26 @@
+<div class="datepicker-container has-time-field">
+  <div class="datepicker-wrapper lg left" data-initial-date="<%= DateTime.current.iso8601 %>">
+    <button class="close-btn close-dp"><i class="icon icon-cancel"></i></button>
+    <% if defined?(instructions_text) %>
+      <p><%= instructions_text %></p>
+    <% end %>
+    <div class="datepicker-fields">
+      <div class="form-group available_date_field date_field">
+        <label>Date</label>
+        <input type="text" placeholder="MM/DD/YYYY" class="form-control date-only inline">
+      </div>
+      <div class="form-group available_time_field time_field hidden">
+        <label>Time</label>
+        <input type="text" placeholder="HH:MM PM" class="form-control time-only format-as-time inline">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-12 col-md-12">
+          <div class="inline-dp-root"></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary pull-right close-dp" type="button">OK</button>
+  </div>
+</div>

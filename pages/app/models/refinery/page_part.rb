@@ -36,9 +36,11 @@ module Refinery
     protected
 
     def normalise_text_fields
-      if body? && body !~ %r{^<}
-        self.body = "<p>#{body.gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>"
-      end
+      # We have some parts now that are straight text (like a subtitle with an <h4>)
+      #  - We don't want the <p> tags injected there
+      #if body? && body !~ %r{^<}
+      #  self.body = "<p>#{body.gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>"
+      #end
     end
 
     private

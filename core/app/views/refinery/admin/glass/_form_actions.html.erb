@@ -1,0 +1,14 @@
+<div class="deliver row">
+  <div class="col-xs-12">
+    <button class="btn btn-success fluid-width save-page" type="submit"><i class="icon icon-save"></i> <span>Save</span></button>
+    <% unless delete_url.nil? %>
+          <%= render 'refinery/admin/glass/delete_button',
+                     css_class: defined?(css_class) ? css_class : '',
+                     delete_url: delete_url,
+                     after_delete_url: after_delete_url,
+                     confirm_text: confirm_text,
+                     delete_btn_text: delete_btn_text
+          -%>
+    <% end %>
+  </div>
+</div>

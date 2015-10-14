@@ -1,52 +1,101 @@
-<% # setup params for various action links
-  add_url =   refinery.new_admin_page_path(parent_id: page.id)
-  edit_url =  refinery.admin_edit_page_path(page.nested_url, switch_locale: (page.translations.first.locale unless page.translated_to_default_locale?))
-  delete_url = refinery.admin_delete_page_path(page.nested_url)
-  delete_options = {
-     class: "cancel confirm-delete",
-            data: {confirm: t('message',  scope: 'refinery.admin.delete', title: page_title_with_translations(page))}
-          }
- %>
+<%
+  editable = true
+  if !current_refinery_user.has_role?(:superuser) && page.respond_to?(:editable)
+    editable = page.editable
+  end
+%>
 
-  <li class='clearfix record items' id="<%= dom_id(page) -%>">
-  <div class='clearfix'>
+<li id="<%= dom_id(page) -%>" class="page-listing">
+  <div class="page-row <%= 'no-edit' unless editable %>" role="tab" id="parent-1">
     <% if page.children.present? %>
-      <span class="item icon toggle <%= 'expanded' if Refinery::Pages.auto_expand_admin_tree %>"
-        title="<%= t('expand_collapse', scope: 'refinery.admin.pages')%>">
-      </span>
+      <% if Refinery::Pages.auto_expand_admin_tree %>
+        <a class="child-toggle" data-toggle="collapse" href="#<%= dom_id(page) -%>_children">
+          <i class="status-icon icon icon-folder-open"></i>
+          <i class="status-icon icon icon-folder"></i>
+        </a>
+      <% else %>
+        <i class="status-icon icon icon-folder toggle"></i>
+      <% end %>
     <% else %>
-      <span class="item"></span>
+      <i class="status-icon icon icon-file"></i>
     <% end %>
 
-    <span class='title <%= 'toggle' if page.children.present? %>'>
-      <%= page_title_with_translations page %>
-      <%= page_meta_information page %>
-    </span>
-
-    <% if Refinery::I18n.frontend_locales.many? %>
-      <span class='locales'>
-        <% page.translations.sort_by{ |t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
-          <% if translation.title.present? %>
-            <%= link_to refinery.admin_edit_page_path(page.nested_url, switch_locale: translation.locale),
-                        class: 'locale', title: translation.locale.upcase do %>
-
-              <div class="<%=translation.locale %> locale_marker">
-                <%= locale_text_icon(translation.locale.upcase) %>
-              </div>
-            <% end %>
-          <% end %>
+    <% link_elem = editable ? 'a' : 'div' %>
+    <<%= link_elem %> href="<%= refinery.admin_edit_page_path(page.nested_url, :switch_locale => (page.translations.first.locale unless page.translated_to_default_locale?)) %>" class="page-title">
+      <span class='title'>
+        <%= page_title_with_translations page %>
+        <%= page_meta_information page %>
+        <% if content_for?(:additional_labels) %>
+          <%= yield :additional_labels %>
         <% end %>
       </span>
-    <% end %>
+      <% if Refinery::I18n.frontend_locales.many? %>
+        <span class='locales'>
+          <% page.translations.sort_by{|t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
+            <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
+                        refinery.admin_edit_page_path(page.nested_url, :switch_locale => translation.locale),
+                        :class => 'locale' if translation.title.present? %>
+          <% end %>
+        </span>
+      <% end %>
+
+
+      <!-- ADDITIONAL ATTRIBUTE -->
+      <!--
+      <span class="attribute">
+        some attribute
+      </span>
+      -->
+
+    </<%= link_elem %>>
+
+    <!-- ADDITIONAL ATTRIBUTE -->
+    <!--
+    <a href="" class="attribute">
+      some attribute
+    </a>
+    -->
+
+    <span class="date">
+      <!--Jan 25, 2014-->
+      <%= page.created_at.strftime("%b %d, %Y") %>
+    </span>
 
     <span class='actions'>
-      <%= action_icon(:preview, page.url,   t('.view_live_html')) %>
-      <%= action_icon(:add,     add_url,    t('new',    scope: 'refinery.admin.pages' ) ) %>
-      <%= action_icon(:edit,    edit_url ,  t('edit',   scope: 'refinery.admin.pages' ) ) %>
-      <%= action_icon(:delete,  delete_url, t('delete', scope: 'refinery.admin.pages' ), delete_options ) if page.deletable? %>
+      <span class="add-child">
+        <% add_subpage_txt = editable ? '' : 'Add Page' %>
+        <%= link_to "<i class=\"icon icon-add\"></i> #{add_subpage_txt}".html_safe,
+                  refinery.new_admin_page_path(:parent_id => page.id),
+                  :class => "circle-icon",
+                  :title => t('new', :scope => 'refinery.admin.pages') %>
+      </span>
+
+      <% if page.deletable? %>
+        <span class="delete">
+          <%= render 'refinery/admin/glass/delete_button',
+                     css_class: 'cancel confirm-delete circle-icon',
+                     delete_url: refinery.admin_delete_page_path(page.nested_url),
+                     after_delete_url: refinery.admin_pages_path,
+                     confirm_text: "Are you sure you want to delete '#{page_title_with_translations(page)}'?",
+                     delete_btn_text: '<i class="icon icon-trash"></i>'
+          -%>
+        </span>
+      <% end %>
+
+      <span class="preview">
+        <%= link_to '<i class="icon icon-screen"></i>'.html_safe, page.nested_path,
+            :title => t('.view_live_html'),
+            :class => "circle-icon",
+            :target => "_blank" %>
+      </span>
     </span>
   </div>
-  <ul class='nested' data-ajax-content="<%= refinery.admin_children_pages_path(page.nested_url) %>">
-    <%= render(partial: 'page', collection: page.children) if Refinery::Pages.auto_expand_admin_tree %>
-  </ul>
+
+
+
+  <!-- This needs to be one line of code as the css looks for the empty state. Spaces interfere. -->
+  <!-- <div id="child-pages" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="parent-1"> -->
+    <ul id="<%= dom_id(page) -%>_children" class='nested list-unstyled panel-collapse collapse in' data-ajax-content="<%= refinery.admin_children_pages_path(page.nested_url) %>"><%= render(:partial => 'page', :collection => page.children) if Refinery::Pages.auto_expand_admin_tree %></ul>
+  <!-- </div> -->
+
 </li>

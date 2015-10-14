@@ -1,86 +1,54 @@
-<%= render '/refinery/admin/form_advanced_options_menu', :f => f %>
+<div class="sidebar-section">
+  <button id="toggle_advanced_options" type="button" class="collapse-toggle collapsed" data-toggle="collapse" data-target="#advanced_options" aria-expanded="true" aria-controls="demo">
+    <div class="sidebar-section-heading">
+      <i class="icon icon-sliders"></i> <span class="flex-1">Advanced Settings</span> <i class="icon icon-down"></i>
+    </div>
+  </button>
 
-<div id="more_options" style="display:none;">
-  <div class="hemisquare">
-    <h2><%= t('.page_options') %></h2>
-    <div class='field'>
-      <span class='label_with_help'>
-        <%= f.label :parent_id, t('.parent_page') %>
-        <%= refinery_help_tag t('.parent_page_help')%>
-      </span>
-      <%= f.select :parent_id, parent_id_nested_set_options(@page), :include_blank => true %>
-    </div>
-    <% if Refinery::Pages.use_layout_templates %>
-    <div class='field'>
-      <span class='label_with_help'>
-        <%= f.label :layout_template, t('.layout_template') %>
-        <%= refinery_help_tag t('.layout_template_help') %>
-      </span>
-      <%= f.select :layout_template, valid_layout_templates,
-                   template_options(:layout_template, @page) %>
-    </div>
-    <% end %>
-    <div class='field'>
-      <span class='label_with_help'>
-        <%= f.label :view_template, t('.view_template') %>
-        <%= refinery_help_tag t('.view_template_help') %>
-      </span>
-      <%= f.select :view_template, valid_view_templates.map { |t| [t.titleize, t] },
-                   template_options(:view_template, @page) %>
-    </div>
+  <div id="advanced_options" class="collapse">
+    <div class="sidebar-section-body">
+      <%= f.label      :link_url, t('.link_url'), :title => t('.link_url_help') %>
+      <%= f.text_field :link_url, :class => 'form-control form-control-lg' %>
 
-    <div class='field'>
-      <span class='label_with_help'>
-        <%= f.label :menu_title, t('.menu_title') %>
-        <%= refinery_help_tag t('.menu_title_help') %>
-      </span>
-      <%= f.text_field :menu_title, :style=> 'width:400px;' %>
-    </div>
-    <% if Refinery::Pages.use_custom_slugs %>
-    <div class='field'>
-      <span class='label_with_help'>
-        <%= f.label :custom_slug, t('.custom_slug') %>
-        <%= refinery_help_tag t('.custom_slug_help') %>
-      </span>
-      <%= f.text_field :custom_slug, :style=> 'width:400px;' %>
-    </div>
-    <% end %>
-    <div class='field'>
-      <span class='label_with_help'>
-        <%= f.label :skip_to_first_child?, t('.skip_to_first_child') %>
-        <%= refinery_help_tag t('.skip_to_first_child_help') %>
-      </span>
-      <%= f.check_box :skip_to_first_child %>
-      <%= f.label :skip_to_first_child, t('.skip_to_first_child_label'),
-                  :class => "stripped" %>
-    </div>
-    <div class='field'>
-      <span class='label_with_help'>
-        <%= f.label :link_url, t('.link_url') %>
-        <%= refinery_help_tag t('.link_url_help') %>
-      </span>
-      <%= f.text_field :link_url, :style=> 'width:400px;' %>
       <% content_for :javascripts do %>
-      <script>
-        $(document).ready(function(){
-          link_tester.validate_url_textbox("#page_link_url")
-        });
-      </script>
+        <script>
+          $(document).ready(function(){
+            link_tester.validate_url_textbox("#page_link_url")
+          });
+        </script>
+      <% end %>
+
+      <%= f.label :skip_to_first_child, :title => t('.skip_to_first_child_help') do %>
+        <%= f.check_box :skip_to_first_child %>
+        <%= t('.skip_to_first_child_label') %>
       <% end %>
     </div>
-    <div class='field'>
-      <span class='label_with_help'>
-        <%= f.label :show_in_menu, t('.show_in_menu_title'),
-                    :id => 'page_show_in_menu_heading' %>
-        <%= refinery_help_tag t('.show_in_menu_help') %>
-      </span>
-      <%= f.check_box :show_in_menu %>
-      <%= f.label :show_in_menu, t('.show_in_menu_description'),
-                  :class => "stripped" %>
+
+    <div class="sidebar-section-body">
+      <%= f.label  :parent_id, t('.parent_page'), :title => t('.parent_page_help') %>
+      <%= f.select :parent_id, parent_id_nested_set_options(@page), {:include_blank => true}, {class: 'form-control c-select'} %>
     </div>
 
-    <%= render 'form_extra_fields_for_more_options', :f => f %>
-  </div>
+    <% if Refinery::Pages.use_layout_templates %>
+      <div class="sidebar-section-body">
+        <div class='form-group'>
+          <%= f.label  :layout_template, t('.layout_template'), :title => t('.layout_template_help') %>
+          <%= f.select :layout_template, @valid_layout_templates,
+                       template_options(:layout_template, @page), {class: 'form-control c-select'} %>
+        </div>
+      </div>
+    <% end %>
 
-  <%= render 'form_advanced_options_seo', :f => f %>
+    <div class="sidebar-section-body">
+      <%= f.label :menu_title, t('.menu_title'), :title => t('.menu_title_help') %>
+      <%= f.text_field :menu_title, :class => 'form-control form-control-lg' %>
+
+      <%= f.label :show_in_menu, :class => "stripped", :title => t('.show_in_menu_help') do %>
+        <%= f.check_box :show_in_menu %>
+        <%= t('.show_in_menu_description') %>
+      <% end %>
+    </div>
+
+    <%= yield :extra_fields_for_more_options %>
+  </div>
 </div>

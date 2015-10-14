@@ -1,0 +1,159 @@
+@mixin transition-fix() {
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+}
+
+@mixin circle($radius) {
+  height: $radius;
+  width: $radius;
+  -moz-border-radius: $radius / 2;
+  -webkit-border-radius: $radius / 2;
+  border-radius: $radius / 2;
+}
+
+@mixin flip($flip) {
+  -webkit-transform: scale($flip);
+  -moz-transform: scale($flip);
+  -ms-transform: scale($flip);
+  -o-transform: scale($flip);
+  transform: scale($flip);
+}
+
+@mixin ellipsis($ellipsis-width) {
+	width: $ellipsis-width;
+	white-space: nowrap;
+	overflow: hidden;
+	-ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+}
+
+@mixin button-primary-variant($color, $background, $border) {
+  $active-background: $primary-hover;
+  $active-border: $primary-hover;
+
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  @include box-shadow(inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075));
+
+  @include hover {
+    color: $color;
+    background-color: $active-background;
+        border-color: $active-border;
+  }
+
+  &:focus,
+  &.focus, &:hover {
+    color: $white;
+    background-color: $active-background;
+        border-color: $active-border;
+  }
+
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $white;
+    background-color: $active-background;
+        border-color: $active-border;
+    // Remove the gradient for the pressed/active state
+    background-image: none;
+    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $white;
+      background-color: lighten($active-background, 8%);
+          border-color: lighten($active-border, 8%);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    &:focus,
+    &.focus {
+      background-color: $background;
+          border-color: $border;
+    }
+    @include hover {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
+}
+
+@mixin button-outline-primary-variant($color) {
+  color: $color;
+  background-image: none;
+  background-color: transparent;
+  border-color: $color;
+
+  &:focus,
+  &.focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: #fff;
+    background-color: $primary-hover;
+        border-color: $primary-hover;
+  }
+  @include hover {
+    color: #fff;
+    background-color: $primary-hover;
+        border-color: $primary-hover;
+  }
+
+  &.active {
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $white;
+      background-color: darken($primary-hover, 8%);
+          border-color: darken($primary-hover, 8%);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    &:focus,
+    &.focus {
+      border-color: lighten($color, 20%);
+    }
+    @include hover {
+      border-color: lighten($color, 20%);
+    }
+  }
+}
+
+@mixin button-outline-inverted-variant($color) {
+  color: $white;
+  background-image: $color;
+  background-color: $color;
+  border-color: $color;
+
+  &:focus,
+  &.focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: transparent;
+        border-color: $color;
+  }
+  @include hover {
+    color: $color;
+    background-color: transparent;
+        border-color: $color;
+  }
+
+  &.disabled,
+  &:disabled {
+    &:focus,
+    &.focus {
+      border-color: lighten($color, 20%);
+    }
+    @include hover {
+      border-color: lighten($color, 20%);
+    }
+  }
+}
