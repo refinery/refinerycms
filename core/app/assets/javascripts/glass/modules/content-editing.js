@@ -53,16 +53,37 @@ var GlassContentEditing = (function ($) {
 
       if (e && e.clipboardData && e.clipboardData.getData) {
         var result = '';
+        var plain_text_buffer = e.clipboardData.getData("text/plain").replace(/<!--[\s\S]*?-->/gm,"");
+
         if (textOnly !== undefined && textOnly) {
-          result = e.clipboardData.getData("text/plain").replace(/<!--[\s\S]*?-->/gm,"");
+          result = plain_text_buffer;
         }
         else {
           result = GlassHtmlEditor.formatHtml(e.clipboardData.getData("text/html").replace(/<!--[\s\S]*?-->/gm,""));
+          var $result = $(result);
+
+          if (!result || result.length < 1) {
+            result = plain_text_buffer; // no html found, we'll fall back to the plaintext buffer
+          }
+          else if (result.slice(0, 1) == '<' && $result.length == 1) {
+            result = $result.html(); // Note this removes the container tag (like <h2>)
+          }
+          else if ($result.length > 1) {
+            result = '';
+            document.execCommand("insertHTML", false, ''); // clear out the selected text
+            $(element).after($result);
+            if ($(element).text().length == 0) {
+              $(element).remove();
+            }
+          }
         }
-        document.execCommand("insertHTML", false, result);
+
+        if (result && result.length > 0) {
+          document.execCommand("insertHTML", false, result);
+        }
       }
       else {
-        alert("Sorry, you will need a different browser in order to paste content"); // FIXME
+        alert("Sorry, you will need a different browser in order to paste content"); // TODO ?
       }
     });
   }
@@ -160,7 +181,7 @@ var GlassContentEditing = (function ($) {
     this.makeEditable = function() {
       if (this.option('type') == 'text') {
         this.ch.elem.attr('contenteditable', true);
-        filterPasteEvents(this.ch.elem[0]);
+        filterPasteEvents(this.ch.elem[0], true);
         this.syncContentChanges();
       }
       else if (this.option('type') == 'html') {

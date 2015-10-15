@@ -1,0 +1,180 @@
+<html>
+  <head>
+  </head>
+
+  <body>
+    <h4>Live Editor Paste HTML testcases</h4>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../core/app/assets/javascripts/glass/editor/htmlEditor.js"></script>
+    <script type="text/javascript" src="./live_editor_js_helper.js"></script>
+    <div id="fail-tmpl" style="display: none;">
+      <p style="width: 50%; float: left">Expected:</p>
+      <p style="width: 50%; float: left">Got:</p>
+      <xmp class="expected" style="width: 50%; float: left"></xmp>
+      <xmp class="got"      style="width: 50%; float: left"></xmp>
+    </div>
+    <div style="display: none;">
+      <div class="testcase">
+        <div class="input">
+          foobar
+        </div>
+        <div class="expect">
+          foobar
+        </div>
+      </div>
+
+      <div class="testcase">
+        <div class="input">
+          link testing <a href="http://example.com" target="_blank" data-foo="foo" style="background: red;">extern</a>
+          <a href="/example">internal</a>
+          <a>another</a> end
+        </div>
+        <div class="expect">
+          link testing <a href="http://example.com" target="_blank">extern</a>
+          <a href="/example">internal</a>
+          <a>another</a> end
+        </div>
+      </div>
+
+      <div class="testcase">
+        <div class="input">
+          <article>
+            some stuff
+            <span>in span</span>
+            and out
+            <span>before</span>
+            <p>the paragraph</p>
+            in
+            <span>between</span>
+            <p>other p</p>
+            after
+          </article>
+        </div>
+        <div class="expect">
+          <p>some stuff in span and out before</p>
+          <p>the paragraph</p>
+          <p>in between</p>
+          <p>other p</p>
+          <p>after</p>
+        </div>
+      </div>
+
+      <div class="testcase">
+        <div class="input">
+          <code>
+            the
+            <article>
+              quick
+              <div>
+                brown
+                <ul>
+                  <li>item 1</li>
+                  <li>item 2</li>
+                </ul>
+                fox
+              </div>
+              jumped
+              <section>
+                over
+                <div>
+                  the
+                  <blockquote>quoted</blockquote>
+                  lazy
+                </div>
+                dog
+              </section>
+              again
+            </article>
+          </code>
+        </div>
+        <div class="expect">
+          <p>the quick brown</p>
+          <ul>
+            <li>item 1</li>
+            <li>item 2</li>
+          </ul>
+          <p>fox jumped over the</p>
+          <blockquote>quoted</blockquote>
+          <p>lazy dog again</p>
+        </div>
+      </div>
+
+      <div class="testcase">
+        <!-- should this create paragraphs out of other stuff?? -->
+        <div class="input">
+          <pre>
+            the pre thing
+          </pre>
+          <div>
+            foobar
+          </div>
+        </div>
+        <div class="expect">
+          the pre thing foobar
+        </div>
+      </div>
+
+      <div class="testcase">
+        <div class="input">
+          <section>
+            My List:
+            <ul>
+              <li>item</li>
+              <li>another <a href="/there" rows="4">thing</a></li>
+            </ul>
+            <div>
+              <h3>heading3</h3>
+            </div>
+          </section>
+        </div>
+        <div class="expect">
+          <p>
+            My List:
+          </p>
+          <ul>
+            <li>item</li>
+            <li>another <a href="/there">thing</a></li>
+          </ul>
+          <h3>heading3</h3>
+        </div>
+      </div>
+
+      <div class="testcase">
+        <div class="input">
+          <div class="glass-no-edit">
+            <div glass="foo" data-foo="foo" style="color: #aeaeae;">
+              <p>foo</p>
+            </div>
+          </div>
+        </div>
+        <div class="expect">
+          <div class="glass-no-edit">
+            <div glass="foo" data-foo="foo" style="color: #aeaeae;">
+              <p>foo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testcase">
+        <div class="input">
+          <h2>before</h2>
+          <div class="glass-no-edit">
+            <p style="height: 40px;">foo</p>
+          </div>
+          <div>
+            <p>after <font>in font</font></p>
+          </div>
+        </div>
+        <div class="expect">
+          <h2>before</h2>
+          <div class="glass-no-edit">
+            <p style="height: 40px;">foo</p>
+          </div>
+          <p>after in font</p>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

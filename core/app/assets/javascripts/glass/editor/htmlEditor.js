@@ -1,3 +1,5 @@
+var formatHtmlBlock;
+
 // #############################################################
 // # HTML editor (actually manipulate the html)                #
 // #############################################################
@@ -114,53 +116,13 @@ function GlassHtmlEditor($elem) {
     this.h.control_stack = [];
   };
 
-  function formatElement($elem) {
-    $elem.find('*').each(function () {
-      formatElement($(this));
-    });
-    // $(this).attr('style', '');
-    $(this).replaceWith('<p>' + $(this).text() + '</p>');
-    result = $elem.html();
-  }
-
-  function formatHtml(html) {
-    var $blob = $('<div>' + html + '</div>');
-    return formatElement($blob);
-  }
-
   this.exportHtml = function() {
     var $wrapper = this.h.elem.clone();
 
     // Remove all editor control modules
     $wrapper.find('.glass-control').remove(); // All the delete btns and stuff
 
-    // Ensure no contenteditable or style overrides get out to front of site
-    $wrapper.find('[contenteditable=true]').removeAttr('contenteditable');
-    $wrapper.find(':not(.glass-no-edit *)').removeAttr('style');
-
-    // Unwrap <div>'s that accidentally get nested or pasted
-    $wrapper.find('div').each(function () {
-      if (!$(this).hasClass('glass-no-edit') && $(this).parents('.glass-no-edit').length == 0) {
-        $(this).children().unwrap();
-      }
-    });
-
-    // Ensure all highest level elements are within our set,  make them into <p>'s if not
-    $wrapper.children(':not(p, ul, ol, h1, h2, h3, h4, h5, h6, blockquote, .glass-no-edit)').each(function () {
-      $('<p></p>').html($(this).html()).insertAfter($(this));
-      $(this).remove();
-    });
-
-    // Same thing with text nodes, make them into <p>'s (nodeType 3 is text)
-    $wrapper.contents().filter(function() { return (this.nodeType === 3 && /\S/.test(this.textContent)); }).wrap("<p></p>");
-
-    // Get rid of unwanted tags that may have been pasted in
-    $wrapper.children('p').find('font, span').each(function () {
-      $(this).replaceWith(this.childNodes);
-    });
-
-    // Remove whitespace and html comments (should be stripped on paste, here to sanitize)
-    return $wrapper.html().replace(/<!--[\s\S]*?-->/gm,"").trim();
+    return formatHtmlBlock($wrapper);
   };
 
   this.getCurFocusModule = function() {
@@ -313,8 +275,126 @@ function GlassHtmlEditor($elem) {
 
   grande.bind(document.querySelectorAll(".glass-edit-html"));
 
-  // return {
-  //   formatHtml: formatHtml
-  // };
   return this;
 }
+
+var stripAttributes = function($elem) {
+  if ($elem.hasClass('glass-no-edit')) {
+    $elem.find('[contenteditable=true]').removeAttr('contenteditable');
+    return $elem;
+  }
+
+  $elem.children().each(function () {
+    $(this).replaceWith(stripAttributes($(this)));
+  });
+
+  var tagName = $elem.prop("tagName").toLowerCase();
+  var $result = $(['<', tagName, '>', $elem.html(), '</', tagName, '>'].join(''));
+  if (tagName == 'a') {
+    $result.attr('href',   $elem.attr('href'));
+    $result.attr('target', $elem.attr('target'));
+  }
+  if (tagName == 'blockquote' || $elem.hasClass('blockquote')) {
+    $result.addClass('blockquote');
+  }
+  return $result;
+};
+
+var top_level_elements = 'p, ul, ol, h1, h2, h3, h4, h5, h6, blockquote, .glass-no-edit';
+var sub_level_elements = 'b, i, a, li, br, em, strong, s';
+var gonner_elements    = ['noscript, script, style, meta, base, head, style, title, area, audio, map, track, video, iframe, embed, ',
+                          'object, param, source, img, canvas, del, ins, svg'].join('');
+
+var flattenElement = function ($elem) {
+  $elem.replaceWith($elem.html());
+};
+
+formatHtmlBlock = function($wrapper) {
+  /*************
+   * FLATTEN
+   *************/
+  var all_flat = true;
+  do {
+    all_flat = true;
+    $wrapper.children().each(function () {
+      if (!$(this).hasClass('glass-no-edit') && $(this).find(top_level_elements).length > 0) {
+        flattenElement($(this));
+        all_flat = false;
+        return false;
+      }
+    });
+  } while (!all_flat);
+
+  /******************************
+   * PUT ALL ELEMENTS IN MODULES
+   ******************************/
+  var text_nodes = [];
+  var $all_nodes = $wrapper.contents();
+  $all_nodes.each(function (i) {
+    var tagName = $(this).prop("tagName");
+    if (!$(this).is(top_level_elements)) {
+      text_nodes.push(this);
+    }
+
+    var is_last = (i == ($all_nodes.length - 1));
+
+    // insert our array of non-TLE's if a TLE is found, or this is the last element
+    if ($(this).is(top_level_elements) || is_last) {
+      if (text_nodes.length > 0) {
+        var $new_p = $('<p></p>');
+        var $cur_elem = $(this);
+
+        $.each(text_nodes, function (i, val) {
+          $new_p.append($(val));
+        });
+        text_nodes = [];
+
+        if (/\S/.test($new_p.text())) {
+          is_last ? $new_p.appendTo($wrapper) : $new_p.insertBefore($cur_elem);
+        }
+      }
+    }
+  });
+
+  /******************************
+   * REMOVE UNWANTED NODE TYPES
+   ******************************/
+  // comments, script, style, meta, ...
+  $wrapper.contents().each(function () {
+    if (this.nodeType == 8) { // comments
+      $(this).remove();
+    }
+  });
+
+  $wrapper.find(gonner_elements).each(function () {
+    if ($(this).parents('.glass-no-edit').length == 0) {
+      $(this).remove();
+    }
+  });
+
+  /**********************************
+   * FLATTEN ALL OTHER UNKNOWN NODES
+   **********************************/
+  // span, font, article, section, ...
+  $wrapper.contents().each(function () {
+    $(this).find('*').each(function () {
+      if ($(this).is(':not(' + sub_level_elements + ')') && $(this).parents('.glass-no-edit').length == 0) {
+        flattenElement($(this));
+      }
+    });
+  });
+
+  /*****************************
+   * STRIP MOST HTML ATTRIBUTES
+   *****************************/
+  $wrapper = stripAttributes($wrapper);
+
+  // Strip meta tags, the gonner_elements loop doesn't seem to be catching them
+  var result = $wrapper.html().trim().replace(/<meta[\s\S]*?>/gm,"");
+  return result;
+}
+
+
+GlassHtmlEditor.formatHtml = function(html) {
+  return formatHtmlBlock($('<div>' + html + '</div>'));
+};
