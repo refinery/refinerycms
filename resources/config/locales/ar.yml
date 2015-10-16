@@ -1,0 +1,39 @@
+ar: 
+  refinery: 
+    plugins: 
+      refinery_files: 
+        title: الملفات
+        description: "تحميل وربط الملفات"
+    admin: 
+      resources: 
+        delete: "إزالة هذه الملف نهائيًّا"
+        edit: "تحرير هذا الملف"
+        form: 
+          download_current: "تنزيل الملف الحالي"
+          or: أو
+          replace: " استبدله مع هذا..."
+          maximum_file_size: "حجم الملف الأعظمي هو %{bytes}."
+          resource_file: الملف
+          resource_title: العنوان
+          resource_title_help: "العنوان مرئي للمُستخدمين."
+        resource: 
+          download: "تنزيل هذه الملف (%{size})"
+        actions: 
+          upload_new: "تحميل ملف جديد"
+        records: 
+          no_files_yet: "لا يوجد ملفات بعد. انقر على (تحميل ملف جديد) لإضافة الملف الأوّل."
+        insert: 
+          existing: "ملف موجود"
+          new: "ملف جديد"
+          no_files: "لا يوجد ملفات."
+        existing_resource: 
+          link_to_file: "ربط إلى هذا الملف"
+          button_text: إدراج
+  activerecord: 
+    models: 
+      refinery/resource: ملف
+    errors: 
+      models: 
+        refinery/resource: 
+          blank: "يجب تحديد ملف للتحميل"
+          too_big: "يجب على حجم الملف أن يكون أصغر من %{size} بايت"
