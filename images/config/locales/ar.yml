@@ -1,0 +1,50 @@
+ar: 
+  refinery: 
+    plugins: 
+      refinery_images: 
+        title: صور
+        description: "إدارة الصور"
+    admin: 
+      images: 
+        delete: "إزالة هذه الصورة نهائيًا"
+        edit: "تحرير هذه الصورة"
+        form: 
+          image: صورة
+          use_current_image: "استخدام صورة حاليّة"
+          or: أو
+          replace_image: " استبدالها بهذه..."
+          current_image: "الصورة الحالية"
+          maximum_image_size: "حجم الصورة الأعظمي هو %{bytes}."
+          image_title: عنوان
+          image_title_help: "معلومات إضافية حول الصورة"
+          image_alt: البديل
+          image_alt_help: "النص المستخدم عند تعذر عرض الصورة."
+        actions: 
+          create_new_image: "إضافة صورة جديدة"
+        records: 
+          no_images_yet: "لا يوجد صور بعد. يرجى النقر على (إضافة صورة جديدة) لإضافة الصورة الأولى."
+        index: 
+          view: 
+            switch_to: "الانتقال إلى العرض %{view_name}"
+            list: قائمة
+            grid: شبكة
+        view_live_html: "استعراض هذه الصورة <br/><em>فتح في نافذة جديدة</em>"
+        existing_image: 
+          button_text: إدراج
+          resize_image: "تغيير حجم الصورة؟"
+          size: حجم
+        insert: 
+          existing_image: مكتبة
+          new_image: تحميل
+      locale_picker: 
+        language: اللغة
+  activerecord: 
+    models: 
+      refinery/image: صورة
+    errors: 
+      models: 
+        refinery/image: 
+          blank: "يجب تحديد صورة للتحميل"
+          too_big: "يجب على حجم الصورة أن يكون أصغر من %{size} بايت"
+          incorrect_format: "صيغة الصورة يجب أن تكون إما JPG أو PNG أو GIF"
+          different_file_name: "لا يُمكن للصورة الجديدة أن تحمل اسم ملف مختلف"

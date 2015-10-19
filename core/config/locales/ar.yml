@@ -1,0 +1,86 @@
+ ar: 
+  refinery: 
+    js: 
+      admin: 
+        confirm_changes: "لن تُطبّق التغييرات التي تمّت. هل أنت متأكّد من المتابعة بدون حفظ؟"
+    plugins: 
+      refinery_core: 
+        title: Refinery
+        description: "إضافة رِفِنِري أصلية"
+      refinery_dialogs: 
+        title: حوارات
+        description: "إضافة حوارات رِفِنِري"
+    welcome: 
+      there_are_no_users: "لا يوجد مستخدمين بعد، لذلك سنقوم بالإعداد أوّلًا."
+    crudify: 
+      created: "أُضيف %{what} بنجاح."
+      updated: "حُدّث %{what} بنجاح."
+      destroyed: "أُزيل %{what} بنجاح."
+    site_bar: 
+      log_out: "تسجيل الخروج"
+      switch_to_your_website: "الانتقال إلى موقعك"
+      switch_to_your_website_editor: "الانتقال إلى محرّر موقعك"
+    admin: 
+      menu: 
+        reorder_menu: "إعادة ترتيب القائمة"
+        reorder_menu_done: "إنهاء ترتيب القائمة"
+      dialogs: 
+        show: 
+          save: حفظ
+          cancel: إلغاء
+      continue_editing: 
+        save_and_continue_editing: "حفظ ومتابعة التحرير"
+      form_actions: 
+        save: Запис
+        cancel: إلغاء
+        cancel_lose_changes: "إن تم الإلغاء سيتم خسارة كافة التعديلات التي أُجريت هنا"
+        delete: إزالة
+        close: إغلاق
+      image_picker: 
+        none_selected: "لا يوجد صورة حاليًا، فضلًا انقر هنا لإضافة واحدة."
+        remove_current: "إزالة الصورة الحالية"
+        change: "يرجى النقر هنا لاختيار صورة"
+        show: إظهار
+      resource_picker: 
+        download_current: "تنزيل ملف حالي"
+        opens_in_new_window: "فتح في نافذة جديدة"
+        remove_current: "إزالة ملف حالي"
+        no_resource_selected: "لا يوجد حاليًا ملف محدّد، يرجى النقر هنا للإضافة."
+        name: "إضافة ملف"
+        current: "ملف حالي"
+      search: 
+        button_text: بحث
+        results_for_html: "نتائج البحث عن &#8216;<em>%{query}</em>&#8217;"
+        no_results: "للأسف، لا يوجد نتائج"
+        cancel_search: "إلغاء البحث"
+        input: 
+          placeholder: "بحث &#8230;"
+          help: "ادخل كلمة أو عبارة للبحث عنها"
+      delete: 
+        message: "يرجى تأكيد إزالة '%{title}'؟"
+      error_messages: 
+        problems_in_following_fields: "يوجد مشاكل مع الحقول التالية"
+      help: مساعدة
+      form_advanced_options_menu: 
+        advanced_options: "خيارات متقدّمة"
+        toggle_advanced_options: "إضهار الخيارات المتقدّمة"
+        save_as_draft: "حفظ كمسودّة"
+      locale_picker: 
+        language: اللغة
+    message: 
+      close: إغلاق
+      close_this_message: "إغلاق هذه الرسالة"
+    draft_page_message: 
+      not_live: "هذه الصفحة ليست معروضة للعموم."
+    footer: 
+      copyright: "جميع الحقوق محفوظة © %{year} %{site_name}"
+    no_script: 
+      enable_javascript_html: "لاستعراض الصفحة بالشكل الأنسب من الضروري تفعيل جافا سكريبت."
+      here_are: "هنا توجد"
+      instructions_enable_javascript_html: "تعليمات كيفية تفعيل جافا سكريبت في المتصفّح"
+  time: 
+    formats: 
+      short: "%A, %d %B %Y"
+  will_paginate: 
+    previous_label: "&raquo;"
+    next_label: "&laquo;"
