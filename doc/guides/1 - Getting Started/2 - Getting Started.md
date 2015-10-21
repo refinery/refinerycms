@@ -37,9 +37,7 @@ and gems. Once RVM is installed on your system, and you’ve created a
 gemset for the project, create an .rvmrc file in the site’s root
 directory. Its contents should look something like:
 
-<shell>\
-rvm use —create ruby-1.9.3@refinery\
-</shell>
+    $ rvm use --create ruby-1.9.3@refinery
 
 TIP: If you are not using an RVM gemset and you have Rails 4 installed,
 be sure to read the [Rails Application
@@ -58,7 +56,7 @@ Internet for learning Rails, including:
 
 Refinery CMS, often shortened to Refinery, is an open source content
 management system written in Ruby as a Ruby on Rails web application
-with JQuery used as the JavaScript library. Refinery runs on Rails 3.2.
+with jQuery used as the JavaScript library. Refinery runs on Rails 3.x and 4.2+.
 
 Refinery differs from similar projects by targeting a non-technical end
 user and allowing the developer to create a flexible website rapidly by
@@ -90,11 +88,10 @@ of any custom development you will do in the */app* directory.
 
 The extensions Refinery comes with are:
 
--   **Authentication** - manages users and sessions within Refinery.
+-   **Authentication** (optional) - manages users and sessions within Refinery.
 -   **Core** - contains default layouts, views, javascripts and CSS.
     This extension also has an extension API for extending Refinery and
     everything Refinery needs to hook into Rails.
--   **Dashboard** - shows you what’s recently been updated.
 -   **Images** - handles image upload, insertion and processing images
     using [Dragonfly](https://github.com/markevans/dragonfly).
 -   **Pages** - allows you to manage pages including the structure of
@@ -123,9 +120,7 @@ running with either.
 
 The easiest way to install Refinery is to take advantage of RubyGems.
 
-<shell>\
-\$ gem install refinerycms\
-</shell>
+    $ gem install refinerycms
 
 NOTE: This step may take some time to load as it needs to download and
 install all the ruby gems Refinery depends on.
@@ -144,24 +139,18 @@ These application templates are another very easy way to install
 Refinery, and allow for a great deal of control of your installation.
 You can create a new Refinery application by typing:
 
-<shell>\
-\$ rails new rickrockstar -m http://refinerycms.com/t/2.1.0\
-</shell>
+    $ rails new rickrockstar -m http://refinerycms.com/t/2.1.0
 
 TIP. As **the latest stable version of Refinery CMS is not compatible
 with Rails 4** you may also need to specify the Rails version in case
 you are not using an RVM gemset:
 
-<shell>\
-\$ rails *3.2.15* new rickrockstar -m http://refinerycms.com/t/2.1.0\
-</shell>
+    $ rails *3.2.15* new rickrockstar -m http://refinerycms.com/t/2.1.0
 
 TIP. If you want to create a Rails 4 application with refinerycms,
 you’ll have to use the edge version. This works with Rails 4.2.3:
 
-<shell>\
-\$ rails new rickrockstar -m http://refinerycms.com/t/edge\
-</shell>
+    $ rails new rickrockstar -m http://refinerycms.com/t/edge
 
 WARNING. If you create an application from the template, be sure to skip
 running *refinerycms rickrockstar* as listed in the next
@@ -176,9 +165,7 @@ so you can literally follow along step-by-step.
 To begin, open a terminal, navigate to a folder where you have rights to
 create files, and type:
 
-<shell>\
-\$ refinerycms rickrockstar\
-</shell>
+    $  refinerycms rickrockstar
 
 This will create a new Rails application with Refinery built in called
 RickRockStar in a directory called *rickrockstar*. It also automatically
@@ -195,9 +182,7 @@ systems.
 Refinery will create a folder in your working directory called
 `rickrockstar`. Switch to this folder:
 
-<shell>\
-\$ cd rickrockstar\
-</shell>
+    $ cd rickrockstar
 
 Open up that folder and explore its contents. You’ll notice what you
 have is a very standard Rails application.
@@ -214,9 +199,7 @@ You actually have a functional Refinery application already installed.
 To see it, you need to start a web server on your development machine.
 You can do this by running:
 
-<shell>\
-\$ rails server\
-</shell>
+    $ rails server
 
 This will fire up an instance of the built-in Rails web server by
 default (called WEBrick). To see your application in action, open a
@@ -243,7 +226,7 @@ Fill out the sign up form to create your first user. This will be the
 super user of Refinery, meaning this user will be able to create other
 users later on.
 
-Once you’ve created your first user you’ll see Refinery’s “Dashboard”.
+Once you’ve created your first user you’ll see Refinery’s admin.
 
 ![](/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfNzIxX2Rhc2hib2FyZC5wbmciXV0/dashboard.png)
 
@@ -256,10 +239,9 @@ of the page and in the footer of your site).
 To do this, you’ll have to edit *config/initializers/refinery/core.rb*.
 Look for the line that begins:
 
-<ruby>
-
-1.  config.site\_name = “Company Name”\
-    </ruby>
+```ruby
+config.site_name = "Company Name"
+```
 
 The *\#* character prefixing the line is a comment character. The
 configuration options in this file (and in other Refinery initializer
@@ -342,17 +324,15 @@ change. To see a list of possible commands simply run
 `rake refinery:override` in the console. Let’s override the pages show
 view:
 
-<shell>\
-\$ rake refinery:override view=refinery/pages/show\
- create app/views/refinery/pages/show.html.erb\
-</shell>
+    $ rake refinery:override view=refinery/pages/show
+        create app/views/refinery/pages/show.html.erb
 
 Now edit *app/views/refinery/pages/show.html.erb* and it will look like
 this:
 
-<erb>\
-<%= render '/refinery/content_page' %>\
-</erb>
+```erb
+<%= render '/refinery/content_page' %>
+```
 
 Refinery has a *content\_page* partial it uses just to get you started.
 But we’ll soon remove this and use our own ERB view instead.
@@ -365,17 +345,14 @@ available. The best way to explain how this works is just to show you.
 Replace the contents of *app/views/refinery/pages/show.html.erb* with
 this:
 
-<erb>
-
-<section id='body'>
-<%=raw @page.content_for(:body) %>
-
+```erb
+<section id="body">
+    <%= raw @page.content_for(:body) %>
 </section>
-<section id='side_body'>
-<%=raw @page.content_for(:side_body) %>
-
+<section id="side_body">
+    <%= raw @page.content_for(:side_body) %>
 </section>
-</erb>
+```
 
 As you can see we’re going to render a view with some HTML5 tags and
 along with some content coming from the CMS (those are the lines that
@@ -395,9 +372,9 @@ this page that you can render in your view. There is a “Body” tab with
 some content on this screen. To render that same content in your view,
 put:
 
-<erb>\
-<%=raw @page.content_for(:body) %>\
-</erb>
+```erb
+<%= raw @page.content_for(:body) %>
+```
 
 #### Styling your views
 
@@ -408,39 +385,39 @@ application, using *app/assets/stylesheets/application.css.scss*.
 
 Open up *app/assets/stylesheets/application.css.scss* and add this:
 
-<erb>\
-body {\
- background: \#DDD;\
- font-family: Verdana;\
- font-size: 13px;\
- line-height: 18px;\
+```css
+body {
+  background: #DDD;
+  font-family: Verdana;
+  font-size: 13px;
+  line-height: 18px;
 }
 
-\#body, \#side\_body {\
- float: left;\
- width: 45%;\
- background: white;\
- color: \#333;\
- padding: 20px;\
+#body, #side_body {
+  float: left;
+  width: 45%;
+  background: white;
+  color: #333;
+  padding: 20px;
 }
 
-\#menu ul {\
- list-style: none;\
- padding: 0px;\
- li {\
- float: left;\
- margin-right: 10px;\
- a {\
- display: block;\
- padding: 5px 10px;\
- text-decoration: none;\
- }\
- &.selected a, a:hover {\
- background: \#CCC;\
- }\
- }\
-}\
-</erb>
+#menu ul {
+  list-style: none;
+  padding: 0px;
+  li {
+    float: left;
+    margin-right: 10px;
+    a {
+      display: block;
+      padding: 5px 10px;
+      text-decoration: none;
+    }
+    &.selected a, a:hover {
+      background: #CCC;
+    }
+  }
+}
+```
 
 TIP: You can add CSS for specific pages by using their slug with -page.
 The default for the home page is ‘home-page’.
