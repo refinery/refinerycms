@@ -1,0 +1,86 @@
+id:
+  refinery:
+    js:
+      admin:
+        confirm_changes: Perubahan tidak akan disimpan. Apakah anda yakin akan melanjutkan tanpa menyimpan terlebih dahulu?
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Plugin inti Refinery
+      refinery_dialogs:
+        title: Dialog
+        description: Plugin dialog Refinery
+    welcome:
+      there_are_no_users: "Belum ada user sama sekali, kami akan membuatkannya"
+    crudify:
+      created: '%{what} berhasil ditambahkan'
+      updated: '%{what} telah diperbarui'
+      destroyed: '%{what} telah dihapus'
+    site_bar:
+      log_out: Akhiri sesi 
+      switch_to_your_website: Ke website 
+      switch_to_your_website_editor: Ke website editor
+    admin:
+      menu:
+        reorder_menu: Tata menu
+        reorder_menu_done: Selesai penataan menu
+      dialogs:
+        show:
+          save: Simpan
+          cancel: Batal
+      continue_editing:
+        save_and_continue_editing: 'Simpan dan lanjutkan editing'
+      form_actions:
+        save: Simpan
+        cancel: Batal
+        cancel_lose_changes: Jika dibatalkan, perubahan apapun tidak akan dicatat
+        delete: Hapus
+        close: Tutup
+      image_picker:
+        none_selected: Belum ada gambar yang dipilih, klik untuk menambahkan.
+        remove_current: Hapus gambar pilihan
+        change: Klik di sini untuk menambahkan gambar 
+        show: Tampilkan
+      locale_picker:
+        language: Bahasa
+      resource_picker:
+        download_current: Unduh file pilihan
+        opens_in_new_window: Buka di jendela lain
+        remove_current: "Hapus file pilihan"
+        no_resource_selected: 'Tidak ada file yang dipilih, klik di sini untuk menambahkan'
+        name: Tambah File 
+        current: File Pilihan
+      search:
+        button_text: Cari
+        results_for_html: "Hasil pencarian untuk &#8216;<em>%{query}</em>&#8217;"
+        no_results: 'Maaf, tidak ditemukan'
+        cancel_search: 'Batalkan pencarian'
+        input:
+          placeholder: "Cari &#8230;"
+          help: 'Masukkan kata/kalimat yang ingin anda cari'
+      delete:
+        message: "Yakin akan menghapus '%{title}'?"
+      error_messages:
+        problems_in_following_fields: Terdapat kesalahan dengan beberapa inputan berikut
+      help: bantuan
+      form_advanced_options_menu:
+        advanced_options: Pengaturan
+        toggle_advanced_options: Tampilkan pengaturan lainnya
+        save_as_draft: Simpan sebagai Draft
+    message:
+      close: Tutup
+      close_this_message: Abaikan pesan ini
+    draft_page_message:
+      not_live: Halaman ini belum di-publish untuk dilihat oleh semua orang
+    footer:
+      copyright: "Hak Cipta © %{year} %{site_name}"
+    no_script:
+      enable_javascript_html: Halaman ini membutuhkan JavaScript untuk berfungsi dengan baik.
+      here_are: Di sinilah
+      instructions_enable_javascript_html: berbagai instruksi untuk mengaktifkan JavaScript.
+  time:
+    formats:
+      short: "%A, %d %B %Y"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
