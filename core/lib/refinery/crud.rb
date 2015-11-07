@@ -206,7 +206,7 @@ module Refinery
             find_all_#{plural_name}(#{options[:search_conditions].inspect})
 
             # Now get weighted results by running the query against the results already found.
-            @#{plural_name} = @#{plural_name}.with_query(params[:search])
+            @#{plural_name} = @#{plural_name}.with_query('^' + params[:search].split.join(' ^'))
           end
 
           def #{singular_name}_params
