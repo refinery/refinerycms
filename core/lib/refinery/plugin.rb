@@ -1,5 +1,17 @@
 module Refinery
   class Plugin
+    META = {
+      "refinery_dashboard"    => {position: 0 , icon: 'icon icon-dashboard'},
+      "refinery_pages"        => {position: 5, icon: 'icon icon-pages'     },
+      "refinerycms_blog"      => {position: 15, icon: 'icon icon-feather'  },
+      "refinerycms_inquiries" => {position: 85, icon: 'icon icon-chat'     },
+      "refinery_users"        => {position: 90, icon: 'icon icon-group'    },
+      "refinery_settings"     => {position: 0 , icon: 'icon icon-wrench'   }, #hide
+      "refinery_images"       => {position: 0 , icon: 'icon icon-wrench'   }, #hide
+      "refinery_files"        => {position: 0 , icon: 'icon icon-wrench'   }, #hide
+    }
+
+    META.default     =  {position: 50, icon: 'icon icon-wrench'}
 
     attr_accessor :name, :class_name, :controller, :directory, :url,
                   :always_allow_access, :menu_match, :hide_from_menu,
@@ -63,6 +75,43 @@ module Refinery
       else
         @url
       end
+    end
+
+    def position
+      positions_override = Refinery::Core.config.backend_menu_positions
+      return positions_override[self.name] if (positions_override.present? && positions_override.has_key?(self.name))
+      return @position                     if @position
+      return Refinery::Plugin::META[self.name][:position]
+    end
+
+    def position=(val)
+      @position = val
+    end
+
+    def icon
+      icons_override = Refinery::Core.config.backend_menu_icons
+      return icons_override[self.name] if icons_override.present? && icons_override.has_key?(self.name)
+      return @icon_str                 if @icon_str
+      return Refinery::Plugin::META[self.name][:icon]
+    end
+
+    def icon=(val)
+      @icon_str = val
+    end
+
+    def show_for_superuser_only=(val)
+      @show_for_superuser_only = val
+    end
+
+    def show_for_superuser_only
+      return @show_for_superuser_only
+    end
+
+  # Make this protected, so that only Plugin.register can use it.
+  protected
+
+    def add_activity(options)
+      (self.plugin_activity ||= []) << Activity::new(options)
     end
 
     def initialize
