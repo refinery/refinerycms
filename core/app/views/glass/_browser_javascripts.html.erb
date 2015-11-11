@@ -1,0 +1,59 @@
+<script>
+
+  var $buoop = {
+
+    vs: {i: 11, f: 14, o: 17, s: 5.1},c:2,  // browser versions to notify
+    reminder: 24,
+    onshow: function (infos) {
+      setAndDisplayUpdateDiv(infos);
+    },
+    l: false,                       // set a language for the message, e.g. "en"
+    // overrides the default detection
+    test: false,                    // true = always show the bar (for testing)
+    text: "",                       // custom notification html text
+    text_xx: "",                    // custom notification text for language "xx"
+    // e.g. text_de for german and text_it for italian
+    newwindow: true                 // open link in new window/tab
+  }
+
+  function $buo_f() {
+    var e = document.createElement("script");
+    e.src = "//browser-update.org/update.js";
+    document.body.appendChild(e);
+  }
+
+  function setAndDisplayUpdateDiv(infos){
+    var browserAbr = 'your current browser';
+
+    switch (infos.browser.n) {
+      case "i":
+        browserAbr = "Internet Explorer ";
+        break;
+      case "f":
+        browserAbr = "FireFox ";
+        break;
+      case "o":
+        browserAbr = "Opera ";
+        break;
+      case "s":
+        browserAbr = "Safari ";
+        break;
+      case "c":
+        browserAbr = "Chrome ";
+        break;
+      default:
+        break;
+    }
+    var browserUpdateContainer = $('.browser-update-wrapper');
+    browserUpdateContainer.find('.current-browser').text(browserAbr + infos.browser.v);
+    browserUpdateContainer.fadeIn(500);
+  }
+
+  try {
+    document.addEventListener("DOMContentLoaded", $buo_f, false)
+  }
+  catch (e) {
+    window.attachEvent("onload", $buo_f)
+  }
+
+</script>
