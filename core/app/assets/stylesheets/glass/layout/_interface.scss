@@ -19,6 +19,13 @@ body {
 .cms-ui {
   line-height: 1.6 !important;
   font-size: 16px;
+}
+
+.glass-ui {
+  z-index: 950;
+}
+
+.cms-ui, .glass-ui {
   .icon:not(.icon-fe) {
     font-family: "Refinery" !important;
     font-size: 16px;
@@ -33,18 +40,6 @@ body {
 
 .container-fluid {
   max-width: 1200px;
-}
-
-
-.small-sidebar {
-  @media (min-width: 768px) {
-    .container-fluid {
-      padding-left: 60px;
-    }
-  }
-  .menu-link-left {
-    display: none;
-  }
 }
 
 .auto-save-state {
@@ -92,14 +87,11 @@ body {
 .small-sidebar {
   #sidebar-left {
     width: 45px;
-    transition: .2s ease-out;
-    @media (min-width: 768px) {
-      transition: .2s .3s ease-out;
-      transform: translate3d(0%, 0%, 0);
-      &:hover {
-        width: 260px;
-        transition: .2s ease-out;
-      }
+    transition: .2s .3s ease-out;
+    transform: translate3d(0%, 0%, 0);
+    &:hover {
+      width: 260px;
+      transition: .2s ease-out;
     }
     &.visible {
       width: 260px;
@@ -272,9 +264,11 @@ body {
       li {
         a {
           &:not(:hover) {
-            color: $white;
-            .icon {
-              color: $gray-1;
+            &:not(:focus) {
+              color: $white;
+              .icon {
+                color: $gray-1;
+              }
             }
           }
         }
@@ -676,6 +670,9 @@ body {
           margin-bottom: 0;
         }
       }
+      .control-label {
+        font-weight: 600;
+      }
     }
     .form-group {
       margin: 0;
@@ -695,7 +692,9 @@ body {
       button {
         margin-left: auto;
         &:not(:hover) {
-          color: $gray-4;
+          &:not(:focus) {
+            color: $gray-4;
+          }
         }
         .icon {
           font-size: 10px;
@@ -742,45 +741,122 @@ body {
   }
 }
 
-@media (max-width: 767px) {
-  .small-sidebar {
-    #sidebar-left {
-      width: 100%;
-      .sidebar-top-nav {
-        .site-name {
-          width: 100%;
-        }
-        .menu-link {
-          position: relative;
-          top: 0;
-          width: 40px;
-          height: 40px;
-          margin: -5px;
-          padding: 4px 5px;
-          .icon {
-            font-size: 18px;
-          }
-        }
-      }
-      .log-out {
-        width: 100%;
-      }
-    }
-  }
 
-  .uv-bottom-right {
-    right: 0;
-    bottom: 55px !important;
-    transform: scale(.7);
-  }
+
+/* -------------------- TYPOGRAPHY -------------------- */
+
+.lead-sm {
+  font-size: 1.1rem;
 }
 
 
 /* -------------------- COMPONENTS -------------------- */
 
+@mixin button-outline-cms-variant($color) {
+  color: $color;
+  background-image: none;
+  background-color: transparent;
+  border-color: $color;
+
+  &:focus,
+  &.focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: #fff;
+    background-color: $cms-hover;
+        border-color: $cms-hover;
+  }
+  @include hover {
+    color: #fff;
+    background-color: $cms-hover;
+        border-color: $cms-hover;
+  }
+
+  &.active {
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $white;
+      background-color: darken($cms-hover, 8%);
+          border-color: darken($cms-hover, 8%);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    &:focus,
+    &.focus {
+      border-color: lighten($color, 20%);
+    }
+    @include hover {
+      border-color: lighten($color, 20%);
+    }
+  }
+}
+
+@mixin button-variant-inverted($color, $background, $border) {
+  $active-background: $color;
+  $active-border: $color;
+
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  @include box-shadow(inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075));
+
+  @include hover {
+    color: $background;
+    background-color: $active-background;
+        border-color: $active-border;
+  }
+
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: $active-background;
+        border-color: $active-border;
+  }
+
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: $active-background;
+        border-color: $active-border;
+    // Remove the gradient for the pressed/active state
+    background-image: none;
+    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: darken($background, 17%);
+          border-color: darken($border, 25%);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    &:focus,
+    &.focus {
+      background-color: $background;
+          border-color: $border;
+    }
+    @include hover {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
+}
+
 .cms-ui {
   .btn-primary {
     @include button-outline-inverted-variant($cms-color);
+  }
+  .btn-secondary-outline {
+    @include button-outline-cms-variant($gray-6);
+    border-color: $gray-3;
   }
   .btn-link {
     color: $cms-color;
@@ -791,11 +867,29 @@ body {
       color: $cms-color;
     }
   }
-  a, button {
+  .btn-white-red {
+    @include button-variant-inverted($red, $white, $white);
+  }
+  .btn-link-red {
+    color: $red;
+    &:link,
+    &:visited {
+      color: $red;
+    }
+    &:hover, &:focus, &:active, &.active {
+      text-decoration: none;
+      color: lighten($red, 15);
+      box-shadow: none;;
+    }
+  }
+  a:not(.btn) {
     color: $cms-color;
       &:hover, &:focus, &:active, &.active {
         color: $cms-hover;
       }
+  }
+  .btn-default {
+    @include button-primary-variant($gray-6, $gray-1, $gray-1);
   }
 }
 
@@ -819,6 +913,14 @@ body {
 .form-control-lg:-ms-input-placeholder {
   font-size: 16px;
   line-height: 1.6;
+}
+
+.cms-ui {
+  .card {
+    background-color: $off-white;
+    border: $card-border-width solid $card-border-color;
+    @include border-radius(5px);
+  }
 }
 
 #flash_container {
@@ -865,15 +967,15 @@ body {
         transition-delay: 0;
         opacity: 1;
         top: calc(100% + 5px);
+        display: block;
       }
     }
     .dropdown-menu {
       left: -65px;
       width: 180px;
-      transition: opacity .2s $bezier .35s, top 0 .5s;
+      transition: opacity .2s $bezier .35s, display 0 .5s;
       opacity: 0;
-      display: block;
-      top: -500px;
+      display: none;
       .btn {
         display: block;
         padding: 3px 15px;
@@ -1168,6 +1270,18 @@ body {
   }
 }
 
+.ui-autocomplete {
+  .ui-state-focus {
+    background: $cms-hover;
+  }
+}
+
+.sub-form {
+  .form-actions {
+    display: none;
+  }
+}
+
 .form-collapse {
   .collapse-toggle {
     display: block;
@@ -1255,13 +1369,17 @@ body {
   }
 }
 
+.module-options {
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+  .btn {
+    margin-top: .25rem;
+  }
+}
+
 .delete-module,
 .delete-content-btn {
-  position: absolute;
-  z-index: 99;
-  bottom: 15px;
-  right: 15px;
-  transition: .2s ease-out;
   color: $red;
   border-color: $white;
   background: white;
@@ -1313,31 +1431,6 @@ body {
   }
 }
 
-.ui-autocomplete {
-  overflow-y: auto;
-  max-height: 300px;
-  padding-top: 5px;
-  border: none;
-  border-radius: 0;
-  box-shadow: $shadow;
-  .ui-menu-item {
-    padding: 5px 12px;
-    font-family: $primary-font;
-    font-size: 18px;
-    font-weight: normal;
-    transition: 0;
-    border: none;
-  }
-  .ui-state-focus {
-    color: $white;
-    border: none;
-    background: $cms-hover;
-  }
-  .icon {
-    color: $gray-3;
-  }
-}
-
 .sticky-logout {
   position: fixed;
   z-index: 5;
@@ -1365,5 +1458,21 @@ body {
     td {
       padding: 3px 30px 3px 0;
     }
+  }
+}
+
+.btn-editor {
+  border: 1px solid $gray-2;
+  border-radius: $border-radius-sm;
+  position: absolute;
+  width: calc(100% - 34px);
+  .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    border-radius: 0;
+    border-top-left-radius: $border-radius-sm;
+    border-top-right-radius: $border-radius-sm;
   }
 }

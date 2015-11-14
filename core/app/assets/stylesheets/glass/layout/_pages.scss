@@ -200,11 +200,15 @@
             flex: 1;
           }
           .label {
-            margin-left: 5px;
+            margin-left: .5rem;
             padding: 2px 8px;
             font-weight: 600;
             text-transform: capitalize;
             background: $gray-3;
+            flex-shrink: 0;
+            &:first-of-type {
+              margin-left: 1rem;
+            }
           }
         }
         .attribute {
@@ -215,12 +219,16 @@
           font-size: 14px;
           text-align: right;
           color: $gray-5;
+          flex-shrink: 0;
+          margin-left: 1rem;
           @media (max-width: 767px) {
             display: none;
           }
         }
         .actions {
           display: none;
+          flex-shrink: 0;
+          margin-left: 1rem;
           align-items: center;
           text-align: right;
           @media (max-width: 767px) {
@@ -394,6 +402,12 @@
   .deliver,
   .image-delete-btn {
     /* Actions are handled by modal buttons.. remove the default ones */
+    display: none;
+  }
+}
+
+.admin-profile-form {
+  .admin-title {
     display: none;
   }
 }

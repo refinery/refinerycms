@@ -87,6 +87,17 @@ function GlassControl($elem) {
     });
   }
 
+  this.element().find('[data-insert-module-template]').click(function (e) {
+    e.preventDefault();
+    var $new_module = this_control.replaceModule('glass-module-' + $(this).data('insert-module-template'));
+    this_control.autoSave($new_module.element());
+  });
+
+  this.element().find('[data-choose-control]').click(function (e) {
+    e.preventDefault();
+    this_control.module().editor().attachControl($(this).data('choose-control'));
+  });
+
   this.element().find('#glass-choose-module-vid').click(function (e) {
     e.preventDefault();
     this_control.module().editor().attachControl('settings-vid');
@@ -208,26 +219,44 @@ function GlassControl($elem) {
     });
   }
 
+  this.replaceModule = function(module_key) {
+    var $cur_module = this_control.module();
+    var $new_module = $cur_module.editor().newModule(module_key, 'after', $cur_module);
+    $cur_module.remove();
+    var $new_p = $new_module.editor().newModule('glass-module-p', 'after', $new_module);
+    return $new_module;
+  };
+
+  this.autoSave = function($elem) {
+    CanvasForms.triggerAutoSave(GlassContentEditing.getFormForElement($elem), $elem);
+  }
+
   this.element().find('#glass-add-vid-form').submit(function (e) {
     e.preventDefault();
-    var $cur_module = this_control.module();
-    var $new_module = $cur_module.editor().newModule('glass-module-vid', 'after', $cur_module);
-    $cur_module.element().remove();
+    var $new_module = this_control.replaceModule('glass-module-vid');
     var $input_elem = this_control.element().find('.url-input');
     var vid_link = $input_elem.val();
     $input_elem.val('');
     $new_module.element().attr('data-video-link', vid_link); // Save for later use if needed (to edit??)
     var embed_url = GlassControl.vidUrlToEmbed(vid_link);
     $new_module.element().find('iframe').attr('src', embed_url);
-    var $new_p = $new_module.editor().newModule('glass-module-p', 'after', $new_module);
+    this_control.autoSave($new_module.element());
   });
 
   this.element().find('#glass-choose-custom').click(function (e) {
     e.preventDefault();
-    var $cur_module = this_control.module();
-    var $new_module = $cur_module.editor().newModule('glass-module-custom', 'after', $cur_module);
-    $cur_module.element().remove();
-    var $new_p = $new_module.editor().newModule('glass-module-p', 'after', $new_module);
+    var $new_module = this_control.replaceModule('glass-module-custom');
+    this_control.autoSave($new_module.element());
+  });
+
+  this.element().find('#glass-add-html-form').submit(function (e) {
+    e.preventDefault();
+    var $new_module = this_control.replaceModule('glass-module-custom');
+    var $html_input = this_control.element().find('.html-input');
+    $new_module.element().html($html_input.val());
+    $html_input.val(''); // clear it for next time
+    $new_module.resetControl(); // this makes the delete btn appear - vid & custom aren't having this issue though!
+    this_control.autoSave($new_module.element());
   });
 }
 

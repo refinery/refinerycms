@@ -1,5 +1,7 @@
 .highlight-menu-wrapper {
   position: static;
+  height: 0;
+  overflow: hidden;
 }
 
 .highlight-menu-wrapper .highlight-menu {
@@ -135,3 +137,4 @@
   width: calc(100% - 6px);
   color: $gray-6;
 }
+

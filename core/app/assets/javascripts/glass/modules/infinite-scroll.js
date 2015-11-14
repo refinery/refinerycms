@@ -8,8 +8,10 @@ var GlassInfiniteScroll = (function ($) {
   var container_selector = '.infinite-scroll-container';
 
   $(document).on('content-ready', function (e, element) {
-
     var $container = $(element).find(container_selector);
+    if ($(element).is(container_selector)) {
+      $container = $(element);
+    }
 
     if ($container.length > 0) {
       $container.each(function () {
@@ -38,7 +40,11 @@ var GlassInfiniteScroll = (function ($) {
       fetch_in_progress = true;
       $spinner.children().show();
 
-      var url = buildURL(next_page);
+      var url = $container.data('url');
+      if (!url) {
+        url = window.location.href;
+      }
+      url += (url.indexOf('?') !== -1 ? '&' : '?') + 'page=' + next_page;
 
       $.get(url, function(data) {
         $spinner.children().hide(); // don't hide the container so we can still get the offset()
@@ -57,26 +63,6 @@ var GlassInfiniteScroll = (function ($) {
       $container.data('next-page', next_page + 1);
     }
   }
-
-  /**
-   * Helper method for building the URL to use in a page request.
-   */
-  var buildURL = function (next_page){
-    var url = window.location.href;
-    var hasGetParam = url.indexOf('?') !== -1;
-    var $adminSearchInput = $('#search');
-    var searchVal = $adminSearchInput.length === 1 ? $adminSearchInput.val().trim() : null;
-    // Append search param if there was one.
-    if(searchVal !== null && searchVal.length > 0){
-      var paramName = url.indexOf('?') !== -1 ? '&search=' : '?search='
-      url += (paramName + searchVal);
-      hasGetParam = true;
-    }
-
-    url += (hasGetParam ? '&' : '?') + 'page=' + next_page;
-
-    return url;
-  };
 
   return {
     loadMoreItems: loadMoreItems

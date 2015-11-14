@@ -18,6 +18,7 @@ module Refinery
           plugin.pathname = root
           plugin.name = 'refinery_images'
           plugin.menu_match = %r{refinery/image(_dialog)?s$}
+          plugin.always_allow_access = true
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_images_path }
         end
       end

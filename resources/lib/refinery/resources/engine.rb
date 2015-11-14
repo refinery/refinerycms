@@ -18,6 +18,7 @@ module Refinery
           plugin.pathname = root
           plugin.name = 'refinery_files'
           plugin.menu_match = /refinery\/(refinery_)?(files|resources)$/
+          plugin.always_allow_access = true
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_resources_path }
         end
       end

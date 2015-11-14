@@ -68,7 +68,7 @@
 <a href="" class="delete"><i class="icon icon-trash"></i> Delete</a>
 -->
 
-<div class='form-actions<%= ' sidebar-section no-border m-t' if in_sidebar %><%= ' form-actions-dialog' if from_dialog? %>'>
+<div class='form-actions flex align-items-center<%= ' sidebar-section no-border m-t' if in_sidebar %><%= ' form-actions-dialog' if from_dialog? %>'>
   <div class='<%= in_sidebar ? "sidebar-section-body" : "form-actions-left" %>'>
     <%= button_tag "#{'<i class="icon icon-publish"></i>' if in_sidebar} <span>#{submit_button_text}</span>".html_safe,
                    :type => :submit,

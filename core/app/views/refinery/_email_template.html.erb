@@ -49,7 +49,41 @@
                     </tr>
                   </table>
                   <!-- // END PREHEADER -->
-              </td>
+                </td>
+
+                <% if content_for?(:header_img) %>
+                  <td>
+                    <tr>
+                      <td align="center" valign="top">
+                        <!-- BEGIN HEADER // -->
+                        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader">
+                          <tr>
+                            <td valign="top" class="headerContainer">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock">
+                                <tbody class="mcnImageBlockOuter">
+                                  <tr>
+                                    <td valign="top" style="padding:0px;" class="mcnImageBlockInner">
+                                      <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer">
+                                        <tbody>
+                                          <tr>
+                                            <td class="mcnImageContent" valign="top" style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0;">
+                                              <img align="left" alt="" src="<%= yield :header_img %>" width="600" style="max-width:1200px; padding-bottom: 0; display: inline !important; vertical-align: bottom; -webkit-border-top-right-radius: 5px; -webkit-border-top-left-radius: 5px; -moz-border-radius-topright: 5px; -moz-border-radius-topleft: 5px; border-top-right-radius: 5px; border-top-left-radius: 5px;" class="mcnImage">
+                                             </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <!-- // END HEADER -->
+                      </td>
+                    </tr>
+                  </td>
+                <% end %>
             </tr>
             <tr>
               <td align="center" valign="top">

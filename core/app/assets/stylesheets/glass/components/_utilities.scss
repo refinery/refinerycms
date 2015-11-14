@@ -17,10 +17,6 @@ body {
   display: inline-block;
 }
 
-.static {
-  position: static;
-}
-
 
 // FLEX
 
@@ -59,6 +55,10 @@ body {
   align-items: center;
 }
 
+.align-content-center {
+  align-content: center;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -77,6 +77,10 @@ body {
 
 .shrink-0 {
   flex-shrink: 0;
+}
+
+.basis-100 {
+  flex-basis: 100%;
 }
 
 
@@ -123,7 +127,69 @@ body {
 }
 
 
-// CMS PAGES
+// POSITIONING
+
+.static {
+  position: static;
+}
+
+.fixed-b-r {
+  position: fixed;
+  bottom: .5rem;
+  right: .5rem;
+}
+
+.fixed-t-r {
+  position: fixed;
+  top: .5rem;
+  right: .5rem;
+}
+
+.fixed-b-l {
+  position: fixed;
+  bottom: .5rem;
+  left: .5rem;
+}
+
+.fixed-t-l {
+  position: fixed;
+  top: .5rem;
+  left: .5rem;
+}
+
+.abs-c-c {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.abs-b-r {
+  position: absolute;
+  bottom: .5rem;
+  right: .5rem;
+}
+
+.abs-t-r {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+}
+
+.abs-b-l {
+  position: absolute;
+  bottom: .5rem;
+  left: .5rem;
+}
+
+.abs-t-l {
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+}
+
+
+// CMS COMPONENTS IN FRONT-END
 
 .inline-module {
   &-fw {
@@ -156,6 +222,11 @@ body {
 .inline-module {
   margin-top: 30px;
   margin-bottom: 30px;
+  figure {
+    figcaption {
+      @include ellipsis($ellipsis-width);
+    }
+  }
 }
 
 .inline-editable-image-container {
@@ -627,6 +698,10 @@ p + .inline-module {
   background-color: $beige !important;
 }
 
+.beige-1-bg {
+  background-color: $beige-1 !important;
+}
+
 .brown-bg {
   background-color: $brown !important;
 }
@@ -697,6 +772,10 @@ p::-moz-selection {
   border-radius: $border-radius * 2;
 }
 
+.box-shadow {
+  box-shadow: $shadow;
+  background: red;
+}
 
 
 
@@ -793,6 +872,10 @@ p::-moz-selection {
   background-size: cover;
 }
 
+.contain-bg {
+  background-size: contain;
+}
+
 .bg-fade {
   background-blend-mode: multiply;
   background-color: $gray-3;
@@ -861,6 +944,21 @@ p::-moz-selection {
 
 
 /* -------------------- VIDEO -------------------- */
+
+.video-wrapper {
+  height: 0;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  padding-bottom: 56.25%;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 .video-16-9 {
   height: 0;
@@ -1179,21 +1277,22 @@ hr {
 
 /* -------------------- FORMS -------------------- */
 
-.form-group {
-  .form-control, .c-select,
-  textarea {
-    &:hover {
-      border-color: $gray-3;
-      box-shadow: 0 0 6px 0 rgba($gray-6,.1);
-    }
+.form-control, .c-select,
+textarea {
+  &:hover {
+    border-color: $gray-3;
+    box-shadow: 0 0 6px 0 rgba($gray-6,.1);
   }
-  textarea {
-    height: 137px;
-    resize: vertical;
-  }
-  label {
-    text-align: right;
-  }
+}
+.form-control-lg {
+  font-size: 1rem;
+}
+textarea {
+  height: 137px;
+  resize: vertical;
+}
+label {
+  text-align: right;
 }
 
 .c-select {
@@ -1215,14 +1314,6 @@ hr {
 .c-select:focus {
   border-color: $gray-5;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px 0 rgba($gray-6,.15);
-}
-
-.form-actions {
-  display: inline;
-  overflow: hidden;
-  .form-actions-left {
-    float: left;
-  }
 }
 
 .select-area,
@@ -1250,69 +1341,57 @@ select:focus {
 
 .placeholder-labels {
   .form-group {
-    .form-control {
-      &:focus {
-        & + label {
-          visibility: visible;
-        }
-      }
-    }
-    .form-control-lg {
-      & + label {
-        top: calc(.75rem - 4px);
-        left: calc(1.25rem + 1px);
-      }
-    }
     label {
       position: absolute;
-      top: calc(.375rem - 4px);
-      left: calc(.75rem + 1px);
-      visibility: hidden;
-      font-size: 16px;
-      line-height: 1.6;
-      transition: .1s $bezier;
+      top: $input-padding-y;
+      left: $input-padding-x;
+      opacity: 0;
+      font-size: .8rem;
+      transition: .2s $bezier;
       pointer-events: none;
       color: $gray-5;
     }
   }
   .form-control:not(.no-placeholder) {
     &:focus {
-      padding-top: 20px;
+      padding-top: $input-padding-y + .85rem;
       &::-webkit-input-placeholder {
         display: none;
         visibility: hidden;
-        transition-delay: 0;
       }
       &::shadow {
         display: none;
         visibility: hidden;
-        transition-delay: 0;
+      }
+      &::-moz-placeholder {
+        display: none;
+        visibility: hidden;
+        opacity: 0;
       }
       & + label {
         top: 0;
-        font-size: 11px;
-        line-height: 15px;
+        opacity: 1;
       }
-    }
-    &::-webkit-input-placeholder {
-      transition-delay: .2s;
-    }
-    &::shadow {
-      transition-delay: .2s;
     }
   }
   .form-control-lg:not(.no-placeholder) {
     &:focus {
-      padding-top: 25px;
+      padding-top: $input-padding-y-lg + .85rem;
     }
-  }
-  textarea {
-    &:focus {
-      padding-top: 30px;
+    & + label {
+      left: $input-padding-x-lg;
     }
   }
 }
 
+.field-row {
+  margin-left: ($spacer-y / -4) !important;
+  margin-right: ($spacer-y / -4) !important;
+  flex-wrap: wrap;
+  .form-control {
+    flex-basis: 120px;
+  }
+}
 
 .validation {
   z-index: 5;
@@ -1364,6 +1443,26 @@ select:focus {
   }
 }
 
+.dropdown-hover {
+  &:hover, &.open {
+    .dropdown-menu {
+      transition-delay: 0;
+      opacity: 1;
+      left: 0;
+    }
+  }
+  .dropdown-menu {
+    transition: opacity .2s $bezier .35s, left 0 .5s;
+    opacity: 0;
+    left: -5000px;
+    display: block;
+  }
+  .btn, a {
+    display: block;
+    text-align: left;
+  }
+}
+
 .tooltip {
   .tooltip-inner {
     padding: 10px 15px;
@@ -1375,6 +1474,23 @@ select:focus {
     .tooltip-arrow {
       border-top-color: $gray-5;
     }
+  }
+}
+
+.close-btn {
+  position: absolute;
+  z-index: 100;
+  top: 10px;
+  right: 10px;
+  font-size: 12px !important;
+  line-height: 12px !important;
+  .icon {
+    font-size: 12px !important;
+    line-height: 12px !important;
+  }
+  &.close-btn-out {
+    top: -15px;
+    right: -15px;
   }
 }
 
@@ -1417,14 +1533,6 @@ select:focus {
       color: $gray-4 !important;
     }
   }
-  .close-btn,
-  .close {
-    position: absolute;
-    z-index: 100;
-    top: 10px;
-    right: 10px;
-    font-size: 12px;
-  }
   .bootstrap-datetimepicker-widget {
     width: 100%;
   }
@@ -1451,6 +1559,34 @@ select:focus {
     opacity: 1;
   }
 }
+
+.ui-autocomplete {
+  overflow-y: auto;
+  max-height: 10rem;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  background-color: $white;
+  padding: .5rem 0;
+  position: absolute;
+  z-index: 5;
+  .ui-menu-item {
+    padding: .15rem .75rem;
+    cursor: pointer;
+  }
+  .ui-state-focus {
+    color: $white;
+    background: $primary-hover;
+  }
+  .icon {
+    color: $gray-3;
+  }
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
+}
+
+
 
 // CIRCLE ICON
 
@@ -1613,6 +1749,9 @@ button.circle-icon {
 
 a {
   transition: .2s $bezier;
+  &:focus {
+    outline: 0;
+  }
 }
 
 
@@ -1821,6 +1960,11 @@ button {
   font-size: 0.85rem;
 }
 
+.btn-lg {
+  font-size: 1rem;
+  padding: 0.65rem 1.25rem;
+}
+
 
 // STATES
 
@@ -1908,7 +2052,7 @@ input[type="submit"]:focus {
       margin-top: 6px;
     }
   }
-  &:hover {
+  &:hover, &:focus {
     .bar-1 {
       margin-top: -8px;
     }
@@ -1947,7 +2091,7 @@ input[type="submit"]:focus {
         margin-top: 4px;
       }
     }
-    &:hover {
+    &:hover, &:focus {
       .bar-1 {
         margin-top: -6px;
       }

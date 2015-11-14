@@ -119,7 +119,7 @@ var GlassModals = (function ($) {
       $modal.modal('show');
 
       $saveBtn.unbind().click(function(e){
-        $saveBtn.html('<i class="active inline inverted xs loader"></i> Sending');
+        $saveBtn.html('<i class="active inline xs loader"></i> Sending');
         $saveBtn.attr('disabled', 'disabled');
         $form.submit();
       });

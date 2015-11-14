@@ -95,13 +95,16 @@
   margin: 0 auto;
   max-width: 300px;
   .upload-preview-container{
-    padding-top: 100%;
+    padding-top: 100% !important;
     .upload-preview-inner{
       border-radius: 50%;
     }
     .file-preview{
       border-radius: 50%;
     }
+  }
+  .image-id-field {
+    display: none;
   }
 }
 

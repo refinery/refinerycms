@@ -49,7 +49,9 @@ var CanvasForms = (function ($) {
 
   function autoSave($form, changed_element) {
     var online = navigator.onLine;
-    var $auto_save_form = $(document).find('form.auto-save');
+    if (!$form.hasClass('auto-save')) {
+      return;
+    }
 
     if ($form.find(".autosave-field").length == 0) {
       $form.append($("#autosave_field").clone());
@@ -58,6 +60,15 @@ var CanvasForms = (function ($) {
     // TODO: change form-before-submit event to a non-queued event so this works:
     // $form.submit();
     $form.data("submit-btns").not('.publish-button').first().click();
+  }
+
+  function triggerAutoSave($form, changed_element) {
+    if (!$form.hasClass('auto-save')) {
+      return;
+    }
+
+    autoSave($form, changed_element);
+    $form.data("watcher").manually_triggered();
   }
 
   function autoSaveComplete(http_status, message, $response) {
@@ -91,6 +102,7 @@ var CanvasForms = (function ($) {
         'onkeypress' : $('.glass-edit'),
         'callback'   : function (element) { autoSave($auto_save_form, element); },
       });
+      $auto_save_form.data("watcher", watcher);
       $auto_save_form.data("allow-unload", true);
     }
   }
@@ -278,6 +290,12 @@ var CanvasForms = (function ($) {
       $(this).data('orig-btn-txt', $(this).html());
     });
 
+    $form.keypress(function (e) {
+      if (e.keyCode == 13) {
+        e.preventDefault();
+      }
+    });
+
     $form.data("submit-btns", $submit_btns);
     $form.data("submit-btn",  $submit_btns.not('.publish-button').first());
   }
@@ -463,7 +481,7 @@ var CanvasForms = (function ($) {
   }
 
   function disableSubmit($form) {
-    $form.data("submit-btn").html('<i class="ui active inline inverted xs loader"></i> Sending');
+    $form.data("submit-btn").html('<i class="active inline xs loader"></i> Sending');
     $form.data("submit-btns").attr('disabled', 'disabled');
   }
 
@@ -641,6 +659,7 @@ var CanvasForms = (function ($) {
     initAjaxForm: initAjaxForm,
     disableSubmit: disableSubmit,
     resetSubmit: resetSubmit,
-    scrollToVerifyErrors: scrollToVerifyErrors
+    scrollToVerifyErrors: scrollToVerifyErrors,
+    triggerAutoSave: triggerAutoSave
   };
 })(jQuery);

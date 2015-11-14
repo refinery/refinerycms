@@ -469,5 +469,11 @@ body {
     &.icon-tags:before {
       content: "\f75e";
     }
+    &.icon-pdf:before {
+      content: '\f75f';
+    }
+    &.icon-button:before {
+      content: '\f760';
+    }
   }
 }

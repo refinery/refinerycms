@@ -145,6 +145,12 @@ function GlassModule($elem, $editor) {
     else if (this.element().hasClass('video-module')) {
       module_type = 'vid-module';
     }
+    else if (this.element().hasClass('button-module')) {
+      module_type = 'button-module';
+    }
+    else if (this.element().hasClass('custom-html')) {
+      module_type = 'custom-html';
+    }
     return module_type;
   };
 
@@ -225,5 +231,9 @@ function GlassModule($elem, $editor) {
 
   if (this.element().find('img, iframe').length > 0 || this.element().hasClass('glass-no-edit')) {
     this.element().attr('contenteditable', false);
+
+    this.element().find('.glass-editable').each(function () {
+      $(this).attr('contenteditable', true)
+    });
   }
 }

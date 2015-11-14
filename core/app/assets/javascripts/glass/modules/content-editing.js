@@ -50,6 +50,7 @@ var GlassContentEditing = (function ($) {
   function filterPasteEvents(element, textOnly) {
     element.addEventListener("paste", function (e) {
       e.preventDefault();
+      var $form = getFormForElement($(element));
 
       if (e && e.clipboardData && e.clipboardData.getData) {
         var result = '';
@@ -60,7 +61,11 @@ var GlassContentEditing = (function ($) {
         }
         else {
           result = GlassHtmlEditor.formatHtml(e.clipboardData.getData("text/html").replace(/<!--[\s\S]*?-->/gm,""));
-          var $result = $(result);
+          var $result = $('<div>' + result + '</div>');
+          $result.find('.glass-no-edit').each(function () {
+            $(this).remove();
+          });
+          $result = $result.children();
 
           if (!result || result.length < 1) {
             result = plain_text_buffer; // no html found, we'll fall back to the plaintext buffer
@@ -70,7 +75,9 @@ var GlassContentEditing = (function ($) {
           }
           else if ($result.length > 1) {
             result = '';
-            document.execCommand("insertHTML", false, ''); // clear out the selected text
+            if (!window.getSelection().isCollapsed) {
+              document.execCommand("delete", false, ''); // clear out the selected text
+            }
             $(element).after($result);
             if ($(element).text().length == 0) {
               $(element).remove();
@@ -81,11 +88,17 @@ var GlassContentEditing = (function ($) {
         if (result && result.length > 0) {
           document.execCommand("insertHTML", false, result);
         }
+        CanvasForms.triggerAutoSave($form, $(element));
       }
       else {
         alert("Sorry, you will need a different browser in order to paste content"); // TODO ?
       }
     });
+  }
+
+  function getFormForElement($elem) {
+    var $chunk = $elem.parents('.glass-edit');
+    return $chunk.length > 0 ? $chunk.glassChunk().getForm() : null;
   }
 
   // #############################################################
@@ -254,5 +267,6 @@ var GlassContentEditing = (function ($) {
   // Return API for other modules
   return {
     filterPasteEvents: filterPasteEvents,
+    getFormForElement: getFormForElement
   };
 })(jQuery);

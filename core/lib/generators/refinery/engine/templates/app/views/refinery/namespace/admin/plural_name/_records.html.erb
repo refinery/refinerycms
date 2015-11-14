@@ -1,7 +1,8 @@
 <%%= render 'refinery/admin/search_header', :url => refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path %>
 <div id="<%= plural_name %>-index">
   <%% if @<%= plural_name %>.any? %>
-    <ul id="<%= plural_name %>" class="list-unstyled sortable_list infinite-scroll-container" data-pages-total="<%%= @<%= plural_name %>.total_pages %>">
+    <ul id="<%= plural_name %>" class="list-unstyled sortable_list infinite-scroll-container"
+      data-pages-total="<%%= @<%= plural_name %>.total_pages %>" <%% if searching? %> data-url="<%%= request.original_fullpath %>" <%% end %>>
       <%%= render '<%= plural_name %>' %>
     </ul>
     <%%= render 'refinery/admin/glass/infinite_scroll_spinner' %>

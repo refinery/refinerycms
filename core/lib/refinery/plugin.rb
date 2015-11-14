@@ -5,7 +5,6 @@ module Refinery
       "refinery_pages"        => {position: 5, icon: 'icon icon-pages'     },
       "refinerycms_blog"      => {position: 15, icon: 'icon icon-feather'  },
       "refinerycms_inquiries" => {position: 85, icon: 'icon icon-chat'     },
-      "refinery_users"        => {position: 90, icon: 'icon icon-group'    },
       "refinery_settings"     => {position: 0 , icon: 'icon icon-wrench'   }, #hide
       "refinery_images"       => {position: 0 , icon: 'icon icon-wrench'   }, #hide
       "refinery_files"        => {position: 0 , icon: 'icon icon-wrench'   }, #hide

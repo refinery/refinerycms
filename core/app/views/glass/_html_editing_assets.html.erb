@@ -12,11 +12,13 @@
 
   <a id="glass-module-switcher-template" href="" class="circle-icon add-module glass-control singleton glass-ui transitionable" contenteditable=false><i class="icon icon-plus"></i></a>
   <div id="glass-choose-module" class="new-module media-chooser clear glass-control singleton glass-ui" contenteditable=false>
-    <a href="" id="glass-choose-module-img" class="circle-icon media-type"><i class="icon icon-photo bump-down"></i></a>
-    <a href="" id="glass-choose-module-vid" class="circle-icon media-type"><i class="icon icon-film"></i></a>
+    <button id="glass-choose-module-img" class="circle-icon media-type"><i class="icon icon-photo bump-down"></i></button>
+    <button id="glass-choose-module-vid" class="circle-icon media-type"><i class="icon icon-film"></i></button>
+    <!-- <button class="circle-icon media-type" data-insert-module-template="button"><i class="icon icon-button"></i></button> -->
     <% if current_refinery_user.has_role?(:superuser) -%>
-      <a href="" id="glass-choose-custom"     class="circle-icon media-type"><i class="icon icon-code"></i></a>
+      <button id="glass-choose-custom"     class="circle-icon media-type"><i class="icon icon-code"></i></button>
     <% end %>
+    <button class="circle-icon media-type" data-choose-control="html"><i class="icon icon-code"></i></button>
   </div>
   <div id="glass-module-settings-vid" class="new-module media-chooser clear glass-control singleton glass-ui" contenteditable=false>
     <form id="glass-add-vid-form" role="form">
@@ -31,7 +33,17 @@
       </div>
     </form>
   </div>
-  <button class="circle-icon delete-module             glass-control append glass-ui" contenteditable=false><i class="icon icon-trash"></i></button>
+  <div id="glass-module-html" class="new-module clear glass-control singleton glass-ui cms-ui" contenteditable=false>
+    <form id="glass-add-html-form" role="form">
+      <label class="bold">Paste your HTML</label>
+      <textarea class="form-control glass-autofocus html-input m-b-xs" placeholder="<iframe>...</iframe>"></textarea>
+      <button type="submit" class="btn btn-default bold">Insert</button>
+    </form>
+  </div>
+  <div class="module-options abs-b-r">
+    <button class="btn btn-white btn-circle btn-sm glass-control glass-ui" contenteditable="false"><i class="icon icon-paragraph"></i></button>
+    <button class="btn btn-white-red btn-circle btn-sm delete-module glass-control glass-ui" contenteditable="false"><i class="icon icon-trash"></i></button>
+  </div>
   <button class="circle-icon icon-only link-items link glass-control append glass-ui" contenteditable=false><i class="icon icon-link" ></i></button>
   <div class="click-pads glass-control append" contenteditable=false>
     <div class="click-pad top"></div>
@@ -62,7 +74,11 @@
     <img class="inline-editable-image img-fluid" src=""/>
   </div>
 
-  <div id="glass-module-custom-template" class="glass-no-edit" contenteditable=false>
+  <div id="glass-module-button-template" class="glass-no-edit module-button" contenteditable=false>
+    <a class="btn btn-primary">ACTION</a>
+  </div>
+
+  <div id="glass-module-custom-template" class="glass-no-edit custom-html" contenteditable=false>
     <div class="whatever-you-want-here">
       <p>Change this to whatever custom html you want using your browser inspector</p>
     </div>

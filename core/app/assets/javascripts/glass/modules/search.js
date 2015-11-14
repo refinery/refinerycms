@@ -42,17 +42,24 @@ var GlassSearch = (function ($){
             return;
           }
           xhr.done(function(data) {
-            var $content = $(data).find('.sortable_list');
             $btnContainer.find('.loader').addClass('hidden-xs-up').fadeOut(100, function(){
               $btnContainer.find('.icon-search').fadeIn(100);
             });
-            if ($content.length > 0) {
-              $('#errorExplanation').remove();
 
-              CanvasForms.replaceContent($('.sortable_list'), $content);
+            var callback = $btnContainer.data('callback');
+            if (callback) {
+              callback(data);
             }
             else {
-              $search_form.prepend($error_div);
+              var $content = $(data).find('.sortable_list');
+              if ($content.length > 0) {
+                $('#errorExplanation').remove();
+
+                CanvasForms.replaceContent($('.sortable_list'), $content);
+              }
+              else {
+                $search_form.prepend($error_div);
+              }
             }
           });
         }

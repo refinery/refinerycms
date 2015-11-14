@@ -71,14 +71,15 @@ function GlassHtmlEditor($elem) {
         $control = $('#glass-parking .module-layout').clone().glassHtmlControl();
         break;
       default:
-        $control = null;
+        var $elem = $('#glass-module-' + key);
+        $control = $elem.length > 0 ? $elem.first().glassHtmlControl() : null;
     }
 
     var stack = this.h.control_stack;
 
     $control.attachToModule($module);
 
-    if (key == 'choose-module' || key == 'settings-vid') {
+    if ($control.element().hasClass('singleton') && key != 'module-switcher') {
       this.curModule().element().hide();
       // We have a stack for modules that replace the content
       if (stack.length > 0) {
@@ -264,12 +265,13 @@ function GlassHtmlEditor($elem) {
     this_editor.triggerChangeFocus(null, null);
   });
 
-  $(document).on('image-uploaded', function (e, img_src) {
+  $(document).on('image-upload-complete', function (e, img_data) {
     var $img = this_editor.h.elem.find('.cur-uploading-img');
     if ($img.length > 0) {
-      $img.attr('src', img_src);
-
+      $img.attr('src', img_data.src);
+      $img.attr('data-image-id', img_data.image_id);
       $img.removeClass('cur-uploading-img');
+      CanvasForms.triggerAutoSave(GlassContentEditing.getFormForElement($img), $img);
     }
   });
 
@@ -278,17 +280,21 @@ function GlassHtmlEditor($elem) {
   return this;
 }
 
-var stripAttributes = function($elem) {
+var formatElementAttrs = function($elem) {
   if ($elem.hasClass('glass-no-edit')) {
     $elem.find('[contenteditable=true]').removeAttr('contenteditable');
     return $elem;
   }
 
   $elem.children().each(function () {
-    $(this).replaceWith(stripAttributes($(this)));
+    $(this).replaceWith(formatElementAttrs($(this)));
   });
 
   var tagName = $elem.prop("tagName").toLowerCase();
+  if (tagName in tag_translations) {
+    tagName = tag_translations[tagName];
+  }
+
   var $result = $(['<', tagName, '>', $elem.html(), '</', tagName, '>'].join(''));
   if (tagName == 'a') {
     $result.attr('href',   $elem.attr('href'));
@@ -302,14 +308,31 @@ var stripAttributes = function($elem) {
 
 var top_level_elements = 'p, ul, ol, h1, h2, h3, h4, h5, h6, blockquote, .glass-no-edit';
 var sub_level_elements = 'b, i, a, li, br, em, strong, s';
-var gonner_elements    = ['noscript, script, style, meta, base, head, style, title, area, audio, map, track, video, iframe, embed, ',
-                          'object, param, source, img, canvas, del, ins, svg'].join('');
+var gonner_elements    = ['noscript, script, style, meta, base, head, style, title, area, audio, map, track, video, ',
+                          'iframe, embed, object, param, source, img, canvas, del, ins, svg, form, input, select'].join('');
+var tag_translations   = { 'i': 'em', 'b': 'strong', 'h1': 'h2', 'h4': 'h3', 'h5': 'h3', 'h6': 'h3' };
 
 var flattenElement = function ($elem) {
   $elem.replaceWith($elem.html());
 };
 
 formatHtmlBlock = function($wrapper) {
+  /******************************
+   * REMOVE UNWANTED NODE TYPES
+   ******************************/
+  // comments, script, style, meta, ...
+  $wrapper.contents().each(function () {
+    if (this.nodeType == 8) { // comments
+      $(this).remove();
+    }
+  });
+
+  $wrapper.find(gonner_elements).each(function () {
+    if ($(this).parents('.glass-no-edit').length == 0) {
+      $(this).remove();
+    }
+  });
+
   /*************
    * FLATTEN
    *************/
@@ -356,30 +379,14 @@ formatHtmlBlock = function($wrapper) {
     }
   });
 
-  /******************************
-   * REMOVE UNWANTED NODE TYPES
-   ******************************/
-  // comments, script, style, meta, ...
-  $wrapper.contents().each(function () {
-    if (this.nodeType == 8) { // comments
-      $(this).remove();
-    }
-  });
-
-  $wrapper.find(gonner_elements).each(function () {
-    if ($(this).parents('.glass-no-edit').length == 0) {
-      $(this).remove();
-    }
-  });
-
   /**********************************
    * FLATTEN ALL OTHER UNKNOWN NODES
    **********************************/
   // span, font, article, section, ...
   $wrapper.contents().each(function () {
-    $(this).find('*').each(function () {
-      if ($(this).is(':not(' + sub_level_elements + ')') && $(this).parents('.glass-no-edit').length == 0) {
-        flattenElement($(this));
+    $.each($(this).find('*').toArray().reverse(), function (i, val) {
+      if ($(val).is(':not(' + sub_level_elements + ')') && $(val).parents('.glass-no-edit').length == 0) {
+        flattenElement($(val));
       }
     });
   });
@@ -387,7 +394,7 @@ formatHtmlBlock = function($wrapper) {
   /*****************************
    * STRIP MOST HTML ATTRIBUTES
    *****************************/
-  $wrapper = stripAttributes($wrapper);
+  $wrapper = formatElementAttrs($wrapper);
 
   // Strip meta tags, the gonner_elements loop doesn't seem to be catching them
   var result = $wrapper.html().trim().replace(/<meta[\s\S]*?>/gm,"");

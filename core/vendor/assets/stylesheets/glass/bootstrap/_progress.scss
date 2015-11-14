@@ -20,7 +20,7 @@
 }
 .progress[value] {
   // IE10 uses `color` to set the bar background-color
-  color: #0074d9;
+  color: $secondary-color;
   // Remove Firefox and Opera border
   border: 0;
   // Reset the default appearance
@@ -35,7 +35,7 @@
   content: attr(value);
 }
 .progress[value]::-webkit-progress-value {
-  background-color: #0074d9;
+  background-color: $secondary-color;
   border-top-left-radius: $border-radius;
   border-bottom-left-radius: $border-radius;
 }

@@ -63,7 +63,7 @@ var GlassImageUploader = (function ($) {
 
       if (isImage) {
         CanvasForms.resetState();
-        if($UPLOAD_PREVIEW_CONTAINERS !== undefined){
+        if($UPLOAD_PREVIEW_CONTAINERS !== undefined && $UPLOAD_PREVIEW_CONTAINERS){
           $UPLOAD_PREVIEW_CONTAINERS.find('.file-preview').fadeOut(200);
         }
         $('#submit-image-btn').click();
@@ -75,18 +75,18 @@ var GlassImageUploader = (function ($) {
 
     $(document).trigger('image-preview');
 
-    if($UPLOAD_PREVIEW_CONTAINERS !== undefined){
+    if($UPLOAD_PREVIEW_CONTAINERS !== undefined && $UPLOAD_PREVIEW_CONTAINERS){
       var $previewDivs = $UPLOAD_PREVIEW_CONTAINERS.find('.file-preview');
       $previewDivs.fadeIn(500);
     }
 
-    if($UPLOAD_PREVIEW_CONTAINER === undefined){
+    if(!$UPLOAD_PREVIEW_CONTAINER){
       $UPLOAD_PREVIEW_CONTAINER = $('.inline-editable-image-container');
       $UPLOAD_PREVIEW_CONTAINERS = $UPLOAD_PREVIEW_CONTAINER;
     }
     resetProgressBar();
 
-    if($UPLOAD_PREVIEW_CONTAINER.length > 0 && $UPLOAD_PREVIEW_CONTAINERS !== undefined){
+    if($UPLOAD_PREVIEW_CONTAINER.length > 0){
 
       var $currentImage = $('img.cur-uploading-img');
 
@@ -127,7 +127,7 @@ var GlassImageUploader = (function ($) {
   }
 
   function handleSuccess(response) {
-    if($CURRENT_IMAGE_CONTAINER !== undefined){
+    if($CURRENT_IMAGE_CONTAINER !== undefined && $CURRENT_IMAGE_CONTAINER){
       var imageIdField = $CURRENT_IMAGE_CONTAINER.find('.image-id-field');
 
       if (imageIdField.length > 0) {
@@ -135,16 +135,19 @@ var GlassImageUploader = (function ($) {
         var html_id = imageIdField.attr('id');
         $("[data-image-bg-id='" + html_id + "']").css("background-image", "url(" + response.url + ")")
       }
+
+      $CURRENT_IMAGE_CONTAINER = null;
     }
 
-    if($UPLOAD_PREVIEW_CONTAINERS !== undefined) {
+    if($UPLOAD_PREVIEW_CONTAINERS) {
 
       var newBtnText = 'Replace Image';
       var $deleteBtns = $UPLOAD_PREVIEW_CONTAINERS.find('.image-delete-btn');
       var $uploadBtns = $UPLOAD_PREVIEW_CONTAINERS.find('.image-upload-btn');
       var $previewDiv = $UPLOAD_PREVIEW_CONTAINERS.find('.file-preview');
 
-      $(document).trigger('image-uploaded', response.url);
+      $(document).trigger('image-uploaded', response.url); // TODO: depricate this
+      $(document).trigger('image-upload-complete', {src: response.url, image_id: response.image_id});
 
       // Preload image
       $('<img/>').attr('src', response.url).load(function() {
@@ -164,6 +167,9 @@ var GlassImageUploader = (function ($) {
         CanvasForms.resetState();
         afterSuccess(response.url);
       });
+
+      $UPLOAD_PREVIEW_CONTAINERS = null;
+      $UPLOAD_PREVIEW_CONTAINER  = null;
     }
   }
 
@@ -175,7 +181,7 @@ var GlassImageUploader = (function ($) {
     var $statusText;
     var $progressBar = $('.progress-bar');
 
-    if($UPLOAD_PREVIEW_CONTAINERS === undefined){
+    if(!$UPLOAD_PREVIEW_CONTAINERS){
       $statusText = $('.glass-control').find('.status-text');
     } else {
       $statusText = $UPLOAD_PREVIEW_CONTAINERS.find('.status-text');
@@ -243,7 +249,7 @@ var GlassImageUploader = (function ($) {
   function resetProgressBar() {
     var statusText   = $UPLOAD_PREVIEW_CONTAINERS.find('.status-text');
 
-    if($UPLOAD_PREVIEW_CONTAINERS !== undefined){
+    if($UPLOAD_PREVIEW_CONTAINERS !== undefined && $UPLOAD_PREVIEW_CONTAINERS){
       $('.progress-bar').removeClass('active');
 
       updateProgressBar(1);
