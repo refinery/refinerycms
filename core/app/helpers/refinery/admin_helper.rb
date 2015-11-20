@@ -1,5 +1,6 @@
 module Refinery
   module AdminHelper
+    include ApplicationHelper
 
     def current_admin_locale
       # TODO: move current_admin_locale to Refinery::I18n
