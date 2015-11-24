@@ -17,9 +17,11 @@
 
     <div class="sidebar-section">
       <div class="sidebar-section-heading">
-        <p class="page-title glass-edit" data-glass-options='{"form_id": "page_title"}' glass-placeholder="Title"><%= @page.title %></p>
+        <span class="page-title glass-edit" data-glass-options='{"form_id": "page_title"}' glass-placeholder="Title"><%= @page.title %></span>
       </div>
     </div>
+
+    <%= yield :fields_after_title %>
 
     <% if Refinery::Pages.use_custom_slugs %>
       <% parent_slug = @page.parent.present? ? @page.parent.nested_path : '' %>
@@ -33,7 +35,7 @@
             <span id="domain-name"></span><%= parent_slug %>/<span
               class="slug glass-edit"
               data-glass-options='{"form_id": "page_custom_slug", "slugify": "page_title", "slugify_if": "page_slugify_title"}'
-            ><%= @page.slug %></span>/
+            ><%= @page.slug %></span>
           </div>
         </div>
       </div>
@@ -55,9 +57,18 @@
           <div class="sidebar-section-body">
             <div class='form-group'>
               <%= f.select :view_template, @valid_view_templates.map { |t| [t.titleize, t] },
-                             template_options(:view_template, @page), {class: 'form-control c-select'}  %>
+                             template_options(:view_template, @page), {class: 'form-control custom-select'}  %>
             </div>
           </div>
+          <% if Refinery::Pages.use_layout_templates %>
+            <div class="sidebar-section-body">
+              <div class='form-group'>
+                <%= f.label  :layout_template, t('.layout_template'), :title => t('.layout_template_help') %>
+                <%= f.select :layout_template, valid_layout_templates,
+                             template_options(:layout_template, @page), {class: 'form-control custom-select'} %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     <%   end %>
@@ -78,7 +89,7 @@
                :before_delete_button => button_tag("<i class='icon icon-pencil'></i> <span>#{status_draft ? 'Save as Draft' : 'Unpublish'}</span>".html_safe,
                  :type => :submit,
                  :id => 'draft-button',
-                 :class => "btn btn-secondary-outline btn-lg mark-as-draft",
+                 :class => "btn btn-outline-secondary btn-lg mark-as-draft",
                  :'data-redirect-url' => refinery.admin_pages_path,
                  :title => "Save this page but omit from menus and hide from the public",
                  :name => nil
@@ -88,7 +99,6 @@
     <%= render '/refinery/admin/locale_picker', :current_locale => Globalize.locale %>
 
     <%= f.hidden_field :title %>
-    <%= yield :fields_after_title %>
 
     <% part_index = -1 %>
     <%= f.fields_for :parts do |p| %>

@@ -3,8 +3,13 @@
   <div class="page-row">
     <!-- <i class="icon icon-file"></i> -->
     <a class="page-title" href="<%%= refinery.<%= 'edit_' if !include_form? %><%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>) %>">
-      <%%= <%= singular_name %>.<%= title_attribute %> %>
+      <span class="title">
+        <%%= <%= singular_name %>.<%= title_attribute %> %>
+      </span>
     </a>
+<% if include_form? -%>
+    <span class="date"><%%= <%= singular_name %>.created_at.strftime('%Y-%b-%d') %></span>
+<% end %>
     <span class='actions'>
 <% if localized? -%>
       <%% if Refinery::I18n.frontend_locales.many? %>

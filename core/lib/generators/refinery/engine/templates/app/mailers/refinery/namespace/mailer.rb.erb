@@ -7,13 +7,13 @@ module Refinery
         mail :subject  => Refinery::<%= namespacing %>::Setting.confirmation_subject,
              :to       => <%= singular_name %>.email,
              :from     => "\"#{Refinery::Core.site_name}\" <no-reply@#{request.domain}>",
-             :reply_to => Refinery::<%= namespacing %>::Setting.notification_recipients.split(',').first
+             :reply_to => (Refinery::Setting.get(:<%= singular_name %>_notification_recipients).presence || '').split(',').first
       end
 
       def notification(<%= singular_name %>, request)
         @<%= singular_name %> = <%= singular_name %>
         mail :subject  => Refinery::<%= namespacing %>::Setting.notification_subject,
-             :to       => Refinery::<%= namespacing %>::Setting.notification_recipients,
+             :to       => Refinery::Setting.get(:<%= singular_name %>_notification_recipients),
              :from     => "\"#{Refinery::Core.site_name}\" <no-reply@#{request.domain}>"
       end
 

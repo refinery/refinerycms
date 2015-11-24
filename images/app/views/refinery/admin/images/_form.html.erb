@@ -1,6 +1,6 @@
 <% @image = ::Refinery::Image.new %>
 <%= form_for @image, url: (@url_override or @image.persisted? ? refinery.admin_image_path(@image) : refinery.admin_images_path),
-             html: { multipart: true, id: 'image-upload-form'} do |f| %>
+             html: { multipart: true, id: 'image-upload-form', class: 'upload-form'} do |f| %>
   <%= f.file_field :image, id: 'refinery-image-input', :tabindex => -1 %>
   <input id="submit-image-btn" type="submit" value="Submit" tabindex="-1" />
 <% end %>

@@ -1,270 +1,85 @@
 var GlassImageUploader = (function ($) {
-
-  var $CURRENT_IMAGE_CONTAINER, $UPLOAD_PREVIEW_CONTAINER, $UPLOAD_PREVIEW_CONTAINERS;
-
   $(document).on('content-ready', function (e, element) {
-    imageListeners(element);
-    fileUploaderListener(element);
-    uploadImageHandler(element);
-    imageDeleteListener(element);
-  });
+    var $upload_btns = $(element).find('.image-upload-btn');
+    if ($upload_btns.length > 0) {
 
-  function imageListeners(element) {
-    // Click listener for upload button
-    $(element).find('.image-upload-btn').unbind('click').click(function (e) {
-      e.preventDefault();
-      $UPLOAD_PREVIEW_CONTAINER  = $(this).parents('.upload-preview-container');
-      $UPLOAD_PREVIEW_CONTAINERS = $('.upload-preview-container[data-field-name=' + $UPLOAD_PREVIEW_CONTAINER.attr('data-field-name') +']');
-      $CURRENT_IMAGE_CONTAINER   = $('.image-upload-container[data-field-name='   + $UPLOAD_PREVIEW_CONTAINER.attr('data-field-name') +']');
-      openFileInput();
-    });
+      // TODO: Deprecate this loop when all image btns have a data-image-input-id attr on them (input_id variable)
+      $upload_btns.each(function () {
+        var $upload_btn = $(this);
+        var $container = $(this).parents('.upload-preview-container');
+        if (!$upload_btn.data('image-input-id') && $container.length > 0) {
+          var $img_field = $container.parents('form')
+            .find('.image-upload-container[data-field-name="' + $container.data('field-name') + '"] .image-id-field');
+          var $preview_div = $container.find('.file-preview');
 
-    // Click listener for edit button
-    $(element).find('.btn-edit-img').unbind('click').click(function (e) {
-      e.preventDefault();
-      $UPLOAD_PREVIEW_CONTAINER  = $(this).parents('.upload-preview-container');
-      $UPLOAD_PREVIEW_CONTAINERS = $('.upload-preview-container[data-field-name=' + $UPLOAD_PREVIEW_CONTAINER.attr('data-field-name') +']');
-      $CURRENT_IMAGE_CONTAINER   = $('.image-upload-container[data-field-name=' + $UPLOAD_PREVIEW_CONTAINER.attr('data-field-name') +']');
-      openCropModal();
-    });
-  }
+          if ($img_field.length > 0) {
+            $upload_btn.attr('data-image-input-id', $img_field.attr('id'));
 
-  function openFileInput() {
-    var imageInputField = $('#refinery-image-input');
-    imageInputField.click();
-  }
-
-  function fileUploaderListener(element) {
-    var maxFileSizeBytes = (5242880 * 20);
-
-    $(element).find('#refinery-image-input').change(function (e) {
-      if (typeof FileReader == "undefined") return true;
-      var isImage = true;
-      var name = $(this).attr('name');
-      var files = e.target.files;
-
-      for (var i = 0, file; file = files[i]; i++) {
-        if (file.type.match('image.*')) {
-          if (file.size >= maxFileSizeBytes){
-
-            CanvasForms.insertErrors($('#image-upload-form'), {
-              image: ['Image is too large. Max size is 100 mb']
-            }, true);
-
-            isImage = false;
-            return true;
+            if ($preview_div.length > 0) {
+              $preview_div.attr('data-image-bg-id', $img_field.attr('id'));
+            }
           }
-        } else {
-          CanvasForms.insertErrors($('#image-upload-form'), {image: ['You may only upload an image here.']}, true);
-          isImage = false;
-          return true;
         }
-      }
-
-      if (isImage) {
-        CanvasForms.resetState();
-        if($UPLOAD_PREVIEW_CONTAINERS !== undefined && $UPLOAD_PREVIEW_CONTAINERS){
-          $UPLOAD_PREVIEW_CONTAINERS.find('.file-preview').fadeOut(200);
-        }
-        $('#submit-image-btn').click();
-      }
-    });
-  }
-
-  function setPreviewDiv() {
-
-    $(document).trigger('image-preview');
-
-    if($UPLOAD_PREVIEW_CONTAINERS !== undefined && $UPLOAD_PREVIEW_CONTAINERS){
-      var $previewDivs = $UPLOAD_PREVIEW_CONTAINERS.find('.file-preview');
-      $previewDivs.fadeIn(500);
-    }
-
-    if(!$UPLOAD_PREVIEW_CONTAINER){
-      $UPLOAD_PREVIEW_CONTAINER = $('.inline-editable-image-container');
-      $UPLOAD_PREVIEW_CONTAINERS = $UPLOAD_PREVIEW_CONTAINER;
-    }
-    resetProgressBar();
-
-    if($UPLOAD_PREVIEW_CONTAINER.length > 0){
-
-      var $currentImage = $('img.cur-uploading-img');
-
-      if($currentImage.length > 0){
-        $currentImage.siblings('.progress-box').show();
-      } else {
-        $UPLOAD_PREVIEW_CONTAINER.find('.progress-box').show();
-      }
-    }
-  }
-
-  function afterSuccess(imageUrl){
-
-  }
-
-  function uploadImageHandler(element) {
-    var $imageForm = $(element).find('#image-upload-form');
-    var defaultOptions = {
-        beforeSubmit: setPreviewDiv,
-        success: handleSuccess,
-        error: handleError,
-        uploadProgress: onProgress,
-        forceSync: true,
-        resetForm: true
-      };
-
-    $imageForm.submit(function (e) {
-      $(this).ajaxSubmit(defaultOptions);
-      return false;
-    });
-  }
-
-  function handleError(response) {
-    console.warn(response);
-    $UPLOAD_PREVIEW_CONTAINERS.find('.progress-box').hide();
-
-     CanvasForms.insertErrors($('#image-upload-form'), response.responseJSON.errors, true);
-  }
-
-  function handleSuccess(response) {
-    if($CURRENT_IMAGE_CONTAINER !== undefined && $CURRENT_IMAGE_CONTAINER){
-      var imageIdField = $CURRENT_IMAGE_CONTAINER.find('.image-id-field');
-
-      if (imageIdField.length > 0) {
-        imageIdField.val(response.image_id);
-        var html_id = imageIdField.attr('id');
-        $("[data-image-bg-id='" + html_id + "']").css("background-image", "url(" + response.url + ")")
-      }
-
-      $CURRENT_IMAGE_CONTAINER = null;
-    }
-
-    if($UPLOAD_PREVIEW_CONTAINERS) {
-
-      var newBtnText = 'Replace Image';
-      var $deleteBtns = $UPLOAD_PREVIEW_CONTAINERS.find('.image-delete-btn');
-      var $uploadBtns = $UPLOAD_PREVIEW_CONTAINERS.find('.image-upload-btn');
-      var $previewDiv = $UPLOAD_PREVIEW_CONTAINERS.find('.file-preview');
-
-      $(document).trigger('image-uploaded', response.url); // TODO: depricate this
-      $(document).trigger('image-upload-complete', {src: response.url, image_id: response.image_id});
-
-      // Preload image
-      $('<img/>').attr('src', response.url).load(function() {
-        $(this).remove(); // prevent memory leaks as @benweet suggested
-        $previewDiv.css('background-image', 'url(' + response.url + ')');
-
-        if ($deleteBtns.length > 0){
-          $deleteBtns.attr('data-path', '/admin/images/' + response.image_id);
-          $deleteBtns.fadeIn(500);
-        }
-
-        if($uploadBtns.length > 0){
-          $uploadBtns.text(newBtnText);
-        }
-
-        $('.progress-box').fadeOut(1000);
-        CanvasForms.resetState();
-        afterSuccess(response.url);
       });
 
-      $UPLOAD_PREVIEW_CONTAINERS = null;
-      $UPLOAD_PREVIEW_CONTAINER  = null;
+      $upload_btns.each(function () {
+        var $upload_btn   = $(this);
+        var $img_field    = $('#' + $upload_btn.data('image-input-id'));
+        var $container    = $(this).parents('.upload-preview-container');
+        var $progress_bar = ($container.length > 0 ? $container : $upload_btn               ).find('.progress');
+        var $error_div    = ($container.length > 0 ? $container : $img_field.parents('form')).find(".errorExplanation").first();
+
+        $upload_btn.click(function (e) {
+          e.preventDefault();
+          GlassUploader.openFileInput('#img-upload-form', $upload_btn);
+          if ($progress_bar.length > 0) {
+            $progress_bar.val(0);
+          }
+        });
+
+        GlassUploader.handleProgressUpdates($upload_btn, $progress_bar);
+
+        $upload_btn.data('on-success', function(response) {
+          $upload_btns.filter('[data-image-input-id="' + $upload_btn.data('image-input-id') + '"]').each(function () {
+            if ($(this).text().replace(/\W+/g, ' ').length > 3) {
+              $(this).text('Replace Image');
+            }
+          });
+          var $preview_divs = $('[data-image-bg-id="' + $upload_btn.data('image-input-id') + '"]')
+          $preview_divs.show();
+          $preview_divs.css('background-image', 'url(' + response.url + ')');
+
+          if ($progress_bar.length > 0) {
+            $progress_bar.addClass('hidden-xs-up');
+          }
+
+          $img_field.val(response.image_id);
+          CanvasForms.triggerAutoSave($img_field.parents('form'), $img_field);
+
+          $error_div.removeClass('active');
+          $error_div.html('');
+        });
+
+        $upload_btn.data('on-error', function(response_text) {
+          $error_div.html("<p>" + response_text + "</p>")
+          $error_div.addClass('active');
+        });
+      });
     }
-  }
 
-  function onProgress(eventFired, position, total, percentComplete) {
-    updateProgressBar(percentComplete);
-  }
+    var $delete_btns = $(element).find('.image-delete-btn');
+    $delete_btns.click(function () {
+      var $container  = $(this).parents('.upload-preview-container');
+      var $upload_btn = $container.find('[data-image-input-id]').first();
+      var $img_field  = $('#' + $upload_btn.data('image-input-id'));
+      $img_field.val('');
 
-  function updateProgressBar(percentComplete) {
-    var $statusText;
-    var $progressBar = $('.progress-bar');
-
-    if(!$UPLOAD_PREVIEW_CONTAINERS){
-      $statusText = $('.glass-control').find('.status-text');
-    } else {
-      $statusText = $UPLOAD_PREVIEW_CONTAINERS.find('.status-text');
-    }
-
-    $statusText.html(percentComplete + '%');
-
-    $progressBar.width(percentComplete + '%').attr('value', percentComplete);
-    if(percentComplete === 100){
-      setTimeout(function(){
-        $progressBar.replaceWith(processingProgressBar());
-        $statusText.html('Processing...');
-      }, 500);
-    }
-  }
-
-  function processingProgressBar(){
-    return [
-      '<progress class="progress progress-success progress-bar" value="100" max="100"></progress>',
-      '</div>'].join('');
-  }
-
-  function imageDeleteListener(element) {
-    $(element).find('.image-delete-btn').unbind('click').click(function (e) {
-      e.preventDefault();
-      $UPLOAD_PREVIEW_CONTAINER  = $(this).parents('.upload-preview-container');
-      $UPLOAD_PREVIEW_CONTAINERS = $('.upload-preview-container[data-field-name=' + $UPLOAD_PREVIEW_CONTAINER.attr('data-field-name') +']');
-      $CURRENT_IMAGE_CONTAINER   = $('.image-upload-container[data-field-name='   + $UPLOAD_PREVIEW_CONTAINER.attr('data-field-name') +']');
-      handleImageDelete($(this));
+      var $preview_divs = $('[data-image-bg-id="' + $upload_btn.data('image-input-id') + '"]')
+      $preview_divs.css('background-image', '');
     });
-  }
-
-  function handleImageDelete($btn) {
-    handleDeleteSuccess();
-    //
-    // This code below actually deletes the image...   BUT   this introduces a slight permissions problem.  Users can delete other users images
-    //
-    //$UPLOAD_PREVIEW_CONTAINER = $btn.parents('.upload-preview-container');
-    //$CURRENT_IMAGE_CONTAINER = $('.image-upload-container[data-field-name=' + $UPLOAD_PREVIEW_CONTAINER.attr('data-field-name') +']');
-    //$.ajax({
-    //  type: 'DELETE',
-    //  url: $btn.attr('data-path'),
-    //  data: {'authenticity_token': $('#auth_token').val()},
-    //  success: handleDeleteSuccess,
-    //  error: handleDeleteError
-    //});
-  }
-
-  function resetImageUpload() {
-    var addBtnText = 'Upload an Image';
-    $CURRENT_IMAGE_CONTAINER.find('.image-id-field').val(null);
-    $UPLOAD_PREVIEW_CONTAINERS.find('.file-preview').fadeOut(500).removeAttr('style');
-    $UPLOAD_PREVIEW_CONTAINERS.find('.image-upload-btn').text(addBtnText);
-    $UPLOAD_PREVIEW_CONTAINERS.find('.image-delete-btn').fadeOut(500)
-  }
-
-  function handleDeleteSuccess(response) {
-    resetImageUpload();
-  }
-
-  function handleDeleteError(response) {
-    // TODO: Do something here.
-  }
-
-  function resetProgressBar() {
-    var statusText   = $UPLOAD_PREVIEW_CONTAINERS.find('.status-text');
-
-    if($UPLOAD_PREVIEW_CONTAINERS !== undefined && $UPLOAD_PREVIEW_CONTAINERS){
-      $('.progress-bar').removeClass('active');
-
-      updateProgressBar(1);
-    }
-  }
-
-  function openCropModal() {
-    $('#modal-edit-image').modal('show');
-  }
+  });
 
   // Return API for other modules
   return {
-    imageListeners: imageListeners,
-    fileUploaderListener: fileUploaderListener,
-    uploadImageHandler: uploadImageHandler,
-    openFileInput: openFileInput
   };
 })(jQuery);

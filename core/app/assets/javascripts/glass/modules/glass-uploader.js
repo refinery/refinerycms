@@ -1,11 +1,11 @@
-var GlassImageUploader = (function ($) {
+var GlassUploader = (function ($) {
   $(document).on('content-ready', function (e, element) {
-    var $resource_form = $(element).find('#resource-upload-form');
+    var $file_upload_forms = $(element).find('.glass-file-upload-form');
 
-    if ($resource_form.length > 0) {
-      handleChooseFile($resource_form);
-      handleSubmitForm($resource_form);
-    }
+    $file_upload_forms.each(function () {
+      handleChooseFile($(this));
+      handleSubmitForm($(this));
+    });
   });
 
   function handleChooseFile($form) {
@@ -29,8 +29,7 @@ var GlassImageUploader = (function ($) {
         if (error_callback) {
           error_callback(response.responseJSON.message);
         }
-        console.log("FIXME: resource form error");
-        console.log("FIXME: resource form error response: " + JSON.stringify(response));
+        console.log("ERROR: upload form error response: " + JSON.stringify(response));
       },
       uploadProgress: function(eventFired, position, total, percentComplete) {
         var progress_callback = $form.data('triggerer').data('on-progress');
@@ -43,7 +42,27 @@ var GlassImageUploader = (function ($) {
     });
   }
 
+  function openFileInput(form_selector, $trigger_btn) {
+    var $form = $(form_selector);
+    $form.data('triggerer', $trigger_btn);
+    $form.find('input[type="file"]').click();
+  }
+
+  function handleProgressUpdates($trigger_btn, $progress_bar) {
+    if ($progress_bar && $progress_bar.length > 0) {
+      $trigger_btn.data('on-progress', function(eventFired, position, total, percentComplete) {
+        $progress_bar.removeClass('hidden-xs-up');
+        $progress_bar.val(percentComplete);
+        if (percentComplete >= 100) {
+          $progress_bar.addClass('progress-striped');
+        }
+      });
+    }
+  }
+
   // Return API for other modules
   return {
+    openFileInput: openFileInput,
+    handleProgressUpdates: handleProgressUpdates
   };
 })(jQuery);

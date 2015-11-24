@@ -1,0 +1,504 @@
+/* -------------------- LAYOUT -------------------- */
+
+#page-preview {
+  margin-left: 45px;
+  .navbar-fixed-top {
+    z-index: 960px;
+    padding-right: 45px;
+    padding-left: 45px;
+  }
+  .cms-ui,
+  .glass-ui {
+    .icon:not(.icon-fe) {
+      font-family: "Refinery" !important;
+    }
+  }
+}
+
+.glass-ui {
+  z-index: 950;
+}
+
+
+/* -------------------- UI -------------------- */
+
+.editor-settings {
+  position: fixed;
+  z-index: 1034;
+  top: 10px;
+  right: 10px;
+  .dropdown {
+    &:hover,
+    &.open {
+      .dropdown-menu {
+        top: calc(100% + 5px);
+        display: block;
+        transition-delay: 0;
+        opacity: 1;
+      }
+    }
+    .dropdown-menu {
+      left: -65px;
+      display: none;
+      width: 180px;
+      transition: opacity .2s $bezier .35s, display 0 .5s;
+      opacity: 0;
+      .btn {
+        display: block;
+        padding: 3px 15px;
+        text-align: left;
+      }
+    }
+  }
+  .btn {
+    .icon {
+      &:nth-child(1) {
+        display: inline-block;
+      }
+      &:nth-child(2) {
+        display: none;
+      }
+    }
+    &.active {
+      .icon {
+        &:nth-child(1) {
+          display: none;
+        }
+        &:nth-child(2) {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+.auto-save-state {
+  position: fixed;
+  z-index: 1040;
+  top: 15px;
+  left: 50vw;
+  height: 35px;
+  padding: 5px 15px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: .2s $bezier;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(5px);
+  color: $white;
+  border-top: none;
+  border-radius: 30px;
+  background: $gray-6;
+  .finished-state {
+    display: none;
+  }
+  &.active {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  &.finished {
+    .saving {
+      display: none;
+    }
+    .finished-state {
+      display: block;
+    }
+  }
+}
+
+.weight-controls {
+  overflow: hidden;
+  .btn {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    line-height: 15px;
+    color: #0967a6;
+    &:hover,
+    &:focus,
+    &:active,
+    .active {
+      background: $off-white;
+    }
+  }
+}
+
+
+
+/* -------------------- CONTENT EDITABLE -------------------- */
+
+[contenteditable=true] {
+  outline: none;
+}
+
+[contenteditable=true]:empty,
+[contenteditable=true].empty {
+  &:before {
+    display: block; /* For Firefox */
+    content: attr(glass-placeholder);
+    cursor: text;
+    transition: .15s ease-out;
+    color: $gray-5;
+  }
+  &:focus {
+    &:before {
+      color: $gray-4;
+    }
+  }
+  &.page-title,
+  &h1,
+  &h2,
+  &h3,
+  &h4,
+  &h5,
+  &h6 {
+    display: block;
+    width: 100%;
+    min-width: 150px;
+  }
+}
+
+span[contenteditable=true]:empty,
+span[contenteditable=true].empty {
+  display: inline-block;
+  min-width: 150px;
+}
+
+[contenteditable=true] p:empty,
+[contenteditable=true] p.empty {
+  min-height: 32px;
+  &:before {
+    content: " ";
+  }
+  &:first-of-type:before {
+    position: absolute;
+    content: "New paragraph...";
+  }
+}
+
+
+
+/* -------------------- MODULES -------------------- */
+
+// ADD MODULE
+
+.add-module {
+  position: absolute;
+  left: -50px;
+  margin-top: 1px;
+  .icon-plus {
+    font-size: 12px;
+  }
+}
+.media-chooser {
+  margin-bottom: $paragraph-margin-bottom;
+  text-align: left;
+  .form-group {
+    margin: 0;
+    .input-group {
+      top: -5px;
+      max-width: 500px;
+      height: 42px;
+      .input-group-addon {
+        line-height: 24px;
+      }
+      .input-group-btn {
+        display: block;
+        width: auto;
+        .btn {
+          height: 42px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}
+
+
+// MODULE OPTIONS
+
+.module-options {
+  z-index: 951;
+  display: flex;
+  flex-direction: column;
+  .btn {
+    margin-top: .25rem;
+  }
+}
+
+
+// CLICK PADS
+
+.click-pads {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  .click-pad {
+    position: absolute;
+    cursor: text;
+    &.bottom,
+    &.top {
+      right: 0;
+      left: 0;
+    }
+    &.top {
+      top: -30px;
+      height: 30px;
+    }
+    &.bottom {
+      bottom: -30px;
+      height: 30px;
+    }
+    &.left,
+    &.right {
+      top: 0;
+      bottom: 0;
+    }
+    &.left {
+      left: -100px;
+      width: 100px;
+    }
+    &.right {
+      right: -100px;
+      width: 100px;
+    }
+  }
+}
+
+
+// MODULE TYPES
+
+/* CUSTOM HTML */
+
+.html-input {
+  font-family: $font-family-monospace;
+}
+
+
+/* BUTTON / LINKEDITOR */
+
+.link-editor {
+  position: absolute;
+  z-index: 952;
+  left: 0;
+  width: calc(100% - 34px);
+  margin-top: 30px;
+  font-size: 16px;
+  color: $gray-6;
+  border: 1px solid $gray-2;
+  border-radius: $border-radius-sm;
+  .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    border-radius: 0;
+    border-top-left-radius: $border-radius-sm;
+    border-top-right-radius: $border-radius-sm;
+  }
+}
+
+
+/* INLINE MODULE */
+
+.inline-module-fw {
+  width: calc(100vw - 45px);
+}
+
+.inline-module {
+  &:hover {
+    .module-layout {
+      opacity: 1 !important;
+    }
+  }
+  .module-layout {
+    position: absolute;
+    z-index: 952;
+    top: 15px;
+    left: 50%;
+    transition: .2s ease-out;
+    transform: translateX(-50%);
+    opacity: 0;
+    button {
+      margin-right: 2px;
+      margin-left: 2px;
+      transition: .2s ease-out;
+      color: $gray-6;
+      border-color: $gray-2;
+      background: $white;
+      &:hover {
+        color: $white;
+        border-color: $cms-color;
+        background: $cms-hover;
+      }
+      .icon {
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+
+/* IMAGE GROUP */
+
+.image-group {
+  &.inline-module-fw {
+    width: calc(100vw - 15px);
+    margin-left: 0;
+  }
+}
+
+.image-group {
+  &.active {
+    display: flex;
+    flex-wrap: wrap;
+    .inline-editable-image-container {
+      .img-layout {
+        display: none;
+      }
+    }
+  }
+  .inline-editable-image-container {
+    flex: 1;
+    flex-basis: auto;
+    margin: 0 15px;
+  }
+}
+
+.link-items {
+  position: absolute;
+  z-index: 952;
+  width: 20px !important;
+  height: 20px !important;
+  line-height: 6px !important;
+  transition: .2s $bezier, top 0, left 0;
+  .icon {
+    top: -4px;
+    font-size: 10px !important;
+    line-height: 6px !important;
+  }
+  &.link {
+    top: -25px;
+    left: 50%;
+    margin-left: -10px;
+  }
+  &.unlink {
+    top: 50%;
+    right: 100%;
+    margin: -10px 5px 0 0;
+  }
+}
+
+
+
+/* -------------------- HIGHLIGHT EDITOR / GRANDE -------------------- */
+
+.highlight-menu-wrapper {
+  position: static;
+  overflow: hidden;
+  height: 0;
+}
+
+.highlight-menu-inner {
+  position: absolute;
+  width: 184px;
+  height: 40px;
+  margin-top: -28px;
+  margin-left: 23px;
+  padding: 0;
+  border: 1px solid $gray-2;
+  border-radius: $radius;
+  background: $white;
+  box-shadow: $shadow;
+  &:after {
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    margin-left: -7px;
+    content: "";
+    border-width: 7px 7px 0 7px;
+    border-style: solid;
+    border-color: $white transparent transparent transparent;
+  }
+  &:before {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    margin-left: -8px;
+    content: "";
+    border-width: 8px 8px 0 8px;
+    border-style: solid;
+    border-color: $gray-2 transparent transparent transparent;
+  }
+  a {
+    margin: 0 5px;
+    color: $gray-6;
+    &:hover {
+      color: $cms-dark;
+    }
+  }
+}
+
+.highlight-menu-wrapper .highlight-menu {
+  position: absolute;
+  z-index: 955;
+  margin-top: -20px;
+  margin-left: -115px;
+  transition: .2s ease-out;
+  color: #ffffff;
+}
+
+.highlight-menu-wrapper .highlight-menu.active {
+  display: block;
+}
+
+.highlight-menu.hide {
+  display: none;
+}
+
+.highlight-menu .active {
+  color: $cms-dark;
+}
+
+.highlight-menu-inner.url-mode {
+  width: 184px;
+}
+
+.menu-buttons {
+  display: flex;
+  justify-content: space-around;
+  button {
+    height: 40px;
+    padding: 5px 5px 8px;
+    line-height: 1.2;
+    white-space: nowrap;
+    color: $gray-6;
+    &:hover {
+      color: $cms-dark;
+    }
+    &:first-child {
+      padding-left: 12px;
+    }
+    &:last-child {
+      padding-right: 12px;
+    }
+  }
+  .header1,
+  .header2 {
+    sub {
+      bottom: -.15em;
+    }
+  }
+  .header3 {
+    .icon {
+      font-size: 12px;
+    }
+    sub {
+      bottom: -.05em;
+    }
+  }
+}

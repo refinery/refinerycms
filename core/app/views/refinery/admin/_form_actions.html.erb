@@ -3,7 +3,7 @@
     submit_button_text  ||= t('.save')
     submit_button_id    ||= "submit_button"
     submit_button_title ||= nil
-    submit_button_classes ||= "btn btn-primary btn-lg"
+    submit_button_classes ||= "btn btn-primary btn-lg m-b-2"
     begin
     submit_redirect_url ||= eval("refinery.#{Refinery.route_for_model(f.object.class, {:plural => true})}")
     rescue Exception => e
@@ -70,7 +70,7 @@
 
 <div class='form-actions flex align-items-center<%= ' sidebar-section no-border m-t' if in_sidebar %><%= ' form-actions-dialog' if from_dialog? %>'>
   <div class='<%= in_sidebar ? "sidebar-section-body" : "form-actions-left" %>'>
-    <%= button_tag "#{'<i class="icon icon-publish"></i>' if in_sidebar} <span>#{submit_button_text}</span>".html_safe,
+    <%= button_tag "#{'<i class="icon icon-publish m-r-2"></i>' if in_sidebar} <span>#{submit_button_text}</span>".html_safe,
                    :type => :submit,
                    :id => submit_button_id,
                    :name => nil,
@@ -83,7 +83,7 @@
     <%= link_to(cancel_button_text, cancel_url,
                 :title => cancel_title,
                 :id => cancel_button_id,
-                :class => "btn btn-secondary-outline btn-lg") unless hide_cancel %>
+                :class => "btn btn-outline-secondary btn-lg m-b-2") unless hide_cancel %>
 
     <%= before_delete_button -%>
     <%= button_tag("<i class='icon icon-trash'></i> <span>#{delete_button_text}</span>".html_safe,
@@ -93,7 +93,7 @@
         :'data-text'         => delete_confirmation,
         :title               => delete_title,
         :id                  => delete_button_id,
-        :class               => "btn btn-danger-outline btn-lg delete-modal") unless hide_delete %>
+        :class               => "btn btn-link-red btn-lg delete-modal p-x-1") unless hide_delete %>
     <%= after_delete_button -%>
   </div>
 </div>

@@ -29,14 +29,14 @@ module Refinery
 
         if @<%= singular_name %>.save
           begin
-            Mailer.notification(@<%= singular_name %>, request).deliver
+            Mailer.notification(@<%= singular_name %>, request).deliver_now
           rescue => e
             logger.warn "There was an error delivering the <%= singular_name %> notification.\n#{e.message}\n"
           end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>
 
           if <%= class_name %>.column_names.map(&:to_s).include?('email')
             begin
-              Mailer.confirmation(@<%= singular_name %>, request).deliver
+              Mailer.confirmation(@<%= singular_name %>, request).deliver_now
             rescue => e
               logger.warn "There was an error delivering the <%= singular_name %> confirmation:\n#{e.message}\n"
             end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>

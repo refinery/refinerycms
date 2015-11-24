@@ -54,7 +54,6 @@
             <button class='quote'><i class='icon icon-quote'></i></button> \
             <button class='url'><i class='icon icon-link'></i></button> \
           </span> \
-          <input class='url-input' type='text' placeholder='Paste or type a link'/> \
         </div>",
         imageTooltipTemplate = document.createElement("div"),
         toolbarContainer = document.createElement("div");
@@ -423,12 +422,12 @@
           case "a":
             document.execCommand("createLink", false, "/temporary");
             // setTimeout(function() {
-            var $anchor = $('a[href$="temporary"]');
-            $anchor.attr('target', '_blank');
-            $anchor.attr('href', '');
-            $anchor.attr('contenteditable', false);
-            $anchor.glassHtmlModule().attachControl('anchor-editor');
-            $('#glass-module-anchor-editor input#url').focus();
+            var $link = $('a[href$="temporary"]');
+            $link.attr('target', '_blank');
+            $link.attr('href', '');
+            $link.attr('contenteditable', false);
+            $link.glassHtmlModule().attachControl('link-editor');
+            $('#glass-module-link-editor input#url').focus();
             textMenu.className = "highlight-menu hide";
             // }, 150);
             return;

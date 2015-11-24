@@ -8,14 +8,10 @@
 <li id="<%= dom_id(page) -%>" class="page-listing">
   <div class="page-row <%= 'no-edit' unless editable %>" role="tab" id="parent-1">
     <% if page.children.present? %>
-      <% if Refinery::Pages.auto_expand_admin_tree %>
-        <a class="child-toggle" data-toggle="collapse" href="#<%= dom_id(page) -%>_children">
-          <i class="status-icon icon icon-folder-open"></i>
-          <i class="status-icon icon icon-folder"></i>
-        </a>
-      <% else %>
-        <i class="status-icon icon icon-folder toggle"></i>
-      <% end %>
+      <a class="child-toggle <%= 'collapsed' if !Refinery::Pages.auto_expand_admin_tree %>" data-toggle="collapse" href="#<%= dom_id(page) -%>_children">
+        <i class="status-icon icon icon-folder-open"></i>
+        <i class="status-icon icon icon-folder"></i>
+      </a>
     <% else %>
       <i class="status-icon icon icon-file"></i>
     <% end %>
@@ -25,10 +21,10 @@
       <span class='title'>
         <%= page_title_with_translations page %>
         <%= page_meta_information page %>
+      </span>
         <% if content_for?(:additional_labels) %>
           <%= yield :additional_labels %>
         <% end %>
-      </span>
       <% if Refinery::I18n.frontend_locales.many? %>
         <span class='locales'>
           <% page.translations.sort_by{|t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
@@ -95,7 +91,7 @@
 
   <!-- This needs to be one line of code as the css looks for the empty state. Spaces interfere. -->
   <!-- <div id="child-pages" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="parent-1"> -->
-    <ul id="<%= dom_id(page) -%>_children" class='nested list-unstyled panel-collapse collapse in' data-ajax-content="<%= refinery.admin_children_pages_path(page.nested_url) %>"><%= render(:partial => 'page', :collection => page.children) if Refinery::Pages.auto_expand_admin_tree %></ul>
+    <ul id="<%= dom_id(page) -%>_children" class='nested list-unstyled panel-collapse collapse <%= 'in' if Refinery::Pages.auto_expand_admin_tree %>' data-ajax-content="<%= refinery.admin_children_pages_path(page.nested_url) %>"><%= render(:partial => 'page', :collection => page.children) %></ul>
   <!-- </div> -->
 
 </li>

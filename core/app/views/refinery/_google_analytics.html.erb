@@ -1,4 +1,5 @@
 <% page_code = Refinery::Core.google_analytics_page_code.to_s.strip %>
+<% page_code = @google_analytics_page_code_override.presence || page_code %>
 <% unless local_request? or admin? or page_code =~ /^(UA-xxxxxx-x)?$/ -%>
 <!-- asynchronous google analytics snippet -->
 <script type="text/javascript">
@@ -8,6 +9,17 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', '<%= page_code %>', 'auto');
+
+  // consider making this optional (thru config)
+  // it enables "enhanced link attribution" (https://support.google.com/analytics/answer/2558867?hl=en)
+  ga('require', 'linkid');
+
+  var ga_dimension_meta = document.getElementById("ga-dimensions");
+  if (ga_dimension_meta) {
+    // Analytics dimensions for better tracking
+    ga('set', JSON.parse(ga_dimension_meta.getAttribute("content")));
+  }
+
   ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->

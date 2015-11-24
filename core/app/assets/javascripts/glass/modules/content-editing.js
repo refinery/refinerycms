@@ -25,12 +25,14 @@ var GlassContentEditing = (function ($) {
     // A glassModule is a piece within a glassHtmlEditor block
     glassHtmlModule: function ($glass_html_editor) {
       var module = this.data('glass-module');
+
       if (!module) {
         if ($glass_html_editor === undefined) {
           $glass_html_editor = getWrappingEditor(this);
         }
-        module = new GlassModule(this, $glass_html_editor);
-        this.data('glass-module', module);
+        module = new GlassModule(this, $glass_html_editor, false);
+        this.data('glass-module', module);     // Set this before constructor callbacks to allow
+        module.glassConstructor(GlassModule);  // calling of glassHtmlModule() again and early out
         module.resetControl();
       }
       return module;

@@ -296,6 +296,10 @@ var CanvasForms = (function ($) {
       }
     });
 
+    $form.find('textarea').keypress(function (e) {
+      e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+    });
+
     $form.data("submit-btns", $submit_btns);
     $form.data("submit-btn",  $submit_btns.not('.publish-button').first());
   }
@@ -452,12 +456,12 @@ var CanvasForms = (function ($) {
             $form.data('allow-unload', xhr.status == 200 || xhr.status == 409 || $error_response == null);
           }
           else if ($error_response != null) {
-            insertErrors($form, $error_response, null);
             $form.data("allow-unload", false);
+            insertErrors($form, $error_response, null);
           }
           else {
-            handleSuccess($form, $replacement);
             $form.data("allow-unload", true);
+            handleSuccess($form, $replacement);
           }
 
           resetSubmit($form);
@@ -522,7 +526,9 @@ var CanvasForms = (function ($) {
       //Loaded from _confirm_delete_modal.html.erb through admin.html.erb
       var $deletionModal = $('#delete-confirm-modal');
       if ($deletionModal.length > 0) {
-        $deletionModal.find('#myModalLabel').text($btn.attr('data-text'));
+        var $title = $btn.parents('.page-listing').find('.title');
+        var title_text = $title.length > 0 ? $title.text() : '';
+        $deletionModal.find('#myModalLabel').text($btn.attr('data-text') + ' ' + title_text);
         var $confirmBtn = $deletionModal.find('#modal-delete-button');
         $confirmBtn.attr('data-url',                $btn.attr('data-url'));
         $confirmBtn.attr('data-redirect-url',       $btn.attr('data-redirect-url'));

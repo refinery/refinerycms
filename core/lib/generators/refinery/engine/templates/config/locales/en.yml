@@ -74,11 +74,6 @@ en:
             date: Date
             message: Message
         settings:
-          notification_recipients_form:
-            settings_value_name: Send notifications to
-            explanation: Every time someone contacts you on your website, Refinery sends out an email to say there is a new <%= singular_name.humanize.downcase %>.
-            hint: When a new <%= singular_name.humanize.downcase %> is submitted, Refinery will send an email notification to you.
-            example: "Enter your email address(es) like: jack@work.com, jill@office.com"
           confirmation_email_form:
             to: To
             from: From
@@ -94,13 +89,19 @@ en:
           greeting: Hi there
           you_recieved_new_<%= singular_name %>: You just received a new <%= singular_name.humanize.downcase %> on your website.
           <%= singular_name %>_starts: --- <%= singular_name.humanize.downcase %> starts ---
-          <%= singular_name %>_ends: --- <%= singular_name.humanize.downcase %> ends ---
-          from: From
-          email: Email
-          phone: Phone
-          message: Message
+          <%= singular_name %>_ends: --- <%= singular_name.humanize.downcase %> ends ---<% attributes.each do |a| %>
+          <%= a.name %>: <%= a.name.titleize %><%
+end %>
           closing_line: Kind Regards
-          ps_html: P.S. All your <%= plural_name.humanize.downcase %> are stored in the "<%= plural_name.titleize %>" section of Refinery should you ever want to view it later there.
+          ps: P.S. All your <%= plural_name.humanize.downcase %> are stored in the "<%= plural_name.titleize %>" section of Refinery should you ever want to view it later there.
+    admin:
+      settings:
+        form:
+          <%= singular_name %>_notification_recipients:
+            title: Who to Notify
+            settings_value_name: Send notifications to
+            hint: When a new <%= singular_name.humanize.downcase %> is submitted, Refinery will send an email notification to you.
+            example: "Enter your email address(es) like: jack@work.com, jill@office.com"
   activerecord:
     attributes:
       'refinery/<%= namespacing.underscore %>/<%= singular_name %>':<% attributes.each do |a| %>

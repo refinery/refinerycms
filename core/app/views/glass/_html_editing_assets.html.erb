@@ -1,6 +1,8 @@
+<%= render 'refinery/admin/customize_html_editing_assets' %>
+
 <div class="auto-save-state">
   <div class="saving">
-    <i class="loader inline xs inverted active m-r-xs bump-up"></i> Saving
+    <i class="loader inline xs inverted active m-r-1 bump-up"></i> Saving
   </div>
   <div class="finished-state">
     <p class="msg">Save failed</p>
@@ -10,80 +12,146 @@
 <div id="glass-parking" style="display: none;">
   <input id="autosave_field" class="autosave-field" name="autosave" type="hidden" value="">
 
-  <a id="glass-module-switcher-template" href="" class="circle-icon add-module glass-control singleton replace-module glass-ui transitionable" contenteditable=false><i class="icon icon-plus"></i></a>
-  <div id="glass-choose-module" class="new-module media-chooser clear glass-control singleton replace-module glass-ui" contenteditable=false>
+  <!-- MODULE SWITCHER ("+" & "x") -->
+  <a id="glass-module-module-switcher-template" href="" contenteditable=false
+     class="circle-icon add-module glass-control singleton replace-module glass-ui transitionable">
+    <i class="icon icon-plus"></i>
+  </a>
+
+  <!-- CHOOSE MODULE -->
+  <div id="glass-module-choose-module-template" class="new-module media-chooser clear glass-control singleton replace-module glass-ui" contenteditable=false>
     <button id="glass-choose-module-img" class="circle-icon media-type"><i class="icon icon-photo bump-down"></i></button>
-    <button id="glass-choose-module-vid" class="circle-icon media-type"><i class="icon icon-film"></i></button>
-    <!-- <button class="circle-icon media-type" data-insert-module-template="button"><i class="icon icon-button"></i></button> -->
+    <button class="circle-icon media-type" data-choose-control="settings-vid"  ><i class="icon icon-film"></i></button>
+    <button class="circle-icon media-type" data-insert-module-template="button"><i class="icon icon-button"></i></button>
     <% if current_refinery_user.has_role?(:superuser) -%>
-      <button id="glass-choose-custom"     class="circle-icon media-type"><i class="icon icon-code"></i></button>
+      <button class="circle-icon media-type" data-choose-control="custom-html-form"><i class="icon icon-code"></i></button>
     <% end %>
-    <button class="circle-icon media-type" data-choose-control="html"><i class="icon icon-code"></i></button>
-    <button class="circle-icon media-type" data-choose-control="anchor-editor"><i class="icon icon-photo"></i></button>
+    <%= yield :additional_module_choices %>
   </div>
-  <div id="glass-module-settings-vid" class="new-module media-chooser clear glass-control singleton replace-module glass-ui" contenteditable=false>
+
+  <!-- ADD VIDEO FORM -->
+  <div id="glass-module-settings-vid-template" class="new-module media-chooser clear glass-control singleton replace-module glass-ui" contenteditable=false>
     <form id="glass-add-vid-form" role="form">
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon">Vimeo or YouTube URL</div>
           <input class="url-input form-control glass-autofocus" type="text" placeholder="http://...">
           <span class="input-group-btn">
-            <button type="submit" class="btn btn-secondary-outline">Insert</button>
+            <button type="submit" class="btn btn-outline-secondary">Insert</button>
           </span>
         </div>
       </div>
     </form>
   </div>
-  <div id="glass-module-anchor-editor" contenteditable=false
-       class="glass-control singleton btn-editor p-a-sm box-shadow white-bg glass-ui">
+
+  <!-- LINK EDITOR -->
+  <div id="glass-module-link-editor-template" contenteditable=false
+       class="glass-control singleton after-module link-editor p-a-2 box-shadow white-bg glass-ui">
     <progress class="progress progress-info hidden-xs-up" value="0" max="100">25%</progress>
     <button class="close close-btn close-btn-out"><i class="icon icon-close"></i></button>
     <form role="form">
       <div class="form-group field-row m-b-0 flex align-items-center">
-        <button id="resource-upload-btn" class="btn btn-primary m-x-xs p-x-sm">
+        <button id="resource-upload-btn" class="btn btn-primary m-x-1 p-x-1">
           <i class="icon icon-export"></i>
         </button>
-        <small class="text-muted p-x-sm">or</small>
+        <small class="text-muted p-x-1">or</small>
         <label for="url" class="sr-only">URL</label>
-        <input id="url" type="text" class="form-control flex-1 m-x-xs m-b-xs" placeholder="http://">
+        <input id="url" type="text" class="form-control flex-1 m-x-1 m-b-2" placeholder="http://">
         <label for="link-text" class="sr-only">Link text</label>
-        <input id="link-text" type="text" class="form-control flex-1 m-x-xs m-b-xs" placeholder="Link text">
+        <input id="link-text" type="text" class="form-control flex-1 m-x-1 m-b-2" placeholder="Link text">
       </div>
       <input type="hidden" value="" id="resource-id">
       <div class="form-group m-b-0 flex align-items-center">
-        <div class="checkbox m-b-0">
+        <div class="checkbox m-b-0 hidden-xs-up">
           <label><input id="is-external" type="checkbox"> External link</label>
         </div>
         <button class="delete btn btn-link-red m-l-auto"><i class="icon icon-trash"></i> Delete</button>
-        <button type="submit" class="btn btn-primary m-l-sm">Save</button>
+        <button type="submit" class="btn btn-primary m-l-2">Save</button>
       </div>
-      <div class="errorExplanation" id="errorExplanation"></div>
+      <div class="errorExplanation"></div>
     </form>
   </div>
-  <div id="glass-module-html" class="new-module clear glass-control singleton replace-module glass-ui cms-ui" contenteditable=false>
+
+  <!-- CUSTOM HTML FORM -->
+  <div id="glass-module-custom-html-form-template" class="new-module clear glass-control singleton replace-module glass-ui cms-ui" contenteditable=false>
     <form id="glass-add-html-form" role="form">
       <label class="bold">Paste your HTML</label>
-      <textarea class="form-control glass-autofocus html-input m-b-xs" placeholder="<iframe>...</iframe>"></textarea>
+      <textarea class="form-control glass-autofocus html-input m-b-1" placeholder="<iframe>...</iframe>"></textarea>
       <button type="submit" class="btn btn-default bold">Insert</button>
     </form>
   </div>
-  <div class="module-options abs-b-r">
-    <button class="btn btn-white btn-circle btn-sm glass-control glass-ui" contenteditable="false"><i class="icon icon-paragraph"></i></button>
-    <button class="btn btn-white-red btn-circle btn-sm delete-module glass-control glass-ui" contenteditable="false"><i class="icon icon-trash"></i></button>
+
+  <!-- FLOAT CONTAINER    (contains delete, weight, caption, [...] buttons) -->
+  <div id="glass-module-float-container-template" class="module-options abs-b-r glass-control append glass-ui"></div>
+
+  <!-- DELETE BTN -->
+  <button id="glass-module-delete-btn-template" contenteditable="false"
+          class="in-float-menu btn btn-white-red btn-circle btn-sm delete-module glass-control glass-ui">
+    <i class="icon icon-trash"></i>
+  </button>
+
+  <!-- IMG CAPTION -->
+  <button id="glass-module-add-img-caption-template" contenteditable="false"
+          class="btn btn-white btn-circle btn-sm glass-control glass-ui">
+    <i class="icon icon-paragraph"></i>
+  </button>
+
+  <!-- IMG WEIGHT BUTTON -->
+  <button id="glass-module-img-weight-btn-template" contenteditable="false"
+          class="btn btn-white btn-circle btn-sm glass-control glass-ui">
+    <i class="icon icon-move"></i>
+  </button>
+
+  <!-- EDIT IMG WEIGHT -->
+  <div id="glass-module-img-weight-edit-template" contenteditable=false
+       class="weight-controls white-bg border-radius">
+    <div class="flex">
+      <button class="btn btn-link"><i class="icon icon-left rotate-45"></i></button>
+      <button class="btn btn-link"><i class="icon icon-up"></i></button>
+      <button class="btn btn-link"><i class="icon icon-up rotate-45 bump-left"></i></button>
+    </div>
+    <div class="flex">
+      <button class="btn btn-link"><i class="icon icon-left"></i></button>
+      <button class="btn btn-link"><i class="icon icon-dot"></i></button>
+      <button class="btn btn-link"><i class="icon icon-right"></i></button>
+    </div>
+    <div class="flex">
+      <button class="btn btn-link"><i class="icon icon-down rotate-45 bump-left"></i></button>
+      <button class="btn btn-link"><i class="icon icon-down"></i></button>
+      <button class="btn btn-link"><i class="icon icon-right rotate-45 bump-right"></i></button>
+    </div>
   </div>
-  <button class="circle-icon icon-only link-items link glass-control append glass-ui" contenteditable=false><i class="icon icon-link" ></i></button>
-  <div class="click-pads glass-control append" contenteditable=false>
+
+  <!-- EDIT CUSTOM HTML BTN -->
+  <button id="glass-module-custom-html-edit-btn-template" contenteditable="false"
+          class="in-float-menu btn btn-white btn-circle btn-sm glass-control glass-ui">
+    <i class="icon icon-code"></i>
+  </button>
+
+  <!-- CLICK PADS -->
+  <div id="glass-module-click-pads-template" class="click-pads glass-control append" contenteditable=false>
     <div class="click-pad top"></div>
     <div class="click-pad right"></div>
     <div class="click-pad bottom"></div>
     <div class="click-pad left"></div>
   </div>
-  <div class="module-layout glass-control append glass-ui" contenteditable=false>
+
+  <!-- LINK BUTTON   - to group modules -->
+  <button id="glass-module-link-items-btn-template" contenteditable=false
+          class="circle-icon icon-only link-items link glass-control append glass-ui">
+    <i class="icon icon-link" ></i>
+  </button>
+
+  <!-- MODULE LAYOUT   - wider than content column -->
+  <div id="glass-module-module-layout-template" class="module-layout glass-control append glass-ui" contenteditable=false>
     <button class="circle-icon" data-layout-class="inline-module-md"><i class="icon icon-normal"></i></button>
     <button class="circle-icon" data-layout-class="inline-module-lg"><i class="icon icon-theatre"></i></button>
     <button class="circle-icon" data-layout-class="inline-module-fw"><i class="icon icon-full-width"></i></button>
   </div>
 
+  <!-- ####################################### MODULE TEMPLATES ############################################### -->
+
+  <!-- VIDEO -->
   <div id="glass-module-vid-template" class="video-module inline-module glass-no-edit glass-ui" contenteditable=false>
     <div class="video-wrapper">
       <iframe data-video-link="" src="" frameborder="0" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" scrolling="no" hspace="0">
@@ -91,23 +159,31 @@
     </div>
   </div>
 
+  <!-- MODULE GROUP -->
   <div id="glass-module-group-template" class="glass-module-group image-group inline-module active glass-no-edit" contenteditable=false></div>
 
+  <!-- IMG -->
   <div id="glass-module-img-template" class="inline-editable-image-container inline-module glass-no-edit glass-ui" contenteditable=false>
     <div class="progress-box glass-control" style="display:none;">
       <div class="status-text"></div>
       <progress class="progress progress-success progress-bar" value="25" max="100"></progress>
     </div>
     <img class="inline-editable-image img-fluid" src=""/>
+    <div class="errorExplanation"></div>
   </div>
 
-  <div id="glass-module-button-template" class="glass-no-edit module-button" contenteditable=false>
-    <a class="btn btn-primary">ACTION</a>
+  <!-- BUTTON -->
+  <div id="glass-module-button-template" class="glass-no-edit module-button deletable no-click-pads m-b-3" contenteditable=false>
+    <a class="glass-editable btn btn-primary">ACTION</a>
   </div>
 
-  <div id="glass-module-custom-template" class="glass-no-edit custom-html" contenteditable=false>
+  <!-- CUSTOM HTML -->
+  <div id="glass-module-custom-html-template" class="glass-no-edit" contenteditable=false>
     <div class="whatever-you-want-here">
       <p>Change this to whatever custom html you want using your browser inspector</p>
     </div>
   </div>
+
+  <%= yield :additional_module_templates %>
+  <%= yield :additional_control %>
 </div>

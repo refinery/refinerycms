@@ -4,3 +4,11 @@ $cms-fade: lighten($cms-color, 25%) !default;
 $cms-light: lighten($cms-color, 15%) !default;
 $cms-bright: saturate($cms-light, 45%) !default;
 $cms-dark: darken($cms-color, 5%) !default;
+
+.cms-color {
+  color: $cms-color;
+}
+
+.cms-bg {
+  color: $cms-color;
+}

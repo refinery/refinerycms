@@ -36,3 +36,11 @@ Refinery::I18n.frontend_locales.each do |lang|
   end
 <% end -%>
 end
+
+<% if include_form? -%>
+Refinery::Setting.find_or_set(
+  :<%= singular_name %>_notification_recipients,
+  (Role[:refinery].users.first.try(:email) if defined?(Role)).to_s,
+  {form_value_type: 'string'}
+)
+<% end -%>

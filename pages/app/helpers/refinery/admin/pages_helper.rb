@@ -37,6 +37,10 @@ module Refinery
       def page_meta_information(page)
         meta_information = ActiveSupport::SafeBuffer.new
         meta_information << content_tag(:span, :class => 'label') do
+          page.layout_template
+        end if Refinery::Pages.use_layout_templates
+
+        meta_information << content_tag(:span, :class => 'label') do
           ::I18n.t('hidden', :scope => 'refinery.admin.pages.page')
         end unless page.show_in_menu?
 

@@ -1,17 +1,14 @@
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
 <% admin = false unless defined?(admin) %>
 
 <% if admin %>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>Admin - <%= Refinery::Core.site_name -%></title>
   <%= csrf_meta_tags %>
 <% else %>
-  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
   <title><%= browser_title(yield(:title)) %></title>
   <%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
-  <%= raw %(<link rel="canonical" href="#{request.protocol}#{request.host_with_port}#{@canonical}" />) if @canonical.present? -%>
+  <% @canonical = "#{request.protocol}#{request.host_with_port}#{@canonical}" if @canonical.present? && !(@canonical =~ /^(?:http|\/\/)/) %>
+  <%= raw %(<link rel="canonical" href="#{@canonical}" />) if @canonical.present? -%>
   <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
-  <%= render '/refinery/google_analytics' %>
 
   <% if defined?(@og) && @og.present? %>
     <% @og.each_key do |property| %>
@@ -26,14 +23,29 @@
 <% end %>
 
 <meta charset='<%= Rails.application.config.encoding %>' />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link rel="apple-touch-icon" href="/touch-icon.png">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
+<% if admin %>
+  <link rel="icon" href="/admin-favicon.ico" type="image/x-icon">
+<% end %>
+
+<% if Rails.env.production? %>
+  <script type="text/javascript"> var production = true;  </script>
+<% else %>
+  <script type="text/javascript"> var production = false; </script>
+<% end %>
+
 
 <%= yield :meta %>
 
 <%= render partial: '/refinery/head', locals: {admin: admin} %>
+
+<% if !admin # below /refinery/head so it can access <meta> tags %>
+  <%= render '/refinery/google_analytics' %>
+<% end %>
 
 <!-- Latest compiled and minified JavaScript at end of body element -->

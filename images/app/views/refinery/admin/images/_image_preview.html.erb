@@ -10,12 +10,14 @@
    unless defined?(title_text)
      title_text = "Featured Image"
    end
+
+   input_id = defined?(input_id) ? input_id : nil
 %>
 
 <div class="upload-preview-container" <%= "style=padding-top:#{preview_padding_top};" %> data-field-name="<%= field_name %>">
   <div class="upload-preview-inner">
     <% unless defined?(buttons_only) && buttons_only %>
-      <div class="file-preview"
+      <div class="file-preview" <% if input_id %> data-image-bg-id="<%= input_id %>" <% end %>
         <% if has_image -%>
           style="background-image: url(<%= image.thumbnail(geometry: image.geometry_string(use_case)).url %>)"
         <% else -%>
@@ -28,8 +30,8 @@
 
     <div class="upload-overlay">
       <span><%= title_text %></span>
-      <button type="button" class="btn btn-primary image-upload-btn">
-        <%= has_image ? 'Replace image' : 'Upload an Image' %>
+      <button type="button" class="btn btn-primary image-upload-btn" <% if input_id %>data-image-input-id="<%= input_id %>"<% end %>>
+        <%= has_image ? '<i class="icon icon-photo m-r-1"></i> Replace photo'.html_safe : '<i class="icon icon-photo m-r-1"></i> Upload photo'.html_safe %>
       </button>
     </div>
 

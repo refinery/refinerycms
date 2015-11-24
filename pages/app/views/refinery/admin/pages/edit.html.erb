@@ -3,9 +3,5 @@
 <% end %>
 
 <% content_for :admin_page_preview do %>
-  <%
-    render_options = {}
-    render_options[:template] = "refinery/pages/#{@page.view_template.presence || (@page.link_url == '/' ? 'home' : 'show')}"
-  %>
-  <%= render render_options %>
+  <%= render template: "refinery/pages/#{@page.view_template.presence || (@page.link_url == '/' ? 'home' : 'show')}", locals: {editing: true} %>
 <% end %>

@@ -40,52 +40,22 @@ function GlassHtmlEditor($elem) {
     });
   };
 
-  this.attachControl = function(key, $module) {
-    $module = (typeof $module === 'undefined') ? this.curModule() : $module;
-
-    var $control;
-    switch(key) {
-      case 'module-switcher':
-        var $switcher = $('#glass-module-switcher');
-        if ($switcher.length < 1) {
-          $switcher = $('#glass-module-switcher-template').clone().attr('id', 'glass-module-switcher');
-        }
-        $control = $switcher.glassHtmlControl();
-        break;
-      case 'choose-module':
-        $control = $('#glass-choose-module').glassHtmlControl();
-        break;
-      case 'settings-vid':
-        $control = $('#glass-module-settings-vid').glassHtmlControl();
-        break;
-      case 'delete-btn':
-        $control = $('#glass-parking .delete-module').clone().glassHtmlControl();
-        break;
-      case 'link-items-btn':
-        $control = $('#glass-parking .link-items').clone().glassHtmlControl();
-        break;
-      case 'click-pads':
-        $control = $('#glass-parking .click-pads').clone().glassHtmlControl();
-        break;
-      case 'module-layout':
-        $control = $('#glass-parking .module-layout').clone().glassHtmlControl();
-        break;
-      default:
-        var $elem = $('#glass-module-' + key);
-        $control = $elem.length > 0 ? $elem.first().glassHtmlControl() : null;
-    }
+  this.attachControl = function(key, module) {
+    module = (typeof module === 'undefined') ? this.curModule() : module;
+    module.debug('Attaching ' + key);
+    var control = GlassControl.newControl(key);
+    control.attachToModule(module);
 
     var stack = this.h.control_stack;
 
-    $control.attachToModule($module);
+    if (control.element().hasClass('replace-module') && key != 'module-switcher') {
+      control.module().element().hide();
 
-    if ($control.element().hasClass('replace-module') && key != 'module-switcher') {
-      this.curModule().element().hide();
       // We have a stack for modules that replace the content
       if (stack.length > 0) {
         stack[stack.length - 1].element().hide();
       }
-      stack.push($control);
+      stack.push(control);
     }
   };
 
@@ -136,13 +106,21 @@ function GlassHtmlEditor($elem) {
     return this.parentModule($(focus_elem));
   };
 
-  this.newModule = function(module_id, before_after, $module) {
-    var $new_html = $module.newModuleHtml(module_id);
+  this.newModule = function(glass_id, before_after, $module_or_elem) {
+    var $elem = ('module_type' in $module_or_elem) ? $module_or_elem.element() : $module_or_elem;
+    var $new_html = GlassModule.newModuleHtml(glass_id);
+    if ($new_html.length == 0) {
+      console.warn("ERROR: attempted to create module '" + glass_id + "' but no html template found");
+      return null;
+    }
     if (before_after == 'before') {
-      $new_html.insertBefore($module.element());
+      $new_html.insertBefore($elem);
+    }
+    if (before_after == 'replace') {
+      $elem.replaceWith($new_html);
     }
     else {
-      $new_html.insertAfter($module.element());
+      $new_html.insertAfter($elem);
     }
     this.removeGlassControl();                   // Reset state
     var $new_module = this.triggerChangeFocus($new_html, null); // Creates a module & initializes it
@@ -180,7 +158,10 @@ function GlassHtmlEditor($elem) {
   this.modules = function() {
     var modules = [];
     this.h.elem.children().each(function () {
-      if (!$(this).hasClass('glass-control')) {
+      if ($(this).hasClass('glass-control')) {
+        $(this).glassHtmlControl();
+      }
+      else {
         var $module = $(this).glassHtmlModule(this_editor);
         modules.push($module);
         if ($module.isaGroup()) {
@@ -246,11 +227,6 @@ function GlassHtmlEditor($elem) {
     this_editor.triggerChangeFocus($module.element(), null);
 
     $module.resetControl();
-
-    var $prev_module = $module.prev_module();
-    if ($prev_module && $prev_module.isGroupable()) {
-      $prev_module.resetLinkButtons();
-    }
   });
 
   this.h.elem.mouseup(function(e) {
@@ -263,16 +239,6 @@ function GlassHtmlEditor($elem) {
 
   $(document).on('new-p', function () {
     this_editor.triggerChangeFocus(null, null);
-  });
-
-  $(document).on('image-upload-complete', function (e, img_data) {
-    var $img = this_editor.h.elem.find('.cur-uploading-img');
-    if ($img.length > 0) {
-      $img.attr('src', img_data.src);
-      $img.attr('data-image-id', img_data.image_id);
-      $img.removeClass('cur-uploading-img');
-      CanvasForms.triggerAutoSave(GlassContentEditing.getFormForElement($img), $img);
-    }
   });
 
   grande.bind(document.querySelectorAll(".glass-edit-html"));
@@ -306,7 +272,7 @@ var formatElementAttrs = function($elem) {
   return $result;
 };
 
-var top_level_elements = 'p, ul, ol, h1, h2, h3, h4, h5, h6, blockquote, .glass-no-edit';
+var top_level_elements = 'p, ul, ol, h1, h2, h3, h4, h5, h6, hr, blockquote, .glass-no-edit';
 var sub_level_elements = 'b, i, a, li, br, em, strong, s';
 var gonner_elements    = ['noscript, script, style, meta, base, head, style, title, area, audio, map, track, video, ',
                           'iframe, embed, object, param, source, img, canvas, del, ins, svg, form, input, select'].join('');

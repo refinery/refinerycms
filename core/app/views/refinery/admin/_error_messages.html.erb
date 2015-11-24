@@ -1,6 +1,6 @@
 <div class="errorExplanation sidebar-validation <%= 'active' if object.errors.any? %>" id="errorExplanation">
   <% if object.errors.any? %>
-    <p class="bold m-b-sm"><%= t('.problems_in_following_fields') %>:</p>
+    <p class="bold m-b-2"><%= t('.problems_in_following_fields') %>:</p>
     <ul class='payment-errors '>
     <% if defined?(include_object_name) and include_object_name %>
       <% object.errors.full_messages.each do |value| %>

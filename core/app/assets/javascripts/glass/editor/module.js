@@ -1,7 +1,7 @@
 // #############################################################
 // # Module - a paragraph, heading, img, video...              #
 // #############################################################
-function GlassModule($elem, $editor) {
+function GlassModule($elem, $editor, do_construction) {
   var this_module = this;
   this.m = {'elem': $elem, 'editor': $editor};
 
@@ -35,59 +35,21 @@ function GlassModule($elem, $editor) {
     return this.m.editor;
   };
 
-  this.newModuleHtml = function(module_id) {
-    var $module_html = $('#glass-parking #' + module_id + '-template');
-    if ($module_html.length > 0) {
-      $module_html = $module_html.first().clone();
-      $module_html.removeAttr('id'); //The id only stays on the one in the parking
-    }
-    else if (module_id == 'glass-module-p') {
-      $module_html = $('<p><br></p>');
-    }
-    return $module_html;
-  };
-
   this.isGroupable = function() {
     var type = this.module_type();
-    return type == 'module-group' || type == 'img-module';
+    return type == 'group' || type == 'img';
   };
 
   //Could be what is breaking tabbing in mozilla
   this.attachControl = function(key) {
-    var key2selector = GlassControl.key2selector;
-    // Avoid attaching the same control twice
-    if (!((key in key2selector) && this.element().children(key2selector[key]).length > 0)) {
-      this.editor().attachControl(key, this);
-    }
-
-    if (key == 'link-items-btn') { // SPECIAL CASE: Change 'link' icon into 'unlink' icon or vice versa
-      var $link_btn = this.element().children(key2selector[key]);
-      if ($link_btn.length == 1) {
-        if (this.inaGroup() && $link_btn.hasClass('link')) {
-          $link_btn.removeClass('link').addClass('unlink');
-          $link_btn.find('.icon').removeClass('icon-link').addClass('icon-unlink');
-        }
-        else if (!this.inaGroup() && $link_btn.hasClass('unlink')) {
-          $link_btn.removeClass('unlink').addClass('link');
-          $link_btn.find('.icon').removeClass('icon-unlink').addClass('icon-link');
-        }
-      }
-    }
+    this.editor().attachControl(key, this);
   };
 
   this.detatchControl = function(key) {
-    var key2selector = GlassControl.key2selector;
-
-    if (!(key in key2selector)) {
-      return null;
-    }
-
-    var $elem = this.element().children(key2selector[key]);
-
-    // TODO: var $control = $elem.glassHtmlControl();
-    // TODO: $control.detatchFromModule();
-    // Big hammer.  I'm not confident in getting the GlassControl from the element yet :(
-    $elem.remove();
+    this.element().find('[data-glass-id="' + key + '"]').each(function () {
+      $(this).glassHtmlControl().detatchFromModule();
+      // just this instead??   $(this).remove();
+    });
   };
 
   this.detatchAllControl = function() {
@@ -108,52 +70,74 @@ function GlassModule($elem, $editor) {
     this.resetLinkButtons();
 
     if (this.isaGroup()) {
-      $.each(this.subModules(), function(i, $val) {
-        $val.resetLinkButtons();
+      $.each(this.subModules(), function(i, module) {
+        module.resetLinkButtons();
       });
     }
   };
 
+  this.isClickpadable = function() {
+    return !(this.inaGroup() || this.element().hasClass('no-click-pads') || GlassModule.modules_without_clickpads[this.glass_id()]);
+  };
+
   this.resetClickPads = function() {
-    var doClickPads = (this.module_type() != 'unknown' && !this.inaGroup());
-    doClickPads ? this.attachControl('click-pads') : this.detatchControl('click-pads');
+    this.isClickpadable() ? this.attachControl('click-pads') : this.detatchControl('click-pads');
+  };
+
+  this.isDeletable = function() {
+    return this.element().hasClass('deletable') || GlassModule.deletable_modules[this.glass_id()];
   };
 
   this.resetDeleteBtn = function() {
-    var doDelete = (this.module_type() != 'unknown' && !this.isaGroup());
-    doDelete ? this.attachControl('delete-btn') : this.detatchControl('delete-btn');
+    this.isDeletable() ? this.attachControl('delete-btn') : this.detatchControl('delete-btn');
   };
 
   this.resetModuleLayoutButtons = function() {
     var type = this.module_type();
-    var doLayoutButtons = !this.inaGroup() && (type == 'module-group' || type == 'img-module' || type == 'vid-module');
+    var doLayoutButtons = !this.inaGroup() && (type == 'group' || type == 'img' || type == 'vid');
     doLayoutButtons ? this.attachControl('module-layout') : this.detatchControl('module-layout');
   };
 
   this.resetLinkButtons = function() {
-    var doLinkButtons = this.isGroupable() && this.next_module() && this.next_module().isGroupable();
+    var doLinkButtons = this.isGroupable() && this.prev_module() && this.prev_module().isGroupable();
     doLinkButtons ? this.attachControl('link-items-btn') : this.detatchControl('link-items-btn');
   };
 
   this.module_type = function() {
-    var module_type = 'unknown';
-    if (this.element().hasClass('glass-module-group')) {
-      module_type = 'module-group';
+    var module_type = this.element().data('glass-id');
+
+    if (!module_type) {
+      if (this.element().hasClass('glass-module-group')) {
+        module_type = 'group';
+      }
+      else if (this.element().hasClass('inline-editable-image-container')) {
+        module_type = 'img';
+      }
+      else if (this.element().hasClass('video-module')) {
+        module_type = 'vid';
+      }
+      else if (this.element().hasClass('custom-html')) {
+        module_type = 'custom-html';
+      }
+      else if (this.element().prop('nodeName') == 'DIV') {
+        console.warn("ERROR: div in html content has no glass_id");
+        module_type = 'unknown';
+      }
+      else {
+        module_type = 'basic';
+      }
     }
-    else if (this.element().hasClass('inline-editable-image-container')) {
-      module_type = 'img-module';
-    }
-    else if (this.element().hasClass('video-module')) {
-      module_type = 'vid-module';
-    }
-    else if (this.element().hasClass('button-module')) {
-      module_type = 'button-module';
-    }
-    else if (this.element().hasClass('custom-html')) {
-      module_type = 'custom-html';
-    }
+
     return module_type;
   };
+
+  this.glass_id = function() {
+    return this.module_type();
+  };
+
+  this.initModule = function($module_html) {
+    return $module_html.glassHtmlModule(this_module.editor());
+  }
 
   this.sibling_module = function(direction) {
     var $sibling = this.element();
@@ -175,7 +159,7 @@ function GlassModule($elem, $editor) {
   };
 
   this.isaGroup = function() {
-    return this.module_type() == 'module-group';
+    return this.module_type() == 'group';
   };
 
   this.subModules = function() {
@@ -218,8 +202,12 @@ function GlassModule($elem, $editor) {
 
   this.adjustGroupImages = function () {
     this.element().children().each(function () {
-      var $img = $(this).find('img').first();
-      $(this).attr('style', flexValueStyles(1.0 * $img.width() / $img.height()));
+      var w_h_ratio = 386 / 686;
+      var $img = $(this).find('img');
+      if ($img.length > 0) {
+        w_h_ratio = $img.first().width() / $img.first().height();
+      }
+      $(this).attr('style', flexValueStyles(1.0 * w_h_ratio));
     });
   };
 
@@ -227,27 +215,42 @@ function GlassModule($elem, $editor) {
   // Initialization
   // ##########################################
   //this.focus();
-
+  this.debug('Init module "' + this.glass_id() + '"');
   GlassContentEditing.filterPasteEvents(this.m.elem[0]);
 
   var $this_elem = this.element();
-  if ($this_elem.find('img, iframe').length > 0 || $this_elem.hasClass('glass-no-edit')) {
-    $this_elem.attr('contenteditable', false);
-
-    $this_elem.find('.glass-editable').each(function () {
-      $(this).attr('contenteditable', true)
-    });
+  if ($this_elem.find('img, iframe').length > 0) {
+    $this_elem.attr('contenteditable', false); // legacy ones may not have .glass-no-edit
   }
 
-  $this_elem.find('a').each(function () {
-    $(this).glassHtmlModule(this_module.editor())
-  });
-
-  if ($this_elem.is('a')) {
-    $this_elem.attr('contenteditable', false);
-    $this_elem.click(function (e) {
-      e.preventDefault();
-      this_module.attachControl('anchor-editor');
-    });
+  if (do_construction === undefined || do_construction) {
+    this.glassConstructor(GlassModule);
   }
+
+  return this;
 }
+
+GlassModuleBase.extend(GlassModule, GlassModuleBase);
+
+GlassModule.deletable_modules = {
+  'img':         true,
+  'vid':         true,
+  'custom-html': true
+};
+
+GlassModule.modules_without_clickpads = {
+  'basic': true,
+};
+
+GlassModule.newModuleHtml = function(glass_id) {
+  var $module_html = $('#glass-parking #glass-module-' + glass_id + '-template');
+  if ($module_html.length > 0) {
+    $module_html = $module_html.first().clone();
+    $module_html.removeAttr('id'); //The id only stays on the one in the parking
+    $module_html.attr('data-glass-id', glass_id);
+  }
+  else if (glass_id == 'p') {
+    $module_html = $('<p></p>');
+  }
+  return $module_html;
+};

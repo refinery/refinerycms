@@ -3,10 +3,6 @@
 <% end %>
 
 <% content_for :admin_page_preview do %>
-  <%
-    render_options = {}
-    render_options[:template] = "refinery/pages/show"
-  %>
-  <%= render render_options %>
+  <%= render template: "refinery/pages/show", locals: {editing: true} %>
 <% end %>
 

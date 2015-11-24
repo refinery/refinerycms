@@ -7,7 +7,8 @@ module Refinery
 
         crudify :'refinery/<%= namespacing.underscore %>/<%= singular_name %>'<% if (title = attributes.detect { |a| a.type.to_s =~ /string|text/ }).present? and title.name != 'title' -%>,
                 :title_attribute => '<%= title.name %>'<% end -%><% if plural_name == singular_name -%>,
-                :redirect_to_url => :refinery_<%= namespacing.underscore %>_admin_<%= singular_name %>_index_path<% end %>,
+                :redirect_to_url => :refinery_<%= namespacing.underscore %>_admin_<%= singular_name %>_index_path<% end %><% if include_form? -%>,
+                :order => 'created_at DESC'<% end -%>,
                 :searchable => false,
                 :sortable => false
 

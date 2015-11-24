@@ -1,10 +1,10 @@
 <% admin = false unless defined?(admin) %>
 
-<div class="page-container dimmer">
+<div class="page-container">
   <header class="header">
     <%= render '/refinery/header' -%>
   </header>
-  <section id="page" class="page">
+  <section id="page" class="page flex flex-column">
     <%# See refinery-glass/app/views/layouts/refinery/admin.html.erb for full structure %>
     <% if admin %>
       <%= content_for?(:admin_page_preview) ? yield(:admin_page_preview) : yield %>

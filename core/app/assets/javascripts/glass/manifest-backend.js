@@ -21,10 +21,15 @@
 //= require glass/modules/file-upload
 //= require glass/modules/dimmer
 //= require glass/modules/menus
+//= require glass/modules/glass-uploader
 //= require glass/modules/image-upload
-//= require glass/modules/resource-upload
 //= require glass/modules/modal-create
 //= require glass/modules/search
-//= require_tree ./editor/
+//= require glass/editor/moduleBase
+//= require glass/editor/control
+//= require glass/editor/module
+//= require glass/editor/htmlEditor
+//= require_tree ./editor/controls
+//= require_tree ./editor/modules
 //= require glass/modules/content-editing
 //  # The rest should be in glass/manifest-back-and-frontend.js

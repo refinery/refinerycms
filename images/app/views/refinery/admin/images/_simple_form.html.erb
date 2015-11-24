@@ -1,0 +1,5 @@
+<% @image = ::Refinery::Image.new %>
+<%= form_for @image, :url => refinery.admin_images_path, :html => {  multipart: true, id: 'img-upload-form', class: 'upload-form glass-file-upload-form'}, :as => 'image' do |f| %>
+  <%= f.file_field :image, :tabindex => -1 %>
+  <%= f.submit 'Upload' %>
+<% end -%>

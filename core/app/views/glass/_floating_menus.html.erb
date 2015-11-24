@@ -1,19 +1,20 @@
 <% if !defined?(@hide_main_nav) || !@hide_main_nav %>
-  <button type="button" class="sidebar-left-opener menu-link menu-link-left"><i class="icon icon-bars"></i></button>
   <% if content_for?(:admin_sidebar) %>
     <div class="editor-settings">
-      <button class="btn btn-secondary-outline btn-circle editor-setting m-r-sm toggle-dimmed-editing active"><i class="icon icon-eye"></i></button>
+      <button class="btn btn-outline-secondary btn-circle editor-setting m-r-2 toggle-dimmed-editing active" data-toggle="tooltip" data-placement="bottom" title="Dimmed editing">
+        <i class="icon icon-eye"></i><i class="icon icon-eye-slash"></i>
+      </button>
       <!--
-      <div class="dropdown inline-block m-r-sm">
-        <button class="btn btn-secondary-outline btn-circle editor-setting" type="button" id="dropdown-settings" data-toggle="dropdown" aria-expanded="true"><i class="icon icon-dots"></i></button>
+      <div class="dropdown inline-block m-r-2">
+        <button class="btn btn-outline-secondary btn-circle editor-setting" type="button" id="dropdown-settings" data-toggle="dropdown" aria-expanded="true"><i class="icon icon-dots"></i></button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-settings">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="" class="btn btn-link-gray"><i class="icon icon-screen m-r-xs"></i> Live preview</a></li>
-          <li role="presentation"><button role="menuitem" tabindex="-1" class="btn btn-link-gray"><i class="icon icon-trash m-r-xs"></i> Delete</button></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="" class="btn btn-link-gray"><i class="icon icon-publish m-r-xs"></i> Update</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="" class="btn btn-link-gray"><i class="icon icon-screen m-r-1"></i> Live preview</a></li>
+          <li role="presentation"><button role="menuitem" tabindex="-1" class="btn btn-link-gray"><i class="icon icon-trash m-r-1"></i> Delete</button></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="" class="btn btn-link-gray"><i class="icon icon-publish m-r-1"></i> Update</a></li>
         </ul>
       </div>
       -->
-      <button type="button" class="sidebar-right-opener menu-link menu-link-text"><i class="icon icon-gears"></i> Publish settings</button>
+      <button type="button" class="btn btn-primary sidebar-right-opener"><i class="icon icon-gears m-r-1"></i> Publish settings</button>
     </div>
   <% end %>
 <% end %>

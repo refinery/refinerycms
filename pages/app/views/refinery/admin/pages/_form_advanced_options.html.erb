@@ -26,18 +26,8 @@
 
     <div class="sidebar-section-body">
       <%= f.label  :parent_id, t('.parent_page'), :title => t('.parent_page_help') %>
-      <%= f.select :parent_id, parent_id_nested_set_options(@page), {:include_blank => true}, {class: 'form-control c-select'} %>
+      <%= f.select :parent_id, parent_id_nested_set_options(@page), {:include_blank => true}, {class: 'form-control custom-select'} %>
     </div>
-
-    <% if Refinery::Pages.use_layout_templates %>
-      <div class="sidebar-section-body">
-        <div class='form-group'>
-          <%= f.label  :layout_template, t('.layout_template'), :title => t('.layout_template_help') %>
-          <%= f.select :layout_template, @valid_layout_templates,
-                       template_options(:layout_template, @page), {class: 'form-control c-select'} %>
-        </div>
-      </div>
-    <% end %>
 
     <div class="sidebar-section-body">
       <%= f.label :menu_title, t('.menu_title'), :title => t('.menu_title_help') %>

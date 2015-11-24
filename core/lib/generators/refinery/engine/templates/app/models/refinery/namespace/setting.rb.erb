@@ -18,11 +18,6 @@ module Refinery
           Refinery::Setting.set(:<%= singular_name %>_confirmation_subject, value)
         end
 
-        def notification_recipients
-          Refinery::Setting.find_or_set(:<%= singular_name %>_notification_recipients,
-                                        (Role[:refinery].users.first.try(:email) if defined?(Role)).to_s)
-        end
-
         def notification_subject
           Refinery::Setting.find_or_set(:<%= singular_name %>_notification_subject,
                                         "New <%= singular_name.humanize.downcase %> from your website")

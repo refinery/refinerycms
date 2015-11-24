@@ -1,5 +1,5 @@
 <% @resource = ::Refinery::Resource.new %>
-<%= form_for @resource, :url => refinery.admin_resources_path, :html => {  multipart: true, id: 'resource-upload-form' }, :as => 'resource' do |f| %>
-  <%= f.file_field :file, :multiple => true %>
+<%= form_for @resource, :url => refinery.admin_resources_path, :html => {  multipart: true, id: 'resource-upload-form', class: 'upload-form glass-file-upload-form'}, :as => 'resource' do |f| %>
+  <%= f.file_field :file, :multiple => true, :tabindex => -1 %>
   <%= f.submit 'Upload' %>
 <% end -%>

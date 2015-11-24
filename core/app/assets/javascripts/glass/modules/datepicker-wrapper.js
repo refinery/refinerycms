@@ -54,7 +54,7 @@ var DatePickerWrapper = (function($){
       next: 'icon icon-right',
       today: 'icon icon-crosshair',
       clear: 'icon icon-trash',
-      close: 'icon icon-cancel'
+      close: 'icon icon-close'
     };
 
     var $timeField = $wrapper.find('.time_field');

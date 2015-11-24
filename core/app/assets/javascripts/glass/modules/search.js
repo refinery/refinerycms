@@ -6,8 +6,13 @@ var GlassSearch = (function ($){
   var watcher;
 
   $(document).on('content-ready', function (e, element) {
-    var $search_form = $(element).find('.search-form').parent();
+    var $search_form = $(element).find('.search-form');
     if ($search_form.length > 0) {
+      if (!$search_form.is('form')) {
+        // I don't know where the form .parent(), but it's how I found this code [SS]
+        $search_form = $search_form.find('form').length > 0 ? $search_form.find('form') : $search_form.parent();
+      }
+
       // Create a watcher (watch for onchange & onkeypress events)
       watcher = new WatchForChanges.Watcher({
         'onkeypress' : $search_form.find('input#search'),
@@ -16,7 +21,7 @@ var GlassSearch = (function ($){
         'maxdelay'   : 1000
       });
 
-      var $error_div = '<div id="errorExplanation" class="errorExplanation text-center">Sorry, no results found</div>';
+      var $error_div = '<div id="errorExplanation" class="errorExplanation text-xs-center">Sorry, no results found</div>';
 
       $search_form.ajaxForm({
         complete: function(xhr, status) {
@@ -34,7 +39,7 @@ var GlassSearch = (function ($){
             if(xhr.responseJSON.message !== undefined){
               // insert the error div into the page if there is a message returned from the server.
               $search_form.prepend([
-                '<div id="errorExplanation" class="errorExplanation text-center">',
+                '<div id="errorExplanation" class="errorExplanation text-xs-center">',
                 xhr.responseJSON.message,
                 '</div>'
               ].join(''));
@@ -42,9 +47,7 @@ var GlassSearch = (function ($){
             return;
           }
           xhr.done(function(data) {
-            $btnContainer.find('.loader').addClass('hidden-xs-up').fadeOut(100, function(){
-              $btnContainer.find('.icon-search').fadeIn(100);
-            });
+            $btnContainer.removeClass('searching');
 
             var callback = $btnContainer.data('callback');
             if (callback) {
@@ -75,14 +78,8 @@ var GlassSearch = (function ($){
   });
 
   function do_search($elem) {
-    var $btnContainer = $('#refinery-search-btn');
-
-    $btnContainer.find('.icon-search').fadeOut(100, function(){
-      $btnContainer.find('.loader.hidden-xs-up').removeClass('hidden-xs-up').fadeIn(100);
-    });
-
+    $('#refinery-search-btn').addClass('searching');
     $elem.parents('form').submit();
-
     watcher.pause();
   }
 

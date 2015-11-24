@@ -3,7 +3,7 @@
   <div class="col-xs-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
     <div id='records'>
       <h2><%%= t('.<%= singular_name %>') %></h2>
-      <table id='<%= singular_name %>' class='inquiry inline-table m-b-md'>
+      <table id='<%= singular_name %>' class='inquiry inline-table m-b-4'>
     <% attributes.each do |attribute| -%>
           <tr>
             <td<%= " valign='top'" if attribute.type.to_s == 'text' %>>

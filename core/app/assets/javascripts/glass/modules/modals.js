@@ -121,6 +121,7 @@ var GlassModals = (function ($) {
       $saveBtn.unbind().click(function(e){
         $saveBtn.html('<i class="active inline xs loader"></i> Sending');
         $saveBtn.attr('disabled', 'disabled');
+        $form.trigger('form-before-submit');
         $form.submit();
       });
 
@@ -152,6 +153,7 @@ var GlassModals = (function ($) {
     });
   }
   return {
-    setOpenBtnListeners: setOpenBtnListeners
+    setOpenBtnListeners: setOpenBtnListeners,
+    openBtnClickHandler: openBtnClickHandler
   };
 })(jQuery);

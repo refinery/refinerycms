@@ -2,7 +2,6 @@
   font-family: "Refinery";
   font-weight: normal;
   font-style: normal;
-
   src: url("dc6e589a.eot");
   src: url("dc6e589a.eot?#iefix") format("embedded-opentype"),
        url("dc6e589a.woff") format("woff"),
@@ -14,7 +13,6 @@
   display: inline-block;
   font: normal normal normal 14px/1 "Refinery";
   font-size: inherit;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: auto;
@@ -214,9 +212,6 @@ body {
     &.icon-file:before {
       content: "\f703";
     }
-    &.icon-search-01:before {
-      content: "\f704";
-    }
     &.icon-folder:before {
       content: "\f708";
     }
@@ -228,9 +223,6 @@ body {
     }
     &.icon-close:before {
       content: "\f70b";
-    }
-    &.icon-cancel:before {
-      content: "\f70c";
     }
     &.icon-photo:before {
       content: "\f70d";
@@ -253,37 +245,22 @@ body {
     &.icon-play:before {
       content: "\f713";
     }
-    &.icon-align-center:before {
-      content: "\f714";
-    }
-    &.icon-align-left:before {
-      content: "\f715";
-    }
-    &.icon-list-number:before {
-      content: "\f716";
-    }
-    &.icon-list-bullet:before {
-      content: "\f717";
-    }
     &.icon-gear:before {
       content: "\f718";
     }
     &.icon-save:before {
       content: "\f719";
     }
-    &.icon-user:before {
-      content: "\f71a";
-    }
     &.icon-group:before {
       content: "\f71b";
     }
-    &.icon-user-1:before {
+    &.icon-user:before {
       content: "\f71c";
     }
-    &.icon-sort-amount-two:before {
+    &.icon-sort-two:before {
       content: "\f71d";
     }
-    &.icon-sort-amount:before {
+    &.icon-sort:before {
       content: "\f71e";
     }
     &.icon-sort-alpha-two:before {
@@ -297,18 +274,6 @@ body {
     }
     &.icon-sort-alpha:before {
       content: "\f722";
-    }
-    &.icon-caret-up:before {
-      content: "\f723";
-    }
-    &.icon-caret-down:before {
-      content: "\f724";
-    }
-    &.icon-rocket:before {
-      content: "\f725";
-    }
-    &.icon-projection-screen:before {
-      content: "\f726";
     }
     &.icon-code:before {
       content: "\f727";
@@ -328,29 +293,17 @@ body {
     &.icon-left:before {
       content: "\f72c";
     }
-    &.icon-crop:before {
-      content: "\f72d";
-    }
     &.icon-paragraph:before {
       content: "\f72e";
     }
     &.icon-heading:before {
       content: "\f72f";
     }
-    &.icon-flag:before {
-      content: "\f730";
-    }
     &.icon-dashboard:before {
       content: "\f731";
     }
     &.icon-filter:before {
       content: "\f732";
-    }
-    &.icon-lock:before {
-      content: "\f733";
-    }
-    &.icon-unlocked:before {
-      content: "\f734";
     }
     &.icon-calendar:before {
       content: "\f735";
@@ -372,9 +325,6 @@ body {
     }
     &.icon-check:before {
       content: "\f73b";
-    }
-    &.icon-check-01:before {
-      content: "\f73c";
     }
     &.icon-reorder:before {
       content: "\f73d";
@@ -409,17 +359,8 @@ body {
     &.icon-files:before {
       content: "\f748";
     }
-    &.icon-down-lg:before {
-      content: "\f749";
-    }
     &.icon-books:before {
       content: "\f74a";
-    }
-    &.icon-caret-right:before {
-      content: "\f74b";
-    }
-    &.icon-caret-left:before {
-      content: "\f74c";
     }
     &.icon-link:before {
       content: "\f74d";
@@ -433,14 +374,8 @@ body {
     &.icon-pages:before {
       content: "\f750";
     }
-    &.icon-fullscreen:before {
-      content: "\f751";
-    }
     &.icon-glass-canvas:before {
       content: "\f752";
-    }
-    &.icon-paperclip:before {
-      content: "\f753";
     }
     &.icon-bars:before {
       content: "\f754";
@@ -460,20 +395,32 @@ body {
     &.icon-add:before {
       content: "\f759";
     }
-    &.icon-eye:before {
-      content: "\f75b";
-    }
     &.icon-dots:before {
       content: "\f75c";
     }
     &.icon-tags:before {
       content: "\f75e";
     }
-    &.icon-pdf:before {
-      content: '\f75f';
-    }
     &.icon-button:before {
       content: '\f760';
+    }
+    &.icon-dot:before {
+      content: '\f761';
+    }
+    &.icon-external-link:before {
+      content: '\f762';
+    }
+    &.icon-add-user:before {
+      content: '\f763';
+    }
+    &.icon-eye-slash:before {
+      content: '\f764';
+    }
+    &.icon-eye:before {
+      content: '\f765';
+    }
+    &.icon-blockquote:before {
+      content: '\f766';
     }
   }
 }

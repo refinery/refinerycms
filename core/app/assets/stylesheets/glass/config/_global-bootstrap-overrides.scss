@@ -52,7 +52,45 @@ $enable-transitions:        true;
 $spacer:                     1rem !default;
 $spacer-x:                   $spacer !default;
 $spacer-y:                   $spacer !default;
-$border-width:               1px !default;
+$spacers: (
+  0: (
+    x:   0,
+    y:   0
+  ),
+  1: (
+    x:   ($spacer-x / 4),
+    y:   ($spacer-y / 4)
+  ),
+  2: (
+    x:   ($spacer-x / 2),
+    y:   ($spacer-y / 2)
+  ),
+  3: (
+    x:   $spacer-x,
+    y:   $spacer-y
+  ),
+  4: (
+    x:   ($spacer-x * 1.5),
+    y:   ($spacer-y * 1.5)
+  ),
+  5: (
+    x:   ($spacer-x * 3),
+    y:   ($spacer-y * 3)
+  ),
+  6: (
+    x:   ($spacer-x * 4.5),
+    y:   ($spacer-y * 4.5)
+  ),
+  7: (
+    x:   ($spacer-x * 6),
+    y:   ($spacer-y * 6)
+  ),
+  8: (
+    x:   ($spacer-x * 8),
+    y:   ($spacer-y * 8)
+  )
+);
+$border-width: 1px !default;
 
 // Body
 //
@@ -389,7 +427,7 @@ $card-bg:                  #fff !default;
 
 $tooltip-max-width:           200px !default;
 $tooltip-color:               #fff !default;
-$tooltip-bg:                  #000 !default;
+$tooltip-bg:                  $gray-5;
 $tooltip-opacity:             .9 !default;
 
 $tooltip-arrow-width:         5px !default;

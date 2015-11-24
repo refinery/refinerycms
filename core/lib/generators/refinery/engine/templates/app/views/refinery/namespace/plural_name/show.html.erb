@@ -1,4 +1,4 @@
-<%% content_for :body_content_title do %>
+<%% content_for :title do %>
   <%%= @<%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>.<%= title.name %><% else %>.title<% end %> %>
 <%% end %>
 
@@ -38,7 +38,7 @@
         <h1<%= live_editor_options %>><%%= @<%= singular_name %>.<%= attribute.name %> %></h1>
 <% elsif attribute.field_type.to_s == 'text_area' and include_live_editor? -%>
         <div class="glass-edit glass-edit-html" data-glass-options='{"form_id": "<%= singular_name %>_<%= attribute.name %>", "type": "html"}'>
-          <%%= raw @<%= singular_name %>.<%= attribute.name %>.present? ? @<%= singular_name %>.<%= attribute.name %> : '<p><br></p>' %>
+          <%%= raw @<%= singular_name %>.<%= attribute.name %>.present? ? @<%= singular_name %>.<%= attribute.name %> : '<p></p>' %>
         </div>
 <% else -%>
         <%%=raw @<%= singular_name %>.<%= attribute.name %> %>

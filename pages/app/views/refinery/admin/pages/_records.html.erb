@@ -2,12 +2,12 @@
 <% if @pages.any? %>
   <%= render 'sortable_list' %>
 <% else %>
-  <div class="col-xs-12 text-center m-t-md m-b-md">
+  <div class="col-xs-12 text-xs-center m-t-4 m-b-4">
     <% unless searching? %>
       <h3 class="text-uppercase">
         <%= t('.no_pages_yet') %>
       </h3>
-        <a href="<%= refinery.new_admin_page_path %>" class="btn btn-primary m-t btn-lg">
+        <a href="<%= refinery.new_admin_page_path %>" class="btn btn-primary m-t-3 btn-lg">
           <i class="icon icon-add"></i> Create one now
         </a>
     <% else %>
