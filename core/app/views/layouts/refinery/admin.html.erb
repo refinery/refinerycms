@@ -112,11 +112,15 @@ html
           <%= render '/glass/html_editing_assets' %>
           <!-- Hidden image upload form -->
           <%= render 'refinery/admin/images/form' %>
+          <!-- Hidden resource upload form -->
+          <%= render 'refinery/admin/resources/simple_form' %>
         </section>
       <% elsif content_for?(:admin_content) %>
         <div class="cms-ui">
           <%= yield :admin_content %>
         </div>
+        <!-- Hidden resource upload form -->
+        <%= render 'refinery/admin/resources/simple_form' %>
         <!-- Hidden image upload form -->
         <%= render 'refinery/admin/images/form' %>
       <% else %>

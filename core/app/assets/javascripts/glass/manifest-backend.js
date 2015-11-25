@@ -22,6 +22,7 @@
 //= require glass/modules/dimmer
 //= require glass/modules/menus
 //= require glass/modules/image-upload
+//= require glass/modules/resource-upload
 //= require glass/modules/modal-create
 //= require glass/modules/search
 //= require_tree ./editor/

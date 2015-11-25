@@ -36,17 +36,20 @@
   </div>
   <div id="glass-module-anchor-editor" contenteditable=false
        class="glass-control singleton btn-editor p-a-sm box-shadow white-bg glass-ui">
-    <progress class="progress progress-info" value="25" max="100">25%</progress>
+    <progress class="progress progress-info hidden-xs-up" value="0" max="100">25%</progress>
     <button class="close close-btn close-btn-out"><i class="icon icon-close"></i></button>
     <form role="form">
       <div class="form-group field-row m-b-0 flex align-items-center">
-        <button class="btn btn-primary m-x-xs p-x-sm"><i class="icon icon-export"></i></button>
+        <button id="resource-upload-btn" class="btn btn-primary m-x-xs p-x-sm">
+          <i class="icon icon-export"></i>
+        </button>
         <small class="text-muted p-x-sm">or</small>
         <label for="url" class="sr-only">URL</label>
         <input id="url" type="text" class="form-control flex-1 m-x-xs m-b-xs" placeholder="http://">
         <label for="link-text" class="sr-only">Link text</label>
         <input id="link-text" type="text" class="form-control flex-1 m-x-xs m-b-xs" placeholder="Link text">
       </div>
+      <input type="hidden" value="" id="resource-id">
       <div class="form-group m-b-0 flex align-items-center">
         <div class="checkbox m-b-0">
           <label><input id="is-external" type="checkbox"> External link</label>
@@ -54,6 +57,7 @@
         <button class="delete btn btn-link-red m-l-auto"><i class="icon icon-trash"></i> Delete</button>
         <button type="submit" class="btn btn-primary m-l-sm">Save</button>
       </div>
+      <div class="errorExplanation" id="errorExplanation"></div>
     </form>
   </div>
   <div id="glass-module-html" class="new-module clear glass-control singleton replace-module glass-ui cms-ui" contenteditable=false>

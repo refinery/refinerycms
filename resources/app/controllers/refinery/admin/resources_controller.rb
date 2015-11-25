@@ -29,15 +29,33 @@ module Refinery
         else
           if @resources.all?(&:valid?)
             flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.map(&:title).join("', '")}'")
-            if from_dialog?
-              @dialog_successful = true
-              render '/refinery/admin/dialog_success', layout: true
-            else
-              redirect_to refinery.admin_resources_path
+
+            respond_to do |format|
+              format.json do
+                resource = @resources.first
+                render json: {resource_id: resource.id, message: 'created!', url: resource.url}, status: 200
+              end
+              format.html do
+                if from_dialog?
+                  @dialog_successful = true
+                  render '/refinery/admin/dialog_success', layout: true
+                else
+                  redirect_to refinery.admin_resources_path
+                end
+              end
             end
           else
-            self.new # important for dialogs
-            render 'new'
+            respond_to do |format|
+              format.json do
+                message = 'Error uploading your resource to the server'
+                message = @resource.errors.messages.values[0] if @resource.errors.size > 0
+                render json: {message: message}, status: 400
+              end
+              format.html do
+                self.new # important for dialogs
+                render 'new'
+              end
+            end
           end
         end
       end

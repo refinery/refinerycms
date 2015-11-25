@@ -270,15 +270,17 @@ function GlassControl($elem) {
 
     $anchor_editor.find('form').submit(function (e) {
       e.preventDefault();
-      var url    = this_control.element().find('input#url').val();
-      var text   = this_control.element().find('input#link-text').val();
-      var extern = this_control.element().find('input#is-external').is(':checked');
+      var url         = this_control.element().find('input#url').val();
+      var text        = this_control.element().find('input#link-text').val();
+      var extern      = this_control.element().find('input#is-external').is(':checked');
+      var resource_id = this_control.element().find('input#resource-id').val();
       var $anchor = this_control.module().element();
       if (!$anchor.is('a')) { console.log("ERROR: anchor form was attached to something other than an anchor"); return; }
       $anchor.attr('href', url);
       $anchor.html(text);
       $anchor.attr('contenteditable', false);
-      extern ? $anchor.attr('target', '_blank') : $anchor.removeAttr('target');
+      resource_id ? $anchor.attr('data-resource-id', resource_id) : $anchor.removeAttr('data-resource-id');
+      extern      ? $anchor.attr('target', '_blank')              : $anchor.removeAttr('target');
       this_control.autoSave($anchor);
       this_control.detatchFromModule();
     });
@@ -300,6 +302,44 @@ function GlassControl($elem) {
       if (same_domain) {
         var new_path = match[2];
         this_control.element().find('input#url').val(new_path);
+      }
+    });
+
+    var $upload_btn = $anchor_editor.find('#resource-upload-btn');
+    $upload_btn.click(function (e) {
+      e.preventDefault();
+      var $form = $('#resource-upload-form');
+      $form.data('triggerer', $(this));
+      $form.find('input[type="file"]').click();
+      $anchor_editor.find(".progress").val(0);
+    });
+
+    $upload_btn.data('on-progress', function(eventFired, position, total, percentComplete) {
+      var $progress_bar = $anchor_editor.find(".progress");
+      $progress_bar.removeClass('hidden-xs-up');
+      $progress_bar.val(percentComplete);
+      if (percentComplete >= 100) {
+        $progress_bar.addClass('progress-striped');
+      }
+    });
+
+    $upload_btn.data('on-success', function(response) {
+      $anchor_editor.find(".progress").addClass('hidden-xs-up');
+      $anchor_editor.find('input#url').val(response.url);
+      $anchor_editor.find('input#resource-id').val(response.resource_id);
+
+      var $error_div = $anchor_editor.find(".errorExplanation");
+      if ($error_div.length > 0) {
+        $error_div.removeClass('active');
+        $error_div.html('');
+      }
+    });
+
+    $upload_btn.data('on-error', function(response_text) {
+      var $error_div = $anchor_editor.find(".errorExplanation");
+      if ($error_div.length > 0) {
+        $error_div.html("<p>" + response_text + "</p>")
+        $error_div.addClass('active');
       }
     });
   }
