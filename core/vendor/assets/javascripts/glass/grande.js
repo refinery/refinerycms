@@ -12,7 +12,6 @@
       },
       textMenu,
       optionsNode,
-      urlInput,
       //previouslySelectedText,
       imageTooltip,
       imageInput,
@@ -79,7 +78,6 @@
     imageTooltip = document.querySelectorAll(".image-tooltip")[0];
     textMenu = document.querySelectorAll(".highlight-menu")[0];
     optionsNode = document.querySelectorAll(".highlight-menu .highlight-menu-inner")[0];
-    urlInput = document.querySelectorAll(".highlight-menu .url-input")[0];
   }
 
   function bindTextSelectionEvents() {
@@ -113,9 +111,6 @@
 
     // Handle window resize events
     root.onresize = triggerTextSelection;
-
-    urlInput.onblur = triggerUrlBlur;
-    urlInput.onkeydown = triggerUrlSet;
 
     if (options.allowImages) {
       imageTooltip.onmousedown = triggerImageUpload;
@@ -426,48 +421,22 @@
             return;
 
           case "a":
-            toggleUrlInput();
-            optionsNode.className = "highlight-menu-inner url-mode";
+            document.execCommand("createLink", false, "/temporary");
+            // setTimeout(function() {
+            var $anchor = $('a[href$="temporary"]');
+            $anchor.attr('target', '_blank');
+            $anchor.attr('href', '');
+            $anchor.attr('contenteditable', false);
+            $anchor.glassHtmlModule().attachControl('anchor-editor');
+            $('#glass-module-anchor-editor input#url').focus();
+            textMenu.className = "highlight-menu hide";
+            // }, 150);
             return;
         }
       }
     }
 
     triggerTextSelection();
-  }
-
-  function triggerUrlBlur(event) {
-    var url = urlInput.value;
-
-    optionsNode.className = "highlight-menu-inner";
-    window.getSelection().removeAllRanges();
-    //window.getSelection().addRange(previouslySelectedText);
-
-    //document.execCommand("unlink", false);
-
-    if (url === "") {
-      return false;
-    }
-
-    if (!url.match("^(http://|https://|mailto:|/)")) {
-      url = "http://" + url;
-    }
-
-    //document.execCommand("createLink", false, url);
-    //document.execCommand('insertHTML', false, '<a href="' + url + '" target="_blank">' + document.getSelection() + '</a>');
-    var $anchor = $('a[href$="temporary"]');
-    $anchor.attr('href', url);
-    url.match("^(http://|https://)") ? $anchor.attr('target', '_blank') : $anchor.removeAttr('target');
-    urlInput.value = "";
-  }
-
-  function triggerUrlSet(event) {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      urlInput.blur();
-    }
   }
 
   function toggleFormatBlock(tag) {
@@ -480,25 +449,6 @@
         $(editableNodes).find("blockquote").addClass("blockquote");
       }
     }
-  }
-
-  function toggleUrlInput() {
-    parentAnchor = getParentWithTag(getFocusNode(), 'a');
-    //var url = getParentHref(getFocusNode());
-
-    if (parentAnchor && parentAnchor.href !== "undefined") {
-      urlInput.value = parentAnchor.href;
-      parentAnchor.href = "/temporary";
-    }
-    else {
-      document.execCommand("createLink", false, "/temporary");
-    }
-
-    //previouslySelectedText = window.getSelection().getRangeAt(0);
-
-    setTimeout(function() {
-      urlInput.focus();
-    }, 150);
   }
 
   function getParent(node, condition, returnCallback) {
