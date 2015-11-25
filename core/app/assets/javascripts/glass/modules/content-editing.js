@@ -26,6 +26,9 @@ var GlassContentEditing = (function ($) {
     glassHtmlModule: function ($glass_html_editor) {
       var module = this.data('glass-module');
       if (!module) {
+        if ($glass_html_editor === undefined) {
+          $glass_html_editor = getWrappingEditor(this);
+        }
         module = new GlassModule(this, $glass_html_editor);
         this.data('glass-module', module);
         module.resetControl();
@@ -99,6 +102,14 @@ var GlassContentEditing = (function ($) {
   function getFormForElement($elem) {
     var $chunk = $elem.parents('.glass-edit');
     return $chunk.length > 0 ? $chunk.glassChunk().getForm() : null;
+  }
+
+  function getWrappingEditor($elem) {
+    var $editor_elem = $elem.parents('.glass-edit');
+    if ($editor_elem.length > 0 && $editor_elem.glassChunk().option('type') == 'html') {
+      return $editor_elem.glassHtmlEditor();
+    }
+    return null;
   }
 
   // #############################################################
@@ -266,6 +277,7 @@ var GlassContentEditing = (function ($) {
 
   // Return API for other modules
   return {
+    getWrappingEditor: getWrappingEditor,
     filterPasteEvents: filterPasteEvents,
     getFormForElement: getFormForElement
   };

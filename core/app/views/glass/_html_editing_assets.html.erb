@@ -10,8 +10,8 @@
 <div id="glass-parking" style="display: none;">
   <input id="autosave_field" class="autosave-field" name="autosave" type="hidden" value="">
 
-  <a id="glass-module-switcher-template" href="" class="circle-icon add-module glass-control singleton glass-ui transitionable" contenteditable=false><i class="icon icon-plus"></i></a>
-  <div id="glass-choose-module" class="new-module media-chooser clear glass-control singleton glass-ui" contenteditable=false>
+  <a id="glass-module-switcher-template" href="" class="circle-icon add-module glass-control singleton replace-module glass-ui transitionable" contenteditable=false><i class="icon icon-plus"></i></a>
+  <div id="glass-choose-module" class="new-module media-chooser clear glass-control singleton replace-module glass-ui" contenteditable=false>
     <button id="glass-choose-module-img" class="circle-icon media-type"><i class="icon icon-photo bump-down"></i></button>
     <button id="glass-choose-module-vid" class="circle-icon media-type"><i class="icon icon-film"></i></button>
     <!-- <button class="circle-icon media-type" data-insert-module-template="button"><i class="icon icon-button"></i></button> -->
@@ -19,8 +19,9 @@
       <button id="glass-choose-custom"     class="circle-icon media-type"><i class="icon icon-code"></i></button>
     <% end %>
     <button class="circle-icon media-type" data-choose-control="html"><i class="icon icon-code"></i></button>
+    <button class="circle-icon media-type" data-choose-control="anchor-editor"><i class="icon icon-photo"></i></button>
   </div>
-  <div id="glass-module-settings-vid" class="new-module media-chooser clear glass-control singleton glass-ui" contenteditable=false>
+  <div id="glass-module-settings-vid" class="new-module media-chooser clear glass-control singleton replace-module glass-ui" contenteditable=false>
     <form id="glass-add-vid-form" role="form">
       <div class="form-group">
         <div class="input-group">
@@ -33,7 +34,29 @@
       </div>
     </form>
   </div>
-  <div id="glass-module-html" class="new-module clear glass-control singleton glass-ui cms-ui" contenteditable=false>
+  <div id="glass-module-anchor-editor" contenteditable=false
+       class="glass-control singleton btn-editor p-a-sm box-shadow white-bg glass-ui">
+    <progress class="progress progress-info" value="25" max="100">25%</progress>
+    <button class="close close-btn close-btn-out"><i class="icon icon-close"></i></button>
+    <form role="form">
+      <div class="form-group field-row m-b-0 flex align-items-center">
+        <button class="btn btn-primary m-x-xs p-x-sm"><i class="icon icon-export"></i></button>
+        <small class="text-muted p-x-sm">or</small>
+        <label for="url" class="sr-only">URL</label>
+        <input id="url" type="text" class="form-control flex-1 m-x-xs m-b-xs" placeholder="http://">
+        <label for="link-text" class="sr-only">Link text</label>
+        <input id="link-text" type="text" class="form-control flex-1 m-x-xs m-b-xs" placeholder="Link text">
+      </div>
+      <div class="form-group m-b-0 flex align-items-center">
+        <div class="checkbox m-b-0">
+          <label><input id="is-external" type="checkbox"> External link</label>
+        </div>
+        <button class="delete btn btn-link-red m-l-auto"><i class="icon icon-trash"></i> Delete</button>
+        <button type="submit" class="btn btn-primary m-l-sm">Save</button>
+      </div>
+    </form>
+  </div>
+  <div id="glass-module-html" class="new-module clear glass-control singleton replace-module glass-ui cms-ui" contenteditable=false>
     <form id="glass-add-html-form" role="form">
       <label class="bold">Paste your HTML</label>
       <textarea class="form-control glass-autofocus html-input m-b-xs" placeholder="<iframe>...</iframe>"></textarea>

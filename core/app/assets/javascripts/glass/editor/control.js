@@ -15,6 +15,13 @@ function GlassControl($elem) {
       $element.insertBefore($module.element());
     }
 
+    if (this_control.element().attr('id') == 'glass-module-anchor-editor') {
+      this_control.element().find('input#url').val( $module.element().attr('href'));
+      this_control.element().find('input#link-text').val($module.element().html());
+      var extern = $module.element().attr('target') == '_blank';
+      this_control.element().find('input#is-external').prop('checked', extern);
+    }
+
     if ($element.hasClass('click-pads')) {
       var sp_bottom = parseInt($module.element().css("margin-bottom" ).replace("px", ""));
       //sp_bottom    += parseInt($module.element().css("padding-bottom").replace("px", ""));
@@ -46,7 +53,6 @@ function GlassControl($elem) {
   };
 
   this.detatchFromModule = function() {
-    this.element().hide();
     this.c.module = null;
     if (this.element().hasClass('singleton')) {
       this.element().appendTo('#glass-parking');
@@ -258,6 +264,45 @@ function GlassControl($elem) {
     $new_module.resetControl(); // this makes the delete btn appear - vid & custom aren't having this issue though!
     this_control.autoSave($new_module.element());
   });
+
+  if (this.element().attr('id') == 'glass-module-anchor-editor') {
+    var $anchor_editor = this.element();
+
+    $anchor_editor.find('form').submit(function (e) {
+      e.preventDefault();
+      var url    = this_control.element().find('input#url').val();
+      var text   = this_control.element().find('input#link-text').val();
+      var extern = this_control.element().find('input#is-external').is(':checked');
+      var $anchor = this_control.module().element();
+      if (!$anchor.is('a')) { console.log("ERROR: anchor form was attached to something other than an anchor"); return; }
+      $anchor.attr('href', url);
+      $anchor.html(text);
+      $anchor.attr('contenteditable', false);
+      extern ? $anchor.attr('target', '_blank') : $anchor.removeAttr('target');
+      this_control.autoSave($anchor);
+      this_control.detatchFromModule();
+    });
+
+    $anchor_editor.find('.close, .delete').click(function (e) {
+      e.preventDefault();
+      if ($(this).hasClass('delete')) {
+        this_control.module().remove();
+      }
+      this_control.detatchFromModule();
+    });
+
+    $anchor_editor.find('input#url').change(function (e) {
+      var single_slash = ($(this).val().charAt(0) == '/' && $(this).val().charAt(1) != '/');
+      var match = /https?:\/\/([^\/]+)(\/.+)$/.exec($(this).val());
+      var same_domain = match && match[1] && match[1] == window.location.hostname;
+      this_control.element().find('input#is-external').prop('checked', !single_slash && !same_domain);
+
+      if (same_domain) {
+        var new_path = match[2];
+        this_control.element().find('input#url').val(new_path);
+      }
+    });
+  }
 }
 
 GlassControl.key2selector = {

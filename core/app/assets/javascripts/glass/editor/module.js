@@ -55,6 +55,7 @@ function GlassModule($elem, $editor) {
   //Could be what is breaking tabbing in mozilla
   this.attachControl = function(key) {
     var key2selector = GlassControl.key2selector;
+    // Avoid attaching the same control twice
     if (!((key in key2selector) && this.element().children(key2selector[key]).length > 0)) {
       this.editor().attachControl(key, this);
     }
@@ -90,7 +91,7 @@ function GlassModule($elem, $editor) {
   };
 
   this.detatchAllControl = function() {
-    this.element().children('.glass-control.singleton').each(function () {
+    this.element().children('.glass-control.replace-module').each(function () {
       var $control = $(this).glassHtmlControl();
       $control.bringBackModule();
       $control.detatchFromModule();
@@ -229,11 +230,24 @@ function GlassModule($elem, $editor) {
 
   GlassContentEditing.filterPasteEvents(this.m.elem[0]);
 
-  if (this.element().find('img, iframe').length > 0 || this.element().hasClass('glass-no-edit')) {
-    this.element().attr('contenteditable', false);
+  var $this_elem = this.element();
+  if ($this_elem.find('img, iframe').length > 0 || $this_elem.hasClass('glass-no-edit')) {
+    $this_elem.attr('contenteditable', false);
 
-    this.element().find('.glass-editable').each(function () {
+    $this_elem.find('.glass-editable').each(function () {
       $(this).attr('contenteditable', true)
+    });
+  }
+
+  $this_elem.find('a').each(function () {
+    $(this).glassHtmlModule(this_module.editor())
+  });
+
+  if ($this_elem.is('a')) {
+    $this_elem.attr('contenteditable', false);
+    $this_elem.click(function (e) {
+      e.preventDefault();
+      this_module.attachControl('anchor-editor');
     });
   }
 }

@@ -79,7 +79,7 @@ function GlassHtmlEditor($elem) {
 
     $control.attachToModule($module);
 
-    if ($control.element().hasClass('singleton') && key != 'module-switcher') {
+    if ($control.element().hasClass('replace-module') && key != 'module-switcher') {
       this.curModule().element().hide();
       // We have a stack for modules that replace the content
       if (stack.length > 0) {
@@ -109,7 +109,7 @@ function GlassHtmlEditor($elem) {
   };
 
   this.removeGlassControl = function() {
-    this.h.elem.find('.glass-control.singleton').each(function () {
+    this.h.elem.find('.glass-control.replace-module').each(function () {
       var $control = $(this).glassHtmlControl();
       $control.bringBackModule();
       $control.detatchFromModule();
