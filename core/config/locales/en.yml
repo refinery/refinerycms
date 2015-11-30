@@ -37,7 +37,7 @@ en:
         delete: Remove
         close: Close
       image_picker:
-        none_selected: There is currently no image selected, please click here to add one.
+        none_selected: No image selected, please click here to add one.
         remove_current: Remove current image
         change: Click here to pick an image
         show: Show

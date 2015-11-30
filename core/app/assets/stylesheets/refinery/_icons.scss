@@ -61,6 +61,7 @@
 .switch_view_list_icon {@include icon('list')}
 .upload_icon          {@include icon('upload');}
 .user_comment_icon    {@include icon('comment-o');}
+.warning_icon         {@include icon('warning', $icon_warning_colour)}
 
 .hidden_icon  {display:none}
 .unhidden_icon {display: inline-block}
@@ -83,3 +84,4 @@
 // don't want underlines on icons
 #content a[class$='icon'] {border-bottom: none}
 #content a[class$='icon']:hover {border-bottom: none}
+
