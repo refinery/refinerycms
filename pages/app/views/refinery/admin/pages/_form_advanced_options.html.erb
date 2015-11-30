@@ -78,7 +78,9 @@
       <%= f.label :show_in_menu, t('.show_in_menu_description'),
                   :class => "stripped" %>
     </div>
-
+    <% Refinery::Pages.page_options.collect do |options| %>
+      <%=  render partial: options.partial, locals:{f: f} %>
+    <%  end   %>
     <%= render 'form_extra_fields_for_more_options', :f => f %>
   </div>
 

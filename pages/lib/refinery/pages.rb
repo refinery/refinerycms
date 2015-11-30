@@ -8,6 +8,7 @@ module Refinery
     require 'refinery/pages/tab'
     require 'refinery/pages/type'
     require 'refinery/pages/types'
+    require 'refinery/pages/page_options'
 
     # Load configuration last so that everything above is available to it.
     require 'refinery/pages/configuration'
