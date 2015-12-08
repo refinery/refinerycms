@@ -1,7 +1,7 @@
 def preview_image
   preview_window = window_opened_by do
     image_url
-    find(:linkhref, image_url).trigger('click')
+    Capybara.find(:linkhref, image_url).click
   end
 
   page.within_window preview_window do
