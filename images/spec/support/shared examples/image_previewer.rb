@@ -24,7 +24,7 @@ shared_examples 'shows an image preview' do
       ensure_on(current_path + "?view=list")
     end
 
-    it 'displays the image in a new window', js: true do
+    it 'displays the image in a new window', js: true, focus: true do
       preview_image()
     end
   end
