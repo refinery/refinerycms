@@ -5,6 +5,8 @@ de:
         title: Bilder
         description: Verwaltet Bilder
     admin:
+      locale_picker:
+        language: Sprache
       images:
         delete: Dieses Bild für immer löschen
         edit: Dieses Bild bearbeiten

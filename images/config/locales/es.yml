@@ -6,6 +6,8 @@ es:
         description: Gestionar imágenes
         article: femenino
     admin:
+      locale_picker:
+        language: Lenguajes
       images:
         delete: Borrar esta imagen para siempre
         edit: Editar esta imagen
@@ -16,6 +18,10 @@ es:
           replace_image: " reemplazarla con esta otra..."
           current_image: Imagen actual
           maximum_image_size: El peso máximo para una imagen son %{bytes}.
+          image_title: Título
+          image_title_help: Información extra acerca de la imágen
+          image_alt: Alt
+          image_alt_help: Texto para usar en caso de que la imágen no sea visible.
         actions:
           create_new_image: Crear nueva imagen
         records:

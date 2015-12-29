@@ -5,6 +5,8 @@ nl:
         title: Afbeeldingen
         description: Afbeeldingen beheren
     admin:
+      locale_picker:
+        language: Taal
       images:
         delete: Deze afbeelding definitief verwijderen
         edit: Deze afbeelding bewerken
@@ -15,6 +17,10 @@ nl:
           replace_image: " vervangen door deze..."
           current_image: Huidige afbeelding
           maximum_image_size: De maximale afbeeldingssgrootte is %{bytes}.
+          image_title: Titel
+          image_title_help: Extra informatie over de afbeelding
+          image_alt: Alternatief
+          image_alt_help: Text indien afbeelding niet kan worden getoond.
         actions:
           create_new_image: Nieuwe afbeelding toevoegen
         records:
