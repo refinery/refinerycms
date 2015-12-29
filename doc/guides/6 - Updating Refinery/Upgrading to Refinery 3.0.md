@@ -97,6 +97,8 @@ run  `rails generate refinery:cms --update`
 ### If you are using Refinerycms-blog ###
 run `rake acts_as_taggable_on_engine:install:migrations`
 
+### If you are using devise ###
+See https://github.com/refinery/refinerycms-authentication-devise
 
 ## Check files that you have over-ridden ##
 Check your app for any Refinery files that you may have over-ridden.
