@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'seo_meta',                    '~> 2.0.0.rc.1'
   s.add_dependency 'refinerycms-core',            version
   s.add_dependency 'babosa',                      '!= 0.3.6'
-  s.add_dependency 'speakingurl-rails',           '~> 1.1.2'
+  s.add_dependency 'speakingurl-rails',           '~> 8.0.0'
 
   s.required_ruby_version = Refinery::Version.required_ruby_version
 end
