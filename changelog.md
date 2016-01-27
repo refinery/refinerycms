@@ -1,8 +1,14 @@
 ## 3.1.0 [unreleased]
 
+* [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...master)
+
+
+## 3.0.1 [26 January 2015]
+* Set speakingurl-rails to 8.0.0, switch to poltergeist gem. [#3084](https://github.com/refinery/refinerycms/pull/3084). [Philip Arndt](https://github.com/parndt) & [Brice Sanchez](https://github.com/bricesanchez)
+* Install a compatible version of refinerycms-acts-as-indexed [#3079](https://github.com/refinery/refinerycms/issues/3079). [Philip Arndt](https://github.com/parndt)
 * Updated Refinery::Pages.default_parts= config to require both a title and a slug attribute for each part. [#3069](https://github.com/refinery/refinerycms/pull/3069). [Brice Sanchez](https://github.com/bricesanchez)
 
-* [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...master)
+* [See full list](https://github.com/refinery/refinerycms/compare/3.0.0...3.0.1)
 
 
 ## 3.0.0 [19 September 2015]
