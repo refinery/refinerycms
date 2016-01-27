@@ -12,7 +12,7 @@ module Refinery
       def new
         @page = Page.new(new_page_params)
         Pages.default_parts_for(@page).each_with_index do |page_part, index|
-          @page.parts << PagePart.new(:title => page_part, :slug => page_part, :position => index)
+          @page.parts << PagePart.new(:title => page_part[:title], :slug => page_part[:slug], :position => index)
         end
       end
 

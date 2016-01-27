@@ -1,5 +1,7 @@
 ## 3.1.0 [unreleased]
 
+* Updated Refinery::Pages.default_parts= config to require both a title and a slug attribute for each part. [#3069](https://github.com/refinery/refinerycms/pull/3069). [Brice Sanchez](https://github.com/bricesanchez)
+
 * [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...master)
 
 

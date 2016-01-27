@@ -744,8 +744,8 @@ module Refinery
           page = Refinery::Page.create! :title => "test"
           Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
             page.parts.create(
-              title: default_page_part,
-              slug: default_page_part,
+              title: default_page_part[:title],
+              slug: default_page_part[:slug],
               body: "<header class='regression'>test</header>",
               position: index
             )
@@ -807,7 +807,7 @@ module Refinery
           page = Refinery::Page.last
           # we need page parts so that there's a visual editor
           Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
-            page.parts.create(:title => default_page_part, :body => nil, :position => index)
+            page.parts.create(:title => default_page_part[:title], :slug => default_page_part[:slug], :body => nil, :position => index)
           end
           page
         end

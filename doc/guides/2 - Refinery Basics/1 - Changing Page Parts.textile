@@ -20,7 +20,7 @@ settings are commented out, including the following:
 
 <ruby>
   # Configure global page default parts
-  # config.default_parts = ["Body", "Side Body"]
+  # config.default_parts = [{ title: "Body", slug: "body" }, { title: "Side Body", slug: "side_body" }]
 </ruby>
 
 Edit this code to have the names of the default page parts you want, click +Save+
