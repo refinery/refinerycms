@@ -20,6 +20,7 @@
   <%= will_paginate @resources, :params => params.dup.merge(:action => "insert") %>
 
   <%= render '/refinery/admin/form_actions', :f => nil,
+             :action_name => "insert",
              :submit_button_text => t('.button_text'),
              :hide_cancel => false,
              :hide_delete => true if @app_dialog or @resources.any? %>
