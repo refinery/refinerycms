@@ -1,4 +1,53 @@
 <ul id='sortable_list'>
-  <%= render :partial => 'page', :collection => @pages.roots  %>
+  <%= sorted_nested_li(@pages, :title) do |page| %>
+
+    <% # setup params for various action links
+      add_url =   refinery.new_admin_page_path(parent_id: page.id)
+      edit_url =  refinery.admin_edit_page_path(page.nested_url, switch_locale: (page.translations.first.locale unless page.translated_to_default_locale?))
+      delete_url = refinery.admin_delete_page_path(page.nested_url)
+      delete_options = {
+         class: "cancel confirm-delete",
+                data: {confirm: t('message',  scope: 'refinery.admin.delete', title: page_title_with_translations(page))}
+              }
+    %>
+
+    <div class='clearfix'>
+      <% if page.children.present? %>
+        <span class="item icon toggle <%= 'expanded' if Refinery::Pages.auto_expand_admin_tree %>"
+          title="<%= t('expand_collapse', scope: 'refinery.admin.pages')%>">
+        </span>
+      <% else %>
+        <span class="item"></span>
+      <% end %>
+
+      <span class='title <%= 'toggle' if page.children.present? %>'>
+        <%= page_title_with_translations page %>
+        <%= page_meta_information page %>
+      </span>
+
+      <% if Refinery::I18n.frontend_locales.many? %>
+        <span class='locales'>
+          <% page.translations.sort_by{ |t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
+            <% if translation.title.present? %>
+              <%= link_to refinery.admin_edit_page_path(page.nested_url, switch_locale: translation.locale),
+                          class: 'locale', title: translation.locale.upcase do %>
+
+                <div class="<%=translation.locale %> locale_marker">
+                  <%= locale_text_icon(translation.locale.upcase) %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </span>
+      <% end %>
+
+      <span class='actions'>
+        <%= action_icon(:preview, page.url,   t('.view_live_html')) %>
+        <%= action_icon(:add,     add_url,    t('new',    scope: 'refinery.admin.pages' ) ) %>
+        <%= action_icon(:edit,    edit_url ,  t('edit',   scope: 'refinery.admin.pages' ) ) %>
+        <%= action_icon(:delete,  delete_url, t('delete', scope: 'refinery.admin.pages' ), delete_options ) if page.deletable? %>
+      </span>
+    </div>
+  <% end %>
 </ul>
 <%= render '/refinery/admin/sortable_list', :continue_reordering => !!local_assigns[:continue_reordering] %>
