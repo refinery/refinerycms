@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%= render '/refinery/html_tag' %>
-  <% content_for :meta, "<meta refinerycms='#{Refinery.version}' />".html_safe %>
+  <% content_for :meta, tag(:meta, name: 'refinerycms', content: Refinery.version) %>
   <%= render 'refinery/admin/head' %>
   <body class="<%= action_name %> <%= I18n.locale %>">
     <%= render '/refinery/site_bar' %>
