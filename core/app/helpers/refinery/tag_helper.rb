@@ -5,7 +5,8 @@ module Refinery
 
     # Remember to wrap your block with <span class='label_with_help'></span> if you're using a label next to the help tag.
     def refinery_help_tag(title='Tip')
-      action_icon(:info, '#', title.html_safe? ? title : h(title), {tooltip: title})
+      title = title.html_safe? ? title : h(title)
+      action_icon(:info, '#', title, {tooltip: title})
     end
 
     # This is just a quick wrapper to render an image tag that lives inside refinery/icons.
