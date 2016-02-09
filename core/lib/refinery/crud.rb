@@ -227,7 +227,7 @@ module Refinery
                     :create_or_update_successful,
                     :create_or_update_unsuccessful,
                     :merge_position_into_params!
-        )
+        ), __FILE__, __LINE__
 
         # Methods that are only included when this controller is searchable.
         if options[:searchable]
@@ -239,7 +239,7 @@ module Refinery
 
                 render_partial_response?
               end
-            )
+            ), __FILE__, __LINE__
           else
             module_eval %(
               def index
@@ -251,7 +251,7 @@ module Refinery
 
                 render_partial_response?
               end
-            )
+            ), __FILE__, __LINE__
           end
 
         else
@@ -262,14 +262,14 @@ module Refinery
 
                 render_partial_response?
               end
-            )
+            ), __FILE__, __LINE__
           else
             module_eval %(
               def index
                 find_all_#{plural_name}
                 render_partial_response?
               end
-            )
+            ), __FILE__, __LINE__
           end
 
         end
@@ -333,7 +333,7 @@ module Refinery
             end
 
             protected :after_update_positions
-          )
+          ), __FILE__, __LINE__
         end
 
         module_eval %(
@@ -351,7 +351,7 @@ module Refinery
               #{options[:searchable]}
             end
           end
-        )
+        ), __FILE__, __LINE__
 
       end
 
