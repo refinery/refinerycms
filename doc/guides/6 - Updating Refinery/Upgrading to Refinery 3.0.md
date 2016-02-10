@@ -127,5 +127,11 @@ Refinery::Search.configure do |config|
 end
 ````
 
-The search route which was `refinery.search_path` is now `refinery.search_root_path`
-More information in [refinerycms-search documentation](https://github.com/refinery/refinerycms-search)
+### Search Route
+
+- The url helper method has been renamed from `refinery.search_path`
+  to `refinery.search_root_path`
+- The search method has changed from POST to GET
+
+More information in [refinerycms-search
+documentation](https://github.com/refinery/refinerycms-search)
