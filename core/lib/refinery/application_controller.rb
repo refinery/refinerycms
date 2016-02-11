@@ -11,7 +11,7 @@ module Refinery
                          :current_refinery_user,
                          :authorisation_manager, :authorization_manager
 
-      base.protect_from_forgery # See ActionController::RequestForgeryProtection
+      base.protect_from_forgery with: :exception # See ActionController::RequestForgeryProtection
 
       base.send :include, Refinery::Crud # basic create, read, update and delete methods
 
