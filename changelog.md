@@ -3,6 +3,24 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...master)
 
 
+## 3.0.2 [unreleased]
+
+* Fixed multiple XSS vulnerabilities found by [Shravan Kumar](https://github.com/cor3sm4sh3r) - Sanitize markup. [#3097](https://github.com/refinery/refinerycms/pull/3097). [Brice Sanchez](https://github.com/bricesanchez)
+* Generate `authors` in order to create a valid gemspec. [#3121](https://github.com/refinery/refinerycms/pull/3121). [Brice Sanchez](https://github.com/bricesanchez)
+* Remove deprecated rspec config `treat_symbols_as_metadata_keys_with_true_values`. [#3118](https://github.com/refinery/refinerycms/pull/3118). [Brice Sanchez](https://github.com/bricesanchez)
+* Update `factory_girl_rails` from '~> 4.4.1' to `~> 4.6.0`. [#3114](https://github.com/refinery/refinerycms/pull/3114). [Eric Guo](https://github.com/Eric-Guo)
+* Now welcome to Ruby 2.3.0. [94657b092cec2dde10f77c68205531defaf54476](https://github.com/refinery/refinerycms/commit/94657b092cec2dde10f77c68205531defaf54476). [Philip Arndt](https://github.com/parndt)
+* Fixed engine template seeds : Add page slug. [#3106](https://github.com/refinery/refinerycms/pull/3106). [Brice Sanchez](https://github.com/bricesanchez)
+* Fixed a Dragonfly deprecation warning. [ed7bbea503fc95e5aac5dcc94ce444a3d7c9718d](https://github.com/refinery/refinerycms/commit/ed7bbea503fc95e5aac5dcc94ce444a3d7c9718d). [Philip Arndt](https://github.com/parndt)
+* Now use font-awesome from `font-awesome-sass` gem. [#3108](https://github.com/refinery/refinerycms/pull/3108). [Oleg German](https://github.com/ogerman)
+* Fixed CSRF vulnerability found by [Shravan Kumar](https://github.com/cor3sm4sh3r) - Add protect_from_forgery with: :exception. [#3101](https://github.com/refinery/refinerycms/pull/3101). [Brice Sanchez](https://github.com/bricesanchez)
+* Add line numbers to stack trace. [#3093](https://github.com/refinery/refinerycms/pull/3093). [Jared Beck](https://github.com/jaredbeck)
+* Add icon to image picker warning. [#3075](https://github.com/refinery/refinerycms/pull/3075). [Anita Graham](https://github.com/anitagraham)
+* Specify that we are expecting action_name to be insert. [#3092](https://github.com/refinery/refinerycms/pull/3092). [Philip Arndt](https://github.com/parndt)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/3.0.1...3.0.2)
+
+
 ## 3.0.1 [26 January 2015]
 * Set speakingurl-rails to 8.0.0, switch to poltergeist gem. [#3084](https://github.com/refinery/refinerycms/pull/3084). [Philip Arndt](https://github.com/parndt) & [Brice Sanchez](https://github.com/bricesanchez)
 * Install a compatible version of refinerycms-acts-as-indexed [#3079](https://github.com/refinery/refinerycms/issues/3079). [Philip Arndt](https://github.com/parndt)
