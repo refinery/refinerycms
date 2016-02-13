@@ -2,6 +2,7 @@ require 'rails' # from railties
 require 'active_record'
 require 'action_controller'
 require 'rbconfig'
+require 'font-awesome-sass'
 
 module Refinery
   require 'refinery/errors'
