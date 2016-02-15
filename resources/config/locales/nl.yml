@@ -13,6 +13,9 @@ nl:
           or: of
           replace: " vervangen door dit bestand..."
           maximum_file_size: De maximale bestandsgrootte is %{bytes}.
+          resource_file: Bestand
+          resource_title: Titel
+          resource_title_help: De titel die aan gebruikers getoond wordt.
         resource:
           download: Dit bestand downloaden (%{size})
         actions:

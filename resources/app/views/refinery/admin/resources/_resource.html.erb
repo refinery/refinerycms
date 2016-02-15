@@ -1,7 +1,7 @@
 <%
   edit_url =    refinery.edit_admin_resource_path(resource)
   delete_url =  refinery.admin_resource_path(resource)
-  delete_options = {data: {confirm: t('.message',  scope: 'refinery.admin.delete', title: resource.title)}}
+  delete_options = {data: {confirm: t('message',  scope: 'refinery.admin.delete', title: resource.title)}}
 %>
 <li class="clearfix record <%= cycle('on', 'on-hover') %>">
 
