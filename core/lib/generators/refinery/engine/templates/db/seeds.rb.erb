@@ -14,7 +14,7 @@ Refinery::I18n.frontend_locales.each do |lang|
     menu_match: "^#{url}(\/|\/.+?|)$"
   ) do |page|
     Refinery::Pages.default_parts.each_with_index do |part, index|
-      page.parts.build title: part, body: nil, position: index
+      page.parts.build title: part[:title], slug: part[:slug], body: nil, position: index
     end
   end if defined?(Refinery::Page)
 <% end -%>
