@@ -41,6 +41,8 @@ nl:
         remove_current: "Huidige afbeelding verwijderen"
         change: Klik hier om een afbeelding te kiezen
         show: Tonen
+      locale_picker:
+        language: Taal
       resource_picker:
         download_current: "Huidig bestand downloaden"
         opens_in_new_window: Opent in een nieuw venster
@@ -52,6 +54,11 @@ nl:
         button_text: Zoeken
         results_for_html: "Zoekresultaten voor &#8216;<em>%{query}</em>&#8217;"
         no_results: "Excuses, geen resultaten gevonden"
+        cancel_search: 'Stop met zoeken'
+        search_input_notice: ''
+        input:
+          placeholder: "Zoek &#8230;"
+          help: 'Vul een woord ofz in in waar je op wil zoeken'
       delete:
         message: Weet u zeker dat u '%{title}' wilt verwijderen?
       error_messages:
