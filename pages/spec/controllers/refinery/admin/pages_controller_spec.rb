@@ -49,5 +49,18 @@ module Refinery
          end
        end
     end
+
+    describe 'additional page options' do
+      context 'when an extra page option has been registered' do
+        before do
+          allow(Refinery::Pages).to receive(:page_options).and_return({name:'test', partial: 'test_option'})
+        end
+        subject { get 'refinery/pages/home/edit'}
+        it 'should render the partial' do
+          expect(response).to render_template(partial: 'test_option')
+        end
+      end
+    end
+
   end
 end

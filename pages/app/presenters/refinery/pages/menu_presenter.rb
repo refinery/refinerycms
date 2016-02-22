@@ -1,4 +1,3 @@
-require 'active_support/core_ext/string'
 require 'active_support/configurable'
 require 'action_view/helpers/tag_helper'
 require 'action_view/helpers/url_helper'
