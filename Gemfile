@@ -16,21 +16,13 @@ gem 'poltergeist', '>= 1.8.1'
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
-
-###########################
 # Rails 5 temp. gem sources
-
-gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'feature/rails-5'
-gem 'globalize', git: 'https://github.com/globalize/globalize', branch: 'master'
-gem 'will_paginate', git: 'https://github.com/nmeylan/will_paginate', branch: 'master'
-
-group :development do
-  gem 'listen', '~> 3.0'
-end
-
-#
-###########################
-
+gem 'refinerycms-i18n', path: '../refinerycms-i18n', branch: 'feature/rails-5'
+gem 'routing-filter', github: 'bricesanchez/routing-filter', branch: 'feature/rails-5'
+gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
+gem 'globalize', github: 'pranik/globalize', branch: 'rails_5'
+gem 'will_paginate', github: 'nmeylan/will_paginate', branch: 'master'
+gem 'listen'
 
 # Add the default visual editor, for now.
 gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6'],
