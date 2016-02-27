@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.description       = 'Ruby on Rails <%= extension_plural_name.titleize %> extension for Refinery CMS'
   s.date              = '<%= Time.now.strftime('%Y-%m-%d') %>'
   s.summary           = '<%= extension_plural_name.titleize %> extension for Refinery CMS'
+  s.authors           = <%= extension_authors %>
   s.require_paths     = %w(lib)
   s.files             = Dir["{app,config,db,lib}/**/*"] + ["readme.md"]
 
