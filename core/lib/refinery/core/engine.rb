@@ -36,7 +36,7 @@ module Refinery
       # Wrap errors in spans
       config.to_prepare do
         ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
-          "<span class=\"fieldWithErrors\">#{html_tag}</span>".html_safe
+          ActionController::Base.helpers.content_tag(:span, html_tag, class: "fieldWithErrors")
         end
       end
 
