@@ -6,6 +6,7 @@ module Refinery
         argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
 
         class_option :namespace, :type => :string, :default => nil, :banner => 'NAMESPACE', :required => false
+        class_option :authors, :type => :array, :default => [], :banner => 'author author', :required => false, :desc => 'Indicates authors of this extension'
         class_option :extension, :type => :string, :default => nil, :banner => 'ENGINE', :required => false
         class_option :i18n, :type => :array, :default => [], :required => false, :banner => "field field", :desc => 'Indicates generated fields'
         class_option :install, :type => :boolean, :default => false, :required => false, :banner => nil, :desc => 'Bundles and runs the generated generator, rake db:migrate, rake db:seed for you'
@@ -31,6 +32,10 @@ module Refinery
 
     def extension_name
       @extension_name ||= options[:extension].presence || singular_name
+    end
+
+    def extension_authors
+      @extension_authors ||= options[:authors].presence
     end
 
     def extension_class_name
