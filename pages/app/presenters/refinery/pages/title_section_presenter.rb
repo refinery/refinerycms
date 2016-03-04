@@ -7,7 +7,7 @@ module Refinery
     private
 
       def wrap_content_in_tag(content)
-        content_tag(:h1, content, :id => id)
+        content_tag(:h1, sanitize(content), :id => id)
       end
     end
   end
