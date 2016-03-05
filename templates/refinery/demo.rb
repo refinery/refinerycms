@@ -31,6 +31,7 @@ gem 'refinerycms-page-images', git: 'https://github.com/refinery/refinerycms-pag
 gem 'refinerycms-portfolio', git: 'https://github.com/refinery/refinerycms-portfolio', branch: 'master'
 gem 'refinerycms-settings', git: 'https://github.com/refinery/refinerycms-settings', branch: 'master'
 gem 'refinerycms-search', git: 'https://github.com/refinery/refinerycms-search', branch: 'master'
+gem 'refinerycms-authentication-devise', '>= 1.0.4'
 "
 end
 
@@ -50,4 +51,4 @@ run 'rails generate refinery:search'
 rake 'db:migrate'
 rake 'db:seed'
 
-run "bin/rails runner \"Refinery::User.new(:username => 'demo', :password => 'demo', :email => 'demo@example.org').create_first\""
+run "bin/rails runner \"Refinery::Authentication::Devise::User.new(:username => 'demo', :password => 'demo', :email => 'demo@example.org').create_first\""
