@@ -5,6 +5,8 @@
 
 ## 3.0.2 [unreleased]
 
+* Specify the correct new_page_part_params. [#3124](https://github.com/refinery/refinerycms/pull/3124). [Philip Arndt](https://github.com/parndt)
+* Properly specify image for strong parameters. [#3123](https://github.com/refinery/refinerycms/pull/3123). [Philip Arndt](https://github.com/parndt)
 * Fixed multiple XSS vulnerabilities found by [Shravan Kumar](https://github.com/cor3sm4sh3r) - Sanitize markup. [#3097](https://github.com/refinery/refinerycms/pull/3097). [Brice Sanchez](https://github.com/bricesanchez)
 * Generate `authors` in order to create a valid gemspec. [#3121](https://github.com/refinery/refinerycms/pull/3121). [Brice Sanchez](https://github.com/bricesanchez)
 * Remove deprecated rspec config `treat_symbols_as_metadata_keys_with_true_values`. [#3118](https://github.com/refinery/refinerycms/pull/3118). [Brice Sanchez](https://github.com/bricesanchez)
