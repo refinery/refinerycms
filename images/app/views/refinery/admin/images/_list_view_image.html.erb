@@ -1,6 +1,6 @@
 <li id="sortable_<%= list_view_image.id %>" class="clearfix record <%= cycle('on', 'on-hover') %>">
   <span class="title">
-    <%= list_view_image.title %>
+    <%= translated_field(list_view_image, :title) %>
   </span>
 
   <% if Refinery::I18n.frontend_locales.many? %>

@@ -6,7 +6,7 @@
 <li class="clearfix record <%= cycle('on', 'on-hover') %>">
 
   <span class="title <%= resource.ext.try(:downcase) %>">
-    <%= resource.title %>
+    <%= translated_field(resource, :title) %>
   </span>
 
   <% if Refinery::I18n.frontend_locales.many? %>

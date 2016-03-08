@@ -11,5 +11,8 @@ module Refinery
       val
     end
 
+    def translated_field(record, field)
+      Refinery::TranslatedFieldPresenter.new(record).call(field)
+    end
   end
 end

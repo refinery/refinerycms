@@ -73,35 +73,6 @@ module Refinery
           end
         end
       end
-
-      describe "#page_title_with_translations" do
-        let(:page) { FactoryGirl.build(:page) }
-
-        before do
-          Globalize.with_locale(:en) do
-            page.title = "draft"
-            page.save!
-          end
-
-          Globalize.with_locale(:lv) do
-            page.title = "melnraksts"
-            page.save!
-          end
-        end
-
-        context "when title is present" do
-          it "returns it" do
-            expect(helper.page_title_with_translations(page)).to eq("draft")
-          end
-        end
-
-        context "when title for current locale isn't available" do
-          it "returns existing title from translations" do
-            Page.translation_class.where(:locale => :en).first.destroy
-            expect(helper.page_title_with_translations(page)).to eq("melnraksts")
-          end
-        end
-      end
     end
   end
 end
