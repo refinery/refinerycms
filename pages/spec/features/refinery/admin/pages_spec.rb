@@ -13,6 +13,15 @@ def expect_window_without_content(content, window: windows.last)
   end
 end
 
+def switch_page_form_locale(locale)
+  within "#switch_locale_picker" do
+    find("a", text: locale.upcase).click
+  end
+
+  # make sure that the locale change has taken effect
+  expect(page).to have_selector("#switch_locale_picker li.selected a##{locale.downcase}")
+end
+
 module Refinery
   module Admin
     describe "Pages", :type => :feature do
@@ -489,19 +498,18 @@ module Refinery
             news_page.destroy!
             visit refinery.admin_pages_path
 
-            find('a', text:"Add new page").trigger(:click)
-            within "#switch_locale_picker" do
-              find('a', text: "RU").trigger(:click)
-            end
+            click_link "Add new page"
+            switch_page_form_locale "RU"
+
             fill_in "Title", :with => ru_page_title
             click_button "Save"
+            expect(page).to have_selector("#page_#{Page.last.id} .actions")
 
             within "#page_#{Page.last.id} .actions" do
               find("a[href^='/#{Refinery::Core.backend_route}/pages/#{ru_page_slug_encoded}/edit']").click
             end
-            within "#switch_locale_picker" do
-              find('a', text: "EN").trigger(:click)
-            end
+
+            switch_page_form_locale "EN"
             fill_in "Title", :with => en_page_title
             find("#submit_button").click
 
@@ -569,10 +577,9 @@ module Refinery
 
           it "lets you add a Russian title without an English title" do
             ru_page.destroy!
-            find('a', text: 'Add new page').trigger(:click)
-            within "#switch_locale_picker" do
-              find('a', text: "RU").trigger(:click)
-            end
+            click_link "Add new page"
+            switch_page_form_locale "RU"
+
             fill_in "Title", :with => ru_page_title
             click_button "Save"
 
@@ -775,11 +782,9 @@ module Refinery
         it "can have a second locale added to it" do
           visit refinery.admin_pages_path
 
-          find('a', text: 'Add new page').trigger(:click)
+          click_link "Add new page"
+          switch_page_form_locale "LV"
 
-          within "#switch_locale_picker" do
-            find('a', text: "LV").trigger(:click)
-          end
           fill_in "Title", :with => "Brīva vieta reklāmai"
           click_button "Save"
 
