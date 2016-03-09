@@ -4,6 +4,8 @@ module Refinery
     # a title. These are much like normal sections except they are wrapped in
     # a h1 tag rather than a div.
     class TitleSectionPresenter < SectionPresenter
+      include ActionView::Helpers::SanitizeHelper
+
     private
 
       def wrap_content_in_tag(content)
