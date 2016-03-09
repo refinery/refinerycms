@@ -13,6 +13,15 @@ def expect_window_without_content(content, window: windows.last)
   end
 end
 
+def switch_page_form_locale(locale)
+  within "#switch_locale_picker" do
+    find("a", text: locale.upcase).click
+  end
+
+  # make sure that the locale change has taken effect
+  expect(page).to have_selector("#switch_locale_picker li.selected a##{locale.downcase}")
+end
+
 module Refinery
   module Admin
     describe "Pages", :type => :feature do
@@ -99,14 +108,14 @@ module Refinery
               expect(page).not_to have_content(locations.title)
             end
 
-            it "expands children", :js do
+            it "expands children", js: true do
               find("#page_#{company.id} .title.toggle").click
 
               expect(page).to have_content(team.title)
               expect(page).to have_content(locations.title)
             end
 
-            it "expands children when nested multiple levels deep", :js do
+            it "expands children when nested multiple levels deep", js: true do
               find("#page_#{company.id} .title.toggle").click
               find("#page_#{locations.id} .title.toggle").click
 
@@ -149,7 +158,7 @@ module Refinery
           expect(page.body).to match(%r{href="/my-first-page"})
         end
 
-        it "includes menu title field", :js => true do
+        it "includes menu title field", js: true do
           visit refinery.new_admin_page_path
 
           fill_in "Title", :with => "My first page"
@@ -204,7 +213,7 @@ module Refinery
 
         context 'when saving and continuing to edit' do
           before :each do
-            find('a[tooltip^=Edit]').visible?
+            expect(page).to have_selector('a[tooltip^=Edit]', visible: true)
             find('a[tooltip^=Edit]').click
 
             fill_in "Title", :with => "Updated"
@@ -212,13 +221,13 @@ module Refinery
             find('#flash').visible?
           end
 
-          it "updates page", :js do
+          it "updates page", js: true do
             expect(page).to have_content("'Updated' was successfully updated.")
           end
 
           # Regression test for https://github.com/refinery/refinerycms/issues/1892
           context 'when saving to exit (a second time)' do
-            it 'updates page', :js do
+            it 'updates page', js: true do
               find("#submit_button").click
               expect(page).to have_content("'Updated' was successfully updated.")
             end
@@ -226,7 +235,7 @@ module Refinery
         end
       end
 
-      describe 'Previewing', :js do
+      describe 'Previewing', js: true do
         let(:preview_content) { "Some changes I'm unsure what they will look like".freeze }
         context "an existing page" do
           before { Page.create :title => 'Preview me' }
@@ -466,7 +475,7 @@ module Refinery
           end
         end
 
-        describe "a page with two locales", js:true do
+        describe "a page with two locales" do
           let(:en_page_title) { 'News' }
           let(:en_page_slug) { 'news' }
           let(:ru_page_title) { 'Новости' }
@@ -489,19 +498,18 @@ module Refinery
             news_page.destroy!
             visit refinery.admin_pages_path
 
-            find('a', text:"Add new page").trigger(:click)
-            within "#switch_locale_picker" do
-              find('a', text: "RU").trigger(:click)
-            end
+            click_link "Add new page"
+            switch_page_form_locale "RU"
+
             fill_in "Title", :with => ru_page_title
             click_button "Save"
+            expect(page).to have_selector("#page_#{Page.last.id} .actions")
 
             within "#page_#{Page.last.id} .actions" do
               find("a[href^='/#{Refinery::Core.backend_route}/pages/#{ru_page_slug_encoded}/edit']").click
             end
-            within "#switch_locale_picker" do
-              find('a', text: "EN").trigger(:click)
-            end
+
+            switch_page_form_locale "EN"
             fill_in "Title", :with => en_page_title
             find("#submit_button").click
 
@@ -527,7 +535,7 @@ module Refinery
             end
           end
 
-          it "uses the slug from the default locale in admin" do
+          it "uses the slug from the default locale in admin", js: true do
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
@@ -570,9 +578,8 @@ module Refinery
           it "lets you add a Russian title without an English title" do
             ru_page.destroy!
             find('a', text: 'Add new page').trigger(:click)
-            within "#switch_locale_picker" do
-              find('a', text: "RU").trigger(:click)
-            end
+            switch_page_form_locale "RU"
+
             fill_in "Title", :with => ru_page_title
             click_button "Save"
 
@@ -622,7 +629,7 @@ module Refinery
             end
           end
 
-          context "when page is a child page", js: true do
+          context "when page is a child page" do
             it 'succeeds' do
               ru_page.destroy!
               parent_page = Page.create(:title => "Parent page")
@@ -642,12 +649,12 @@ module Refinery
         end
       end
 
-      describe "new page part", :js do
+      describe "new page part" do
         before do
           allow(Refinery::Pages).to receive(:new_page_parts).and_return(true)
         end
 
-        it "adds new page part" do
+        it "adds new page part", js: true do
           visit refinery.new_admin_page_path
           find("#add_page_part").trigger(:click)
 
@@ -662,7 +669,7 @@ module Refinery
         end
       end
 
-      describe "delete existing page part", :js do
+      describe "delete existing page part" do
         let!(:some_page) { Page.create! :title => "Some Page" }
 
         before do
@@ -673,7 +680,7 @@ module Refinery
           allow(Refinery::Pages).to receive(:new_page_parts).and_return(true)
         end
 
-        it "deletes page parts" do
+        it "deletes page parts", js: true do
           visit refinery.edit_admin_page_path(some_page.id)
 
           within "#page_parts" do
@@ -721,7 +728,7 @@ module Refinery
               @page = parent_page.children.create :title => 'Child Page'
             end
 
-            specify 'sub page should inherit them', :js => true do
+            specify 'sub page should inherit them', js: true do
               visit refinery.edit_admin_page_path(@page.id)
 
               find('#toggle_advanced_options').trigger(:click)
@@ -739,7 +746,7 @@ module Refinery
       end
 
       # regression spec for https://github.com/refinery/refinerycms/issues/1891
-      describe "a page part with HTML", js:true do
+      describe "a page part with HTML" do
         before do
           page = Refinery::Page.create! :title => "test"
           Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
@@ -752,7 +759,7 @@ module Refinery
           end
         end
 
-        specify "should retain the html" do
+        specify "should retain the html", js:true do
           visit refinery.admin_pages_path
           find('a[tooltip="Edit this page"]').trigger(:click)
           Capybara.ignore_hidden_elements = false
@@ -766,7 +773,7 @@ module Refinery
       before { Globalize.locale = :en }
       refinery_login
 
-      describe "a page with a single locale", js: true do
+      describe "a page with a single locale" do
         before do
           allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :lv])
           Page.create :title => 'First Page'
@@ -775,11 +782,9 @@ module Refinery
         it "can have a second locale added to it" do
           visit refinery.admin_pages_path
 
-          find('a', text: 'Add new page').trigger(:click)
+          click_link "Add new page"
+          switch_page_form_locale "LV"
 
-          within "#switch_locale_picker" do
-            find('a', text: "LV").trigger(:click)
-          end
           fill_in "Title", :with => "Brīva vieta reklāmai"
           click_button "Save"
 
