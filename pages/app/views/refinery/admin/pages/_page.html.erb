@@ -19,7 +19,7 @@
     <% end %>
 
     <span class='title <%= 'toggle' if page.children.present? %>'>
-      <%= page_title_with_translations page %>
+      <%= translated_field(page, :title) %>
       <%= page_meta_information page %>
     </span>
 
