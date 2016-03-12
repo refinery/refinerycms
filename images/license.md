@@ -1,6 +1,6 @@
 # MIT License
  
-Copyright (c) 2005 [Resolve Digital](http://resolve.digital)
+Copyright (c) 2005 [Resolve Digital](https://resolve.digital)
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
