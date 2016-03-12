@@ -1,6 +1,6 @@
 # Adding Multiple Images to your Model
 
-Refinery offers a generator which allows an engine/model to have fields which are single images. It doesn't supply anything out-of-the-box to allow a model to have a collection of images. 
+Refinery offers a generator which allows an engine/model to have fields which are single images. It doesn't supply anything out-of-the-box to allow a model to have a collection of images.
 
 However the extension *Refinerycms-page-images* implements an image collection for the *Refinery::Page* model which can be extended to other models.
 
@@ -10,7 +10,7 @@ However the extension *Refinerycms-page-images* implements an image collection f
 
 When you have completed these steps your model/engine you will be able to add and remove images from an instance of your model using the same tabbed interface used by Refinery::Pages.
 
-In a view you will have access to a collection of images (*@model.images*) or a collection of images with associated captions (*@model.images_with_captions*). 
+In a view you will have access to a collection of images (*@model.images*).
 
 ### Pre-requisites
 
@@ -33,7 +33,7 @@ Refinery::PageImages.configure do |config|
 end
 ````
 
-#####  Add page-images to your model 
+#####  Add page-images to your model
 
 ````Ruby
 #vendor/extensions/shows/app/models/refinery/shows/show.rb
@@ -110,7 +110,7 @@ end
 ````
 
 
-##### Finally modify the admin view
+##### Modify the admin view
 ````Ruby
 # vendor/extensions/shows/app/views/refinery/admin/_form.html.erb
 <%= form_for [refinery, :shows_admin, @show] do |f| -%>
@@ -153,4 +153,52 @@ end
              :delete_title => t('delete', :scope => 'refinery.shows.admin.shows.show'),
              :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @show.title) -%>
 <% end -%>
+````
+
+##### Add strong parameters for the new fields
+
+Part 1. Write a decorator.
+
+````Ruby
+#vendor/extensions/shows/app/decorators/controllers/refinery/admin/shows_controller_decorator.rb
+module RefineryPageImagesShowsControllerDecorator
+    def permitted_show_params
+      # Hand the case where all images have been deleted
+      params[:show][:images_attributes]={} if params[:show][:images_attributes].nil?
+      super <<  [images_attributes: [:id, :caption, :image_page_id]]
+    end
+  end
+
+Refinery::Shows::Admin::ShowsController.send :prepend, RefineryPageImagesShowsControllerDecorator
+````
+
+Part 2. Modify the ShowsController (if required)
+
+Some `ModelsControllers` will require this update. It doesn't change the controller itself, but makes it easier to extend the initial list of permitted fields.
+
+````Ruby
+#vendor/extensions/shows/app/controllers/refinery/shows/admin/shows_controller.rb
+module Refinery
+  module Shows
+    module Admin
+      class ShowsController < ::Refinery::AdminController
+
+        crudify :'refinery/shows/show'
+
+        def show_params
+          params.require(:show).permit(permitted_show_params)
+        end
+
+       # private
+
+        # Only allow a trusted parameter "white list" through.
+        def permitted_show_params
+          [:title, :blurb]
+        end
+
+      end
+    end
+  end
+end
+
 ````
