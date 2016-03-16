@@ -5,6 +5,8 @@
 
 ## 3.0.2 [unreleased]
 
+* Update respond_to? and method_missing API. [21e77b08563905b1a79d335cfa3f32278961f24b](https://github.com/refinery/refinerycms/commit/21e77b08563905b1a79d335cfa3f32278961f24b). [Philip Arndt](https://github.com/parndt)
+* Add TranslatedFieldPresenter. [#3125](https://github.com/refinery/refinerycms/pull/3125) & [#3129](https://github.com/refinery/refinerycms/pull/3129). [Brice Sanchez](https://github.com/bricesanchez) & [Glenn Hoppe](https://github.com/ghoppe)
 * Specify the correct new_page_part_params. [#3124](https://github.com/refinery/refinerycms/pull/3124). [Philip Arndt](https://github.com/parndt)
 * Properly specify image for strong parameters. [#3123](https://github.com/refinery/refinerycms/pull/3123). [Philip Arndt](https://github.com/parndt)
 * Fixed multiple XSS vulnerabilities found by [Shravan Kumar](https://github.com/cor3sm4sh3r) - Sanitize markup. [#3097](https://github.com/refinery/refinerycms/pull/3097). [Brice Sanchez](https://github.com/bricesanchez)
