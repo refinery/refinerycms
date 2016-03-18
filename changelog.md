@@ -3,7 +3,7 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...master)
 
 
-## 3.0.2 [unreleased]
+## 3.0.2 [16 March 2016]
 
 * Update respond_to? and method_missing API. [21e77b08563905b1a79d335cfa3f32278961f24b](https://github.com/refinery/refinerycms/commit/21e77b08563905b1a79d335cfa3f32278961f24b). [Philip Arndt](https://github.com/parndt)
 * Add TranslatedFieldPresenter. [#3125](https://github.com/refinery/refinerycms/pull/3125) & [#3129](https://github.com/refinery/refinerycms/pull/3129). [Brice Sanchez](https://github.com/bricesanchez) & [Glenn Hoppe](https://github.com/ghoppe)
@@ -25,7 +25,7 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/3.0.1...3.0.2)
 
 
-## 3.0.1 [26 January 2015]
+## 3.0.1 [26 January 2016]
 * Set speakingurl-rails to 8.0.0, switch to poltergeist gem. [#3084](https://github.com/refinery/refinerycms/pull/3084). [Philip Arndt](https://github.com/parndt) & [Brice Sanchez](https://github.com/bricesanchez)
 * Install a compatible version of refinerycms-acts-as-indexed [#3079](https://github.com/refinery/refinerycms/issues/3079). [Philip Arndt](https://github.com/parndt)
 * Updated Refinery::Pages.default_parts= config to require both a title and a slug attribute for each part. [#3069](https://github.com/refinery/refinerycms/pull/3069). [Brice Sanchez](https://github.com/bricesanchez)
