@@ -3,13 +3,20 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...master)
 
 
+## 3.0.3 [unreleased]
+
+* Fixed ability to display HTML data-attributes in content section presenter. [#3138](https://github.com/refinery/refinerycms/pull/3138). [Brice Sanchez](https://github.com/bricesanchez)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/3.0.2...master)
+
+
 ## 3.0.2 [16 March 2016]
 
 * Update respond_to? and method_missing API. [21e77b08563905b1a79d335cfa3f32278961f24b](https://github.com/refinery/refinerycms/commit/21e77b08563905b1a79d335cfa3f32278961f24b). [Philip Arndt](https://github.com/parndt)
 * Add TranslatedFieldPresenter. [#3125](https://github.com/refinery/refinerycms/pull/3125) & [#3129](https://github.com/refinery/refinerycms/pull/3129). [Brice Sanchez](https://github.com/bricesanchez) & [Glenn Hoppe](https://github.com/ghoppe)
 * Specify the correct new_page_part_params. [#3124](https://github.com/refinery/refinerycms/pull/3124). [Philip Arndt](https://github.com/parndt)
 * Properly specify image for strong parameters. [#3123](https://github.com/refinery/refinerycms/pull/3123). [Philip Arndt](https://github.com/parndt)
-* Fixed multiple XSS vulnerabilities found by [Shravan Kumar](https://github.com/cor3sm4sh3r) - Sanitize markup. [#3097](https://github.com/refinery/refinerycms/pull/3097). [Brice Sanchez](https://github.com/bricesanchez)
+* Fixed multiple XSS vulnerabilities found by [Shravan Kumar](https://github.com/cor3sm4sh3r) - Sanitize markup. [#3117](https://github.com/refinery/refinerycms/pull/3117). [Brice Sanchez](https://github.com/bricesanchez)
 * Generate `authors` in order to create a valid gemspec. [#3121](https://github.com/refinery/refinerycms/pull/3121). [Brice Sanchez](https://github.com/bricesanchez)
 * Remove deprecated rspec config `treat_symbols_as_metadata_keys_with_true_values`. [#3118](https://github.com/refinery/refinerycms/pull/3118). [Brice Sanchez](https://github.com/bricesanchez)
 * Update `factory_girl_rails` from '~> 4.4.1' to `~> 4.6.0`. [#3114](https://github.com/refinery/refinerycms/pull/3114). [Eric Guo](https://github.com/Eric-Guo)

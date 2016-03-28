@@ -65,7 +65,8 @@ module Refinery
       def wrap_content_in_tag(content)
         content = sanitize(content,
           tags: Loofah::HTML5::WhiteList::ALLOWED_ELEMENTS,
-          attributes: Loofah::HTML5::WhiteList::ALLOWED_ATTRIBUTES
+          attributes: Loofah::HTML5::WhiteList::ALLOWED_ATTRIBUTES,
+          scrubber: Rails::Html::PermitScrubber.new
         )
         content_tag(:section, content_tag(:div, content, :class => 'inner'), :id => id)
       end
