@@ -1,9 +1,11 @@
 language: ruby
 cache: bundler
 bundler_args: --without development
-before_script: "bin/rake refinery:testing:dummy_app"
+before_script:
+  - export RETRY_COUNT=3
+  - bin/rake refinery:testing:dummy_app
 script:
-  - "bin/rspec $EXTENSION/spec"
+  - bin/rspec $EXTENSION/spec
 env:
   - DB=postgresql EXTENSION=core
   - DB=postgresql EXTENSION=pages
