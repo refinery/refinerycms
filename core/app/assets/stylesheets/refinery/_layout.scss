@@ -1146,17 +1146,17 @@ ul#image_grid, .pagination_container > ul#image_grid {
 ul#image_grid li, .pagination_container > ul#image_grid li {
   position: relative;
   float: left;
-  margin: 0px 7px 12px 0px;
+  margin: 0px 12px 12px 0px;
   padding: 0px;
-  width: 124px;
+  width: 149px;
+  height: 186px;
+  max-width: 149px;
+  max-height: 186px;
   text-align: center;
-  height: 165px;
   overflow: hidden;
-  max-width: 124px;
-  max-height: 165px;
 }
-ul#image_grid li.image_4 {
-  margin-left: 1px;
+ul#image_grid li.image_3 {
+  margin-left: 0px;
   margin-right: 0px;
 }
 #records ul#image_grid li .actions {
