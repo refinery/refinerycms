@@ -45,6 +45,35 @@ module Refinery
           expect(section.wrapped_html(true)).to xml_eq('<section id="mynode"><div class="inner">foobar</div></section>')
         end
 
+
+        # Regression tests for https://github.com/refinery/refinerycms-inquiries/issues/168
+        describe "#whitelist_elements" do
+          context "when #whitelist_elements is badly configured" do
+            it "returns section with missing elements" do
+              allow(Refinery::Pages).to receive(:whitelist_elements).and_return(%w[ ])
+
+              section = SectionPresenter.new
+              section.override_html = '<video width="320" height="240" controls=""><source src="movie.ogg" type="video/ogg" /></video>'
+
+              expect(section.wrapped_html(true)).to xml_eq(
+                %Q{<section><div class="inner"></div></section>}
+              )
+            end
+          end
+
+          context "when #whitelist_elements isn't configured" do
+            it "returns section with no missing elements" do
+              section = SectionPresenter.new
+              section.override_html = '<video width="320" height="240" controls=""><source src="movie.ogg" type="video/ogg" /></video>'
+              
+              expect(section.wrapped_html(true)).to xml_eq(
+                %Q{<section><div class="inner"><video width="320" height="240" controls=""><source src="movie.ogg" type="video/ogg" /></video></div></section>}
+              )
+            end
+          end
+        end
+
+
         describe "if allowed to use fallback html" do
           it "wont show a section with no fallback or override" do
             section = SectionPresenter.new
