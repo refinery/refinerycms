@@ -2,6 +2,8 @@ require "spec_helper"
 
 module Refinery
   module Pages
+
+
     describe SectionPresenter do
       it "can build a css class for when it is not present based on id" do
         section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode')
@@ -43,6 +45,56 @@ module Refinery
           section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode')
           expect(section.has_content?(true)).to be_truthy
           expect(section.wrapped_html(true)).to xml_eq('<section id="mynode"><div class="inner">foobar</div></section>')
+        end
+
+
+        # Regression tests for https://github.com/refinery/refinerycms-inquiries/issues/168
+        describe "#whitelist_elements" do
+          context "when an element is not in a whitelist" do
+            it "will not return those elements" do
+              allow(Refinery::Pages).to receive(:whitelist_elements) {%w()}
+              section = SectionPresenter.new
+              section.override_html = %Q{<dummy></dummy>}
+              expect(section.wrapped_html(true)).to xml_eq(
+                %Q{<section><div class="inner"></div></section>}
+              )
+            end
+          end
+
+          context "when an extra element is included in the whitelist" do
+            it "will contain the whitelisted element" do
+              allow(Refinery::Pages).to receive(:whitelist_elements) {%w(dummy)}
+              section = SectionPresenter.new
+              section.override_html = %Q{<dummy></dummy>}
+              expect(section.wrapped_html(true)).to xml_eq(
+                %Q{<section><div class="inner"><dummy></dummy></div></section>}
+              )
+            end
+          end
+        end
+
+        describe "#whitelist_attributes" do
+          context "when an attribute is not in a whitelist" do
+            it "will not return those attributes" do
+              allow(Refinery::Pages).to receive(:whitelist_attributes) {%w()}
+              section = SectionPresenter.new
+              section.override_html = %Q{<a attribute="value"></a>}
+              expect(section.wrapped_html(true)).to xml_eq(
+                %Q{<section><div class="inner"><a></a></div></section>}
+              )
+            end
+          end
+
+          context "when extra attributes are included in the whitelist" do
+            it "will contain the whitelisted attributes" do
+              allow(Refinery::Pages).to receive(:whitelist_attributes) {%w(attribute)}
+              section = SectionPresenter.new
+              section.override_html = %Q{<a attribute="value"></a>}
+              expect(section.wrapped_html(true)).to xml_eq(
+                %Q{<section><div class="inner"><a attribute="value"></a></div></section>}
+              )
+            end
+          end
         end
 
         describe "if allowed to use fallback html" do
