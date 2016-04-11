@@ -15,7 +15,7 @@ module Refinery
     self.s3_backend = false
     self.base_cache_key = :refinery
     self.site_name = "Company Name"
-    self.google_analytics_page_code = "UA-xxxxxx-x"
+    self.google_analytics_page_code = ENV['GOOGLE_UA']
     self.authenticity_token_on_frontend = false
     self.dragonfly_secret = Array.new(24) { rand(256) }.pack('C*').unpack('H*').first
     self.javascripts = []
