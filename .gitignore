@@ -92,3 +92,6 @@ Gemfile.lock
 *.txt
 
 *.orig
+
+#byebug_history
+.byebug_history
