@@ -1,0 +1,13 @@
+// we use a content block in the basic icon mixin
+@mixin icon-base($colour, $size, $float:none) {
+  @content;
+  &:before {
+    @extend .fa;
+    font-size: $size;
+    color: $colour;
+    text-decoration: none;
+    width: auto;
+    height: auto;
+    float: $float;
+  }
+}

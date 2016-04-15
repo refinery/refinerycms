@@ -25,25 +25,23 @@ acronym {
 label[for] {
   cursor: pointer;
 }
-#admin_container, #login_container {
+#admin_container,
+#login_container {
   font-size: 13px;
   margin: 0px auto 15px auto;
   text-align: left;
-
+  position: relative;
+  margin-top: 15px;
+  @include rounded($standard_rounding);
   a {
     color: #41403C;
     text-decoration: none;
   }
-
-  @include rounded($standard_rounding);
-  position: relative;
-  margin-top: 15px;
   #menu {
     a:hover {
       border-bottom: 0px;
     }
   }
-
   .hidden {
     display: none;
   }
@@ -53,28 +51,26 @@ label[for] {
   width: 620px;
 }
 #admin_container {
-  @include faux_columns_2($menu_width, transparent, white);
   width: $admin_width;
   margin: -5px auto 0px auto;
   height: 100%;
+  @include faux_columns_2($menu_width, transparent, white);
 }
 #page_container {
-  @include box-sizing(border-box);
-  @include right-rounded($standard_rounding);
   background-color: white;
   padding: 1.5em 1em;
   position: relative;
   float: left;
   width: $admin_width - $menu_width;
+  @include box-sizing(border-box);
+  @include right-rounded($standard_rounding);
 }
-#content .field, #content .form-actions {
+#content .field,
+#content .form-actions {
   position: relative;
 }
-#dialog_container #content .field, .dialog_container .field {
-  width: auto;
-  margin: 5px 0;
-}
-input.widest, textarea.widest {
+input.widest,
+textarea.widest {
   width: 99%;
 }
 select.widest {
@@ -132,32 +128,40 @@ hr {
     font-weight: normal;
   }
 }
-.fieldWithErrors input, .fieldWithErrors textarea {
+.fieldWithErrors input,
+.fieldWithErrors textarea {
   border: 1px solid red !important;
   background-color: #FFECF0 !important;
 }
-.fieldWithErrors iframe, .fieldWithErrors .visual_editor_box {
+.fieldWithErrors iframe,
+.fieldWithErrors .visual_editor_box {
   border-color: red !important;
 }
-#message, .flash {
+#message,
+.flash {
   padding: 8px 8px 8px 30px;
   margin-bottom: 15px;
   position: relative;
 }
-.flash_notice, .flash_message {
+.flash_notice,
+.flash_message {
   border: 1px solid #00A017;
   color: #00A017;
   @include icon('check-circle', green)
 }
-.flash_notice, .flash_notice * {
+.flash_notice,
+.flash_notice * {
   color: #00A017;
 }
-.flash_error, .flash_alert {
+.flash_error,
+.flash_alert {
   border: 1px solid #A00027;
   color: #A00027;
   @include icon('question-circle', red)
 }
-.flash.flash_notice #flash_close, .flash.flash_error #flash_close, .flash.flash_alert #flash_close {
+.flash.flash_notice #flash_close,
+.flash.flash_error #flash_close,
+.flash.flash_alert #flash_close {
   text-transform: lowercase;
   @include icon('times-circle', $icon_done_colour, 1.2em)
 }
@@ -170,21 +174,26 @@ hr {
     margin-top: 12px;
   }
 }
-.flash.flash_message.flash_message, .flash_message * {
+.flash.flash_message.flash_message,
+.flash_message * {
   color: #262719;
   font-size: 14px;
 }
-.flash a, .flash a:hover {
+.flash a,
+.flash a:hover {
   color: #e20003;
   border-bottom-color: #e20003;
 }
-.flash.flash_error a, .flash.flash_error a:hover,
-.flash.flash_alert a, .flash.flash_alert a:hover {
+.flash.flash_error a,
+.flash.flash_error a:hover,
+.flash.flash_alert a,
+.flash.flash_alert a:hover {
   display: none;
 }
-
-noscript .flash.flash_error a, noscript .flash.flash_error a:hover,
-noscript .flash.flash_alert a, noscript .flash.flash_alert a:hover {
+noscript .flash.flash_error a,
+noscript .flash.flash_error a:hover,
+noscript .flash.flash_alert a,
+noscript .flash.flash_alert a:hover {
   display: inline;
   font-weight: bold;
 }
@@ -193,16 +202,18 @@ noscript .flash.flash_alert a, noscript .flash.flash_alert a:hover {
   right: 9px;
   top: 7px;
 }
-
-#content .visual_editor_box a, #content .ui-tabs a {
+#content .visual_editor_box a,
+#content .ui-tabs a {
   border-bottom: 0px none;
 }
-.index #content, .splash #content {
+.index #content,
+.splash #content {
   background-color: white;
   background-repeat: repeat-y;
 }
 #content {
   padding: 0px;
+  background-color: white;
   a {
     border-bottom: 1px dotted #727272;
     &.locale {
@@ -245,10 +256,9 @@ noscript .flash.flash_alert a, noscript .flash.flash_alert a:hover {
 .less-important {
   color: #727272;
 }
-#content {
-  background-color: white;
-}
-header, footer, nav {
+header,
+footer,
+nav {
   display: block;
 }
 #page_container .login #page h1 {
@@ -261,7 +271,8 @@ header, footer, nav {
   #page_container {
     background: transparent;
     width: 100%;
-    div.remember_me label, label.inline {
+    div.remember_me label,
+    label.inline {
       display: inline;
     }
     div.actions {
@@ -296,12 +307,14 @@ header, footer, nav {
   label {
     margin-top: 0px;
   }
-  label, a {
+  label,
+  a {
     font-size: 14px;
   }
   .field {
     margin-bottom: 20px;
-    &.remember_me, &.forgot_password {
+    &.remember_me,
+    &.forgot_password {
       margin-bottom: 0px;
       margin-top: 0px;
     }
@@ -312,7 +325,8 @@ header, footer, nav {
       margin-top: 20px;
     }
   }
-  #flash_container, .errorExplanation {
+  #flash_container,
+  .errorExplanation {
     margin-bottom: 12px;
   }
   /* Works in Firefox, Safari, Chrome, IE8+ */
@@ -581,14 +595,6 @@ pre {
   .current, a:hover, em {
     background: #A8B9C1;
   }
-}
-#dialog-form-actions .pagination {
-  margin: -4px 6px -4px 0px;
-  float: right;
-  width: auto;
-}
-#dialog-form-actions .pagination a, #dialog-form-actions .pagination .current, #dialog-form-actions .pagination .disabled {
-  line-height: 15px;
 }
 textarea {
   line-height: 20px;
@@ -1215,25 +1221,6 @@ ul.checkboxes li {
   display:inline-block;
   width:auto;
 }
-/**** Tooltip Icons *****/
-.tooltip {
-  background: #22a7f2;
-  border: 1px solid #1b82bd;
-  word-wrap:break-word;
-  position: relative;
-  span {
-    display: block;
-    padding: 10px;
-    border: 1px solid #62c1f6;
-  }
-}
-.tooltip-nib {
-  position: absolute;
-  z-index: 10001;
-}
-.tooltip, .tooltip * {
-  color: white;
-}
 .visual_editor_dialog_paste .field textarea {
   width: 98%;
 }
@@ -1525,72 +1512,16 @@ a.information:hover {
   text-transform: uppercase;
   white-space: nowrap;
   background-color: #bfbfbf;
-}
-.label.important {
-  background-color: #c43c35;
-}
-.label.warning {
-  background-color: #f89406;
-}
-.label.success {
-  background-color: #46a546;
-}
-.label.notice {
-  background-color: #62cffc;
-}
-
-.label {
-  padding: 1px 3px 2px;
-  font-size: 9.75px;
-  font-weight: bold;
-  color: #ffffff;
-  text-transform: uppercase;
-  white-space: nowrap;
-  background-color: #bfbfbf;
-}
-.label.important {
-  background-color: #c43c35;
-}
-.label.warning {
-  background-color: #f89406;
-}
-.label.success {
-  background-color: #46a546;
-}
-.label.notice {
-  background-color: #62cffc;
-}
-
-/* Internet Explorer to follow: */
-/* IE 7 */
-.ie7 #content .form-actions .form-actions-left a.button {
-  height: 19px;
-  line-height: 19px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-.ie7 .search_form input.button {
-  padding-left: 8px;
-  padding-right: 8px;
-}
-.ie7 body.login .field input.larger, .ie7 body.login .field input.larger:focus {
-  background-image: none !important;
-  padding: 0px;
-  line-height: 30px;
-}
-.ie7 .pagination a, .ie7 #content .pagination a, .ie7 .pagination .current, .ie7 .disabled, .ie7 .pagination em {
-  padding-bottom: 6px;
-}
-.ie7 .pt-BR #search {
-  width: 97px;
-}
-.ie7 .en #search {
-  width: 170px;
-}
-/* IE 8 */
-.ie8 body.login .field input.larger, .ie8 body.login .field input.larger:focus {
-  line-height: 30px;
-}
-.ie8 .pagination a, .ie8 #content .pagination a, .ie8 .pagination .current, .ie8 .disabled, .ie8 .pagination em {
-  padding-bottom: 6px;
+  &.important{
+    background-color: #c43c35;
+  }
+  &.warning{
+    background-color: #f89406;
+  }
+  &.success{
+    background-color: #46a546;
+  }
+  &.notice{
+    background-color: #62cffc;
+  }
 }

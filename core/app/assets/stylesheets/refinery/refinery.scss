@@ -1,10 +1,22 @@
-@import 'mixins';
-@import 'colours';
-@import 'font-awesome-sprockets', 'font-awesome';
-@import 'icons';
+@import 'global/colours';
 
-@import 'layout';
+@import 'font-awesome-sprockets', 'font-awesome';
+
+@import 'mixins/box_sizing';
+@import 'mixins/faux_columns_2';
+@import 'mixins/form_action';
+@import 'mixins/icon_base';
+@import 'mixins/icon';
+@import 'mixins/rounded';
+
+@import 'plugins/ui';
+
+@import 'components/icons';
+@import 'components/dialog';
+@import 'components/submenu';
+@import 'components/tooltips';
+@import 'components/ie';
+
+@import 'sections/layout';
+
 @import 'site_bar';
-@import 'submenu';
-@import 'tooltips';
-@import 'ui';
