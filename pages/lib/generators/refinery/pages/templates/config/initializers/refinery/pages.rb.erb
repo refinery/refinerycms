@@ -40,7 +40,9 @@ Refinery::Pages.configure do |config|
   # and will no longer be nested as children.
   # config.scope_slug_by_parent = <%= Refinery::Pages.scope_slug_by_parent.inspect %>
 
-  # Set this to true to activate full-page-cache
+  # Set this to true to activate full-page-cache.
+  # If you use Rails 4.0+ and set config.cache_pages_full to true, you have to add this gem in your Gemfile:
+  # gem 'actionpack-page_caching'
   # config.cache_pages_full = <%= Refinery::Pages.cache_pages_full.inspect %>
 
   # Set this to true to fully expand the page hierarchy in the admin
