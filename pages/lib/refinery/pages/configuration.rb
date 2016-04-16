@@ -5,7 +5,7 @@ module Refinery
     config_accessor :pages_per_dialog, :pages_per_admin_index, :new_page_parts,
                     :marketable_urls, :approximate_ascii, :strip_non_ascii,
                     :default_parts, :use_custom_slugs, :scope_slug_by_parent,
-                    :cache_pages_backend, :cache_pages_full, :layout_template_whitelist,
+                    :cache_pages_full, :layout_template_whitelist,
                     :use_layout_templates, :page_title, :absolute_page_links, :types,
                     :auto_expand_admin_tree, :show_title_in_body,
                     :friendly_id_reserved_words, :layout_templates_pattern, :view_templates_pattern
@@ -19,7 +19,6 @@ module Refinery
     self.default_parts = [{ title: "Body", slug: "body" }, { title: "Side Body", slug: "side_body" }]
     self.use_custom_slugs = false
     self.scope_slug_by_parent = true
-    self.cache_pages_backend = false
     self.cache_pages_full = false
     self.layout_template_whitelist = ["application"]
     class << self
