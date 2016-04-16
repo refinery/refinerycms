@@ -30,8 +30,7 @@ module Refinery
       end
 
       initializer "add marketable route parts to reserved words", :after => :set_routes_reloader_hook do
-        # HOTFIX : the routes reader is now a private method, see : https://github.com/rails/rails/commit/7187339854d8454fdb3338b3041f89c6ce7e1e41
-        # add_route_parts_as_reserved_words if Refinery::Pages.marketable_urls
+        add_route_parts_as_reserved_words if Refinery::Pages.marketable_urls
       end
 
       config.to_prepare do
