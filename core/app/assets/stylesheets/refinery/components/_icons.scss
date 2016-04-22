@@ -1,27 +1,3 @@
-
-// we use a content block in the basic icon mixin
-@mixin icon-base($colour, $size, $float:none) {
-  @content;
-  &:before {
-    @extend .fa;
-    font-size: $size;
-    color: $colour;
-    text-decoration: none;
-    width: auto;
-    height:auto;
-    float:$float;
-  }
-}
-
-// Any icon
-@mixin icon($icon-selector, $color: $icon_default_colour, $padding: 4px, $size: 1.2em, $float: none) {
-  @include icon-base($color, $size, $float) {
-    @extend .fa-#{$icon-selector};
-    &:before {margin-right: 0.1em!important;}
-  };
-}
-
-
 %icon-font { font-family: 'FontAwesome', Helvetica, Arial, sans-serif; }
 
 /* icons */
@@ -29,7 +5,10 @@
 .add_icon             {@include icon('plus-circle');}
 .back_icon            {@include icon('arrow-left');}
 .close_icon           {@include icon('times-circle')}
-.delete_icon, .delete_section_icon    {@include icon('minus-circle', $icon_delete_colour);}
+
+.delete_icon,
+.delete_section_icon  {@include icon('minus-circle', $icon_delete_colour);}
+
 .download_icon        {@include icon('download');}
 .edit_email_icon      {@include icon('envelope-o');}
 .edit_icon            {@include icon('edit', $icon_edit_colour);}
@@ -39,10 +18,7 @@
 .folder_icon          {@include icon('folder',$icon_folder_colour)}
 .go_icon              {@include icon('caret-square-o-right');}
 .info_icon            {@include icon('info-circle');}
-.loading_icon         {
-  @include icon('spinner');
-  @extend .fa-spin
-}
+.loading_icon         {@include icon('spinner'); @extend .fa-spin}
 .page_icon            {@include icon('file-o',$icon_page_colour)}
 .preview_icon         {@include icon('eye', $icon_preview_colour)}
 .remove_icon          {@include icon('unlink', $icon_delete_colour);}

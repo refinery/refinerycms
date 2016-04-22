@@ -1,0 +1,80 @@
+/* Tooltips CSS definitions */
+.tooltip {
+  position: absolute!important;
+  overflow:hidden;
+  font-size: 13px;
+  font-family: inherit;
+  z-index: 10000!important;
+  text-align: center;
+  background: #22a7f2;
+  border: 1px solid #1b82bd;
+  word-wrap:break-word;
+  position: relative;
+  color: white;
+  * {
+    color: white;
+  }
+  span {
+  display: block;
+  padding: 10px;
+  border: 1px solid #62c1f6;
+  }
+  .xtop,
+  .tooltip .xbottom {
+    display: block;
+    background: transparent;
+    font-size: 1px;
+  }
+  .xb1,
+  .tooltip .xb2,
+  .tooltip .xb3,
+  .tooltip .xb4 {
+    display: block;
+    overflow: hidden;
+  }
+  .xb1,
+  .tooltip .xb2,
+  .tooltip .xb3 {
+    height: 1px;
+  }
+  .xb2,
+  .tooltip .xb3,
+  .tooltip .xb4 {
+    background: #606060;
+    border-left: 1px solid #606060;
+    border-right: 1px solid #606060;
+  }
+  .xbottom .xb2,
+  .tooltip .xbottom .xb3,
+  .tooltip .xbottom .xb4 {
+    background: #606060;
+  }
+  .xb1 { margin: 0 5px; background: #606060; }
+  .xb2 { margin: 0 3px; border-width: 0 2px; }
+  .xb3 { margin: 0 2px; }
+  .xb4 { height: 2px; margin: 0 1px; }
+  .xboxcontent {
+    margin: 0;
+    color: #000;
+    word-wrap:break-word;
+    border-width: 4px 4px;
+    border-style: solid;
+    border-color: #606060;
+    background-color: white;
+    padding: 6px;
+  }
+  .xb1,
+  .xb2,
+  .xb3,
+  .xb4 {
+    border-color: #606060;
+  }
+}
+.tooltip-square .xtop,
+.tooltip-square .xbottom {
+  display: none;
+}
+.tooltip-nib {
+  position: absolute;
+  z-index: 10001;
+}

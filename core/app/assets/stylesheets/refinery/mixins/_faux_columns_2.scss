@@ -1,0 +1,39 @@
+@mixin faux_columns_2($col1_width, $col1_bg, $col2_bg) {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0, $col1_bg),
+    color-stop($col1_width, $col1_bg),
+    color-stop($col1_width, $col2_bg),
+    color-stop(100%, $col2_bg)
+  );
+  background-image: -webkit-linear-gradient(
+    left,
+    $col1_bg,
+    $col1_bg $col1_width,
+    $col2_bg $col1_width,
+    $col2_bg 100%
+  );
+  background-image: -moz-linear-gradient(
+    left,
+    $col1_bg,
+    $col1_bg $col1_width,
+    $col2_bg $col1_width,
+    $col2_bg 100%
+  );
+  background-image: -ms-linear-gradient(
+    left,
+    $col1_bg,
+    $col1_bg $col1_width,
+    $col2_bg $col1_width,
+    $col2_bg 100%
+  );
+  background-image: -o-linear-gradient(
+    left,
+    $col1_bg,
+    $col1_bg $col1_width,
+    $col2_bg $col1_width,
+    $col2_bg 100%
+  );
+}
