@@ -3,11 +3,18 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...master)
 
 
+## 3.0.4 [unreleased]
+
+* [See full list](https://github.com/refinery/refinerycms/compare/3.0.3...master)
+
+
 ## 3.0.3 [unreleased]
 
-* Fixed ability to display HTML data-attributes in content section presenter. [#3138](https://github.com/refinery/refinerycms/pull/3138). [Brice Sanchez](https://github.com/bricesanchez)
+* Split and tidy up stylesheets. [#3165](https://github.com/refinery/refinerycms/pull/3165). [Marie-Helene Tremblay](https://github.com/mhtremblay)
+* Add config for adding to the elements and attributes whitelisted for HTML sanitization. [#3164](https://github.com/refinery/refinerycms/pull/3164). [Anita Graham](https://github.com/anitagraham)
+* Move javascripts partial in head tag. [#3153](https://github.com/refinery/refinerycms/pull/3153). [Brice Sanchez](https://github.com/bricesanchez)
 
-* [See full list](https://github.com/refinery/refinerycms/compare/3.0.2...master)
+* [See full list](https://github.com/refinery/refinerycms/compare/3.0.2...3.0.3)
 
 
 ## 3.0.2 [16 March 2016]
