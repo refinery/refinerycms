@@ -1,3 +1,5 @@
-<%= link_to menu_item.title, refinery.url_for(menu_item.url),
+<li>
+  <%= link_to menu_item.title, refinery.url_for(menu_item.url),
             :class => ("active" if menu_item.highlighted?(params)),
             :id => "plugin_#{menu_item.name}" %>
+</li>
