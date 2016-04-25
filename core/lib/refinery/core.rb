@@ -3,6 +3,7 @@ require 'truncate_html'
 require 'will_paginate'
 require 'refinery/i18n'
 require 'zilch/authorisation'
+require 'bootstrap'
 
 module Refinery
   module Core
