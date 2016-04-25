@@ -3,7 +3,7 @@ module Refinery
 
     attr_accessor :name, :class_name, :controller, :directory, :url,
                   :always_allow_access, :menu_match, :hide_from_menu,
-                  :pathname
+                  :pathname, :icon
 
     def self.register(&_block)
       yield(plugin = new)
@@ -14,6 +14,9 @@ module Refinery
       plugin.menu_match ||= %r{refinery/#{plugin.name}(/.+?)?$}
       plugin.always_allow_access ||= false
       plugin.class_name ||= plugin.name.camelize
+      plugin.icon ||= 'icon icon-wrench'
+      # plugin.icon available values could be found in this file :
+      # core/app/assets/stylesheets/glass/components/_icons.scss
 
       # add the new plugin to the collection of registered plugins
       ::Refinery::Plugins.registered.unshift plugin
