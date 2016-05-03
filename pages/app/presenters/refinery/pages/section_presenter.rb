@@ -1,3 +1,5 @@
+require 'diffy'
+
 module Refinery
   module Pages
     # Knows how to build the html for a section. A section is part of the visible html, that has
@@ -63,11 +65,24 @@ module Refinery
       attr_writer :id, :fallback_html, :hidden
 
       def wrap_content_in_tag(content)
-        content = sanitize(content,
+        content_tag(:section, content_tag(:div, sanitize_content(content), :class => 'inner'), :id => id)
+      end
+
+      def sanitize_content(input)
+        output = sanitize(input,
           tags: Refinery::Pages::whitelist_elements,
           attributes: Refinery::Pages::whitelist_attributes
         )
-        content_tag(:section, content_tag(:div, content, :class => 'inner'), :id => id)
+
+        if input != output
+          warning = "\n-- SANITIZED CONTENT WARNING --\n"
+          warning << "Refinery::Pages::SectionPresenter#wrap_content_in_tag\n"
+          warning << "HTML attributes and/or elements content has been sanitized\n"
+          warning << "#{::Diffy::Diff.new(input, output).to_s(:color)}\n"
+          warn warning
+        end
+
+        return output
       end
     end
   end

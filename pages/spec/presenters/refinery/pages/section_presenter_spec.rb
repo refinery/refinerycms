@@ -97,6 +97,26 @@ module Refinery
           end
         end
 
+        describe "#sanitize_content" do
+          before do
+            @errors = StringIO.new
+            @old_err = $stderr
+            $stderr = @errors
+          end
+
+          after(:each) { $stderr = @old_err }
+
+          it "shows a sanitized content warning" do
+            section = SectionPresenter.new
+            section.override_html = %Q{<dummy></dummy>}
+            section.wrapped_html(true)
+            @errors.rewind
+            expect(@errors.read).to eq(
+              %Q{\n-- SANITIZED CONTENT WARNING --\nRefinery::Pages::SectionPresenter#wrap_content_in_tag\nHTML attributes and/or elements content has been sanitized\n\e[31m-<dummy></dummy>\e[0m\n\\ No newline at end of file\n\n}
+            )
+          end
+        end
+
         describe "if allowed to use fallback html" do
           it "wont show a section with no fallback or override" do
             section = SectionPresenter.new
