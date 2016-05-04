@@ -73,6 +73,8 @@ en:
       close_this_message: Close this message
     draft_page_message:
       not_live: This page is NOT live for public viewing.
+    skip_to_first_child_page_message:
+      skip_to_first_child: "This page uses the option \"Skip to first child\" and will never be displayed to visitors."
     footer:
       copyright: "Copyright © %{year} %{site_name}"
     no_script:
