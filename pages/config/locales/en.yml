@@ -40,6 +40,7 @@ en:
           view_live_html: View this page live <br/><em>(opens in a new window)</em>
           hidden: hidden
           draft: draft
+          skip_to_first_child: Skip to first child
         form:
           preview: Preview
           preview_changes: Preview your changes before making them live

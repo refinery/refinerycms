@@ -63,6 +63,16 @@ module Refinery
           end
         end
 
+        context "when skip_to_first_child is true" do
+          it "adds 'skip to first child' label" do
+            page.skip_to_first_child = true
+
+            expect(helper.page_meta_information(page)).to eq(
+              %Q{<span class="label">#{::I18n.t('refinery.admin.pages.page.skip_to_first_child')}</span>}
+            )
+          end
+        end
+
         context "when draft is true" do
           it "adds 'draft' label" do
             page.draft = true
