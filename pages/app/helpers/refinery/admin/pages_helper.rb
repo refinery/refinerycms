@@ -44,6 +44,10 @@ module Refinery
           ::I18n.t('skip_to_first_child', :scope => 'refinery.admin.pages.page')
         end if page.skip_to_first_child?
 
+        meta_information << content_tag(:span, :class => 'label') do
+          ::I18n.t('redirected', :scope => 'refinery.admin.pages.page')
+        end if page.link_url?
+
         meta_information << content_tag(:span, :class => 'label notice') do
           ::I18n.t('draft', :scope => 'refinery.admin.pages.page')
         end if page.draft?
