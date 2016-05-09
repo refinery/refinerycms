@@ -16,7 +16,6 @@ You can chat with us using Gitter:
 * [ImageMagick](http://www.imagemagick.org/script/install-source.php)
   * :warning: Warning: ImageMagick currently has a serious security vulnerability, CVE-2016–3714. After installing, you must disable certain features in ImageMagick's policy configuration. Please see the following for details:
     * https://imagetragick.com/
-    * https://github.com/refinery/refinerycms/issues/3171
   * Mac OS X users should use [homebrew's](https://github.com/mxcl/homebrew/wiki/installation) `brew install imagemagick` or the [magick-installer](https://github.com/maddox/magick-installer).
 
 ## How to
