@@ -1,4 +1,4 @@
 <ul id='sortable_list'>
-  <%= render :partial => 'page', :collection => @pages.roots  %>
+  <%= render partial: 'page', locals: { pages: @pages} %>
 </ul>
 <%= render '/refinery/admin/sortable_list', :continue_reordering => !!local_assigns[:continue_reordering] %>

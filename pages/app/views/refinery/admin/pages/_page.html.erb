@@ -1,14 +1,15 @@
-<% # setup params for various action links
-  add_url =   refinery.new_admin_page_path(parent_id: page.id)
-  edit_url =  refinery.admin_edit_page_path(page.nested_url, switch_locale: (page.translations.first.locale unless page.translated_to_default_locale?))
-  delete_url = refinery.admin_delete_page_path(page.nested_url)
-  delete_options = {
-     class: "cancel confirm-delete",
-            data: {confirm: t('message',  scope: 'refinery.admin.delete', title: page_title_with_translations(page))}
-          }
- %>
+<%= sorted_nested_li(pages, :lft) do |page| %>
 
-  <li class='clearfix record items' id="<%= dom_id(page) -%>">
+  <% # setup params for various action links
+    add_url =   refinery.new_admin_page_path(parent_id: page.id)
+    edit_url =  refinery.admin_edit_page_path(page.nested_url, switch_locale: (page.translations.first.locale unless page.translated_to_default_locale?))
+    delete_url = refinery.admin_delete_page_path(page.nested_url)
+    delete_options = {
+       class: "cancel confirm-delete",
+              data: {confirm: t('message',  scope: 'refinery.admin.delete', title: page_title_with_translations(page))}
+            }
+  %>
+
   <div class='clearfix'>
     <% if page.children.present? %>
       <span class="item icon toggle <%= 'expanded' if Refinery::Pages.auto_expand_admin_tree %>"
@@ -46,7 +47,4 @@
       <%= action_icon(:delete,  delete_url, t('delete', scope: 'refinery.admin.pages' ), delete_options ) if page.deletable? %>
     </span>
   </div>
-  <ul class='nested' data-ajax-content="<%= refinery.admin_children_pages_path(page.nested_url) %>">
-    <%= render(partial: 'page', collection: page.children) if Refinery::Pages.auto_expand_admin_tree %>
-  </ul>
-</li>
+<% end %>
