@@ -26,6 +26,12 @@ And run
 $ bundle install
 </ruby>
 
+You will need to install phantomjs from http://phantomjs.org/ or through your OS package manager.
+
+<shell>
+$ sudo apt-get install phantomjs
+</shell>
+
 Now we will configure our test environment by preparing a dummy refinerycms app
 
 Add the following lines to your extension's Rakefile
