@@ -4,7 +4,7 @@
   delete_url = refinery.admin_delete_page_path(page.nested_url)
   delete_options = {
      class: "cancel confirm-delete",
-            data: {confirm: t('message',  scope: 'refinery.admin.delete', title: page_title_with_translations(page))}
+            data: {confirm: t('message',  scope: 'refinery.admin.delete', title: translated_field(page, :title))}
           }
  %>
 
