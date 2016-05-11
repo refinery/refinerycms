@@ -11,7 +11,7 @@
                 :rel => page_link.title,
                 :class => 'page_link'
               }.merge(link_args) do %>
-    <%= page_title_with_translations page_link %>
+    <%= translated_field(page_link, :title) %>
     <%= page_meta_information page_link %>
   <% end %>
 </li>
