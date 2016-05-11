@@ -26,10 +26,12 @@ And run
 $ bundle install
 </ruby>
 
-You will need to install phantomjs from http://phantomjs.org/ or through your OS package manager.
+You will need phantomjs from http://phantomjs.org/ or through your OS package manager (e.g. Ubuntu/Debian, OS X Homebrew, and npm below)
 
 <shell>
 $ sudo apt-get install phantomjs
+$ brew install phantomjs
+$ npm install -g phantomjs
 </shell>
 
 Now we will configure our test environment by preparing a dummy refinerycms app
