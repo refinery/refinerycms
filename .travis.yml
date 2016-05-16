@@ -1,8 +1,8 @@
 language: ruby
 cache: bundler
+before_install: gem install bundler
 bundler_args: --without development
 before_script:
-  - gem install bundler
   - export RETRY_COUNT=3
   - bin/rake refinery:testing:dummy_app
 script:
