@@ -332,6 +332,7 @@ module Refinery
 
         within ".active * > .selected a" do
           expect(page).to have_content(child_page.title)
+          expect(page).to_not have_content(::I18n.t('skip_to_first_child', scope: 'refinery.skip_to_first_child_page_message'))
         end
       end
     end

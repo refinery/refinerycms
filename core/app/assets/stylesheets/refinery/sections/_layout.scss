@@ -197,10 +197,14 @@ noscript .flash.flash_alert a:hover {
   display: inline;
   font-weight: bold;
 }
-.flash a#flash_close {
-  position: absolute;
-  right: 9px;
-  top: 7px;
+.flash #flash_close {
+  background: none;
+  border: none;
+  color: #41403C;
+  cursor: pointer;
+  float: right;
+  font-size: 1em;
+  margin-top: 3px;
 }
 #content .visual_editor_box a,
 #content .ui-tabs a {
@@ -1512,6 +1516,7 @@ a.information:hover {
   text-transform: uppercase;
   white-space: nowrap;
   background-color: #bfbfbf;
+  margin-right: 0.25em;
   &.important{
     background-color: #c43c35;
   }

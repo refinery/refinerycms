@@ -10,8 +10,6 @@ module Refinery
 
         skip_before_action :error_404, :set_canonical
 
-        layout :layout
-
         def show
           render_with_templates?
         end
@@ -33,16 +31,18 @@ module Refinery
         end
         alias_method :page, :find_page
 
-        def layout
-          'application'
+        def page_params
+          params.require(:page).permit(permitted_page_params)
         end
 
-        def page_params
-          params.require(:page).permit(
+        private
+
+        def permitted_page_params
+          [
             :browser_title, :draft, :link_url, :menu_title, :meta_description,
             :parent_id, :skip_to_first_child, :show_in_menu, :title, :view_template,
-            :layout_template, parts_attributes: [:id, :title, :body, :position]
-          )
+            :layout_template, :custom_slug, parts_attributes: [:id, :title, :slug, :body, :position]
+          ]
         end
       end
     end
