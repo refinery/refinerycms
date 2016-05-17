@@ -2,6 +2,13 @@ source 'https://rubygems.org'
 
 gemspec
 
+path "./" do
+  gem "refinerycms-core"
+  gem "refinerycms-images"
+  gem "refinerycms-pages"
+  gem "refinerycms-resources"
+end
+
 gem 'quiet_assets'
 gem 'spring'
 gem 'spring-commands-rspec'
@@ -34,7 +41,7 @@ if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
 end
 
 group :test do
-  gem 'refinerycms-testing', '~> 3.0.0'
+  gem 'refinerycms-testing', path: "./testing"
   gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'coveralls', require: false
