@@ -95,6 +95,20 @@ module Refinery
               )
             end
           end
+
+          context 'wild cards in attribute whitelist' do
+            it 'will allow matched attributes' do
+              allow(Refinery::Pages).to receive(:whitelist_attributes) {%w(data-.*)}
+              section = SectionPresenter.new
+              section.override_html = %Q{<a data-foo="value"></a>}
+              expect(section.wrapped_html(true)).to xml_eq(
+                  %Q{<section><div class="inner"><a data-foo="value"></a></div></section>}
+              )
+
+            end
+          end
+
+
         end
 
         describe "#sanitize_content" do
