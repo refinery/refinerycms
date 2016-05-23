@@ -70,7 +70,7 @@ module Refinery
 
       def sanitize_content(input)
         output =
-            if true
+            if Refinery::Core.regex_white_list
               sanitize(input, scrubber: CustomScrubber.new(Refinery::Pages::whitelist_elements, Refinery::Pages::whitelist_attributes))
             else
               sanitize(input,

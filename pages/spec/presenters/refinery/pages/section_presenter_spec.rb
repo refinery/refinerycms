@@ -98,6 +98,7 @@ module Refinery
 
           context 'wild cards in attribute whitelist' do
             it 'will allow matched attributes' do
+              Refinery::Core.regex_white_list = true
               allow(Refinery::Pages).to receive(:whitelist_attributes) {%w(data-.*)}
               section = SectionPresenter.new
               section.override_html = %Q{<a data-foo="value"></a>}
