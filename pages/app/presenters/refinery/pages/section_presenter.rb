@@ -50,7 +50,7 @@ module Refinery
         "no_#{id}"
       end
 
-    protected
+      protected
 
       def content_html(can_use_fallback)
         override_html.presence || html_from_fallback(can_use_fallback)
@@ -60,7 +60,7 @@ module Refinery
         fallback_html.presence if can_use_fallback
       end
 
-    private
+      private
 
       attr_writer :id, :fallback_html, :hidden
 
@@ -69,10 +69,15 @@ module Refinery
       end
 
       def sanitize_content(input)
-        output = sanitize(input,
-          tags: Refinery::Pages::whitelist_elements,
-          attributes: Refinery::Pages::whitelist_attributes
-        )
+        output =
+            if Refinery::Core.regex_white_list
+              sanitize(input, scrubber: CustomScrubber.new(Refinery::Pages::whitelist_elements, Refinery::Pages::whitelist_attributes))
+            else
+              sanitize(input,
+                       tags: Refinery::Pages::whitelist_elements,
+                       attributes: Refinery::Pages::whitelist_attributes
+              )
+            end
 
         if input != output
           warning = "\n-- SANITIZED CONTENT WARNING --\n"
@@ -83,6 +88,28 @@ module Refinery
         end
 
         return output
+      end
+    end
+
+    class CustomScrubber < Rails::Html::PermitScrubber
+      def initialize(tags, attributes)
+        @direction = :bottom_up
+        @tags = tags
+        @attributes = attributes
+        @all_regex = create_regexs
+      end
+
+      def scrub_attribute?(name)
+        !name.match(@all_regex)
+      end
+
+      private
+
+      def create_regexs
+        reg = @attributes.map do |attr|
+          Regexp.new(attr)
+        end
+        Regexp.union(reg)
       end
     end
   end
