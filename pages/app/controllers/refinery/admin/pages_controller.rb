@@ -108,7 +108,7 @@ module Refinery
         nested_url = page.nested_url
         {
           new_refinery_edit_page_path: refinery.admin_edit_page_path(nested_url),
-          new_refinery_page_path: refinery.admin_page_path(nested_url),
+          new_refinery_page_path: refinery.admin_update_page_path(nested_url),
           new_page_path: refinery.pages_admin_preview_page_path(nested_url)
         }
       end
