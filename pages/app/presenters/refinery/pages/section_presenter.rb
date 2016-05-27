@@ -50,7 +50,7 @@ module Refinery
         "no_#{id}"
       end
 
-    protected
+      protected
 
       def content_html(can_use_fallback)
         override_html.presence || html_from_fallback(can_use_fallback)
@@ -60,7 +60,7 @@ module Refinery
         fallback_html.presence if can_use_fallback
       end
 
-    private
+      private
 
       attr_writer :id, :fallback_html, :hidden
 
@@ -69,10 +69,8 @@ module Refinery
       end
 
       def sanitize_content(input)
-        output = sanitize(input,
-          tags: Refinery::Pages::whitelist_elements,
-          attributes: Refinery::Pages::whitelist_attributes
-        )
+        output = sanitize(input, scrubber: CustomScrubber.new(Refinery::Pages::whitelist_elements,
+                                                              Refinery::Pages::whitelist_attributes))
 
         if input != output
           warning = "\n-- SANITIZED CONTENT WARNING --\n"
@@ -84,6 +82,24 @@ module Refinery
 
         return output
       end
+    end
+
+    class CustomScrubber < Rails::Html::PermitScrubber
+      def initialize(tags, attributes)
+        @direction = :bottom_up
+        @tags = tags
+        @attributes = attributes
+      end
+
+      #see https://github.com/flavorjones/loofah/blob/master/lib/loofah/html5/scrub.rb#L21
+      def scrub_attributes(node)
+        node.attribute_nodes.each do |attr_node|
+          next if attr_node.node_name =~ /\Adata-[\w-]+\z/
+
+          super
+        end
+      end
+
     end
   end
 end

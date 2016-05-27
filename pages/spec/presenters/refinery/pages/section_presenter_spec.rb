@@ -95,6 +95,16 @@ module Refinery
               )
             end
           end
+
+          context 'data attributes' do
+            it 'all data attributes passed thru' do
+              section = SectionPresenter.new
+              section.override_html = %Q{<a data-foo-bar="value"></a>}
+              expect(section.wrapped_html(true)).to xml_eq(
+                  %Q{<section><div class="inner"><a data-foo-bar="value"></a></div></section>}
+              )
+            end
+          end
         end
 
         describe "#sanitize_content" do
