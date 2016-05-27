@@ -193,16 +193,19 @@ module Refinery
       end
 
       describe "edit/update" do
-        before do
-          Page.create :title => "Update me"
+        let(:updateable_page_parent) { Page.create title: "Parent page" }
+        let!(:updateable_page) {
+          updateable_page_parent.children.create title: "Update me"
+        }
 
+        before do
           visit refinery.admin_pages_path
           expect(page).to have_content("Update me")
         end
 
         context 'when saving and returning to index' do
-          it "updates page", js:true do
-            find('a[tooltip="Edit this page"]').trigger(:click)
+          it "updates page", js: true do
+            find("a[href$='#{updateable_page.slug}/edit']").trigger(:click)
 
             fill_in "Title", :with => "Updated"
             find("#submit_button").click
@@ -211,25 +214,33 @@ module Refinery
           end
         end
 
-        context 'when saving and continuing to edit' do
+        context 'when saving and continuing to edit', js: true do
           before :each do
-            expect(page).to have_selector('a[tooltip^=Edit]', visible: true)
-            find('a[tooltip^=Edit]').click
+            expect(page).to have_selector("a[href$='#{updateable_page.slug}/edit']", visible: true)
+            find("a[href$='#{updateable_page.slug}/edit']").click
 
-            fill_in "Title", :with => "Updated"
+            fill_in "Title", :with => "Updated you"
             find("#submit_continue_button").click
             find('#flash').visible?
           end
 
-          it "updates page", js: true do
-            expect(page).to have_content("'Updated' was successfully updated.")
+          it "updates page" do
+            expect(page).to have_content("'Updated you' was successfully updated.")
+          end
+
+          # Regression test for https://github.com/refinery/refinerycms/issues/3179
+          # We expect this to end with /updated-you rather than /updated%2Fyou
+          it "doesn't have an encoded URL" do
+            updateable_page.reload # the slug will be different now
+            expect(page).not_to have_selector("form[action$='%2F#{updateable_page.slug}']")
+            expect(page).to have_selector("form[action$='/#{updateable_page.slug}']")
           end
 
           # Regression test for https://github.com/refinery/refinerycms/issues/1892
           context 'when saving to exit (a second time)' do
-            it 'updates page', js: true do
+            it 'updates page' do
               find("#submit_button").click
-              expect(page).to have_content("'Updated' was successfully updated.")
+              expect(page).to have_content("'Updated you' was successfully updated.")
             end
           end
         end
