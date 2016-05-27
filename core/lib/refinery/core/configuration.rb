@@ -9,7 +9,7 @@ module Refinery
                     :s3_secret_access_key, :force_ssl, :backend_route,
                     :dragonfly_custom_backend_class, :dragonfly_custom_backend_opts,
                     :visual_editor_javascripts, :visual_editor_stylesheets,
-                    :plugin_priority, :refinery_logout_path, :regex_white_list
+                    :plugin_priority, :refinery_logout_path
 
     self.rescue_not_found = false
     self.s3_backend = false
@@ -32,7 +32,6 @@ module Refinery
     self.visual_editor_javascripts = []
     self.visual_editor_stylesheets = []
     self.plugin_priority = []
-    self.regex_white_list = false
 
     def config.register_javascript(name)
       self.javascripts << name

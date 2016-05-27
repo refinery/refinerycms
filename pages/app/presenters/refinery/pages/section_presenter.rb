@@ -69,15 +69,8 @@ module Refinery
       end
 
       def sanitize_content(input)
-        output =
-            if Refinery::Core.regex_white_list
-              sanitize(input, scrubber: CustomScrubber.new(Refinery::Pages::whitelist_elements, Refinery::Pages::whitelist_attributes))
-            else
-              sanitize(input,
-                       tags: Refinery::Pages::whitelist_elements,
-                       attributes: Refinery::Pages::whitelist_attributes
-              )
-            end
+        output = sanitize(input, scrubber: CustomScrubber.new(Refinery::Pages::whitelist_elements,
+                                                              Refinery::Pages::whitelist_attributes))
 
         if input != output
           warning = "\n-- SANITIZED CONTENT WARNING --\n"
@@ -96,21 +89,17 @@ module Refinery
         @direction = :bottom_up
         @tags = tags
         @attributes = attributes
-        @all_regex = create_regexs
       end
 
-      def scrub_attribute?(name)
-        !name.match(@all_regex)
-      end
+      #see https://github.com/flavorjones/loofah/blob/master/lib/loofah/html5/scrub.rb#L21
+      def scrub_attributes(node)
+        node.attribute_nodes.each do |attr_node|
+          next if attr_node.node_name =~ /\Adata-[\w-]+\z/
 
-      private
-
-      def create_regexs
-        reg = @attributes.map do |attr|
-          Regexp.new(attr)
+          super
         end
-        Regexp.union(reg)
       end
+
     end
   end
 end
