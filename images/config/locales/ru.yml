@@ -3,8 +3,10 @@ ru:
     plugins:
       refinery_images:
         title: Изображения
-        article: neuter
+        description: Управление изображениями
     admin:
+      locale_picker:
+        language: Язык
       images:
         delete: Удалить это изображение навсегда
         edit: Редактировать это изображение
@@ -15,6 +17,10 @@ ru:
           replace_image: " заменить его этим"
           current_image: Текущее изображение
           maximum_image_size: "Максимальный размер изображения — %{bytes}."
+          image_title: Название
+          image_title_help: Дополнительная информация об изображении
+          image_alt: Alt
+          image_alt_help: "Текст, используемый, если изображение не может быть отображено."
         actions:
           create_new_image: Создать новое изображение
         records:
@@ -41,3 +47,4 @@ ru:
           blank: Вы должны выбрать файл для загрузки
           too_big: "Файлы должны быть меньше по размеру, чем %{size} МБ"
           incorrect_format: "Ваше изображение может быть только в форматах JPG, PNG или GIF"
+          different_file_name: Новое изображение не может иметь другое имя файла
