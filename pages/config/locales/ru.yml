@@ -3,7 +3,6 @@ ru:
     plugins:
       refinery_pages:
         title: Страницы
-        article: feminine
         description: Управление страницами с содержимым
     admin:
       pages_dialogs:
@@ -38,14 +37,17 @@ ru:
         new: Добавить новую подстраницу
         expand_collapse: Развернуть или свернуть подстраницу
         page:
-          view_live_html: Показать эту страницу вживую <br/><em>(откроется в новом окне)</em>
-          hidden: скрытая
           draft: черновик
+          hidden: скрытая
+          redirected: Перенаправлена
+          skip_to_first_child: Пропуск страницы верхнего уровня
+          view_live_html: Показать эту страницу вживую <br/><em>(откроется в новом окне)</em>
         form:
           preview: Посмотреть
           preview_changes: Посмотреть свои изменения перед сохранением
         form_new_page_parts:
           title: Заголовок
+          slug: Slug
         form_page_parts:
           create_content_section: Добавить колонку
           delete_content_section: Удалить колонку

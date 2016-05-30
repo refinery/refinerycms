@@ -41,6 +41,8 @@ ru:
         remove_current: Удалить текущее изображение
         change: Нажмите здесь, чтобы выбрать изображение
         show: Показать
+      locale_picker:
+        language: Язык
       resource_picker:
         download_current: Скачать текущий файл
         opens_in_new_window: Откроется в новом окне
@@ -53,11 +55,12 @@ ru:
         results_for_html: "Результаты поиска для &#8216;<em>%{query}</em>&#8217;"
         no_results: Ничего не найдено
         cancel_search: Отмена поиска
+        search_input_notice: ''
         input:
           placeholder: "Поиск&8230;"
           help: Введите строку содержащую то, что вы ищете, минимум 3 символа.
       delete:
-        message: Вы уверены, что хотите удалить '%{title}'?
+        message: "Вы уверены, что хотите удалить '%{title}'?"
       error_messages:
         problems_in_following_fields: Обнаружены проблемы со следующими полями
       help: Помощь
@@ -70,6 +73,8 @@ ru:
       close_this_message: Закрыть это сообщение
     draft_page_message:
       not_live: Эта страница не предназначена для публичного просмотра.
+    skip_to_first_child_page_message:
+      skip_to_first_child: "Для этой странице активирована опция \"Пропуск страницы верхнего уровня\", и она никогда не будет показана посетителям."
     footer:
       copyright: © %{site_name}, %{year}
     no_script:
