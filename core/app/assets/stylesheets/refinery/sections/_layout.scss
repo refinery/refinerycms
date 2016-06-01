@@ -11,8 +11,6 @@ html {
 }
 body {
   height: 100%;
-  margin: -52px 0;
-  padding: 52px 0 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
   line-height: 1.5em;
@@ -55,6 +53,7 @@ label[for] {
   margin: -5px auto 0px auto;
   height: 100%;
   @include faux_columns_2($menu_width, transparent, white);
+  padding-left: 120px;
 }
 #page_container {
   background-color: white;
@@ -833,7 +832,7 @@ body.dialog form {
   }
   #dialog_menu_left {
     position: fixed;
-    left: 12px;
+    left: 30px;
     top: 9px;
     width: 130px;
   }
