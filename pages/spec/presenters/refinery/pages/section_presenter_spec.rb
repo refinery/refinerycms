@@ -2,8 +2,6 @@ require "spec_helper"
 
 module Refinery
   module Pages
-
-
     describe SectionPresenter do
       it "can build a css class for when it is not present based on id" do
         section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode')
@@ -28,6 +26,14 @@ module Refinery
       end
 
       describe "when building html for a section" do
+        before do
+          @errors = StringIO.new
+          @old_err = $stderr
+          $stderr = @errors
+        end
+
+        after(:each) { $stderr = @old_err }
+
         it "wont show a hidden section" do
           section = SectionPresenter.new(:fallback_html => 'foobar', :hidden => true)
           expect(section.has_content?(true)).to be_falsey
@@ -46,7 +52,6 @@ module Refinery
           expect(section.has_content?(true)).to be_truthy
           expect(section.wrapped_html(true)).to xml_eq('<section id="mynode"><div class="inner">foobar</div></section>')
         end
-
 
         # Regression tests for https://github.com/refinery/refinerycms-inquiries/issues/168
         describe "#whitelist_elements" do
@@ -108,14 +113,6 @@ module Refinery
         end
 
         describe "#sanitize_content" do
-          before do
-            @errors = StringIO.new
-            @old_err = $stderr
-            $stderr = @errors
-          end
-
-          after(:each) { $stderr = @old_err }
-
           it "shows a sanitized content warning" do
             section = SectionPresenter.new
             section.override_html = %Q{<dummy></dummy>}
