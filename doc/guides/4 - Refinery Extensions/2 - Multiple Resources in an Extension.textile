@@ -18,7 +18,7 @@ $ rails generate refinery:engine singular_model_name attribute:type [attribute:t
 
 TIP: to see all the options supported by the +refinery:engine+ generator just run +rails g refinery:engine+.
 
-Here is a list of the different field types are what they give you:
+Here is a list of the different field types available:
 
 |*field type*|*description*|
 |text|a multiline visual editor|
