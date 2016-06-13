@@ -101,7 +101,11 @@ module Refinery
 
     describe ".first_in_menu_with_url" do
       it "finds plugins that are landable" do
-        skip
+        first_in_menu_with_url = described_class.registered.in_menu.detect do |plugin|
+          plugin.url.present?
+        end
+
+        expect(described_class.registered.first_in_menu_with_url.title).to eq(first_in_menu_with_url.title)
       end
     end
 
