@@ -146,7 +146,7 @@ hr {
 .flash_message {
   border: 1px solid #00A017;
   color: #00A017;
-  @include icon('check-circle', green)
+  @include icon('check', green)
 }
 .flash_notice,
 .flash_notice * {
@@ -156,13 +156,12 @@ hr {
 .flash_alert {
   border: 1px solid #A00027;
   color: #A00027;
-  @include icon('question-circle', red)
+  @include icon('close', red)
 }
-.flash.flash_notice #flash_close,
-.flash.flash_error #flash_close,
-.flash.flash_alert #flash_close {
+#flash_close {
   text-transform: lowercase;
-  @include icon('times-circle', $icon_done_colour, 1.2em)
+  @include icon('close', $icon_done_colour, 1.2em);
+  float:Right
 }
 .flash.flash_message {
   background: #E0F5E0;
@@ -196,14 +195,19 @@ noscript .flash.flash_alert a:hover {
   display: inline;
   font-weight: bold;
 }
-.flash #flash_close {
-  background: none;
-  border: none;
-  color: #41403C;
-  cursor: pointer;
-  float: right;
-  font-size: 1em;
-  margin-top: 3px;
+.flash a#flash_close {
+  background:none;
+  border:none;
+  color:#41403c;
+  cursor:pointer;
+  float:right;
+  font-size:1em;
+  margin-top:3px;
+  // I think these were removed by Glass. Check appearance
+  // position: absolute;
+  // right: 9px;
+  // top: 7px;
+  
 }
 #content .visual_editor_box a,
 #content .ui-tabs a {
@@ -662,14 +666,14 @@ label.stripped {
   min-height:16px;
   background-repeat:no-repeat;
   background-position:left;
-  @include icon('file-o', blue)
+  @include icon('file', blue)
 }
 #dialog_main #resource_file_area .pages_list ul li a.page_link{
   background-position:5px center;
   display:block;
 }
 #records.files .record .title.pdf, #dialog_main #resource_file_area .pages_list ul li a.page_link.pdf {
-  @include icon('file-pdf-o')
+  @include icon('file')
 }
 #records.files .record .title.jpg,
 #records.files .record .title.gif,
@@ -681,23 +685,23 @@ label.stripped {
 #dialog_main #resource_file_area .pages_list ul li a.page_link.gif,
 #dialog_main #resource_file_area .pages_list ul li a.page_link.png,
 #dialog_main #resource_file_area .pages_list ul li a.page_link.tiff {
-  @include icon('file-image-o');
+  @include icon('photo');
 }
 
 #records.files .record .title.doc, #records.files .record .title.pages, #records.files .record .title.docx, #dialog_main #resource_file_area .pages_list ul li a.page_link.doc, #dialog_main #resource_file_area .pages_list ul li a.page_link.docx, #dialog_main #resource_file_area .pages_list ul li a.page_link.pages {
-  @include icon('file-word-o');
+  @include icon('file');
 }
 #records.files .record .title.ppt, #records.files .record .title.keynote, #dialog_main #resource_file_area .pages_list ul li a.page_link.ppt, #dialog_main #resource_file_area .pages_list ul li a.page_link.keynote {
-  @include icon('file-powerpoint-o');
+  @include icon('file');
 }
 #records.files .record .title.xls, #records.files .record .title.numbers, #dialog_main #resource_file_area .pages_list ul li a.page_link.xls, #dialog_main #resource_file_area .pages_list ul li a.page_link.numbers {
-  @include icon('file-excel-o');
+  @include icon('file');
 }
 #records.files .record .title.zip, #records.files .record .title.rar, #dialog_main #resource_file_area .pages_list ul li a.page_link.zip, #dialog_main #resource_file_area .pages_list ul li a.page_link.rar {
-  @include icon('file-zip-o');
+  @include icon('file');
 }
 #records.files .record .title.mp3, #records.files .record .title.wav, #records.files .record .title.aiff, #records.files .record .title.m4a, #dialog_main #resource_file_area .pages_list ul li a.page_link.mp3, #dialog_main #resource_file_area .pages_list ul li a.page_link.wav, #dialog_main #resource_file_area .pages_list ul li a.page_link.aiff, #dialog_main #resource_file_area .pages_list ul li a.page_link.m4a {
-  @include icon('file-audio-o');
+  @include icon('file');
 }
 #records .actions {
   position: absolute;
@@ -744,7 +748,7 @@ label.stripped {
   width: 16px;
   height: 16px;
   margin: 3px 3px 0 0;
-  @include icon('file-o', $icon_page_colour);
+  @include icon('file', $icon_page_colour);
 
   &.toggle {
     cursor: pointer;
@@ -755,7 +759,7 @@ label.stripped {
   }
 }
 #records.tree li.loading > div > span.icon {
-  @include icon('spinner');
+  @include icon('gear');
 }
 #image_grid .actions a img {
   padding: 4px 4px 1px 4px;
@@ -813,7 +817,7 @@ body.dialog form {
 .visual_editor_dialog_table {
   height: 250px;
 }
-.no_picked_image_selected {@include icon('warning', $icon_warning_colour)}
+.no_picked_image_selected {@include icon('close', $icon_warning_colour)}
 .dialog {
   #dialog_main {
     float: left;
@@ -963,7 +967,7 @@ body.dialog form {
   .pages_list .linked a, .pages_list .linked a:hover {
     border: 1px solid #00A017;
     color: #00A017;
-    @include icon('check-circle', green);
+    @include icon('check', green);
   }
   .pages_list .linked a em {
     color: #00A017;
@@ -1460,7 +1464,7 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 .locale_marker {
   font-size:8px;
   display: inline;
-  .fa-stack .fa-comment {color: $icon_locale_colour; font-size: 24px;}
+  .icon-stack .icon-comment {color: $icon_locale_colour; font-size: 24px;}
 }
 
 #content #records .title .preview a.locale {

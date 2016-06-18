@@ -17,10 +17,11 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_images'
-          plugin.icon = 'icon icon-photo bump-down'
+          plugin.icon = 'photo'
           plugin.menu_match = %r{refinery/image(_dialog)?s$}
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_images_path }
         end
+
       end
 
       config.after_initialize do

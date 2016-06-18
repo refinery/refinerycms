@@ -5,15 +5,14 @@
 
   <section id="sidebar-left" class="sidebar left inverted cms-ui">
     <div class="sidebar-top-nav">
-      <button type="button" class="btn btn-white sidebar-left-opener abs-t-l z-5 hidden-sm-up">
-        <i class="icon icon-close"></i>
+      <button type="button" class="btn btn-white sidebar-left-opener abs-t-l z-5 hidden-sm-up close_icon">
       </button>
 
       <div class="site-name">
         <% if content_for?(:custom_sidebar_header_link) %>
           <%= yield :custom_sidebar_header_link %>
         <% else %>
-          <i class="icon icon-bars"></i> <%= link_to Refinery::Core.site_name, '/', :class => 'ellipsis' %>
+          <%= link_to Refinery::Core.site_name, '/', :class => ['ellipsis', 'sitebar_icon']  %>
         <% end %>
       </div>
     </div>
@@ -27,7 +26,8 @@
 
     <%= link_to Refinery::Core.refinery_logout_path, id:'logout', class: 'log-out' do %>
       <%= t('.log_out', site_bar_translate_locale_args) %>
-      <%= content_tag(:i, nil, class: 'icon icon-log-out') %>
     <% end if Refinery::Core.refinery_logout_path.present? %>
+
+
   </section>
 </nav>
