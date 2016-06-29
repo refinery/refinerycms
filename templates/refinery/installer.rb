@@ -6,7 +6,9 @@ MINOR_VERSION_BAND = '3.0.0'
 begin
   require 'execjs'
 rescue LoadError
-  abort "ExecJS is not installed. Please re-start the installer after running:\ngem install execjs"
+  abort <<-ERROR
+\033[31m[ABORTING]\033[0m ExecJS is not installed. Please re-start the installer after running:\ngem install execjs
+ERROR
 end
 
 if File.read("#{destination_root}/Gemfile") !~ /assets.+coffee-rails/m
