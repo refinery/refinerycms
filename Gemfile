@@ -15,7 +15,7 @@ gem 'spring-commands-rspec'
 gem 'poltergeist', '>= 1.8.1'
 
 # Add support for refinerycms-acts-as-indexed
-gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.0']
+gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
 # Add the default visual editor, for now.
 gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6']

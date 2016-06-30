@@ -35,7 +35,7 @@ append_file 'Gemfile' do
 gem 'quiet_assets', group: :development
 
 # Add support for searching inside Refinery's admin interface.
-gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.0']
+gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
 # Add support for Refinery's custom fork of the visual editor WYMeditor.
 gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6']
