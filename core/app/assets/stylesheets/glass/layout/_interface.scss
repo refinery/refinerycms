@@ -1,3 +1,14 @@
+/* -------------------- LAYOUT -------------------- */
+
+#wrapper {
+  padding: 0;
+  background: lighten($off-white, 2%) !important;
+}
+
+.container-fluid {
+  max-width: 1200px;
+}
+
 /* -------------------- NAVIGATION -------------------- */
 
 // SIDEBARS
