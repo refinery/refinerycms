@@ -3,7 +3,6 @@ require 'truncate_html'
 require 'will_paginate'
 require 'refinery/i18n'
 require 'zilch/authorisation'
-require 'bootstrap'
 
 module Refinery
   module Core
@@ -26,3 +25,5 @@ require 'jquery-rails'
 require 'jquery-ui-rails'
 require 'sass-rails'
 require 'coffee-rails'
+require 'font-awesome-sass'
+require 'bootstrap'
