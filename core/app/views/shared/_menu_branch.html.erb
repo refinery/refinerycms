@@ -8,7 +8,7 @@
 <li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '').html_safe %>>
   <%= link_to menu_branch.title, menu_branch.url -%>
   <% if (children = menu_branch.children unless hide_children).present? -%>
-    <ul class='clearfix'>
+ 	<ul class="<%= [menu_subtree_css_class].join(' ').html_safe %>">
       <%= render :partial => '/shared/menu_branch', :collection => children,
                  :locals => {
                    :apply_css => local_assigns[:apply_css],
