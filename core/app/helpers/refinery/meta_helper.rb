@@ -48,5 +48,9 @@ module Refinery
       end
     end
 
+    def canonical_id(page)
+      "#{page.canonical_slug}-page" if page
+    end
+
   end
 end
