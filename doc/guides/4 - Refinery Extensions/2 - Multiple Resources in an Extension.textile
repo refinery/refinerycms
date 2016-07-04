@@ -55,7 +55,6 @@ This results in the following:
       create  vendor/extensions/events/app/views/refinery/admin/events/_events.html.erb
       create  vendor/extensions/events/app/views/refinery/admin/events/_records.html.erb
       create  vendor/extensions/events/app/views/refinery/admin/events/_event.html.erb
-      create  vendor/extensions/events/app/views/refinery/admin/events/_sortable_list.html.erb
       create  vendor/extensions/events/app/views/refinery/admin/events/edit.html.erb
       create  vendor/extensions/events/app/views/refinery/admin/events/index.html.erb
       create  vendor/extensions/events/app/views/refinery/admin/events/new.html.erb
@@ -131,7 +130,6 @@ Running this command will produce the following output:
       create  vendor/extensions/events/app/views/admin/places/_states.html.erb
       create  vendor/extensions/events/app/views/admin/places/_records.html.erb
       create  vendor/extensions/events/app/views/admin/places/_place.html.erb
-      create  vendor/extensions/events/app/views/admin/places/_sortable_list.html.erb
       create  vendor/extensions/events/app/views/admin/places/edit.html.erb
       create  vendor/extensions/events/app/views/admin/places/index.html.erb
       create  vendor/extensions/events/app/views/admin/places/new.html.erb
