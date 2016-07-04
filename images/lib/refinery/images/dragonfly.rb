@@ -33,6 +33,20 @@ module Refinery
               # S3 Region otherwise defaults to 'us-east-1'
               s3.region = Refinery::Images.s3_region if Refinery::Images.s3_region
             end
+            app_images.configure do |c|
+              c.server.before_serve do |job, env|
+                uid = job.store
+                ::Refinery::Images::Thumb.create!( :uid => uid, :job => job.serialize )
+              end
+              c.define_url do |app, job, opts|
+                thumb = ::Refinery::Images::Thumb.find_by_job(job.serialize)
+                if thumb
+                  app.datastore.url_for(thumb.uid)
+                else
+                  app.server.url_for(job)
+                end
+              end
+            end
           end
         end
 
@@ -48,7 +62,6 @@ module Refinery
           }
         end
       end
-
     end
   end
 end
