@@ -324,6 +324,13 @@ class User < Refinery::Core::BaseModel
       self.has_role?(:superuser)
     )
   end
+
+  def can_edit?(user_to_edit = self)
+    user_to_edit.persisted? && (
+      user_to_edit == self ||
+      self.has_role?(:superuser)
+    )
+  end
 end
 </ruby>
 
