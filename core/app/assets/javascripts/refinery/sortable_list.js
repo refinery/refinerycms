@@ -118,7 +118,9 @@ var create_sortable_list = function(options){
             this.list.sortable_list.removeClass("reordering");
 
             if (this.list.update_url !== null) {
-                var serialized = this.list.sortable_list.serializelist();
+                var list = this.list.sortable_list.clone();
+                list.find('h3').remove()
+                var serialized = list.serializelist()
 
                 $.post(this.list.update_url, serialized, $.proxy(this.list.restore_controls,{list: this.list}));
             } else {

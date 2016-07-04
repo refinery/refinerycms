@@ -1,4 +1,14 @@
 <ul id='sortable_list'>
-  <%= render :partial => 'page', :collection => @pages.roots  %>
+  <% Refinery::Site.all.each do |site| %>
+    <% if site.pages.count > 0 %>
+      <h3><%= site.name %></h3>
+      <%= render :partial => 'page', :collection => site.pages.roots  %>
+    <% end %>
+  <% end %>
+  <% if @pages.where(:site_id => nil).count > 0 %>
+    <h3>Common</h3>
+    <%= render :partial => 'page', :collection => @pages.where(:site_id => nil).roots  %>
+  <% end %>
+
 </ul>
 <%= render '/refinery/admin/sortable_list', :continue_reordering => !!local_assigns[:continue_reordering] %>

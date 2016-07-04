@@ -22,7 +22,7 @@ module Refinery
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :parent_id, :menu_title, :page_id,
                     :layout_template, :view_template, :custom_slug, :slug,
-                    :title, *::SeoMeta.attributes.keys
+                    :title, :site_id, *::SeoMeta.attributes.keys
 
     validates :title, :presence => true
 
@@ -50,6 +50,8 @@ module Refinery
              :include => ((:translations) if ::Refinery::PagePart.respond_to?(:translation_class))
 
     accepts_nested_attributes_for :parts, :allow_destroy => true
+
+    belongs_to :site
 
     before_save do |m|
       m.translation.globalized_model = self
@@ -159,6 +161,10 @@ module Refinery
         nullify_duplicate_slugs_under_the_same_parent!
       end
       alias_method_chain :rebuild!, :slug_nullification
+
+      def for_site(site = nil)
+        where('site_id IS NULL OR site_id = ?', site)
+      end
 
       protected
       def nullify_duplicate_slugs_under_the_same_parent!

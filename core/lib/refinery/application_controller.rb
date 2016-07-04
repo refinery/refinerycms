@@ -15,6 +15,8 @@ module Refinery
                          ActionView::MissingTemplate,
                          :with => :error_404
       end
+
+      base.before_filter :load_site
     end
 
     def admin?
@@ -51,6 +53,10 @@ module Refinery
     end
 
   protected
+
+    def load_site
+      @site = Refinery::Site.find_by_hostname(request.host)
+    end
 
     # use a different model for the meta information.
     def present(model)

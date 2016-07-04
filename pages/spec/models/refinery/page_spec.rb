@@ -618,5 +618,31 @@ module Refinery
         page.destroy
       end
     end
+
+    describe ".for_site" do
+      let(:site1) { create(:site) }
+      let(:site2) { create(:site) }
+      let(:common_page) { create(:page, :title => 'common') }
+      let(:site1_page)  { create(:page, :title => 'site 1', :site => site1) }
+      let(:site2_page)  { create(:page, :title => 'site 2', :site => site2) }
+
+      before do
+        common_page
+        site1_page
+        site2_page
+      end
+
+      it "returns common pages when no site specified" do
+        Page.for_site.should eq [common_page]
+      end
+
+      it "includes pages for site specified" do
+        Page.for_site(site1.id).should include site1_page
+      end
+
+      it "does not include pages for other sites" do
+        Page.for_site(site1.id).should_not include site2_page
+      end
+    end
   end
 end

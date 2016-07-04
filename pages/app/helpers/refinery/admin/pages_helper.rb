@@ -52,6 +52,10 @@ module Refinery
       def page_title_with_translations(page)
         page.title.presence || page.translations.detect {|t| t.title.present?}.title
       end
+
+      def site_options
+        Refinery::Site.all.map {|s| [s.name, s.id]}
+      end
     end
   end
 end

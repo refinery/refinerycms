@@ -22,6 +22,7 @@ RSpec.configure do |config|
   config.filter_run :js => nil if ENV['JS'] == 'false'
   config.run_all_when_everything_filtered = true
   config.include ActionView::TestCase::Behavior, :example_group => { :file_path => %r{spec/presenters} }
+  config.include(FactoryGirl::Syntax::Methods)
 end
 
 # Requires supporting files with custom matchers and macros, etc,
