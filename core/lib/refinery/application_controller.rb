@@ -65,6 +65,10 @@ module Refinery
 
   protected
 
+    def show_welcome_page?
+      !!Refinery::Core.show_welcome_page
+    end
+
     def force_ssl?
       redirect_to :protocol => 'https' if !request.ssl? && Refinery::Core.force_ssl
     end
@@ -83,7 +87,7 @@ module Refinery
     end
 
     def refinery_user_required?
-      if just_installed? and controller_name != 'users'
+      if just_installed? and show_welcome_page? and controller_name != 'users'
         redirect_to refinery.new_refinery_user_registration_path
       end
     end

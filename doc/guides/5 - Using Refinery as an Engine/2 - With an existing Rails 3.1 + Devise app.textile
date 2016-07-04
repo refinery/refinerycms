@@ -408,6 +408,17 @@ Refinery::Admin::BaseController.class_eval do
 end
 </ruby>
 
+But this is the old and busted way of doing things. Let's get with the new hotness:
+
++config/initializers/refinery/core.rb+
+<ruby>
+Refinery::Core.configure do |config|
+  ...
+  config.show_welcome_page = false
+  ...
+end
+</ruby>
+
 Ok. We should be ready to give it a spin.
 
 If you try to access http://localhost:3000/, you should get first an error @undefined method 'refinery_user?'@. Just reload the page, it should now be fine.
