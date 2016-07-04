@@ -4,7 +4,6 @@ module Refinery
 
       def self.included(base)
         base.send :helper_method, :refinery_menu_pages
-        base.send :alias_method_chain, :render, :presenters
       end
 
       def error_404(exception=nil)
@@ -27,9 +26,9 @@ module Refinery
       end
 
     protected
-      def render_with_presenters(*args)
-        present(@page) unless admin? or @meta.present?
-        render_without_presenters(*args)
+      def render(*args)
+        present(@page) unless admin? || @meta.present?
+        super
       end
 
     private
