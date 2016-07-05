@@ -1036,30 +1036,38 @@ a img {
   border: 0px none;
 }
 
+
 /* page parts */
-ul#page_parts {
-  float: left;
-  width: 92%;
-}
-ul#page_parts, ul#page_parts_controls {
+
+ul#page_parts, 
+ul#page_parts_controls {
   margin: 0;
   padding: 0;
 }
+
+ul#page_parts {
+  float: left;
+  width: 92%;
+  z-index: 1;
+}
+
 ul#page_parts_controls {
   float: right;
   margin: 20px 3px 0 0;
+  z-index: 2;
+
+  li {
+    list-style: none;
+    float: right;
+    margin: 0 3px;
+
+    a {
+      border: 0px none;
+    }
+  }
 }
-ul#page_parts_controls li {
-  list-style: none;
-  float: right;
-  margin: 0 3px;
-}
-ul#page_parts_controls li a {
-  border: 0px none;
-}
-ul#page_parts_controls img {
-  vertical-align: middle;
-}
+
+
 #page-tabs.ui-sortable.reordering {
   li {
     cursor: move;
