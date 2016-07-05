@@ -56,7 +56,7 @@
       justify-content: space-between;
       width: 260px;
       height: 65px;
-      padding: 18px 15px;
+      padding: 18px 15px 18px 10px;
       text-align: right;
       background: $gray-1;
       a {
@@ -97,31 +97,27 @@
     font-size: 16px;
     font-weight: 600;
     white-space: nowrap;
-    color: $gray-6;
+    color: $white;
     background: darken($off-white, 3%);
+
+    transition: .2s .3s ease-out;
+    transform: translate3d(0%, 0%, 0);
     &:hover {
       color: $white;
       background: $cms-hover;
     }
-    .icon {
-      left: 3px;
-    }
   }
+
   li {
     margin: 0 0 1px;
     white-space: nowrap;
-    .icon {
-      margin-right: 4px;
-      text-align: center;
-      color: $gray-6;
-    }
     a {
       @include transition-fix();
       @include ellipsis(100%);
       display: block;
       width: 100%;
       min-width: 200px;
-      padding: 10px 15px 6px;
+      padding: 10px 25px 6px 12px;
       font-size: 16px;
       font-weight: 400;
       transition: .1s $bezier;
@@ -133,13 +129,10 @@
         color: $cms-dark;
         border-bottom: 0;
         background: $white-opaque;
-        .icon {
-          color: $cms-dark;
-        }
       }
-      > .icon {
-        min-width: 18px;
-        margin-right: 8px;
+      &::before {
+        color: $white;
+        margin-right: 1.3em!important;
       }
     }
     .active {
@@ -214,6 +207,20 @@
   .log-out {
     color: $white;
     background-color: $cms-dark;
+    // this icon comes after it's text
+    &::after {
+      @extend %icon;
+      content: "\f711";
+      font-size: 1.2em;
+      color: $white;
+      text-decoration: none;
+      width: auto;
+      height: auto;
+      margin-left:1.2em !important;
+      &::hover {
+        color: darken($white, 30%)
+      }      
+    }
   }
 }
 

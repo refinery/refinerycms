@@ -1,3 +1,7 @@
+/*
+ * Icon colours
+ */
+
 $icon_default_colour: #404650;
 $icon_delete_colour:  #ff707f;   // rose
 $icon_done_colour:    #00a017;  //
@@ -13,9 +17,19 @@ $icon_preview_colour: $icon_default_colour;
 $icon_edit_colour: $icon_default_colour;
 $icon_add_colour: $icon_default_colour;
 
+$plugin_icon_colour: #fff;
+/*
+ * Index page colours
+ */
 $action_background_colour: lighten($icon_locale_colour,10%);
 $action_border_colour: $icon_locale_colour;
 
-// $icon_preview_colour: #7f00ff;   // violet
-// $icon_edit_colour:    #007fff;   // azure
-// $icon_add_colour:     #7fff00;   // chartreuse
+/*
+ * label colours
+ */
+$label_important_bg_colour: #c43c35;
+$label_warning_bg_colour:   #f89406;
+$label_success_bg_colour:   #46a546;
+$label_notice_bg_colour:    #62cffc;
+
+
