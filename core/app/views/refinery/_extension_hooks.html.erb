@@ -1,0 +1,5 @@
+<% scope = :layout unless defined?(scope) %>
+<% Refinery::ExtensionHooks.html_partials(scope).each do |path| %>
+  <%= render partial: "refinery/customize_#{scope}", locals: {admin: true}  %>
+  <%= render path, locals: {admin: true} %>
+<% end %>

@@ -17,6 +17,7 @@ module Refinery
   autoload :Version, 'refinery/version'
   autoload :Crud, 'refinery/crud'
   autoload :BasePresenter, 'refinery/base_presenter'
+  autoload :ExtensionHooks, 'refinery/extension_hooks'
 
   module Admin
     autoload :BaseController, 'refinery/admin/base_controller'
