@@ -287,3 +287,8 @@
     @include button-primary-variant($gray-6, $gray-1, $gray-1);
   }
 }
+
+/* -------------------- FLASH MESSAGES -------------------- */
+#flash_container.glass-flash .flash {
+  padding-left: 100px;
+}
