@@ -4,10 +4,13 @@ require 'generators/refinery/cms/cms_generator'
 
 module Refinery
   describe CmsGenerator do
+    include GeneratorSpec::TestCase
     destination File.expand_path("../../../../../../tmp", __FILE__)
 
     before do
       prepare_destination
+
+      File.write "#{destination_root}/Gemfile", ""
 
       dir = "#{destination_root}/config/environments"
       FileUtils.mkdir_p(dir)
@@ -34,7 +37,7 @@ end
       SPEC
 
       copy_routes
-      run_generator %w[--skip-db --skip-migrations]
+      run_generator %w[--skip-db --skip-migrations --heroku]
     end
 
     specify do
