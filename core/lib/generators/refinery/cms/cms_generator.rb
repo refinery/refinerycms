@@ -81,8 +81,11 @@ ruby #{ENV['RUBY_VERSION'].inspect}
 
 # The Heroku gem allows you to interface with Heroku's API
 gem 'heroku'
+}
 
-group :production do
+      append_file 'Gemfile', "\ngroup :production do"
+
+      append_file 'Gemfile', %q{
   # Dragonfly's S3 Data Store extension allows you to use S3 assets (added for Heroku)
   gem 'dragonfly-s3_data_store'
 
@@ -98,10 +101,7 @@ group :production do
 }
       end
 
-      append_file 'Gemfile', %q{
-end
-
-} # close the production group that was opened for dragonfly, and pg.
+      append_file 'Gemfile', "\nend"
     end
 
     def bundle!
