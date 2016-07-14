@@ -91,13 +91,16 @@ module Refinery
         @attributes = attributes
       end
 
-      #see https://github.com/flavorjones/loofah/blob/master/lib/loofah/html5/scrub.rb#L21
-      def scrub_attributes(node)
-        node.attribute_nodes.each do |attr_node|
-          next if attr_node.node_name =~ /\Adata-[\w-]+\z/
+      def allowed_node?(node)
+        tags.include?(node.name)
+      end
 
-          super
-        end
+      def skip_node?(node)
+        node.text?
+      end
+
+      def scrub_attribute?(name)
+        attributes.exclude?(name) && name !~ /\Adata-[\w-]+\z/
       end
 
     end
