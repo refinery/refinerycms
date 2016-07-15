@@ -75,33 +75,25 @@ end}  end
     end
 
     def append_heroku_gems!
-      append_file 'Gemfile', %Q{
+      production_gems = [
+        "gem 'dragonfly-s3_data_store'",
+        "gem 'rails_12factor'",
+        "gem 'puma'"
+      ]
+      production_gems << "gem 'pg'" unless destination_gemfile_has_postgres?
+
+      append_file "Gemfile", %Q{
 # The Ruby version is specified here so that Heroku uses the right version.
 ruby #{ENV['RUBY_VERSION'].inspect}
 
 # The Heroku gem allows you to interface with Heroku's API
 gem 'heroku'
-}
 
-      append_file 'Gemfile', "\ngroup :production do"
-
-      append_file 'Gemfile', %q{
-  # Dragonfly's S3 Data Store extension allows you to use S3 assets (added for Heroku)
-  gem 'dragonfly-s3_data_store'
-
-  # Gems that are recommended for using Heroku:
-  gem 'rails_12factor'
-  gem 'puma'
-}
-      # If postgres is not the database in use, Heroku still needs it.
-      if destination_path.join('Gemfile').file? && destination_path.join('Gemfile').read !~ %r{gem ['"]pg['"]}
-        append_file 'Gemfile', %q{
-  # Postgres support (added for Heroku)
-  gem 'pg'
-}
-      end
-
-      append_file 'Gemfile', "\nend"
+# Gems that have been added for Heroku support
+group :production do
+  {{production_gems}}
+end
+}.sub("{{production_gems}}", production_gems.join("\n  "))
     end
 
     def bundle!
@@ -227,6 +219,11 @@ end
       force_options = self.options.dup
       force_options[:force] = self.options[:force] || self.options[:update]
       self.options = force_options
+    end
+
+    def destination_gemfile_has_postgres?
+      destination_path.join('Gemfile').file? &&
+        destination_path.join('Gemfile').read =~ %r{gem ['"]pg['"]}
     end
 
     def heroku?
