@@ -17,6 +17,8 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
          filter.around_generate({}) do
            raw_url
          end
+       else
+         raw_url
        end
      end
 
