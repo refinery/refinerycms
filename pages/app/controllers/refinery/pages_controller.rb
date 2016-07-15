@@ -68,12 +68,7 @@ module Refinery
     end
 
     def find_page(fallback_to_404 = true)
-      @page ||= case action_name
-                when "home"
-                  Refinery::Page.find_by(link_url: '/')
-                when "show"
-                  Refinery::Page.friendly.find_by_path_or_id(params[:path], params[:id])
-                end
+      @page ||= action_page_finder.call(params) if action_has_page_finder?
       @page || (error_404 if fallback_to_404)
     end
 
@@ -87,6 +82,29 @@ module Refinery
       # Don't cache the page with the site bar showing.
       if Refinery::Pages.cache_pages_full && !authorisation_manager.allow?(:read, :site_bar)
         cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path).to_s)
+      end
+    end
+
+    private
+    def action_has_page_finder?
+      Finders.const_defined? action_name.classify
+    end
+
+    def action_page_finder
+      Finders.const_get action_name.classify
+    end
+
+    module Finders
+      class Home
+        def self.call(_params)
+          Refinery::Page.find_by link_url: "/"
+        end
+      end
+
+      class Show
+        def self.call(params)
+          Refinery::Page.friendly.find_by_path_or_id params[:path], params[:id]
+        end
       end
     end
   end
