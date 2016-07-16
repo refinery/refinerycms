@@ -1,14 +1,34 @@
-## 3.1.0 [unreleased]
+## 4.0.0.dev [unreleased]
+* Add new admin menu icons. [#3167](https://github.com/refinery/refinerycms/pull/3167). [Stefan Spicer](https://github.com/stefanspicer) & [Brice Sanchez](https://github.com/bricesanchez)
+* Add new admin menu. [#3167](https://github.com/refinery/refinerycms/pull/3167). [Stefan Spicer](https://github.com/stefanspicer) & [Brice Sanchez](https://github.com/bricesanchez)
+* Include and configure bootstrap 4. [#3167](https://github.com/refinery/refinerycms/pull/3167). [Stefan Spicer](https://github.com/stefanspicer)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...master)
 
 
+## 3.0.5 [unreleased]
+
+* [See full list](https://github.com/refinery/refinerycms/compare/3.0.4...3-0-stable)
+
+
 ## 3.0.4 [unreleased]
 
-* [See full list](https://github.com/refinery/refinerycms/compare/3.0.3...master)
+* Fixed sitemap generation for multiple frontend locales. [#3218](https://github.com/refinery/refinerycms/pull/3218). [Dmitriy Molodtsov](https://github.com/sintro)
+* Allow finders to be defined for each action. [#3146](https://github.com/refinery/refinerycms/pull/3146). [Philip Arndt](https://github.com/parndt)
+* Fix Gemfile additions when using --heroku. [#3219](https://github.com/refinery/refinerycms/pull/3219). [Philip Arndt](https://github.com/parndt)
+* Allow all data attributes through the HTML sanitizer. [#3187](https://github.com/refinery/refinerycms/pull/3187) & [#3217](https://github.com/refinery/refinerycms/pull/3217). [nzgrover](https://github.com/nzgrover) & [Brice Sanchez](https://github.com/bricesanchez)
+* Use admin_update_page_path to avoid encoded URLs. [#3182](https://github.com/refinery/refinerycms/pull/3182). [Philip Arndt](https://github.com/parndt)
+* Improve flash messages close action. [#3168](https://github.com/refinery/refinerycms/pull/3168). [Brice Sanchez](https://github.com/bricesanchez)
+* Add skip_to_first_child_page_message. [#3168](https://github.com/refinery/refinerycms/pull/3168). [Brice Sanchez](https://github.com/bricesanchez)
+* Add skip_to_first_child label in page admin index. [#3168](https://github.com/refinery/refinerycms/pull/3168). [Brice Sanchez](https://github.com/bricesanchez)
+* Add redirected label in page admin index. [#3168](https://github.com/refinery/refinerycms/pull/3168). [Brice Sanchez](https://github.com/bricesanchez)
+* Add warning when content has been sanitized. [#3170](https://github.com/refinery/refinerycms/pull/3170). [Brice Sanchez](https://github.com/bricesanchez)
+* Remove usage of deprecated page_title_with_translations. [#3176](https://github.com/refinery/refinerycms/pull/3176). [Brice Sanchez](https://github.com/bricesanchez)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/3.0.3...3.0.4)
 
 
-## 3.0.3 [unreleased]
+## 3.0.3 [27 April 2016]
 
 * Split and tidy up stylesheets. [#3165](https://github.com/refinery/refinerycms/pull/3165). [Marie-Helene Tremblay](https://github.com/mhtremblay)
 * Add config for adding to the elements and attributes whitelisted for HTML sanitization. [#3164](https://github.com/refinery/refinerycms/pull/3164). [Anita Graham](https://github.com/anitagraham)
