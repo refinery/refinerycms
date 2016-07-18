@@ -11,7 +11,7 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/3.0.4...3-0-stable)
 
 
-## 3.0.4 [unreleased]
+## 3.0.4 [18 July 2016]
 
 * Fixed sitemap generation for multiple frontend locales. [#3218](https://github.com/refinery/refinerycms/pull/3218). [Dmitriy Molodtsov](https://github.com/sintro)
 * Allow finders to be defined for each action. [#3146](https://github.com/refinery/refinerycms/pull/3146). [Philip Arndt](https://github.com/parndt)
