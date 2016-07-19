@@ -13,7 +13,9 @@
 <%= f.hidden_field field %>
 
 <div>
-  <%= action_icon :add, insert_link, t('.name'), id: "current_resource_link_#{field}" unless resource %>
+  <%= content_tag(:div, id: "no_resource_selected_#{field}", style: ("display: none;" if resource)) do %>
+    <%= action_icon :add, insert_link, t('.name'), id: "current_resource_link_#{field}" %>
+  <% end %>
 
   <div id="current_resource_container_<%= field %>" style="margin-top: 10px;<%= ' display: none;' unless resource %>">
     <span class="current_resource" id="<%="current_resource_text_#{field}"%>">
