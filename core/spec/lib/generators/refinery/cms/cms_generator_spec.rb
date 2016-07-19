@@ -37,7 +37,7 @@ end
       SPEC
 
       copy_routes
-      run_generator %w[--skip-db --skip-migrations --heroku]
+      run_generator %w[--skip-db --skip-migrations]
     end
 
     specify do
