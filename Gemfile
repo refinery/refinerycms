@@ -22,8 +22,6 @@ gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 # Rails 5 temp. gem sources
 
 gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'feature/rails-5'
-gem 'routing-filter', github: 'svenfuchs/routing-filter', branch: 'master'
-
 gem 'globalize', github: 'globalize/globalize', branch: 'master'
 gem 'will_paginate', github: 'nmeylan/will_paginate', branch: 'master'
 
