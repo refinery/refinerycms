@@ -17,7 +17,7 @@ module Refinery
       include ::Refinery::ApplicationController
 
       def index
-        render :nothing => true
+        head :ok
       end
     end
 

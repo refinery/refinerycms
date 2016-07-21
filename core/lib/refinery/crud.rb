@@ -329,7 +329,7 @@ module Refinery
             end
 
             def after_update_positions
-              render :nothing => true
+              head :ok
             end
 
             protected :after_update_positions
