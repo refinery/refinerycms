@@ -166,8 +166,8 @@ module Refinery
           # then render only the collection of items.
           def render_partial_response?
             if request.xhr?
-              render :text => render_to_string(:partial => '#{plural_name}', :layout => false).html_safe,
-                     :layout => 'refinery/flash' and return false
+              render plain: render_to_string(partial: '#{plural_name}', layout: false).html_safe,
+                     layout: 'refinery/flash' and return false
             end
           end
 
