@@ -1,5 +1,15 @@
 es:
   refinery:
+    js:
+      admin:
+        confirm_changes: Todos los cambios realizados se perderán. ¿Estás seguro de querer continuar sin guardar?
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core refinery plugin
+      refinery_dialogs:
+        title: Dialogos
+        description: Refinery dialogs plugin
     welcome:
       there_are_no_users: "No hay usuarios registrados, así que debemos registrar al primero."
     crudify:
@@ -31,6 +41,8 @@ es:
         remove_current: Eliminar imagen actual
         change: Haz click aquí para escoger una imagen
         show: Mostrar
+      locale_picker:
+        language: Lenguaje
       resource_picker:
         download_current: Descargar archivo actual
         opens_in_new_window: Abre en una nueva ventana
@@ -42,8 +54,13 @@ es:
         button_text: Buscar
         results_for_html: "Resultados de la búsqueda &#8216;<em>%{query}</em>&#8217;"
         no_results: Lo siento, no hay resultados
+        cancel_search: 'Cancelar busqueda'
+        search_input_notice: ''
+        input:
+          placeholder: "Buscar &#8230;"
+          help: 'Introduca la palabra o frase que quiera buscar'
       delete:
-        message: ¿Seguro que quieres borrar '%{title}'?
+        message: "¿Seguro que quieres borrar '%{title}'?"
       error_messages:
         problems_in_following_fields: Hubo problemas con los siguientes campos
       help: ayuda
@@ -57,7 +74,7 @@ es:
     draft_page_message:
       not_live: Esta página NO está visible para el público.
     footer:
-      copyright: Copyright © %{year} %{site_name}
+      copyright: "Copyright © %{year} %{site_name}"
     no_script:
       enable_javascript_html: Para obtener una funcionalidad completa de esta página es necesario activar JavaScript.
       here_are: Aquí están las
