@@ -9,7 +9,6 @@ path "./" do
   gem "refinerycms-resources"
 end
 
-gem 'quiet_assets'
 gem 'spring'
 gem 'spring-commands-rspec'
 gem 'poltergeist', '>= 1.8.1'
