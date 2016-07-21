@@ -23,11 +23,7 @@ gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'feature/rails-5'
 gem 'routing-filter', github: 'svenfuchs/routing-filter', branch: 'master'
 
-# TODO: Change source when this is merged:
-# https://github.com/globalize/globalize/pull/512
-gem 'globalize', github: 'globalize/globalize', branch: 'fix_type_cast_from_database'
-gem 'activemodel-serializers-xml'
-
+gem 'globalize', github: 'globalize/globalize', branch: 'master'
 gem 'will_paginate', github: 'nmeylan/will_paginate', branch: 'master'
 
 group :development do
