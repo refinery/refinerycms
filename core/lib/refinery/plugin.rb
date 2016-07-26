@@ -19,7 +19,7 @@ module Refinery
       # core/app/assets/stylesheets/glass/components/_icons.scss
 
       # add the new plugin to the collection of registered plugins
-      ::Refinery::Plugins.registered.unshift plugin
+      ::Refinery::Plugins.registered.unshift(plugin).uniq!(&:name)
     end
 
     # Returns the internationalized version of the title
