@@ -49,6 +49,9 @@ RSpec.configure do |config|
       activerecord dragonfly benchmark quiet_assets rubygems
     ).map { |noisy| /\b#{noisy}\b/ }
   end
+
+  # Store last errors so we can run rspec with --only-failures
+  config.example_status_persistence_file_path = ".rspec_failures"
 end
 
 # Requires supporting files with custom matchers and macros, etc,

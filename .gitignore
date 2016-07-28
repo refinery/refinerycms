@@ -95,3 +95,6 @@ Gemfile.lock
 
 #byebug_history
 .byebug_history
+
+# rspec failures
+.rspec_failures
