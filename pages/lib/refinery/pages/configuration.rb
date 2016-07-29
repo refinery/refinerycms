@@ -24,7 +24,7 @@ module Refinery
     self.layout_template_whitelist = ["application"]
     self.add_whitelist_elements = %w[ source track ]
     # Note: "data-" attributes are whitelisted by default. See https://github.com/refinery/refinerycms/pull/3187
-    self.add_whitelist_attributes = %w[ kind srclang placeholder controls ]
+    self.add_whitelist_attributes = %w[ kind srclang placeholder controls required ]
 
 
     class << self
