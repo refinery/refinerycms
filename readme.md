@@ -59,8 +59,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 
 * [Getting Started](http://refinerycms.com/guides/getting-started)
 * [Guides](http://refinerycms.com/guides)
-* [Google Group Discussion](http://group.refinerycms.org)
-* [IRC Channel](http://refinerycms.com/guides/how-to-get-help#irc-channel)
+* [Google Group Discussion](https://groups.google.com/forum/#!forum/refinery-cms)
 * [Gitter chat](https://gitter.im/refinery/refinerycms)
 * [GitHub repository](https://github.com/refinery/refinerycms)
 * [Developer/API documentation](http://rubydoc.info/github/refinery/refinerycms)
