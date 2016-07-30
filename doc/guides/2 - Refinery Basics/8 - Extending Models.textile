@@ -70,16 +70,16 @@ Next, to whitelist the +:background_image_id+, we need to 'permit' the param in 
 Create a new file in the +decorators/controllers/refinery/admin+ directory called +pages_controller_decorator.rb+:
 
 <ruby>
-# Open the Refinery::Admin::PagesController controller for manipulation
-Refinery::Admin::PagesController.class_eval do
-  def page_params_with_my_params
-    page_params_without_my_params.merge(params.require(:page).permit(:background_image_id))
+Refinery::Admin::PagesController.prepend(
+  Module.new do
+    def permitted_page_params
+      super << [:background_image_id]
+    end
   end
-  alias_method_chain :page_params, :my_params
-end
+)
 </ruby>
 
-+alias_method_chain+ will alias the normal +page_params+ method to our newly defined method +page_params_with_my_params+ and will alias the old +page_params+ to +page_params_without_my_params+. This enables us to add additional params to be permitted without having to override Refinery's defined +page_params+ method.
+This enables us to add additional params to be permitted without having to override Refinery's defined +page_params+ method.
 
 After saving, the admin pages controller can now use the Page model to store a background image, but there is no way to associate an image through the administrative interface.
 
