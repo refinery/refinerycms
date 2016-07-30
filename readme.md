@@ -30,7 +30,11 @@ If you're new to Refinery, start with this guide:
 
 * __[Getting Started](http://refinerycms.com/guides/getting-started)__
 
-If you want to use Rails 4.2.x with Refinery now, install using this template:
+If you want to use `3-0-stable` branch of Refinery with Rails 4.2.x. Install using this template:
+
+    rails new app_name -m http://refinerycms.com/t/3-0-stable
+
+If you want to use `edge` branch of Refinery. Install using this template:
 
     rails new app_name -m http://refinerycms.com/t/edge
 
@@ -55,8 +59,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 
 * [Getting Started](http://refinerycms.com/guides/getting-started)
 * [Guides](http://refinerycms.com/guides)
-* [Google Group Discussion](http://group.refinerycms.org)
-* [IRC Channel](http://refinerycms.com/guides/how-to-get-help#irc-channel)
+* [Google Group Discussion](https://groups.google.com/forum/#!forum/refinery-cms)
 * [Gitter chat](https://gitter.im/refinery/refinerycms)
 * [GitHub repository](https://github.com/refinery/refinerycms)
 * [Developer/API documentation](http://rubydoc.info/github/refinery/refinerycms)
