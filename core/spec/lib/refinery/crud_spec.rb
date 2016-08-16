@@ -1,7 +1,7 @@
 require "spec_helper"
 
 ActiveRecord::Schema.define do
-  create_table :refinery_crud_dummies, :force => true do |t|
+  create_table :refinery_crud_dummies, force: true do |t|
     t.integer :parent_id
     t.integer :lft
     t.integer :rgt
@@ -20,7 +20,7 @@ module Refinery
 end
 
 module Refinery
-  describe CrudDummyController, :type => :controller do
+  describe CrudDummyController, type: :controller do
     before do
       @routes = ActionDispatch::Routing::RouteSet.new.tap do |r|
         r.draw do
@@ -40,12 +40,12 @@ module Refinery
         let!(:crud_dummy_three) { Refinery::CrudDummy.create! }
 
         it "orders dummies" do
-          post :update_positions, {
-            "ul" => {
-              "0" => {
-                "0" => {"id" => "crud_dummy_#{crud_dummy_three.id}"},
-                "1" => {"id" => "crud_dummy_#{crud_dummy_two.id}"},
-                "2" => {"id" => "crud_dummy_#{crud_dummy_one.id}"}
+          post :update_positions, params: {
+            "ul": {
+              "0": {
+                "0": {"id": "crud_dummy_#{crud_dummy_three.id}"},
+                "1": {"id": "crud_dummy_#{crud_dummy_two.id}"},
+                "2": {"id": "crud_dummy_#{crud_dummy_one.id}"}
               }
             }
           }
@@ -64,23 +64,23 @@ module Refinery
         end
 
         it "orders nested dummies" do
-          nested_crud_dummy_one = Refinery::CrudDummy.create! :parent_id => crud_dummy_one.id
-          nested_crud_dummy_two = Refinery::CrudDummy.create! :parent_id => crud_dummy_one.id
+          nested_crud_dummy_one = Refinery::CrudDummy.create! parent_id: crud_dummy_one.id
+          nested_crud_dummy_two = Refinery::CrudDummy.create! parent_id: crud_dummy_one.id
 
-          post :update_positions, {
-            "ul" => {
-              "0" => {
-                "0" => {
-                  "id" => "crud_dummy_#{crud_dummy_three.id}",
-                  "children" => {
-                    "0" => {
-                      "0" => {"id" => "crud_dummy_#{nested_crud_dummy_one.id}"},
-                      "1" => {"id" => "crud_dummy_#{nested_crud_dummy_two.id}"}
+          post :update_positions, params: {
+            "ul": {
+              "0": {
+                "0": {
+                  "id": "crud_dummy_#{crud_dummy_three.id}",
+                  "children": {
+                    "0": {
+                      "0": {"id": "crud_dummy_#{nested_crud_dummy_one.id}"},
+                      "1": {"id": "crud_dummy_#{nested_crud_dummy_two.id}"}
                     }
                   }
                 },
-                "1" => {"id" => "crud_dummy_#{crud_dummy_two.id}"},
-                "2" => {"id" => "crud_dummy_#{crud_dummy_one.id}"}
+                "1": {"id": "crud_dummy_#{crud_dummy_two.id}"},
+                "2": {"id": "crud_dummy_#{crud_dummy_one.id}"}
               }
             }
           }
@@ -117,10 +117,10 @@ module Refinery
         # sorted above #2 if we are sorting by strings.
         11.times do |n|
           dummy << Refinery::CrudDummy.create!
-          dummy_params[n.to_s] = {"id" => "crud_dummy_#{dummy[n].id}"}
+          dummy_params[n.to_s] = {"id": "crud_dummy_#{dummy[n].id}"}
         end
 
-        post :update_positions, { "ul" => { "0" => dummy_params } }
+        post :update_positions, params: { "ul": { "0": dummy_params } }
 
         expect(dummy.last.reload.lft).to eq(21)
       end
