@@ -36,7 +36,7 @@ module ::Refinery
       end
 
       def url_params
-        params.reject { |key, value| /(action)|(controller)/ === key}.
+        params.to_unsafe_h.reject { |key, value| /(action)|(controller)/ === key}.
                merge :id => nil
       end
 
