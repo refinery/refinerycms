@@ -283,7 +283,8 @@ module Refinery
             # Based upon https://github.com/matenia/jQuery-Awesome-Nested-Set-Drag-and-Drop
             def update_positions
               previous = nil
-              params[:ul].each do |_, list|
+              # TODO: Find fix because `to_unsafe_h` badly reorder the hash
+              params.to_unsafe_h[:ul].each do |_, list|
                 list.each do |index, hash|
                   moved_item_id = hash['id'][/\\d+\\z/]
                   @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
