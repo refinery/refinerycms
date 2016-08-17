@@ -73,6 +73,9 @@ en:
           layout_template_help: You can choose a different layout template for this page
           view_template: View template
           view_template_help: You can choose a different view template for this page
+          expand_in_admin_tree: Expand in admin tree
+          expand_in_admin_tree_label: Display this page expanded in admin pages tree
+          expand_in_admin_tree_help: Uncheck this box if you don't want to expand this page from your admin pages tree.
         actions:
           create_new_page: Add new page
           reorder_pages: Reorder pages

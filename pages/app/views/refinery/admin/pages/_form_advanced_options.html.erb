@@ -79,6 +79,18 @@
                   :class => "stripped" %>
     </div>
 
+    <% if Refinery::Pages.auto_expand_admin_tree %>
+      <div class='field'>
+        <span class='label_with_help'>
+          <%= f.label :expand_in_admin_tree, t('.expand_in_admin_tree') %>
+          <%= refinery_help_tag t('.expand_in_admin_tree_help') %>
+        </span>
+        <%= f.check_box :expand_in_admin_tree %>
+        <%= f.label :expand_in_admin_tree, t('.expand_in_admin_tree_label'),
+                    :class => "stripped" %>
+      </div>
+    <% end %>
+
     <%= render 'form_extra_fields_for_more_options', :f => f %>
   </div>
 
