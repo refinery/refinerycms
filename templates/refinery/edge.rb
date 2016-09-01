@@ -45,6 +45,10 @@ gem 'refinerycms-authentication-devise', '~> 1.0'
 "
 end
 
+if RbConfig::CONFIG['target_os'] =~ /linux/i && !defined?(JRUBY_VERSION)
+  gsub_file 'Gemfile', "# gem 'therubyracer'", "gem 'therubyracer'"
+end
+
 run 'bundle install'
 
 rake 'db:create'
