@@ -10,6 +10,10 @@ da:
         edit: Redigér billede
         form:
           image: Billede
+          image_title: Titel
+          image_title_help: Angiv en titel for billedet
+          image_alt: Beskrivelse
+          image_alt_help: Angiv en beskrivelse for billedet
           use_current_image: Behold nuværende billede
           or: eller
           replace_image: " erstat med dette..."
