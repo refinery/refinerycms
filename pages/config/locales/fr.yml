@@ -37,9 +37,11 @@ fr:
         new: Ajouter une nouvelle sous-page
         expand_collapse: Développer ou réduire les sous-pages
         page:
-          view_live_html: Voir cette page<br/><em>(Ouvre une nouvelle fenêtre)</em>
-          hidden: caché
           draft: brouillon
+          hidden: caché
+          redirected: redirigé
+          skip_to_first_child: redirigé vers 1er enfant
+          view_live_html: Voir cette page<br/><em>(Ouvre une nouvelle fenêtre)</em>
         form:
           preview: Prévisualiser
           preview_changes: Prévisualiser vos changements avant de les appliquer
