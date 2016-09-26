@@ -10,7 +10,7 @@ module Refinery
       include ActionView::Helpers::UrlHelper
       include ActiveSupport::Configurable
 
-      config_accessor :roots, :menu_tag, :list_tag, :list_item_tag, :css, :dom_id,
+      config_accessor :roots, :menu_tag, :menu_role, :list_tag, :list_item_tag, :css, :dom_id,
                       :max_depth, :active_css, :selected_css, :first_css, :last_css, :list_tag_css,
                       :link_tag_css
       self.dom_id = 'menu'
@@ -42,7 +42,7 @@ module Refinery
 
       private
       def render_menu(items)
-        content_tag(menu_tag, :id => dom_id, :class => css) do
+        content_tag(menu_tag, id: dom_id, class: css, role: menu_role) do
           render_menu_items(items)
         end
       end
