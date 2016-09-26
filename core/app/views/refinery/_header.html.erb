@@ -1,8 +1,11 @@
-<%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %>
 <%= content_tag :div, id: "logo", itemscope: "",  itemtype: "http://schema.org/Organization" do %>
   <%= link_to refinery.root_path, itemprop: "url" do %>
     <%= content_tag :span, { itemprop: "name"} do %>
       <%= Refinery::Core.site_name %>
     <% end %>
   <% end %>
+<% end %>
+
+<% cache(cache_key_for_main_menu(@page)) do %>
+  <%= main_menu(1).to_html %>
 <% end %>
