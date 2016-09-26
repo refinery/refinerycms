@@ -8,13 +8,13 @@
   <body id="<%= canonical_id @page %>">
     <%= site_bar -%>
     <div id="page_container">
-      <header id="header">
+      <header id="header" role="banner">
         <%= render "/refinery/header" -%>
       </header>
-      <section id="page">
+      <main id="page" role="main">
         <%= yield %>
-      </section>
-      <footer>
+      </main>
+      <footer role="contentinfo">
         <%= render "/refinery/footer" -%>
       </footer>
     </div>
