@@ -1,4 +1,8 @@
-<h1 id='logo'>
-  <%= link_to Refinery::Core.site_name, refinery.root_path %>
-</h1>
 <%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %>
+<%= content_tag :div, id: "logo", itemscope: "",  itemtype: "http://schema.org/Organization" do %>
+  <%= link_to refinery.root_path, itemprop: "url" do %>
+    <%= content_tag :span, { itemprop: "name"} do %>
+      <%= Refinery::Core.site_name %>
+    <% end %>
+  <% end %>
+<% end %>
