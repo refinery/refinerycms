@@ -18,7 +18,6 @@ module Refinery
         end
 
         ::ApplicationController.send :helper, Refinery::Pages::ContentPagesHelper
-        ::ApplicationController.send :helper, Refinery::Pages::MenuPagesHelper
         Refinery::AdminController.send :helper, Refinery::Pages::ContentPagesHelper
       end
 

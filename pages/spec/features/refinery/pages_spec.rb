@@ -13,7 +13,7 @@ module Refinery
     end
 
     def standard_page_menu_items_exist?
-      within('#menu') do
+      within('.menu') do
         expect(page).to have_content(home_page.title)
         expect(page).to have_content(about_page.title)
         expect(page).not_to have_content(draft_page.title)
