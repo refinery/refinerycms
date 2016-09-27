@@ -6,6 +6,10 @@
   <% end %>
 <% end %>
 
-<% cache(cache_key_for_main_menu(@page)) do %>
-  <%= main_menu(1).to_html %>
+<% cache [I18n.locale, 'main_menu', @page, Refinery::Page.fast_menu.map(&:updated_at).max] do %>
+  <%=
+    main_menu = Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self)
+    main_menu.menu_role = 'navigation' 
+    main_menu.to_html 
+  %>
 <% end %>
