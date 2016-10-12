@@ -56,7 +56,7 @@ module Refinery
       def add_route_parts_as_reserved_words
         ActiveSupport.on_load(:active_record) do
           # do not add routes with :allow_slug => true
-          included_routes = Rails.application.routes.named_routes.reject{ |name, route| route.defaults[:allow_slug] }
+          included_routes = Rails.application.routes.named_routes.to_a.reject{ |name, route| route.defaults[:allow_slug] }
           route_paths = included_routes.map { |name, route| route.path.spec }
           route_paths.reject! { |path| path.to_s =~ %r{^/(rails|refinery)}}
           Refinery::Pages.friendly_id_reserved_words |= route_paths.map { |path|
