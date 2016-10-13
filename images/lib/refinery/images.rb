@@ -1,10 +1,13 @@
 require 'refinerycms-core'
 require 'dragonfly'
+require 'refinerycms-dragonfly'
 
 module Refinery
   autoload :ImagesGenerator, 'generators/refinery/images/images_generator'
 
+
   module Images
+    #require 'refinery/caststone/caststone_dragonfly'
     require 'refinery/images/engine'
     require 'refinery/images/configuration'
 
