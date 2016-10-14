@@ -33,7 +33,9 @@ end
 
 
 # Add the default visual editor, for now.
-gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6']
+gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6'],
+  git: "https://github.com/parndt/refinerycms-wymeditor",
+  branch: "bugfix/rails-5"
 
 # Database Configuration
 unless ENV['TRAVIS']
