@@ -20,9 +20,9 @@ gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 ###########################
 # Rails 5 temp. gem sources
 
-gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'feature/rails-5'
-gem 'globalize', github: 'globalize/globalize', branch: 'master'
-gem 'will_paginate', github: 'nmeylan/will_paginate', branch: 'master'
+gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'feature/rails-5'
+gem 'globalize', git: 'https://github.com/globalize/globalize', branch: 'master'
+gem 'will_paginate', git: 'https://github.com/nmeylan/will_paginate', branch: 'master'
 
 group :development do
   gem 'listen', '~> 3.0'
