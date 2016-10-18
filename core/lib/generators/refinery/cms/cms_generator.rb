@@ -86,9 +86,6 @@ end}  end
 # The Ruby version is specified here so that Heroku uses the right version.
 ruby #{ENV['RUBY_VERSION'].inspect}
 
-# The Heroku gem allows you to interface with Heroku's API
-gem 'heroku'
-
 # Gems that have been added for Heroku support
 group :production do
   {{production_gems}}
