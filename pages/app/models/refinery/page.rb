@@ -137,11 +137,10 @@ module Refinery
         dialog ? Pages.pages_per_dialog : Pages.pages_per_admin_index
       end
 
-      def rebuild_with_slug_nullification!
-        rebuild_without_slug_nullification!
+      def rebuild!
+        super
         nullify_duplicate_slugs_under_the_same_parent!
       end
-      alias_method_chain :rebuild!, :slug_nullification
 
       protected
 
