@@ -52,5 +52,9 @@ module Refinery
       "#{page.canonical_slug}-page" if page
     end
 
+    def view_template_class(page)
+      "template-#{page.view_template}" if page
+    end
+
   end
 end
