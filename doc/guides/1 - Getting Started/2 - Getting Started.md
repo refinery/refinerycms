@@ -4,10 +4,9 @@ Getting Started
 This guide covers getting up and running with Refinery CMS. After
 reading it, you should be familiar with:
 
--   Installing and creating a new Refinery site
--   Switching between the back-end Refinery site editor and the
-    front-end of a site
--   Changing the front end design of a Refinery site
+  - Installing and creating a new Refinery site
+  - Switching between the back-end Refinery site editor and the front-end of a site
+  - Changing the front end design of a Refinery site
 
 endprologue.
 
@@ -21,20 +20,17 @@ Refinery CMS site from scratch. It does not assume that you have any
 prior experience with Refinery. However, to get the most out of it, you
 need to have some prerequisites installed:
 
--   The [Ruby](http://www.ruby-lang.org/en/downloads) language version
-    1.9.3 or higher
--   A working installation of the [SQLite3
-    Database](http://www.sqlite.org)
--   A working installation of
-    [ImageMagick](http://www.imagemagick.org/script/install-source.php)
+  - The [Ruby](http://www.ruby-lang.org/en/downloads) language version 1.9.3 or higher
+  - A working installation of the [SQLite3 Database](http://www.sqlite.org)
+  - A working installation of [ImageMagick](http://www.imagemagick.org/script/install-source.php)
 
-TIP: If you don’t already have these things, then you will need to
+TIP: If you don't already have these things, then you will need to
 follow the [Installing Refinery
 Prerequisites](/guides/installation-prerequisites/) guide.
 
 TIP: It is recommended that developers use RVM to manage Ruby versions
-and gems. Once RVM is installed on your system, and you’ve created a
-gemset for the project, create an .rvmrc file in the site’s root
+and gems. Once RVM is installed on your system, and you've created a
+gemset for the project, create an .rvmrc file in the site's root
 directory. Its contents should look something like:
 
     $ rvm use --create ruby-1.9.3@refinery
@@ -48,9 +44,8 @@ experience with Rails, you will find a very steep learning curve diving
 straight into Refinery. There are some good free resources on the
 Internet for learning Rails, including:
 
--   [Getting Started with
-    Rails](http://guides.rubyonrails.org/getting_started.html)
--   [Rails for Zombies](http://railsforzombies.org)
+  - [Getting Started with Rails](http://guides.rubyonrails.org/getting_started.html)
+  - [Rails for Zombies](http://railsforzombies.org)
 
 ### What is Refinery CMS?
 
@@ -65,22 +60,22 @@ framework.
 
 The Refinery philosophy includes several guiding principles:
 
--   **“The Rails Way” where possible** - Refinery embraces conventions
+  - **"The Rails Way" where possible** - Refinery embraces conventions
     used in Rails, allowing any Rails programmer to leverage existing
     knowledge to get up and running quickly.
--   **End user focused interface** - Refinery’s user interface is
+  - **End user focused interface** - Refinery's user interface is
     simple, bright and attractive so end users feel invited and
     not overwhelmed.
--   **Awesome developer tools** - Refinery makes it easy for developers
+  - **Awesome developer tools** - Refinery makes it easy for developers
     to add functionality and change the front end look and feel.
--   **Encourage and Help Others** - Refinery has an active community on
+  - **Encourage and Help Others** - Refinery has an active community on
     Google Groups and IRC. If you ever have a question there is someone
     able and willing to assist.
 
-#### Refinery’s architecture
+#### Refinery's architecture
 
 Refinery is comprised of several Rails Engines. Each engine, or
-“extension,” acts like a mini Rails application with its own routes and
+"extension," acts like a mini Rails application with its own routes and
 views. Refinery is architected like this so that it keeps out of the way
 of any custom development you will do in the */app* directory.
 
@@ -88,22 +83,22 @@ of any custom development you will do in the */app* directory.
 
 The extensions Refinery comes with are:
 
--   **Authentication** (optional) - manages users and sessions within Refinery.
--   **Core** - contains default layouts, views, javascripts and CSS.
+  - **Authentication** (optional) - manages users and sessions within Refinery.
+  - **Core** - contains default layouts, views, javascripts and CSS.
     This extension also has an extension API for extending Refinery and
     everything Refinery needs to hook into Rails.
--   **Images** - handles image upload, insertion and processing images
+  - **Images** - handles image upload, insertion and processing images
     using [Dragonfly](https://github.com/markevans/dragonfly).
--   **Pages** - allows you to manage pages including the structure of
+  - **Pages** - allows you to manage pages including the structure of
     your site displayed in the front end.
--   **Resources** - handles file upload and storage.
+  - **Resources** - handles file upload and storage.
 
 ### Creating a new Refinery project
 
 ![](/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMDdfMTRfNjQ3X3JpY2tfYXN0bGV5X25ldmVyX2dvbm5hX2dpdmVfeW91X3VwLmpwZyJdXQ/12_07_14_647_rick_astley_never_gonna_give_you_up.jpg)
 
-If you follow this guide, you’ll create a Refinery site called
-`rickrockstar` that will have a custom design. Then you’ll be ready to
+If you follow this guide, you'll create a Refinery site called
+`rickrockstar` that will have a custom design. Then you'll be ready to
 go further in the following guide and add events extension to allow Rick
 to tell his fans when his next gig is.
 
@@ -129,7 +124,7 @@ NOTE: If *gem install refinerycms* fails with an error message saying
 *ERROR: While executing gem … (Gem::ImpossibleDependenciesError)*, run
 *gem install rails -v=3.2.15* then *gem install refinerycms*
 
-TIP. If you’re working on Windows, you should be aware that the vast
+TIP. If you're working on Windows, you should be aware that the vast
 majority of Refinery development is done in Unix environments. If at all
 possible, we suggest that you develop on a Linux based operating system.
 
@@ -148,7 +143,7 @@ you are not using an RVM gemset:
     $ rails *3.2.15* new rickrockstar -m http://refinerycms.com/t/2.1.0
 
 TIP. If you want to create a Rails 4 application with refinerycms,
-you’ll have to use the edge version. This works with Rails 4.2.3:
+you'll have to use the edge version. This works with Rails 4.2.3:
 
     $ rails new rickrockstar -m http://refinerycms.com/t/edge
 
@@ -169,13 +164,13 @@ create files, and type:
 
 This will create a new Rails application with Refinery built in called
 RickRockStar in a directory called *rickrockstar*. It also automatically
-runs *bundle install* which will find and install all Refinery’s ruby
+runs *bundle install* which will find and install all Refinery's ruby
 gem dependencies. Finally, it creates your database and seeds it with
 some basic defaults to get you started.
 
 NOTE: In this guide we are using an SQLite3 database for data storage,
 because it is a zero-configuration database that works without effort.
-Refinery also supports MySQL and PostgreSQL “out of the box”. For
+Refinery also supports MySQL and PostgreSQL "out of the box". For
 important applications, you may wish to use one of these other database
 systems.
 
@@ -184,7 +179,7 @@ Refinery will create a folder in your working directory called
 
     $ cd rickrockstar
 
-Open up that folder and explore its contents. You’ll notice what you
+Open up that folder and explore its contents. You'll notice what you
 have is a very standard Rails application.
 
 ### Hello, Refinery!
@@ -210,7 +205,7 @@ Refinery user.
 ![](/system/images/W1siZiIsIjIwMTIvMDMvMDQvMTRfMTFfMjRfOTkzX3NldF91cF95b3VyX2ZpcnN0X3VzZXIucG5nIl0sWyJwIiwidGh1bWIiLCI2MTB4Il1d/set-up-your-first-user.png)
 
 TIP: To stop the web server, hit *Ctrl+C* in the terminal window where
-it’s running.
+it's running.
 
 WARNING: If you do not see this page, but rather see a default page for
 Rails, ensure you have removed *public/index.html*. The installer should
@@ -226,17 +221,17 @@ Fill out the sign up form to create your first user. This will be the
 super user of Refinery, meaning this user will be able to create other
 users later on.
 
-Once you’ve created your first user you’ll see Refinery’s admin.
+Once you've created your first user you'll see Refinery's admin.
 
 ![](/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfNzIxX2Rhc2hib2FyZC5wbmciXV0/dashboard.png)
 
 #### Setting Your Site Name
 
-You’ll need to set your Site Name; it’s used in several spots on the CMS
+You'll need to set your Site Name; it's used in several spots on the CMS
 to give you nice branding (for instance, in the blue header at the top
 of the page and in the footer of your site).
 
-To do this, you’ll have to edit *config/initializers/refinery/core.rb*.
+To do this, you'll have to edit *config/initializers/refinery/core.rb*.
 Look for the line that begins:
 
 ```ruby
@@ -248,9 +243,9 @@ configuration options in this file (and in other Refinery initializer
 files) are all commented out, because these options are already set deep
 inside of Refinery. If you uncomment a line, Refinery will prefer the
 value you set inside these initializers. Go ahead and remove the *\#*
-character plus the space before the word ‘config’, and then change
-“Company Name” to “Rick Rock Star”. Make sure you save, and then restart
-your server (if you’re using the built-in Rails server, hit *Ctrl+C*,
+character plus the space before the word 'config', and then change
+"Company Name" to "Rick Rock Star". Make sure you save, and then restart
+your server (if you're using the built-in Rails server, hit *Ctrl+C*,
 and then type *rails server* again.
 
 TIP: Many parts of Refinery can be customized by changing the options
@@ -260,24 +255,24 @@ extensions you install.
 
 #### Explore Refinery
 
-Now you’re setup, click around the various tabs in the backend and
+Now you're setup, click around the various tabs in the backend and
 become familiar with what comes out of the box.
 
 ![](/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfNTRfNDJfNzNfcmVvcmRlcl90YWJzLnBuZyJdXQ/12_54_42_73_reorder_tabs.png)
 
 While exploring, one of the first things to do is reorder the tabs to
 reflect what you will be working on the most. Click the tab with the two
-green arrows, and then drag the backend tabs - for example, “Users” or
-“Images” - into an order which makes the most sense to you.
+green arrows, and then drag the backend tabs - for example, "Users" or
+"Images" - into an order which makes the most sense to you.
 
-Click the reorder button again when you’re done to save.
+Click the reorder button again when you're done to save.
 
 #### Switching to your front end
 
 ![](>/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfNTdfMDZfNDIyX3N3aXRjaF90b193ZWJzaXRlLnBuZyJdXQ/12_57_06_422_switch_to_website.png)
 
-You’re currently in the back-end Refinery site editor. To see the
-front-end site, click “Switch to your website”.
+You're currently in the back-end Refinery site editor. To see the
+front-end site, click "Switch to your website".
 
 As you can see, Refinery is already displaying a basic menu and layout
 ready for you to customise.
@@ -286,7 +281,7 @@ ready for you to customise.
 
 ### Customising the Design
 
-The layout Refinery provides out of the box is very bare. We’ll now
+The layout Refinery provides out of the box is very bare. We'll now
 guide you through customising the front end design to give Rick the
 beautiful site we promised.
 
@@ -297,18 +292,18 @@ end site you currently have. But more times than often you want to
 customise them with your own layout and design.
 
 TIP: Overriding Refinery views is a common pattern which is worth
-keeping in mind at all times. If Refinery isn’t displaying something how
-you’d like, just override it.
+keeping in mind at all times. If Refinery isn't displaying something how
+you'd like, just override it.
 
 If you request *http://localhost:3000/about*, this maps by default to
-Refinery’s *pages\_controller.rb* show action.
+Refinery's *pages\_controller.rb* show action.
 
 So as you would expect according to Rails convention, the view for this
-action is located in *app/views/refinery/pages/show.html.erb*. You won’t
+action is located in *app/views/refinery/pages/show.html.erb*. You won't
 be able to see this file because Refinery is providing it for you. Next,
-let’s override that view and replace it with our own.
+let's override that view and replace it with our own.
 
-TIP: Overriding a file simply copies the file from Refinery’s code into
+TIP: Overriding a file simply copies the file from Refinery's code into
 your *app/* folder. Many people are confused as to what can be
 overridden initially. Any controller, model, view, javascript, or
 stylesheet from any installed extension can be overridden, but the most
@@ -321,7 +316,7 @@ folder.
 Refinery comes with a rake task called *refinery:override* which allows
 you to copy files out of Refinery and into your own application to
 change. To see a list of possible commands simply run
-`rake refinery:override` in the console. Let’s override the pages show
+`rake refinery:override` in the console. Let's override the pages show
 view:
 
     $ rake refinery:override view=refinery/pages/show
@@ -335,7 +330,7 @@ this:
 ```
 
 Refinery has a *content\_page* partial it uses just to get you started.
-But we’ll soon remove this and use our own ERB view instead.
+But we'll soon remove this and use our own ERB view instead.
 
 #### Rendering content using *@page*
 
@@ -354,21 +349,21 @@ this:
 </section>
 ```
 
-As you can see we’re going to render a view with some HTML5 tags and
+As you can see we're going to render a view with some HTML5 tags and
 along with some content coming from the CMS (those are the lines that
 mention *@page*).
 
 *@page* has what we call *PageParts* associated with it. To see what we
-mean, go to <http://localhost:3000/refinery/pages> and then click “Edit”
-on the page titled “About”.
+mean, go to <http://localhost:3000/refinery/pages> and then click "Edit"
+on the page titled "About".
 
-When you edit the About page you’ll see something like this:
+When you edit the About page you'll see something like this:
 
 ![](/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfNDg5X2Fib3V0X3BhZ2VfZWRpdC5wbmciXV0/about_page_edit.png)
 
-You’ll notice two tabs on the page: “Body” and “Side Body”. These are
+You'll notice two tabs on the page: "Body" and "Side Body". These are
 *PageParts*, or in other words, a single piece of content attached to
-this page that you can render in your view. There is a “Body” tab with
+this page that you can render in your view. There is a "Body" tab with
 some content on this screen. To render that same content in your view,
 put:
 
@@ -378,8 +373,8 @@ put:
 
 #### Styling your views
 
-As mentioned earlier, a key principle in Refinery is to stick to “The
-Rails Way” where possible. This is apparent in the way you style your
+As mentioned earlier, a key principle in Refinery is to stick to "The
+Rails Way" where possible. This is apparent in the way you style your
 views too. You style your site exactly how you would style any Rails 3.1
 application, using *app/assets/stylesheets/application.css.scss*.
 
@@ -420,9 +415,9 @@ body {
 ```
 
 TIP: You can add CSS for specific pages by using their slug with -page.
-The default for the home page is ‘home-page’.
+The default for the home page is 'home-page'.
 
-Now when you view your front end at <http://localhost:3000/about> you’ll
+Now when you view your front end at <http://localhost:3000/about> you'll
 notice your site has a grey background, with a horizontal menu and two
 white content areas.
 
@@ -441,7 +436,7 @@ columns.
 ### What Next?
 
 You have Refinery up and running and know how to display content, change
-the design, and work with the administrative backend. Now you’re ready
+the design, and work with the administrative backend. Now you're ready
 to see how to use RefineryCMS with your own models, views, and
 controllers (MVCs). You do this by generating and customizing a Refinery
 extension, which is covered in the [Generate an Extension to Use Your
