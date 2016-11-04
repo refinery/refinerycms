@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-ui-rails',             '~> 5.0.0'
   s.add_dependency 'decorators',                  '~> 2.0.0'
   s.add_dependency 'zilch-authorisation'
-  s.add_dependency 'bootstrap',                   '~> 4.0.0.alpha3'
+  s.add_dependency 'bootstrap',                   '~> 4.0.0.alpha5'
 
   s.cert_chain  = [File.expand_path("../../certs/parndt.pem", __FILE__)]
   if $0 =~ /gem\z/ && ARGV.include?("build") && ARGV.include?(__FILE__)
