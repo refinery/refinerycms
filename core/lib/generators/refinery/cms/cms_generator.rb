@@ -283,7 +283,7 @@ end
       generator_args << '--quiet' if self.options[:quiet]
       generator_args << '--skip-migrations' if self.options[:skip_migrations]
       Refinery::CoreGenerator.start generator_args
-      Refinery::AuthenticationGenerator.start generator_args if defined?(Refinery::AuthenticationGenerator)
+      Refinery::Authentication::DeviseGenerator.start generator_args if defined?(Refinery::Authentication::DeviseGenerator)
       Refinery::ResourcesGenerator.start generator_args if defined?(Refinery::ResourcesGenerator)
       Refinery::PagesGenerator.start generator_args if defined?(Refinery::PagesGenerator)
       Refinery::ImagesGenerator.start generator_args if defined?(Refinery::ImagesGenerator)
