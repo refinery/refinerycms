@@ -99,6 +99,7 @@ module Refinery
         # images
         Rails.application.config.assets.precompile += %w(
           refinery/images/*
+          refinery/refinery-cms-logo.svg
         )
 
         # fonts
