@@ -25,7 +25,7 @@ if Refinery::Page.where(menu_match: "^/$").empty?
   )
   page_not_found_page.parts.create(
     title: "Body",
-    body: "<h2>Sorry, there was a problem...</h2><p>The page you requested was not found.</p><p><a href='/'>Return to the home page</a></p>",
+    body: '<h2>Sorry, there was a problem...</h2><p>The page you requested was not found.</p><p><a href="/">Return to the home page</a></p>',
     position: 0
   )
 
