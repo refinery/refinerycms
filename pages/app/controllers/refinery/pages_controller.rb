@@ -3,7 +3,7 @@ module Refinery
     include Pages::RenderOptions
 
     before_action :find_page, :set_canonical
-    before_action :error_404, :unless => :current_user_can_view_page?
+    before_action :error_404, unless: :current_user_can_view_page?
 
     # Save whole Page after delivery
     after_action :write_cache?
@@ -60,9 +60,13 @@ module Refinery
     end
 
     def current_user_can_view_page?
-      page.live? || authorisation_manager.allow?(:plugin, "refinery_pages")
+      page.live? || current_refinery_user_can_access?("refinery_pages")
     end
 
+    def current_refinery_user_can_access?(plugin)
+      admin? && authorisation_manager.allow?(:plugin, plugin)
+    end
+    
     def first_live_child
       page.children.order('lft ASC').live.first
     end
