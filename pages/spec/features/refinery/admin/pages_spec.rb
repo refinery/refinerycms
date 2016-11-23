@@ -134,6 +134,14 @@ module Refinery
               expect(page).to have_content(team.title)
               expect(page).to have_content(locations.title)
             end
+
+            it "doesn't shows children when expand_in_admin_tree is false" do
+              company.toggle!(:expand_in_admin_tree)
+              visit refinery.admin_pages_path
+
+              expect(page).not_to have_content(team.title)
+              expect(page).not_to have_content(locations.title)
+            end
           end
         end
       end

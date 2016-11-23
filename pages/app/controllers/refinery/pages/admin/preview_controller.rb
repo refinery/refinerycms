@@ -41,7 +41,8 @@ module Refinery
           [
             :browser_title, :draft, :link_url, :menu_title, :meta_description,
             :parent_id, :skip_to_first_child, :show_in_menu, :title, :view_template,
-            :layout_template, :custom_slug, parts_attributes: [:id, :title, :slug, :body, :position]
+            :layout_template, :custom_slug, :expand_in_admin_tree,
+             parts_attributes: [:id, :title, :slug, :body, :position]
           ]
         end
       end
