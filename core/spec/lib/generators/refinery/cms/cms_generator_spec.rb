@@ -55,11 +55,6 @@ end
               end
             end
           end
-          directory "views" do
-            directory "sitemap" do
-              file "index.xml.builder"
-            end
-          end
         end
         directory "config" do
           file "database.yml.mysql"
