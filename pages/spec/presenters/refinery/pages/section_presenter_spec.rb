@@ -114,13 +114,10 @@ module Refinery
 
         describe "#sanitize_content" do
           it "shows a sanitized content warning" do
+            expect(Rails.logger).to receive(:warn).with(%Q{\n-- SANITIZED CONTENT WARNING --\nRefinery::Pages::SectionPresenter#wrap_content_in_tag\nHTML attributes and/or elements content has been sanitized\n\e[31m-<dummy></dummy>\e[0m\n\\ No newline at end of file\n\n})
             section = SectionPresenter.new
             section.override_html = %Q{<dummy></dummy>}
             section.wrapped_html(true)
-            @errors.rewind
-            expect(@errors.read).to eq(
-              %Q{\n-- SANITIZED CONTENT WARNING --\nRefinery::Pages::SectionPresenter#wrap_content_in_tag\nHTML attributes and/or elements content has been sanitized\n\e[31m-<dummy></dummy>\e[0m\n\\ No newline at end of file\n\n}
-            )
           end
         end
 
