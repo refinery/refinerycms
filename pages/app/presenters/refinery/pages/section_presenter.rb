@@ -77,7 +77,7 @@ module Refinery
           warning << "Refinery::Pages::SectionPresenter#wrap_content_in_tag\n"
           warning << "HTML attributes and/or elements content has been sanitized\n"
           warning << "#{::Diffy::Diff.new(input, output).to_s(:color)}\n"
-          warn warning
+          Rails.logger.warn warning
         end
 
         return output
