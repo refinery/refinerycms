@@ -43,7 +43,7 @@ Add +has_many_page_images+ line to the model in +vendor/extensions/shows/app/mod
 
 h3. Define Tabs
 
-Create the tabs file in +vendor/extensions/shows/lib/refinery/shows/tabs.rb+:
+Create the tab class in +vendor/extensions/shows/lib/refinery/shows/tabs.rb+:
 
 <ruby>
 module Refinery
@@ -109,7 +109,7 @@ h3. Modify the admin view
 
 TIP: You may add custom fields like +blurb+ and add the support inside the +form_part+ partial.
 
-Add a new field to the form +vendor/extensions/shows/app/views/refinery/admin/_form.html.erb+:
+Add a new field to the form in +vendor/extensions/shows/app/views/refinery/admin/_form.html.erb+:
 
 <erb>
 <div class='field'>
@@ -170,7 +170,7 @@ h4. Tell the Controller to Permit the new parameters it must handle
 
 TIP: It doesn't change the controller itself, but makes it easier to extend the initial list of permitted fields. Later versions of Refinery may generate this automatically.
 
-Edit the controller +vendor/extensions/shows/app/controllers/refinery/shows/admin/shows_controller.rb+:
+Edit the controller in +vendor/extensions/shows/app/controllers/refinery/shows/admin/shows_controller.rb+:
 
 <ruby>
 module Refinery
@@ -196,3 +196,28 @@ module Refinery
   end
 end
 </ruby>
+
+h3. Add captions
+
+Create the model decorator and define images collection with captions in +vendor/extensions/shows/app/decorators/models/refinery/show_decorator.rb+
+
+<ruby>
+require 'ostruct'
+
+Refinery::Shows::Show.class_eval do
+  attr_accessor :images_with_captions
+
+  def images_with_captions
+    @images_with_captions = image_pages.map do |ref|
+      OpenStruct.new(
+        {
+          image: Refinery::Image.find(ref.image_id),
+          caption: ref.caption || ''
+        }
+      )
+    end
+  end
+end
+</ruby>
+
+TIP: See further usage "here":https://github.com/refinery/refinerycms-page-images#usage.
