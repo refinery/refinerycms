@@ -31,6 +31,16 @@ module Refinery
       expect(part_two.errors[:slug]).to be_empty
     end
 
+    it 'updates the page updated_at field when changed' do
+      page.save
+      original_updated_at = page.updated_at
+
+      page.parts.first.content = 'Modified'
+      page.parts.first.save
+
+      expect(original_updated_at).to be < page.updated_at
+    end
+
     context 'when using content_for?' do
 
       it 'return true when page part has content' do

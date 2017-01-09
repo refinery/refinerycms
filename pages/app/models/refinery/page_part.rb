@@ -1,7 +1,7 @@
 module Refinery
   class PagePart < Refinery::Core::BaseModel
 
-    belongs_to :page, :foreign_key => :refinery_page_id
+    belongs_to :page, :foreign_key => :refinery_page_id, :touch => true
 
     before_validation :set_default_slug
 
