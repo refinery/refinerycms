@@ -33,12 +33,10 @@ module Refinery
 
     it 'updates the page updated_at field when changed' do
       page.save
-      original_updated_at = page.updated_at
 
-      page.parts.first.content = 'Modified'
-      page.parts.first.save
-
-      expect(original_updated_at).to be < page.updated_at
+      expect {
+        page.parts.first.update_attribute(:content, 'Modified')
+      }.to change { page.reload.updated_at }.from(page.updated_at)
     end
 
     context 'when using content_for?' do
