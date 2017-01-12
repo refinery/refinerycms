@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%= render '/refinery/html_tag' %>
+  <%= render partial: 'refinery/extension_hooks' %>
   <% content_for :meta, tag(:meta, name: 'refinerycms', content: Refinery.version) %>
   <%= render 'refinery/admin/head' %>
   <body class="<%= action_name %> <%= I18n.locale %> cms-interface">

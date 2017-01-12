@@ -1,0 +1,5 @@
+<%
+  Refinery::ExtensionHooks.backend_js_files.each do |path|
+    require_asset(path)
+  end
+%>
