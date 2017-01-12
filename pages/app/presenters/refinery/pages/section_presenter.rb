@@ -16,7 +16,7 @@ module Refinery
       include ActionView::Helpers::SanitizeHelper
 
       def initialize(initial_hash = {})
-        initial_hash.map do |key, value|
+        { logger: Rails.logger }.merge(initial_hash).map do |key, value|
           send("#{key}=", value)
         end
       end
@@ -62,6 +62,7 @@ module Refinery
 
       private
 
+      attr_accessor :logger
       attr_writer :id, :fallback_html, :hidden
 
       def wrap_content_in_tag(content)
@@ -77,7 +78,7 @@ module Refinery
           warning << "Refinery::Pages::SectionPresenter#wrap_content_in_tag\n"
           warning << "HTML attributes and/or elements content has been sanitized\n"
           warning << "#{::Diffy::Diff.new(input, output).to_s(:color)}\n"
-          Rails.logger.warn warning
+          logger.warn warning
         end
 
         return output
