@@ -1,6 +1,7 @@
 <meta charset='<%= Rails.application.config.encoding %>' />
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
 <title><%= browser_title(yield(:title)) %></title>
+<%= tag :meta, name: 'viewport', content: 'width=device-width, initial-scale=1.0' %>
 <%= tag(:meta, name: 'description', content: @meta.meta_description) if @meta.meta_description.present? -%>
 <%= tag(:link, href: request.protocol+request.host_with_port+@canonical, rel: 'canonical') if @canonical.present? -%>
 <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
