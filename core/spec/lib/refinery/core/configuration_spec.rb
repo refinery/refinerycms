@@ -33,22 +33,6 @@ module Refinery
         end
       end
 
-      describe 'custom storage backend' do
-        it 'class should be nil by default' do
-          expect(Refinery::Core.dragonfly_custom_backend_class).to eq(nil)
-        end
-
-        context 'is set in core' do
-          before { class DummyBackend; end }
-          after { Refinery::Core.dragonfly_custom_backend_class = nil }
-          let(:backend) { DummyBackend.new }
-
-          it 'and is set to a class that exists' do
-            Refinery::Core.dragonfly_custom_backend_class = 'Refinery::Core::DummyBackend'
-            expect(Refinery::Core.dragonfly_custom_backend_class).to eq(backend.class)
-          end
-        end
-      end
     end
   end
 end

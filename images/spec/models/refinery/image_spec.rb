@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'uri'
 
 module Refinery
   describe Image, :type => :model do
@@ -71,8 +72,8 @@ module Refinery
         expect(image).to respond_to(:thumbnail)
       end
 
-      it "contains its filename at the end" do
-        expect(created_image.url.split('/').last).to match(/\A#{created_image.image_name}/)
+      it "contains its filename" do
+        expect(File.basename(URI.parse(created_image.url).path)).to match(/\A#{created_image.image_name}/)
       end
 
       it "becomes different when supplying geometry" do
