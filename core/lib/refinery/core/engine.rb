@@ -28,6 +28,35 @@ module Refinery
         end
       end
 
+      def self.frontend_routes(&block)
+        @frontend_routes ||= []
+        unless @frontend_routes.include?(block)
+          @frontend_routes << block
+        end
+      end
+
+      def self.backend_routes(&block)
+        @backend_routes ||= []
+        unless @backend_routes.include?(block)
+          @backend_routes << block
+        end
+      end
+
+      def self.draw_routes(&block)
+        @frontend_routes ||= []
+        @backend_routes ||= []
+        eval_block(block) if block_given?
+        @frontend_routes.each { |r| eval_block(&r) }
+        @backend_routes.each { |r| eval_block(&r) }
+        # # Clear out routes so that they aren't drawn twice.
+        @frontend_routes = []
+        @backend_routes = []
+      end
+
+      def eval_block(&block)
+        Refinery::Core::Engine.routes.eval_block(block)
+      end
+
       config.autoload_paths += %W( #{config.root}/lib )
 
       # Include the refinery controllers and helpers dynamically
