@@ -86,9 +86,6 @@ end}  end
 # The Ruby version is specified here so that Heroku uses the right version.
 ruby #{ENV['RUBY_VERSION'].inspect}
 
-# The Heroku gem allows you to interface with Heroku's API
-gem 'heroku'
-
 # Gems that have been added for Heroku support
 group :production do
   {{production_gems}}
@@ -144,6 +141,12 @@ end
 
     def deploy_to_hosting?
       if heroku?
+        if heroku_toolbelt_missing?
+          fail <<-ERROR
+  \033[31m[ABORTING]\033[0m Heroku Toolbelt is not installed. Please re-start the installer after installing at:\nhttps://devcenter.heroku.com/articles/heroku-command-line
+  ERROR
+        end
+
         append_heroku_gems!
 
         # Sanity check the heroku application name and save whatever messages are produced.
@@ -230,6 +233,10 @@ end
       options[:heroku].present?
     end
 
+    def heroku_toolbelt_missing?
+      !!system("heroku --version")
+    end
+
     def manage_roadblocks!
       %w(public/index.html app/views/layouts/application.html.erb).each do |roadblock|
         if (roadblock_path = destination_path.join(roadblock)).file?
@@ -276,7 +283,7 @@ end
       generator_args << '--quiet' if self.options[:quiet]
       generator_args << '--skip-migrations' if self.options[:skip_migrations]
       Refinery::CoreGenerator.start generator_args
-      Refinery::AuthenticationGenerator.start generator_args if defined?(Refinery::AuthenticationGenerator)
+      Refinery::Authentication::DeviseGenerator.start generator_args if defined?(Refinery::Authentication::DeviseGenerator)
       Refinery::ResourcesGenerator.start generator_args if defined?(Refinery::ResourcesGenerator)
       Refinery::PagesGenerator.start generator_args if defined?(Refinery::PagesGenerator)
       Refinery::ImagesGenerator.start generator_args if defined?(Refinery::ImagesGenerator)

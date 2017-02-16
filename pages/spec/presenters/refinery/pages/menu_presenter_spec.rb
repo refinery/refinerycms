@@ -63,10 +63,26 @@ module Refinery
           Refinery::Menu.new(FactoryGirl.create(:page, :title => "Refinery CMS"))
         }
         let(:menu_presenter) { MenuPresenter.new(menu_items, view) }
-        it "returns menu items wrapped in html" do
-          expect(menu_presenter.to_html).to xml_eq(
-            %Q{<nav class="menu clearfix" id="menu"><ul class="nav"><li class="first last"><a href="/refinery-cms">Refinery CMS</a></li></ul></nav>}
-          )
+        
+        context "wrapped in html" do
+          it "returns menu items" do
+            expect(menu_presenter.to_html).to xml_eq(
+              %Q{<nav class="menu clearfix" id="menu"><ul class="nav"><li class="first last"><a href="/refinery-cms">Refinery CMS</a></li></ul></nav>}
+            )
+          end
+
+          context "with role set to navigation" do
+            let(:menu_presenter_with_role) { 
+              menu_presenter.menu_role = 'navigation'
+              menu_presenter
+            }
+
+            it "returns menu items wrapped in html with role set to navigation" do
+              expect(menu_presenter_with_role.to_html).to xml_eq(
+                %Q{<nav class="menu clearfix" id="menu" role="navigation"><ul class="nav"><li class="first last"><a href="/refinery-cms">Refinery CMS</a></li></ul></nav>}
+              )
+            end
+          end
         end
 
         context "takes mount point into account" do

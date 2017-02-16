@@ -75,9 +75,7 @@ WARNING. Using differing databases for development and production is not recomme
 h5. Others additions to append in the +Gemfile+
 
 <shell>
-ruby 2.3.0 # or the newest version of Ruby
-
-gem 'heroku'
+ruby 2.3.1 # or the newest version of Ruby
 
 group :production do
   gem 'dragonfly-s3_data_store'

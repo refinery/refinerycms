@@ -31,6 +31,12 @@ module Refinery
       expect(part_two.errors[:slug]).to be_empty
     end
 
+    it 'updates the page updated_at field when changed' do
+      page.save
+      expect(page).to receive(:touch)
+      page.parts.first.update_attribute(:content, 'Modified')
+    end
+
     context 'when using content_for?' do
 
       it 'return true when page part has content' do

@@ -1,4 +1,5 @@
 ## 4.0.0.dev [unreleased]
+
 * Add new admin menu icons. [#3167](https://github.com/refinery/refinerycms/pull/3167). [Stefan Spicer](https://github.com/stefanspicer) & [Brice Sanchez](https://github.com/bricesanchez)
 * Add new admin menu. [#3167](https://github.com/refinery/refinerycms/pull/3167). [Stefan Spicer](https://github.com/stefanspicer) & [Brice Sanchez](https://github.com/bricesanchez)
 * Include and configure bootstrap 4. [#3167](https://github.com/refinery/refinerycms/pull/3167). [Stefan Spicer](https://github.com/stefanspicer)
@@ -8,10 +9,20 @@
 
 ## 3.0.5 [unreleased]
 
-* [See full list](https://github.com/refinery/refinerycms/compare/3.0.4...3-0-stable)
+* Fix HTML format for not found page in page seeds. [#3263](https://github.com/refinery/refinerycms/pull/3263). [Brice Sanchez](https://github.com/bricesanchez)
+* Bugfix/draft page view not hidden for visitors. [#3264](https://github.com/refinery/refinerycms/pull/3264). [Brice Sanchez](https://github.com/bricesanchez)
+* Remove deprecated heroku gem. Fix start generator for Authentication. [#3258](https://github.com/refinery/refinerycms/pull/3258). [Brice Sanchez](https://github.com/bricesanchez)
+* Add ability to display current used template in layout. [#3259](https://github.com/refinery/refinerycms/pull/3259). [Brice Sanchez](https://github.com/bricesanchez)
+* Add SVG logo. Improve site_bar HTML/CSS. [#3262](https://github.com/refinery/refinerycms/pull/3262). [Brice Sanchez](https://github.com/bricesanchez)
+* Fix preview button with WYMeditor. [#3020](https://github.com/refinery/refinerycms/pull/3020). [Christoph Wagner](https://github.com/aiomaster)
+* Add "required" html attribute in add_whitelist_attributes config. [#3236](https://github.com/refinery/refinerycms/pull/3236). [Brice Sanchez](https://github.com/bricesanchez)
+* Fixed admin menu items duplicating after extensions code changing. [#3234](https://github.com/refinery/refinerycms/pull/3234). [Dmitriy Molodtsov](https://github.com/sintro)
+* Enable reselection of resource after removal. [#3216](https://github.com/refinery/refinerycms/pull/3216). [NicholasKirchner](https://github.com/NicholasKirchner)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/3.0.4...3.0.5)
 
 
-## 3.0.4 [18 July 2016]
+## 3.0.4 [17 July 2016]
 
 * Fixed sitemap generation for multiple frontend locales. [#3218](https://github.com/refinery/refinerycms/pull/3218). [Dmitriy Molodtsov](https://github.com/sintro)
 * Allow finders to be defined for each action. [#3146](https://github.com/refinery/refinerycms/pull/3146). [Philip Arndt](https://github.com/parndt)
