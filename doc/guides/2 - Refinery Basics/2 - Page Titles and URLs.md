@@ -59,8 +59,8 @@ as the basis for your slug instead of the Title or Menu Title.
 By default, Refinery will scan your routes.rb file and add your routes
 as reserved words. This prevents Refinery Pages from interfering with
 your app. If you want to have a Refinery Page that has the same slug as
-a Rails route, you can add *:allow_slug =&gt; true*
-*match '/cart', :to =&gt; 'cart#index, :allow_slug =&gt; true'*
+a Rails route, you can add *:allow_slug => true*
+*match '/cart', :to => 'cart#index, :allow_slug => true'*
 
 This will allow a page with slug 'cart', whereas the default behaviour
 would result in a page with slug 'cart-page'

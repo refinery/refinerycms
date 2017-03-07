@@ -63,7 +63,7 @@ In your model, add the following lines after the opening *class* line:
 
 ```ruby
  extend FriendlyId
- friendly_id :title, :use =&gt; [:slugged]
+ friendly_id :title, :use => [:slugged]
 ```
 
 And in your controller, use the following instead of StaffMember.find

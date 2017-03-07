@@ -53,7 +53,7 @@ it to find us some blog posts:
 ```ruby
  Refinery::PagesController.class_eval do
 
-before_action :find_all_blog_posts, :only =&gt; [:home]
+before_action :find_all_blog_posts, :only => [:home]
 
 protected
 
@@ -76,7 +76,7 @@ by writing:
 
 include Refinery::Blog::ControllerHelper
  helper :'refinery/blog/posts'
- before_action :find_all_blog_posts, :only =&gt; [:home]
+ before_action :find_all_blog_posts, :only => [:home]
 
 end
 ```

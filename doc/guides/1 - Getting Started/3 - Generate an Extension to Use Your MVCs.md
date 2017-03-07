@@ -286,8 +286,8 @@ module Refinery
  class EventsController < ::Refinery::AdminController
 
         crudify :'refinery/events/event', :xhr_paging => true,
- :order =&gt; "date DESC",
- :sortable =&gt; false
+ :order => "date DESC",
+ :sortable => false
 
 end
  end

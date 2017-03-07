@@ -143,8 +143,7 @@ scaffold to put inside of it.
 To do that, run the following command.
 
 ```shell
- $ rails g refinery:engine place name:string --extension events
---namespace events
+ $ rails g refinery:engine place name:string --extension events --namespace events
 ```
 
 TIP: You can additionally specify *--pretend* to simulate generation, so
@@ -283,8 +282,8 @@ module Refinery
  class EventsController < ::Refinery::AdminController
 
         crudify :'refinery/events/event', :xhr_paging => true,
- :order =&gt; "date DESC",
- :sortable =&gt; false
+ :order => "date DESC",
+ :sortable => false
 
 end
  end

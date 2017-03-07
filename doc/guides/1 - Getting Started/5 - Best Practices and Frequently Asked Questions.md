@@ -102,8 +102,8 @@ in the Gemfile.
 There is no facility for this. In your console, you will have to run:
 
 ```ruby
-Refinery::Page.all.map do { |p| p.parts.create(:title =&gt; "My Page
-Part", :position =&gt; 3) }
+Refinery::Page.all.map do { |p| p.parts.create(:title => "My Page
+Part", :position => 3) }
 ```
 
 If you wish to make this a default for all new pages, be sure to add it
@@ -135,7 +135,7 @@ says:
 > Add a *content_for :body_content_title* block in the template
 > you're including from. Just make it blank and tell the
 > *_content_page* partial to hide empty sections by passing it
-> *:locals =&gt; {:hide_sections =&gt; [:body_content_title]}*.
+> *:locals => {:hide_sections => [:body_content_title]}*.
 
 ### Translation
 

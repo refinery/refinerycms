@@ -29,8 +29,7 @@ properly.
 To add your EventType model, run the following command.
 
 ```shell
- $ rails g refinery:engine event_type name:string --extension events
---namespace events
+ $ rails g refinery:engine event_type name:string --extension events --namespace events
 ```
 
 TIP: You can additionally specify *--pretend* to simulate generation, so
@@ -169,7 +168,7 @@ module Refinery
 
       acts_as_indexed :fields => [:name]
 
-validates :name, :presence =&gt; true, :uniqueness =&gt; true
+validates :name, :presence => true, :uniqueness => true
  end
  end
 end
@@ -187,7 +186,7 @@ module Refinery
 
       acts_as_indexed :fields => [:name]
 
-validates :name, :presence =&gt; true, :uniqueness =&gt; true
+validates :name, :presence => true, :uniqueness => true
 
 has_many :events
  end
@@ -213,9 +212,9 @@ module Refinery
 
       acts_as_indexed :fields => [:title, :blurb]
 
-validates :title, :presence =&gt; true, :uniqueness =&gt; true
+validates :title, :presence => true, :uniqueness => true
 
-belongs_to :photo, :class_name =&gt; '::Refinery::Image'
+belongs_to :photo, :class_name => '::Refinery::Image'
  end
  end
 end
@@ -234,9 +233,9 @@ module Refinery
 
       acts_as_indexed :fields => [:title, :blurb]
 
-validates :title, :presence =&gt; true, :uniqueness =&gt; true
+validates :title, :presence => true, :uniqueness => true
 
-belongs_to :photo, :class_name =&gt; '::Refinery::Image'
+belongs_to :photo, :class_name => '::Refinery::Image'
  belongs_to :event_type
  end
  end
@@ -288,7 +287,7 @@ module Refinery
         before_action :find_all_event_types, :except => [:show,
 :destroy]
 
-crudify :'refinery/events/event', :xhr_paging =&gt; true
+crudify :'refinery/events/event', :xhr_paging => true
 
 protected
 

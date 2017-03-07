@@ -20,9 +20,9 @@ as a series of tabs instead, simply edit the admin view (under
 *app/views/admin/extension_name/_form.html.erb*), and add:
 
 ```erb
-<%= render :partial => '/refinery/admin/tabbed_fields',
- :locals =&gt; { :f =&gt; f,
- :tabbed_fields =&gt; [:field, :list] } %&gt;
+<%= render partial: '/refinery/admin/tabbed_fields',
+           locals: { :f => f,
+           tabbed_fields: [:field, :list] } %>
 ```
 
 Replace the array *[:field, :list]* with an array of symbols of the

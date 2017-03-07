@@ -81,7 +81,7 @@ bc..
 
           def render_menu(items)
             if menu_tag
-              content_tag(menu_tag, :id => dom_id, :class =&gt; css)
+              content_tag(menu_tag, :id => dom_id, :class => css)
     do
      render_menu_items(items)
      end
@@ -92,7 +92,7 @@ bc..
 
 def render_menu_items(menu_items)
  return if menu_items.blank?
- content_tag(list_tag, :class =&gt; menu_items_css(menu_items)) do
+ content_tag(list_tag, :class => menu_items_css(menu_items)) do
  menu_items.each_with_index.inject(ActiveSupport::SafeBuffer.new) do
 |buffer, (item, index)|
  buffer << render_menu_item(item, index)
@@ -134,9 +134,8 @@ if roots == menu_items
 index)) do
  @cont = context.refinery.url_for(menu_item.url)
  buffer = ActiveSupport::SafeBuffer.new
- buffer &lt;&lt; link_to(menu_item.title,
-context.refinery.url_for(menu_item.url))
- buffer &lt;&lt; render_menu_items(menu_item_children(menu_item))
+ buffer << link_to(menu_item.title, context.refinery.url_for(menu_item.url))
+ buffer << render_menu_items(menu_item_children(menu_item))
  buffer
  end
  end

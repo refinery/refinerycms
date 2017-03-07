@@ -139,7 +139,7 @@ containing the following:
 
 ```ruby
 Refinery::PagesController.class_eval do
- before_action :fetch_events, :only =&gt; [:show]
+ before_action :fetch_events, :only => [:show]
 
 def fetch_events
  @events = ::Refinery::Events::Event.all
@@ -180,7 +180,7 @@ Basically, use a decorator to create an additional method on the
 
 1.  /app/decorators/controllers/refinery/pages/pages_controller_decorator.rb
     Refinery::PagesController.class_eval do
-     skip_before_action :find_page, :only =&gt; [:about_us]
+     skip_before_action :find_page, :only => [:about_us]
      def about_us
 
     `page = ::Refinery::Page.where(:link_url => '/about-us').first || error_404
@@ -201,7 +201,7 @@ else, add the following:
 
 ```ruby
 Refinery::Core::Engine.routes.prepend do
- get '/about-us', :to =&gt; 'pages#about_us', :as =&gt; :about_us
+ get '/about-us', :to => 'pages#about_us', :as => :about_us
 end
 
 1.  Your route file resumes here

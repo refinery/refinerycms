@@ -73,7 +73,7 @@ Create a new file in the *decorators/models/refinery* directory called
     Refinery::Page.class_eval do
      # Add an association to the Refinery::Image class, so we
      # can take advantage of the magic that the class provides
-     belongs_to :background_image, :class_name =&gt;
+     belongs_to :background_image, :class_name =>
     '::Refinery::Image'
     end
     ```
@@ -140,12 +140,12 @@ insert the following:
 
 <div class="field">
 <%= f.label :background_image %>
- <%= render :partial => "/refinery/admin/image_picker", :locals =&gt;
+ <%= render :partial => "/refinery/admin/image_picker", :locals =>
 {
- :f =&gt; f,
- :field =&gt; :background_image_id,
- :image =&gt; f.object.background_image,
- :toggle_image_display =&gt; false
+ :f => f,
+ :field => :background_image_id,
+ :image => f.object.background_image,
+ :toggle_image_display => false
  }
  %&gt;
 
