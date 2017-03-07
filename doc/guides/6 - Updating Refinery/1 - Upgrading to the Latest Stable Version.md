@@ -45,7 +45,7 @@ WARNING: This will overwrite files so make sure you have a backup or
 have your current code committed to a remote git repository.
 
 ```shell
-$ rails generate refinery:cms —update
+$ rails generate refinery:cms --update
 ```
 
 Database migrations and new gem dependencies may have been added, so

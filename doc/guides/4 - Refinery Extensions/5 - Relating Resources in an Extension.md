@@ -29,16 +29,16 @@ properly.
 To add your EventType model, run the following command.
 
 ```shell
- $ rails g refinery:engine event_type name:string —extension events
-—namespace events
+ $ rails g refinery:engine event_type name:string --extension events
+--namespace events
 ```
 
-TIP: You can additionally specify *—pretend* to simulate generation, so
+TIP: You can additionally specify *--pretend* to simulate generation, so
 you may inspect the outcome without actually modifying anything.
 
-Notice the last arguments (*—extension <extension_name> —namespace
+Notice the last arguments (*--extension <extension_name> --namespace
 <extension_name>*). This is how Refinery knows which extension to insert
-your new code. The *—namespace* argument is necessary because Refinery
+your new code. The *--namespace* argument is necessary because Refinery
 will create a namespace for your extension by default. If you don't
 specify one, it's the name of the first scaffold you created. In this
 case, the namespace is *events*.
@@ -112,13 +112,13 @@ vendor/extensions/events/spec/support/factories/refinery/event_types.rb
  remove vendor/extensions/events/config/locales/tmp
  remove vendor/extensions/events/config/tmp
  remove vendor/extensions/events/lib/tmp
-————————————
+------------------------
 Now run:
 bundle install
 rails generate refinery:events
 rake db:migrate
 rake db:seed
-————————————
+------------------------
 ```
 
 WARNING: If you are presented with a conflict in the

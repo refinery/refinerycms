@@ -42,7 +42,7 @@ complex series of classes beginning with the *ContentPagePresenter*.
 
 This is rather advanced magic, and in some circumstances, this
 automatic
-rendering does not serve well — or we might need to wrap content inside
+rendering does not serve well -- or we might need to wrap content inside
 an
 element. In this case, when we are customizing the rendering of only the
 page,

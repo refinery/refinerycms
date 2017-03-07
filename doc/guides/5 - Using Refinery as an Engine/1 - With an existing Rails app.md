@@ -62,7 +62,7 @@ Generating Refinery on top of an existing application is marginally more
 complicated than it was before, but it's still quite simple:
 
 ```shell
- rails generate refinery:cms —fresh-installation
+ rails generate refinery:cms --fresh-installation
 ```
 
 This does a couple of things:

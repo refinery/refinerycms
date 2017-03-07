@@ -30,7 +30,7 @@ not by hand.
 To do so, create a new migration file in the *db/migrate* folder of your
 extension. Since this depends on the previous migration, it's best to
 rename the other migrations to include a sequence reference in the
-filename — for example, *create_staff_members.rb* becomes
+filename -- for example, *create_staff_members.rb* becomes
 *001_create_staff_members.rb*. When you re-run the generator that
 will move these migrations over to your main *db/migrate* folder, they
 will be moved in this order. Don't worry if you've already run these

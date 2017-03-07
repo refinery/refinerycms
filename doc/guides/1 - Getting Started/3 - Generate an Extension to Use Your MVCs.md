@@ -150,14 +150,14 @@ vendor/extensions/events/lib/generators/refinery/events_generator.rb
  create vendor/extensions/events/readme.md
  create vendor/extensions/events/refinerycms-events.gemspec
  …
-————————————
+------------------------
 Now run:
 bundle install
 rails generate refinery:events
 rake db:migrate
 rake db:seed
 Please restart your rails server.
-————————————
+------------------------
 ```
 
 As the output shows, next run these commands:

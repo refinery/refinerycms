@@ -34,7 +34,7 @@ Now, inside the application's directory, use the refinerycms generator
 to update your application:
 
 ```shell
-$ bin/rails generate refinery:cms —update
+$ bin/rails generate refinery:cms --update
 ```
 
 ### Solve any deprecation problems.

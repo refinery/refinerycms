@@ -53,10 +53,10 @@ photo:image blurb:text
 ```
 
 TIP: if you want to create a model without any front-end code (i.e. code
-only for the administrative interface), add *—skip-frontend*.
+only for the administrative interface), add *--skip-frontend*.
 
 TIP: if you want to use a custom namespace for your extension, add
-*—namespace <namespace_name>*. If you use it, you have to remember to
+*--namespace <namespace_name>*. If you use it, you have to remember to
 specify this namespace for every scaffold you generate for this
 extension.
 
@@ -106,13 +106,13 @@ vendor/extensions/events/lib/generators/refinery/events_generator.rb
  create vendor/extensions/events/readme.md
  create vendor/extensions/events/refinerycms-events.gemspec
  …
-————————————
+------------------------
 Now run:
 bundle install
 rails generate refinery:events
 rake db:migrate
 rake db:seed
-————————————
+------------------------
 ```
 
 As the output shows, next run:
@@ -132,8 +132,8 @@ TIP: When new extensions are added, it's a good idea to restart your
 server for new changes to be loaded in.
 
 As you can see inside your text editor, the event extension is now
-stored in *vendor/extensions/events/*. This is where all your files —
-including your migration file — will be placed. The folder structure of
+stored in *vendor/extensions/events/*. This is where all your files --
+including your migration file -- will be placed. The folder structure of
 *events* is nearly identical to a normal Rails app, but has a few
 additions to provide Refinery functionality.
 
@@ -143,16 +143,16 @@ scaffold to put inside of it.
 To do that, run the following command.
 
 ```shell
- $ rails g refinery:engine place name:string —extension events
-—namespace events
+ $ rails g refinery:engine place name:string --extension events
+--namespace events
 ```
 
-TIP: You can additionally specify *—pretend* to simulate generation, so
+TIP: You can additionally specify *--pretend* to simulate generation, so
 you may inspect the outcome without actually modifying anything.
 
-Notice the last arguments (*—extension <extension_name> —namespace
+Notice the last arguments (*--extension <extension_name> --namespace
 <extension_name>*). This is how Refinery knows which extension to insert
-your new code. The *—namespace* argument is necessary because Refinery
+your new code. The *--namespace* argument is necessary because Refinery
 will create a namespace for your extension by default. If you don't
 specify one, it's the name of the first scaffold you created. In this
 case, the namespace is *events*. If you look inside, for example,
@@ -213,13 +213,13 @@ vendor/extensions/events/lib/generators/refinerycms_places_generator.rb
  create vendor/extensions/events/spec/models/place_spec.rb
  append vendor/extensions/events/lib/refinerycms-events.rb
  …
-————————————
+------------------------
 Now run:
 bundle install
 rails generate refinery:events
 rake db:migrate
 rake db:seed
-————————————
+------------------------
 ```
 
 WARNING: If you are presented with a conflict in the
@@ -238,7 +238,7 @@ before your application will declare its migrations chronologically
 later than the migrations you wrote for the app. For instance, if you
 wrote your app on Tuesday and then inserted the extension on Wednesday,
 you would want the timestamps on the migrations to show Wednesday rather
-than the date it was created — perhaps Monday. If the extension didn't
+than the date it was created -- perhaps Monday. If the extension didn't
 do this, when you deployed your application, it would run the migrations
 for your extension first, potentially failing because it couldn't find
 the Refinery database tables it needs to complete.

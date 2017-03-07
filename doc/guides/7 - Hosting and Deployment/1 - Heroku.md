@@ -28,11 +28,11 @@ logging
 in through the client.
 
 Now it's time to create your Refinery application using the built in
-*—heroku*
+*--heroku*
 option:
 
 ```shell
-refinerycms myapp —heroku
+refinerycms myapp --heroku
 ```
 
 NOTE: Heroku relies on [Git](http://git-scm.com/download) being
@@ -116,7 +116,7 @@ git commit -m "setup for Heroku"
 
 ```shell
 app_name="your-app-name"
-heroku create $app_name —stack cedar
+heroku create $app_name --stack cedar
 git push heroku master
 ```
 
@@ -207,7 +207,7 @@ Now copy the data to your Heroku app.
 heroku pg:push
 ```
 
-If that command gives you the error "no such file to load —
+If that command gives you the error "no such file to load --
 taps/operation",
 you have run into
 [this Heroku and taps bug](https://github.com/heroku/heroku/issues/69).
@@ -271,7 +271,7 @@ guide for more specific information on file storage.
 
 #### Other problems?
 
-Otherwise, run `heroku logs` or `heroku logs —tail` and see if you
+Otherwise, run `heroku logs` or `heroku logs --tail` and see if you
 can spot the
 error yourself. Or you could explore the [help options
 available](/guides/how-to-get-help).

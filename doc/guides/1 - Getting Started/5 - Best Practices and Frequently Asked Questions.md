@@ -20,7 +20,7 @@ in learning to customize any computer system. Refinery prides itself on
 doing
 things the 'Rails way' where possible, so any sort of customization
 beyond a
-very basic level will require some ability to code—or, at least, the
+very basic level will require some ability to code--or, at least, the
 ability to
 deductively reason.
 
@@ -82,7 +82,7 @@ below
 demonstrates this using the refinerycms-news extension at version 2.0.0:
 
 ```shell
-gem unpack refinerycms-news —version 2.0.0 —target vendor/extensions
+gem unpack refinerycms-news --version 2.0.0 --target vendor/extensions
 ```
 
 And update the relevant line in your *Gemfile* to read:
