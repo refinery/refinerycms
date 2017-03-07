@@ -22,11 +22,11 @@ file system, you'll need an additional gem. Create a bucket called
 "my_app_production"
 and add this line in your Gemfile:
 
-<ruby>
+```ruby
 group :production do
  gem 'dragonfly-s3_data_store'
 end
-</ruby>
+```
 
 ### Telling Refinery to use S3
 
@@ -56,21 +56,21 @@ You can put the environment keys literally in any of the Rails config
 files like
 *config/application.rb* or *config/environments/production.rb*:
 
-<ruby>
+```ruby
 ENV['S3_KEY']='fill_in_your_key_here'
 ENV['S3_SECRET']='fill_in_your_secret_key_here'
 ENV['S3_BUCKET']='fill_in_your_bucket_name_here'
-</ruby>
+```
 
 (Note: For Heroku, you should use [config vars to set your environment
 variables](http://refinerycms.com/guides/heroku))
 
 Another option, especially if you experience
-\`Dragonfly::DataStorage::S3DataStore\` exceptions, is to configure your
+`Dragonfly::DataStorage::S3DataStore` exceptions, is to configure your
 Amazon S3 credentials in *config/initializers/refinery/core.rb* using
 the following syntax:
 
-<ruby>
+```ruby
 Refinery::Core.configure do |config|
  config.s3_backend = true
  config.s3_access_key_id = 'fill_in_your_key_here'
@@ -79,7 +79,7 @@ Refinery::Core.configure do |config|
  config.s3_region = 'fill_in_your_buckets_region_here' # this
 one's not always required, default is 'us-east-1'
 end
-</ruby>
+```
 
 ### Turning S3 on and off
 
@@ -90,9 +90,9 @@ environment file, for
 example with the production environment
 *config/environments/production.rb*:
 
-<ruby>
+```ruby
 Refinery::Core.config.s3_backend = true
-</ruby>
+```
 
 There are some cases where you have these three variables set but do not
 want to use S3.
@@ -102,6 +102,6 @@ For example, forcing S3 to always be off in development is as simple as
 adding the
 following line to the *end* of *config/environments/development.rb*:
 
-<ruby>
+```ruby
 Refinery::Core.config.s3_backend = false
-</ruby>
+```

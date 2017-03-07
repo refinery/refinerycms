@@ -19,23 +19,23 @@ Here are the basic steps:
 
 Replace the line that looks like this:
 
-<ruby>
+```ruby
 gem 'refinerycms'
-</ruby>
+```
 
 With a line that looks like this:
 
-<ruby>
+```ruby
 gem 'refinerycms', git: 'https://github.com/refinery/refinerycms',
 branch: 'master'
-</ruby>
+```
 
 Now, inside the application's directory, use the refinerycms generator
 to update your application:
 
-<shell>
+```shell
 $ bin/rails generate refinery:cms —update
-</shell>
+```
 
 ### Solve any deprecation problems.
 

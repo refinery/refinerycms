@@ -30,9 +30,9 @@ Open up your Gemfile and add the latest version (a later version than
 the one shown [may
 exist](https://rubygems.org/gems/refinerycms/versions)):
 
-<ruby>
- gem 'refinerycms', '\~&gt; 3.0.0'
-</ruby>
+```ruby
+ gem 'refinerycms', '~> 3.0.0'
+```
 
 Refinery doesn't ship with authentication by default, but you will need
 to add it
@@ -40,15 +40,15 @@ unless you want every visitor to be automatically logged in.
 
 If you want to use the default authentication system:
 
-<ruby>
- gem 'refinerycms-authentication-devise', '\~&gt; 1.0'
-</ruby>
+```ruby
+ gem 'refinerycms-authentication-devise', '~> 1.0'
+```
 
 Now, to install the gems, run:
 
-<shell>
+```shell
  bundle install
-</shell>
+```
 
 #### Generate support files and migrations, and prepare the database
 
@@ -61,9 +61,9 @@ code.
 Generating Refinery on top of an existing application is marginally more
 complicated than it was before, but it's still quite simple:
 
-<shell>
+```shell
  rails generate refinery:cms —fresh-installation
-</shell>
+```
 
 This does a couple of things:
 
@@ -84,9 +84,9 @@ experience.
 It is possible to mount Refinery to a subfolder. To do this, simply
 change the following setting in *config/initializers/refinery/core.rb*:
 
-<ruby>
+```ruby
  config.mounted_path = "/subfolder"
-</ruby>
+```
 
 After starting your rails server and navigating to
 *localhost:3000/subfolder*, you should see a dummy home page.

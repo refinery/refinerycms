@@ -29,20 +29,20 @@ In this example, we will add a background image to the Page model. Our
 use case is to allow an administrator to set a different background per
 page. To track this data, we will need to generate a migration:
 
-<shell>
+```shell
  $ rails g migration AddBackgroundImageToRefineryPages
 background_image_id:integer
-</shell>
+```
 
 Open up the file that Rails has created for you, and make sure it looks
 something like this:
-<ruby>
+```ruby
 class AddBackgroundImageToRefineryPages < ActiveRecord::Migration
   def change
     add_column :refinery_pages, :background_image_id, :integer
   end
 end
-</ruby>
+```
 
 The important things to note, above:
 
@@ -56,9 +56,9 @@ Save any changes you need to make to the migration file.
 
 Next, run:
 
-<shell>
+```shell
  $ rake db:migrate
-</shell>
+```
 
 … to update your schema.
 
@@ -67,7 +67,7 @@ Next, run:
 Create a new file in the *decorators/models/refinery* directory called
 *page_decorator.rb*:
 
-<ruby>
+```ruby
 
 1.  Open the Refinery::Page model for manipulation
     Refinery::Page.class_eval do
@@ -76,13 +76,13 @@ Create a new file in the *decorators/models/refinery* directory called
      belongs_to :background_image, :class_name =&gt;
     '::Refinery::Image'
     end
-    </ruby>
+    ```
 
 There is some additional explanation needed for the following line:
 
-<ruby>
+```ruby
 Refinery::Page.class_eval do … end
-</ruby>
+```
 
 This is what opens the model to manipulation. This essentially tells
 Ruby to reopen the model as if you were writing methods inside the class
@@ -99,7 +99,7 @@ param in the controller.
 Create a new file in the *decorators/controllers/refinery/admin*
 directory called *pages_controller_decorator.rb*:
 
-<ruby>
+```ruby
 
 1.  Open the Refinery::Admin::PagesController controller for
     manipulation
@@ -110,7 +110,7 @@ directory called *pages_controller_decorator.rb*:
      end
      alias_method_chain :page_params, :my_params
     end
-    </ruby>
+    ```
 
 *alias_method_chain* will alias the normal *page_params* method to
 our newly defined method *page_params_with_my_params* and will alias
@@ -126,9 +126,9 @@ through the administrative interface.
 
 In the console, run the following:
 
-<shell>
+```shell
 $ rake refinery:override view=refinery/admin/pages/_form
-</shell>
+```
 
 After a few moments, you should see something that states that
 *_form.html.erb has been copied into app/views/refinery/admin/pages*.
@@ -136,7 +136,7 @@ After a few moments, you should see something that states that
 Open that file in your editor of choice. After the existing fields,
 insert the following:
 
-<ruby>
+```ruby
 
 <div class="field">
 <%= f.label :background_image %>
@@ -150,7 +150,7 @@ insert the following:
  %&gt;
 
 </div>
-</ruby>
+```
 
 This code simply adds a label for :background_image, then uses
 Refinery's built-in image picker partial to add the field.
@@ -166,7 +166,7 @@ have to display it!
 In one of your template partials or layouts, you need to add something
 along these lines:
 
-<ruby>
+```ruby
 <% content_for :stylesheets do %>
  <% if @page.background_image.present? %>
 
@@ -178,7 +178,7 @@ body {
 </style>
 <% end %>
 <% end %>
-</ruby>
+```
 
 This is, of course, just one way you could take advantage of model
 decoration. It should give you an idea of the flexibility of decorators

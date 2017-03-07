@@ -13,16 +13,16 @@ endprologue.
 Inside *config/initializers/refinery/pages.rb*, find the line that
 reads:
 
-<ruby>
+```ruby
 
 1.  config.cache_pages_full = false
-    </ruby>
+    ```
 
 Set it to true, and uncomment the line:
 
-<ruby>
+```ruby
 config.cache_pages_full = true
-</ruby>
+```
 
 Then restart your server.
 

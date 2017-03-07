@@ -66,10 +66,10 @@ In the case of a controller method, you can get easy access to the code
 with
 the *refinery:uncrudify* rake task:
 
-<shell>
+```shell
 $ bin/rake refinery:uncrudify controller=refinery/admin/pages
 action=create
-</shell>
+```
 
 TIP. Running the *rake refinery:uncrudify* task outputs to *stdout*, and
 will not modify any files, so you can do so without fear of overwriting
@@ -81,15 +81,15 @@ the gem and unpack it to your *vendor/extensions* directory. The example
 below
 demonstrates this using the refinerycms-news extension at version 2.0.0:
 
-<shell>
+```shell
 gem unpack refinerycms-news —version 2.0.0 —target vendor/extensions
-</shell>
+```
 
 And update the relevant line in your *Gemfile* to read:
 
-<ruby>
+```ruby
 gem 'refinerycms-news', '2.0.0', path: 'vendor/extensions/refinerycms-news-2.0.0'
-</ruby>
+```
 
 TIP. For convenience, you can rename the folder of the unpacked gem to
 something short, like 'news', so long as you update the path specified
@@ -101,10 +101,10 @@ in the Gemfile.
 
 There is no facility for this. In your console, you will have to run:
 
-<ruby>
+```ruby
 Refinery::Page.all.map do { |p| p.parts.create(:title =&gt; "My Page
 Part", :position =&gt; 3) }
-</ruby>
+```
 
 If you wish to make this a default for all new pages, be sure to add it
 to your
@@ -121,7 +121,7 @@ working.
 You can fortunately revert this, though, just by making your news page
 point there.
 
-This is caused by the \`present(@page)\` statement usually found in your
+This is caused by the `present(@page)` statement usually found in your
 controllers.
 As long as you present a page or another model with the appropriate
 attributes,
@@ -153,6 +153,6 @@ In Refinery 1.0.x, you have have two choices. The more severe one is to
 reset all
 slugs for that model:
 
-<shell>
+```shell
 MODEL=news_item bin/rake friendly_id:redo_slugs
-</shell>
+```

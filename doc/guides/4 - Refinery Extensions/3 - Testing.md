@@ -24,22 +24,22 @@ extension's directory.
 
 In your extension's Gemfile uncomment or add the following line
 
-<ruby>
+```ruby
  gem 'refinerycms-testing'
-</ruby>
+```
 
 And run
 
-<ruby>
+```ruby
 $ bundle install
-</ruby>
+```
 
 Now we will configure our test environment by preparing a dummy
 refinerycms app
 
 Add the following lines to your extension's Rakefile
 
-<ruby>
+```ruby
 ENGINE_PATH = File.dirname(*FILE*)
 APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", *FILE*)
 
@@ -47,22 +47,22 @@ load 'rails/tasks/extension.rake' if File.exists?(APP_RAKEFILE)
 
 require "refinerycms-testing"
 Refinery::Testing::Railtie.load_dummy_tasks ENGINE_PATH
-</ruby>
+```
 
 And run the dummy application generator:
 
-<shell>
+```shell
 $ bin/rake refinery:testing:dummy_app
-</shell>
+```
 
 NOTE: To successfully run rake tasks within your project you may need to
 add the *refinerycms-testing* gem to your application's Gemfile, too.
 
 ### Running the tests with Rake
 
-<shell>
+```shell
 $ bin/rake spec
-</shell>
+```
 
 This will run the rspec specs.
 
@@ -82,9 +82,9 @@ specs. This is a faster way to get feedback during your TDD cycles.
 
 At your extension's root directory run:
 
-<shell>
+```shell
 $ bin/guard start
-</shell>
+```
 
 Larger Rails apps, particularly on Ruby 1.9.2, may take several seconds
 (or more) to start up. If that's the case, you might also want to use

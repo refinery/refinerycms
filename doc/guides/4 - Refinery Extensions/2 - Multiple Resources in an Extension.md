@@ -14,10 +14,10 @@ WARNING: This only works on Refinery versions 2.0.0 and greater.
 Refinery ships with an extension generator that makes adding your own
 functionality a breeze. It works just like the Rails scaffold generator.
 
-<shell>
+```shell
 $ rails generate refinery:engine singular_model_name attribute:type
 [attribute:type …]
-</shell>
+```
 
 TIP: to see all the options supported by the *refinery:engine* generator
 just run *rails g refinery:engine*.
@@ -47,10 +47,10 @@ event:
 
 Run this command to generate the events extension for Rick:
 
-<shell>
+```shell
 $ rails generate refinery:engine event title:string date:datetime
 photo:image blurb:text
-</shell>
+```
 
 TIP: if you want to create a model without any front-end code (i.e. code
 only for the administrative interface), add *—skip-frontend*.
@@ -61,7 +61,7 @@ specify this namespace for every scaffold you generate for this
 extension.
 
 This results in the following:
-<shell>
+```shell
  create
 vendor/extensions/events/app/controllers/refinery/admin/events_controller.rb
  create
@@ -113,16 +113,16 @@ rails generate refinery:events
 rake db:migrate
 rake db:seed
 ————————————
-</shell>
+```
 
 As the output shows, next run:
 
-<shell>
+```shell
 $ bundle install
 $ rails generate refinery:events
 $ rake db:migrate
 $ rake db:seed
-</shell>
+```
 
 A *refinery:events* generator is created for you to install the
 migration to create the events table. Run all the commands provided in
@@ -142,10 +142,10 @@ scaffold to put inside of it.
 
 To do that, run the following command.
 
-<shell>
+```shell
  $ rails g refinery:engine place name:string —extension events
 —namespace events
-</shell>
+```
 
 TIP: You can additionally specify *—pretend* to simulate generation, so
 you may inspect the outcome without actually modifying anything.
@@ -159,11 +159,11 @@ case, the namespace is *events*. If you look inside, for example,
 *vendor/extensions/events/app/controllers/refinery/events/events_controller.rb*,
 you will see that the opening lines look something like this:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  class EventsController < ::ApplicationController
-</ruby>
+```
 
 The first two lines indicate that the extension is namespaced using
 *Refinery::Events*. Refinery will automatically add the *Refinery* for
@@ -171,7 +171,7 @@ you, but you will have to manually specify the namespace.
 
 Running this command will produce the following output:
 
-<shell>
+```shell
  …
  create
 vendor/extensions/events/app/controllers/admin/places_controller.rb
@@ -220,7 +220,7 @@ rails generate refinery:events
 rake db:migrate
 rake db:seed
 ————————————
-</shell>
+```
 
 WARNING: If you are presented with a conflict in the
 *events_generator.rb* file, say no! This happens at the moment because
@@ -255,7 +255,7 @@ Open up
 *vendor/extensions/events/app/controllers/refinery/events/admin/events_controller.rb*
 and look at its contents:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  module Admin
@@ -267,7 +267,7 @@ end
  end
  end
 end
-</ruby>
+```
 
 Most of the time, crudify's defaults are bang on, but if you need to,
 you can easily customise how it works.
@@ -276,7 +276,7 @@ By default *crudify* assumes your records will be sortable. But events
 should not be manually sortable; it makes more sense to order them by
 their event date. Update the contents of the file to this:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  module Admin
@@ -290,7 +290,7 @@ end
  end
  end
 end
-</ruby>
+```
 
 This will tell *crudify* to sort by our event date field and to turn off
 manual sorting by the user.
@@ -299,7 +299,7 @@ Finally edit
 *vendor/extensions/events/app/controllers/refinery/events/events_controller.rb*
 and replace the *find_all_events* method with this one:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  class EventsController < ::ApplicationController
@@ -318,7 +318,7 @@ module Refinery
     end
   end
 end
-</ruby>
+```
 
 This will sort your events by date, rather than the default, which is
 its ID (a rather information-less order).

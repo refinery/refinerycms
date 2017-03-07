@@ -28,10 +28,10 @@ properly.
 
 To add your EventType model, run the following command.
 
-<shell>
+```shell
  $ rails g refinery:engine event_type name:string —extension events
 —namespace events
-</shell>
+```
 
 TIP: You can additionally specify *—pretend* to simulate generation, so
 you may inspect the outcome without actually modifying anything.
@@ -45,7 +45,7 @@ case, the namespace is *events*.
 
 Running this command will produce the following output:
 
-<shell>
+```shell
  identical vendor/extensions/events/Gemfile
  identical vendor/extensions/events/Guardfile
  identical vendor/extensions/events/Rakefile
@@ -119,7 +119,7 @@ rails generate refinery:events
 rake db:migrate
 rake db:seed
 ————————————
-</shell>
+```
 
 WARNING: If you are presented with a conflict in the
 *events_generator.rb* file, say no! This happens at the moment because
@@ -138,18 +138,18 @@ Since we've already created the Event model (as part of the "Multiple
 Resources…" guide), we'll have to manually add the event_type_id
 column to the refinery_events table:
 
-<shell>
+```shell
 rails generate migration AddEventTypeToRefineryEvents
 event_type_id:integer
-</shell>
+```
 
 invoke active_record
 create
 db/migrate/20130409125232_add_event_type_to_refinery_events.rb
 
-<shell>
+```shell
 rake db:migrate
-</shell>
+```
 
 #### Linking the models in our engine
 
@@ -160,7 +160,7 @@ Open up
 *vendor/extensions/events/app/models/refinery/events/event_type.rb* and
 look at its contents:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  class EventType < Refinery::Core::BaseModel
@@ -173,13 +173,13 @@ validates :name, :presence =&gt; true, :uniqueness =&gt; true
  end
  end
 end
-</ruby>
+```
 
 All of the Rails code in the model should be correct, but we need to
 tell Rails of the has_many relationship between an EventType and an
 Event. Add the has_many line so it appears as:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  class EventType < Refinery::Core::BaseModel
@@ -193,7 +193,7 @@ has_many :events
  end
  end
 end
-</ruby>
+```
 
 Naturally, there is also a belongs_to relationship between an Event and
 an EventType (an Event belongs_to an EventType). We also need to ensure
@@ -203,7 +203,7 @@ otherwise it will get ignored during the update.
 Open up *vendor/extensions/events/app/models/refinery/events/event.rb*
 and look at its contents:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  class Event < Refinery::Core::BaseModel
@@ -219,12 +219,12 @@ belongs_to :photo, :class_name =&gt; '::Refinery::Image'
  end
  end
 end
-</ruby>
+```
 
 Add the belongs_to line, and update the attr_accessible list so the
 code appears as:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  class Event < Refinery::Core::BaseModel
@@ -241,7 +241,7 @@ belongs_to :photo, :class_name =&gt; '::Refinery::Image'
  end
  end
 end
-</ruby>
+```
 
 #### Modifying the Controller to gather information for our sub-table
 
@@ -258,7 +258,7 @@ and look at its contents:
 WARNING: Be sure you are looking at the /events/admin/events_controller
 not the /events/events_controller!
 
-<ruby>
+```ruby
 module Refinery
  module Events
  module Admin
@@ -270,7 +270,7 @@ end
  end
  end
 end
-</ruby>
+```
 
 Now, add a function to "find_all_event_types", and call that function
 in a before_action. The @event_types variable will be needed in all
@@ -279,7 +279,7 @@ actions that utilize the
 partial (all actions except :show and :destroy). Your controller should
 look like this when you are done:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  module Admin
@@ -300,7 +300,7 @@ end
  end
  end
 end
-</ruby>
+```
 
 #### Modifying the View to display and store the sub-table select box
 
@@ -313,7 +313,7 @@ In that file, wherever you want your select box to appear, simply add
 this rails code below (we added ours between the :title and :date
 sections):
 
-<ruby>
+```ruby
 
 <div class="field">
 <%= f.label :event_type -%>
@@ -321,7 +321,7 @@ sections):
 <%= f.select(:event_type_id, @event_types.collect { |d| [d.name, d.id] })%>
 
 </div>
-</ruby>
+```
 
 That should be all you need. Try it out: Login to refinery and first add
 some event types. Then go to the Events edit page and you should see the

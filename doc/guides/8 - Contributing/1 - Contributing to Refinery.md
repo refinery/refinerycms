@@ -36,13 +36,13 @@ WARNING: This guide is only for advanced users of Refinery
 
 ##### In terminal
 
-<shell>
+```shell
 $ git clone git@github.com:USERNAME/refinerycms.git
 $ cd refinerycms
 $ bundle install
 $ bin/rake refinery:testing:dummy_app
 $ rails server
-</shell>
+```
 
 ##### In your browser
 
@@ -58,29 +58,29 @@ $ rails server
 Make your changes to fix a bug. Next regenerate the dummy app and run
 the Refinery tests
 
-<shell>
+```shell
 $ bin/rake refinery:testing:clean_dummy_app
 $ bin/rake refinery:testing:dummy_app
 $ bin/rspec ./*/spec
-</shell>
+```
 
 If this doesn't work. Follow the [How to test Refinery
 guide](/guides/testing)
 
 Commit your changes:
 
-<shell>
+```shell
 $ git add path/to/files/changed
 $ git commit -m "your fix"
-</shell>
+```
 
 TIP: if you've filed an issue on Github add "Closes GH-999" (replace 999
 with your issue number) to your commit message and it will automatically
 link the issue to your commit and close it.
 
-<shell>
+```shell
 $ git push origin master
-</shell>
+```
 
 Now go to <https://github.com/refinery/refinerycms> and click "Pull
 Request". Type a nice message explaining what you've done and send the

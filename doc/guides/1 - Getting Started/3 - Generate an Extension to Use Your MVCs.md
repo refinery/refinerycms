@@ -64,10 +64,10 @@ necessary model, view, controller, configuration, and database files for
 you and will put them into their appropriate directories. Here's the
 command:
 
-<shell>
+```shell
 $ rails generate refinery:engine singular_model_name attribute:type
 [attribute:type …]
-</shell>
+```
 
 TIP: to see all the options supported by the *refinery:engine* generator
 just run *rails g refinery:engine*.
@@ -99,13 +99,13 @@ event:
 
 Run this command to generate the events extension for Rick:
 
-<shell>
+```shell
 $ rails generate refinery:engine event title:string date:datetime
 photo:image blurb:text
-</shell>
+```
 
 This results in the following:
-<shell>
+```shell
  create
 vendor/extensions/events/app/controllers/refinery/admin/events_controller.rb
  create
@@ -158,16 +158,16 @@ rake db:migrate
 rake db:seed
 Please restart your rails server.
 ————————————
-</shell>
+```
 
 As the output shows, next run these commands:
 
-<shell>
+```shell
 $ bundle install
 $ rails generate refinery:events
 $ rake db:migrate
 $ rake db:seed
-</shell>
+```
 
 A line for the events extension has been added in the Gemfile of your
 application. *bundle install* will verify and load the extension. A
@@ -181,12 +181,12 @@ the events extension. .
 
 When you run bundle install, you may see a message that says
 
-<shell>
+```shell
 …extensions/events did not have a valid gemspec. This prevents bundler
 from installing bins or native extensions, but that may not affect its
 functionality. The validation message from Rubygems was:
  authors may not be empty
-</shell>
+```
 
 This is a warning message from RubyGems telling you that no author is
 specified for this extension. This is only important if you are going to
@@ -258,7 +258,7 @@ Open up
 *vendor/extensions/events/app/controllers/refinery/events/admin/events_controller.rb*
 and look at its contents:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  module Admin
@@ -270,7 +270,7 @@ end
  end
  end
 end
-</ruby>
+```
 
 Most of the time, crudify's defaults are bang on, but if you need to,
 you can easily customise how it works.
@@ -279,7 +279,7 @@ By default *crudify* assumes your records will be sortable. But events
 should not be manually sortable; it makes more sense to order them by
 their event date. Update the contents of the file to this:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  module Admin
@@ -293,7 +293,7 @@ end
  end
  end
 end
-</ruby>
+```
 
 This will tell *crudify* to sort by our event date field and to turn off
 manual sorting by the user.
@@ -302,7 +302,7 @@ Finally edit
 *vendor/extensions/events/app/controllers/refinery/events/events_controller.rb*
 and replace the *find_all_events* method with this one:
 
-<ruby>
+```ruby
 module Refinery
  module Events
  class EventsController < ::ApplicationController
@@ -321,7 +321,7 @@ module Refinery
     end
   end
 end
-</ruby>
+```
 
 Now when you look at <http://localhost:3000/events> you'll notice
 they're now being sorted by the event date.

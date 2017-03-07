@@ -23,31 +23,31 @@ TIP: Throughout this guide, we refer to the Dutch locale (*nl*). In most
 circumstances, you will not want to refer to this locale; be sure to
 substitute *nl* for the locale you're working with.
 
-<shell>
+```shell
 $ git checkout -b i18n_nl
-</shell>
+```
 
 ### Finding missing keys
 
 First, you must create a 'dummy' application to enable additional useful
 *rake* tasks. Do so with the following command:
-<shell>
+```shell
 $ bin/rake refinery:testing:dummy_app
-</shell>
+```
 
 Then execute the following to get a list of missing translations for all
 locales:
 
-<shell>
+```shell
 $ bin/rake app:translate:lost_in_translation_all
-</shell>
+```
 
 Or execute the following rake task to get a list of missing translations
 for a given locale:
 
-<shell>
+```shell
 $ bin/rake app:translate:lost_in_translation LOCALE=nl
-</shell>
+```
 
 The output of this will look like this:
 
@@ -69,14 +69,14 @@ right key in the right file.
 The key *refinery.admin.pages_dialogs.link_to.insert* is represented
 in YAML like so:
 
-<yaml>
+```yaml
 nl:
  refinery:
  admin:
  pages_dialogs:
  link_to:
  insert: Voeg in
-</yaml>
+```
 
 Order the keys exactly like the en.yml version. This way, you can use a
 diff-enabled-editor to open both the *en.yml* and *nl.yml* file to
@@ -95,29 +95,29 @@ WARNING: Make sure you change *en:* to your locale's key at the top of
 Run the Refinery tests to be sure you didn't break something, and that
 your YAML is valid.
 
-<shell>
+```shell
 $ bin/rake spec
-</shell>
+```
 
 ### Commit & Push
 
 Add the modified files to the git repository
 
-<shell>
+```shell
 $ git add pages/config/locales/nl.yml
-</shell>
+```
 
 Commit your changes
 
-<shell>
+```shell
 $ git commit
-</shell>
+```
 
 and push them back to GitHub
 
-<shell>
+```shell
 $ git push origin i18n_nl
-</shell>
+```
 
 ### Pull request
 

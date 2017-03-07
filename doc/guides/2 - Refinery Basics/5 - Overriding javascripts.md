@@ -19,10 +19,10 @@ Javascript.
 This means that you can simply remove the two relevant lines from
 `application.js` to remove the default library, jQuery:
 
-<erb>
+```erb
 //= require jquery
 //= require jquery_ujs
-</erb>
+```
 
 You can include your own files this way too; indeed, since
 `application.js` is
@@ -43,11 +43,11 @@ on a user to inject your dependency into his `application.js` file.
 
 It should be used inside a view like so:
 
-<erb>
+```erb
 <% content_for :javascripts do %>
  <%= javascript_include_tag 'jquery-cycle.min' %>
 <% end %>
-</erb>
+```
 
 This will append `jquery-cycle.min.js` after your `application.js` file.
 

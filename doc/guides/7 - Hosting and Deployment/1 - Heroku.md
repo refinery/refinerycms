@@ -15,9 +15,9 @@ endprologue.
 First you need to install Refinery. To do that you need the refinerycms
 gem.
 
-<shell>
+```shell
 gem install refinerycms
-</shell>
+```
 
 Then, if you haven't done so already, follow the first three steps of
 the
@@ -31,21 +31,21 @@ Now it's time to create your Refinery application using the built in
 *—heroku*
 option:
 
-<shell>
+```shell
 refinerycms myapp —heroku
-</shell>
+```
 
 NOTE: Heroku relies on [Git](http://git-scm.com/download) being
 installed on your system. You should install it beforehand.
 
 Watch the output for these lines:
 
-<shell>
+```shell
 Creating Heroku app..
 Running: cd /path/to/app/myapp && heroku create
 Creating random-site-name….. done
 Created http://random-site-name.herokuapp.com/
-</shell>
+```
 
 This will output the URL for your Heroku-hosted Refinery application.
 Your
@@ -70,20 +70,20 @@ but
 Heroku depends on the presence of the `pg` gem. So, in your Gemfile,
 change:
 
-<shell>
+```shell
 gem 'sqlite3' # or whatever the database driver for your local database
 is
-</shell>
+```
 
 to:
-<shell>
+```shell
 group :development, :test do
  gem 'sqlite3'
 end
 group :production do
  gem 'pg'
 end
-</shell>
+```
 
 WARNING. Using differing databases for development and production is
 not
@@ -105,20 +105,20 @@ deployed).
 ##### Applying your changes
 
 Now we just need to run bundle and add the changes to git:
-<shell>
+```shell
 bundle install
 git add Gemfile
 git add Gemfile.lock
 git commit -m "setup for Heroku"
-</shell>
+```
 
 #### Step 2: Set up your app on Heroku:
 
-<shell>
+```shell
 app_name="your-app-name"
 heroku create $app_name —stack cedar
 git push heroku master
-</shell>
+```
 
 #### Step 3: Set up asset precompilation
 
@@ -126,9 +126,9 @@ Inside *config/application.rb*, at the end of the config block, make
 sure you
 add the following:
 
-<ruby>
+```ruby
 config.assets.initialize_on_precompile = true
-</ruby>
+```
 
 This is necessary to make post-deploy asset precompilation happen.
 Without this,
@@ -143,9 +143,9 @@ Heroku. You can read more
 in
 short, run the following command:
 
-<shell>
+```shell
 $ heroku labs:enable user-env-compile
-</shell>
+```
 
 In theory, this should only affect applications where
 *initialize_on_precompile*
@@ -167,17 +167,17 @@ local
 database to heroku, you'll need to run a few commands to get Refinery's
 database set up.
 
-<shell>
+```shell
 heroku run rake db:migrate
 heroku run rake db:seed
-</shell>
+```
 
 This will set up the required database tables, and set up a homepage.
 Log in to your site to set up your first user.
 
-<shell>
+```shell
 heroku open
-</shell>
+```
 
 #### Step 4 (Option 2): Copy your data from your local database to the Heroku app
 
@@ -197,15 +197,15 @@ You'll want to actually install taps to your system – not just add it to
 your
 Gemfile.
 
-<shell>
+```shell
 gem install taps
-</shell>
+```
 
 Now copy the data to your Heroku app.
 
-<shell>
+```shell
 heroku pg:push
-</shell>
+```
 
 If that command gives you the error "no such file to load —
 taps/operation",
@@ -227,18 +227,18 @@ On Amazon S3, create a bucket called "my_app_production". Then add
 this to the
 end of your Gemfile (this might already be done for you):
 
-<ruby>
+```ruby
 group :production do
  gem 'fog'
 end
-</ruby>
+```
 
 Next, tell Heroku about your new S3 bucket.
 
-<shell>
+```shell
 heroku config:add S3_KEY=123key S3_SECRET=456secret
 S3_BUCKET=my_app_production
-</shell>
+```
 
 WARNING. Make sure the config vars you add to Heroku match Refinery's
 environment variables: *S3_KEY*, *S3_SECRET*, and *S3_BUCKET*
@@ -271,7 +271,7 @@ guide for more specific information on file storage.
 
 #### Other problems?
 
-Otherwise, run \`heroku logs\` or \`heroku logs —tail\` and see if you
+Otherwise, run `heroku logs` or `heroku logs —tail` and see if you
 can spot the
 error yourself. Or you could explore the [help options
 available](/guides/how-to-get-help).

@@ -38,38 +38,38 @@ migrations; Rails will auto-detect that you've run them, even though the
 filename has been changed, and it won't re-run them.
 
 Inside your migration, write something like this:
-<ruby>
+```ruby
  class AddSlugToRefineryStaffMembers < ActiveRecord::Migration
     def change
       add_column :refinery_staff_members, :slug, :string
       add_index :refinery_staff_members, :slug
     end
   end
-</ruby>
+```
 
 Run the generator that you ran initially to create your extension, and
 then migrate. In the above example, since the extension is named
 *staff_members*, one would run:
 
-<shell>
+```shell
 $ rails generate refinery:staff_members
 $ rake db:migrate
 $ rake db:seed
-</shell>
+```
 
 ### Adding Friendly ID
 
 In your model, add the following lines after the opening *class* line:
 
-<ruby>
+```ruby
  extend FriendlyId
  friendly_id :title, :use =&gt; [:slugged]
-</ruby>
+```
 
 And in your controller, use the following instead of StaffMember.find
-<ruby>
+```ruby
  StaffMember.friendly.find(params[:id])
-</ruby>
+```
 
 If you want to use a different field than *title* from which to generate
 the URL, be sure to change the first symbol after *friendly_id* to be
@@ -86,9 +86,9 @@ Each entry must be re-saved to generate its slug. You can do this
 quickly from the Rails console (obviously, replace *StaffMember* with
 your model's name):
 
-<ruby>
+```ruby
  StaffMember.all.map(&:save)
-</ruby>
+```
 
 If all entries in the resulting array return true, everything is
 complete! If you have an entry return false, you may have some

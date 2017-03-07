@@ -19,18 +19,18 @@ version, rather than its original copy.
 It's easy to get a copy of this file to modify locally. For example, for
 the footer, run the following command in the terminal:
 
-<shell>
+```shell
 $ rake refinery:override view=refinery/_footer.html
-</shell>
+```
 
 ### Common Examples
 
 These are files we often override when creating a Refinery site.
 
-<shell>
+```shell
 $ rake refinery:override view=refinery/pages/show
 $ rake refinery:override view=refinery/pages/home
-</shell>
+```
 
 ### Tips and Tricks
 

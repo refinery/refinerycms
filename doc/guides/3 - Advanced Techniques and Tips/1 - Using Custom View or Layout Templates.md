@@ -137,7 +137,7 @@ Assuming we need access to a collection of events, create
 */app/decorators/controllers/refinery/pages/pages_controller_decorator.rb*
 containing the following:
 
-<ruby>
+```ruby
 Refinery::PagesController.class_eval do
  before_action :fetch_events, :only =&gt; [:show]
 
@@ -146,7 +146,7 @@ def fetch_events
  end
  protected :fetch_events
 end
-</ruby>
+```
 
 You can also entirely override the *show* method inside this decorator,
 too, if
@@ -176,7 +176,7 @@ This is actually relatively straightforward with one single exception.
 Basically, use a decorator to create an additional method on the
 *PagesController*:
 
-<ruby>
+```ruby
 
 1.  /app/decorators/controllers/refinery/pages/pages_controller_decorator.rb
     Refinery::PagesController.class_eval do
@@ -188,7 +188,7 @@ Basically, use a decorator to create an additional method on the
      render_with_templates?
      end
     end
-    </ruby>
+    ```
 
 WARNING. You may need to adjust the *where* method if you intend to
 rename the page at any point, since *link_url* is volatile.
@@ -199,13 +199,13 @@ unaccessible. On the very first line of *config/routes.rb*, before
 anything
 else, add the following:
 
-<ruby>
+```ruby
 Refinery::Core::Engine.routes.prepend do
  get '/about-us', :to =&gt; 'pages#about_us', :as =&gt; :about_us
 end
 
 1.  Your route file resumes here
-    </ruby>
+    ```
 
 Then this will use the *app/views/refinery/pages/about_us.html.erb*
 template by

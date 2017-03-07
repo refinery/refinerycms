@@ -14,9 +14,9 @@ endprologue.
 When designing pages for Refinery, a commonly performed task is to
 override views with something similar to:
 
-<shell>
+```shell
  $ rake refinery:override view=refinery/pages/show
-</shell>
+```
 
 The same can be done for Refinery's controllers or models, but it could
 make troubleshooting Refinery and upgrading to future versions more
@@ -39,18 +39,18 @@ We start out by creating
 *app/decorators/controllers/refinery/pages_controller_decorator.rb*
 unless it already exists:
 
-<ruby>
+```ruby
  Refinery::PagesController.class_eval do
  # your controller logic goes here
  end
-</ruby>
+```
 
 The code within the *class_eval* block in any decorator can be written
 as if you are writing in the class definition of the class it is
 extending. In this case we're extending a ActionController and we want
 it to find us some blog posts:
 
-<ruby>
+```ruby
  Refinery::PagesController.class_eval do
 
 before_action :find_all_blog_posts, :only =&gt; [:home]
@@ -62,7 +62,7 @@ def find_all_blog_posts
  end
 
 end
-</ruby>
+```
 
 We define the *find_all_blog_posts* method and set it as a
 *before_action* for the *pages#home* action. This will make the
@@ -71,7 +71,7 @@ contain all of the live blog posts. Because writing a decorator is just
 like extending a class definition, we could even simplify this further
 by writing:
 
-<ruby>
+```ruby
  Refinery::PagesController.class_eval do
 
 include Refinery::Blog::ControllerHelper
@@ -79,7 +79,7 @@ include Refinery::Blog::ControllerHelper
  before_action :find_all_blog_posts, :only =&gt; [:home]
 
 end
-</ruby>
+```
 
 The Blog extension contains a helper module which already has the
 *find_all_blog_posts* method defined for this common case. This will

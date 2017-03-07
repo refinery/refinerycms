@@ -22,7 +22,7 @@ supported with the addition of these form specific ones:
     Model::FIELD_NAMES
 
 Example:
-<shell>
+```shell
 $ rails generate refinery:form job_inquiry name:string message:text
 job_type:radio brochure:checkbox qualification:select
-</shell>
+```

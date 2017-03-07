@@ -21,7 +21,7 @@ content disposition configuration.
 You can do this by making use of the after_inclusion hook refinery
 provides:
 
-<ruby>
+```ruby
 
 1.  config/application.rb
 2.  refinery change content-disipotion
@@ -32,7 +32,7 @@ provides:
     nil)
      end
     end
-    </ruby>
+    ```
 
 You want this code to be placed inside the *class Application &lt;
 Rails::Application* class. Once you restart your web server, you'll now

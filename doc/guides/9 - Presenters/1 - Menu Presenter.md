@@ -33,39 +33,39 @@ The requirement was to persist the data to the database, so we will
 start by creating a migration that a will add *show_in_footer* column
 to the *refinery_pages* database table. Open up terminal and type:
 
-<shell>
+```shell
 rails generate migration add_show_in_footer_to_refinery_pages
-</shell>
+```
 
 This will generate an empty migration. Open it and add the following
 code:
 
-<ruby>
+```ruby
 class AddShowInFooterToRefineryPages < ActiveRecord::Migration
   def change
     add_column :refinery_pages, :show_in_footer, :boolean, default: false
   end
 end
-</ruby>
+```
 
 Run the migration:
 
-<shell>
+```shell
 rake db:migrate
-</shell>
+```
 
 ### Decorating the *Refinery::Page* model
 
 We want to decorate the *Refinery::Page* class. Create a file
 *app/decorators/models/refinery/page_decorator.rb* with this content:
 
-<ruby>
+```ruby
 Refinery::Page.class_eval do
  def self.footer_menu_pages
  where show_in_footer: true
  end
 end
-</ruby>
+```
 
 We added *footer_menu_pages* class method to abstract away
 ActiveRecord query method.
@@ -77,7 +77,7 @@ Before overriding Refinery's form view, we want to decorate the
 *app/decorators/controllers/refinery/admin/pages_controller_decorator.rb*
 with this content:
 
-<ruby>
+```ruby
 Refinery::Admin::PagesController.prepend(
  Module.new do
  def permitted_page_params
@@ -85,7 +85,7 @@ Refinery::Admin::PagesController.prepend(
     end
   end
 )
-</ruby>
+```
 
 We added *show_in_footer* to the permitted attributes list so that it
 doesn't raise a mass-assignment error each time someone tries to save
@@ -100,10 +100,10 @@ editing a page. To do this, we have to override the file
 partial](https://github.com/refinery/refinerycms/blob/master/pages/app/views/refinery/admin/pages/_form_extra_fields_for_more_options.html.erb).
 Type this in the terminal:
 
-<shell>
+```shell
 rake refinery:override
 view=refinery/admin/pages/_form_extra_fields_for_more_options.html
-</shell>
+```
 
 Now open the *_form_extra_fields_for_more_options.html.erb*
 partial and add the following code right after the commented line :
@@ -128,7 +128,7 @@ configuration code.
 
 Open the ApplicationHelper and add this code:
 
-<ruby>
+```ruby
 def footer_menu
  menu_items = Refinery::Menu.new(Refinery::Page.footer_menu_pages)
 
@@ -139,7 +139,7 @@ Refinery::Pages::MenuPresenter.new(menu_items, self).tap do
  presenter.menu_tag = :div
  end
 end
-</ruby>
+```
 
 We create an instance of *Refinery::Menu* by passing a collection of
 footer pages (*Refinery::Page.footer_menu_pages*) to it. We need it
@@ -150,11 +150,11 @@ footer menu to be wrapped inside of a *div* tag instead of the default
 *nav* tag and I also want it to have a CSS class and an ID of
 *footer_menu* instead of the default *menu* one:
 
-<ruby>
+```ruby
 presenter.dom_id = "footer_menu"
 presenter.css = "footer_menu"
 presenter.menu_tag = :div
-</ruby>
+```
 
 Now that we have configured the menu presenter we need to return it
 because we'll have to call *.to_html* on it in the view later on.
@@ -165,15 +165,15 @@ Requirement was for the footer menu to appear just above Refinery's
 copyright notice. To do that we will simply override Refinery's footer
 view:
 
-<shell>
+```shell
 rake refinery:override view=refinery/_footer.html
-</shell>
+```
 
 Next, add this code in the footer partial, above the existing code:
 
-<erb>
+```erb
 <%= footer_menu.to_html %>
-</erb>
+```
 
 ### Taking a look at it
 

@@ -23,10 +23,10 @@ Within `config/initializers/refinery/pages.rb` you will see various
 default
 settings are commented out, including the following:
 
-<ruby>
+```ruby
  # Configure global page default parts
  # config.default_parts = ["Body", "Side Body"]
-</ruby>
+```
 
 Edit this code to have the names of the default page parts you want,
 click *Save*
@@ -38,10 +38,10 @@ Here's a sample of a site that would have three content areas on most of
 its
 pages.
 
-<ruby>
+```ruby
  # Configure global page default parts
  config.default_parts = ["Left Body", "Middle Body", "Right Body"]
-</ruby>
+```
 
 ### Changing Page Parts for a single page
 
@@ -60,9 +60,9 @@ To add a new Page Part just to the home page, refer back to
 `config/initializers/refinery/pages.rb`. Inside, you should see the
 following:
 
-<ruby>
+```ruby
  # config.new_page_parts = false
-</ruby>
+```
 
 Uncomment this and change the value to true, save, and restart your
 server.
@@ -88,9 +88,9 @@ If you have modified your `home.html.erb` file, you can use the
 following
 snippet to output the new part's content in your page:
 
-<erb>
+```erb
  <%= raw @page.content_for(:middle_body) %>
-</erb>
+```
 
 NOTE: If you don't have a *app/views/refinery/pages/home.html.erb* view
 already,

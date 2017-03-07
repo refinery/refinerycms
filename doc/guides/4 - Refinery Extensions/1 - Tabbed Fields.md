@@ -19,11 +19,11 @@ If your extension has a number of text areas that you'd like to display
 as a series of tabs instead, simply edit the admin view (under
 *app/views/admin/extension_name/_form.html.erb*), and add:
 
-<erb>
+```erb
 <%= render :partial => '/refinery/admin/tabbed_fields',
  :locals =&gt; { :f =&gt; f,
  :tabbed_fields =&gt; [:field, :list] } %&gt;
-</erb>
+```
 
 Replace the array *[:field, :list]* with an array of symbols of the
 columns you would like displayed as tabs.
