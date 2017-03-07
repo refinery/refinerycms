@@ -2,9 +2,9 @@ Overriding Javascripts
 ----------------------
 
 By default, Refinery will provide you with the required javascript files
-you\
+you
 need. Sometimes, these defaults do not suffice, and you will need to
-customize\
+customize
 the Javascript files used by Refinery. This guide will show you how to:
 
 -   Change the default javascript libraries included;
@@ -14,39 +14,39 @@ endprologue.
 
 ### Overriding the default Javascript libraries
 
-Refinery version 2.0 and later use Rails’s asset pipeline to deliver
-Javascript.\
-This means that you can simply remove the two relevant lines from\
+Refinery version 2.0 and later use Rails's asset pipeline to deliver
+Javascript.
+This means that you can simply remove the two relevant lines from
 `application.js` to remove the default library, jQuery:
 
-<erb>\
-//= require jquery\
-//= require jquery\_ujs\
+<erb>
+//= require jquery
+//= require jquery_ujs
 </erb>
 
 You can include your own files this way too; indeed, since
-`application.js` is\
+`application.js` is
 minified in production, we recommend this as opposed to adding separate
 files.
 
 ### Adding additional files
 
 If you absolutely must include your own discrete Javascript files, you
-can\
+can
 utilize the `content_for :javascripts` block, which will append
-Javascript files\
+Javascript files
 after `application.js`. This is often times useful when you are writing
-an\
+an
 extension that requires additional functionality, where you do not want
-to rely\
+to rely
 on a user to inject your dependency into his `application.js` file.
 
 It should be used inside a view like so:
 
-<erb>\
-<% content_for :javascripts do %>\
- <%= javascript_include_tag 'jquery-cycle.min' %>\
-<% end %>\
+<erb>
+<% content_for :javascripts do %>
+ <%= javascript_include_tag 'jquery-cycle.min' %>
+<% end %>
 </erb>
 
 This will append `jquery-cycle.min.js` after your `application.js` file.

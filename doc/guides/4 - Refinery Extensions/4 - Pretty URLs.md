@@ -1,7 +1,7 @@
 Pretty / SEO-Friendly URLs
 --------------------------
 
-It’s very important for Search Engine Optimization (SEO) purposes to
+It's very important for Search Engine Optimization (SEO) purposes to
 have your URLs be human-readable. Refinery CMS ships with software
 (FriendlyID) that enables these marketing-friendly URLs with only minor
 modifications.
@@ -15,30 +15,30 @@ endprologue.
 WARNING: This method is tested with Refinery CMS v. 2.0.0 only. It
 should be applicable to later versions, but not earlier versions (1.0.9
 or earlier). It is known to work with Refinery CMS v. 3.0, but has not
-been tested extensively.\
+been tested extensively.
 Always ensure your code is backed up or under version control before
 making substantial changes.
 
 ### Fresh Slugs
 
 FriendlyID requires that you create a string field entitled *slug* on
-any model that you wish to convert. It’s better to do this as a separate
-migration after creating the extension, because you don’t want Refinery
+any model that you wish to convert. It's better to do this as a separate
+migration after creating the extension, because you don't want Refinery
 to auto-generate a field in the back-end; this attribute is set by code,
 not by hand.
 
 To do so, create a new migration file in the *db/migrate* folder of your
-extension. Since this depends on the previous migration, it’s best to
+extension. Since this depends on the previous migration, it's best to
 rename the other migrations to include a sequence reference in the
-filename — for example, *create\_staff\_members.rb* becomes
-*001\_create\_staff\_members.rb*. When you re-run the generator that
+filename — for example, *create_staff_members.rb* becomes
+*001_create_staff_members.rb*. When you re-run the generator that
 will move these migrations over to your main *db/migrate* folder, they
-will be moved in this order. Don’t worry if you’ve already run these
-migrations; Rails will auto-detect that you’ve run them, even though the
-filename has been changed, and it won’t re-run them.
+will be moved in this order. Don't worry if you've already run these
+migrations; Rails will auto-detect that you've run them, even though the
+filename has been changed, and it won't re-run them.
 
-Inside your migration, write something like this:\
-<ruby>\
+Inside your migration, write something like this:
+<ruby>
  class AddSlugToRefineryStaffMembers < ActiveRecord::Migration
     def change
       add_column :refinery_staff_members, :slug, :string
@@ -49,33 +49,33 @@ Inside your migration, write something like this:\
 
 Run the generator that you ran initially to create your extension, and
 then migrate. In the above example, since the extension is named
-*staff\_members*, one would run:
+*staff_members*, one would run:
 
-<shell>\
-\$ rails generate refinery:staff\_members\
-\$ rake db:migrate\
-\$ rake db:seed\
+<shell>
+$ rails generate refinery:staff_members
+$ rake db:migrate
+$ rake db:seed
 </shell>
 
 ### Adding Friendly ID
 
 In your model, add the following lines after the opening *class* line:
 
-<ruby>\
- extend FriendlyId\
- friendly\_id :title, :use =&gt; \[:slugged\]\
+<ruby>
+ extend FriendlyId
+ friendly_id :title, :use =&gt; [:slugged]
 </ruby>
 
-And in your controller, use the following instead of StaffMember.find\
-<ruby>\
- StaffMember.friendly.find(params\[:id\])\
+And in your controller, use the following instead of StaffMember.find
+<ruby>
+ StaffMember.friendly.find(params[:id])
 </ruby>
 
 If you want to use a different field than *title* from which to generate
-the URL, be sure to change the first symbol after *friendly\_id* to be
+the URL, be sure to change the first symbol after *friendly_id* to be
 in accordance (for example, many extensions use *name* instead).
 
-Also be sure to remove any *to\_param* method that exists, or this will
+Also be sure to remove any *to_param* method that exists, or this will
 interfere.
 
 Restart your server.
@@ -84,10 +84,10 @@ Restart your server.
 
 Each entry must be re-saved to generate its slug. You can do this
 quickly from the Rails console (obviously, replace *StaffMember* with
-your model’s name):
+your model's name):
 
-<ruby>\
- StaffMember.all.map(&:save)\
+<ruby>
+ StaffMember.all.map(&:save)
 </ruby>
 
 If all entries in the resulting array return true, everything is

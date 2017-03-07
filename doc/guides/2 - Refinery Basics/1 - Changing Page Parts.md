@@ -1,8 +1,8 @@
 Changing Page Parts
 -------------------
 
-Refinery sets up two default page parts *Body* and *Side Body*.\
-Sometimes this is not suitable for your project.\
+Refinery sets up two default page parts *Body* and *Side Body*.
+Sometimes this is not suitable for your project.
 This guide will show you how to:
 
 -   Change the default page parts to be something else
@@ -13,85 +13,85 @@ endprologue.
 ### Changing default Page Parts
 
 By default, Refinery provides you with *Body* and *Side Body* page parts
-since\
+since
 most pages have a two column-style layout. If your layout has three
-content\
-areas or one, you’re going to want to update this setting to reflect
+content
+areas or one, you're going to want to update this setting to reflect
 that.
 
 Within `config/initializers/refinery/pages.rb` you will see various
-default\
+default
 settings are commented out, including the following:
 
-<ruby>\
- \# Configure global page default parts\
- \# config.default\_parts = \[“Body”, “Side Body”\]\
+<ruby>
+ # Configure global page default parts
+ # config.default_parts = ["Body", "Side Body"]
 </ruby>
 
 Edit this code to have the names of the default page parts you want,
-click *Save*\
-and you’re done. You’ll need to add a new page to see the page part.
-Existing pages\
-have the default\_parts they were created with.
+click *Save*
+and you're done. You'll need to add a new page to see the page part.
+Existing pages
+have the default_parts they were created with.
 
-Here’s a sample of a site that would have three content areas on most of
-its\
+Here's a sample of a site that would have three content areas on most of
+its
 pages.
 
-<ruby>\
- \# Configure global page default parts\
- config.default\_parts = \[“Left Body”, “Middle Body”, “Right Body”\]\
+<ruby>
+ # Configure global page default parts
+ config.default_parts = ["Left Body", "Middle Body", "Right Body"]
 </ruby>
 
 ### Changing Page Parts for a single page
 
 Often we find our home pages have three or more page parts but the rest
-of the\
+of the
 site only needs two. In this situation you just want to have the default
-page\
+page
 parts set to Body and Side Body and your home page setup to have an
 extra one.
 
 Refinery supports the ability for the user to add new Page Parts on the
-fly when\
+fly when
 editing a page.
 
-To add a new Page Part just to the home page, refer back to\
+To add a new Page Part just to the home page, refer back to
 `config/initializers/refinery/pages.rb`. Inside, you should see the
 following:
 
-<ruby>\
- \# config.new\_page\_parts = false\
+<ruby>
+ # config.new_page_parts = false
 </ruby>
 
 Uncomment this and change the value to true, save, and restart your
 server.
 
-Now go to your “Pages” tab in Refinery and edit your home page. You’ll
-notice a\
+Now go to your "Pages" tab in Refinery and edit your home page. You'll
+notice a
 plus and minus button at the top right of the visual editor. Click on
-the plus\
-icon and add a new page part titled “Middle Body” and click save. A new
-visual\
-editor will appear in a tab called “Middle Body” ready to use just for
-this\
-page. Inserting content there will show up on any page that uses the\
+the plus
+icon and add a new page part titled "Middle Body" and click save. A new
+visual
+editor will appear in a tab called "Middle Body" ready to use just for
+this
+page. Inserting content there will show up on any page that uses the
 `content_page` partial (by default, all of them).
 
-WARNING. If you’ve modified your
-`app/views/refinery/pages/home.html.erb` file,\
+WARNING. If you've modified your
+`app/views/refinery/pages/home.html.erb` file,
 you will not see your new page part until you set that page part to
-display in\
+display in
 the view.
 
 If you have modified your `home.html.erb` file, you can use the
-following\
-snippet to output the new part’s content in your page:
+following
+snippet to output the new part's content in your page:
 
-<erb>\
- <%= raw @page.content_for(:middle_body) %>\
+<erb>
+ <%= raw @page.content_for(:middle_body) %>
 </erb>
 
-NOTE: If you don’t have a *app/views/refinery/pages/home.html.erb* view
-already,\
+NOTE: If you don't have a *app/views/refinery/pages/home.html.erb* view
+already,
 run *rake refinery:override view=pages/home* to copy it into your app.

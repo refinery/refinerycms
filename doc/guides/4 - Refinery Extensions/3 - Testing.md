@@ -20,48 +20,48 @@ endprologue.
 ### Bootstrap the test environment
 
 NOTE: Make sure you perform all of the following steps from within your
-extension’s directory.
+extension's directory.
 
-In your extension’s Gemfile uncomment or add the following line
+In your extension's Gemfile uncomment or add the following line
 
-<ruby>\
- gem ‘refinerycms-testing’\
+<ruby>
+ gem 'refinerycms-testing'
 </ruby>
 
 And run
 
-<ruby>\
-\$ bundle install\
+<ruby>
+$ bundle install
 </ruby>
 
 Now we will configure our test environment by preparing a dummy
 refinerycms app
 
-Add the following lines to your extension’s Rakefile
+Add the following lines to your extension's Rakefile
 
-<ruby>\
-ENGINE\_PATH = File.dirname(*FILE*)\
-APP\_RAKEFILE = File.expand\_path(“../spec/dummy/Rakefile”, *FILE*)
+<ruby>
+ENGINE_PATH = File.dirname(*FILE*)
+APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", *FILE*)
 
-load ‘rails/tasks/extension.rake’ if File.exists?(APP\_RAKEFILE)
+load 'rails/tasks/extension.rake' if File.exists?(APP_RAKEFILE)
 
-require “refinerycms-testing”\
-Refinery::Testing::Railtie.load\_dummy\_tasks ENGINE\_PATH\
+require "refinerycms-testing"
+Refinery::Testing::Railtie.load_dummy_tasks ENGINE_PATH
 </ruby>
 
 And run the dummy application generator:
 
-<shell>\
-\$ bin/rake refinery:testing:dummy\_app\
+<shell>
+$ bin/rake refinery:testing:dummy_app
 </shell>
 
 NOTE: To successfully run rake tasks within your project you may need to
-add the *refinerycms-testing* gem to your application’s Gemfile, too.
+add the *refinerycms-testing* gem to your application's Gemfile, too.
 
 ### Running the tests with Rake
 
-<shell>\
-\$ bin/rake spec\
+<shell>
+$ bin/rake spec
 </shell>
 
 This will run the rspec specs.
@@ -71,7 +71,7 @@ one time run.
 
 NOTE: If you get *Could not find table* errors, it may help to delete
 the *spec/dummy* directory and run *bin/rake
-refinery:testing:dummy\_app* again.
+refinery:testing:dummy_app* again.
 
 ### Running the tests with Guard
 
@@ -80,13 +80,13 @@ watch your project for changes in files. If a change is made to a spec
 or a file that is tested against, it will re-run only the necessary
 specs. This is a faster way to get feedback during your TDD cycles.
 
-At your extension’s root directory run:
+At your extension's root directory run:
 
-<shell>\
-\$ bin/guard start\
+<shell>
+$ bin/guard start
 </shell>
 
 Larger Rails apps, particularly on Ruby 1.9.2, may take several seconds
-(or more) to start up. If that’s the case, you might also want to use
+(or more) to start up. If that's the case, you might also want to use
 Spork, which loads a single instance of the Rails environment and forks
 it to run tests, for even faster feedback cycles.

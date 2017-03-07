@@ -15,8 +15,8 @@ The best way for you to learn how to create a guide is to look at how a
 guide is structured. We are currently using the docrails project and as
 such all of the guides are written in textile.
 
-A good example of how a guide can be structured is the ‘Getting Started
-With Refinery’ guide which you can [see
+A good example of how a guide can be structured is the 'Getting Started
+With Refinery' guide which you can [see
 here](https://raw.github.com/refinery/refinerycms/master/doc/guides/1%20-%20Getting%20Started/2%20-%20Getting%20Started.textile).
 
 You should be able to match the sections of the raw textile guide with
@@ -26,25 +26,25 @@ the [live guide](/guides/getting-started/) to see how each aspect works.
 
 -   Login to <https://github.com>
 -   Go to <https://github.com/refinery/refinerycms>
--   If you have a fork of refinerycms already, delete it (*if you’re not
+-   If you have a fork of refinerycms already, delete it (*if you're not
     going to lose work. This makes it much easier for us to integrate
     your changes back in*)
--   Click on “fork” to make a fresh new fork on your own account.
+-   Click on "fork" to make a fresh new fork on your own account.
 -   Clone your new fork to your local machine
 
-Next make your changes or new guide in the ‘doc/guides’ folder.
+Next make your changes or new guide in the 'doc/guides' folder.
 
-Now go to <https://github.com/refinery/refinerycms> and click “Pull
-Request”.
+Now go to <https://github.com/refinery/refinerycms> and click "Pull
+Request".
 
-After we review it, we’ll merge it into the master refinerycms
+After we review it, we'll merge it into the master refinerycms
 repository, and the changes will be up on http://refinerycms.com/guides
 within a few seconds.
 
 ### Why submit a guide?
 
 The majority of Refinery CMS remains undocumented as development happens
-quickly. We’d appreciate it very much if you submitted a new guide or
+quickly. We'd appreciate it very much if you submitted a new guide or
 updated old ones. Here are some reasons for doing so:
 
 -   You will be listed as a contributor at

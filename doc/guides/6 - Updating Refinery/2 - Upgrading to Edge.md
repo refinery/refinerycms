@@ -1,7 +1,7 @@
 Upgrading to Edge
 -----------------
 
-If you’re an experienced Refinery developer you might want to live on
+If you're an experienced Refinery developer you might want to live on
 the edge. This guide will show you how to:
 
 -   Keep your existing Refinery installation on the edge version
@@ -19,22 +19,22 @@ Here are the basic steps:
 
 Replace the line that looks like this:
 
-<ruby>\
-gem ‘refinerycms’\
+<ruby>
+gem 'refinerycms'
 </ruby>
 
 With a line that looks like this:
 
-<ruby>\
-gem ‘refinerycms’, git: ‘https://github.com/refinery/refinerycms’,
-branch: ‘master’\
+<ruby>
+gem 'refinerycms', git: 'https://github.com/refinery/refinerycms',
+branch: 'master'
 </ruby>
 
-Now, inside the application’s directory, use the refinerycms generator
+Now, inside the application's directory, use the refinerycms generator
 to update your application:
 
-<shell>\
-\$ bin/rails generate refinery:cms —update\
+<shell>
+$ bin/rails generate refinery:cms —update
 </shell>
 
 ### Solve any deprecation problems.

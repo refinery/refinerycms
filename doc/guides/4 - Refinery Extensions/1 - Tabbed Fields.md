@@ -3,10 +3,10 @@ Tabbed Fields
 
 Sometimes you create an extension with a number of wymeditor fields.
 Having these display one after another can be overwhelming for your
-clients (or you!).\
+clients (or you!).
 This guide will show you how to:
 
--   Organise many visual editors into nice tabs like Refinery’s ‘pages’
+-   Organise many visual editors into nice tabs like Refinery's 'pages'
     extension does
 
 endprologue.
@@ -15,15 +15,15 @@ WARNING: This only works on Refinery versions 0.9.9 and greater
 
 ### Changing your admin view to support multiple tabs
 
-If your extension has a number of text areas that you’d like to display
+If your extension has a number of text areas that you'd like to display
 as a series of tabs instead, simply edit the admin view (under
-*app/views/admin/extension\_name/\_form.html.erb*), and add:
+*app/views/admin/extension_name/_form.html.erb*), and add:
 
-<erb>\
-<%= render :partial => ‘/refinery/admin/tabbed\_fields’,\
- :locals =&gt; { :f =&gt; f,\
- :tabbed\_fields =&gt; \[:field, :list\] } %&gt;\
+<erb>
+<%= render :partial => '/refinery/admin/tabbed_fields',
+ :locals =&gt; { :f =&gt; f,
+ :tabbed_fields =&gt; [:field, :list] } %&gt;
 </erb>
 
-Replace the array *\[:field, :list\]* with an array of symbols of the
+Replace the array *[:field, :list]* with an array of symbols of the
 columns you would like displayed as tabs.

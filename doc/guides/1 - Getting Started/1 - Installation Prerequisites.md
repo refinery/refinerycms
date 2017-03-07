@@ -13,7 +13,7 @@ endprologue.
 ### Checklist
 
 If you are already a Rails developer, you will most likely not have to
-install anything else. Here’s the requirements for Refinery:
+install anything else. Here's the requirements for Refinery:
 
 -   **Ruby** - 1.9.3, 2.0.0, Rubinius, and JRuby are all acceptable
 -   **RubyGems** - Recommended that you have the latest version
@@ -31,7 +31,7 @@ Otherwise, choose your operating system below.
 
 #### Ruby
 
-TIP. If you’re planning on using Ruby a lot, the best way to install it
+TIP. If you're planning on using Ruby a lot, the best way to install it
 is using the [Ruby Version Manager](https://rvm.io/rvm/install) (RVM)
 
 	$ sudo apt-get install ruby
@@ -73,7 +73,7 @@ which will cause problems. Update using:
 
 	$ gem update --system
 
-Also, due to an RDoc bug, you’ll need to update it as well:
+Also, due to an RDoc bug, you'll need to update it as well:
 
 	$ gem install rdoc
 
@@ -114,6 +114,6 @@ Follow the instructions at
 
 ### Ready to Install!
 
-Easier than expected right? Now you’re ready to start building great
+Easier than expected right? Now you're ready to start building great
 websites with Refinery! Proceed on to the [Getting Started with
 Refinery](/guides/getting-started/) guide.

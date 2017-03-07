@@ -23,17 +23,17 @@ Edit your *Gemfile* to reference the latest version of Refinery (a later
 version than the one shown [may
 exist](https://rubygems.org/gems/refinerycms/versions)).
 
-<ruby>\
-gem ‘refinerycms’, ‘\~&gt; 3.0.0’\
+<ruby>
+gem 'refinerycms', '~> 3.0.0'
 </ruby>
 
-Now install the new gems using bundler’s update functionality:
+Now install the new gems using bundler's update functionality:
 
-<shell>\
-\$ bundle update refinerycms\
+<shell>
+$ bundle update refinerycms
 </shell>
 
-Inside the application’s directory, use the Rails generator to update
+Inside the application's directory, use the Rails generator to update
 your Refinery installation:
 
 TIP: You only need to run the below step when upgrading between major or
@@ -44,14 +44,14 @@ you do not need to run this command.
 WARNING: This will overwrite files so make sure you have a backup or
 have your current code committed to a remote git repository.
 
-<shell>\
-\$ rails generate refinery:cms —update\
+<shell>
+$ rails generate refinery:cms —update
 </shell>
 
 Database migrations and new gem dependencies may have been added, so
 finish your Refinery update with:
 
-<shell>\
-\$ bin/rake db:migrate\
-\$ bundle install\
+<shell>
+$ bin/rake db:migrate
+$ bundle install
 </shell>

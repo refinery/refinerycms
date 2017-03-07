@@ -7,13 +7,13 @@ We all sometimes hit a brick wall. This guide will show you how to:
 
 endprologue.
 
-One of Refinery’s key principles is “Encourage and Help Others” so if
-you have any problems just let us know and we’ll do our best to help
+One of Refinery's key principles is "Encourage and Help Others" so if
+you have any problems just let us know and we'll do our best to help
 you. And one day you might help someone else out too!
 
 ### IRC Channel
 
-Use your favourite IRC client to connect to \#refinerycms on
+Use your favourite IRC client to connect to #refinerycms on
 freenode.net, or use this [Online IRC
 Client](http://webchat.freenode.net/?randomnick=1&amp;channels=refinerycms&amp;prompt=1&amp;uio=d4).
 
@@ -21,7 +21,7 @@ Alternatively, just use this in-browser client below.
 
 <iframe src="http://webchat.freenode.net/?randomnick=1&amp;channels=refinerycms&amp;prompt=1&amp;uio=d" width="613" height="428">
 </iframe>
-If you ask a question and don’t get an immediate response, don’t take
+If you ask a question and don't get an immediate response, don't take
 offence; either wait a half-hour and ask again, or just post your
 question on the [Google Group](http://group.refinerycms.org) instead.
 This gives developers who are in other timezones or who are temporarily
@@ -30,7 +30,7 @@ unavailable a chance to help you out.
 Please remember that Refinery is a fully open-source application. None
 of us are paid to fix it or improve it; we do so because we like
 Refinery and we greatly appreciate its value. Unfortunately, we cannot
-immediately drop everything to solve a problem for you (as much as we’d
+immediately drop everything to solve a problem for you (as much as we'd
 like to). Be patient, and try to figure out the problem on your own
 while you wait. The more information you can dig up yourself, the easier
 it is for us to help you resolve your issues expediently.
@@ -38,7 +38,7 @@ it is for us to help you resolve your issues expediently.
 ### Google Group
 
 The [Refinery CMS Google Group](http://group.refinerycms.org) is a great
-place to ask for help if you don’t get a response on IRC. Your first
+place to ask for help if you don't get a response on IRC. Your first
 message may take a short while to appear, as all first-time posters are
 required by Google Groups to pass moderation.
 
@@ -49,7 +49,7 @@ required by Google Groups to pass moderation.
 
 ### Other places
 
--   API (click ‘File List’ in top right) -
+-   API (click 'File List' in top right) -
     <a href="http://api.refinerycms.org" title="http://api.refinerycms.org">http://api.refinerycms.org</a>
 -   [GitHub Wiki](https://github.com/refinery/refinerycms/wiki)
 -   [Guides](http://refinerycms.com/guides)

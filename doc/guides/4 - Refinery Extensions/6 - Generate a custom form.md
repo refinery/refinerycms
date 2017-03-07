@@ -3,7 +3,7 @@ Generate a custom form
 
 ### Description
 
-Generate a custom form based extension for Refinery automatically.\
+Generate a custom form based extension for Refinery automatically.
 It works very similarly to the Refinery Engine generator.
 
 The first string attribute should always be the one which is the title
@@ -16,13 +16,13 @@ There must be at least one attribute.
 All field types that are supported by the Refinery Engine generator are
 supported with the addition of these form specific ones:
 
--   radio - creates a set of radio buttons based off Model::FIELD\_NAMES
+-   radio - creates a set of radio buttons based off Model::FIELD_NAMES
 -   checkbox - creates a checkbox for true/false values.
 -   select - creates a select list with options using
-    Model::FIELD\_NAMES
+    Model::FIELD_NAMES
 
-Example:\
-<shell>\
-\$ rails generate refinery:form job\_inquiry name:string message:text
-job\_type:radio brochure:checkbox qualification:select\
+Example:
+<shell>
+$ rails generate refinery:form job_inquiry name:string message:text
+job_type:radio brochure:checkbox qualification:select
 </shell>

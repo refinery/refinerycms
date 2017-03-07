@@ -6,7 +6,7 @@ Refinery. After reading it, you should be familiar with:
 
 -   The basic structure of a Refinery extension
 -   Using the Refinery generator to generate a custom extension
--   Extending Refinery’s functionality with custom extensions
+-   Extending Refinery's functionality with custom extensions
 -   Crudify, a CRUD module that Refinery provides
 
 endprologue.
@@ -50,7 +50,7 @@ extension and they can take full advantage of all of the functionality
 that Refinery offers.
 
 Since an extension is a kind of engine, it has the same familiar
-directory structure. You’ll see folders for your models, views,
+directory structure. You'll see folders for your models, views,
 controllers, helpers, decorators, config, and so forth. Your code goes
 in those folders just as it does in a regular Rails application or
 engine.
@@ -61,12 +61,12 @@ Refinery ships with an extension generator that makes adding your own
 functionality a breeze. It works just like the Rails scaffold generator:
 given information about a model, it will automatically generate the
 necessary model, view, controller, configuration, and database files for
-you and will put them into their appropriate directories. Here’s the
+you and will put them into their appropriate directories. Here's the
 command:
 
-<shell>\
-\$ rails generate refinery:engine singular\_model\_name attribute:type
-\[attribute:type …\]\
+<shell>
+$ rails generate refinery:engine singular_model_name attribute:type
+[attribute:type …]
 </shell>
 
 TIP: to see all the options supported by the *refinery:engine* generator
@@ -84,7 +84,7 @@ you:
   -------------------- -------------------------------------------------------------------------------------------------------
 
 If you remember from the [Getting Started](/guide/getting-started/)
-guide, we told Rick that we’ll give him an area to post up events he’ll
+guide, we told Rick that we'll give him an area to post up events he'll
 be at. Although we could technically create a new page in Refinery to
 add the event content there, areas that have special functionality are
 much better suited as an extension.
@@ -99,74 +99,74 @@ event:
 
 Run this command to generate the events extension for Rick:
 
-<shell>\
-\$ rails generate refinery:engine event title:string date:datetime
-photo:image blurb:text\
+<shell>
+$ rails generate refinery:engine event title:string date:datetime
+photo:image blurb:text
 </shell>
 
-This results in the following:\
-<shell>\
+This results in the following:
+<shell>
  create
-vendor/extensions/events/app/controllers/refinery/admin/events\_controller.rb\
+vendor/extensions/events/app/controllers/refinery/admin/events_controller.rb
  create
-vendor/extensions/events/app/controllers/refinery/events\_controller.rb\
- create vendor/extensions/events/app/models/refinery/event.rb\
+vendor/extensions/events/app/controllers/refinery/events_controller.rb
+ create vendor/extensions/events/app/models/refinery/event.rb
  create
-vendor/extensions/events/app/views/refinery/admin/events/\_actions.html.erb\
+vendor/extensions/events/app/views/refinery/admin/events/_actions.html.erb
  create
-vendor/extensions/events/app/views/refinery/admin/events/\_form.html.erb\
+vendor/extensions/events/app/views/refinery/admin/events/_form.html.erb
  create
-vendor/extensions/events/app/views/refinery/admin/events/\_events.html.erb\
+vendor/extensions/events/app/views/refinery/admin/events/_events.html.erb
  create
-vendor/extensions/events/app/views/refinery/admin/events/\_records.html.erb\
+vendor/extensions/events/app/views/refinery/admin/events/_records.html.erb
  create
-vendor/extensions/events/app/views/refinery/admin/events/\_event.html.erb\
+vendor/extensions/events/app/views/refinery/admin/events/_event.html.erb
  create
-vendor/extensions/events/app/views/refinery/admin/events/\_sortable\_list.html.erb\
+vendor/extensions/events/app/views/refinery/admin/events/_sortable_list.html.erb
  create
-vendor/extensions/events/app/views/refinery/admin/events/edit.html.erb\
+vendor/extensions/events/app/views/refinery/admin/events/edit.html.erb
  create
-vendor/extensions/events/app/views/refinery/admin/events/index.html.erb\
+vendor/extensions/events/app/views/refinery/admin/events/index.html.erb
  create
-vendor/extensions/events/app/views/refinery/admin/events/new.html.erb\
+vendor/extensions/events/app/views/refinery/admin/events/new.html.erb
  create
-vendor/extensions/events/app/views/refinery/events/index.html.erb\
+vendor/extensions/events/app/views/refinery/events/index.html.erb
  create
-vendor/extensions/events/app/views/refinery/events/show.html.erb\
- create vendor/extensions/events/config/locales/en.yml\
- create vendor/extensions/events/config/locales/es.yml\
- create vendor/extensions/events/config/locales/fr.yml\
- create vendor/extensions/events/config/locales/lolcat.yml\
- create vendor/extensions/events/config/locales/nb.yml\
- create vendor/extensions/events/config/locales/nl.yml\
- create vendor/extensions/events/config/routes.rb\
+vendor/extensions/events/app/views/refinery/events/show.html.erb
+ create vendor/extensions/events/config/locales/en.yml
+ create vendor/extensions/events/config/locales/es.yml
+ create vendor/extensions/events/config/locales/fr.yml
+ create vendor/extensions/events/config/locales/lolcat.yml
+ create vendor/extensions/events/config/locales/nb.yml
+ create vendor/extensions/events/config/locales/nl.yml
+ create vendor/extensions/events/config/routes.rb
  create
-vendor/extensions/events/db/migrate/20111031210430\_create\_events.rb\
- create vendor/extensions/events/db/seeds.rb\
+vendor/extensions/events/db/migrate/20111031210430_create_events.rb
+ create vendor/extensions/events/db/seeds.rb
  create
-vendor/extensions/events/lib/generators/refinery/events\_generator.rb\
- create vendor/extensions/events/lib/refinerycms-events.rb\
- create vendor/extensions/events/lib/tasks/events.rake\
- create vendor/extensions/events/readme.md\
- create vendor/extensions/events/refinerycms-events.gemspec\
- …\
-————————————\
-Now run:\
-bundle install\
-rails generate refinery:events\
-rake db:migrate\
-rake db:seed\
-Please restart your rails server.\
-————————————\
+vendor/extensions/events/lib/generators/refinery/events_generator.rb
+ create vendor/extensions/events/lib/refinerycms-events.rb
+ create vendor/extensions/events/lib/tasks/events.rake
+ create vendor/extensions/events/readme.md
+ create vendor/extensions/events/refinerycms-events.gemspec
+ …
+————————————
+Now run:
+bundle install
+rails generate refinery:events
+rake db:migrate
+rake db:seed
+Please restart your rails server.
+————————————
 </shell>
 
 As the output shows, next run these commands:
 
-<shell>\
-\$ bundle install\
-\$ rails generate refinery:events\
-\$ rake db:migrate\
-\$ rake db:seed\
+<shell>
+$ bundle install
+$ rails generate refinery:events
+$ rake db:migrate
+$ rake db:seed
 </shell>
 
 A line for the events extension has been added in the Gemfile of your
@@ -181,11 +181,11 @@ the events extension. .
 
 When you run bundle install, you may see a message that says
 
-<shell>\
+<shell>
 …extensions/events did not have a valid gemspec. This prevents bundler
 from installing bins or native extensions, but that may not affect its
-functionality. The validation message from Rubygems was:\
- authors may not be empty\
+functionality. The validation message from Rubygems was:
+ authors may not be empty
 </shell>
 
 This is a warning message from RubyGems telling you that no author is
@@ -195,10 +195,10 @@ you do want to resolve it and get rid of the message, you can edit the
 [gem specification
 file](http://guides.rubygems.org/specification-reference/) for the
 extension *refinerycms-events.gemspec* and put your name in there as the
-author. Just put this line: *s.author = ’yourname’* in the do block
+author. Just put this line: *s.author = 'yourname'* in the do block
 (after the *s.version….* line is fine).
 
-TIP: When new extensions are added it’s a good idea to restart your
+TIP: When new extensions are added it's a good idea to restart your
 server for new changes to be loaded in.
 
 TIP: Models in Refinery extensions expect a string field that acts as
@@ -210,12 +210,12 @@ in your extension.
 
 Now go to the backend of your Refinery site
 ([http://localhost:3000/refinery](http://localhost:3000/refinery)) and
-you’ll notice a new tab called “Events”. Click on “Add new event” and
-you’ll see something like this:
+you'll notice a new tab called "Events". Click on "Add new event" and
+you'll see something like this:
 
 ![](/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfODYwX2V2ZW50X3BhZ2VfZWRpdC5wbmciXV0/event_page_edit.png)
 
-You’ll see the entire form has been generated for you based off the
+You'll see the entire form has been generated for you based off the
 field types you specified when generating the events section. The blurb
 has a visual editor, the date field is a date picker and the photo
 allows you to pick or upload a new photo from a built-in Refinery
@@ -223,11 +223,11 @@ dialog.
 
 Add a couple of mock events to your events extension.
 
-Now click on “Switch to your website”, and navigate to
+Now click on "Switch to your website", and navigate to
 <http://localhost:3000/events>
 
-You’ll notice not only has Refinery generated the backend “Events” tab
-but also a new menu item called “Events” and two new front-end views,
+You'll notice not only has Refinery generated the backend "Events" tab
+but also a new menu item called "Events" and two new front-end views,
 *index.html.erb* and *show.html.erb*, located in
 *vendor/extensions/events/app/views/refinery/events/* for you to
 customise.
@@ -237,10 +237,10 @@ customise.
 As you can see, Refinery makes it insanely easy to quickly add new
 extensions to manage various areas of a site.
 
-But I’ve noticed one problem. The “2011 Music Awards” is showing up in
+But I've noticed one problem. The "2011 Music Awards" is showing up in
 the middle when it makes more sense to order the events with the latest
-event at the top. To fix this we need to understand what’s happening
-under the hood of a Refinery extension. Let’s dive in.
+event at the top. To fix this we need to understand what's happening
+under the hood of a Refinery extension. Let's dive in.
 
 ### Testing your extension
 
@@ -255,56 +255,56 @@ reusable module included with Refinery that gives you all the standard
 CRUD actions as well as reordering, searching and paging.
 
 Open up
-*vendor/extensions/events/app/controllers/refinery/events/admin/events\_controller.rb*
+*vendor/extensions/events/app/controllers/refinery/events/admin/events_controller.rb*
 and look at its contents:
 
-<ruby>\
-module Refinery\
- module Events\
- module Admin\
+<ruby>
+module Refinery
+ module Events
+ module Admin
  class EventsController < ::Refinery::AdminController
 
         crudify :'refinery/events/event', :xhr_paging => true
 
-end\
- end\
- end\
-end\
+end
+ end
+ end
+end
 </ruby>
 
-Most of the time, crudify’s defaults are bang on, but if you need to,
+Most of the time, crudify's defaults are bang on, but if you need to,
 you can easily customise how it works.
 
 By default *crudify* assumes your records will be sortable. But events
 should not be manually sortable; it makes more sense to order them by
 their event date. Update the contents of the file to this:
 
-<ruby>\
-module Refinery\
- module Events\
- module Admin\
+<ruby>
+module Refinery
+ module Events
+ module Admin
  class EventsController < ::Refinery::AdminController
 
-        crudify :'refinery/events/event', :xhr_paging => true,\
- :order =&gt; “date DESC”,\
+        crudify :'refinery/events/event', :xhr_paging => true,
+ :order =&gt; "date DESC",
  :sortable =&gt; false
 
-end\
- end\
- end\
-end\
+end
+ end
+ end
+end
 </ruby>
 
 This will tell *crudify* to sort by our event date field and to turn off
 manual sorting by the user.
 
 Finally edit
-*vendor/extensions/events/app/controllers/refinery/events/events\_controller.rb*
-and replace the *find\_all\_events* method with this one:
+*vendor/extensions/events/app/controllers/refinery/events/events_controller.rb*
+and replace the *find_all_events* method with this one:
 
-<ruby>\
-module Refinery\
- module Events\
+<ruby>
+module Refinery
+ module Events
  class EventsController < ::ApplicationController
 
       # code
@@ -323,17 +323,17 @@ module Refinery\
 end
 </ruby>
 
-Now when you look at <http://localhost:3000/events> you’ll notice
-they’re now being sorted by the event date.
+Now when you look at <http://localhost:3000/events> you'll notice
+they're now being sorted by the event date.
 
 ![](/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfMzE0X2V2ZW50c19lbmdpbmVfZml4ZWRfc21hbGwucG5nIl1d/14_24_51_314_events_extension_fixed_small.png)
 
-What’s Next?
+What's Next?
 ------------
 
-Now that you’ve made your first Refinery application with a custom
+Now that you've made your first Refinery application with a custom
 events extension, you should feel free to update it and experiment on
-your own. But you don’t have to do everything without help.
+your own. But you don't have to do everything without help.
 
 If you need assistance getting up and running with Refinery, follow the
 [How to get help with Refinery Guide](/guides/how-to-get-help/).

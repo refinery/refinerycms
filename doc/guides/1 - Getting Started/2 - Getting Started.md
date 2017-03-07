@@ -238,11 +238,11 @@ Look for the line that begins:
 config.site_name = "Company Name"
 ```
 
-The *\#* character prefixing the line is a comment character. The
+The *#* character prefixing the line is a comment character. The
 configuration options in this file (and in other Refinery initializer
 files) are all commented out, because these options are already set deep
 inside of Refinery. If you uncomment a line, Refinery will prefer the
-value you set inside these initializers. Go ahead and remove the *\#*
+value you set inside these initializers. Go ahead and remove the *#*
 character plus the space before the word 'config', and then change
 "Company Name" to "Rick Rock Star". Make sure you save, and then restart
 your server (if you're using the built-in Rails server, hit *Ctrl+C*,
@@ -296,7 +296,7 @@ keeping in mind at all times. If Refinery isn't displaying something how
 you'd like, just override it.
 
 If you request *http://localhost:3000/about*, this maps by default to
-Refinery's *pages\_controller.rb* show action.
+Refinery's *pages_controller.rb* show action.
 
 So as you would expect according to Rails convention, the view for this
 action is located in *app/views/refinery/pages/show.html.erb*. You won't
@@ -329,7 +329,7 @@ this:
 <%= render '/refinery/content_page' %>
 ```
 
-Refinery has a *content\_page* partial it uses just to get you started.
+Refinery has a *content_page* partial it uses just to get you started.
 But we'll soon remove this and use our own ERB view instead.
 
 #### Rendering content using *@page*

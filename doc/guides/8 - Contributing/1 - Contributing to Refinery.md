@@ -1,7 +1,7 @@
 Contributing to Refinery
 ------------------------
 
-One of Refinery’s key principles is encouraging people to contribute.
+One of Refinery's key principles is encouraging people to contribute.
 This guide will show you how to:
 
 -   Contribute to the documentation (such as this guide)
@@ -12,7 +12,7 @@ endprologue.
 
 ### Contributing documentation or guides
 
-We’d love it if you have a how-to guide on adding or setting up a
+We'd love it if you have a how-to guide on adding or setting up a
 feature on Refinery.
 
 Read the [Writing a guide for this
@@ -29,19 +29,19 @@ WARNING: This guide is only for advanced users of Refinery
 
 -   Login to <https://github.com>
 -   Go to <https://github.com/refinery/refinerycms>
--   If you have a fork of refinerycms already, delete it (*if you’re not
+-   If you have a fork of refinerycms already, delete it (*if you're not
     going to lose work. This makes it much easier for us to integrate
     your changes back in*)
--   Click on “fork” to make a fresh new fork on your own account.
+-   Click on "fork" to make a fresh new fork on your own account.
 
 ##### In terminal
 
-<shell>\
-\$ git clone git@github.com:USERNAME/refinerycms.git\
-\$ cd refinerycms\
-\$ bundle install\
-\$ bin/rake refinery:testing:dummy\_app\
-\$ rails server\
+<shell>
+$ git clone git@github.com:USERNAME/refinerycms.git
+$ cd refinerycms
+$ bundle install
+$ bin/rake refinery:testing:dummy_app
+$ rails server
 </shell>
 
 ##### In your browser
@@ -58,35 +58,35 @@ WARNING: This guide is only for advanced users of Refinery
 Make your changes to fix a bug. Next regenerate the dummy app and run
 the Refinery tests
 
-<shell>\
-\$ bin/rake refinery:testing:clean\_dummy\_app\
-\$ bin/rake refinery:testing:dummy\_app\
-\$ bin/rspec ./\*/spec\
+<shell>
+$ bin/rake refinery:testing:clean_dummy_app
+$ bin/rake refinery:testing:dummy_app
+$ bin/rspec ./*/spec
 </shell>
 
-If this doesn’t work. Follow the [How to test Refinery
+If this doesn't work. Follow the [How to test Refinery
 guide](/guides/testing)
 
 Commit your changes:
 
-<shell>\
-\$ git add path/to/files/changed\
-\$ git commit -m “your fix”\
+<shell>
+$ git add path/to/files/changed
+$ git commit -m "your fix"
 </shell>
 
-TIP: if you’ve filed an issue on Github add “Closes GH-999” (replace 999
+TIP: if you've filed an issue on Github add "Closes GH-999" (replace 999
 with your issue number) to your commit message and it will automatically
 link the issue to your commit and close it.
 
-<shell>\
-\$ git push origin master\
+<shell>
+$ git push origin master
 </shell>
 
-Now go to <https://github.com/refinery/refinerycms> and click “Pull
-Request”. Type a nice message explaining what you’ve done and send the
+Now go to <https://github.com/refinery/refinerycms> and click "Pull
+Request". Type a nice message explaining what you've done and send the
 request.
 
-We’ll merge it in if it’s all good.
+We'll merge it in if it's all good.
 
 #### Confused on where to find everything?
 
@@ -97,7 +97,7 @@ which briefly explains the source.
 ### Contributing financially
 
 Some of the effort that goes into Refinery CMS is covered by client work
-where requirements aren’t met by the current implementation and so
+where requirements aren't met by the current implementation and so
 extensions are required. Most of the effort, however, is done on a free
 basis by the core team and many contributors worldwide.
 

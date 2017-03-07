@@ -30,39 +30,39 @@ Open up your Gemfile and add the latest version (a later version than
 the one shown [may
 exist](https://rubygems.org/gems/refinerycms/versions)):
 
-<ruby>\
- gem ‘refinerycms’, ‘\~&gt; 3.0.0’\
+<ruby>
+ gem 'refinerycms', '\~&gt; 3.0.0'
 </ruby>
 
-Refinery doesn’t ship with authentication by default, but you will need
-to add it\
+Refinery doesn't ship with authentication by default, but you will need
+to add it
 unless you want every visitor to be automatically logged in.
 
 If you want to use the default authentication system:
 
-<ruby>\
- gem ‘refinerycms-authentication-devise’, ‘\~&gt; 1.0’\
+<ruby>
+ gem 'refinerycms-authentication-devise', '\~&gt; 1.0'
 </ruby>
 
 Now, to install the gems, run:
 
-<shell>\
- bundle install\
+<shell>
+ bundle install
 </shell>
 
 #### Generate support files and migrations, and prepare the database
 
 WARNING. Doing this will overwrite any tables that you have of the same
-name; please backup first. Refinery table names begin with *refinery\_*,
+name; please backup first. Refinery table names begin with *refinery_*,
 so the likelihood of a collision occurring is low, but it is
 nevertheless recommended you keep backups of your database and your
 code.
 
 Generating Refinery on top of an existing application is marginally more
-complicated than it was before, but it’s still quite simple:
+complicated than it was before, but it's still quite simple:
 
-<shell>\
- rails generate refinery:cms —fresh-installation\
+<shell>
+ rails generate refinery:cms —fresh-installation
 </shell>
 
 This does a couple of things:
@@ -71,11 +71,11 @@ This does a couple of things:
     required initializers from Refinery
 -   copies all Refinery migrations to your apps migration folder and
     runs these migrations, and adds the seed data to your database
--   injects Refinery’s mounting line into your *config/routes.rb* file
+-   injects Refinery's mounting line into your *config/routes.rb* file
 -   inserts *require refinery/formatting* and *require refinery/theme*
     lines in your apps application.css file
 
-After this, you should be all set. Don’t forget to revisit the
+After this, you should be all set. Don't forget to revisit the
 initializers in *config/initializers/refinery/* to customize your
 experience.
 
@@ -84,8 +84,8 @@ experience.
 It is possible to mount Refinery to a subfolder. To do this, simply
 change the following setting in *config/initializers/refinery/core.rb*:
 
-<ruby>\
- config.mounted\_path = “/subfolder”\
+<ruby>
+ config.mounted_path = "/subfolder"
 </ruby>
 
 After starting your rails server and navigating to
