@@ -2,6 +2,8 @@ module Refinery
   module Admin
     class PagesDialogsController < ::Refinery::Admin::DialogsController
 
+      newrelic_ignore
+
       helper :'refinery/admin/pages'
 
       def link_to
