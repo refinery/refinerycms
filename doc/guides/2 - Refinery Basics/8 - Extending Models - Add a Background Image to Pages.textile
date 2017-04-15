@@ -1,0 +1,148 @@
+h2. Extending Models with Decorators - Add a Background Image to Pages
+
+Sometimes you will want to graft in extra functionality that requires extra data to be stored in your Model. This guide will show you how to:
+
+* Extend the Pages Model to add a Background Image field
+* Modify the Pages _form partial through an override
+
+endprologue.
+
+h3. The Use-Case
+
+Designers love control. It's what they live for, what they crave, and you, as a stalwart developer, must often find ways to add functionality that is not necessarily built into Refinery. In this case, your designers desire the ability to give each page its own background.
+
+Obviously, creating an entirely new engine to duplicate all the abilities of the built-in Page model is offensive to your DRY sense.
+
+You could also override the model, but as you already face the not-undaunting task of overriding functionality in the Admin and user-facing Views, that just simply seems to be overkill.
+
+If only there was a way to add a Background Image to the Page model, so that you could leverage the existing functionality and add just that little extra your designers are longing for!
+
+h3. Enter the Decorator
+
+Thankfully, we now have this decorator pattern to work with, wherein we can add onto existing code without directly overriding and altering the entire module.
+
+(It wouldn't hurt, by the way, to check out the Refinery Guide for Extending Controllers with Decorators!)
+
+h3. The Setup
+
+We know we're going to need to add a field to the Page model in our database, so let's create a new migration:
+
+<shell>
+  $ rails g migration AddBackgroundImageToRefineryPage background_image:integer
+</shell>
+
+Open up the file that Rails has kindly created for you, in your db/migrate folder, and make sure it looks something like this:
+<ruby>
+class AddBackgroundImageToRefineryPages < ActiveRecord::Migration
+  def change
+    add_column :refinery_pages, :background_image_id, :integer
+  end
+end
+</ruby>
+
+The important things to note, above:
+1. :refinery_pages is the actual name of the Page model
+2. :background_image_id is how Rails will store a reference to the Background Image
+3. :integer is therefore the type of field data that :background_image_id stores
+
+Save any changes you need to make to the migration file, then go back to the Terminal.
+
+Run 
+<shell>
+  $ rake db:migrate
+</shell>
+to update your schema.
+
+h3. Create your Decorator
+
+Create a new file, under the decorators/models/refinery directory, called page_decorator.rb
+
+Here's the magic:
+<ruby>
+Refinery::Page.class_eval do
+  attr_accessible :background_image_id
+
+  belongs_to :background_image, :class_name => '::Refinery::Image'
+end
+</ruby>
+
+Yes.
+
+That's right.
+
+Five lines, to add this functionality to the Page model.
+
+I'll give you a minute to pick up your jaws from the floor.
+
+While you're reacquainting your mouth with your lower mandible, here's a quick overview of what the code does:
+
+<ruby>
+Refinery::Page.class_eval do 
+...
+end
+</ruby>
+
+This is what opens the model to manipulation. You're essentially telling Ruby to give you access to the model, to make modifications to it. Anything between the "do" and "end" will make adjustments to the way the model works, what fields it has... you can add or even modify methods on the model.
+
+<ruby>
+  attr_accessible :background_image_id
+</ruby>
+
+This allows the :background_image_id to be a readable, writable field.
+
+<ruby>
+  belongs_to :background_image, :class_name => '::Refinery::Image'
+</ruby>
+
+This associates the :background_image symbol with the Page model, and bases that symbol on the Refinery.Image model.
+
+We now have this lovely Page model that can store a background image, but we have to modify the Admin form to allow users to edit that image.
+
+h3. Adding an Image Editor
+
+In Terminal, run the following:
+
+<shell>
+  $ rake refinery:override view=refinery/admin/pages/_form
+</shell>
+
+After a few moments, you should see something that states _form.html.erb has been copied into app/views/refinery/admin/pages
+
+Open that file in your editor of choice. Find a nice spot for the new field to live. I personally think it's important enough to sit right up there with the title, so add this code under the block that holds the title field:
+
+<ruby>
+  <div class="field">
+    <%= f.label :background_image %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+      :f => f,
+      :field => :background_image_id,
+      :image => f.object.background_image,
+      :toggle_image_display => false
+    }
+    %>
+  </div>
+</ruby>
+
+This code simply adds a label for :background_image, then uses Refinery's built-in Image Picker partial to add the field. 
+Note that :field must point at the :background_image_id, and :image points at the background_image object.
+
+h3. Adding the Background Image on the User Side
+
+You can save a background image for each Page in your site, but now you have to display it!
+
+In one of your template partials, even in _content_page.html.erb, you need to add something along these lines:
+
+<ruby>
+<% content_for :stylesheets do %>
+  <% unless @page.background_image.nil? %>
+  <style type="text/css">
+    body {
+      background-image: url(<%= @page.background_image.url -%>);
+    }
+  </style>
+  <% end %>
+<% end %>
+</ruby>
+
+This is, of course, just one way you could take advantage of this field, but it should at least give you an idea of the flexibility of decorators in conjunction with the Page model. You'll probably want to take a look at other guides, in particular, Overriding Views, for more information.
+
