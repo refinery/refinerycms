@@ -56,6 +56,10 @@
         $form.attr({'action': prev_url, 'target': prev_target});
         e.preventDefault();
       });
+
+      $('#page_title').on('change', function() {
+        $("#submit_continue_button").remove();
+      });
     });
   </script>
 <% end %>
