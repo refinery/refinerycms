@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
   s.add_dependency 'friendly_id',                 ['>= 5.1.0', '< 5.3']
-  s.add_dependency 'globalize',                   ['>= 5.1.0', '< 5.2']
+  s.add_dependency 'globalize',                   '5.1.0.beta1'
   s.add_dependency 'activemodel-serializers-xml', '~> 1.0.1'
   s.add_dependency 'awesome_nested_set',          '~> 3.1.0'
   s.add_dependency 'seo_meta',                    '~> 2.0.0.rc.1'
