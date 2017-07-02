@@ -77,41 +77,6 @@ module Refinery
         ].flatten
       end
 
-      # set assets to be precompiled
-      config.to_prepare do
-
-        # scripts
-        Rails.application.config.assets.precompile += %w(
-          refinery/*.js
-          refinery/icons/*
-          modernizr-min.js
-          admin.js
-        )
-
-        # stylesheets
-        Rails.application.config.assets.precompile += %w(
-          refinery/refinery.css
-          refinery/formatting.css
-          refinery/site_bar.css
-          refinery/theme.css
-        )
-
-        # images
-        Rails.application.config.assets.precompile += %w(
-          refinery/images/*
-          refinery/refinery-cms-logo.svg
-        )
-
-        # fonts
-        Rails.application.config.assets.precompile += %w(
-          font-awesome/fontawesome-webfont.eot
-          font-awesome/fontawesome-webfont.woff2
-          font-awesome/fontawesome-webfont.woff
-          font-awesome/fontawesome-webfont.ttf
-          font-awesome/fontawesome-webfont.svg
-        )
-      end
-
       # active model fields which may contain sensitive data to filter
       initializer "refinery.params.filter" do |app|
         app.config.filter_parameters += [:password, :password_confirmation]
