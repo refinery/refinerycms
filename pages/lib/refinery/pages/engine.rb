@@ -25,13 +25,15 @@ module Refinery
         Refinery.include_once(Refinery::AdminController, Refinery::Pages::Admin::InstanceMethods)
       end
 
-      initializer "refinery.pages append marketable routes", :after => :set_routes_reloader_hook do
-        append_marketable_routes if Refinery::Pages.marketable_urls
-      end
+      # FIXME: Find why in Rails 5 it redirect sprockets assets engines paths to 404
+      # initializer "refinery.pages append marketable routes", :after => :set_routes_reloader_hook do
+      #   append_marketable_routes if Refinery::Pages.marketable_urls
+      # end
 
-      initializer "add marketable route parts to reserved words", :after => :set_routes_reloader_hook do
-        add_route_parts_as_reserved_words if Refinery::Pages.marketable_urls
-      end
+      # FIXME: Find why in Rails 5 it redirect sprockets assets engines paths to 404
+      # initializer "add marketable route parts to reserved words", :after => :set_routes_reloader_hook do
+      #   add_route_parts_as_reserved_words if Refinery::Pages.marketable_urls
+      # end
 
       config.to_prepare do
         Rails.application.config.assets.precompile += %w(
