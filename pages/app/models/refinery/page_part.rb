@@ -36,7 +36,7 @@ module Refinery
     protected
 
     def normalise_text_fields
-      if read_attribute(:body) && read_attribute(:body) !~ %r{^<}
+      if read_attribute(:body).present? && read_attribute(:body) !~ %r{^<}
         write_attribute(:body, "<p>#{read_attribute(:body).gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>")
       end
     end
