@@ -48,7 +48,7 @@ module Refinery
 
         if params.present? and params[:file].is_a?(Array)
           params[:file].each do |resource|
-            resources << create({:file => resource}.merge(params.except(:file)))
+            resources << create({:file => resource}.merge(params.except(:file).to_h))
           end
         else
           resources << create(params)
