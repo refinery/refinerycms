@@ -63,12 +63,12 @@ module Refinery
         end
       end
 
-      # FIXME: Find why in Rails 5 it redirect sprockets assets engines paths to 404
-      # initializer "refinery.routes", :after => :set_routes_reloader_hook do |app|
-      #   Refinery::Core::Engine.routes.append do
-      #     get "#{Refinery::Core.backend_route}/*path" => 'admin#error_404'
-      #   end
-      # end
+      # FIXME: Find why in Rails 5, if we use `:set_routes_reloader_hook` it redirect sprockets assets engines paths to 404
+      initializer "refinery.routes" do |app|
+        Refinery::Core::Engine.routes.append do
+          get "#{Refinery::Core.backend_route}/*path" => 'admin#error_404'
+        end
+      end
 
       initializer "refinery.autoload_paths" do |app|
         app.config.autoload_paths += [
