@@ -122,7 +122,7 @@ module Refinery
 
         post :update_positions, params: { "ul": { "0": dummy_params } }
 
-        expect(dummy.last.reload.lft).to eq(21)
+        expect(dummy.last.reload.lft).to eq(5)
       end
     end
 
