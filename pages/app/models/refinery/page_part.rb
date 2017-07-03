@@ -16,7 +16,7 @@ module Refinery
     end
 
     def body=(value)
-      super
+      write_attribute(:body, value)
 
       normalise_text_fields
     end
@@ -36,8 +36,8 @@ module Refinery
     protected
 
     def normalise_text_fields
-      if body? && body !~ %r{^<}
-        self.body = "<p>#{body.gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>"
+      if read_attribute(:body) && read_attribute(:body) !~ %r{^<}
+        write_attribute(:body, "<p>#{read_attribute(:body).gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>")
       end
     end
 
