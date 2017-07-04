@@ -44,6 +44,7 @@ module Refinery
 
       config.after_initialize do
         Refinery.register_extension(Refinery::Pages)
+        Rails.application.reload_routes!
       end
 
       protected
@@ -52,7 +53,6 @@ module Refinery
         Refinery::Core::Engine.routes.append do
           get '*path', :to => 'pages#show', :as => :marketable_page
         end
-        Rails.application.routes_reloader.reload!
       end
 
       # Add any parts of routes as reserved words.
