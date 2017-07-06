@@ -1,24 +1,4 @@
-<button type="button" class="btn btn-primary sidebar-left-opener fixed-t-l z-5 hidden-sm-up"><i class="icon icon-bars"></i></button>
-
-<section id="sidebar-left" class="sidebar left inverted cms-ui">
-  <div class="sidebar-top-nav">
-    <button type="button" class="btn btn-white sidebar-left-opener abs-t-l z-5 hidden-sm-up"><i class="icon icon-close"></i></button>
-    <div class="site-name">
-      <% if content_for?(:custom_sidebar_header_link) %>
-        <%= yield :custom_sidebar_header_link %>
-      <% else %>
-        <%= link_to Refinery::Core.site_name, '/', :class => 'ellipsis' %>
-      <% end %>
-    </div>
-  </div>
-  <div id="sidebar-left-inner" class="sidebar-inner">
-    <ul class="list-unstyled">
-      <%= render partial: "refinery/admin/menu_item",
-                 collection: current_refinery_user.active_plugins.in_menu -%>
-    </ul>
-  </div>
-  <%= link_to t('.log_out', site_bar_translate_locale_args),
-              ::Refinery::Core.refinery_logout_path,
-              :id => 'logout',
-              :class => 'log-out' if ::Refinery::Core.refinery_logout_path.present? %>
-</section>
+<nav id="menu">
+  <%= render partial: "refinery/admin/menu_item",
+             collection: current_refinery_user.active_plugins.in_menu -%>
+</nav>
