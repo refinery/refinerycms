@@ -2,30 +2,22 @@
 <%= render '/refinery/html_tag' %>
   <% content_for :meta, tag(:meta, name: 'refinerycms', content: Refinery.version) %>
   <%= render 'refinery/admin/head' %>
-  <body class="<%= action_name %> <%= I18n.locale %> cms-interface">
+  <body class="<%= action_name %> <%= I18n.locale %>">
     <%= render 'refinery/admin/menu' %>
     <%= render '/refinery/site_bar' %>
     <div id='tooltip_container'></div>
-    <section id="wrapper" class="dimmer">
-      <% if content_for?(:admin_content) %>
-        <div class="cms-ui">
-          <%= yield :admin_content %>
-        </div>
-      <% else %>
-        <div id="admin_container" class="clearfix">
-          <div id="page_container">
-            <div id="page">
-              <div id="content" class="clearfix">
-                <div id="flash_container">
-                  <%= render '/refinery/no_script' %>
-                  <%= render '/refinery/message' %>
-                </div>
-                <%= yield %>
-              </div>
+    <div id="admin_container" class="clearfix">
+      <div id="page_container">
+        <div id="page">
+          <div id="content" class="clearfix">
+            <div id="flash_container">
+              <%= render '/refinery/no_script' %>
+              <%= render '/refinery/message' %>
             </div>
+            <%= yield %>
           </div>
         </div>
-      <% end %>
-    </section>
+      </div>
+    </div>
   </body>
 </html>

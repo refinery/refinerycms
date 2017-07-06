@@ -987,8 +987,21 @@ body.dialog form {
 ul#menu.reordering_menu li a {
   cursor: move;
 }
+#search {
+  border: 1px solid #b3b3b3;
+  line-height: 18px;
+  padding: 2px;
+  font-size: 16px;
+  width: 10em;
+}
 .cancel-search {
   float: right;
+}
+.pt-BR #search {
+  width: 107px;
+}
+.en #search {
+  width: 130px;
 }
 .search_form {
   position: relative;
@@ -1286,7 +1299,6 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   border: 1px solid #7f9db9;
   padding: 0.4% 0.5%;
   line-height: 20px;
-  display: block;
 }
 /* ## Advanced Page Options --------------------------------------------- */
 #more_options_field {
