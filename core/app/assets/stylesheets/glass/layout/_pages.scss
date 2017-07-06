@@ -31,6 +31,9 @@
     align-items: center;
     width: 100%;
   }
+  .relative-nav-item {
+    min-width: 80px;
+  }
   .btn-group .btn-link-gray {
     border: 1px solid $gray-3;
   }
@@ -70,7 +73,7 @@
     &:last-child {
       margin-right: 0;
       margin-left: auto;
-      @include media-breakpoint-down(sm) {
+      @media (max-width: 767px) {
         order: -1;
         margin-left: 0;
       }
@@ -104,7 +107,7 @@
   }
   .dropdown-menu {
     z-index: 50;
-    top: -5px;
+    top: -2px;
     display: block;
     visibility: hidden;
     overflow: hidden;
@@ -117,9 +120,8 @@
     a {
       display: block;
       padding: 5px 12px;
-      font-size: .75rem;
+      font-size: 14px;
       transition: 0;
-      white-space: nowrap;
       &:first-child {
         border-top: 1px solid $gray-1;
         &:hover {
@@ -146,7 +148,7 @@
   }
 }
 
-@include media-breakpoint-down(sm) {
+@media (max-width: 767px) {
   .contextual-menu {
     flex-wrap: wrap;
     justify-content: space-around;
@@ -189,7 +191,7 @@
   }
   .index-listing {
     margin-bottom: 90px;
-    @include media-breakpoint-up(md) {
+    @media (min-width: 768px) {
       margin-bottom: 60px;
     }
     & > ul {
@@ -211,13 +213,13 @@
         align-items: center;
         margin-bottom: 2px;
         padding: 0 15px;
-        font-size: 1rem;
+        font-size: 18px;
         color: $gray-6;
         background: $white;
         &:hover {
           background: darken($off-white, 1%);
         }
-        @include media-breakpoint-up(md) {
+        @media (min-width: 768px) {
           &:hover {
             background: $cms-hover;
             .icon {
@@ -264,12 +266,12 @@
             }
             .add-child {
               width: auto;
-              font-size: .75rem;
+              font-size: 14px;
               .circle-icon {
                 width: auto;
                 padding: 0 10px;
                 .icon {
-                  font-size: 1rem;
+                  font-size: 18px;
                 }
               }
             }
@@ -298,16 +300,16 @@
           }
         }
         .child-toggle {
-          width: 20px;
           margin-right: 10px;
+          width: 20px;
           .status-icon {
             width: 18px;
             margin-right: 0;
           }
         }
         .status-icon {
-          width: 18px;
           margin-right: 10px;
+          width: 18px;
         }
         .child-toggle {
           .icon-folder {
@@ -344,12 +346,13 @@
             @include media-breakpoint-down(sm) {
               display: none;
             }
-            flex-shrink: 0;
             margin-left: .5rem;
             padding: 2px 8px;
             font-weight: 600;
             text-transform: capitalize;
             background: $gray-3;
+
+            flex-shrink: 0;
             &:first-of-type {
               margin-left: 1rem;
             }
@@ -360,22 +363,24 @@
         }
         .date {
           display: block;
-          flex-shrink: 0;
           margin-left: auto;
-          font-size: .75rem;
+          font-size: 14px;
           text-align: right;
           color: $gray-5;
-          @include media-breakpoint-down(sm) {
+
+          flex-shrink: 0;
+          @media (max-width: 767px) {
             display: none;
           }
         }
         .actions {
           display: none;
           align-items: center;
-          flex-shrink: 0;
           margin-left: auto;
           text-align: right;
-          @include media-breakpoint-down(sm) {
+
+          flex-shrink: 0;
+          @media (max-width: 767px) {
             display: block;
           }
           &-visible {
@@ -399,10 +404,10 @@
               background: $cms-dark;
             }
             .icon-close {
-              font-size: .75rem;
+              font-size: 14px;
             }
           }
-          @include media-breakpoint-up(md) {
+          @media (min-width: 768px) {
             .circle-icon {
               color: $white;
               border-color: $white;
@@ -456,28 +461,32 @@
     height: 50px;
     margin-bottom: 2px;
     padding: 10px 0 0 15px;
-    margin: .2rem;
     border: 1px dashed #cccccc;
-    background: $gray-1;
-    border-radius: $radius;
+    background: lighten($off-white, 4%);
     &:before {
       position: relative;
       top: 2px;
       padding-left: 0;
       font-family: "Refinery" !important;
-      font-size: 1rem;
+      font-size: 18px;
       font-weight: normal !important;
       font-style: normal !important;
       font-variant: normal !important;
       line-height: 1;
       content: attr(data-icon);
-      content: "\f744";
+      content: "\f703";
       text-transform: none !important;
       color: $gray-6;
 
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       speak: none;
+    }
+    &:after {
+      padding-left: 10px;
+      font-size: 18px;
+      content: "Move Here";
+      color: $gray-6;
     }
   }
   .reordering {

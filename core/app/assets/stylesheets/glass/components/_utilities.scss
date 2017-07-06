@@ -145,13 +145,6 @@ body {
 
 /* FIXED */
 
-.fixed-c-c {
-  position: fixed;
-  top: 50vh;
-  left: 50vw;
-  transform: translate(-50%, -50%);
-}
-
 .fixed-t-l {
   position: fixed;
   top: .5rem;
@@ -255,7 +248,7 @@ body {
     }
   }
   &-lg {
-    @include media-breakpoint-up(md) {
+    @media (min-width: 768px) {
       width: calc(100% + 200px);
       margin-left: -100px;
     }
@@ -1012,13 +1005,6 @@ p::-moz-selection {
 .btn {
   .loader {
     display: inline-block;
-  }
-}
-
-.loader.pause {
-  &:after {
-    animation: none;
-    transform: rotate(135deg);
   }
 }
 
