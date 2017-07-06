@@ -99,17 +99,6 @@ module Refinery
       end
     end
 
-    describe '#icon' do
-      it 'returns a default icon if @icon is not set' do
-        expect(plugin.icon).to eq('icon icon-wrench')
-      end
-
-      it 'returns another icon if set so' do
-        allow(plugin).to receive(:icon).and_return('icon icon-pages')
-        expect(plugin.icon).to eq('icon icon-pages')
-      end
-    end
-
     describe '#url' do
       class Plugin
         def reset_url!

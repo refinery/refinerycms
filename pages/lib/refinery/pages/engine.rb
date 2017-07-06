@@ -12,7 +12,6 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_pages'
-          plugin.icon = 'icon icon-pages'
           plugin.menu_match = %r{refinery/page(_part|s_dialog)?s(/preview)?$}
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_pages_path }
         end
