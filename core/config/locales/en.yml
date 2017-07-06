@@ -22,7 +22,6 @@ en:
       switch_to_your_website_editor: Switch to your website editor
     admin:
       menu:
-        log_out: Log out
         reorder_menu: Reorder menu
         reorder_menu_done: Finished reordering the menu
       dialogs:
