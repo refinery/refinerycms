@@ -9,10 +9,6 @@
     <section id="wrapper" class="dimmer">
       <% if content_for?(:admin_content) %>
         <div class="cms-ui">
-          <div id="flash_container" class="glass-flash">
-            <%= render '/refinery/no_script' %>
-            <%= render '/refinery/message' %>
-          </div>
           <%= yield :admin_content %>
         </div>
       <% else %>
