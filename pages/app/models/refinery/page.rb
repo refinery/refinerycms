@@ -163,15 +163,15 @@ module Refinery
 
     # The canonical page for this particular page.
     # Consists of:
-    #   * The default locale's translated slug
+    #   * The current locale's translated slug
     def canonical
-      Globalize.with_locale(::Refinery::I18n.default_frontend_locale) { url }
+      Globalize.with_locale(::Refinery::I18n.current_frontend_locale) { url }
     end
 
     # The canonical slug for this particular page.
-    # This is the slug for the default frontend locale.
+    # This is the slug for the current frontend locale.
     def canonical_slug
-      Globalize.with_locale(::Refinery::I18n.default_frontend_locale) { slug }
+      Globalize.with_locale(::Refinery::I18n.current_frontend_locale) { slug }
     end
 
     # Returns in cascading order: custom_slug or menu_title or title depending on
