@@ -15,6 +15,8 @@ module Refinery
     attribute :custom_slug
     attribute :slug
 
+    after_save { translations.collect(&:save) }
+
     class Translation
       is_seo_meta
 
