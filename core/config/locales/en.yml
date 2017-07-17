@@ -16,6 +16,7 @@ en:
       created: '%{what} was successfully added.'
       updated: '%{what} was successfully updated.'
       destroyed: '%{what} was successfully removed.'
+      delete_translation_success: "%{what} page's translation was successfully removed."
     site_bar:
       log_out: Log out
       switch_to_your_website: Switch to your website
@@ -35,6 +36,7 @@ en:
         cancel: Cancel
         cancel_lose_changes: If you cancel you will lose any changes you have made here
         delete: Remove
+        delete_translation: Remove this translation
         close: Close
       image_picker:
         none_selected: No image selected, please click here to add one.

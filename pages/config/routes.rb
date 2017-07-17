@@ -19,6 +19,10 @@ Refinery::Core::Engine.routes.draw do
 
     resources :pages, except: :show do
       post :update_positions, on: :collection
+
+      member do
+        post :delete_translation
+      end
     end
 
     resources :pages_dialogs, only: [] do

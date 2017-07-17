@@ -24,6 +24,11 @@
                    (f.object.respond_to?(:deletable?) && !f.object.deletable?))
   end
 
+  if !defined?(hide_delete_translation).presence
+    hide_delete_translation = hide_delete || 
+                              (Refinery::I18n.frontend_locales.many? && !f.object.translations.many?)
+  end
+
   unless hide_delete
     delete_button_text  ||= t('.delete')
     delete_title        ||= nil
@@ -31,6 +36,15 @@
     delete_button_id    ||= "delete_button"
     # we have to use eval rather than refinery.send because this url may not exist for HTTP GET
     delete_url          ||= eval("refinery.#{Refinery.route_for_model(f.object.class)}(#{f.object.id})")
+  end
+
+  unless hide_delete_translation
+    delete_translation_button_text  ||= t('.delete_translation')
+    delete_translation_title        ||= nil
+    delete_translation_confirmation ||= nil
+    delete_translation_button_id    ||= "delete_translation_button"
+    # we have to use eval rather than refinery.send because this url may not exist for HTTP GET
+    delete_translation_url          ||= eval("refinery.delete_translation_#{Refinery.route_for_model(f.object.class)}(#{f.object.id}, locale_to_delete: :#{Globalize.locale})")
   end
 -%>
 <% if from_dialog? %>
@@ -61,6 +75,12 @@
   </div>
   <div class='form-actions-right'>
     <%= local_assigns[:before_delete_button] -%>
+    <%= link_to(delete_translation_button_text, delete_translation_url,
+                method: :post,
+                data: {
+                  confirm: delete_translation_confirmation
+                },
+                class: "button confirm-delete") unless hide_delete_translation %>
     <%= link_to(delete_button_text, delete_url,
                 :title => delete_title,
                 :id => delete_button_id,

@@ -107,6 +107,14 @@ module Refinery
             redirect_to redirect_url
           end
 
+          def delete_translation
+            find_#{singular_name}
+            record = @#{singular_name}.translations.find_by_locale(params[:locale_to_delete])
+            record.destroy
+            flash[:notice] = t('delete_translation_success', scope: 'refinery.crudify', what: "'\#{record.#{options[:title_attribute]}}'")
+            redirect_to redirect_url
+          end
+
           # Finds one single result based on the id params.
           def find_#{singular_name}
             @#{singular_name} = find_#{singular_name}_scope.find(params[:id])
