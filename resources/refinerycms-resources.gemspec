@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'acts_as_indexed',         '~> 0.8.0'
   s.add_dependency 'dragonfly',               '~> 1.1.0'
-  s.add_dependency 'globalize',               '5.1.0.beta1'
+  s.add_dependency 'globalize',               ['>= 5.1.0.beta1', '< 5.2']
   s.add_dependency 'activemodel-serializers-xml', '~> 1.0.1'
   s.add_dependency 'refinerycms-core',        version
 
