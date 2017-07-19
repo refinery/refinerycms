@@ -49,6 +49,10 @@ if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
   end
 end
 
+group :development do
+  gem 'listen', '~> 3.0'
+end
+
 group :test do
   gem 'refinerycms-testing', path: "./testing"
   gem 'generator_spec', '~> 0.9.3'
