@@ -17,17 +17,11 @@ gem 'poltergeist', '>= 1.8.1'
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
 
-###########################
-# Rails 5 temp. gem sources
 
-gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'feature/rails-5'
-
-group :development do
-  gem 'listen', '~> 3.0'
-end
-
-#
-###########################
+# TODO: remove this when refinerycms-i18n 4.0.0 will be released
+gem 'refinerycms-i18n',
+  git: 'https://github.com/refinery/refinerycms-i18n',
+  branch: 'master'
 
 
 # Add the default visual editor, for now.
