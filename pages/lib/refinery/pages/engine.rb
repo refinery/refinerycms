@@ -25,12 +25,10 @@ module Refinery
         Refinery.include_once(Refinery::AdminController, Refinery::Pages::Admin::InstanceMethods)
       end
 
-      # FIXME: Find why in Rails 5, if we use `:set_routes_reloader_hook` it redirect sprockets assets engines paths to 404
       initializer "refinery.pages append marketable routes"  do
         append_marketable_routes if Refinery::Pages.marketable_urls
       end
 
-      # FIXME: Find why in Rails 5, if we use `:set_routes_reloader_hook` it redirect sprockets assets engines paths to 404
       initializer "add marketable route parts to reserved words" do
         add_route_parts_as_reserved_words if Refinery::Pages.marketable_urls
       end
