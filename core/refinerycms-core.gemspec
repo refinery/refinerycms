@@ -27,7 +27,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'railties',                    rails_version
   s.add_dependency 'activerecord',                rails_version
   s.add_dependency 'actionpack',                  rails_version
-  s.add_dependency 'actionmailer',                rails_version
   s.add_dependency 'truncate_html',               '~> 0.9'
   s.add_dependency 'will_paginate',               '~> 3.1.0'
   s.add_dependency 'sass-rails',                  '>= 4.0', '< 5.1'
