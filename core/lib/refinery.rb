@@ -4,7 +4,6 @@ require 'action_controller'
 require 'rbconfig'
 require 'font-awesome-sass'
 require 'jquery-rails'
-require 'jquery-ui-rails'
 
 module Refinery
   require 'refinery/errors'
