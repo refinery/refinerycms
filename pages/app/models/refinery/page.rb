@@ -10,6 +10,11 @@ module Refinery
 
     translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
 
+    attribute :title
+    attribute :menu_title
+    attribute :custom_slug
+    attribute :slug
+
     class Translation
       is_seo_meta
 

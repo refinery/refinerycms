@@ -11,6 +11,8 @@ module Refinery
 
     translates :body
 
+    attribute :body
+
     def to_param
       "page_part_#{slug.downcase.gsub(/\W/, '_')}"
     end
