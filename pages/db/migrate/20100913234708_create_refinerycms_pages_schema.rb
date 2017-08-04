@@ -1,4 +1,4 @@
-class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
+class CreateRefinerycmsPagesSchema < ActiveRecord::Migration[4.2]
   def up
     create_table :refinery_page_parts do |t|
       t.integer  :refinery_page_id

@@ -1,4 +1,4 @@
-class AddCustomSlugToRefineryPages < ActiveRecord::Migration
+class AddCustomSlugToRefineryPages < ActiveRecord::Migration[4.2]
   def up
     if page_column_names.exclude?('custom_slug')
       add_column :refinery_pages, :custom_slug, :string

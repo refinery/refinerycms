@@ -1,4 +1,4 @@
-class TranslateRefineryImages < ActiveRecord::Migration
+class TranslateRefineryImages < ActiveRecord::Migration[4.2]
   def self.up
     begin
       ::Refinery::Image.create_translation_table!({
