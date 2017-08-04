@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.files             = `git ls-files`.split("\n")
 
   s.add_dependency 'refinerycms-core',        version
-  s.add_dependency 'database_cleaner',        '~> 1.5.3 '
+  s.add_dependency 'database_cleaner',        '~> 1.6.1'
   s.add_dependency 'factory_girl_rails',      '~> 4.6.0'
   s.add_dependency 'rspec-rails',             '~> 3.5'
   s.add_dependency 'capybara',                '~> 2.7.1'
