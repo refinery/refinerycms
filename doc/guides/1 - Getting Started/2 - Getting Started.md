@@ -440,4 +440,4 @@ the design, and work with the administrative backend. Now you're ready
 to see how to use RefineryCMS with your own models, views, and
 controllers (MVCs). You do this by generating and customizing a Refinery
 extension, which is covered in the [Generate an Extension to Use Your
-Own MVCs](/guides/generate-an-extension-to-use-your-own-mvcs/) guide.
+Own MVCs](/guides/generate-an-extension-to-use-your-mvcs) guide.
