@@ -1,7 +1,8 @@
-## 4.0.0.dev [unreleased]
+## 4.0.0 [unreleased]
 
-* [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...master)
+* Now supporting Rails 5.1. [#3122](https://github.com/refinery/refinerycms/pull/3122). [Brice Sanchez](https://github.com/bricesanchez) & [Philip Arndt](https://github.com/parndt) & [Remco Meinen](https://github.com/sjoulbak) & [Don Pinkster](https://github.com/donpinkster) & [Johan Bruning](https://github.com/johanb) & [Michael de Silva](https://github.com/bsodmike) & [Kiril Mitov](https://github.com/thebravoman) and everyone else who helped out!
 
+* [See full list](https://github.com/refinery/refinerycms/compare/3.0.6...4.0.0)
 
 ## 3.0.6 [unreleased]
 

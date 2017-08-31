@@ -1,6 +1,6 @@
 # Refinery CMS
 
-__An open source content management system for Rails 4.2+__
+__An open source content management system for Rails 5.1+__
 
 More information at [http://refinerycms.com](http://refinerycms.com)
 
@@ -30,9 +30,13 @@ If you're new to Refinery, start with this guide:
 
 * __[Getting Started](http://refinerycms.com/guides/getting-started)__
 
-If you want to use `3-0-stable` branch of Refinery with Rails 4.2.x. Install using this template:
+If you want to use `4-0-stable` branch of Refinery CMS which supports Rails 5.1+. Install using this template:
 
-    rails new app_name -m http://refinerycms.com/t/3-0-stable
+    rails new app_name -m http://refinerycms.com/t/4.0.0
+
+If you want to use `3-0-stable` branch of Refinery CMS which supports Rails 4.2.x. Install using this template:
+
+    rails new app_name -m http://refinerycms.com/t/3.0.0
 
 If you want to use `edge` branch of Refinery. Install using this template:
 
