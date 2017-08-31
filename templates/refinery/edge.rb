@@ -36,10 +36,10 @@ append_file 'Gemfile' do
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
 # Add support for Refinery's custom fork of the visual editor WYMeditor.
-gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6']
+gem 'refinerycms-wymeditor', ['~> 2.0', '>= 2.0.0']
 
 # The default authentication adapter
-gem 'refinerycms-authentication-devise', '~> 1.0'
+gem 'refinerycms-authentication-devise', '~> 2.0'
 "
 end
 
