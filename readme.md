@@ -1,4 +1,4 @@
-# Refinery CMS
+# Refinery CMS™
 
 __An open source content management system for Rails 5.1+__
 
@@ -20,9 +20,9 @@ You can chat with us using Gitter:
 
 ## How to
 
-* __[Install Refinery CMS](http://refinerycms.com/download)__
-* [Install Refinery CMS on Heroku](http://refinerycms.com/guides/heroku)
-* [Contribute to Refinery CMS](readme.md#contributing)
+* __[Install Refinery CMS™](http://refinerycms.com/download)__
+* [Install Refinery CMS™ on Heroku](http://refinerycms.com/guides/heroku)
+* [Contribute to Refinery CMS™](readme.md#contributing)
 
 ## Getting Started
 
@@ -30,15 +30,15 @@ If you're new to Refinery, start with this guide:
 
 * __[Getting Started](http://refinerycms.com/guides/getting-started)__
 
-If you want to use `4-0-stable` branch of Refinery CMS which supports Rails 5.1+. Install using this template:
+For Rails 5.1+ support, you can use version `4.0.x` using this template:
 
     rails new app_name -m http://refinerycms.com/t/4.0.0
 
-If you want to use `3-0-stable` branch of Refinery CMS which supports Rails 4.2.x. Install using this template:
+For Rails 4.2.x support, you can use version `3.0.x` using this template:
 
-    rails new app_name -m http://refinerycms.com/t/3.0.0
+    rails new app_name -m http://refinerycms.com/t/3.0.6
 
-If you want to use `edge` branch of Refinery. Install using this template:
+You can also install the `edge` vesrion for the latest code using this template:
 
     rails new app_name -m http://refinerycms.com/t/edge
 
@@ -117,8 +117,8 @@ guide for details about contributing and running test.
 
 ## License
 
-Refinery is released under the MIT license. See the [license.md file](license.md#readme) for details.
+Refinery CMS™ is released under the MIT license. See the [license.md file](license.md#readme) for details.
 
 ### Credits
 
-Many of the icons used in Refinery CMS are from the wonderful [Silk library by Mark James](http://www.famfamfam.com/lab/icons/silk/).
+Many of the icons used in Refinery CMS™ are from the wonderful [Silk library by Mark James](http://www.famfamfam.com/lab/icons/silk/).
