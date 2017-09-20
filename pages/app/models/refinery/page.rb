@@ -326,11 +326,6 @@ module Refinery
       end
     end
 
-    def part_with_title(part_title)
-      Refinery.deprecate("Refinery::Page#part_with_title", when: "3.1", replacement: "part_with_slug")
-      part_with_slug(part_title.to_s.parameterize.underscore)
-    end
-
     # Protects generated slugs from title if they are in the list of reserved words
     # This applies mostly to plugin-generated pages.
     # This only kicks in when Refinery::Pages.marketable_urls is enabled.

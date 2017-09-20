@@ -30,11 +30,6 @@ module Refinery
       )
     end
 
-    def title_matches?(other_title)
-      Refinery.deprecate("Refinery::PagePart#title_matches?", when: "3.1", replacement: "slug_matches?")
-      slug_matches?(other_title.to_s.parameterize.underscore)
-    end
-
     protected
 
     def normalise_text_fields

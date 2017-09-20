@@ -49,7 +49,6 @@ module Refinery
 
       def crudify(model_name, options = {})
         options = ::Refinery::Crud.default_options(model_name).merge(options)
-        Refinery.deprecate :xhr_paging, when: '3.1' if options[:xhr_paging]
         class_name = options[:class_name]
         singular_name = options[:singular_name]
         plural_name = options[:plural_name]
