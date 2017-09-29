@@ -1,9 +1,9 @@
-## 4.0.0 [unreleased]
+## 4.0.0 [29 September 2017]
 
 * Remove deprecated methods for versions < 4.0.0. [124e560](https://github.com/refinery/refinerycms/commit/124e560086eb9b10bb5665aff7923f6881374398). [Brice Sanchez](https://github.com/bricesanchez)
 * Now supporting Rails 5.1. [#3122](https://github.com/refinery/refinerycms/pull/3122). [Brice Sanchez](https://github.com/bricesanchez) & [Philip Arndt](https://github.com/parndt) & [Remco Meinen](https://github.com/sjoulbak) & [Don Pinkster](https://github.com/donpinkster) & [Johan Bruning](https://github.com/johanb) & [Michael de Silva](https://github.com/bsodmike) & [Kiril Mitov](https://github.com/thebravoman) and everyone else who helped out!
 
-* [See full list](https://github.com/refinery/refinerycms/compare/3.0.6...4.0.0)
+* [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...4.0.0)
 
 ## 3.0.6 [unreleased]
 
