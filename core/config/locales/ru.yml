@@ -57,7 +57,7 @@ ru:
         cancel_search: Отмена поиска
         search_input_notice: ''
         input:
-          placeholder: "Поиск&8230;"
+          placeholder: "Поиск &#8230;"
           help: Введите строку содержащую то, что вы ищете, минимум 3 символа.
       delete:
         message: "Вы уверены, что хотите удалить '%{title}'?"

@@ -10,6 +10,6 @@
 <% end %>
 <%= yield :after_javascript_libraries -%>
 <% custom_javascripts.each do |js| %>
-  <%= javascript_include_tag js %>
+  <%= javascript_include_tag js, skip_pipeline: true %>
 <% end %>
 <%= yield :javascripts %>

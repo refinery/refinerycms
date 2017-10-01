@@ -6,10 +6,10 @@
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'refinery/refinery' %>
   <% visual_editor_stylesheets.each do |css| %>
-    <%= stylesheet_link_tag css.path, css.options %>
+    <%= stylesheet_link_tag css.path, { skip_pipeline: true }.merge(css.options) %>
   <% end %>
   <% custom_stylesheets.each do |css| %>
-    <%= stylesheet_link_tag css.path, css.options %>
+    <%= stylesheet_link_tag css.path, { skip_pipeline: true }.merge(css.options) %>
   <% end %>
   <%= yield :stylesheets %>
   <%= render 'refinery/admin/javascripts' %>

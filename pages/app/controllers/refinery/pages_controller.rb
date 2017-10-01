@@ -25,11 +25,11 @@ module Refinery
     #
     def show
       if should_skip_to_first_child?
-        redirect_to refinery.url_for(first_live_child.url) and return
+        redirect_to refinery.url_for(first_live_child.url), status: 301 and return
       elsif page.link_url.present?
-        redirect_to page.link_url and return
+        redirect_to page.link_url, status: 301 and return
       elsif should_redirect_to_friendly_url?
-        redirect_to refinery.url_for(page.url), :status => 301 and return
+        redirect_to refinery.url_for(page.url), status: 301 and return
       end
 
       render_with_templates?
@@ -66,7 +66,7 @@ module Refinery
     def current_refinery_user_can_access?(plugin)
       admin? && authorisation_manager.allow?(:plugin, plugin)
     end
-    
+
     def first_live_child
       page.children.order('lft ASC').live.first
     end

@@ -1,6 +1,6 @@
 require 'rbconfig'
-VERSION_BAND = '3.0'
-MINOR_VERSION_BAND = '3.0.0'
+VERSION_BAND = '4.0'
+MINOR_VERSION_BAND = '4.0.0'
 
 # We want to ensure that you have an ExecJS runtime available!
 begin
@@ -22,8 +22,8 @@ gem 'refinerycms', '~> #{VERSION_BAND}'
 
 # Optionally, specify additional Refinery CMS Extensions here:
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
-gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6']
-gem 'refinerycms-authentication-devise', '~> 1.0'
+gem 'refinerycms-wymeditor', ['~> 2.0', '>= 2.0.0']
+gem 'refinerycms-authentication-devise', '~> 2.0'
 #  gem 'refinerycms-blog', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
 #  gem 'refinerycms-inquiries', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
 #  gem 'refinerycms-search', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']

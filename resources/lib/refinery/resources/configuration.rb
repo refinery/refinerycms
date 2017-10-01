@@ -22,14 +22,6 @@ module Refinery
     # We have to configure these settings after Rails is available.
     # But a non-nil custom option can still be provided
     class << self
-      def dragonfly_url_format
-        if config.dragonfly_url_format.include?(':format')
-          config.dragonfly_url_format.gsub!(':format', ':ext')
-          Refinery.deprecate(':format option in Refinery::Resources dragonfly_url_format config', when: '3.1', replacement: ':ext option')
-        end
-        config.dragonfly_url_format
-      end
-
       def datastore_root_path
         config.datastore_root_path || (Rails.root.join('public', 'system', 'refinery', 'resources').to_s if Rails.root)
       end
