@@ -11,12 +11,14 @@ module Refinery
 
     translates :body
 
+    attribute :body
+
     def to_param
       "page_part_#{slug.downcase.gsub(/\W/, '_')}"
     end
 
     def body=(value)
-      super
+      write_attribute(:body, value)
 
       normalise_text_fields
     end
@@ -28,16 +30,11 @@ module Refinery
       )
     end
 
-    def title_matches?(other_title)
-      Refinery.deprecate("Refinery::PagePart#title_matches?", when: "3.1", replacement: "slug_matches?")
-      slug_matches?(other_title.to_s.parameterize.underscore)
-    end
-
     protected
 
     def normalise_text_fields
-      if body? && body !~ %r{^<}
-        self.body = "<p>#{body.gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>"
+      if read_attribute(:body).present? && read_attribute(:body) !~ %r{^<}
+        write_attribute(:body, "<p>#{read_attribute(:body).gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>")
       end
     end
 

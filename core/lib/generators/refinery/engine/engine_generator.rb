@@ -36,10 +36,12 @@ module Refinery
       'rails generate refinery:engine'
     end
 
-    def reject_file_with_skip_frontend?(file)
-      (skip_frontend? && (file.to_s.include?('app') && file.to_s.scan(/admin|models|mailers/).empty?)) ||
-        reject_file_without_skip_frontend?(file)
+    def reject_file?(file)
+      (skip_frontend? && in_frontend_directory?(file)) || super
     end
-    alias_method_chain :reject_file?, :skip_frontend
+
+    def in_frontend_directory?(file)
+      file.to_s.include?('app') && file.to_s.scan(/admin|models|mailers/).empty?
+    end
   end
 end

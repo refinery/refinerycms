@@ -63,7 +63,7 @@ module Refinery
         end
       end
 
-      initializer "refinery.routes", :after => :set_routes_reloader_hook do |app|
+      initializer "refinery.routes" do |app|
         Refinery::Core::Engine.routes.append do
           get "#{Refinery::Core.backend_route}/*path" => 'admin#error_404'
         end
@@ -75,41 +75,6 @@ module Refinery
           Rails.root.join('vendor', '**', '**', 'app', 'presenters'),
           Refinery.roots.map{ |r| r.join('**', 'app', 'presenters')}
         ].flatten
-      end
-
-      # set assets to be precompiled
-      config.to_prepare do
-
-        # scripts
-        Rails.application.config.assets.precompile += %w(
-          refinery/*.js
-          refinery/icons/*
-          modernizr-min.js
-          admin.js
-        )
-
-        # stylesheets
-        Rails.application.config.assets.precompile += %w(
-          refinery/refinery.css
-          refinery/formatting.css
-          refinery/site_bar.css
-          refinery/theme.css
-        )
-
-        # images
-        Rails.application.config.assets.precompile += %w(
-          refinery/images/*
-          refinery/refinery-cms-logo.svg
-        )
-
-        # fonts
-        Rails.application.config.assets.precompile += %w(
-          font-awesome/fontawesome-webfont.eot
-          font-awesome/fontawesome-webfont.woff2
-          font-awesome/fontawesome-webfont.woff
-          font-awesome/fontawesome-webfont.ttf
-          font-awesome/fontawesome-webfont.svg
-        )
       end
 
       # active model fields which may contain sensitive data to filter

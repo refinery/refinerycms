@@ -1,0 +1,1 @@
+Rails.application.config.assets.precompile << 'refinery_core_manifest.js'

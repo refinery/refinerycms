@@ -54,14 +54,6 @@ module Refinery
 
         meta_information
       end
-
-      # We show the title from the next available locale
-      # if there is no title for the current locale
-      def page_title_with_translations(page)
-        Refinery.deprecate('page_title_with_translations', when: '3.1', replacement: 'translated_field')
-        page.title.presence || page.translations.detect { |t| t.title.present?}.title
-      end
-
     end
   end
 end

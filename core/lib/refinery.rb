@@ -3,6 +3,7 @@ require 'active_record'
 require 'action_controller'
 require 'rbconfig'
 require 'font-awesome-sass'
+require 'jquery-rails'
 
 module Refinery
   require 'refinery/errors'
