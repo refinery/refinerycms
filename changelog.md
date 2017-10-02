@@ -5,7 +5,7 @@
 
 * [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...4.0.0)
 
-## 3.0.6 [unreleased]
+## 3.0.6 [2 October 2017]
 
 * Fix search placeholder. [#3291](https://github.com/refinery/refinerycms/pull/3291). [Roman Krylov](https://github.com/xtsidx)
 * Upgrade dragonfly to version 1.1. [#3303](https://github.com/refinery/refinerycms/pull/3303). [Anita Graham](https://github.com/anitagraham)
