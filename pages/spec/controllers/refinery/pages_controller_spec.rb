@@ -16,7 +16,7 @@ module Refinery
 
     describe "#show" do
       it "renders show template" do
-        get :show, :path => "test"
+        get :show, params: {path: "test"}
         expect(response).to render_template("show")
       end
     end

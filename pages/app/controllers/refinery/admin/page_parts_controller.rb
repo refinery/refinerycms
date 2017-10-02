@@ -15,9 +15,9 @@ module Refinery
         page = part.page
         if part.destroy
           page.reposition_parts!
-          render :text => "'#{part.title}' deleted."
+          render plain: t('refinery.crudify.destroyed', what: "'#{part.title}'")
         else
-          render :text => "'#{part.title}' not deleted."
+          render plain: t('refinery.crudify.not_destroyed', what: "'#{part.title}'")
         end
       end
 

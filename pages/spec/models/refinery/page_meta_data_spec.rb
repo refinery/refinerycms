@@ -4,7 +4,7 @@ require 'spec_helper'
 module Refinery
   describe Page do
     let(:page_title) { 'RSpec is great for testing too' }
-    let(:page) { subject.class.new(:title => page_title, :deletable => true)}
+    let(:page) { subject.class.create(title: page_title, deletable: true)}
 
     context 'responds to' do
       it 'meta_description' do

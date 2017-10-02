@@ -39,22 +39,8 @@ module Refinery
       def layout_template_whitelist
         Array(config.layout_template_whitelist).map(&:to_s)
       end
-
-      def default_parts
-        if config.default_parts.all? { |v| v.is_a? String }
-          new_syntax = config.default_parts.map do |part|
-            { title: part, slug: part.downcase.gsub(" ", "_") }
-          end
-          Refinery.deprecate(
-            "Change Refinery::Pages.default_parts= from #{config.default_parts.inspect} to #{new_syntax.inspect}",
-            when: "3.2.0"
-          )
-          new_syntax
-        else
-          config.default_parts
-        end
-      end
     end
+
     self.use_layout_templates = false
     self.page_title = {
       :chain_page_title => false,

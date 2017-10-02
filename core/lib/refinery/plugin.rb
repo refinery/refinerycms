@@ -29,15 +29,6 @@ module Refinery
       ::I18n.translate(['refinery', 'plugins', name, 'description'].join('.'))
     end
 
-    # Stores information that can be used to retrieve the latest activities of this plugin
-    def activity=(_)
-      Refinery.deprecate('Refinery::Plugin#activity=', when: '3.1')
-    end
-
-    def dashboard=(_)
-      Refinery.deprecate('Refinery::Plugin#dashboard=', when: '3.1')
-    end
-
     # Used to highlight the current tab in the admin interface
     def highlighted?(params)
       !!(params[:controller].try(:gsub, "admin/", "") =~ menu_match)
