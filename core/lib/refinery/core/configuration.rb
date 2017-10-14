@@ -59,7 +59,7 @@ module Refinery
       end
 
       def dragonfly_custom_backend_class
-        Refinery.deprecate("Refinery::Dragonfly now handles all dragonfly configuration. Consult 'config/initializers/refinery/dragonfly.rb'.")
+        raise "Refinery::Dragonfly now handles all dragonfly configuration. Consult 'config/initializers/refinery/dragonfly.rb'."
       end
 
       def site_name
