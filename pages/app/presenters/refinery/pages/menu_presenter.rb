@@ -77,11 +77,6 @@ module Refinery
         item.has_children? && item.descendants.any?(&method(:selected_item?))
       end
 
-      def selected_item_or_descendant_item_selected?(item)
-        Refinery.deprecate('Refinery::Pages::MenuPresenter#selected_item_or_descendant_item_selected?', when: '3.1')
-        selected_item?(item) || descendant_item_selected?(item)
-      end
-
       # Determine whether the supplied item is the currently open item according to Refinery.
       def selected_item?(item)
         # Ensure we match the path without the locale, if present.

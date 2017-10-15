@@ -4,7 +4,7 @@ module Refinery
   module Admin
     class DummyController < Refinery::AdminController
       def index
-        render :nothing => true
+        head :ok
       end
     end
   end

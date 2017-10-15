@@ -10,6 +10,13 @@ module Refinery
 
     translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
 
+    attribute :title
+    attribute :menu_title
+    attribute :custom_slug
+    attribute :slug
+
+    after_save { translations.collect(&:save) }
+
     class Translation
       is_seo_meta
 
@@ -137,11 +144,10 @@ module Refinery
         dialog ? Pages.pages_per_dialog : Pages.pages_per_admin_index
       end
 
-      def rebuild_with_slug_nullification!
-        rebuild_without_slug_nullification!
+      def rebuild!
+        super
         nullify_duplicate_slugs_under_the_same_parent!
       end
-      alias_method_chain :rebuild!, :slug_nullification
 
       protected
 
@@ -163,15 +169,15 @@ module Refinery
 
     # The canonical page for this particular page.
     # Consists of:
-    #   * The default locale's translated slug
+    #   * The current locale's translated slug
     def canonical
-      Globalize.with_locale(::Refinery::I18n.default_frontend_locale) { url }
+      Globalize.with_locale(::Refinery::I18n.current_frontend_locale) { url }
     end
 
     # The canonical slug for this particular page.
-    # This is the slug for the default frontend locale.
+    # This is the slug for the current frontend locale.
     def canonical_slug
-      Globalize.with_locale(::Refinery::I18n.default_frontend_locale) { slug }
+      Globalize.with_locale(::Refinery::I18n.current_frontend_locale) { slug }
     end
 
     # Returns in cascading order: custom_slug or menu_title or title depending on
@@ -318,11 +324,6 @@ module Refinery
       self.parts.detect do |part|
         part.slug_matches?(part_slug)
       end
-    end
-
-    def part_with_title(part_title)
-      Refinery.deprecate("Refinery::Page#part_with_title", when: "3.1", replacement: "part_with_slug")
-      part_with_slug(part_title.to_s.parameterize.underscore)
     end
 
     # Protects generated slugs from title if they are in the list of reserved words

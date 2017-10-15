@@ -118,12 +118,15 @@ module Refinery
           expect(default_canonical).to eq(page.canonical)
         end
 
-        specify 'translated page returns master page' do
+        specify "translated page returns its pages's canonical"  do
+          allow(Refinery::I18n).to receive(:current_frontend_locale).and_return(:ru)
+
           Globalize.with_locale(:ru) do
             page.title = ru_page_title
             page.save
 
-            expect(page.canonical).to eq(default_canonical)
+            expect(page.canonical).to_not eq(default_canonical)
+            expect(page.canonical).to eq(page.url)
           end
         end
       end
@@ -142,12 +145,15 @@ module Refinery
           expect(default_canonical_slug).to eq(page.canonical_slug)
         end
 
-        specify "translated page returns master page's slug'" do
+        specify "translated page returns its page's canonical slug'" do
+          allow(Refinery::I18n).to receive(:current_frontend_locale).and_return(:ru)
+
           Globalize.with_locale(:ru) do
             page.title = ru_page_title
             page.save
 
-            expect(page.canonical_slug).to eq(default_canonical_slug)
+            expect(page.canonical_slug).to_not eq(default_canonical_slug)
+            expect(page.canonical_slug).to eq(page.canonical_slug)
           end
         end
       end
