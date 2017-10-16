@@ -1,3 +1,5 @@
+require_relative '../custom_datastore_one'
+require_relative '../custom_datastore_two'
 shared_examples_for 'Creates a dragonfly App:' do
 
   describe 'app creation' do
@@ -43,13 +45,9 @@ shared_examples_for 'Creates a dragonfly App:' do
   end
 
   describe "defining a custom datastore" do
-    before(:all) do
-      CustomDatastore1 = Class.new
-      CustomDatastore2 = Class.new
-    end
 
     before(:each) do
-      allow(Refinery::Dragonfly).to receive_messages(custom_datastore_class: CustomDatastore1)
+      allow(Refinery::Dragonfly).to receive_messages(custom_datastore_class: CustomDatastoreOne)
     end
 
     after(:each) do
@@ -58,14 +56,14 @@ shared_examples_for 'Creates a dragonfly App:' do
 
     context "with the default configuration" do
       it "uses the default values" do
-        expect(described_class.dragonfly_custom_datastore_class).to eq(CustomDatastore1)
+        expect(described_class.dragonfly_custom_datastore_class).to eq(CustomDatastoreOne)
       end
     end
 
     context "with a custom configuration" do
       it "uses custom values" do
-        described_class.dragonfly_custom_datastore_class = 'CustomDatastore2'
-        expect(described_class.dragonfly_custom_datastore_class).to eq(CustomDatastore2)
+        described_class.dragonfly_custom_datastore_class = 'CustomDatastoreTwo'
+        expect(described_class.dragonfly_custom_datastore_class).to eq(CustomDatastoreTwo)
       end
     end
 

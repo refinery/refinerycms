@@ -1,9 +1,6 @@
 shared_examples_for 'adds the dragonfly app to the middleware stack' do
 
-  def middleware_array
-    Rails.application.config.middleware.to_a
-  end
-
+  let(:middleware_array){ Rails.application.config.middleware.to_a}
 
   describe 'middleware stack:' do
     it 'includes Dragonfly::Middleware' do
