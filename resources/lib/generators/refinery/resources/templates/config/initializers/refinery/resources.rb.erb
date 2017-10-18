@@ -9,25 +9,35 @@ Refinery::Resources.configure do |config|
   # Configure how many resources per page should be displayed in the list of resources in the admin area
   # config.pages_per_admin_index = <%= Refinery::Resources.pages_per_admin_index.inspect %>
 
+  # Configure Dragonfly.
+  # Refer to config/initializers/refinery/dragonfly.rb for the full list of dragonfly configurations which can be used.
+  # This includes all dragonfly config for Dragonfly v 1.1.1
+
+  # config.dragonfly_verify_urls     = <%= Refinery::Resources.dragonfly_verify_urls.inspect %>
+  # config.dragonfly_secret          = <%= Refinery::Resources.dragonfly_secret.inspect %>
+  # config.dragonfly_url_host        = <%= Refinery::Resources.dragonfly_url_host.inspect %>
+  # config.dragonfly_datastore_root_path = <%= Refinery::Resources.dragonfly_datastore_root_path.inspect %>
+  # config.dragonfly_url_format       = <%= Refinery::Resources.dragonfly_url_format.inspect %>
+
   # Configure S3 (you can also use ENV for this)
-  # The s3_backend setting by default defers to the core setting for this but can be set just for resources.
-  # config.s3_backend = Refinery::Core.s3_backend
-  # config.s3_bucket_name = ENV['S3_BUCKET']
-  # config.s3_access_key_id = ENV['S3_KEY']
+  # The s3_datastore setting by default defers to the Refinery::Dragonfly setting for this but can be set just for images.
+  # config.s3_datastore         = Refinery::Dragonfly.s3_datastore
+  # config.s3_bucket_name       = ENV['S3_BUCKET']
+  # config.s3_access_key_id     = ENV['S3_KEY']
   # config.s3_secret_access_key = ENV['S3_SECRET']
-  # config.s3_region = ENV['S3_REGION']
+  # config.s3_region            = ENV['S3_REGION']
+  #
+  #  further S3 configuration options
+  # config.s3_fog_storage_options      = <%= Refinery::Resources.s3_fog_storage_options.inspect %>
+  # config.s3_root_path                = <%= Refinery::Resources.s3_root_path.inspect %>
+  # config.s3_storage_path             = <%= Refinery::Resources.s3_storage_path.inspect %>
+  # config.s3_storage_headers          = <%= Refinery::Resources.s3_storage_headers.inspect %>
+  # config.s3_url_host                 = <%= Refinery::Resources.s3_url_host.inspect %>
+  # config.s3_url_scheme               = <%= Refinery::Resources.s3_url_scheme.inspect %>
+  # config.s3_use_iam_profile          = <%= Refinery::Resources.s3_use_iam_profile.inspect %>
 
-  # Configure Dragonfly
-  # config.dragonfly_verify_urls = <%= Refinery::Resources.dragonfly_verify_urls %>
-  # config.dragonfly_secret = <%= Refinery::Resources.dragonfly_secret.inspect %>
-  # config.dragonfly_url_format = <%= Refinery::Resources.dragonfly_url_format.inspect %>
-  # config.dragonfly_url_host = <%= Refinery::Resources.dragonfly_url_host.inspect %>
-  # config.datastore_root_path = <%= Refinery::Resources.datastore_root_path.inspect %>
-  # config.content_disposition = <%= Refinery::Resources.content_disposition.inspect %>
-
-  # Configure Dragonfly custom storage backend
-  # The custom_backend setting by default defers to the core setting for this but can be set just for resources.
-  # config.custom_backend_class = <%= Refinery::Resources.custom_backend_class.inspect %>
-  # config.custom_backend_opts = <%= Refinery::Resources.custom_backend_opts.inspect %>
-
+  # Configure Dragonfly custom datastore
+  # The custom_datastore setting by default defers to the Refinery::Resources setting for this but can be set just for images.
+  # config.custom_datastore_class     = <%= Refinery::Resources.dragonfly_custom_datastore_class.inspect %>
+  # config.custom_datastore_opts      = <%= Refinery::Resources.dragonfly_custom_datastore_opts.inspect %>
 end
