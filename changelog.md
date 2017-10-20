@@ -1,5 +1,15 @@
+## 4.0.1 [24 October 2017]
+
+* Always expect to have css and js files precompiled. Remove skip_pipeline option for visual_editor_stylesheets and custom_stylesheets. [#3318](https://github.com/refinery/refinerycms/pull/3318). [Brice Sanchez](https://github.com/bricesanchez)
+* Now require globalize on top of the engine. [#3316](https://github.com/refinery/refinerycms/pull/3316). [Brice Sanchez](https://github.com/bricesanchez)
+* Require refinery core nil_user class (needed for prod env). [#3317](https://github.com/refinery/refinerycms/pull/3317). [Brice Sanchez](https://github.com/bricesanchez)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/4.0.0...4.0.1)
+
+
 ## 4.0.0 [29 September 2017]
 
+* Add Rails version to generated migration. [#3313](https://github.com/refinery/refinerycms/pull/3313). [Brice Sanchez](https://github.com/bricesanchez)
 * Remove deprecated methods for versions < 4.0.0. [124e560](https://github.com/refinery/refinerycms/commit/124e560086eb9b10bb5665aff7923f6881374398). [Brice Sanchez](https://github.com/bricesanchez)
 * Now supporting Rails 5.1. [#3122](https://github.com/refinery/refinerycms/pull/3122). [Brice Sanchez](https://github.com/bricesanchez) & [Philip Arndt](https://github.com/parndt) & [Remco Meinen](https://github.com/sjoulbak) & [Don Pinkster](https://github.com/donpinkster) & [Johan Bruning](https://github.com/johanb) & [Michael de Silva](https://github.com/bsodmike) & [Kiril Mitov](https://github.com/thebravoman) and everyone else who helped out!
 
