@@ -84,19 +84,19 @@ __TIP__: If you're working on Windows, you should be aware that the vast majorit
 These application templates are another very easy way to install Refinery, and allow for a great deal of control of your installation. You can create a new Refinery application by typing:
 
 ```shell
-$ rails new rickrockstar -m http://refinerycms.com/t/4.0.0
+$ rails new rickrockstar -m https://www.refinerycms.com/t/4.0.0
 ```
 
 __TIP__: In order to install an old version of Refinery, you will probably have to specify the Rails version you need:
 
 ```shell
-$ rails _4.2.9_ new rickrockstar -m http://refinerycms.com/t/3.0.0
+$ rails _4.2.9_ new rickrockstar -m https://www.refinerycms.com/t/3.0.0
 ```
 
 __TIP__: If you want to create a rails application with an unreleased version of refinerycms, you'll have to use the edge template.
 
 ```shell
-$ rails new rickrockstar -m http://refinerycms.com/t/edge
+$ rails new rickrockstar -m https://www.refinerycms.com/t/edge
 ```
 
 __WARNING__: If you create an application from the template, be sure to skip running `refinerycms rickrockstar` as listed in the next section - thee template will have completed this step.
