@@ -7,6 +7,7 @@ path "./" do
   gem "refinerycms-images"
   gem "refinerycms-pages"
   gem "refinerycms-resources"
+  gem "refinerycms-api"
 end
 
 gem 'bootsnap', require: false
