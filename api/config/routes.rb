@@ -3,7 +3,7 @@ Refinery::Core::Engine.routes.draw do
     post 'graphql' => 'graphql#execute'
 
     if Rails.env.development?
-      mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+      mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/api/graphql"
     end
   end
 end

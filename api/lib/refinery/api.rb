@@ -1,6 +1,6 @@
 require 'refinerycms-core'
 require 'graphql'
-require 'graphiql-rails'
+require 'graphiql/rails'
 
 module Refinery
   autoload :ApiGenerator, 'generators/refinery/api_generator'

@@ -6,7 +6,7 @@ module Refinery
       query = params[:query]
       variables = params[:variables] || {}
       context = {
-        current_user: current_user
+        current_user: current_refinery_user
       }
       begin
         result = GraphqlSchema.execute(query, variables: variables, context: context)

@@ -8,10 +8,9 @@ module Refinery
 
       before_inclusion do
         Refinery::Plugin.register do |plugin|
-          plugin.name = "api"
-          plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.api_admin_apis_path }
+          plugin.name = "refinerycms_api"
+          plugin.hide_from_menu = true
           plugin.pathname = root
-          
         end
       end
 

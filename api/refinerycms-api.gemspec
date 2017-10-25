@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
   # Runtime dependencies
-  s.add_dependency             'refinerycms-core', '~> 4.0.0'
+  s.add_dependency             'refinerycms-core', version
   s.add_dependency             'graphql',          '~> 1.7'
   s.add_dependency             'graphiql-rails',   '~> 1.4'
 
