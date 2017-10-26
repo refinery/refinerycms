@@ -70,4 +70,4 @@ You can create the initial admin user by visiting `localhost:3000/subfolder/refi
 
 ## Getting Help
 
-As this is a relatively new process, if you need help with any of these steps we would love to [hear about it](/guides/how-to-get-help/).
+As this is a relatively new process, if you need help with any of these steps we would love to [hear about it](https://www.refinerycms.com/guides/how-to-get-help/).

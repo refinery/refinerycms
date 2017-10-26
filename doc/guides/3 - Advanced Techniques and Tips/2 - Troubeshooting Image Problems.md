@@ -43,7 +43,7 @@ Check that the file is still where Dragonfly saved it.
 
 Refinery/Dragonfly allow you to use stores like Amazon S3, Couch and Mongo, or to write your own.
 
-Refer to Refinery's Guide [Amazon S3 for Uploads](http://refinerycms.com/guides/amazon-s3-for-uploads) or to
+Refer to Refinery's Guide [Amazon S3 for Uploads](https://www.refinerycms.com/guides/amazon-s3-for-uploads) or to
 Dragonfly's [Data Store document](http://markevans.github.io/dragonfly/data-stores/).
 
 ## Dragonfly.log

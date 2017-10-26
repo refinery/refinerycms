@@ -12,7 +12,7 @@ The best way for you to learn how to create a guide is to look at how a guide is
 A good example of how a guide can be structured is the 'Getting Started With Refinery' guide which you can [see
 here](https://raw.github.com/refinery/refinerycms/master/doc/guides/1%20-%20Getting%20Started/2%20-%20Getting%20Started.md).
 
-You should be able to match the sections of the raw textile guide with the [live guide](/guides/getting-started/) to see how each aspect works.
+You should be able to match the sections of the raw textile guide with the [live guide](https://www.refinerycms.com/guides/getting-started/) to see how each aspect works.
 
 ## Submitting the guide
 
@@ -26,7 +26,7 @@ Next make your changes or new guide in the `doc/guides` folder.
 
 Now go to <https://github.com/refinery/refinerycms> and click "Pull Request".
 
-After we review it, we'll merge it into the master refinerycms repository, and the changes will be up [Refinery CMS Guides](http://refinerycms.com/guides) within a few seconds.
+After we review it, we'll merge it into the master refinerycms repository, and the changes will be up [Refinery CMS Guides](https://www.refinerycms.com/guides) within a few seconds.
 
 ## Why submit a guide?
 
