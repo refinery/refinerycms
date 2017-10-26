@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary           = %q{Testing plugin for Refinery CMS}
   s.description       = %q{This plugin adds the ability to tests against the Refinery CMS gem while inside a Refinery CMS extension}
   s.email             = %q{refinerycms@p.arndt.io}
-  s.homepage          = %q{http://refinerycms.com}
+  s.homepage          = %q{https://www.refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}

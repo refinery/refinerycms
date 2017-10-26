@@ -16,7 +16,7 @@ This guide is designed for beginners who want to get started with a Refinery CMS
 * A working installation of the [SQLite3 Database](http://www.sqlite.org)
 * A working installation of [ImageMagick](http://www.imagemagick.org/script/install-source.php)
 
-__TIP__: If you don't already have these things, then you will need to follow the [Installing Refinery Prerequisites](/guides/installation-prerequisites/) guide.
+__TIP__: If you don't already have these things, then you will need to follow the [Installing Refinery Prerequisites](https://www.refinerycms.com/guides/installation-prerequisites/) guide.
 
 __TIP__: It is recommended that developers use [rbenv](https://github.com/rbenv/rbenv) to manage Ruby versions and gems.
 
@@ -56,7 +56,7 @@ The extensions Refinery comes with are:
 
 ## Creating a new Refinery project
 
-![](/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMDdfMTRfNjQ3X3JpY2tfYXN0bGV5X25ldmVyX2dvbm5hX2dpdmVfeW91X3VwLmpwZyJdXQ/rick-astley-never-gonna-give-you-up.jpg?sha=d5fdafec8a158121)
+![](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfMDdfMTRfNjQ3X3JpY2tfYXN0bGV5X25ldmVyX2dvbm5hX2dpdmVfeW91X3VwLmpwZyJdXQ/rick-astley-never-gonna-give-you-up.jpg?sha=d5fdafec8a158121)
 
 If you follow this guide, you'll create a Refinery site called `rickrockstar` that will have a custom design. Then you'll be ready to go further in the following guide and add events extension to allow Rick to tell his fans when his next gig is.
 
@@ -137,7 +137,7 @@ $ rails server
 
 This will fire up an instance of the built-in Rails web server by default (called WEBrick). To see your application in action, open a browser window and navigate to <http://localhost:3000/refinery>. You should be greeted with a screen prompting you to create your first Refinery user.
 
-![](/system/images/W1siZiIsIjIwMTIvMDMvMDQvMTRfMTFfMjRfOTkzX3NldF91cF95b3VyX2ZpcnN0X3VzZXIucG5nIl1d/set-up-your-first-user.png?sha=42b2ae6479070760)
+![](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTIvMDMvMDQvMTRfMTFfMjRfOTkzX3NldF91cF95b3VyX2ZpcnN0X3VzZXIucG5nIl1d/set-up-your-first-user.png?sha=42b2ae6479070760)
 
 __TIP__: To stop the web server, hit `Ctrl+C` in the terminal window where it's running.
 
@@ -151,7 +151,7 @@ Fill out the sign up form to create your first user. This will be the super user
 
 Once you've created your first user you'll see Refinery's admin.
 
-![](/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfNzIxX2Rhc2hib2FyZC5wbmciXV0/dashboard.png?sha=d05ed9da6bb78669)
+![](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfNzIxX2Rhc2hib2FyZC5wbmciXV0/dashboard.png?sha=d05ed9da6bb78669)
 
 ### Setting Your Site Name
 
@@ -173,13 +173,13 @@ Now you're setup, click around the various tabs in the backend and become famili
 
 ### Switching to your front-end
 
-![](/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfNTdfMDZfNDIyX3N3aXRjaF90b193ZWJzaXRlLnBuZyJdXQ/switch-to-website.png?sha=a13b44877a69739e)
+![](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTJfNTdfMDZfNDIyX3N3aXRjaF90b193ZWJzaXRlLnBuZyJdXQ/switch-to-website.png?sha=a13b44877a69739e)
 
 You're currently in the back-end Refinery site editor. To see the front-end site, click "Switch to your website".
 
 As you can see, Refinery is already displaying a basic menu and layout ready for you to customise.
 
-![](/system/images/W1siZiIsIjIwMTIvMDMvMjUvMjNfMjVfMThfNjg1X3JlZmluZXJ5X2RlZmF1bHRfZnJvbnRfZW5kX3NtYWxsLnBuZyJdXQ/refinery-default-front-end-small.png?sha=021f1e16d298eb86)
+![](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTIvMDMvMjUvMjNfMjVfMThfNjg1X3JlZmluZXJ5X2RlZmF1bHRfZnJvbnRfZW5kX3NtYWxsLnBuZyJdXQ/refinery-default-front-end-small.png?sha=021f1e16d298eb86)
 
 ### Customising the Design
 
@@ -234,7 +234,7 @@ As you can see we're going to render a view with some HTML5 tags and along with 
 
 When you edit the About page you'll see something like this:
 
-![](/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfNDg5X2Fib3V0X3BhZ2VfZWRpdC5wbmciXV0/about_page_edit.png?sha=6d88aaa196ad01a2)
+![](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfNDg5X2Fib3V0X3BhZ2VfZWRpdC5wbmciXV0/about_page_edit.png?sha=6d88aaa196ad01a2)
 
 You'll notice two tabs on the page: "Body" and "Side Body". These are `PageParts`, or in other words, a single piece of content attached to this page that you can render in your view. There is a "Body" tab with some content on this screen. To render that same content in your view, put:
 
@@ -286,7 +286,7 @@ __TIP__: You can add CSS for specific pages by using their slug with `-page`. Th
 
 Now when you view your front-end at <http://localhost:3000/about> you'll notice your site has a grey background, with a horizontal menu and two white content areas.
 
-![](/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfMjI3X2RlZmF1bHRfZGVzaWduX3NtYWxsLnBuZyJdXQ/default-design-small.png?sha=84c3f6a40328b9a6)
+![](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfMjI3X2RlZmF1bHRfZGVzaWduX3NtYWxsLnBuZyJdXQ/default-design-small.png?sha=84c3f6a40328b9a6)
 
 ### What we just did
 
@@ -296,4 +296,4 @@ Finally we added a (super) simple style that changes the colour of the backgroun
 
 ## What Next?
 
-You have Refinery up and running and know how to display content, change the design, and work with the administrative backend. Now you're ready to see how to use RefineryCMS with your own models, views, and controllers (MVCs). You do this by generating and customizing a Refinery extension, which is covered in the [Generate an Extension to Use Your Own MVCs](/guides/generate-an-extension-to-use-your-mvcs) guide.
+You have Refinery up and running and know how to display content, change the design, and work with the administrative backend. Now you're ready to see how to use RefineryCMS with your own models, views, and controllers (MVCs). You do this by generating and customizing a Refinery extension, which is covered in the [Generate an Extension to Use Your Own MVCs](https://www.refinerycms.com/guides/generate-an-extension-to-use-your-mvcs) guide.

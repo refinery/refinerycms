@@ -11,7 +11,7 @@ This guide will show you how to:
 
 We'd love it if you have a how-to guide on adding or setting up a feature on Refinery.
 
-Read the [Writing a guide for this website](/guides/writing-a-guide-for-this-website) guide for more
+Read the [Writing a guide for this website](https://www.refinerycms.com/guides/writing-a-guide-for-this-website) guide for more
 information.
 
 ## Contributing bug fixes or new features
@@ -55,7 +55,7 @@ $ bin/rake refinery:testing:dummy_app
 $ bin/rspec ./*/spec
 ```
 
-If this doesn't work. Follow the [How to test Refinery guide](/guides/testing)
+If this doesn't work. Follow the [How to test Refinery guide](https://www.refinerycms.com/guides/testing)
 
 Commit your changes:
 

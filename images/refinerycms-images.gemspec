@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary           = %q{Images extension for Refinery CMS}
   s.description       = %q{Handles all image upload and processing functionality in Refinery CMS.}
   s.email             = %q{refinerycms@p.arndt.io}
-  s.homepage          = %q{http://refinerycms.com}
+  s.homepage          = %q{https://www.refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}
