@@ -2,8 +2,8 @@ require 'spec_helper'
 
 module Refinery
   describe Resource, :type => :model do
-    let(:resource) { FactoryGirl.create(:resource) }
-    let(:titled_resource) { FactoryGirl.create(:resource, resource_title: 'Resource Title')}
+    let(:resource) { FactoryBot.create(:resource) }
+    let(:titled_resource) { FactoryBot.create(:resource, resource_title: 'Resource Title')}
 
     context "with valid attributes" do
       it "should create successfully" do

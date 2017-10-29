@@ -60,10 +60,10 @@ module Refinery
 
       describe "#to_html" do
         let(:menu_items) {
-          Refinery::Menu.new(FactoryGirl.create(:page, :title => "Refinery CMS"))
+          Refinery::Menu.new(FactoryBot.create(:page, :title => "Refinery CMS"))
         }
         let(:menu_presenter) { MenuPresenter.new(menu_items, view) }
-        
+
         context "wrapped in html" do
           it "returns menu items" do
             expect(menu_presenter.to_html).to xml_eq(
@@ -72,7 +72,7 @@ module Refinery
           end
 
           context "with role set to navigation" do
-            let(:menu_presenter_with_role) { 
+            let(:menu_presenter_with_role) {
               menu_presenter.menu_role = 'navigation'
               menu_presenter
             }
@@ -96,7 +96,7 @@ module Refinery
 
           context "when page has a link_url" do
             let(:menu_items) {
-              Menu.new(FactoryGirl.create(:page, title: "Home", link_url: "/"))
+              Menu.new(FactoryBot.create(:page, title: "Home", link_url: "/"))
             }
             it "the menu item URL includes the mounted path" do
               expect(menu_presenter.to_html).to xml_eq(
