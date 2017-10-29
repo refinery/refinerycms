@@ -47,7 +47,7 @@ module Refinery
 
     context "when in frontend" do
       # make a page in order to avoid 404
-      let!(:root_page) { FactoryGirl.create(:page, :link_url => "/") }
+      let!(:root_page) { FactoryBot.create(:page, :link_url => "/") }
       before { visit refinery.root_path }
 
       it "has a 'switch to your website editor' button" do
