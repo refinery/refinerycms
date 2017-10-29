@@ -1,3 +1,5 @@
+require 'refinery/core/nil_user'
+
 module Refinery
   module Core
     class AuthorisationAdapter < Zilch::Authorisation::Adapters::Default

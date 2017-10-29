@@ -1,0 +1,59 @@
+# encoding: utf-8
+Refinery::Dragonfly.configure do |config|
+
+  # Should set this if concerned about DOS attacks. See
+  # http://markevans.github.com/dragonfly/file.Configuration.html#Configuration
+
+  # config.secret       = <%= Refinery::Dragonfly.secret.inspect %>
+  # config.verify_urls  = <%= Refinery::Dragonfly.verify_urls.inspect %>
+
+  # Refinery passes all options to Dragonfly. See refinerycms/dragonfly/lib/refinery/dragonfly/configuration.rb and
+  # http://markevans.github.com/dragonfly/file.Configuration.html#Configuration
+
+  # config.url_format           = <%= Refinery::Dragonfly.url_format.inspect %>
+  # config.url_host             = <%= Refinery::Dragonfly.url_host.inspect %>
+  # config.url_path_prefix      = <%= Refinery::Dragonfly.url_path_prefix.inspect %>
+
+  # config.allow_legacy_urls    = <%= Refinery::Dragonfly.allow_legacy_urls.inspect %>
+  # config.analysers            = <%= Refinery::Dragonfly.analysers.inspect %>
+  # config.before_serve         = <%= Refinery::Dragonfly.before_serve.inspect %>
+  # config.datastore_root_path  = <%= Refinery::Dragonfly.datastore_root_path.inspect %>
+  # config.define_url           = <%= Refinery::Dragonfly.define_url.inspect %>
+  # config.dragonfly_url        = <%= Refinery::Dragonfly.dragonfly_url.inspect %>
+  # config.fetch_file_whitelist = <%= Refinery::Dragonfly.fetch_file_whitelist.inspect %>
+  # config.fetch_url_whitelist  = <%= Refinery::Dragonfly.fetch_url_whitelist.inspect %>
+  # config.generators           = <%= Refinery::Dragonfly.generators.inspect %>
+  # config.mime_types           = <%= Refinery::Dragonfly.mime_types.inspect %>
+  # config.name                 = <%= Refinery::Dragonfly.name.inspect %>
+  # config.path_prefix          = <%= Refinery::Dragonfly.path_prefix.inspect %>
+  # config.plugin               = <%= Refinery::Dragonfly.plugin.inspect %>
+  # config.processors           = <%= Refinery::Dragonfly.processors.inspect %>
+  # config.response_header      = <%= Refinery::Dragonfly.response_header.inspect %>
+
+
+  # Set the S3 options using means other than securely by environment variables.
+  # If you have to.
+  # config.s3_bucket_name = ENV['S3_BUCKET']
+  # config.s3_region = ENV['S3_REGION']
+  # config.s3_access_key_id = ENV['S3_KEY']
+  # config.s3_secret_access_key = ENV['S3_SECRET']
+
+  # When true will use Amazon's Simple Storage Service instead of the default file system for storing resources and images
+  config.s3_datastore = config.s3_access_key_id.present? || config.s3_secret_access_key.present?
+
+  # config.s3_fog_storage_options = <%= Refinery::Dragonfly.s3_fog_storage_options.inspect %>
+  # config.s3_root_path           = <%= Refinery::Dragonfly.s3_root_path.inspect %>
+  # config.s3_storage_path        = <%= Refinery::Dragonfly.s3_storage_path.inspect %>
+  # config.s3_storage_headers     = <%= Refinery::Dragonfly.s3_storage_headers.inspect %>
+  # config.s3_url_host            = <%= Refinery::Dragonfly.s3_url_host.inspect %>
+  # config.s3_url_scheme          = <%= Refinery::Dragonfly.s3_url_scheme.inspect %>
+  # config.s3_use_iam_profile     = <%= Refinery::Dragonfly.s3_use_iam_profile.inspect %>
+
+  # Configure a custom Dragonfly datastore instead of the default (filesystem).
+  # Dragonfly offers gems for datastores on S3, Couch, Mongo
+  # See http://markevans.github.io/dragonfly/data-stores#building-a-custom-data-store
+  #
+  # config.custom_datastore_class = <%= Refinery::Dragonfly.custom_datastore_class.inspect %>
+  # config.custom_datastore_opts  = <%= Refinery::Dragonfly.custom_datastore_opts.inspect %>
+
+end
