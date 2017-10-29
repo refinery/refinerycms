@@ -29,10 +29,6 @@ module Refinery
               env_file.read.gsub(current_mailer_config, new_mailer_config)
             )
           end
-
-          env_file.write(
-            env_file.read.gsub("assets.compile = false", "assets.compile = true")
-          )
         end
       end
 
