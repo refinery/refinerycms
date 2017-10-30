@@ -7,8 +7,8 @@ module Refinery
         name 'Query'
         description 'The query root of this schema'
 
-        field :page, field: Fields::PageField
-        # field :pages, field: Refinery::Api::Fields::PagesField
+        field :page, field: Fields::Pages::PageField
+        field :pages, field: Fields::Pages::PagesField
       end
     end
   end
