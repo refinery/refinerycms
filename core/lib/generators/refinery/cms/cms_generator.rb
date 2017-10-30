@@ -284,7 +284,7 @@ end
       generator_args << '--skip-migrations' if self.options[:skip_migrations]
       Refinery::CoreGenerator.start generator_args
       Refinery::Authentication::DeviseGenerator.start generator_args if defined?(Refinery::Authentication::DeviseGenerator)
-      Refinery::Dragonfly::DragonflyGenerator.start generator_args if defined?(Refinery::DragonflyGenerator)
+      Refinery::Dragonfly::DragonflyGenerator.start generator_args if defined?(Refinery::Dragonfly::DragonflyGenerator)
       Refinery::ResourcesGenerator.start generator_args if defined?(Refinery::ResourcesGenerator)
       Refinery::PagesGenerator.start generator_args if defined?(Refinery::PagesGenerator)
       Refinery::ImagesGenerator.start generator_args if defined?(Refinery::ImagesGenerator)
