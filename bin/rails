@@ -4,7 +4,7 @@
 
 begin
   load File.join(File.expand_path('../../',  __FILE__), 'spec/dummy/bin/rails')
-rescue LoadError => load_error
+rescue LoadError => _load_error
   warn "No dummy Rails application found! \n" \
        "To create one in spec/dummy, please run: \n\n" \
        "    rake refinery:testing:dummy_app"
