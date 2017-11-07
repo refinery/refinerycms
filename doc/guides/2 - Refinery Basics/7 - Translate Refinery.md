@@ -6,7 +6,7 @@ Refinery supports internationalization (I18n for short), which includes translat
 
 ## Setup
 
-Before you start translating, you should clone a fresh copy of Refinery from GitHub. See [the contributing guide](https://www.refinerycms.com/guides/contributing-to-refinery) for information regarding how to do that.
+Before you start translating, you should clone a fresh copy of Refinery from GitHub. See [the contributing guide](/guides/contributing-to-refinery) for information regarding how to do that.
 
 It's not required, but we strongly advise you to create a separate branch when adding a translation or a new feature. You can do so by typing the following shell command.
 

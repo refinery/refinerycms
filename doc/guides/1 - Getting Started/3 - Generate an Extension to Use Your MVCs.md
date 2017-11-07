@@ -11,9 +11,9 @@ __WARNING__: This guide is based on Refinery CMS 2.1.0 so some of the code shown
 
 ## Guide Assumptions
 
-This guide continues the Rick Rock Star example from the [Getting Started](https://www.refinerycms.com/guides/getting-started/) guide. You will need to have Refinery installed and running as explained in that guide.
+This guide continues the Rick Rock Star example from the [Getting Started](/guides/getting-started/) guide. You will need to have Refinery installed and running as explained in that guide.
 
-This guide does not assume that you have any prior experience with Refinery beyond what is covered in the [Getting Started](https://www.refinerycms.com/guides/getting-started/) guide, but it does assume that you are somewhat familiar with Rails. If you are not familiar with Rails, you will still be able to step through the guide but you may not fully understand all of the commands or code. Here are some resources to learn more about Rails:
+This guide does not assume that you have any prior experience with Refinery beyond what is covered in the [Getting Started](/guides/getting-started/) guide, but it does assume that you are somewhat familiar with Rails. If you are not familiar with Rails, you will still be able to step through the guide but you may not fully understand all of the commands or code. Here are some resources to learn more about Rails:
 
 * [Ruby on Rails](http://rubyonrails.org/)
 * [Ruby on Rails Guides for v3.2](http://guides.rubyonrails.org/v3.2.14/) - Note that these are the guides for Rails version `3.2` since that is the version Refinery requires.
@@ -47,7 +47,7 @@ Here is a list of the most often used field types and what they give you:
   -------------------- -------------------------------------------------------------------------------------------------------
 ```
 
-If you remember from the [Getting Started](https://www.refinerycms.com/guides/getting-started/) guide, we told Rick that we'll give him an area to post up events he'll be at. Although we could technically create a new page in Refinery to add the event content there, areas that have special functionality are much better suited as an extension.
+If you remember from the [Getting Started](/guides/getting-started/) guide, we told Rick that we'll give him an area to post up events he'll be at. Although we could technically create a new page in Refinery to add the event content there, areas that have special functionality are much better suited as an extension.
 
 Rick is going to want to enter the following information about each event:
 
@@ -149,7 +149,7 @@ But I've noticed one problem. The "2011 Music Awards" is showing up in the middl
 
 ## Testing your extension
 
-There is a separate guide which covers this subject found at [Testing Your Extension](https://www.refinerycms.com/guides/testing/).
+There is a separate guide which covers this subject found at [Testing Your Extension](/guides/testing/).
 
 ## Crudify: The Backbone of Refinery Engines
 
@@ -224,4 +224,4 @@ Now when you look at <http://localhost:3000/events> you'll notice they're now be
 
 Now that you've made your first Refinery application with a custom events extension, you should feel free to update it and experiment on your own. But you don't have to do everything without help.
 
-If you need assistance getting up and running with Refinery, follow the [How to get help with Refinery Guide](https://www.refinerycms.com/guides/how-to-get-help/).
+If you need assistance getting up and running with Refinery, follow the [How to get help with Refinery Guide](/guides/how-to-get-help/).
