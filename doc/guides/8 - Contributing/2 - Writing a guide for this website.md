@@ -12,7 +12,7 @@ The best way for you to learn how to create a guide is to look at how a guide is
 A good example of how a guide can be structured is the 'Getting Started With Refinery' guide which you can [see
 here](https://raw.github.com/refinery/refinerycms/master/doc/guides/1%20-%20Getting%20Started/2%20-%20Getting%20Started.md).
 
-You should be able to match the sections of the raw textile guide with the [live guide](https://www.refinerycms.com/guides/getting-started/) to see how each aspect works.
+You should be able to match the sections of the raw textile guide with the [live guide](/guides/getting-started/) to see how each aspect works.
 
 ## Submitting the guide
 

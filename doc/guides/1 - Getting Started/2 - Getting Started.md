@@ -16,7 +16,7 @@ This guide is designed for beginners who want to get started with a Refinery CMS
 * A working installation of the [SQLite3 Database](http://www.sqlite.org)
 * A working installation of [ImageMagick](http://www.imagemagick.org/script/install-source.php)
 
-__TIP__: If you don't already have these things, then you will need to follow the [Installing Refinery Prerequisites](https://www.refinerycms.com/guides/installation-prerequisites/) guide.
+__TIP__: If you don't already have these things, then you will need to follow the [Installing Refinery Prerequisites](/guides/installation-prerequisites/) guide.
 
 __TIP__: It is recommended that developers use [rbenv](https://github.com/rbenv/rbenv) to manage Ruby versions and gems.
 
@@ -296,4 +296,4 @@ Finally we added a (super) simple style that changes the colour of the backgroun
 
 ## What Next?
 
-You have Refinery up and running and know how to display content, change the design, and work with the administrative backend. Now you're ready to see how to use RefineryCMS with your own models, views, and controllers (MVCs). You do this by generating and customizing a Refinery extension, which is covered in the [Generate an Extension to Use Your Own MVCs](https://www.refinerycms.com/guides/generate-an-extension-to-use-your-mvcs) guide.
+You have Refinery up and running and know how to display content, change the design, and work with the administrative backend. Now you're ready to see how to use RefineryCMS with your own models, views, and controllers (MVCs). You do this by generating and customizing a Refinery extension, which is covered in the [Generate an Extension to Use Your Own MVCs](/guides/generate-an-extension-to-use-your-mvcs) guide.

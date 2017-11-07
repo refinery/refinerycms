@@ -66,7 +66,7 @@ __WARNING__: Using differing databases for development and production is not rec
 
 #### Getting a place to store files
 
-If you want to use Refinery's image and resource support, you need to follow the guide [Amazon S3 for Uploads](https://www.refinerycms.com/guides/amazon-s3-for-uploads) below (you can do the other steps in that section after your site is first
+If you want to use Refinery's image and resource support, you need to follow the guide [Amazon S3 for Uploads](/guides/amazon-s3-for-uploads) below (you can do the other steps in that section after your site is first
 deployed).
 
 #### Applying your changes
@@ -154,8 +154,8 @@ Simply add that gem to the Gemfile.
 
 Double check your `S3_` information and make sure that the right buckets actually exist. You can confirm against the values Heroku has recorded by running `heroku config`.
 
-See the [How to use Amazon S3 for uploads](https://www.refinerycms.com/guides/amazon-s3-for-uploads) guide for more specific information on file storage.
+See the [How to use Amazon S3 for uploads](/guides/amazon-s3-for-uploads) guide for more specific information on file storage.
 
 ### Other problems?
 
-Otherwise, run `heroku logs` or `heroku logs --tail` and see if you can spot the error yourself. Or you could explore the [help options available](https://www.refinerycms.com/guides/how-to-get-help).
+Otherwise, run `heroku logs` or `heroku logs --tail` and see if you can spot the error yourself. Or you could explore the [help options available](/guides/how-to-get-help).

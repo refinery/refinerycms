@@ -5,7 +5,7 @@ Hosting your site's files on Amazon S3 is a popular option for many, especially 
 
 * Enable and configure Refinery to store files and images on Amazon S3
 
-__NOTE__: If you are using S3 in combination with Heroku please refer to the [Heroku guide](https://www.refinerycms.com/guides/heroku) for more information.
+__NOTE__: If you are using S3 in combination with Heroku please refer to the [Heroku guide](/guides/heroku) for more information.
 
 ## Setting Up
 
@@ -48,7 +48,7 @@ ENV['S3_SECRET']='fill_in_your_secret_key_here'
 ENV['S3_BUCKET']='fill_in_your_bucket_name_here'
 ```
 
-__Note__: For Heroku, you should use [config vars to set your environment variables](https://www.refinerycms.com/guides/heroku))
+__Note__: For Heroku, you should use [config vars to set your environment variables](/guides/heroku))
 
 Another option, especially if you experience `Dragonfly::DataStorage::S3DataStore` exceptions, is to configure your
 Amazon S3 credentials in `config/initializers/refinery/core.rb` using the following syntax:
