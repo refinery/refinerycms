@@ -131,7 +131,7 @@ __TIP__: Models in Refinery extensions expect a string field that acts as the ti
 Now go to the backend of your Refinery site ([http://localhost:3000/refinery](http://localhost:3000/refinery)) and
 you'll notice a new tab called "Events". Click on "Add new event" and you'll see something like this:
 
-![](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfODYwX2V2ZW50X3BhZ2VfZWRpdC5wbmciXV0/event_page_edit.png?sha=d45dd13cf1a97d8f)
+![Adding an event](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfODYwX2V2ZW50X3BhZ2VfZWRpdC5wbmciXV0/event_page_edit.png?sha=d45dd13cf1a97d8f)
 
 You'll see the entire form has been generated for you based off the field types you specified when generating the events section. The blurb has a visual editor, the date field is a date picker and the photo allows you to pick or upload a new photo from a built-in Refinery dialog.
 
@@ -141,9 +141,9 @@ Now click on "Switch to your website", and navigate to <http://localhost:3000/ev
 
 You'll notice not only has Refinery generated the backend "Events" tab but also a new menu item called "Events" and two new front-end views,`index.html.erb` and `show.html.erb`, located in `vendor/extensions/events/app/views/refinery/events/` for you to customise.
 
-![](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfNDE1X2V2ZW50c19lbmdpbmVfc21hbGwucG5nIl1d/events-engine-small.png?sha=d3af41646dd136ba)
+![Events frontend with undesired ordering](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfNDE1X2V2ZW50c19lbmdpbmVfc21hbGwucG5nIl1d/events-engine-small.png?sha=d3af41646dd136ba)
 
-As you can see, Refinery makes it insanely easy to quickly add new extensions to manage various areas of a site.
+As you can see, Refinery makes it really easy to quickly add new extensions to manage various areas of a site.
 
 But I've noticed one problem. The "2011 Music Awards" is showing up in the middle when it makes more sense to order the events with the latest event at the top. To fix this we need to understand what's happening under the hood of a Refinery extension. Let's dive in.
 
@@ -218,7 +218,7 @@ end
 
 Now when you look at <http://localhost:3000/events> you'll notice they're now being sorted by the event date.
 
-![](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfMzE0X2V2ZW50c19lbmdpbmVfZml4ZWRfc21hbGwucG5nIl1d/events-engine-fixed-small.png?sha=452dcc1cbd2522c3)
+![Finished events frontend](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfMzE0X2V2ZW50c19lbmdpbmVfZml4ZWRfc21hbGwucG5nIl1d/events-engine-fixed-small.png?sha=452dcc1cbd2522c3)
 
 ## What's Next?
 
