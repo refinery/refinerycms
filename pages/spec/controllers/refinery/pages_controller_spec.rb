@@ -3,8 +3,8 @@ require "spec_helper"
 module Refinery
   describe PagesController, :type => :controller do
     before do
-      FactoryGirl.create(:page, :link_url => "/")
-      FactoryGirl.create(:page, :title => "test")
+      FactoryBot.create(:page, :link_url => "/")
+      FactoryBot.create(:page, :title => "test")
     end
 
     describe "#home" do

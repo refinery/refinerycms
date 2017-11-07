@@ -6,7 +6,7 @@ module Refinery
       describe "#template_options" do
         context "when page layout/view template is set" do
           it "returns those templates as selected" do
-            page = FactoryGirl.create(:page)
+            page = FactoryBot.create(:page)
 
             page.view_template = "rspec_template"
             expect(helper.template_options(:view_template, page)).to eq(:selected => "rspec_template")
@@ -22,7 +22,7 @@ module Refinery
           end
 
           it "works as expected" do
-            page = FactoryGirl.create(:page, :layout_template => "three")
+            page = FactoryBot.create(:page, :layout_template => "three")
 
             expect(helper.template_options(:layout_template, page)).to eq(:selected => 'three')
           end
@@ -31,8 +31,8 @@ module Refinery
         context "when page layout template isn't set" do
           context "when page has parent and parent has layout_template set" do
             it "returns parent layout_template as selected" do
-              parent = FactoryGirl.create(:page, :layout_template => "rspec_layout")
-              page = FactoryGirl.create(:page, :parent_id => parent.id)
+              parent = FactoryBot.create(:page, :layout_template => "rspec_layout")
+              page = FactoryBot.create(:page, :parent_id => parent.id)
 
               expected_layout = { :selected => parent.layout_template }
               expect(helper.template_options(:layout_template, page)).to eq(expected_layout)
@@ -41,7 +41,7 @@ module Refinery
 
           context "when page doesn't have parent page" do
             it "returns default application template" do
-              page = FactoryGirl.create(:page)
+              page = FactoryBot.create(:page)
 
               expected_layout = { :selected => "application" }
               expect(helper.template_options(:layout_template, page)).to eq(expected_layout)
@@ -51,7 +51,7 @@ module Refinery
       end
 
       describe "#page_meta_information" do
-        let(:page) { FactoryGirl.build(:page) }
+        let(:page) { FactoryBot.build(:page) }
 
         context "when show_in_menu is false" do
           it "adds 'hidden' label" do

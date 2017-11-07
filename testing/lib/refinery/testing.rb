@@ -1,6 +1,6 @@
 require 'refinerycms-core'
 require 'rspec-rails'
-require 'factory_girl'
+require 'factory_bot'
 require 'rails-controller-testing'
 
 module Refinery
@@ -17,11 +17,11 @@ module Refinery
         Refinery.extensions.each do |extension_const|
           if extension_const.respond_to?(:factory_paths)
             extension_const.send(:factory_paths).each do |path|
-              FactoryGirl.definition_file_paths << path
+              FactoryBot.definition_file_paths << path
             end
           end
         end
-        FactoryGirl.find_definitions
+        FactoryBot.find_definitions
       end
     end
 

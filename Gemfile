@@ -44,7 +44,7 @@ group :development do
 end
 
 group :test do
-  gem 'refinerycms-testing', path: "./testing"
+  gem 'refinerycms-testing', path: './testing'
   gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'coveralls', require: false

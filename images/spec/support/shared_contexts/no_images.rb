@@ -1,3 +1,3 @@
 shared_context "no existing images" do
- let(:image) { FactoryGirl.create(:image) }
+ let(:image) { FactoryBot.create(:image) }
 end

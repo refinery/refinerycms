@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.summary           = %q{Core extension for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most extensions}
   s.email             = %q{refinerycms@p.arndt.io}
-  s.homepage          = %q{http://refinerycms.com}
+  s.homepage          = %q{https://www.refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}

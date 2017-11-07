@@ -154,7 +154,7 @@ Simply add that gem to the Gemfile.
 
 Double check your `S3_` information and make sure that the right buckets actually exist. You can confirm against the values Heroku has recorded by running `heroku config`.
 
-See the [How to use Amazon S3 for uploads](http://refinerycms.com/guides/amazon-s3-for-uploads) guide for more specific information on file storage.
+See the [How to use Amazon S3 for uploads](/guides/amazon-s3-for-uploads) guide for more specific information on file storage.
 
 ### Other problems?
 

@@ -74,7 +74,7 @@ module Refinery
       end
 
       context "edit/update" do
-        let!(:resource) { FactoryGirl.create(:resource) }
+        let!(:resource) { FactoryBot.create(:resource) }
 
         it "updates file" do
           visit refinery.admin_resources_path
@@ -119,7 +119,7 @@ module Refinery
       end
 
       context "destroy" do
-        let!(:resource) { FactoryGirl.create(:resource) }
+        let!(:resource) { FactoryBot.create(:resource) }
 
         it "removes file" do
           visit refinery.admin_resources_path
@@ -133,7 +133,7 @@ module Refinery
       end
 
       context "download" do
-        let!(:resource) { FactoryGirl.create(:resource) }
+        let!(:resource) { FactoryBot.create(:resource) }
 
         it "succeeds" do
           visit refinery.admin_resources_path

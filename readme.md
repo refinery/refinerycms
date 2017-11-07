@@ -2,7 +2,7 @@
 
 __An open source content management system for Rails 5.1+__
 
-More information at [http://refinerycms.com](http://refinerycms.com)
+More information at [https://www.refinerycms.com](https://www.refinerycms.com)
 
 [![Build Status](https://travis-ci.org/refinery/refinerycms.svg?branch=master)](https://travis-ci.org/refinery/refinerycms)  [![Code Climate](https://codeclimate.com/github/refinery/refinerycms.svg)](https://codeclimate.com/github/refinery/refinerycms)  [![Coverage Status](https://img.shields.io/coveralls/refinery/refinerycms.svg)](https://coveralls.io/r/refinery/refinerycms?branch=master)
 
@@ -20,27 +20,27 @@ You can chat with us using Gitter:
 
 ## How to
 
-* __[Install Refinery CMS™](http://refinerycms.com/download)__
-* [Install Refinery CMS™ on Heroku](http://refinerycms.com/guides/heroku)
+* __[Install Refinery CMS™](https://www.refinerycms.com/download)__
+* [Install Refinery CMS™ on Heroku](https://www.refinerycms.com/guides/heroku)
 * [Contribute to Refinery CMS™](readme.md#contributing)
 
 ## Getting Started
 
 If you're new to Refinery, start with this guide:
 
-* __[Getting Started](http://refinerycms.com/guides/getting-started)__
+* __[Getting Started](https://www.refinerycms.com/guides/getting-started)__
 
 For Rails 5.1+ support, you can use version `4.0.x` using this template:
 
-    rails new app_name -m http://refinerycms.com/t/4.0.0
+    rails new app_name -m https://www.refinerycms.com/t/4.0.0
 
 For Rails 4.2.x support, you can use version `3.0.x` using this template:
 
-    rails new app_name -m http://refinerycms.com/t/3.0.6
+    rails new app_name -m https://www.refinerycms.com/t/3.0.6
 
 You can also install the `edge` vesrion for the latest code using this template:
 
-    rails new app_name -m http://refinerycms.com/t/edge
+    rails new app_name -m https://www.refinerycms.com/t/edge
 
 ## What's it good at?
 
@@ -61,8 +61,8 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 
 ## Help and Documentation
 
-* [Getting Started](http://refinerycms.com/guides/getting-started)
-* [Guides](http://refinerycms.com/guides)
+* [Getting Started](https://www.refinerycms.com/guides/getting-started)
+* [Guides](https://www.refinerycms.com/guides)
 * [Google Group Discussion](https://groups.google.com/forum/#!forum/refinery-cms)
 * [Gitter chat](https://gitter.im/refinery/refinerycms)
 * [GitHub repository](https://github.com/refinery/refinerycms)
@@ -103,7 +103,7 @@ For help run the command without any options:
 * [News](https://github.com/refinery/refinerycms-news) - post and manage news items.
 * [Inquiries](https://github.com/refinery/refinerycms-inquiries) - simple contact form that notifies you and customer when an inquiry is made.
 
-[Full extension list here](http://refinerycms.com/engines)
+[Full extension list here](https://www.refinerycms.com/engines)
 
 ### Example Site Showcase
 
@@ -112,7 +112,7 @@ For help run the command without any options:
 ## Contributing
 
 See [contributing.md](contributing.md)
-and [Contributing to Refinery](http://refinerycms.com/guides/contributing-to-refinery)
+and [Contributing to Refinery](https://www.refinerycms.com/guides/contributing-to-refinery)
 guide for details about contributing and running test.
 
 ## License

@@ -26,7 +26,7 @@ Next make your changes or new guide in the `doc/guides` folder.
 
 Now go to <https://github.com/refinery/refinerycms> and click "Pull Request".
 
-After we review it, we'll merge it into the master refinerycms repository, and the changes will be up [Refinery CMS Guides](http://refinerycms.com/guides) within a few seconds.
+After we review it, we'll merge it into the master refinerycms repository, and the changes will be up [Refinery CMS Guides](https://www.refinerycms.com/guides) within a few seconds.
 
 ## Why submit a guide?
 
