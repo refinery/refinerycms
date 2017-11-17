@@ -8,7 +8,7 @@ module Refinery
       module Pages
         describe 'PagesField' do
 
-          let!(:page) { FactoryBot.create_list(:page, 5) }
+          let!(:pages) { FactoryBot.create_list(:page, 5) }
 
           let(:context) { { } }
           let(:variables) { { } }
@@ -31,10 +31,12 @@ query {
             QUERY
           end
 
+          subject { result }
+
           context "as a normal user" do
             it 'returns the pages' do
-              pages = result['data']['pages']
-              expect(pages.length).to eq(5)
+              subject
+              expect(result['data']['pages'].length).to eq(5)
             end
           end
         end

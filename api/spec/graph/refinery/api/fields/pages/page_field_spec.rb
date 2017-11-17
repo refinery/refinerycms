@@ -31,14 +31,16 @@ query($id: ID!) {
             QUERY
           end
 
+          subject { result }
+
           context "as a normal user" do
             let(:variables) do
               {'query' => '', 'id' => page.id }
             end
 
             it 'returns a page' do
-              result_page = result['data']['page']
-              expect(result_page['title']).to eq(page.title)
+              subject
+              expect(result['data']['page']['title']).to eq(page.title)
             end
           end
         end
