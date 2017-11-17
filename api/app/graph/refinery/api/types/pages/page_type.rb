@@ -31,7 +31,13 @@ module Refinery
           field :meta_description, types.String
           field :browser_title, types.String
 
-          field :parts, types[Types::Pages::PagePartType]
+          field :parts do
+            type types[Types::Pages::PagePartType]
+
+            resolve -> (obj, args, ctx) {
+              obj.parts.order(:position)
+            }
+          end
         end
       end
     end
