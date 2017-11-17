@@ -63,7 +63,7 @@ module Refinery
     self.auto_expand_admin_tree = true
     self.reserved_paths = %w(/rails/active_storage)
     self.friendly_id_reserved_words = %w(
-      index new session login logout users refinery admin images
+      index new session login logout users refinery admin images api
     ) | self.reserved_paths.map { |path| path.split('/').reject(&:blank?).first}.flatten.uniq
     self.layout_templates_pattern = 'app', 'views', '{layouts,refinery/layouts}', '*html*'
     self.view_templates_pattern = 'app', 'views', '{pages,refinery/pages}', '*html*'
