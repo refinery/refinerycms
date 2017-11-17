@@ -6,11 +6,11 @@ module Refinery
   module Api
     module Fields
       module Pages
-        describe 'PagesField' do
+        describe 'PageField' do
 
-          let!(:page) { FactoryBot.create_list(:page, 5) }
+          let!(:page) { FactoryBot.create(:page) }
 
-          let(:context) { { } }
+          let(:context) { {  } }
           let(:variables) { { } }
 
           let(:result) do
@@ -23,8 +23,8 @@ module Refinery
 
           let(:query_string) do
             <<-QUERY
-query {
-  pages {
+query($id: ID!) {
+  page(id: $id) {
     title
   }
 }
@@ -32,13 +32,17 @@ query {
           end
 
           context "as a normal user" do
-            it 'returns the pages' do
-              pages = result['data']['pages']
-              expect(pages.length).to eq(5)
+            let(:variables) do
+              {'query' => '', 'id' => page.id }
+            end
+
+            it 'returns a page' do
+              result_page = result['data']['page']
+              expect(result_page['title']).to eq(page.title)
             end
           end
         end
       end
     end
   end
-  end
+end
