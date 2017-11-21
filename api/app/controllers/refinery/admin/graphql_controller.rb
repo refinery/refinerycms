@@ -1,6 +1,6 @@
 module Refinery
-  module Api
-    class GraphqlController < ::ApplicationController
+  module Admin
+    class GraphqlController < Refinery::AdminController
 
       def execute
         query = params[:query]

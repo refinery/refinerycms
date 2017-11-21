@@ -36,34 +36,11 @@ mutation($page: DeletePageInput!) {
           subject { result }
 
           context 'Correct page id' do
-            let(:variables) { {'page': { 'id': page.id }} }
+            let(:variables) { {'page' => { 'id' => page.id }} }
 
             it 'deletes the page' do
               subject
               expect(Refinery::Page.find_by_id(page.id)).to be(nil)
-            end
-          end
-
-          context 'Incorrect page id' do
-            let(:variables) { {'page': { 'id': 1000 }} }
-
-            it 'does not delete the page' do
-              subject
-              expect(Refinery::Page.find_by_id(page.id)).to_not be(nil)
-            end
-          end
-
-          context 'Current user does not exist' do
-            let(:variables) { {'page': { 'id': page.id }} }
-            let(:context) { {current_user: nil} }
-
-            it 'returns an error' do
-              expect(subject['errors']).
-                to include(include('message' => "You're not authorized to do this"))
-            end
-
-            it 'returns no data' do
-              expect(subject['data']['delete_page']).to be(nil)
             end
           end
         end
