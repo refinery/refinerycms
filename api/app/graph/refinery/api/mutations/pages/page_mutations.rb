@@ -34,7 +34,7 @@ module Refinery
             resolve -> (obj, inputs, ctx) {
               inputs = inputs.to_h.deep_symbolize_keys
 
-              Refinery::Page.update(inputs[:id], inputs[:page])
+              page = Refinery::Page.update(inputs[:id], inputs[:page])
 
               { page: page }
             }
