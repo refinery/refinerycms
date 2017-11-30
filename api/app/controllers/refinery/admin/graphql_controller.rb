@@ -6,10 +6,6 @@ module Refinery
         query = params[:query]
         variables = params[:variables] || {}
 
-        context = {
-          current_user: current_refinery_user
-        }
-
         begin
           result = Refinery::Api::GraphqlSchema.execute(query, variables: variables, context: context)
         rescue => error
@@ -17,6 +13,14 @@ module Refinery
         end
 
         render json: result
+      end
+
+      private
+
+      def context
+        {
+          current_user: current_refinery_user
+        }
       end
     end
   end
