@@ -18,19 +18,20 @@
 
   <%= render 'form_advanced_options', :f => f %>
 
-  <%= render '/refinery/admin/form_actions', :f => f,
-             :continue_editing => true,
-             :delete_title => t('delete', :scope => 'refinery.admin.pages'),
-             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @page.title),
-             :before_cancel_button => submit_tag(
+  <%= render '/refinery/admin/form_actions', f: f,
+             continue_editing: true,
+             delete_title: t('delete', scope: 'refinery.admin.pages'),
+             delete_confirmation: t('message', scope: 'refinery.admin.delete', title: @page.title),
+             before_cancel_button: submit_tag(
                t('.preview'),
-               :id => 'preview-button',
-               :title => 'Preview page',
-               :name => nil,
-               :class => "wymupdate button",
-               :tooltip => t('.preview_changes')
+               id: 'preview-button',
+               title: 'Preview page',
+               name: nil,
+               class: 'wymupdate button',
+               tooltip: t('.preview_changes'),
+               data: { disable_with: false }
              ),
-             :cancel_url => refinery.admin_pages_path %>
+             cancel_url: refinery.admin_pages_path %>
 
   <%= render 'form_new_page_parts', :f => f if Refinery::Pages.new_page_parts %>
 <% end %>
