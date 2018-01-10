@@ -2,33 +2,23 @@ module Refinery
   module Core
     include ActiveSupport::Configurable
 
-    config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name,
+    config_accessor :rescue_not_found, :base_cache_key, :site_name,
                     :google_analytics_page_code, :authenticity_token_on_frontend,
-                    :dragonfly_secret, :javascripts, :stylesheets, :mounted_path,
-                    :s3_bucket_name, :s3_region, :s3_access_key_id,
-                    :s3_secret_access_key, :force_ssl, :backend_route,
-                    :dragonfly_custom_backend_class, :dragonfly_custom_backend_opts,
+                    :javascripts, :stylesheets, :mounted_path,
+                    :force_ssl, :backend_route,
                     :visual_editor_javascripts, :visual_editor_stylesheets,
                     :plugin_priority, :refinery_logout_path
 
     self.rescue_not_found = false
-    self.s3_backend = false
     self.base_cache_key = :refinery
     self.site_name = "Company Name"
     self.google_analytics_page_code = "UA-xxxxxx-x"
     self.authenticity_token_on_frontend = false
-    self.dragonfly_secret = Array.new(24) { rand(256) }.pack('C*').unpack('H*').first
     self.javascripts = []
     self.stylesheets = []
-    self.s3_bucket_name = ENV['S3_BUCKET']
-    self.s3_region = ENV['S3_REGION']
-    self.s3_access_key_id = ENV['S3_KEY']
-    self.s3_secret_access_key = ENV['S3_SECRET']
     self.force_ssl = false
     self.backend_route = "refinery"
     self.mounted_path = "/"
-    self.dragonfly_custom_backend_class = ''
-    self.dragonfly_custom_backend_opts = {}
     self.visual_editor_javascripts = []
     self.visual_editor_stylesheets = []
     self.plugin_priority = []
@@ -68,12 +58,8 @@ module Refinery
         self.stylesheets = []
       end
 
-      def dragonfly_custom_backend?
-        config.dragonfly_custom_backend_class.present?
-      end
-
       def dragonfly_custom_backend_class
-        config.dragonfly_custom_backend_class.constantize if dragonfly_custom_backend?
+        raise "Refinery::Dragonfly now handles all dragonfly configuration. Consult 'config/initializers/refinery/dragonfly.rb'."
       end
 
       def site_name

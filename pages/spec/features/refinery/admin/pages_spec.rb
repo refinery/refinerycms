@@ -327,6 +327,30 @@ module Refinery
             window.close
           end
 
+          # Regression test for save-and_continue after previewing
+          # https://github.com/refinery/refinerycms/issues/3328
+          it 'will save-and-continue after show the preview in a new window' do
+            visit refinery.admin_pages_path
+
+            find('a[tooltip^=Edit]').click
+            fill_in "Title", :with => "Save this"
+
+            window = window_opened_by do
+              click_button "Preview"
+            end
+
+            expect_window_with_content("Save this", window: window)
+            expect_window_without_content(
+              ::I18n.t('switch_to_website', :scope => 'refinery.site_bar'),
+              window: window
+            )
+
+            window.close
+
+            click_button "Save & continue editing"
+            expect(page).to have_content("'Save this' was successfully updated")
+          end
+
           it 'will show pages with inherited templates', js:true do
             visit refinery.admin_pages_path
 
