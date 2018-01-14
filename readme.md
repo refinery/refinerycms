@@ -38,7 +38,7 @@ For Rails 4.2.x support, you can use version `3.0.x` using this template:
 
     rails new app_name -m https://www.refinerycms.com/t/3.0.6
 
-You can also install the `edge` vesrion for the latest code using this template:
+You can also install the `edge` version for the latest code using this template:
 
     rails new app_name -m https://www.refinerycms.com/t/edge
 
