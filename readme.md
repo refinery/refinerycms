@@ -103,7 +103,7 @@ For help run the command without any options:
 * [News](https://github.com/refinery/refinerycms-news) - post and manage news items.
 * [Inquiries](https://github.com/refinery/refinerycms-inquiries) - simple contact form that notifies you and customer when an inquiry is made.
 
-[Full extension list here](https://www.refinerycms.com/engines)
+[Full extension list here](https://www.refinerycms.com/extensions)
 
 ### Example Site Showcase
 
