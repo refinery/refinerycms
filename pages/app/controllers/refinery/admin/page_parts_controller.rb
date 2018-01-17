@@ -23,9 +23,13 @@ module Refinery
 
       protected
         def new_page_part_params
-          params.except(:part_index).permit(:title, :slug, :body, :locale)
+          params.except(:part_index).permit(permitted_new_page_part_params)
         end
 
+      private
+        def permitted_new_page_part_params
+          [:title, :slug, :body, :locale]
+        end
     end
   end
 end
