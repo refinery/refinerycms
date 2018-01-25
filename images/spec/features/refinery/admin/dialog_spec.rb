@@ -14,11 +14,11 @@ module Refinery
       end
 
       it "only selects the provided image" do
-        visit refinery.insert_admin_images_path(selected_image: 1)
+        visit refinery.insert_admin_images_path(selected_image: image.id)
 
-        expect(page).to have_selector("li[class='selected'] img[data-id='1']")
-        expect(page).to_not have_selector("li[class='selected'] img[data-id='2']")
-        expect(page).to_not have_selector("li[class='selected'] img[data-id='3']")
+        expect(page).to have_selector("li[class='selected'] img[data-id='#{image.id}']")
+        expect(page).to_not have_selector("li[class='selected'] img[data-id='#{alt_image.id}']")
+        expect(page).to_not have_selector("li[class='selected'] img[data-id='#{another_image.id}']")
       end
     end
   end
