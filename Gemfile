@@ -35,7 +35,7 @@ end
 if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
   group :postgres, :postgresql do
     gem 'activerecord-jdbcpostgresql-adapter', '>= 1.3.0.rc1', platform: :jruby
-    gem 'pg', platform: :ruby
+    gem 'pg', '~> 0.21', platform: :ruby
   end
 end
 
@@ -44,7 +44,7 @@ group :development do
 end
 
 group :test do
-  gem 'refinerycms-testing', path: "./testing"
+  gem 'refinerycms-testing', path: './testing'
   gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'coveralls', require: false

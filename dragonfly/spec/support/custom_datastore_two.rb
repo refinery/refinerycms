@@ -1,0 +1,1 @@
+CustomDatastoreTwo = Class.new

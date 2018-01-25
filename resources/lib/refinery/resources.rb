@@ -1,15 +1,15 @@
 require 'refinerycms-core'
-require 'dragonfly'
+require 'refinerycms-dragonfly'
 
 module Refinery
   autoload :ResourcesGenerator, 'generators/refinery/resources/resources_generator'
 
   module Resources
     require 'refinery/resources/engine'
+    require 'refinery/dragonfly/extension_configuration'
     require 'refinery/resources/configuration'
 
-    autoload :Dragonfly, 'refinery/resources/dragonfly'
-    autoload :Validators, 'refinery/resources/validators'
+   autoload :Validators, 'refinery/resources/validators'
 
     class << self
       def root

@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary           = %q{Resources extension for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
   s.email             = %q{refinerycms@p.arndt.io}
-  s.homepage          = %q{http://refinerycms.com}
+  s.homepage          = %q{https://www.refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'globalize',               ['>= 5.1.0.beta1', '< 5.2']
   s.add_dependency 'activemodel-serializers-xml', '~> 1.0', '>= 1.0.1'
   s.add_dependency 'refinerycms-core',        version
+  s.add_dependency 'refinerycms-dragonfly',   '~> 1.0'
 
   s.required_ruby_version = Refinery::Version.required_ruby_version
 

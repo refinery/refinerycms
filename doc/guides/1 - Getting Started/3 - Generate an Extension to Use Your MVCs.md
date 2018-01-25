@@ -11,9 +11,9 @@ __WARNING__: This guide is based on Refinery CMS 2.1.0 so some of the code shown
 
 ## Guide Assumptions
 
-This guide continues the Rick Rock Star example from the [Getting Started](/guide/getting-started/) guide. You will need to have Refinery installed and running as explained in that guide.
+This guide continues the Rick Rock Star example from the [Getting Started](/guides/getting-started/) guide. You will need to have Refinery installed and running as explained in that guide.
 
-This guide does not assume that you have any prior experience with Refinery beyond what is covered in the [Getting Started](/guide/getting-started/) guide, but it does assume that you are somewhat familiar with Rails. If you are not familiar with Rails, you will still be able to step through the guide but you may not fully understand all of the commands or code. Here are some resources to learn more about Rails:
+This guide does not assume that you have any prior experience with Refinery beyond what is covered in the [Getting Started](/guides/getting-started/) guide, but it does assume that you are somewhat familiar with Rails. If you are not familiar with Rails, you will still be able to step through the guide but you may not fully understand all of the commands or code. Here are some resources to learn more about Rails:
 
 * [Ruby on Rails](http://rubyonrails.org/)
 * [Ruby on Rails Guides for v3.2](http://guides.rubyonrails.org/v3.2.14/) - Note that these are the guides for Rails version `3.2` since that is the version Refinery requires.
@@ -47,7 +47,7 @@ Here is a list of the most often used field types and what they give you:
   -------------------- -------------------------------------------------------------------------------------------------------
 ```
 
-If you remember from the [Getting Started](/guide/getting-started/) guide, we told Rick that we'll give him an area to post up events he'll be at. Although we could technically create a new page in Refinery to add the event content there, areas that have special functionality are much better suited as an extension.
+If you remember from the [Getting Started](/guides/getting-started/) guide, we told Rick that we'll give him an area to post up events he'll be at. Although we could technically create a new page in Refinery to add the event content there, areas that have special functionality are much better suited as an extension.
 
 Rick is going to want to enter the following information about each event:
 
@@ -131,7 +131,7 @@ __TIP__: Models in Refinery extensions expect a string field that acts as the ti
 Now go to the backend of your Refinery site ([http://localhost:3000/refinery](http://localhost:3000/refinery)) and
 you'll notice a new tab called "Events". Click on "Add new event" and you'll see something like this:
 
-![](/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfODYwX2V2ZW50X3BhZ2VfZWRpdC5wbmciXV0/event_page_edit.png?sha=d45dd13cf1a97d8f)
+![Adding an event](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTMvMDYvMDkvMjNfNTdfNDRfODYwX2V2ZW50X3BhZ2VfZWRpdC5wbmciXV0/event_page_edit.png?sha=d45dd13cf1a97d8f)
 
 You'll see the entire form has been generated for you based off the field types you specified when generating the events section. The blurb has a visual editor, the date field is a date picker and the photo allows you to pick or upload a new photo from a built-in Refinery dialog.
 
@@ -141,9 +141,9 @@ Now click on "Switch to your website", and navigate to <http://localhost:3000/ev
 
 You'll notice not only has Refinery generated the backend "Events" tab but also a new menu item called "Events" and two new front-end views,`index.html.erb` and `show.html.erb`, located in `vendor/extensions/events/app/views/refinery/events/` for you to customise.
 
-![](/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfNDE1X2V2ZW50c19lbmdpbmVfc21hbGwucG5nIl1d/events-engine-small.png?sha=d3af41646dd136ba)
+![Events frontend with undesired ordering](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfNDE1X2V2ZW50c19lbmdpbmVfc21hbGwucG5nIl1d/events-engine-small.png?sha=d3af41646dd136ba)
 
-As you can see, Refinery makes it insanely easy to quickly add new extensions to manage various areas of a site.
+As you can see, Refinery makes it really easy to quickly add new extensions to manage various areas of a site.
 
 But I've noticed one problem. The "2011 Music Awards" is showing up in the middle when it makes more sense to order the events with the latest event at the top. To fix this we need to understand what's happening under the hood of a Refinery extension. Let's dive in.
 
@@ -218,7 +218,7 @@ end
 
 Now when you look at <http://localhost:3000/events> you'll notice they're now being sorted by the event date.
 
-![](/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfMzE0X2V2ZW50c19lbmdpbmVfZml4ZWRfc21hbGwucG5nIl1d/events-engine-fixed-small.png?sha=452dcc1cbd2522c3)
+![Finished events frontend](https://www.refinerycms.com/system/images/W1siZiIsIjIwMTAvMTIvMDIvMTRfMjRfNTFfMzE0X2V2ZW50c19lbmdpbmVfZml4ZWRfc21hbGwucG5nIl1d/events-engine-fixed-small.png?sha=452dcc1cbd2522c3)
 
 ## What's Next?
 

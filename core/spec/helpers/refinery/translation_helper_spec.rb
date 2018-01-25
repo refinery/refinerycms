@@ -11,7 +11,7 @@ module Refinery
     end
 
     describe "#translated_field" do
-      let(:page) { FactoryGirl.build(:page) }
+      let(:page) { FactoryBot.build(:page) }
 
       before do
         Globalize.with_locale(:en) do
