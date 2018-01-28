@@ -67,7 +67,8 @@ module Refinery
           end
 
           def create
-            if (@#{singular_name} = #{class_name}.create(#{singular_name}_params)).valid?
+            @#{singular_name} = #{class_name}.new(#{singular_name}_params)
+            if @#{singular_name}.save
               flash.notice = t(
                 'refinery.crudify.created',
                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
