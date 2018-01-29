@@ -4,12 +4,12 @@ require 'uri'
 module Refinery
   describe Image, :type => :model do
 
-    let(:image)         { FactoryGirl.build(:image) }
-    let(:created_image) { FactoryGirl.create(:image) }
-    let(:titled_image)  { FactoryGirl.create(:image, image_title: 'Image Title')}
-    let(:image_with_alt_text) { FactoryGirl.create(:image, image_alt: 'Alt Text')}
-    let(:image_with_sha) {FactoryGirl.create(:image)}
-    let(:image_without_sha) {FactoryGirl.create(:image)}
+    let(:image)         { FactoryBot.build(:image) }
+    let(:created_image) { FactoryBot.create(:image) }
+    let(:titled_image)  { FactoryBot.create(:image, image_title: 'Image Title')}
+    let(:image_with_alt_text) { FactoryBot.create(:image, image_alt: 'Alt Text')}
+    let(:image_with_sha) {FactoryBot.create(:image)}
+    let(:image_without_sha) {FactoryBot.create(:image)}
 
     describe "validations" do
       describe "valid #image" do
@@ -202,7 +202,7 @@ module Refinery
     end
 
     describe '#thumbnail_dimensions returns correctly with' do
-      let(:created_alternate_image) { FactoryGirl.create(:alternate_image) }
+      let(:created_alternate_image) { FactoryBot.create(:alternate_image) }
 
       it 'nil' do
         expect(created_alternate_image.thumbnail_dimensions(nil)).to eq({ :width => 376, :height => 184 })

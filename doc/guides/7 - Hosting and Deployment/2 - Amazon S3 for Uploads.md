@@ -48,7 +48,7 @@ ENV['S3_SECRET']='fill_in_your_secret_key_here'
 ENV['S3_BUCKET']='fill_in_your_bucket_name_here'
 ```
 
-__Note__: For Heroku, you should use [config vars to set your environment variables](http://refinerycms.com/guides/heroku))
+__Note__: For Heroku, you should use [config vars to set your environment variables](/guides/heroku))
 
 Another option, especially if you experience `Dragonfly::DataStorage::S3DataStore` exceptions, is to configure your
 Amazon S3 credentials in `config/initializers/refinery/core.rb` using the following syntax:

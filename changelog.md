@@ -1,3 +1,7 @@
+## 4.0.2 [Unreleased]
+
+* Renamed FactoryGirl to FactoryBot. [#3324](https://github.com/refinery/refinerycms/pull/3324). [Philip Arndt](https://github.com/parndt)
+
 ## 4.0.1 [24 October 2017]
 
 * Always expect to have css and js files precompiled. Remove skip_pipeline option for visual_editor_stylesheets and custom_stylesheets. [#3318](https://github.com/refinery/refinerycms/pull/3318). [Brice Sanchez](https://github.com/bricesanchez)

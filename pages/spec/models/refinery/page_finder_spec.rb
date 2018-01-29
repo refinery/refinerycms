@@ -30,7 +30,7 @@ module Refinery
     end
 
     describe ".find_by_path_or_id" do
-      let!(:market) { FactoryGirl.create(:page, :title => "market") }
+      let!(:market) { FactoryBot.create(:page, :title => "market") }
       let(:path) { "market" }
       let(:id) { market.id }
 

@@ -26,7 +26,7 @@ module Refinery
       {
         :conditions => '',
         :include => [],
-        :order => ('position ASC' if this_class.table_exists? && this_class.column_names.include?('position')),
+        :order => ('position ASC' if this_class.connected? && this_class.table_exists? && this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
         :redirect_to_url => "refinery.#{Refinery.route_for_model(class_name.constantize, :plural => true)}",
@@ -67,7 +67,8 @@ module Refinery
           end
 
           def create
-            if (@#{singular_name} = #{class_name}.create(#{singular_name}_params)).valid?
+            @#{singular_name} = #{class_name}.new(#{singular_name}_params)
+            if @#{singular_name}.save
               flash.notice = t(
                 'refinery.crudify.created',
                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"

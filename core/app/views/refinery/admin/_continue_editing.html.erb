@@ -1,3 +1,4 @@
 <%= f.submit t('.save_and_continue_editing'),
-             :id => "submit_continue_button",
-             :class => "wymupdate button" if f.object.persisted? %>
+             id: 'submit_continue_button',
+             class: 'wymupdate button',
+             data: { disable_with: false } if f.object.persisted? %>
