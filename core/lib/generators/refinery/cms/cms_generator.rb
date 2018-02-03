@@ -77,9 +77,9 @@ end}  end
     def append_heroku_gems!
       production_gems = [
         "gem 'dragonfly-s3_data_store'",
-        "gem 'rails_12factor'",
-        "gem 'puma'"
+        "gem 'rails_12factor'"
       ]
+      production_gems << "gem 'puma'" unless destination_gemfile_has_puma?
       production_gems << "gem 'pg'" unless destination_gemfile_has_postgres?
 
       append_file "Gemfile", %Q{
@@ -227,6 +227,11 @@ end
     def destination_gemfile_has_postgres?
       destination_path.join('Gemfile').file? &&
         destination_path.join('Gemfile').read =~ %r{gem ['"]pg['"]}
+    end
+
+    def destination_gemfile_has_puma?
+      destination_path.join('Gemfile').file? &&
+        destination_path.join('Gemfile').read =~ %r{gem ['"]puma['"]}
     end
 
     def heroku?
