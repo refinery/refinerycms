@@ -225,13 +225,16 @@ end
     end
 
     def destination_gemfile_has_postgres?
-      destination_path.join('Gemfile').file? &&
-        destination_path.join('Gemfile').read =~ %r{gem ['"]pg['"]}
+      destination_gemfile_has_gem?('pg')
     end
 
     def destination_gemfile_has_puma?
+      destination_gemfile_has_gem?('puma')
+    end
+
+    def destination_gemfile_has_gem?(gem_name)
       destination_path.join('Gemfile').file? &&
-        destination_path.join('Gemfile').read =~ %r{gem ['"]puma['"]}
+        destination_path.join('Gemfile').read =~ %r{gem ['"]#{gem_name}['"]}
     end
 
     def heroku?
