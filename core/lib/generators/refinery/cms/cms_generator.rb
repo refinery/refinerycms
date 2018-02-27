@@ -85,13 +85,17 @@ end}  end
 
       append_file "Gemfile", %Q{
 # The Ruby version is specified here so that Heroku uses the right version.
-ruby #{ENV['RUBY_VERSION'].inspect}
+ruby #{current_ruby_version.inspect}
 
 # Gems that have been added for Heroku support
 group :production do
   {{production_gems}}
 end
 }.sub("{{production_gems}}", production_gems.join("\n  "))
+    end
+
+    def current_ruby_version
+      ENV['RUBY_VERSION'].presence || RUBY_VERSION
     end
 
     def bundle!
