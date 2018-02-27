@@ -1,4 +1,5 @@
 require 'pathname'
+require 'mkmf'
 
 module Refinery
   class CmsGenerator < Rails::Generators::Base
@@ -242,7 +243,7 @@ end
     end
 
     def heroku_toolbelt_missing?
-      !!system("heroku --version")
+      find_executable("heroku").nil?
     end
 
     def manage_roadblocks!
