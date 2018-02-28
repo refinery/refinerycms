@@ -91,7 +91,7 @@ module Refinery
       end
 
       def new_page_params
-        params.permit(:parent_id, :view_template, :layout_template)
+        params.permit(permitted_new_page_params)
       end
 
       private
@@ -100,8 +100,16 @@ module Refinery
         [
           :browser_title, :draft, :link_url, :menu_title, :meta_description,
           :parent_id, :skip_to_first_child, :show_in_menu, :title, :view_template,
-          :layout_template, :custom_slug, parts_attributes: [:id, :title, :slug, :body, :position]
+          :layout_template, :custom_slug, parts_attributes: permitted_parts_attributes_params
         ]
+      end
+
+      def permitted_parts_attributes_params
+        [:id, :title, :slug, :body, :position]
+      end
+
+      def permitted_new_page_params
+        [:parent_id, :view_template, :layout_template]
       end
 
       def save_and_continue_locals(page)

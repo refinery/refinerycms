@@ -38,7 +38,7 @@ For Rails 4.2.x support, you can use version `3.0.x` using this template:
 
     rails new app_name -m https://www.refinerycms.com/t/3.0.6
 
-You can also install the `edge` vesrion for the latest code using this template:
+You can also install the `edge` version for the latest code using this template:
 
     rails new app_name -m https://www.refinerycms.com/t/edge
 
@@ -103,7 +103,7 @@ For help run the command without any options:
 * [News](https://github.com/refinery/refinerycms-news) - post and manage news items.
 * [Inquiries](https://github.com/refinery/refinerycms-inquiries) - simple contact form that notifies you and customer when an inquiry is made.
 
-[Full extension list here](https://www.refinerycms.com/engines)
+[Full extension list here](https://www.refinerycms.com/extensions)
 
 ### Example Site Showcase
 

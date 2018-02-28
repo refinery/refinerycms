@@ -4,7 +4,7 @@ FactoryBot.define do
 
     factory :page_with_page_part do
       after(:create) do |page|
-        page.parts << FactoryBot.create(:page_part)
+        page.parts << FactoryBot.build(:page_part)
       end
     end
   end
