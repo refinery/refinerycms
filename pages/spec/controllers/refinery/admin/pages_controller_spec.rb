@@ -4,6 +4,12 @@ module Refinery
   module Admin
     describe PagesController, type: :controller do
 
+      describe "with view template" do 
+        before { Refinery::Pages::Types.register("show") { |type| type.parts = ["Body"] } }
+        after { Refinery::Pages::Types.registered.delete(Refinery::Pages::Types.registered.find_by_name("show")) }
+        it { expect(get(:new, params: { view_template: "show" })).to be_ok }
+      end
+
       describe "valid templates" do
         before do
           File.write(Rails.root.join('tmp', 'abc.html.erb'), '')

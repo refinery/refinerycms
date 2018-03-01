@@ -22,5 +22,13 @@ module Refinery
         end
       end
     end
+
+    describe ".default_parts_for" do
+      context "with no view template" do
+        it "returns the default page parts" do
+          expect(subject.default_parts_for(Page.new)).to eq subject.default_parts_for
+        end
+      end
+    end
   end
 end
