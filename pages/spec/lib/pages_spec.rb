@@ -26,7 +26,32 @@ module Refinery
     describe ".default_parts_for" do
       context "with no view template" do
         it "returns the default page parts" do
-          expect(subject.default_parts_for(Page.new)).to eq subject.default_parts_for
+          expect(subject.default_parts_for(Page.new)).to eq subject.default_parts
+        end
+      end
+
+      context "with registered type" do
+        let(:type_name) { "custom_type" }
+        before { Pages::Types.registered.register(type_name) { |type| type.parts = type_parts } }
+        after { Pages::Types.registered.delete(Pages::Types.registered.find_by_name(type_name)) }
+
+        context "page parts specified as array of hashes (part attributes)" do
+          let(:type_parts) { [{slug: "body", title: "Body"}] }
+          it "returns the parts for the type" do
+            type_parts = Pages::Types.registered.find_by_name(type_name).parts
+            page = Page.new(view_template: type_name)
+            expect(subject.default_parts_for(page)).to eq type_parts
+          end
+        end
+
+        context "page parts specified as array of strings" do
+          let(:type_parts) { %w[Body] }
+          it "returns the parts for the type as a hash" do
+            page = Page.new(view_template: type_name)
+            expect(subject.default_parts_for(page)).to eq [{slug: "body", title: "Body"}]
+          end
+
+          xit "warns that this configuration format is deprecated"
         end
       end
     end
