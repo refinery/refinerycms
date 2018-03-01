@@ -77,8 +77,7 @@ end}  end
 
     def append_heroku_gems!
       production_gems = [
-        "gem 'dragonfly-s3_data_store'",
-        "gem 'rails_12factor'"
+        "gem 'dragonfly-s3_data_store'"
       ]
       production_gems << "gem 'puma'" unless destination_gemfile_has_puma?
       production_gems << "gem 'pg'" unless destination_gemfile_has_postgres?
