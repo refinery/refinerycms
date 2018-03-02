@@ -10,7 +10,7 @@ module Refinery
             { title: part, slug: part.downcase.gsub(" ", "_") }
           end
           Refinery.deprecate(
-            "Change Refinery::Pages.default_parts= from #{@parts} to #{new_syntax}",
+            "Change specific page template page parts from #{new_parts} to #{new_syntax}",
             when: "4.1.0"
           )
           new_syntax
