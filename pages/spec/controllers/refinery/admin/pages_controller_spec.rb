@@ -5,7 +5,7 @@ module Refinery
     describe PagesController, type: :controller do
 
       describe "with view template" do 
-        before { Refinery::Pages::Types.register("show") { |type| type.parts = ["Body"] } }
+        before { Refinery::Pages::Types.register("show") { |type| type.parts = Refinery::Pages.default_parts } }
         after { Refinery::Pages::Types.registered.delete(Refinery::Pages::Types.registered.find_by_name("show")) }
         it { expect(get(:new, params: { view_template: "show" })).to be_ok }
       end
