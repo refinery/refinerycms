@@ -9,15 +9,14 @@ module Refinery
       config.autoload_paths += %W( #{config.root}/lib )
 
       initializer 'attach-refinery-resources-with-dragonfly', :before => :finisher_hook do |app|
-        ::Refinery::Resources::Dragonfly.configure!
-        ::Refinery::Resources::Dragonfly.attach!(app)
+        ::Refinery::Dragonfly.configure!(Refinery::Resources)
+        ::Refinery::Dragonfly.attach!(app, Refinery::Resources)
       end
 
       before_inclusion do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_files'
-          plugin.icon = 'icon icon-export'
           plugin.menu_match = /refinery\/(refinery_)?(files|resources)$/
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_resources_path }
         end

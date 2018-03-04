@@ -3,7 +3,7 @@ module Refinery
     include Pages::RenderOptions
 
     before_action :find_page, :set_canonical
-    before_action :error_404, :unless => :current_user_can_view_page?
+    before_action :error_404, unless: :current_user_can_view_page?
 
     # Save whole Page after delivery
     after_action :write_cache?
@@ -25,11 +25,11 @@ module Refinery
     #
     def show
       if should_skip_to_first_child?
-        redirect_to refinery.url_for(first_live_child.url) and return
+        redirect_to refinery.url_for(first_live_child.url), status: 301 and return
       elsif page.link_url.present?
-        redirect_to page.link_url and return
+        redirect_to page.link_url, status: 301 and return
       elsif should_redirect_to_friendly_url?
-        redirect_to refinery.url_for(page.url), :status => 301 and return
+        redirect_to refinery.url_for(page.url), status: 301 and return
       end
 
       render_with_templates?
@@ -60,7 +60,11 @@ module Refinery
     end
 
     def current_user_can_view_page?
-      page.live? || authorisation_manager.allow?(:plugin, "refinery_pages")
+      page.live? || current_refinery_user_can_access?("refinery_pages")
+    end
+
+    def current_refinery_user_can_access?(plugin)
+      admin? && authorisation_manager.allow?(:plugin, plugin)
     end
 
     def first_live_child

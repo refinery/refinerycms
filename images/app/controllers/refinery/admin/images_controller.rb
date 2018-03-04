@@ -43,7 +43,7 @@ module Refinery
           if params[:image].present? && params[:image][:image].is_a?(Array)
             params[:image][:image].each do |image|
               params[:image][:image_title] = params[:image][:image_title].presence || auto_title(image.original_filename)
-              @images << (@image = ::Refinery::Image.create({image: image}.merge(image_params.except(:image))))
+              @images << (@image = ::Refinery::Image.create({image: image}.merge(image_params.except(:image).to_h)))
             end
           else
             @images << (@image = ::Refinery::Image.create(image_params))
@@ -116,6 +116,7 @@ module Refinery
         @app_dialog = params[:app_dialog].present?
         @field = params[:field]
         @update_image = params[:update_image]
+        @image_id = params[:selected_image].to_i if params[:selected_image].present?
         @thumbnail = params[:thumbnail]
         @callback = params[:callback]
         @multiple = params[:multiple]
@@ -148,7 +149,7 @@ module Refinery
 
       def permitted_image_params
         [
-          { image: [] }, :image_size, :image_title, :image_alt
+          :image, :image_size, :image_title, :image_alt
         ]
       end
 

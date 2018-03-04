@@ -10,7 +10,7 @@ module Refinery
       include ActionView::Helpers::UrlHelper
       include ActiveSupport::Configurable
 
-      config_accessor :roots, :menu_tag, :list_tag, :list_item_tag, :css, :dom_id,
+      config_accessor :roots, :menu_tag, :menu_role, :list_tag, :list_item_tag, :css, :dom_id,
                       :max_depth, :active_css, :selected_css, :first_css, :last_css, :list_tag_css,
                       :link_tag_css
       self.dom_id = 'menu'
@@ -42,7 +42,7 @@ module Refinery
 
       private
       def render_menu(items)
-        content_tag(menu_tag, :id => dom_id, :class => css) do
+        content_tag(menu_tag, id: dom_id, class: css, role: menu_role) do
           render_menu_items(items)
         end
       end
@@ -75,11 +75,6 @@ module Refinery
       # unless it first quickly determines that there are no descendants.
       def descendant_item_selected?(item)
         item.has_children? && item.descendants.any?(&method(:selected_item?))
-      end
-
-      def selected_item_or_descendant_item_selected?(item)
-        Refinery.deprecate('Refinery::Pages::MenuPresenter#selected_item_or_descendant_item_selected?', when: '3.1')
-        selected_item?(item) || descendant_item_selected?(item)
       end
 
       # Determine whether the supplied item is the currently open item according to Refinery.

@@ -1,17 +1,58 @@
-## 4.0.0.dev [unreleased]
-* Add new admin menu icons. [#3167](https://github.com/refinery/refinerycms/pull/3167). [Stefan Spicer](https://github.com/stefanspicer) & [Brice Sanchez](https://github.com/bricesanchez)
-* Add new admin menu. [#3167](https://github.com/refinery/refinerycms/pull/3167). [Stefan Spicer](https://github.com/stefanspicer) & [Brice Sanchez](https://github.com/bricesanchez)
-* Include and configure bootstrap 4. [#3167](https://github.com/refinery/refinerycms/pull/3167). [Stefan Spicer](https://github.com/stefanspicer)
+## 4.0.2 [Unreleased]
 
-* [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...master)
+* Renamed FactoryGirl to FactoryBot. [#3324](https://github.com/refinery/refinerycms/pull/3324). [Philip Arndt](https://github.com/parndt)
+
+## 4.0.1 [24 October 2017]
+
+* Always expect to have css and js files precompiled. Remove skip_pipeline option for visual_editor_stylesheets and custom_stylesheets. [#3318](https://github.com/refinery/refinerycms/pull/3318). [Brice Sanchez](https://github.com/bricesanchez)
+* Now require globalize on top of the engine. [#3316](https://github.com/refinery/refinerycms/pull/3316). [Brice Sanchez](https://github.com/bricesanchez)
+* Require refinery core nil_user class (needed for prod env). [#3317](https://github.com/refinery/refinerycms/pull/3317). [Brice Sanchez](https://github.com/bricesanchez)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/4.0.0...4.0.1)
 
 
-## 3.0.5 [unreleased]
+## 4.0.0 [29 September 2017]
 
-* [See full list](https://github.com/refinery/refinerycms/compare/3.0.4...3-0-stable)
+* Add Rails version to generated migration. [#3313](https://github.com/refinery/refinerycms/pull/3313). [Brice Sanchez](https://github.com/bricesanchez)
+* Remove deprecated methods for versions < 4.0.0. [124e560](https://github.com/refinery/refinerycms/commit/124e560086eb9b10bb5665aff7923f6881374398). [Brice Sanchez](https://github.com/bricesanchez)
+* Now supporting Rails 5.1. [#3122](https://github.com/refinery/refinerycms/pull/3122). [Brice Sanchez](https://github.com/bricesanchez) & [Philip Arndt](https://github.com/parndt) & [Remco Meinen](https://github.com/sjoulbak) & [Don Pinkster](https://github.com/donpinkster) & [Johan Bruning](https://github.com/johanb) & [Michael de Silva](https://github.com/bsodmike) & [Kiril Mitov](https://github.com/thebravoman) and everyone else who helped out!
+
+* [See full list](https://github.com/refinery/refinerycms/compare/3-0-stable...4.0.0)
+
+## 3.0.6 [2 October 2017]
+
+* Fix search placeholder. [#3291](https://github.com/refinery/refinerycms/pull/3291). [Roman Krylov](https://github.com/xtsidx)
+* Upgrade dragonfly to version 1.1. [#3303](https://github.com/refinery/refinerycms/pull/3303). [Anita Graham](https://github.com/anitagraham)
+* Bugfix: canonical url now use current_frontend_locale instead of default_frontend_locale. [#3299](https://github.com/refinery/refinerycms/pull/3299). [Brice Sanchez](https://github.com/bricesanchez)
+* Now we use redirect 301 to show pages. [#3300](https://github.com/refinery/refinerycms/pull/3300). [Brice Sanchez](https://github.com/bricesanchez)
+* jQuery .load() deprecated. [#3288](https://github.com/refinery/refinerycms/pull/3288). [Roman Krylov](https://github.com/xtsidx)
+* Fixed variable name for editor options. [#3287](https://github.com/refinery/refinerycms/pull/3287). [Bo Frederiksen](https://github.com/bofrede)
+* Fixed PhantomJS timeout when appending something to the body. [#3297](https://github.com/refinery/refinerycms/pull/3297). [Remco Meinen](https://github.com/sjoulbak)
+* Change warn to use rails logger. [#3272](https://github.com/refinery/refinerycms/pull/3272). [Paul](https://github.com/yule) & [Philip Arndt](https://github.com/parndt)
+* Update the updated_at field of the page itself when a page_part got updated. [#3275](https://github.com/refinery/refinerycms/pull/3275). [Maarten Bezemer](https://github.com/veger)
+* Remove obsolete sitemap builder from generator [#3270](https://github.com/refinery/refinerycms/pull/3270). [Brice Sanchez](https://github.com/bricesanchez)
+* Fix #3218 regression: don't duplicate locale in url. [#3271](https://github.com/refinery/refinerycms/pull/3271). [Brice Sanchez](https://github.com/bricesanchez)
+* Change data attribute to match Turbolinks 5 syntax. [#3269](https://github.com/refinery/refinerycms/pull/3269). [Maarten Bezemer](https://github.com/veger)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/3.0.5...3.0.6)
 
 
-## 3.0.4 [18 July 2016]
+## 3.0.5 [23 November 2016]
+
+* Fix HTML format for not found page in page seeds. [#3263](https://github.com/refinery/refinerycms/pull/3263). [Brice Sanchez](https://github.com/bricesanchez)
+* Bugfix/draft page view not hidden for visitors. [#3264](https://github.com/refinery/refinerycms/pull/3264). [Brice Sanchez](https://github.com/bricesanchez)
+* Remove deprecated heroku gem. Fix start generator for Authentication. [#3258](https://github.com/refinery/refinerycms/pull/3258). [Brice Sanchez](https://github.com/bricesanchez)
+* Add ability to display current used template in layout. [#3259](https://github.com/refinery/refinerycms/pull/3259). [Brice Sanchez](https://github.com/bricesanchez)
+* Add SVG logo. Improve site_bar HTML/CSS. [#3262](https://github.com/refinery/refinerycms/pull/3262). [Brice Sanchez](https://github.com/bricesanchez)
+* Fix preview button with WYMeditor. [#3020](https://github.com/refinery/refinerycms/pull/3020). [Christoph Wagner](https://github.com/aiomaster)
+* Add "required" html attribute in add_whitelist_attributes config. [#3236](https://github.com/refinery/refinerycms/pull/3236). [Brice Sanchez](https://github.com/bricesanchez)
+* Fixed admin menu items duplicating after extensions code changing. [#3234](https://github.com/refinery/refinerycms/pull/3234). [Dmitriy Molodtsov](https://github.com/sintro)
+* Enable reselection of resource after removal. [#3216](https://github.com/refinery/refinerycms/pull/3216). [NicholasKirchner](https://github.com/NicholasKirchner)
+
+* [See full list](https://github.com/refinery/refinerycms/compare/3.0.4...3.0.5)
+
+
+## 3.0.4 [17 July 2016]
 
 * Fixed sitemap generation for multiple frontend locales. [#3218](https://github.com/refinery/refinerycms/pull/3218). [Dmitriy Molodtsov](https://github.com/sintro)
 * Allow finders to be defined for each action. [#3146](https://github.com/refinery/refinerycms/pull/3146). [Philip Arndt](https://github.com/parndt)

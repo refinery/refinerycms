@@ -1,4 +1,5 @@
 require 'pathname'
+require 'mkmf'
 
 module Refinery
   class CmsGenerator < Rails::Generators::Base
@@ -76,24 +77,24 @@ end}  end
 
     def append_heroku_gems!
       production_gems = [
-        "gem 'dragonfly-s3_data_store'",
-        "gem 'rails_12factor'",
-        "gem 'puma'"
+        "gem 'dragonfly-s3_data_store'"
       ]
+      production_gems << "gem 'puma'" unless destination_gemfile_has_puma?
       production_gems << "gem 'pg'" unless destination_gemfile_has_postgres?
 
       append_file "Gemfile", %Q{
 # The Ruby version is specified here so that Heroku uses the right version.
-ruby #{ENV['RUBY_VERSION'].inspect}
-
-# The Heroku gem allows you to interface with Heroku's API
-gem 'heroku'
+ruby #{current_ruby_version.inspect}
 
 # Gems that have been added for Heroku support
 group :production do
   {{production_gems}}
 end
 }.sub("{{production_gems}}", production_gems.join("\n  "))
+    end
+
+    def current_ruby_version
+      ENV['RUBY_VERSION'].presence || RUBY_VERSION
     end
 
     def bundle!
@@ -144,6 +145,12 @@ end
 
     def deploy_to_hosting?
       if heroku?
+        if heroku_toolbelt_missing?
+          fail <<-ERROR
+  \033[31m[ABORTING]\033[0m Heroku Toolbelt is not installed. Please re-start the installer after installing at:\nhttps://devcenter.heroku.com/articles/heroku-command-line
+  ERROR
+        end
+
         append_heroku_gems!
 
         # Sanity check the heroku application name and save whatever messages are produced.
@@ -222,12 +229,24 @@ end
     end
 
     def destination_gemfile_has_postgres?
+      destination_gemfile_has_gem?('pg')
+    end
+
+    def destination_gemfile_has_puma?
+      destination_gemfile_has_gem?('puma')
+    end
+
+    def destination_gemfile_has_gem?(gem_name)
       destination_path.join('Gemfile').file? &&
-        destination_path.join('Gemfile').read =~ %r{gem ['"]pg['"]}
+        destination_path.join('Gemfile').read =~ %r{gem ['"]#{gem_name}['"]}
     end
 
     def heroku?
       options[:heroku].present?
+    end
+
+    def heroku_toolbelt_missing?
+      find_executable("heroku").nil?
     end
 
     def manage_roadblocks!
@@ -276,7 +295,8 @@ end
       generator_args << '--quiet' if self.options[:quiet]
       generator_args << '--skip-migrations' if self.options[:skip_migrations]
       Refinery::CoreGenerator.start generator_args
-      Refinery::AuthenticationGenerator.start generator_args if defined?(Refinery::AuthenticationGenerator)
+      Refinery::Authentication::DeviseGenerator.start generator_args if defined?(Refinery::Authentication::DeviseGenerator)
+      Refinery::Dragonfly::DragonflyGenerator.start generator_args if defined?(Refinery::Dragonfly::DragonflyGenerator)
       Refinery::ResourcesGenerator.start generator_args if defined?(Refinery::ResourcesGenerator)
       Refinery::PagesGenerator.start generator_args if defined?(Refinery::PagesGenerator)
       Refinery::ImagesGenerator.start generator_args if defined?(Refinery::ImagesGenerator)

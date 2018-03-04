@@ -9,15 +9,14 @@ module Refinery
       config.autoload_paths += %W( #{config.root}/lib )
 
       initializer 'attach-refinery-images-with-dragonfly', :before => :finisher_hook do |app|
-        ::Refinery::Images::Dragonfly.configure!
-        ::Refinery::Images::Dragonfly.attach!(app)
+        ::Refinery::Dragonfly.configure!(::Refinery::Images)
+        ::Refinery::Dragonfly.attach!(app, ::Refinery::Images)
       end
 
       before_inclusion do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_images'
-          plugin.icon = 'icon icon-photo bump-down'
           plugin.menu_match = %r{refinery/image(_dialog)?s$}
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_images_path }
         end

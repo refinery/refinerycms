@@ -1,4 +1,4 @@
-class UpdateSlugAndTitleInRefineryPageParts < ActiveRecord::Migration
+class UpdateSlugAndTitleInRefineryPageParts < ActiveRecord::Migration[4.2]
   def change
     begin
       ::Refinery::PagePart.all.each do |pp|

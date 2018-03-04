@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
-# This command will automatically be run when you run "rails" with Rails 3 gems installed from the root of your application.
+# This command will automatically be run when you run "rails" with Rails gems
+# installed from the root of your application.
 
-ENGINE_PATH = File.expand_path('../..',  __FILE__)
-load File.expand_path('../../spec/dummy/bin/rails',  __FILE__)
+begin
+  load File.join(File.expand_path('../../',  __FILE__), 'spec/dummy/bin/rails')
+rescue LoadError => load_error
+  warn "No dummy Rails application found! \n" \
+       "To create one in spec/dummy, please run: \n\n" \
+       "    rake refinery:testing:dummy_app"
+end

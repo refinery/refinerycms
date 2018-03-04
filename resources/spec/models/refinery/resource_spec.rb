@@ -2,8 +2,8 @@ require 'spec_helper'
 
 module Refinery
   describe Resource, :type => :model do
-    let(:resource) { FactoryGirl.create(:resource) }
-    let(:titled_resource) { FactoryGirl.create(:resource, resource_title: 'Resource Title')}
+    let(:resource) { FactoryBot.create(:resource) }
+    let(:titled_resource) { FactoryBot.create(:resource, resource_title: 'Resource Title')}
 
     context "with valid attributes" do
       it "should create successfully" do
@@ -27,7 +27,7 @@ module Refinery
       context "when Dragonfly.verify_urls is true" do
         before do
           allow(Refinery::Resources).to receive(:dragonfly_verify_urls).and_return(true)
-          ::Refinery::Resources::Dragonfly.configure!
+          ::Refinery::Dragonfly.configure!(Refinery::Resources)
         end
 
         it "returns a url with an SHA parameter" do
@@ -38,7 +38,7 @@ module Refinery
       context "when Dragonfly.verify_urls is false" do
         before do
           allow(Refinery::Resources).to receive(:dragonfly_verify_urls).and_return(false)
-          ::Refinery::Resources::Dragonfly.configure!
+          ::Refinery::Dragonfly.configure!(Refinery::Resources)
         end
         it "returns a url without an SHA parameter" do
           expect(resource.url).not_to match(/\?sha=[\da-fA-F]{16}\z/)

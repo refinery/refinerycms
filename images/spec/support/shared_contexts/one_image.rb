@@ -1,3 +1,3 @@
 shared_context "one image" do
- let!(:image) { FactoryGirl.create(:image) }
+ let!(:image) { FactoryBot.create(:image) }
 end

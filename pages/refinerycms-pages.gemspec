@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary           = %q{Pages extension for Refinery CMS}
   s.description       = %q{The default content extension of Refinery CMS. This extension handles the administration and display of user-editable pages.}
   s.email             = %q{refinerycms@p.arndt.io}
-  s.homepage          = %q{http://refinerycms.com}
+  s.homepage          = %q{https://www.refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}
@@ -20,13 +20,14 @@ Gem::Specification.new do |s|
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
   s.add_dependency 'friendly_id',                 ['>= 5.1.0', '< 5.3']
-  s.add_dependency 'globalize',                   ['>= 4.0.0', '< 5.2']
-  s.add_dependency 'awesome_nested_set',          '~> 3.0.0'
-  s.add_dependency 'seo_meta',                    '~> 2.0.0.rc.1'
+  s.add_dependency 'globalize',                   ['>= 5.1.0.beta1', '< 5.2']
+  s.add_dependency 'activemodel-serializers-xml', '~> 1.0', '>= 1.0.1'
+  s.add_dependency 'awesome_nested_set',          '~> 3.1', '>= 3.1.0'
+  s.add_dependency 'seo_meta',                    '~> 3.0', '>= 3.0.0'
   s.add_dependency 'refinerycms-core',            version
   s.add_dependency 'babosa',                      '!= 0.3.6'
-  s.add_dependency 'speakingurl-rails',           '~> 8.0.0'
-  s.add_dependency 'diffy',                       '~> 3.1.0'
+  s.add_dependency 'speakingurl-rails',           '~> 8.0', '>= 8.0.0'
+  s.add_dependency 'diffy',                       '~> 3.1', '>= 3.1.0'
 
   s.required_ruby_version = Refinery::Version.required_ruby_version
 

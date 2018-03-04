@@ -8,8 +8,8 @@ module Refinery
       # Refinery::Admin::ImagesController specifies :order => 'created_at DESC' in crudify
       let(:first_image) { Image.order('created_at DESC').first }
       let(:last_image) { Image.order('created_at DESC').last }
-      let!(:image_1) { FactoryGirl.create :image }
-      let!(:image_2) { FactoryGirl.create :image }
+      let!(:image_1) { FactoryBot.create :image }
+      let!(:image_2) { FactoryBot.create :image }
 
       before do
         allow(Image).to receive(:per_page).and_return(1)
@@ -22,9 +22,9 @@ module Refinery
         expect(page).to have_css(%Q{img[alt="#{first_image.title}"]})
 
         # placeholder which would disappear in a full page refresh.
-        page.evaluate_script(
-          %{$('body').append('<i id="has_not_refreshed_entire_page"/>')}
-        )
+        page.evaluate_script("node = document.createElement('i');")
+        page.evaluate_script("node.id = 'has_not_refreshed_entire_page';")
+        page.evaluate_script("document.body.appendChild(node);")
 
         within '.pagination' do
           click_link '2'

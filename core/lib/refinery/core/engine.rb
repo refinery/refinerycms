@@ -63,7 +63,7 @@ module Refinery
         end
       end
 
-      initializer "refinery.routes", :after => :set_routes_reloader_hook do |app|
+      initializer "refinery.routes" do |app|
         Refinery::Core::Engine.routes.append do
           get "#{Refinery::Core.backend_route}/*path" => 'admin#error_404'
         end
@@ -85,38 +85,8 @@ module Refinery
         if defined?(Turbolinks)
           Rails.application.config.assets.precompile += %w(turbolinks.js)
         end
-
-        # scripts
-        Rails.application.config.assets.precompile += %w(
-          refinery/*.js
-          refinery/icons/*
-          modernizr-min.js
-          admin.js
-        )
-
-        # stylesheets
-        Rails.application.config.assets.precompile += %w(
-          refinery/refinery.css
-          refinery/formatting.css
-          refinery/site_bar.css
-          refinery/theme.css
-        )
-
-        # images
-        Rails.application.config.assets.precompile += %w(
-          refinery/images/*
-        )
-
-        # fonts
-        Rails.application.config.assets.precompile += %w(
-          font-awesome/fontawesome-webfont.eot
-          font-awesome/fontawesome-webfont.woff2
-          font-awesome/fontawesome-webfont.woff
-          font-awesome/fontawesome-webfont.ttf
-          font-awesome/fontawesome-webfont.svg
-        )
       end
-
+      
       # active model fields which may contain sensitive data to filter
       initializer "refinery.params.filter" do |app|
         app.config.filter_parameters += [:password, :password_confirmation]

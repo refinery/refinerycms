@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary           = %q{Testing plugin for Refinery CMS}
   s.description       = %q{This plugin adds the ability to tests against the Refinery CMS gem while inside a Refinery CMS extension}
   s.email             = %q{refinerycms@p.arndt.io}
-  s.homepage          = %q{http://refinerycms.com}
+  s.homepage          = %q{https://www.refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}
@@ -19,10 +19,11 @@ Gem::Specification.new do |s|
   s.files             = `git ls-files`.split("\n")
 
   s.add_dependency 'refinerycms-core',        version
-  s.add_dependency 'database_cleaner',        '~> 1.3.0'
-  s.add_dependency 'factory_girl_rails',      '~> 4.6.0'
-  s.add_dependency 'rspec-rails',             '~> 3.0'
-  s.add_dependency 'capybara',                '~> 2.4.3'
+  s.add_dependency 'database_cleaner',        '~> 1.6'
+  s.add_dependency 'factory_bot_rails',       '~> 4.8'
+  s.add_dependency 'rspec-rails',             '~> 3.5'
+  s.add_dependency 'capybara',                '~> 2.7'
+  s.add_dependency 'rails-controller-testing', '~> 0.1.1'
 
   s.required_ruby_version = Refinery::Version.required_ruby_version
 

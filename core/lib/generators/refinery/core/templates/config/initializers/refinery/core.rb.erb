@@ -6,21 +6,7 @@ Refinery::Core.configure do |config|
   # When true this will force SSL redirection in all Refinery backend controllers.
   # config.force_ssl = <%= Refinery::Core.force_ssl.inspect %>
 
-  # Set the S3 options using means other than securely by environment variables.
-  # If you have to.
-  # config.s3_bucket_name = ENV['S3_BUCKET']
-  # config.s3_region = ENV['S3_REGION']
-  # config.s3_access_key_id = ENV['S3_KEY']
-  # config.s3_secret_access_key = ENV['S3_SECRET']
-
-  # When true will use Amazon's Simple Storage Service instead of
-  # the default file system for storing resources and images
-  config.s3_backend = config.s3_access_key_id.present? || config.s3_secret_access_key.present?
-
-  # Use a custom Dragonfly storage backend instead of the default
-  # file system for storing resources and images
-  # config.dragonfly_custom_backend_class = <%= Refinery::Core.dragonfly_custom_backend_class.inspect %>
-  # config.dragonfly_custom_backend_opts = <%= Refinery::Core.dragonfly_custom_backend_opts.inspect %>
+  # Dragonfly and S3 configurations have moved to initializers/refinery/dragonfly.rb
 
   # Whenever Refinery caches anything and can set a cache key, it will add
   # a prefix to the cache key containing the string you set here.
@@ -36,10 +22,6 @@ Refinery::Core.configure do |config|
 
   # Enable/disable authenticity token on frontend
   # config.authenticity_token_on_frontend = <%= Refinery::Core.authenticity_token_on_frontend.inspect %>
-
-  # Should set this if concerned about DOS attacks. See
-  # http://markevans.github.com/dragonfly/file.Configuration.html#Configuration
-  # config.dragonfly_secret = <%= Refinery::Core.dragonfly_secret.inspect %>
 
   # Register extra javascript for backend
   # config.register_javascript "prototype-rails"

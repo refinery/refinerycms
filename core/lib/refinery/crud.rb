@@ -26,7 +26,7 @@ module Refinery
       {
         :conditions => '',
         :include => [],
-        :order => ('position ASC' if this_class.table_exists? && this_class.column_names.include?('position')),
+        :order => ('position ASC' if this_class.connected? && this_class.table_exists? && this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
         :redirect_to_url => "refinery.#{Refinery.route_for_model(class_name.constantize, :plural => true)}",
@@ -49,7 +49,6 @@ module Refinery
 
       def crudify(model_name, options = {})
         options = ::Refinery::Crud.default_options(model_name).merge(options)
-        Refinery.deprecate :xhr_paging, when: '3.1' if options[:xhr_paging]
         class_name = options[:class_name]
         singular_name = options[:singular_name]
         plural_name = options[:plural_name]
@@ -68,7 +67,8 @@ module Refinery
           end
 
           def create
-            if (@#{singular_name} = #{class_name}.create(#{singular_name}_params)).valid?
+            @#{singular_name} = #{class_name}.new(#{singular_name}_params)
+            if @#{singular_name}.save
               flash.notice = t(
                 'refinery.crudify.created',
                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
@@ -166,8 +166,8 @@ module Refinery
           # then render only the collection of items.
           def render_partial_response?
             if request.xhr?
-              render :text => render_to_string(:partial => '#{plural_name}', :layout => false).html_safe,
-                     :layout => 'refinery/flash' and return false
+              render plain: render_to_string(partial: '#{plural_name}', layout: false).html_safe,
+                     layout: 'refinery/flash' and return false
             end
           end
 
@@ -283,7 +283,7 @@ module Refinery
             # Based upon https://github.com/matenia/jQuery-Awesome-Nested-Set-Drag-and-Drop
             def update_positions
               previous = nil
-              params[:ul].each do |_, list|
+              params.to_unsafe_h[:ul].each do |_, list|
                 list.each do |index, hash|
                   moved_item_id = hash['id'][/\\d+\\z/]
                   @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
@@ -329,7 +329,7 @@ module Refinery
             end
 
             def after_update_positions
-              render :nothing => true
+              head :ok
             end
 
             protected :after_update_positions

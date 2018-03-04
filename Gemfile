@@ -9,7 +9,6 @@ path "./" do
   gem "refinerycms-resources"
 end
 
-gem 'quiet_assets'
 gem 'spring'
 gem 'spring-commands-rspec'
 gem 'poltergeist', '>= 1.8.1'
@@ -18,7 +17,7 @@ gem 'poltergeist', '>= 1.8.1'
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
 # Add the default visual editor, for now.
-gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6']
+gem 'refinerycms-wymeditor', ['~> 2.0', '>= 2.0.0']
 
 # Database Configuration
 unless ENV['TRAVIS']
@@ -36,12 +35,16 @@ end
 if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
   group :postgres, :postgresql do
     gem 'activerecord-jdbcpostgresql-adapter', '>= 1.3.0.rc1', platform: :jruby
-    gem 'pg', platform: :ruby
+    gem 'pg', '~> 0.21', platform: :ruby
   end
 end
 
+group :development do
+  gem 'listen', '~> 3.0'
+end
+
 group :test do
-  gem 'refinerycms-testing', path: "./testing"
+  gem 'refinerycms-testing', path: './testing'
   gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'coveralls', require: false

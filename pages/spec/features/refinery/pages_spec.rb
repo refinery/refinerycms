@@ -336,6 +336,30 @@ module Refinery
         end
       end
     end
+
+    describe 'when draft is set to true' do
+      before { allow_any_instance_of(PagesController).to receive(:find_page).and_return(:draft_page) }
+
+      describe 'for vistor' do
+        it 'redirect to the 404 error page' do
+          allow_any_instance_of(PagesController).to receive(:current_refinery_user_can_access?).and_return(false)
+          
+          visit refinery.page_path(draft_page)
+
+          expect(page).to have_http_status(404)
+        end
+      end
+
+      describe 'for admin' do
+        it 'displays draft page message not live' do
+          allow_any_instance_of(PagesController).to receive(:current_refinery_user_can_access?).and_return(true)
+
+          visit refinery.page_path(draft_page)
+
+          expect(page).to have_content(::I18n.t('refinery.draft_page_message.not_live'))
+        end
+      end
+    end
   end
 
   context "with multiple locales" do

@@ -1,14 +1,14 @@
 require 'refinerycms-core'
-require 'dragonfly'
+require 'refinerycms-dragonfly'
 
 module Refinery
   autoload :ImagesGenerator, 'generators/refinery/images/images_generator'
 
   module Images
     require 'refinery/images/engine'
+    require 'refinery/dragonfly/extension_configuration'
     require 'refinery/images/configuration'
 
-    autoload :Dragonfly, 'refinery/images/dragonfly'
     autoload :Validators, 'refinery/images/validators'
 
     class << self

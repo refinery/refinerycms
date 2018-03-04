@@ -3,8 +3,8 @@ require "spec_helper"
 module Refinery
   describe PagesController, :type => :controller do
     before do
-      FactoryGirl.create(:page, :link_url => "/")
-      FactoryGirl.create(:page, :title => "test")
+      FactoryBot.create(:page, :link_url => "/")
+      FactoryBot.create(:page, :title => "test")
     end
 
     describe "#home" do
@@ -16,7 +16,7 @@ module Refinery
 
     describe "#show" do
       it "renders show template" do
-        get :show, :path => "test"
+        get :show, params: {path: "test"}
         expect(response).to render_template("show")
       end
     end

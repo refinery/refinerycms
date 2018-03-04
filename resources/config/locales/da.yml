@@ -9,6 +9,9 @@ da:
         delete: Slet fil
         edit: Redigér fil
         form:
+          resource_file: Fil
+          resource_title: Titel
+          resource_title_help: Angiv en titel for filen
           download_current: Download filen
           or: eller
           replace: " erstat den med denne fil..."

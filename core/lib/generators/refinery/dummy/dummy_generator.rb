@@ -14,7 +14,7 @@ module Refinery
     end
 
     PASSTHROUGH_OPTIONS = [
-      :skip_active_record, :skip_javascript, :database, :javascript, :quiet, :pretend, :force, :skip
+      :skip_active_record, :skip_javascript, :skip_action_cable, :skip_action_mailer, :database, :javascript, :quiet, :pretend, :force, :skip
     ]
 
     def generate_test_dummy
@@ -22,6 +22,8 @@ module Refinery
       opts[:database] = 'sqlite3' if opts[:database].blank?
       opts[:force] = true
       opts[:skip_bundle] = true
+      opts[:skip_action_cable] = true
+      opts[:skip_action_mailer] = true
 
       invoke Rails::Generators::AppGenerator, [ File.expand_path(dummy_path, destination_root) ], opts
     end

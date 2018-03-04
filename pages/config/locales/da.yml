@@ -40,6 +40,7 @@ da:
           view_live_html: Vis siden live <br/><em>(åbner i et nyt vindue)</em>
           hidden: skjult
           draft: kladde
+          redirected: Videresendt
         form:
           preview: Preview
           preview_changes: Se dine ændringer før du udgiver dem
