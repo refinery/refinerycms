@@ -149,7 +149,7 @@ module Refinery
 
       def permitted_image_params
         [
-          { image: [] }, :image_size, :image_title, :image_alt
+          :image, :image_size, :image_title, :image_alt
         ]
       end
 
