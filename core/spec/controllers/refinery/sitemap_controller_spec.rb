@@ -9,7 +9,7 @@ module Refinery
     it "shows a valid xml response" do
       get :index
 
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end
