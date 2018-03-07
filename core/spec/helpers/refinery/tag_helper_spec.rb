@@ -15,7 +15,7 @@ module Refinery
       end
 
       it "wraps image_tag with some options preset" do
-        expect(helper.refinery_icon_tag("ugis.ozols.jpg")).to xml_eq(%Q{<img alt="Ugis.ozols" height="16" src="/images/refinery/icons/ugis.ozols.jpg" width="16" />})
+        expect(helper.refinery_icon_tag("ugis.ozols.jpg", { alt: "Ugis.ozols"})).to xml_eq(%Q{<img alt="Ugis.ozols" height="16" src="/images/refinery/icons/ugis.ozols.jpg" width="16" />})
       end
     end
 

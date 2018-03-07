@@ -12,6 +12,8 @@ module Refinery
     # This is just a quick wrapper to render an image tag that lives inside refinery/icons.
     # They are all 16x16 so this is the default but is able to be overriden with supplied options.
     def refinery_icon_tag(filename, options = {})
+      Refinery.deprecate('Refinery::TagHelper.refinery_icon_tag', when: '5.1', replacement: 'Refinery::TagHelper.action_icon')
+
       filename = "#{filename}.png" unless filename.split('.').many?
       path = image_path "refinery/icons/#{filename}", skip_pipeline: true
       image_tag path, {:width => 16, :height => 16}.merge(options)
