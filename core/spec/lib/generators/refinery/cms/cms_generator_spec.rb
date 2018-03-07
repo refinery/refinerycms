@@ -97,12 +97,12 @@ end
     end
 
     def copy_routes
-      routes = File.join(Gem.loaded_specs['railties'].full_gem_path, 'lib', 'rails', 'generators', 'rails', 'app', 'templates', 'config', 'routes.rb')
+      routes = File.join(Gem.loaded_specs['railties'].
+        full_gem_path, 'lib', 'rails', 'generators', 'rails', 'app', 'templates', 'config', 'routes.rb.tt')
       destination = File.join(destination_root, "config")
 
       FileUtils.mkdir_p(destination)
-      FileUtils.cp routes, destination
+      FileUtils.cp routes, File.join(destination, "routes.rb")
     end
-
   end
 end
