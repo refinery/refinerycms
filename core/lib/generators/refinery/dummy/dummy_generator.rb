@@ -34,7 +34,7 @@ module Refinery
       opts[:skip_action_cable] = true
       opts[:skip_action_mailer] = true
       opts[:skip_keeps] = true
-      opts[:skip_migrate] = true
+      opts[:skip_migrations] = true
       opts[:template] = refinery_path.join("templates", "refinery", "edge.rb").to_s
 
       invoke Rails::Generators::AppGenerator,
