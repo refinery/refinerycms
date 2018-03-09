@@ -32,7 +32,7 @@ If you're new to Refinery, start with this guide:
 
 For Rails 5.1+ support, you can use version `4.0.x` using this template:
 
-    rails new app_name -m https://www.refinerycms.com/t/4.0.0
+    rails new app_name -m https://www.refinerycms.com/t/4.0.0 --webpack=stimulus
 
 For Rails 4.2.x support, you can use version `3.0.x` using this template:
 

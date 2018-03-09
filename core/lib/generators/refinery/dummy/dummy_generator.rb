@@ -14,7 +14,8 @@ module Refinery
     end
 
     PASSTHROUGH_OPTIONS = [
-      :skip_active_record, :skip_javascript, :skip_action_cable, :skip_action_mailer, :database, :javascript, :quiet, :pretend, :force, :skip
+      :skip_active_record, :skip_javascript, :skip_action_cable, :skip_action_mailer, :database, :javascript, :quiet,
+      :pretend, :force, :skip, :webpack
     ]
 
     def generate_test_dummy
@@ -24,6 +25,7 @@ module Refinery
       opts[:skip_bundle] = true
       opts[:skip_action_cable] = true
       opts[:skip_action_mailer] = true
+      opts[:webpack] = 'stimulus'
 
       invoke Rails::Generators::AppGenerator, [ File.expand_path(dummy_path, destination_root) ], opts
     end
