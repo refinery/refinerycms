@@ -18,6 +18,8 @@ module Refinery
                            :desc => "Skip over any database creation, migration or seeding."
     class_option :skip_migrations, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
                            :desc => "Skip over installing or running migrations."
+    class_option :skip_seeds, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
+                           :desc => "Skip over seeding."
 
     def generate
       start_pretending?
@@ -245,7 +247,7 @@ end
         command = %w[railties:install:migrations]
         unless self.options[:skip_db]
           command |= %w[db:create db:migrate]
-          command |= %w[db:seed] unless self.options[:skip_migrations]
+          command |= %w[db:seed] unless self.options[:skip_seeds]
         end
         rake command.join(' ')
       end
@@ -273,6 +275,7 @@ end
       generator_args = []
       generator_args << '--quiet' if self.options[:quiet]
       generator_args << '--skip-migrations' if self.options[:skip_migrations]
+      generator_args << '--skip-seeds' if self.options[:skip_seeds] && !self.options[:skip_migrations]
       Refinery::CoreGenerator.start generator_args
       Refinery::Authentication::DeviseGenerator.start generator_args if defined?(Refinery::Authentication::DeviseGenerator)
       Refinery::Dragonfly::DragonflyGenerator.start generator_args if defined?(Refinery::Dragonfly::DragonflyGenerator)
