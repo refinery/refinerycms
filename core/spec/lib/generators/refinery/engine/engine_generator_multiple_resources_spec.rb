@@ -1,16 +1,20 @@
 require 'spec_helper'
+require 'fileutils'
 require 'generator_spec/test_case'
 require 'generators/refinery/engine/engine_generator'
-require 'tmpdir'
 
 module Refinery
   describe EngineGenerator do
     include GeneratorSpec::TestCase
-    destination Dir.mktmpdir
+    destination File.expand_path("../../../../../../tmp", __FILE__)
 
     before do
       prepare_destination
       run_generator %w{ rspec_product_test title:string description:text image:image brochure:resource }
+    end
+
+    after do
+      FileUtils.rm_r destination_root
     end
 
     context "when generating a resource without passing a namespace" do
