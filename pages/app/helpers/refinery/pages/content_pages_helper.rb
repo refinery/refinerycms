@@ -6,8 +6,11 @@ module Refinery
       # to get its html. The options are passed to that method, so see render_content_presenter for
       # more details.
       def render_content_page(page, options = {})
-        content_page_presenter = Refinery::Pages::ContentPagePresenter.new(page, page_title)
-        render_content_presenter(content_page_presenter, options)
+        content_page_presenter = Refinery::Pages::ContentPagePresenter.new(page, page_title, current_refinery_user)
+
+        Rails.cache.fetch([::I18n.locale, current_refinery_user, page]) do
+          render_content_presenter(content_page_presenter, options)
+        end
       end
 
       # Pass the options into a ContentPresenter object and return its html. For more
