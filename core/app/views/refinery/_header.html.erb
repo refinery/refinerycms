@@ -4,7 +4,7 @@
   <% end %>
 <% end %>
 
-<% cache [I18n.locale, 'main_menu', @page, Refinery::Page.fast_menu.map(&:updated_at).max] do %>
+<% cache [I18n.locale, current_refinery_user, @page, Refinery::Page.fast_menu] do %>
   <%=
     main_menu = Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self)
     main_menu.menu_role = 'navigation'
