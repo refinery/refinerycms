@@ -28,6 +28,17 @@ module Refinery
 
 
     class << self
+      def cache_pages_full
+        if config.cache_pages_full
+          Refinery.deprecate(
+            'Refinery::Pages.cache_pages_full',
+            replacement: 'Fragment Caching, see: http://guides.rubyonrails.org/caching_with_rails.html#fragment-caching',
+            when: '4.2'
+          )
+        end
+        config.cache_pages_full
+      end
+
       def whitelist_elements
         Loofah::HTML5::WhiteList::ALLOWED_ELEMENTS.merge(config.add_whitelist_elements)
       end

@@ -85,6 +85,14 @@ module Refinery
     def write_cache?
       # Don't cache the page with the site bar showing.
       if Refinery::Pages.cache_pages_full && !authorisation_manager.allow?(:read, :site_bar)
+        if config.cache_pages_full
+          Refinery.deprecate(
+            'Refinery::PagesController#write_cache?',
+            replacement: 'Fragment Caching, see: http://guides.rubyonrails.org/caching_with_rails.html#fragment-caching',
+            when: '4.2'
+          )
+        end
+
         cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path).to_s)
       end
     end
