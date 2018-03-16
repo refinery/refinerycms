@@ -46,7 +46,8 @@
       <%= action_icon(:delete,  delete_url, t('delete', scope: 'refinery.admin.pages' ), delete_options ) if page.deletable? %>
     </span>
   </div>
-  <ul class='nested' data-ajax-content="<%= refinery.admin_children_pages_path(page.nested_url) %>">
-    <%= render(partial: 'page', collection: page.children) if Refinery::Pages.auto_expand_admin_tree %>
-  </ul>
+
+  <%= content_tag :ul, class: 'nested', data: { 'ajax-content': refinery.admin_children_pages_path(page.nested_url) } do %>
+    <%= render(partial: 'page', collection: page.children, cached: true) if Refinery::Pages.auto_expand_admin_tree %>
+  <% end %>
 </li>
