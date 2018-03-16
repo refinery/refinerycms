@@ -55,7 +55,7 @@ module Refinery
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
     # rather than :delete_all we want :destroy
-    acts_as_nested_set :dependent => :destroy
+    acts_as_nested_set counter_cache: :children_count, dependent: :destroy
 
     friendly_id :custom_slug_or_title, FriendlyIdOptions.options
 
