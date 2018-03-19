@@ -5,4 +5,5 @@
  *= require refinery/interface
  *= require refinery/submit_continue
  *= require refinery/ajaxy_pagination
+ *= require refinery/controllers/submit_continue_controller
 */

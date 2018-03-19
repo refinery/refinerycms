@@ -1,4 +1,10 @@
-<%= f.submit t('.save_and_continue_editing'),
-             id: 'submit_continue_button',
-             class: 'wymupdate button',
-             data: { disable_with: false } if f.object.persisted? %>
+<%= content_tag :div, data: { controller: 'refinery--admin--core--submit-continue' } do %>
+  <%= f.submit t('.save_and_continue_editing'),
+    id: 'submit_continue_button',
+    class: 'wymupdate button',
+    data: {
+      disable_with: !f.object.persisted?,
+      target: "form##{f.options[:html][:id]}",
+      action: 'click->refinery--admin--core--submit-continue#submit'
+    } %>
+<% end %>
