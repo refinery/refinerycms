@@ -7,6 +7,7 @@
 //= link refinery/tree.js
 //= link admin.js
 //= link modernizr-min.js
+//= link refinery/application.js
 
 //= link refinery/refinery.css
 //= link refinery/formatting.css
