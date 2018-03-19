@@ -5,6 +5,7 @@ require 'rbconfig'
 require 'font-awesome-sass'
 require 'jquery-rails'
 require 'babel-transpiler'
+require 'stimulusjs-rails'
 
 module Refinery
   require 'refinery/errors'
