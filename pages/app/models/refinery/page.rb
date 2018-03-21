@@ -73,6 +73,9 @@ module Refinery
     before_destroy :deletable?
     after_save :reposition_parts!
 
+    after_save { update_all_descendants if descendants.any? }
+    after_move { update_all_descendants if descendants.any? }
+
     class << self
       # Live pages are 'allowed' to be shown in the frontend of your website.
       # By default, this is all pages that are not set as 'draft'.
@@ -383,6 +386,10 @@ module Refinery
       else
         translations.first.locale
       end
+    end
+
+    def update_all_descendants
+      self.descendants.update_all(updated_at: DateTime.now)
     end
   end
 end
