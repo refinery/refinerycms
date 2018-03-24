@@ -10,6 +10,7 @@ class Create<%= namespacing %><%= class_name.pluralize %> < ActiveRecord::Migrat
       t.timestamps
     end
 <% if localized? %>
+    # FIXME: remove create_translation_table!` method
     Refinery::<%= namespacing %>::<%= class_name %>.create_translation_table! <%= attributes_for_translation_table %>
 <% end %>
   end
