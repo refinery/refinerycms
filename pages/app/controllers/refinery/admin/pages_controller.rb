@@ -72,9 +72,9 @@ module Refinery
 
         # Always display the tree of pages from the default frontend locale.
         if Refinery::I18n.built_in_locales.keys.map(&:to_s).include?(params[:switch_locale])
-          Globalize.locale = params[:switch_locale].try(:to_sym)
+          Mobility.locale = params[:switch_locale].try(:to_sym)
         else
-          Globalize.locale = Refinery::I18n.default_frontend_locale
+          Mobility.locale = Refinery::I18n.default_frontend_locale
         end
       end
 

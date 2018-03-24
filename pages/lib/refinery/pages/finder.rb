@@ -30,7 +30,7 @@ module Refinery
       end
 
       def with_globalize
-        globalized_conditions = {:locale => ::Globalize.locale.to_s}.merge(conditions)
+        globalized_conditions = {:locale => ::Mobility.locale.to_s}.merge(conditions)
         translations_conditions = translations_conditions(globalized_conditions)
 
         # A join implies readonly which we don't really want.

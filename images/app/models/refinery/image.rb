@@ -2,6 +2,7 @@ require 'dragonfly'
 
 module Refinery
   class Image < Refinery::Core::BaseModel
+    extend Mobility
     translates :image_title, :image_alt
 
     attribute :image_title

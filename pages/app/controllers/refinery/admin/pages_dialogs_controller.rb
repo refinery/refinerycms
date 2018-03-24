@@ -6,9 +6,9 @@ module Refinery
 
       def link_to
         # Get the switch_local variable to determine the locale we're currently editing
-        # Set up Globalize with our current locale
-        Globalize.locale = if params[:switch_locale].present? && Refinery::I18n.built_in_locales.keys.map(&:to_s).include?(params[:switch_locale])
-          Globalize.locale = params[:switch_locale]
+        # Set up Mobility with our current locale
+        Mobility.locale = if params[:switch_locale].present? && Refinery::I18n.built_in_locales.keys.map(&:to_s).include?(params[:switch_locale])
+          Mobility.locale = params[:switch_locale]
         else
           Refinery::I18n.default_locale
         end

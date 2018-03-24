@@ -9,6 +9,9 @@ path "./" do
   gem "refinerycms-resources"
 end
 
+# TODO: Remove this before merging this PR
+gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'feature/mobility'
+
 gem 'spring'
 gem 'spring-commands-rspec'
 gem 'poltergeist', '>= 1.8.1'

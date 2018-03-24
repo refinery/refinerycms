@@ -105,7 +105,7 @@ module Refinery
 
       describe '#canonical' do
         let!(:default_canonical) {
-          Globalize.with_locale(Refinery::I18n.default_frontend_locale) {
+          Mobility.with_locale(Refinery::I18n.default_frontend_locale) {
             page.canonical
           }
         }
@@ -121,7 +121,7 @@ module Refinery
         specify "translated page returns its pages's canonical"  do
           allow(Refinery::I18n).to receive(:current_frontend_locale).and_return(:ru)
 
-          Globalize.with_locale(:ru) do
+          Mobility.with_locale(:ru) do
             page.title = ru_page_title
             page.save
 
@@ -133,7 +133,7 @@ module Refinery
 
       describe '#canonical_slug' do
         let!(:default_canonical_slug) {
-          Globalize.with_locale(Refinery::I18n.default_frontend_locale) {
+          Mobility.with_locale(Refinery::I18n.default_frontend_locale) {
             page.canonical_slug
           }
         }
@@ -148,7 +148,7 @@ module Refinery
         specify "translated page returns its page's canonical slug'" do
           allow(Refinery::I18n).to receive(:current_frontend_locale).and_return(:ru)
 
-          Globalize.with_locale(:ru) do
+          Mobility.with_locale(:ru) do
             page.title = ru_page_title
             page.save
 

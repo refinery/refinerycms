@@ -9,6 +9,7 @@ module Refinery
     validates :slug, :presence => true, :uniqueness => {:scope => :refinery_page_id}
     alias_attribute :content, :body
 
+    extend Mobility
     translates :body
 
     attribute :body
