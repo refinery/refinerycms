@@ -9,7 +9,7 @@ module Refinery
     extend FriendlyId
 
     extend Mobility
-    translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
+    translates :title, :menu_title, :custom_slug, :slug, :browser_title, :meta_description
 
     attribute :title
     attribute :menu_title
@@ -20,10 +20,6 @@ module Refinery
     
     class Translation
       is_seo_meta
-
-      def self.seo_fields
-        ::SeoMeta.attributes.keys.map{ |a| [a, :"#{a}="]}.flatten
-      end
     end
 
     class FriendlyIdOptions
@@ -47,12 +43,8 @@ module Refinery
       changes.keys.include?("title") || changes.keys.include?("custom_slug")
     end
 
-    # Delegate SEO Attributes to globalize translation
-    delegate(*(Translation.seo_fields << {:to => :translation}))
-
-    validates :title, :presence => true
-
-    validates :custom_slug, :uniqueness => true, :allow_blank => true
+    validates :title, presence: true
+    validates :custom_slug, uniqueness: true, allow_blank: true
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
     # rather than :delete_all we want :destroy
