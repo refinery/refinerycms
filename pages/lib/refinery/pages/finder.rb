@@ -51,7 +51,7 @@ module Refinery
         translations_conditions = {}
         original_conditions.keys.each do |key|
           if translated_attributes.include? key.to_s
-            translations_conditions["#{Page.translation_class.table_name}.#{key}"] = original_conditions.delete(key)
+            translations_conditions["#{Page::Translation.table_name}.#{key}"] = original_conditions.delete(key)
           end
         end
         translations_conditions

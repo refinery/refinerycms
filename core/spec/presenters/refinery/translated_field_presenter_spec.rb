@@ -25,7 +25,7 @@ module Refinery
 
       context "when title for current locale isn't available" do
         it "returns existing title from translations" do
-          Page.translation_class.where(locale: :en).first.destroy
+          Page::Translation.where(locale: :en).first.destroy
           expect(TranslatedFieldPresenter.new(page).call(:title)).to eq("melnraksts")
         end
       end
