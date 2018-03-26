@@ -17,7 +17,7 @@ module Refinery
     attribute :slug
 
     after_save { translations.collect(&:save) }
-    
+
     class Translation
       is_seo_meta
     end
@@ -372,9 +372,9 @@ module Refinery
     end
 
     def slug_locale
-      return Mobility.locale if translation_for(Mobility.locale, false).try(:slug).present?
+      return Mobility.locale if slug_backend.read(Mobility.locale).present?
 
-      if translations.empty? || translation_for(Refinery::I18n.default_frontend_locale, false).try(:slug).present?
+      if translations.empty? || slug_backend.read(Refinery::I18n.default_frontend_locale).try(:slug).present?
         Refinery::I18n.default_frontend_locale
       else
         translations.first.locale
