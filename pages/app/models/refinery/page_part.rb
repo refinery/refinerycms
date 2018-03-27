@@ -17,7 +17,7 @@ module Refinery
     end
 
     def body=(value)
-      write_attribute(:body, value)
+      super
 
       normalise_text_fields
     end
