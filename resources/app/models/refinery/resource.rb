@@ -7,8 +7,6 @@ module Refinery
     extend Mobility
     translates :resource_title
 
-    attribute :resource_title
-
     dragonfly_accessor :file, :app => :refinery_resources
 
     validates :file, :presence => true

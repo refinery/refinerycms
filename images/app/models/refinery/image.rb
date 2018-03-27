@@ -5,9 +5,6 @@ module Refinery
     extend Mobility
     translates :image_title, :image_alt
 
-    attribute :image_title
-    attribute :image_alt
-
     dragonfly_accessor :image, :app => :refinery_images
 
     include Images::Validators

@@ -11,11 +11,6 @@ module Refinery
     extend Mobility
     translates :title, :menu_title, :custom_slug, :slug, :browser_title, :meta_description
 
-    attribute :title
-    attribute :menu_title
-    attribute :custom_slug
-    attribute :slug
-
     after_save { translations.collect(&:save) }
 
     class Translation
