@@ -11,6 +11,8 @@ module Refinery
     extend Mobility
     translates :title, :menu_title, :custom_slug, :slug, :browser_title, :meta_description
 
+    default_scope { i18n }
+
     class Translation
       is_seo_meta
     end
@@ -19,14 +21,14 @@ module Refinery
       def self.options
         # Docs for friendly_id https://github.com/norman/friendly_id
         friendly_id_options = {
-          use: [:reserved],
+          use: [:mobility, :reserved],
           reserved_words: Refinery::Pages.friendly_id_reserved_words
         }
         if ::Refinery::Pages.scope_slug_by_parent
           friendly_id_options[:use] << :scoped
           friendly_id_options.merge!(scope: :parent)
         end
-        friendly_id_options[:use] << :mobility
+        # friendly_id_options[:use] << :mobility
         friendly_id_options
       end
     end
