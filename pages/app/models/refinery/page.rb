@@ -47,7 +47,7 @@ module Refinery
 
     has_many :parts, -> {
       scope = order('position ASC')
-      scope = scope.includes(:translations) if ::Refinery::PagePart.respond_to?(:translation_class)
+      scope = scope.includes(:translations) if ::Refinery::PagePart.respond_to?(:mobility)
       scope
     },       :foreign_key => :refinery_page_id,
              :class_name => '::Refinery::PagePart',
