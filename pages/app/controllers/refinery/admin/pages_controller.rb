@@ -67,7 +67,7 @@ module Refinery
 
       # We can safely assume ::Refinery::I18n is defined because this method only gets
       # Invoked when the before_action from the plugin is run.
-      def globalize!
+      def mobility!
         return super unless action_name.to_s == 'index'
 
         # Always display the tree of pages from the default frontend locale.

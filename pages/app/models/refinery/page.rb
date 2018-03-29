@@ -115,7 +115,7 @@ module Refinery
       # This works using a query against the translated content first and then
       # using all of the page_ids we further filter against this model's table.
       def in_menu
-        where(:show_in_menu => true).with_globalize
+        where(show_in_menu: true).with_mobility
       end
 
       # An optimised scope containing only live pages ordered for display in a menu.
@@ -124,8 +124,8 @@ module Refinery
       end
 
       # Wrap up the logic of finding the pages based on the translations table.
-      def with_globalize(conditions = {})
-        Pages::Finder.with_globalize(conditions)
+      def with_mobility(conditions = {})
+        Pages::Finder.with_mobility(conditions)
       end
 
       # Returns how many pages per page should there be when paginating pages
