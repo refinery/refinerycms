@@ -31,12 +31,10 @@ module Refinery
 
       def with_mobility
         mobility_conditions = {:locale => ::Mobility.locale.to_s}.merge(conditions)
-        translations_conditions = translations_conditions(mobility_conditions)
 
         # A join implies readonly which we don't really want.
         Page.i18n.where(mobility_conditions).
              joins(:translations).
-             where(translations_conditions).
              readonly(false)
       end
 
@@ -46,17 +44,6 @@ module Refinery
       def translated_attributes
         Page.translated_attribute_names.map(&:to_s) | %w(locale)
       end
-
-      def translations_conditions(original_conditions)
-        translations_conditions = {}
-        original_conditions.keys.each do |key|
-          if translated_attributes.include? key.to_s
-            translations_conditions["#{Page::Translation.table_name}.#{key}"] = original_conditions.delete(key)
-          end
-        end
-        translations_conditions
-      end
-
     end
 
     class FinderByTitle < Finder
