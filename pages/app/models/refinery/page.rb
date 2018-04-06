@@ -1,19 +1,33 @@
 # Encoding: utf-8
 require 'friendly_id'
+require 'friendly_id/mobility'
 require 'refinery/core/base_model'
 require 'refinery/pages/url'
 require 'refinery/pages/finder'
 
 module Refinery
   class Page < Core::BaseModel
-    extend FriendlyId
-
     extend Mobility
     translates :title, :menu_title, :custom_slug, :slug, :browser_title, :meta_description
 
     class Translation
       is_seo_meta
     end
+
+    has_many :parts, -> {
+      scope = ::Refinery::PagePart.respond_to?(:mobility) ? i18n.includes(:translations) : all
+      scope = scope.order('position ASC')
+      scope
+    },       :foreign_key => :refinery_page_id,
+             :class_name => '::Refinery::PagePart',
+             :inverse_of => :page,
+             :dependent => :destroy
+
+    accepts_nested_attributes_for :parts, :allow_destroy => true
+
+    # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
+    # rather than :delete_all we want :destroy
+    acts_as_nested_set :dependent => :destroy
 
     class FriendlyIdOptions
       def self.options
@@ -31,30 +45,16 @@ module Refinery
       end
     end
 
+    extend FriendlyId
+    friendly_id :custom_slug_or_title, FriendlyIdOptions.options
+
     # If title changes tell friendly_id to regenerate slug when saving record
     def should_generate_new_friendly_id?
-      changes.keys.include?("title") || changes.keys.include?("custom_slug")
+      title_changed? || custom_slug_changed?
     end
 
     validates :title, presence: true
     validates :custom_slug, uniqueness: true, allow_blank: true
-
-    # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
-    # rather than :delete_all we want :destroy
-    acts_as_nested_set counter_cache: :children_count, dependent: :destroy, touch: true
-
-    friendly_id :custom_slug_or_title, FriendlyIdOptions.options
-
-    has_many :parts, -> {
-      scope = ::Refinery::PagePart.respond_to?(:mobility) ? i18n.includes(:translations) : all
-      scope = scope.order('position ASC')
-      scope
-    },       :foreign_key => :refinery_page_id,
-             :class_name => '::Refinery::PagePart',
-             :inverse_of => :page,
-             :dependent => :destroy
-
-    accepts_nested_attributes_for :parts, :allow_destroy => true
 
     before_destroy :deletable?
     after_save :reposition_parts!
