@@ -11,8 +11,6 @@ module Refinery
     extend Mobility
     translates :title, :menu_title, :custom_slug, :slug, :browser_title, :meta_description
 
-    default_scope { i18n }
-
     class Translation
       is_seo_meta
     end
@@ -48,8 +46,8 @@ module Refinery
     friendly_id :custom_slug_or_title, FriendlyIdOptions.options
 
     has_many :parts, -> {
-      scope = order('position ASC')
-      scope = scope.includes(:translations) if ::Refinery::PagePart.respond_to?(:mobility)
+      scope = ::Refinery::PagePart.respond_to?(:mobility) ? i18n.includes(:translations) : all
+      scope = scope.order('position ASC')
       scope
     },       :foreign_key => :refinery_page_id,
              :class_name => '::Refinery::PagePart',

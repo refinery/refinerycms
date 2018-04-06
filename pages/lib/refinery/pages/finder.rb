@@ -34,7 +34,7 @@ module Refinery
         translations_conditions = translations_conditions(mobility_conditions)
 
         # A join implies readonly which we don't really want.
-        Page.where(mobility_conditions).
+        Page.i18n.where(mobility_conditions).
              joins(:translations).
              where(translations_conditions).
              readonly(false)
