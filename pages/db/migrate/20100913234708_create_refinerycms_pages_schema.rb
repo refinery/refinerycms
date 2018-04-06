@@ -49,7 +49,6 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration[4.2]
       t.timestamps null: false
     end
 
-    add_index :refinery_page_part_translations, :refinery_page_part_id, name: :index_refinery_pp_t10s_on_refinery_pp_id
     add_index :refinery_page_part_translations, :locale, name: :index_refinery_page_part_translations_on_locale
     add_index :refinery_page_part_translations, [:refinery_page_part_id, :locale], name: :index_93b7363baf444ecab114aab0bbdedc79d0ec4f4b, unique: true
 
@@ -67,7 +66,6 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration[4.2]
       t.timestamps null: false
     end
 
-    add_index :refinery_page_translations, :refinery_page_id, name: :index_refinery_page_translations_on_refinery_page_id
     add_index :refinery_page_translations, :locale, name: :index_refinery_page_translations_on_locale
     add_index :refinery_page_translations, [:refinery_page_id, :locale], name: :index_refinery_page_t10s_on_refinery_page_id_and_locale, unique: true
   end
