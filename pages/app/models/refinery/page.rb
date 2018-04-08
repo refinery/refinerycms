@@ -153,7 +153,7 @@ module Refinery
     end
 
     def translated_to_default_locale?
-      persisted? && translations.any?{ |t| t.locale == Refinery::I18n.default_frontend_locale}
+      persisted? && translations.any?{ |t| t.locale.to_sym == Refinery::I18n.default_frontend_locale}
     end
 
     # The canonical page for this particular page.
