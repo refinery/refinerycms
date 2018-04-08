@@ -425,7 +425,7 @@ module Refinery
         let(:nested_page_slug) { 'nested_page' }
 
         let!(:nested_page) do
-          Mobility.fallbacks = [:ru]
+          Mobility.new_fallbacks[:ru]
           _page = Mobility.with_locale(:en) {
             news_page.children.create :title => nested_page_title
           }
