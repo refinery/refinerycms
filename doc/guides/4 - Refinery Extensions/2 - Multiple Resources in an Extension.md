@@ -4,7 +4,7 @@ This guide will show you how to:
 
 * Create multiple tables on one single extension
 
-__WARNING__: This only works on Refinery versions 2.0.0 and greater.
+__WARNING__: This only works on Refinery versions 3.0.0 and greater.
 
 ## Generating an extension
 
@@ -48,41 +48,57 @@ __TIP__: if you want to use a custom namespace for your extension, add `--namesp
 This results in the following:
 
 ```shell
- create vendor/extensions/events/app/controllers/refinery/admin/events_controller.rb
- create vendor/extensions/events/app/controllers/refinery/events_controller.rb
- create vendor/extensions/events/app/models/refinery/event.rb
- create vendor/extensions/events/app/views/refinery/admin/events/_actions.html.erb
- create vendor/extensions/events/app/views/refinery/admin/events/_form.html.erb
- create vendor/extensions/events/app/views/refinery/admin/events/_events.html.erb
- create vendor/extensions/events/app/views/refinery/admin/events/_records.html.erb
- create vendor/extensions/events/app/views/refinery/admin/events/_event.html.erb
- create vendor/extensions/events/app/views/refinery/admin/events/_sortable_list.html.erb
- create vendor/extensions/events/app/views/refinery/admin/events/edit.html.erb
- create vendor/extensions/events/app/views/refinery/admin/events/index.html.erb
- create vendor/extensions/events/app/views/refinery/admin/events/new.html.erb
- create vendor/extensions/events/app/views/refinery/events/index.html.erb
- create vendor/extensions/events/app/views/refinery/events/show.html.erb
- create vendor/extensions/events/config/locales/en.yml
- create vendor/extensions/events/config/locales/es.yml
- create vendor/extensions/events/config/locales/fr.yml
- create vendor/extensions/events/config/locales/lolcat.yml
- create vendor/extensions/events/config/locales/nb.yml
- create vendor/extensions/events/config/locales/nl.yml
- create vendor/extensions/events/config/routes.rb
- create vendor/extensions/events/db/migrate/20111031210430_create_events.rb
- create vendor/extensions/events/db/seeds.rb
- create vendor/extensions/events/lib/generators/refinery/events_generator.rb
- create vendor/extensions/events/lib/refinerycms-events.rb
- create vendor/extensions/events/lib/tasks/events.rake
- create vendor/extensions/events/readme.md
- create vendor/extensions/events/refinerycms-events.gemspec
- ...
+      create  vendor/extensions/events/tasks/rspec.rake
+      create  vendor/extensions/events/tasks/testing.rake
+      create  vendor/extensions/events/app/models/refinery/events/event.rb
+      create  vendor/extensions/events/app/controllers/refinery/events/events_controller.rb
+      create  vendor/extensions/events/app/controllers/refinery/events/admin/events_controller.rb
+      create  vendor/extensions/events/app/views/refinery/events/admin/events/index.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/events/edit.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/events/_event.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/events/_records.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/events/_form.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/events/new.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/events/_events.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/events/_sortable_list.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/events/_actions.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/events/index.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/events/show.html.erb
+      create  vendor/extensions/events/config/locales/cs.yml
+      create  vendor/extensions/events/config/locales/nb.yml
+      create  vendor/extensions/events/config/locales/es.yml
+      create  vendor/extensions/events/config/locales/sk.yml
+      create  vendor/extensions/events/config/locales/it.yml
+      create  vendor/extensions/events/config/locales/en.yml
+      create  vendor/extensions/events/config/locales/ru.yml
+      create  vendor/extensions/events/config/locales/fr.yml
+      create  vendor/extensions/events/config/locales/tr.yml
+      create  vendor/extensions/events/config/locales/zh-CN.yml
+      create  vendor/extensions/events/config/locales/nl.yml
+      create  vendor/extensions/events/config/routes.rb
+      create  vendor/extensions/events/spec/spec_helper.rb
+      create  vendor/extensions/events/spec/features/refinery/events/admin/events_spec.rb
+      create  vendor/extensions/events/spec/models/refinery/events/event_spec.rb
+      create  vendor/extensions/events/spec/support/factories/refinery/events.rb
+      create  vendor/extensions/events/refinerycms-events.gemspec
+      create  vendor/extensions/events/script/rails
+      create  vendor/extensions/events/readme.md
+      create  vendor/extensions/events/Rakefile
+      create  vendor/extensions/events/lib/tasks/refinery/events.rake
+      create  vendor/extensions/events/lib/refinerycms-events.rb
+      create  vendor/extensions/events/lib/refinery/events.rb
+      create  vendor/extensions/events/lib/refinery/events/engine.rb
+      create  vendor/extensions/events/lib/generators/refinery/events_generator.rb
+      create  vendor/extensions/events/db/migrate/1_create_events_events.rb
+      create  vendor/extensions/events/Gemfile
+      append  /Users/rick/Sites/refinery/refinerycms/Gemfile
 ------------------------
 Now run:
 bundle install
 rails generate refinery:events
 rake db:migrate
 rake db:seed
+Please restart your rails server.
 ------------------------
 ```
 
@@ -118,7 +134,6 @@ case, the namespace is `events`. If you look inside, for example, `vendor/extens
 module Refinery
   module Events
     class EventsController < ::ApplicationController
-[...]
 ```
 
 The first two lines indicate that the extension is namespaced using `Refinery::Events`. Refinery will automatically add the `Refinery` for you, but you will have to manually specify the namespace.
@@ -126,49 +141,60 @@ The first two lines indicate that the extension is namespaced using `Refinery::E
 Running this command will produce the following output:
 
 ```shell
- ...
- create vendor/extensions/events/app/controllers/admin/places_controller.rb
- create vendor/extensions/events/app/controllers/places_controller.rb
- create vendor/extensions/events/app/models/place.rb
- create vendor/extensions/events/app/views/admin/places/_actions.html.erb
- create vendor/extensions/events/app/views/admin/places/_form.html.erb
- create vendor/extensions/events/app/views/admin/places/_states.html.erb
- create vendor/extensions/events/app/views/admin/places/_records.html.erb
- create vendor/extensions/events/app/views/admin/places/_place.html.erb
- create vendor/extensions/events/app/views/admin/places/_sortable_list.html.erb
- create vendor/extensions/events/app/views/admin/places/edit.html.erb
- create vendor/extensions/events/app/views/admin/places/index.html.erb
- create vendor/extensions/events/app/views/admin/places/new.html.erb
- create vendor/extensions/events/app/views/places/index.html.erb
- create vendor/extensions/events/app/views/places/show.html.erb
- create vendor/extensions/events/config/locales/tmp/en.yml
- create vendor/extensions/events/config/locales/tmp/fr.yml
- create vendor/extensions/events/config/locales/tmp/lolcat.yml
- create vendor/extensions/events/config/locales/tmp/nb.yml
- create vendor/extensions/events/config/locales/tmp/nl.yml
- create vendor/extensions/events/config/tmp/routes.rb
- create vendor/extensions/events/db/migrate/create_places.rb
- create vendor/extensions/events/db/seeds/places.rb
- create vendor/extensions/events/features/manage_places.feature
- create vendor/extensions/events/features/step_definitions/place_steps.rb
- create vendor/extensions/events/features/support/tmp/paths.rb
- create vendor/extensions/events/lib/generators/refinerycms_places_generator.rb
- create vendor/extensions/events/lib/refinerycms-places.rb
- create vendor/extensions/events/lib/tasks/places.rake
- create vendor/extensions/events/refinerycms-places.gemspec
- create vendor/extensions/events/spec/models/place_spec.rb
- append vendor/extensions/events/lib/refinerycms-events.rb
- ...
+   identical  vendor/extensions/events/tasks/rspec.rake
+   identical  vendor/extensions/events/tasks/testing.rake
+      create  vendor/extensions/events/app/models/refinery/events/place.rb
+      create  vendor/extensions/events/app/controllers/refinery/events/places_controller.rb
+      create  vendor/extensions/events/app/controllers/refinery/events/admin/places_controller.rb
+      create  vendor/extensions/events/app/views/refinery/events/admin/places/index.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/places/edit.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/places/_place.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/places/_records.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/places/_form.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/places/new.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/places/_places.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/places/_sortable_list.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/admin/places/_actions.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/places/index.html.erb
+      create  vendor/extensions/events/app/views/refinery/events/places/show.html.erb
+      create  vendor/extensions/events/config/locales/tmp/cs.yml
+      create  vendor/extensions/events/config/locales/tmp/nb.yml
+      create  vendor/extensions/events/config/locales/tmp/es.yml
+      create  vendor/extensions/events/config/locales/tmp/sk.yml
+      create  vendor/extensions/events/config/locales/tmp/it.yml
+      create  vendor/extensions/events/config/locales/tmp/en.yml
+      create  vendor/extensions/events/config/locales/tmp/ru.yml
+      create  vendor/extensions/events/config/locales/tmp/fr.yml
+      create  vendor/extensions/events/config/locales/tmp/tr.yml
+      create  vendor/extensions/events/config/locales/tmp/zh-CN.yml
+      create  vendor/extensions/events/config/locales/tmp/nl.yml
+      create  vendor/extensions/events/config/tmp/routes.rb
+   identical  vendor/extensions/events/spec/spec_helper.rb
+      create  vendor/extensions/events/spec/features/refinery/events/admin/places_spec.rb
+      create  vendor/extensions/events/spec/models/refinery/events/place_spec.rb
+      create  vendor/extensions/events/spec/support/factories/refinery/places.rb
+   identical  vendor/extensions/events/refinerycms-events.gemspec
+   identical  vendor/extensions/events/script/rails
+   identical  vendor/extensions/events/readme.md
+   identical  vendor/extensions/events/Rakefile
+   identical  vendor/extensions/events/lib/tasks/refinery/events.rake
+      create  vendor/extensions/events/lib/tmp/refinerycms-events.rb
+      create  vendor/extensions/events/lib/refinery/places.rb
+      create  vendor/extensions/events/lib/refinery/places/engine.rb
+   identical  vendor/extensions/events/lib/generators/refinery/events_generator.rb
+      create  vendor/extensions/events/db/migrate/2_create_events_places.rb
+   identical  vendor/extensions/events/Gemfile
 ------------------------
 Now run:
 bundle install
 rails generate refinery:events
 rake db:migrate
 rake db:seed
+Please restart your rails server.
 ------------------------
 ```
 
-__WARNING__: If you are presented with a conflict in the`events_generator.rb` file, say no! This happens at the moment because Refinery thinks you are generating a Places extension, and this may cause all kinds of havoc if you agree to it. If you have accidentally agreed to it, you can revert that file, and check your `db/seeds.rb` file to see if you have accidentally appended an additional line reading `Refinery::Events::Engine.load_seed`.
+__WARNING__: If you are presented with a conflict in the `events_generator.rb` file, say no! This happens at the moment because Refinery thinks you are generating a Places extension, and this may cause all kinds of havoc if you agree to it. If you have accidentally agreed to it, you can revert that file, and check your `db/seeds.rb` file to see if you have accidentally appended an additional line reading `Refinery::Events::Engine.load_seed`.
 
 Run the commands listed above. Notice `rails generate refinery:events`. The `rails generate refinery:events` will copy the migration files from `vendor/extensions/events/db/migrate` to `db/migrate` and will prepend a timestamp to each migration. This is so an extension that was written before your application will declare its migrations chronologically
 later than the migrations you wrote for the app. For instance, if you wrote your app on Tuesday and then inserted the extension on Wednesday, you would want the timestamps on the migrations to show Wednesday rather than the date it was created -- perhaps Monday. If the extension didn't do this, when you deployed your application, it would run the migrations for your extension first, potentially failing because it couldn't find the Refinery database tables it needs to complete.
@@ -185,7 +211,7 @@ module Refinery
     module Admin
       class EventsController < ::Refinery::AdminController
 
-        crudify :'refinery/events/event', :xhr_paging => true
+        crudify :'refinery/events/event'
       end
     end
   end
@@ -202,7 +228,7 @@ module Refinery
     module Admin
       class EventsController < ::Refinery::AdminController
 
-        crudify :'refinery/events/event', :xhr_paging => true, :order => "date DESC", :sortable => false
+        crudify :'refinery/events/event', order: "date DESC", sortable: false
 
       end
     end
@@ -212,25 +238,24 @@ end
 
 This will tell `crudify` to sort by our event date field and to turn off manual sorting by the user.
 
-Finally edit
-*vendor/extensions/events/app/controllers/refinery/events/events_controller.rb*
-and replace the *find_all_events* method with this one:
+Finally edit `vendor/extensions/events/app/controllers/refinery/events/events_controller.rb`
+and replace the `find_all_events` method with this one:
 
 ```ruby
 module Refinery
- module Events
- class EventsController < ::ApplicationController
+  module Events
+    class EventsController < ::ApplicationController
 
       # code
 
       protected
 
-        def find_all_events
-          # Order by event date
-          @events = Event.order("date DESC")
-        end
+      def find_all_events
+        # Order by event date
+        @events = Event.order("date DESC")
+      end
 
-        # code
+      # code
 
     end
   end
