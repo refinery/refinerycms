@@ -11,6 +11,7 @@ end
 
 # TODO: Remove this before merging this PR
 gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'feature/mobility'
+gem 'mobility', git: 'https://github.com/shioyama/mobility', branch: 'table_finder_extension'
 
 gem 'spring'
 gem 'spring-commands-rspec'
