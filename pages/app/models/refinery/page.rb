@@ -40,7 +40,7 @@ module Refinery
           friendly_id_options[:use] << :scoped
           friendly_id_options.merge!(scope: :parent)
         end
-        # friendly_id_options[:use] << :mobility
+
         friendly_id_options
       end
     end
