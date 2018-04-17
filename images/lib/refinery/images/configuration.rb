@@ -1,7 +1,7 @@
 module Refinery
   module Images
 
-    extend Refinery::Dragonfly::ExtensionConfiguration
+    extend Refinery::Storage::ExtensionConfiguration
     include ActiveSupport::Configurable
 
     config_accessor :max_image_size, :pages_per_dialog, :pages_per_admin_index,
@@ -22,12 +22,12 @@ module Refinery
     self.image_views = [:grid, :list]
     self.preferred_image_view = :grid
 
-    # Images should always use these changes to the dragonfly defaults
-    self.dragonfly_name         = :refinery_images
-    self.dragonfly_plugin       = :imagemagick
+    # Images should always use these changes to the storage defaults
+    self.storage_name         = :refinery_images
+    self.storage_plugin       = :imagemagick
 
-    # Dragonfly processor to strip image of all profiles and comments (imagemagick conversion -strip)
-    self.dragonfly_processors   = [{
+    # Storage processor to strip image of all profiles and comments (imagemagick conversion -strip)
+    self.storage_processors   = [{
       name: :strip,
       block: -> (content) { content.process!(:convert, '-strip') }
     }]

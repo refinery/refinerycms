@@ -14,7 +14,7 @@ file system, you'll need an additional gem. Create a S3 bucket called `my_app_pr
 
 ```ruby
 group :production do
- gem 'dragonfly-s3_data_store'
+ gem 'aws-sdk-s3', '~> 1.2'
 end
 ```
 
@@ -50,7 +50,7 @@ ENV['S3_BUCKET']='fill_in_your_bucket_name_here'
 
 __Note__: For Heroku, you should use [config vars to set your environment variables](/guides/heroku))
 
-Another option, especially if you experience `Dragonfly::DataStorage::S3DataStore` exceptions, is to configure your
+Another option, especially if you experience `Storage::DataStorage::S3DataStore` exceptions, is to configure your
 Amazon S3 credentials in `config/initializers/refinery/core.rb` using the following syntax:
 
 ```ruby

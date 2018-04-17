@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version           = '1.0'
   s.summary           = %q{File storage interface for Refinery CMS}
   s.description       = %q{Allows Refinery to use a file storage and processing}
-  s.email             = %q{anita@joli.com.au}
+  s.email             = %q{refinerycms@p.arndt.io}
   s.homepage          = %q{http://refinerycms.com}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski', 'Anita Graham', 'Brice Sanchez']
   s.license           = %q{MIT}
@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'shrine', '~> 1.1'
   s.add_dependency 'aws-sdk-s3', '~> 1.2'
-
 
   # s.cert_chain  = [File.expand_path("../../certs/parndt.pem", __FILE__)]
   # if $0 =~ /gem\z/ && ARGV.include?("build") && ARGV.include?(__FILE__)

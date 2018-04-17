@@ -1,9 +1,9 @@
 require 'spec_helper'
 require 'generator_spec/test_case'
-require 'generators/refinery/dragonfly/dragonfly_generator'
+require 'generators/refinery/storage/storage_generator'
 
 module Refinery
-  describe DragonflyGenerator do
+  describe StorageGenerator do
     include GeneratorSpec::TestCase
     destination File.expand_path("../../../../tmp", __FILE__)
 
@@ -17,8 +17,8 @@ module Refinery
         directory "config" do
           directory "initializers" do
             directory "refinery" do
-              file "dragonfly.rb" do
-                contains "Refinery::Dragonfly.configure"
+              file "storage.rb" do
+                contains "Refinery::Storage.configure"
               end
             end
           end

@@ -46,7 +46,7 @@ RSpec.configure do |config|
   unless ENV['FULL_BACKTRACE']
     config.backtrace_exclusion_patterns = %w(
       rails actionpack railties capybara activesupport rack warden rspec actionview
-      activerecord dragonfly benchmark quiet_assets rubygems
+      activerecord storage benchmark quiet_assets rubygems
     ).map { |noisy| /\b#{noisy}\b/ }
   end
 

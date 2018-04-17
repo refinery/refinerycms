@@ -16,7 +16,7 @@ You can do this by making use of the `after_inclusion` hook refinery provides:
 Refinery::Core::Engine.after_inclusion do
   Refinery::Resource # force autoload
 
-  ::Dragonfly.app(:refinery_resources).response_header('Content-Disposition', nil)
+  ::Storage.app(:refinery_resources).response_header('Content-Disposition', nil)
 end
 ```
 

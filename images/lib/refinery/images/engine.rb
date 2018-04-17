@@ -8,9 +8,9 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer 'attach-refinery-images-with-dragonfly', :before => :finisher_hook do |app|
-        ::Refinery::Dragonfly.configure!(::Refinery::Images)
-        ::Refinery::Dragonfly.attach!(app, ::Refinery::Images)
+      initializer 'attach-refinery-images-with-storage', :before => :finisher_hook do |app|
+        ::Refinery::Storage.configure!(::Refinery::Images)
+        ::Refinery::Storage.attach!(app, ::Refinery::Images)
       end
 
       before_inclusion do

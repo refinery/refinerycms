@@ -27,7 +27,7 @@ module Refinery
     end
 
     def resize_geometry
-      ::Dragonfly::ImageMagick::Processors::Thumb::RESIZE_GEOMETRY === geometry.geometry
+      ::Storage::ImageMagick::Processors::Thumb::RESIZE_GEOMETRY === geometry.geometry
     end
 
     def resize_necessary
@@ -72,9 +72,9 @@ module Refinery
     end
 
     def thumb_geometry
-      Regexp.union(::Dragonfly::ImageMagick::Processors::Thumb::RESIZE_GEOMETRY,
-                   ::Dragonfly::ImageMagick::Processors::Thumb::CROPPED_RESIZE_GEOMETRY,
-                   ::Dragonfly::ImageMagick::Processors::Thumb::CROP_GEOMETRY)
+      Regexp.union(::Storage::ImageMagick::Processors::Thumb::RESIZE_GEOMETRY,
+                   ::Storage::ImageMagick::Processors::Thumb::CROPPED_RESIZE_GEOMETRY,
+                   ::Storage::ImageMagick::Processors::Thumb::CROP_GEOMETRY)
     end
 
     class Geometry

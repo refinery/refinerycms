@@ -1,4 +1,4 @@
-require 'dragonfly'
+require 'storage'
 
 module Refinery
   class Resource < Refinery::Core::BaseModel
@@ -8,7 +8,7 @@ module Refinery
 
     attribute :resource_title
 
-    dragonfly_accessor :file, :app => :refinery_resources
+    storage_accessor :file, :app => :refinery_resources
 
     validates :file, :presence => true
     validates_with FileSizeValidator

@@ -1,4 +1,4 @@
-require 'dragonfly'
+require 'storage'
 
 module Refinery
   class Image < Refinery::Core::BaseModel
@@ -7,7 +7,7 @@ module Refinery
     attribute :image_title
     attribute :image_alt
 
-    dragonfly_accessor :image, :app => :refinery_images
+    storage_accessor :image, :app => :refinery_images
 
     include Images::Validators
 
@@ -46,7 +46,7 @@ module Refinery
       thumbnail
     end
 
-    # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
+    # Intelligently works out dimensions for a thumbnail of this image based on the Storage geometry string.
     def thumbnail_dimensions(geometry)
       dimensions = ThumbnailDimensions.new(geometry, image.width, image.height)
       { :width => dimensions.width, :height => dimensions.height }

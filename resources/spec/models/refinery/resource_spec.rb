@@ -24,10 +24,10 @@ module Refinery
         expect(resource.url.split('/').last).to match(/\A#{resource.file_name}/)
       end
 
-      context "when Dragonfly.verify_urls is true" do
+      context "when Storage.verify_urls is true" do
         before do
-          allow(Refinery::Resources).to receive(:dragonfly_verify_urls).and_return(true)
-          ::Refinery::Dragonfly.configure!(Refinery::Resources)
+          allow(Refinery::Resources).to receive(:storage_verify_urls).and_return(true)
+          ::Refinery::Storage.configure!(Refinery::Resources)
         end
 
         it "returns a url with an SHA parameter" do
@@ -35,10 +35,10 @@ module Refinery
         end
       end
 
-      context "when Dragonfly.verify_urls is false" do
+      context "when Storage.verify_urls is false" do
         before do
-          allow(Refinery::Resources).to receive(:dragonfly_verify_urls).and_return(false)
-          ::Refinery::Dragonfly.configure!(Refinery::Resources)
+          allow(Refinery::Resources).to receive(:storage_verify_urls).and_return(false)
+          ::Refinery::Storage.configure!(Refinery::Resources)
         end
         it "returns a url without an SHA parameter" do
           expect(resource.url).not_to match(/\?sha=[\da-fA-F]{16}\z/)

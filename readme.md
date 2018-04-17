@@ -80,7 +80,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 
 * Easily upload and insert images.
 * Upload and link to resources such as PDF documents.
-* Uses the popular [Dragonfly](https://github.com/markevans/dragonfly).
+* Uses the popular [Storage](https://github.com/markevans/storage).
 * Supports storage on Amazon S3.
 
 ### Authentication & Users

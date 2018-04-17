@@ -49,7 +49,7 @@ Refinery is comprised of several Rails Engines. Each engine, or "extension" acts
 The extensions Refinery comes with are:
 
 * __Core__ - contains default layouts, views, javascripts and CSS. This extension also has an extension API for extending Refinery and everything Refinery needs to hook into Rails.
-* __Images__ - handles image upload, insertion and processing images using [Dragonfly](https://github.com/markevans/dragonfly).
+* __Images__ - handles image upload, insertion and processing images using [Shrine](https://shrinerb.com/).
 * __Pages__ - allows you to manage pages including the structure of your site displayed in the front-end.
 * __Resources__ - handles file upload and storage.
 * __Authentication__ (optional) - manages users and sessions within Refinery.

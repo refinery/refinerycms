@@ -58,8 +58,8 @@ module Refinery
         self.stylesheets = []
       end
 
-      def dragonfly_custom_backend_class
-        raise "Refinery::Dragonfly now handles all dragonfly configuration. Consult 'config/initializers/refinery/dragonfly.rb'."
+      def storage_custom_backend_class
+        raise "Refinery::Storage now handles all storage configuration. Consult 'config/initializers/refinery/storage.rb'."
       end
 
       def site_name

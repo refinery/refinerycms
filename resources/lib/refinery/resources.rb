@@ -1,12 +1,12 @@
 require 'refinerycms-core'
-require 'refinerycms-dragonfly'
+require 'refinerycms-storage'
 
 module Refinery
   autoload :ResourcesGenerator, 'generators/refinery/resources/resources_generator'
 
   module Resources
     require 'refinery/resources/engine'
-    require 'refinery/dragonfly/extension_configuration'
+    require 'refinery/storage/extension_configuration'
     require 'refinery/resources/configuration'
 
    autoload :Validators, 'refinery/resources/validators'

@@ -3,12 +3,12 @@ module Refinery
 
     include ActiveSupport::Configurable
 
-    # All dragonfly options allowed
+    # All storage options allowed
     config_accessor :allow_legacy_urls, :analysers,
                     :before_serve,
                     :cache_log_level, :cache_store_root,
                     :custom_datastore_class, :custom_datastore_opts,
-                    :datastore_root_path, :define_url, :dragonfly_url,
+                    :datastore_root_path, :define_url, :storage_url,
                     :fetch_file_whitelist, :fetch_url_whitelist,
                     :generators,
                     :mime_types,
@@ -35,18 +35,18 @@ module Refinery
     self.before_serve = nil
 
     self.cache_log_level = 'verbose'
-    self.cache_store_root = 'tmp/dragonfly'
+    self.cache_store_root = 'tmp/storage'
     self.custom_datastore_class = nil
     self.custom_datastore_opts = {}
 
-    self.datastore_root_path = 'public/system/refinery/dragonfly'
+    self.datastore_root_path = 'public/system/refinery/storage'
     self.define_url = nil
-    self.dragonfly_url = nil
+    self.storage_url = nil
     self.fetch_file_whitelist = nil
     self.fetch_url_whitelist = nil
     self.generators = []
     self.mime_types = []
-    self.name = 'dragonfly'
+    self.name = 'storage'
     self.path_prefix = nil
     self.plugin = ''
     self.processors = []
@@ -78,7 +78,7 @@ module Refinery
       config.custom_datastore_class.present? && config.custom_datastore_opts.present?
     end
 
-    def self.url_format(url_segment='dragonfly')
+    def self.url_format(url_segment='storage')
       "/system/refinery/#{url_segment}/:job/:basename.:ext"
     end
   end
