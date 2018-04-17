@@ -1,5 +1,5 @@
 module Refinery
-  module Dragonfly
+  module Storage
 
     include ActiveSupport::Configurable
 
@@ -62,7 +62,7 @@ module Refinery
     self.s3_bucket_name = ENV['S3_BUCKET']
     self.s3_access_key_id = ENV['S3_KEY']
     self.s3_secret_access_key = ENV['S3_SECRET']
-    self.s3_region = ENV['S3_REGION']           # default 'us-east-1' see Dragonfly S3DataStore :s3_REGIONS for options
+    self.s3_region = ENV['S3_REGION']           # default 'us-east-1' see Storage S3DataStore :s3_REGIONS for options
     self.s3_url_scheme = nil                    # defaults to "http"
     self.s3_url_host = nil                      # defaults to "<bucket-name>.s3.amazonaws.com" or "s3.amazonaws.com/<bucket-name>" if not a valid subdomain
     self.s3_use_iam_profile = nil               # boolean - if true no need for access_key_id or secret_access_key

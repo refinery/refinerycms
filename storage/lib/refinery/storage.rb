@@ -1,13 +1,13 @@
 require 'active_support/configurable'
-require 'dragonfly'
+require 'shrine'
 
 module Refinery
-  autoload :DragonflyGenerator, 'generators/refinery/dragonfly/dragonfly_generator'
+  autoload :StorageGenerator, 'generators/refinery/storage/storage_generator'
 
-  module Dragonfly
-    require 'refinery/dragonfly/configuration'
-    require 'refinery/dragonfly/dragonfly'
-    require 'refinery/dragonfly/engine'
+  module Storage
+    require 'refinery/storage/configuration'
+    require 'refinery/storage/storage'
+    require 'refinery/storage/engine'
 
     class << self
       def root

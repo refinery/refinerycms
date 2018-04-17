@@ -1,8 +1,8 @@
 namespace :refinery do
   namespace :testing do
     task :setup_extension do
-      require 'refinerycms-dragonfly'
-      Refinery::DragonflyGenerator.start %w[--quiet]
+      require 'refinerycms-storage'
+      Refinery::StorageGenerator.start %w[--quiet]
     end
   end
 end

@@ -1,5 +1,5 @@
 module Refinery
-  module Dragonfly
+  module Storage
 
     class << self
 
