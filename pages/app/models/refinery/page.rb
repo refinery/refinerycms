@@ -389,7 +389,7 @@ module Refinery
     end
 
     def update_all_descendants
-      self.descendants.update_all(updated_at: DateTime.now)
+      self.descendants.map(&:touch)
     end
   end
 end
