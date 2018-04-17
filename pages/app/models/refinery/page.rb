@@ -73,8 +73,8 @@ module Refinery
     before_destroy :deletable?
     after_save :reposition_parts!
 
-    after_save { update_all_descendants if descendants.any? }
-    after_move { update_all_descendants if descendants.any? }
+    after_save :update_all_descendants
+    after_move :update_all_descendants
 
     class << self
       # Live pages are 'allowed' to be shown in the frontend of your website.
