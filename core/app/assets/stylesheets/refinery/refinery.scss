@@ -17,6 +17,12 @@
 @import 'components/tooltips';
 @import 'components/ie';
 
-@import 'sections/layout';
+body {
+  background-color: #F0F2F5;
+  margin: 0;
+}
+
+//@import 'sections/layout';
+@import 'components/menu';
 
 @import 'site_bar';

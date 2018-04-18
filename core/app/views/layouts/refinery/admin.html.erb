@@ -3,23 +3,23 @@
   <% content_for :meta, tag(:meta, name: 'refinerycms', content: Refinery.version) %>
   <%= render 'refinery/admin/head' %>
   <body class="<%= action_name %> <%= I18n.locale %>">
-    <%= render '/refinery/site_bar' %>
     <div id='tooltip_container'></div>
-    <div id="admin_container" class="clearfix">
-      <header id="header">
-        <%= render 'refinery/admin/menu' %>
-      </header>
-      <div id="page_container">
-        <div id="page">
-          <div id="content" class="clearfix">
-            <div id="flash_container">
-              <%= render '/refinery/no_script' %>
-              <%= render '/refinery/message' %>
-            </div>
-            <%= yield %>
+    <header id="header" role="banner">
+      <%= render '/refinery/site_bar' %>
+    </header>
+    <aside>
+      <%= render 'refinery/admin/menu' %>
+    </aside>
+    <main id="page_container" role="main">
+      <div id="page">
+        <div id="content" class="clearfix">
+          <div id="flash_container">
+            <%= render '/refinery/no_script' %>
+            <%= render '/refinery/message' %>
           </div>
+          <%= yield %>
         </div>
       </div>
-    </div>
+    </main>
   </body>
 </html>
