@@ -1,0 +1,38 @@
+#main-menu
+  background-color: white
+  bottom: 0
+  position: fixed
+  top: 3.5em
+  width: 15em
+  z-index: 99
+
+  nav
+    ul
+      margin: 2em 0 1em 0
+      padding: 0
+
+      li
+        display: flex
+        margin-top: 0.1em
+        padding: 0.5em 0
+
+        a
+          border-left: 2px solid transparent
+          color: #666A70
+          display: block
+          font-size: 0.9em
+          padding: 0.5em 0 0.5em 3em
+          text-decoration: none
+          width: 100%
+
+        &:hover,
+        &.active
+
+          a
+            color: #22a7f2
+
+        &.active
+          background-color: rgba(46, 168, 239, 0.08)
+
+          a
+            border-left: 2px solid #22a7f2

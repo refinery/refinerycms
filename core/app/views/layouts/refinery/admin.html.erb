@@ -2,12 +2,12 @@
 <%= render '/refinery/html_tag' %>
   <% content_for :meta, tag(:meta, name: 'refinerycms', content: Refinery.version) %>
   <%= render 'refinery/admin/head' %>
-  <body class="<%= action_name %> <%= I18n.locale %>">
+  <body id="admin" class="<%= action_name %> <%= I18n.locale %>">
     <div id='tooltip_container'></div>
     <header id="header" role="banner">
       <%= render '/refinery/site_bar' %>
     </header>
-    <aside>
+    <aside id="main-menu">
       <%= render 'refinery/admin/menu' %>
     </aside>
     <main id="page_container" role="main">

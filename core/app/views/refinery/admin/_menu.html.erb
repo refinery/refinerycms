@@ -1,4 +1,6 @@
-<nav id="main-menu" role="navigation">
-  <%= render partial: 'refinery/admin/menu_item',
+<nav role="navigation">
+  <ul>
+    <%= render partial: 'refinery/admin/menu_item',
              collection: current_refinery_user.active_plugins.in_menu %>
+  </ul>
 </nav>

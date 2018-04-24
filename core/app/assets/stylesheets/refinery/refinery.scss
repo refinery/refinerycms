@@ -1,3 +1,5 @@
+@import '../normalize.css';
+
 @import 'global/colours';
 
 @import 'font-awesome-sprockets', 'font-awesome';
@@ -17,12 +19,9 @@
 @import 'components/tooltips';
 @import 'components/ie';
 
-body {
-  background-color: #F0F2F5;
-  margin: 0;
-}
-
 //@import 'sections/layout';
-@import 'components/menu';
+@import 'components/layout';
+@import 'components/main_menu';
+@import 'components/form';
 
 @import 'site_bar';

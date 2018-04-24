@@ -1,3 +1,3 @@
-<%= link_to menu_item.title, refinery.url_for(menu_item.url),
-            class: ("active" if menu_item.highlighted?(params)),
-            id: "plugin_#{menu_item.name}" %>
+<%= content_tag :li, class: ('active' if menu_item.highlighted?(params)) do %>
+  <%= link_to menu_item.title, refinery.url_for(menu_item.url), id: "plugin_#{menu_item.name}" %>
+<% end %>
