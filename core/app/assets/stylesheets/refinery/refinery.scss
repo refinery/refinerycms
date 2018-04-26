@@ -11,17 +11,18 @@
 @import 'mixins/icon';
 @import 'mixins/rounded';
 
-@import 'plugins/ui';
+//@import 'plugins/ui';
 
 @import 'components/icons';
 @import 'components/dialog';
 @import 'components/submenu';
 @import 'components/tooltips';
-@import 'components/ie';
 
 //@import 'sections/layout';
 @import 'components/layout';
+@import 'components/desktop';
 @import 'components/main_menu';
 @import 'components/form';
+@import 'components/page_parts';
 
 @import 'site_bar';
