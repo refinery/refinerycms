@@ -101,7 +101,7 @@ body.dialog #content .search_form {
   color: #000;
   border: 4px solid #22A7F2;
   width: auto;
-  z-index: 3;
+  z-index: 1000;
   #dialog_loading {
     position: fixed;
     top: 50%;
