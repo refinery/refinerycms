@@ -34,6 +34,17 @@ module Refinery
       end
     end
 
+    describe '.current' do
+      it 'returns the current plugin' do
+        expect(Plugin.current({controller: '/refinery/admin/refinery_rspec'}).name).to eq('refinery_rspec')
+      end
+
+      it 'returns nil if does not match any plugin' do
+        params = { controller: '/refinery/admin/refinery_nil_rspec', action: 'index', locale: 'en'}
+        expect(Plugin.current(params)).to be_nil
+      end
+    end
+
     describe '#class_name' do
       it 'returns class name' do
         expect(plugin.class_name).to eq('RefineryRspec')
