@@ -12,13 +12,18 @@ ul#page_parts
 
     a
       border-bottom: 2px solid transparent
-      color: #6D727B
+      color: $text_light_color
       display: block
       font-size: 0.9em
       padding: 0 0 1.05em
       text-decoration: none
 
+      &:hover
+        color: $text_base_color
+        border-bottom: 2px solid $text_light_color
+
+
     &.ui-tabs-active
       a
-        border-bottom: 2px solid #22a7f2
-        color: #282C2F
+        border-bottom: 2px solid $base_color
+        color: $text_base_color

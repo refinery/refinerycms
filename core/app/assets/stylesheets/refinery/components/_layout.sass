@@ -1,11 +1,13 @@
 body
   background-color: #f0f2f5
   font-family: Helvetica
-  color: #282C2F
+  color: $text_base_color
 
 main#page_container
-  margin-left: 15.5em
   padding: 3.5em 0 2em
+
+  @include grid-media($tablet-up)
+    margin-left: 15.5em
 
   #content
     #records
@@ -17,3 +19,7 @@ body
     #content
       @include panel
       padding: 1.5em 1.5em 0
+
+  a
+    color: $base_color
+    font-size: 0.9em

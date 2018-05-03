@@ -22,15 +22,16 @@
 @import 'components/submenu';
 @import 'components/tooltips';
 
-//@import 'sections/layout';
+@import 'grid/mobile';
+@import 'grid/desktop';
+
 @import 'components/layout';
-@import 'components/desktop';
 @import 'components/main_menu';
 @import 'components/form';
 @import 'components/form_actions';
 @import 'components/page_parts';
 
+@import 'pages/grid/desktop';
 @import 'pages/components/form';
-@import 'pages/components/desktop';
 
 @import 'site_bar';

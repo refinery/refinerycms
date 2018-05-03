@@ -1,0 +1,11 @@
+@include grid-media($tablet-up)
+  body
+    form
+      &.new_page,
+      &.edit_page
+        #more_options
+          @include grid-container
+          @include grid-collapse
+
+          .hemisquare
+            @include grid-column(6)
