@@ -42,8 +42,6 @@
 .ui-dialog .form-actions {
   margin-top: 16px;
 }
-#content .form-actions .form-actions-left,
-#content .form-actions .form-actions-right,
 .visual_editor_dialog .form-actions .form-actions-left,
 .visual_editor_dialog .form-actions .form-actions-right,
 .ui-dialog .form-actions .form-actions-left,
@@ -51,12 +49,10 @@
   position: absolute;
   top: 10px;
 }
-#content .form-actions .form-actions-left,
 .visual_editor_dialog .form-actions .form-actions-left,
 .ui-dialog .form-actions .form-actions-left {
   left: 10px;
 }
-#content .form-actions .form-actions-right,
 .visual_editor_dialog .form-actions .form-actions-right,
 .ui-dialog .form-actions .form-actions-right {
   right: 10px;

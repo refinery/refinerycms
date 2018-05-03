@@ -1,10 +1,41 @@
 form
   .form-actions
     position: absolute
-    bottom: 0
+    bottom: -5em
     left: 0
     width: 100%
 
     .form-actions-left,
     .form-actions-right
       margin: 1.5em 0
+
+    .form-actions-left
+      .button
+        margin-right: 0.25em
+
+    .form-actions-right
+      text-align: right
+
+      .button
+        margin-left: 0.25em
+
+
+  .button
+    background: linear-gradient(to bottom, #65c3f7, #22a7f2)
+    border: 1px solid #22a7f2
+    border-radius: 3px
+    color: white
+    cursor: pointer
+    display: inline-block
+    font-size: 0.9em
+    padding: 0.5em 1em
+    text-decoration: none
+
+    &#delete_button
+      background: linear-gradient(to bottom, #de3618, #c73016)
+      border: 1px solid #b02b13
+
+    &#cancel_button
+      background: linear-gradient(to bottom, white, #f9fafb)
+      border: 1px solid #c4cdd5
+      color: #666A70

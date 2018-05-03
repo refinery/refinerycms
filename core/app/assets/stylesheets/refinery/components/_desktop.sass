@@ -17,3 +17,12 @@
 
         #actions
           @include grid-column(3)
+
+    form
+      .form-actions
+        @include grid-container
+        @include grid-collapse
+
+        .form-actions-left,
+        .form-actions-right
+          @include grid-column(6)
