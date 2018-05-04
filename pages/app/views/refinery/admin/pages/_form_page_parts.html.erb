@@ -1,30 +1,32 @@
-<% if ::Refinery::Pages.new_page_parts %>
-  <ul id="page_parts_controls">
-     <li>
-      <%= action_icon(:reorder_h, '#', t('.reorder_content_section'), id: 'reorder_page_part' ) %>
-      <%= action_icon(:reorder_done, '#',  t('.reorder_content_section_done'), id: 'reorder_page_part_done')%>
-    </li>
-    <li>
-      <%= action_icon(:add, '#', t('.create_content_section'), id: 'add_page_part')%>
-    <li>
-      <%= action_icon(:delete_section, '#', t('.delete_content_section'), id: 'delete_page_part', class: 'delete_page_part' )  %>
-    </li>
-  </ul>
-<% end %>
-
 <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
-  <ul id='page_parts'>
-    <% @page.parts.each_with_index do |part, part_index| %>
-      <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>' data-index='<%= part_index %>'>
-        <%= link_to part.title, "##{@page.persisted? ? part.to_param : "page_part_new_#{part_index}"}" %>
-      </li>
+  <div class="wrapper">
+    <ul id='page_parts'>
+      <% @page.parts.each_with_index do |part, part_index| %>
+        <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>' data-index='<%= part_index %>'>
+          <%= link_to part.title, "##{@page.persisted? ? part.to_param : "page_part_new_#{part_index}"}" %>
+        </li>
+      <% end %>
+      <% ::Refinery::Pages.tabs_for_template(@page.view_template).each_with_index do |tab, tab_index| %>
+        <li class='ui-state-default' id="custom_<%= tab.name %>_tab">
+          <%= link_to tab.name.titleize, "#custom_tab_#{tab_index}" %>
+        </li>
+      <% end %>
+    </ul>
+
+    <% if ::Refinery::Pages.new_page_parts %>
+      <ul id="page_parts_controls">
+         <li>
+          <%= action_icon(:reorder_h, '#', t('.reorder_content_section'), id: 'reorder_page_part' ) %>
+          <%= action_icon(:reorder_done, '#',  t('.reorder_content_section_done'), id: 'reorder_page_part_done')%>
+        </li>
+        <li>
+          <%= action_icon(:add, '#', t('.create_content_section'), id: 'add_page_part')%>
+        <li>
+          <%= action_icon(:delete_section, '#', t('.delete_content_section'), id: 'delete_page_part', class: 'delete_page_part' )  %>
+        </li>
+      </ul>
     <% end %>
-    <% ::Refinery::Pages.tabs_for_template(@page.view_template).each_with_index do |tab, tab_index| %>
-      <li class='ui-state-default' id="custom_<%= tab.name %>_tab">
-        <%= link_to tab.name.titleize, "#custom_tab_#{tab_index}" %>
-      </li>
-    <% end %>
-  </ul>
+  </div>
 
   <div id='page_part_editors'>
     <% part_index = -1 %>

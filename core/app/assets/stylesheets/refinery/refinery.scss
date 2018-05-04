@@ -25,11 +25,13 @@
 @import 'grid/mobile';
 @import 'grid/desktop';
 
-@import 'components/layout';
-@import 'components/main_menu';
+@import 'components/actions';
 @import 'components/form';
 @import 'components/form_actions';
+@import 'components/layout';
+@import 'components/main_menu';
 @import 'components/page_parts';
+@import 'components/page_parts_controls';
 
 @import 'pages/grid/desktop';
 @import 'pages/components/form';
