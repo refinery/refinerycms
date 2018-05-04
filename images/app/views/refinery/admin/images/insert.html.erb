@@ -37,7 +37,7 @@
 
 <% content_for :javascripts do %>
   <script>
-    $(document).ready(function(){
+    $(document).on('ready page:load', function(){
       new ImageDialog({
         callback: <%= @callback.present? ? "self.parent.#{h @callback}" : 'null' %>,
         multiple: <%= @multiple == 'true' %>

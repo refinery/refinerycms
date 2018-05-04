@@ -43,7 +43,7 @@
 
 <% content_for :javascripts do %>
   <script>
-    $(document).ready(function(){
+    $(document).on('ready page:load', function(){
     <% unless user_can_modify_resources %>
       link_dialog.init();
     <% end %>

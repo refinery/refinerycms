@@ -53,7 +53,7 @@
 <% end -%>
 <% content_for :javascripts do %>
   <script>
-    $(document).ready(function(){
+    $(document).on('ready page:load', function(){
       link_dialog.init();
     });
   </script>

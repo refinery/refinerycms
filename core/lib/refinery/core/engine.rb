@@ -77,6 +77,16 @@ module Refinery
         ].flatten
       end
 
+      # set assets to be precompiled
+      config.to_prepare do
+        if defined?(JqueryTurbolinks)
+          Rails.application.config.assets.precompile += %w(jquery.turbolinks.js)
+        end
+        if defined?(Turbolinks)
+          Rails.application.config.assets.precompile += %w(turbolinks.js)
+        end
+      end
+      
       # active model fields which may contain sensitive data to filter
       initializer "refinery.params.filter" do |app|
         app.config.filter_parameters += [:password, :password_confirmation]

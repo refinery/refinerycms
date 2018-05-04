@@ -42,7 +42,7 @@
       $('#current_resource_text_<%= field %>').html(callback_args.html);
     };
 
-    $(document).ready(function(e) {
+    $(document).on('ready page:load', function(e) {
       $('#remove_resource_<%= field %>').click(function(e) {
         $('#<%= f.object_name %>_<%= field %>').val('');
         $('#current_resource_container_<%= field %>').hide();
