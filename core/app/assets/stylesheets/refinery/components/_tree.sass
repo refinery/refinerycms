@@ -1,0 +1,53 @@
+#records.tree,
+.tree
+  .title
+    font-size: 0.9em
+    line-height: 1.8em
+
+  ul
+    margin: 0
+    padding: 0
+
+    li
+      display: block
+      margin: 0
+      padding: 0.25em 0 0 2em
+      background: image_url('refinery/branch.gif') no-repeat 15px 0px
+
+      span.item
+        display: block
+        float: left
+        width: 1em
+        height: 1em
+        margin: 0.25em 0.25em 0 0
+        padding: 0 0 0 0.5em
+        @include icon('file-o', $icon_page_colour)
+
+        &.toggle
+          cursor: pointer
+          @include icon('folder',$icon_folder_colour)
+
+        &.toggle.expanded
+          @include icon('folder-open',$icon_folder_colour)
+
+      &.loading
+        > div
+          > span.icon
+            @include icon('spinner')
+
+      &.branch_start
+        background-image: image_url('refinery/branch-start.gif')
+
+      &.branch_end
+        background-image: image_url('refinery/branch-end.gif')
+
+      > div
+        &:hover
+          background-color: #EAEAEA
+
+  .actions
+    float: right
+
+    a
+      float: right
+      margin: 0.3em 0.25em
