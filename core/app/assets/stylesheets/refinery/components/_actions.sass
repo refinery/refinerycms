@@ -1,6 +1,41 @@
 #actions
   ul
     padding: 0
+    margin: 0
     
     li
       display: block
+
+      a
+        background: linear-gradient(to bottom, white, #f9fafb)
+        border: 1px solid #c4cdd5
+        color: $menu_base_color
+        border-radius: 3px
+        display: block
+        font-size: 0.9em
+        padding: 0.65em 1em
+        margin-bottom: 0.5em
+        text-decoration: none
+
+        &:before
+          color: $menu_base_color
+
+        &:hover
+          background: #f9fafb
+
+
+        &.hidden
+          display: none
+
+
+        &.add_icon,
+        &.upload_icon
+          background: linear-gradient(to bottom, #65c3f7, $base_color)
+          border: 1px solid $base_color
+          color: white
+
+          &:before
+            color: white
+
+          &:hover
+            background: $base_color

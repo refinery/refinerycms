@@ -35,10 +35,10 @@
           > span.icon
             @include icon('spinner')
 
-      &.branch_start
+      &:first-child
         background-image: image_url('refinery/branch-start.gif')
 
-      &.branch_end
+      &:last-child
         background-image: image_url('refinery/branch-end.gif')
 
       > div
@@ -50,4 +50,4 @@
 
     a
       float: right
-      margin: 0.3em 0.25em
+      margin: 0.3em 0.15em

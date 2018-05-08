@@ -104,8 +104,8 @@ var create_sortable_list = function(options){
             this.list.div_with_list_and_actions.parents().siblings('div').fadeTo(0, 0.3);
             $('*:not("#reorder_action_done, #reorder_action")', this.list.actions).not(this.list.reorder_action_done.parents('li, ul, div')).fadeTo(0, 0.55);
             this.list.sortable_list.nestedSortable("enable");
-            this.list.reorder_action.hide();
-            this.list.reorder_action_done.show();
+            this.list.reorder_action.css('display', 'none');
+            this.list.reorder_action_done.css('display', 'block');
         }
         , disable_reordering: function(e){
             if(e) { e.preventDefault(); }

@@ -1,7 +1,7 @@
 // Any icon
-@mixin icon($icon-selector, $color: $icon_default_colour, $padding: 4px, $size: 0.9em, $float: none) {
+@mixin icon($icon-selector, $color: $icon_default_colour, $padding: 4px, $size: 0.95em, $float: none) {
   @include icon-base($color, $size, $float) {
     @extend .fa-#{$icon-selector};
-    &:before {margin-right: 0.1em!important;}
+    &:before {margin-right: 0.3em!important;}
   };
 }
