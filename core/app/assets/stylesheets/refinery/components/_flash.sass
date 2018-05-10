@@ -1,0 +1,70 @@
+.flash
+  margin: 0 1.4em 1em
+  color: $text_base_color
+  font-size: 0.9em
+
+  a
+    font-weight: bold
+
+  &.flash_notice,
+  &.flash_message
+    border-top: 2px solid #50b83c
+    @include icon('check-circle', #50b83c)
+    @include panel(#e3f1df, 0.75em 0.25em 0.75em 0.75em)
+
+    a
+      color: #50b83c
+
+  &.flash_error,
+  &.flash_alert
+    border-top: 2px solid #de3618
+    @include icon('question-circle', #de3618)
+    @include panel(#fbeae5, 0.75em 0.25em 0.75em 0.75em)
+
+    a
+      color: #de3618
+
+  #flash_close
+    background: none
+    border: none
+    color: #41403C
+    cursor: pointer
+    float: right
+    font-size: 1em
+    text-transform: lowercase
+    @include icon('times-circle', $icon_done_colour, 1.2em)
+
+.errorExplanation
+  background-color: #fbeae5
+  border: 1px solid #de3618
+  border-radius: 3px
+  font-size: 0.9em
+  padding: 1em
+  margin-bottom: 1.5em
+
+  &:before
+    color: #de3618
+    display: inline-block
+    vertical-align: middle
+
+  p
+    display: inline-block
+    margin: 0
+    vertical-align: middle
+
+  ul
+    margin-bottom: 0
+
+    li
+      font-weight: bold
+
+
+.fieldWithErrors
+  input,
+  textarea
+    background-color: #fbeae5 !important
+    border: 1px solid #de3618 !important
+
+  iframe,
+  .visual_editor_box
+    border-color: #de3618 !important

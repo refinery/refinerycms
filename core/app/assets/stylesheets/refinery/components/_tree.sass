@@ -1,6 +1,7 @@
 #records.tree,
 .tree
   .title
+    color: $text_base_color
     font-size: 0.9em
     line-height: 1.8em
 
@@ -39,11 +40,12 @@
         background-image: image_url('refinery/branch-start.gif')
 
       &:last-child
-        background-image: image_url('refinery/branch-end.gif')
+        background-image: image_url('refinery/branch-end.png')
 
       > div
         &:hover
-          background-color: #EAEAEA
+          .title
+            color: $base_color
 
   .actions
     float: right
