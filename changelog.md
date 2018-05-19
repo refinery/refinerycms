@@ -1,6 +1,35 @@
 ## 4.0.2 [Unreleased]
 
-* Renamed FactoryGirl to FactoryBot. [#3324](https://github.com/refinery/refinerycms/pull/3324). [Philip Arndt](https://github.com/parndt)
+- Remove financials - pledgie has closed down [#3365](https://github.com/refinery/refinerycms/pull/3365) ([parndt](https://github.com/parndt))
+- Bugfix #3351 Use namespacing in cancel_url [#3362](https://github.com/refinery/refinerycms/pull/3362) ([bricesanchez](https://github.com/bricesanchez))
+- QA guides Multiple and Relating Resources in an Extension [#3361](https://github.com/refinery/refinerycms/pull/3361) ([bricesanchez](https://github.com/bricesanchez))
+- Feature/admin page index cache [#3359](https://github.com/refinery/refinerycms/pull/3359) ([bricesanchez](https://github.com/bricesanchez))
+- Fix Reserved Word Documentation Typo [#3358](https://github.com/refinery/refinerycms/pull/3358) ([jcbantuelle](https://github.com/jcbantuelle))
+- Feature/tests/locale [#3356](https://github.com/refinery/refinerycms/pull/3356) ([bricesanchez](https://github.com/bricesanchez))
+- Add Ruby 2.5.0 to CI and update others. [#3354](https://github.com/refinery/refinerycms/pull/3354) ([parndt](https://github.com/parndt))
+- Generator specs clean up after themselves. [#3353](https://github.com/refinery/refinerycms/pull/3353) ([parndt](https://github.com/parndt))
+- Bugfix #2915: assign cancel_url path in engine generator _form partial [#3351](https://github.com/refinery/refinerycms/pull/3351) ([bricesanchez](https://github.com/bricesanchez))
+- Update `Refinery::Pages::Type.parts` to match the format introduced in 3535b906fa [#3350](https://github.com/refinery/refinerycms/pull/3350) ([joshmcarthur](https://github.com/joshmcarthur))
+- Remove rails_12factor from Heroku gems [#3349](https://github.com/refinery/refinerycms/pull/3349) ([bricesanchez](https://github.com/bricesanchez))
+- Bugfix/3340/heroku deploy [#3347](https://github.com/refinery/refinerycms/pull/3347) ([bricesanchez](https://github.com/bricesanchez))
+- Fix checking :custom_slug existence to use column_exists? [#3343](https://github.com/refinery/refinerycms/pull/3343) ([yadex205](https://github.com/yadex205))
+- Only add puma when it's missing [#3341](https://github.com/refinery/refinerycms/pull/3341) ([parndt](https://github.com/parndt))
+- no need call valid? [#3339](https://github.com/refinery/refinerycms/pull/3339) ([ShallmentMo](https://github.com/ShallmentMo))
+- Bugfix factory page_with_page_part since Rails 5.1 [#3338](https://github.com/refinery/refinerycms/pull/3338) ([bricesanchez](https://github.com/bricesanchez))
+- Update readme.md [#3337](https://github.com/refinery/refinerycms/pull/3337) ([bricesanchez](https://github.com/bricesanchez))
+- Extract permitted params lists [#3336](https://github.com/refinery/refinerycms/pull/3336) ([matiasgarciaisaia](https://github.com/matiasgarciaisaia))
+- Fix CI error due to pg 1.0.0 [#3335](https://github.com/refinery/refinerycms/pull/3335) ([bricesanchez](https://github.com/bricesanchez))
+- Fix typo in readme [#3333](https://github.com/refinery/refinerycms/pull/3333) ([guich-wo](https://github.com/guich-wo))
+- rails asset:precompile attempts to connect to DB because [#3332](https://github.com/refinery/refinerycms/pull/3332) ([emaraschio](https://github.com/emaraschio))
+- Bugfix/3328 3329/preview button [#3330](https://github.com/refinery/refinerycms/pull/3330) ([bricesanchez](https://github.com/bricesanchez))
+- Rename FactoryGirl to FactoryBot. [#3324](https://github.com/refinery/refinerycms/pull/3324) ([parndt](https://github.com/parndt))
+- Now use https protocol for links to refinerycms.com [#3323](https://github.com/refinery/refinerycms/pull/3323) ([bricesanchez](https://github.com/bricesanchez))
+- Updates URL's used in the docs for installation. [#3322](https://github.com/refinery/refinerycms/pull/3322) ([Designaroni](https://github.com/Designaroni))
+- Use selected_image parameter to select an image upon opening the dialog [#3284](https://github.com/refinery/refinerycms/pull/3284) ([veger](https://github.com/veger))
+- Fix permitted params allowing new images to be uploaded [#3278](https://github.com/refinery/refinerycms/pull/3278) ([veger](https://github.com/veger))
+
+* [See full list](https://github.com/refinery/refinerycms/compare/4.0.1...4.0.0)
+
 
 ## 4.0.1 [24 October 2017]
 
