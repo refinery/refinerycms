@@ -1,35 +1,34 @@
 ## 4.0.2 [Unreleased]
 
-- Remove financials - pledgie has closed down [#3365](https://github.com/refinery/refinerycms/pull/3365) ([parndt](https://github.com/parndt))
-- Bugfix #3351 Use namespacing in cancel_url [#3362](https://github.com/refinery/refinerycms/pull/3362) ([bricesanchez](https://github.com/bricesanchez))
-- QA guides Multiple and Relating Resources in an Extension [#3361](https://github.com/refinery/refinerycms/pull/3361) ([bricesanchez](https://github.com/bricesanchez))
-- Feature/admin page index cache [#3359](https://github.com/refinery/refinerycms/pull/3359) ([bricesanchez](https://github.com/bricesanchez))
-- Fix Reserved Word Documentation Typo [#3358](https://github.com/refinery/refinerycms/pull/3358) ([jcbantuelle](https://github.com/jcbantuelle))
-- Feature/tests/locale [#3356](https://github.com/refinery/refinerycms/pull/3356) ([bricesanchez](https://github.com/bricesanchez))
-- Add Ruby 2.5.0 to CI and update others. [#3354](https://github.com/refinery/refinerycms/pull/3354) ([parndt](https://github.com/parndt))
-- Generator specs clean up after themselves. [#3353](https://github.com/refinery/refinerycms/pull/3353) ([parndt](https://github.com/parndt))
-- Bugfix #2915: assign cancel_url path in engine generator _form partial [#3351](https://github.com/refinery/refinerycms/pull/3351) ([bricesanchez](https://github.com/bricesanchez))
-- Update `Refinery::Pages::Type.parts` to match the format introduced in 3535b906fa [#3350](https://github.com/refinery/refinerycms/pull/3350) ([joshmcarthur](https://github.com/joshmcarthur))
-- Remove rails_12factor from Heroku gems [#3349](https://github.com/refinery/refinerycms/pull/3349) ([bricesanchez](https://github.com/bricesanchez))
-- Bugfix/3340/heroku deploy [#3347](https://github.com/refinery/refinerycms/pull/3347) ([bricesanchez](https://github.com/bricesanchez))
-- Fix checking :custom_slug existence to use column_exists? [#3343](https://github.com/refinery/refinerycms/pull/3343) ([yadex205](https://github.com/yadex205))
-- Only add puma when it's missing [#3341](https://github.com/refinery/refinerycms/pull/3341) ([parndt](https://github.com/parndt))
-- no need call valid? [#3339](https://github.com/refinery/refinerycms/pull/3339) ([ShallmentMo](https://github.com/ShallmentMo))
-- Bugfix factory page_with_page_part since Rails 5.1 [#3338](https://github.com/refinery/refinerycms/pull/3338) ([bricesanchez](https://github.com/bricesanchez))
-- Update readme.md [#3337](https://github.com/refinery/refinerycms/pull/3337) ([bricesanchez](https://github.com/bricesanchez))
-- Extract permitted params lists [#3336](https://github.com/refinery/refinerycms/pull/3336) ([matiasgarciaisaia](https://github.com/matiasgarciaisaia))
-- Fix CI error due to pg 1.0.0 [#3335](https://github.com/refinery/refinerycms/pull/3335) ([bricesanchez](https://github.com/bricesanchez))
-- Fix typo in readme [#3333](https://github.com/refinery/refinerycms/pull/3333) ([guich-wo](https://github.com/guich-wo))
-- rails asset:precompile attempts to connect to DB because [#3332](https://github.com/refinery/refinerycms/pull/3332) ([emaraschio](https://github.com/emaraschio))
-- Bugfix/3328 3329/preview button [#3330](https://github.com/refinery/refinerycms/pull/3330) ([bricesanchez](https://github.com/bricesanchez))
-- Rename FactoryGirl to FactoryBot. [#3324](https://github.com/refinery/refinerycms/pull/3324) ([parndt](https://github.com/parndt))
-- Now use https protocol for links to refinerycms.com [#3323](https://github.com/refinery/refinerycms/pull/3323) ([bricesanchez](https://github.com/bricesanchez))
-- Updates URL's used in the docs for installation. [#3322](https://github.com/refinery/refinerycms/pull/3322) ([Designaroni](https://github.com/Designaroni))
-- Use selected_image parameter to select an image upon opening the dialog [#3284](https://github.com/refinery/refinerycms/pull/3284) ([veger](https://github.com/veger))
-- Fix permitted params allowing new images to be uploaded [#3278](https://github.com/refinery/refinerycms/pull/3278) ([veger](https://github.com/veger))
+* Remove financials - pledgie has closed down [#3365](https://github.com/refinery/refinerycms/pull/3365) ([parndt](https://github.com/parndt))
+* Bugfix #3351 Use namespacing in cancel_url [#3362](https://github.com/refinery/refinerycms/pull/3362) ([bricesanchez](https://github.com/bricesanchez))
+* QA guides Multiple and Relating Resources in an Extension [#3361](https://github.com/refinery/refinerycms/pull/3361) ([bricesanchez](https://github.com/bricesanchez))
+* Feature/admin page index cache [#3359](https://github.com/refinery/refinerycms/pull/3359) ([bricesanchez](https://github.com/bricesanchez))
+* Fix Reserved Word Documentation Typo [#3358](https://github.com/refinery/refinerycms/pull/3358) ([jcbantuelle](https://github.com/jcbantuelle))
+* Feature/tests/locale [#3356](https://github.com/refinery/refinerycms/pull/3356) ([bricesanchez](https://github.com/bricesanchez))
+* Add Ruby 2.5.0 to CI and update others. [#3354](https://github.com/refinery/refinerycms/pull/3354) ([parndt](https://github.com/parndt))
+* Generator specs clean up after themselves. [#3353](https://github.com/refinery/refinerycms/pull/3353) ([parndt](https://github.com/parndt))
+* Bugfix #2915: assign cancel_url path in engine generator `_form` partial [#3351](https://github.com/refinery/refinerycms/pull/3351) ([bricesanchez](https://github.com/bricesanchez))
+* Update `Refinery::Pages::Type.parts` to match the format introduced in 3535b906fa [#3350](https://github.com/refinery/refinerycms/pull/3350) ([joshmcarthur](https://github.com/joshmcarthur))
+* Remove rails_12factor from Heroku gems [#3349](https://github.com/refinery/refinerycms/pull/3349) ([bricesanchez](https://github.com/bricesanchez))
+* Bugfix/3340/heroku deploy [#3347](https://github.com/refinery/refinerycms/pull/3347) ([bricesanchez](https://github.com/bricesanchez))
+* Fix checking :custom_slug existence to use column_exists? [#3343](https://github.com/refinery/refinerycms/pull/3343) ([yadex205](https://github.com/yadex205))
+* Only add puma when it's missing [#3341](https://github.com/refinery/refinerycms/pull/3341) ([parndt](https://github.com/parndt))
+* no need call valid? [#3339](https://github.com/refinery/refinerycms/pull/3339) ([ShallmentMo](https://github.com/ShallmentMo))
+* Bugfix factory page_with_page_part since Rails 5.1 [#3338](https://github.com/refinery/refinerycms/pull/3338) ([bricesanchez](https://github.com/bricesanchez))
+* Update readme.md [#3337](https://github.com/refinery/refinerycms/pull/3337) ([bricesanchez](https://github.com/bricesanchez))
+* Extract permitted params lists [#3336](https://github.com/refinery/refinerycms/pull/3336) ([matiasgarciaisaia](https://github.com/matiasgarciaisaia))
+* Fix CI error due to pg 1.0.0 [#3335](https://github.com/refinery/refinerycms/pull/3335) ([bricesanchez](https://github.com/bricesanchez))
+* Fix typo in readme [#3333](https://github.com/refinery/refinerycms/pull/3333) ([guich-wo](https://github.com/guich-wo))
+* rails asset:precompile attempts to connect to DB because [#3332](https://github.com/refinery/refinerycms/pull/3332) ([emaraschio](https://github.com/emaraschio))
+* Bugfix/3328 3329/preview button [#3330](https://github.com/refinery/refinerycms/pull/3330) ([bricesanchez](https://github.com/bricesanchez))
+* Rename FactoryGirl to FactoryBot. [#3324](https://github.com/refinery/refinerycms/pull/3324) ([parndt](https://github.com/parndt))
+* Now use https protocol for links to refinerycms.com [#3323](https://github.com/refinery/refinerycms/pull/3323) ([bricesanchez](https://github.com/bricesanchez))
+* Updates URL's used in the docs for installation. [#3322](https://github.com/refinery/refinerycms/pull/3322) ([Designaroni](https://github.com/Designaroni))
+* Use selected_image parameter to select an image upon opening the dialog [#3284](https://github.com/refinery/refinerycms/pull/3284) ([veger](https://github.com/veger))
+* Fix permitted params allowing new images to be uploaded [#3278](https://github.com/refinery/refinerycms/pull/3278) ([veger](https://github.com/veger))
 
-* [See full list](https://github.com/refinery/refinerycms/compare/4.0.1...4.0.0)
-
+- [See full list](https://github.com/refinery/refinerycms/compare/4.0.1...4.0.0)
 
 ## 4.0.1 [24 October 2017]
 
@@ -38,7 +37,6 @@
 * Require refinery core nil_user class (needed for prod env). [#3317](https://github.com/refinery/refinerycms/pull/3317). [Brice Sanchez](https://github.com/bricesanchez)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/4.0.0...4.0.1)
-
 
 ## 4.0.0 [29 September 2017]
 
@@ -65,7 +63,6 @@
 
 * [See full list](https://github.com/refinery/refinerycms/compare/3.0.5...3.0.6)
 
-
 ## 3.0.5 [23 November 2016]
 
 * Fix HTML format for not found page in page seeds. [#3263](https://github.com/refinery/refinerycms/pull/3263). [Brice Sanchez](https://github.com/bricesanchez)
@@ -79,7 +76,6 @@
 * Enable reselection of resource after removal. [#3216](https://github.com/refinery/refinerycms/pull/3216). [NicholasKirchner](https://github.com/NicholasKirchner)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/3.0.4...3.0.5)
-
 
 ## 3.0.4 [17 July 2016]
 
@@ -97,7 +93,6 @@
 
 * [See full list](https://github.com/refinery/refinerycms/compare/3.0.3...3.0.4)
 
-
 ## 3.0.3 [27 April 2016]
 
 * Split and tidy up stylesheets. [#3165](https://github.com/refinery/refinerycms/pull/3165). [Marie-Helene Tremblay](https://github.com/mhtremblay)
@@ -105,7 +100,6 @@
 * Move javascripts partial in head tag. [#3153](https://github.com/refinery/refinerycms/pull/3153). [Brice Sanchez](https://github.com/bricesanchez)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/3.0.2...3.0.3)
-
 
 ## 3.0.2 [16 March 2016]
 
@@ -128,14 +122,13 @@
 
 * [See full list](https://github.com/refinery/refinerycms/compare/3.0.1...3.0.2)
 
-
 ## 3.0.1 [26 January 2016]
+
 * Set speakingurl-rails to 8.0.0, switch to poltergeist gem. [#3084](https://github.com/refinery/refinerycms/pull/3084). [Philip Arndt](https://github.com/parndt) & [Brice Sanchez](https://github.com/bricesanchez)
 * Install a compatible version of refinerycms-acts-as-indexed [#3079](https://github.com/refinery/refinerycms/issues/3079). [Philip Arndt](https://github.com/parndt)
 * Updated Refinery::Pages.default_parts= config to require both a title and a slug attribute for each part. [#3069](https://github.com/refinery/refinerycms/pull/3069). [Brice Sanchez](https://github.com/bricesanchez)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/3.0.0...3.0.1)
-
 
 ## 3.0.0 [19 September 2015]
 
@@ -166,7 +159,7 @@
 
 ## 2.1.4 [28 October 2014]
 
-* Changed Dragonfly to load before `:build_middleware_stack` instead of after `:load_config_initializers`.  [#2721](https://github.com/refinery/refinerycms/pull/2721). [Thilo-Alexander Ginkel](https://github.com/ginkel)
+* Changed Dragonfly to load before `:build_middleware_stack` instead of after `:load_config_initializers`. [#2721](https://github.com/refinery/refinerycms/pull/2721). [Thilo-Alexander Ginkel](https://github.com/ginkel)
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2.1.3...2.1.4)
 
@@ -257,12 +250,14 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/2.0.10...2-0-stable)
 
 ## 2.0.10 [15 March 2013]
+
 * Blocked past insecure Rails versions. [Philip Arndt](https://github.com/parndt)
 * Fixed problems with editing pages in different locales. [Philip Arndt](https://github.com/parndt)
 * Locked `truncate_html` to 0.5.x to ensure Ruby 1.8.x compatibility. [Uģis Ozols](https://github.com/ugisozols)
 * [See full list](https://github.com/refinery/refinerycms/compare/2.0.9...2.0.10)
 
 ## 2.0.9 [21 November 2012]
+
 * Allowed extra parameters to be passed when creating image. [#1914](https://github.com/refinery/refinerycms/pull/1914). [tbuyle](https://github.com/tbuyle)
 * Added usage instructions to refinerycms executable. [#1931](https://github.com/refinery/refinerycms/pull/1931). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt).
 * Disabled page caching when logged in to prevent caching the sitebar. [#1609](https://github.com/refinery/refinerycms/pull/1609). [Johan Frolich](https://github.com/jokklan)
@@ -277,22 +272,26 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/2.0.8...2.0.9)
 
 ## 2.0.8 [17 August 2012]
+
 * Fixes installs broken by the release of jquery-rails 2.1.0 by requiring ~> 2.0.0. [Rob Yurkowski](https://github.com/robyurkowski)
 * [See full list](https://github.com/refinery/refinerycms/compare/2.0.7...2.0.8)
 
 ## 2.0.7 [16 August 2012]
+
 * Fixed a bug with nested reordering that would shuffle any set with 11 or more entities. [#1882](https://github.com/refinery/refinerycms/pull/1882). [Rob Yurkowski](https://github.com/robyurkowski)
 
 ## 2.0.6 [6 August 2012]
+
 * Added Refinery::Page#canonical_slug to allow us to retrieve a consistent slug across multiple translations of a page. Useful for CSS selectors. [#1457](https://github.com/refinery/refinerycms/pull/1457). [Philip Arndt](https://github.com/parndt)
 * Fixed bug with 404 page not honoring custom view/layout template. [#1746](https://github.com/refinery/refinerycms/pull/1746). [Uģis Ozols](https://github.com/ugisozols)
-* Renamed all templates in generators which contained erb to *.rb.erb. [#1750](https://github.com/refinery/refinerycms/pull/1750). [Uģis Ozols](https://github.com/ugisozols)
+* Renamed all templates in generators which contained erb to \*.rb.erb. [#1750](https://github.com/refinery/refinerycms/pull/1750). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed page reorder issue on Ruby 1.8.x. [#1585](https://github.com/refinery/refinerycms/issues/1585). [Uģis Ozols](https://github.com/ugisozols) & [Philip Arndt](https://github.com/parndt).
 * Allowed to override presenters using `rake refinery:override`. [#1790](https://github.com/refinery/refinerycms/pull/1790). [Kevin Bullock](https://github.com/krbullock).
 * Fixed issue with saving settings in generated form extension by completely rewriting settings controller. [#1817](https://github.com/refinery/refinerycms/issues/1817). [Uģis Ozols](https://github.com/ugisozols)
 * Removed Refinery::Page#title_with_meta in favour of view helpers. [#1847](https://github.com/refinery/refinerycms/pull/1847). [Philip Arndt](https://github.com/parndt)
 
 ## 2.0.5 [11 June 2012]
+
 * Now extension/form generators will add all attributes to attr_accessible. [#1613](https://github.com/refinery/refinerycms/pull/1613). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed a bug where `refinerycms-images` was trying to load `refinerycms-resources`. [#1651](https://github.com/refinery/refinerycms/issues/1651). [Philip Arndt](https://github.com/parndt)
 * Use new page part names (:body, :side_body) when generating extensions. [Uģis Ozols](https://github.com/ugisozols)
@@ -310,6 +309,7 @@
 * Fixed bug where flag icons in page listing couldn't be clicked due to expand/collapse event preventing it. [#1741](https://github.com/refinery/refinerycms/pull/1741). [Uģis Ozols](https://github.com/ugisozols)
 
 ## 2.0.4 [14 May 2012]
+
 * IMPORTANT: Fixed a security issue whereby the user could bypass some access restrictions in the backend. [#1636](https://github.com/refinery/refinerycms/pull/1636). [Rob Yurkowski](https://github.com/robyurkowski) and [Uģis Ozols](https://github.com/ugisozols)
 * Fixed stack level too deep error in Refinery::Menu#inspect. [#1551](https://github.com/refinery/refinerycms/pull/1551). [Uģis Ozols](https://github.com/ugisozols)
 * Fixed spec fails for newly generated engines and bumped gem versions in generated Gemfile. [#1553](https://github.com/refinery/refinerycms/issues/1553). [Uģis Ozols](https://github.com/ugisozols)
@@ -332,6 +332,7 @@
 * Manually loaded translations associations to avoid N+1 queries in the pages backend. [#1633](https://github.com/refinery/refinerycms/pull/1633). [thedarkone](https://github.com/thedarkone)
 
 ## 2.0.3 [2 April 2012]
+
 * Fixed missing authentication initializer. [Uģis Ozols](https://github.com/ugisozols)
 * Fixed Heroku and sqlite3 related errors. [Philip Arndt](https://github.com/parndt)
 * Replaced label_tag with label in pages advanced options form. [Johannes Edelstam](https://github.com/jede)
@@ -739,6 +740,7 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/0.9.8.3...0.9.8.4)
 
 ## 0.9.8.3 [14 September 2010]
+
 * German translation improvements. [Andre Lohan](https://github.com/dc5ala)
 * Fix bug with `bin/refinerycms` and windows commands. [Philip Arndt](https://github.com/parndt)
 * DRY up `crudify` and also switch to ARel. [Philip Arndt](https://github.com/parndt)
@@ -746,6 +748,7 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/0.9.8.2...0.9.8.3)
 
 ## 0.9.8.2 [13 September 2010]
+
 * Update `readme.md` [David Jones](https://github.com/djones)
 * Speed improvements to menu with nested_set. [Maarten Hoogendoorn](https://github.com/moretea)
 * More speed improvements by optimising slugs. [Philip Arndt](https://github.com/parndt)
@@ -753,6 +756,7 @@
 * [See full list](https://github.com/refinery/refinerycms/compare/0.9.8.1...0.9.8.2)
 
 ## 0.9.8.1 [9 September 2010]
+
 * Convert to `awesome_nested_set`. [Maarten Hoogendoorn](https://github.com/moretea) and [Philip Arndt](https://github.com/parndt)
 * Allow passing `-g` to the bin task for extra gems. [Tomás Senart](https://github.com/tsenart)
 * Update documentation for engines, not plugins. [David Jones](https://github.com/djones)
@@ -771,12 +775,12 @@
 ## 0.9.8 [30 August 2010]
 
 * Rails 3 support!
-  - [Philip Arndt](https://github.com/parndt)
-  - [Alex Coles](https://github.com/myabc)
-  - [Steven Heidel](https://github.com/stevenheidel)
-  - [David Jones](https://github.com/djones)
-  - [Uģis Ozols](https://github.com/ugisozols)
-  - [Maarten Hoogendoorn](https://github.com/moretea)
+  * [Philip Arndt](https://github.com/parndt)
+  * [Alex Coles](https://github.com/myabc)
+  * [Steven Heidel](https://github.com/stevenheidel)
+  * [David Jones](https://github.com/djones)
+  * [Uģis Ozols](https://github.com/ugisozols)
+  * [Maarten Hoogendoorn](https://github.com/moretea)
 * [See our blog post](http://refinerycms.com/blog/refinery-cms-supports-rails-3)
 * [See full list](https://github.com/refinery/refinerycms/compare/0.9.7.13...0.9.8)
 
@@ -805,23 +809,22 @@
 
 * Removed `app/controllers/application.rb` due to its serious deprecation. Fixed deprecations in how we use acts_as_indexed. [Philip Arndt](https://github.com/parndt)
 * Added passing cucumber features for search for: [Uģis Ozols](https://github.com/ugisozols)
-  - Images
-  - Files
-  - Inquiries
-  - Pages
+  * Images
+  * Files
+  * Inquiries
+  * Pages
 * Moved HTML5 enabling script to a partial so that IE always runs it first. [Philip Arndt](https://github.com/parndt)
 * Fixed some invalid HTML. [Bo Frederiksen](https://github.com/bofrede)
 * Added Danish translation for WYMeditor. [Bo Frederiksen](https://github.com/bofrede)
 * Fixes for Tooltips [Philip Arndt](https://github.com/parndt)
-  - Tooltips were not showing in dialogues, they now are.
-  - Tooltips would not position properly above links, they now do.
-  - The Tooltips' nibs (the arrow) would not sit properly centered above the element if the tooltip had to move for the browser window size, they now do.
+  * Tooltips were not showing in dialogues, they now are.
+  * Tooltips would not position properly above links, they now do.
+  * The Tooltips' nibs (the arrow) would not sit properly centered above the element if the tooltip had to move for the browser window size, they now do.
 * Lots of fixes for translations. [Uģis Ozols](https://github.com/ugisozols)
 * Fix XSS vulnerability on page meta information by escaping the relevant fields properly [David Jones](https://github.com/djones)
 * Ensure that the generator script grabs the first attribute that is a string, not just the first attribute, when choosing the field for Dashboard activity. [Joe Sak](https://github.com/joemsak)
 * Updated `json-pure` to `1.4.5`, now using the actual gem [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/refinery/refinerycms/compare/0.9.7.10...0.9.7.11)
-
 
 ## 0.9.7.10 [02 August 2010]
 
