@@ -1,4 +1,4 @@
-## 4.0.2 [Unreleased]
+## 4.0.2 [21 May 2018]
 
 * Remove financials - pledgie has closed down [#3365](https://github.com/refinery/refinerycms/pull/3365) ([parndt](https://github.com/parndt))
 * Bugfix #3351 Use namespacing in cancel_url [#3362](https://github.com/refinery/refinerycms/pull/3362) ([bricesanchez](https://github.com/bricesanchez))
