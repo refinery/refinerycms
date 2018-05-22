@@ -9,7 +9,7 @@ class CreateRefinerycmsImagesSchema < ActiveRecord::Migration[4.2]
       t.string   :image_uid
       t.string   :image_ext
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

@@ -24,7 +24,7 @@ namespace :refinery do
 
       Refinery::DummyGenerator.start %W[--quiet --database=#{ENV['DB'].presence || 'sqlite3'}]
 
-      Refinery::CmsGenerator.start %w[--quiet --fresh-installation]
+      Refinery::CmsGenerator.start %w[--quiet --fresh-installation --skip-seeds]
 
       Dir.chdir dummy_app_path
     end

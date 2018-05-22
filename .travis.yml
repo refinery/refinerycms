@@ -4,7 +4,7 @@ before_install: gem install bundler
 bundler_args: --without development
 before_script:
   - export RETRY_COUNT=3
-  - bin/rake refinery:testing:dummy_app
+  - yes | bin/rake refinery:testing:dummy_app
 script:
   - bin/rspec $EXTENSION/spec
 env:

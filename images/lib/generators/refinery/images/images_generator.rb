@@ -1,7 +1,8 @@
 module Refinery
   class ImagesGenerator < Rails::Generators::Base
-    class_option :skip_migrations, :type => :boolean, :default => false, :aliases => nil, :group => :runtime,
-                           :desc => "Skip over installing or running migrations."
+    class_option :skip_migrations, :type => :boolean, :default => false,
+                 :aliases => nil, :group => :runtime,
+                 :desc => "Skip over installing or running migrations."
 
     source_root File.expand_path('../templates', __FILE__)
 

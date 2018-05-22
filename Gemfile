@@ -51,6 +51,10 @@ group :test do
   gem 'rspec-retry'
 end
 
+group :development, :test do
+  gem 'activejob'
+end
+
 # Load local gems according to Refinery developer preference.
 if File.exist? local_gemfile = File.expand_path('../.gemfile', __FILE__)
   eval File.read(local_gemfile)
