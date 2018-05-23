@@ -67,12 +67,16 @@ Refinery::Pages.configure do |config|
   # config.show_title_in_body = <%= Refinery::Pages.show_title_in_body.inspect %>
 
   # You can add new HTML elements not already supported by Loofah::HTML5::WhiteList::ALLOWED_ELEMENTS
-  # For more information on whitelist see ALLOWED_ELEMENTS 
+  # For more information on whitelist see ALLOWED_ELEMENTS
   # (https://github.com/flavorjones/loofah/blob/v2.0.3/lib/loofah/html5/whitelist.rb#L151)
   # config.add_whitelist_elements = <%= Refinery::Pages.add_whitelist_elements.inspect %>
-  
+
   # You can add new HTML attributes not already supported by Loofah::HTML5::WhiteList::ALLOWED_ATTRIBUTES
-  # For more information on whitelist see ALLOWED_ATTRIBUTES 
+  # For more information on whitelist see ALLOWED_ATTRIBUTES
   # (https://github.com/flavorjones/loofah/blob/v2.0.3/lib/loofah/html5/whitelist.rb#L152)
   # config.add_whitelist_attributes = <%= Refinery::Pages.add_whitelist_attributes.inspect %>
+
+  # You can configure the site so that the home page is a model-index page
+  # config.home_page_path = <%= Refinery::Pages.home_page_path.inspect %>
+
 end
