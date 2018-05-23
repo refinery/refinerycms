@@ -22,6 +22,7 @@ def switch_page_form_locale(locale)
   expect(page).to have_selector("#switch_locale_picker li.selected a##{locale.downcase}")
 end
 
+
 module Refinery
   module Admin
     describe "Pages", :type => :feature do
@@ -45,6 +46,7 @@ module Refinery
         end
 
         context "when no pages" do
+
           it "doesn't show reorder pages link" do
             visit refinery.admin_pages_path
 
@@ -811,20 +813,18 @@ module Refinery
       describe "a page with a single locale" do
         before do
           allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :lv])
-          Page.create :title => 'First Page'
         end
+        let(:first_page){Page.create title: 'First Page'}
 
         it "can have a second locale added to it" do
-          visit refinery.admin_pages_path
+          visit refinery.edit_admin_page_path(first_page.id)
 
-          click_link "Add new page"
           switch_page_form_locale "LV"
-
           fill_in "Title", :with => "Brīva vieta reklāmai"
           click_button "Save"
 
-          expect(page).to have_content("'Brīva vieta reklāmai' was successfully added.")
-          expect(Refinery::Page.count).to eq(2)
+          expect(page).to have_content("'Brīva vieta reklāmai' was successfully updated.")
+          expect(first_page.translations.count).to eq(2)
         end
       end
 

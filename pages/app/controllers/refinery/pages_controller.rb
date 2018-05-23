@@ -10,6 +10,9 @@ module Refinery
 
     # This action is usually accessed with the root path, normally '/'
     def home
+      if page.link_url.present? && page.link_url != "/"
+        redirect_to page.link_url, status: 301 and return
+      end
       render_with_templates?
     end
 
@@ -101,7 +104,7 @@ module Refinery
     module Finders
       class Home
         def self.call(_params)
-          Refinery::Page.find_by link_url: "/"
+          Refinery::Page.find_by link_url: Refinery::Pages.home_page_path
         end
       end
 
