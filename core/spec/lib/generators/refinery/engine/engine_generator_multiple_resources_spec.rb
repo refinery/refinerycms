@@ -7,6 +7,7 @@ module Refinery
   describe EngineGenerator do
     include GeneratorSpec::TestCase
     destination File.expand_path("../../../../../../tmp", __FILE__)
+    let(:extension_root){"#{destination_root}/vendor/extensions/rspec_product_tests"}
 
     before do
       prepare_destination
@@ -41,6 +42,13 @@ module Refinery
           end
         }
       end
+
+      it "does not namespace the link_url in the extension controller" do
+        File.read("#{extension_root}/app/controllers/refinery/rspec_product_tests/rspec_product_tests_controller.rb") do |file|
+          expect(file.grep(%r{/:link_url => "/rspec_product_tests"\)\.first/})).to be_truthy
+        end
+      end
+
     end
 
     context "when generating a resource inside existing extensions dir" do
@@ -66,14 +74,27 @@ module Refinery
       end
 
       it "appends existing seeds file" do
-        File.open("#{destination_root}/vendor/extensions/rspec_product_tests/db/seeds.rb") do |file|
+        File.open("#{extension_root}/db/seeds.rb") do |file|
           expect(file.grep(%r{/rspec_product_tests|/rspec_item_tests}).count).to eq(2)
         end
       end
 
       it "appends routes to the routes file" do
-        File.open("#{destination_root}/vendor/extensions/rspec_product_tests/config/routes.rb") do |file|
+        File.open("#{extension_root}/config/routes.rb") do |file|
           expect(file.grep(%r{rspec_item_tests}).count).to eq(2)
+        end
+      end
+
+      it "places second and subsequent routes before the primary extension routes" do
+        content = File.read("#{extension_root}/config/routes.rb")
+        item_front_end_route = content.index("resources :rspec_item_tests, :only => [:index, :show]")
+        product_front_end_route =  content.index("resources :rspec_product_tests, :path => '', :only => [:index, :show]")
+        expect(item_front_end_route).to be < product_front_end_route
+      end
+
+      it "uses the namespaced url in the extension controller" do
+        content = File.read("#{extension_root}/app/controllers/refinery/rspec_product_tests/rspec_item_tests_controller.rb") do |file|
+          expect(file.grep(%r{/:link_url => "/rspec_product_tests/rspec_item_tests"\)\.first/})).to be_truthy
         end
       end
     end
