@@ -9,9 +9,6 @@ path "./" do
   gem "refinerycms-resources"
 end
 
-# TODO: Switch to the released gem
-gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'master'
-
 gem 'spring'
 gem 'spring-commands-rspec'
 gem 'poltergeist', '>= 1.8.1'
