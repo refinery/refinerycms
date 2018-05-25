@@ -1,67 +1,24 @@
 # Encoding: utf-8
 require 'friendly_id'
+require 'friendly_id/mobility'
 require 'refinery/core/base_model'
 require 'refinery/pages/url'
 require 'refinery/pages/finder'
 
 module Refinery
   class Page < Core::BaseModel
-    extend FriendlyId
+    extend Mobility
+    translates :title, :menu_title, :custom_slug, :slug, :browser_title, :meta_description
 
-    translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
-
-    attribute :title
-    attribute :menu_title
-    attribute :custom_slug
-    attribute :slug
-
-    after_save { translations.collect(&:save) }
+    after_save { translations.in_locale(Mobility.locale).seo_meta.save! }
 
     class Translation
       is_seo_meta
-
-      def self.seo_fields
-        ::SeoMeta.attributes.keys.map{ |a| [a, :"#{a}="]}.flatten
-      end
     end
-
-    class FriendlyIdOptions
-      def self.options
-        # Docs for friendly_id https://github.com/norman/friendly_id
-        friendly_id_options = {
-          use: [:reserved],
-          reserved_words: Refinery::Pages.friendly_id_reserved_words
-        }
-        if ::Refinery::Pages.scope_slug_by_parent
-          friendly_id_options[:use] << :scoped
-          friendly_id_options.merge!(scope: :parent)
-        end
-        friendly_id_options[:use] << :globalize
-        friendly_id_options
-      end
-    end
-
-    # If title changes tell friendly_id to regenerate slug when saving record
-    def should_generate_new_friendly_id?
-      changes.keys.include?("title") || changes.keys.include?("custom_slug")
-    end
-
-    # Delegate SEO Attributes to globalize translation
-    delegate(*(Translation.seo_fields << {:to => :translation}))
-
-    validates :title, :presence => true
-
-    validates :custom_slug, :uniqueness => true, :allow_blank => true
-
-    # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
-    # rather than :delete_all we want :destroy
-    acts_as_nested_set counter_cache: :children_count, dependent: :destroy, touch: true
-
-    friendly_id :custom_slug_or_title, FriendlyIdOptions.options
 
     has_many :parts, -> {
-      scope = order('position ASC')
-      scope = scope.includes(:translations) if ::Refinery::PagePart.respond_to?(:translation_class)
+      scope = ::Refinery::PagePart.respond_to?(:mobility) ? i18n.includes(:translations) : all
+      scope = scope.order('position ASC')
       scope
     },       :foreign_key => :refinery_page_id,
              :class_name => '::Refinery::PagePart',
@@ -69,6 +26,37 @@ module Refinery
              :dependent => :destroy
 
     accepts_nested_attributes_for :parts, :allow_destroy => true
+
+    # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
+    # rather than :delete_all we want :destroy
+    acts_as_nested_set :dependent => :destroy
+
+    class FriendlyIdOptions
+      def self.options
+        # Docs for friendly_id https://github.com/norman/friendly_id
+        friendly_id_options = {
+          use: [:mobility, :reserved],
+          reserved_words: Refinery::Pages.friendly_id_reserved_words
+        }
+        if ::Refinery::Pages.scope_slug_by_parent
+          friendly_id_options[:use] << :scoped
+          friendly_id_options.merge!(scope: :parent)
+        end
+
+        friendly_id_options
+      end
+    end
+
+    extend FriendlyId
+    friendly_id :custom_slug_or_title, FriendlyIdOptions.options
+
+    # If title changes tell friendly_id to regenerate slug when saving record
+    def should_generate_new_friendly_id?
+      title_changed? || custom_slug_changed?
+    end
+
+    validates :title, presence: true
+    validates :custom_slug, uniqueness: true, allow_blank: true
 
     before_destroy :deletable?
     after_save :reposition_parts!
@@ -103,7 +91,7 @@ module Refinery
       def find_by_path_or_id!(path, id)
         page = find_by_path_or_id(path, id)
 
-        raise ActiveRecord::RecordNotFound unless page
+        raise ::ActiveRecord::RecordNotFound unless page
 
         page
       end
@@ -129,7 +117,7 @@ module Refinery
       # This works using a query against the translated content first and then
       # using all of the page_ids we further filter against this model's table.
       def in_menu
-        where(:show_in_menu => true).with_globalize
+        where(show_in_menu: true).with_mobility
       end
 
       # An optimised scope containing only live pages ordered for display in a menu.
@@ -138,8 +126,8 @@ module Refinery
       end
 
       # Wrap up the logic of finding the pages based on the translations table.
-      def with_globalize(conditions = {})
-        Pages::Finder.with_globalize(conditions)
+      def with_mobility(conditions = {})
+        Pages::Finder.with_mobility(conditions)
       end
 
       # Returns how many pages per page should there be when paginating pages
@@ -155,7 +143,7 @@ module Refinery
       protected
 
       def nullify_duplicate_slugs_under_the_same_parent!
-        t_slug = translation_class.arel_table[:slug]
+        t_slug = Translation.arel_table[:slug]
         joins(:translations).group(:locale, :parent_id, t_slug).having(t_slug.count.gt(1)).count.
         each do |(locale, parent_id, slug), count|
           by_slug(slug, :locale => locale).where(:parent_id => parent_id).drop(1).each do |page|
@@ -167,20 +155,20 @@ module Refinery
     end
 
     def translated_to_default_locale?
-      persisted? && translations.any?{ |t| t.locale == Refinery::I18n.default_frontend_locale}
+      persisted? && translations.any?{ |t| t.locale.to_sym == Refinery::I18n.default_frontend_locale}
     end
 
     # The canonical page for this particular page.
     # Consists of:
     #   * The current locale's translated slug
     def canonical
-      Globalize.with_locale(::Refinery::I18n.current_frontend_locale) { url }
+      Mobility.with_locale(::Refinery::I18n.current_frontend_locale) { url }
     end
 
     # The canonical slug for this particular page.
     # This is the slug for the current frontend locale.
     def canonical_slug
-      Globalize.with_locale(::Refinery::I18n.current_frontend_locale) { slug }
+      Mobility.with_locale(::Refinery::I18n.current_frontend_locale) { slug }
     end
 
     # Returns in cascading order: custom_slug or menu_title or title depending on
@@ -237,7 +225,7 @@ module Refinery
     end
 
     def nested_url
-      Globalize.with_locale(slug_locale) do
+      Mobility.with_locale(slug_locale) do
         if ::Refinery::Pages.scope_slug_by_parent && !root?
           self_and_ancestors.includes(:translations).map(&:to_param)
         else
@@ -379,9 +367,9 @@ module Refinery
     end
 
     def slug_locale
-      return Globalize.locale if translation_for(Globalize.locale, false).try(:slug).present?
+      return Mobility.locale if slug
 
-      if translations.empty? || translation_for(Refinery::I18n.default_frontend_locale, false).try(:slug).present?
+      if translations.empty? || slug(locale: Refinery::I18n.default_frontend_locale)
         Refinery::I18n.default_frontend_locale
       else
         translations.first.locale

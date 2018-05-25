@@ -14,12 +14,12 @@ module Refinery
       let(:page) { FactoryBot.build(:page) }
 
       before do
-        Globalize.with_locale(:en) do
+        Mobility.with_locale(:en) do
           page.title = "draft"
           page.save!
         end
 
-        Globalize.with_locale(:lv) do
+        Mobility.with_locale(:lv) do
           page.title = "melnraksts"
           page.save!
         end
@@ -33,7 +33,7 @@ module Refinery
 
       context "when title for current locale isn't available" do
         it "returns existing title from translations" do
-          Page.translation_class.where(locale: :en).first.destroy
+          Page::Translation.where(locale: :en).first.destroy
           expect(helper.translated_field(page, :title)).to eq("melnraksts")
         end
       end

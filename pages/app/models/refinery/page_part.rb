@@ -9,16 +9,15 @@ module Refinery
     validates :slug, :presence => true, :uniqueness => {:scope => :refinery_page_id}
     alias_attribute :content, :body
 
+    extend Mobility
     translates :body
-
-    attribute :body
 
     def to_param
       "page_part_#{slug.downcase.gsub(/\W/, '_')}"
     end
 
     def body=(value)
-      write_attribute(:body, value)
+      super
 
       normalise_text_fields
     end
@@ -33,8 +32,8 @@ module Refinery
     protected
 
     def normalise_text_fields
-      if read_attribute(:body).present? && read_attribute(:body) !~ %r{^<}
-        write_attribute(:body, "<p>#{read_attribute(:body).gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>")
+      if body? && body !~ %r{^<}
+        self.body = "<p>#{body.gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>"
       end
     end
 

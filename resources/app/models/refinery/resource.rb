@@ -4,9 +4,8 @@ module Refinery
   class Resource < Refinery::Core::BaseModel
     include Resources::Validators
 
+    extend Mobility
     translates :resource_title
-
-    attribute :resource_title
 
     dragonfly_accessor :file, :app => :refinery_resources
 

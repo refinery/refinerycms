@@ -1,5 +1,5 @@
 class CreateRefinerycmsPagesSchema < ActiveRecord::Migration[4.2]
-  def up
+  def change
     create_table :refinery_page_parts do |t|
       t.integer  :refinery_page_id
       t.string   :title
@@ -38,38 +38,35 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration[4.2]
     add_index :refinery_pages, :parent_id
     add_index :refinery_pages, :rgt
 
-    begin
-      ::Refinery::PagePart.create_translation_table!({
-        :body => :text
-      })
-    rescue NameError
-      warn "Refinery::PagePart was not defined!"
+    create_table :refinery_page_part_translations do |t|
+
+      # Translated attribute(s)
+      t.text :body
+
+      t.string  :locale, null: false
+      t.integer :refinery_page_part_id, null: false
+
+      t.timestamps null: false
     end
 
-    begin
-      ::Refinery::Page.create_translation_table!({
-        :title => :string,
-        :custom_slug => :string,
-        :menu_title => :string,
-        :slug => :string
-      })
-    rescue NameError
-      warn "Refinery::Page was not defined!"
-    end
-  end
+    add_index :refinery_page_part_translations, :locale, name: :index_refinery_page_part_translations_on_locale
+    add_index :refinery_page_part_translations, [:refinery_page_part_id, :locale], name: :index_93b7363baf444ecab114aab0bbdedc79d0ec4f4b, unique: true
 
-  def down
-    drop_table :refinery_page_parts
-    drop_table :refinery_pages
-    begin
-      ::Refinery::PagePart.drop_translation_table!
-    rescue NameError
-      warn "Refinery::PagePart was not defined!"
+    create_table :refinery_page_translations do |t|
+
+      # Translated attribute(s)
+      t.string :title
+      t.string :custom_slug
+      t.string :menu_title
+      t.string :slug
+
+      t.string  :locale, null: false
+      t.integer :refinery_page_id, null: false
+
+      t.timestamps null: false
     end
-    begin
-      ::Refinery::Page.drop_translation_table! if defined?(::Refinery::Page)
-    rescue NameError
-      warn "Refinery::Page was not defined!"
-    end
+
+    add_index :refinery_page_translations, :locale, name: :index_refinery_page_translations_on_locale
+    add_index :refinery_page_translations, [:refinery_page_id, :locale], name: :index_refinery_page_t10s_on_refinery_page_id_and_locale, unique: true
   end
 end

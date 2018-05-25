@@ -451,13 +451,13 @@ module Refinery
           allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru])
 
           # Create a home page in both locales (needed to test menus)
-          home_page = Globalize.with_locale(:en) do
+          home_page = Mobility.with_locale(:en) do
             Page.create :title => 'Home',
             :link_url => '/',
             :menu_match => "^/$"
           end
 
-          Globalize.with_locale(:ru) do
+          Mobility.with_locale(:ru) do
             home_page.title = 'Домашняя страница'
             home_page.save
           end
@@ -520,10 +520,10 @@ module Refinery
           let!(:news_page) do
             allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru])
 
-            _page = Globalize.with_locale(:en) {
+            _page = Mobility.with_locale(:en) {
               Page.create :title => en_page_title
             }
-            Globalize.with_locale(:ru) do
+            Mobility.with_locale(:ru) do
               _page.title = ru_page_title
               _page.save
             end
@@ -599,7 +599,7 @@ module Refinery
 
         describe "add a page with title only for secondary locale", js:true do
           let(:ru_page) {
-            Globalize.with_locale(:ru) {
+            Mobility.with_locale(:ru) {
               Page.create :title => ru_page_title
             }
           }
@@ -670,7 +670,7 @@ module Refinery
             it 'succeeds' do
               ru_page.destroy!
               parent_page = Page.create(:title => "Parent page")
-              sub_page = Globalize.with_locale(:ru) {
+              sub_page = Mobility.with_locale(:ru) {
                 Page.create :title => ru_page_title, :parent_id => parent_page.id
               }
               expect(sub_page.parent).to eq(parent_page)
@@ -807,7 +807,7 @@ module Refinery
     end
 
     describe "TranslatePages", :type => :feature do
-      before { Globalize.locale = :en }
+      before { Mobility.locale = :en }
       refinery_login
 
       describe "a page with a single locale" do
@@ -833,11 +833,11 @@ module Refinery
           allow(Refinery::I18n).to receive(:frontend_locales).and_return [:en, :ru]
 
           # Create a page in both locales
-          about_page = Globalize.with_locale(:en) do
+          about_page = Mobility.with_locale(:en) do
             Page.create :title => 'About'
           end
 
-          Globalize.with_locale(:ru) do
+          Mobility.with_locale(:ru) do
             about_page.title = 'About Ru'
             about_page.save
           end

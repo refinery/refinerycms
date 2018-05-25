@@ -68,6 +68,13 @@ module Refinery
       @localized_attributes ||= attributes.select{ |a| options[:i18n].include?(a.name)}
     end
 
+    def localized_table_name
+      localized_table_name = [ 'refinery']
+      localized_table_name << namespacing.underscore if table_name != namespacing.underscore.pluralize
+      localized_table_name << [ singular_table_name, 'translations']
+      localized_table_name.join('_')
+    end
+
     def attributes_for_translation_table
       localized_attributes.inject([]) { |memo, attr| memo << ":#{attr.name} => :#{attr.type}"}.join(', ')
     end

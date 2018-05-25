@@ -17,7 +17,7 @@ module Refinery
         FinderBySlug.new(slug, conditions).find
       end
 
-      def self.with_globalize(conditions = {})
+      def self.with_mobility(conditions = {})
         Finder.new(conditions).find
       end
 
@@ -26,15 +26,15 @@ module Refinery
       end
 
       def find
-        with_globalize
+        with_mobility
       end
 
-      def with_globalize
-        globalized_conditions = {:locale => ::Globalize.locale.to_s}.merge(conditions)
-        translations_conditions = translations_conditions(globalized_conditions)
+      def with_mobility
+        mobility_conditions = {:locale => ::Mobility.locale.to_s}.merge(conditions)
+        translations_conditions = translations_conditions(mobility_conditions)
 
         # A join implies readonly which we don't really want.
-        Page.where(globalized_conditions).
+        Page.i18n.where(mobility_conditions).
              joins(:translations).
              where(translations_conditions).
              readonly(false)
@@ -51,7 +51,7 @@ module Refinery
         translations_conditions = {}
         original_conditions.keys.each do |key|
           if translated_attributes.include? key.to_s
-            translations_conditions["#{Page.translation_class.table_name}.#{key}"] = original_conditions.delete(key)
+            translations_conditions["#{Page::Translation.table_name}.#{key}"] = original_conditions.delete(key)
           end
         end
         translations_conditions
