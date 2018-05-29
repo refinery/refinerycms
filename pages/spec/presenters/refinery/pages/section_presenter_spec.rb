@@ -112,6 +112,30 @@ module Refinery
           end
         end
 
+        describe "#whitelist_css_properties", focus: true do
+          context "when a css properties is not in a whitelist" do
+            it "will not return those attributes" do
+              allow(Refinery::Pages).to receive(:whitelist_css_properties) {%w()}
+              section = SectionPresenter.new
+              section.override_html = %Q{<a style="color: red;background-image:url(http://www.ragingplatypus.com/i/cam-full.jpg);"></a>}
+              expect(section.wrapped_html(true)).to xml_eq(
+                %Q{<section><div class="inner"><a style="color: red;"></a></div></section>}
+              )
+            end
+          end
+
+          context "when extra css properties are included in the whitelist" do
+            it "will contain the whitelisted css properties" do
+              allow(Refinery::Pages).to receive(:whitelist_css_properties) {%w(background-image)}
+              section = SectionPresenter.new
+              section.override_html = %Q{<a style="color: red;background-image:url(http://www.ragingplatypus.com/i/cam-full.jpg);"></a>}
+              expect(section.wrapped_html(true)).to xml_eq(
+                %Q{<section><div class="inner"><a style="color: red;background-image:url(http://www.ragingplatypus.com/i/cam-full.jpg);"></a></div></section>}
+              )
+            end
+          end
+        end
+
         describe "#sanitize_content" do
           let(:warning) do
             %Q{\n-- SANITIZED CONTENT WARNING --\nRefinery::Pages::SectionPresenter#wrap_content_in_tag\nHTML attributes and/or elements content has been sanitized\n\e[31m-<dummy></dummy>\e[0m\n\\ No newline at end of file\n\n}
