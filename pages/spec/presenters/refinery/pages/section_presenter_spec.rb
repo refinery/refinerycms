@@ -112,7 +112,7 @@ module Refinery
           end
         end
 
-        describe "#whitelist_css_properties", focus: true do
+        describe "#whitelist_css_properties" do
           context "when a css properties is not in a whitelist" do
             it "will not return those attributes" do
               allow(Refinery::Pages).to receive(:whitelist_css_properties) {%w()}
