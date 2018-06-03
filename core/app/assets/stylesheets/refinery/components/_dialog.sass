@@ -1,0 +1,218 @@
+.hide-overflow
+  overflow: hidden
+
+.ui-widget-overlay
+  background-color: rgba(0,0,0,0.25)
+  height: 100%
+  left: 0
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 550
+
+
+.ui-dialog
+  border-radius: 3px
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.2)
+  position: absolute
+  background-color: #fff
+  color: $text_base_color
+  width: auto
+  z-index: 1000
+
+  #dialog_loading
+    position: fixed
+    top: 50%
+    left: 50%
+    width: 208px
+    height: 13px
+    margin: -6px 0 0 -104px
+
+.ui-dialog
+  .ui-dialog-titlebar
+    padding: 1.25em
+    border-bottom: 1px solid $line_separator_colour
+
+  .ui-dialog-title
+    font-size: 1.1em
+    color: $text_base_color
+
+  .ui-dialog-titlebar-close
+    @include icon('times')
+    background: none
+    border: none
+    cursor: pointer
+    float: right
+    font-size: 1.2em
+    margin-top: -0.15em
+
+    span
+      border: 0
+      clip: rect(0 0 0 0)
+      height: 1px
+      margin: -1px
+      overflow: hidden
+      padding: 0
+      position: absolute
+      width: 1px
+
+  iframe
+    width: 100% !important
+
+#dialog_container
+  background-color: white
+
+  #dialog_container #content .field,
+  .dialog_container .field
+    width: auto
+    margin: 5px 0
+
+  #dialog-form-actions .pagination
+    margin: -4px 6px -4px 0px
+    float: right
+    width: auto
+    a,
+    .current,
+    .disabled
+      line-height: 15px
+
+  #dialog_container #content .form-actions,
+  .ui-dialog .form-actions,
+  .dialog_container .form-actions
+    position: absolute
+    bottom: 0px
+    left: 0px
+    right: 0px
+    border-right: 0px
+    border-left: 0px
+    border-bottom: 0px
+    width: auto
+
+  #dialog_container.dialog.iframed #content .form-actions
+    position: fixed
+
+
+
+// #dialog_frame
+//   width: 952px
+//   height: 460px
+//   padding: 0px
+//   border: 0px solid #F2F1ED
+
+
+
+
+// .visual_editor_hideables
+//   display: none
+
+// .wym_dialog .form-actions,
+// .ui-dialog .form-actions
+//   @include form-actions
+
+// .dialog
+//   form
+//     margin-bottom: 45px
+
+//   .dialog_area > div > .field label:first-child,
+//   .dialog_area > div > label:first-child
+//     margin-top: 0px
+
+
+// .visual_editor_dialog .form-actions,
+// #content.form-actions.dialog-form-actions,
+// .ui-dialog .form-actions
+//   margin-top: 16px
+
+// .visual_editor_dialog .form-actions .form-actions-left,
+// .visual_editor_dialog .form-actions .form-actions-right,
+// .ui-dialog .form-actions .form-actions-left,
+// .ui-dialog .form-actions .form-actions-right
+//   position: absolute
+//   top: 10px
+
+// .visual_editor_dialog .form-actions .form-actions-left,
+// .ui-dialog .form-actions .form-actions-left
+//   left: 10px
+
+// .visual_editor_dialog .form-actions .form-actions-right,
+// .ui-dialog .form-actions .form-actions-right
+//   right: 10px
+
+// #content .form-actions .save-loader
+//   position: absolute
+//   right: -24px
+//   top: 4px
+
+// .visual_editor_dialog .form-actions, .ui-dialog .form-actions
+//   border: 0px none
+//   border-top: 1px solid #E8E8E8
+
+// #dialog_iframe
+//   position: relative
+
+
+
+// body.dialog #content .search_form
+//   float: right
+//   width: auto !important
+//   min-width: 300px
+//   margin-bottom: 0px
+
+
+
+
+
+
+// .ui-dialog[aria-describedby=editor_dialog],
+// .ui-dialog[aria-describedby=dialog_iframe]
+//   outline: none
+
+//   &.ui-dialog
+//     padding: 0
+
+//   &.ui-corner-all
+//     border: 4px solid #22A7F2
+//     border-radius: 0
+
+//   &.ui-widget
+//     font-family: inherit
+//     color: inherit
+
+//   .ui-widget-header
+//     background-image: none
+//     &.ui-corner-all
+//       border: none
+//       border-radius: 0
+
+
+//   .ui-dialog-titlebar
+//     padding: 0
+//     .ui-dialog-title
+//       font-weight: normal
+
+//     .ui-dialog-titlebar-close
+//       background-color: #22A7F2
+//       background-image: none
+//       border: none
+//       outline: none
+//       cursor: pointer
+//       right: 10px
+//       .ui-button-text
+//         display: none
+
+//       &.ui-button-icon-only .ui-icon
+//         position: static
+//         height: 20px
+
+
+
+//   .ui-dialog-content
+//     padding: 0
+//     overflow: visible
+
+//   .editor_dialog
+//     border: none
+
+//   iframe#dialog_frame, iframe#dialog_iframe
+//     display: block !important
+
