@@ -28,7 +28,7 @@ module Refinery
 
       private
         def permitted_new_page_part_params
-          [:title, :slug, :body, :locale]
+          [:title, :slug, :body]
         end
     end
   end

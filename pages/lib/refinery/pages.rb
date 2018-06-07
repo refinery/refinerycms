@@ -1,5 +1,5 @@
 require 'refinerycms-core'
-require 'globalize'
+require 'mobility'
 
 module Refinery
   autoload :PagesGenerator, 'generators/refinery/pages/pages_generator'
