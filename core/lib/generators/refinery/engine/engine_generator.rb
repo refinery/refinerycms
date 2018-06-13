@@ -43,5 +43,6 @@ module Refinery
     def in_frontend_directory?(file)
       file.to_s.include?('app') && file.to_s.scan(/admin|models|mailers/).empty?
     end
+
   end
 end

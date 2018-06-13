@@ -9,10 +9,9 @@ module Refinery
     end
 
     describe 'body' do
-      it "id is the page's canonical id" do
+      it "has an id that includes the page's canonical name" do
         visit home_page.url
-
-        expect(page).to have_css 'body#home-page'
+        expect(page.find("body")[:id]).to eq "home-page"
       end
     end
   end

@@ -15,7 +15,7 @@ Within `config/initializers/refinery/pages.rb` you will see various default sett
 
 ```ruby
 # Configure global page default parts
-# config.default_parts = ["Body", "Side Body"]
+# config.default_parts = [{ title: "Body", slug: "body" }, { title: "Side Body", slug: "side_body" }]
 ```
 
 Edit this code to have the names of the default page parts you want, click *Save* and you're done. You'll need to add a new page to see the page part. Existing pages have the default_parts they were created with.
@@ -24,7 +24,7 @@ Here's a sample of a site that would have three content areas on most of its pag
 
 ```ruby
 # Configure global page default parts
-config.default_parts = ["Left Body", "Middle Body", "Right Body"]
+config.default_parts = [{ title: "Left Body", slug: "left" }, { title: "Middle Body", slug: "middle" }, { title: "Right Body", slug: "right" }]
 ```
 
 ## Changing Page Parts for a single page

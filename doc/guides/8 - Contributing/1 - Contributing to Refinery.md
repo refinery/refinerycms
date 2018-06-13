@@ -77,11 +77,3 @@ We'll merge it in if it's all good.
 ### Confused on where to find everything?
 
 Take a look at this [page](https://github.com/refinery/refinerycms/wiki/Begin-Developing) which briefly explains the source.
-
-## Contributing financially
-
-Some of the effort that goes into Refinery CMS is covered by client work where requirements aren't met by the current implementation and so extensions are required. Most of the effort, however, is done on a free basis by the core team and many contributors worldwide.
-
-If you would like to contribute to Refinery CMS development by helping us to justify spending more time on it then you can [donate to the project at pledgie.](http://pledgie.com/campaigns/8431)
-
-All donations are very much appreciated and 100% of proceeds go toward making Refinery CMS even better.

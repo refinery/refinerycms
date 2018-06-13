@@ -6,7 +6,7 @@
              :object => @resource,
              :include_object_name => false %>
 
-  <%= render '/refinery/admin/locale_picker', :current_locale => Globalize.locale if @resource.persisted? %>
+  <%= render '/refinery/admin/locale_picker', :current_locale => Mobility.locale if @resource.persisted? %>
 
   <div class="field" id="file">
     <span class='label_with_help'>

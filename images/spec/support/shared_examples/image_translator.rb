@@ -25,7 +25,7 @@ shared_examples 'translates an image' do
       click_button "Save"
 
       expect(page).to have_content("'Titre de la première image' was successfully updated.")
-      expect(Refinery::Image.translation_class.count).to eq(1)
+      expect(Refinery::Image::Translation.count).to eq(1)
     end
   end
 end
