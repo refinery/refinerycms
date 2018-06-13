@@ -240,12 +240,44 @@ noscript .flash.flash_alert a:hover {
     font-weight: bold;
   }
   form.edit_image {
-    width: 70%;
-    float: left;
+    width: 30%;
+    float: right;
+    margin-top: 3em
   }
   #existing_image {
-    float: right;
-    width: 25%;
+    float: left;
+    width: 60%;
+
+    #original-image {
+      img {
+        max-width: 100%;
+      }
+    }
+
+    #crops {
+      margin-top: 2em;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          float: left;
+          margin-right: 1em;
+          margin-bottom: 1em;
+          
+          img {
+            display: block;
+          }
+
+          a.delete_icon {
+            display: block;
+            float: right;
+          }
+        }
+      }
+    }
   }
   .actions {
     a {
@@ -355,7 +387,7 @@ div.field.checkbox_access {
     font-weight: normal;
   }
 }
-#menu, {
+#menu {
   display: block;
   margin: 45px 0px 0px 0px;
   padding: 0px;
@@ -842,7 +874,7 @@ body.dialog form {
     height: 300px;
     padding: 12px;
   }
-  #existing_image_area_content {
+  #existing_image_area_content, #existing_image_area_crops {
     margin-top: 28px;
     ul {
       margin: 0px;
@@ -871,6 +903,7 @@ body.dialog form {
   }
   #existing_image_size_area {
     margin-top: 18px;
+    margin-bottom: 50px;
     ul {
       margin: 0px;
       padding: 10px 0px 0px 0px;

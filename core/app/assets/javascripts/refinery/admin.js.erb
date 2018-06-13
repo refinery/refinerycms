@@ -746,7 +746,7 @@ function ImageDialog(options) {
   };
 
   this.init_select = function() {
-    $('#existing_image_area_content ul li img').click(function() {
+    $(document).on('click', '#existing_image_area_content ul li img, #existing_image_area_crops ul li img', function() {
       self.toggle_image($(this));
     });
 
@@ -758,37 +758,53 @@ function ImageDialog(options) {
 
   this.toggle_image = function(img) {
     if (img.length > 0) {
-      if (!self.settings.multiple) $('#existing_image_area_content ul li.selected').removeClass('selected');
+      if (!self.settings.multiple) {
+        $('#existing_image_area_content ul li.selected, #existing_image_area_crops ul li.selected').removeClass('selected');
+      }
 
       img.parent().toggleClass('selected');
-      var imageId = img.attr('data-id');
-      var geometry = $('#existing_image_size_area li.selected a').attr('data-geometry');
-      var size = $('#existing_image_size_area li.selected a').attr('data-size');
-      var resize = $("#wants_to_resize_image").is(':checked');
 
-      image_url = resize ? img.attr('data-' + size) : img.attr('data-original');
-
-      if (parent) {
-        if ((visual_editor_src = parent.document.getElementById('visual_editor_src')) != null) {
-          visual_editor_src.value = image_url;
-        }
-        if ((visual_editor_title = parent.document.getElementById('visual_editor_title')) != null) {
-          visual_editor_title.value = img.attr('title');
-        }
-        if ((visual_editor_alt = parent.document.getElementById('visual_editor_alt')) != null) {
-          visual_editor_alt.value = img.attr('alt');
-        }
-        if ((visual_editor_size = parent.document.getElementById('visual_editor_size')) != null
-            && typeof(geometry) != 'undefined') {
-          visual_editor_size.value = geometry.replace(/[<>=]/g, '');
-        }
+      if(img.parent().find('.crops').length) {
+        $('#existing_image_area_crops').html(img.parent().find('.crops').html());
       }
+
+      self.prepare_wysiwyg();
+
     }
   };
 
+  this.prepare_wysiwyg = function(){
+    var geometry = $('#existing_image_size_area select#resize option:selected').attr('data-geometry');
+    var size = $('#existing_image_size_area select#resize').val();
+    var resize = $("#wants_to_resize_image").is(':checked');
+
+    let img = $(document).find('#existing_image_area_content ul li.selected img:first-child');
+
+    if(img.length == 0) img = $(document).find('#existing_image_area_crops ul li.selected img');
+
+    image_url = resize && size != 0 ? img.attr('data-' + size) : img.attr('data-original');
+
+    if (parent) {
+      if ((visual_editor_src = parent.document.getElementById('visual_editor_src')) != null) {
+          visual_editor_src.value = image_url;
+      }
+      if ((visual_editor_title = parent.document.getElementById('visual_editor_title')) != null) {
+          visual_editor_title.value = img.attr('title');
+      }
+      if ((visual_editor_alt = parent.document.getElementById('visual_editor_alt')) != null) {
+          visual_editor_alt.value = img.attr('alt');
+      }
+      if ((visual_editor_size = parent.document.getElementById('visual_editor_size')) != null
+          && typeof(geometry) != 'undefined') {
+          visual_editor_size.value = geometry.replace(/[<>=]/g, '');
+      }
+    }
+  }
+
   this.submit_image_choice = function(e) {
     e.preventDefault();
-    selected_images = $('#existing_image_area_content ul li.selected img');
+    selected_images = $(document).find('#existing_image_area_content ul li.selected img:first-child');
+    if(selected_images.length == 0) selected_images = $(document).find('#existing_image_area_crops ul li.selected img');
     selected_images = self.settings.multiple ? selected_images.get() : selected_images.get(0);
 
     if(selected_images && $.isFunction(self.callback))
@@ -830,6 +846,7 @@ function ImageDialog(options) {
     image_area = $('#existing_image_area').not('#visual_editor_iframe_body #existing_image_area');
     image_area.find('.form-actions input#submit_button').click($.proxy(function(e) {
       e.preventDefault();
+      self.prepare_wysiwyg();
       $(this.document.getElementById('visual_editor_dialog_submit')).click();
     }, parent));
     image_area.find('.form-actions a.close_dialog').click(close_dialog);

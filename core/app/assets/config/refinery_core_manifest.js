@@ -4,6 +4,8 @@
 //= link refinery/sortable_list.js
 //= link refinery/nestedsortables.js
 //= link refinery/serializelist.js
+//= link refinery/plugins/cropper.js
+//= link refinery/image_crop.js
 //= link refinery/tree.js
 //= link admin.js
 //= link modernizr-min.js
