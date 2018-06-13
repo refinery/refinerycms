@@ -5,19 +5,24 @@ module Refinery
     extend Mobility
     translates :image_title, :image_alt
 
-    dragonfly_accessor :image, :app => :refinery_images
+    dragonfly_accessor :image, app: :refinery_images
 
     include Images::Validators
 
-    validates :image, :presence  => true
+    validates :image, presence: true
     validates_with ImageSizeValidator
-    validates_with ImageUpdateValidator, :on => :update
+    validates_with ImageUpdateValidator, on: :update
     validates_property :mime_type,
-                       :of => :image,
-                       :in => ::Refinery::Images.whitelisted_mime_types,
-                       :message => :incorrect_format
+                       of: :image,
+                       in: ::Refinery::Images.whitelisted_mime_types,
+                       message: :incorrect_format
 
-    delegate :size, :mime_type, :url, :width, :height, :to => :image
+    delegate :size, :mime_type, :url, :width, :height, to: :image
+
+    has_many :crops, class_name: '::Refinery::Image', foreign_key: 'parent_id', dependent: :destroy
+    belongs_to :parent, class_name: '::Refinery::Image', foreign_key: 'parent_id', optional: true
+
+    scope :root, -> { where(parent_id: nil) }
 
     class << self
       # How many images per page should be displayed?
@@ -36,7 +41,7 @@ module Refinery
 
     # Get a thumbnail job object given a geometry and whether to strip image profiles and comments.
     def thumbnail(options = {})
-      options = { :geometry => nil, :strip => false }.merge(options)
+      options = { geometry: nil, strip: false }.merge(options)
       geometry = convert_to_geometry(options[:geometry])
       thumbnail = image
       thumbnail = thumbnail.thumb(geometry) if geometry
@@ -47,7 +52,7 @@ module Refinery
     # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
     def thumbnail_dimensions(geometry)
       dimensions = ThumbnailDimensions.new(geometry, image.width, image.height)
-      { :width => dimensions.width, :height => dimensions.height }
+      { width: dimensions.width, height: dimensions.height }
     end
 
     # Returns a titleized version of the filename

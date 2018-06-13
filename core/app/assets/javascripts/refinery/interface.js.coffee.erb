@@ -16,10 +16,6 @@
     $("html,body").animate scrollTop: $("#other_locales").parent().offset().top, 250
     e.preventDefault()
 
-  $("#existing_image img").on 'load', ->
-    margin_top = ($("#existing_image").height() - $("form.edit_image").height() + 8)
-    $("form.edit_image .form-actions").css "margin-top": margin_top if margin_top > 0
-
   $(".form-actions .form-actions-left input:submit#submit_button").click (e) ->
     $(this).nextAll('#spinner').removeClass('hidden_icon').addClass('unhidden_icon')
 

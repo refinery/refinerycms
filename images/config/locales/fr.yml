@@ -19,6 +19,14 @@ fr:
           image_title_help: Information complémentaire sur l'image
           image_alt: Alt
           image_alt_help: Texte utilise si l'image ne peut pas être affichée.
+          ratios: Ratios
+          choose_crop: Pour éditer un recadrage, veuillez sélectionner un format parmi la liste suivante
+          available_crops: Liste des recadrages disponibles
+          save: Sauvegarder le recadrage
+          format: Format
+          crop_success: Le recadrage a été généré avec succès
+        crop:
+          delete_crop: "%{title} - Recadrage %{id}"
         actions:
           create_new_image: Ajouter une image
         records:
@@ -33,6 +41,7 @@ fr:
           button_text: Insérer
           resize_image: Redimensionner l'image ?
           size: Taille
+          select_resize: Sélectionnez une taille
         insert:
           existing_image: Image existante
           new_image: Nouvelle image

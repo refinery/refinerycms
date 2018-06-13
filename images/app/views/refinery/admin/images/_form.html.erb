@@ -62,7 +62,50 @@
 
 <% if action_name =~ /(edit)|(update)/ %>
   <div id="existing_image">
-    <label><%=t('.current_image') %></label>
-    <%= image_fu @thumbnail || @image, '225x255>', class: 'brown_border' %>
+    <label><%= t('.current_image') %></label>
+    <div id="original-image">
+      <%= image_tag @image.url, id: 'crop',
+                  data: { mime_type: @image.mime_type,
+                          filename: @image.image_name,
+                          image_id: @image.id } %>
+    </div>
+
+    <section id="ratios" class="clearfix">
+      <%= form_for @image,
+                   url: refinery.admin_image_crop_path(@image),
+                   html: {
+                     multipart: true,
+                     id: "crop_image_#{@image.id}",
+                     class: 'crop_image'
+                   } do |f| %>
+        <div class="field">
+          <span class='label_with_help'>
+            <%= f.label :ratio, t('.ratios') %>
+            <%= refinery_help_tag t('.choose_crop') %>
+          </span>
+
+          <% ::Refinery::Images.user_image_ratios.each do |ratio, value| %>
+            <%= f.button ratio, type: 'button', data: { value: value, ratio: ratio.to_s.parameterize } %>
+          <% end %>
+
+          <%= f.submit t('.save'), id: 'save_crop' %>
+        </div>
+      <% end %>
+    </section>
+
+    <section id="crops">
+      <h2><%= t('.available_crops') %></h2>
+
+      <ul id="crop-list">
+        <% @image.crops.each do |crop| %>
+          <%= render partial: 'crop', locals: { crop: crop } %>
+        <% end %>
+      </ul>
+    </section>
   </div>
+
+  <% content_for :after_javascript_libraries do %>
+    <%= javascript_include_tag 'refinery/plugins/cropper' %>
+    <%= javascript_include_tag 'refinery/image_crop' %>
+  <% end %>
 <% end %>

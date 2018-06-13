@@ -2,24 +2,44 @@
   <%= render '/refinery/admin/search', :url => refinery.insert_admin_images_path(params.to_unsafe_h.dup.except('image')) %>
   <input type="hidden" name="selected_image" id="selected_image" />
   <div id="existing_image_area_content" class="clearfix">
-<% if @images.any? %>
-    <ul>
-      <% @images.each do |image| -%>
-        <li<%= ' class="selected"'.html_safe if @image_id == image.id %>>
-          <%= image_fu(image, '106x106#c', {
-                         :alt => image.title,
-                         :title => image.title,
-                         :id => "image_#{image.id}",
-                         :'data-id' => image.id
-                       }.merge(thumbnail_urls(image))) -%>
-        </li>
-      <% end -%>
-    </ul>
-<% elsif searching? %>
-    <%= t('no_results', :scope => 'refinery.admin.search') %>
-<% end %>
+    <% if @images.any? %>
+      <ul class="clearfix">
+        <% @images.each do |image| -%>
+          <%= content_tag :li, class: ('selected' if @image_id == image.id) do %>
+            <%= image_fu(image, '106x106#c', {
+              alt: image.title,
+              title: image.title,
+              id: "image_#{image.id}",
+              'data-id': image.id
+            }.merge(thumbnail_urls(image)))-%>
+
+            <% if image.crops.any? %>
+              <div class="crops">
+                <ul class="clearfix">
+                  <% image.crops.each do |crop| %>
+                    <%= content_tag :li, class: ('selected' if @image_id == image.id) do %>
+                      <%= image_fu(crop, '106x106>', {
+                          alt: crop.parent.alt,
+                          title: crop.parent.title,
+                          id: "image_#{crop.id}",
+                          'data-id': crop.id
+                      }.merge(thumbnail_urls(crop))) %>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    <% elsif searching? %>
+      <%= t('no_results', :scope => 'refinery.admin.search') %>
+    <% end %>
   </div>
+
   <%= will_paginate @images, :params => params.to_unsafe_h.dup.merge(:action => "insert") %>
+
+  <div id="existing_image_area_crops" class="clearfix"></div>
 
   <% unless @app_dialog or @images.empty? %>
     <div id="existing_image_size_area" class="clearfix">
@@ -30,22 +50,23 @@
           <%= t('.resize_image') %>
         </label>
       </p>
-      <ul>
+
+      <%= select :resize, nil, nil, { prompt: t('.select_resize') }, { id: 'resize'} do %>
         <%
           Refinery::Images.user_image_sizes.sort_by { |key, geometry| geometry.to_i }.each_with_index do |(size, pixels), index|
             safe_pixels = pixels.to_s.gsub(/[<>=]/, '')
             # (parndt): ' selected' if size.to_s == 'medium' is not very generic, but I
             # can't think of a decent way of making it so for even sets (e.g. 2,4,6,8,etc image sizes).
-        -%>
-            <li id="image_dialog_size_<%= index %>" class="image_dialog_size<%= ' selected' if size.to_s == 'medium' %>">
-              <%= link_to size.to_s, "##{size}",
-                          :'data-geometry' => pixels,
-                          :'data-size' => size.to_s.parameterize,
-                          :title   => "#{size} image (#{safe_pixels})",
-                          :tooltip => "#{size} image (#{safe_pixels})" %>
-            </li>
-        <% end -%>
-      </ul>
+        %>
+          <%= content_tag :option,
+                          "#{size} image (#{safe_pixels})",
+                          value: size.to_s.parameterize,
+                          id: "image_dialog_size_#{index}",
+                          data: { geometry: pixels, size: size.to_s.parameterize },
+                          selected: (true if size.to_s == 'medium')
+          %>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 
