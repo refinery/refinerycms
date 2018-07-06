@@ -55,18 +55,18 @@ module Refinery
           if extension.s3_datastore
             require 'dragonfly/s3_data_store'
             datastore :s3,{
-              s3_access_key_id: extension.s3_access_key_id,
-              s3_datastore: extension.s3_datastore,
-              s3_bucket_name: extension.s3_bucket_name,
-              s3_fog_storage_options: extension.s3_fog_storage_options,
-              s3_region: extension.s3_region,
-              s3_root_path: extension.s3_root_path,
-              s3_secret_access_key: extension.s3_secret_access_key,
-              s3_storage_path: extension.s3_storage_path,
-              s3_storage_headers: extension.s3_storage_headers,
-              s3_url_host: extension.s3_url_host,
-              s3_url_scheme: extension.s3_url_scheme,
-              s3_use_iam_profile: extension.s3_use_iam_profile
+              access_key_id: extension.s3_access_key_id,
+              datastore: extension.s3_datastore,
+              bucket_name: extension.s3_bucket_name,
+              fog_storage_options: extension.s3_fog_storage_options,
+              region: extension.s3_region,
+              root_path: extension.s3_root_path,
+              secret_access_key: extension.s3_secret_access_key,
+              storage_path: extension.s3_storage_path,
+              storage_headers: extension.s3_storage_headers,
+              url_host: extension.s3_url_host,
+              url_scheme: extension.s3_url_scheme,
+              use_iam_profile: extension.s3_use_iam_profile
             }
           end
 
