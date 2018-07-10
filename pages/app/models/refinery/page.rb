@@ -56,13 +56,21 @@ module Refinery
     end
 
     validates :title, presence: true
-    validates :custom_slug, uniqueness: true, allow_blank: true
+    validate :custom_slug_siblings
 
     before_destroy :deletable?
     after_save :reposition_parts!
 
     after_save :update_all_descendants
     after_move :update_all_descendants
+
+    def custom_slug_siblings
+      return if custom_slug.blank?
+      same_slug_count = siblings.where(custom_slug: custom_slug).count
+      errors.add(:custom_slug,
+        ::I18n.t('refinery.admin.pages.form_advanced_options.custom_slug_error')
+        ) unless same_slug_count.zero?
+    end
 
     class << self
       # Live pages are 'allowed' to be shown in the frontend of your website.
