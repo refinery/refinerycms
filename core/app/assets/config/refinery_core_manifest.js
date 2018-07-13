@@ -4,8 +4,6 @@
 //= link refinery/sortable_list.js
 //= link refinery/nestedsortables.js
 //= link refinery/serializelist.js
-//= link refinery/plugins/cropper.js
-//= link refinery/image_crop.js
 //= link refinery/tree.js
 //= link admin.js
 //= link modernizr-min.js
@@ -14,3 +12,7 @@
 //= link refinery/formatting.css
 //= link refinery/site_bar.css
 //= link refinery/theme.css
+
+//= link refinery/plugins/cropper.css
+//= link refinery/plugins/cropper.js
+//= link refinery/image_crop.js
