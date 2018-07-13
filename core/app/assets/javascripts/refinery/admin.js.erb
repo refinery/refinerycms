@@ -769,7 +769,6 @@ function ImageDialog(options) {
       }
 
       self.prepare_wysiwyg();
-
     }
   };
 
@@ -778,7 +777,7 @@ function ImageDialog(options) {
     var size = $('#existing_image_size_area select#resize').val();
     var resize = $("#wants_to_resize_image").is(':checked');
 
-    let img = $(document).find('#existing_image_area_content ul li.selected img:first-child');
+    var img = $(document).find('#existing_image_area_content ul li.selected img:first-child');
 
     if(img.length == 0) img = $(document).find('#existing_image_area_crops ul li.selected img');
 
