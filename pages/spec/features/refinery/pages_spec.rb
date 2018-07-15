@@ -8,7 +8,7 @@ module Refinery
     let(:draft_page) { Page.create :title => 'Draft', :draft => true }
     before do
       # Stub the menu pages we're expecting
-      ::I18n.default_locale = Globalize.locale = :en
+      ::I18n.default_locale = Mobility.locale = :en
       allow(Page).to receive(:fast_menu).and_return([home_page, about_page])
     end
 
@@ -365,26 +365,37 @@ module Refinery
   context "with multiple locales" do
 
     describe "redirects" do
-      before { allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru]) }
-      after { allow(Refinery::I18n).to receive(:frontend_locales).and_call_original }
       let(:en_page_title) { 'News' }
       let(:en_page_slug) { 'news' }
       let(:ru_page_title) { 'Новости' }
       let(:ru_page_slug_encoded) { '%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8' }
       let!(:news_page) do
-        _page = Globalize.with_locale(:en) { Page.create title: en_page_title }
-        Globalize.with_locale(:ru) do
-          _page.title = ru_page_title
-          _page.save
+        @page = Mobility.with_locale(:en) { Page.create title: en_page_title }
+        Mobility.with_locale(:ru) do
+          @page.title = ru_page_title
+          @page.save
         end
 
-        _page
+        @page
       end
+
+      before {
+        allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru])
+        allow(Page).to receive(:fast_menu).and_return([@page])
+      }
+
+      after { allow(Refinery::I18n).to receive(:frontend_locales).and_call_original }
 
       it "should recognise when default locale is in the path" do
         visit "/en/#{en_page_slug}"
 
         expect(current_path).to eq("/en/#{en_page_slug}")
+      end
+
+      it "should display the default locale when locale is not in the path" do
+        visit "/#{en_page_slug}"
+
+        expect(current_path).to eq("/#{en_page_slug}")
       end
 
       it "should redirect to default locale slug" do
@@ -401,17 +412,25 @@ module Refinery
         visit "/en/#{en_page_slug}"
       end
 
+      it "should not have the locale in the menu href link" do
+        visit "/en/#{en_page_slug}"
+
+        within('.menu') do
+          expect(page).to have_selector(:css, "a[href='/#{en_page_slug}']")
+        end
+      end
+
       describe "nested page" do
         let(:nested_page_title) { 'nested_page' }
         let(:nested_page_slug) { 'nested_page' }
 
         let!(:nested_page) do
-          Globalize.fallbacks = [:ru]
-          _page = Globalize.with_locale(:en) {
+          ::I18n.fallbacks[:ru]
+          _page = Mobility.with_locale(:en) {
             news_page.children.create :title => nested_page_title
           }
 
-          Globalize.with_locale(:ru) do
+          Mobility.with_locale(:ru) do
             _page.title = nested_page_title
             _page.save
           end

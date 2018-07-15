@@ -24,5 +24,5 @@ module Refinery
 end
 
 ActiveSupport.on_load(:active_record) do
-  require 'globalize'
+  require 'mobility'
 end

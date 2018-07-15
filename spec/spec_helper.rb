@@ -40,7 +40,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.before(:each) do
-    ::I18n.default_locale = I18n.locale = Globalize.locale = :en
+    ::I18n.default_locale = I18n.locale = Mobility.locale = :en
   end
 
   unless ENV['FULL_BACKTRACE']

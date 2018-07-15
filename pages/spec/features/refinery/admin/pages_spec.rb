@@ -22,6 +22,7 @@ def switch_page_form_locale(locale)
   expect(page).to have_selector("#switch_locale_picker li.selected a##{locale.downcase}")
 end
 
+
 module Refinery
   module Admin
     describe "Pages", :type => :feature do
@@ -45,6 +46,7 @@ module Refinery
         end
 
         context "when no pages" do
+
           it "doesn't show reorder pages link" do
             visit refinery.admin_pages_path
 
@@ -449,13 +451,13 @@ module Refinery
           allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru])
 
           # Create a home page in both locales (needed to test menus)
-          home_page = Globalize.with_locale(:en) do
+          home_page = Mobility.with_locale(:en) do
             Page.create :title => 'Home',
             :link_url => '/',
             :menu_match => "^/$"
           end
 
-          Globalize.with_locale(:ru) do
+          Mobility.with_locale(:ru) do
             home_page.title = 'Домашняя страница'
             home_page.save
           end
@@ -518,10 +520,10 @@ module Refinery
           let!(:news_page) do
             allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru])
 
-            _page = Globalize.with_locale(:en) {
+            _page = Mobility.with_locale(:en) {
               Page.create :title => en_page_title
             }
-            Globalize.with_locale(:ru) do
+            Mobility.with_locale(:ru) do
               _page.title = ru_page_title
               _page.save
             end
@@ -597,7 +599,7 @@ module Refinery
 
         describe "add a page with title only for secondary locale", js:true do
           let(:ru_page) {
-            Globalize.with_locale(:ru) {
+            Mobility.with_locale(:ru) {
               Page.create :title => ru_page_title
             }
           }
@@ -668,7 +670,7 @@ module Refinery
             it 'succeeds' do
               ru_page.destroy!
               parent_page = Page.create(:title => "Parent page")
-              sub_page = Globalize.with_locale(:ru) {
+              sub_page = Mobility.with_locale(:ru) {
                 Page.create :title => ru_page_title, :parent_id => parent_page.id
               }
               expect(sub_page.parent).to eq(parent_page)
@@ -805,26 +807,24 @@ module Refinery
     end
 
     describe "TranslatePages", :type => :feature do
-      before { Globalize.locale = :en }
+      before { Mobility.locale = :en }
       refinery_login
 
       describe "a page with a single locale" do
         before do
           allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :lv])
-          Page.create :title => 'First Page'
         end
+        let(:first_page){Page.create title: 'First Page'}
 
         it "can have a second locale added to it" do
-          visit refinery.admin_pages_path
+          visit refinery.edit_admin_page_path(first_page.id)
 
-          click_link "Add new page"
           switch_page_form_locale "LV"
-
           fill_in "Title", :with => "Brīva vieta reklāmai"
           click_button "Save"
 
-          expect(page).to have_content("'Brīva vieta reklāmai' was successfully added.")
-          expect(Refinery::Page.count).to eq(2)
+          expect(page).to have_content("'Brīva vieta reklāmai' was successfully updated.")
+          expect(first_page.translations.count).to eq(2)
         end
       end
 
@@ -833,11 +833,11 @@ module Refinery
           allow(Refinery::I18n).to receive(:frontend_locales).and_return [:en, :ru]
 
           # Create a page in both locales
-          about_page = Globalize.with_locale(:en) do
+          about_page = Mobility.with_locale(:en) do
             Page.create :title => 'About'
           end
 
-          Globalize.with_locale(:ru) do
+          Mobility.with_locale(:ru) do
             about_page.title = 'About Ru'
             about_page.save
           end

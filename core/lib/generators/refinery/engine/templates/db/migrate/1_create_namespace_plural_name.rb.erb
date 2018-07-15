@@ -2,17 +2,29 @@ class Create<%= namespacing %><%= class_name.pluralize %> < ActiveRecord::Migrat
 
   def up
     create_table :refinery_<%= "#{namespacing.underscore}_" if table_name != namespacing.underscore.pluralize -%><%= table_name %> do |t|
-<% attributes.each do |attribute| -%>
+<% (attributes - localized_attributes).each do |attribute| -%>
       t.<%= attribute.type %> :<%= attribute.column_name %>
 <% end -%>
       t.integer :position
 
       t.timestamps
     end
+
 <% if localized? %>
-    Refinery::<%= namespacing %>::<%= class_name %>.create_translation_table! <%= attributes_for_translation_table %>
+    create_table :<%= localized_table_name %> do |t|
+<% localized_attributes.each do |attribute| -%>
+      t.<%= attribute.type %> :<%= attribute.column_name %>
+<% end -%>
+      t.string  :locale, null: false
+      t.integer :refinery_<%= singular_table_name %>_id, null: false
+      t.timestamps
+    end
+
+    add_index :<%= localized_table_name %>, :locale, name: :index_<%= localized_table_name %>_on_locale
+    add_index :<%= localized_table_name %>, [:refinery_<%= singular_table_name %>_id, :locale], name: :index_<%= Digest::SHA1.hexdigest(localized_table_name) %>, unique: true
 <% end %>
   end
+
 
   def down
     if defined?(::Refinery::UserPlugin)
@@ -25,8 +37,7 @@ class Create<%= namespacing %><%= class_name.pluralize %> < ActiveRecord::Migrat
 <% end %>
     drop_table :refinery_<%= "#{namespacing.underscore}_" if table_name != namespacing.underscore.pluralize -%><%= table_name %>
 <% if localized? %>
-    Refinery::<%= namespacing %>::<%= class_name %>.drop_translation_table!
+    drop_table :<%= localized_table_name %>
 <% end %>
   end
-
 end

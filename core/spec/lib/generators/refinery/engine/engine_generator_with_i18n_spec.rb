@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'fileutils'
 require 'generator_spec/test_case'
 require 'generators/refinery/engine/engine_generator'
 
@@ -10,6 +11,10 @@ module Refinery
     before do
       prepare_destination
       run_generator %w{ rspec_product_test title:string description:text image:image brochure:resource --i18n title description }
+    end
+
+    after do
+      FileUtils.rm_r destination_root
     end
 
     specify do

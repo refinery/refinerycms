@@ -113,7 +113,7 @@ module Refinery
             click_button "Save"
 
             expect(page).to have_content("'Premier fichier' was successfully updated.")
-            expect(Resource.translation_class.count).to eq(1)
+            expect(Resource::Translation.count).to eq(1)
           end
         end
       end

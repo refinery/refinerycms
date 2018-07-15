@@ -42,7 +42,7 @@ module Refinery
 
       context "with #menu_title" do
         before do
-          page[:menu_title] = "Menu Title"
+          page.menu_title = "Menu Title"
         end
 
         it_should_behave_like "Refinery menu item hash"
@@ -54,7 +54,7 @@ module Refinery
 
       context "with #title" do
         before do
-          page[:title] = "Title"
+          page.title = "Title"
         end
 
         it_should_behave_like "Refinery menu item hash"

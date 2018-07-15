@@ -6,6 +6,7 @@ module Refinery
 <% end %>
 <% if localized? -%>
 
+      extend Mobility
       translates <%= localized_attributes.map { |a| ":#{a.name}" }.join(', ') %>
 <% end -%>
 <% if string_attributes.any? -%>
