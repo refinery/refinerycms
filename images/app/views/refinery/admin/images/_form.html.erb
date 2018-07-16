@@ -109,7 +109,5 @@
     <%= javascript_include_tag 'refinery/image_crop' %>
   <% end %>
 
-  <% content_for :stylesheets do %>
-    <%= stylesheet_link_tag('refinery/plugins/cropper') %>
-  <% end %>
+  <% content_for :stylesheets, stylesheet_link_tag('refinery/plugins/cropper') -%>
 <% end %>
