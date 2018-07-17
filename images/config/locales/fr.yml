@@ -25,6 +25,7 @@ fr:
           save: Sauvegarder le recadrage
           format: Format
           crop_success: Le recadrage a été généré avec succès
+          no_crops_yet: "Il n'y a actuellement aucun recadrage d'image. Cliquez sur 'Sauvegarder le recadrage' pour en ajouter un."
         crop:
           delete_crop: "%{title} - Recadrage %{id}"
         actions:

@@ -48,7 +48,7 @@ window.onload = function () {
       formData.append('height', cropHeight);
       formData.append('width', cropWidth);
 
-      ajaxPostNewCrop(formData, actionUrl)
+      ajaxPostNewCrop(formData, actionUrl);
     }, mimeType);
   });
 
@@ -68,11 +68,34 @@ window.onload = function () {
   }
 
   function appendNewCropInList(newCrop, listId) {
-    let child = document.createElement('div');
+    initCropList(listId);
 
+    let child = document.createElement('div');
     child.innerHTML = newCrop;
     child = child.firstChild;
 
     return document.getElementById(listId).appendChild(child);
+  }
+
+  function initCropList(listId){
+    let cropsId = document.getElementById('crops');
+    let cropListId = document.getElementById(listId);
+
+    if(cropListId == null) {
+      cropListId = document.createElement('ul');
+      cropListId.setAttribute("id", listId);
+      cropListId.setAttribute("class", "clearfix");
+      cropsId.appendChild(cropListId);
+    }
+
+    hideNoCropsYetText();
+  }
+
+  function hideNoCropsYetText(){
+    const noCropsYetText = document.getElementById('no-crops-yet');
+
+    if(noCropsYetText !== null && noCropsYetText.style.display != 'none')  {
+      noCropsYetText.style.display = 'none';
+    }
   }
 };
