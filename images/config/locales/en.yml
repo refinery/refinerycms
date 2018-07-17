@@ -27,6 +27,8 @@ en:
           save: Save crop
           format: Format
           crop_success: Crop has been successfully generated
+          no_crops_yet: There are no image crops yet. Click "Save crop" to add your first image crop.
+
         crop:
           delete_crop: "%{title} - Crop %{id}"
         actions:

@@ -1,4 +1,18 @@
 let cropList = document.getElementById('crop-list');
 let deletedCrop = document.getElementById('crop_<%= image_id %>');
 
-deletedCrop.parentNode.removeChild(deletedCrop);
+if(deletedCrop !== null) {
+  deletedCrop.parentNode.removeChild(deletedCrop);
+}
+
+if( cropList.querySelectorAll('li').length == 0) {
+  displayNoCropsYetText();
+}
+
+function displayNoCropsYetText(){
+  const noCropsYetText = document.getElementById('no-crops-yet');
+
+  if(noCropsYetText !== null && noCropsYetText.style.display != 'block')  {
+    noCropsYetText.style.display = 'block';
+  }
+}

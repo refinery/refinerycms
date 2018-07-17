@@ -96,11 +96,15 @@
     <section id="crops">
       <h2><%= t('.available_crops') %></h2>
 
-      <ul id="crop-list">
-        <% @image.crops.each do |crop| %>
-          <%= render partial: 'crop', locals: { crop: crop } %>
-        <% end %>
-      </ul>
+      <% if @image.crops.present? %>
+        <ul id="crop-list" class="clearfix">
+          <% @image.crops.each do |crop| %>
+            <%= render partial: 'crop', locals: { crop: crop } %>
+          <% end %>
+        </ul>
+      <% else %>
+          <p id="no-crops-yet"><strong><%=t('.no_crops_yet')%></strong></p>
+      <% end %>
     </section>
   </div>
 
