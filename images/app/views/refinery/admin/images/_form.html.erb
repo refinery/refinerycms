@@ -98,9 +98,7 @@
 
       <% if @image.crops.present? %>
         <ul id="crop-list" class="clearfix">
-          <% @image.crops.each do |crop| %>
-            <%= render partial: 'crop', locals: { crop: crop } %>
-          <% end %>
+          <%= render partial: 'crop', collection: @image.crops %>
         </ul>
       <% else %>
           <p id="no-crops-yet"><strong><%=t('.no_crops_yet')%></strong></p>
