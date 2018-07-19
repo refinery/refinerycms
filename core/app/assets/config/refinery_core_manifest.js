@@ -13,6 +13,6 @@
 //= link refinery/site_bar.css
 //= link refinery/theme.css
 
-//= link refinery/plugins/cropper.css
-//= link refinery/plugins/cropper.js
+//= link cropper.css
+//= link cropper.js
 //= link refinery/image_crop.js

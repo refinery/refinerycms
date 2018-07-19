@@ -107,9 +107,9 @@
   </div>
 
   <% content_for :after_javascript_libraries do %>
-    <%= javascript_include_tag 'refinery/plugins/cropper' %>
+    <%= javascript_include_tag 'cropper' %>
     <%= javascript_include_tag 'refinery/image_crop' %>
   <% end %>
 
-  <% content_for :stylesheets, stylesheet_link_tag('refinery/plugins/cropper') -%>
+  <% content_for :stylesheets, stylesheet_link_tag('cropper') -%>
 <% end %>
