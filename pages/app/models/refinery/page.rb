@@ -65,7 +65,7 @@ module Refinery
     after_move :update_all_descendants
 
     def custom_slug_siblings
-      return if !ActiveRecord::Base.connection.column_exists?(:refinery_page_translations,
+      return if !::ActiveRecord::Base.connection.column_exists?(:refinery_page_translations,
         :custom_slug)
       return if custom_slug.blank?
       same_slug_count = siblings.where(custom_slug: custom_slug).count
