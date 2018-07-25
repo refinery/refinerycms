@@ -1,5 +1,5 @@
 module Refinery
-  module Admin
+  module Api
     class GraphqlController < Refinery::AdminController
 
       def execute

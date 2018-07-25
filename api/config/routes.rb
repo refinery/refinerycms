@@ -1,5 +1,5 @@
 Refinery::Core::Engine.routes.draw do
-  namespace :admin, path: Refinery::Core.backend_route do
+  namespace :api do
     post 'graphql' => 'graphql#execute'
 
     if Rails.env.development?
