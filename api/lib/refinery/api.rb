@@ -3,8 +3,6 @@ require 'graphql'
 require 'graphiql/rails'
 
 module Refinery
-  autoload :ApiGenerator, 'generators/refinery/api_generator'
-
   module Api
     require 'refinery/api/engine'
 
