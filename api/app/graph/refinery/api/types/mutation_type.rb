@@ -3,13 +3,13 @@
 module Refinery
   module Api
     module Types
-      MutationType = GraphQL::ObjectType.define do
+      class MutationType < Types::BaseObject
         name 'Mutation'
         description 'The mutation root for this schema'
 
-        field :create_page, field: Mutations::Pages::PageMutations::Create.field
-        field :update_page, field: Mutations::Pages::PageMutations::Update.field
-        field :delete_page, field: Mutations::Pages::PageMutations::Delete.field
+        field :createPage, mutation: Mutations::Pages::Create
+        field :updatePage, mutation: Mutations::Pages::Update
+        field :deletePage, mutation: Mutations::Pages::Delete
       end
     end
   end

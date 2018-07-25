@@ -4,7 +4,7 @@ module Refinery
   module Api
     module Inputs
       module Pages
-        PageInput = GraphQL::InputObjectType.define do
+        class PageInput < GraphQL::Schema::InputObject
           name 'PageInput'
 
           input_field :parent_id, types.Int

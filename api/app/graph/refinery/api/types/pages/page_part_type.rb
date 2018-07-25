@@ -4,7 +4,7 @@ module Refinery
   module Api
     module Types
       module Pages
-        PagePartType = GraphQL::ObjectType.define do
+        class PagePartType < GraphQL::Schema::Object
           name "PagePart"
           description "A PagePart"
 

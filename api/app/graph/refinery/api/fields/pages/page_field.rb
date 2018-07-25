@@ -4,7 +4,7 @@ module Refinery
   module Api
     module Fields
       module Pages
-        PageField = GraphQL::Field.define do
+        class PageField < GraphQL::Schema::Field
           name 'Page'
           description 'Find a page by ID'
 

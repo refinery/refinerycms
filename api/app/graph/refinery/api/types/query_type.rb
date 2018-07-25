@@ -3,7 +3,7 @@
 module Refinery
   module Api
     module Types
-      QueryType = GraphQL::ObjectType.define do
+      class QueryType < Types::BaseObject
         name 'Query'
         description 'The query root of this schema'
 

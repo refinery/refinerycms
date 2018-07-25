@@ -2,7 +2,7 @@
 
 module Refinery
   module Api
-    GraphqlSchema = GraphQL::Schema.define do
+    class GraphqlSchema < GraphQL::Schema
       query Types::QueryType
       mutation Types::MutationType
 

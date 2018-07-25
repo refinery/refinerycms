@@ -4,7 +4,7 @@ module Refinery
   module Api
     module Fields
       module Pages
-        PagesField = GraphQL::Field.define do
+        class PagesField < GraphQL::Schema::Field
           name 'Pages'
           description 'Find all pages'
 
