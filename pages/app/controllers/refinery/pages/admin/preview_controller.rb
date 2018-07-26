@@ -10,6 +10,8 @@ module Refinery
 
         skip_before_action :error_404, :set_canonical
 
+        layout :layout
+
         def show
           render_with_templates?
         end
@@ -43,6 +45,10 @@ module Refinery
             :parent_id, :skip_to_first_child, :show_in_menu, :title, :view_template,
             :layout_template, :custom_slug, parts_attributes: [:id, :title, :slug, :body, :position]
           ]
+        end
+
+        def layout
+          'application'
         end
       end
     end
