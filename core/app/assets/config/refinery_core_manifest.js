@@ -15,4 +15,5 @@
 
 //= link cropper.css
 //= link cropper.js
+//= link canvas-to-blob.js
 //= link refinery/image_crop.js
