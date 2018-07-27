@@ -61,10 +61,10 @@ module Refinery
     self.absolute_page_links = false
     self.types = Types.registered
     self.auto_expand_admin_tree = true
+    self.reserved_paths = %w(/rails/active_storage)
     self.friendly_id_reserved_words = %w(
       index new session login logout users refinery admin images
-    )
-    self.reserved_paths = %w(/rails/active_storage)
+    ) + self.reserved_paths.map { |path| path.split('/') }.flatten.uniq - [""]
     self.layout_templates_pattern = 'app', 'views', '{layouts,refinery/layouts}', '*html*'
     self.view_templates_pattern = 'app', 'views', '{pages,refinery/pages}', '*html*'
   end
