@@ -125,7 +125,7 @@ module Refinery
             crop: render_to_string('/refinery/admin/images/_crop', layout: false, locals: { crop: cropped_image})
           }
         else
-          flash.error = ::I18n.t('refinery.admin.images.form.crop_error')
+          flash.now[:error] = ::I18n.t('refinery.admin.images.form.crop_error')
           render json: { message: ::I18n.t('refinery.admin.images.form.crop_error') }
         end
       end
