@@ -31,5 +31,11 @@ module Refinery
         expect(response).to render_template("show")
       end
     end
+
+    describe "#show" do
+      it "does not interfere with active storage" do
+        expect(:get => "/rails/active_storage").not_to be_routable
+      end
+    end
   end
 end
