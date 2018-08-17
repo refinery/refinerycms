@@ -28,8 +28,8 @@ module Refinery
         end
 
         # web address link
-        @web_address_text = "http://"
-        @web_address_text = params[:current_link] if params[:current_link].to_s =~ /^http:\/\//
+        @web_address_text = "https://"
+        @web_address_text = params[:current_link] if params[:current_link].to_s =~ /^https:\/\//
         @web_address_target_blank = (params[:target_blank] == "true")
 
         # mailto link
@@ -45,8 +45,8 @@ module Refinery
           @page_area_selected = (params[:paginating] == "your_page")
           @resource_area_selected = (params[:paginating] == "resource_file")
         else
-          @page_area_selected = (!is_resource_link and @web_address_text == "http://" and @email_address_text.blank?)
-          @web_address_area_selected = (@web_address_text != "http://")
+          @page_area_selected = (!is_resource_link and @web_address_text == "https://" and @email_address_text.blank?)
+          @web_address_area_selected = (@web_address_text != "https://")
           @email_address_area_selected = @email_address_text.present?
           @resource_area_selected = is_resource_link
         end
