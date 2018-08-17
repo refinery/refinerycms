@@ -44,8 +44,7 @@ module Refinery
 
       def insert
         self.new if @resource.nil?
-
-        @url_override = refinery.admin_resources_path(request.query_parameters.merge(:insert => true))
+        @url_override = refinery.admin_resources_path(request.query_parameters.merge(insert: true))
 
         if params[:conditions].present?
           extra_condition = params[:conditions].split(',')
@@ -53,11 +52,16 @@ module Refinery
           extra_condition[1] = true if extra_condition[1] == "true"
           extra_condition[1] = false if extra_condition[1] == "false"
           extra_condition[1] = nil if extra_condition[1] == "nil"
-          paginate_resources({extra_condition[0] => extra_condition[1]})
-        else
-          paginate_resources
         end
-        render 'insert'
+
+        find_all_resources(({extra_condition[0] => extra_condition[1]} if extra_condition.present?))
+        search_all_resources if searching?
+
+        paginate_resources
+
+        @resource_area_selected = from_dialog?
+
+        render @callback.presence || 'insert'
       end
 
       protected
@@ -77,10 +81,8 @@ module Refinery
         super unless action_name == 'insert'
       end
 
-      def paginate_resources(conditions = {})
-        @resources = Resource.where(conditions).
-                              paginate(:page => params[:page], :per_page => Resource.per_page(from_dialog?)).
-                              order('created_at DESC')
+      def paginate_resources
+        @resources = @resources.paginate(page: params[:page], per_page: Resource.per_page(from_dialog?))
       end
 
       def resource_params

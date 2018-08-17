@@ -1,20 +1,27 @@
 <div id="existing_resource_area" class="dialog_area" <%= 'style="display:none;"'.html_safe if @resource.errors.any? %>>
+  <%= render '/refinery/admin/search', url: refinery.insert_admin_resources_path(params.to_unsafe_h.dup.except('resource')) %>
+
   <input type="hidden" name="linked_resource" id="linked_resource" />
+
   <div id="existing_resource_area_content" class="clearfix">
-    <div id="pages_list" class="pages_list">
-      <ul class="link_list">
-        <% @resources.each do |resource| -%>
-          <% resource_linked = ((@resource_id.present? && @resource_id == resource.id) || (params[:current_link].present? && resource.url == params[:current_link])) %>
-          <li<%= ' class="linked"'.html_safe if resource_linked %>>
-            <%= link_to "#{resource.title} (#{resource.file_name})", path_to_asset(resource.url),
-                        :title => t('.link_to_file'),
-                        :rel => resource.title,
-                        :class => 'page_link',
-                        :id => "resource_#{resource.id}" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+    <% if @resources.any? %>
+      <div id="pages_list" class="pages_list">
+        <ul class="link_list">
+          <% @resources.each do |resource| -%>
+            <% resource_linked = ((@resource_id.present? && @resource_id == resource.id) || (params[:current_link].present? && resource.url == params[:current_link])) %>
+            <li<%= ' class="linked"'.html_safe if resource_linked %>>
+              <%= link_to "#{resource.title} (#{resource.file_name})", path_to_asset(resource.url),
+                          :title => t('.link_to_file'),
+                          :rel => resource.title,
+                          :class => 'page_link',
+                          :id => "resource_#{resource.id}" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% elsif searching? %>
+      <%= t('no_results', scope: 'refinery.admin.search') %>
+    <% end %>
   </div>
 
   <%= will_paginate @resources, :params => params.dup.merge(:action => "insert") %>
