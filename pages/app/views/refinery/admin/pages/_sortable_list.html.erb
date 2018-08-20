@@ -1,5 +1,5 @@
 <%= content_tag :ul, id: 'sortable_list' do %>
-  <%= render partial: 'page', collection: @pages.roots, cached: true %>
+  <%= render partial: 'page', collection: @pages.roots, cached: ->(child_page) { child_page.self_and_descendants } %>
 <% end %>
 
 <%= render '/refinery/admin/sortable_list', continue_reordering: !!local_assigns[:continue_reordering] %>

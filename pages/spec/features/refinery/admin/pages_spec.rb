@@ -128,6 +128,7 @@ module Refinery
           context "with auto expand option turned on" do
             before do
               allow(Refinery::Pages).to receive(:auto_expand_admin_tree).and_return(true)
+              Rails.cache.clear
 
               visit refinery.admin_pages_path
             end
@@ -135,6 +136,13 @@ module Refinery
             it "shows children" do
               expect(page).to have_content(team.title)
               expect(page).to have_content(locations.title)
+            end
+
+            it "refreshes the cache if sub_children change" do
+              expect(page).to have_content(location.title)
+              location.update(title: 'Las Vegas')
+              visit refinery.admin_pages_path
+              expect(page).to have_content(location.title)
             end
           end
         end
