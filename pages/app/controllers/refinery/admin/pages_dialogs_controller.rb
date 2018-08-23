@@ -29,7 +29,7 @@ module Refinery
 
         # web address link
         @web_address_text = "https://"
-        @web_address_text = params[:current_link] if params[:current_link].to_s =~ /^https:\/\//
+        @web_address_text = params[:current_link] if params[:current_link].to_s =~ /^https?:\/\//
         @web_address_target_blank = (params[:target_blank] == "true")
 
         # mailto link
