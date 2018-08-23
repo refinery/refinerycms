@@ -22,7 +22,7 @@
   $(".form-actions.form-actions-dialog .form-actions-left a.close_dialog").click (e) ->
     titlebar_close_button = $('.ui-dialog-titlebar-close')
     titlebar_close_button = parent.$('.ui-dialog-titlebar-close') if parent
-    titlebar_close_button.trigger('click')
+    titlebar_close_button.click
     e.preventDefault()
 
   $("a.suppress").on "click", (e) ->

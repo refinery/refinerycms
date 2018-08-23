@@ -22,7 +22,7 @@ module Refinery
       context "new/create" do
         it "uploads file", :js => true do
           visit refinery.admin_resources_path
-          find('a', text: 'Upload new file').trigger(:click)
+          find('a', text: 'Upload new file').click
 
           expect(page).to have_selector 'iframe#dialog_iframe'
 

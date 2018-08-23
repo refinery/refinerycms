@@ -11,7 +11,7 @@ end
 
 gem 'spring'
 gem 'spring-commands-rspec'
-gem 'poltergeist', '>= 1.8.1'
+gem 'selenium-webdriver', require: false
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
