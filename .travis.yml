@@ -1,9 +1,16 @@
 language: ruby
+dist: trusty
+sudo: false
+addons:
+  apt:
+    packages:
+      - chromium-chromedriver
 cache: bundler
 before_install: gem install bundler
 bundler_args: --without development
 before_script:
   - export RETRY_COUNT=3
+  - export PATH=$PATH:/usr/lib/chromium-browser/
   - bin/rake refinery:testing:dummy_app
 script:
   - bin/rspec $EXTENSION/spec
@@ -18,16 +25,6 @@ env:
   - DB=mysql EXTENSION=resources
 notifications:
   email: true
-  irc:
-    use_notice: true
-    skip_join: true
-    channels:
-      - "irc.freenode.org#refinerycms"
-  campfire:
-    on_success: always
-    on_failure: always
-    rooms:
-      - secure: "X5X39BTgXacSdc32F8mIjJKPqm5dZzmgZfJ14qYpJeMETTdA5JfByt2uCfU8\njJkkxT+XGWta0bSSlRIHQJO6pK26U94A95VYDX0jNuneKEnsoAsqJ6U0VY6v\nH5oxXMAZ2perP/FH9ZsPNR+ulyFfbMQCeGPJw5AXKZQqzf6qPOI="
   webhooks:
     - https://webhooks.gitter.im/e/b5d48907cdc89864b874
 rvm:
@@ -35,4 +32,3 @@ rvm:
   - 2.4.3
   - 2.3.6
   - 2.2.9
-sudo: false
