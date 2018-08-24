@@ -140,16 +140,19 @@ module Refinery
 
             it "refreshes the cache if sub_children change" do
               expect(page).to have_content(location.title)
-              location.update(title: 'Las Vegas')
-              visit refinery.admin_pages_path
-              expect(page).to have_content(location.title)
+
+              find("#page_#{location.id} .edit_icon").click
+              fill_in "Title", with: 'Las Vegas'
+              click_button "Save"
+
+              expect(page).to have_content('Las Vegas')
             end
           end
         end
       end
 
       describe "new/create" do
-        it "Creates a page", js:true do
+        it "Creates a page", js: true do
           visit refinery.admin_pages_path
 
           find('a', text: 'Add new page').click
