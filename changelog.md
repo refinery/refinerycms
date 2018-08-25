@@ -1,3 +1,22 @@
+## 5.0.0 [unreleased]
+
+* #3391 Switch to selenium with chrome headless [#3394](https://github.com/refinery/refinerycms/pull/3394) ([bricesanchez](https://github.com/bricesanchez))
+* Fix page tree cache refresh on sub page changes [#3390](https://github.com/refinery/refinerycms/pull/3390) ([aiomaster](https://github.com/aiomaster))
+* Fix image_title assignment with an auto_title different for each image [#3388](https://github.com/refinery/refinerycms/pull/3388) ([bricesanchez](https://github.com/bricesanchez))
+* Interference marketable pages active record [#3387](https://github.com/refinery/refinerycms/pull/3387) ([bricesanchez](https://github.com/bricesanchez))
+* flash.error does not exist, use flash.now[:error] instead [#3386](https://github.com/refinery/refinerycms/pull/3386) ([bricesanchez](https://github.com/bricesanchez))
+* Partial revert ae30517 : Remove layout def, we use render_with_templates? method [#3384](https://github.com/refinery/refinerycms/pull/3384) ([bricesanchez](https://github.com/bricesanchez))
+* Closes GH-3381 [#3382](https://github.com/refinery/refinerycms/pull/3382) ([mightymatth](https://github.com/mightymatth))
+* Feature image crop [#3380](https://github.com/refinery/refinerycms/pull/3380) ([bricesanchez](https://github.com/bricesanchez))
+* Closes GH-3376 [#3377](https://github.com/refinery/refinerycms/pull/3377) ([kluucreations](https://github.com/kluucreations))
+* Fix generation of second/subsequent resources in an extension [#3372](https://github.com/refinery/refinerycms/pull/3372) ([anitagraham](https://github.com/anitagraham))
+* Update refinerycms-dragonfly gemspec for release. [#3371](https://github.com/refinery/refinerycms/pull/3371) ([parndt](https://github.com/parndt))
+* Allow the home page to have a path other than '/' [#3368](https://github.com/refinery/refinerycms/pull/3368) ([anitagraham](https://github.com/anitagraham))
+* Switch from Globalize to Mobility [#3360](https://github.com/refinery/refinerycms/pull/3360) ([bricesanchez](https://github.com/bricesanchez))
+* Feature/rails 5.2 [#3352](https://github.com/refinery/refinerycms/pull/3352) ([bricesanchez](https://github.com/bricesanchez))
+
+- [See full list](https://github.com/refinery/refinerycms/compare/4.0.2...master)
+
 ## 4.0.2 [21 May 2018]
 
 * Remove financials - pledgie has closed down [#3365](https://github.com/refinery/refinerycms/pull/3365) ([parndt](https://github.com/parndt))
@@ -28,7 +47,7 @@
 * Use selected_image parameter to select an image upon opening the dialog [#3284](https://github.com/refinery/refinerycms/pull/3284) ([veger](https://github.com/veger))
 * Fix permitted params allowing new images to be uploaded [#3278](https://github.com/refinery/refinerycms/pull/3278) ([veger](https://github.com/veger))
 
-- [See full list](https://github.com/refinery/refinerycms/compare/4.0.1...4.0.0)
+- [See full list](https://github.com/refinery/refinerycms/compare/4.0.1...4.0.2)
 
 ## 4.0.1 [24 October 2017]
 
