@@ -1,3 +1,9 @@
+## 4.0.3 [2 September 2018]
+
+* Update dragonfly initializer to be compatible with dragonfly s3 datastore - Closes GH-3376 [#3377](https://github.com/refinery/refinerycms/pull/3377) ([kluucreations](https://github.com/kluucreations))
+
+- [See full list](https://github.com/refinery/refinerycms/compare/4.0.2...4.0.3)
+
 ## 4.0.2 [21 May 2018]
 
 * Remove financials - pledgie has closed down [#3365](https://github.com/refinery/refinerycms/pull/3365) ([parndt](https://github.com/parndt))
@@ -28,7 +34,7 @@
 * Use selected_image parameter to select an image upon opening the dialog [#3284](https://github.com/refinery/refinerycms/pull/3284) ([veger](https://github.com/veger))
 * Fix permitted params allowing new images to be uploaded [#3278](https://github.com/refinery/refinerycms/pull/3278) ([veger](https://github.com/veger))
 
-- [See full list](https://github.com/refinery/refinerycms/compare/4.0.1...4.0.0)
+- [See full list](https://github.com/refinery/refinerycms/compare/4.0.1...4.0.2)
 
 ## 4.0.1 [24 October 2017]
 
