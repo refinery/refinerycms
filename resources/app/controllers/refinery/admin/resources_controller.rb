@@ -61,7 +61,11 @@ module Refinery
 
         @resource_area_selected = from_dialog?
 
-        render @callback.presence || 'insert'
+        if params[:visual_editor]
+          render '/refinery/admin/pages_dialogs/link_to' 
+        else 
+          render 'insert' 
+        end
       end
 
       protected
