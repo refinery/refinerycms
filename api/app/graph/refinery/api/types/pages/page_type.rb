@@ -5,39 +5,30 @@ module Refinery
     module Types
       module Pages
         class PageType < GraphQL::Schema::Object
-          name "Page"
+          graphql_name "Page"
           description "A Page"
 
-          interfaces [Types::ActiveRecordInterface]
-
-          field :parent_id, types.Int
-          field :path, types.String
-          field :show_in_menu, types.Boolean
-          field :link_url, types.String
-          field :menu_match, types.String
-          field :deletable, types.Boolean
-          field :draft, types.Boolean
-          field :skip_to_first_child, types.Boolean
-          field :lft, types.Int
-          field :rgt, types.Int
-          field :depth, types.Int
-          field :view_template, types.String
-          field :layout_template, types.String
-          field :locale, types.String
-          field :title, types.String
-          field :custom_slug, types.String
-          field :menu_title, types.String
-          field :slug, types.String
-          field :meta_description, types.String
-          field :browser_title, types.String
-
-          field :parts do
-            type types[Types::Pages::PagePartType]
-
-            resolve -> (obj, args, ctx) {
-              obj.parts.order(:position)
-            }
-          end
+          field :parent_id, Integer, null: true
+          field :path, String, null: true
+          field :show_in_menu, Boolean, null: true
+          field :link_url, String, null: true
+          field :menu_match, String, null: true
+          field :deletable, Boolean, null: true
+          field :draft, Boolean, null: true
+          field :skip_to_first_child, Boolean, null: true
+          field :lft, Integer, null: true
+          field :rgt, Integer, null: true
+          field :depth, Integer, null: true
+          field :view_template, String, null: true
+          field :layout_template, String, null: true
+          field :locale, String, null: true
+          field :title, String, null: true
+          field :custom_slug, String, null: true
+          field :menu_title, String, null: true
+          field :slug, String, null: true
+          field :meta_description, String, null: true
+          field :browser_title, String, null: true
+          field :parts, [PagePartType], null: true
         end
       end
     end

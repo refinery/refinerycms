@@ -4,7 +4,7 @@ module Refinery
   module Api
     module Types
       class MutationType < Types::BaseObject
-        name 'Mutation'
+        graphql_name 'Mutation'
         description 'The mutation root for this schema'
 
         field :createPage, mutation: Mutations::Pages::Create

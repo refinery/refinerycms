@@ -4,15 +4,15 @@ module Refinery
   module Api
     module Mutations
       module Pages
-        class Delete < GraphQL::Schema::Mutation
-          name 'DeletePage'
+        class Delete <  Mutations::BaseMutation
+          graphql_name 'DeletePage'
 
-          input_field :id, !types.ID
+          argument :id, ID, required: true
 
           return_field :page, Types::Pages::PageType
 
-          resolve -> (obj, inputs, ctx) {
-            page = Refinery::Page.destroy(inputs[:id])
+          resolve -> (id:) {
+            page = Refinery::Page.destroy!(id)
 
             { page: page }
           }

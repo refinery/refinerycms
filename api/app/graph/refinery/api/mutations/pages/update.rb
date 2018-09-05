@@ -5,7 +5,7 @@ module Refinery
     module Mutations
       module Pages
         class Update < GraphQL::Schema::Mutation
-          name 'UpdatePage'
+          graphql_name 'UpdatePage'
           description 'Create a page'
 
           input_field :id, !types.ID

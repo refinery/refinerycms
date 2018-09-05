@@ -5,17 +5,15 @@ module Refinery
     module Types
       module Pages
         class PagePartType < GraphQL::Schema::Object
-          name "PagePart"
+          graphql_name "PagePart"
           description "A PagePart"
 
-          interfaces [Types::ActiveRecordInterface]
+          field :slug, String, null: true
+          field :position, Integer, null: true
+          field :title, String, null: true
 
-          field :slug, types.String
-          field :position, types.Int
-          field :title, types.String
-
-          field :locale, types.String
-          field :body, types.String
+          field :locale, String, null: true
+          field :body, String, null: true
         end
       end
     end

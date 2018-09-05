@@ -4,11 +4,19 @@ module Refinery
   module Api
     module Types
       class QueryType < Types::BaseObject
-        name 'Query'
+        graphql_name 'Query'
         description 'The query root of this schema'
 
-        field :page, field: Fields::Pages::PageField
-        field :pages, field: Fields::Pages::PagesField
+        field :pages, [Types::Pages::PageType],
+              null: true, resolve: Resolvers::Pages::PageResolver::All do
+          description "All pages"
+        end
+
+        field :page, Types::Pages::PageType,
+              null: true, resolve: Resolvers::Pages::PageResolver::ById do
+          description "Find page by id"
+        end
+
       end
     end
   end

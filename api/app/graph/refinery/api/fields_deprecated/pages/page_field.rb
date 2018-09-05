@@ -5,7 +5,7 @@ module Refinery
     module Fields
       module Pages
         class PageField < GraphQL::Schema::Field
-          name 'Page'
+          graphql_name 'Page'
           description 'Find a page by ID'
 
           type Types::Pages::PageType

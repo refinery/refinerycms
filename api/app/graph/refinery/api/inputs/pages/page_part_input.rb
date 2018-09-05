@@ -5,7 +5,7 @@ module Refinery
     module Inputs
       module Pages
         class PagePartInput < GraphQL::Schema::InputObject
-          name 'PagePartInput'
+          graphql_name 'PagePartInput'
 
           input_field :slug, types.String
           input_field :position, types.Int

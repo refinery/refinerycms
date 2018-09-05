@@ -4,7 +4,7 @@ module Refinery
   module Api
     module Types
       DateType = GraphQL::ScalarType.define do
-        name "Date"
+        graphql_name "Date"
         description "Valid date format (parsable by Ruby's Date.parse)"
 
         coerce_input -> (value, context) do

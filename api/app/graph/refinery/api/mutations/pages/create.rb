@@ -5,12 +5,12 @@ module Refinery
     module Mutations
       module Pages
         class Create < GraphQL::Schema::Mutation
-          name 'CreatePage'
+          graphql_name 'CreatePage'
           description 'Create a page'
 
-          input_field :page, !Inputs::Pages::PageInput
+          argument :page, !Types::Pages::PageType
 
-          return_field :page, Types::Pages::PageType
+          type Types::Pages::PageType
 
           resolve -> (obj, inputs, ctx) {
             inputs = inputs.to_h.deep_symbolize_keys

@@ -5,7 +5,7 @@ module Refinery
     module Fields
       module Pages
         class PagesField < GraphQL::Schema::Field
-          name 'Pages'
+          graphql_name 'Pages'
           description 'Find all pages'
 
           type types[Types::Pages::PageType]

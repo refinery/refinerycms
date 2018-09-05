@@ -39,6 +39,7 @@ query($id: ID!) {
             end
 
             it 'returns a page' do
+              byebug
               subject
               expect(result['data']['page']['title']).to eq(page.title)
             end
