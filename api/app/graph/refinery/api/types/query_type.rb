@@ -14,9 +14,9 @@ module Refinery
 
         field :page, Types::Pages::PageType,
               null: true, resolve: Resolvers::Pages::PageResolver::ById do
+          argument :id, ID, required: true
           description "Find page by id"
         end
-
       end
     end
   end

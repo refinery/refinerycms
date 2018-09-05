@@ -6,7 +6,7 @@ module Refinery
   module Api
     module Mutations
       module Pages
-        describe 'UpdatePageMutation' do
+        describe 'UpdatePageMutation', focus: true do
           let(:logged_in_user) { Refinery::Core::NilUser.new }
 
           let!(:page) { FactoryBot.create(:page) }
@@ -24,7 +24,7 @@ module Refinery
           let(:query_string) do
             <<-QUERY
 mutation($page: UpdatePageInput!) {
-  update_page(input: $page) {
+  updatePage(input: $page) {
     page {
       id
       title

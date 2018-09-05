@@ -4,22 +4,30 @@ module Refinery
   module Api
     module Mutations
       module Pages
-        class Update < GraphQL::Schema::Mutation
+        class Update < Mutations::BaseMutation
           graphql_name 'UpdatePage'
-          description 'Create a page'
+          description 'Update a Page'
 
-          input_field :id, !types.ID
-          input_field :page, !Inputs::Pages::PageInput
+          argument :id, ID, required: true
 
-          return_field :page, Types::Pages::PageType
+          field :page, Types::Pages::PageType, null: false
+          field :errors, [String], null: false
 
-          resolve -> (obj, inputs, ctx) {
-            inputs = inputs.to_h.deep_symbolize_keys
+          def resolve(id:, page:)
+            page = Refinery::Page.update(id, page)
 
-            page = Refinery::Page.update(inputs[:id], inputs[:page])
-
-            { page: page }
-          }
+            if page.errors.empty?
+              {
+                page: page,
+                errors: []
+              }
+            else
+              {
+                page: nil,
+                errors: page.errors.full_messages
+              }
+            end
+          end
         end
       end
     end

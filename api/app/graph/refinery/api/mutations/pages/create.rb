@@ -4,21 +4,30 @@ module Refinery
   module Api
     module Mutations
       module Pages
-        class Create < GraphQL::Schema::Mutation
+        class Create < Mutations::BaseMutation
+          null true
+
           graphql_name 'CreatePage'
-          description 'Create a page'
+          description 'Create a Page'
 
-          argument :page, !Types::Pages::PageType
+          field :page, Types::Pages::PageAttributes, null: true
+          field :errors, [String], null: false
 
-          type Types::Pages::PageType
+          def resolve(page:)
+            page = Refinery::Page.create!(page)
 
-          resolve -> (obj, inputs, ctx) {
-            inputs = inputs.to_h.deep_symbolize_keys
-
-            page = Refinery::Page.create!(inputs[:page])
-
-            { page: page }
-          }
+            if page.errors.empty?
+              {
+                page: page,
+                errors: []
+              }
+            else
+              {
+                page: nil,
+                errors: page.errors.full_messages
+              }
+            end
+          end
         end
       end
     end

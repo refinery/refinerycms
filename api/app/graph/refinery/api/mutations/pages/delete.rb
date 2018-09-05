@@ -4,18 +4,30 @@ module Refinery
   module Api
     module Mutations
       module Pages
-        class Delete <  Mutations::BaseMutation
+        class Delete < Mutations::BaseMutation
           graphql_name 'DeletePage'
+          description 'Delete a Page'
 
           argument :id, ID, required: true
 
-          return_field :page, Types::Pages::PageType
+          field :page, Types::Pages::PageType, null: false
+          field :errors, [String], null: false
 
-          resolve -> (id:) {
+          def resolve(id:)
             page = Refinery::Page.destroy!(id)
 
-            { page: page }
-          }
+            if page.errors.empty?
+              {
+                page: page,
+                errors: []
+              }
+            else
+              {
+                page: nil,
+                errors: page.errors.full_messages
+              }
+            end
+          end
         end
       end
     end

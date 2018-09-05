@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Refinery
   module Api
     module Resolvers

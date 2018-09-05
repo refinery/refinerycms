@@ -24,7 +24,7 @@ module Refinery
           let(:query_string) do
             <<-QUERY
 mutation($page: DeletePageInput!) {
-  delete_page(input: $page) {
+  deletePage(input: $page) {
     page {
       id
     }
@@ -39,7 +39,6 @@ mutation($page: DeletePageInput!) {
             let(:variables) { {'page' => { 'id' => page.id }} }
 
             it 'deletes the page' do
-              subject
               expect(Refinery::Page.find_by_id(page.id)).to be(nil)
             end
           end

@@ -6,7 +6,7 @@ module Refinery
   module Api
     module Mutations
       module Pages
-        describe 'CreatePageMutation' do
+        describe 'CreatePageMutation', focus: true do
           let(:logged_in_user) { Refinery::Core::NilUser.new }
 
           let(:context) { {current_user: logged_in_user} }
@@ -21,8 +21,8 @@ module Refinery
 
           let(:query_string) do
             <<-QUERY
-mutation($page: CreatePageInput!) {
-  create_page(input: $page) {
+mutation {
+  createPage(page: $page) {
     page {
       title
     }
@@ -47,6 +47,7 @@ mutation($page: CreatePageInput!) {
 
               it 'returns the page title of the newly created page' do
                 subject
+                byebug
                 expect(result['data']['create_page']['page']['title']).to eq('Test page')
               end
             end
