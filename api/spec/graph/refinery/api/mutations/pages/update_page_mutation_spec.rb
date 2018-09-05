@@ -6,7 +6,7 @@ module Refinery
   module Api
     module Mutations
       module Pages
-        describe 'UpdatePageMutation', focus: true do
+        describe 'UpdatePageMutation' do
           let(:logged_in_user) { Refinery::Core::NilUser.new }
 
           let!(:page) { FactoryBot.create(:page) }

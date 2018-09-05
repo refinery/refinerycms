@@ -6,7 +6,7 @@ module Refinery
   module Api
     module Mutations
       module Pages
-        describe 'CreatePageMutation', focus: true do
+        describe 'CreatePageMutation' do
           let(:logged_in_user) { Refinery::Core::NilUser.new }
 
           let(:context) { {current_user: logged_in_user} }
