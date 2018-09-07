@@ -28,6 +28,7 @@ module Refinery
           field :slug, String, null: true
           field :meta_description, String, null: true
           field :browser_title, String, null: true
+
           field :parts, [PagePartType], null: true
         end
       end

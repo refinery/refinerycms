@@ -16,7 +16,7 @@ module Refinery
           argument :draft, Boolean, required: false
           argument :skip_to_first_child, Boolean, required: false
           argument :lft, Integer, required: false
-          argument :rgt, required: false
+          argument :rgt, Integer, required: false
           argument :depth, Integer, required: false
           argument :view_template, String, required: false
           argument :layout_template, String, required: false
@@ -28,7 +28,7 @@ module Refinery
           argument :meta_description, String, required: false
           argument :browser_title, String, required: false
 
-          argument :parts, [Types::PagePart], required: false
+          argument :parts, [PagePartAttributes], required: false
         end
       end
     end
