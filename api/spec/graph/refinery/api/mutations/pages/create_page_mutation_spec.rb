@@ -47,7 +47,6 @@ mutation {
 
               it 'returns the page title of the newly created page' do
                 subject
-                byebug
                 expect(result['data']['create_page']['page']['title']).to eq('Test page')
               end
             end
