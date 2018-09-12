@@ -22,13 +22,13 @@ module Refinery
           end
 
           let(:query_string) do
-            <<-QUERY
-query {
-  pages {
-    title
-  }
-}
-            QUERY
+            <<-GRAPHQL
+              query {
+                pages {
+                  title
+                }
+              }
+            GRAPHQL
           end
 
           subject { result }

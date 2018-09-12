@@ -22,7 +22,7 @@ module Refinery
           end
 
           let(:query_string) do
-            <<~QUERY
+            <<-GRAPHQL
               mutation deletePage($input: DeletePageInput!) {
                 deletePage(input: $input) {
                   page {
@@ -30,7 +30,7 @@ module Refinery
                   }
                 }
               }
-            QUERY
+            GRAPHQL
           end
 
           subject { result }

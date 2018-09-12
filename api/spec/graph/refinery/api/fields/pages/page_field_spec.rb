@@ -22,13 +22,13 @@ module Refinery
           end
 
           let(:query_string) do
-            <<-QUERY
-query($id: ID!) {
-  page(id: $id) {
-    title
-  }
-}
-            QUERY
+            <<-GRAPHQL
+              query($id: ID!) {
+                page(id: $id) {
+                  title
+                }
+              }
+            GRAPHQL
           end
 
           subject { result }

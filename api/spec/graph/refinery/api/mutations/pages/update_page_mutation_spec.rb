@@ -22,7 +22,7 @@ module Refinery
           end
 
           let(:query_string) do
-            <<~QUERY
+            <<-GRAPHQL
               mutation updatePage($input: UpdatePageInput!) {
                 updatePage(input: $input) {
                   page {
@@ -31,7 +31,7 @@ module Refinery
                   }
                 }
               }
-            QUERY
+            GRAPHQL
           end
 
           subject { result }
