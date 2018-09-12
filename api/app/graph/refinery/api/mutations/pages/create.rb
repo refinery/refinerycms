@@ -5,16 +5,16 @@ module Refinery
     module Mutations
       module Pages
         class Create < Mutations::BaseMutation
-          null true
-
           graphql_name 'CreatePage'
           description 'Create a Page'
 
-          field :page, Types::Pages::PageAttributes, null: true
+          argument :page, Types::Pages::PageAttributes, required: true
+
+          field :page, Types::Pages::PageType, null: true
           field :errors, [String], null: false
 
           def resolve(page:)
-            page = Refinery::Page.create!(page)
+            page = Refinery::Page.create!(page.to_h)
 
             if page.errors.empty?
               {

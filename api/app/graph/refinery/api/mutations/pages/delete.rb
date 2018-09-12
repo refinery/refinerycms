@@ -10,11 +10,11 @@ module Refinery
 
           argument :id, ID, required: true
 
-          field :page, Types::Pages::PageType, null: false
+          field :page, Types::Pages::PageType, null: true
           field :errors, [String], null: false
 
           def resolve(id:)
-            page = Refinery::Page.destroy!(id)
+            page = Refinery::Page.destroy(id)
 
             if page.errors.empty?
               {

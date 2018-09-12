@@ -20,14 +20,14 @@ module Refinery
           end
 
           let(:query_string) do
-            <<-QUERY
-mutation {
-  createPage(page: $page) {
-    page {
-      title
-    }
-  }
-}
+            <<~QUERY
+              mutation createPage($input: CreatePageInput!) {
+                createPage(input: $input) {
+                  page {
+                    title
+                  }
+                }
+              }
             QUERY
           end
 
@@ -37,9 +37,9 @@ mutation {
             context 'create a page' do
               let(:variables) do
                 {
-                  'page' => {
-                    'page' => {
-                      'title' => 'Test page'
+                  "input": {
+                    "page": {
+                      "title": "Test page"
                     }
                   }
                 }
@@ -47,7 +47,7 @@ mutation {
 
               it 'returns the page title of the newly created page' do
                 subject
-                expect(result['data']['create_page']['page']['title']).to eq('Test page')
+                expect(result['data']['createPage']['page']['title']).to eq('Test page')
               end
             end
           end

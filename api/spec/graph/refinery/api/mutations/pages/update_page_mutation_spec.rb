@@ -22,15 +22,15 @@ module Refinery
           end
 
           let(:query_string) do
-            <<-QUERY
-mutation($page: UpdatePageInput!) {
-  updatePage(input: $page) {
-    page {
-      id
-      title
-    }
-  }
-}
+            <<~QUERY
+              mutation updatePage($input: UpdatePageInput!) {
+                updatePage(input: $input) {
+                  page {
+                    id
+                    title
+                  }
+                }
+              }
             QUERY
           end
 
@@ -40,10 +40,10 @@ mutation($page: UpdatePageInput!) {
             context 'update a page' do
               let(:variables) do
                 {
-                  'page' => {
-                    'id' => page.id,
-                    'page' => {
-                      'title' => 'Updated Test page'
+                  "input": {
+                    "id": page.id,
+                    "page": {
+                      "title": "Updated test page"
                     }
                   }
                 }
@@ -51,8 +51,8 @@ mutation($page: UpdatePageInput!) {
 
               it 'returns the page id and title of the newly created page' do
                 subject
-                expect(result['data']['update_page']['page']['id']).to eq(page.id.to_s)
-                expect(result['data']['update_page']['page']['title']).to eq('Updated Test page')
+                expect(result['data']['updatePage']['page']['id']).to eq(page.id)
+                expect(result['data']['updatePage']['page']['title']).to eq('Updated test page')
               end
             end
           end

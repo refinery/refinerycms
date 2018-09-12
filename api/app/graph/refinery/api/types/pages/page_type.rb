@@ -8,6 +8,7 @@ module Refinery
           graphql_name "Page"
           description "A Page"
 
+          field :id, Integer, null: false
           field :parent_id, Integer, null: true
           field :path, String, null: true
           field :show_in_menu, Boolean, null: true

@@ -22,23 +22,30 @@ module Refinery
           end
 
           let(:query_string) do
-            <<-QUERY
-mutation($page: DeletePageInput!) {
-  deletePage(input: $page) {
-    page {
-      id
-    }
-  }
-}
+            <<~QUERY
+              mutation deletePage($input: DeletePageInput!) {
+                deletePage(input: $input) {
+                  page {
+                    id
+                  }
+                }
+              }
             QUERY
           end
 
           subject { result }
 
           context 'Correct page id' do
-            let(:variables) { {'page' => { 'id' => page.id }} }
+            let(:variables) do
+              {
+                "input": {
+                  "id": page.id
+                }
+              }
+            end
 
             it 'deletes the page' do
+              subject
               expect(Refinery::Page.find_by_id(page.id)).to be(nil)
             end
           end

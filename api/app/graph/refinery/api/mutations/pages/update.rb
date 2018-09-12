@@ -9,12 +9,13 @@ module Refinery
           description 'Update a Page'
 
           argument :id, ID, required: true
+          argument :page, Types::Pages::PageAttributes, required: true
 
           field :page, Types::Pages::PageType, null: false
           field :errors, [String], null: false
 
           def resolve(id:, page:)
-            page = Refinery::Page.update(id, page)
+            page = Refinery::Page.update(id, page.to_h)
 
             if page.errors.empty?
               {
