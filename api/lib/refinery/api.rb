@@ -1,5 +1,6 @@
 require 'refinerycms-core'
 require 'graphql'
+require 'graphql/guard'
 require 'graphiql/rails'
 
 module Refinery

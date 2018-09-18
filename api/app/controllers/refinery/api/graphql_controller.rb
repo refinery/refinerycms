@@ -1,6 +1,8 @@
 module Refinery
   module Api
     class GraphqlController < ::ApplicationController
+      include Refinery::Admin::BaseController
+
       def execute
         variables = ensure_hash(params[:variables])
         query = params[:query]

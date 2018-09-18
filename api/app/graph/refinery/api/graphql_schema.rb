@@ -5,6 +5,7 @@ module Refinery
     class GraphqlSchema < GraphQL::Schema
       mutation Types::MutationType
       query Types::QueryType
+      use GraphQL::Guard.new
     end
   end
 end

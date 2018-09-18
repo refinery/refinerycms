@@ -33,7 +33,18 @@ module Refinery
 
           subject { result }
 
-          context "as a normal user" do
+          context "as a visitor" do
+            let(:variables) do
+              {'query' => '', 'id' => page.id }
+            end
+
+            it 'returns a page' do
+              subject
+              expect(result['data']['page']['title']).to eq(page.title)
+            end
+          end
+
+          context "as an admin user" do
             let(:variables) do
               {'query' => '', 'id' => page.id }
             end

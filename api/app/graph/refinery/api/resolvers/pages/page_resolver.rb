@@ -6,14 +6,22 @@ module Refinery
       module Pages
         class PageResolver
           class All
-            def self.call(obj, args, ctx)
-              Refinery::Page.live
+            def self.call(_obj, args, ctx)
+              if ctx[:current_user].has_role?(:refinery)
+                Refinery::Page.all
+              else
+                Refinery::Page.live
+              end
             end
           end
 
           class ById
-            def self.call(obj, args, ctx)
-              Refinery::Page.find_by_id(args[:id])
+            def self.call(_obj, args, ctx)
+              if ctx[:current_user].has_role?(:refinery)
+                Refinery::Page.find_by_id(args[:id])
+              else
+                Refinery::Page.live.find_by_id(args[:id])
+              end
             end
           end
         end

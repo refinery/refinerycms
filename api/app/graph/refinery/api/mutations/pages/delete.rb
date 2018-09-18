@@ -8,6 +8,8 @@ module Refinery
           graphql_name 'DeletePage'
           description 'Delete a Page'
 
+          guard ->(_obj, _args, ctx) { ctx[:current_user].has_role?(:refinery) }
+
           argument :id, ID, required: true
 
           field :page, Types::Pages::PageType, null: true

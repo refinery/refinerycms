@@ -8,6 +8,8 @@ module Refinery
           graphql_name 'UpdatePage'
           description 'Update a Page'
 
+          guard ->(_obj, _args, ctx) { ctx[:current_user].has_role?(:refinery) }
+
           argument :id, ID, required: true
           argument :page, Types::Pages::PageAttributes, required: true
 
