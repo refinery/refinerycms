@@ -36,4 +36,5 @@ fr:
       models:
         refinery/resource:
           blank: Vous devez spécifier un fichier à télécharger
+          incorrect_format: Votre fichier doit être un PDF
           too_big: Le poids maximal des fichiers est de %{size} megaoctets

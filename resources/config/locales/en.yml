@@ -36,4 +36,5 @@ en:
       models:
         refinery/resource:
           blank: You must specify file for upload
+          incorrect_format: Your file must be a PDF
           too_big: File should be smaller than %{size} bytes in size
