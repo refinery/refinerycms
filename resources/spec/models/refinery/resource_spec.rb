@@ -1,61 +1,64 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 module Refinery
-  describe Resource, :type => :model do
+  describe Resource, type: :model do
     let(:resource) { FactoryBot.create(:resource) }
-    let(:titled_resource) { FactoryBot.create(:resource, resource_title: 'Resource Title')}
+    let(:titled_resource) { FactoryBot.create(:resource, resource_title: 'Resource Title') }
 
-    context "with valid attributes" do
-      it "should create successfully" do
+    context 'with valid attributes' do
+      it 'should create successfully' do
         expect(resource.errors).to be_empty
       end
     end
 
-    context "resource url" do
-      it "should respond to .url" do
+    context 'resource url' do
+      it 'should respond to .url' do
         expect(resource).to respond_to(:url)
       end
 
-      it "should not support thumbnailing like images do" do
+      it 'should not support thumbnailing like images do' do
         expect(resource).not_to respond_to(:thumbnail)
       end
 
-      it "should contain its filename at the end" do
+      it 'should contain its filename at the end' do
         expect(resource.url.split('/').last).to match(/\A#{resource.file_name}/)
       end
 
-      context "when Dragonfly.verify_urls is true" do
+      context 'when Dragonfly.verify_urls is true' do
         before do
           allow(Refinery::Resources).to receive(:dragonfly_verify_urls).and_return(true)
           ::Refinery::Dragonfly.configure!(Refinery::Resources)
         end
 
-        it "returns a url with an SHA parameter" do
+        it 'returns a url with an SHA parameter' do
           expect(resource.url).to match(/\?sha=[\da-fA-F]{16}\z/)
         end
       end
 
-      context "when Dragonfly.verify_urls is false" do
+      context 'when Dragonfly.verify_urls is false' do
         before do
           allow(Refinery::Resources).to receive(:dragonfly_verify_urls).and_return(false)
           ::Refinery::Dragonfly.configure!(Refinery::Resources)
         end
-        it "returns a url without an SHA parameter" do
+
+        it 'returns a url without an SHA parameter' do
           expect(resource.url).not_to match(/\?sha=[\da-fA-F]{16}\z/)
         end
       end
     end
 
-    describe "#type_of_content" do
-      it "returns formated mime type" do
-        expect(resource.type_of_content).to eq("text plain")
+    describe '#type_of_content' do
+      it 'returns formated mime type' do
+        expect(resource.type_of_content).to eq('application pdf')
       end
     end
 
-    describe "#title" do
+    describe '#title' do
       context 'when a specific title has not been given' do
-        it "returns a titleized version of the filename" do
-          expect(resource.title).to eq("Refinery Is Awesome")
+        it 'returns a titleized version of the filename' do
+          expect(resource.title).to eq('Cape Town Tide Table')
         end
       end
       context 'when a specific title has been given' do
@@ -65,93 +68,113 @@ module Refinery
       end
     end
 
-    describe ".per_page" do
-      context "dialog is true" do
-        it "returns resource count specified by Resources.pages_per_dialog option" do
+    describe '.per_page' do
+      context 'dialog is true' do
+        it 'returns resource count specified by Resources.pages_per_dialog option' do
           expect(Resource.per_page(true)).to eq(Resources.pages_per_dialog)
         end
       end
 
-      context "dialog is false" do
-        it "returns resource count specified by Resources.pages_per_admin_index constant" do
+      context 'dialog is false' do
+        it 'returns resource count specified by Resources.pages_per_admin_index constant' do
           expect(Resource.per_page).to eq(Resources.pages_per_admin_index)
         end
       end
     end
 
-    describe ".create_resources" do
-      let(:file) { Refinery.roots('refinery/resources').join("spec/fixtures/refinery_is_awesome.txt") }
+    describe '.create_resources' do
+      let(:file) { Refinery.roots('refinery/resources').join('spec/fixtures/cape-town-tide-table.pdf') }
 
-      context "only one resource uploaded" do
-        it "returns an array containing one resource" do
-          expect(Resource.create_resources(:file => file).size).to eq(1)
+      context 'only one resource uploaded' do
+        it 'returns an array containing one resource' do
+          expect(Resource.create_resources(file: file).size).to eq(1)
         end
       end
 
-      context "many resources uploaded at once" do
-        it "returns an array containing all those resources" do
-          expect(Resource.create_resources(:file => [file, file, file]).size).to eq(3)
+      context 'many resources uploaded at once' do
+        it 'returns an array containing all those resources' do
+          expect(Resource.create_resources(file: [file, file, file]).size).to eq(3)
         end
       end
 
-      specify "each returned array item should be an instance of resource" do
-        Resource.create_resources(:file => [file, file, file]).each do |r|
-          expect(r).to be_an_instance_of(Resource)
+      specify 'each returned array item should be an instance of resource' do
+        Resource.create_resources(file: [file, file, file]).each do |resource|
+          expect(resource).to be_an_instance_of(Resource)
         end
       end
 
-      specify "each returned array item should be passed form parameters" do
-        params = {:file => [file, file, file], :fake_param => 'blah'}
+      specify 'each returned array item should be passed form parameters' do
+        params = { file: [file, file, file], fake_param: 'blah' }
 
-        expect(Resource).to receive(:create).exactly(3).times.with({:file => file, :fake_param => 'blah'})
+        expect(Resource).to receive(:create).exactly(3).times.with(file: file, fake_param: 'blah')
         Resource.create_resources(params)
       end
     end
 
-    describe "validations" do
-      describe "valid #file" do
+    describe 'validations' do
+      describe 'valid #file' do
         before do
-          @file = Refinery.roots('refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
-          Resources.max_file_size = (File.read(@file).size + 10)
+          @file = Refinery.roots('refinery/resources').join('spec/fixtures/cape-town-tide-table.pdf')
+          Resources.max_file_size = (File.read(@file).size + 1000)
         end
 
-        it "should be valid when size does not exceed .max_file_size" do
-          expect(Resource.new(:file => @file)).to be_valid
+        it 'should be valid when size does not exceed .max_file_size' do
+          expect(Resource.new(file: @file)).to be_valid
         end
       end
 
-      describe "too large #file" do
+      describe 'wrong mime_type #file' do
         before do
-          @file = Refinery.roots('refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
-          Resources.max_file_size = (File.read(@file).size - 10)
-          @resource = Resource.new(:file => @file)
+          @file = Refinery.roots('refinery/resources').join('spec/fixtures/refinery_is_secure.txt')
+          Resources.max_file_size = (File.read(@file).size + 10)
+          @resource = Resource.new(file: @file)
         end
 
-        it "should not be valid when size exceeds .max_file_size" do
+        it 'should not be valid when mime_type is not in .whitelisted_mime_types' do
           expect(@resource).not_to be_valid
         end
 
-        it "should contain an error message" do
+        it 'should contain an error message' do
           @resource.valid?
           expect(@resource.errors).not_to be_empty
           expect(@resource.errors[:file]).to eq(Array(::I18n.t(
-            'too_big', :scope => 'activerecord.errors.models.refinery/resource',
-                       :size => Resources.max_file_size
-          )))
+                                                        'incorrect_format', scope: 'activerecord.errors.models.refinery/resource'
+                                                      )))
         end
       end
 
-      describe "invalid argument for #file" do
+      describe 'too large #file' do
+        before do
+          @file = Refinery.roots('refinery/resources').join('spec/fixtures/cape-town-tide-table.pdf')
+          Resources.max_file_size = (File.read(@file).size - 10)
+          @resource = Resource.new(file: @file)
+        end
+
+        it 'should not be valid when size exceeds .max_file_size' do
+          expect(@resource).not_to be_valid
+        end
+
+        it 'should contain an error message' do
+          @resource.valid?
+          expect(@resource.errors).not_to be_empty
+          expect(@resource.errors[:file]).to eq(Array(::I18n.t(
+                                                        'too_big', scope: 'activerecord.errors.models.refinery/resource',
+                                                                   size: Resources.max_file_size
+                                                      )))
+        end
+      end
+
+      describe 'invalid argument for #file' do
         before do
           @resource = Resource.new
         end
 
-        it "has an error message" do
+        it 'has an error message' do
           @resource.valid?
           expect(@resource.errors).not_to be_empty
           expect(@resource.errors[:file]).to eq(Array(::I18n.t(
-            'blank', :scope => 'activerecord.errors.models.refinery/resource'
-          )))
+                                                        'blank', scope: 'activerecord.errors.models.refinery/resource'
+                                                      )))
         end
       end
     end
