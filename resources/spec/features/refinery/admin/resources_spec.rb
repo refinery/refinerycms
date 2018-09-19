@@ -44,7 +44,7 @@ module Refinery
         end
 
         context 'when the file mime_type is not acceptable' do
-          let(:file_path) { Refinery.roots('refinery/resources').join('spec/fixtures/refinery_is_secure.txt') }
+          let(:file_path) { Refinery.roots('refinery/resources').join('spec/fixtures/refinery_is_secure.html') }
 
           it 'the file is rejected', js: true do
             expect(uploading_a_file).to_not change(Refinery::Resource, :count)

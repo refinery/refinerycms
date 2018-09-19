@@ -125,7 +125,7 @@ module Refinery
 
       describe 'wrong mime_type #file' do
         before do
-          @file = Refinery.roots('refinery/resources').join('spec/fixtures/refinery_is_secure.txt')
+          @file = Refinery.roots('refinery/resources').join('spec/fixtures/refinery_is_secure.html')
           Resources.max_file_size = (File.read(@file).size + 10)
           @resource = Resource.new(file: @file)
         end
