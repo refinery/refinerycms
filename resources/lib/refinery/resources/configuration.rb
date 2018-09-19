@@ -15,6 +15,40 @@ module Refinery
 
     self.dragonfly_name = :refinery_resources
 
-    self.whitelisted_mime_types = %w[application/pdf]
+    self.whitelisted_mime_types = %w[
+      audio/mp4
+      audio/mpeg
+      audio/wav
+      audio/x-wav
+
+      image/gif
+      image/jpeg
+      image/png
+      image/svg+xml
+      image/tiff
+      image/x-psd
+
+      video/mp4
+      video/mpeg
+      video/quicktime
+      video/x-msvideo
+      video/x-ms-wmv
+
+      text/csv
+      text/plain
+
+      application/pdf
+      application/rtf
+      application/x-rar
+      application/zip
+
+      application/vnd.ms-excel
+      application/vnd.ms-powerpoint
+      application/vnd.msword
+
+      application/vnd.openxmlformats-officedocument.presentationml.presentation
+      application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+      application/vnd.openxmlformats-officedocument.wordprocessingml.document
+    ]
   end
 end
