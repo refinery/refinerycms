@@ -36,5 +36,6 @@ en:
       models:
         refinery/resource:
           blank: You must specify file for upload
-          incorrect_format: Your file must be a PDF
+          incorrect_format: "File type is not allowed. Your file must be a MP4, MPEG, WMV, AVI, WAV,
+          GIF, JPEG, PNG, SVG, TIFF, PSD, CSV, PDF, TXT, RAR, ZIP, XLS, PPT or a DOC"
           too_big: File should be smaller than %{size} bytes in size

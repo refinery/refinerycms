@@ -36,5 +36,6 @@ fr:
       models:
         refinery/resource:
           blank: Vous devez spécifier un fichier à télécharger
-          incorrect_format: Votre fichier doit être un PDF
+          incorrect_format: "Type de fichier non autorisé. Votre fichier doit être un MP4, MPEG, WMV, AVI, WAV,
+          GIF, JPEG, PNG, SVG, TIFF, PSD, CSV, PDF, TXT, RAR, ZIP, XLS, PPT ou un DOC"
           too_big: Le poids maximal des fichiers est de %{size} megaoctets
