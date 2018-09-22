@@ -1,0 +1,10 @@
+.locale_marker {
+  font-size:0.56em;
+  display: inline;
+  color: $text_base_color;
+
+  .fa-stack .fa-comment {
+    color: $icon_locale_colour;
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,34 @@
+#switch_locale_picker {
+  border-bottom: 1px solid #c4cdd5;
+  margin: 1em 0 1em 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    padding-right: 0.8em;
+
+    a {
+      border-bottom: 2px solid transparent;
+      color: $text_light_color;
+      display: block;
+      font-size: 0.9em;
+      padding: 0 0 0.8em;
+      text-decoration: none;
+
+
+      &:hover {
+        color: $text_base_color;
+        border-bottom: 2px solid $text_light_color;
+      }
+
+      &:active {
+        border-bottom: 2px solid $base_color;
+      }
+    }
+
+    &.selected a {
+      border-bottom: 2px solid $base_color;
+      color: $text_base_color;
+    }
+  }
+}

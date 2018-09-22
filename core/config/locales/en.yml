@@ -43,7 +43,7 @@ en:
         change: Click here to pick an image
         show: Show
       locale_picker:
-        language: Language
+        languages: Languages
       resource_picker:
         download_current: Download current file
         opens_in_new_window: Opens in a new window
