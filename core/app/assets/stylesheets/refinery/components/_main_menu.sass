@@ -1,8 +1,9 @@
 #main-menu
+  background-color: $main_menu_background_color
   border-right: 1px solid #dfe3e8
   bottom: 0
   position: fixed
-  top: 3.5em
+  top: 3.2em
   width: 15em
   z-index: 99
 
@@ -18,7 +19,7 @@
 
         a
           border-left: 2px solid transparent
-          color: $menu_base_color
+          color: $main_menu_base_light_color
           display: block
           font-size: 0.9em
           padding: 0.5em 0 0.5em 3em
@@ -28,10 +29,10 @@
         &:hover,
         &.active
           a
-            color: $base_color
+            color: $main_menu_base_light_color
 
         &.active
-          background-color: $base_light_color
+          background-color: $main_menu_background_light_color
 
           a
-            border-left: 2px solid $base_color
+            border-left: 2px solid $main_menu_accent_color

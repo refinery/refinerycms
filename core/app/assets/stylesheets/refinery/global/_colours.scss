@@ -20,10 +20,15 @@ $action_border_colour: $icon_locale_colour;
 // $icon_edit_colour:    #007fff;   // azure
 // $icon_add_colour:     #7fff00;   // chartreuse
 
-$base_color: #066CFF; // blue
+$base_color: #25a9f4; // blue
 $base_light_color: #E4EEFD;
 $text_base_color: #282C2F; // grey
 $text_light_color: #6D727B;
-$menu_base_color: #666A70;
+
+$main_menu_background_color: #414a52;
+$main_menu_background_light_color: #535D65;
+$main_menu_base_color: #666A70;
+$main_menu_base_light_color: white;
+$main_menu_accent_color: #25a9f4;
 
 $line_separator_colour:  #c4cdd5;
