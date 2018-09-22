@@ -1,0 +1,74 @@
+#page_container {
+  #page {
+    #content {
+      form {
+        position: relative;
+
+        .form-actions {
+          position: absolute;
+          bottom: -5em;
+          left: 0;
+
+          .form-actions-left,
+          .form-actions-right {
+            margin-top: 1.5em;
+            margin-bottom: 1.5em;
+          }
+
+          .form-actions-left {
+            .button {
+              margin-right: 0.25em;
+            }
+          }
+
+          .form-actions-right {
+            text-align: right;
+
+            .button {
+              margin-left: 0.25em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+form {
+  .form-actions {
+    .button {
+      background: linear-gradient(to bottom, #65c3f7, $base_color);
+      border: 1px solid $base_color;
+      border-radius: 3px;
+      color: white;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 0.9em;
+      padding: 0.5em 1em;
+      text-decoration: none;
+
+      &:hover {
+        background: $base_color;
+      }
+
+      &#delete_button {
+        background: linear-gradient(to bottom, #de3618, #c73016);
+        border: 1px solid #b02b13;
+
+        &:hover {
+          background: #c73016;
+        }
+      }
+
+      &#cancel_button {
+        background: linear-gradient(to bottom, white, #f9fafb);
+        border: 1px solid #c4cdd5;
+        color: #666A70;
+
+        &:hover {
+          background: #f9fafb;
+        }
+      }
+    }
+  }
+}
