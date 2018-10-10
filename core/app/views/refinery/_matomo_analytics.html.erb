@@ -1,0 +1,18 @@
+<% server = Refinery::Core.matomo_analytics_server.to_s.strip %>
+<% site_id = Refinery::Core.matomo_analytics_site_id.to_s.strip %>
+<% unless local_request? or admin? or server =~ /^(analytics.example.org)?$/ or site_id =~ /^$/ -%>
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//<%= server %>/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '<%= site_id %>']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+<% end -%>
