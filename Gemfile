@@ -11,7 +11,7 @@ end
 
 gem 'spring'
 gem 'spring-commands-rspec'
-gem 'poltergeist', '>= 1.8.1'
+gem 'selenium-webdriver', require: false
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
@@ -28,7 +28,7 @@ end
 if !ENV['TRAVIS'] || ENV['DB'] == 'mysql'
   group :mysql do
     gem 'activerecord-jdbcmysql-adapter', '>= 1.3.0.rc1', platform: :jruby
-    gem 'mysql2', '~> 0.4.10', :platform => :ruby
+    gem 'mysql2', '~> 0.4', :platform => :ruby
   end
 end
 

@@ -128,6 +128,7 @@ module Refinery
           context "with auto expand option turned on" do
             before do
               allow(Refinery::Pages).to receive(:auto_expand_admin_tree).and_return(true)
+              Rails.cache.clear
 
               visit refinery.admin_pages_path
             end
@@ -136,15 +137,25 @@ module Refinery
               expect(page).to have_content(team.title)
               expect(page).to have_content(locations.title)
             end
+
+            it "refreshes the cache if sub_children change" do
+              expect(page).to have_content(location.title)
+
+              find("#page_#{location.id} .edit_icon").click
+              fill_in "Title", with: 'Las Vegas'
+              click_button "Save"
+
+              expect(page).to have_content('Las Vegas')
+            end
           end
         end
       end
 
       describe "new/create" do
-        it "Creates a page", js:true do
+        it "Creates a page", js: true do
           visit refinery.admin_pages_path
 
-          find('a', text: 'Add new page').trigger(:click)
+          find('a', text: 'Add new page').click
 
           fill_in "Title", :with => "My first page"
           expect { click_button "Save" }.to change(Refinery::Page, :count).from(0).to(1)
@@ -165,7 +176,7 @@ module Refinery
 
           fill_in "Title", :with => "My first page"
 
-          find('#toggle_advanced_options').trigger(:click)
+          find('#toggle_advanced_options').click
 
           fill_in "Menu title", :with => "The first page"
 
@@ -207,7 +218,7 @@ module Refinery
 
         context 'when saving and returning to index' do
           it "updates page", js: true do
-            find("a[href$='#{updateable_page.slug}/edit']").trigger(:click)
+            find("a[href$='#{updateable_page.slug}/edit']").click
 
             fill_in "Title", :with => "Updated"
             find("#submit_button").click
@@ -358,7 +369,7 @@ module Refinery
 
             find('a[tooltip^=Edit]').click
             fill_in 'Title', :with => 'Searchable'
-            find('#toggle_advanced_options').trigger(:click)
+            find('#toggle_advanced_options').click
             select 'Searchable', :from => 'View template'
             Timeout::timeout(5) do
               click_button 'Preview'
@@ -372,7 +383,7 @@ module Refinery
           it "will not save when just previewing", js:true do
             visit refinery.admin_pages_path
 
-            find('a', text: 'Add new page').trigger(:click)
+            find('a', text: 'Add new page').click
             fill_in "Title", :with => "My first page"
             window = window_opened_by do
               click_button "Preview"
@@ -413,7 +424,9 @@ module Refinery
           it "will show delete button" do
             visit refinery.admin_pages_path
 
-            find('a[tooltip="Remove this page forever"]').trigger(:click)
+            find('a[tooltip="Remove this page forever"]').click
+
+            page.accept_alert
 
             expect(page).to have_content("'Delete me' was successfully removed.")
 
@@ -466,7 +479,7 @@ module Refinery
         describe "add a page with title for default locale", js:true do
           before do
             visit refinery.admin_pages_path
-            find('a', text: "Add new page").trigger(:click)
+            find('a', text: "Add new page").click
             fill_in "Title", :with => "News"
             click_button "Save"
           end
@@ -614,7 +627,7 @@ module Refinery
 
           it "lets you add a Russian title without an English title" do
             ru_page.destroy!
-            find('a', text: 'Add new page').trigger(:click)
+            find('a', text: 'Add new page').click
             switch_page_form_locale "RU"
 
             fill_in "Title", :with => ru_page_title
@@ -676,7 +689,7 @@ module Refinery
               expect(sub_page.parent).to eq(parent_page)
               visit refinery.admin_pages_path
               within "#page_#{sub_page.id}" do
-                find("a.edit_icon").trigger(:click)
+                find("a.edit_icon").click
               end
               fill_in "Title", :with => ru_page_title
               click_button "Save"
@@ -693,7 +706,7 @@ module Refinery
 
         it "adds new page part", js: true do
           visit refinery.new_admin_page_path
-          find("#add_page_part").trigger(:click)
+          find("#add_page_part").click
 
           within "#new_page_part_dialog" do
             fill_in "new_page_part_title", :with => "testy"
@@ -727,7 +740,7 @@ module Refinery
           end
 
           2.times do
-            find("#delete_page_part").trigger(:click)
+            find("#delete_page_part").click
             # Poltergeist automatically accepts dialogues.
             if Capybara.javascript_driver != :poltergeist
               page.driver.browser.switch_to.alert.accept
@@ -768,7 +781,7 @@ module Refinery
             specify 'sub page should inherit them', js: true do
               visit refinery.edit_admin_page_path(@page.id)
 
-              find('#toggle_advanced_options').trigger(:click)
+              find('#toggle_advanced_options').click
 
               within '#page_layout_template' do
                 expect(page.find('option[value=refinery]')).to be_selected
@@ -798,7 +811,7 @@ module Refinery
 
         specify "should retain the html", js:true do
           visit refinery.admin_pages_path
-          find('a[tooltip="Edit this page"]').trigger(:click)
+          find('a[tooltip="Edit this page"]').click
           Capybara.ignore_hidden_elements = false
           expect(page).to have_content("header class='regression'")
           Capybara.ignore_hidden_elements = true

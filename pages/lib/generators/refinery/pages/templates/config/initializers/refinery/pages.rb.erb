@@ -18,6 +18,9 @@ Refinery::Pages.configure do |config|
   # This only applies when marketable_urls is enabled.
   # config.friendly_id_reserved_words = <%= Refinery::Pages.friendly_id_reserved_words.inspect %>
 
+  # You can specify reserved paths that won't interfere with others routes like ActiveStorage route
+  # config.reserved_paths = <%= Refinery::Pages.reserved_paths.inspect %>
+
   # Configure how many pages per page should be displayed when a dialog is presented that contains a links to pages
   # config.pages_per_dialog = <%= Refinery::Pages.pages_per_dialog.inspect %>
 

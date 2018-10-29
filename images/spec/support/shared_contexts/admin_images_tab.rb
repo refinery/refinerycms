@@ -1,6 +1,6 @@
 shared_context 'admin images tab' do
 
-  let(:open_upload_dialog) { find('a', text: ::I18n.t('create_new_image', scope: 'refinery.admin.images.actions')).trigger(:click) }
+  let(:open_upload_dialog) { find('a', text: ::I18n.t('create_new_image', scope: 'refinery.admin.images.actions')).click }
   let(:select_upload) {}
   let(:initialize_context) {}
   let(:index_in_frame) {false}

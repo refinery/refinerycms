@@ -12,3 +12,8 @@
 //= link refinery/formatting.css
 //= link refinery/site_bar.css
 //= link refinery/theme.css
+
+//= link cropper.css
+//= link cropper.js
+//= link canvas-to-blob.js
+//= link refinery/image_crop.js

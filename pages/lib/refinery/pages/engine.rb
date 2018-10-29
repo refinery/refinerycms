@@ -48,7 +48,8 @@ module Refinery
 
       def append_marketable_routes
         Refinery::Core::Engine.routes.append do
-          get '*path', :to => 'pages#show', :as => :marketable_page
+          get '*path', :to => 'pages#show', :as => :marketable_page,
+            constraints: lambda { |request| !Refinery::Pages.config.reserved_paths.any? { |path| request.path.start_with?(path) } }
         end
       end
 

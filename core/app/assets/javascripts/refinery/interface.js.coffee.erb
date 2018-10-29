@@ -16,17 +16,13 @@
     $("html,body").animate scrollTop: $("#other_locales").parent().offset().top, 250
     e.preventDefault()
 
-  $("#existing_image img").on 'load', ->
-    margin_top = ($("#existing_image").height() - $("form.edit_image").height() + 8)
-    $("form.edit_image .form-actions").css "margin-top": margin_top if margin_top > 0
-
   $(".form-actions .form-actions-left input:submit#submit_button").click (e) ->
     $(this).nextAll('#spinner').removeClass('hidden_icon').addClass('unhidden_icon')
 
   $(".form-actions.form-actions-dialog .form-actions-left a.close_dialog").click (e) ->
     titlebar_close_button = $('.ui-dialog-titlebar-close')
     titlebar_close_button = parent.$('.ui-dialog-titlebar-close') if parent
-    titlebar_close_button.trigger('click')
+    titlebar_close_button.click
     e.preventDefault()
 
   $("a.suppress").on "click", (e) ->

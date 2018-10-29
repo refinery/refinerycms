@@ -27,9 +27,8 @@ module Refinery
       action_icon_label(action, url, title, options, true)
     end
 
+    # See icons.scss for defined icons/classes
     def action_icon_label(action, url, title, options={}, label = true)
-#   See icons.scss for defined icons/classes
-
       options[:title] = title
       options[:class].presence ? options[:class] << " #{action}_icon " : options[:class] = "#{action}_icon"
       options[:class] << ' icon_label' if label
