@@ -35,7 +35,7 @@ module Refinery
                 render partial: 'save_and_continue_callback',
                        locals: save_and_continue_locals(@page)
               else
-                redirect_to :back
+                redirect_back(fallback_location: { action: 'edit' })
               end
             else
               redirect_back_or_default(refinery.admin_pages_path)
