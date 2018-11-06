@@ -3,7 +3,8 @@ module Refinery
     include ActiveSupport::Configurable
 
     config_accessor :rescue_not_found, :base_cache_key, :site_name,
-                    :google_analytics_page_code, :authenticity_token_on_frontend,
+                    :google_analytics_page_code, :matomo_analytics_server,
+                    :matomo_analytics_site_id, :authenticity_token_on_frontend,
                     :javascripts, :stylesheets, :mounted_path,
                     :force_ssl, :backend_route,
                     :visual_editor_javascripts, :visual_editor_stylesheets,
@@ -13,6 +14,8 @@ module Refinery
     self.base_cache_key = :refinery
     self.site_name = "Company Name"
     self.google_analytics_page_code = "UA-xxxxxx-x"
+    self.matomo_analytics_server = "analytics.example.org"
+    self.matomo_analytics_site_id = "123"
     self.authenticity_token_on_frontend = false
     self.javascripts = []
     self.stylesheets = []
