@@ -57,7 +57,7 @@ module Refinery
     self.verify_urls = true
 
     # s3 Data Store Config
-
+    # When using s3 as data store, make sure to add the dragonfly-s3_data_store gem to your project
     self.s3_datastore = false
     self.s3_bucket_name = ENV['S3_BUCKET']
     self.s3_access_key_id = ENV['S3_KEY']
@@ -84,4 +84,3 @@ module Refinery
   end
 
 end
-
