@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
   s.add_dependency 'dragonfly', '~> 1.1'
-  s.add_dependency 'dragonfly-s3_data_store'
+  s.add_development_dependency 'dragonfly-s3_data_store'
   s.add_dependency 'refinerycms-core', ['~> 4.0', '>= 4.0.2']
 
   s.cert_chain  = [File.expand_path("../../certs/parndt.pem", __FILE__)]
