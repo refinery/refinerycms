@@ -16,10 +16,12 @@ script:
   - bin/rspec $EXTENSION/spec
 env:
   - DB=postgresql EXTENSION=core
+  - DB=postgresql EXTENSION=dragonfly
   - DB=postgresql EXTENSION=pages
   - DB=postgresql EXTENSION=images
   - DB=postgresql EXTENSION=resources
   - DB=mysql EXTENSION=core
+  - DB=mysql EXTENSION=dragonfly
   - DB=mysql EXTENSION=pages
   - DB=mysql EXTENSION=images
   - DB=mysql EXTENSION=resources
