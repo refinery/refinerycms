@@ -181,7 +181,7 @@ module Refinery
                 if request.xhr?
                   render :partial => '/refinery/message'
                 else
-                  redirect_to :back
+                  redirect_back(fallback_location: { action: 'edit' })
                 end
               else
                 redirect_back_or_default redirect_url
