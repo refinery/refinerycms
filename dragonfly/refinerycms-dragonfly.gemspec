@@ -4,7 +4,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{refinerycms-dragonfly}
-  s.version           = '1.0'
+  s.version           = '1.0.1'
   s.summary           = %q{Dragonfly interface for Refinery CMS}
   s.description       = %q{Allows Refinery to use dragonfly for file storage and processing}
   s.email             = %q{anita@joli.com.au}
@@ -19,9 +19,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'dragonfly', '~> 1.1'
   s.add_dependency 'dragonfly-s3_data_store'
 
-
-  # s.cert_chain  = [File.expand_path("../../certs/parndt.pem", __FILE__)]
-  # if $0 =~ /gem\z/ && ARGV.include?("build") && ARGV.include?(__FILE__)
-  #   s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem")
-  # end
+  s.cert_chain  = [File.expand_path("../../certs/parndt.pem", __FILE__)]
+  if $0 =~ /gem\z/ && ARGV.include?("build") && ARGV.include?(__FILE__)
+    s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem")
+  end
 end
