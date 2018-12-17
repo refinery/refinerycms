@@ -1,0 +1,7 @@
+#sortable_list {
+  .reordering {
+    > li {
+      cursor: move;
+    }
+  }
+}
