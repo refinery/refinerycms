@@ -17,7 +17,6 @@ gem 'selenium-webdriver', require: false
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
 # Add the default visual editor, for now.
-gem 'refinerycms-wymeditor', ['~> 2.0', '>= 2.0.0']
 
 # Database Configuration
 unless ENV['TRAVIS']
@@ -41,6 +40,7 @@ end
 
 group :development do
   gem 'listen', '~> 3.0'
+  gem 'pry'
 end
 
 group :test do

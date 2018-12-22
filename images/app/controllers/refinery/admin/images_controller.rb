@@ -37,6 +37,24 @@ module Refinery
         render 'insert'
       end
 
+      def upload
+        begin
+          image = params[:image][:image]
+          image_title = params[:image_title].presence || auto_title(image.original_filename)
+          @image = ::Refinery::Image.create(
+            image_params.merge(image_title: image_title, image: image)
+          )
+          respond_to do |format|
+            format.json {
+              render json: { url: @image.url }
+            }
+          end
+
+        rescue NotImplementedError
+          logger.warn($!.message)
+        end
+      end
+
       def create
         @images = []
         begin

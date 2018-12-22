@@ -4,6 +4,7 @@ Refinery::Core::Engine.routes.draw do
   namespace :admin, path: Refinery::Core.backend_route do
     resources :images, except: :show do
       get :insert, on: :collection
+      post :upload, on: :collection
       patch :crop
       match 'crop', to: 'images#destroy_crop', via: :delete
     end
