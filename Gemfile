@@ -49,6 +49,7 @@ group :test do
   gem 'launchy'
   gem 'coveralls', require: false
   gem 'rspec-retry'
+  gem 'puma'
 end
 
 # Load local gems according to Refinery developer preference.
