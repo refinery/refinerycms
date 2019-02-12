@@ -18,7 +18,7 @@ This guide is designed for beginners who want to get started with a Refinery CMS
 
 __TIP__: If you don't already have these things, then you will need to follow the [Installing Refinery Prerequisites](/guides/installation-prerequisites/) guide.
 
-__TIP__: It is recommended that developers use [rbenv](https://github.com/rbenv/rbenv) to manage Ruby versions and gems.
+__TIP__: It is recommended that developers use [ruby-install](https://github.com/postmodern/ruby-install) to install Ruby and [chruby](https://github.com/postmodern/chruby) to manage Ruby versions.
 
 __TIP__: If you are not using a Ruby version manager and you have Rails 4 installed, be sure to read the [Rails Application Templates](#rails-application-templates) section below.
 
