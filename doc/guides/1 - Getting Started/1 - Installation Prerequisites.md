@@ -2,18 +2,18 @@
 
 This guide covers getting your system ready for Refinery. Afterwards you will have:
 
-* A working version of Ruby
-* ImageMagick installed
-* Either the SQLite, MySQL, or PostgreSQL database configured
+- A working version of Ruby
+- ImageMagick installed
+- Either the SQLite, MySQL, or PostgreSQL database configured
 
 ## Checklist
 
 If you are already a Rails developer, you will most likely not have to install anything else. Here's the requirements for Refinery:
 
-* __Ruby__ - 2.2.2+, Rubinius, and JRuby are all acceptable
-* __RubyGems__ - Recommended that you have the latest version installed
-* __Database__ - SQLite3 (default), MySQL, or PostgreSQL
-* __ImageMagick__ - Recommended that you have the latest version installed
+- **Ruby** - 2.2.2+, Rubinius, and JRuby are all acceptable
+- **RubyGems** - Recommended that you have the latest version installed
+- **Database** - SQLite3 (default), MySQL, or PostgreSQL
+- **ImageMagick** - Recommended that you have the latest version installed
 
 If you have all of these things, great! Proceed on to the [Getting Started with Refinery](/guides/getting-started/) guide.
 
@@ -23,7 +23,7 @@ Otherwise, choose your operating system below.
 
 ### Ruby
 
-__TIP__: The best way to install Ruby is using [rbenv](https://github.com/rbenv/rbenv)
+**TIP**: The best way to install Ruby is using [ruby-install](https://github.com/postmodern/ruby-install)
 
 ```shell
 $ sudo apt-get install ruby
@@ -31,7 +31,7 @@ $ sudo apt-get install ruby
 
 ### RubyGems
 
-__TIP__: If you used `rbenv` above then this step will not be necessary.
+**TIP**: If you used `ruby-install` above then this step will not be necessary.
 
 ```shell
 $ sudo apt-get install rubygems
@@ -61,11 +61,11 @@ $ sudo apt-get install imagemagick
 
 ### Ruby
 
-__TIP__: The best way to install Ruby is using [rbenv](https://github.com/rbenv/rbenv)
+**TIP**: The best way to install Ruby is using [ruby-install](https://github.com/postmodern/ruby-install)
 
 ### Rubygems
 
-__TIP__: If you used `rbenv` above then this step will not be necessary.
+**TIP**: If you used `ruby-install` above then this step will not be necessary.
 
 Rubygems also comes installed by default, however, it could be an old version which will cause problems. Update using:
 
@@ -103,7 +103,7 @@ If you used Rails Installer, then SQLite will have been installed by default. Fo
 
 ### ImageMagick
 
-__WARNING__: ImageMagick is tricky to install on Windows. Make sure to read the instructions carefully, and if one version does not work for you try an older version as well.
+**WARNING**: ImageMagick is tricky to install on Windows. Make sure to read the instructions carefully, and if one version does not work for you try an older version as well.
 
 Follow the instructions at <http://www.imagemagick.org/script/binary-releases.php#windows>
 
