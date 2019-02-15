@@ -6,7 +6,9 @@ addons:
     packages:
       - chromium-chromedriver
 cache: bundler
-before_install: gem install bundler
+before_install:
+  - gem update --system
+  - gem install bundler
 bundler_args: --without development
 before_script:
   - export RETRY_COUNT=3
@@ -30,7 +32,6 @@ notifications:
   webhooks:
     - https://webhooks.gitter.im/e/b5d48907cdc89864b874
 rvm:
-  - 2.5.0
-  - 2.4.3
-  - 2.3.6
-  - 2.2.9
+  - 2.6.1
+  - 2.5.3
+  - 2.4.5
