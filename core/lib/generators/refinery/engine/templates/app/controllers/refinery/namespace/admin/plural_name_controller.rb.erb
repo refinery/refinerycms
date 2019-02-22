@@ -9,7 +9,7 @@ module Refinery
 
         private
 
-        # Only allow a trusted parameter "white list" through.
+        # Only allow a trusted parameter "permit list" through.
         def <%= "#{singular_table_name}_params" %>
           <%- if attributes_names.empty? -%>
           params[:<%= singular_table_name %>]

@@ -211,7 +211,7 @@ module Refinery
 
         private
 
-        # Only allow a trusted parameter "white list" through.
+        # Only allow a trusted parameter "permit list" through.
         def event_params
           params.require(:event).permit(:title, :date, :photo_id, :blurb)
         end
@@ -246,7 +246,7 @@ module Refinery
 
         private
 
-        # Only allow a trusted parameter "white list" through.
+        # Only allow a trusted parameter "permit list" through.
         def event_params
           params.require(:event).permit(:title, :date, :photo_id, :blurb, :event_type_id)
         end
