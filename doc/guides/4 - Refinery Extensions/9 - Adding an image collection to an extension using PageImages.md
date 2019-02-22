@@ -184,7 +184,7 @@ module Refinery
           params.require(:show).permit(permitted_show_params)
         end
 
-        # Only allow a trusted parameter "white list" through.
+        # Only allow a trusted parameter "permit list" through.
         def permitted_show_params
           [:title, :blurb]
         end
