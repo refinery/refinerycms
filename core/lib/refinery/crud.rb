@@ -59,7 +59,7 @@ module Refinery
           end
 
           prepend_before_action :find_#{singular_name},
-                                :only => [:update, :destroy, :edit, :show]
+                                :only => [:update, :destroy, :edit, :show, :duplicate]
           prepend_before_action :merge_position_into_params!, :only => :create
 
           def new
@@ -82,6 +82,17 @@ module Refinery
 
           def edit
             # object gets found by find_#{singular_name} function
+          end
+          
+          def duplicate
+            original = @#{singular_name}
+            @#{singular_name} = original.dup
+            @#{singular_name}.title << duplicate_suffix
+            render 'edit'
+          end
+
+          def duplicate_suffix
+            t('refinery.crudify.duplicate_suffix')
           end
 
           def update
