@@ -31,12 +31,15 @@ Refinery::Dragonfly.configure do |config|
   # config.response_header      = <%= Refinery::Dragonfly.response_header.inspect %>
 
 
-  # Set the S3 options using means other than securely by environment variables.
-  # If you have to.
-  # config.s3_bucket_name = ENV['S3_BUCKET']
-  # config.s3_region = ENV['S3_REGION']
-  # config.s3_access_key_id = ENV['S3_KEY']
-  # config.s3_secret_access_key = ENV['S3_SECRET']
+  # Set the S3 access keys in the encrypted credentials file
+  # aws:
+  #   access_key_id: 123
+  #   secret_access_key: 345
+  #
+  # config.s3_bucket_name = Rails.application.credentials.aws[:bucket_name]
+  # config.s3_region = Rails.application.credentials.aws[:region]
+  # config.s3_access_key_id = Rails.application.credentials.aws[:access_key_id]
+  # config.s3_secret_access_key = Rails.application.credentials.aws[:secret_access_key]
 
   # When true will use Amazon's Simple Storage Service instead of the default file system for storing resources and images
   config.s3_datastore = config.s3_access_key_id.present? || config.s3_secret_access_key.present?

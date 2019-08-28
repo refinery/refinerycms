@@ -59,11 +59,12 @@ module Refinery
     # s3 Data Store Config
     # When using s3 as data store, make sure to add the dragonfly-s3_data_store gem to your project
     self.s3_datastore = false
-    self.s3_bucket_name = ENV['S3_BUCKET']
-    self.s3_access_key_id = ENV['S3_KEY']
-    self.s3_secret_access_key = ENV['S3_SECRET']
-    self.s3_region = ENV['S3_REGION']           # default 'us-east-1' see Dragonfly S3DataStore :s3_REGIONS for options
-    self.s3_url_scheme = nil                    # defaults to "http"
+    self.s3_bucket_name       = Rails.application.credentials[:s3_bucket_name]
+    self.s3_access_key_id     = Rails.application.credentials[:s3_access_key_id]
+    self.s3_secret_access_key = Rails.application.credentials[:s3_secret_access_key]
+    self.s3_region            = Rails.application.credentials[:s3_region]
+                                                # default 'us-east-1' see Dragonfly S3DataStore :s3_REGIONS for options
+    self.s3_url_scheme = 'https'                # defaults to "http"
     self.s3_url_host = nil                      # defaults to "<bucket-name>.s3.amazonaws.com" or "s3.amazonaws.com/<bucket-name>" if not a valid subdomain
     self.s3_use_iam_profile = nil               # boolean - if true no need for access_key_id or secret_access_key
     self.s3_root_path = nil                     # store all content under a subdirectory - uids will be relative to this - defaults to nil
