@@ -34,5 +34,5 @@ jobs:
 env:
   BUNDLE_JOBS: 4
   POSTGRES_HOST: localhost
-  POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+  POSTGRES_PORT: 5432
   RETRY_COUNT: 3
