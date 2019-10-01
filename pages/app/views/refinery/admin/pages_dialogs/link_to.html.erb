@@ -27,10 +27,10 @@
       <div id="your_page_content" class="clearfix">
         <div id="pages_list" class="pages_list">
           <ul class="link_list">
-            <%= render :partial => '/refinery/admin/pages_dialogs/page_link', :collection => @pages,
-                       :locals => {
-                         :child => 0,
-                         :link_to_arguments => {}
+            <%= render partial: '/refinery/admin/pages_dialogs/page_link', collection: @pages, cached: true,
+                       locals: {
+                         child: 0,
+                         link_to_arguments: {}
                        } %>
           </ul>
           <%= will_paginate @pages, :id => 'pages_paginate' %>
