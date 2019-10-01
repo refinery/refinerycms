@@ -1,0 +1,38 @@
+name: CI
+
+on: [push]
+
+jobs:
+  postgres:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: [ '2.6.x' ]
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        architecture: 'x64'
+    - run: gem install bundler --version '>= 2.0.2'
+    - run: bundle install --without development
+    - run: bundle exec rspec --format documentation
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+        - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+env:
+  BUNDLE_JOBS: 4
+  POSTGRES_HOST: localhost
+  POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+  RETRY_COUNT: 3
