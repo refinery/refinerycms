@@ -22,13 +22,13 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = Refinery::Version.required_ruby_version
 
-  s.add_dependency 'refinerycms-i18n',            ['~> 5.0', '>= 5.0.0']
+  s.add_dependency 'refinerycms-i18n',            ['~> 5.0', '>= 5.0.1']
   s.add_dependency 'railties',                    rails_version
   s.add_dependency 'activerecord',                rails_version
   s.add_dependency 'actionpack',                  rails_version
   s.add_dependency 'truncate_html',               '~> 0.9'
   s.add_dependency 'will_paginate',               '~> 3.1', '>= 3.1.0'
-  s.add_dependency 'sass-rails',                  '>= 4.0', '< 5.1'
+  s.add_dependency 'sass-rails',                  '>= 4.0', '< 7'
   s.add_dependency 'font-awesome-sass',           '>= 4.3.0', '< 5.0'
   s.add_dependency 'coffee-rails',                ['~> 4.0', '>= 4.0.0']
   s.add_dependency 'jquery-rails',                '~> 4.3', '>= 4.3.1'
