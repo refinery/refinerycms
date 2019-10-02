@@ -36,9 +36,12 @@ if !ENV['CI'] || ENV['DB'] == 'postgresql'
 end
 
 group :development do
-  gem 'listen', '~> 3.0'
   gem 'spring'
   gem 'spring-commands-rspec'
+end
+
+group :development, :test do
+  gem 'listen', '~> 3.0'
 end
 
 group :test do
