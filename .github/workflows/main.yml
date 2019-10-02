@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v1
     - run: apk add git g++ tzdata sqlite-dev mysql-dev postgresql-dev postgresql-client nodejs imagemagick
     - run: apk add --virtual .ruby-gemdeps libc-dev gcc libxml2-dev libxslt-dev make
-    - run: apk add chromium-chromedriver
+    - run: apk add chromium chromium-chromedriver
     - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ./*/spec --format documentation
