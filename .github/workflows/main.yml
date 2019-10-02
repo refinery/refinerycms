@@ -5,7 +5,8 @@ on: [push]
 jobs:
   postgres:
     runs-on: ubuntu-latest
-    container: docker.pkg.github.com/refinery/refinerycms/ci:latest
+    container: 
+      image: docker.pkg.github.com/refinery/refinerycms/ci:latest
 
     steps:
     - uses: actions/checkout@v1
