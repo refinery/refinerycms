@@ -5,23 +5,19 @@ on: [push]
 jobs:
   postgres:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby: [ '2.6.x' ]
-    
+    container: docker.pkg.github.com/refinery/refinerycms/ci:latest
+
     steps:
     - uses: actions/checkout@v1
-    - name: Setup Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        architecture: 'x64'
-    - run: sudo apt-get update
-    - run: sudo apt-get install chromium-chromedriver imagemagick libpq-dev libmysqlclient-dev libsqlite3-dev -y
-    - run: gem install bundler --version '>= 2.0.2'
     - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ./*/spec --format documentation
+
+    env:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+      RETRY_COUNT: 3
+
     services:
       postgres:
         image: postgres:latest
@@ -33,9 +29,3 @@ jobs:
         - 5432:5432
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
-env:
-  BUNDLE_JOBS: 4
-  POSTGRES_HOST: localhost
-  POSTGRES_PORT: 5432
-  RETRY_COUNT: 3
