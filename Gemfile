@@ -9,10 +9,6 @@ path "./" do
   gem "refinerycms-resources"
 end
 
-gem 'spring'
-gem 'spring-commands-rspec'
-gem 'selenium-webdriver', require: false
-
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
@@ -20,19 +16,19 @@ gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 gem 'refinerycms-wymeditor', ['~> 2.0', '>= 2.0.0']
 
 # Database Configuration
-unless ENV['TRAVIS']
+unless ENV['CI']
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.3.0.rc1', platform: :jruby
   gem 'sqlite3', platform: :ruby
 end
 
-if !ENV['TRAVIS'] || ENV['DB'] == 'mysql'
+if !ENV['CI'] || ENV['DB'] == 'mysql'
   group :mysql do
     gem 'activerecord-jdbcmysql-adapter', '>= 1.3.0.rc1', platform: :jruby
     gem 'mysql2', '~> 0.4', :platform => :ruby
   end
 end
 
-if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
+if !ENV['CI'] || ENV['DB'] == 'postgresql'
   group :postgres, :postgresql do
     gem 'activerecord-jdbcpostgresql-adapter', '>= 1.3.0.rc1', platform: :jruby
     gem 'pg', '~> 0.21', platform: :ruby
@@ -41,6 +37,8 @@ end
 
 group :development do
   gem 'listen', '~> 3.0'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
@@ -50,6 +48,7 @@ group :test do
   gem 'coveralls', require: false
   gem 'rspec-retry'
   gem 'puma'
+  gem 'selenium-webdriver', require: false
 end
 
 # Load local gems according to Refinery developer preference.
