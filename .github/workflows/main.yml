@@ -13,11 +13,10 @@ jobs:
     - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ./*/spec --format documentation
-
-    env:
-      POSTGRES_HOST: postgres
-      POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
-      RETRY_COUNT: 3
+      env:
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        RETRY_COUNT: 3
 
     services:
       postgres:
