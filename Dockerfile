@@ -20,6 +20,8 @@ RUN apk add --no-cache imagemagick
 # for nokogiri
 RUN apk add --no-cache --virtual .ruby-gemdeps libc-dev gcc libxml2-dev libxslt-dev make
 
+RUN apk add chromium-chromedriver
+
 ENV GEM_HOME /usr/local/bundle
 ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
 RUN unset BUNDLE_PATH
