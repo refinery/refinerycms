@@ -16,7 +16,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         architecture: 'x64'
-    - run: sudo apt-get install chromium libpq-dev libmysqlclient-dev libsqlite3-dev -y
+    - run: sudo apt-get install chromium-chromedriver libpq-dev libmysqlclient-dev libsqlite3-dev -y
     - run: gem install bundler --version '>= 2.0.2'
     - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
