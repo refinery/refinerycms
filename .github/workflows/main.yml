@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: docker.pkg.github.com/refinery/refinerycms/ci:latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
     - uses: actions/checkout@v1
