@@ -8,6 +8,7 @@ jobs:
     container: 
       image: docker.pkg.github.com/refinery/refinerycms/ci:latest
     env:
+      GITHUB_PACKAGE_REGISTRY_TOKEN: ${{ secrets.GITHUB_PACKAGE_REGISTRY_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
