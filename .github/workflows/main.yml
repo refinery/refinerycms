@@ -6,10 +6,13 @@ jobs:
   postgres:
     runs-on: ubuntu-latest
     container: 
-      image: docker.pkg.github.com/refinery/refinerycms/ci:latest
+      image: ruby:2.6-alpine
 
     steps:
     - uses: actions/checkout@v1
+    - run: apk add git g++ tzdata sqlite-dev mysql-dev postgresql-dev postgresql-client nodejs imagemagick
+    - run: apk add --virtual .ruby-gemdeps libc-dev gcc libxml2-dev libxslt-dev make
+    - run: apk add chromium-chromedriver
     - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ./*/spec --format documentation
@@ -29,7 +32,3 @@ jobs:
         - 5432:5432
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
-env:
-  GITHUB_PACKAGE_REGISTRY_TOKEN: ${{ secrets.GITHUB_PACKAGE_REGISTRY_TOKEN }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
