@@ -13,6 +13,7 @@ jobs:
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ./*/spec --format documentation
       env:
+        DB: postgresql
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         POSTGRES_HOST: postgres
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
