@@ -20,7 +20,7 @@ jobs:
     - run: gem install bundler --version '>= 2.0.2'
     - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
-    - run: bin/rspec --format documentation
+    - run: bin/rspec ./*/spec --format documentation
     services:
       postgres:
         image: postgres:latest
