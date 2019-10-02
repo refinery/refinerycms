@@ -5,16 +5,19 @@ on: [push]
 jobs:
   postgres:
     runs-on: ubuntu-latest
+    container: 
+      image: ruby:2.6-alpine
+
     steps:
     - uses: actions/checkout@v1
-    - run: docker login docker.pkg.github.com --username refinery
-    - uses: docker://docker.pkg.github.com/refinery/refinerycms/ci:latest
+    - run: apk add git g++ tzdata sqlite-dev mysql-dev postgresql-dev postgresql-client nodejs imagemagick
+    - run: apk add --virtual .ruby-gemdeps libc-dev gcc libxml2-dev libxslt-dev make
+    - run: apk add chromium-chromedriver
     - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ./*/spec --format documentation
       env:
         DB: postgresql
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         POSTGRES_HOST: postgres
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         RETRY_COUNT: 3
