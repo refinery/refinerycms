@@ -6,20 +6,18 @@ jobs:
   postgres:
     runs-on: ubuntu-latest
     container: 
-      image: ruby:2.6-alpine
+      image: circleci/ruby:2.6-node-browsers
 
     steps:
     - uses: actions/checkout@v1
-    - run: apk add git g++ tzdata sqlite-dev mysql-dev postgresql-dev postgresql-client nodejs imagemagick
-    - run: apk add --virtual .ruby-gemdeps libc-dev gcc libxml2-dev libxslt-dev make
-    - run: apk add chromium chromium-chromedriver
     - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ./*/spec --format documentation
       env:
         DB: postgresql
-        POSTGRES_HOST: postgres
-        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        PGHOST: postgres
+        PGPORT: ${{ job.services.postgres.ports[5432] }}
+        PGUSER: postgres
         RETRY_COUNT: 3
 
     services:
