@@ -20,7 +20,7 @@ RUN apk add --no-cache imagemagick
 # for nokogiri
 RUN apk add --no-cache --virtual .ruby-gemdeps libc-dev gcc libxml2-dev libxslt-dev make
 
-RUN apk add chromium-chromedriver
+RUN apk add chromium chromium-chromedriver
 
 ENV GEM_HOME /usr/local/bundle
 ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
@@ -29,9 +29,11 @@ RUN unset BUNDLE_BIN
 
 ENV BUNDLE_JOBS 4
 
-ENV APP_HOME /refinery
+ENV APP_HOME /home/runner/work/refinerycms/refinerycms
 WORKDIR $APP_HOME
 
 ENV RAILS_ENV=test
 
 RUN gem install bundler --version ">= 2.0.2"
+
+CMD ["sh"]
