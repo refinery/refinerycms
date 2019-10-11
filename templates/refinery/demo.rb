@@ -10,9 +10,6 @@ rescue LoadError
 ERROR
 end
 
-if File.read("#{destination_root}/Gemfile") !~ /assets.+coffee-rails/m
-  gem "coffee-rails", :group => :assets
-end
 
 append_file 'Gemfile' do
 "
