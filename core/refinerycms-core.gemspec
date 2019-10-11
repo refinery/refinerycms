@@ -2,7 +2,7 @@
 require File.expand_path('../../core/lib/refinery/version', __FILE__)
 
 version = Refinery::Version.to_s
-rails_version = ['>= 5.2.0', '< 7']
+rails_version = ['>= 6.0.0', '< 7']
 
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
