@@ -9,6 +9,9 @@ path "./" do
   gem "refinerycms-resources"
 end
 
+gem 'bootsnap', require: false
+gem 'listen'
+
 gem 'spring'
 gem 'spring-commands-rspec'
 gem 'selenium-webdriver', require: false
@@ -25,12 +28,12 @@ unless ENV['TRAVIS']
   gem 'sqlite3', platform: :ruby
 end
 
-if !ENV['TRAVIS'] || ENV['DB'] == 'mysql'
-  group :mysql do
-    gem 'activerecord-jdbcmysql-adapter', '>= 1.3.0.rc1', platform: :jruby
-    gem 'mysql2', '~> 0.4', :platform => :ruby
-  end
-end
+# if !ENV['TRAVIS'] || ENV['DB'] == 'mysql'
+#   group :mysql do
+#     gem 'activerecord-jdbcmysql-adapter', '>= 1.3.0.rc1', platform: :jruby
+#     gem 'mysql2', '~> 0.4', :platform => :ruby
+#   end
+# end
 
 if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
   group :postgres, :postgresql do
@@ -40,7 +43,7 @@ if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
 end
 
 group :development do
-  gem 'listen', '~> 3.0'
+  gem 'byebug'
 end
 
 group :test do
