@@ -39,6 +39,15 @@ RSpec.configure do |config|
   config.include ActionView::TestCase::Behavior, :file_path => %r{spec/presenters}
   config.infer_spec_type_from_file_location!
 
+  config.when_first_matching_example_defined(type: :feature) do
+    config.before :suite do
+      # Preload assets
+      # This should avoid capybara timeouts, and avoid counting asset compilation
+      # towards the timing of the first feature spec.
+      Rails.application.precompiled_assets
+    end
+  end
+
   config.before(:each) do
     ::I18n.default_locale = I18n.locale = Mobility.locale = :en
   end

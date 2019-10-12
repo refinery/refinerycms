@@ -1,10 +1,11 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'refinerycms-core'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
+Bundler.require(*Rails.groups(assets: %w(development test)))
 
 module Dummy
   class Application < Rails::Application
@@ -16,5 +17,10 @@ module Dummy
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    if config.respond_to?(:assets)
+      config.assets.paths << File.expand_path('app/assets/javascripts', __dir__)
+      config.assets.paths << File.expand_path('app/assets/stylesheets', __dir__)
+    end
   end
 end
