@@ -22,7 +22,7 @@ module Refinery
       end
 
       def update
-        if @page.update_attributes(page_params)
+        if @page.update(page_params)
           flash.notice = t('refinery.crudify.updated', what: "'#{@page.title}'")
 
           if from_dialog?
