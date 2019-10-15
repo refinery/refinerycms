@@ -53,6 +53,9 @@ group :test do
   gem 'coveralls', require: false
   gem 'rspec-retry'
   gem 'puma'
+
+  # TODO: Use github source until Rails 6.0 support is done on rspec-rails
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-dev'
 end
 
 # Load local gems according to Refinery developer preference.
