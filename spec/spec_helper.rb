@@ -55,6 +55,10 @@ RSpec.configure do |config|
     ::I18n.default_locale = I18n.locale = Mobility.locale = :en
   end
 
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
   config.before(:each, type: :system, js: true) do
     driven_by :selenium_chrome_headless
   end
