@@ -15,6 +15,7 @@ gem 'listen'
 gem 'spring'
 gem 'spring-commands-rspec'
 gem 'selenium-webdriver', require: false
+gem 'activejob'
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
