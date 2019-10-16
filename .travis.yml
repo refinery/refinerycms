@@ -1,10 +1,13 @@
 language: ruby
-dist: trusty
+dist: bionic
 sudo: false
 addons:
   apt:
     packages:
       - chromium-chromedriver
+  postgresql: '10'
+services:
+  - mysql
 cache: bundler
 before_install:
   - gem update --system
@@ -32,6 +35,6 @@ notifications:
   webhooks:
     - https://webhooks.gitter.im/e/b5d48907cdc89864b874
 rvm:
-  - 2.6.5
-  - 2.5.7
-  - 2.4.8
+  - 2.6
+  - 2.5
+  - 2.4
