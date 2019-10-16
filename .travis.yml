@@ -2,9 +2,7 @@ language: ruby
 dist: bionic
 sudo: false
 addons:
-  apt:
-    packages:
-      - chromium-chromedriver
+  chrome: stable
   postgresql: '10'
 services:
   - mysql
