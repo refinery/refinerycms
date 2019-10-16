@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rspec-rails',             '~> 4.0.0.beta2'
   s.add_dependency 'capybara',                '>= 2.18'
   s.add_dependency 'rails-controller-testing', '>= 0.1.1'
+  s.add_dependency 'webdrivers', '~> 4.0'
 
   s.required_ruby_version = Refinery::Version.required_ruby_version
 
