@@ -25,7 +25,7 @@ end
 
 module Refinery
   module Admin
-    describe "Pages", :type => :feature do
+    describe "Pages", :type => :system do
       refinery_login
 
       context "when no pages" do
@@ -819,7 +819,7 @@ module Refinery
       end
     end
 
-    describe "TranslatePages", :type => :feature do
+    describe "TranslatePages", :type => :system do
       before { Mobility.locale = :en }
       refinery_login
 

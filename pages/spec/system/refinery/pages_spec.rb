@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 module Refinery
-  describe 'page frontend', :type => :feature do
+  describe 'page frontend', :type => :system do
     let(:home_page) { Page.create :title => 'Home', :link_url => '/' }
     let(:about_page) { Page.create :title => 'About' }
     let(:draft_page) { Page.create :title => 'Draft', :draft => true }
@@ -343,7 +343,7 @@ module Refinery
       describe 'for vistor' do
         it 'redirect to the 404 error page' do
           allow_any_instance_of(PagesController).to receive(:current_refinery_user_can_access?).and_return(false)
-          
+
           visit refinery.page_path(draft_page)
 
           expect(page).to have_http_status(404)

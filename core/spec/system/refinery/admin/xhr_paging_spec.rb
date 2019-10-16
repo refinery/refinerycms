@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Refinery
-  describe "Crudify", type: :feature do
+  describe "Crudify", type: :system do
     refinery_login
 
     describe "xhr_paging", :js do
