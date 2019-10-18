@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Refinery
-  describe "the Admin Images Tab", type: :feature do
+  describe "the Admin Images Tab", type: :system do
     refinery_login
     include_context 'admin images tab'
 

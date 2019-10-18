@@ -2,7 +2,7 @@ require "spec_helper"
 
 module Refinery
   module Core
-    describe Engine, :type => :feature do
+    describe Engine, :type => :system do
       describe "#refinery_inclusion!" do
         it "should be idempotent" do
           expect { visit(refinery.root_path) }.not_to raise_error

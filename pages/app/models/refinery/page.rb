@@ -205,7 +205,7 @@ module Refinery
 
     # If you want to destroy a page that is set to be not deletable this is the way to do it.
     def destroy!
-      self.update_attributes(:menu_match => nil, :link_url => nil, :deletable => true)
+      self.update(:menu_match => nil, :link_url => nil, :deletable => true)
 
       self.destroy
     end
