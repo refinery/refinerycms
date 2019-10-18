@@ -3,13 +3,43 @@ module Refinery
 
     def self.included(base)
       base.class_eval do
-        argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
+        argument :attributes,
+                 type: :array,
+                 default: [],
+                 banner: 'field:type field:type'
 
-        class_option :namespace, :type => :string, :default => nil, :banner => 'NAMESPACE', :required => false
-        class_option :authors, :type => :array, :default => [], :banner => 'author author', :required => false, :desc => 'Indicates authors of this extension'
-        class_option :extension, :type => :string, :default => nil, :banner => 'ENGINE', :required => false
-        class_option :i18n, :type => :array, :default => [], :required => false, :banner => "field field", :desc => 'Indicates generated fields'
-        class_option :install, :type => :boolean, :default => false, :required => false, :banner => nil, :desc => 'Bundles and runs the generated generator, rake db:migrate, rake db:seed for you'
+        class_option :namespace,
+                     type: :string,
+                     default: '',
+                     banner: 'NAMESPACE',
+                     required: false
+
+        class_option :authors,
+                     type: :array,
+                     default: [],
+                     banner: 'author author',
+                     required: false,
+                     desc: 'Indicates authors of this extension'
+
+        class_option :extension,
+                     type: :string,
+                     default: '',
+                     banner: 'ENGINE',
+                     required: false
+
+        class_option :i18n,
+                     type: :array,
+                     default: [],
+                     required: false,
+                     banner: 'field field',
+                     desc: 'Indicates generated fields'
+
+        class_option :install,
+                     type: :boolean,
+                     default: false,
+                     required: false,
+                     banner: nil,
+                     desc: 'Bundles and runs the generated generator, rake db:migrate, rake db:seed for you'
 
         remove_class_option :skip_namespace
       end

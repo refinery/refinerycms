@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Refinery
-  describe "Crudify", type: :feature do
+  describe "Crudify", type: :system do
     refinery_login
 
     describe "xhr_paging", :js do
@@ -22,9 +22,9 @@ module Refinery
         expect(page).to have_css(%Q{img[alt="#{first_image.title}"]})
 
         # placeholder which would disappear in a full page refresh.
-        page.evaluate_script("node = document.createElement('i');")
-        page.evaluate_script("node.id = 'has_not_refreshed_entire_page';")
-        page.evaluate_script("document.body.appendChild(node);")
+        page.execute_script("node = document.createElement('i');")
+        page.execute_script("node.id = 'has_not_refreshed_entire_page';")
+        page.execute_script("document.body.appendChild(node);")
 
         within '.pagination' do
           click_link '2'

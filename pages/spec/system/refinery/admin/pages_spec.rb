@@ -25,7 +25,7 @@ end
 
 module Refinery
   module Admin
-    describe "Pages", :type => :feature do
+    describe "Pages", :type => :system do
       refinery_login
 
       context "when no pages" do
@@ -819,7 +819,7 @@ module Refinery
       end
     end
 
-    describe "TranslatePages", :type => :feature do
+    describe "TranslatePages", :type => :system do
       before { Mobility.locale = :en }
       refinery_login
 
@@ -891,14 +891,14 @@ module Refinery
               visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true, :switch_locale => :ru)
 
               expect(page).to have_content("About Ru")
-              expect(page).to have_selector("a[href='http://www.example.com/ru/about-ru']")
+              expect(page).to have_selector("a[href='http://127.0.0.1/ru/about-ru']")
             end
 
             it "shows default to the default locale if no query string is added" do
               visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true)
 
               expect(page).to have_content("About")
-              expect(page).to have_selector("a[href='http://www.example.com/about']")
+              expect(page).to have_selector("a[href='http://127.0.0.1/about']")
             end
           end
         end

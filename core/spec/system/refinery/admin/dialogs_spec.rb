@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Refinery
-  describe "dialog", type: :feature do
+  describe "dialog", type: :system do
     refinery_login
 
     context "links" do

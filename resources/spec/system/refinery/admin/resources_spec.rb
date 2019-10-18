@@ -4,7 +4,7 @@ require 'spec_helper'
 
 module Refinery
   module Admin
-    describe 'Resources', type: :feature do
+    describe 'Resources', type: :system do
       refinery_login
 
       context 'when no files' do
