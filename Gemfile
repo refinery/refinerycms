@@ -51,8 +51,8 @@ group :test do
   gem 'rspec-retry'
   gem 'puma'
 
-  # TODO: Use github source until Rails 6.0 support is done on rspec-rails
-  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-dev'
+  # TODO: Use beta source for Rails 6 support
+  gem 'rspec-rails', '~> 4.0.0.beta3'
 end
 
 # Load local gems according to Refinery developer preference.
