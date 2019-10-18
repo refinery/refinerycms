@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Refinery
-  describe "site bar", :type => :feature do
+  describe "site bar", :type => :system do
     refinery_login
 
     describe "logout link" do

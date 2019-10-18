@@ -26,6 +26,7 @@ module Refinery
       opts[:skip_action_cable] = true
       opts[:skip_action_mailer] = true
       opts[:skip_active_storage] = true
+      opts[:skip_javascript] = true
 
       invoke Rails::Generators::AppGenerator, [ File.expand_path(dummy_path, destination_root) ], opts
     end

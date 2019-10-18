@@ -31,11 +31,11 @@ module Refinery
 
     class << self
       def whitelist_elements
-        Loofah::HTML5::WhiteList::ALLOWED_ELEMENTS.merge(config.add_whitelist_elements)
+        Loofah::HTML5::SafeList::ALLOWED_ELEMENTS.merge(config.add_whitelist_elements)
       end
 
       def whitelist_attributes
-        Loofah::HTML5::WhiteList::ALLOWED_ATTRIBUTES.merge(config.add_whitelist_attributes)
+        Loofah::HTML5::SafeList::ALLOWED_ATTRIBUTES.merge(config.add_whitelist_attributes)
       end
 
       def layout_template_whitelist
