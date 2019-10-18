@@ -9,15 +9,19 @@ path "./" do
   gem "refinerycms-resources"
 end
 
+gem 'bootsnap', require: false
+gem 'listen'
+
 gem 'spring'
 gem 'spring-commands-rspec'
-gem 'selenium-webdriver', require: false
+
+gem 'activejob'
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
 # Add the default visual editor, for now.
-gem 'refinerycms-wymeditor', ['~> 2.0', '>= 2.0.0']
+gem 'refinerycms-wymeditor', ['~> 2.2', '>= 2.2.0']
 
 # Database Configuration
 unless ENV['TRAVIS']
@@ -39,10 +43,6 @@ if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
   end
 end
 
-group :development do
-  gem 'listen', '~> 3.0'
-end
-
 group :test do
   gem 'refinerycms-testing', path: './testing'
   gem 'generator_spec', '~> 0.9.3'
@@ -50,9 +50,10 @@ group :test do
   gem 'coveralls', require: false
   gem 'rspec-retry'
   gem 'puma'
+
+  # TODO: Use github source until Rails 6.0 support is done on rspec-rails
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-dev'
 end
 
 # Load local gems according to Refinery developer preference.
-if File.exist? local_gemfile = File.expand_path('../.gemfile', __FILE__)
-  eval File.read(local_gemfile)
-end
+eval_gemfile '.gemfile' if File.exist?('.gemfile')

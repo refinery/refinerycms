@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Refinery
-  describe "custom", type: :feature do
+  describe "custom", type: :system do
     refinery_login
 
     let(:custom_js){ Refinery.roots('refinery/core').join('spec/support/fixtures/custom_js.js') }
