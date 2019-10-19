@@ -12,7 +12,11 @@ jobs:
     - uses: actions/checkout@v1
     - run: bundle update
     - run: bin/rake refinery:testing:dummy_app
-    - run: bin/rspec ./*/spec --format documentation
+    - run: bin/rspec core/spec
+    - run: bin/rspec dragonfly/spec
+    - run: bin/rspec pages/spec
+    - run: bin/rspec images/spec
+    - run: bin/rspec resources/spec
       env:
         DB: postgresql
         PGHOST: postgres
