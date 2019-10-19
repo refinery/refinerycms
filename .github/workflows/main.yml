@@ -1,9 +1,11 @@
 name: CI
 
 on: [push]
-
 jobs:
-  core:
+  postgres:
+    strategy:
+      matrix:
+        extension: [core, dragonfly, images, pages, resources]
     runs-on: ubuntu-latest
     container:
       image: parndt/refinerycms-ci:latest
@@ -12,107 +14,7 @@ jobs:
     - uses: actions/checkout@v1
     - run: bundle update
     - run: bin/rake refinery:testing:dummy_app
-    - run: bin/rspec core/spec
-      env:
-        DB: postgresql
-        PGHOST: postgres
-        PGPORT: ${{ job.services.postgres.ports[5432] }}
-        PGUSER: postgres
-
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-        - 5432:5432
-  dragonfly:
-    runs-on: ubuntu-latest
-    container:
-      image: parndt/refinerycms-ci:latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - run: bundle update
-    - run: bin/rake refinery:testing:dummy_app
-    - run: bin/rspec dragonfly/spec
-      env:
-        DB: postgresql
-        PGHOST: postgres
-        PGPORT: ${{ job.services.postgres.ports[5432] }}
-        PGUSER: postgres
-
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-        - 5432:5432
-  pages:
-    runs-on: ubuntu-latest
-    container:
-      image: parndt/refinerycms-ci:latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - run: bundle update
-    - run: bin/rake refinery:testing:dummy_app
-    - run: bin/rspec pages/spec
-      env:
-        DB: postgresql
-        PGHOST: postgres
-        PGPORT: ${{ job.services.postgres.ports[5432] }}
-        PGUSER: postgres
-
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-        - 5432:5432
-  images:
-    runs-on: ubuntu-latest
-    container:
-      image: parndt/refinerycms-ci:latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - run: bundle update
-    - run: bin/rake refinery:testing:dummy_app
-    - run: bin/rspec images/spec
-      env:
-        DB: postgresql
-        PGHOST: postgres
-        PGPORT: ${{ job.services.postgres.ports[5432] }}
-        PGUSER: postgres
-
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-        - 5432:5432
-  resources:
-    runs-on: ubuntu-latest
-    container:
-      image: parndt/refinerycms-ci:latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - run: bundle update
-    - run: bin/rake refinery:testing:dummy_app
-    - run: bin/rspec resources/spec
+    - run: bin/rspec ${{ matrix.extension }}/spec
       env:
         DB: postgresql
         PGHOST: postgres
