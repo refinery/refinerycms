@@ -2,9 +2,10 @@ name: CI
 
 on: [push]
 jobs:
-  postgres:
+  test:
     strategy:
       matrix:
+        database: [mysql, postgresql]
         extension: [core, dragonfly, images, pages, resources]
     runs-on: ubuntu-latest
     container:
@@ -16,12 +17,20 @@ jobs:
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ${{ matrix.extension }}/spec
       env:
-        DB: postgresql
+        DB: ${{ matrix.database }}
+        DB_PASSWORD: postgres
         PGHOST: postgres
         PGPORT: ${{ job.services.postgres.ports[5432] }}
         PGUSER: postgres
 
     services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: postgres
+        ports:
+        - 3306:3306
+
       postgres:
         image: postgres:latest
         env:
@@ -30,3 +39,4 @@ jobs:
           POSTGRES_DB: postgres
         ports:
         - 5432:5432
+
