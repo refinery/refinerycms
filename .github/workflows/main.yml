@@ -5,7 +5,7 @@ jobs:
   test:
     strategy:
       matrix:
-        database: [mysql, postgresql]
+        database: [postgresql]
         extension: [core, dragonfly, images, pages, resources]
     runs-on: ubuntu-latest
     container:
@@ -18,19 +18,11 @@ jobs:
     - run: bin/rspec ${{ matrix.extension }}/spec
       env:
         DB: ${{ matrix.database }}
-        DB_PASSWORD: postgres
         PGHOST: postgres
         PGPORT: ${{ job.services.postgres.ports[5432] }}
         PGUSER: postgres
 
     services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: postgres
-        ports:
-        - 3306:3306
-
       postgres:
         image: postgres:latest
         env:
