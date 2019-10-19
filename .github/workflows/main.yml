@@ -5,12 +5,12 @@ on: [push]
 jobs:
   postgres:
     runs-on: ubuntu-latest
-    container: 
+    container:
       image: circleci/ruby:2.6-node-browsers
 
     steps:
     - uses: actions/checkout@v1
-    - run: bundle install --without development
+    - run: sudo touch Gemfile.lock && sudo chown $(whoami) Gemfile.lock && bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ./*/spec --format documentation
       env:
