@@ -6,14 +6,12 @@ jobs:
   postgres:
     runs-on: ubuntu-latest
     container:
-      image: circleci/ruby:2.6-node-browsers
+      image: parndt/refinerycms-ci:latest
 
     steps:
     - uses: actions/checkout@v1
-    - run: |
-      sudo chown -R $(whoami) .
-      bundle install --without development
-      bin/rake refinery:testing:dummy_app
+    - run: bundle install --without development
+    - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ./*/spec --format documentation
       env:
         BUNDLE_JOBS: 4
