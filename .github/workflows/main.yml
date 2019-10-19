@@ -10,16 +10,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - run: bundle install --without development
+    - run: bundle update
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ./*/spec --format documentation
       env:
-        BUNDLE_JOBS: 4
         DB: postgresql
         PGHOST: postgres
         PGPORT: ${{ job.services.postgres.ports[5432] }}
         PGUSER: postgres
-        RETRY_COUNT: 3
 
     services:
       postgres:

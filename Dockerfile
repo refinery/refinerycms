@@ -35,5 +35,7 @@ WORKDIR $APP_HOME
 ENV RAILS_ENV=test
 
 RUN gem install bundler --version ">= 2.0.2"
+COPY . ${APP_HOME}/
+RUN bundle install --without development
 
 CMD ["sh"]
