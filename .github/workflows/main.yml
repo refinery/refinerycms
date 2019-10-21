@@ -17,8 +17,8 @@ jobs:
       BUNDLE_JOBS: 4
       CI: true
       DB: ${{ matrix.database }}
-      POSTGRES_HOST: postgres
-      POSTGRES_PORT: 5432
+      PG_HOST: postgres
+      PG_PORT: 5432
     
     steps:
     - uses: actions/setup-ruby@v1.0.0
