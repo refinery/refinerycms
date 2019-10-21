@@ -8,13 +8,11 @@ jobs:
         database: [postgresql]
         extension: [core, dragonfly, images, pages, resources]
     runs-on: ubuntu-latest
-    container:
-      image: parndt/refinerycms-ci:latest
 
     steps:
+    - uses: actions/setup-ruby@v1.0.0
     - uses: actions/checkout@v1
-    - run: sudo chown -R $(whoami) .
-    - run: bundle update
+    - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ${{ matrix.extension }}/spec
       env:
