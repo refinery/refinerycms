@@ -5,13 +5,17 @@ jobs:
   test:
     strategy:
       matrix:
+        architecture: [x64]
         database: [postgresql]
         extension: [core, dragonfly, images, pages, resources]
-        ruby-version: ['2.6.x', '2.5.x', '2.4.x']
+        ruby: ['2.6.x', '2.5.x', '2.4.x']
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/setup-ruby@v1.0.0
+      with:
+        architecture: ${{ matrix.architecture }}
+        ruby-version: ${{ matrix.ruby }}
     - uses: actions/checkout@v1
     - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
