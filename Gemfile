@@ -12,9 +12,6 @@ end
 gem 'bootsnap', require: false
 gem 'listen'
 
-gem 'spring'
-gem 'spring-commands-rspec'
-
 gem 'activejob'
 
 # Add support for refinerycms-acts-as-indexed
