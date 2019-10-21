@@ -13,13 +13,6 @@ jobs:
       max-parallel: 10
     runs-on: ubuntu-latest
     name: ${{ matrix.extension }} ${{ matrix.ruby }} ${{ matrix.database }}
-    env:
-      BUNDLE_JOBS: 4
-      CI: true
-      DB: ${{ matrix.database }}
-      PG_HOST: localhost
-      PG_PASSWORD: postgres
-      PG_PORT: 5432
     
     steps:
     - uses: actions/setup-ruby@v1.0.0
@@ -31,6 +24,13 @@ jobs:
     - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ${{ matrix.extension }}/spec
+      env:
+        BUNDLE_JOBS: 4
+        CI: true
+        DB: ${{ matrix.database }}
+        PG_HOST: localhost
+        PG_PASSWORD: postgres
+        PG_PORT: ${{ job.services.postgres.ports[5432] }}
 
     services:
       postgres:
@@ -40,6 +40,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
         ports:
+        # will assign a random free host port
         - 5432/tcp
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
