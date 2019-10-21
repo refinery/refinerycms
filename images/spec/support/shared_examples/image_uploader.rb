@@ -30,7 +30,10 @@ shared_examples 'uploads images' do
     it 'the image is rejected', :js => true do
       expect(uploading_an_image).to_not change(Refinery::Image, :count)
       page.within_frame(dialog_frame_id) do
-        expect(page).to have_content(::I18n.t('incorrect_format', :scope => 'activerecord.errors.models.refinery/image'))
+        expect(page).to have_content(::I18n.t('incorrect_format',
+                                              :scope => 'activerecord.errors.models.refinery/image',
+                                              actual: 'application/pdf',
+                                              valid_types: 'image/jpeg, image/png, image/gif or image/tiff'))
       end
     end
   end

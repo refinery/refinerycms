@@ -14,8 +14,13 @@ module Refinery
     validates_with ImageUpdateValidator, on: :update
     validates_property :mime_type,
                        of: :image,
-                       in: ::Refinery::Images.whitelisted_mime_types,
-                       message: :incorrect_format
+                       in: ::Refinery::Images.allowed_mime_types,
+                       message: ->(mime_type, image){
+                         ::I18n.t(:incorrect_format,
+                                  scope: 'activerecord.errors.models.refinery/image',
+                                  actual: mime_type,
+                                  valid_types: ::Refinery::Images.allowed_mime_types_msg)
+                       }
 
     delegate :size, :mime_type, :url, :width, :height, to: :image
 
