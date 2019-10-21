@@ -17,7 +17,8 @@ jobs:
       BUNDLE_JOBS: 4
       CI: true
       DB: ${{ matrix.database }}
-      PG_HOST: postgres
+      PG_HOST: localhost
+      PG_PASSWORD: postgres
       PG_PORT: 5432
     
     steps:
