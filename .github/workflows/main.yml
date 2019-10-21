@@ -17,6 +17,7 @@ jobs:
         architecture: ${{ matrix.architecture }}
         ruby-version: ${{ matrix.ruby }}
     - uses: actions/checkout@v1
+    - run: sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
     - run: bundle install --without development
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ${{ matrix.extension }}/spec
