@@ -52,7 +52,7 @@ module Refinery
             processor p[:name], p[:block]
           end unless extension.dragonfly_processors.blank?
 
-          if extension.s3_datastore
+          if extension.s3_datastore?
             require 'dragonfly/s3_data_store'
             datastore :s3,{
               access_key_id: extension.s3_access_key_id,
