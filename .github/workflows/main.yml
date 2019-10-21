@@ -17,6 +17,8 @@ jobs:
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ${{ matrix.extension }}/spec
       env:
+        BUNDLE_JOBS: 4
+        CI: true
         DB: ${{ matrix.database }}
         PGHOST: postgres
         PGPORT: ${{ job.services.postgres.ports[5432] }}
