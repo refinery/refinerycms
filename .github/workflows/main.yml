@@ -13,6 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - run: sudo chown -R $(whoami) .
     - run: bundle update
     - run: bin/rake refinery:testing:dummy_app
     - run: bin/rspec ${{ matrix.extension }}/spec
