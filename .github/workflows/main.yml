@@ -7,6 +7,7 @@ jobs:
       matrix:
         database: [postgresql]
         extension: [core, dragonfly, images, pages, resources]
+        ruby-version: ['2.6.x', '2.5.x', '2.4.x']
     runs-on: ubuntu-latest
 
     steps:
