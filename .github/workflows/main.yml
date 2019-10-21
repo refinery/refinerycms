@@ -13,11 +13,6 @@ jobs:
       max-parallel: 10
     runs-on: ubuntu-latest
     name: ${{ matrix.extension }} ${{ matrix.ruby }} ${{ matrix.database }}
-    env:
-      BUNDLE_JOBS: 4
-      CI: true
-      DB: ${{ matrix.database }}
-    
     steps:
     - uses: actions/setup-ruby@v1.0.0
       with:
@@ -27,9 +22,14 @@ jobs:
     - uses: actions/checkout@v1
     - run: sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
     - run: bundle install --without development
-    - run: bin/rake refinery:testing:dummy_app
-    - run: bin/rspec ${{ matrix.extension }}/spec
       env:
+        BUNDLE_JOBS: 4
+        CI: true
+    - run: |
+        bin/rake refinery:testing:dummy_app
+        bin/rspec ${{ matrix.extension }}/spec
+      env:
+        DB: ${{ matrix.database }}
         PG_HOST: localhost
         PG_PASSWORD: postgres
         PG_PORT: ${{ job.services.postgres.ports[5432] }}
