@@ -1,4 +1,4 @@
-FROM circleci/ruby:2.6-buster
+FROM circleci/ruby:2.6-buster-node-browsers
 
 RUN sudo mkdir -p refinerycms && sudo chown -R $(whoami) refinerycms
 RUN git clone https://github.com/refinery/refinerycms /refinerycms
@@ -13,3 +13,5 @@ RUN gem install bundler --version ">= 2.0.2"
 RUN BUNDLE_JOBS=16 BUNDLE_GEMFILE=/refinerycms/Gemfile bundle install --without development
 
 RUN sudo rm -rf /refinerycms
+
+CMD ["/bin/sh"]
