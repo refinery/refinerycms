@@ -25,6 +25,7 @@ jobs:
       env:
         BUNDLE_JOBS: 4
         CI: true
+        DB: ${{ matrix.database }}
     - run: |
         bin/rake refinery:testing:dummy_app
         bin/rspec ${{ matrix.extension }}/spec
