@@ -1,6 +1,9 @@
 language: ruby
 dist: bionic
 sudo: false
+branches:
+  only: 
+    - master
 addons:
   postgresql: '10'
 services:
