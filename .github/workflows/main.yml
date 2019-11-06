@@ -29,6 +29,7 @@ jobs:
         bin/rake refinery:testing:dummy_app
         bin/rspec ${{ matrix.extension }}/spec
       env:
+        CI: true
         DB: ${{ matrix.database }}
         PG_HOST: localhost
         PG_PASSWORD: postgres
