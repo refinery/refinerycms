@@ -32,8 +32,12 @@ module Refinery
 
           #  These options require a name and block
           define_url extension.dragonfly_define_url if extension.dragonfly_define_url.present?
-          before_serve extension.dragonfly_before_serve if extension.dragonfly_before_serve.present?
-
+          
+          if extension.dragonfly_before_serve.present?
+            before_serve do
+              extension.dragonfly_before_serve
+            end
+          end
 
           # There can be more than one instance of each of these options.
           extension.dragonfly_mime_types.each do |mt|
