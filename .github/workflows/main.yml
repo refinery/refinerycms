@@ -21,15 +21,12 @@ jobs:
         version: ${{ matrix.ruby }}
     - uses: actions/checkout@v1
     - run: sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
-    - run: bundle install --without development
-      env:
-        BUNDLE_JOBS: 4
-        CI: true
-        DB: ${{ matrix.database }}
     - run: |
+        bundle install --without development
         bin/rake refinery:testing:dummy_app
         bin/rspec ${{ matrix.extension }}/spec
       env:
+        BUNDLE_JOBS: 4
         CI: true
         DB: ${{ matrix.database }}
         PG_HOST: localhost
