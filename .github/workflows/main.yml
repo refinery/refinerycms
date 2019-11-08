@@ -29,7 +29,7 @@ jobs:
         BUNDLE_JOBS: 4
         CI: true
         DB: ${{ matrix.database }}
-        PG_HOST: localhost
+        PG_HOST: postgres
         PG_PASSWORD: postgres
         PG_PORT: ${{ job.services.postgres.ports[5432] }}
 
