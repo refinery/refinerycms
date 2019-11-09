@@ -37,9 +37,11 @@ sk:
         new: Pridať novú podstránku
         expand_collapse: Rozbaliť alebo zbaliť podstránky
         page:
-          view_live_html: Zobraziť stránku <br/><em>(otvorí sa v novom okne)</em>
-          hidden: skrytá
           draft: pracovná verzia
+          hidden: skrytá
+          redirected: Presmerovanie
+          skip_to_first_child: Presmerovať na prvú substránku
+          view_live_html: Zobraziť stránku <br/><em>(otvorí sa v novom okne)</em>
         form:
           preview: Náhľad
           preview_changes: Zobraziť náhľad s vykonanými zmenami
