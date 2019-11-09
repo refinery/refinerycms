@@ -52,6 +52,11 @@ sk:
         button_text: Hľadať 
         results_for_html: "Výsledky hľadania pre &#8216;<em>%{query}</em>&#8217;"
         no_results: Žiadne záznamy sa nenašli
+        cancel_search: 'Zrušiť vyhľadávanie'
+        search_input_notice: ''
+        input:
+          placeholder: "Hľadať &#8230;"
+          help: 'Napíšte slovo alebo frázu, ktorú chcete vyhľadať'
       delete:
         message: Naozaj chcete zmazať '%{title}'?
       error_messages:
@@ -66,6 +71,8 @@ sk:
       close_this_message: Zavrieť správu
     draft_page_message:
       not_live: Táto stránka NIE JE viditeľná pre bežných návštevníkov webu.
+    skip_to_first_child_page_message:
+      skip_to_first_child: "Táto stránka má nastavenie \"Presmeruj na prvú substránku\" a nikdy nebude zobrazená návštevníkom"
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
