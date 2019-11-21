@@ -5,6 +5,8 @@ sk:
         title: Obrázky
         description: Spravovať obrázky
     admin:
+      locale_picker:
+        language: Jazyk
       images:
         delete: Zmazať tento obrázok
         edit: Upraviť tento obrázok
@@ -15,6 +17,19 @@ sk:
           replace_image: " nahradiť ho týmto..."
           current_image: Vybraný obrázok
           maximum_image_size: Maximálna veľkosť obrázku je %{bytes}.
+          image_title: Názov
+          image_title_help: Extra informácie o obrázku
+          image_alt: Alt
+          image_alt_help: Text, ktorý sa zobrazí, ak obrázok nemôže byť zobrazený.
+          ratios: Pomer strán
+          choose_crop: Aby ste mohli editovať zmenšeninu, prosím zvoľte formát z nasledovného zoznamu
+          available_crops: Dostupné zmenšeniny
+          save: Uložiť zmenšeninu
+          format: Formát
+          crop_success: Zmenšenina bola úspešne vygenerovaná
+          no_crops_yet: Zatiaľ neboli vytvorené žiadne zmenšeniny. Kliknite  "Uložiť zmenšeninu" ak chcete pridať prvú
+        crop:
+          delete_crop: "%{title} - Zmenšenina %{id}"
         actions:
           create_new_image: Pridať nový obrázok
         records:
@@ -29,6 +44,7 @@ sk:
           button_text: Vložiť
           resize_image: Upraviť veľkosť?
           size: Veľkosť
+          select_resize: Vyberte veľkosť
         insert:
           existing_image: Knižnica
           new_image: Nový obrázok

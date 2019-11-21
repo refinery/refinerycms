@@ -13,6 +13,9 @@ sk:
           or: alebo
           replace: " nahradiť týmto..."
           maximum_file_size: Maximálna veľkosť súboru je %{bytes}.
+          resource_file: Súbor
+          resource_title: Názov
+          resource_title_help: Názov zobrazený návštevníkom stránky
         resource:
           download: Stiahnuť súbor (%{size})
         actions:
@@ -33,4 +36,6 @@ sk:
       models:
         refinery/resource:
           blank: Musíte vybrať súbor pre nahranie.
+          incorrect_format: "Typ súboru nie je povolený. Váš súbor musí byť typu MP4, MPEG, WMV, AVI, WAV,
+                GIF, JPEG, PNG, SVG, TIFF, PSD, CSV, PDF, TXT, RAR, ZIP, XLS, PPT alebo DOC"
           too_big: Maximálna veľkosť súboru je %{size} MB.
