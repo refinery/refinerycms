@@ -21,11 +21,17 @@ jobs:
         version: ${{ matrix.ruby }}
     - uses: actions/checkout@v1
     - run: sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
+    - id: cache-bundler
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ matrix.ruby }}-gem-${{ matrix.database }}-${{ hashFiles('Gemfile.lock') }}
     - run: |
-        bundle install --without development
+        bundle install --without development --path vendor/bundle
         bin/rake refinery:testing:dummy_app
       env:
         BUNDLE_JOBS: 4
+        BUNDLE_PATH: vendor/bundle
         CI: true
         DB: ${{ matrix.database }}
         PGHOST: localhost
