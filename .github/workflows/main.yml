@@ -20,7 +20,7 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
         version: ${{ matrix.ruby }}
     - uses: actions/checkout@v1
-    - run: sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
+    - run: sudo apt-get update && sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
     - id: cache-bundler
       uses: actions/cache@v1
       with:
