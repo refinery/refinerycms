@@ -25,7 +25,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: vendor/bundle
-        key: ${{ matrix.ruby }}-gem-${{ matrix.database }}-${{ hashFiles('Gemfile.lock') }}
+        key: ${{ matrix.ruby }}-gem-${{ matrix.database }}-${{ hashFiles('Gemfile') }}
     - run: |
         bundle install --without development --path vendor/bundle
         bin/rake refinery:testing:dummy_app
