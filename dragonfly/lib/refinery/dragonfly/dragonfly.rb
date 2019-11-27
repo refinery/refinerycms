@@ -32,7 +32,7 @@ module Refinery
 
           #  These options require a name and block
           define_url extension.dragonfly_define_url if extension.dragonfly_define_url.present?
-          before_serve extension.dragonfly_before_serve if extension.dragonfly_before_serve.present?
+          before_serve(&extension.dragonfly_before_serve) if extension.dragonfly_before_serve.present?
 
 
           # There can be more than one instance of each of these options.
@@ -52,7 +52,7 @@ module Refinery
             processor p[:name], p[:block]
           end unless extension.dragonfly_processors.blank?
 
-          if extension.s3_datastore
+          if extension.s3_datastore?
             require 'dragonfly/s3_data_store'
             datastore :s3,{
               access_key_id: extension.s3_access_key_id,

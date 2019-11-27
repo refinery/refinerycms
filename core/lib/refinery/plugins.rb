@@ -49,7 +49,7 @@ module Refinery
     def update_positions(plugin_list)
       plugins = plugin_list.map {|p| find_by_name(p) }.reject(&:blank?)
       plugins.each_with_index do |plugin, index|
-        plugin.update_attributes(position: index)
+        plugin.update(position: index)
       end
     end
 

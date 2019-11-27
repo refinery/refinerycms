@@ -16,6 +16,7 @@ require File.expand_path("../dummy/config/environment", __FILE__)
 
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'webdrivers/chromedriver'
 
 if ENV['RETRY_COUNT']
   require 'rspec/retry'
@@ -39,8 +40,27 @@ RSpec.configure do |config|
   config.include ActionView::TestCase::Behavior, :file_path => %r{spec/presenters}
   config.infer_spec_type_from_file_location!
 
+  config.use_transactional_fixtures = true
+
+  config.when_first_matching_example_defined(type: :system) do
+    config.before :suite do
+      # Preload assets
+      # This should avoid capybara timeouts, and avoid counting asset compilation
+      # towards the timing of the first feature spec.
+      Rails.application.precompiled_assets
+    end
+  end
+
   config.before(:each) do
     ::I18n.default_locale = I18n.locale = Mobility.locale = :en
+  end
+
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1080]
   end
 
   unless ENV['FULL_BACKTRACE']
@@ -61,16 +81,3 @@ end
 }.flatten.sort.each do |support_file|
   require support_file
 end
-
-require "selenium/webdriver"
-
-Capybara.register_driver :selenium_chrome_headless do |app|
-  browser_options = ::Selenium::WebDriver::Chrome::Options.new
-  browser_options.args << '--headless'
-  browser_options.args << '--no-sandbox'
-  browser_options.args << '--disable-gpu'
-  browser_options.args << '--window-size=1440,1080'
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
-end
-
-Capybara.javascript_driver = (ENV['CAPYBARA_DRIVER'] || :selenium_chrome_headless).to_sym

@@ -22,7 +22,7 @@ module Refinery
       end
 
       def update
-        if @page.update_attributes(page_params)
+        if @page.update(page_params)
           flash.notice = t('refinery.crudify.updated', what: "'#{@page.title}'")
 
           if from_dialog?
@@ -35,7 +35,7 @@ module Refinery
                 render partial: 'save_and_continue_callback',
                        locals: save_and_continue_locals(@page)
               else
-                redirect_to :back
+                redirect_back(fallback_location: { action: 'edit' })
               end
             else
               redirect_back_or_default(refinery.admin_pages_path)

@@ -12,10 +12,6 @@ rescue LoadError
 ERROR
 end
 
-if File.read("#{destination_root}/Gemfile") !~ /assets.+coffee-rails/m
-  gem "coffee-rails", :group => :assets
-end
-
 if ENV['REFINERY_PATH']
   append_file 'Gemfile' do
 "
@@ -33,13 +29,13 @@ end
 append_file 'Gemfile' do
 "
 # Add support for searching inside Refinery's admin interface.
-gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
+gem 'refinerycms-acts-as-indexed', git: 'https://github.com/refinery/refinerycms-acts-as-indexed', branch: 'master'
 
 # Add support for Refinery's custom fork of the visual editor WYMeditor.
-gem 'refinerycms-wymeditor', ['~> 2.0', '>= 2.0.0']
+gem 'refinerycms-wymeditor', git: 'https://github.com/parndt/refinerycms-wymeditor', branch: 'master'
 
 # The default authentication adapter
-gem 'refinerycms-authentication-devise', '~> 2.0'
+gem 'refinerycms-authentication-devise', git: 'https://github.com/refinery/refinerycms-authentication-devise', branch: 'master'
 "
 end
 

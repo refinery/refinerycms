@@ -28,7 +28,6 @@ en:
           format: Format
           crop_success: Crop has been successfully generated
           no_crops_yet: There are no image crops yet. Click "Save crop" to add your first image crop.
-
         crop:
           delete_crop: "%{title} - Crop %{id}"
         actions:
@@ -57,5 +56,5 @@ en:
         refinery/image:
           blank: You must specify an image for upload
           too_big: Image should be smaller than %{size} bytes in size
-          incorrect_format: 'Your image must be either a JPG, PNG or GIF'
+          incorrect_format: "Your image type is '%{actual}' but must be one of %{valid_types}"
           different_file_name: New image can't have different file name

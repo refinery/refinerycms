@@ -141,7 +141,7 @@ module Refinery
 
       klass = klass.constantize if klass.respond_to?(:constantize)
       active_name = ::ActiveModel::Name.new(
-        klass, (Refinery if klass.parents.include?(Refinery))
+        klass, (Refinery if klass.module_parents.include?(Refinery))
       )
 
       if options[:admin]

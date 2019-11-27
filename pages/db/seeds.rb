@@ -51,7 +51,7 @@ Refinery::I18n.frontend_locales.each do |lang|
    'about' => 'About'
   }.each do |slug, title|
     Refinery::Page.by_title(title).each do |page|
-      page.update_attributes slug: slug
+      page.update slug: slug
     end
   end
 end

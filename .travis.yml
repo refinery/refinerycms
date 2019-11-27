@@ -1,25 +1,34 @@
 language: ruby
-dist: trusty
+dist: bionic
 sudo: false
+branches:
+  only: 
+    - master
 addons:
-  apt:
-    packages:
-      - chromium-chromedriver
-cache: bundler
-before_install: gem install bundler
+  postgresql: '10'
+services:
+  - mysql
+cache:
+  bundler: true
+  directories:
+    - /home/travis/.webdrivers/
+before_install:
+  - gem update --system
+  - gem install bundler
 bundler_args: --without development
 before_script:
   - export RETRY_COUNT=3
-  - export PATH=$PATH:/usr/lib/chromium-browser/
   - bin/rake refinery:testing:dummy_app
 script:
   - bin/rspec $EXTENSION/spec
 env:
   - DB=postgresql EXTENSION=core
+  - DB=postgresql EXTENSION=dragonfly
   - DB=postgresql EXTENSION=pages
   - DB=postgresql EXTENSION=images
   - DB=postgresql EXTENSION=resources
   - DB=mysql EXTENSION=core
+  - DB=mysql EXTENSION=dragonfly
   - DB=mysql EXTENSION=pages
   - DB=mysql EXTENSION=images
   - DB=mysql EXTENSION=resources
@@ -28,7 +37,5 @@ notifications:
   webhooks:
     - https://webhooks.gitter.im/e/b5d48907cdc89864b874
 rvm:
-  - 2.5.0
-  - 2.4.3
-  - 2.3.6
-  - 2.2.9
+  - 2.6
+  - 2.5
