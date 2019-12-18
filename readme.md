@@ -11,9 +11,9 @@ You can chat with us using Gitter:
 [![Gitter chat](https://badges.gitter.im/refinery/refinerycms.svg)](https://gitter.im/refinery/refinerycms)
 
 
-Deploy an example app of Refinery on Heroku
+You can deploy an example app to Heroku:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/refinery/refinery-example-app)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/refinery/refinerycms-example-app)
 
 
 ## Requirements
