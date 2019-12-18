@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'refinerycms-core', version
   s.add_dependency 'graphql', '~> 1.8', '>= 1.8.5'
   s.add_dependency 'graphql-guard', '~> 1.2'
-  s.add_dependency 'graphiql-rails', '~> 1.4'
 
   # Development dependencies (usually used for testing)
   s.add_development_dependency 'refinerycms-testing', '~> 4.0.0'
