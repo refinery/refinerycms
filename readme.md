@@ -10,6 +10,12 @@ You can chat with us using Gitter:
 
 [![Gitter chat](https://badges.gitter.im/refinery/refinerycms.svg)](https://gitter.im/refinery/refinerycms)
 
+
+Deploy an example app of Refinery on Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/refinery/refinery-example-app)
+
+
 ## Requirements
 
 * [Bundler](http://gembundler.com)
