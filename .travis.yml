@@ -2,7 +2,7 @@ language: ruby
 dist: bionic
 sudo: false
 branches:
-  only: 
+  only:
     - master
 addons:
   postgresql: '10'
@@ -13,8 +13,7 @@ cache:
   directories:
     - /home/travis/.webdrivers/
 before_install:
-  - gem update --system
-  - gem install bundler
+  - gem update bundler
 bundler_args: --without development
 before_script:
   - export RETRY_COUNT=3
