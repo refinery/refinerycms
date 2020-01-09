@@ -32,6 +32,8 @@ module Refinery
               attach_file 'resource_file', file_path
               click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
             end
+
+            sleep 0.1
           end
         end
 
