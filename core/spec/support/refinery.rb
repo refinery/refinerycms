@@ -4,6 +4,7 @@ RSpec.configure do |config|
   config.extend Refinery::Testing::ControllerMacros::Authentication, :type => :controller
   config.include Refinery::Testing::ControllerMacros::Routes, :type => :controller
   config.extend Refinery::Testing::FeatureMacros::Authentication, :type => :system
+  config.include Refinery::Testing::WaitForAjax, type: :system
 
   # set some config values so that image and resource factories don't fail to create
   config.before do
