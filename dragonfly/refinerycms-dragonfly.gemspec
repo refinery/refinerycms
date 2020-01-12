@@ -1,10 +1,9 @@
 # Encoding: UTF-8
 
-
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{refinerycms-dragonfly}
-  s.version           = '1.0.1'
+  s.version           = '1.0.2'
   s.summary           = %q{Dragonfly interface for Refinery CMS}
   s.description       = %q{Allows Refinery to use dragonfly for file storage and processing}
   s.email             = %q{anita@joli.com.au}
