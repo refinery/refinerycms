@@ -6,7 +6,7 @@ module Refinery
       isolate_namespace Refinery
       engine_name :refinery_images
 
-      config.autoload_paths += %W( #{config.root}/lib )
+      config.autoload_paths += Dir["#{config.root}/lib"]
 
       initializer 'attach-refinery_images-with-dragonfly', :before => :finisher_hook do |app|
         ::Refinery::Dragonfly.configure!(::Refinery::Images)

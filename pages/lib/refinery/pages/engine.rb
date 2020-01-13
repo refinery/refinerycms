@@ -6,7 +6,7 @@ module Refinery
       isolate_namespace Refinery
       engine_name :refinery_pages
 
-      config.autoload_paths += %W( #{config.root}/lib )
+      config.autoload_paths += Dir["#{config.root}/lib"]
 
       before_inclusion do
         Refinery::Plugin.register do |plugin|
