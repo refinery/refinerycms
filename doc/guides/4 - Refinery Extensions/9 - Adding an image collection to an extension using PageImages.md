@@ -75,7 +75,7 @@ end
 Edit the file `vendor/extensions/shows/lib/refinery/shows.rb`:
 
 ```ruby
-require 'refinerycms-core'
+require 'refinery/core'
 
 module Refinery
   autoload :ShowsGenerator, 'generators/refinery/shows_generator'

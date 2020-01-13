@@ -1,7 +1,7 @@
 namespace :refinery do
   namespace :testing do
     task :setup_extension do
-      require 'refinerycms-dragonfly'
+      require 'refinery/dragonfly'
       Refinery::DragonflyGenerator.start %w[--quiet]
     end
   end
