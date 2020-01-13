@@ -1,5 +1,5 @@
 require 'spec_helper_no_rails'
-require 'refinery/users_manager'
+require 'refinery/core/users_manager'
 
 module Refinery
   module Core
