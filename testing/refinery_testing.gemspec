@@ -5,7 +5,7 @@ version = Refinery::Version.to_s
 
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
-  s.name              = %q{refinerycms-testing}
+  s.name              = %q{refinery_testing}
   s.version           = version
   s.summary           = %q{Testing plugin for Refinery CMS}
   s.description       = %q{This plugin adds the ability to tests against the Refinery CMS gem while inside a Refinery CMS extension}
@@ -14,11 +14,11 @@ Gem::Specification.new do |s|
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}
-  s.require_paths     = %w(lib)
+  s.require_paths     = %w[lib]
 
   s.files             = `git ls-files`.split("\n")
 
-  s.add_dependency 'refinerycms-core',        version
+  s.add_dependency 'refinery_core',        version
   s.add_dependency 'factory_bot_rails',       '~> 4.8'
   s.add_dependency 'rspec-rails',             '~> 4.0.0.beta2'
   s.add_dependency 'capybara',                '>= 2.18'

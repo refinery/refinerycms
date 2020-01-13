@@ -70,7 +70,7 @@ module Refinery
       end
 
       def wymeditor_whitelist_tags=(tags)
-        raise "Please ensure refinerycms-wymeditor is being used and use Refinery::Wymeditor.whitelist_tags instead of Refinery::Core.wymeditor_whitelist_tags"
+        raise "Please ensure refinery_wymeditor is being used and use Refinery::Wymeditor.whitelist_tags instead of Refinery::Core.wymeditor_whitelist_tags"
       end
     end
 

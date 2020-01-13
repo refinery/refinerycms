@@ -1,4 +1,4 @@
-require 'refinerycms-core'
+require 'refinery_core'
 require 'mobility'
 
 module Refinery

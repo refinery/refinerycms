@@ -14,7 +14,7 @@ def show_help_message
   if File.exist?(relative_path)
     require relative_path
   else
-    gem 'refinerycms-core'
+    gem 'refinery_core'
     require 'generators/refinery/cms/cms_generator'
   end
   Refinery::CmsGenerator.class_options.each do |raw, option|

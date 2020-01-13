@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 gemspec
 
 path "./" do
-  gem "refinerycms-core"
-  gem "refinerycms-images"
-  gem "refinerycms-pages"
-  gem "refinerycms-resources"
+  gem "refinery_core"
+  gem "refinery_images"
+  gem "refinery_pages"
+  gem "refinery_resources"
 end
 
 gem 'bootsnap', require: false
@@ -41,7 +41,7 @@ if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
 end
 
 group :test do
-  gem 'refinerycms-testing', path: './testing'
+  gem 'refinery_testing', path: './testing'
   gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'coveralls', require: false

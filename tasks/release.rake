@@ -7,7 +7,7 @@ root = File.expand_path('../../', __FILE__)
 (ENGINES + ['refinerycms']).each do |extension|
   namespace extension do
     extension_name = extension
-    extension_name = "refinerycms-#{extension}" unless extension == "refinerycms"
+    extension_name = "refinery_#{extension}" unless extension == "refinerycms"
 
     gem_filename = "pkg/#{extension_name}-#{version}.gem"
     gemspec = "#{extension_name}.gemspec"

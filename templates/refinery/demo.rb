@@ -15,20 +15,20 @@ append_file 'Gemfile' do
 "
 gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', branch: 'master'
 
-# Add support for refinerycms-acts-as-indexed
-gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
+# Add support for refinery_acts-as-indexed
+gem 'refinery_acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
-# Add support for refinerycms-wymeditor
-gem 'refinerycms-wymeditor', ['~> 1.0', '>= 1.0.6']
+# Add support for refinery_wymeditor
+gem 'refinery_wymeditor', ['~> 1.0', '>= 1.0.6']
 
-gem 'refinerycms-blog', git: 'https://github.com/refinery/refinerycms-blog', branch: 'master'
-gem 'refinerycms-inquiries', git: 'https://github.com/refinery/refinerycms-inquiries', branch: 'master'
-gem 'refinerycms-news', git: 'https://github.com/refinery/refinerycms-news', branch: 'master'
-gem 'refinerycms-page-images', git: 'https://github.com/refinery/refinerycms-page-images', branch: 'master'
-gem 'refinerycms-portfolio', git: 'https://github.com/refinery/refinerycms-portfolio', branch: 'master'
-gem 'refinerycms-settings', git: 'https://github.com/refinery/refinerycms-settings', branch: 'master'
-gem 'refinerycms-search', git: 'https://github.com/refinery/refinerycms-search', branch: 'master'
-gem 'refinerycms-authentication-devise', '>= 1.0.4'
+gem 'refinery_blog', git: 'https://github.com/refinery/refinery_blog', branch: 'master'
+gem 'refinery_inquiries', git: 'https://github.com/refinery/refinery_inquiries', branch: 'master'
+gem 'refinery_news', git: 'https://github.com/refinery/refinery_news', branch: 'master'
+gem 'refinery_page-images', git: 'https://github.com/refinery/refinery_page-images', branch: 'master'
+gem 'refinery_portfolio', git: 'https://github.com/refinery/refinery_portfolio', branch: 'master'
+gem 'refinery_settings', git: 'https://github.com/refinery/refinery_settings', branch: 'master'
+gem 'refinery_search', git: 'https://github.com/refinery/refinery_search', branch: 'master'
+gem 'refinery_authentication-devise', '>= 1.0.4'
 "
 end
 

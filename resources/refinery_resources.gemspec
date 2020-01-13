@@ -5,7 +5,7 @@ version = Refinery::Version.to_s
 
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
-  s.name              = %q{refinerycms-resources}
+  s.name              = %q{refinery_resources}
   s.version           = version
   s.summary           = %q{Resources extension for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
@@ -14,13 +14,13 @@ Gem::Specification.new do |s|
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}
-  s.require_paths     = %w(lib)
+  s.require_paths     = %w[lib]
 
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
-  s.add_dependency 'refinerycms-core', version
-  s.add_dependency 'refinerycms-dragonfly', '~> 1.0'
+  s.add_dependency 'refinery_core', version
+  s.add_dependency 'refinery_dragonfly', '~> 1.0'
 
   s.required_ruby_version = Refinery::Version.required_ruby_version
 

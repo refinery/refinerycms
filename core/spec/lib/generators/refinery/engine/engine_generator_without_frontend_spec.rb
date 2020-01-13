@@ -62,7 +62,7 @@ module Refinery
                 end
               end
               directory "lib" do
-                file "refinerycms-rspec_product_tests.rb"
+                file "refinery_rspec_product_tests.rb"
               end
               directory "spec" do
                 file "spec_helper.rb"

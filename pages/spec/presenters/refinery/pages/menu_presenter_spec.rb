@@ -67,7 +67,7 @@ module Refinery
         context "wrapped in html" do
           it "returns menu items" do
             expect(menu_presenter.to_html).to xml_eq(
-              %Q{<nav class="menu clearfix" id="menu"><ul class="nav"><li class="first last"><a href="/refinery-cms">Refinery CMS</a></li></ul></nav>}
+              %Q{<nav class="menu clearfix" id="menu"><ul class="nav"><li class="first last"><a href="/refinery_cms">Refinery CMS</a></li></ul></nav>}
             )
           end
 
@@ -79,7 +79,7 @@ module Refinery
 
             it "returns menu items wrapped in html with role set to navigation" do
               expect(menu_presenter_with_role.to_html).to xml_eq(
-                %Q{<nav class="menu clearfix" id="menu" role="navigation"><ul class="nav"><li class="first last"><a href="/refinery-cms">Refinery CMS</a></li></ul></nav>}
+                %Q{<nav class="menu clearfix" id="menu" role="navigation"><ul class="nav"><li class="first last"><a href="/refinery_cms">Refinery CMS</a></li></ul></nav>}
               )
             end
           end
@@ -90,7 +90,7 @@ module Refinery
 
           it "for normal pages" do
             expect(menu_presenter.to_html).to xml_eq(
-              %Q{<nav class="menu clearfix" id="menu"><ul class="nav"><li class="first last"><a href="#{mounted_path}/refinery-cms">Refinery CMS</a></li></ul></nav>}
+              %Q{<nav class="menu clearfix" id="menu"><ul class="nav"><li class="first last"><a href="#{mounted_path}/refinery_cms">Refinery CMS</a></li></ul></nav>}
             )
           end
 

@@ -20,10 +20,10 @@ Gem::Specification.new do |s|
 
   s.files             = `git ls-files -- lib/* templates/*`.split("\n")
 
-  s.add_dependency    'refinerycms-core',           version
-  s.add_dependency    'refinerycms-images',         version
-  s.add_dependency    'refinerycms-pages',          version
-  s.add_dependency    'refinerycms-resources',      version
+  s.add_dependency    'refinery_core',           version
+  s.add_dependency    'refinery_images',         version
+  s.add_dependency    'refinery_pages',          version
+  s.add_dependency    'refinery_resources',      version
   s.required_ruby_version = Refinery::Version.required_ruby_version
 
   s.cert_chain  = [File.expand_path("../certs/parndt.pem", __FILE__)]

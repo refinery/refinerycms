@@ -32,7 +32,7 @@ index/**/*
 # Refinery Specific
 *.tmproj
 *.autobackupbyrefinery.*
-refinerycms-*.gem
+refinery_*.gem
 .autotest
 
 # Mac

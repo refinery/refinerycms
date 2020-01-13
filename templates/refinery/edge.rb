@@ -29,13 +29,13 @@ end
 append_file 'Gemfile' do
 "
 # Add support for searching inside Refinery's admin interface.
-gem 'refinerycms-acts-as-indexed', git: 'https://github.com/refinery/refinerycms-acts-as-indexed', branch: 'master'
+gem 'refinery_acts-as-indexed', git: 'https://github.com/refinery/refinery_acts-as-indexed', branch: 'master'
 
 # Add support for Refinery's custom fork of the visual editor WYMeditor.
-gem 'refinerycms-wymeditor', git: 'https://github.com/parndt/refinerycms-wymeditor', branch: 'master'
+gem 'refinery_wymeditor', git: 'https://github.com/parndt/refinery_wymeditor', branch: 'master'
 
 # The default authentication adapter
-gem 'refinerycms-authentication-devise', git: 'https://github.com/refinery/refinerycms-authentication-devise', branch: 'master'
+gem 'refinery_authentication-devise', git: 'https://github.com/refinery/refinery_authentication-devise', branch: 'master'
 "
 end
 

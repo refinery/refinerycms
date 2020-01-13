@@ -17,13 +17,13 @@ append_file 'Gemfile', <<-GEMFILE
 gem 'refinerycms', '~> #{VERSION_BAND}'
 
 # Optionally, specify additional Refinery CMS Extensions here:
-gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
-gem 'refinerycms-wymeditor', ['~> 2.0', '>= 2.0.0']
-gem 'refinerycms-authentication-devise', '~> 2.0'
-#  gem 'refinerycms-blog', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
-#  gem 'refinerycms-inquiries', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
-#  gem 'refinerycms-search', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
-#  gem 'refinerycms-page-images', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
+gem 'refinery_acts-as-indexed', ['~> 3.0', '>= 3.0.0']
+gem 'refinery_wymeditor', ['~> 2.0', '>= 2.0.0']
+gem 'refinery_authentication-devise', '~> 2.0'
+#  gem 'refinery_blog', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
+#  gem 'refinery_inquiries', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
+#  gem 'refinery_search', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
+#  gem 'refinery_page-images', ['~> #{VERSION_BAND}', '>= #{MINOR_VERSION_BAND}']
 GEMFILE
 
 begin

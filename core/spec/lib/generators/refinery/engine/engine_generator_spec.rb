@@ -110,7 +110,7 @@ module Refinery
                     file "rspec_product_tests.rake"
                   end
                 end
-                file "refinerycms-rspec_product_tests.rb"
+                file "refinery_rspec_product_tests.rb"
               end
               directory "script" do
                 file "rails"
@@ -148,7 +148,7 @@ module Refinery
               file "Gemfile"
               file "Rakefile"
               file "readme.md"
-              file "refinerycms-rspec_product_tests.gemspec"
+              file "refinery_rspec_product_tests.gemspec"
             end
           end
         end

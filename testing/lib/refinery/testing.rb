@@ -1,4 +1,4 @@
-require 'refinerycms-core'
+require 'refinery_core'
 require 'rspec-rails'
 require 'factory_bot'
 require 'rails-controller-testing'

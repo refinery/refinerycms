@@ -223,7 +223,7 @@ module Refinery
     end
 
     def gem_name
-      "refinerycms-#{extension_plural_name}"
+      "refinery_#{extension_plural_name}"
     end
 
     def gemfile
@@ -246,7 +246,7 @@ module Refinery
     def merge_existing_files!
       # go through all of the temporary files and merge what we need into the current files.
       tmp_directories = []
-      globs = %w[config/locales/*.yml config/routes.rb.erb lib/refinerycms-extension_plural_name.rb.erb]
+      globs = %w[config/locales/*.yml config/routes.rb.erb lib/refinery_extension_plural_name.rb.erb]
       Pathname.glob(source_pathname.join("{#{globs.join(',')}}"), File::FNM_DOTMATCH).each do |path|
         # get the path to the current tmp file.
         # Both the new and current paths need to strip the .erb portion from the generator template

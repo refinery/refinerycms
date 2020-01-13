@@ -6,7 +6,7 @@ rails_version = ['>= 6.0.0', '< 7']
 
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
-  s.name              = %q{refinerycms-core}
+  s.name              = %q{refinery_core}
   s.version           = version
   s.summary           = %q{Core extension for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most extensions}
@@ -15,14 +15,14 @@ Gem::Specification.new do |s|
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Philip Arndt', 'Uģis Ozols', 'Rob Yurkowski']
   s.license           = %q{MIT}
-  s.require_paths     = %w(lib)
+  s.require_paths     = %w[lib]
 
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
   s.required_ruby_version = Refinery::Version.required_ruby_version
 
-  s.add_dependency 'refinerycms-i18n',            ['~> 5.0', '>= 5.0.1']
+  s.add_dependency 'refinery_i18n',            ['~> 5.0', '>= 5.0.1']
   s.add_dependency 'railties',                    rails_version
   s.add_dependency 'activerecord',                rails_version
   s.add_dependency 'actionpack',                  rails_version

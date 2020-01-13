@@ -28,7 +28,7 @@ class Create<%= namespacing %><%= class_name.pluralize %> < ActiveRecord::Migrat
 
   def down
     if defined?(::Refinery::UserPlugin)
-      ::Refinery::UserPlugin.destroy_all({:name => "refinerycms-<%= namespacing.underscore %>"})
+      ::Refinery::UserPlugin.destroy_all({:name => "refinery_<%= namespacing.underscore %>"})
     end
 <% unless skip_frontend? %>
     if defined?(::Refinery::Page)

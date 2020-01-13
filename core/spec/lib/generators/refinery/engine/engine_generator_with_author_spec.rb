@@ -18,7 +18,7 @@ module Refinery
     end
 
     it "uses reference columns for image and resource attributes" do
-      File.open("#{destination_root}/vendor/extensions/rspec_product_tests/refinerycms-rspec_product_tests.gemspec") do |file|
+      File.open("#{destination_root}/vendor/extensions/rspec_product_tests/refinery_rspec_product_tests.gemspec") do |file|
         content = file.read
         expect(content.include?('["Author1", "Author2"]')).to be_truthy
       end
@@ -69,7 +69,7 @@ module Refinery
                 end
               end
               directory "lib" do
-                file "refinerycms-rspec_product_tests.rb"
+                file "refinery_rspec_product_tests.rb"
               end
               directory "spec" do
                 file "spec_helper.rb"
