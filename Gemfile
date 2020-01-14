@@ -41,7 +41,7 @@ if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
 end
 
 group :test do
-  gem 'refinerycms-testing', path: './testing'
+  gem 'refinerycms-testing', path: './testing', require: 'refinery/testing'
   gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'coveralls', require: false
