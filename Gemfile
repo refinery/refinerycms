@@ -15,10 +15,10 @@ gem 'listen'
 gem 'activejob'
 
 # Add support for refinerycms-acts-as-indexed
-gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
+gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0'], require: 'refinery/acts_as_indexed'
 
 # Add the default visual editor, for now.
-gem 'refinerycms-wymeditor', ['~> 2.2', '>= 2.2.0']
+gem 'refinerycms-wymeditor', ['~> 2.2', '>= 2.2.0'], require: 'refinery/wymeditor'
 
 # Database Configuration
 unless ENV['TRAVIS']
