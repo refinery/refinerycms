@@ -1,5 +1,5 @@
-require 'refinery/core'
-require 'refinery/dragonfly'
+require 'refinerycms/core'
+require 'refinerycms/dragonfly'
 
 module Refinery
   autoload :ImagesGenerator, 'generators/refinery/images/images_generator'
