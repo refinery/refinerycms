@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms'
   s.version           = version
-  s.description       = "A Ruby on Rails CMS that supports Rails 5.1. It's developer friendly and easy to extend."
-  s.summary           = 'A Ruby on Rails CMS that supports Rails 5.1'
+  s.description       = "A CMS for Ruby on Rails, supporting Rails 6+. It's developer friendly and easy to extend."
+  s.summary           = 'A CMS for Ruby on Rails, supporting Rails 6+'
   s.email             = 'gems@p.arndt.io'
   s.homepage          = 'https://www.refinerycms.com'
   s.authors           = ['Philip Arndt', 'David Jones', 'Uģis Ozols', 'Brice Sanchez']
