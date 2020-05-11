@@ -26,11 +26,13 @@ env:
   - DB=postgresql EXTENSION=pages
   - DB=postgresql EXTENSION=images
   - DB=postgresql EXTENSION=resources
+  - DB=postgresql EXTENSION=api
   - DB=mysql EXTENSION=core
   - DB=mysql EXTENSION=dragonfly
   - DB=mysql EXTENSION=pages
   - DB=mysql EXTENSION=images
   - DB=mysql EXTENSION=resources
+  - DB=mysql EXTENSION=api
 notifications:
   email: true
   webhooks:
