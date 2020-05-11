@@ -13,7 +13,7 @@
 .edit_email_icon      {@include icon('envelope-o');}
 .edit_icon            {@include icon('edit', $icon_edit_colour);}
 .email_icon           {@include icon('envelope-o');}
-.error_icon           {@include icon('question-circle', $icon_error_colour);}
+.error_icon           {@include icon('exclamation-circle', $icon_error_colour);}
 .failure_icon         {@include icon('times');}
 .folder_icon          {@include icon('folder',$icon_folder_colour)}
 .go_icon              {@include icon('caret-square-o-right');}

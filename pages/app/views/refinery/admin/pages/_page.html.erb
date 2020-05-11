@@ -47,7 +47,9 @@
     </span>
   </div>
 
-  <%= content_tag :ul, class: 'nested', data: { 'ajax-content': refinery.admin_children_pages_path(page.nested_url) } do %>
-    <%= render(partial: 'page', collection: page.children, cached: ->(child_page) { child_page.self_and_descendants }) if Refinery::Pages.auto_expand_admin_tree %>
+  <% if page.children.present? %>
+    <%= content_tag :ul, class: 'nested', data: { 'ajax-content': refinery.admin_children_pages_path(page.nested_url) } do %>
+      <%= render(partial: 'page', collection: page.children, cached: ->(child_page) { child_page.self_and_descendants }) if Refinery::Pages.auto_expand_admin_tree %>
+    <% end %>
   <% end %>
 </li>

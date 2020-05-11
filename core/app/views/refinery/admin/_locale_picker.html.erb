@@ -1,18 +1,26 @@
 <input type="hidden" name="switch_locale" id="switch_locale" value="<%= local_assigns[:current_locale] %>" />
-<% if Refinery::I18n.frontend_locales.many? %>
-  <label><%= t('.language') %></label>
-  <ul id="switch_locale_picker" class="clearfix">
-    <% locales = Refinery::I18n.locales.clone %>
-    <% Refinery::I18n.frontend_locales.each do |locale| %>
-      <% locale_name = locales.delete(locale) %>
-      <li<%= %Q{ class=selected} if locale.to_s == local_assigns[:current_locale].to_s %>>
-        <%= link_to refinery.url_for(:switch_locale => locale, :parent_id => params[:parent_id]), id: locale do %>
-          <div class="<%=locale %> locale_marker">
-            <%= locale_text_icon(locale.upcase) %>
-          </div>
-          <%= locale_name %>
+
+<% if (frontend_locales = Refinery::I18n.frontend_locales).many? %>
+  <div class="field">
+    <label><%= t('.languages') %></label>
+
+    <ul id="switch_locale_picker">
+
+      <% locales = Refinery::I18n.locales.clone %>
+
+      <% frontend_locales.each do |locale| %>
+        <% locale_name = locales.delete(locale) %>
+
+        <%= content_tag :li, class: ('selected' if locale.to_s == local_assigns[:current_locale].to_s) do %>
+          <%= link_to refinery.url_for(switch_locale: locale, parent_id: params[:parent_id]), id: locale do %>
+            <%= locale_name %>
+
+            <%= content_tag :div, class: [locale, 'locale_marker'] do %>
+              <%= locale_text_icon(locale.upcase) %>
+            <% end %>
+          <% end %>
         <% end %>
-      </li>
-    <% end %>
-  </ul>
+      <% end %>
+    </ul>
+  </div>
 <% end %>

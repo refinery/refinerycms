@@ -19,6 +19,10 @@ module Refinery
       ::Refinery::Plugins.registered.unshift(plugin).uniq!(&:name)
     end
 
+    def self.current(params)
+      Refinery::Plugins.registered.find{ |plugin| params[:controller].try(:gsub, "admin/", "") =~ plugin.menu_match}
+    end
+
     # Returns the internationalized version of the title
     def title
       ::I18n.translate(['refinery', 'plugins', name, 'title'].join('.'))

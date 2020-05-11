@@ -1,0 +1,29 @@
+ul#page_parts
+  border-bottom: 1px solid #c4cdd5
+  margin: 1em 0
+  padding: 0
+
+  li
+    display: inline-block
+    padding-right: 0.8em
+
+    &:focus
+      outline: none
+
+    a
+      border-bottom: 2px solid transparent
+      color: $text_light_color
+      display: block
+      font-size: 0.9em
+      padding: 0 0 1.05em
+      text-decoration: none
+
+      &:hover
+        color: $text_base_color
+        border-bottom: 2px solid $text_light_color
+
+
+    &.ui-tabs-active
+      a
+        border-bottom: 2px solid $base_color
+        color: $text_base_color

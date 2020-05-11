@@ -1,0 +1,43 @@
+body
+  background-color: $base_light_color
+  font-family: Helvetica
+  color: $text_base_color
+
+main#page_container
+  padding: 3.5em 0 2em
+
+  @include grid-media($tablet-up)
+    margin-left: 15.5em
+
+  #content
+    #records
+      @include panel
+
+body
+  &.new,
+  &.edit,
+  &.create,
+  &.update
+    #content
+      @include panel
+      padding: 1.5em 1.5em 0
+
+  h1
+    font-size: 1.75em
+    margin: 0.67em 0
+    font-weight: 500
+
+  h2
+    font-size: 1.3em
+    font-weight: 600
+    margin: 1.2em 0
+
+  #records
+    h2
+      margin-top: 0
+
+  a
+    color: $base_color
+
+  .hidden
+    display: none
