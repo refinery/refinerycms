@@ -15,7 +15,7 @@ Take a look at <https://rubygems.org/gems/refinerycms> to find the latest versio
 Edit your `Gemfile` to reference the latest version of Refinery (a later version than the one shown [may exist](https://rubygems.org/gems/refinerycms/versions)).
 
 ```ruby
-gem 'refinerycms', '~> 3.0.0'
+gem 'refinerycms', '~> 4.0.0'
 ```
 
 Now install the new gems using bundler's update functionality:
