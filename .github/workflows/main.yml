@@ -38,10 +38,11 @@ jobs:
       - run: bin/rake refinery:testing:dummy_app
         env:
           PGPORT: ${{ job.services.postgres.ports[5432] }}
-          
+
       - run: bin/rspec ${{ matrix.extension }}/spec
         env:
           PGPORT: ${{ job.services.postgres.ports[5432] }}
+          RETRY_COUNT: 3
 
     services:
       postgres:
