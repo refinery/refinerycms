@@ -2,7 +2,7 @@ development: &development
   adapter: mysql2
   host: localhost
   username: root
-  password:
+  password: <%%= ENV['MYSQL_PASSWORD'] %>
   database: <%= Rails.application.engine_name.gsub(/_application/,'').downcase %>_development
 
 test: &test

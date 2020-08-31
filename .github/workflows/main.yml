@@ -18,6 +18,7 @@ jobs:
       BUNDLE_PATH: vendor/bundle
       CI: true
       DB: ${{ matrix.database }}
+      MYSQL_PASSWORD: root
       PGHOST: localhost
       PGUSER: postgres
       RAILS_ENV: test
