@@ -6,7 +6,6 @@ jobs:
   test:
     strategy:
       matrix:
-        architecture: [x64]
         database: [postgresql]
         extension: [core, dragonfly, images, pages, resources]
         ruby: ["2.7.x", "2.6.x"]
@@ -27,8 +26,6 @@ jobs:
     steps:
       - uses: actions/setup-ruby@v1.0.0
         with:
-          architecture: ${{ matrix.architecture }}
-          ruby-version: ${{ matrix.ruby }}
           version: ${{ matrix.ruby }}
       - uses: actions/checkout@v2
       - run: sudo apt-get update && sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
