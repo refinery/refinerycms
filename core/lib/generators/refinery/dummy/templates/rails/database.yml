@@ -5,7 +5,7 @@ login: &login
   reconnect: false
   pool: 5
   username: root
-  password:
+  password: <%%= ENV['MYSQL_PASSWORD'] %>
   #socket: /tmp/mysql.sock
 <% elsif /postgresql/ === @database %>
   adapter: postgresql

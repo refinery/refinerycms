@@ -9,11 +9,6 @@ path "./" do
   gem "refinerycms-resources"
 end
 
-gem 'bootsnap', require: false
-gem 'listen'
-
-gem 'activejob'
-
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
@@ -21,23 +16,29 @@ gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 gem 'refinerycms-wymeditor', ['~> 2.2', '>= 2.2.0']
 
 # Database Configuration
-unless ENV['TRAVIS']
+unless ENV['CI']
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.3.0.rc1', platform: :jruby
   gem 'sqlite3', platform: :ruby
 end
 
-if !ENV['TRAVIS'] || ENV['DB'] == 'mysql'
+if !ENV['CI'] || ENV['DB'] == 'mysql'
   group :mysql do
     gem 'activerecord-jdbcmysql-adapter', '>= 1.3.0.rc1', platform: :jruby
     gem 'mysql2', '~> 0.4', :platform => :ruby
   end
 end
 
-if !ENV['TRAVIS'] || ENV['DB'] == 'postgresql'
+if !ENV['CI'] || ENV['DB'] == 'postgresql'
   group :postgres, :postgresql do
     gem 'activerecord-jdbcpostgresql-adapter', '>= 1.3.0.rc1', platform: :jruby
     gem 'pg', '~> 0.21', platform: :ruby
   end
+end
+
+group :development, :test do
+  gem 'activejob'
+  gem 'bootsnap', require: false
+  gem 'listen', '~> 3.0'
 end
 
 group :test do
