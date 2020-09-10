@@ -13,7 +13,8 @@ end
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
 # Add the default visual editor, for now.
-gem 'refinerycms-wymeditor', ['~> 2.2', '>= 2.2.0']
+# gem 'refinerycms-wymeditor', ['~> 2.2', '>= 2.2.0']
+gem 'refinerycms-wymeditor', git: 'https://github.com/parndt/refinerycms-wymeditor', branch: 'master'
 
 # Database Configuration
 unless ENV['CI']
