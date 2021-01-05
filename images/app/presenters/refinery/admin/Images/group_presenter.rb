@@ -4,24 +4,25 @@ module Refinery
       class GroupPresenter < Refinery::BasePresenter
         include ActionView::Helpers::TagHelper
 
-        attr_accessor :context, :collection, :pagination_class
+        attr_accessor :context, :collection, :pagination_class, :layout
         delegate :output_buffer, :output_buffer=, :t, to: :context
         delegate :group_by_date, to: :collection
 
 
-        def initialize(collection, context)
-          @context = context
+        def initialize(collection, layout, context)
           @collection = collection.map { |image| Refinery::Admin::Images::ImagePresenter.new(image, context) }
+          @layout = layout
+          @context = context
           @pagination_class = context.pagination_css_class
         end
 
         def to_html
-          tag.ul id: :image_list, class: ['clearfix', 'pagination_frame', pagination_class] do
+          tag.ul id: "image_#{layout}", class: ['clearfix', 'pagination_frame', pagination_class] do
             yield
           end
         end
 
-        def by_date
+        def list_by_date
           buffer = ActiveSupport::SafeBuffer.new
           context.group_by_date(collection).each do |container|
             date_time = (image_group = container.last).first.created_at

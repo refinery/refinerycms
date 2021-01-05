@@ -266,7 +266,7 @@ noscript .flash.flash_alert a:hover {
           float: left;
           margin-right: 1em;
           margin-bottom: 1em;
-          
+
           img {
             display: block;
           }
@@ -1073,7 +1073,7 @@ a img {
 
 /* page parts */
 
-ul#page_parts, 
+ul#page_parts,
 ul#page_parts_controls {
   margin: 0;
   padding: 0;
@@ -1191,25 +1191,21 @@ body.dialog #content .search_form {
 }
 ul#image_grid, .pagination_container > ul#image_grid {
   width: 100%;
-  padding: 0px;
-  margin: 10px 0px 15px 0px;
+  padding: 0;
+  margin: 1rem 0 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 1rem;
 }
 ul#image_grid li, .pagination_container > ul#image_grid li {
-  position: relative;
-  float: left;
-  margin: 0px 12px 12px 0px;
-  padding: 0px;
-  width: 149px;
+
+  margin: 0px 1rem 1rem 0px;
   height: 186px;
-  max-width: 149px;
-  max-height: 186px;
+  width: 149px;
   text-align: center;
   overflow: hidden;
 }
-ul#image_grid li.image_3 {
-  margin-left: 0px;
-  margin-right: 0px;
-}
+
 #records ul#image_grid li .actions {
   top: auto;
   bottom: 0px;

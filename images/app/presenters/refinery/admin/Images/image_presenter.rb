@@ -42,13 +42,13 @@ module Refinery
         end
 
         def edit_link(&block)
-          link_to refinery.edit_admin_image_path(image), class: [:title, :edit] do
+          link_to refinery.edit_admin_image_path(image), class: [:title, :edit], title: 'Click to edit' do
             block.call
           end
         end
 
         def image_for_list
-          edit_link { image.title }
+          [edit_link { image.title }, tag.span( image.image_name, class: :preview)].join(' ').html_safe
         end
 
         def image_for_grid

@@ -1,2 +1,2 @@
-<% presenter = Refinery::Admin::Images::GroupPresenter.new(@images, self) %>
+<% presenter = Refinery::Admin::Images::GroupPresenter.new(@images, :grid, self) %>
 <%= presenter.to_html { presenter.grid_view } %>
