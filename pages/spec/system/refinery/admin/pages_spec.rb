@@ -218,7 +218,7 @@ module Refinery
 
         context 'when saving and returning to index' do
           it "updates page", js: true do
-            find("a[href$='#{updateable_page.slug}/edit']").click
+            find("a[href$='#{updateable_page.slug}/edit']", match: :first).click
 
             fill_in "Title", :with => "Updated"
             find("#submit_button").click
@@ -230,7 +230,7 @@ module Refinery
         context 'when saving and continuing to edit', js: true do
           before :each do
             expect(page).to have_selector("a[href$='#{updateable_page.slug}/edit']", visible: true)
-            find("a[href$='#{updateable_page.slug}/edit']").click
+            find("a[href$='#{updateable_page.slug}/edit']", match: :first).click
 
             fill_in "Title", :with => "Updated you"
             find("#submit_continue_button").click

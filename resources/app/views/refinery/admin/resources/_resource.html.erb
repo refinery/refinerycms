@@ -6,7 +6,7 @@
 <li class="clearfix record <%= cycle('on', 'on-hover') %>">
 
   <span class="title <%= resource.ext.try(:downcase) %>">
-    <%= translated_field(resource, :title) %>
+    <%= link_to translated_field(resource, :title), edit_url, tooltip: 'Click to edit' %>
   </span>
 
   <% if Refinery::I18n.frontend_locales.many? %>

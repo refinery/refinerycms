@@ -15,25 +15,24 @@ shared_examples 'shows an image preview' do
     ensure_on(initial_path)
   end
 
-  let(:image_url) {
+  let(:image_url) do
     uri = URI(first(:xpath, "//a[@class='preview_icon']")[:href])
     uri.path << '?' << uri.query
-  }
+  end
 
-  context "when in list view" do
-    before  do
-      ensure_on(current_path + "?view=list")
+  context 'when in list view' do
+    before do
+      ensure_on(current_path + '?view=list')
     end
 
     it 'displays the image in a new window', js: true do
-      preview_image()
+      preview_image
     end
   end
 
-
-    context "when in grid view" do
-    before  do
-      ensure_on(current_path + "?view=grid")
+  context 'when in grid view' do
+    before do
+      ensure_on(current_path + '?view=grid')
     end
 
     it 'displays the image in a new window', js: true do
