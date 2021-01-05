@@ -26,7 +26,7 @@ module Refinery
     self.allowed_mime_types = %w[image/jpeg image/png image/gif image/tiff]
     self.allowed_mime_types_msg = self.allowed_mime_types.to_sentence(last_word_connector: ' or ')
     self.image_views = [:grid, :list]
-    self.preferred_image_view = :grid
+    self.preferred_image_view = :list
 
     # Images should always use these changes to the dragonfly defaults
     self.dragonfly_name         = :refinery_images

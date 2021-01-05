@@ -5,7 +5,7 @@ module Refinery
       helper :'refinery/admin/pages'
 
       def link_to
-        # Get the switch_local variable to determine the locale we're currently editing
+        # Get the switch_locale variable to determine the locale we're currently editing
         # Set up Mobility with our current locale
         Mobility.locale = if params[:switch_locale].present? && Refinery::I18n.built_in_locales.keys.map(&:to_s).include?(params[:switch_locale])
           Mobility.locale = params[:switch_locale]
@@ -13,9 +13,10 @@ module Refinery
           Refinery::I18n.default_locale
         end
 
+        @pages = @pages.with_mobility
         @pages = ::Refinery::Page.roots.paginate(:page => params[:page], :per_page => ::Refinery::Page.per_page(true))
 
-        @pages = @pages.with_mobility
+        # @pages = @pages.with_mobility
 
         if ::Refinery::Plugins.registered.names.include?('refinery_files')
           @resources = Resource.paginate(:page => params[:resource_page], :per_page => Resource.per_page(true)).

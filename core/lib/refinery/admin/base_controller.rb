@@ -30,6 +30,7 @@ module Refinery
         current_refinery_user.landing_url
       end
 
+
       protected
 
       def force_ssl!

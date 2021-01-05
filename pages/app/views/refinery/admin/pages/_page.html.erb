@@ -18,10 +18,12 @@
       <span class="item"></span>
     <% end %>
 
-    <span class='title <%= 'toggle' if page.children.present? %>'>
-      <%= translated_field(page, :title) %>
-      <%= page_meta_information page %>
-    </span>
+    <%= link_to edit_url  do %>
+      <span class='title <%= 'toggle' if page.children.present? %>'>
+        <%= translated_field(page, :title) %>
+        <%= page_meta_information page %>
+      </span>
+    <% end %>
 
     <% if Refinery::I18n.frontend_locales.many? %>
       <span class='locales'>
