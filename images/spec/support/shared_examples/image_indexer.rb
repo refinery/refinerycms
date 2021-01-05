@@ -29,43 +29,43 @@ shared_examples_for 'shows list and grid views' do
     ensure_on(initial_path)
   end
 
-  context "when in grid view" do
+  context "Grid view: " do
 
     before { ensure_on(current_path + "?view=grid") }
 
-    it 'shows the images with thumbnails', js: true do
+    it 'shows thumbnails', js: true do
       expect(page).to have_selector(index_item_selector << gridview_img_selector, count: image_count)
     end
 
-    it 'makes the title attribute of each image available', js: true do
-      expect(page).to have_selector(index_item_selector << gridview_img_selector << gridview_title_selector, count: image_count)
+    it 'shows image title', js: true do
+      expect(page).to have_selector(index_item_selector << gridview_title_selector, count: image_count)
     end
 
-    it 'makes the alt attribute of each image available', js: true do
-      expect(page).to have_selector(index_item_selector << gridview_img_selector << gridview_alt_selector, count: image_count)
+    it 'shows image alt', js: true do
+      expect(page).to have_selector(index_item_selector  << gridview_alt_selector, count: image_count)
     end
 
-    it 'has an option to switch to list view' do
+    it 'will switch to list view' do
       expect(page).to have_content(::I18n.t('switch_to', view_name: 'list', scope: 'refinery.admin.images.index.view'))
     end
 
   end  # grid view
 
-  context "when in list view" do
+  context "List view: " do
 
     before  do
       ensure_on(current_path + "?view=list")
     end
 
-    it 'makes the title attribute of each image available', js: true do
+    it 'shows image title', js: true do
       expect(page).to have_selector(index_item_selector <<  listview_title_selector, count: image_count)
     end
 
-    it 'makes the filename of each image available' do
+    it 'shows the image filename' do
       expect(page).to have_selector(index_item_selector << listview_filename_selector, count: image_count)
     end
 
-    it 'has an option to switch to grid view' do
+    it 'will switch to grid view' do
       ensure_on(current_path + '?view=list')
 
       expect(page).to have_content(::I18n.t('switch_to', view_name: 'grid', scope: 'refinery.admin.images.index.view'))
