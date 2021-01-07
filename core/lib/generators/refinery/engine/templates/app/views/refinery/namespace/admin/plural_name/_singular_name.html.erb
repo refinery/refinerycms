@@ -1,8 +1,13 @@
+
+
+
 <% title_attribute = (title = attributes.detect { |a| a.type.to_s == "string" }).present? ? title.name : 'title' -%>
 <li class='clearfix record <%%= cycle("on", "on-hover") %>' id="<%%= dom_id(<%= singular_name %>) -%>">
-  <span class='title'>
-    <% if localized? %><%%= translated_field(<%= singular_name %>, :<%= title_attribute %>) %><% else %><%%= <%= singular_name %>.<%= title_attribute %> %><% end %>
-  </span>
+  <%%= link_to  t('.edit'), refinery.edit_<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>) do %>
+    <span class='title'>
+      <% if localized? %><%%= translated_field(<%= singular_name %>, :<%= title_attribute %>) %><% else %><%%= <%= singular_name %>.<%= title_attribute %> %><% end %>
+    </span>
+  <%% end %>
 <% if localized? %>
   <%% if Refinery::I18n.frontend_locales.many? %>
     <span class='locales'>

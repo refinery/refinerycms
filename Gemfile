@@ -57,3 +57,7 @@ end
 
 # Load local gems according to Refinery developer preference.
 eval_gemfile '.gemfile' if File.exist?('.gemfile')
+
+gem 'refinerycms-things', path: 'spec/dummy/vendor/extensions'
+gem 'refinerycms-thongs', path: 'spec/dummy/vendor/extensions'
+gem 'refinerycms-thangs', path: 'spec/dummy/vendor/extensions'
