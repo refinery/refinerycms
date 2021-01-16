@@ -1,2 +1,9 @@
 <%= will_paginate @images if Refinery::Admin::ImagesController.pageable? %>
-<%= render "#{Refinery::Images.preferred_image_view}_view" %>
+
+<%
+  requested_view = Refinery::Images.preferred_image_view
+  presenter = Refinery::Admin::Images::CollectionPresenter.new(@images, requested_view,  self)
+%>
+<%= presenter.to_html %>
+
+

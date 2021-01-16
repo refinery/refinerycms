@@ -8,8 +8,8 @@ en:
       locale_picker:
         language: Language
       images:
+        edit: Edit %{title}
         delete: Remove this image forever
-        edit: Edit this image
         form:
           image: Image
           use_current_image: Use current image
