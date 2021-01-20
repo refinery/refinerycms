@@ -8,7 +8,7 @@ jobs:
       matrix:
         database: [ mysql, postgresql ]
         extension: [ core, dragonfly, images, pages, resources ]
-        ruby: [ "2.7.x", "2.6.x" ]
+        ruby: [ 2.7, 2.6 ]
       fail-fast: false
       max-parallel: 10
     runs-on: ubuntu-latest
@@ -25,10 +25,10 @@ jobs:
 
     name: ${{ matrix.extension }} ${{ matrix.ruby }} ${{ matrix.database }}
     steps:
-      - uses: actions/setup-ruby@v1.0.0
-        with:
-          version: ${{ matrix.ruby }}
       - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
       - run: sudo apt-get update && sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
       - run: sudo systemctl start mysql.service
       - id: cache-bundler
