@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: ruby/setup-ruby@v1.0.0
         with:
-          version: ${{ matrix.ruby }}
+          ruby_version: ${{ matrix.ruby }}
       - uses: actions/checkout@v2
       - run: sudo apt-get update && sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
       - run: sudo systemctl start mysql.service
