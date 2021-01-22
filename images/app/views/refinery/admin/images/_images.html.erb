@@ -2,7 +2,7 @@
 
 <%
   requested_view = Refinery::Images.preferred_image_view
-  presenter = Refinery::Admin::Images::CollectionPresenter.new(@images, requested_view,  self)
+  presenter = Refinery::Admin::ImagePresenter.collection(@images, requested_view,  self)
 %>
 <%= presenter.to_html %>
 

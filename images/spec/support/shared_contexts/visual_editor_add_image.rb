@@ -16,9 +16,6 @@ shared_context 'Visual Editor - add image' do
 
   let(:initial_path) { refinery.edit_admin_page_path(page_for_image) }
 
-  # let(:target_image) { find(:xpath, "//img[@title='Beach']")}
-  # let(:url){target_image["data-#{size}"]}
-
   let(:index_in_frame)  {true}
   let(:dialog_frame_id) {'dialog_frame'}
   let(:index_item_selector) {'#existing_image_area_content ul li img'}

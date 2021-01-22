@@ -8,7 +8,7 @@ en:
       locale_picker:
         language: Language
       images:
-        edit: Edit %{title}
+        edit: Edit this image
         delete: Remove this image forever
         form:
           image: Image

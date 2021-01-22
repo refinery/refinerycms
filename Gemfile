@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gemspec
+gem 'rails', '~>6.0'
 
 path "./" do
   gem "refinerycms-core"
