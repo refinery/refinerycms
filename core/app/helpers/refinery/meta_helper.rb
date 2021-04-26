@@ -21,7 +21,7 @@ module Refinery
       objects = (options[:chain_page_title] and object.respond_to?(:ancestors)) ? [object.ancestors, object] : [object]
 
       objects.flatten.compact.each do |obj|
-        obj_title = obj.title if obj.title
+        obj_title = obj&.title.presence
 
         # Only link when the object responds to a url method.
         if options[:link] && obj.respond_to?(:url)
