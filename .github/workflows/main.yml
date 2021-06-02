@@ -25,18 +25,13 @@ jobs:
 
     name: ${{ matrix.extension }} ${{ matrix.ruby }} ${{ matrix.database }}
     steps:
+      - run: sudo apt-get update && sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
+      - run: sudo systemctl start mysql.service
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-      - run: sudo apt-get update && sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
-      - run: sudo systemctl start mysql.service
-      - id: cache-bundler
-        uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ matrix.ruby }}-gem-${{ matrix.database }}-${{ hashFiles('Gemfile') }}
-      - run: bundle install --without development --path vendor/bundle
+          bundler-cache: true
       - run: bin/rake refinery:testing:dummy_app
         env:
           PGPORT: ${{ job.services.postgres.ports[5432] }}
