@@ -24,7 +24,7 @@ jobs:
 
     name: ${{ matrix.extension }} ${{ matrix.ruby }} ${{ matrix.database }}
     steps:
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby }}
