@@ -1,0 +1,53 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        database: [ mysql, postgresql ]
+        extension: [ core, dragonfly, images, pages, resources ]
+        ruby: [ "2.7.x", "2.6.x" ]
+      fail-fast: false
+      max-parallel: 10
+    runs-on: ubuntu-latest
+
+    env:
+      BUNDLE_JOBS: 4
+      BUNDLE_PATH: vendor/bundle
+      CI: true
+      DB: ${{ matrix.database }}
+      MYSQL_PASSWORD: root
+      PGHOST: localhost
+      PGUSER: postgres
+      RAILS_ENV: test
+
+    name: ${{ matrix.extension }} ${{ matrix.ruby }} ${{ matrix.database }}
+    steps:
+      - uses: actions/setup-ruby@v1.0.0
+        with:
+          version: ${{ matrix.ruby }}
+      - uses: actions/checkout@v2
+      - run: sudo apt-get update && sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
+      - run: sudo systemctl start mysql.service
+      - id: cache-bundler
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ matrix.ruby }}-gem-${{ matrix.database }}-${{ hashFiles('Gemfile') }}
+      - run: bundle install --without development --path vendor/bundle
+      - run: bin/rake refinery:testing:dummy_app
+        env:
+          PGPORT: ${{ job.services.postgres.ports[5432] }}
+
+      - run: bin/rspec ${{ matrix.extension }}/spec
+        env:
+          PGPORT: ${{ job.services.postgres.ports[5432] }}
+          RETRY_COUNT: 3
+
+    services:
+      postgres:
+        image: postgres:11.5
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5

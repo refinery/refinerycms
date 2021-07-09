@@ -57,9 +57,9 @@ end
           end
         end
         directory "config" do
-          file "database.yml.mysql"
-          file "database.yml.postgresql"
-          file "database.yml.sqlite3"
+          file "database.mysql.yml"
+          file "database.postgresql.yml"
+          file "database.sqlite3.yml"
         end
       }
     end
