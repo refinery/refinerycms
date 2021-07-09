@@ -24,12 +24,12 @@ jobs:
 
     name: ${{ matrix.extension }} ${{ matrix.ruby }} ${{ matrix.database }}
     steps:
+      - run: sudo apt-get update && sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
+      - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby }}
-      - uses: actions/checkout@v2
-      - run: sudo apt-get update && sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
       - run: sudo systemctl start mysql.service
       - run: bin/rake refinery:testing:dummy_app
         env:
