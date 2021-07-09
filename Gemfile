@@ -14,6 +14,7 @@ gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n',
 
 gem 'bootsnap', require: false
 gem 'listen'
+gem 'routing-filter', github: 'svenfuchs/routing-filter', branch: 'master'
 
 gem 'activejob'
 
