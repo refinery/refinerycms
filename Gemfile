@@ -35,7 +35,7 @@ end
 if !ENV['CI'] || ENV['DB'] == 'postgresql'
   group :postgres, :postgresql do
     gem 'activerecord-jdbcpostgresql-adapter', '>= 1.3.0.rc1', platform: :jruby
-    gem 'pg', '~> 0.21', platform: :ruby
+    gem 'pg', '~> 1.1', platform: :ruby
   end
 end
 
