@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{refinerycms-dragonfly}
-  s.version           = '1.0.2'
+  s.version           = '1.1.0'
   s.summary           = %q{Dragonfly interface for Refinery CMS}
   s.description       = %q{Allows Refinery to use dragonfly for file storage and processing}
   s.email             = %q{anita@joli.com.au}
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
-  s.add_dependency 'dragonfly', '~> 1.1'
+  s.add_dependency 'dragonfly', '~> 1.4'
   s.add_development_dependency 'dragonfly-s3_data_store'
   s.add_dependency 'refinerycms-core', ['~> 4.0', '>= 4.0.2']
 
