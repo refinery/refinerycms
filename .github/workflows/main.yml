@@ -45,7 +45,6 @@ jobs:
         run: |
           sudo apt-get install libpq-dev -y
           sudo systemctl start postgresql.service
-          sudo -u postgres psql -c "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres'"
 
       - run: bin/rake refinery:testing:dummy_app
       - run: bin/rspec ${{ matrix.extension }}/spec
