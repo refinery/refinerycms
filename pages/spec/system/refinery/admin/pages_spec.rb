@@ -891,14 +891,14 @@ module Refinery
               visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true, :switch_locale => :ru)
 
               expect(page).to have_content("About Ru")
-              expect(page).to have_selector("a[href='http://127.0.0.1/ru/about-ru']")
+              expect(page).to have_selector("a[href='http://www.example.com/ru/about-ru']")
             end
 
             it "shows default to the default locale if no query string is added" do
               visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true)
 
               expect(page).to have_content("About")
-              expect(page).to have_selector("a[href='http://127.0.0.1/about']")
+              expect(page).to have_selector("a[href='http://www.example.com/about']")
             end
           end
         end
