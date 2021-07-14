@@ -12,8 +12,8 @@ login: &login
   encoding: unicode
   database: refinery_database_development
   pool: 5
-  username: postgres
-  password: postgres
+  username: <%%= ENV.fetch('PGUSER', 'postgres') %>
+  password: <%%= ENV.fetch('PGPASSWORD', 'postgres') %>
   min_messages: warning
 <% else %>
   adapter: sqlite3
