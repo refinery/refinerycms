@@ -9,6 +9,10 @@ path "./" do
   gem "refinerycms-resources"
 end
 
+# routing-filter needs a newer release than version 0.6.3
+gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
+gem 'routing-filter', github: 'svenfuchs/routing-filter', branch: 'master'
+
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 
@@ -31,7 +35,7 @@ end
 if !ENV['CI'] || ENV['DB'] == 'postgresql'
   group :postgres, :postgresql do
     gem 'activerecord-jdbcpostgresql-adapter', '>= 1.3.0.rc1', platform: :jruby
-    gem 'pg', '~> 0.21', platform: :ruby
+    gem 'pg', '~> 1.1', platform: :ruby
   end
 end
 
