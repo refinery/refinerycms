@@ -161,7 +161,7 @@ module Refinery
         it 'should have a canonical url' do
           visit '/about-us'
 
-          expect(page).to have_selector('head link[rel="canonical"][href^="http://127.0.0.1/about-us"]', visible: false)
+          expect(page).to have_selector('head link[rel="canonical"][href^="http://www.example.com/about-us"]', visible: false)
         end
       end
 
