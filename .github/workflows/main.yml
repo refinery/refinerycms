@@ -35,6 +35,7 @@ jobs:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby }}
       - run: sudo systemctl start mysql.service
+        if: ${{ env.DB == 'mysql' }}
       - run: bin/rake refinery:testing:dummy_app
         env:
           PGPORT: ${{ job.services.postgres.ports[5432] }}
