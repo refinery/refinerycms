@@ -21,9 +21,7 @@ gem 'refinerycms-acts-as-indexed', ['~> 4.0', '>= 4.0.0'],
   branch: 'zeitwerk'
 
 # Add the default visual editor, for now.
-gem 'refinerycms-wymeditor', ['~> 2.2', '>= 2.2.0'],
-  git: 'https://github.com/parndt/refinerycms-wymeditor',
-  branch: 'zeitwerk'
+gem 'refinerycms-wymeditor', ['~> 3.0', '>= 3.0.0']
 
 # Database Configuration
 unless ENV['CI']
