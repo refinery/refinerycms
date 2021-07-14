@@ -43,6 +43,7 @@ group :development, :test do
   gem 'activejob'
   gem 'bootsnap', require: false
   gem 'listen', '~> 3.0'
+  gem 'standard'
 end
 
 group :test do
