@@ -22,6 +22,8 @@ jobs:
       DB: ${{ matrix.database }}
       MYSQL_PASSWORD: root
       PGHOST: localhost
+      PGPASSWORD: runner
+      PGUSER: runner
       RAILS_ENV: test
       RETRY_COUNT: 3
 
@@ -45,6 +47,7 @@ jobs:
         run: |
           sudo apt-get install libpq-dev -y
           sudo systemctl start postgresql.service
+          sudo -u postgres psql -c "CREATE USER runner WITH SUPERUSER PASSWORD 'runner'"
 
       - run: bin/rake refinery:testing:dummy_app
       - run: bin/rspec ${{ matrix.extension }}/spec
