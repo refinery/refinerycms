@@ -1,6 +1,10 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   test:
@@ -10,7 +14,7 @@ jobs:
         extension: [ core, dragonfly, images, pages, resources ]
         ruby: [ 2.7, 2.6 ]
       fail-fast: false
-      max-parallel: 10
+      max-parallel: 20
     runs-on: ubuntu-latest
 
     env:
@@ -18,36 +22,32 @@ jobs:
       DB: ${{ matrix.database }}
       MYSQL_PASSWORD: root
       PGHOST: localhost
-      PGUSER: postgres
-      PGPASSWORD: postgres
+      PGPASSWORD: runner
+      PGUSER: runner
       RAILS_ENV: test
+      RETRY_COUNT: 3
 
     name: ${{ matrix.extension }} ${{ matrix.ruby }} ${{ matrix.database }}
     steps:
-      - run: sudo apt-get update && sudo apt-get install libpq-dev libmysqlclient-dev libsqlite3-dev -y
+      - run: sudo apt-get update && sudo apt-get install libsqlite3-dev -y
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby }}
-      - run: sudo systemctl start mysql.service
+
+      - name: "Set up MySQL using VM's server"
+        if: ${{ env.DB == 'mysql' }}
+        run: |
+          sudo apt-get install libmysqlclient-dev -y
+          sudo systemctl start mysql.service
+
+      - name: "Set up PostgreSQL using VM's server"
+        if: ${{ env.DB == 'postgresql' }}
+        run: |
+          sudo apt-get install libpq-dev -y
+          sudo systemctl start postgresql.service
+          sudo -u postgres psql -c "CREATE USER runner WITH SUPERUSER PASSWORD 'runner'"
+
       - run: bin/rake refinery:testing:dummy_app
-        env:
-          PGPORT: ${{ job.services.postgres.ports[5432] }}
-
       - run: bin/rspec ${{ matrix.extension }}/spec
-        env:
-          PGPORT: ${{ job.services.postgres.ports[5432] }}
-          RETRY_COUNT: 3
-
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        ports: ["5432:5432"]
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
