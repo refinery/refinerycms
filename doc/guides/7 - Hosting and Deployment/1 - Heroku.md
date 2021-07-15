@@ -84,7 +84,7 @@ $ git commit -m "setup for Heroku"
 
 ```shell
 $ app_name="your-app-name"
-$ heroku create $app_name --stack cedar
+$ heroku create $app_name
 $ git push heroku master
 ```
 
@@ -105,8 +105,6 @@ heroku labs:enable user-env-compile
 ```
 
 In theory, this should only affect applications where `initialize_on_precompile` is false or default; however, you may need to set the `user_env_compile` option if you receive complaints about being unable to connect to `127.0.0.1`.
-
-(If someone else created the Heroku app for you, make sure it is on the [Cedar stack](https://devcenter.heroku.com/articles/cedar). Cedar is the newest stack and Heroku recommends it for new apps. You can run `heroku stack` to check which stack your app is on.)
 
 ### Step 4 (Option 1): Start from clean slate
 
