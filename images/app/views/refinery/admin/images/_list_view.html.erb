@@ -1,6 +1,6 @@
 <div id= 'image_list' class="<%= ['clearfix', 'pagination_frame', pagination_css_class].compact.join(' ') %>">
-  <% group_by_date(@images).each do |container| %>
-    <% date_time = (image_group = container.last).first.created_at %>
+  <% group_by_date(@images, :updated_at).each do |container| %>
+    <% date_time = (image_group = container.last).first.updated_at %>
     <% date = Date.parse(date_time.to_s) %>
     <h3><%= l(date, format: :long ) %></h3>
     <ul class='images_list'>
