@@ -149,7 +149,7 @@ module Refinery
       protected
 
       def set_original_filename
-        i = ::Refinery::Image.find_by_id(params[:image_id])
+        i = ::Refinery::Image.find_by_id(params[:id])
         @original_filename = i
       rescue 
         # noop
