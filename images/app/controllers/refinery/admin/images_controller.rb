@@ -80,6 +80,7 @@ module Refinery
       end
 
       def update
+        @original_filename = @image.image_name
         @image.attributes = image_params
         if @image.valid? && @image.save
           flash.notice = t('refinery.crudify.updated', what: "'#{@image.title}'")

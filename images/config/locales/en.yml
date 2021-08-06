@@ -13,6 +13,7 @@ en:
         form:
           image: Image
           use_current_image: Use current image
+          expected_filename: File must be named 
           or: or
           replace_image: " replace it with this one..."
           current_image: Current Image

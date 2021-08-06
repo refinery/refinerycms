@@ -15,6 +15,9 @@
       </p>
       <p>
         <%= f.file_field :image %>
+        <% if @original_file || @image.image_name %>
+          <em><%= t('.expected_filename') %>: <%=@original_file || @image.image_name %></em>
+        <% end %>
       </p>
     <% else %>
       <% # we must only hint at multiple when it's a new record otherwise update fails. %>
