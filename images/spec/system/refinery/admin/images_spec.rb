@@ -22,8 +22,8 @@ module Refinery
       it_has_behaviour 'indexes images'
       it_has_behaviour 'shows list and grid views'
       it_has_behaviour 'shows an image preview'
-      it_has_behaviour 'deletes an image'
       it_has_behaviour 'edits an image'
+      it_has_behaviour 'deletes an image'
       it_has_behaviour 'uploads images'
       it_has_behaviour 'translates an image'
     end
@@ -37,7 +37,6 @@ module Refinery
       it_has_behaviour 'shows an image preview'
       it_has_behaviour 'deletes an image'
       it_has_behaviour 'uploads images'
-      it_has_behaviour 'edits an image'
     end
   end
 
