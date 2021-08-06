@@ -63,6 +63,7 @@
 <% if action_name =~ /(edit)|(update)/ %>
   <div id="existing_image">
     <label><%= t('.current_image') %></label>
+    <% if @image.url %>
     <div id="original-image">
       <%= image_tag @image.url, id: 'crop',
                   data: { mime_type: @image.mime_type,
@@ -104,6 +105,7 @@
           <p id="no-crops-yet"><strong><%=t('.no_crops_yet')%></strong></p>
       <% end %>
     </section>
+    <% end %>
   </div>
 
   <% content_for :after_javascript_libraries do %>
