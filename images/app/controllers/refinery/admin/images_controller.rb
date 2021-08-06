@@ -9,6 +9,7 @@ module Refinery
               conditions: 'parent_id IS NULL'
 
       before_action :change_list_mode_if_specified, :init_dialog
+      before_action :set_original_filename, only: [:edit, :update]
 
       def new
         @image = ::Refinery::Image.new if @image.nil?
@@ -80,7 +81,6 @@ module Refinery
       end
 
       def update
-        @original_filename = @image.image_name
         @image.attributes = image_params
         if @image.valid? && @image.save
           flash.notice = t('refinery.crudify.updated', what: "'#{@image.title}'")
@@ -147,6 +147,13 @@ module Refinery
       end
 
       protected
+
+      def set_original_filename
+        i = ::Refinery::Image.find_by_id(params[:image_id])
+        @original_filename = i
+      rescue 
+        # noop
+      end
 
       def init_dialog
         @app_dialog = params[:app_dialog].present?
