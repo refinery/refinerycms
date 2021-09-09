@@ -4,7 +4,7 @@
     <% date = Date.parse(date_time.to_s) %>
     <h3><%= l(date, format: :long ) %></h3>
     <ul class='images_list'>
-      <%= render partial: 'list_view_image', collection: image_group %>
+      <%= render partial: "list_view_image", collection: image_group, as: :image %>
     </ul>
   <% end %>
 </div>

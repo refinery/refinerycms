@@ -22,22 +22,9 @@
       <%= translated_field(page, :title) %>
       <%= page_meta_information page %>
     </span>
-
-    <% if Refinery::I18n.frontend_locales.many? %>
-      <span class='locales'>
-        <% page.translations.sort_by{ |t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
-          <% if translation.title.present? %>
-            <%= link_to refinery.admin_edit_page_path(page.nested_url, switch_locale: translation.locale),
-                        class: 'locale', title: translation.locale.upcase do %>
-
-              <div class="<%=translation.locale %> locale_marker">
-                <%= locale_text_icon(translation.locale.upcase) %>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
-      </span>
-    <% end %>
+    <span class='locales'>
+      <%= switch_locale(page, edit_url, :title,).html_safe if Refinery::I18n.frontend_locales.many?   %>
+    </span>
 
     <span class='actions'>
       <%= action_icon(:preview, page.url,   t('.view_live_html')) %>
