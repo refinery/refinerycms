@@ -81,8 +81,8 @@ module Refinery
           unless app.config.action_controller.perform_caching && app.config.action_dispatch.rack_cache
             app.config.middleware.insert 0, ::Rack::Cache, {
               verbose: extension.dragonfly_cache_log_level =='verbose',
-              metastore: URI.encode("file:#{extension.dragonfly_cache_store_root}/meta"), # URI encoded in case of spaces
-              entitystore: URI.encode("file:#{extension.dragonfly_cache_store_root}/body")
+              metastore: "file:#{extension.dragonfly_cache_store_root}/meta",
+              entitystore: "file:#{extension.dragonfly_cache_store_root}/body"
             }
           end
           app.config.middleware.insert_after ::Rack::Cache, ::Dragonfly::Middleware, extension.dragonfly_name
