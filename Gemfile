@@ -9,9 +9,7 @@ path "./" do
   gem "refinerycms-resources"
 end
 
-# routing-filter needs a newer release than version 0.6.3
 gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'zeitwerk'
-gem 'routing-filter', github: 'svenfuchs/routing-filter', branch: 'master'
 
 gem 'activejob'
 
