@@ -40,11 +40,11 @@ module Refinery
         authorisation_manager.authenticate!
       end
 
-      def group_by_date(records)
+      def group_by_date(records, date_field = :created_at)
         new_records = []
 
         records.each do |record|
-          key = record.created_at.strftime("%Y-%m-%d")
+          key = record.send(date_field).strftime("%Y-%m-%d")
           record_group = new_records.map{ |r| r.last if r.first == key }.flatten.compact << record
           (new_records.delete_if { |i| i.first == key}) << [key, record_group]
         end
