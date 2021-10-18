@@ -20,7 +20,7 @@ module Refinery
       include_context 'one image'
 
       it_has_behaviour 'indexes images'
-      it_has_behaviour 'shows list and grid views'
+      it_has_behaviour 'different views'
       it_has_behaviour 'shows an image preview'
       it_has_behaviour 'deletes an image'
       it_has_behaviour 'edits an image'
@@ -32,7 +32,7 @@ module Refinery
       include_context 'many images'
 
       it_has_behaviour 'indexes images'
-      it_has_behaviour 'shows list and grid views'
+      it_has_behaviour 'different views'
       it_has_behaviour 'paginates the list of images'
       it_has_behaviour 'shows an image preview'
       it_has_behaviour 'deletes an image'

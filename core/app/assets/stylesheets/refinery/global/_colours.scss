@@ -16,6 +16,12 @@ $icon_add_colour: $icon_default_colour;
 $action_background_colour: lighten($icon_locale_colour,10%);
 $action_border_colour: $icon_locale_colour;
 
+$menu-background: #e9e9e9;
+$menu-color: #0770ad;
+$admin-blue: #28A9F4;
+$admin-blue-light: lighten($admin-blue, 20%);
+$lowlight: #a3a093;
+$highlight: black;
 // $icon_preview_colour: #7f00ff;   // violet
 // $icon_edit_colour:    #007fff;   // azure
 // $icon_add_colour:     #7fff00;   // chartreuse

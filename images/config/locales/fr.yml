@@ -7,7 +7,7 @@ fr:
     admin:
       images:
         delete: Supprimer définitivement cette image
-        edit: Modifier cette image
+        edit: Modifier %{title}
         form:
           image: Image
           use_current_image: Utiliser l'image actuelle
