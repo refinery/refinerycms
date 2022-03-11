@@ -1,5 +1,5 @@
-require 'refinerycms-core'
-require 'refinerycms-dragonfly'
+require 'refinerycms/core'
+require 'refinerycms/dragonfly'
 
 module Refinery
   autoload :ResourcesGenerator, 'generators/refinery/resources/resources_generator'

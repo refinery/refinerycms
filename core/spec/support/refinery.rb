@@ -1,4 +1,4 @@
-require 'refinerycms-testing'
+require 'refinery/testing'
 
 RSpec.configure do |config|
   config.extend Refinery::Testing::ControllerMacros::Authentication, :type => :controller

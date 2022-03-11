@@ -2,7 +2,7 @@ require "spec_helper"
 require 'refinery/cli'
 require "rake"
 
-describe "CLI" do
+describe "Cli" do
   let(:rake) { Rake::Application.new }
 
   before do

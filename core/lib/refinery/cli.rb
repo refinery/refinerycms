@@ -1,7 +1,7 @@
 require 'thor'
 
 module Refinery
-  class CLI < Thor
+  class Cli < Thor
     include Thor::Actions
 
     no_tasks do
