@@ -10,10 +10,10 @@ module Refinery
       context "when set" do
         before do
           allow(Refinery::Core).to receive(:refinery_logout_path).and_return(logout_path)
-          visit Refinery::Core.backend_path
         end
 
         it "is present" do
+          visit Refinery::Core.backend_path
           expect(page).to have_selector("a[href='#{logout_path}']")
           expect(page).to have_content("Log out")
         end

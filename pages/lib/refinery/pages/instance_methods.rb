@@ -18,7 +18,7 @@ module Refinery
         end
       end
 
-      def render(*args)
+      def render(*args, &block)
         present @page unless admin? || @meta
         super
       end

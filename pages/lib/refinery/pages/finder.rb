@@ -44,7 +44,7 @@ module Refinery
       attr_accessor :conditions
 
       def translated_attributes
-        Page.translated_attribute_names.map(&:to_s) | %w(locale)
+        [*Page.mobility_attributes, 'locale']
       end
 
       def translations_conditions(original_conditions)

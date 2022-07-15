@@ -1,4 +1,4 @@
-shared_examples 'translates an image' do
+shared_examples 'Translate' do
   before do
     allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :fr])
     ensure_on(initial_path)

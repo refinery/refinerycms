@@ -1,15 +1,23 @@
 source 'https://rubygems.org'
 
+ruby "3.1.2"
 gemspec
+
+gem 'rails', "~>6.1"
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
+
 
 path "./" do
   gem "refinerycms-core"
+  gem "refinerycms-dragonfly"
   gem "refinerycms-images"
   gem "refinerycms-pages"
   gem "refinerycms-resources"
 end
 
-gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
+gem 'refinerycms-i18n', path: '/private/var/www/refinery/refinerycms-i18n'
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', ['~> 4.0', '>= 4.0.0'],
@@ -43,6 +51,7 @@ group :development, :test do
   gem 'activejob'
   gem 'bootsnap', require: false
   gem 'listen', '~> 3.0'
+  gem 'rspec-rails', '~> 6.0.0.rc1'
 end
 
 group :test do
@@ -53,9 +62,6 @@ group :test do
   gem 'rspec-retry'
   gem 'falcon'
   gem 'falcon-capybara'
-
-  # TODO: Use beta source for Rails 6 support
-  gem 'rspec-rails', '~> 4.0.0.beta3'
 end
 
 # Load local gems according to Refinery developer preference.

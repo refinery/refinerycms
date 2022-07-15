@@ -1,4 +1,4 @@
-shared_examples_for 'indexes images' do
+shared_examples_for 'Index' do
 
   let(:image_count) {[Refinery::Image.count, Refinery::Images.pages_per_admin_index].min}
 
@@ -20,7 +20,7 @@ shared_examples_for 'indexes images' do
 
 end # image index
 
-shared_examples_for 'shows list and grid views' do
+shared_examples_for 'Index Views' do
 
   let(:image_count) {[Refinery::Image.count, Refinery::Images.pages_per_admin_index].min}
 
@@ -70,11 +70,10 @@ shared_examples_for 'shows list and grid views' do
 
       expect(page).to have_content(::I18n.t('switch_to', view_name: 'grid', scope: 'refinery.admin.images.index.view'))
     end
-
   end # list view
 end
 
-shared_examples_for 'paginates the list of images' do
+shared_examples_for 'Index Pagination' do
 
   let(:image_count) {[Refinery::Image.count, Refinery::Images.pages_per_admin_index].min}
 

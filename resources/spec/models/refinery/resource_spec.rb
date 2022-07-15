@@ -61,6 +61,7 @@ module Refinery
           expect(resource.title).to eq('Cape Town Tide Table')
         end
       end
+
       context 'when a specific title has been given' do
         it 'returns that title' do
           expect(titled_resource.title).to eq('Resource Title')
@@ -103,7 +104,7 @@ module Refinery
         end
       end
 
-      specify 'each returned array item should be passed form parameters' do
+      specify 'each returned array item should should be processed with other form parameters' do
         params = { file: [file, file, file], fake_param: 'blah' }
 
         expect(Resource).to receive(:create).exactly(3).times.with(file: file, fake_param: 'blah')
