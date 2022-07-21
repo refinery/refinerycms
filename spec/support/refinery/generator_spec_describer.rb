@@ -1,11 +1,11 @@
 class GeneratorSpec::Matcher::File
   def description
-    'Matches a file'
+    'match a file'
   end
 end
 
 class GeneratorSpec::Matcher::Directory
   def description
-    'Matches a directory'
+    'match a directory stucture'
   end
 end

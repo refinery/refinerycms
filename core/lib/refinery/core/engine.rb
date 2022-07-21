@@ -51,9 +51,7 @@ module Refinery
             reader                             # Explicitly declare readers,
             writer                             # writers, and
             backend_reader                     # backend reader (post.title_backend, etc).
-
             active_record                      # You must now also explicitly ask for ActiveRecord (or Sequel)
-
             query                              # i18n is the default scope
             cache                              # previously implicit
             fallbacks
@@ -63,7 +61,6 @@ module Refinery
             dirty
           end
           # accessor_method not available in v1.0
-          # config.accessor_method = :translates  #.. not sure if this is covered in the above plugins (AMG. 15/7/22).
         end
       end
 

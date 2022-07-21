@@ -6,11 +6,11 @@ module Refinery
 
     before do
       Mobility.with_locale(:en) do
-        page.update!({ title: "draft" })
+        page.update!( title: "draft")
       end
 
       Mobility.with_locale(:lv) do
-        page.update!({title: "melnraksts"})
+        page.update!(title: "melnraksts")
       end
     end
 

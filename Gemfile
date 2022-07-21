@@ -17,12 +17,10 @@ path "./" do
   gem "refinerycms-resources"
 end
 
-gem 'refinerycms-i18n', git: 'https://github.com/anitagraham/refinerycms-i18n', branch: 'ruby3'
+gem 'refinerycms-i18n', git: 'https://github.com/refinery/refinerycms-i18n', branch: 'ruby3'
 
 # Add support for refinerycms-acts-as-indexed
-gem 'refinerycms-acts-as-indexed', ['~> 4.0', '>= 4.0.0'],
-  git: 'https://github.com/refinery/refinerycms-acts-as-indexed',
-  branch: 'master'
+gem 'refinerycms-acts-as-indexed', ['~> 4.0', '>= 4.0.0'], git: 'https://github.com/refinery/refinerycms-acts-as-indexed', branch: 'master'
 
 # Add the default visual editor, for now.
 gem 'refinerycms-wymeditor', ['~> 3.0', '>= 3.0.0']
