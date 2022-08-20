@@ -24,13 +24,8 @@ module Refinery
         def uploading_a_file
           visit refinery.admin_resources_path
           find('a', text: 'Upload new file').click
-
-          expect(page).to have_selector 'iframe#dialog_iframe'
-
-          page.within_frame('dialog_iframe') do
-            attach_file 'resource_file', file_path
-            click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
-          end
+          attach_file 'resource_file', file_path
+          click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
         end
 
         context 'when the file mime_type is acceptable' do
@@ -46,10 +41,7 @@ module Refinery
 
           it 'the file is rejected', js: true do
             expect { uploading_a_file }.to_not change(Refinery::Resource, :count)
-
-            page.within_frame('dialog_iframe') do
-              expect(page).to have_content(::I18n.t('incorrect_format', scope: 'activerecord.errors.models.refinery/resource'))
-            end
+            expect(page).to have_content(::I18n.t('incorrect_format', scope: 'activerecord.errors.models.refinery/resource'))
           end
         end
 

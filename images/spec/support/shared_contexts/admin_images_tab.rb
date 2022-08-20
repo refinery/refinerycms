@@ -9,7 +9,7 @@ shared_context 'admin images tab' do
 
   let(:index_item_selector) {'#records li'}
   let(:gridview_img_selector) {' > img'}
-  let(:gridview_title_selector) {'[tooltip]'}
+  let(:gridview_title_selector) {'[title]'}
   let(:gridview_alt_selector) {'[alt]'}
   let(:listview_title_selector) {' > span.title'}
   let(:listview_filename_selector) {' > span.preview'}

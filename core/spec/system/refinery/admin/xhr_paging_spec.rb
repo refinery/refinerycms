@@ -2,6 +2,9 @@ require "spec_helper"
 
 module Refinery
   describe "Crudify", type: :system do
+    before do
+      driven_by(:selenium_chrome_headless)
+    end
     refinery_login
 
     describe "xhr_paging", :js do
@@ -37,5 +40,4 @@ module Refinery
       end
     end
   end
-
 end
