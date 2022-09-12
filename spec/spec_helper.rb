@@ -17,6 +17,8 @@ require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'webdrivers/chromedriver'
+require 'falcon/capybara'
+Capybara.server = :falcon
 
 if ENV['RETRY_COUNT']
   require 'rspec/retry'

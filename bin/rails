@@ -7,5 +7,6 @@ begin
 rescue LoadError => load_error
   warn "No dummy Rails application found! \n" \
        "To create one in spec/dummy, please run: \n\n" \
-       "    rake refinery:testing:dummy_app"
+       "    rake refinery:testing:dummy_app\n\n" \
+       "#{load_error}"
 end

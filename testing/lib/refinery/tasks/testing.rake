@@ -20,7 +20,7 @@ namespace :refinery do
 
     desc "Sets up just the dummy application for testing, no migrations or extensions"
     task :setup_dummy_app do
-      require 'refinerycms-core'
+      require 'refinerycms/core'
 
       Refinery::DummyGenerator.start %W[--quiet --database=#{ENV['DB'].presence || 'sqlite3'}]
 
@@ -36,7 +36,7 @@ namespace :refinery do
     # namespace :refinery do
     #   namespace :testing do
     #     task :setup_extension do
-    #       require 'refinerycms-my-extension'
+    #       require 'refinery/my-extension'
     #       Refinery::MyEngineGenerator.start %w[--quiet]
     #     end
     #   end

@@ -12,7 +12,9 @@ end
 gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
 
 # Add support for refinerycms-acts-as-indexed
-gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
+gem 'refinerycms-acts-as-indexed', ['~> 4.0', '>= 4.0.0'],
+  git: 'https://github.com/refinery/refinerycms-acts-as-indexed',
+  branch: 'master'
 
 # Add the default visual editor, for now.
 gem 'refinerycms-wymeditor', ['~> 3.0', '>= 3.0.0']
@@ -49,7 +51,8 @@ group :test do
   gem 'launchy'
   gem 'coveralls', require: false
   gem 'rspec-retry'
-  gem 'puma'
+  gem 'falcon'
+  gem 'falcon-capybara'
 
   # TODO: Use beta source for Rails 6 support
   gem 'rspec-rails', '~> 4.0.0.beta3'
