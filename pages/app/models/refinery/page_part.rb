@@ -6,7 +6,7 @@ module Refinery
     before_validation :set_default_slug
 
     validates :title, :presence => true
-    validates :slug, :presence => true, :uniqueness => {:scope => :refinery_page_id}
+    validates :slug, :presence => true, :uniqueness => {:scope => :refinery_page_id, :case_sensitive => true}
     alias_attribute :content, :body
 
     extend Mobility
