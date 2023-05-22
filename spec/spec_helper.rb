@@ -41,6 +41,7 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.include ActionView::TestCase::Behavior, :file_path => %r{spec/presenters}
   config.infer_spec_type_from_file_location!
+  # config.raise_errors_for_deprecations!
 
   config.use_transactional_fixtures = true
 

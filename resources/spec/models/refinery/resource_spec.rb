@@ -61,6 +61,7 @@ module Refinery
           expect(resource.title).to eq('Cape Town Tide Table')
         end
       end
+
       context 'when a specific title has been given' do
         it 'returns that title' do
           expect(titled_resource.title).to eq('Resource Title')
@@ -97,16 +98,18 @@ module Refinery
         end
       end
 
-      specify 'each returned array item should be an instance of resource' do
+      specify 'each returned item should be an instance of resource' do
         Resource.create_resources(file: [file, file, file]).each do |resource|
           expect(resource).to be_an_instance_of(Resource)
         end
       end
 
-      specify 'each returned array item should be passed form parameters' do
-        params = { file: [file, file, file], fake_param: 'blah' }
+      specify 'each returned array item should should be processed with other form parameters' do
+        params = { file: [file, file, file], file_mime_type: 'application/pdf' }
 
-        expect(Resource).to receive(:create).exactly(3).times.with(file: file, fake_param: 'blah')
+        expect(Resource).to receive(:create).exactly(3).times.with({file: file,
+                                                   file_mime_type: 'application/pdf'
+                                                  })
         Resource.create_resources(params)
       end
     end

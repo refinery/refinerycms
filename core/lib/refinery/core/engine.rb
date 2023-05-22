@@ -45,11 +45,22 @@ module Refinery
       end
 
       initializer "refinery.mobility" do
-        Mobility.configure do |config|
-          config.default_backend = :table
-          config.accessor_method = :translates
-          config.query_method    = :i18n
-          config.default_options[:dirty] = true
+        Mobility.configure do
+          plugins do
+            backend :table
+            reader                             # Explicitly declare readers,
+            writer                             # writers, and
+            backend_reader                     # backend reader (post.title_backend, etc).
+            active_record                      # You must now also explicitly ask for ActiveRecord (or Sequel)
+            query                              # i18n is the default scope
+            cache                              # previously implicit
+            fallbacks
+            presence                           # previously implicit
+            default
+            attribute_methods                  # uncomment this to get methods like `translated_attributes`
+            dirty
+          end
+          # accessor_method not available in v1.0
         end
       end
 

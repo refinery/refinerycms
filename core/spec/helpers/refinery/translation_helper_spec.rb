@@ -15,8 +15,9 @@ module Refinery
 
       before do
         Mobility.with_locale(:en) do
-          page.title = "draft"
-          page.save!
+          # page.title = "draft"
+          # page.save!
+          page.update!({title: 'draft'})
         end
 
         Mobility.with_locale(:lv) do

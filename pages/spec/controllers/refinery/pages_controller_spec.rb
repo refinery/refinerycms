@@ -3,7 +3,7 @@ require "spec_helper"
 module Refinery
   describe PagesController, :type => :controller do
     before do
-      FactoryBot.create(:page, link_url:  "/")
+      FactoryBot.create(:page, { link_url: "/" })
       FactoryBot.create(:page, title:  "testing")
       FactoryBot.create(:page, link_url: "/items")
     end

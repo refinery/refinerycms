@@ -12,7 +12,7 @@ jobs:
       matrix:
         database: [ mysql, postgresql ]
         extension: [ core, dragonfly, images, pages, resources ]
-        ruby: [ 2.7, 2.6 ]
+        ruby: [ 3.1]
       fail-fast: false
       max-parallel: 20
     runs-on: ubuntu-latest

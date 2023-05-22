@@ -24,6 +24,8 @@ Gem::Specification.new do |s|
   s.add_dependency    'refinerycms-images',         version
   s.add_dependency    'refinerycms-pages',          version
   s.add_dependency    'refinerycms-resources',      version
+
+  s.add_development_dependency 'rspec-rails'
   s.required_ruby_version = Refinery::Version.required_ruby_version
 
   s.cert_chain = [File.expand_path('certs/parndt.pem', __dir__)]

@@ -3,12 +3,12 @@
   <p><%= t('.problems_in_following_fields') %>:</p>
   <ul>
   <% if defined?(include_object_name) and include_object_name %>
-    <% object.errors.full_messages.each do |value| %>
-      <li><%= value %></li>
+    <% object.errors.each do |error| %>
+      <li><%= error.message %></li>
     <% end %>
   <% else %>
-    <% object.errors.each do |key, value| %>
-      <li><%= value %></li>
+    <% object.errors.each do |error| %>
+      <li><%= error.message %></li>
     <% end %>
   <% end %>
   </ul>
