@@ -14,7 +14,7 @@ root = File.expand_path('../../', __FILE__)
 
     task :clean do
       package_dir = "#{root}/pkg"
-      mkdir_p package_dir unless File.exists?(package_dir)
+      mkdir_p package_dir unless File.exist?(package_dir)
       rm_f gem_filename
     end
 
