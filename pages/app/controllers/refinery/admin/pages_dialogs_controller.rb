@@ -5,7 +5,8 @@ module Refinery
       helper :'refinery/admin/pages'
 
       def link_to
-        # Get the switch_local variable to determine the locale we're currently editing
+
+        # Get the switch_locale variable to determine the locale we're currently editing
         # Set up Mobility with our current locale
         Mobility.locale = if params[:switch_locale].present? && Refinery::I18n.built_in_locales.keys.map(&:to_s).include?(params[:switch_locale])
           Mobility.locale = params[:switch_locale]
