@@ -74,6 +74,12 @@ RSpec.configure do |config|
 
   # Store last errors so we can run rspec with --only-failures
   config.example_status_persistence_file_path = ".rspec_failures"
+
+  # it_has_behaviour alias is used in several gems.
+  config.alias_it_should_behave_like_to :it_has_behaviour, 'has behaviour:'
+
+  # for use when chasing deprecations
+  # config.raise_errors_for_deprecations!
 end
 
 # Requires supporting files with custom matchers and macros, etc,

@@ -5,10 +5,8 @@ shared_examples_for 'deletes an image' do
   end
 
   let(:image_count) {[Refinery::Image.count, Refinery::Images.pages_per_admin_index].min}
-  let(:deleting_an_image) {
-    -> {
-      first("#records li").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))
-    }
+  let(:deleting_an_image)  {
+    first("#records li").click_link(::I18n.t('delete', scope: 'refinery.admin.images'))
   }
 
   it 'has a delete image link for each image' do
@@ -16,7 +14,7 @@ shared_examples_for 'deletes an image' do
   end
 
   it "removes an image" do
-    expect(deleting_an_image).to change(Refinery::Image, :count).by(-1)
+    expect{ deleting_an_image }.to change(Refinery::Image, :count).by(-1)
   end
 
   it 'says the image has been removed' do
