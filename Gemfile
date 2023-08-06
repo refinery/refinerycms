@@ -54,8 +54,7 @@ group :test do
   gem 'falcon'
   gem 'falcon-capybara'
 
-  # TODO: Use beta source for Rails 6 support
-  gem 'rspec-rails', '~> 4.0.0.beta3'
+  gem 'rspec-rails', '~> 6.0.0'
 end
 
 # Load local gems according to Refinery developer preference.

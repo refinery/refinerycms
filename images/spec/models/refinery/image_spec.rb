@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'uri'
 
 module Refinery
-  describe Image, :type => :model do
+  describe Image, type: :model do
 
     let(:image)         { FactoryBot.build(:image) }
     let(:created_image) { FactoryBot.create(:image) }
@@ -37,7 +37,7 @@ module Refinery
         it "should contain an error message" do
           @image.valid?
           expect(@image.errors).not_to be_empty
-          expect(@image.errors[:image]).to eq(["Image should be smaller than #{Images.max_image_size} bytes in size"])
+          expect(@image.errors[:too_big]).to eq(["Image should be smaller than #{Images.max_image_size} bytes in size"])
         end
       end
 

@@ -157,10 +157,10 @@ module Refinery
         it 'should contain an error message' do
           @resource.valid?
           expect(@resource.errors).not_to be_empty
-          expect(@resource.errors[:file]).to eq(Array(::I18n.t(
+          expect(@resource.errors[:too_big]).to eq([::I18n.t(
                                                         'too_big', scope: 'activerecord.errors.models.refinery/resource',
                                                                    size: Resources.max_file_size
-                                                      )))
+                                                      )])
         end
       end
 
