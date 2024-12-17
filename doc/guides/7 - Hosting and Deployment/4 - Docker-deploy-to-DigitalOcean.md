@@ -50,7 +50,7 @@ bundle exec puma -C config/puma.rb
 ```
 
 Apply executable permission:
-``` 
+```
 chmod +x bin/run.docker.sh
 ```
 
@@ -68,7 +68,7 @@ done
 mkdir -p /app/shared/nginx/cache/dragonfly
 ```
 Apply executable permission:
-``` 
+```
 chmod +x run.symlinks.docker.sh
 ```
 
@@ -186,7 +186,7 @@ threads threads_min, threads_max
 environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Executed in Docker container
-if File.exists?('/.dockerenv')
+if File.exist?('/.dockerenv')
   app_dir = File.expand_path("../..", __FILE__)
 
   stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
@@ -462,7 +462,7 @@ if you are going only to play with the droplet for few hours.
 Install the `ufw` firewall via `apt-get install ufw` and do some initial settings:
 ```
 ufw default deny incoming
-ufw allow 22 
+ufw allow 22
 ufw allow 5000
 ufw allow 80
 ufw allow 443
@@ -686,16 +686,16 @@ We can now delete the public allow 5433 rule in ufw:
 ```
      To                         Action      From
      --                         ------      ----
-[ 1] 22                         ALLOW IN    Anywhere                  
-[ 2] 5000                       ALLOW IN    Anywhere                  
-[ 3] 80                         ALLOW IN    Anywhere                  
-[ 4] 443                        ALLOW IN    Anywhere                  
-[ 5] 5433                       ALLOW IN    Anywhere                  
-[ 6] 5433                       ALLOW IN    172.18.0.0/16             
-[ 7] 22 (v6)                    ALLOW IN    Anywhere (v6)             
-[ 8] 5000 (v6)                  ALLOW IN    Anywhere (v6)             
-[ 9] 80 (v6)                    ALLOW IN    Anywhere (v6)             
-[10] 443 (v6)                   ALLOW IN    Anywhere (v6)             
+[ 1] 22                         ALLOW IN    Anywhere
+[ 2] 5000                       ALLOW IN    Anywhere
+[ 3] 80                         ALLOW IN    Anywhere
+[ 4] 443                        ALLOW IN    Anywhere
+[ 5] 5433                       ALLOW IN    Anywhere
+[ 6] 5433                       ALLOW IN    172.18.0.0/16
+[ 7] 22 (v6)                    ALLOW IN    Anywhere (v6)
+[ 8] 5000 (v6)                  ALLOW IN    Anywhere (v6)
+[ 9] 80 (v6)                    ALLOW IN    Anywhere (v6)
+[10] 443 (v6)                   ALLOW IN    Anywhere (v6)
 [11] 5433 (v6)                  ALLOW IN    Anywhere (v6)
 ```
 - to delete 5th and 11th rules, run `ufw delete 5` and `ufw delete 11`
@@ -705,7 +705,7 @@ use the Postgres with non-docker on `5432` and Postgres from Docker via `5433` o
 
 Restart the docker-compose again, it should start correctly.
 
-Now we will check, if the `5433` port is available from the public. From your local machine, run: (replace IP)  
+Now we will check, if the `5433` port is available from the public. From your local machine, run: (replace IP)
 `nmap 46.101.99.215`
 
 You should not see `5433` port available to public.

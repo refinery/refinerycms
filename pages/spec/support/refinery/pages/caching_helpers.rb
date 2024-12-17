@@ -15,7 +15,7 @@ module CachingHelpers
 
   RSpec::Matchers.define :be_cached do
     match do |page|
-      File.exists?(cached_file_path(page))
+      File.exist?(cached_file_path(page))
     end
   end
 

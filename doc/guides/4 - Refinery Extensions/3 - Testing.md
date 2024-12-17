@@ -32,7 +32,7 @@ Add the following lines to your extension's Rakefile
 ENGINE_PATH = File.dirname(*FILE*)
 APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", *FILE*)
 
-load 'rails/tasks/extension.rake' if File.exists?(APP_RAKEFILE)
+load 'rails/tasks/extension.rake' if File.exist?(APP_RAKEFILE)
 
 require "refinerycms-testing"
 Refinery::Testing::Railtie.load_dummy_tasks ENGINE_PATH
