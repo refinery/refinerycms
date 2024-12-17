@@ -98,7 +98,7 @@ describe "Cli" do
         Array(spec_success_message).each do |message_fragment|
           expect(msg).to include(message_fragment)
         end
-        expect(File.exists?(Rails.root.join(copied_file_location))).to be_truthy
+        expect(File.exist?(Rails.root.join(copied_file_location))).to be_truthy
       end
     end
   end

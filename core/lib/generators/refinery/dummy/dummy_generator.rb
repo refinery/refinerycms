@@ -83,7 +83,7 @@ module Refinery
     def application_definition
       @application_definition ||= begin
         dummy_application_path = File.expand_path("#{dummy_path}/config/application.rb", destination_root)
-        unless options[:pretend] || !File.exists?(dummy_application_path)
+        unless options[:pretend] || !File.exist?(dummy_application_path)
           contents = File.read(dummy_application_path)
           contents[(contents.index("module #{module_name}"))..-1]
         end
