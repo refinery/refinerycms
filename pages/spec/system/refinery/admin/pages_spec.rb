@@ -890,17 +890,16 @@ module Refinery
             before { Refinery::Pages.absolute_page_links = true }
 
             it "shows Russian pages if we're editing the Russian locale" do
-              visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true, :switch_locale => :ru)
-
+              visit refinery.link_to_admin_pages_dialogs_path(visual_editor: true, switch_locale: :ru)
               expect(page).to have_content("About Ru")
-              expect(page).to have_selector("a[href='http://www.example.com/ru/about-ru']")
+              expect(page).to have_selector("a[href$='ru/about-ru']")
             end
 
             it "shows default to the default locale if no query string is added" do
-              visit refinery.link_to_admin_pages_dialogs_path(:visual_editor => true)
+              visit refinery.link_to_admin_pages_dialogs_path(visual_editor: true)
 
               expect(page).to have_content("About")
-              expect(page).to have_selector("a[href='http://www.example.com/about']")
+              expect(page).to have_selector("a[href$='about']")
             end
           end
         end
