@@ -18,13 +18,13 @@ module Refinery
 
         context "when page layout template is set using symbols" do
           before do
-            allow(Pages.config).to receive(:layout_template_whitelist).and_return [:three, :one, :two]
+            allow(Refinery::Pages.config).to receive(:layout_template_whitelist).and_return [:three, :one, :two]
           end
 
-          it "works as expected" do
-            page = FactoryBot.create(:page, :layout_template => "three")
+          it "page layout template is set correctly" do
+            page = FactoryBot.create(:page, layout_template: "three")
 
-            expect(helper.template_options(:layout_template, page)).to eq(:selected => 'three')
+            expect(helper.template_options(:layout_template, page)).to eq(selected: 'three')
           end
         end
 
