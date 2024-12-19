@@ -1,24 +1,24 @@
 require 'rack/test'
 require 'rspec/rails'
 require 'capybara/rspec'
-require 'falcon'
 require 'falcon/capybara'
-require 'webdrivers/chromedriver'
 require 'selenium/webdriver'
 
 Capybara.register_driver :local_selenium do |app|
-  options = Selenium::WebDriver::Chrome::Options.new
+  options = Selenium::WebDriver::Options.firefox
+  # options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument("--window-size=1400,1080")
 
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
 end
 
 Capybara.register_driver :local_selenium_headless do |app|
-  options = Selenium::WebDriver::Chrome::Options.new
+  options = Selenium::WebDriver::Options.firefox
+  # options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument("--headless")
   options.add_argument("--window-size=1400,1400")
 
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
 end
 
 selenium_app_host = ENV.fetch("SELENIUM_APP_HOST") do
@@ -33,10 +33,13 @@ Capybara.configure do |config|
   #   File.expand_path('../config.ru', __dir__)
   # ).first
   config.server = :falcon
-  config.server = :falcon_https
-  config.default_driver = :selenium_chrome_https
-  config.javascript_driver = :selenium_chrome_headless_https
+  # config.server = :falcon_https
+  config.default_driver = :local_selenium
+  # config.default_driver = :selenium_chrome_https
+  config.javascript_driver = :local_selenium_headless
+  # config.javascript_driver = :selenium_chrome_headless_https
   config.server_host = selenium_app_host
+  Selenium::WebDriver.logger.ignore(:clear_local_storage, :clear_session_storage)
 end
 
 RSpec.configure do |config|

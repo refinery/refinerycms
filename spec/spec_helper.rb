@@ -16,24 +16,14 @@ require File.expand_path("../dummy/config/environment", __FILE__)
 
 require 'rack/test'
 require 'rspec/rails'
-require 'capybara/rspec'
 require 'falcon'
-require 'falcon/capybara'
-require 'webdrivers/chromedriver'
-require 'selenium/webdriver'
-#
-# Capybara.server = :falcon_https
-# Capybara.default_driver = :selenium_chrome_https
-# Capybara.javascript_driver = :selenium_chrome_headless_https
+
 
 # if testing on localhost
 Capybara.configure do |config|
-  # config.app = Rack::Builder.parse_file(
-  #   File.expand_path('../config.ru', __dir__)
-  # ).first
-
-  # For HTTPS:
-  # For not headless, use `:selenium_chrome_https`
+  config.app = Rack::Builder.parse_file(
+    File.expand_path('../config.ru', __dir__)
+  ).first
 end
 
 if ENV['RETRY_COUNT']
@@ -74,13 +64,13 @@ RSpec.configure do |config|
     ::I18n.default_locale = I18n.locale = Mobility.locale = :en
   end
 
-  # config.before(:each, type: :system) do
-  #   driven_by :selenium_chrome_headless
-  # end
-  #
-  # config.before(:each, type: :system, js: true) do
-  #   driven_by :selenium_chrome_headless, using: :headless_chrome, screen_size: [1400, 1080]
-  # end
+  config.before(:each, type: :system) do
+    driven_by :selenium_chrome_headless
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_headless, using: :headless_chrome, screen_size: [1400, 1080]
+  end
 
   unless ENV['FULL_BACKTRACE']
     config.backtrace_exclusion_patterns = %w(
@@ -98,5 +88,6 @@ end
 ([ENGINE_RAILS_ROOT, Rails.root.to_s].uniq | Refinery::Plugins.registered.pathnames).map{ |p|
   Dir[File.join(p, 'spec', 'support', '**', '*.rb').to_s]
 }.flatten.sort.each do |support_file|
+  # puts "Requiring #{support_file}"
   require support_file
 end
