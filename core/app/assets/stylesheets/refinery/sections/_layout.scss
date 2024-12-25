@@ -644,7 +644,8 @@ textarea {
   width: auto;
   height: 25px;
 }
-label, .label_with_help {
+//label, .label_with_help {
+label {
   margin-bottom: 5px;
   font-weight: bold;
   margin-top: 20px;
@@ -1371,20 +1372,20 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   width: 98%;
 }
 .label_with_help {
-  vertical-align: middle;
+  @include label_with_help
 }
-.label_with_help label, .label_with_help span.help, .label_with_help img.help {
-  display: inline;
-}
-.label_with_help img.help {
-  vertical-align: middle;
-}
-.label_with_help span.help {
-  font-weight: normal;
-  margin-left: 3px;
-  border-bottom: 1px dotted #727272;
-  cursor: help;
-}
+//.label_with_help label, .label_with_help span.help, .label_with_help img.help {
+//  display: inline;
+//}
+//.label_with_help img.help {
+//  vertical-align: middle;
+//}
+//.label_with_help span.help {
+//  font-weight: normal;
+//  margin-left: 3px;
+//  border-bottom: 1px dotted #727272;
+//  cursor: help;
+//}
 #more_options_field {
   position: relative;
 }

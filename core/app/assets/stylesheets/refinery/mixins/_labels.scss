@@ -1,0 +1,17 @@
+@mixin label_with_help {
+  margin-bottom: 5px;
+  font-weight: bold;
+  margin-top: 20px;
+  display: block;
+  vertical-align: middle;
+
+  > label, > .help, {
+    display: inline;
+    vertical-align: middle;
+  }
+  > .help {
+    font-weight: normal;
+    font-style: italic;
+    margin-left: 3px;
+  }
+}
