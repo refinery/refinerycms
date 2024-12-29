@@ -1,6 +1,6 @@
 $admin_width: 1080px;
 $menu_width: 120px;
-$standard_rounding: 0px;
+$standard_rounding: 0;
 
 p {
   font-size: 14px;
@@ -28,7 +28,7 @@ label[for] {
 #admin_container,
 #login_container {
   font-size: 13px;
-  margin: 0px auto 15px auto;
+  margin: 0 auto 15px auto;
   text-align: left;
   position: relative;
   margin-top: 15px;
@@ -39,7 +39,7 @@ label[for] {
   }
   #menu {
     a:hover {
-      border-bottom: 0px;
+      border-bottom: 0;
     }
   }
   .hidden {
@@ -52,7 +52,7 @@ label[for] {
 }
 #admin_container {
   width: $admin_width;
-  margin: -5px auto 0px auto;
+  margin: -5px auto 0 auto;
   height: 100%;
   @include faux_columns_2($menu_width, transparent, white);
 }
@@ -84,9 +84,9 @@ select.widest {
   float: right;
   width: 30%;
   padding-left: 15px;
-  padding-top: 0px;
+  padding-top: 0;
   ul {
-    margin: 0px 0px 18px 0px;
+    margin: 0 0 18px 0;
     padding: 0;
     list-style: none;
     &#current_locale {
@@ -105,7 +105,7 @@ select.widest {
   }
 }
 #sort-status {
-  padding: 5px 5px 5px 0px;
+  padding: 5px 5px 5px 0;
 }
 hr {
   border: 0;
@@ -114,7 +114,7 @@ hr {
 
 .errorExplanation {
   background-color: #FFB1B1;
-  padding: 0px 5px 5px 30px;
+  padding: 0 5px 5px 30px;
   font-weight: bold;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -208,7 +208,7 @@ noscript .flash.flash_alert a:hover {
 }
 #content .visual_editor_box a,
 #content .ui-tabs a {
-  border-bottom: 0px none;
+  border-bottom: 0 none;
 }
 .index #content,
 .splash #content {
@@ -216,7 +216,7 @@ noscript .flash.flash_alert a:hover {
   background-repeat: repeat-y;
 }
 #content {
-  padding: 0px;
+  padding: 0;
   background-color: white;
   a {
     border-bottom: 1px dotted #727272;
@@ -341,7 +341,7 @@ nav {
     }
   }
   label {
-    margin-top: 0px;
+    margin-top: 0;
   }
   label,
   a {
@@ -351,8 +351,8 @@ nav {
     margin-bottom: 20px;
     &.remember_me,
     &.forgot_password {
-      margin-bottom: 0px;
-      margin-top: 0px;
+      margin-bottom: 0;
+      margin-top: 0;
     }
     &.forgot_password {
       text-align: right;
@@ -371,10 +371,10 @@ nav {
     height: 31px;
   }
   input.larger:focus {
-    background-position: 0px -41px;
+    background-position: 0 -41px;
   }
   .fieldWithErrors input.larger {
-    background-position: 0px -82px;
+    background-position: 0 -82px;
     border: 1px solid red;
   }
 }
@@ -389,17 +389,17 @@ div.field.checkbox_access {
 }
 #menu {
   display: block;
-  margin: 45px 0px 0px 0px;
-  padding: 0px;
+  margin: 45px 0 0 0;
+  padding: 0;
   position: absolute;
   background: transparent;
 }
 header {
   float: left;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   width: $menu_width;
   a, a:hover {
-    border-bottom: 0px none;
+    border-bottom: 0 none;
   }
   #logo {
     position: absolute;
@@ -495,7 +495,7 @@ pre {
   > ul li, > #recent_activity > ul li, > #recent_inquiries > ul li,
   .pagination_container > ul li, .pagination_frame > ul {
     list-style: none;
-    padding: 0px 5px;
+    padding: 0 5px;
     vertical-align: top;
     margin-bottom: 2px;
     line-height: 35px;
@@ -521,15 +521,15 @@ pre {
   ul {
     &.clickable {
       li {
-        padding: 0px;
-        margin-bottom: 0px;
+        padding: 0;
+        margin-bottom: 0;
         a {
-          padding: 0px 5px;
+          padding: 0 5px;
           vertical-align: top;
           margin-bottom: 2px;
           line-height: 35px;
           display: block;
-          border-bottom: 0px none;
+          border-bottom: 0 none;
         }
       }
     }
@@ -578,15 +578,15 @@ pre {
   padding: 0;
 }
 #records.tree ul li, .tree ul li {
-  margin: 0px;
+  margin: 0;
   padding: 4px 0 0 40px;
-  background: image_url('refinery/branch.gif') no-repeat 15px 0px;
+  background: image_url('refinery/branch.gif') no-repeat 15px 0;
 }
 #records.tree li.record ul {
   margin-left: 0;
 }
 #records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
-  background: image_url('refinery/branch.gif') no-repeat 15px 0px;
+  background: image_url('refinery/branch.gif') no-repeat 15px 0;
 }
 #records.tree ul li.branch_start, .tree ul li.branch_start {
   background-image: image_url('refinery/branch-start.gif');
@@ -607,16 +607,16 @@ pre {
   cursor: move;
 }
 #records h2, #actions h2 {
-  margin-top: 0px;
+  margin-top: 0;
 }
 .pagination {
   background-color: #C9DAE2;
   padding: 5px 5px 4px 5px;
-  margin: 10px 0px;
+  margin: 10px 0;
   em {
     font-weight: bold;
     font-style: normal;
-    padding: 0px 6px;
+    padding: 0 6px;
   }
 }
 .pagination {
@@ -626,7 +626,7 @@ pre {
   a, #content a, .current, .disabled, em  {
     padding: 7px;
     line-height: 20px;
-    border-bottom: 0px none;
+    border-bottom: 0 none;
   }
   .current, a:hover, em {
     background: #A8B9C1;
@@ -668,8 +668,8 @@ label.stripped {
   display: inline;
   font-weight: normal;
   font-size: 1em;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 #body_field {
   float: left;
@@ -735,8 +735,8 @@ label.stripped {
 }
 #records .actions {
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: 0;
+  top: 0;
   width: 120px;
   text-align: right;
   display: block;
@@ -759,7 +759,7 @@ label.stripped {
   text-align: center;
 }
 #content #records.tree > ul li .actions a {
-  margin: 3px 3px 0px 3px;
+  margin: 3px 3px 0 3px;
   line-height: 24px;
 }
 .actions a * {
@@ -809,7 +809,7 @@ label.stripped {
   li {
     margin: 0;
     list-style: none;
-    padding: 5px 0px 5px 0px;
+    padding: 5px 0 5px 0;
   }
     a {
       font-weight: bold;
@@ -830,7 +830,7 @@ label.stripped {
   padding: 7px;
 }
 #inquiry tr:last-child td, .inquiry tr:last-child td {
-  border-bottom: 0px;
+  border-bottom: 0;
 }
 #inquiry td label.stripped, .inquiry td label.stripped {
   font-weight: bold;
@@ -858,7 +858,7 @@ body.dialog form {
   span.radio {
     display: block;
     line-height: 18px;
-    padding: 6px 0px;
+    padding: 6px 0;
   }
   span.radio * {
     cursor: pointer;
@@ -878,12 +878,12 @@ body.dialog form {
   #existing_image_area_content, #existing_image_area_crops {
     margin-top: 28px;
     ul {
-      margin: 0px;
-      padding: 0px;
+      margin: 0;
+      padding: 0;
       li {
         list-style: none;
-        padding: 0px;
-        margin: 0px 2px 0px 0px;
+        padding: 0;
+        margin: 0 2px 0 0;
         float: left;
         height: 114px;
         max-height: 114px;
@@ -906,12 +906,12 @@ body.dialog form {
     margin-top: 18px;
     margin-bottom: 50px;
     ul {
-      margin: 0px;
-      padding: 10px 0px 0px 0px;
+      margin: 0;
+      padding: 10px 0 0 0;
       li {
         float: left;
         list-style: none;
-        margin: 0px 18px 0px 0px;
+        margin: 0 18px 0 0;
         text-align:center;
         a {
           display: block;
@@ -931,12 +931,12 @@ body.dialog form {
   }
   #existing_image_size_area {
     #image_dialog_size_0 a { height: 30px; width: 30px; line-height: 30px; margin-top: 10px }
-    #image_dialog_size_1 a { height: 50px; width: 50px; line-height: 50px; margin-top:  0px }
+    #image_dialog_size_1 a { height: 50px; width: 50px; line-height: 50px; margin-top:  0 }
     #image_dialog_size_2 a { height: 70px; width: 70px; line-height: 70px; margin-top:-10px }
     #image_dialog_size_3 a { height: 90px; width: 90px; line-height: 90px; margin-top:-20px }
   }
   #content {
-    padding: 0px;
+    padding: 0;
   }
 }
 #upload_image_area, #upload_resource_area {
@@ -948,7 +948,7 @@ body.dialog form {
 }
 #dialog_main {
   .pagination {
-    margin: 0px;
+    margin: 0;
     position: fixed;
     bottom: 5px;
     right: 12px;
@@ -958,8 +958,8 @@ body.dialog form {
     width: 100%;
     padding-bottom: 40px;
     ul {
-      margin: 0px 12px 0px 12px;
-      padding: 0px;
+      margin: 0 12px 0 12px;
+      padding: 0;
       li {
         cursor: pointer;
         line-height: 24px;
@@ -1010,7 +1010,7 @@ body.dialog form {
 #link_title {
   margin-top: 12px;
   label {
-    margin: 3px 0px 0px 0px !important;
+    margin: 3px 0 0 0 !important;
     width: 130px;
     display: block;
     float: left;
@@ -1042,7 +1042,7 @@ ul#menu.reordering_menu li a {
   position: relative;
   .button, .button-wrapper {
     position: absolute;
-    right: 0px;
+    right: 0;
     top: 2px;
   }
 }
@@ -1068,7 +1068,7 @@ a:focus {
   outline: none;
 }
 a img {
-  border: 0px none;
+  border: 0 none;
 }
 
 
@@ -1097,7 +1097,7 @@ ul#page_parts_controls {
     margin: 0 3px;
 
     a {
-      border: 0px none;
+      border: 0 none;
     }
   }
 }
@@ -1119,8 +1119,8 @@ ul#page_parts_controls {
 #dialog_frame {
   width:952px;
   height:460px;
-  padding: 0px;
-  border: 0px solid #F2F1ED;
+  padding: 0;
+  border: 0 solid #F2F1ED;
 }
 .visual_editor_hideables {
   display: none;
@@ -1132,7 +1132,7 @@ ul#page_parts_controls {
   margin-bottom: 45px;
 }
 .dialog .dialog_area > div > .field label:first-child, .dialog .dialog_area > div > label:first-child {
-  margin-top: 0px;
+  margin-top: 0;
 }
 .visual_editor_dialog .form-actions, #content.form-actions.dialog-form-actions, .ui-dialog .form-actions {
   margin-top: 16px;
@@ -1155,7 +1155,7 @@ ul#page_parts_controls {
   top: 4px;
 }
 .visual_editor_dialog .form-actions, .ui-dialog .form-actions {
-  border: 0px none;
+  border: 0 none;
   border-top: 1px solid #E8E8E8;
 }
 #dialog_iframe {
@@ -1163,12 +1163,12 @@ ul#page_parts_controls {
 }
 #dialog_container #content .form-actions, .ui-dialog .form-actions, .dialog_container .form-actions {
   position: absolute;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  border-right: 0px;
-  border-left: 0px;
-  border-bottom: 0px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 0;
   width: auto;
 }
 #dialog_container.dialog.iframed #content .form-actions {
@@ -1178,16 +1178,16 @@ body.dialog #content .search_form {
   float: right;
   width: auto !important;
   min-width: 300px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 #existing_image_area {
   padding-top:6px;
 }
 .ui-dialog div.field {
-  margin: 0px 10px;
+  margin: 0 10px;
 }
 #dialog_container, .dialog_container {
-  margin: 0px;
+  margin: 0;
   padding: 12px;
 }
 ul#image_grid, .pagination_container > ul#image_grid {
@@ -1232,8 +1232,8 @@ ul#image_grid li span.actions {
   width: 100%;
 }
 ul.checkboxes {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 ul.checkboxes li {
   list-style: none;
@@ -1243,7 +1243,7 @@ ul.checkboxes li {
   margin-right: 6px;
 }
 .label_inline_with_link a {
-  border: 0px none;
+  border: 0 none;
   margin-top: 19px;
   line-height: 17px;
   float: left;
@@ -1257,7 +1257,7 @@ ul.checkboxes li {
   width:auto;
 }
 #new_page_part_dialog .field {
-  padding: 0px 10px;
+  padding: 0 10px;
 }
 .hide-overflow {
   overflow: hidden;
@@ -1271,25 +1271,25 @@ ul.checkboxes li {
   width: 98%;
 }
 .ui-dialog .visual_editor_dialog_paste .field, .ui-dialog .visual_editor_dialog_paste .field textarea {
-  margin: 0px 0px 45px 0px;
+  margin: 0 0 45px 0;
   height: 300px;
 }
 input.button, a.button, #content a.button, span.button-wrapper, span.button-wrapper input {
   cursor:pointer;
   background: #22a7f2;
   color: white;
-  padding: 0px 14px 0px 14px;
+  padding: 0 14px 0 14px;
   font-size: 14px;
   line-height: 24px;
   height: 24px;
   display: inline-block;
-  border: 0px none;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  border: 0 none;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 /* for those pesky IE browsers */
 span.button-wrapper {
-  padding: 0px;
+  padding: 0;
 }
 span.button-wrapper input {
   display: inherit;
@@ -1322,7 +1322,7 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 .form-actions a.confirm-delete, #content .form-actions a.confirm-delete {
   background: #ee1100;
   position: absolute;
-  right: 0px;
+  right: 0;
 }
 .form-actions a.confirm-delete:hover, #content .form-actions a.confirm-delete:hover {
   background: #ff3322;
@@ -1344,7 +1344,7 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 .hemisquare {
   padding: 10px;
-  margin: 0px 0px;
+  margin: 0 0;
   margin-left: 10px;
   float: left;
   width: 45%;
@@ -1352,23 +1352,23 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
       float: right;
   }
   input, textarea, select {
-    margin: 7px 0px;
+    margin: 7px 0;
   }
   textarea {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
   label {
-    margin: 0px;
+    margin: 0;
   }
   small {
     font-size: 0.9em;
   }
 }
 #content .hemisquare h2 {
-  margin-top: 0px;
+  margin-top: 0;
 }
 #content .hemisquare .field {
-  margin: 0 0 20px 0px;
+  margin: 0 0 20px 0;
   width: 98%;
 }
 .label_with_help {
@@ -1406,11 +1406,11 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 
 /* Locale picker */
 #switch_locale_picker {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   li {
     float: left;
-    padding: 0px;
+    padding: 0;
     margin: 0;
     list-style: none;
     a {
@@ -1507,7 +1507,7 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 
 #content #records .title .preview a.locale {
-  border-bottom: 0px none;
+  border-bottom: 0 none;
 }
 /* AJAX pagination */
 .pagination_container {
