@@ -486,14 +486,12 @@ pre {
   float: right;
 }
 #records {
-  > ul, > #recent_activity > ul, > #recent_inquiries > ul,
-  .pagination_container > ul, .pagination_frame > ul {
+  > ul,  .pagination_container > ul, .pagination_frame > ul {
     margin-left: 0;
     margin-top: 0;
     padding-left: 0;
   }
-  > ul li, > #recent_activity > ul li, > #recent_inquiries > ul li,
-  .pagination_container > ul li, .pagination_frame > ul {
+  > ul li, .pagination_container > ul li, .pagination_frame > ul {
     list-style: none;
     padding: 0 5px;
     vertical-align: top;
@@ -505,13 +503,7 @@ pre {
     max-height: 35px;
   }
 }
-#recent_activity li a, #recent_inquiries li a {
-  overflow: hidden;
-  white-space: nowrap;
-  -o-text-overflow: ellipsis;
-  -ms-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-}
+
 #content #records {
   > ul li .actions a, .pagination_container > ul li .actions a {
     line-height: 29px;
@@ -560,17 +552,8 @@ pre {
   ul#sortable_list, ul.sortable_list {
     margin-top: 6px;
   }
-  > #recent_activity, > #recent_inquiries {
-    float: left;
-    width: 48%;
-  }
-  > #recent_inquiries {
-    margin-left: 21px;
-  }
 }
-#records.one_list > #recent_activity, #records.one_list > #recent_inquiries {
-  width: 100%;
-}
+
 #pagination ul a:hover, #pagination .on {
   background: image_url('refinery/hover-gradient.jpg') repeat-x bottom #D4D4C6;
 }
