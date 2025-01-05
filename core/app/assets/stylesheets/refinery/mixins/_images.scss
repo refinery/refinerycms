@@ -1,0 +1,52 @@
+@mixin indexImage {
+  .alt {font-style: italic}
+  .preview {color: #A3A093} // the filename
+  .title {font-weight: bold;}
+}
+
+@mixin gridImage {
+  @include indexImage;
+  padding: 0;
+  margin: 0;
+  line-height: 1.2;
+
+  img ~ * {
+    display: inline-block;
+    margin-right: 2px;
+  }
+}
+
+@mixin listImage {
+  @include indexImage;
+  margin: 0 12px 12px 0;
+  padding: 0;
+  overflow: hidden;
+  .actions {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+  }
+}
+
+@mixin imageIndexLayout {
+  width: 100%;
+  padding: 0;
+  @content;
+}
+
+// apply to #image_grid
+@mixin imageGridLayout {
+  @include imageIndexLayout {
+    display: grid;
+    grid-template-columns: repeat(4, 150px);
+    grid-template-rows: auto;
+    gap: 15px;}
+}
+
+// apply to #image_list (note: 1. id, 2. not plural
+@mixin imageListLayout {
+  @include imageIndexLayout {
+    margin: 10px 0 15px 0;
+  }
+}
