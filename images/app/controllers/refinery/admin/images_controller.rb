@@ -16,6 +16,14 @@ module Refinery
         @url_override = refinery.admin_images_path(dialog: from_dialog?)
       end
 
+      def index
+        search_all_images if searching?
+        paginate_all_images
+
+        @images = @images.map { |image| ImageObject.new(image, view_context) }
+      end
+
+
       # This renders the image insert dialog
       def insert
         self.new if @image.nil?

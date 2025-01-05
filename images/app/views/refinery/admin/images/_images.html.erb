@@ -1,2 +1,19 @@
-<%= will_paginate @images if Refinery::Admin::ImagesController.pageable? %>
-<%= render "#{Refinery::Images.preferred_image_view}_view" %>
+<%#= will_paginate @images if Refinery::Admin::ImagesController.pageable? %>
+<% images = @images %>
+<% view = Refinery::Images.preferred_image_view %>
+<% if view == 'grid'
+     groups = [[Date.today, images]]
+     group_header = nil
+   else
+     groups = group_by_date(images, :updated_at)
+
+   end
+%>
+
+<%= tag.ul id: "images_#{view}", classes: [*%w(clearfix pagination_frame images_list), pagination_selector] %>
+<% groups.each do |(date, group)| %>
+  <h3><%= l(Date.parse(date.to_s), format: :long ) %></h3>
+  <%= tag.ul class: :images_list do %>
+    <%= render partial: 'refinery/admin/images/image', collection: group, view: "#{view}_view" %>
+  <% end %>
+<% end %>
