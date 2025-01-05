@@ -52,7 +52,10 @@
     span {
       display: block;
       margin: 1px;
-      background: transparent image_url('refinery/cross.png') top left no-repeat;
+      background-image: image_url('refinery/cross.png');
+      background-repeat: no-repeat;
+      background-position: top left;
+      background-color: transparent;
       text-indent:-10000px;
     }
   }
@@ -84,9 +87,9 @@
   }
 }
 .ie7 .ui-tabs-hide {
-  display: none !important !important;
-  height: auto !important !important;
-  width: auto !important !important;
+  display: none !important;
+  height: auto !important;
+  width: auto !important;
   position: static;
 }
 .ui-tabs li.ui-state-default {
