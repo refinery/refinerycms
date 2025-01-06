@@ -6,7 +6,7 @@ module Refinery
 
     config_accessor :max_image_size, :pages_per_dialog, :pages_per_admin_index,
                     :pages_per_dialog_that_have_size_options, :user_image_sizes, :user_image_ratios,
-                    :image_views, :preferred_image_view,
+                    :image_views, :preferred_image_view, :admin_image_sizes,
                     :allowed_mime_types, :allowed_mime_types_msg
 
     self.max_image_size = 5_242_880
@@ -23,6 +23,10 @@ module Refinery
       '4/3': '1.333',
       '1:1': 1
     }
+
+    self.admin_image_sizes = {
+      grid: '149x149#c'
+    }
     self.allowed_mime_types = %w[image/jpeg image/png image/gif image/tiff]
     self.allowed_mime_types_msg = self.allowed_mime_types.to_sentence(last_word_connector: ' or ')
     self.image_views = [:grid, :list]
@@ -35,7 +39,7 @@ module Refinery
     # Dragonfly processor to strip image of all profiles and comments (imagemagick conversion -strip)
     self.dragonfly_processors   = [{
       name: :strip,
-      block: -> (content) { content.process!(:convert, '-strip') }
+      block: -> (content) { ::Dragonfly::ImageMagick::Commands.convert(content, '-strip') }
     }]
   end
 
