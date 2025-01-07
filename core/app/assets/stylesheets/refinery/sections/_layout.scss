@@ -1398,16 +1398,24 @@ body.dialog #content .search_form {
   margin: 0;
   padding: 12px;
 }
-#records ul#image_grid {
-  @include imageGridLayout;
-  li {
-    @include gridImage
-  }
-}
-#records ul#images_list {
-  @include imageListLayout;
-  li {
-    @include listImage
+
+#records.images {
+  #image_index {
+    .image_group.grid {
+      @include imageGridLayout;
+
+      li {
+        @include gridImage
+      }
+    }
+
+    .image_group.list {
+      @include imageListLayout;
+
+      li {
+        @include listImage
+      }
+    }
   }
 }
 
