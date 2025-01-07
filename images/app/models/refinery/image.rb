@@ -46,7 +46,7 @@ module Refinery
 
     # Get a thumbnail job object given a geometry and whether to strip image profiles and comments.
     def thumbnail(options = {})
-      options = { geometry: nil, strip: false }.merge(options)
+      options = { geometry: nil, strip: false, **options}
       geometry = convert_to_geometry(options[:geometry])
       thumbnail = image
       thumbnail = thumbnail.thumb(geometry) if geometry

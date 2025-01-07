@@ -6,7 +6,7 @@ module Refinery
 
     config_accessor :max_image_size, :pages_per_dialog, :pages_per_admin_index,
                     :pages_per_dialog_that_have_size_options, :user_image_sizes, :user_image_ratios,
-                    :image_views, :preferred_image_view, :admin_image_sizes,
+                    :index_formats, :preferred_index_format, :admin_image_sizes,
                     :allowed_mime_types, :allowed_mime_types_msg
 
     self.max_image_size = 5_242_880
@@ -29,8 +29,8 @@ module Refinery
     }
     self.allowed_mime_types = %w[image/jpeg image/png image/gif image/tiff]
     self.allowed_mime_types_msg = self.allowed_mime_types.to_sentence(last_word_connector: ' or ')
-    self.image_views = [:grid, :list]
-    self.preferred_image_view = :grid
+    self.index_formats = [:grid, :list]
+    self.preferred_index_format = :grid
 
     # Images should always use these changes to the dragonfly defaults
     self.dragonfly_name         = :refinery_images

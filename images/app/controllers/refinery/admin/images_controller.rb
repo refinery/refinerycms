@@ -8,7 +8,7 @@ module Refinery
               sortable: false,
               conditions: 'parent_id IS NULL'
 
-      before_action :change_list_mode_if_specified, :init_dialog
+      before_action :change_format_if_specified, :init_dialog
 
       def new
         @image = ::Refinery::Image.new if @image.nil?
@@ -166,9 +166,12 @@ module Refinery
         @conditions = params[:conditions]
       end
 
-      def change_list_mode_if_specified
-        if action_name == 'index' && params[:view].present? && Refinery::Images.image_views.include?(params[:view].to_sym)
-           Refinery::Images.preferred_image_view = params[:view]
+      def change_format_if_specified
+        return unless params[:format].present?
+
+        format = params[:format].to_sym
+        if action_name == 'index' && format && Refinery::Images.index_formats.include?(format)
+           Refinery::Images.preferred_index_format = format
         end
       end
 

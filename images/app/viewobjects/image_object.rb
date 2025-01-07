@@ -15,20 +15,22 @@ class ImageObject
   end
 
   def title
-    translated_field(image, :title)
+    translated_field(image, :image_title).titleize
   end
 
   def alt
-    translated_field(image, :alt)
+    translated_field(image, :image_alt).titleize
   end
 
-  def img_element
-    image_fu image, '149x149#c', title: ::I18n.t('edit_title', scope: i18n_scope, title: image.image_title || image.image_alt)
+  def grid_image_attributes
+    { src: image.thumbnail(geometry: Refinery::Images.admin_image_sizes[:grid], strip: true).url,
+      title: ::I18n.t('edit_title', scope: i18n_scope, title: title) }
   end
 
   def filename
     image.image_name
   end
+
   def locales_with_titles
     image.translations
          .reject { |i| i.image_title.blank? }
