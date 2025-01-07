@@ -9,6 +9,7 @@ module Refinery
         "frame_center"
       end
     end
+    alias pagination_selector pagination_css_class
 
   end
 end

@@ -29,9 +29,10 @@ module Refinery
 
     # See icons.scss for defined icons/classes
     def action_icon_label(action, url, title, options={}, label = true)
+      action_classes = [options.delete(:class), "#{action}_icon"]
+      action_classes << "icon_label" if label
+      options[:class] = action_classes.compact.join(' ')
       options[:title] = title
-      options[:class].presence ? options[:class] << " #{action}_icon " : options[:class] = "#{action}_icon"
-      options[:class] << ' icon_label' if label
 
       case action
       when :preview
@@ -41,7 +42,6 @@ module Refinery
       when :reorder_done
         options[:class] << ' hidden'
       end
-
       link_to(label && title || '', url, options)
     end
 
