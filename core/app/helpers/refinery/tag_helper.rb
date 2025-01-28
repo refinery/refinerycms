@@ -12,44 +12,11 @@ module Refinery
     # This is just a quick wrapper to render an image tag that lives inside refinery/icons.
     # They are all 16x16 so this is the default but is able to be overriden with supplied options.
     def refinery_icon_tag(filename, options = {})
-      Refinery.deprecate('Refinery::TagHelper.refinery_icon_tag', when: '5.1', replacement: 'Refinery::TagHelper.action_icon')
+      Refinery.deprecate('Refinery::TagHelper.refinery_icon_tag', when: '5.1', replacement: 'Refinery::ActionHelper.action_icon')
 
       filename = "#{filename}.png" unless filename.split('.').many?
       path = image_path "refinery/icons/#{filename}", skip_pipeline: true
       image_tag path, {:width => 16, :height => 16}.merge(options)
-    end
-
-    def action_icon(action, url, title, options={})
-      action_icon_label(action, url, title, options, false)
-    end
-
-    def action_label(action, url, title, options={})
-      action_icon_label(action, url, title, options, true)
-    end
-
-    # See icons.scss for defined icons/classes
-    def action_icon_label(action, url, title, options={}, label = true)
-      action_classes = [options.delete(:class), "#{action}_icon"]
-      action_classes << "icon_label" if label
-      options[:class] = action_classes.compact.join(' ')
-      options[:title] = title
-
-      case action
-      when :preview
-        options[:target] = '_blank'
-      when :delete
-        options[:method] = :delete
-      when :reorder_done
-        options[:class] << ' hidden'
-      end
-      link_to(label && title || '', url, options)
-    end
-
-    # this stacks the text onto the locale icon (actually a comment balloon)
-    def locale_text_icon(text)
-      content_tag(:span, class: 'fa-stack') do
-        content_tag(:i, '', class: 'fa fa-comment') << content_tag(:strong, text)
-      end
     end
 
   end
