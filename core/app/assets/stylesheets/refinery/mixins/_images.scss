@@ -1,5 +1,12 @@
 @mixin indexImage {
-  a {font-weight: bold;
+  padding: 0;
+  margin: 0;
+  line-height: 1.2;
+  a.edit_link {
+    display: inline-block;
+    font-weight: bold;
+    height: fit-content;
+
     &:has(img) { border-bottom: 0}
   }
   .alt {font-style: italic}
@@ -9,11 +16,8 @@
 
 @mixin gridImage {
   @include indexImage;
-  padding: 0;
-  margin: 0;
-  line-height: 1.2;
 
-  img ~ * {
+  a:has(img) ~ * {
     display: inline-block;
     margin-right: 2px;
   }
@@ -51,15 +55,16 @@
 }
 
 @mixin imageIndexLayout {
+  list-style-type: none;
   width: 100%;
   padding: 0;
+  line-height: 1.2;
   @content;
 }
 
 // apply to #image_grid
 @mixin imageGridLayout {
   @include imageIndexLayout {
-    list-style-type: none;
     padding-inline-start: 0;
     display: grid;
     grid-template-columns: repeat(4, 150px);

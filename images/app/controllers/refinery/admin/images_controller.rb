@@ -1,5 +1,6 @@
 module Refinery
   module Admin
+    require 'will_paginate/array'
     class ImagesController < ::Refinery::AdminController
 
       crudify :'refinery/image',
@@ -18,9 +19,8 @@ module Refinery
 
       def index
         search_all_images if searching?
-        paginate_all_images
-
-        @images = @images.map { |image| ImageObject.new(image, view_context) }
+        find_all_images if @images.nil?
+        @images = @images.map{ |image| Refinery::Admin::ImagePresenter.new(image, view_context)}.paginate(page: params[:page], per_page: paginate_per_page)
       end
 
 
@@ -167,11 +167,11 @@ module Refinery
       end
 
       def change_format_if_specified
-        return unless params[:format].present?
+        return unless params[:view].present?
 
-        format = params[:format].to_sym
-        if action_name == 'index' && format && Refinery::Images.index_formats.include?(format)
-           Refinery::Images.preferred_index_format = format
+        view = params[:view].to_sym
+        if action_name == 'index' && view && Refinery::Images.index_formats.include?(view)
+           Refinery::Images.preferred_index_format = view
         end
       end
 
@@ -199,5 +199,6 @@ module Refinery
         ]
       end
     end
+
   end
 end
