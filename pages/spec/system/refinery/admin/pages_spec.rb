@@ -154,12 +154,8 @@ module Refinery
 
       describe " new / create " do
         it " Creates a page ", js: true do
-          Rails.logger.debug " #{Time.current} about to visit #{refinery.admin_pages_path}"
           visit refinery.admin_pages_path
-          Rails.logger.debug "#{Time.current} at #{refinery.admin_pages_path}"
-
           find('a', text: 'Add new page').click
-
           fill_in "Title", with: "My first page"
           expect { click_button "Save" }.to change(Refinery::Page, :count).from(0).to(1)
 

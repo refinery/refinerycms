@@ -32,15 +32,19 @@ en:
             tab_name: Your file
             link_to_this_resource: Link to this file
       pages:
-        delete: Remove this page forever
         edit: Edit this page
-        new: Add a new child page
-        expand_collapse: Expand or collapse sub pages
         page:
           draft: draft
           hidden: hidden
           redirected: Redirected
           skip_to_first_child: Skip to first child
+          delete: Remove this page forever
+          edit: Edit this page
+          edit_locale: Edit this page in %{language}
+          edit_title: Edit "%{title}"
+          edit_title_locale: Edit "%{title}" in %{language}
+          new: Add a new child page
+          expand_collapse: Expand or collapse sub pages
           view_live_html: View this page live <br/><em>(opens in a new window)</em>
         form:
           preview: Preview

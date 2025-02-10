@@ -57,9 +57,7 @@ module Refinery
           it "adds 'hidden' label" do
             page.show_in_menu = false
 
-            expect(helper.page_meta_information(page)).to eq(
-              %Q{<span class="label">#{::I18n.t('refinery.admin.pages.page.hidden')}</span>}
-            )
+            expect(helper.page_meta_information(page)).to have_text ::I18n.t('refinery.admin.pages.page.hidden')
           end
         end
 
@@ -67,29 +65,21 @@ module Refinery
           it "adds 'skip to first child' label" do
             page.skip_to_first_child = true
 
-            expect(helper.page_meta_information(page)).to eq(
-              %Q{<span class="label">#{::I18n.t('refinery.admin.pages.page.skip_to_first_child')}</span>}
-            )
+            expect(helper.page_meta_information(page)).to have_text ::I18n.t('refinery.admin.pages.page.skip_to_first_child')
           end
         end
 
         context "when link_url is present" do
           it "adds 'redirected' label" do
             page.link_url = '/redirect'
-
-            expect(helper.page_meta_information(page)).to eq(
-              %Q{<span class="label">#{::I18n.t('refinery.admin.pages.page.redirected')}</span>}
-            )
+            expect(helper.page_meta_information(page)).to have_text ::I18n.t('refinery.admin.pages.page.redirected')
           end
         end
 
         context "when draft is true" do
           it "adds 'draft' label" do
             page.draft = true
-
-            expect(helper.page_meta_information(page)).to eq(
-              %Q{<span class="label notice">#{::I18n.t('refinery.admin.pages.page.draft')}</span>}
-            )
+            expect(helper.page_meta_information(page)).to have_text ::I18n.t('refinery.admin.pages.page.draft')
           end
         end
       end

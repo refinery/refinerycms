@@ -32,27 +32,6 @@ module Refinery
         "application"
       end
 
-      def page_icon(number_of_children)
-        # 1. has_children 'folder|folderopen', 'toggle'
-        # 2. no_children 'page'
-
-        # .toggle scss handles adding icons to pages with children
-        classes = []
-        case number_of_children
-        when 0
-          classes.push icon_class('page')
-          title = ::I18n.t('edit', scope: 'refinery.admin.pages')
-        else
-          classes.push 'toggle'
-          classes.push 'expanded' if Refinery::Pages.auto_expand_admin_tree
-          title =  ::I18n.t('expand_collapse', scope: 'refinery.admin.pages')
-        end
-
-        tag.span(class: classes.join(' '), title: title)
-      end
-
-      def icon_class(icon) = "#{icon}_icon"
-
       # In the admin area we use a slightly different title
       # to inform the which pages are draft or hidden pages
       def page_meta_information(page)
@@ -73,7 +52,26 @@ module Refinery
           ::I18n.t('draft', :scope => 'refinery.admin.pages.page')
         end if page.draft?
 
-        meta_information
+        tag.span meta_information, class: :meta
+      end
+
+      def page_icon(number_of_children)
+        # 1. has_children 'folder|folderopen', 'toggle'
+        # 2. no_children 'page'
+
+        # .toggle scss handles adding icons to pages with children
+        classes = []
+        case
+        when number_of_children.zero?
+          classes.push icon_class('page')
+          title = ::I18n.t('edit', scope: 'refinery.admin.pages')
+        else
+          expanded_class = Refinery::Pages.auto_expand_admin_tree ? 'expanded' : ''
+          classes.push ['toggle', expanded_class]
+          title =  ::I18n.t('expand_collapse', scope: 'refinery.admin.pages')
+        end
+
+        tag.span(class: classes.join(' '), title: title)
       end
     end
   end
