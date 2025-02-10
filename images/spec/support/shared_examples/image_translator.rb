@@ -16,7 +16,7 @@ shared_examples 'Translate' do
       click_link "Edit this image"
 
       within "#switch_locale_picker" do
-        click_link "FR"
+        click_link "fr"
       end
 
       fill_in "Title", :with => "Titre de la première image"
@@ -25,7 +25,7 @@ shared_examples 'Translate' do
       click_button "Save"
 
       expect(page).to have_content("'Titre de la première image' was successfully updated.")
-      expect(Refinery::Image::Translation.count).to eq(1)
+      expect(Refinery::Image::Translation.count).to eq(2)
     end
   end
 end

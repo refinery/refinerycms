@@ -1,31 +1,5 @@
-<li id="<%= dom_id(image) %>">
-  <% edit_action = image.edit_action %>
-  <% preview_action = image.preview_action %>
-  <% delete_action = image.delete_action %>
-
-  <% view_identity_elements = [] %>
-  <% case Refinery::Images.preferred_image_view %>
-  <% when 'list' %>
-    <% view_identity_elements = [
-      link_to(image.title, edit_action.href, class: :title, title: edit_action.text),
-      tag.span(image.filename, class: :filename)
-    ] %>
-  <% when 'grid' %>
-    <% view_identity_elements = [
-      link_to(image.img_element, edit_action.href, title: edit_action.text),
-      tag.span(image.title, class: "title", title: "t('.title')")
-    ] %>
-  <% else %>
-    <% Rails.logger.error "Undefined image view #{Refinery::Images.preferred_image_view} " %>
-  <% end %>
-  <%= view_identity_elements.compact.join(' ').html_safe %>
-
-  <span class="alt" title= '<%= Refinery::Image.human_attribute_name(:alt)%>' ><%= image.alt unless image.alt == image.title %></span>
-  <span class='locales'> <%= edit_in_locales(image, image.locales_with_titles) %></span>
-
-  <span class="actions">
-    <%= action_icon :preview, preview_action.href, preview_action.title, preview_action.options %>
-    <%= action_icon :edit, edit_action.href, edit_action.title, edit_action.options %>
-    <%= action_icon :delete, delete_action.href, delete_action.title, **delete_action.options %>
-  </span>
+<li class="record image" id='<%= "image_#{image.id}" %>'>
+  <%= image.edit_link %>
+  <%= image.text_elements %>
+  <%= image.actions %>
 </li>

@@ -9,20 +9,13 @@ module Refinery
               sortable: false,
               conditions: 'parent_id IS NULL'
 
-      before_action :change_format_if_specified, :init_dialog
+      before_action :change_view_if_specified, :init_dialog
 
       def new
         @image = ::Refinery::Image.new if @image.nil?
 
         @url_override = refinery.admin_images_path(dialog: from_dialog?)
       end
-
-      def index
-        search_all_images if searching?
-        find_all_images if @images.nil?
-        @images = @images.map{ |image| Refinery::Admin::ImagePresenter.new(image, view_context)}.paginate(page: params[:page], per_page: paginate_per_page)
-      end
-
 
       # This renders the image insert dialog
       def insert
@@ -166,12 +159,12 @@ module Refinery
         @conditions = params[:conditions]
       end
 
-      def change_format_if_specified
+      def change_view_if_specified
         return unless params[:view].present?
 
         view = params[:view].to_sym
-        if action_name == 'index' && view && Refinery::Images.index_formats.include?(view)
-           Refinery::Images.preferred_index_format = view
+        if action_name == 'index' && view && Refinery::Images.index_views.include?(view)
+           Refinery::Images.preferred_index_view = view
         end
       end
 

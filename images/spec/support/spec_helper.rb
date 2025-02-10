@@ -6,7 +6,17 @@ module Capybara
   end
 
   add_selector(:linkhref) do
-    xpath {|href| ".//a[@href='#{href}']"}
+    xpath { |href| ".//a[@href='#{href}']" }
+  end
+end
+
+def init_index_view(view, &block)
+  include_context( "#{view} view") do
+    before do
+      ensure_on(initial_path)
+      initialize_context
+    end
+    yield
   end
 end
 

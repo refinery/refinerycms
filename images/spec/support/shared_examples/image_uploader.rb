@@ -7,13 +7,13 @@ shared_examples 'Upload' do
 
   def uploading_an_image
     open_upload_dialog
-    # page.within_frame(dialog_frame_id) do
+    page.within_frame(dialog_frame_id) do
       select_upload
       attach_file 'image_image', image_path
       fill_in 'image_image_title', with: 'Image With Dashes'
       fill_in 'image_image_alt', with: "Alt description for image"
       click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
-    # end
+    end
   end
 
   context 'when the image type is acceptable' do

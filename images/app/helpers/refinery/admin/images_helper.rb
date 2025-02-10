@@ -1,23 +1,26 @@
 module Refinery
   module Admin
     module ImagesHelper
-      def other_image_views
-        Refinery::Images.image_views.reject do |image_view|
-          image_view.to_s == Refinery::Images.preferred_image_view.to_s
+      def other_index_views
+        Refinery::Images.index_views.reject do |view|
+          view.to_s == Refinery::Images.preferred_index_view.to_s
         end
       end
 
       def thumbnail_urls(image)
-        thumbnail_urls = {
-          :"data-original" => image_path(image.url),
-          :"data-grid" => image_path(image.thumbnail(:geometry => '135x135#c').url)
+        thumbnails = {
+          original: image_path(image.url),
+          grid: image_path(image.thumbnail(geometry: Refinery::Images.admin_image_sizes[:thumbnail]).url)
         }
 
-        Refinery::Images.user_image_sizes.sort_by{ |key, geometry| geometry}.each do |size, pixels|
-          thumbnail_urls[:"data-#{size.to_s.parameterize}"] = image_path(image.thumbnail(:geometry => pixels).url)
+        Refinery::Images.user_image_sizes.sort_by { |key, geometry| geometry }.each do |size, pixels|
+          thumbnails[size.to_s.parameterize] = image_path(image.thumbnail(geometry: pixels).url)
         end
+        { data: thumbnails }
+      end
 
-        thumbnail_urls
+      def localized(date)
+        ::I18n.l(Date.parse(date))
       end
     end
   end

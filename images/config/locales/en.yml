@@ -48,9 +48,15 @@ en:
         insert:
           existing_image: Library
           new_image: Upload
+        alt: Description
+        filename: File name
+        title: Title
   activerecord:
     models:
       refinery/image: image
+    attributes:
+      image_title: Title
+      image_alt: Description
     errors:
       models:
         refinery/image:

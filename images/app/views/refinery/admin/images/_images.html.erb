@@ -1,19 +1,18 @@
-<%#= will_paginate @images if Refinery::Admin::ImagesController.pageable? %>
-<% images = @images %>
-<% view = Refinery::Images.preferred_image_view %>
-<% if view == 'grid'
-     groups = [[Date.today, images]]
-     group_header = nil
-   else
-     groups = group_by_date(images, :updated_at)
-
-   end
+<%= will_paginate @images if Refinery::Admin::ImagesController.pageable? %>
+<%
+  view = Refinery::Images.preferred_index_view || 'list'
+  presenter = Refinery::Admin.const_get("#{view}_presenter".camelize).new(self)
+  images = @images.map { |image| Refinery::Admin::ImagePresenter.new(image, self) }
 %>
 
-<%= tag.ul id: "images_#{view}", classes: [*%w(clearfix pagination_frame images_list), pagination_selector] %>
-<% groups.each do |(date, group)| %>
-  <h3><%= l(Date.parse(date.to_s), format: :long ) %></h3>
-  <%= tag.ul class: :images_list do %>
-    <%= render partial: 'refinery/admin/images/image', collection: group, view: "#{view}_view" %>
+<% groups = presenter.groups.call(images) %>
+<%= tag.ul id: "image_index", class: ['pagination_frame', view, pagination_selector].compact do %>
+
+  <% groups.each do |group_date, group_images| %>
+    <%= presenter.group_header(group_date) if presenter.group_headers %>
+    <% group_images.each do |image| %>
+      <%= render 'refinery/admin/images/image', image: image.index_entry(presenter.identity_keys) %>
+    <% end %>
   <% end %>
+
 <% end %>
