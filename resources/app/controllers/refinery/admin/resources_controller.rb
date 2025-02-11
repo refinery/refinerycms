@@ -1,6 +1,7 @@
 module Refinery
   module Admin
     class ResourcesController < ::Refinery::AdminController
+      helper Refinery::Admin::ResourceHelper
 
       crudify :'refinery/resource',
               include: [:translations],
@@ -62,9 +63,9 @@ module Refinery
         @resource_area_selected = from_dialog?
 
         if params[:visual_editor]
-          render '/refinery/admin/pages_dialogs/link_to' 
-        else 
-          render 'insert' 
+          render '/refinery/admin/pages_dialogs/link_to'
+        else
+          render 'insert'
         end
       end
 

@@ -24,8 +24,10 @@ module Refinery
         def uploading_a_file
           visit refinery.admin_resources_path
           find('a', text: 'Upload new file').click
-          attach_file 'resource_file', file_path
-          click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
+          page.within_frame('dialog_iframe') do
+            attach_file 'resource_file', file_path
+            click_button ::I18n.t('save', scope: 'refinery.admin.form_actions')
+          end
         end
 
         context 'when the file mime_type is acceptable' do
@@ -41,7 +43,9 @@ module Refinery
 
           it 'the file is rejected', js: true do
             expect { uploading_a_file }.to_not change(Refinery::Resource, :count)
-            expect(page).to have_content(::I18n.t('incorrect_format', scope: 'activerecord.errors.models.refinery/resource'))
+            page.within_frame('dialog_iframe') do
+              expect(page).to have_content(::I18n.t('incorrect_format', scope: 'activerecord.errors.models.refinery/resource'))
+            end
           end
         end
 
@@ -55,12 +59,12 @@ module Refinery
               allow(Refinery::I18n).to receive(:current_locale).and_return(:en)
             end
 
-            it 'is shown' do
+            it 'is shown in English' do
               visit refinery.admin_resources_path
               click_link 'Upload new file'
 
-              within('#file') do
-                expect(page).to have_selector('a[tooltip="The maximum file size is 1.2 KB."]')
+              within '#file' do
+                expect(page).to have_text "The maximum file size is 1.2 KB."
               end
             end
           end
@@ -70,12 +74,12 @@ module Refinery
               allow(Refinery::I18n).to receive(:current_locale).and_return(:da)
             end
 
-            it 'is shown' do
+            it 'is shown in Danish' do
               visit refinery.admin_resources_path
 
               click_link 'Tilføj en ny fil'
               within '#file' do
-                expect(page).to have_selector('a[tooltip="Filen må maksimalt fylde 1,2 KB."]')
+                expect(page).to have_text "Filen må maksimalt fylde 1,2 kB."
               end
             end
           end
@@ -115,7 +119,7 @@ module Refinery
             click_link 'Edit this file'
 
             within '#switch_locale_picker' do
-              click_link 'FR'
+              click_link 'fr'
             end
 
             fill_in 'Title', with: 'Premier fichier'
