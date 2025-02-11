@@ -19,8 +19,8 @@ shared_examples 'Translate' do
         click_link "fr"
       end
 
-      fill_in "Title", :with => "Titre de la première image"
-      fill_in "Alt", :with => "Texte alternatif de la première image"
+      fill_in "Title", with: "Titre de la première image"
+      fill_in "Alt", with: "Texte alternatif de la première image"
 
       click_button "Save"
 

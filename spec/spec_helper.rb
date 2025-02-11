@@ -88,6 +88,5 @@ end
 ([ENGINE_RAILS_ROOT, Rails.root.to_s].uniq | Refinery::Plugins.registered.pathnames).map{ |p|
   Dir[File.join(p, 'spec', 'support', '**', '*.rb').to_s]
 }.flatten.sort.each do |support_file|
-  # puts "Requiring #{support_file}"
   require support_file
 end

@@ -1,6 +1,6 @@
 <% # setup params for various action links
    edit_url = refinery.admin_edit_page_path(page.nested_url)
-   translated_locales = locales_with_titles(page, 'title')
+   translated_locales = locales_with_translated_field(page, 'title')
 %>
 
 <li class='record page <%= cycle('on', 'on-hover') %>' id='<%= dom_id(page) %>'>
