@@ -8,12 +8,7 @@
     <%= page_icon(page.children.size) %>
     <%= link_to translated_field(page, :title), edit_url, class: [:title, :edit], title: t('edit') %>
     <%= page_meta_information(page) %>
-
-    <span class='locales'>
-      <% translated_locales.each do |locale| %>
-        <%= edit_in_locale locale, url: edit_url, title: translated_field(page, :title) %>
-      <% end %>
-    </span>
+    <%= edit_in_locales(edit_url, translated_locales) %>
 
     <span class='actions'>
       <%= action_icon(:preview, page.url, t('.view_live_html')) %>

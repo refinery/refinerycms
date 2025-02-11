@@ -43,5 +43,14 @@ module Refinery
                   locale: locale, class: :edit, **options
       )
     end
+
+    def edit_in_locales(edit_url, locales=[])
+      return if locales.empty?
+
+      edit_links = locales.map do |locale|
+        edit_in_locale(locale, url: edit_url )
+      end
+      tag.span edit_links.compact.join(' ').html_safe, class: :locales
+    end
   end
 end

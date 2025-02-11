@@ -124,11 +124,8 @@ module Refinery
       end
 
       def edit_actions
-        locales_with_translated_field(image, :image_title).reduce(ActiveSupport::SafeBuffer.new) do |buffer, locale|
-          buffer << edit_in_locale(locale,
-                                   url: context.edit_admin_image_path(image),
-                                   title: image.title)
-        end
+        translated_locales = locales_with_translated_field(image, :image_title)
+        edit_in_locales(context.edit_admin_image_path(image), translated_locales)
       end
 
       def preview_action(options = {})

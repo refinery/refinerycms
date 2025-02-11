@@ -3,13 +3,11 @@
   delete_url =  refinery.admin_resource_path(resource)
   delete_options = {data: {confirm: t('message',  scope: 'refinery.admin.delete', title: resource.title)}}
 %>
-<li class="clearfix record <%= cycle('on', 'on-hover') %>">
-
-  <span class='locales'>
-    <% locales_with_translated_field(resource, :resource_title).each do |locale| %>
-      <%= edit_in_locale locale, url: edit_url %>
-    <% end %>
-  </span>
+<li class="record resource item <%= cycle('on', 'on-hover') %>">
+  <%= mime_type_icon(resource.mime_type) %>
+  <%= link_to translated_field(resource, :title), edit_url, class: [:title, :edit] %>
+  <%= resource_meta_information resource %>
+  <%= edit_in_locales(edit_url, translated_locales) %>
 
   <span class="actions">
     <%= action_icon :download,  resource.url, t('.download', size: number_to_human_size(resource.size)) %>
