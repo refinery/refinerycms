@@ -5,6 +5,7 @@ module Refinery
 
       crudify :'refinery/resource',
               include: [:translations],
+              exclude_from_find: :show,
               order: "updated_at DESC",
               sortable: false
 

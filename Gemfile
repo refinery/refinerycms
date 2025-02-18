@@ -50,6 +50,7 @@ group :development, :test do
   gem 'bootsnap', require: false
   gem 'listen', '~> 3.0'
   gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem 'puma', require: false
 end
 
 group :test do

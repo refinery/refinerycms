@@ -13,9 +13,22 @@ module Refinery
       paths.flatten
     end
 
+
     PASSTHROUGH_OPTIONS = [
-      :skip_active_record, :skip_javascript, :skip_action_cable, :skip_action_mailer, :skip_active_storage, :database,
-      :javascript, :quiet, :pretend, :force, :skip
+      :database,
+      :force,
+      :pretend,
+      :quiet,
+      :skip,
+      :skip_action_cable,
+      :skip_action_mailbox,
+      :skip_action_mailer,
+      :skip_action_text,
+      :skip_active_job,
+      :skip_active_record,
+      :skip_active_storage,
+      :skip_hotwire,
+      :skip_javascript
     ]
 
     def generate_test_dummy
@@ -24,8 +37,12 @@ module Refinery
       opts[:force] = true
       opts[:skip_bundle] = true
       opts[:skip_action_cable] = true
+      opts[:skip_action_mailbox] = true
       opts[:skip_action_mailer] = true
+      opts[:skip_action_text] = true
+      opts[:skip_active_job] = true
       opts[:skip_active_storage] = true
+      opts[:skip_hotwire] = true
       opts[:skip_javascript] = true
 
       invoke Rails::Generators::AppGenerator, [ File.expand_path(dummy_path, destination_root) ], opts
@@ -34,14 +51,14 @@ module Refinery
     def test_dummy_config
       @database = options[:database]
 
-      template "rails/database.yml", "#{dummy_path}/config/database.yml", :force => true
-      template "rails/boot.rb.erb", "#{dummy_path}/config/boot.rb", :force => true
-      template "rails/application.rb.erb", "#{dummy_path}/config/application.rb", :force => true
-      template "rails/routes.rb", "#{dummy_path}/config/routes.rb", :force => true
-      template "rails/Rakefile", "#{dummy_path}/Rakefile", :force => true
-      template "rails/application.js", "#{dummy_path}/app/assets/javascripts/application.js", :force => true
-      template 'rails/blank.png', "#{dummy_path}/public/apple-touch-icon.png", :force => true
-      template 'rails/blank.png', "#{dummy_path}/public/apple-touch-icon-precomposed.png", :force => true
+      template "rails/database.yml", "#{dummy_path}/config/database.yml", force: true
+      template "rails/boot.rb.erb", "#{dummy_path}/config/boot.rb", force: true
+      template "rails/application.rb.erb", "#{dummy_path}/config/application.rb", force: true
+      template "rails/routes.rb", "#{dummy_path}/config/routes.rb", force: true
+      template "rails/Rakefile", "#{dummy_path}/Rakefile", force: true
+      template "rails/application.js", "#{dummy_path}/app/assets/javascripts/application.js", force: true
+      template 'rails/blank.png', "#{dummy_path}/public/apple-touch-icon.png", force: true
+      template 'rails/blank.png', "#{dummy_path}/public/apple-touch-icon-precomposed.png", force: true
     end
 
     def test_dummy_clean

@@ -24,19 +24,21 @@ module Refinery
       plural_name = singular_name.pluralize
 
       {
-        :conditions => '',
-        :include => [],
-        :order => ('position ASC' if this_class.connected? && this_class.table_exists? && this_class.column_names.include?('position')),
-        :paging => true,
-        :per_page => false,
-        :redirect_to_url => "refinery.#{Refinery.route_for_model(class_name.constantize, :plural => true)}",
-        :searchable => true,
-        :search_conditions => '',
-        :sortable => true,
-        :title_attribute => "title",
-        :class_name => class_name,
-        :singular_name => singular_name,
-        :plural_name => plural_name
+        conditions: '',
+        include: [],
+        order: ('position ASC' if this_class.connected? && this_class.table_exists? && this_class.column_names.include?('position')),
+        paging: true,
+        per_page: false,
+        redirect_to_url: "refinery.#{Refinery.route_for_model(class_name.constantize, :plural => true)}",
+        searchable: true,
+        search_conditions: '',
+        sortable: true,
+        title_attribute: "title",
+        class_name: class_name,
+        singular_name: singular_name,
+        plural_name: plural_name,
+        find_actions: [:update, :destroy, :edit, :show],
+        exclude_from_find: []
       }
     end
 
@@ -52,14 +54,16 @@ module Refinery
         class_name = options[:class_name]
         singular_name = options[:singular_name]
         plural_name = options[:plural_name]
+        find_actions = [*options[:find_actions]]
+        exclude_from_find = [*options[:exclude_from_find]]
 
         module_eval <<-RUBY, __FILE__, __LINE__ + 1
           def self.crudify_options
             #{options.inspect}
           end
-
-          prepend_before_action :find_#{singular_name},
-                                :only => [:update, :destroy, :edit, :show]
+          
+          actions = find_actions - exclude_from_find
+          prepend_before_action :find_#{singular_name}, only: actions
           prepend_before_action :merge_position_into_params!, :only => :create
 
           def new

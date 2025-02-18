@@ -5,7 +5,8 @@ module Refinery
 
       crudify :'refinery/page',
               include: [:translations, :children],
-              paging: false
+              paging: false,
+              exclude_from_find: [:show]
 
       helper_method :valid_layout_templates, :valid_view_templates
 
