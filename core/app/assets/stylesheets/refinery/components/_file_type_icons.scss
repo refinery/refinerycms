@@ -1,0 +1,36 @@
+%icon-font { font-family: 'FontAwesome', Helvetica, Arial, sans-serif; }
+$adobe_red: B30C00FF;
+$ms_word_blue: #1558BB;
+$msxl_green: #0F7C42;
+$mspp_brown: #C94B26;
+/* icons */
+
+.pdf_icon {@include icon(file-pdf-o, $adobe_red);}
+
+.word_icon {@include icon(file-word-o, $ms_word_blue);}
+
+.excel_icon {@include icon(file-excel-o, $msxl_green);}
+
+.powerpoint_icon {@include icon(file-powerpoint-o, $mspp_brown);}
+
+.photo_icon {@include icon(file-photo-o);}
+
+.picture_icon {@include icon(file-picture-o);}
+
+.plain_icon {@include icon('file-text')}  // text/plain
+
+.image_icon {@include icon(file-image-o);}
+
+.zip_icon {@include icon(file-zip-o);}
+
+.archive_icon {@include icon(file-archive-o);}
+
+.sound_icon {@include icon(file-sound-o);}
+
+.audio_icon {@include icon(file-audio-o);}
+
+.movie_icon {@include icon(file-movie-o);}
+
+.video_icon {@include icon(file-video-o);}
+
+.code_icon {@include icon(file-code-o);}

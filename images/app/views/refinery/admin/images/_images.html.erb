@@ -1,2 +1,18 @@
 <%= will_paginate @images if Refinery::Admin::ImagesController.pageable? %>
-<%= render "#{Refinery::Images.preferred_image_view}_view" %>
+<%
+  view = Refinery::Images.preferred_index_view || 'list'
+  presenter = Refinery::Admin.const_get("#{view}_presenter".camelize).new(self)
+  images = @images.map { |image| Refinery::Admin::ImagePresenter.new(image, self) }
+%>
+
+<% groups = presenter.groups.call(images) %>
+<%= tag.ul id: "image_index", class: ['pagination_frame', view, pagination_selector].compact do %>
+
+  <% groups.each do |group_date, group_images| %>
+    <%= presenter.group_header(group_date) if presenter.group_headers %>
+    <% group_images.each do |image| %>
+      <%= render 'refinery/admin/images/image', image: image.index_entry(presenter.identity_keys) %>
+    <% end %>
+  <% end %>
+
+<% end %>

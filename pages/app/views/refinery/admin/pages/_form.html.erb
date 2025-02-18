@@ -1,22 +1,22 @@
 <%= form_for [refinery, :admin, @page],
-             :url => (refinery.admin_update_page_path(@page.nested_url) if @page.persisted?) do |f| %>
+             url: (refinery.admin_update_page_path(@page.nested_url) if @page.persisted?) do |f| %>
 
-  <%= render '/refinery/admin/error_messages', :object => @page, :include_object_name => true %>
+  <%= render '/refinery/admin/error_messages', object: @page, include_object_name: true %>
 
-  <%= render '/refinery/admin/locale_picker', :current_locale => Mobility.locale %>
+  <%= render '/refinery/admin/locale_picker', current_locale: Mobility.locale %>
 
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title, :class => "larger widest" %>
+    <%= f.text_field :title, class: %w(larger widest) %>
   </div>
 
-  <%= render 'form_fields_after_title', :f => f %>
+  <%= render 'form_fields_after_title', f: f %>
 
   <div class='field'>
-    <%= render 'form_page_parts', :f => f %>
+    <%= render 'form_page_parts', f: f %>
   </div>
 
-  <%= render 'form_advanced_options', :f => f %>
+  <%= render 'form_advanced_options', f: f %>
 
   <%= render '/refinery/admin/form_actions', f: f,
              continue_editing: true,
@@ -33,7 +33,7 @@
              ),
              cancel_url: refinery.admin_pages_path %>
 
-  <%= render 'form_new_page_parts', :f => f if Refinery::Pages.new_page_parts %>
+  <%= render 'form_new_page_parts', f: f if Refinery::Pages.new_page_parts %>
 <% end %>
 
 <% content_for :javascripts do %>

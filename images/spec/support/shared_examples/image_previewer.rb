@@ -1,5 +1,5 @@
 def preview_image
-  preview_window = window_opened_by do
+  preview_window = Capybara.window_opened_by do
     find(:linkhref, image_url).click
   end
 
@@ -9,14 +9,14 @@ def preview_image
   preview_window.close
 end
 
-shared_examples 'shows an image preview' do
+shared_examples 'Preview' do
   before do
     raise "please set let(:initial_path)" if initial_path.blank?
     ensure_on(initial_path)
   end
 
   let(:image_url) {
-    uri = URI(first(:xpath, "//a[@class='preview_icon']")[:href])
+    uri = URI(first(:xpath, "//a[contains(concat(' ', @class, ' '), ' preview ')]")[:href])
     uri.path << '?' << uri.query
   }
 

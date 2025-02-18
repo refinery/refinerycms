@@ -1,6 +1,6 @@
-shared_examples_for 'indexes images' do
+shared_examples_for 'Index' do
 
-  let(:image_count) {[Refinery::Image.count, Refinery::Images.pages_per_admin_index].min}
+  let(:image_count) { [Refinery::Image.count, Refinery::Images.pages_per_admin_index].min }
 
   before do
     raise "please set let(:initial_path)" if initial_path.blank?
@@ -17,66 +17,47 @@ shared_examples_for 'indexes images' do
       expect(page).to have_selector(index_item_selector, count: image_count)
     end
   end
-
-end # image index
-
-shared_examples_for 'shows list and grid views' do
-
-  let(:image_count) {[Refinery::Image.count, Refinery::Images.pages_per_admin_index].min}
-
-  before do
-    raise "please set let(:initial_path)" if initial_path.blank?
-    ensure_on(initial_path)
-  end
-
-  context "when in grid view" do
-
-    before { ensure_on(current_path + "?view=grid") }
-
-    it 'shows the images with thumbnails', js: true do
-      expect(page).to have_selector(index_item_selector << gridview_img_selector, count: image_count)
-    end
-
-    it 'makes the title attribute of each image available', js: true do
-      expect(page).to have_selector(index_item_selector << gridview_img_selector << gridview_title_selector, count: image_count)
-    end
-
-    it 'makes the alt attribute of each image available', js: true do
-      expect(page).to have_selector(index_item_selector << gridview_img_selector << gridview_alt_selector, count: image_count)
-    end
-
-    it 'has an option to switch to list view' do
-      expect(page).to have_content(::I18n.t('switch_to', view_name: 'list', scope: 'refinery.admin.images.index.view'))
-    end
-
-  end  # grid view
-
-  context "when in list view" do
-
-    before  do
-      ensure_on(current_path + "?view=list")
-    end
-
-    it 'makes the title attribute of each image available', js: true do
-      expect(page).to have_selector(index_item_selector <<  listview_title_selector, count: image_count)
-    end
-
-    it 'makes the filename of each image available' do
-      expect(page).to have_selector(index_item_selector << listview_filename_selector, count: image_count)
-    end
-
-    it 'has an option to switch to grid view' do
-      ensure_on(current_path + '?view=list')
-
-      expect(page).to have_content(::I18n.t('switch_to', view_name: 'grid', scope: 'refinery.admin.images.index.view'))
-    end
-
-  end # list view
 end
 
-shared_examples_for 'paginates the list of images' do
+shared_examples_for 'All Index Views' do
+  it 'shows the alt attribute of each image if it different from the title', js: true do
+    expect(page).to have_selector(image_alt, text: 'A Beach', count: 1)
+  end
 
-  let(:image_count) {[Refinery::Image.count, Refinery::Images.pages_per_admin_index].min}
+  it 'shows the title attribute of an image', js: true do
+    expect(page).to have_selector(image_title, count: image_count)
+  end
+
+  it 'has an option to switch to another view', js: true do
+    expect(page).to have_content(::I18n.t('switch_to', view_name: alt_view, scope: 'refinery.admin.images.index.view'))
+  end
+end
+
+shared_examples_for 'Index Views' do
+  let(:image_count) { [Refinery::Image.count, Refinery::Images.pages_per_admin_index].min }
+
+  context "when in grid view" do
+    init_index_view('grid') do
+      it_behaves_like 'All Index Views'
+      it 'shows thumbnails', js: true do
+        expect(page).to have_selector(image_item, count: image_count)
+      end
+    end
+  end # grid view
+
+  context "when in list view" do
+    init_index_view('list') do
+      it_behaves_like 'All Index Views'
+      it 'show filenames' do
+        expect(page).to have_selector(filename, count: image_count)
+      end
+    end
+  end
+
+end
+
+shared_examples_for 'Index Pagination' do
+  let(:image_count) { [Refinery::Image.count, Refinery::Images.pages_per_admin_index].min }
 
   before do
     raise "please set let(:initial_path)" if initial_path.blank?
@@ -112,7 +93,8 @@ shared_examples_for 'paginates the list of images' do
       it 'has disabled the next link' do
         expect(page).to have_selector('.next_page.disabled')
       end
+    end # last page
 
-    end
-  end  # pagination
+  end # pagination
+
 end # image index

@@ -3,22 +3,22 @@ module Refinery
     module PagesHelper
       def parent_id_nested_set_options(current_page)
         pages = []
-        nested_set_options(::Refinery::Page, current_page) { |page| pages << page}
+        nested_set_options(::Refinery::Page, current_page) { |page| pages << page }
         # page.title needs the :translations association, doing something like
         # nested_set_options(::Refinery::Page.includes(:translations), page) doesn't work, yet.
         # See https://github.com/collectiveidea/awesome_nested_set/pull/123
-        ActiveRecord::Associations::Preloader.new.preload(pages, :translations)
-        pages.map { |page| ["#{'-' * page.level} #{page.title}", page.id]}
+        ActiveRecord::Associations::Preloader.new(records: pages, associations: :translations)
+        pages.map { |page| ["#{'-' * page.level} #{page.title}", page.id] }
       end
 
       def template_options(template_type, current_page)
-        html_options = { :selected => send("default_#{template_type}", current_page) }
+        html_options = { selected: send("default_#{template_type}", current_page) }
 
         if (template = current_page.send(template_type).presence)
-          html_options.update :selected => template
+          html_options.update selected: template
         elsif current_page.parent_id? && !current_page.send(template_type).presence
           template = current_page.parent.send(template_type).presence
-          html_options.update :selected => template if template
+          html_options.update selected: template if template
         end
 
         html_options
@@ -52,7 +52,26 @@ module Refinery
           ::I18n.t('draft', :scope => 'refinery.admin.pages.page')
         end if page.draft?
 
-        meta_information
+        tag.span meta_information, class: :meta
+      end
+
+      def page_icon(number_of_children)
+        # 1. has_children 'folder|folderopen', 'toggle'
+        # 2. no_children 'page'
+
+        # .toggle scss handles adding icons to pages with children
+        classes = []
+        case
+        when number_of_children.zero?
+          classes.push icon_class('page')
+          title = ::I18n.t('edit', scope: 'refinery.admin.pages')
+        else
+          expanded_class = Refinery::Pages.auto_expand_admin_tree ? 'expanded' : ''
+          classes.push ['toggle', expanded_class]
+          title =  ::I18n.t('expand_collapse', scope: 'refinery.admin.pages')
+        end
+
+        tag.span(class: classes.join(' '), title: title)
       end
     end
   end

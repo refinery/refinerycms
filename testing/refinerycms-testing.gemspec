@@ -22,8 +22,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'factory_bot_rails',       '~> 4.8'
   s.add_dependency 'rails-controller-testing', '>= 0.1.1'
   s.add_dependency 'refinerycms-core', version
-  s.add_dependency 'rspec-rails', '~> 4.0.0.beta2'
-  s.add_dependency 'webdrivers', '~> 4.0'
+  s.add_dependency 'rspec-rails', '~> 6.0.0.rc1'
+  s.add_dependency 'selenium-webdriver', '>= 2.46.0'
 
   s.required_ruby_version = Refinery::Version.required_ruby_version
 

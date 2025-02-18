@@ -1,20 +1,26 @@
 source 'https://rubygems.org'
 
+ruby "3.2.4"
 gemspec
+
+gem 'rails', "~>7.1"
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
+
 
 path "./" do
   gem "refinerycms-core"
+  gem "refinerycms-dragonfly"
   gem "refinerycms-images"
   gem "refinerycms-pages"
   gem "refinerycms-resources"
 end
 
-gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'master'
+gem 'refinerycms-i18n', git: 'https://github.com/anitagraham/refinerycms-i18n', branch: 'ruby3'
 
 # Add support for refinerycms-acts-as-indexed
-gem 'refinerycms-acts-as-indexed', ['~> 4.0', '>= 4.0.0'],
-  git: 'https://github.com/refinery/refinerycms-acts-as-indexed',
-  branch: 'master'
+gem 'refinerycms-acts-as-indexed', '~> 4.0', '>= 4.0.0', git: 'https://github.com/refinery/refinerycms-acts-as-indexed', branch: 'master'
 
 # Add the default visual editor, for now.
 gem 'refinerycms-wymeditor', ['~> 3.0', '>= 3.0.0']
@@ -43,6 +49,8 @@ group :development, :test do
   gem 'activejob'
   gem 'bootsnap', require: false
   gem 'listen', '~> 3.0'
+  gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem 'puma', require: false
 end
 
 group :test do
@@ -53,9 +61,6 @@ group :test do
   gem 'rspec-retry'
   gem 'falcon'
   gem 'falcon-capybara'
-
-  # TODO: Use beta source for Rails 6 support
-  gem 'rspec-rails', '~> 4.0.0.beta3'
 end
 
 # Load local gems according to Refinery developer preference.

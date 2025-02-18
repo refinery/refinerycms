@@ -1,17 +1,18 @@
 module Refinery
   module Admin
     class PagesController < Refinery::AdminController
-      prepend Pages::InstanceMethods
+      prepend Refinery::Pages::InstanceMethods
 
       crudify :'refinery/page',
-              :include => [:translations, :children],
-              :paging => false
+              include: [:translations, :children],
+              paging: false,
+              exclude_from_find: [:show]
 
       helper_method :valid_layout_templates, :valid_view_templates
 
       def new
         @page = Page.new(new_page_params)
-        Pages.default_parts_for(@page).each_with_index do |page_part, index|
+        Refinery::Pages.default_parts_for(@page).each_with_index do |page_part, index|
           @page.parts << PagePart.new(:title => page_part[:title], :slug => page_part[:slug], :position => index)
         end
       end
@@ -79,11 +80,11 @@ module Refinery
       end
 
       def valid_layout_templates
-        Pages.layout_template_whitelist & Pages.valid_templates(*Pages.layout_templates_pattern)
+        Refinery::Pages.layout_template_whitelist & Refinery::Pages.valid_templates(*Refinery::Pages.layout_templates_pattern)
       end
 
       def valid_view_templates
-        Pages.valid_templates(*Pages.view_templates_pattern)
+        Refinery::Pages.valid_templates(*Refinery::Pages.view_templates_pattern)
       end
 
       def page_params

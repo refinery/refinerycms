@@ -29,7 +29,7 @@ module Refinery
       image_tag_args = (image.thumbnail_dimensions(geometry) rescue {})
       image_tag_args[:alt] = image.respond_to?(:title) ? image.title : image.image_name
 
-      image_tag(image.thumbnail(thumbnail_args).url, image_tag_args.merge(options))
+      image_tag image.thumbnail(thumbnail_args).url, **image_tag_args, **options
     end
   end
 end

@@ -3,7 +3,7 @@
 require File.expand_path('../core/lib/refinery/version', __dir__)
 
 version = Refinery::Version.to_s
-rails_version = ['>= 6.0.0', '< 7']
+rails_version = ['>= 6.0.0', '< 8']
 
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'decorators',                  '~> 2.0', '>= 2.0.0'
   s.add_dependency 'font-awesome-sass',           '>= 4.3.0', '< 5.0'
   s.add_dependency 'jquery-rails',                '~> 4.3', '>= 4.3.1'
-  s.add_dependency 'jquery-ui-rails',             '~> 6.0', '>= 6.0.0'
+  s.add_dependency 'jquery-ui-rails',             '~> 7.0.0'
   s.add_dependency 'railties',                    rails_version
   s.add_dependency 'refinerycms-i18n',            ['~> 5.0', '>= 5.0.1']
   s.add_dependency 'sass-rails',                  '>= 4.0', '< 7'

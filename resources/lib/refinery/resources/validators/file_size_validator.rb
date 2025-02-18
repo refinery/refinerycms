@@ -7,12 +7,11 @@ module Refinery
           file = record.file
 
           if file.respond_to?(:length) && file.length > Resources.max_file_size
-            record.errors[:file] << ::I18n.t('too_big',
-                                             :scope => 'activerecord.errors.models.refinery/resource',
-                                             :size => Resources.max_file_size)
+            record.errors.add :file, ::I18n.t('too_big',
+                                              scope: 'activerecord.errors.models.refinery/resource',
+                                              size: Resources.max_file_size)
           end
         end
-
       end
     end
   end

@@ -1,3 +1,3 @@
-shared_examples 'edits an image' do
+shared_examples 'Edit' do
   pending
 end
