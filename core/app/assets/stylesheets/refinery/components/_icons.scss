@@ -79,28 +79,19 @@
 
 .unhidden_icon {display: inline-block}
 
-
 .locale_icon {
   position: relative;
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  align-items: center;
-  font-size: 1rem;
-  // icon_base occupies the ::before position
-  @include icon_base($icon_locale_colour, $size: 1.5rem);
+  // icon_base (the icon) occupies the ::before position
+  @include icon_base($locale_icon_colour, $size: 1.5rem);
 
   &::after {
-    line-height: 1em;
     position: absolute;
-    top: 25%;
-    left: 10%;
+    left: 0.3rem;
     font-size: 0.8rem;
-    color: #444;
+    color: $locale_text_colour;
     font-weight: bold;
-    content: attr(locale);
+    content: attr(id);
     text-transform: uppercase;
-
   }
 }
 

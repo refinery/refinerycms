@@ -7,13 +7,19 @@ $icon_locale_colour:  #b7e3fc;    // pale blue
 $icon_page_colour:    #86cffa;   //
 $icon_warning_colour: #FF6600; // orange
 
-$info_icon_blue:      #316CC8;
+$info_icon_blue: #022864;
 
 $icon_preview_colour: $icon_default_colour;
 $icon_edit_colour: $icon_default_colour;
 $icon_add_colour: $icon_default_colour;
 
+$locale_icon_colour: $icon_locale_colour;    // pale blue
+$locale_text_colour: #444444AA;
+$locale_selected_background: #65c3f7;
+$locale_hover_background: #cae7fb;
 $current_active_locale:  #22A7F2;
+$locale_active_background:  #22A7F2;
+
 $action_background_colour: lighten($icon_locale_colour,10%);
 $action_border_colour: #b7e3fc;
 

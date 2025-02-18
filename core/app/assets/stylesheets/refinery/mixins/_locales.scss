@@ -1,0 +1,22 @@
+@mixin locale_button {
+  padding: 7px 3px 3px 3px;
+  background-color: #cdcdcd;
+  border-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  align-items: center;
+  font-size: 1rem;
+  &.selected { background-color: $locale_selected_background; }
+  &:active { background-color: $locale_active_background;}
+}
+
+@mixin locale_group {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  @content;
+}
