@@ -38,17 +38,25 @@ module Refinery
     end
 
     def edit_in_locale(locale, url:, title:, **options)
-      Rails.logger.debug "[Refinery] edit_in_locale(#{locale}): #{url}, title: #{title}, options: #{options}"
-      action_icon(:locale, "#{url}?switch_locale=#{locale}", title,
-                  locale: locale, class: :edit, **options
-      )
+      if options.delete(:label)
+        title = language(locale)
+        action_label(:locale, "#{url}?switch_locale=#{locale}", title, **options,
+                    id: locale, class: :edit, **options
+        )
+      else
+        title = ::I18n.t('.edit_in_language', language: locale_language(locale), scope: 'refinery.admin.locale_picker')
+        action_icon(:locale, "#{url}?switch_locale=#{locale}", title,
+                    id: locale, class: :edit, **options
+        )
+      end
     end
+
 
     def edit_in_locales(edit_url, locales=[])
       return if locales.empty?
 
       edit_links = locales.map do |locale|
-        edit_in_locale(locale, url: edit_url )
+        edit_in_locale(locale, url: edit_url, title: t('.edit_in_locale', locale: locale) )
       end
       tag.span edit_links.compact.join(' ').html_safe, class: :locales
     end

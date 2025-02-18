@@ -15,8 +15,8 @@ module Refinery
       Refinery::TranslatedFieldPresenter.new(record).call(field)
     end
 
-    def locales_with_titles(record, title_field, include_current: true)
-      translations = record.translations.where.not(title_field, nil )
+    def locales_with_translated_field(record, field_name, include_current: true)
+      translations = record.translations.where.not(field_name, nil )
       translations = translations.where.not(locale: current_locale) unless include_current
       translations.map(&:locale).sort_by { |t| Refinery::I18n.frontend_locales.index(t.to_sym) }
     end

@@ -43,7 +43,9 @@ en:
         change: Click here to pick an image
         show: Show
       locale_picker:
-        language: Language
+        language: Language,
+        edit_in_locale: Edit in %{locale}
+        edit_in_language: Edit in %{language}
       resource_picker:
         download_current: Download current file
         opens_in_new_window: Opens in a new window
