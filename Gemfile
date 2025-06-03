@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'concurrent-ruby', '= 1.3.4'
+
 path "./" do
   gem "refinerycms-core"
   gem "refinerycms-images"
