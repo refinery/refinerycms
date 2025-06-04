@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'concurrent-ruby', '= 1.3.4'
+
 path "./" do
   gem "refinerycms-core"
   gem "refinerycms-images"
@@ -54,8 +56,7 @@ group :test do
   gem 'falcon'
   gem 'falcon-capybara'
 
-  # TODO: Use beta source for Rails 6 support
-  gem 'rspec-rails', '~> 4.0.0.beta3'
+  gem 'rspec-rails', '~> 6.0.0'
 end
 
 # Load local gems according to Refinery developer preference.
