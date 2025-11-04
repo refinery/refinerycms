@@ -1,6 +1,8 @@
 module Refinery
   module Admin
     module PagesHelper
+      include Refinery::TranslationHelper
+
       def parent_id_nested_set_options(current_page)
         pages = []
         nested_set_options(::Refinery::Page, current_page) { |page| pages << page}
