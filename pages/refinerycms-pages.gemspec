@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'babosa',                      '~> 1.0'
   s.add_dependency 'diffy',                       '~> 3.1', '>= 3.1.0'
   s.add_dependency 'friendly_id',                 ['>= 5.1.0', '< 5.3']
-  s.add_dependency 'friendly_id-mobility',        '~> 0.5'
+  s.add_dependency 'friendly_id-mobility',        '>= 0.5'
   s.add_dependency 'refinerycms-core',            version
   s.add_dependency 'seo_meta',                    '~> 3.0', '>= 3.0.0'
   s.add_dependency 'speakingurl-rails',           '~> 8.0', '>= 8.0.0'
