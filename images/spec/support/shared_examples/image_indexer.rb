@@ -10,7 +10,9 @@ shared_examples_for 'indexes images' do
 
   it 'shows all the images', js: true do
     if index_in_frame
+      sleep 0.1
       page.within_frame(dialog_frame_id) do
+        sleep 0.1
         expect(page).to have_selector(index_item_selector, count: image_count)
       end
     else

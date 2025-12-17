@@ -29,5 +29,6 @@ module Refinery
 
     autoload :ControllerMacros, 'refinery/testing/controller_macros'
     autoload :FeatureMacros, 'refinery/testing/feature_macros'
+    autoload :WaitForAjax, 'refinery/testing/wait_for_ajax'
   end
 end
