@@ -17,6 +17,8 @@ en:
       updated: '%{what} was successfully updated.'
       destroyed: '%{what} was successfully removed.'
       not_destroyed: '%{what} was not removed.'
+      duplicated: '%{what} was duplicated.'
+      duplicate_suffix: ' Copy'
     site_bar:
       log_out: Log out
       switch_to_your_website: Switch to your website
