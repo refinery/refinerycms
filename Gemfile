@@ -47,7 +47,7 @@ group :development, :test do
   gem 'activejob'
   gem 'bootsnap', require: false
   gem 'listen', '~> 3.0'
-  gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem 'rspec-rails'
   gem 'puma', require: false
 end
 
