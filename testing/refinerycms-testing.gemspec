@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.files             = `git ls-files`.split("\n")
 
   s.add_dependency 'capybara',                '>= 2.18'
-  s.add_dependency 'factory_bot_rails',       '~> 4.8'
+  s.add_dependency 'factory_bot_rails',       '~> 6.0'
   s.add_dependency 'rails-controller-testing', '>= 0.1.1'
   s.add_dependency 'refinerycms-core', version
   s.add_dependency 'rspec-rails', '~> 6.0.0.rc1'
