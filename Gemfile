@@ -22,6 +22,9 @@ gem 'refinerycms-acts-as-indexed', '~> 4.0', '>= 4.0.0', github: 'refinery/refin
 # Add the default visual editor, for now.
 gem 'refinerycms-wymeditor', ['~> 3.0', '>= 3.0.0']
 
+# Work around Zeitwerk loading issues
+gem 'decorators', github: 'parndt/decorators', branch: 'zeitwerk'
+
 # Database Configuration
 if !ENV['CI'] || ENV['DB'] == 'sqlite3'
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.3.0.rc1', platform: :jruby
