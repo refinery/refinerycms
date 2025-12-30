@@ -10,7 +10,7 @@ jobs:
   test:
     strategy:
       matrix:
-        database: [ mysql, postgresql ]
+        database: [ sqlite, mysql, postgresql ]
         extension: [ core, dragonfly, images, pages, resources ]
         ruby: [ 3.2, 3.3, 3.4, 4.0 ]
       fail-fast: false
