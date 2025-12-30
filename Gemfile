@@ -6,7 +6,6 @@ gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
 
-
 path "./" do
   gem "refinerycms-core"
   gem "refinerycms-dragonfly"
@@ -24,7 +23,7 @@ gem 'refinerycms-acts-as-indexed', '~> 4.0', '>= 4.0.0', github: 'refinery/refin
 gem 'refinerycms-wymeditor', ['~> 3.0', '>= 3.0.0']
 
 # Database Configuration
-unless ENV['CI']
+if !ENV['CI'] || ENV['DB'] == 'sqlite3'
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.3.0.rc1', platform: :jruby
   gem 'sqlite3', platform: :ruby
 end
