@@ -12,9 +12,8 @@ jobs:
       matrix:
         database: [ mysql, postgresql ]
         extension: [ core, dragonfly, images, pages, resources ]
-        ruby: [ 3.1]
+        ruby: [ 3.2, 3.3, 3.4, 4.0 ]
       fail-fast: false
-      max-parallel: 20
     runs-on: ubuntu-latest
 
     env:
@@ -30,7 +29,7 @@ jobs:
     name: ${{ matrix.extension }} ${{ matrix.ruby }} ${{ matrix.database }}
     steps:
       - run: sudo apt-get update && sudo apt-get install libsqlite3-dev -y
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
