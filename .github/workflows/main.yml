@@ -35,6 +35,10 @@ jobs:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby }}
 
+      - name: "Install ImageMagick for images extension"
+        if: ${{ matrix.extension == 'images' }}
+        run: sudo apt-get install imagemagick -y
+
       - name: "Set up MySQL using VM's server"
         if: ${{ env.DB == 'mysql' }}
         run: |
