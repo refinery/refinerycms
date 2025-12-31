@@ -21,9 +21,9 @@ require 'falcon'
 
 # if testing on localhost
 Capybara.configure do |config|
-  config.app = Rack::Builder.parse_file(
-    File.expand_path('../config.ru', __dir__)
-  ).first
+  parsed = Rack::Builder.parse_file(File.expand_path('../config.ru', __dir__))
+  # Rack 3+ returns the app directly; Rack 2 returned [app, options]
+  config.app = parsed.is_a?(Array) ? parsed.first : parsed
 end
 
 if ENV['RETRY_COUNT']
