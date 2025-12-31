@@ -1,6 +1,7 @@
 module Refinery
   module Admin
     class PagePartsController < ::Refinery::AdminController
+      skip_after_action :store_location?, raise: false
 
       def new
         render :partial => '/refinery/admin/pages/page_part_field', :locals => {

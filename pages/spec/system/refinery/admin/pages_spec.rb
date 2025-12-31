@@ -19,7 +19,7 @@ def switch_page_form_locale(locale)
   end
 
   # make sure that the locale change has taken effect
-  expect(page).to have_selector("#switch_locale_picker li.selected a##{locale.downcase}")
+  expect(page).to have_selector("#switch_locale_picker a.selected##{locale.downcase}")
 end
 
 module Refinery
@@ -93,9 +93,14 @@ module Refinery
           let!(:location) { locations.children.create title: 'New York' }
 
           context "with auto expand option turned off" do
-            before do
-              allow(Refinery::Pages).to receive(:auto_expand_admin_tree).and_return(false)
+            around do |example|
+              old_value = Refinery::Pages.auto_expand_admin_tree
+              Refinery::Pages.auto_expand_admin_tree = false
+              example.run
+              Refinery::Pages.auto_expand_admin_tree = old_value
+            end
 
+            before do
               visit refinery.admin_pages_path
             end
 
@@ -110,25 +115,30 @@ module Refinery
             end
 
             it "expands children", js: true do
-              find("#page_#{company.id} .item .toggle").click
+              find("#page_#{company.id} .icon.toggle").click
 
               expect(page).to have_content(team.title)
               expect(page).to have_content(locations.title)
             end
 
             it "expands children when nested multiple levels deep", js: true do
-              find("#page_#{company.id} .item .toggle").click
-              find("#page_#{locations.id} .item .toggle").click
+              find("#page_#{company.id} .icon.toggle").click
+              find("#page_#{locations.id} .icon.toggle").click
 
               expect(page).to have_content("New York")
             end
           end
 
           context "with auto expand option turned on" do
-            before do
-              allow(Refinery::Pages).to receive(:auto_expand_admin_tree).and_return(true)
+            around do |example|
+              old_value = Refinery::Pages.auto_expand_admin_tree
+              Refinery::Pages.auto_expand_admin_tree = true
               Rails.cache.clear
+              example.run
+              Refinery::Pages.auto_expand_admin_tree = old_value
+            end
 
+            before do
               visit refinery.admin_pages_path
             end
 
@@ -359,6 +369,9 @@ module Refinery
 
             window.close
 
+            # Wait for setTimeout to restore form action/target after preview
+            sleep 0.6
+
             click_button "Save & continue editing"
             expect(page).to have_content("'Save this' was successfully updated")
           end
@@ -459,9 +472,14 @@ module Refinery
       end
 
       context "with translations" do
-        before do
-          allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru])
+        around do |example|
+          old_locales = Refinery::I18n.config.frontend_locales
+          Refinery::I18n.config.frontend_locales = [:en, :ru]
+          example.run
+          Refinery::I18n.config.frontend_locales = old_locales
+        end
 
+        before do
           # Create a home page in both locales (needed to test menus)
           home_page = Mobility.with_locale(:en) do
             Page.create title: 'Home',
@@ -529,8 +547,6 @@ module Refinery
           let(:ru_page_title) { 'Новости' }
           let(:ru_page_slug_encoded) { '%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8' }
           let!(:news_page) do
-            allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru])
-
             _page = Mobility.with_locale(:en) {
               Page.create title: en_page_title
             }
@@ -698,8 +714,11 @@ module Refinery
       end
 
       describe "new page part" do
-        before do
-          allow(Refinery::Pages).to receive(:new_page_parts).and_return(true)
+        around do |example|
+          old_value = Refinery::Pages.new_page_parts
+          Refinery::Pages.new_page_parts = true
+          example.run
+          Refinery::Pages.new_page_parts = old_value
         end
 
         it "adds new page part", js: true do

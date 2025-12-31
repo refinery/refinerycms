@@ -60,14 +60,14 @@ module Refinery
         # 2. no_children 'page'
 
         # .toggle scss handles adding icons to pages with children
-        classes = []
+        classes = ['icon']
         case
         when number_of_children.zero?
           classes.push icon_class('page')
           title = ::I18n.t('edit', scope: 'refinery.admin.pages')
         else
           expanded_class = Refinery::Pages.auto_expand_admin_tree ? 'expanded' : ''
-          classes.push ['toggle', expanded_class]
+          classes.push 'toggle', expanded_class
           title =  ::I18n.t('expand_collapse', scope: 'refinery.admin.pages')
         end
 
