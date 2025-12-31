@@ -54,16 +54,14 @@ module Refinery
         class_name = options[:class_name]
         singular_name = options[:singular_name]
         plural_name = options[:plural_name]
-        find_actions = [*options[:find_actions]]
-        exclude_from_find = [*options[:exclude_from_find]]
+        actions = [*options[:find_actions]] - [*options[:exclude_from_find]]
 
         module_eval <<-RUBY, __FILE__, __LINE__ + 1
           def self.crudify_options
             #{options.inspect}
           end
           
-          actions = find_actions - exclude_from_find
-          prepend_before_action :find_#{singular_name}, only: actions
+          prepend_before_action :find_#{singular_name}, only: #{actions}
           prepend_before_action :merge_position_into_params!, :only => :create
 
           def new
