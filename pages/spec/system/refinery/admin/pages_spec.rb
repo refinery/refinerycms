@@ -93,15 +93,13 @@ module Refinery
           let!(:location) { locations.children.create title: 'New York' }
 
           context "with auto expand option turned off" do
-            around do |example|
-              old_value = Refinery::Pages.auto_expand_admin_tree
+            before do
               Refinery::Pages.auto_expand_admin_tree = false
-              example.run
-              Refinery::Pages.auto_expand_admin_tree = old_value
+              visit refinery.admin_pages_path
             end
 
-            before do
-              visit refinery.admin_pages_path
+            after do
+              Refinery::Pages.auto_expand_admin_tree = true
             end
 
             it "show parent page" do
@@ -130,15 +128,9 @@ module Refinery
           end
 
           context "with auto expand option turned on" do
-            around do |example|
-              old_value = Refinery::Pages.auto_expand_admin_tree
+            before do
               Refinery::Pages.auto_expand_admin_tree = true
               Rails.cache.clear
-              example.run
-              Refinery::Pages.auto_expand_admin_tree = old_value
-            end
-
-            before do
               visit refinery.admin_pages_path
             end
 
@@ -369,8 +361,8 @@ module Refinery
 
             window.close
 
-            # Wait for setTimeout to restore form action/target after preview
-            sleep 0.6
+            # Wait for JavaScript setTimeout to restore form action after preview
+            expect(page).to have_no_css("form[action*='/preview/']", wait: 1)
 
             click_button "Save & continue editing"
             expect(page).to have_content("'Save this' was successfully updated")
@@ -472,11 +464,12 @@ module Refinery
       end
 
       context "with translations" do
-        around do |example|
-          old_locales = Refinery::I18n.config.frontend_locales
+        before do
           Refinery::I18n.config.frontend_locales = [:en, :ru]
-          example.run
-          Refinery::I18n.config.frontend_locales = old_locales
+        end
+
+        after do
+          Refinery::I18n.config.frontend_locales = [:en]
         end
 
         before do
@@ -714,11 +707,12 @@ module Refinery
       end
 
       describe "new page part" do
-        around do |example|
-          old_value = Refinery::Pages.new_page_parts
+        before do
           Refinery::Pages.new_page_parts = true
-          example.run
-          Refinery::Pages.new_page_parts = old_value
+        end
+
+        after do
+          Refinery::Pages.new_page_parts = false
         end
 
         it "adds new page part", js: true do
