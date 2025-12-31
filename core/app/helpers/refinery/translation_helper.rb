@@ -17,9 +17,9 @@ module Refinery
 
     def locales_with_translated_field(record, field_name, include_current: true)
       field_name = field_name.to_sym
-      translations = record.translations.where.not(field_name, nil )
+      translations = record.translations.where.not(field_name => [nil, ""])
       translations = translations.where.not(locale: current_locale) unless include_current
-      translations.map(&:locale).sort_by { |t| Refinery::I18n.frontend_locales.index(t.to_sym) }
+      translations.map { |t| t.locale.to_sym }.sort_by { |locale| Refinery::I18n.frontend_locales.index(locale) }
     end
 
     def current_locale?(locale) = locale.to_sym == Refinery::I18n.current_locale

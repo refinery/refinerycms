@@ -15,7 +15,8 @@ module Refinery
   end
 
   class CrudDummyController < ::ApplicationController
-    crudify :'refinery/crud_dummy'
+    skip_before_action :find_or_set_locale, raise: false
+    crudify :'refinery/crud_dummy', find_actions: [:update, :destroy, :edit]
   end
 end
 

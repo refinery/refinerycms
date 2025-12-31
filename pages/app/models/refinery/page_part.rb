@@ -7,10 +7,17 @@ module Refinery
 
     validates :title, :presence => true
     validates :slug, :presence => true, :uniqueness => {:scope => :refinery_page_id, :case_sensitive => true}
-    alias_attribute :content, :body
 
     extend Mobility
     translates :body
+
+    def content
+      body
+    end
+
+    def content=(value)
+      self.body = value
+    end
 
     def to_param
       "page_part_#{slug.downcase.gsub(/\W/, '_')}"

@@ -9,6 +9,7 @@ module Refinery
         include Pages::RenderOptions
 
         skip_before_action :error_404, :set_canonical
+        skip_after_action :store_location?, raise: false
 
         layout :layout
 

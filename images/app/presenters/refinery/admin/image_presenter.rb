@@ -67,6 +67,7 @@ module Refinery
       attr_reader :image, :context, :index_keys, :i18n_scope
       attr_writer :title, :alt, :filename, :translations, :edit_attributes, :delete_attributes, :preview_attributes
       delegate_missing_to :image
+      delegate :t, to: :context
 
       IndexEntry = Struct.new('ImageEntry', :id, :edit_link, :text_elements, :locales, :actions)
 

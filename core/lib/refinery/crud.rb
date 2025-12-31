@@ -60,7 +60,7 @@ module Refinery
           def self.crudify_options
             #{options.inspect}
           end
-          
+
           prepend_before_action :find_#{singular_name}, only: #{actions}
           prepend_before_action :merge_position_into_params!, :only => :create
 

@@ -7,7 +7,8 @@ module Refinery
               include: [:translations, :crops],
               order: "updated_at DESC",
               sortable: false,
-              conditions: 'parent_id IS NULL'
+              conditions: 'parent_id IS NULL',
+              find_actions: [:update, :destroy, :edit]
 
       before_action :change_view_if_specified, :init_dialog
 

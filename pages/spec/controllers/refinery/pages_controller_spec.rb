@@ -9,7 +9,7 @@ module Refinery
     end
 
     describe "#home" do
-      context "when page path set to default ('/') " do
+      context "when page path set to default ('/')" do
         it "renders home template" do
           get :home
           expect(response).to render_template("home")

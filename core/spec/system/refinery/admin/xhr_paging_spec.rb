@@ -21,8 +21,8 @@ module Refinery
       it 'performs ajax paging of index' do
         visit refinery.admin_images_path
 
-        expect(page).to have_selector('ul#image_grid li > img', count: 1)
-        expect(page).to have_css(%Q{img[alt="#{first_image.title}"]})
+        expect(page).to have_selector('ul#image_index li.image', count: 1)
+        expect(page).to have_css(%Q{img[alt="#{first_image.alt}"]})
 
         # placeholder which would disappear in a full page refresh.
         page.execute_script("node = document.createElement('i');")
@@ -33,7 +33,7 @@ module Refinery
           click_link '2'
         end
 
-        expect(page).to have_css(%Q{img[alt="#{last_image.title}"]})
+        expect(page).to have_css(%Q{img[alt="#{last_image.alt}"]})
         expect(page.evaluate_script(
           %{$('i#has_not_refreshed_entire_page').length}
         )).to eq(1)

@@ -3,9 +3,22 @@ require 'rails/generators/generated_attribute'
 module Refinery
   module Generators
     class GeneratedAttribute < Rails::Generators::GeneratedAttribute
+      REFINERY_TYPES = %w(image resource radio select checkbox)
+
       attr_accessor :refinery_type
 
       class << self
+        def parse(column_definition)
+          name, type, index_type = column_definition.split(":")
+
+          # Handle Refinery's custom types before Rails validates them
+          if type && REFINERY_TYPES.include?(type)
+            new(name, type.to_sym, index_type)
+          else
+            super
+          end
+        end
+
         def reference?(type)
           [:references, :belongs_to, :image, :resource].include? type
         end
