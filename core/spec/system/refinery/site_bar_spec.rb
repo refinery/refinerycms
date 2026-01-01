@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 module Refinery
-  describe "site bar", :type => :system do
+  describe "site bar", type: :system do
     refinery_login
 
     describe "logout link" do
@@ -62,7 +64,7 @@ module Refinery
       end
 
       it "has an 'edit this page' button" do
-        expect(page).to have_link("Edit this page", :href => refinery.edit_admin_page_path(root_page))
+        expect(page).to have_link("Edit this page", href: refinery.edit_admin_page_path(root_page))
       end
 
     end

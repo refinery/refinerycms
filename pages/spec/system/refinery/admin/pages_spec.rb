@@ -491,23 +491,21 @@ module Refinery
             expect(Refinery::Page.count).to eq(2)
           end
 
-          it "shows locale for page" do
-            p = ::Refinery::Page.by_slug('news').first
-            within "#page_#{p.id} .locales" do
-              expect(page).to have_selector(locale_link_selector(locale: 'en'))
+          it "doesn't show locale for default frontend locale" do
+            within "#page_#{::Refinery::Page.by_slug('news').first.id}" do
+              expect(page).not_to have_selector(".locales")
+              expect(page).not_to have_selector(locale_link_selector(locale: 'en'))
             end
           end
 
           it "shows title in the admin menu" do
-            p = ::Refinery::Page.by_slug('news').first
-            within "#page_#{p.id}" do
+            within "#page_#{::Refinery::Page.by_slug('news').first.id}" do
               expect(page).to have_content('News')
               expect(page.first(title_link_selector)[:text]).to have_content('News')
             end
           end
 
           it "shows in frontend menu for 'en' locale" do
-            # page.driver.debug
             visit "/"
 
             within "#menu" do
@@ -532,15 +530,12 @@ module Refinery
           let(:ru_page_title) { 'Новости' }
           let(:ru_page_slug_encoded) { '%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8' }
           let!(:news_page) do
-            _page = Mobility.with_locale(:en) {
-              Page.create title: en_page_title
-            }
-            Mobility.with_locale(:ru) do
-              _page.title = ru_page_title
-              _page.save
+            Mobility.with_locale(:en) { Page.create(title: en_page_title) }.tap do |localised_page|
+              Mobility.with_locale(:ru) do
+                localised_page.title = ru_page_title
+                localised_page.save
+              end
             end
-
-            _page
           end
 
           it "can have a title for each locale" do
@@ -566,13 +561,16 @@ module Refinery
             expect(Refinery::Page.count).to eq(2)
           end
 
-          it "is shown with both locales in the index" do
+          it "is shown with only the non-default locale in the index" do
             visit refinery.admin_pages_path
 
-            within "#page_#{news_page.id} .locales" do
-              # expect(page).to have_selector(edit_in_locale, count: 2)
-              expect(page).to have_selector(locale_link_selector(locale: 'en'))
-              expect(page).to have_selector(locale_link_selector(locale: 'ru'))
+            within "#page_#{news_page.id}" do
+              expect(page).to have_selector(".locales")
+
+              within ".locales" do
+                expect(page).to have_selector(locale_link_selector(locale: 'ru'))
+                expect(page).to have_no_selector(locale_link_selector(locale: 'en'))
+              end
             end
           end
 

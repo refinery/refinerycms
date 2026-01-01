@@ -1,7 +1,7 @@
-<input type="hidden" name="switch_locale" id="switch_locale" value="<%= local_assigns[:current_locale] %>" />
+<input type="hidden" name="switch_locale" id="switch_locale" value="<%= local_assigns[:current_locale] %>">
 <% if Refinery::I18n.frontend_locales.many? %>
   <label><%= t('.language') %></label>
-  <div id="switch_locale_picker" class='locales'>
+  <div id="switch_locale_picker" class="locales">
     <% Refinery::I18n.frontend_locales.each do |locale, language| %>
         <% classes = locale.to_s == local_assigns[:current_locale].to_s ? 'selected' : '' %>
         <%= edit_in_locale(locale,

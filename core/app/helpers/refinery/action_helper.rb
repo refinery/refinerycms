@@ -61,13 +61,14 @@ module Refinery
       end
     end
 
-
-    def edit_in_locales(edit_url, locales = [])
-      return if locales.empty? || locales.one?
+    def edit_in_locales(edit_url, locales = [], i18n_scope: %i[refinery admin locale_picker])
+      return if locales.empty?
 
       edit_links = locales.map do |locale|
-        edit_in_locale(locale, url: edit_url, title: t('.edit_in_locale', locale: locale))
+        language = ::Refinery::I18n.config.locales.fetch(locale, locale)
+        edit_in_locale(locale, url: edit_url, title: t('edit_in_language', language: language, scope: i18n_scope))
       end
+
       tag.span edit_links.compact.join(' ').html_safe, class: :locales
     end
   end

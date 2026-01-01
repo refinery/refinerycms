@@ -18,12 +18,12 @@ module Refinery
     def locales_with_translated_field(record, field_name, include_current: true)
       field_name = field_name.to_sym
       translations = record.translations.where.not(field_name => [nil, ""])
-      translations = translations.where.not(locale: current_locale) unless include_current
-      translations.map { |t| t.locale.to_sym }.sort_by { |locale| Refinery::I18n.frontend_locales.index(locale) }
-    end
+      translations = translations.where.not(locale: Refinery::I18n.default_frontend_locale.to_s) unless include_current
 
-    private def current_locale
-      Refinery::I18n.current_locale.to_s
+      translations.pluck(:locale).map(&:to_sym).sort_by do |locale|
+        index = Refinery::I18n.frontend_locales.index(locale)
+        index ? [0, index] : [1, locale]
+      end
     end
   end
 end

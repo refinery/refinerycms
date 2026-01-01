@@ -17,7 +17,7 @@
         <%= f.file_field :image %>
       </p>
     <% else %>
-      <% # we must only hint at multiple when it's a new record otherwise update fails. %>
+      <%# we must only hint at multiple when it's a new record otherwise update fails. %>
       <%= f.file_field :image, multiple: true %>
     <% end %>
   </div>
@@ -26,7 +26,7 @@
     <label><%= t('.maximum_image_size', bytes: number_to_human_size(Refinery::Images.max_image_size)) %></label>
   </div>
   <div class="field" id="title">
-    <span class='label_with_help'>
+    <span class="label_with_help">
       <%= f.label :image_title, t('.image_title') %>
       <%= refinery_help_tag t('.image_title_help') %>
     </span>
@@ -34,7 +34,7 @@
   </div>
 
   <div class="field" id="alt">
-    <span class='label_with_help'>
+    <span class="label_with_help">
       <%= f.label :image_alt, t('.image_alt') %>
       <%= refinery_help_tag t('.image_alt_help') %>
     </span>
@@ -51,12 +51,12 @@
              cancel_url: refinery.admin_images_path -%>
 
   <% if @app_dialog %>
-    <input type="hidden" name="app_dialog" value="<%= @app_dialog %>" />
-    <input type="hidden" name="field" value="<%= @field %>" />
-    <input type="hidden" name="update_image" value="<%= @update_image %>" />
-    <input type="hidden" name="thumbnail" value="<%= @thumbnail %>" />
-    <input type="hidden" name="callback" value="<%= @callback %>" />
-    <input type="hidden" name="conditions" value="<%= @conditions %>" />
+    <input type="hidden" name="app_dialog" value="<%= @app_dialog %>">
+    <input type="hidden" name="field" value="<%= @field %>">
+    <input type="hidden" name="update_image" value="<%= @update_image %>">
+    <input type="hidden" name="thumbnail" value="<%= @thumbnail %>">
+    <input type="hidden" name="callback" value="<%= @callback %>">
+    <input type="hidden" name="conditions" value="<%= @conditions %>">
   <% end %>
 <% end %>
 
@@ -79,13 +79,13 @@
                      class: 'crop_image'
                    } do |f| %>
         <div class="field">
-          <span class='label_with_help'>
+          <span class="label_with_help">
             <%= f.label :ratio, t('.ratios') %>
             <%= refinery_help_tag t('.choose_crop') %>
           </span>
 
           <% ::Refinery::Images.user_image_ratios.each do |ratio, value| %>
-            <%= f.button ratio, type: 'button', data: { value: value, ratio: ratio.to_s.parameterize } %>
+            <%= f.button value, type: 'button', data: { value: value, ratio: ratio.to_s.parameterize } %>
           <% end %>
 
           <%= f.submit t('.save'), id: 'save_crop' %>
@@ -101,7 +101,7 @@
           <%= render partial: 'crop', collection: @image.crops %>
         </ul>
       <% else %>
-          <p id="no-crops-yet"><strong><%=t('.no_crops_yet')%></strong></p>
+          <p id="no-crops-yet"><strong><%= t('.no_crops_yet') %></strong></p>
       <% end %>
     </section>
   </div>

@@ -75,7 +75,7 @@ module Refinery
               click_link 'Upload new file'
 
               within '#file' do
-                expect(page).to have_text "The maximum file size is 1.2 KB."
+                expect(page).to have_selector('a[tooltip="The maximum file size is 1.2 KB."]')
               end
             end
           end
@@ -90,7 +90,7 @@ module Refinery
 
               click_link 'Tilføj en ny fil'
               within '#file' do
-                expect(page).to have_text "Filen må maksimalt fylde 1,2 kB."
+                expect(page).to have_selector('a[tooltip="Filen må maksimalt fylde 1,2 kB."]')
               end
             end
           end

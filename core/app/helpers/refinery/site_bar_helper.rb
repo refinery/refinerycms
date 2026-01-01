@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Refinery
   module SiteBarHelper
 
@@ -5,7 +7,7 @@ module Refinery
     def site_bar_switch_link
       link_to_if(admin?, t('.switch_to_your_website', **site_bar_translate_locale_args),
                          refinery.root_path(site_bar_translate_locale_args),
-                         'data-turbolinks' => false) do
+                         data: {turbolinks: false}) do
         link_to t('.switch_to_your_website_editor', **site_bar_translate_locale_args),
                 Refinery::Core.backend_path, 'data-turbolinks' => false
       end
@@ -13,10 +15,11 @@ module Refinery
 
     def site_bar_edit_link
       return nil if admin? || @page.nil?
-      link_to t('refinery.admin.pages.edit', **site_bar_translate_locale_args),
+
+      link_to t('refinery.admin.pages.page.edit', **site_bar_translate_locale_args),
               refinery.admin_edit_page_path(@page.nested_url,
-              :switch_locale => (@page.translations.first.locale unless @page.translated_to_default_locale?)),
-              'data-turbolinks' => false
+              switch_locale: (@page.translations.first.locale unless @page.translated_to_default_locale?)),
+              data: {turbolinks: false}
     end
 
     def site_bar_translate_locale_args
