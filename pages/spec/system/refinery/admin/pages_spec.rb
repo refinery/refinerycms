@@ -94,12 +94,8 @@ module Refinery
 
           context "with auto expand option turned off" do
             before do
-              Refinery::Pages.auto_expand_admin_tree = false
+              allow(Refinery::Pages).to receive(:auto_expand_admin_tree).and_return(false)
               visit refinery.admin_pages_path
-            end
-
-            after do
-              Refinery::Pages.auto_expand_admin_tree = true
             end
 
             it "show parent page" do
@@ -465,11 +461,7 @@ module Refinery
 
       context "with translations" do
         before do
-          Refinery::I18n.config.frontend_locales = [:en, :ru]
-        end
-
-        after do
-          Refinery::I18n.config.frontend_locales = [:en]
+          allow(Refinery::I18n).to receive(:frontend_locales).and_return([:en, :ru])
         end
 
         before do
@@ -708,11 +700,7 @@ module Refinery
 
       describe "new page part" do
         before do
-          Refinery::Pages.new_page_parts = true
-        end
-
-        after do
-          Refinery::Pages.new_page_parts = false
+          allow(Refinery::Pages).to receive(:new_page_parts).and_return(true)
         end
 
         it "adds new page part", js: true do
