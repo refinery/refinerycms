@@ -43,7 +43,7 @@ module Refinery
 
     def edit_in_locale(locale, url:, title:, **options)
       if options.delete(:label)
-        title = locale_language(locale)
+        title = locale.to_s.upcase
         action_label(:locale, "#{url}?switch_locale=#{locale}", title, **options,
                     id: locale, class: :edit, **options
         )

@@ -16,7 +16,7 @@ shared_examples 'translates an image' do
       click_link "Edit this image"
 
       within "#switch_locale_picker" do
-        find("a#fr").click
+        click_link "FR"
       end
 
       fill_in "Title", :with => "Titre de la première image"
