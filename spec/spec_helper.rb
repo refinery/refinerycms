@@ -16,7 +16,6 @@ require File.expand_path("../dummy/config/environment", __FILE__)
 
 require 'rack/test'
 require 'rspec/rails'
-require 'falcon'
 
 
 # if testing on localhost

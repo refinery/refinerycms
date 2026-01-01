@@ -132,16 +132,34 @@ module Refinery
       end
 
       context 'destroy' do
-        let!(:resource) { FactoryBot.create(:resource) }
+        context 'when resource_title is empty' do
+          let!(:resource) { FactoryBot.create(:resource) }
 
-        it 'removes file' do
-          visit refinery.admin_resources_path
-          expect(page).to have_selector("a[href='/refinery/resources/#{resource.id}']")
+          it 'shows filename in confirmation', js: true do
+            visit refinery.admin_resources_path
+            delete_link = find('a[tooltip="Remove this file forever"]')
+            expect(delete_link['data-confirm']).to eq("Are you sure you want to remove 'Cape Town Tide Table'?")
+          end
 
-          click_link 'Remove this file forever'
+          it 'removes file' do
+            visit refinery.admin_resources_path
+            expect(page).to have_selector("a[href='/refinery/resources/#{resource.id}']")
 
-          expect(page).to have_content("'Cape Town Tide Table' was successfully removed.")
-          expect(Refinery::Resource.count).to eq(0)
+            click_link 'Remove this file forever'
+
+            expect(page).to have_content("'Cape Town Tide Table' was successfully removed.")
+            expect(Refinery::Resource.count).to eq(0)
+          end
+        end
+
+        context 'when resource_title is set' do
+          let!(:resource) { FactoryBot.create(:resource, resource_title: 'My Custom Title') }
+
+          it 'shows resource_title in confirmation', js: true do
+            visit refinery.admin_resources_path
+            delete_link = find('a[tooltip="Remove this file forever"]')
+            expect(delete_link['data-confirm']).to eq("Are you sure you want to remove 'My Custom Title'?")
+          end
         end
       end
 

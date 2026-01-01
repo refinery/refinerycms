@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gemspec
 
-gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
+gem 'net-smtp', require: false
 
-path "./" do
-  gem "refinerycms-core"
-  gem "refinerycms-dragonfly"
-  gem "refinerycms-images"
-  gem "refinerycms-pages"
-  gem "refinerycms-resources"
+path './' do
+  gem 'refinerycms-core'
+  gem 'refinerycms-dragonfly'
+  gem 'refinerycms-images'
+  gem 'refinerycms-pages'
+  gem 'refinerycms-resources'
 end
 
 gem 'refinerycms-i18n', github: 'anitagraham/refinerycms-i18n', branch: 'ruby3'
@@ -34,7 +36,7 @@ end
 if !ENV['CI'] || ENV['DB'] == 'mysql'
   group :mysql do
     gem 'activerecord-jdbcmysql-adapter', '>= 1.3.0.rc1', platform: :jruby
-    gem 'mysql2', '~> 0.4', :platform => :ruby
+    gem 'mysql2', '~> 0.4', platform: :ruby
   end
 end
 
@@ -49,18 +51,16 @@ group :development, :test do
   gem 'activejob'
   gem 'bootsnap', require: false
   gem 'listen', '~> 3.0'
-  gem 'rspec-rails'
   gem 'puma', require: false
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'refinerycms-testing', path: './testing'
+  gem 'coveralls', require: false
   gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
-  gem 'coveralls', require: false
+  gem 'refinerycms-testing', path: './testing'
   gem 'rspec-retry'
-  gem 'falcon'
-  gem 'falcon-capybara'
 end
 
 # Load local gems according to Refinery developer preference.

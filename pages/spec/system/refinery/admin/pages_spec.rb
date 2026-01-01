@@ -147,7 +147,7 @@ module Refinery
               end
 
               fill_in "page_title", with: 'Las Vegas'
-              click_button "Save "
+              click_button "Save"
               expect(page).to have_content('Las Vegas')
             end
           end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pathname'
 require 'mkmf'
 
@@ -329,8 +331,10 @@ end
       # Only pretend to do the next actions if this is Refinery to stay DRY
       if destination_path == Refinery.root
         say_status :'-- pretending to make changes that happen in an actual installation --', nil, :yellow
-        original_pretend = self.options[:pretend]
-        self.options.merge(pretend: true, original_pretend: original_pretend)
+        self.old_pretend = self.options[:pretend]
+        new_options = self.options.dup
+        new_options[:pretend] = true
+        self.options = new_options
       end
     end
 
@@ -338,9 +342,12 @@ end
       # Stop pretending
       if destination_path == Refinery.root
         say_status :'-- finished pretending --', nil, :yellow
-        original_pretend = self.options[:original_pretend]
-        self.options.merge(pretend: original_pretend).remove(:original_pretend)
+        new_options = options.dup.merge(pretend: old_pretend)
+        new_options[:pretend] = old_pretend
+        self.options = new_options
       end
     end
+
+    private attr_accessor :old_pretend
   end
 end

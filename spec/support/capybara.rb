@@ -1,7 +1,6 @@
 require 'rack/test'
 require 'rspec/rails'
 require 'capybara/rspec'
-require 'falcon/capybara'
 require 'selenium/webdriver'
 
 Capybara.register_driver :local_selenium do |app|
@@ -28,12 +27,7 @@ selenium_app_host = ENV.fetch("SELENIUM_APP_HOST") do
 end
 
 Capybara.configure do |config|
-  # config.server = :puma, { Silent: true }
-  # config.app = Rack::Builder.parse_file(
-  #   File.expand_path('../config.ru', __dir__)
-  # ).first
-  config.server = :falcon
-  # config.server = :falcon_https
+  config.server = :puma, { Silent: true }
   config.default_driver = :local_selenium
   # config.default_driver = :selenium_chrome_https
   config.javascript_driver = :local_selenium_headless

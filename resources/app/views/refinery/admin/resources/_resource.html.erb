@@ -2,7 +2,7 @@
   # setup params for various action links
   edit_url =    refinery.edit_admin_resource_path(resource)
   delete_url =  refinery.admin_resource_path(resource)
-  delete_options = {data: {confirm: t('message',  scope: 'refinery.admin.delete', title: resource.resource_title)}}
+  delete_options = {data: {confirm: t('message',  scope: 'refinery.admin.delete', title: translated_field(resource, :title))}}
   translated_locales = locales_with_translated_field(resource, 'resource_title')
 %>
 <li class="record resource item <%= cycle('on', 'on-hover') %>">
