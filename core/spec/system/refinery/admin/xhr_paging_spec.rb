@@ -16,6 +16,7 @@ module Refinery
 
       before do
         allow(Image).to receive(:per_page).and_return(1)
+        allow(Refinery::Images).to receive(:preferred_image_view).and_return(:grid)
       end
 
       it 'performs ajax paging of index' do
