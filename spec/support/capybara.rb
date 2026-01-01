@@ -3,6 +3,9 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'selenium/webdriver'
 
+# Disable Selenium Manager telemetry
+ENV['SE_AVOID_STATS'] = 'true'
+
 Capybara.register_driver :local_selenium do |app|
   options = Selenium::WebDriver::Options.firefox
   # options = Selenium::WebDriver::Chrome::Options.new
