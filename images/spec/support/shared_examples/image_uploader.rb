@@ -21,14 +21,14 @@ shared_examples 'uploads images' do
   context 'when the image type is acceptable' do
     let(:image_path) {Refinery.roots('refinery/images').join("spec/fixtures/image-with-dashes.jpg")}
     it 'the image is uploaded', :js => true do
-      expect(uploading_an_image).to change(Refinery::Image, :count).by(1)
+      expect { uploading_an_image.call }.to change(Refinery::Image, :count).by(1)
     end
   end
 
   context 'when the image type is not acceptable' do
     let(:image_path) {Refinery.roots('refinery/images').join("spec/fixtures/cape-town-tide-table.pdf")}
     it 'the image is rejected', :js => true do
-      expect(uploading_an_image).to_not change(Refinery::Image, :count)
+      expect { uploading_an_image.call }.to_not change(Refinery::Image, :count)
       page.within_frame(dialog_frame_id) do
         expect(page).to have_content(::I18n.t('incorrect_format',
                                               :scope => 'activerecord.errors.models.refinery/image',

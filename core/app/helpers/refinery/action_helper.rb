@@ -37,6 +37,10 @@ module Refinery
       action_icon(:edit, url, title, class: :edit,  **options  )
     end
 
+    def locale_language(locale)
+      Refinery::I18n.locales[locale]
+    end
+
     def edit_in_locale(locale, url:, title:, **options)
       if options.delete(:label)
         title = locale_language(locale)

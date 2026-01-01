@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+require 'will_paginate/array'
+
 module Refinery
   module Admin
     class ImagesController < ::Refinery::AdminController
@@ -6,7 +10,8 @@ module Refinery
               include: [:translations, :crops],
               order: "updated_at DESC",
               sortable: false,
-              conditions: 'parent_id IS NULL'
+              conditions: 'parent_id IS NULL',
+              find_actions: [:update, :destroy, :edit]
 
       before_action :change_list_mode_if_specified, :init_dialog
 
@@ -184,7 +189,7 @@ module Refinery
 
       def permitted_image_params
         [
-          :image, :image_size, :image_title, :image_alt
+          { image: [] }, :image_size, :image_title, :image_alt
         ]
       end
     end

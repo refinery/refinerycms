@@ -16,7 +16,7 @@ shared_examples_for 'deletes an image' do
   end
 
   it "removes an image" do
-    expect(deleting_an_image).to change(Refinery::Image, :count).by(-1)
+    expect { deleting_an_image.call }.to change(Refinery::Image, :count).by(-1)
   end
 
   it 'says the image has been removed' do

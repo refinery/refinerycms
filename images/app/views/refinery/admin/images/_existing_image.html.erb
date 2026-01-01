@@ -6,24 +6,28 @@
       <ul class="clearfix">
         <% @images.each do |image| -%>
           <%= content_tag :li, class: ('selected' if @image_id == image.id) do %>
-            <%= image_fu(image, '106x106#c', {
+            <%= image_fu(image, '106x106#c',
               alt: image.title,
               title: image.title,
-              id: "image_#{image.id}",
-              'data-id': image.id
-            }.merge(thumbnail_urls(image)))-%>
+              id: dom_id(image),
+              data: {
+                id: image.id,
+                **thumbnail_urls(image)[:data]
+              })-%>
 
             <% if image.crops.any? %>
               <div class="crops">
                 <ul class="clearfix">
                   <% image.crops.each do |crop| %>
                     <%= content_tag :li, class: ('selected' if @image_id == image.id) do %>
-                      <%= image_fu(crop, '106x106>', {
+                      <%= image_fu(crop, '106x106>',
                           alt: crop.parent.alt,
                           title: crop.parent.title,
                           id: "image_#{crop.id}",
-                          'data-id': crop.id
-                      }.merge(thumbnail_urls(crop))) %>
+                          data: {
+                            id: crop.id,
+                            **thumbnail_urls(crop)[:data]
+                          }) %>
                     <% end %>
                   <% end %>
                 </ul>

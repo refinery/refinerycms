@@ -16,7 +16,7 @@ shared_examples 'shows an image preview' do
   end
 
   let(:image_url) {
-    uri = URI(first(:xpath, "//a[@class='preview_icon']")[:href])
+    uri = URI(first(:xpath, "//a[contains(@class, 'preview_icon')]")[:href])
     uri.path << '?' << uri.query
   }
 
