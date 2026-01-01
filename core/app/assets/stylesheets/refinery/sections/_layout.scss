@@ -917,6 +917,11 @@ label.stripped {
   @include icon('spinner');
 }
 
+#image_grid .actions a img {
+  padding: 4px 4px 1px 4px;
+  vertical-align: top;
+}
+
 .actions a.reorder_anchor:hover {
   background: inherit !important;
   cursor: move;
@@ -1399,24 +1404,54 @@ body.dialog #content .search_form {
   padding: 12px;
 }
 
-#records.images {
-  #image_index {
-    .image_group.grid {
-      @include imageGridLayout;
+ul#image_grid, .pagination_container > ul#image_grid {
+  width: 100%;
+  padding: 0px;
+  margin: 10px 0px 15px 0px;
+}
 
-      li {
-        @include gridImage
-      }
-    }
+ul#image_grid li, .pagination_container > ul#image_grid li {
+  position: relative;
+  float: left;
+  margin: 0px 12px 12px 0px;
+  padding: 0px;
+  width: 149px;
+  height: 186px;
+  max-width: 149px;
+  max-height: 186px;
+  text-align: center;
+  overflow: hidden;
+}
 
-    .image_group.list {
-      @include imageListLayout;
+ul#image_grid li.image_3 {
+  margin-left: 0px;
+  margin-right: 0px;
+}
 
-      li {
-        @include listImage
-      }
-    }
-  }
+#records ul#image_grid li .actions {
+  top: auto;
+  bottom: 0px;
+}
+
+#records ul#image_grid li .actions a {
+  line-height: 24px;
+}
+
+ul#image_grid li.row-end {
+  margin-right: 0px;
+  float: right;
+}
+
+ul#image_grid li a {
+  border: 0 none;
+}
+
+ul#image_grid li p {
+  margin: 3px 0;
+}
+
+ul#image_grid li span.actions {
+  width: 100%;
 }
 
 ul.checkboxes {
