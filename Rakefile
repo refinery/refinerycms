@@ -1,4 +1,6 @@
 #!/usr/bin/env rake
+require 'logger'
+
 begin
   require 'bundler/setup'
 rescue LoadError

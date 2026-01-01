@@ -1,4 +1,4 @@
-name: CI
+name: Legacy
 
 on:
   push:
@@ -13,7 +13,12 @@ jobs:
         database: [ sqlite3, mysql, postgresql ]
         extension: [ core, dragonfly, images, pages, resources ]
         ruby: [ 3.2, 3.3, 3.4, 4.0 ]
-        rails: [ '~> 7.2.0', '~> 8.0.0', '~> 8.1.0' ]
+        rails: [ '~> 6.1.0', '~> 7.0.0', '~> 7.1.0' ]
+        exclude:
+          - ruby: 3.4
+            rails: '~> 6.1.0'
+          - ruby: 4.0
+            rails: '~> 6.1.0'
       fail-fast: false
     runs-on: ubuntu-latest
 
