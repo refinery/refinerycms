@@ -1,0 +1,16 @@
+<ul id="image_grid" class="<%= ['clearfix', 'pagination_frame', 'images_list', pagination_css_class].compact.join(' ') %>">
+  <% @images.each_with_index do |image, index| -%>
+    <li id="image_<%= image.id %>" class="image_<%= index % 4 %>">
+      <%= image_fu image, '149x149#c', title: image.title %>
+      <span class="actions">
+
+       <%= action_icon :preview, image.url, t('view_live_html', scope: 'refinery.admin.images') %>
+       <%= action_icon :edit,    refinery.edit_admin_image_path(image), t('edit', scope: 'refinery.admin.images') %>
+       <%= action_icon :delete,  refinery.admin_image_path(image, params.to_unsafe_h.slice(:page)),  t('delete', scope: 'refinery.admin.images'), class: 'confirm-delete',
+                           data: { confirm: t('message', scope: 'refinery.admin.delete', title: image.title) } %>
+       <%= action_icon :info,    '#', "Title: #{image.title} Alt text: #{image.alt}" %>
+
+      </span>
+    </li>
+  <% end -%>
+</ul>

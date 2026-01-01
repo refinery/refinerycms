@@ -1,16 +1,14 @@
 module Refinery
   module Admin
-    require 'will_paginate/array'
     class ImagesController < ::Refinery::AdminController
 
       crudify :'refinery/image',
               include: [:translations, :crops],
               order: "updated_at DESC",
               sortable: false,
-              conditions: 'parent_id IS NULL',
-              find_actions: [:update, :destroy, :edit]
+              conditions: 'parent_id IS NULL'
 
-      before_action :change_view_if_specified, :init_dialog
+      before_action :change_list_mode_if_specified, :init_dialog
 
       def new
         @image = ::Refinery::Image.new if @image.nil?
@@ -160,12 +158,9 @@ module Refinery
         @conditions = params[:conditions]
       end
 
-      def change_view_if_specified
-        return unless params[:view].present?
-
-        view = params[:view].to_sym
-        if action_name == 'index' && view && Refinery::Images.index_views.include?(view)
-           Refinery::Images.preferred_index_view = view
+      def change_list_mode_if_specified
+        if action_name == 'index' && params[:view].present? && Refinery::Images.image_views.include?(params[:view].to_sym)
+           Refinery::Images.preferred_image_view = params[:view]
         end
       end
 
@@ -189,10 +184,9 @@ module Refinery
 
       def permitted_image_params
         [
-          { image: [] }, :image_size, :image_title, :image_alt
+          :image, :image_size, :image_title, :image_alt
         ]
       end
     end
-
   end
 end

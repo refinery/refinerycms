@@ -1,5 +1,5 @@
 
-shared_examples 'Insert' do
+shared_examples 'inserts images' do
   before do
     raise "please set let(:initial_path)" if initial_path.blank?
     ensure_on(initial_path)

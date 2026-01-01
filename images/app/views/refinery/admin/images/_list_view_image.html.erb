@@ -1,0 +1,30 @@
+<li id="sortable_<%= list_view_image.id %>" class="clearfix record <%= cycle('on', 'on-hover') %>">
+  <span class="title">
+    <%= translated_field(list_view_image, :title) %>
+  </span>
+
+  <% if Refinery::I18n.frontend_locales.many? %>
+    <span class='locales'>
+      <% list_view_image.translations.sort_by{ |t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
+        <% if translation.image_title.present? %>
+          <%= link_to refinery.edit_admin_image_path(list_view_image, switch_locale: translation.locale),
+                      class: 'locale', title: translation.locale.upcase do %>
+
+            <div class="<%=translation.locale %> locale_marker">
+              <%= locale_text_icon(translation.locale.upcase) %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </span>
+  <% end %>
+
+  <span class="preview"><%= list_view_image.image_name %></span>
+  <span class="actions">
+
+    <%= action_icon :preview, list_view_image.url, t('view_live_html', scope: 'refinery.admin.images') %>
+    <%= action_icon :edit,    refinery.edit_admin_image_path(list_view_image), t('edit', scope: 'refinery.admin.images') %>
+    <%= action_icon :delete,  refinery.admin_image_path(list_view_image),  t('delete', scope: 'refinery.admin.images'), class: 'confirm-delete',
+                           data: { confirm: t('message', scope: 'refinery.admin.delete', title: list_view_image.title)} %>
+  </span>
+</li>
