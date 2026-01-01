@@ -12,6 +12,17 @@ module Refinery
           visit refinery.admin_resources_path
           expect(page).to have_content('There are no files yet. Click "Upload new file" to add your first file.')
         end
+
+        it 'shows flash notice after successful upload' do
+          visit refinery.new_admin_resource_path
+
+          attach_file 'resource_file', Refinery.roots('refinery/resources').join('spec/fixtures/cape-town-tide-table.pdf')
+          fill_in 'resource_resource_title', with: 'Tide Table'
+          click_button 'Save'
+
+          expect(page).to have_content("'Tide Table' was successfully added.")
+          expect(page).to have_current_path(refinery.admin_resources_path)
+        end
       end
 
       it 'shows upload file link' do

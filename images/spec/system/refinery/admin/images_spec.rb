@@ -13,6 +13,18 @@ module Refinery
         expect(page).to have_content(::I18n.t('no_images_yet', scope: 'refinery.admin.images.records'))
       end
 
+      it 'shows flash notice after successful upload' do
+        visit refinery.new_admin_image_path
+
+        attach_file 'image_image', Refinery.roots('refinery/images').join("spec/fixtures/beach.jpeg")
+        fill_in 'image_image_title', with: 'Beach Photo'
+        fill_in 'image_image_alt', with: 'A beach'
+        click_button 'Save'
+
+        expect(page).to have_content("'Beach Photo' was successfully added.")
+        expect(page).to have_current_path(refinery.admin_images_path)
+      end
+
       it_has_behaviour 'uploads images'
     end
 
