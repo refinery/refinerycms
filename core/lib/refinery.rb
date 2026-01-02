@@ -1,4 +1,11 @@
-require 'rails' # from railties
+begin
+  require 'rails' # from railties
+rescue NameError => e
+  raise unless e.message.include?("ActiveSupport::LoggerThreadSafeLevel::Logger")
+
+  require "logger"
+  retry
+end
 require 'active_record'
 require 'action_controller'
 require 'rbconfig'
