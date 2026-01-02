@@ -1,5 +1,4 @@
 #!/usr/bin/env rake
-require 'logger'
 
 begin
   require 'bundler/setup'
@@ -8,10 +7,7 @@ rescue LoadError
 end
 
 APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
-
-if File.exist?(APP_RAKEFILE)
-  load 'rails/tasks/engine.rake'
-end
+load 'rails/tasks/engine.rake' if File.exist?(APP_RAKEFILE)
 
 Dir[File.expand_path('../tasks/**/*', __FILE__)].each do |task|
   load task
