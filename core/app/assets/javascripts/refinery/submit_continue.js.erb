@@ -1,0 +1,23 @@
+<%# encoding: utf-8 %>
+window.init_submit_continue = function() {
+  $("#submit_continue_button").click(submit_and_continue);
+  
+  $("form").change(function(e) {
+    $(this).attr("data-changes-made", true);
+  });
+
+  const continue_editing_button = $("#continue_editing");
+  if (continue_editing_button.length > 0 && continue_editing_button.attr("rel") !== "no-prompt") {
+    $("#editor_switch a").click(function(e) {
+      if ($("form[data-changes-made]").length > 0) {
+        if (!confirm("<%= ::I18n.t("refinery.js.admin.confirm_changes") %>")) {
+          e.preventDefault();
+        }
+      }
+    });
+  }
+
+  $("input[id=page_custom_slug]").change(function() {
+    $("#submit_continue_button").remove();
+  });
+};

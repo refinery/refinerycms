@@ -1,0 +1,42 @@
+window.init_interface = function() {
+  if (parent && parent.document.location.href !== document.location.href) {
+    $("body#dialog_container.dialog").addClass("iframed");
+  }
+  
+  $("input:submit:not(.button)").addClass("button");
+
+  if (typeof visual_editor_init_interface_hook !== 'undefined') {
+    visual_editor_init_interface_hook();
+  }
+
+  $("#current_locale li a").click(function(e) {
+    $("#current_locale li a span.action").each(function() {
+      $(this).css("display", $(this).css("display") === "none" ? "" : "none");
+    });
+
+    $("#other_locales").animate({
+      opacity: "toggle",
+      height: "toggle"
+    }, 250);
+    
+    $("html,body").animate({ scrollTop: $("#other_locales").parent().offset().top }, 250);
+    e.preventDefault();
+  });
+
+  $(".form-actions .form-actions-left input:submit#submit_button").click(function(e) {
+    $(this).nextAll('#spinner').removeClass('hidden_icon').addClass('unhidden_icon');
+  });
+
+  $(".form-actions.form-actions-dialog .form-actions-left a.close_dialog").click(function(e) {
+    let titlebar_close_button = $('.ui-dialog-titlebar-close');
+    if (parent) {
+      titlebar_close_button = parent.$('.ui-dialog-titlebar-close');
+    }
+    titlebar_close_button.click();
+    e.preventDefault();
+  });
+
+  $("a.suppress").on("click", function(e) {
+    e.preventDefault();
+  });
+};
