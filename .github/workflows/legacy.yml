@@ -33,7 +33,7 @@ jobs:
       RAILS_VERSION: ${{ matrix.rails }}
       RETRY_COUNT: 3
 
-    name: rails-${{ matrix.rails }} ruby-${{ matrix.ruby }} refinerycms-${{ matrix.extension }} ${{ matrix.database }}
+    name: rails ${{ matrix.rails }} ruby ${{ matrix.ruby }} refinerycms-${{ matrix.extension }} ${{ matrix.database }}
     steps:
       - run: sudo apt-get update && sudo apt-get install libsqlite3-dev -y
       - uses: actions/checkout@v6
