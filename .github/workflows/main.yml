@@ -55,4 +55,6 @@ jobs:
           sudo -u postgres psql -c "CREATE USER runner WITH SUPERUSER PASSWORD 'runner'"
 
       - run: bin/rake refinery:testing:dummy_app
+      - run: cd spec/dummy && bin/rails assets:precompile
+        if: ${{ matrix.rails == '~> 8.1.0' }}
       - run: bin/rspec ${{ matrix.extension }}/spec
