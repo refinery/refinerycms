@@ -69,7 +69,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'coveralls', require: false
   gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'refinerycms-testing', path: './testing'

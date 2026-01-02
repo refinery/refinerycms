@@ -7,23 +7,10 @@ ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../') unless defined?(ENG
 # Configure Rails Environment
 ENV["RAILS_ENV"] ||= 'test'
 
-if ENV['TRAVIS']
-  require 'coveralls'
-  Coveralls.wear!
-end
-
 require File.expand_path("../dummy/config/environment", __FILE__)
 
 require 'rack/test'
 require 'rspec/rails'
-
-
-# if testing on localhost
-Capybara.configure do |config|
-  parsed = Rack::Builder.parse_file(File.expand_path('../config.ru', __dir__))
-  # Rack 3+ returns the app directly; Rack 2 returned [app, options]
-  config.app = parsed.is_a?(Array) ? parsed.first : parsed
-end
 
 if ENV['RETRY_COUNT']
   require 'rspec/retry'

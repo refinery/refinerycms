@@ -33,4 +33,4 @@ inclusion.
 
 ## Links ##
 
-See also the [Contributing to Refinery](https://www.refinerycms.com/guides/contributing-to-refinery) guide.
+See also the [Contributing to Refinery](https://github.com/refinery/refinerycms/blob/main/doc/guides/8%20-%20Contributing/1%20-%20Contributing%20to%20Refinery.md) guide.

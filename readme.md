@@ -1,38 +1,32 @@
-# Refinery CMS™
+# Refinery CMS
 
-__An open source content management system for Rails 5.1+__
-
-More information at [https://www.refinerycms.com](https://www.refinerycms.com)
-
-[![Build Status](https://travis-ci.org/refinery/refinerycms.svg?branch=master)](https://travis-ci.org/refinery/refinerycms)  [![Code Climate](https://codeclimate.com/github/refinery/refinerycms.svg)](https://codeclimate.com/github/refinery/refinerycms)  [![Coverage Status](https://img.shields.io/coveralls/refinery/refinerycms.svg)](https://coveralls.io/r/refinery/refinerycms?branch=master)
-
-You can chat with us using Gitter:
-
-[![Gitter chat](https://badges.gitter.im/refinery/refinerycms.svg)](https://gitter.im/refinery/refinerycms)
+__An open source content management system for Rails 6.1+ through 8.1+__
 
 You can deploy an example app to Heroku:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/refinery/refinerycms-example-app)
 
+Note that some of our docs in this README are out of date, and our website is not currently live. Please refer to our [GitHub repository](https://github.com/refinery/refinerycms) for the current status and instructions. Guides can be found in the [doc/guides](https://github.com/refinery/refinerycms/tree/main/doc/guides) folder.
+
 ## Requirements
 
-* [Bundler](http://gembundler.com)
-* [ImageMagick](http://www.imagemagick.org/script/install-source.php)
+* [Bundler](https://bundler.io/)
+* [ImageMagick](https://imagemagick.org/script/install-source.php)
   * :warning: Warning: ImageMagick currently has a serious security vulnerability, CVE-2016–3714. After installing, you must disable certain features in ImageMagick's policy configuration. Please see the following for details:
     * https://imagetragick.com/
   * Mac OS X users should use [homebrew's](https://github.com/mxcl/homebrew/wiki/installation) `brew install imagemagick` or the [magick-installer](https://github.com/maddox/magick-installer).
 
 ## How to
 
-* __[Install Refinery CMS™](https://www.refinerycms.com/download)__
-* [Install Refinery CMS™ on Heroku](https://www.refinerycms.com/guides/heroku)
-* [Contribute to Refinery CMS™](readme.md#contributing)
+* __[Install Refinery CMS](https://www.refinerycms.com/download)__
+* [Install Refinery CMS on Heroku](https://github.com/refinery/refinerycms/blob/main/doc/guides/7%20-%20Hosting%20and%20Deployment/1%20-%20Heroku.md)
+* [Contribute to Refinery CMS](readme.md#contributing)
 
 ## Getting Started
 
 If you're new to Refinery, start with this guide:
 
-* __[Getting Started](https://www.refinerycms.com/guides/getting-started)__
+* __[Getting Started](https://github.com/refinery/refinerycms/tree/main/doc/guides/1%20-%20Getting%20Started)__
 
 For Rails 5.1+ support, you can use version `4.0.x` using this template:
 
@@ -57,14 +51,12 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 * Easily customise the look to suit the business.
 * __Extend with custom extensions__ to do anything Refinery doesn't do out of the box.
 * Sticks to __"the Rails way"__ as much as possible; we don't force you to learn new templating languages.
-* Uses [jQuery](http://jquery.com/) for fast and concise Javascript.
+* Uses [jQuery](http://jquery.com/) for now, for fast and concise Javascript.
 
 ## Help and Documentation
 
-* [Getting Started](https://www.refinerycms.com/guides/getting-started)
-* [Guides](https://www.refinerycms.com/guides)
-* [Google Group Discussion](https://groups.google.com/forum/#!forum/refinery-cms)
-* [Gitter chat](https://gitter.im/refinery/refinerycms)
+* [Getting Started](https://github.com/refinery/refinerycms/tree/main/doc/guides/1%20-%20Getting%20Started)
+* [Google Group Discussion](https://groups.google.com/g/refinery-cms)
 * [GitHub repository](https://github.com/refinery/refinerycms)
 * [Developer/API documentation](http://rubydoc.info/github/refinery/refinerycms)
 * [Twitter Account](https://twitter.com/refinerycms)
@@ -112,13 +104,13 @@ For help run the command without any options:
 ## Contributing
 
 See [contributing.md](contributing.md)
-and [Contributing to Refinery](https://www.refinerycms.com/guides/contributing-to-refinery)
+and [Contributing to Refinery](https://github.com/refinery/refinerycms/blob/main/doc/guides/8%20-%20Contributing/1%20-%20Contributing%20to%20Refinery.md)
 guide for details about contributing and running test.
 
 ## License
 
-Refinery CMS™ is released under the MIT license. See the [license.md file](license.md#readme) for details.
+Refinery CMS is released under the MIT license. See the [license.md file](license.md#readme) for details.
 
 ### Credits
 
-Many of the icons used in Refinery CMS™ are from the wonderful [Silk library by Mark James](http://www.famfamfam.com/lab/icons/silk/).
+Many of the icons used in Refinery CMS are from the wonderful [Silk library by Mark James](http://www.famfamfam.com/lab/icons/silk/).

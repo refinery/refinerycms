@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary           = 'Core extension for Refinery CMS'
   s.description       = 'The core of Refinery CMS. This handles the common functionality and is required by most extensions'
   s.email             = 'gems@p.arndt.io'
-  s.homepage          = 'https://www.refinerycms.com'
+  s.homepage          = 'https://github.com/refinery/refinerycms'
   s.authors           = ['Philip Arndt', 'David Jones', 'Uģis Ozols', 'Brice Sanchez']
   s.license           = 'MIT'
   s.require_paths     = %w[lib]

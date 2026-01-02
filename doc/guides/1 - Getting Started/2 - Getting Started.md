@@ -38,7 +38,7 @@ The Refinery philosophy includes several guiding principles:
 * __"The Rails Way" where possible__ - Refinery embraces conventions used in Rails, allowing any Rails programmer to leverage existing knowledge to get up and running quickly.
 * __End user focused interface__ - Refinery's user interface is simple, bright and attractive so end users feel invited and not overwhelmed.
 * __Awesome developer tools__ - Refinery makes it easy for developers to add functionality and change the front-end look and feel.
-* __Encourage and Help Others__ - Refinery has an active community on Github, Gitter and Google Groups. If you ever have a question there is someone able and willing to assist.
+* __Encourage and Help Others__ - Refinery has an active community on GitHub, and Google Groups. If you ever have a question there is someone able and willing to assist.
 
 ### Refinery's architecture
 
