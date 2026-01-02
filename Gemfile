@@ -22,7 +22,7 @@ path './' do
   gem 'refinerycms-resources'
 end
 
-gem 'refinerycms-i18n', github: 'anitagraham/refinerycms-i18n', branch: 'ruby3'
+gem 'refinerycms-i18n', github: 'refinery/refinerycms-i18n', branch: 'main'
 
 # Add support for refinerycms-acts-as-indexed
 gem 'refinerycms-acts-as-indexed', '~> 4.0', '>= 4.0.0',
