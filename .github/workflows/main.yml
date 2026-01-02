@@ -12,8 +12,8 @@ jobs:
       matrix:
         database: [ sqlite3, mysql, postgresql ]
         extension: [ core, dragonfly, images, pages, resources ]
-        ruby: [ 3.2, 3.3, 3.4, 4.0 ]
-        rails: [ '~> 7.2.0', '~> 8.0.0', '~> 8.1.0' ]
+        ruby: [ 4.0, 3.4, 3.3, 3.2  ]
+        rails: [ '~> 8.1.0', '~> 8.0.0', '~> 7.2.0' ]
       fail-fast: false
     runs-on: ubuntu-latest
 
