@@ -2,6 +2,7 @@ shared_examples_for 'deletes an image' do
   before do
     raise "please set let(:initial_path)" if initial_path.blank?
     ensure_on(initial_path)
+    initialize_context
   end
 
   let(:image_count) {[Refinery::Image.count, Refinery::Images.pages_per_admin_index].min}

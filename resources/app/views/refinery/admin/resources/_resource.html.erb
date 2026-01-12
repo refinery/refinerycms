@@ -1,37 +1,24 @@
 <%
-  edit_url =    refinery.edit_admin_resource_path(resource)
-  delete_url =  refinery.admin_resource_path(resource)
-  delete_options = {data: {confirm: t('message',  scope: 'refinery.admin.delete', title: resource.title)}}
+  edit_url = refinery.edit_admin_resource_path(resource)
+  delete_url = refinery.admin_resource_path(resource)
+  delete_options = { data: { confirm: t('message', scope: 'refinery.admin.delete', title: resource.title) } }
 %>
-<li class="clearfix record <%= cycle('on', 'on-hover') %>">
+<li class="clearfix record <%= cycle('on', 'on-hover') %>" >
 
-  <span class="title <%= resource.ext.try(:downcase) %>">
+  <span class="title <%= resource.ext.try(:downcase) %>" >
     <%= translated_field(resource, :title) %>
-  </span>
+  </span >
+  <span class='locales' >
+    <%= switch_locale(resource, edit_url, :resource_title) if Refinery::I18n.frontend_locales.many? %>
+  </span >
 
-  <% if Refinery::I18n.frontend_locales.many? %>
-    <span class='locales'>
-      <% resource.translations.sort_by{ |t| Refinery::I18n.frontend_locales.index(t.locale)}.each do |translation| %>
-        <% if translation.resource_title.present? %>
-          <%= link_to refinery.edit_admin_resource_path(resource, switch_locale: translation.locale),
-                      class: 'locale', title: translation.locale.upcase do %>
-
-            <div class="<%=translation.locale %> locale_marker">
-              <%= locale_text_icon(translation.locale.upcase) %>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    </span>
-  <% end %>
-
-  <span class="preview">
+  <span class="preview" >
     <%= resource.file_name %> - <%= number_to_human_size(resource.size) %>
-  </span>
+  </span >
 
-  <span class="actions">
-    <%= action_icon :download,  resource.url, t('.download', size: number_to_human_size(resource.size)) %>
-    <%= action_icon :edit,      edit_url,     t('edit', scope: 'refinery.admin.resources') %>
-    <%= action_icon :delete,    delete_url,   t('delete', scope: 'refinery.admin.resources'), delete_options %>
-  </span>
-</li>
+  <span class="actions" >
+    <%= action_icon :download, resource.url, t('.download', size: number_to_human_size(resource.size)) %>
+    <%= action_icon :edit, edit_url, t('edit', scope: 'refinery.admin.resources') %>
+    <%= action_icon :delete, delete_url, t('delete', scope: 'refinery.admin.resources'), delete_options %>
+  </span >
+</li >
