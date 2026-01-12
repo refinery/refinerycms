@@ -7,8 +7,8 @@
       <li><%= value %></li>
     <% end %>
   <% else %>
-    <% object.errors.each do |key, value| %>
-      <li><%= value %></li>
+    <% object.errors.each do |error| %>
+      <li><%= error.message %></li>
     <% end %>
   <% end %>
   </ul>
