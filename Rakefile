@@ -1,9 +1,10 @@
 #!/usr/bin/env rake
+require "bundler/gem_helper"
 
-begin
-  require 'bundler/setup'
-rescue LoadError
-  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
+Bundler::GemHelper.install_tasks(name: "refinerycms")
+
+%w[core dragonfly images pages resources testing].each do |sub_gem|
+  Bundler::GemHelper.install_tasks(dir: sub_gem, name: "refinerycms-#{sub_gem}")
 end
 
 APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
