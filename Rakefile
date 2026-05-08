@@ -4,7 +4,9 @@ require "bundler/gem_helper"
 Bundler::GemHelper.install_tasks(name: "refinerycms")
 
 %w[core dragonfly images pages resources testing].each do |sub_gem|
-  Bundler::GemHelper.install_tasks(dir: sub_gem, name: "refinerycms-#{sub_gem}")
+  namespace sub_gem do
+    Bundler::GemHelper.install_tasks(dir: sub_gem, name: "refinerycms-#{sub_gem}")
+  end
 end
 
 APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)

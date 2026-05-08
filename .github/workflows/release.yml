@@ -24,4 +24,29 @@ jobs:
           ruby-version: ruby
 
       # Release
-      - uses: rubygems/release-gem@v1
+      #
+      # We use rubygems/configure-rubygems-credentials directly rather than the
+      # higher-level rubygems/release-gem action because this is a monorepo with
+      # multiple gems that must be released in dependency order. The release-gem
+      # action only supports a single gem (it runs `bundle exec rake release`
+      # which would only release the last gem registered with GemHelper).
+      #
+      # We also skip the `release:source_control_push` task (git tagging) because
+      # this workflow is triggered by a tag push — the tag already exists.
+      #
+      # rubygems/configure-rubygems-credentials exchanges the GitHub Actions OIDC
+      # token for a temporary RubyGems API key, enabling trusted publishing without
+      # storing any secrets.
+      - name: Configure RubyGems credentials
+        uses: rubygems/configure-rubygems-credentials@v2
+      # Gems are released in dependency order so each gem is available on
+      # RubyGems.org before any gem that depends on it is pushed.
+      - name: Release gems in dependency order
+        run: |
+          bundle exec rake core:release:rubygem_push
+          bundle exec rake dragonfly:release:rubygem_push
+          bundle exec rake testing:release:rubygem_push
+          bundle exec rake pages:release:rubygem_push
+          bundle exec rake images:release:rubygem_push
+          bundle exec rake resources:release:rubygem_push
+          bundle exec rake release:rubygem_push
