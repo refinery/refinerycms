@@ -35,9 +35,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'truncate_html',               '~> 0.9'
   s.add_dependency 'will_paginate',               '~> 3.1', '>= 3.1.0'
   s.add_dependency 'zilch-authorisation',         '~> 0', '>= 0.0.1'
-
-  s.cert_chain = [File.expand_path('../certs/parndt.pem', __dir__)]
-  if $PROGRAM_NAME =~ /gem\z/ && ARGV.include?('build') && ARGV.include?(__FILE__)
-    s.signing_key = File.expand_path('~/.ssh/gem-private_key.pem')
-  end
 end
