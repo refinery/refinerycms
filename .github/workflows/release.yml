@@ -43,6 +43,7 @@ jobs:
       # RubyGems.org before any gem that depends on it is pushed.
       - name: Release gems in dependency order
         run: |
+          bundle exec rake dragonfly:release:rubygem_push
           bundle exec rake testing:release:rubygem_push
           bundle exec rake pages:release:rubygem_push
           bundle exec rake images:release:rubygem_push
