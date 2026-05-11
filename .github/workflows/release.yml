@@ -38,7 +38,7 @@ jobs:
       # token for a temporary RubyGems API key, enabling trusted publishing without
       # storing any secrets.
       - name: Configure RubyGems credentials
-        uses: rubygems/configure-rubygems-credentials@v2
+        uses: rubygems/configure-rubygems-credentials@v2.0.0
       # Gems are released in dependency order so each gem is available on
       # RubyGems.org before any gem that depends on it is pushed.
       - name: Release gems in dependency order
