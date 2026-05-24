@@ -5,7 +5,7 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
     ::I18n.locale = locale
 
     ::Refinery::Page.live.in_menu.each do |page|
-      
+
       # exclude sites that are external to our own domain.
       if page.url.is_a?(Hash)
         
@@ -17,7 +17,7 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
         # handle relative link_url addresses.
         raw_url = [request.protocol, request.host_with_port, page.url].join
         
-        if (@locales.size > 1) && !page.url.start_with?("/#{locale}/") && defined?(RoutingFilter::RefineryLocales)
+        if (@locales.size > 1) && !page.url.start_with?("/#{locale}") && !!defined?(RoutingFilter::RefineryLocales)
           filter = RoutingFilter::RefineryLocales.new
           filter.around_generate({}) do
             raw_url
