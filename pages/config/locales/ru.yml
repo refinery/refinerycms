@@ -58,6 +58,7 @@ ru:
           parent_page: Родительская страница
           menu_title: Заголовок в меню
           custom_slug: Пользовательский slug
+          custom_slug_error: не может повторяться на одном уровне
           show_in_menu_title: Показывать в меню
           show_in_menu_description: Отображать эту страницу в меню сайта
           show_in_menu_help: "Снимите отметку, если вы хотите убрать страницу из меню вашего сайта."
