@@ -200,6 +200,14 @@ module Refinery
 
           expect(page).to have_content("'Parent page' was successfully added.")
         end
+
+        it "names the field in validation errors" do
+          visit refinery.new_admin_page_path
+
+          click_button "Save"
+
+          expect(page).to have_content("Title can't be blank")
+        end
       end
 
       describe "edit/update" do
