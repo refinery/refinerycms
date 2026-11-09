@@ -1,0 +1,44 @@
+name: Release Gem to rubygems.org
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  push:
+    if: github.repository == 'refinery/refinerycms'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      # Set up
+      - uses: actions/checkout@v6
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+
+      # Release
+      #
+      # The 4.0.x line predates the per-gem `rake <gem>:release` tasks on main,
+      # and its bundle does not resolve on a current Ruby. Releasing needs
+      # neither: each gemspec is built with `gem build` and pushed with
+      # `gem push`, so no bundle is installed.
+      #
+      # rubygems/configure-rubygems-credentials exchanges the GitHub Actions OIDC
+      # token for a temporary RubyGems API key, enabling trusted publishing without
+      # storing any secrets.
+      - name: Configure RubyGems credentials
+        uses: rubygems/configure-rubygems-credentials@v2.0.0
+      # Gems are released in dependency order so each gem is available on
+      # RubyGems.org before any gem that depends on it is pushed.
+      - name: Release gems in dependency order
+        run: |
+          for dir in core dragonfly testing pages images resources .; do
+            name=$(basename "$dir"/*.gemspec .gemspec)
+            (cd "$dir" && gem build "$name.gemspec" --output "$name.gem" && gem push "$name.gem")
+          done
