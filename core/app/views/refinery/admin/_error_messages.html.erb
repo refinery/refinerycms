@@ -4,7 +4,7 @@
   <ul>
   <% if defined?(include_object_name) and include_object_name %>
     <% object.errors.each do |error| %>
-      <li><%= error.message %></li>
+      <li><%= error.full_message %></li>
     <% end %>
   <% else %>
     <% object.errors.each do |error| %>
