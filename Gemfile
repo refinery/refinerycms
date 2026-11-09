@@ -72,6 +72,7 @@ group :test do
   gem 'generator_spec', '~> 0.9.3'
   gem 'launchy'
   gem 'refinerycms-testing', path: './testing'
+  gem 'rexml'
   gem 'rspec-retry'
 end
 
