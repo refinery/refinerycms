@@ -40,7 +40,7 @@ if !ENV['CI'] || ENV['DB'] == 'sqlite3'
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.3.0.rc1', platform: :jruby
   # Rails 6.1 and 7.0 require sqlite3 ~> 1.4, Rails 7.1+ can use newer versions
   if ENV['RAILS_VERSION']&.match?(/[67]\.[01]/)
-    gem 'sqlite3', '~> 1.4.0', platform: :ruby
+    gem 'sqlite3', '~> 1.4', platform: :ruby
   else
     gem 'sqlite3', platform: :ruby
   end
