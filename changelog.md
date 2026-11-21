@@ -17,6 +17,18 @@
 
 - [See full list](https://github.com/refinery/refinerycms/compare/4.0.2...master)
 
+## 4.1.1 [21 November 2026]
+
+* Fix stored XSS via SVG upload in refinerycms-resources and refinerycms-dragonfly [GHSA-h657-8j5c-6jfx](https://github.com/refinery/refinerycms/security/advisories/GHSA-h657-8j5c-6jfx) ([bl4cksku11](https://github.com/bl4cksku11))
+
+- [See full list](https://github.com/refinery/refinerycms/compare/4.1.0...4.1.1)
+
+## 4.0.4 [21 November 2026]
+
+* Fix stored XSS via SVG upload in refinerycms-resources and refinerycms-dragonfly [GHSA-h657-8j5c-6jfx](https://github.com/refinery/refinerycms/security/advisories/GHSA-h657-8j5c-6jfx) ([bl4cksku11](https://github.com/bl4cksku11))
+
+- [See full list](https://github.com/refinery/refinerycms/compare/4.0.3...4.0.4)
+
 ## 4.0.2 [21 May 2018]
 
 * Remove financials - pledgie has closed down [#3365](https://github.com/refinery/refinerycms/pull/3365) ([parndt](https://github.com/parndt))
