@@ -1,3 +1,9 @@
+## 4.0.4 [21 November 2026]
+
+* Fix stored XSS via SVG upload in refinerycms-resources and refinerycms-dragonfly [GHSA-h657-8j5c-6jfx](https://github.com/refinery/refinerycms/security/advisories/GHSA-h657-8j5c-6jfx) ([bl4cksku11](https://github.com/bl4cksku11))
+
+- [See full list](https://github.com/refinery/refinerycms/compare/4.0.3...4.0.4)
+
 ## 4.0.3 [2 September 2018]
 
 * Update dragonfly initializer to be compatible with dragonfly s3 datastore - Closes GH-3376 [#3377](https://github.com/refinery/refinerycms/pull/3377) ([kluucreations](https://github.com/kluucreations))
