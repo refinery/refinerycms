@@ -28,6 +28,12 @@ module Refinery
 
           response_header extension.dragonfly_response_header
 
+          if extension.respond_to?(:content_disposition) && extension.content_disposition.to_s == 'attachment'
+            response_header 'Content-Disposition' do |job, _request, _headers|
+              %(attachment; filename="#{job.name || 'file'}")
+            end
+          end
+
           verify_urls extension.dragonfly_verify_urls
 
           #  These options require a name and block

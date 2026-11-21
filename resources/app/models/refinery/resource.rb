@@ -20,6 +20,7 @@ module Refinery
 
     delegate :ext, :size, :mime_type, :url, to: :file
 
+    before_save :sanitize_svg
     before_destroy :cached_mime_type, prepend: true
 
     def cached_mime_type
@@ -43,6 +44,28 @@ module Refinery
       self.class.index_remove(copy)
       self.class.index_add(self)
     end
+
+    private
+
+    def sanitize_svg
+      return unless file.present? && file.mime_type.to_s == 'image/svg+xml'
+
+      data = file.data
+      doc = Nokogiri::XML(data)
+      doc.xpath('//*[local-name()="script"]').remove
+      doc.xpath('//@*[starts-with(local-name(), "on")]').remove
+      doc.xpath('//@*[local-name()="href" and starts-with(normalize-space(.), "javascript:")]').remove
+
+      cleaned = doc.to_xml
+      return if cleaned == data
+
+      original_name = file.name
+      io = StringIO.new(cleaned)
+      io.define_singleton_method(:original_filename) { original_name }
+      self.file = io
+    end
+
+    public
 
     class << self
       # How many resources per page should be displayed?
