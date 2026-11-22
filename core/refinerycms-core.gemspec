@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'decorators',                  '~> 2.1'
   s.add_dependency 'font-awesome-sass',           '>= 4.3.0', '< 5.0'
   s.add_dependency 'jquery-rails',                '~> 4.3', '>= 4.3.1'
-  s.add_dependency 'jquery-ui-rails',             '~> 7.0.0'
+  s.add_dependency 'jquery-ui-rails',             '~> 8.0'
   s.add_dependency 'railties',                    rails_version
   s.add_dependency 'refinerycms-i18n',            ['~> 5.0', '>= 5.0.1']
   s.add_dependency 'sass-rails',                  '>= 4.0', '< 7'

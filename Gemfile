@@ -39,7 +39,7 @@ if !ENV['CI'] || ENV['DB'] == 'sqlite3'
   if ENV['RAILS_VERSION']&.match?(/[67]\.[01]/)
     gem 'sqlite3', '~> 1.4', platform: :ruby
   else
-    gem 'sqlite3', platform: :ruby
+    gem 'sqlite3', '>= 2.10.2', platform: :ruby
   end
 end
 
