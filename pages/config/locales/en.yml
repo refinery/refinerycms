@@ -58,6 +58,7 @@ en:
           parent_page: Parent page
           menu_title: Menu title
           custom_slug: Custom slug
+          custom_slug_error: should be unique in scope of parent
           show_in_menu_title: Show in menu
           show_in_menu_description: Display this page in the site menu
           show_in_menu_help: Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu.
